@@ -1,0 +1,130 @@
+/* Jetons centralisés — seule source des couleurs et polices du site.
+   Ne jamais coder une couleur ou une police en dur ailleurs. */
+:root {
+	--c-bleu-principal: #174A81;
+	--c-bleu-profond: #10263B;
+	--c-turquoise-clair: #BFE6E6;
+	--c-orange-accent: #D9A062;
+	--c-texte: #191C19;
+	--c-gris-fond: #F4F7F8;
+	--c-blanc: #FFFFFF;
+
+	--f-titres: var(--wp--preset--font-family--hanken-grotesk, "Hanken Grotesk", -apple-system, BlinkMacSystemFont, sans-serif);
+	--f-texte: var(--wp--preset--font-family--public-sans, "Public Sans", -apple-system, BlinkMacSystemFont, sans-serif);
+
+	--rayon-sm: 4px;
+	--rayon-md: 8px;
+	--ombre-sobre: 0 1px 2px rgba(16, 38, 59, 0.08);
+	--bordure-sobre: 1px solid rgba(16, 38, 59, 0.12);
+
+	--conteneur-max: 1180px;
+	--conteneur-large: 1360px;
+
+	--esp-xs: 0.5rem;
+	--esp-sm: 1rem;
+	--esp-md: 1.5rem;
+	--esp-lg: 2.5rem;
+	--esp-xl: 4rem;
+	--esp-2xl: 6rem;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: auto; }
+body {
+	margin: 0;
+	background: var(--c-blanc);
+	color: var(--c-texte);
+	font-family: var(--f-texte);
+	font-size: 1.125rem;
+	line-height: 1.6;
+	-webkit-font-smoothing: antialiased;
+}
+img, svg, video { max-width: 100%; height: auto; display: block; }
+ul, ol { margin: 0; padding: 0; list-style: none; }
+h1, h2, h3, h4, h5, h6 {
+	font-family: var(--f-titres);
+	color: var(--c-bleu-profond);
+	line-height: 1.2;
+	font-weight: 700;
+	margin: 0 0 var(--esp-sm);
+}
+h1 { font-size: clamp(2rem, 1.5rem + 2vw, 2.75rem); }
+h2 { font-size: clamp(1.5rem, 1.2rem + 1.2vw, 2rem); }
+h3 { font-size: 1.375rem; }
+p { margin: 0 0 var(--esp-sm); }
+a { color: var(--c-bleu-principal); text-decoration: underline; text-underline-offset: 0.15em; }
+a:hover { color: var(--c-bleu-profond); }
+strong { font-weight: 700; }
+
+/* Focus visible et cohérent partout : jamais supprimé, jamais invisible. */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+[tabindex]:focus-visible {
+	outline: 3px solid var(--c-bleu-profond);
+	outline-offset: 2px;
+	border-radius: var(--rayon-sm);
+}
+
+/* Sur les fonds sombres (bandeaux bleus), un contour clair reste
+   suffisamment contrasté (WCAG 1.4.11) alors qu'un contour bleu foncé
+   s'y fondrait. */
+.tfp-cta-final :focus-visible,
+.tfp-preuves :focus-visible {
+	outline-color: var(--c-turquoise-clair);
+}
+
+.screen-reader-text {
+	position: absolute;
+	width: 1px; height: 1px;
+	margin: -1px; padding: 0;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border: 0;
+}
+
+.tfp-skip-link {
+	position: absolute;
+	left: var(--esp-sm);
+	top: -100px;
+	background: var(--c-bleu-profond);
+	color: var(--c-blanc);
+	padding: var(--esp-xs) var(--esp-sm);
+	border-radius: var(--rayon-sm);
+	z-index: 1000;
+	transition: top 0.15s ease;
+}
+.tfp-skip-link:focus {
+	top: var(--esp-sm);
+}
+
+.container {
+	max-width: var(--conteneur-max);
+	margin-inline: auto;
+	padding-inline: var(--esp-md);
+}
+.container--large { max-width: var(--conteneur-large); }
+
+.tfp-section { padding-block: var(--esp-xl); }
+.tfp-section--alt { background: var(--c-gris-fond); }
+.tfp-section--turquoise { background: var(--c-turquoise-clair); }
+
+.tfp-grille {
+	display: grid;
+	gap: var(--esp-md);
+	grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+.tfp-grille--2 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+.tfp-grille--3 { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+
+@media (prefers-reduced-motion: reduce) {
+	*, *::before, *::after {
+		animation-duration: 0.001ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.001ms !important;
+		scroll-behavior: auto !important;
+	}
+}

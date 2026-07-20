@@ -1,0 +1,13 @@
+/*
+Theme Name: Top-Famille Pro
+Theme URI: https://top-famille-pro.fr
+Author: Top-Famille Pro
+Description: Thème WordPress classique sur mesure pour Top-Famille Pro, entreprise de nettoyage professionnel en Bourgogne-Franche-Comté. Multi-pages, accessible, sans constructeur de page.
+Version: 1.0.0
+Requires at least: 6.4
+Requires PHP: 8.0
+Text Domain: top-famille-pro
+*/
+
+/* Les styles réels sont chargés via assets/css (voir inc/enqueue.php).
+   Ce fichier ne sert qu'à déclarer le thème auprès de WordPress. */

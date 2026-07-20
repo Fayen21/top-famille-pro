@@ -1,0 +1,147 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/theme.json",
+  "version": 2,
+  "settings": {
+    "appearanceTools": false,
+    "useRootPaddingAwareAlignments": true,
+    "layout": {
+      "contentSize": "1180px",
+      "wideSize": "1360px"
+    },
+    "color": {
+      "custom": false,
+      "customDuotone": false,
+      "customGradient": false,
+      "defaultPalette": false,
+      "defaultGradients": false,
+      "palette": [
+        { "slug": "bleu-principal", "name": "Bleu principal", "color": "#174A81" },
+        { "slug": "bleu-profond", "name": "Bleu profond", "color": "#10263B" },
+        { "slug": "turquoise-clair", "name": "Turquoise clair", "color": "#BFE6E6" },
+        { "slug": "orange-accent", "name": "Orange d'accent", "color": "#D9A062" },
+        { "slug": "texte", "name": "Texte", "color": "#191C19" },
+        { "slug": "gris-fond", "name": "Gris de fond", "color": "#F4F7F8" },
+        { "slug": "blanc", "name": "Blanc", "color": "#FFFFFF" }
+      ]
+    },
+    "typography": {
+      "customFontSize": false,
+      "fontStyle": true,
+      "fontWeight": true,
+      "lineHeight": true,
+      "fontFamilies": [
+        {
+          "fontFamily": "\"Hanken Grotesk\", -apple-system, BlinkMacSystemFont, sans-serif",
+          "name": "Hanken Grotesk",
+          "slug": "hanken-grotesk",
+          "fontFace": [
+            {
+              "fontFamily": "Hanken Grotesk",
+              "fontWeight": "400",
+              "fontStyle": "normal",
+              "fontDisplay": "swap",
+              "src": ["file:./assets/fonts/hanken-grotesk/HankenGrotesk-Regular.woff2"]
+            },
+            {
+              "fontFamily": "Hanken Grotesk",
+              "fontWeight": "600",
+              "fontStyle": "normal",
+              "fontDisplay": "swap",
+              "src": ["file:./assets/fonts/hanken-grotesk/HankenGrotesk-SemiBold.woff2"]
+            },
+            {
+              "fontFamily": "Hanken Grotesk",
+              "fontWeight": "700",
+              "fontStyle": "normal",
+              "fontDisplay": "swap",
+              "src": ["file:./assets/fonts/hanken-grotesk/HankenGrotesk-Bold.woff2"]
+            }
+          ]
+        },
+        {
+          "fontFamily": "\"Public Sans\", -apple-system, BlinkMacSystemFont, sans-serif",
+          "name": "Public Sans",
+          "slug": "public-sans",
+          "fontFace": [
+            {
+              "fontFamily": "Public Sans",
+              "fontWeight": "400",
+              "fontStyle": "normal",
+              "fontDisplay": "swap",
+              "src": ["file:./assets/fonts/public-sans/PublicSans-Regular.woff2"]
+            },
+            {
+              "fontFamily": "Public Sans",
+              "fontWeight": "500",
+              "fontStyle": "normal",
+              "fontDisplay": "swap",
+              "src": ["file:./assets/fonts/public-sans/PublicSans-Medium.woff2"]
+            },
+            {
+              "fontFamily": "Public Sans",
+              "fontWeight": "700",
+              "fontStyle": "normal",
+              "fontDisplay": "swap",
+              "src": ["file:./assets/fonts/public-sans/PublicSans-Bold.woff2"]
+            }
+          ]
+        }
+      ],
+      "fontSizes": [
+        { "slug": "small", "name": "Petit", "size": "0.9375rem" },
+        { "slug": "base", "name": "Texte courant", "size": "1.125rem" },
+        { "slug": "medium", "name": "Intertitre", "size": "1.375rem" },
+        { "slug": "large", "name": "Titre de section", "size": "2rem" },
+        { "slug": "x-large", "name": "Titre principal", "size": "2.75rem" }
+      ]
+    },
+    "spacing": {
+      "customSpacingSize": false,
+      "units": ["px", "rem", "%", "vh"],
+      "spacingScale": {
+        "steps": 0
+      },
+      "spacingSizes": [
+        { "slug": "xs", "name": "XS", "size": "0.5rem" },
+        { "slug": "sm", "name": "SM", "size": "1rem" },
+        { "slug": "md", "name": "MD", "size": "1.5rem" },
+        { "slug": "lg", "name": "LG", "size": "2.5rem" },
+        { "slug": "xl", "name": "XL", "size": "4rem" },
+        { "slug": "2xl", "name": "2XL", "size": "6rem" }
+      ]
+    }
+  },
+  "styles": {
+    "color": {
+      "background": "var(--wp--preset--color--blanc)",
+      "text": "var(--wp--preset--color--texte)"
+    },
+    "typography": {
+      "fontFamily": "var(--wp--preset--font-family--public-sans)",
+      "fontSize": "var(--wp--preset--font-size--base)",
+      "lineHeight": "1.6"
+    },
+    "elements": {
+      "heading": {
+        "typography": {
+          "fontFamily": "var(--wp--preset--font-family--hanken-grotesk)",
+          "fontWeight": "700",
+          "lineHeight": "1.2"
+        },
+        "color": {
+          "text": "var(--wp--preset--color--bleu-profond)"
+        }
+      },
+      "link": {
+        "color": {
+          "text": "var(--wp--preset--color--bleu-principal)"
+        },
+        ":hover": {
+          "color": {
+            "text": "var(--wp--preset--color--bleu-profond)"
+          }
+        }
+      }
+    }
+  }
+}
