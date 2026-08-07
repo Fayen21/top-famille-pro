@@ -1,8 +1,123 @@
 # STATUS — Top-Famille Pro
 
 > Lien entre deux sessions Claude Code Web. Mis à jour à la fin de chaque phase.
-> Dernière mise à jour : **Phase 3 — migration des 53 pages**, 7 août 2026.
-> `PHASE_3=PASS`
+> Dernière mise à jour : **Phase 4 — maillage interne, formulaire de devis enrichi, analytics**, 7 août 2026.
+> `PHASE_4=PASS`
+
+---
+
+## -3. Phase 4 — maillage interne, formulaire de devis enrichi, analytics
+
+Branche `phase-4-maillage-conversion`, créée sur `main` une fois les PR des phases 2 et 3 fusionnées
+(PR #3 puis PR #4, retargetée sur `main`). Trois chantiers, chacun commité séparément.
+
+### 1. Maillage interne
+
+Audit complet des liens garantis par le brief phase 4, gabarit par gabarit (pas page par page — un
+lien absent d'un gabarit est absent des ~10 pages de la famille en une fois). Détail complet et
+matrice avant/après : `docs/MAILLAGE.md`. Résumé des manques trouvés et corrigés :
+
+- `villes_prioritaires` sur les 6 prestations : le champ existait et le gabarit le rendait déjà,
+  mais aucun script de seed n'y avait jamais écrit de valeur depuis la phase 2 — la section
+  « Disponible dans ces villes » était silencieusement absente sur les 6 pages prestation depuis le
+  début. Renseigné avec les 10 villes réelles (`bin/seed-phase4-maillage.php`).
+- `/tarifs/` → 6 prestations (absent), page région → 8 départements (absent), département → page
+  région (lien contextuel ajouté en plus de la nav globale).
+- Articles ↔ prestations : aucun mécanisme de relation n'existait. Nouveau champ postmeta
+  multi-lignes `_tfp_related_prestation` (`includes/articles-meta.php`, ACF-free comme le reste du
+  thème), rendu dans les deux sens (`single.php` → « Prestations liées », `single-prestation.php` →
+  « Nos conseils sur ce sujet »).
+- Aucune page orpheline trouvée ; 3 clics maximum depuis l'accueil, fil d'Ariane sur toutes les
+  pages sauf l'accueil.
+
+### 2. Formulaire de devis — conforme au brief phase 4
+
+Champs étendus à la liste complète du brief : étape 1 = type de locaux, régime (régulier/ponctuel),
+ville (désormais un champ **visible**, plus seulement cachée), code postal, surface approximative,
+nom, téléphone, e-mail ; étape 2 = entreprise (renommé depuis « structure »), fréquence, créneau,
+message, consentement RGPD (case à cocher, lien vers `/politique-de-confidentialite/`).
+
+**Changement de règle de validation** (`includes/quote-form.php`) : l'e-mail n'est plus
+obligatoire — nom + (téléphone **ou** e-mail) + message + consentement coché sont requis ; si un
+e-mail est fourni, il doit être valide. L'ordre validation-avant-limitation-de-fréquence posé en
+phase 3 est conservé. `wp_mail()` reçoit tous les nouveaux champs, avec libellés lisibles (pas les
+clés brutes du formulaire).
+
+Deux CTA « Demander mon devis » (page prestation, page zone) transmettent maintenant leur contexte
+au formulaire, qui le pré-remplit (`src/js/quote-form.js`, déjà prêt à les lire depuis la phase 3) :
+`single-prestation.php` → `?service=&service_label=`, `single-zone.php` → `?ville=&departement=`
+(ville) ou `?departement=` seul (département). Détail et justification du nommage des paramètres :
+`docs/MAILLAGE.md`.
+
+### 3. Analytics — couche de données neutre, aucun outil installé
+
+`src/js/analytics.js` (nouveau) empile les 8 événements du brief
+(`quote_start`, `quote_step_1_complete`, `quote_submit`, `quote_success`, `quote_error`,
+`phone_click`, `email_click`, `local_cta_click`) dans `window.dataLayer`, un tableau JavaScript brut.
+Aucun script tiers chargé, aucun identifiant de mesure, conforme à CLAUDE.md §6 (« Aucun outil de
+tracking installé tant que son identifiant et les règles de consentement ne sont pas fournis »).
+
+### Bugs trouvés et corrigés pendant cette phase
+
+- **Collision de query_var WordPress, sérieuse** : le premier essai de transmission de contexte
+  utilisait `?prestation=<slug>` sur le lien vers `/demande-de-devis/`. `register_post_type()`
+  enregistre par défaut un query_var identique au nom du CPT — donc `?prestation=bureaux` sur
+  n'importe quelle URL du site (y compris `/demande-de-devis/`) détournait silencieusement la
+  requête principale de WordPress vers l'article single « bureaux » à la place de la page
+  réellement demandée, sans erreur ni redirection visible (juste un mauvais contenu rendu, HTTP
+  200). Trouvé par un test Playwright de préremplissage qui a constaté un `<title>` inattendu.
+  Corrigé en renommant le paramètre en `service`/`service_label` (`departement` et `ville` vérifiés
+  sans collision : la taxonomie `departement` a `query_var => false`, `ville` n'est le nom d'aucun
+  post type ni d'aucune taxonomie).
+- **Débordement horizontal à 320px sur `/demande-de-devis/`** : `<fieldset>` a un
+  `min-width: min-content` implicite dans les navigateurs, qui ignore la largeur du conteneur
+  parent — dès qu'un des deux `<fieldset data-step>` du formulaire a un contenu dont la largeur
+  intrinsèque dépasse le viewport, tout le formulaire déborde. Corrigé par une règle globale
+  `fieldset { min-width: 0; }` (`src/css/02-base.css`) — correctif standard pour ce piège CSS connu.
+
+### Vérifications
+
+| Contrôle | Résultat |
+|---|---|
+| `npm run test` (lint PHP + build) | ✅ |
+| Soumission valide (téléphone seul, sans e-mail) | ✅ passe la validation (échoue ensuite à l'envoi, faute de transport mail dans le bac à sable — attendu, voir §8) |
+| Soumission valide (e-mail seul, sans téléphone) | ✅ idem |
+| Ni téléphone ni e-mail | ✅ rejeté (`erreur=champs`) |
+| E-mail fourni mais mal formé | ✅ rejeté (`erreur=champs`) |
+| Consentement non coché | ✅ rejeté (`erreur=champs`) |
+| Honeypot rempli | ✅ rejet silencieux |
+| Nonce invalide/absent | ✅ rejeté (`erreur=session`) |
+| Navigation clavier étape 1 → 2 (Tab, Espace sur la case à cocher) | ✅ |
+| Message d'erreur annoncé pour le groupe radio « régime » (`<legend>`, pas de doublon par bouton) | ✅ |
+| Préremplissage `?service=&service_label=&ville=&departement=` sur `/demande-de-devis/` | ✅ |
+| `window.dataLayer` : `quote_start`, `quote_step_1_complete`, `quote_success`, `quote_error` | ✅ observés par Playwright |
+| axe-core (WCAG 2A/2AA/2.2AA) + débordement horizontal, 320/375/1440px, `/demande-de-devis/` (avec et sans contexte), `/prestations/bureaux/`, page ville, page département | ✅ 0 violation après correctifs |
+| Balayage de régression (17 pages statiques/hub, 320/1440px, statut HTTP + débordement + erreurs JS) | ✅ aucune régression |
+| Recherche finale « Top-Entreprise » résiduelle | ✅ aucune |
+
+### Ce qu'il reste à fournir pour que le formulaire envoie réellement les demandes
+
+Inchangé depuis la phase 3, toujours d'actualité : le code envoie réellement via `wp_mail()` (pas de
+simulation), mais ce bac à sable n'a aucun transport mail système — `wp_mail()` y retourne `false`
+de façon reproductible, y compris en appel isolé hors formulaire. Pour un envoi réel une fois
+déployé sur Hostinger, il faut :
+
+1. **L'adresse de réception réelle** des demandes (`PROJECT_INPUTS.md` §1, question ouverte #4) —
+   `tfp_site_data()['email']` l'utilise déjà, seule sa valeur définitive manque.
+2. **Un test d'envoi réel** une fois le site déployé : Hostinger fournit un transport mail
+   fonctionnel nativement pour un domaine hébergé chez eux (`mail()` PHP standard), donc aucune
+   configuration SMTP dédiée ne devrait être nécessaire en usage normal — mais cela doit être vérifié
+   en conditions réelles, pas supposé.
+3. Si les e-mails partent en spam ou n'arrivent pas malgré (2), configurer SPF/DKIM pour
+   `top-famille-pro.fr` côté DNS Hostinger, ou basculer sur un plugin SMTP (ex. WP Mail SMTP) avec
+   les identifiants d'un service comme celui déjà utilisé pour `top-famille.fr` le cas échéant —
+   aucun choix technique à faire dans le thème, `wp_mail()` reste l'API utilisée quel que soit le
+   transport sous-jacent.
+
+### Base de cette branche
+
+`phase-4-maillage-conversion` est branchée sur `main`, après fusion des PR #3 (phase 2) et #4
+(phase 3).
 
 ---
 
@@ -636,12 +751,10 @@ phase 3 (`noindex,follow`, voir §-2).
   pages déjà créées en `noindex,follow`, §-2).
 - Avis clients réels : texte exact des 6 témoignages authentiques (§-2).
 
-### Phase 4 / 6
-- Adresse de réception des demandes de devis + test d'envoi réel du formulaire + SMTP Hostinger
-  (phase 4 — le formulaire est fonctionnel côté code depuis la phase 3, §-2, mais n'a pas pu être
-  testé bout en bout faute de transport mail dans le bac à sable).
-- Liens contextuels `?prestation=&ville=` vers `/demande-de-devis/` depuis les CTA des pages
-  prestation/zone (le formulaire sait déjà les lire, §-2).
+### Phase 6
+- Adresse de réception des demandes de devis + test d'envoi réel du formulaire (le code envoie
+  réellement via `wp_mail()` depuis la phase 3, champs enrichis en phase 4, §-3 ; non testable bout
+  en bout faute de transport mail dans le bac à sable — à vérifier dès le déploiement Hostinger).
 - Devenir de `topentreprise.fr` + inventaire des articles de son blog (phase 6).
 
 ---
