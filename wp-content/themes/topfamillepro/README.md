@@ -15,6 +15,7 @@ wp-content/themes/topfamillepro/
 ├── index.php / page.php / single.php   Gabarits de secours (phase 2 les remplace)
 ├── includes/
 │   ├── setup.php                    Support du thème, menus, tailles d'image
+│   ├── customizer.php               Réglage natif (photo d'Audrey) — aucune dépendance ACF
 │   ├── site-options.php             Données réelles (PROJECT_INPUTS.md) — jamais de valeur inventée
 │   ├── enqueue.php                  Chargement CSS/JS, cache-busting par filemtime
 │   ├── images.php                   tfp_picture() — AVIF/WebP/JPEG responsive
@@ -22,9 +23,10 @@ wp-content/themes/topfamillepro/
 │   ├── breadcrumbs.php              Fil d'Ariane + BreadcrumbList JSON-LD
 │   ├── seo.php                      title, meta description, canonical, OG, Twitter, JSON-LD
 │   ├── security.php                 Durcissement scopé au thème
-│   ├── cpt-zone.php / cpt-prestation.php       CPT (déclarations, contenu en phase 2)
-│   ├── acf-fields-zone.php / acf-fields-prestation.php   Champs ACF structurés
-│   └── acf-options-reassurance.php  Page d'options avis/note réels (vide par défaut)
+│   ├── cpt-zone.php / cpt-prestation.php       CPT (déclarations, contenu en phase 2) — enregistrés indépendamment d'ACF
+│   ├── acf-helpers.php              FAQ à nombre variable sans le champ Repeater (Pro), via des champs Group (gratuit)
+│   ├── acf-fields-zone.php / acf-fields-prestation.php   Champs ACF structurés — 100 % compatibles ACF gratuit
+│   └── reassurance-settings.php     Réglages avis/note réels — API Settings native, sans ACF
 ├── template-parts/
 │   ├── header/   site-header, mobile-nav, mobile-cta-bar
 │   ├── footer/   site-footer
@@ -72,9 +74,14 @@ Après toute modification de `src/css/*.css` ou `src/js/*.js`, lancer `npm run b
 2. Installer le thème parent **GeneratePress** (gratuit, WordPress.org) dans
    `wp-content/themes/generatepress/` — prérequis, WordPress refuse d'activer un thème enfant
    dont le parent est absent.
-3. Installer et activer le plugin **ACF** (Advanced Custom Fields, gratuit suffit) — les CPT
-   `zone`/`prestation` et les gabarits en dépendent pour leurs champs structurés. Sans ACF actif,
-   le thème ne plante pas (les fonctions vérifient `function_exists`) mais les champs n'existent pas.
+3. Installer et activer le plugin **ACF** gratuit (Advanced Custom Fields — la version gratuite
+   suffit, vérifié : aucun champ Repeater/Flexible Content/Gallery/Clone ni page d'options ACF
+   n'est utilisé, ces cinq fonctionnalités étant exclusives à ACF PRO) — les CPT
+   `zone`/`prestation` en dépendent pour leurs champs structurés. Sans ACF (absent ou inactif),
+   le thème ne plante pas (`function_exists` systématique) et les CPT restent enregistrés ; seuls
+   leurs champs n'existent pas. Les avis/note réels et la photo d'Audrey ne dépendent d'ACF dans
+   aucun cas : réglages natifs WordPress (`includes/reassurance-settings.php`,
+   `includes/customizer.php`).
 4. Dans l'administration WordPress → *Apparence → Thèmes*, activer **Top-Famille Pro**.
 5. Réglages → Permaliens : choisir une structure autre que « Simple » (ex. « Nom de l'article »)
    pour que les URL des CPT (`/prestations/…/`, `/zones-intervention/…/`) fonctionnent.

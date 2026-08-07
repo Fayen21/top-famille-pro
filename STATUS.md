@@ -1,7 +1,108 @@
 # STATUS — Top-Famille Pro
 
 > Lien entre deux sessions Claude Code Web. Mis à jour à la fin de chaque phase.
-> Dernière mise à jour : **Phase 1 — Fondations techniques et accueil**, 7 août 2026.
+> Dernière mise à jour : **Phase 1 — validation finale avant fusion de la PR #2**, 7 août 2026.
+> `PHASE_1_FINAL=PASS`
+
+---
+
+## 0. Validation finale de la phase 1 (avant fusion PR #2)
+
+Audit ciblé demandé avant fusion, sur la branche `phase-1-fondations`. Un vrai problème de fond a
+été trouvé et corrigé : **le thème dépendait d'ACF PRO alors que le README annonçait qu'ACF
+gratuit suffisait.**
+
+### Audit ACF gratuit/Pro
+
+`acf_add_options_page()` (page d'options « Réassurance & avis ») et le champ **Repeater**
+(FAQ des zones/prestations, tâches des prestations, avis de la page d'options) sont tous les deux
+des fonctionnalités **exclusives à ACF PRO** — confirmé sur `advancedcustomfields.com/pro/` : les
+cinq fonctionnalités réservées à Pro sont Repeater, Flexible Content, Gallery, Clone et les pages
+d'options. Aucune des deux n'est disponible dans ACF gratuit. Corrigé :
+
+- **Page d'options → API Settings native WordPress.** `includes/reassurance-settings.php`
+  remplace entièrement `includes/acf-options-reassurance.php` (supprimé) : `register_setting()`,
+  page d'admin native (`add_menu_page`), formulaire HTML classique, sanitization dédiée
+  (`esc_url_raw`, `sanitize_text_field`, `sanitize_textarea_field`, notes bornées 0–5). **Aucune
+  dépendance à ACF, ni gratuit ni Pro**, pour les avis/note/lien Google réels.
+- **FAQ (zone, prestation) → champs Group (gratuit) au lieu de Repeater.** Nombre fixe de 8 blocs
+  question/réponse (`includes/acf-helpers.php`, `tfp_acf_faq_group_fields()` /
+  `tfp_get_faq_items()`), chaque bloc facultatif, seuls les blocs dont la question est renseignée
+  sont retournés/affichés.
+- **Tâches de prestation → textarea « une par ligne »** (`tfp_get_lines()`) au lieu de Repeater.
+
+Vérifié dans un WordPress réel (ACF gratuit officiel, cloné depuis
+`github.com/AdvancedCustomFields/acf`, version 6.8.7) dans les trois situations demandées :
+
+| Situation | CPT `zone`/`prestation` enregistrés | Erreur fatale | Champs ACF disponibles |
+|---|---|---|---|
+| ACF absent (plugin non installé) | ✅ oui | ✅ aucune | Non (attendu) |
+| ACF gratuit installé, inactif | ✅ oui | ✅ aucune | Non (attendu) |
+| ACF gratuit installé et actif | ✅ oui | ✅ aucune | ✅ 5 groupes de champs enregistrés, testés en écriture/lecture (`update_field`/`get_field` réels sur un post de test) |
+
+Recherche globale confirmant l'absence de toute fonctionnalité Pro résiduelle
+(`acf_add_options_page`, `acf_add_options_sub_page`, `repeater`, `flexible_content`, `gallery`,
+`clone`) : aucune occurrence hors commentaires expliquant la correction.
+
+### Décisions de conception — vérifiées, une régression trouvée et corrigée
+
+- **Fusion Prestations ↔ « Professionnels accompagnés »** : les 5 chips du prototype sont toutes
+  présentes, aucun CTA n'a été perdu (le bloc d'origine n'en contenait aucun), un seul H2 au lieu
+  de deux — hiérarchie correcte, lecture plus courte. **CRO** : évite un second bloc de titre+lede
+  qui ne faisait que réintroduire le sujet « prestations » juste avant la vraie section
+  Prestations, sans apporter d'information ni de CTA propre.
+- **Fusion « Pourquoi » ↔ « Audrey et avis »** : les 4 items « Pourquoi » et les 2 CTA de la
+  section Audrey (« Échanger sur mes locaux », « Lire les avis ») étaient bien présents, **mais
+  le lien « Toutes nos preuves → » (vers `/pourquoi-nous/`) avait disparu pendant la fusion — un
+  vrai maillage perdu.** Réintégré (`template-parts/home/audrey-reviews.php`). **CRO** : les deux
+  blocs d'origine poursuivaient le même objectif de réassurance juste après la couverture
+  régionale ; les séparer allongeait la page sans ajouter d'information, mais fusionner ne
+  justifiait pas de perdre le lien vers la page de preuves complètes.
+- **Portrait d'Audrey** : visuel neutre confirmé (aucune photo de stock présentée comme elle,
+  aucun `alt` décrivant une personne inexistante — il n'y a d'ailleurs aucun `<img>` tant que le
+  placeholder est actif). Ajout d'un réglage **Customizer natif** (Apparence → Personnaliser →
+  Équipe, `includes/customizer.php`, sans dépendance ACF) : la vraie photo se dépose en un geste
+  depuis l'administration dès qu'elle est fournie, sans toucher au thème. Reste vide par défaut.
+- **Tarifs** : les trois montants réels sont confirmés — **24,30 € HT/heure** (locations
+  meublées, régulier), **26,00 € HT/heure** (autres locaux, régulier), **30,00 € HT/heure**
+  (ponctuel, ≤ 5 interventions) — tous trois sourcés `PROJECT_INPUTS.md` §5 « Tarifs réels »
+  (tableau « Ménage régulier — locations / — autres locaux / Ménage ponctuel »). Frais de gestion
+  9,00 € HT/mois et frais de mise en place 50,00 € HT, même source. Recherche globale : aucune
+  occurrence résiduelle de « 27 € » dans le HTML, le CSS, le JS, les métadonnées ou le JSON-LD
+  (uniquement dans un commentaire de code expliquant la correction).
+- **CTA mobile** : la barre CTA fixe contient bien les deux actions (☎ Appeler → `tel:+33636176339`,
+  Demander mon devis → `/demande-de-devis/`), visibles sans défiler, zones tactiles 138×55 px
+  (> 44×44 px), toutes deux atteignables au clavier (Tab), pas de débordement à 320 px. **Un vrai
+  défaut trouvé et corrigé** : le réservataire d'espace en bas de page (`.tfp-mobile-cta-spacer`)
+  avait une hauteur figée en CSS légèrement inférieure à la hauteur réelle de la barre (76px vs
+  76,6px), laissant un chevauchement de moins d'1px avec le footer. Corrigé par un calcul
+  dynamique en JS (`syncMobileCtaBarSpacer()`, `src/js/nav.js`) qui cale la hauteur du
+  réservataire sur la hauteur réelle de la barre, plus une valeur de repli CSS relevée par
+  sécurité (84px) si JavaScript est indisponible.
+
+### Preuves visuelles
+
+13 captures demandées, générées contre le commit `46740cb` (dernier commit de la PR au moment de
+la validation) et envoyées directement en pièces jointes de la conversation (accueil complet à
+320/375/768/1440 px, header desktop, menu mobile ouvert, hero mobile/desktop, section tarifs,
+section Audrey/avis neutralisée, footer + barre CTA mobile, 404 desktop/mobile). Non versionnées
+dans le dépôt (dossier `qa/` volontairement absent) pour ne pas alourdir l'historique Git d'images
+lourdes, conformément à la demande.
+
+### Contrôles finaux (tous relancés après corrections)
+
+`npm run test` (lint PHP 37/37 + build CSS/JS/images) ✅ · axe-core desktop (1440 px, accueil) 0
+violation ✅ · axe-core mobile (375 px, accueil) 0 violation ✅ · axe-core 404 desktop/mobile 0
+violation ✅ · 6 largeurs (320–1920 px) sans débordement horizontal ✅ · 0 erreur console sur les 6
+largeurs + interactions clavier ✅ · menu clavier (sous-menus desktop, piège de focus mobile,
+Échap) ✅ · 404 réelle (statut HTTP 404 confirmé) ✅ · recherche données fictives : aucune ✅ ·
+recherche fonctions ACF Pro : aucune ✅.
+
+### Blocages restants
+
+Aucun nouveau. Ceux déjà listés en §8 (Kbis, assureur, fiche Google, portrait réel, e-mails,
+accès hébergeur, tarifs à reconfirmer, communes secondaires, SMTP devis, devenir de
+topentreprise.fr) restent d'actualité et inchangés par cette validation.
 
 ---
 
