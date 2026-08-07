@@ -76,8 +76,16 @@ function tfp_zone_rewrite_rules() {
 		'index.php?zone=$matches[2]',
 		'top'
 	);
+	/*
+	 * Exclusion explicite de « bourgogne-franche-comte » : c'est une Page WordPress classique
+	 * (le hub régional, includes/cpt-zone.php ligne 18), pas une entrée de ce CPT. Sans cette
+	 * exclusion, ce premier segment matche comme n'importe quel slug de département et la requête
+	 * est réécrite en `zone=bourgogne-franche-comte`, qui ne correspond à aucun post → 404 au lieu
+	 * de laisser WordPress router normalement vers la Page (bug trouvé en créant la page réelle,
+	 * phase 3).
+	 */
 	add_rewrite_rule(
-		'^zones-intervention/([^/]+)/?$',
+		'^zones-intervention/(?!bourgogne-franche-comte/?$)([^/]+)/?$',
 		'index.php?zone=$matches[1]',
 		'top'
 	);

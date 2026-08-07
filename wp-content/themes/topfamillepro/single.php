@@ -18,9 +18,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 $post_id = get_queried_object_id();
 $site    = tfp_site_data();
 
-$direct  = get_post_meta( $post_id, '_tfp_direct_answer', true );
-$faq     = tfp_get_article_faq( $post_id );
-$robots  = tfp_article_is_complete( $post_id ) ? 'index,follow' : 'noindex,follow';
+$direct    = get_post_meta( $post_id, '_tfp_direct_answer', true );
+$faq       = tfp_get_article_faq( $post_id );
+$robots    = tfp_article_is_complete( $post_id ) ? 'index,follow' : 'noindex,follow';
+$seo_title = get_post_meta( $post_id, '_tfp_seo_title', true );
 
 $categories = get_the_category( $post_id );
 $cat_name   = ! empty( $categories ) ? $categories[0]->name : 'Conseils';
@@ -59,7 +60,7 @@ if ( ! empty( $faq ) ) {
 
 tfp_seo(
 	array(
-		'title'       => wp_strip_all_tags( get_the_title( $post_id ) ) . ' | ' . $site['brand_name'],
+		'title'       => $seo_title ?: ( wp_strip_all_tags( get_the_title( $post_id ) ) . ' | ' . $site['brand_name'] ),
 		'description' => get_the_excerpt( $post_id ),
 		'type'        => 'article',
 		'robots'      => $robots,
