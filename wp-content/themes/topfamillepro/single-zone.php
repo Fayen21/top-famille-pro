@@ -237,6 +237,14 @@ get_header();
 </section>
 <?php endif; ?>
 
+<?php if ( $is_dept ) : ?>
+<section class="tfp-section--tight">
+	<div class="tfp-container">
+		<a href="<?php echo esc_url( home_url( '/zones-intervention/bourgogne-franche-comte/' ) ); ?>" class="tfp-eyebrow-link">← Voir toute la région Bourgogne-Franche-Comté</a>
+	</div>
+</section>
+<?php endif; ?>
+
 <?php if ( $exclusions_rappel || $materiel_rappel ) : ?>
 <section class="tfp-section--alt tfp-section--tight">
 	<div class="tfp-container tfp-grid" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr))">

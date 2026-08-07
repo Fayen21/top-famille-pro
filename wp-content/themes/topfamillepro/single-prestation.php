@@ -22,6 +22,7 @@ $exclusions  = tfp_get_field( 'exclusions', $post_id );
 $materiel    = tfp_get_field( 'materiel_rappel', $post_id );
 $villes      = tfp_get_field( 'villes_prioritaires', $post_id );
 $faq         = tfp_get_faq_items( 'faq', $post_id, 8 );
+$related_articles = tfp_get_prestation_related_articles( $post_id );
 
 $seo_title = tfp_get_field( 'seo_title', $post_id );
 $seo_desc  = tfp_get_field( 'seo_description', $post_id );
@@ -180,6 +181,22 @@ get_header();
 		<div class="tfp-flex" style="margin-top:16px">
 			<?php foreach ( $villes as $ville ) : ?>
 				<a href="<?php echo esc_url( get_permalink( $ville ) ); ?>" class="tfp-chip"><?php echo esc_html( get_the_title( $ville ) ); ?></a>
+			<?php endforeach; ?>
+		</div>
+	</div>
+</section>
+<?php endif; ?>
+
+<?php if ( ! empty( $related_articles ) ) : ?>
+<section class="tfp-section--tight">
+	<div class="tfp-container">
+		<h2>Nos conseils sur ce sujet</h2>
+		<div class="tfp-grid tfp-grid--autofit-md" style="margin-top:16px">
+			<?php foreach ( $related_articles as $article ) : ?>
+				<a href="<?php echo esc_url( get_permalink( $article ) ); ?>" class="tfp-card" style="display:block;text-decoration:none;color:inherit">
+					<h3 style="font-size:17px"><?php echo esc_html( get_the_title( $article ) ); ?></h3>
+					<span class="tfp-link-arrow" style="margin-top:8px;display:inline-block">Lire l'article →</span>
+				</a>
 			<?php endforeach; ?>
 		</div>
 	</div>

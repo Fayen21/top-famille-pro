@@ -16,6 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 $site   = tfp_site_data();
 $budget = tfp_home_budget_example();
+$departements = get_posts( array( 'post_type' => 'zone', 'numberposts' => -1, 'meta_key' => 'niveau', 'meta_value' => 'departement', 'orderby' => 'title', 'order' => 'ASC' ) );
 
 $faqs = array(
 	array( 'q' => 'Intervenez-vous dans les huit départements de la région ?', 'a' => "Oui : Côte-d'Or, Doubs, Jura, Nièvre, Haute-Saône, Saône-et-Loire, Yonne et Territoire de Belfort. En revanche, nous n'intervenons pas en dehors de la {$site['address_region']}." ),
@@ -97,6 +98,20 @@ get_header();
 			<h2>Le territoire que nous couvrons — et celui que nous ne couvrons pas</h2>
 			<p style="margin-top:12px;color:var(--color-text-secondary);line-height:1.6">Nous intervenons sur les huit départements de la <?php echo esc_html( $site['address_region'] ); ?> : Côte-d'Or, Doubs, Jura, Nièvre, Haute-Saône, Saône-et-Loire, Yonne et Territoire de Belfort.</p>
 			<p style="margin-top:12px;color:var(--color-text-secondary);line-height:1.6">À l'intérieur de la région, la densité de nos interventions n'est pas uniforme. L'agglomération dijonnaise est notre secteur prioritaire ; les autres pôles urbains — Besançon, Chalon-sur-Saône, Mâcon, Dole, Auxerre, Nevers, Lons-le-Saunier, Vesoul, Belfort — sont couverts avec des plannings regroupés. Les communes intermédiaires sont traitées au cas par cas, selon le trajet et la fréquence.</p>
+		</div>
+	</div>
+</section>
+
+<section class="tfp-section--alt tfp-section">
+	<div class="tfp-container">
+		<h2>Les 8 départements couverts</h2>
+		<div class="tfp-grid tfp-grid--autofit-md" style="margin-top:20px">
+			<?php foreach ( $departements as $dept ) : ?>
+				<a href="<?php echo esc_url( get_permalink( $dept ) ); ?>" class="tfp-card" style="display:block;text-decoration:none;color:inherit">
+					<h3 style="font-size:17px"><?php echo esc_html( get_the_title( $dept ) ); ?></h3>
+					<span class="tfp-link-arrow" style="margin-top:8px;display:inline-block">Voir la page →</span>
+				</a>
+			<?php endforeach; ?>
 		</div>
 	</div>
 </section>

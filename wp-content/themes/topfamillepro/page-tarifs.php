@@ -13,6 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 $site   = tfp_site_data();
 $budget = tfp_home_budget_example();
+$prestations = get_posts( array( 'post_type' => 'prestation', 'posts_per_page' => -1, 'orderby' => 'title', 'order' => 'ASC' ) );
 
 $faqs = array(
 	array( 'q' => 'Le tarif est-il le même partout dans la région ?', 'a' => "Oui. La grille tarifaire est identique dans les huit départements couverts, en régulier comme en ponctuel. Seules les éventuelles indemnités kilométriques varient selon l'adresse des locaux, le planning et les conditions d'intervention, et sont précisées dans le devis." ),
@@ -98,6 +99,20 @@ get_header();
 			<h2>Exemple · bureaux réguliers, <?php echo (int) $budget['hours']; ?> h/mois</h2>
 			<p class="tfp-price-band__value" style="margin:12px 0"><strong><?php echo esc_html( tfp_format_price( $budget['monthly'] ) ); ?> HT/mois</strong></p>
 			<p style="color:var(--color-text-secondary)"><?php echo (int) $budget['hours']; ?> h × <?php echo esc_html( tfp_format_price( $site['price_autres_locaux'] ) ); ?> HT + <?php echo esc_html( tfp_format_price( $site['price_gestion'] ) ); ?> HT de gestion = <?php echo esc_html( tfp_format_price( $budget['monthly'] ) ); ?> HT/mois. Premier mois : <?php echo esc_html( tfp_format_price( $budget['first_month'] ) ); ?> HT si les frais de mise en place s'appliquent. Exemple non contractuel.</p>
+		</div>
+	</div>
+</section>
+
+<section class="tfp-section--alt tfp-section">
+	<div class="tfp-container">
+		<h2>Cette grille s'applique à toutes nos prestations</h2>
+		<div class="tfp-grid tfp-grid--autofit-md" style="margin-top:20px">
+			<?php foreach ( $prestations as $prestation ) : ?>
+				<a href="<?php echo esc_url( get_permalink( $prestation ) ); ?>" class="tfp-card" style="display:block;text-decoration:none;color:inherit">
+					<h3 style="font-size:17px"><?php echo esc_html( get_the_title( $prestation ) ); ?></h3>
+					<span class="tfp-link-arrow" style="margin-top:8px;display:inline-block">Voir la prestation →</span>
+				</a>
+			<?php endforeach; ?>
 		</div>
 	</div>
 </section>

@@ -28,8 +28,10 @@ add_action( 'add_meta_boxes', 'tfp_register_article_meta_box' );
 function tfp_render_article_meta_box( $post ) {
 	wp_nonce_field( 'tfp_article_meta_save', 'tfp_article_meta_nonce' );
 
-	$direct    = get_post_meta( $post->ID, '_tfp_direct_answer', true );
-	$seo_title = get_post_meta( $post->ID, '_tfp_seo_title', true );
+	$direct       = get_post_meta( $post->ID, '_tfp_direct_answer', true );
+	$seo_title    = get_post_meta( $post->ID, '_tfp_seo_title', true );
+	$related_ids  = array_map( 'intval', get_post_meta( $post->ID, '_tfp_related_prestation' ) );
+	$prestations  = get_posts( array( 'post_type' => 'prestation', 'numberposts' => -1, 'orderby' => 'title', 'order' => 'ASC' ) );
 	?>
 	<p>
 		<label for="tfp-direct-answer"><strong>Réponse directe</strong> (paragraphe d'ouverture, avant le sommaire)</label><br>
@@ -38,6 +40,15 @@ function tfp_render_article_meta_box( $post ) {
 	<p>
 		<label for="tfp-seo-title"><strong>Title SEO</strong> (facultatif — laisser vide pour utiliser le titre de l'article + « | <?php echo esc_html( tfp_site_data()['brand_name'] ); ?> ». À renseigner uniquement si cette valeur par défaut dépasse ~65 caractères.)</label><br>
 		<input type="text" id="tfp-seo-title" name="tfp_seo_title" value="<?php echo esc_attr( $seo_title ); ?>" style="width:100%">
+	</p>
+	<p>
+		<strong>Prestations liées</strong> (maillage — affichées en bas d'article et depuis la page de chaque prestation cochée)<br>
+		<?php foreach ( $prestations as $prestation ) : ?>
+			<label style="display:inline-block;margin:4px 12px 4px 0">
+				<input type="checkbox" name="tfp_related_prestations[]" value="<?php echo (int) $prestation->ID; ?>" <?php checked( in_array( (int) $prestation->ID, $related_ids, true ) ); ?>>
+				<?php echo esc_html( get_the_title( $prestation ) ); ?>
+			</label>
+		<?php endforeach; ?>
 	</p>
 	<hr>
 	<p><strong>FAQ</strong> — jusqu'à <?php echo (int) TFP_ARTICLE_FAQ_MAX; ?> questions. Un bloc dont la question est vide n'est ni affiché ni inclus dans le FAQPage JSON-LD (CLAUDE.md §8).</p>
@@ -72,6 +83,16 @@ function tfp_save_article_meta( $post_id ) {
 
 	if ( isset( $_POST['tfp_seo_title'] ) ) {
 		update_post_meta( $post_id, '_tfp_seo_title', sanitize_text_field( wp_unslash( $_POST['tfp_seo_title'] ) ) );
+	}
+
+	delete_post_meta( $post_id, '_tfp_related_prestation' );
+	if ( isset( $_POST['tfp_related_prestations'] ) && is_array( $_POST['tfp_related_prestations'] ) ) {
+		foreach ( $_POST['tfp_related_prestations'] as $prestation_id ) {
+			$prestation_id = (int) $prestation_id;
+			if ( $prestation_id > 0 && 'prestation' === get_post_type( $prestation_id ) ) {
+				add_post_meta( $post_id, '_tfp_related_prestation', $prestation_id );
+			}
+		}
 	}
 
 	for ( $i = 1; $i <= TFP_ARTICLE_FAQ_MAX; $i++ ) {
@@ -114,4 +135,38 @@ function tfp_get_article_faq( $post_id ) {
  */
 function tfp_article_is_complete( $post_id ) {
 	return (bool) get_post_meta( $post_id, '_tfp_direct_answer', true );
+}
+
+/**
+ * Prestations liées à un article (maillage CLAUDE.md/phase 4 « articles ↔ prestations »).
+ *
+ * @param int $article_id
+ * @return WP_Post[]
+ */
+function tfp_get_article_related_prestations( $article_id ) {
+	$ids = array_map( 'intval', get_post_meta( $article_id, '_tfp_related_prestation' ) );
+	if ( empty( $ids ) ) {
+		return array();
+	}
+	return get_posts( array( 'post_type' => 'prestation', 'post__in' => $ids, 'orderby' => 'post__in', 'numberposts' => -1 ) );
+}
+
+/**
+ * Articles liés à une prestation — sens inverse de tfp_get_article_related_prestations().
+ * `_tfp_related_prestation` est stocké en plusieurs lignes de postmeta non uniques (une par
+ * prestation cochée), ce qui rend cette requête directe sans jointure manuelle.
+ *
+ * @param int $prestation_id
+ * @return WP_Post[]
+ */
+function tfp_get_prestation_related_articles( $prestation_id ) {
+	return get_posts(
+		array(
+			'post_type'      => 'post',
+			'category_name'  => 'conseils',
+			'numberposts'    => -1,
+			'meta_key'       => '_tfp_related_prestation',
+			'meta_value'     => (int) $prestation_id,
+		)
+	);
 }
