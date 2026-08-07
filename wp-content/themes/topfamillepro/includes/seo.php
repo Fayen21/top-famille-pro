@@ -188,5 +188,27 @@ function tfp_render_jsonld( $seo, $canonical ) {
 		'@graph'   => $graph,
 	);
 
-	echo '<script type="application/ld+json">' . wp_json_encode( $jsonld, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES ) . '</script>' . "\n";
+	echo '<script type="application/ld+json">' . wp_json_encode( tfp_jsonld_decode_entities( $jsonld ), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES ) . '</script>' . "\n";
+}
+
+/**
+ * Décode les entités HTML dans toutes les valeurs texte d'un graphe JSON-LD, en profondeur.
+ *
+ * Les titres, extraits et libellés de fil d'Ariane passent par des filtres WordPress
+ * (wptexturize via get_the_title()/get_the_excerpt()) qui remplacent par exemple une apostrophe
+ * droite par l'entité HTML &#8217; — correct dans un contexte HTML, mais faux tel quel dans du
+ * JSON : ce n'est pas du HTML, donc les moteurs ne décodent pas cette entité et affichent le
+ * texte de l'entité au lieu du caractère. On décode donc systématiquement avant l'encodage JSON.
+ *
+ * @param mixed $data
+ * @return mixed
+ */
+function tfp_jsonld_decode_entities( $data ) {
+	if ( is_array( $data ) ) {
+		return array_map( 'tfp_jsonld_decode_entities', $data );
+	}
+	if ( is_string( $data ) ) {
+		return html_entity_decode( $data, ENT_QUOTES, 'UTF-8' );
+	}
+	return $data;
 }

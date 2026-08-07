@@ -45,3 +45,15 @@ function tfp_disable_default_image_sizes( $sizes ) {
 	return $sizes;
 }
 add_filter( 'intermediate_image_sizes_advanced', 'tfp_disable_default_image_sizes' );
+
+/**
+ * S'assure que la catégorie « Conseils » existe (CLAUDE.md §3 : type `post` natif, catégorie
+ * « Conseils », pour les 3 articles). Idempotent — wp_insert_term() ne recrée rien si le terme
+ * existe déjà.
+ */
+function tfp_ensure_conseils_category() {
+	if ( ! term_exists( 'conseils', 'category' ) ) {
+		wp_insert_term( 'Conseils', 'category', array( 'slug' => 'conseils' ) );
+	}
+}
+add_action( 'init', 'tfp_ensure_conseils_category', 20 );

@@ -1,8 +1,143 @@
 # STATUS — Top-Famille Pro
 
 > Lien entre deux sessions Claude Code Web. Mis à jour à la fin de chaque phase.
-> Dernière mise à jour : **Phase 1 — validation finale avant fusion de la PR #2**, 7 août 2026.
-> `PHASE_1_FINAL=PASS`
+> Dernière mise à jour : **Phase 2 — gabarits par famille de pages**, 7 août 2026.
+> `PHASE_2=PASS`
+
+---
+
+## -1. Phase 2 — un gabarit + une page réelle par famille
+
+PR #2 (phase 1) fusionnée, travail sur la nouvelle branche `phase-2-gabarits`. Brief : un gabarit
+PHP par famille de contenu (page statique, prestation, département, ville/commune, article) et une
+page de référence réelle par famille, contenu repris du prototype et corrigé selon CLAUDE.md §9,
+structure locale obligatoire (réponse directe, exclusions réelles, matériel fourni par le client,
+FAQ, CTA, maillage), JSON-LD complet par famille.
+
+### Ce qui a été construit
+
+- **`single-prestation.php`** — gabarit unique pour les 6 prestations (une seule entrée réelle
+  créée : **Bureaux**, `/prestations/bureaux/`). Pour qui, tâches couvertes, problèmes fréquents,
+  organisation (cahier des charges/produits/accès/sélection/suivi d'absence consolidés en un seul
+  champ), exclusions réelles, rappel matériel fourni par le client, tarif réel à trois montants,
+  villes prioritaires liées, FAQ, JSON-LD `Service` + `FAQPage` conditionnel.
+- **`single-zone.php`** — gabarit unique pour les 3 niveaux (`departement`/`ville`/`commune`),
+  branché sur le champ ACF `niveau`. Deux entrées réelles créées : **Côte-d'Or** (département,
+  `/zones-intervention/cote-dor/`) et **Dijon** (ville, `/zones-intervention/cote-dor/dijon/`).
+  Réponse directe, tissu économique et types de locaux du secteur (jamais un tarif différencié),
+  fonctionnement, tarif réel identique à toutes les zones, interlocutrice, villes du département ou
+  communes proches selon le niveau, FAQ locale, lien vers la page pilier et le département parent.
+- **`single.php`** — gabarit des articles (catégorie « Conseils », type `post` natif). Une entrée
+  réelle créée : **Fréquence de nettoyage des bureaux** (`/conseils/frequence-bureaux/`). Réponse
+  directe en tête, contenu structuré, FAQ, JSON-LD `Article` + `FAQPage` conditionnel.
+- **`page-nettoyage-professionnel.php`** — gabarit dédié de la page pilier (WP Page classique,
+  gabarit par slug, même logique que `front-page.php`). ~15 sections fidèles au prototype :
+  définition, professionnels accompagnés, prestataire vs recrutement direct, 6 prestations,
+  régulier/ponctuel, fréquences, tâches par espace, cahier des charges, avis réel conditionnel (pas
+  de faux avis), tarifs à trois montants, FAQ 10 questions, CTA final.
+- **Champs ACF ajoutés** (tous compatibles ACF gratuit, cf. audit phase 1) : `locaux_types`,
+  `fonctionnement`, `zones_desservies`, `cta_label` sur `zone` ; `problemes`, `organisation` sur
+  `prestation`.
+- **`tfp_get_field()`** (`includes/acf-helpers.php`) : wrapper de secours utilisé partout à la place
+  de `get_field()` — retombe sur `get_post_meta()` si ACF est absent. Corrige une régression trouvée
+  pendant la vérification (`single-prestation.php`/`single-zone.php` appelaient `get_field()` sans
+  garde, ce qui aurait provoqué une erreur fatale sans ACF — contraire à la garantie validée en
+  phase 1).
+- **Routage dédié des articles** (`includes/articles-routing.php`) : `/conseils/{slug}/` forcé par
+  règle de réécriture + filtre `post_link`, indépendant du réglage global « Permaliens » — un
+  changement de ce réglage en admin ne peut plus casser silencieusement les URL d'article. Bug
+  trouvé et corrigé pendant la vérification (voir « Écarts corrigés » ci-dessous).
+- **Routage imbriqué des zones** (`includes/cpt-zone.php`, posé en phase 1, activé en phase 2) :
+  `/zones-intervention/{departement}/` et `/zones-intervention/{departement}/{ville}/` via règles
+  de réécriture dédiées + redirection 301 canonique si le segment département ne correspond pas.
+- **Structure méta native des articles** (`includes/articles-meta.php`) : boîte de méta WordPress
+  standard (réponse directe + 8 blocs FAQ facultatifs), aucune dépendance ACF — un article reste
+  éditable même si ACF est désactivé.
+- **Script de seed idempotent** (`bin/seed-phase2-content.php`, `wp eval-file bin/seed-phase2-content.php`)
+  : crée/met à jour les 5 pages de référence avec du contenu réel. Choisi plutôt qu'un dump de base
+  de données parce que CLAUDE.md §3 ne versionne que le thème — le contenu de référence doit rester
+  relisible en PHP, pas opaque dans une base.
+
+### Écarts corrigés pendant la vérification
+
+- **Canonical et robots dupliqués.** WordPress core hooke par défaut `rel_canonical` et `wp_robots`
+  sur `wp_head`, en plus du rendu propre à `includes/seo.php` — chaque page servait donc deux
+  `<link rel="canonical">` et deux `<meta name="robots">`. Corrigé par `remove_action('wp_head',
+  'rel_canonical')` et `remove_action('wp_head', 'wp_robots', 1)` dans `includes/security.php`
+  (même endroit que les retraits déjà faits en phase 1 pour `wp_generator`/`rsd_link`) — la priorité
+  `1` de `wp_robots` a nécessité un `remove_action` explicite avec cette priorité, le défaut `10` ne
+  suffisant pas.
+- **Entités HTML échappées dans le JSON-LD.** `get_the_title()` passe par `wptexturize`, qui
+  convertit par exemple l'apostrophe droite de « Côte-d'Or » en entité HTML `&#8217;` — correct en
+  contexte HTML, mais faux tel quel dans un bloc JSON-LD (ce n'est pas du HTML, les moteurs
+  n'auraient pas décodé l'entité). Trouvé dans le nom de `BreadcrumbList`. Corrigé par un décodage
+  récursif (`tfp_jsonld_decode_entities()`) appliqué à tout le graphe avant `wp_json_encode()` dans
+  `includes/seo.php` — corrige la classe de bug pour tout titre futur contenant une apostrophe, pas
+  seulement le cas trouvé.
+- **URL d'article redirigées au lieu d'être servies directement.**
+  `/conseils/frequence-bureaux/` renvoyait un 301 vers `/frequence-bureaux/` parce que l'URL réelle
+  de l'article dépendait du réglage global « Permaliens » (configuré ad hoc pendant les tests de la
+  phase 1), pas d'une règle propre au thème. Corrigé par `includes/articles-routing.php` (voir
+  ci-dessus).
+- **Débordement horizontal à 320 px sur la page département.** Le CTA « Demander un devis en
+  Côte-d'Or » (libellé généré dynamiquement par gabarit) dépassait de 9 px à 320 px : `.tfp-btn` a
+  `white-space: nowrap` globalement (adapté aux libellés courts fixes, mais pas à un libellé
+  dynamique long). Corrigé par une règle `@media (max-width: 479px)` qui autorise le retour à la
+  ligne (`04-components.css`) plutôt que de raccourcir un libellé réel.
+- **Cible tactile insuffisante sur le fil d'Ariane à 320 px** (violation axe `target-size`, WCAG
+  2.5.8) : les liens du fil d'Ariane n'avaient ni `padding` ni espacement entre lignes en cas de
+  retour à la ligne (`row-gap: 0`), trouvé sur la page ville (4 niveaux de fil d'Ariane, cas le plus
+  serré). Corrigé : `padding: 8px 2px` + `min-height: 24px` sur les liens (`04-components.css`) et
+  `row-gap: 4px` sur la liste (`includes/breadcrumbs.php`).
+- **Zones non validées présentées comme desservies (CLAUDE.md §5.4 — trouvé après relecture du
+  contenu de seed, avant tout commit).** Le contenu repris du prototype pour les pages Côte-d'Or et
+  Dijon nommait Beaune et 7 autres « communes secondaires » du prototype (Chevigny-Saint-Sauveur,
+  Ahuy, Daix, Plombières-lès-Dijon, Sennecey-lès-Dijon, Nuits-Saint-Georges, Ruffey-lès-Echirey)
+  dans la réponse directe, le secteur économique, la FAQ, la meta description et le champ
+  `zones_desservies` — alors qu'aucune de ces communes n'est validée par Audrey et que seule Dijon
+  est une ville confirmée en Côte-d'Or (`PROJECT_INPUTS.md` §6). Même en texte simple non lié (pas
+  de page dédiée), les nommer sur une page indexée affirme une couverture non confirmée. **Corrigé** :
+  toutes les occurrences retirées de `bin/seed-phase2-content.php` (reformulées sans perte
+  d'information réelle), le champ `zones_desservies` laissé vide sur les deux pages plutôt que
+  rempli de noms non confirmés — la section correspondante se masque déjà automatiquement quand le
+  champ est vide (`single-zone.php`).
+
+### Vérifications
+
+| Contrôle | Résultat |
+|---|---|
+| `npm run test` (lint PHP 43/43 + build CSS/JS/images) | ✅ |
+| JSON-LD valide (`JSON.parse`) sur les 5 pages, types corrects par famille (`Service` sur la prestation, `Article` sur l'article, `FAQPage` uniquement si FAQ visible, `BreadcrumbList` partout, `Organization`/`ProfessionalService`/`WebSite`/`WebPage` toujours) | ✅ |
+| Nombre de blocs FAQ dans le JSON-LD = nombre de `<details>` visibles, sur les 5 pages | ✅ (7/6/7/3/10) |
+| Scénario commune non validée (`niveau=commune`, `statut_validation` décoché) | ✅ `robots: noindex,follow` émis, canonical et fil d'Ariane cohérents, aucune erreur PHP |
+| 3 scénarios ACF (absent / installé-inactif / installé-actif) sur `single-prestation.php` et `single-zone.php` | ✅ 200 partout, aucune erreur fatale, exactement un `<h1>` |
+| axe-core (WCAG 2A/2AA/2.2AA), 6 largeurs (320–1920 px) × 5 gabarits | ✅ 0 violation (2 trouvées et corrigées, voir écarts ci-dessus) |
+| Débordement horizontal, 6 largeurs × 5 gabarits | ✅ 0 (1 trouvé et corrigé) |
+| Erreurs console JS, 6 largeurs × 5 gabarits | ✅ 0 |
+| Navigation clavier (Tab complet + activation `<details>` FAQ au clavier) sur 3 gabarits représentatifs | ✅ tous les éléments focusables atteints, aucun piège, FAQ activable au clavier |
+| Recherche fonctions ACF Pro résiduelles | ✅ aucune (hors commentaires expliquant la correction phase 1) |
+| Recherche tarif fictif « 27 € » résiduel | ✅ aucune (hors commentaires) |
+| Recherche avis/notes fictifs résiduels | ✅ aucune |
+| Recherche « Top-Entreprise » résiduelle | ✅ aucune (hors `legalName` réel et un placeholder d'admin de la phase 1) |
+| Recherche distance/délai/quartier inventé | ✅ aucune |
+| Recherche zones non validées présentées comme desservies | ✅ aucune après correction (voir écarts) |
+
+### Points ouverts / limites de cette phase
+
+- **`communes_proches` vide sur la page Dijon** : aucun post `zone` de niveau `commune` n'existe
+  encore (les 8 communes secondaires du prototype restent non créées tant qu'Audrey ne les valide
+  pas une par une — CLAUDE.md §5.4). Le champ relationnel est prêt (`acf-fields-zone.php`), mais
+  n'a rien à référencer pour l'instant. Concerne la phase 3.
+- **1 seule entrée réelle par famille**, conformément au brief (« un gabarit + une page de
+  référence par famille ») — les 25 autres zones, 5 autres prestations, 17 pages statiques
+  restantes et 2 autres articles restent à créer en phase 3, avec les mêmes gabarits.
+- **Pas d'exemple de budget chiffré sur les pages zone** (contrairement au prototype qui affichait
+  un exemple « 12h/mois » quasi identique sur chaque ville) : évite un contenu quasi dupliqué entre
+  pages de zone et avec l'exemple déjà présent sur la page pilier/l'accueil. Écart signalé comme
+  demandé (CLAUDE.md §4).
+- Tous les points ouverts déjà listés en §8 (Kbis, assureur, fiche Google, portrait réel, e-mails,
+  accès hébergeur, tarifs à reconfirmer, communes secondaires, SMTP devis, devenir de
+  topentreprise.fr) restent d'actualité et inchangés par cette phase.
 
 ---
 
@@ -108,14 +243,16 @@ topentreprise.fr) restent d'actualité et inchangés par cette validation.
 
 ## 1. Où en est le projet
 
-Phase 0 et Phase 1 terminées. Le dépôt contient un thème enfant WordPress fonctionnel
-(`wp-content/themes/topfamillepro/`) avec une page d'accueil complète, fidèle au prototype et
-corrigée selon les règles de CLAUDE.md, vérifiée dans un WordPress réel (voir §11).
+Phase 0, Phase 1 et Phase 2 terminées. Le dépôt contient un thème enfant WordPress fonctionnel
+(`wp-content/themes/topfamillepro/`) avec une page d'accueil complète, un gabarit par famille de
+contenu (page statique, prestation, département, ville/commune, article) et une page réelle de
+référence par famille, tout fidèle au prototype et corrigé selon les règles de CLAUDE.md, vérifié
+dans un WordPress réel (voir §-1 et §11).
 
-**Prochaine étape : Phase 2 — Gabarits par famille de pages**, sur une nouvelle branche dédiée
-(`phase-2-gabarits` ou nom équivalent selon la convention CLAUDE.md §7), une fois cette PR revue.
-Cette session s'est arrêtée strictement à l'accueil, comme demandé — aucun gabarit de prestation,
-zone ou article n'a été construit.
+**Prochaine étape : Phase 3 — contenu réel restant**, sur une nouvelle branche dédiée
+(`phase-3-...` selon la convention CLAUDE.md §7) : les 25 zones, 5 prestations, 17 pages statiques
+et 2 articles restants, plus la validation des 8 communes secondaires par Audrey (voir §-1 « Points
+ouverts »).
 
 ---
 
@@ -312,16 +449,24 @@ token `--color-text-tertiary` (#58717F), qui passe.
 
 ---
 
-## 7. Prochaine étape (phase 2) — ce qui reste à faire
+## 7. Prochaine étape (phase 3) — ce qui reste à faire
 
-- Créer les 26 entrées `zone` et 6 entrées `prestation` réelles (contenu repris du prototype,
-  corrigé selon CLAUDE.md §9), avec leurs champs ACF renseignés.
-- Construire les gabarits définitifs par famille (statique, prestation, département, ville/commune,
-  article) et les règles de réécriture imbriquées pour les zones.
-- Câbler `page.php`/`single.php` définitifs (actuellement des filets de sécurité `noindex`).
-- Créer les 18 pages WordPress classiques (accueil exclu, déjà fait).
-- Passer les communes secondaires non validées en `noindex,follow` via le champ ACF
-  `statut_validation` déjà prévu dans `acf-fields-zone.php`.
+Gabarits et routage définitifs livrés en phase 2 (§-1) — la phase 3 est du contenu, pas de
+l'architecture :
+
+- Créer les 25 entrées `zone` restantes (7 autres départements + 9 autres villes) avec
+  `bin/seed-phase2-content.php` comme modèle (script à renommer/étendre plutôt qu'un nouveau script
+  par entrée).
+- Créer les 5 entrées `prestation` restantes.
+- Créer les 17 pages WordPress classiques restantes (accueil et page pilier `nettoyage-professionnel`
+  déjà faites), chacune avec son propre gabarit `page-{slug}.php` comme `page-nettoyage-professionnel.php`.
+- Créer les 2 articles restants avec la même structure que `frequence-bureaux` (réponse directe +
+  FAQ via `includes/articles-meta.php`).
+- Faire valider par Audrey, une par une, les 8 communes secondaires du prototype (Beaune,
+  Chevigny-Saint-Sauveur, Ahuy, Daix, Plombières-lès-Dijon, Sennecey-lès-Dijon,
+  Nuits-Saint-Georges, Ruffey-lès-Echirey — retirées du contenu de la phase 2, voir §-1) ; créer les
+  entrées `zone` de niveau `commune` uniquement pour celles confirmées, avec `statut_validation`
+  décoché par défaut (`noindex,follow` automatique, déjà vérifié en phase 2).
 
 ---
 
@@ -343,7 +488,7 @@ token `--color-text-tertiary` (#58717F), qui passe.
 
 ### Phase 3
 - Confirmation que les tarifs relevés sont toujours à jour.
-- Validation une par une des 8 communes secondaires du prototype.
+- Validation une par une des 8 communes secondaires du prototype (liste exacte en §7).
 
 ### Phase 4 / 6
 - Adresse de réception des demandes de devis + SMTP Hostinger (phase 4).

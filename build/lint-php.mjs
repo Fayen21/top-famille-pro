@@ -14,7 +14,9 @@ import { promisify } from 'node:util';
 
 const execFileAsync = promisify(execFile);
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const THEME_DIR = path.join(__dirname, '..', 'wp-content', 'themes', 'topfamillepro');
+const ROOT = path.join(__dirname, '..');
+const THEME_DIR = path.join(ROOT, 'wp-content', 'themes', 'topfamillepro');
+const BIN_DIR = path.join(ROOT, 'bin');
 
 async function findPhpFiles(dir) {
   const entries = await readdir(dir, { withFileTypes: true });
@@ -31,16 +33,16 @@ async function findPhpFiles(dir) {
 }
 
 async function main() {
-  const files = await findPhpFiles(THEME_DIR);
+  const files = [...(await findPhpFiles(THEME_DIR)), ...(await findPhpFiles(BIN_DIR))];
   let hasError = false;
 
   for (const file of files) {
     try {
       await execFileAsync('php', ['-l', file]);
-      console.log(`  OK  ${path.relative(THEME_DIR, file)}`);
+      console.log(`  OK  ${path.relative(ROOT, file)}`);
     } catch (err) {
       hasError = true;
-      console.error(`FAIL  ${path.relative(THEME_DIR, file)}`);
+      console.error(`FAIL  ${path.relative(ROOT, file)}`);
       console.error(err.stdout || err.message);
     }
   }

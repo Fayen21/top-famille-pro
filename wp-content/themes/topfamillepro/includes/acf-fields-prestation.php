@@ -55,6 +55,22 @@ function tfp_register_acf_fields_prestation() {
 					'rows'         => 8,
 				),
 				array(
+					'key'          => 'field_tfp_prestation_problemes',
+					'label'        => 'Situations concrètes traitées',
+					'name'         => 'problemes',
+					'type'         => 'textarea',
+					'instructions' => 'Une situation par ligne (ex. « Une salle de réunion utilisée toute la journée… »).',
+					'rows'         => 4,
+				),
+				array(
+					'key'          => 'field_tfp_prestation_organisation',
+					'label'        => 'Organisation (matériel, accès, intervenant, suivi)',
+					'name'         => 'organisation',
+					'type'         => 'textarea',
+					'instructions' => "Paragraphe libre couvrant produits/matériel, accès et clés, sélection de l'intervenant, suivi et gestion des absences — condensé plutôt qu'un champ par sous-thème, pour garder le formulaire gérable (cf. STATUS.md, phase 2).",
+					'rows'         => 6,
+				),
+				array(
 					'key'          => 'field_tfp_prestation_exclusions',
 					'label'        => 'Exclusions réelles',
 					'name'         => 'exclusions',

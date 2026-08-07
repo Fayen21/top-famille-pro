@@ -21,6 +21,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 remove_action( 'wp_head', 'wp_generator' );
 add_filter( 'the_generator', '__return_empty_string' );
 
+/**
+ * Retire le canonical et le robots meta par défaut du cœur WordPress : includes/seo.php
+ * (tfp_render_head_meta(), hooké sur wp_head à la priorité 5) rend déjà les deux à partir des
+ * données déclarées par tfp_seo() dans chaque gabarit. Sans ce retrait, les deux balises
+ * apparaissent en double dans le <head> — le cœur ajoute les siennes par défaut sur wp_head.
+ */
+remove_action( 'wp_head', 'rel_canonical' );
+remove_action( 'wp_head', 'wp_robots', 1 ); // Hooké à la priorité 1 par le cœur (wp-includes/default-filters.php), pas 10.
+
 /** Retire l'en-tête et le lien de pingback : le site n'utilise pas XML-RPC. */
 remove_action( 'wp_head', 'rsd_link' );
 remove_action( 'wp_head', 'wlwmanifest_link' );

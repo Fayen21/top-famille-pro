@@ -30,6 +30,8 @@ $tfp_includes = array(
 	'includes/acf-fields-zone.php',       // Champs ACF structurés du CPT zone — tous compatibles ACF gratuit.
 	'includes/acf-fields-prestation.php', // Champs ACF structurés du CPT prestation — tous compatibles ACF gratuit.
 	'includes/reassurance-settings.php', // Réglages « Réassurance & avis » (avis/note/lien Google réels) — API Settings native WordPress, aucune dépendance ACF.
+	'includes/articles-meta.php', // Réponse directe + FAQ des articles (type post natif) — boîte de méta native, aucune dépendance ACF.
+	'includes/articles-routing.php', // URL réelle /conseils/{slug}/ des articles, indépendante du réglage Permaliens global.
 );
 
 foreach ( $tfp_includes as $tfp_include ) {
