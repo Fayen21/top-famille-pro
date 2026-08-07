@@ -1,228 +1,412 @@
 # STATUS — Top-Famille Pro
 
 > Lien entre deux sessions Claude Code Web. Mis à jour à la fin de chaque phase.
-> Dernière mise à jour : **Phase 0 — Audit et choix de plateforme**, 7 août 2026.
+> Dernière mise à jour : **Phase 1 — validation finale avant fusion de la PR #2**, 7 août 2026.
+> `PHASE_1_FINAL=PASS`
+
+---
+
+## 0. Validation finale de la phase 1 (avant fusion PR #2)
+
+Audit ciblé demandé avant fusion, sur la branche `phase-1-fondations`. Un vrai problème de fond a
+été trouvé et corrigé : **le thème dépendait d'ACF PRO alors que le README annonçait qu'ACF
+gratuit suffisait.**
+
+### Audit ACF gratuit/Pro
+
+`acf_add_options_page()` (page d'options « Réassurance & avis ») et le champ **Repeater**
+(FAQ des zones/prestations, tâches des prestations, avis de la page d'options) sont tous les deux
+des fonctionnalités **exclusives à ACF PRO** — confirmé sur `advancedcustomfields.com/pro/` : les
+cinq fonctionnalités réservées à Pro sont Repeater, Flexible Content, Gallery, Clone et les pages
+d'options. Aucune des deux n'est disponible dans ACF gratuit. Corrigé :
+
+- **Page d'options → API Settings native WordPress.** `includes/reassurance-settings.php`
+  remplace entièrement `includes/acf-options-reassurance.php` (supprimé) : `register_setting()`,
+  page d'admin native (`add_menu_page`), formulaire HTML classique, sanitization dédiée
+  (`esc_url_raw`, `sanitize_text_field`, `sanitize_textarea_field`, notes bornées 0–5). **Aucune
+  dépendance à ACF, ni gratuit ni Pro**, pour les avis/note/lien Google réels.
+- **FAQ (zone, prestation) → champs Group (gratuit) au lieu de Repeater.** Nombre fixe de 8 blocs
+  question/réponse (`includes/acf-helpers.php`, `tfp_acf_faq_group_fields()` /
+  `tfp_get_faq_items()`), chaque bloc facultatif, seuls les blocs dont la question est renseignée
+  sont retournés/affichés.
+- **Tâches de prestation → textarea « une par ligne »** (`tfp_get_lines()`) au lieu de Repeater.
+
+Vérifié dans un WordPress réel (ACF gratuit officiel, cloné depuis
+`github.com/AdvancedCustomFields/acf`, version 6.8.7) dans les trois situations demandées :
+
+| Situation | CPT `zone`/`prestation` enregistrés | Erreur fatale | Champs ACF disponibles |
+|---|---|---|---|
+| ACF absent (plugin non installé) | ✅ oui | ✅ aucune | Non (attendu) |
+| ACF gratuit installé, inactif | ✅ oui | ✅ aucune | Non (attendu) |
+| ACF gratuit installé et actif | ✅ oui | ✅ aucune | ✅ 5 groupes de champs enregistrés, testés en écriture/lecture (`update_field`/`get_field` réels sur un post de test) |
+
+Recherche globale confirmant l'absence de toute fonctionnalité Pro résiduelle
+(`acf_add_options_page`, `acf_add_options_sub_page`, `repeater`, `flexible_content`, `gallery`,
+`clone`) : aucune occurrence hors commentaires expliquant la correction.
+
+### Décisions de conception — vérifiées, une régression trouvée et corrigée
+
+- **Fusion Prestations ↔ « Professionnels accompagnés »** : les 5 chips du prototype sont toutes
+  présentes, aucun CTA n'a été perdu (le bloc d'origine n'en contenait aucun), un seul H2 au lieu
+  de deux — hiérarchie correcte, lecture plus courte. **CRO** : évite un second bloc de titre+lede
+  qui ne faisait que réintroduire le sujet « prestations » juste avant la vraie section
+  Prestations, sans apporter d'information ni de CTA propre.
+- **Fusion « Pourquoi » ↔ « Audrey et avis »** : les 4 items « Pourquoi » et les 2 CTA de la
+  section Audrey (« Échanger sur mes locaux », « Lire les avis ») étaient bien présents, **mais
+  le lien « Toutes nos preuves → » (vers `/pourquoi-nous/`) avait disparu pendant la fusion — un
+  vrai maillage perdu.** Réintégré (`template-parts/home/audrey-reviews.php`). **CRO** : les deux
+  blocs d'origine poursuivaient le même objectif de réassurance juste après la couverture
+  régionale ; les séparer allongeait la page sans ajouter d'information, mais fusionner ne
+  justifiait pas de perdre le lien vers la page de preuves complètes.
+- **Portrait d'Audrey** : visuel neutre confirmé (aucune photo de stock présentée comme elle,
+  aucun `alt` décrivant une personne inexistante — il n'y a d'ailleurs aucun `<img>` tant que le
+  placeholder est actif). Ajout d'un réglage **Customizer natif** (Apparence → Personnaliser →
+  Équipe, `includes/customizer.php`, sans dépendance ACF) : la vraie photo se dépose en un geste
+  depuis l'administration dès qu'elle est fournie, sans toucher au thème. Reste vide par défaut.
+- **Tarifs** : les trois montants réels sont confirmés — **24,30 € HT/heure** (locations
+  meublées, régulier), **26,00 € HT/heure** (autres locaux, régulier), **30,00 € HT/heure**
+  (ponctuel, ≤ 5 interventions) — tous trois sourcés `PROJECT_INPUTS.md` §5 « Tarifs réels »
+  (tableau « Ménage régulier — locations / — autres locaux / Ménage ponctuel »). Frais de gestion
+  9,00 € HT/mois et frais de mise en place 50,00 € HT, même source. Recherche globale : aucune
+  occurrence résiduelle de « 27 € » dans le HTML, le CSS, le JS, les métadonnées ou le JSON-LD
+  (uniquement dans un commentaire de code expliquant la correction).
+- **CTA mobile** : la barre CTA fixe contient bien les deux actions (☎ Appeler → `tel:+33636176339`,
+  Demander mon devis → `/demande-de-devis/`), visibles sans défiler, zones tactiles 138×55 px
+  (> 44×44 px), toutes deux atteignables au clavier (Tab), pas de débordement à 320 px. **Un vrai
+  défaut trouvé et corrigé** : le réservataire d'espace en bas de page (`.tfp-mobile-cta-spacer`)
+  avait une hauteur figée en CSS légèrement inférieure à la hauteur réelle de la barre (76px vs
+  76,6px), laissant un chevauchement de moins d'1px avec le footer. Corrigé par un calcul
+  dynamique en JS (`syncMobileCtaBarSpacer()`, `src/js/nav.js`) qui cale la hauteur du
+  réservataire sur la hauteur réelle de la barre, plus une valeur de repli CSS relevée par
+  sécurité (84px) si JavaScript est indisponible.
+
+### Preuves visuelles
+
+13 captures demandées, générées contre le commit `46740cb` (dernier commit de la PR au moment de
+la validation) et envoyées directement en pièces jointes de la conversation (accueil complet à
+320/375/768/1440 px, header desktop, menu mobile ouvert, hero mobile/desktop, section tarifs,
+section Audrey/avis neutralisée, footer + barre CTA mobile, 404 desktop/mobile). Non versionnées
+dans le dépôt (dossier `qa/` volontairement absent) pour ne pas alourdir l'historique Git d'images
+lourdes, conformément à la demande.
+
+### Contrôles finaux (tous relancés après corrections)
+
+`npm run test` (lint PHP 37/37 + build CSS/JS/images) ✅ · axe-core desktop (1440 px, accueil) 0
+violation ✅ · axe-core mobile (375 px, accueil) 0 violation ✅ · axe-core 404 desktop/mobile 0
+violation ✅ · 6 largeurs (320–1920 px) sans débordement horizontal ✅ · 0 erreur console sur les 6
+largeurs + interactions clavier ✅ · menu clavier (sous-menus desktop, piège de focus mobile,
+Échap) ✅ · 404 réelle (statut HTTP 404 confirmé) ✅ · recherche données fictives : aucune ✅ ·
+recherche fonctions ACF Pro : aucune ✅.
+
+### Blocages restants
+
+Aucun nouveau. Ceux déjà listés en §8 (Kbis, assureur, fiche Google, portrait réel, e-mails,
+accès hébergeur, tarifs à reconfirmer, communes secondaires, SMTP devis, devenir de
+topentreprise.fr) restent d'actualité et inchangés par cette validation.
 
 ---
 
 ## 1. Où en est le projet
 
-Phase 0 terminée. Aucun code applicatif écrit (conforme à la consigne de phase). Le dépôt contient
-désormais, en plus du cadrage existant, un audit complet du prototype et une décision d'architecture.
+Phase 0 et Phase 1 terminées. Le dépôt contient un thème enfant WordPress fonctionnel
+(`wp-content/themes/topfamillepro/`) avec une page d'accueil complète, fidèle au prototype et
+corrigée selon les règles de CLAUDE.md, vérifiée dans un WordPress réel (voir §11).
 
-**Prochaine étape : Phase 1 — Fondations techniques**, sur une nouvelle branche dédiée
-(`phase-1-fondations` selon la convention CLAUDE.md §7), une fois cette PR de phase 0 revue.
-
-> Note pour Emmanuel : les prompts des phases 1 à 6 sont arrivés dans la même conversation que
-> celui de la phase 0, avant que celle-ci soit terminée. Je n'ai traité que la phase 0 dans cette
-> session — c'est la seule pour laquelle cette session a une branche dédiée
-> (`claude/phase-0-audit-plateforme-siw01r`), et CLAUDE.md §7 impose une branche par phase avec
-> revue entre deux sessions. Les phases 1 à 6 nécessitent chacune leur propre session/branche ;
-> elles s'appuient d'ailleurs sur les décisions prises ici (architecture WordPress, notamment), donc
-> les lancer avant la fin de la phase 0 aurait été prématuré.
+**Prochaine étape : Phase 2 — Gabarits par famille de pages**, sur une nouvelle branche dédiée
+(`phase-2-gabarits` ou nom équivalent selon la convention CLAUDE.md §7), une fois cette PR revue.
+Cette session s'est arrêtée strictement à l'accueil, comme demandé — aucun gabarit de prestation,
+zone ou article n'a été construit.
 
 ---
 
-## 2. Audit du dépôt
+## 2. Ce qui a été fait en phase 1
 
-**Historique complet (4 commits, tous en local + `origin`) :**
-1. `7c2441b` "Add test file" / `2d04ebe` "Delete test" — fichier de test vide créé puis supprimé le
-   même jour (20 juillet). Sans conséquence, ne laisse rien dans l'arbre actuel.
-2. `be1ac81` "Top-Entreprise - Prototype Ready for Code.html" (20 juillet) — **vestige d'une
-   tentative précédente**, antérieure au cadrage actuel.
-3. `65e95cd` "Ajout du prototype, des assets et du cadrage" (7 août) — commit unique qui apporte
-   `CLAUDE.md`, `PROJECT_INPUTS.md`, `PROMPT-PHASES.md`, `assets/`, et `reference/Top-Famille-Pro-HANDOFF-READY.html`.
-   C'est le vrai point de départ du projet actuel.
+### Nettoyage contrôlé
+- Suppression de `Top-Entreprise - Prototype Ready for Code.html` (vestige identifié en phase 0,
+  commit dédié séparé du reste du travail).
+- `reference/Top-Famille-Pro-HANDOFF-READY.html` non touché.
 
-**Branches :** `integration-v2` existe sur `origin` et en local mais est **strictement identique**
-à la branche courante (aucun commit propre, `git diff` vide). Aucune trace de travail non commité
-ailleurs. Rien à récupérer d'une « tentative précédente » côté code : il n'y en a pas eu, seulement
-un fichier prototype isolé.
+### Fondations WordPress
+- Thème enfant `topfamillepro`, parent **GeneratePress**, arborescence conventionnelle
+  (`functions.php` + `includes/` + `template-parts/` + `src/` + `assets/dist/`) — détail dans
+  `wp-content/themes/topfamillepro/README.md`.
+- CPT `zone` (taxonomie `departement` associée) et CPT `prestation` déclarés conformément à la
+  décision d'architecture de la phase 0 — **déclarations seulement**, les 26 + 6 entrées réelles
+  seront créées en phase 2.
+- Champs ACF structurés pour les deux CPT, enregistrés en PHP (`acf_add_local_field_group`, pas
+  via l'export JSON d'ACF) : la structure vit dans le dépôt Git, pas dans la base.
+- Page d'options ACF « Réassurance & avis » : seule source des avis/note/lien Google réels,
+  vide par défaut (voir §5).
+- URL propres : toutes les routes du site utilisent des chemins réels (`/prestations/bureaux/`,
+  `/zones-intervention/cote-dor/`…), aucun fragment `#/` nulle part dans le thème.
+- Vraie 404 : `404.php` appelle `status_header(404)` — vérifié en conditions réelles (§11), la
+  route renvoie bien un statut HTTP 404, pas seulement une page qui y ressemble.
+- Sécurité scopée au thème (`includes/security.php`) : masquage de la version WordPress, retrait
+  du pingback/RSD, blocage de l'énumération d'auteurs. Ce qui relève de `wp-config.php` ou de
+  l'hébergement (`DISALLOW_FILE_EDIT`, limitation des tentatives de connexion) reste à faire côté
+  hébergement — hors périmètre d'un dépôt qui ne versionne que le thème (CLAUDE.md §3).
+- Aucune dépendance lourde : deux devDependencies (`esbuild` pour le bundling CSS/JS, `sharp`
+  pour le pipeline d'images), toutes deux uniquement utilisées au build, jamais chargées par le
+  site en production.
 
-### Fichier à abandonner : `Top-Entreprise - Prototype Ready for Code.html` (racine du dépôt)
+### Design system
+- Tokens centralisés dans `src/css/00-tokens.css`, extraits et réduits à une échelle discrète à
+  partir de `docs/DESIGN-TOKENS.md` (couleurs, typographie, espacements, rayons, ombres, largeurs
+  de conteneur, breakpoints, cible tactile 44 px).
+- Bricolage Grotesque + Hanken Grotesk auto-hébergées, `font-display: swap`, sous-ensembles latin
+  + latin-ext uniquement (vietnamese/cyrillic-ext retirés), récupérées depuis l'API officielle
+  Google Fonts par `npm run fonts` (script reproductible, `build/fetch-fonts.mjs`) — pas de fichier
+  de police extrait à la main du bundle du prototype. Licence OFL, texte complet dans
+  `assets/dist/fonts/OFL.txt`.
+- CSS organisé en 6 fichiers sources (tokens → fonts → base → layout → composants → home),
+  bundlés et minifiés par `esbuild` en un seul `assets/dist/css/main.css` (~31 Ko minifié).
 
-- Utilise encore l'**ancienne marque** dans son `<title>` (« Top-Entreprise — Prototype Ready for
-  Code ») et une palette différente (fond `#174A81` au lieu de `#10263B`) — signe qu'il s'agit d'un
-  prototype antérieur au rebranding Top-Famille Pro, pas d'une version alternative du prototype actuel.
-  C'est exactement le genre d'artefact que CLAUDE.md §9 demande de faire disparaître
-  (« Supprimer toute occurrence de "Top-Entreprise" »).
-  Il n'est référencé par aucune règle de CLAUDE.md (seul `reference/Top-Famille-Pro-HANDOFF-READY.html`
-  est cité comme source visuelle/éditoriale) et fait **1,4 Mo** dans un dépôt censé ne verser que le
-  thème enfant.
-- **Recommandation : supprimer ce fichier en phase 1**, avec l'accord d'Emmanuel avant suppression
-  puisque CLAUDE.md interdit toute suppression de travail existant sans justification explicite —
-  cette justification est documentée ici. Non supprimé dans cette session (hors périmètre : « ne
-  modifie rien d'autre » pour la phase 0).
+### Composants globaux
+Header desktop avec sous-menus accessibles (Prestations, Zones), menu mobile plein écran avec
+piège de focus et fermeture au clavier (Échap), bouton téléphone, CTA devis, footer complet à
+4 colonnes, barre CTA mobile fixe (avec réservation d'espace pour ne jamais masquer le footer),
+bouton, carte, conteneur/section, fil d'Ariane (composant prêt, pas affiché sur l'accueil — voir
+`includes/breadcrumbs.php`), bloc CTA contextualisable, bloc de réassurance, cartes de
+prestations, cartes d'articles, image responsive (`tfp_picture()`).
 
-### Ce qui est réutilisable
+Vérifiés au clavier et en interaction réelle (§11) : ouverture/fermeture des sous-menus desktop
+(clic, clic extérieur, Échap), ouverture/fermeture du menu mobile (Échap, piège de focus confirmé
+sur 3 tabulations), verrouillage du scroll du body pendant que le menu mobile est ouvert.
 
-- `reference/Top-Famille-Pro-HANDOFF-READY.html` — prototype Claude Design actuel, en lecture
-  seule : source unique de vérité visuelle/éditoriale (jamais factuelle). Entièrement exploitable
-  pour la migration : structure de composants claire, 53 pages générées par 10 gabarits, logique
-  SEO déjà pensée (fonction `seoEntry()` interne, cf. §3 ci-dessous).
-- `assets/` — logos et photos, partiellement exploitables (détail en §4).
-- `CLAUDE.md`, `PROJECT_INPUTS.md`, `PROMPT-PHASES.md` — cadrage à jour, à conserver tel quel (sauf
-  mise à jour de CLAUDE.md §3 faite par cette phase).
+### Images
+Aucune archive `Top-Famille-Pro-images-temporaires.zip` n'a été fournie dans cette session — les
+photos de stock déjà présentes dans `assets/photos/` (relevées en phase 0) servent de
+placeholders, avec les mêmes règles d'honnêteté (voir §5). Pipeline AVIF/WebP/JPEG avec fallback,
+`srcset`/`sizes`, dimensions explicites, un seul `fetchpriority="high"` sans lazy-loading sur
+l'image LCP (hero), lazy-loading sur tout le reste — vérifié dans le HTML rendu (§11). Toute image
+est référencée par son *slug* (`tfp_picture('hero-main', […])`), jamais par un chemin de fichier en
+dur dans un gabarit : remplacer une photo provisoire par la photo réelle ne touchera aucun template,
+seulement `build/optimize-images.mjs` (mapping slug → fichier source).
+
+**Portrait d'Audrey : décision volontaire.** Aucune photo de stock n'est utilisée à cet endroit —
+un visuel neutre (pastille avec l'initiale « A ») remplace le portrait, avec la légende « Photo à
+venir ». Une photo de stock à côté du nom d'Audrey aurait visuellement laissé croire qu'il s'agit
+d'elle, quel que soit le texte de l'`alt` (invisible aux yeux d'un visiteur non malvoyant) — cela
+semblait aller au-delà de ce que permet le brief phase 1 §5/§7 (« ne jamais présenter une photo de
+stock comme Audrey »). Ce choix modifie la composition visuelle par rapport au prototype à cet
+endroit précis : à signaler comme demandé (CLAUDE.md §4). À remplacer par le vrai portrait dès
+réception (question ouverte PROJECT_INPUTS.md #7).
+
+### Page d'accueil
+Les 10 sections du brief, dans l'ordre demandé. « Professionnels accompagnés » fusionné en tête de
+la section Prestations (chips), et le bloc « Pourquoi Top-Famille Pro » du prototype fusionné dans
+la section « Audrey et avis » plutôt que de rester une section à part : les deux blocs
+poursuivaient le même objectif (réassurance/différenciation) juste après la couverture régionale,
+les séparer aurait allongé la page sans ajouter d'information — écart signalé comme demandé.
+
+**SEO/GEO** : `<title>` unique, meta description unique, canonical absolue auto-référente, H1
+unique (vérifié : un seul sur la page), hiérarchie de titres cohérente (8 H2, un par section
+visible), Open Graph, Twitter Card, JSON-LD `Organization`/`ProfessionalService` + `WebSite` +
+`WebPage` — vérifiés dans le HTML servi par un WordPress réel (§11), aucune dépendance JS pour ces
+balises. Pas de fil d'Ariane sur l'accueil (c'est la racine du fil que les autres pages
+afficheront) et donc pas de `BreadcrumbList` JSON-LD ici — décision documentée dans
+`includes/breadcrumbs.php`.
+
+**Conversion** : CTA principal « Demander mon devis » cohérent sur toute la page (header, hero,
+bandeau tarifaire, panneau tarif, CTA final, barre mobile), CTA secondaire téléphonique partout où
+pertinent, réassurance (24 h · gratuit · sans engagement) reprise à plusieurs endroits sans jamais
+répéter une fausse note, tarif présenté sans ambiguïté (voir correction ci-dessous), aucune fausse
+urgence, aucune fausse preuve sociale.
+
+### Corrections imposées par CLAUDE.md appliquées sur l'accueil
+- « Aucun simulateur » → « Devis étudié personnellement par Audrey » (microcopie du hero).
+- « Une couverture régionale, pas des agences fictives » → « Une entreprise régionale basée à
+  Saint-Apollinaire » (titre de la section couverture).
+- « Interlocuteur identifié » → « Interlocutrice identifiée » (bloc de réassurance).
+- Les trois cartes « Conseils & repères » pointent chacune vers son article
+  (`/conseils/frequence-bureaux/`, `/conseils/cout-nettoyage-bureaux/`,
+  `/conseils/cahier-des-charges-nettoyage/`), plus aucune vers `/conseils/`.
+- **Tarif réécrit entièrement.** Le prototype affichait un unique tarif fictif « 27 € HT/h »
+  partout sur l'accueil (badge hero, bandeau, panneau tarif, exemple de budget). CLAUDE.md §5.3
+  et §8 imposent le vrai point d'entrée (**à partir de 24,30 € HT/h**) et interdisent un chiffre
+  différencié par ville — mais rien n'imposait de garder le raccourci « un seul prix pour tout » du
+  prototype, qui est lui-même faux au regard de la grille réelle à trois tarifs
+  (`PROJECT_INPUTS.md` §5 : 24,30 € locations · 26,00 € autres locaux · 30,00 € ponctuel). La
+  section Tarifs de l'accueil détaille maintenant les trois montants réels, et l'exemple de budget
+  (« bureaux réguliers, 12 h/mois ») est recalculé sur le tarif réel « autres locaux » (26,00 €) au
+  lieu du tarif fictif : 321 € HT/mois (371 € le premier mois avec les frais de mise en place),
+  contre 333 €/383 € dans le prototype. Écart signalé comme demandé (CLAUDE.md §4).
 
 ---
 
-## 3. Ce que le prototype contient réellement (méthode d'extraction)
+## 3. Données fictives neutralisées (docs/DONNEES-FICTIVES.md appliqué)
 
-Le fichier `reference/Top-Famille-Pro-HANDOFF-READY.html` n'est pas un site statique lisible
-directement : c'est un **bundle** (format « Claude Design ») encodant un runtime `x-dc` +
-React + un unique composant applicatif compilé, avec toutes les ressources (images, polices,
-JS) encodées en base64/gzip dans un JSON de 3,8 Mo. Il a été décompressé et exécuté (Node, sans
-navigateur) pour en extraire les données réelles plutôt que de les deviner : tableaux `SERVICES`,
-`DEPTS`, `CITIES`, `SECONDARY`, `ARTICLES`, `STATIC_SEO`, fonction `seoEntry()`, et surtout
-`QA_ROWS` — **le prototype embarque lui-même un audit de ses 53 routes** (`qaRoutes()`), utilisé ici
-comme source de vérité pour `docs/INVENTAIRE-ROUTES.md`. Le prototype contient aussi un onglet de
-QA interne (`#/documentation-interne`) et un auditeur de débordement horizontal in-browser — utile
-pour comprendre l'intention du designer, mais ce ne sont **pas** des pages publiques.
-
-Résultat : **53 pages publiques + 1 page 404** répartis en 6 familles sur 10 gabarits distincts,
-détaillés dans `docs/INVENTAIRE-ROUTES.md`.
-
----
-
-## 4. Documents produits par cette phase
-
-| Document | Contenu |
+| Élément | Sort sur l'accueil |
 |---|---|
-| `docs/INVENTAIRE-ROUTES.md` | Les 53 pages + 404 : route démo `#/...` → URL cible → famille → title (avec longueur) → h1 → FAQ → preuves utilisées → statut robots cible. Inclut les écarts à corriger (communes secondaires en `index,follow` dans le prototype, à passer en `noindex,follow`). |
-| `docs/DESIGN-TOKENS.md` | Couleurs (hex, occurrences, rôle déduit), typographie (tailles, graisses), rayons, ombres, espacements, breakpoints — extraits par comptage réel dans le bundle, pas estimés à l'œil. |
-| `docs/DONNEES-FICTIVES.md` | Les 40 avis de démonstration (détail par page), la note 5,0/47 avis, les 18 scénarios locaux hypothétiques, les portraits/photos à ne pas présenter comme réels — avec emplacement exact dans les données du prototype. |
-| `STATUS.md` (ce fichier) | Bilan de phase, décisions, blocages. |
+| Note 5,0/5 + compteur 47 avis + lien Google `#` | Masqués. Le badge hero et le badge flottant sur le portrait n'existent que si `get_field('note', 'option')` et `get_field('nombre_avis', 'option')` sont renseignés (page d'options ACF, vides par défaut). |
+| 40 avis de démonstration (`demo: true`) | Aucun repris. La section Audrey affiche un seul avis authentique s'il existe dans la page d'options (`avis` repeater), sinon un bloc neutre « Avis clients à venir » clairement identifiable comme contenu à compléter. |
+| Citation attribuée à Audrey à la première personne (prototype) | Non reprise telle quelle : remplacée par un texte descriptif à la troisième personne (« Audrey suit votre dossier… ») — le brief §7 interdit d'inventer une information biographique sur elle, une citation directe non confirmée entre dans cette catégorie. |
+| Portrait de stock présenté comme Audrey | Remplacé par une pastille neutre (initiale + « Photo à venir »), voir §2. |
+| `alt` des photos de stock (hero, prestations, articles) | Tous réécrits avec la mention « (photo d'illustration) », aucun ne prétend montrer un lieu, une personne ou une intervention réelle de Top-Famille Pro. |
+| JSON-LD | Aucune note agrégée (`AggregateRating`), aucun avis, aucune coordonnée géographique, aucun horaire inventé — uniquement les champs de `PROJECT_INPUTS.md` (§4 « Contacts publics », adresse, horaires « lundi-samedi 6h-22h »). Aucune donnée d'immatriculation (SIRET/TVA/APE) : absente du schéma, pas même en `[À COMPLÉTER]` — elle n'a simplement rien à faire dans le JSON-LD tant que le Kbis ne l'a pas confirmée. |
 
 ---
 
-## 5. Inventaire `assets/` — ce qui manque
+## 4. Résultats des vérifications (session du 7 août 2026)
 
-| Élément attendu | Présent ? | Détail |
-|---|---|---|
-| Logo horizontal SVG | ❌ | `assets/logo/logo-horizontal.png` existe mais en **PNG raster** (759×402), pas en SVG. À vectoriser ou à redemander en SVG pour un rendu net à toutes tailles/résolutions. |
-| Logo carré | 🟡 | `assets/logo/logo-square.jpg` (1024×1009, JPEG) — raster également, pas de fond transparent possible (JPEG). Formats PNG/SVG à privilégier pour les usages (favicon, réseaux sociaux, `logo` JSON-LD). |
-| Favicon | ❌ | Aucun fichier favicon (`.ico`, `.png` 32/180/512, `apple-touch-icon`) dans `assets/`. À générer à partir du logo carré une fois celui-ci disponible en meilleure qualité. |
-| Doublons | ⚠️ | `assets/icons/123ee98e-….jpg` = `assets/logo/logo-square.jpg` (md5 identique) et `assets/icons/896e5255-….jpg` = `assets/logo/896e5255-….jpg` (md5 identique). Le dossier `assets/icons/` ne contient donc aucun fichier qui ne soit pas déjà dans `assets/logo/`, plus un PNG supplémentaire (`f6e491bf-….png`, 1536×1024, 2 Mo — à identifier, poids inhabituel pour une icône). |
-| Photos hero/prestations | ✅ (stock) | `hero-bureaux.jpg`, `hero-nettoyage-vitres.jpg`, `prestation-bureaux.jpg`, `prestation-commerces.jpg`, `locaux-professionnels-region.jpg`, + 17 photos `unsplash-*` : toutes des photos de lieux/objets, exploitables comme illustrations génériques (`alt` honnête), en attendant d'éventuelles photos réelles des locaux desservis. |
-| Portraits | ⚠️ | 3 portraits de stock (`portrait-stock-01.jpg`, `portrait-stock-a-propos.jpg`, `portrait-stock-contact.jpg`) présentés dans le prototype comme Audrey ou des interlocuteurs — détail dans `docs/DONNEES-FICTIVES.md` §5. Aucun portrait réel disponible pour l'instant (bloqueur mise en ligne, PROJECT_INPUTS.md #7). |
-| Photos intervenants | ⚠️ | 2 photos de stock (`intervenante-stock-bureaux.jpg`, `intervenante-stock-materiel.jpg`) — aucune photo réelle disponible (idem). |
-| Polices | ❌ (pas dans `assets/`) | Bricolage Grotesque et Hanken Grotesk sont toutes deux sur Google Fonts, licence **OFL** (open, auto-hébergement autorisé). 7 fichiers `.woff2` (sous-ensembles Unicode) sont embarqués dans le bundle du prototype mais **ne sont pas versés dans `assets/`** — à retélécharger proprement depuis Google Fonts en phase 1 (poids et licence garantis), plutôt qu'à extraire du bundle. |
+Procédure complète en §11. Résumé :
+
+| Contrôle | Résultat |
+|---|---|
+| 320 px | ✅ Aucun débordement horizontal (corrigé — voir §6), CTA mobile lisible, menu fonctionnel |
+| 375 px | ✅ Aucun débordement horizontal |
+| 768 px | ✅ Aucun débordement horizontal, bascule menu mobile encore active (seuil 820 px) |
+| 1024 px | ✅ Aucun débordement horizontal, navigation desktop active |
+| 1440 px | ✅ Aucun débordement horizontal |
+| 1920 px | ✅ Aucun débordement horizontal, conteneur plafonné à 1260 px, pas d'étirement excessif |
+| URL sans `#/` | ✅ Toutes les URL du thème sont des chemins réels |
+| Vraie 404 | ✅ `curl -I` confirme un statut HTTP `404 Not Found` réel sur une route inexistante |
+| Menu clavier | ✅ Sous-menus desktop : ouverture/fermeture au clic, fermeture par clic extérieur et par Échap. Menu mobile : piège de focus vérifié (3 tabulations restent dans le panneau), Échap ferme et restitue le focus, scroll du body verrouillé pendant l'ouverture |
+| Données fictives visibles/structurées | ✅ Aucune trouvée (voir §3) |
+| Secrets dans le dépôt | ✅ Aucun — `wp-config.php` du test local n'est pas dans ce dépôt (créé dans `/tmp`, hors repo) |
+| Erreurs JS console | ✅ Aucune, sur les 6 largeurs testées + interactions clavier/souris |
+| Erreurs PHP | ✅ Aucune dans `wp-content/debug.log` lors du rendu de l'accueil et de la 404 ; `npm run lint:php` : 35/35 fichiers valides |
+| Accessibilité automatisée (axe-core, WCAG 2A/2AA/2.2AA) | ✅ 0 violation après correction (voir §6) — passe sur l'accueil (375 px et 1280 px) et sur la 404 |
 
 ---
 
-## 6. Points bloquants de `PROJECT_INPUTS.md`, classés par phase
+## 5. Écart corrigé pendant la vérification
 
-Repris de `PROJECT_INPUTS.md` §12 (déjà taggés « Bloque » à la source), reclassés ici par phase
-pour anticiper :
+Un vrai bug de débordement horizontal a été trouvé et corrigé à 320 px (avant correction :
+362 px de large au lieu de 320, soit +42 px) :
+- Le bouton « Demander mon devis » du header ne rétrécissait pas sous 375 px environ (texte en
+  `nowrap` dans un conteneur flex trop étroit). **Corrigé** en le masquant sous 820 px : la barre
+  CTA mobile fixe fait déjà ce travail, le garder en double dans le header était redondant et
+  cassait la mise en page.
+- Les deux boutons de la barre CTA mobile (« Appeler » / « Demander mon devis ») ne rétrécissaient
+  pas non plus pour la même raison (`flex: 1` sans `min-width: 0` sur un contenu `nowrap`).
+  **Corrigé** : `min-width: 0`, texte autorisé à passer sur deux lignes, police et padding réduits
+  pour cette barre spécifiquement.
 
-### Bloque la mise en ligne (pas une phase de travail, la publication elle-même)
-- **Kbis** : SIRET exact, capital social, code APE, TVA intracommunautaire, date d'immatriculation —
-  et lever l'incohérence SIREN 938 472 242 vs 938 472 420 relevée en annuaire. *(§2, question #1)*
-- Assureur RC professionnelle (nom + n° de police) pour justifier « nous sommes assurés ». *(question #2)*
-- URL de la fiche Google Business + note réelle + nombre d'avis réels. *(question #6)*
-- Portrait HD d'Audrey + visuels réels. *(question #7)*
+Un vrai défaut de contraste a été trouvé et corrigé par axe-core : le numéro de département
+(« 21 », « 25 »…) dans la section couverture régionale utilisait la couleur du prototype
+`#7FAEBF` sur fond blanc (ratio 2,41:1, minimum WCAG AA = 4,5:1). **Corrigé** en réutilisant le
+token `--color-text-tertiary` (#58717F), qui passe.
 
-### Phase 0 (traité par cette phase)
-- CPT + ACF ou pages classiques ? → tranché en §7 ci-dessous. *(question #11)*
+---
 
-### Phase 1
-- E-mails en `@top-famille-pro.fr` ou maintien de `@top-famille.fr` ? *(question #5)*
-- Accès hPanel / SFTP / base de données ; `top-famille-pro.fr` déposé et pointé ? *(question #12)*
+## 6. Limitations connues de cette phase
+
+- **Aucun contenu réel dans les CPT** : `zone` et `prestation` sont déclarés (structure, champs
+  ACF) mais vides. Les URL imbriquées définitives des zones
+  (`/zones-intervention/{departement}/{ville}/`) ne sont pas encore câblées par des règles de
+  réécriture dédiées — elles dépendent du contenu réel, à faire en phase 2 en même temps que le
+  gabarit (documenté dans `includes/cpt-zone.php`).
+- **Gabarits `page.php`/`single.php`/`index.php` volontairement minimalistes et en `noindex,follow`** :
+  ce sont des filets de sécurité pour que WordPress ne plante pas si une page est créée avant la
+  phase 2, pas des gabarits finaux. Les 17 pages statiques et les 3 articles seront construits en
+  phase 2 avec leur structure obligatoire complète (réponse directe, FAQ visible, JSON-LD dédié…).
+- **Pas de logo SVG** (gap déjà identifié en phase 0) : `logo-horizontal.png` recompressé à 360 px
+  (2× la taille d'affichage) sert de solution provisoire correcte, mais un SVG serait plus net et
+  plus léger.
+- **Pas de favicon** (gap déjà identifié en phase 0) : à générer dès que le logo carré est
+  disponible en meilleure qualité.
+- Le drop-in de sécurité (`includes/security.php`) est scopé à ce qu'un thème peut légitimement
+  faire ; les réglages serveur/`wp-config.php` (voir §9) restent à appliquer en phase 1+ côté
+  hébergement.
+
+---
+
+## 7. Prochaine étape (phase 2) — ce qui reste à faire
+
+- Créer les 26 entrées `zone` et 6 entrées `prestation` réelles (contenu repris du prototype,
+  corrigé selon CLAUDE.md §9), avec leurs champs ACF renseignés.
+- Construire les gabarits définitifs par famille (statique, prestation, département, ville/commune,
+  article) et les règles de réécriture imbriquées pour les zones.
+- Câbler `page.php`/`single.php` définitifs (actuellement des filets de sécurité `noindex`).
+- Créer les 18 pages WordPress classiques (accueil exclu, déjà fait).
+- Passer les communes secondaires non validées en `noindex,follow` via le champ ACF
+  `statut_validation` déjà prévu dans `acf-fields-zone.php`.
+
+---
+
+## 8. Données réelles encore attendues (reporté de la phase 0, toujours d'actualité)
+
+### Bloque la mise en ligne
+- Kbis (SIRET, capital, APE, TVA, date d'immatriculation, incohérence SIREN à lever)
+- Assureur RC professionnelle (nom + n° de police)
+- URL de la fiche Google Business + note réelle + nombre d'avis réels — **techniquement prêt à
+  recevoir ces valeurs** dès qu'elles sont fournies (page d'options ACF « Réassurance & avis »,
+  aucune modification de template nécessaire)
+- Portrait HD d'Audrey + visuels réels
+
+### Phase 1 (restée ouverte)
+- E-mails en `@top-famille-pro.fr` ou maintien de `@top-famille.fr` ?
+- Accès hPanel / SFTP / base de données ; `top-famille-pro.fr` déposé et pointé ?
+- Une archive de photos réelles/temporaires n'a pas été fournie dans cette session — les visuels de
+  stock de `assets/photos/` (phase 0) restent utilisés en placeholders.
 
 ### Phase 3
-- Confirmation que les tarifs relevés sont toujours à jour. *(question #3)*
-- Validation une par une des 8 communes secondaires du prototype (absentes du site actuel — voir
-  `docs/INVENTAIRE-ROUTES.md`, famille « Commune »). *(question #8)*
+- Confirmation que les tarifs relevés sont toujours à jour.
+- Validation une par une des 8 communes secondaires du prototype.
 
-### Phase 4
-- Adresse de réception des demandes de devis + configuration SMTP Hostinger. *(question #4)*
-
-### Phase 6
-- Que devient `topentreprise.fr` (redirection page à page ou abandon) ? *(question #9)*
-- Inventaire des articles du blog actuel de `topentreprise.fr` pour compléter les redirections. *(question #10)*
+### Phase 4 / 6
+- Adresse de réception des demandes de devis + SMTP Hostinger (phase 4).
+- Devenir de `topentreprise.fr` + inventaire des articles de son blog (phase 6).
 
 ---
 
-## 7. Décision d'architecture WordPress (phase 0)
+## 9. Réglages à appliquer côté hébergement/serveur (hors dépôt thème)
 
-> Reportée dans `CLAUDE.md` §3 par cette même phase, conformément à la consigne de fin de phase 0.
-
-**CPT `zone` (26 entrées : 8 départements + 10 villes + 8 communes secondaires) avec champs ACF
-structurés, un seul gabarit PHP par niveau.**
-
-**CPT `prestation` (6 entrées) avec champs ACF structurés, un seul gabarit PHP.**
-
-**Pages WordPress classiques pour les 18 pages statiques** (accueil, page pilier, index
-prestations, tarifs, hub zones, page région, pourquoi-nous, fonctionnement, avis, à-propos, devis,
-contact, recrutement, index conseils, plan du site, mentions légales, confidentialité, cookies).
-
-**Type `post` natif de WordPress pour les 3 articles**, dans une catégorie « Conseils » — pas de
-CPT dédié pour 3 contenus qui correspondent exactement à ce que le type natif fait déjà (taxonomie,
-flux RSS, auteur, date de publication/modification déjà présents dans les données du prototype).
-
-### Argumentation
-
-**CPT plutôt que pages classiques pour les 26 zones.** Le prototype confirme, avec ses propres
-données, que les 26 pages de zone partagent une structure identique à un seul champ de contenu
-libre près : `GEO2[id]` a systématiquement les mêmes clés (`h1`, `ctaLabel`, `lede`, `direct`,
-`tarif`, `example`, `review`, `blocks`, `faqs`, + `zonesIntro`/`communesIntro`/`communeLinks` pour
-les départements et villes). 26 pages classiques copiées-collées à la main sont ingérables dès la
-première correction transversale (ex. retirer la note Google partout, ou corriger un tarif) : il
-faudrait rouvrir 26 pages une par une, avec un risque de désynchronisation immédiat. Un CPT avec un
-seul gabarit PHP applique toute correction de structure ou de SEO à 26 pages à la fois.
-
-**Un CPT unique `zone` plutôt que trois CPT séparés (`departement`, `ville`, `commune`).** Les trois
-niveaux partagent la même structure de données et le même gabarit de rendu (constaté dans le
-prototype : département, ville et commune utilisent la même fonction `auditRow('dept'|'city'|'secondary', …)`
-et un `BOILER`/`MIN`/`FIXED_H2` par niveau, mais la même mécanique). Un champ ACF `niveau`
-(département / ville / commune) avec une taxonomie hiérarchique `departement` en relation parent
-suffit à modéliser la hiérarchie département → ville → commune (liens croisés, breadcrumb,
-`areaServed`) sans multiplier les types de contenu. Ceci simplifie aussi le futur passage en
-`noindex,follow` des communes non validées (un seul champ ACF `statut_validation` filtrable, plutôt
-qu'un type de contenu entier à traiter différemment).
-
-**CPT plutôt que pages classiques pour les 6 prestations.** Même raisonnement à plus petite échelle :
-les 6 pages prestations partagent une structure à 15+ champs (`forWhom`, `tasks`, `problems`,
-`exclusions`, `faqs`, `review`…) — bloquer ces champs en ACF garantit qu'aucune page prestation
-n'oublie les exclusions réelles (CLAUDE.md §9 : locaux industriels/alimentaires/médicaux
-nécessitant une asepsie) ni la mention que le matériel est fourni par le client, deux points que
-CLAUDE.md considère comme qualifiants pour les demandes et qu'un champ ACF obligatoire empêche
-d'oublier — un champ de page libre ne l'empêche pas.
-
-**ACF plutôt que blocs natifs, sur les deux CPT.** PROJECT_INPUTS.md §3 tranche déjà dans ce sens
-(« Sur un site à forte contrainte SEO, ACF est plus sûr ») et l'audit du prototype le confirme :
-la structure obligatoire des pages locales imposée par la phase 2 (réponse directe → types de
-locaux → services → fonctionnement → tarif → interlocutrice → zones → FAQ → CTA → liens) n'a de
-sens que si elle est **impossible à casser** par un éditeur non technique. Des blocs natifs
-Gutenberg permettraient à Audrey de réordonner ou supprimer une section critique (ex. les
-exclusions, ou le fil d'Ariane) sans s'en rendre compte. Des champs ACF obligatoires, avec une
-disposition fixée par le gabarit PHP, éliminent ce risque : Audrey édite le **contenu** de chaque
-section, jamais leur présence ni leur ordre. C'est aussi plus sûr pour le SEO technique (title,
-meta description, JSON-LD) : ACF expose des champs dédiés que le gabarit assemble de façon
-déterministe, alors que des blocs génériques nécessiteraient une convention de nommage fragile
-pour en extraire les mêmes données structurées.
-
-**Pages classiques pour le statique, pas de CPT.** Les 18 pages statiques sont chacune unique
-(pas de répétition de structure à travers 8+ instances) : les gérer en CPT n'apporterait aucun
-bénéfice de cohérence et ajouterait de la complexité inutile pour un éditeur qui n'a qu'une page à
-modifier. Un champ ACF « bloc de contenu flexible » (repeater) reste possible page par page si
-Audrey doit pouvoir réordonner des sections sans risque — à évaluer en phase 1 selon le besoin
-éditorial réel, mais sans CPT dédié.
+- `define('DISALLOW_FILE_EDIT', true);` dans `wp-config.php`.
+- Limitation des tentatives de connexion (plugin dédié ou pare-feu Hostinger).
+- Cache LiteSpeed (CLAUDE.md §3) — à configurer une fois le site déployé.
+- PHP ≥ 8.0 côté hPanel Hostinger (le thème n'utilise aucune syntaxe antérieure).
 
 ---
 
-## 8. Décisions prises pendant cette phase
+## 10. Décisions nécessitant une validation humaine
 
-- Architecture WordPress tranchée (§7) et reportée dans `CLAUDE.md` §3.
-- Le fichier `Top-Entreprise - Prototype Ready for Code.html` (racine) est identifié comme vestige
-  d'une tentative antérieure au rebranding actuel : **non modifié dans cette session**, suppression
-  recommandée en phase 1 avec accord explicite d'Emmanuel.
-- La branche `integration-v2` est identique à la branche courante : rien à en récupérer.
+1. **Fusion de sections** (§2) : « Professionnels accompagnés » dans Prestations, « Pourquoi »
+   dans « Audrey et avis ». Réversible facilement si Emmanuel préfère les sections séparées.
+2. **Portrait d'Audrey en pastille neutre plutôt qu'en photo de stock** (§2) : à valider — l'option
+   alternative (garder une photo de stock générique avec un `alt` honnête) reste possible si jugée
+   préférable visuellement, mais expose au risque de confusion identifié.
+3. **Détail des trois tarifs sur l'accueil** plutôt qu'un chiffre unique (§2) : à valider —
+   l'alternative minimaliste (n'afficher que « à partir de 24,30 € HT/h » partout, sans les trois
+   montants) reste possible si la page doit rester plus courte, au prix d'une précision en moins.
+4. **Suppression du CTA devis dans le header mobile** (§5) : la barre CTA mobile fixe le remplace ;
+   à confirmer que c'est suffisant plutôt que de redimensionner le bouton du header.
 
-## 9. Questions ouvertes (au-delà de celles déjà dans PROJECT_INPUTS.md §12)
+---
 
-- Faut-il conserver la branche `integration-v2` (identique, sans historique propre) ou la supprimer ?
-  Décision à prendre par Emmanuel (suppression de branche = action destructive hors périmètre de
-  cette session).
-- Le fichier PNG `assets/icons/f6e491bf-cdd2-4a06-aec1-f056fc79f933.png` (1536×1024, 2 Mo) n'a pas
-  d'usage identifié dans le prototype actuel : à clarifier avant de le reprendre ou de l'écarter.
+## 11. Procédure de vérification utilisée cette session (référence, non versionnée)
+
+Pas de MySQL ni de Docker fonctionnel disponibles dans cet environnement, et `wordpress.org` hors
+de portée réseau (politique de l'environnement). Vérification faite avec un WordPress jetable,
+entièrement hors du dépôt (`/tmp`, jamais commité) :
+
+```bash
+# Cœur WordPress (miroir GitHub, wordpress.org étant inaccessible depuis ce bac à sable)
+git clone --depth 1 https://github.com/WordPress/WordPress.git wp-core
+
+# Drop-in SQLite (base de données sans MySQL), simple fichier unique
+git clone --depth 1 https://github.com/aaemnnosttv/wp-sqlite-db.git sqlite-simple
+cp sqlite-simple/src/db.php wp-core/wp-content/db.php
+mkdir -p wp-core/wp-content/database
+
+# wp-cli
+curl -sSL https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar -o wp-cli.phar
+
+# Thème parent GeneratePress : introuvable sur GitHub (dépôt privé/absent), remplacé par un stub
+# minimal (juste l'en-tête de style.css) pour satisfaire la contrainte "parent theme" de
+# WordPress — le thème enfant ne dépend d'aucune fonction PHP de GeneratePress, seulement de son
+# style.css (chargé en best-effort dans includes/enqueue.php).
+
+# Installation + thème enfant lié au vrai dossier du dépôt
+php wp-cli.phar core install --url=http://localhost:8899 --title="Test" \
+  --admin_user=admin --admin_password=admin --admin_email=test@example.com --skip-email --allow-root
+ln -s /chemin/vers/ce/depot/wp-content/themes/topfamillepro wp-core/wp-content/themes/topfamillepro
+php wp-cli.phar theme activate topfamillepro --allow-root
+
+php -S localhost:8899
+```
+
+Puis Playwright (Chromium préinstallé de l'environnement) pour les 6 largeurs, les interactions
+clavier/souris et un scan `axe-core`. **Sur un WordPress réel (MySQL, vrai GeneratePress, ACF
+actif)**, suivre plutôt la procédure standard du `README.md` du thème.

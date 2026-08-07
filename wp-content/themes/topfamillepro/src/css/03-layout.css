@@ -1,0 +1,114 @@
+/**
+ * Layout — conteneur, grille de section, utilitaires de mise en page.
+ */
+
+.tfp-container {
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--container-padding);
+}
+
+.tfp-container--narrow {
+  max-width: var(--container-max-narrow);
+}
+
+.tfp-section {
+  padding-block: var(--section-padding-y);
+}
+
+.tfp-section--tight {
+  padding-block: clamp(30px, 4vw, 52px);
+}
+
+.tfp-section--alt {
+  background: var(--color-white);
+  border-top: 1px solid var(--color-bg-alt);
+  border-bottom: 1px solid var(--color-bg-alt);
+}
+
+.tfp-section--navy {
+  background: var(--color-navy);
+  color: var(--color-white);
+}
+
+.tfp-section--navy h2 {
+  color: var(--color-white);
+}
+
+.tfp-section--turquoise {
+  background: var(--color-turquoise-pale);
+  border-top: 1px solid var(--color-turquoise-light);
+  border-bottom: 1px solid var(--color-turquoise-light);
+}
+
+.tfp-section--primary {
+  background: var(--color-primary);
+  color: var(--color-white);
+}
+
+.tfp-section--primary h2 {
+  color: var(--color-white);
+}
+
+/* Grilles génériques réutilisées par plusieurs composants */
+.tfp-grid {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.tfp-grid--autofit-sm {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), 1fr));
+}
+
+.tfp-grid--autofit-md {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+}
+
+.tfp-grid--autofit-lg {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+}
+
+.tfp-grid--divided {
+  gap: 1px;
+  background: var(--color-border);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.tfp-grid--divided > * {
+  background: var(--color-bg);
+}
+
+.tfp-flex {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+}
+
+.tfp-flex--between {
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.tfp-flex--center {
+  align-items: center;
+}
+
+.tfp-two-col {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(30px, 4vw, 56px);
+  align-items: center;
+}
+
+.tfp-two-col > * {
+  flex: 1 1 380px;
+  min-width: min(100%, 320px);
+}
+
+@media (max-width: 359px) {
+  .tfp-container {
+    padding-inline: 14px;
+  }
+}

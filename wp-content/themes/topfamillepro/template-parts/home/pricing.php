@@ -1,0 +1,52 @@
+<?php
+/**
+ * 6. Tarifs — grille réelle (PROJECT_INPUTS.md §5), identique partout, jamais différenciée
+ * par ville (CLAUDE.md §5.3). Le prototype affichait un unique tarif fictif de 27 € HT/h :
+ * corrigé ici en trois tarifs réels selon le type de local et le régime (régulier/ponctuel).
+ */
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
+$site   = tfp_site_data();
+$budget = tfp_home_budget_example();
+?>
+<section class="tfp-section">
+	<div class="tfp-container tfp-two-col">
+		<div>
+			<h2>Un tarif clair, affiché avant le devis</h2>
+			<p style="margin-top:14px;font-size:17px;color:var(--color-text-secondary)">
+				<?php echo esc_html( tfp_format_price( $site['price_entry'] ) ); ?> HT/heure pour les locations meublées,
+				<?php echo esc_html( tfp_format_price( $site['price_autres_locaux'] ) ); ?> HT/heure pour les autres locaux, en entretien régulier.
+				En intervention ponctuelle : <?php echo esc_html( tfp_format_price( $site['price_ponctuel'] ) ); ?> HT/heure.
+				Le cas échéant, nous y ajoutons <?php echo esc_html( tfp_format_price( $site['price_gestion'] ) ); ?> HT/mois de frais de gestion
+				et <?php echo esc_html( tfp_format_price( $site['price_setup'] ) ); ?> HT de frais de mise en place — toujours indiqués à l'avance.
+			</p>
+
+			<div class="tfp-price-example">
+				<div class="tfp-price-example__label">Exemple · bureaux réguliers, <?php echo (int) $budget['hours']; ?> h/mois</div>
+				<div class="tfp-price-example__value"><?php echo esc_html( tfp_format_price( $budget['monthly'] ) ); ?> <span>HT/mois</span></div>
+				<div class="tfp-price-example__note">Avec les frais de mise en place : <?php echo esc_html( tfp_format_price( $budget['first_month'] ) ); ?> HT le premier mois · exemple non contractuel</div>
+			</div>
+
+			<a href="<?php echo esc_url( home_url( '/tarifs/' ) ); ?>" class="tfp-eyebrow-link">Voir la page Tarifs complète →</a>
+		</div>
+
+		<div class="tfp-price-panel">
+			<div class="tfp-price-panel__label">Tarif d'entrée</div>
+			<div class="tfp-price-panel__value">à partir de <?php echo esc_html( $site['price_entry_display'] ); ?><span> HT/h</span></div>
+			<div class="tfp-price-panel__sub">Régulier ou ponctuel · devis gratuit sous 24 h.</div>
+			<?php
+			tfp_button(
+				array(
+					'label'   => 'Demander mon devis',
+					'href'    => home_url( '/demande-de-devis/' ),
+					'variant' => 'on-primary',
+					'block'   => true,
+				)
+			);
+			?>
+		</div>
+	</div>
+</section>

@@ -1,0 +1,20 @@
+{
+  "name": "top-famille-pro-theme",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Outils de build du thème enfant WordPress topfamillepro (Top-Famille Pro).",
+  "type": "module",
+  "scripts": {
+    "dev": "node build/build.mjs --watch",
+    "build": "node build/build.mjs && node build/optimize-images.mjs",
+    "build:css": "node build/build.mjs",
+    "images": "node build/optimize-images.mjs",
+    "fonts": "node build/fetch-fonts.mjs",
+    "lint:php": "node build/lint-php.mjs",
+    "test": "npm run lint:php && npm run build"
+  },
+  "devDependencies": {
+    "esbuild": "^0.28.1",
+    "sharp": "^0.35.3"
+  }
+}
