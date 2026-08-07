@@ -66,8 +66,19 @@ nom réel de la prestation, de la ville ou de l'article (jamais « cliquez ici �
 mécanique). Les liens de navigation (fil d'Ariane, menu) répètent nécessairement les mêmes libellés
 d'une page à l'autre par nature — c'est attendu pour une navigation, pas un défaut d'ancrage.
 
-## Limite assumée
+## Contexte transmis au formulaire de devis
 
-Les CTA des pages prestation/zone ne transmettent pas encore de contexte au formulaire de devis
-(`?prestation=&ville=`) — corrigé dans cette même phase 4, voir la section formulaire de
-`STATUS.md`.
+Les CTA « Demander mon devis » des pages prestation et zone transmettent désormais leur contexte au
+formulaire (`page-demande-de-devis.php`), qui le pré-remplit via `src/js/quote-form.js` :
+
+- `single-prestation.php` → `?service=<slug>&service_label=<nom>` (préremplit le champ « Prestation
+  concernée »)
+- `single-zone.php` (niveau ville/commune) → `?ville=<nom>&departement=<nom>`
+- `single-zone.php` (niveau département) → `?departement=<nom>`
+
+Le paramètre n'est volontairement **pas** nommé `prestation` : WordPress enregistre par défaut un
+query_var du même nom que le CPT (`register_post_type( 'prestation', ... )`), et un `?prestation=…`
+sur n'importe quelle URL du site détournerait la requête principale vers l'article single
+correspondant au lieu d'afficher la page réellement demandée — bug reproduit et corrigé pendant
+cette phase (voir `STATUS.md`). `ville` et `departement` ne collisionnent avec aucun query_var
+existant (la taxonomie `departement` a `query_var => false`).

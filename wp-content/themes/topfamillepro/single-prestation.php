@@ -27,6 +27,19 @@ $related_articles = tfp_get_prestation_related_articles( $post_id );
 $seo_title = tfp_get_field( 'seo_title', $post_id );
 $seo_desc  = tfp_get_field( 'seo_description', $post_id );
 
+// Contexte transmis au formulaire de devis (préremplissage, src/js/quote-form.js). Le paramètre
+// n'est volontairement pas nommé « prestation » : ce nom est le query_var natif du CPT `prestation`
+// (register_post_type() l'enregistre par défaut) et un `?prestation=bureaux` sur toute URL du site
+// détournerait la requête principale de WordPress vers l'article single « bureaux », quelle que
+// soit la page réellement demandée.
+$devis_url = add_query_arg(
+	array(
+		'service'       => get_post_field( 'post_name', $post_id ),
+		'service_label' => rawurlencode( get_the_title( $post_id ) ),
+	),
+	home_url( '/demande-de-devis/' )
+);
+
 $canonical_path = wp_parse_url( get_permalink( $post_id ), PHP_URL_PATH );
 
 $schema = array(
@@ -91,7 +104,7 @@ get_header();
 	<?php endif; ?>
 	<div class="tfp-flex" style="margin-top:24px">
 		<?php
-		tfp_button( array( 'label' => 'Demander mon devis', 'href' => home_url( '/demande-de-devis/' ), 'variant' => 'primary' ) );
+		tfp_button( array( 'label' => 'Demander mon devis', 'href' => $devis_url, 'variant' => 'primary' ) );
 		tfp_button( array( 'label' => '☎ Appeler ' . $site['manager'], 'href' => 'tel:' . $site['phone_href'], 'variant' => 'secondary' ) );
 		?>
 	</div>
@@ -225,7 +238,7 @@ get_header();
 		<p>Décrivez vos locaux : <?php echo esc_html( explode( ' ', $site['manager'] )[0] ); ?> vous répond sous 24 heures avec une proposition claire.</p>
 		<div class="tfp-cta-block__actions">
 			<?php
-			tfp_button( array( 'label' => 'Demander mon devis', 'href' => home_url( '/demande-de-devis/' ), 'variant' => 'on-primary' ) );
+			tfp_button( array( 'label' => 'Demander mon devis', 'href' => $devis_url, 'variant' => 'on-primary' ) );
 			tfp_button( array( 'label' => '☎ ' . $site['phone'], 'href' => 'tel:' . $site['phone_href'], 'variant' => 'on-dark' ) );
 			?>
 		</div>

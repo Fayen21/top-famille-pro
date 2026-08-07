@@ -58,6 +58,15 @@ $seo_title = tfp_get_field( 'seo_title', $post_id );
 $seo_desc  = tfp_get_field( 'seo_description', $post_id );
 $robots    = $validated ? 'index,follow' : 'noindex,follow';
 
+// Contexte transmis au formulaire de devis (préremplissage, src/js/quote-form.js).
+$devis_args = $is_dept
+	? array( 'departement' => get_the_title( $post_id ) )
+	: array(
+		'ville'       => get_the_title( $post_id ),
+		'departement' => $dept_term ? $dept_term->name : '',
+	);
+$devis_url = add_query_arg( array_map( 'rawurlencode', array_filter( $devis_args ) ), home_url( '/demande-de-devis/' ) );
+
 $canonical = get_permalink( $post_id );
 
 $breadcrumb = array( array( 'label' => 'Accueil', 'url' => home_url( '/' ) ) );
@@ -114,7 +123,7 @@ get_header();
 	<?php endif; ?>
 	<div class="tfp-flex" style="margin-top:24px">
 		<?php
-		tfp_button( array( 'label' => $cta_label, 'href' => home_url( '/demande-de-devis/' ), 'variant' => 'primary' ) );
+		tfp_button( array( 'label' => $cta_label, 'href' => $devis_url, 'variant' => 'primary' ) );
 		tfp_button( array( 'label' => '☎ Appeler ' . $site['manager'], 'href' => 'tel:' . $site['phone_href'], 'variant' => 'secondary' ) );
 		?>
 	</div>
@@ -292,7 +301,7 @@ get_header();
 		<p>Décrivez vos locaux : <?php echo esc_html( explode( ' ', $site['manager'] )[0] ); ?> vous répond sous 24 heures avec une proposition claire.</p>
 		<div class="tfp-cta-block__actions">
 			<?php
-			tfp_button( array( 'label' => 'Demander mon devis', 'href' => home_url( '/demande-de-devis/' ), 'variant' => 'on-primary' ) );
+			tfp_button( array( 'label' => 'Demander mon devis', 'href' => $devis_url, 'variant' => 'on-primary' ) );
 			tfp_button( array( 'label' => '☎ ' . $site['phone'], 'href' => 'tel:' . $site['phone_href'], 'variant' => 'on-dark' ) );
 			?>
 		</div>
