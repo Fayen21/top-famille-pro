@@ -41,7 +41,13 @@ En cas de contradiction, `PROJECT_INPUTS.md` gagne. **Le prototype n'est pas une
 - Le contenu principal et les balises SEO doivent être rendus **côté serveur**. Aucune dépendance au JavaScript client pour le `title`, la canonical ou le contenu indexable.
 - Cache LiteSpeed à configurer explicitement : sur mutualisé Hostinger, les cibles Lighthouse ne s'atteignent pas sans cela.
 
-**Décisions d'architecture à trancher en phase 0** (voir `PROJECT_INPUTS.md` §3) : CPT `zone` et CPT `prestation` avec champs structurés, ou pages classiques ; blocs natifs ou ACF. 26 pages locales copiées-collées à la main sont ingérables — le sujet doit être arbitré avant toute création de contenu.
+**Décisions d'architecture — tranchées en phase 0** (voir `STATUS.md` §7 pour l'argumentation complète) :
+
+- **CPT `zone`** (26 entrées : 8 départements + 10 villes + 8 communes secondaires), un seul type de contenu pour les trois niveaux, distingués par un champ ACF `niveau` et une relation hiérarchique vers une taxonomie `departement`. Un seul gabarit PHP par niveau (conditionnel sur `niveau`).
+- **CPT `prestation`** (6 entrées), un seul gabarit PHP.
+- **Champs structurés ACF** sur ces deux CPT — pas de blocs natifs Gutenberg. La structure obligatoire des pages locales et prestations (réponse directe, exclusions réelles, mention matériel fourni par le client, FAQ, CTA, maillage) doit être impossible à casser ou à réordonner par un éditeur non technique ; ACF expose aussi des champs dédiés directement exploitables pour le SEO technique (title, meta description, JSON-LD) sans convention de nommage fragile.
+- **Pages WordPress classiques** pour les 18 pages statiques (accueil, page pilier, index prestations, tarifs, hub zones, page région, pourquoi-nous, fonctionnement, avis, à-propos, devis, contact, recrutement, index conseils, plan du site, mentions légales, confidentialité, cookies) : structure unique à chacune, un CPT n'apporterait aucun bénéfice de cohérence.
+- **Type `post` natif de WordPress**, catégorie « Conseils », pour les 3 articles : pas de CPT dédié pour un contenu que le type natif couvre déjà (taxonomie, auteur, dates de publication/modification).
 
 ## 4. Direction artistique — à conserver
 
