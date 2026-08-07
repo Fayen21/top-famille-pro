@@ -28,11 +28,16 @@ add_action( 'add_meta_boxes', 'tfp_register_article_meta_box' );
 function tfp_render_article_meta_box( $post ) {
 	wp_nonce_field( 'tfp_article_meta_save', 'tfp_article_meta_nonce' );
 
-	$direct = get_post_meta( $post->ID, '_tfp_direct_answer', true );
+	$direct    = get_post_meta( $post->ID, '_tfp_direct_answer', true );
+	$seo_title = get_post_meta( $post->ID, '_tfp_seo_title', true );
 	?>
 	<p>
 		<label for="tfp-direct-answer"><strong>Réponse directe</strong> (paragraphe d'ouverture, avant le sommaire)</label><br>
 		<textarea id="tfp-direct-answer" name="tfp_direct_answer" rows="3" style="width:100%"><?php echo esc_textarea( $direct ); ?></textarea>
+	</p>
+	<p>
+		<label for="tfp-seo-title"><strong>Title SEO</strong> (facultatif — laisser vide pour utiliser le titre de l'article + « | <?php echo esc_html( tfp_site_data()['brand_name'] ); ?> ». À renseigner uniquement si cette valeur par défaut dépasse ~65 caractères.)</label><br>
+		<input type="text" id="tfp-seo-title" name="tfp_seo_title" value="<?php echo esc_attr( $seo_title ); ?>" style="width:100%">
 	</p>
 	<hr>
 	<p><strong>FAQ</strong> — jusqu'à <?php echo (int) TFP_ARTICLE_FAQ_MAX; ?> questions. Un bloc dont la question est vide n'est ni affiché ni inclus dans le FAQPage JSON-LD (CLAUDE.md §8).</p>
@@ -63,6 +68,10 @@ function tfp_save_article_meta( $post_id ) {
 
 	if ( isset( $_POST['tfp_direct_answer'] ) ) {
 		update_post_meta( $post_id, '_tfp_direct_answer', sanitize_textarea_field( wp_unslash( $_POST['tfp_direct_answer'] ) ) );
+	}
+
+	if ( isset( $_POST['tfp_seo_title'] ) ) {
+		update_post_meta( $post_id, '_tfp_seo_title', sanitize_text_field( wp_unslash( $_POST['tfp_seo_title'] ) ) );
 	}
 
 	for ( $i = 1; $i <= TFP_ARTICLE_FAQ_MAX; $i++ ) {

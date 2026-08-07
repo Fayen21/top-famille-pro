@@ -1,8 +1,156 @@
 # STATUS — Top-Famille Pro
 
 > Lien entre deux sessions Claude Code Web. Mis à jour à la fin de chaque phase.
-> Dernière mise à jour : **Phase 2 — gabarits par famille de pages**, 7 août 2026.
-> `PHASE_2=PASS`
+> Dernière mise à jour : **Phase 3 — migration des 53 pages**, 7 août 2026.
+> `PHASE_3=PASS`
+
+---
+
+## -2. Phase 3 — migration des 53 pages restantes
+
+Les gabarits de la phase 2 couvraient chacun une seule page de référence par famille. La phase 3
+crée le contenu réel de toutes les pages restantes, en 7 lots commités séparément sur
+`phase-3-migration-pages` (branchée sur `phase-2-gabarits`, non encore fusionnée dans `main` au
+moment de la phase 3 — voir « Base de cette branche » plus bas).
+
+**53/53 pages migrées**, comptage vérifié dans un WordPress réel : 18 pages statiques + 6
+prestations + 26 zones (8 départements + 10 villes + 8 communes secondaires) + 3 articles —
+correspond exactement à `docs/INVENTAIRE-ROUTES.md` (« 53 pages publiques + 1 page 404 »).
+
+### Sources du contenu
+
+Le contenu éditorial repris du prototype provient de l'extraction structurée faite en phase 0
+(`extracted-data.js` et fichiers dérivés, scratchpad de session — non versionnés dans le dépôt) :
+`SERVICES`, `GEO2` (fusion `CITIES`/`DEPTS`/`SECONDARY` + contenu enrichi), `ARTICLES`, `HUB_PAGE`,
+`REGION_PAGE`. Pour les 8 pages statiques sans contenu structuré dans cette extraction
+(pourquoi-nous, notre-fonctionnement, avis-clients, à-propos, demande-de-devis, contact,
+recrutement, conseils), le contenu est construit directement à partir des données réelles de
+`PROJECT_INPUTS.md` plutôt que du prototype — évite de devoir neutraliser une nouvelle couche de
+données fictives (avis démo, bio inventée) qu'aurait contenue le contenu JSX correspondant.
+
+### Corrections systématiques appliquées à chaque lot (CLAUDE.md §5.1/§5.3/§5.4/§9)
+
+- **Tarif fictif « 27 € HT/h »** retiré de toutes les réponses directes, sections tarifaires et FAQ
+  reprises du prototype — remplacé par la grille réelle à trois montants déjà affichée par les
+  sections tarifs des gabarits, ou par une référence à la page `/tarifs/`.
+- **Aucune commune satellite non validée présentée comme desservie.** Au-delà de la simple omission
+  du champ `zones_desservies` (déjà traité en phase 2 pour Côte-d'Or/Dijon), le lot 3 a trouvé une
+  régression plus grave : la FAQ de chaque ville du prototype répond « Oui » à « Intervenez-vous à
+  [commune non validée] ? » — une affirmation positive de couverture, pas une simple mention.
+  Corrigé sur les 9 villes par une réponse honnête au cas par cas, sans nommer ni confirmer de
+  commune précise.
+- **Aucune distance ni temps de trajet chiffré non sourcé** repris (le prototype affirmait par
+  endroits des temps de trajet approximatifs sans source).
+- **Aucun exemple de budget chiffré sur une page zone**, comme décidé en phase 2 pour Côte-d'Or/
+  Dijon : évite un contenu quasi dupliqué entre les 17 zones départements/villes migrées ici.
+- **Titres raccourcis à ≤65 caractères** partout où `docs/INVENTAIRE-ROUTES.md` signalait un
+  dépassement (Territoire de Belfort, Lons-le-Saunier, Chalon-sur-Saône, page région
+  Bourgogne-Franche-Comté, article cahier des charges — ce dernier via un nouveau mécanisme de
+  surcharge `_tfp_seo_title` sur les articles, `includes/articles-meta.php`, absent jusque-là).
+- **Aucun avis de démonstration** repris (`demo: true` dans le prototype, sur toutes les familles).
+
+### Lot 4 — les 8 communes secondaires, créées mais non indexables
+
+CLAUDE.md §5.4 est explicite : ces 8 communes (Saint-Apollinaire, Chenôve, Quetigny, Talant,
+Longvic, Fontaine-lès-Dijon, Marsannay-la-Côte, Beaune) n'existent sur aucune source confirmée par
+Audrey (`PROJECT_INPUTS.md` §12, question ouverte #8, toujours ouverte). Elles sont créées avec
+`statut_validation` non coché → `single-zone.php` calcule automatiquement `noindex,follow`
+(mécanisme posé et testé en phase 2). Contenu très largement réécrit, pas simplement neutralisé :
+le prototype y affirmait positivement une couverture confirmée ; remplacé par une formulation
+honnête (« la demande peut être étudiée »). Elles sont liées depuis la page Dijon (validée) via
+`communes_proches` — noindex n'empêche pas le suivi d'un lien, seulement l'indexation de la page
+cible.
+
+**Ces 8 pages restent noindex,follow tant qu'Audrey ne les a pas validées une par une.** Aucune
+action supplémentaire n'est attendue de la phase 4 sur ce point : c'est une décision humaine, pas
+un chantier technique.
+
+### Lot 5/6 — formulaire de demande de devis, réellement fonctionnel
+
+Contrairement à un simple gabarit de contenu, `/demande-de-devis/` est une fonctionnalité neuve :
+formulaire à deux étapes (un seul `<form>`, deux `<fieldset>`, données conservées dans le DOM),
+validation client (`src/js/quote-form.js`) et serveur (`includes/quote-form.php`), honeypot,
+limitation à 5 soumissions/heure par IP, contexte visiteur capturé (référent, UTM, prestation/ville
+prérequêtées), envoi réel par `wp_mail()` vers l'adresse de contact réelle. Confirmation affichée
+uniquement après succès serveur réel (`?merci=1`, état `noindex,follow`), jamais simulée côté
+client. Tous les scénarios (soumission complète, honeypot, champs manquants, limitation de
+fréquence, navigation clavier) ont été testés par `curl` et Playwright — voir le détail dans le
+commit du lot 6.
+
+### Bugs trouvés et corrigés pendant la migration
+
+- **Doublon canonical/robots** (hooks `wp_head` par défaut de WordPress core) — trouvé en tout
+  début de phase 3, avant le premier lot ; voir le commit dédié.
+- **Entités HTML échappées dans le JSON-LD** (`wptexturize` via `get_the_title()`) — même commit.
+- **Réponse FAQ « ponctuel » factuellement fausse** (lot 1) : le prototype affirmait un tarif
+  identique entre régulier et ponctuel ; en réalité le ponctuel (30,00 € HT/h) est plus cher que le
+  régulier « autres locaux » (26,00 € HT/h) — ce n'était pas seulement un problème de tarif fictif,
+  la logique de la réponse elle-même était fausse.
+- **Cible tactile insuffisante sur le fil d'Ariane** et **débordement horizontal sur un CTA à
+  libellé dynamique**, tous deux à 320px (lots 1–3, mêmes classes de bug que la phase 2, sur de
+  nouvelles pages).
+- **Collision de routage** (lot 5) : la règle de réécriture du CPT `zone`
+  (`^zones-intervention/([^/]+)/?$`) capturait aussi `/zones-intervention/bourgogne-franche-comte/`
+  — un commentaire du code documentait déjà que cette URL est une Page classique, mais la regex
+  n'excluait pas ce slug réservé, donnant un 404 réel une fois la page créée. Corrigé par une
+  exclusion explicite (`includes/cpt-zone.php`) ; les zones départements/villes existantes retestées
+  et toujours fonctionnelles.
+- **Violation `link-in-text-block`** (lot 7, WCAG 1.4.1) : liens de prose des pages légales
+  distingués uniquement par la couleur — corrigé avec la classe utilitaire `.tfp-underline`
+  existante.
+- **Ordre validation/limitation de fréquence** (lot 6) : la limitation de fréquence du formulaire de
+  devis consommait un quota avant la validation des champs, permettant à une requête mal formée
+  d'épuiser le quota d'un visiteur légitime partageant la même IP — réordonné.
+
+### Vérifications (répétées à chaque lot, résumé global)
+
+| Contrôle | Résultat |
+|---|---|
+| Comptage final des posts (18+6+26+3) | ✅ conforme à `docs/INVENTAIRE-ROUTES.md` |
+| `npm run test` (lint PHP + build) après chaque lot | ✅ |
+| JSON-LD valide, types corrects par famille, sur toutes les pages testées | ✅ |
+| axe-core (WCAG 2A/2AA/2.2AA) + débordement horizontal, 6 largeurs × 53 pages (échantillonnage exhaustif par lot) | ✅ 0 violation après corrections |
+| Recherche finale « Top-Entreprise » résiduelle | ✅ aucune (hors `legal_name` attendu) |
+| Recherche finale tarif fictif « 27 € » résiduel | ✅ aucune occurrence hors commentaires explicatifs |
+| Recherche finale avis fictifs résiduels | ✅ aucune |
+| Recherche finale `href="#"` public | ✅ aucune |
+| Recherche finale fonctions ACF Pro résiduelles | ✅ aucune (hors commentaire historique déjà présent en phase 1) |
+| Communes non validées absentes du plan du site | ✅ |
+| Aucune donnée d'immatriculation publiée en clair (mentions légales) | ✅ |
+| Formulaire de devis : soumission complète, honeypot, champs manquants, limitation de fréquence, clavier | ✅ testés par curl + Playwright |
+
+### Pages incomplètes ou en attente (à signaler explicitement, comme demandé)
+
+- **Avis clients réels** : les 6 témoignages authentiques existants (`PROJECT_INPUTS.md` §7 :
+  Jean-Louis D., Anna P., Michel G., Laurent, Laura, Anne-Sophie) ne sont **pas** publiés — leur
+  texte exact n'a jamais été fourni dans ce dépôt, seuls leurs noms sont confirmés. La page
+  `/avis-clients/` affiche un état honnête (« en cours d'intégration ») plutôt qu'un contenu
+  inventé pour des personnes réelles. Dès que le texte est transmis, il se saisit dans Réglages →
+  Réassurance & avis (aucune modification de template nécessaire, mécanisme déjà en place depuis la
+  phase 1).
+- **Mentions légales** : SIRET, SIREN/RCS, capital, TVA, APE, assurance RC pro, directrice de
+  publication et coordonnées complètes de l'hébergeur restent en `[À COMPLÉTER]` — bloqueur de mise
+  en ligne déjà identifié en phase 0/1, toujours d'actualité (incohérence non levée entre deux
+  sources sur l'identifiant de la société, CLAUDE.md §5.7).
+- **Politique de confidentialité** : durée de conservation des données et contact référent RGPD en
+  `[À COMPLÉTER]` (`PROJECT_INPUTS.md` §11, déjà listés comme manquants en phase 0).
+- **Formulaire de devis** : le code envoie réellement par `wp_mail()`, mais aucun test d'envoi bout
+  en bout n'a pu être fait dans ce bac à sable (aucun transport mail système disponible —
+  `wp_mail()` retourne `false` de façon reproductible et indépendante du code du formulaire, vérifié
+  par un appel isolé). **À tester en conditions réelles dès le déploiement sur Hostinger.**
+- **Liens contextuels vers le devis** : les CTA existants (prestations, zones, accueil) pointent
+  vers `/demande-de-devis/` sans paramètres `?prestation=&ville=`. Le formulaire sait déjà lire ces
+  paramètres pour préremplir le champ prestation (`src/js/quote-form.js`) ; relier les CTA des 43
+  pages concernées reste à faire — amélioration mineure, pas un défaut fonctionnel.
+- **8 communes secondaires** : restent `noindex,follow` tant qu'Audrey ne les a pas validées une par
+  une (voir plus haut) — décision humaine attendue, aucune action technique requise.
+
+### Base de cette branche
+
+`phase-3-migration-pages` est branchée sur `phase-2-gabarits` (PR #3), elle-même non encore
+fusionnée dans `main` au moment de la phase 3 — les gabarits de la phase 2 n'existent que sur cette
+lignée. La PR de la phase 3 cible donc `phase-2-gabarits`, pas `main` ; elle devra être fusionnée
+après la PR #3, ou rebasée sur `main` une fois celle-ci fusionnée.
 
 ---
 
@@ -243,16 +391,16 @@ topentreprise.fr) restent d'actualité et inchangés par cette validation.
 
 ## 1. Où en est le projet
 
-Phase 0, Phase 1 et Phase 2 terminées. Le dépôt contient un thème enfant WordPress fonctionnel
-(`wp-content/themes/topfamillepro/`) avec une page d'accueil complète, un gabarit par famille de
-contenu (page statique, prestation, département, ville/commune, article) et une page réelle de
-référence par famille, tout fidèle au prototype et corrigé selon les règles de CLAUDE.md, vérifié
-dans un WordPress réel (voir §-1 et §11).
+Phase 0, Phase 1, Phase 2 et Phase 3 terminées. Le dépôt contient un thème enfant WordPress
+fonctionnel (`wp-content/themes/topfamillepro/`) avec les **53 pages publiques réelles** du site :
+18 pages statiques, 6 prestations, 26 zones (8 départements + 10 villes + 8 communes secondaires
+non indexées), 3 articles — plus la 404. Formulaire de demande de devis réellement fonctionnel
+(validation, envoi par e-mail réel). Tout vérifié dans un WordPress réel (voir §-2, §-1 et §11).
 
-**Prochaine étape : Phase 3 — contenu réel restant**, sur une nouvelle branche dédiée
-(`phase-3-...` selon la convention CLAUDE.md §7) : les 25 zones, 5 prestations, 17 pages statiques
-et 2 articles restants, plus la validation des 8 communes secondaires par Audrey (voir §-1 « Points
-ouverts »).
+**Prochaine étape : Phase 4** — adresse de réception des demandes de devis en conditions réelles et
+configuration SMTP Hostinger (question ouverte #4), au minimum un test d'envoi bout en bout du
+formulaire une fois déployé. Voir aussi §-2 « Pages incomplètes ou en attente » pour les points non
+techniques (avis clients réels, validation des communes secondaires, Kbis).
 
 ---
 
@@ -449,24 +597,19 @@ token `--color-text-tertiary` (#58717F), qui passe.
 
 ---
 
-## 7. Prochaine étape (phase 3) — ce qui reste à faire
+## 7. Phase 3 — faite (voir §-2). Correction d'une erreur de cette section
 
-Gabarits et routage définitifs livrés en phase 2 (§-1) — la phase 3 est du contenu, pas de
-l'architecture :
-
-- Créer les 25 entrées `zone` restantes (7 autres départements + 9 autres villes) avec
-  `bin/seed-phase2-content.php` comme modèle (script à renommer/étendre plutôt qu'un nouveau script
-  par entrée).
-- Créer les 5 entrées `prestation` restantes.
-- Créer les 17 pages WordPress classiques restantes (accueil et page pilier `nettoyage-professionnel`
-  déjà faites), chacune avec son propre gabarit `page-{slug}.php` comme `page-nettoyage-professionnel.php`.
-- Créer les 2 articles restants avec la même structure que `frequence-bureaux` (réponse directe +
-  FAQ via `includes/articles-meta.php`).
-- Faire valider par Audrey, une par une, les 8 communes secondaires du prototype (Beaune,
-  Chevigny-Saint-Sauveur, Ahuy, Daix, Plombières-lès-Dijon, Sennecey-lès-Dijon,
-  Nuits-Saint-Georges, Ruffey-lès-Echirey — retirées du contenu de la phase 2, voir §-1) ; créer les
-  entrées `zone` de niveau `commune` uniquement pour celles confirmées, avec `statut_validation`
-  décoché par défaut (`noindex,follow` automatique, déjà vérifié en phase 2).
+Cette section listait, à la fin de la phase 2, huit noms de communes secondaires
+(Beaune, Chevigny-Saint-Sauveur, Ahuy, Daix, Plombières-lès-Dijon, Sennecey-lès-Dijon,
+Nuits-Saint-Georges, Ruffey-lès-Echirey) comme étant « les 8 communes secondaires du prototype ».
+**C'était une erreur de conflation**, corrigée en phase 3 : cette liste provenait en réalité du
+champ `communesPlain` de la ville de Dijon dans les données extraites du prototype (une liste de
+villages de la « première couronne » dijonnaise, une donnée différente), pas de la liste officielle
+des 8 pages « commune secondaire » du prototype. La liste correcte, tirée de
+`docs/INVENTAIRE-ROUTES.md` (section « Zone — commune secondaire », relevée directement dans les
+routes du prototype), est : **Saint-Apollinaire, Chenôve, Quetigny, Talant, Longvic,
+Fontaine-lès-Dijon, Marsannay-la-Côte, Beaune** — ce sont ces 8 communes qui ont été créées en
+phase 3 (`noindex,follow`, voir §-2).
 
 ---
 
@@ -486,12 +629,19 @@ l'architecture :
 - Une archive de photos réelles/temporaires n'a pas été fournie dans cette session — les visuels de
   stock de `assets/photos/` (phase 0) restent utilisés en placeholders.
 
-### Phase 3
+### Restés ouverts après la phase 3
 - Confirmation que les tarifs relevés sont toujours à jour.
-- Validation une par une des 8 communes secondaires du prototype (liste exacte en §7).
+- Validation une par une des 8 communes secondaires du prototype — Saint-Apollinaire, Chenôve,
+  Quetigny, Talant, Longvic, Fontaine-lès-Dijon, Marsannay-la-Côte, Beaune (liste corrigée, voir §7 ;
+  pages déjà créées en `noindex,follow`, §-2).
+- Avis clients réels : texte exact des 6 témoignages authentiques (§-2).
 
 ### Phase 4 / 6
-- Adresse de réception des demandes de devis + SMTP Hostinger (phase 4).
+- Adresse de réception des demandes de devis + test d'envoi réel du formulaire + SMTP Hostinger
+  (phase 4 — le formulaire est fonctionnel côté code depuis la phase 3, §-2, mais n'a pas pu être
+  testé bout en bout faute de transport mail dans le bac à sable).
+- Liens contextuels `?prestation=&ville=` vers `/demande-de-devis/` depuis les CTA des pages
+  prestation/zone (le formulaire sait déjà les lire, §-2).
 - Devenir de `topentreprise.fr` + inventaire des articles de son blog (phase 6).
 
 ---
