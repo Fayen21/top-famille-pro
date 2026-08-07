@@ -1,0 +1,415 @@
+/**
+ * Page d'accueil — styles spécifiques non couverts par les composants globaux.
+ */
+
+/* ---------- Hero ---------- */
+.tfp-hero {
+  padding: clamp(30px, 4vw, 60px) var(--container-padding) clamp(20px, 3vw, 40px);
+  max-width: var(--container-max);
+  margin-inline: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(30px, 4vw, 56px);
+  align-items: center;
+}
+
+.tfp-hero__content {
+  flex: 1 1 480px;
+  min-width: min(100%, 460px);
+}
+
+.tfp-hero__title {
+  font-size: var(--fs-hero);
+  font-weight: var(--fw-black);
+  line-height: 1;
+}
+
+.tfp-hero__lede {
+  margin-top: var(--space-5);
+  font-size: clamp(17px, 1.5vw, 20px);
+  color: var(--color-text-secondary);
+  max-width: 560px;
+}
+
+.tfp-hero__actions {
+  margin-top: var(--space-7);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.tfp-hero__microcopy {
+  margin-top: var(--space-4);
+  font-size: var(--fs-2xs);
+  color: var(--color-text-tertiary);
+}
+
+.tfp-hero__media {
+  flex: 1 1 380px;
+  min-width: min(100%, 340px);
+  position: relative;
+}
+
+.tfp-hero__media-main {
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+}
+
+.tfp-hero__media-main img {
+  width: 100%;
+  aspect-ratio: 4 / 3.5;
+  object-fit: cover;
+  background: var(--color-border);
+}
+
+.tfp-hero__media-secondary {
+  position: absolute;
+  right: -10px;
+  bottom: -24px;
+  width: 44%;
+  aspect-ratio: 1 / 1;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 5px solid var(--color-bg);
+  box-shadow: var(--shadow-md);
+}
+
+.tfp-hero__media-secondary img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background: var(--color-border);
+}
+
+.tfp-hero__price-tag {
+  position: absolute;
+  left: -10px;
+  top: 20px;
+  background: var(--color-white);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-md);
+  padding: 10px 14px;
+  box-shadow: 0 16px 32px -14px rgba(16, 38, 59, .42);
+}
+
+.tfp-hero__price-tag-value {
+  font-family: var(--font-heading);
+  font-weight: var(--fw-black);
+  font-size: var(--fs-xl);
+  color: var(--color-primary);
+  line-height: 1;
+}
+
+.tfp-hero__price-tag-unit {
+  font-size: var(--fs-2xs);
+  color: var(--color-navy);
+  font-weight: var(--fw-bold);
+}
+
+.tfp-hero__price-tag-note {
+  font-size: 11.5px;
+  color: var(--color-text-secondary);
+}
+
+/* ---------- Bandeau tarifaire ---------- */
+.tfp-price-band {
+  background: var(--color-turquoise-pale);
+  border: 1px solid var(--color-turquoise-light);
+  border-radius: var(--radius-lg);
+  padding: 14px var(--space-4);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px clamp(16px, 2.4vw, 26px);
+}
+
+.tfp-price-band__value {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  background: var(--color-primary);
+  color: var(--color-white);
+  border-radius: var(--radius-md);
+  padding: 10px var(--space-4);
+}
+
+.tfp-price-band__value strong {
+  font-family: var(--font-heading);
+  font-size: var(--fs-xl);
+  font-weight: var(--fw-black);
+  letter-spacing: var(--ls-heading);
+}
+
+.tfp-price-band__value span {
+  font-size: var(--fs-2xs);
+  color: var(--color-turquoise);
+  line-height: 1.18;
+  max-width: 110px;
+}
+
+.tfp-price-band__cta {
+  margin-left: auto;
+}
+
+/* ---------- Chips "professionnels accompagnés" (fusionnés avec Prestations) ---------- */
+.tfp-chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.tfp-chip {
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  padding: 11px var(--space-5);
+  font-weight: var(--fw-semibold);
+  font-size: var(--fs-sm);
+  transition: background var(--transition-base), border-color var(--transition-base);
+}
+
+.tfp-chip:hover {
+  background: var(--color-turquoise-pale);
+  border-color: var(--color-turquoise);
+}
+
+.tfp-lede-rule {
+  margin-top: var(--space-4);
+  font-size: var(--fs-sm);
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+  border-left: 2px solid var(--color-turquoise);
+  padding-left: 15px;
+  max-width: 680px;
+}
+
+/* ---------- Problèmes résolus (fond navy) ---------- */
+.tfp-problem {
+  border-top: 1px solid #2C5E8C;
+  padding-top: var(--space-5);
+}
+
+.tfp-problem__title {
+  font-family: var(--font-heading);
+  font-weight: var(--fw-semibold);
+  font-size: var(--fs-base);
+  color: var(--color-turquoise);
+  margin-bottom: var(--space-2);
+}
+
+.tfp-problem__desc {
+  font-size: var(--fs-sm);
+  color: var(--color-turquoise-light);
+}
+
+/* ---------- Fonctionnement (étapes numérotées) ---------- */
+.tfp-step {
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 22px;
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.tfp-step:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-sm);
+}
+
+.tfp-step__num {
+  font-family: var(--font-heading);
+  font-weight: var(--fw-black);
+  font-size: var(--fs-sm);
+  color: var(--color-primary);
+}
+
+.tfp-step__title {
+  font-weight: var(--fw-semibold);
+  margin: var(--space-2) 0 6px;
+}
+
+.tfp-step__desc {
+  font-size: var(--fs-xs);
+  color: var(--color-text-secondary);
+}
+
+/* ---------- Tarif résumé ---------- */
+.tfp-price-example {
+  margin-top: var(--space-5);
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 22px;
+}
+
+.tfp-price-example__label {
+  font-size: var(--fs-2xs);
+  color: var(--color-text-tertiary);
+}
+
+.tfp-price-example__value {
+  font-family: var(--font-heading);
+  font-weight: var(--fw-black);
+  font-size: var(--fs-3xl);
+  color: var(--color-text);
+  margin: 2px 0;
+}
+
+.tfp-price-example__value span {
+  font-size: var(--fs-sm);
+  color: var(--color-text-tertiary);
+  font-weight: var(--fw-semibold);
+}
+
+.tfp-price-example__note {
+  font-size: var(--fs-2xs);
+  color: var(--color-text-tertiary);
+}
+
+.tfp-price-panel {
+  flex: 1 1 300px;
+  min-width: min(100%, 280px);
+  background: var(--color-primary);
+  color: var(--color-white);
+  border-radius: var(--radius-xl);
+  padding: clamp(26px, 3vw, 38px);
+}
+
+.tfp-price-panel__label {
+  font-size: var(--fs-xs);
+  color: var(--color-turquoise);
+}
+
+.tfp-price-panel__value {
+  font-family: var(--font-heading);
+  font-weight: var(--fw-black);
+  font-size: clamp(38px, 5vw, 52px);
+  line-height: 1.1;
+  margin: 4px 0;
+}
+
+.tfp-price-panel__value span {
+  font-size: var(--fs-lg);
+  color: var(--color-turquoise);
+  font-weight: var(--fw-semibold);
+}
+
+.tfp-price-panel__sub {
+  font-size: var(--fs-sm);
+  color: var(--color-turquoise-light);
+  margin-bottom: var(--space-5);
+}
+
+.tfp-price-note {
+  margin-top: var(--space-4);
+  font-size: var(--fs-2xs);
+  color: var(--color-text-secondary);
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-3) var(--space-4);
+}
+
+/* ---------- Couverture régionale ---------- */
+.tfp-dept-link {
+  background: var(--color-white);
+  border: 1px solid var(--color-turquoise-light);
+  border-radius: 11px;
+  padding: 12px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--color-text);
+  font-weight: var(--fw-semibold);
+  font-size: var(--fs-sm);
+  transition: transform var(--transition-base), border-color var(--transition-base);
+  min-height: var(--tap-target-min);
+}
+
+.tfp-dept-link:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  transform: translateX(2px);
+}
+
+.tfp-dept-link__num {
+  font-size: var(--fs-3xs);
+  color: var(--color-text-tertiary); /* #7FAEBF (couleur du prototype) échouait WCAG AA (2.41:1) — corrigé */
+}
+
+/* ---------- Audrey et avis ---------- */
+.tfp-audrey-portrait {
+  flex: 1 1 320px;
+  min-width: min(100%, 300px);
+  max-width: 420px;
+  position: relative;
+}
+
+.tfp-audrey-portrait img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  background: var(--color-border);
+  border-radius: var(--radius-xl);
+}
+
+.tfp-audrey-quote {
+  flex: 1 1 380px;
+  min-width: min(100%, 320px);
+}
+
+.tfp-audrey-quote blockquote {
+  margin-top: var(--space-4);
+  font-size: var(--fs-md);
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+
+.tfp-audrey-quote__signature {
+  margin-top: var(--space-4);
+  font-weight: var(--fw-bold);
+  font-family: var(--font-heading);
+}
+
+.tfp-audrey-quote__signature span {
+  font-weight: var(--fw-medium);
+  color: var(--color-text-tertiary);
+}
+
+.tfp-why-list {
+  margin-top: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.tfp-why-item {
+  display: flex;
+  gap: 14px;
+}
+
+.tfp-why-item__num {
+  font-family: var(--font-heading);
+  font-weight: var(--fw-black);
+  color: var(--color-primary);
+  font-size: var(--fs-lg);
+}
+
+.tfp-why-item__title {
+  font-weight: var(--fw-semibold);
+  font-size: var(--fs-base);
+}
+
+.tfp-why-item__desc {
+  font-size: var(--fs-sm);
+  color: var(--color-text-secondary);
+  margin-top: 2px;
+}
+
+/* ---------- Sections utilitaires ---------- */
+.tfp-eyebrow-link {
+  margin-top: var(--space-5);
+  display: inline-flex;
+  font-weight: var(--fw-semibold);
+  color: var(--color-primary);
+}

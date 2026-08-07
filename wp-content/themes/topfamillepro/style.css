@@ -1,0 +1,15 @@
+/*
+Theme Name: Top-Famille Pro
+Theme URI: https://top-famille-pro.fr
+Description: Thème enfant sur mesure pour Top-Famille Pro (SARL TOP-ENTREPRISE), basé sur GeneratePress.
+Author: Top-Famille Pro
+Template: generatepress
+Version: 0.1.0
+Text Domain: topfamillepro
+Requires PHP: 8.0
+Requires at least: 6.4
+
+Le CSS visuel réel est généré par le pipeline de build (src/css/*.css → assets/dist/css/main.css,
+voir README.md) et chargé via wp_enqueue_style() dans includes/enqueue.php. Ce fichier ne sert
+que d'en-tête de déclaration du thème enfant, requis par WordPress.
+*/
