@@ -14,6 +14,28 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
+ * Enveloppe sûre autour de get_field() : si ACF n'est pas actif, get_field() n'existe pas et un
+ * appel direct provoquerait une erreur fatale sur tout gabarit consultant un champ (single-zone.php,
+ * single-prestation.php…) — ce qui casserait la garantie validée en phase 1 (« ACF absent = aucune
+ * erreur fatale »). Se rabat sur get_post_meta() (valeur brute, sans le post-traitement d'ACF)
+ * pour les cas simples (texte, textarea, true_false stocké en post meta par ACF de toute façon).
+ *
+ * @param string   $selector Nom du champ.
+ * @param int|bool $post_id
+ * @param mixed    $default
+ * @return mixed
+ */
+function tfp_get_field( $selector, $post_id = false, $default = '' ) {
+	if ( function_exists( 'get_field' ) ) {
+		$value = get_field( $selector, $post_id );
+		return ( null !== $value && '' !== $value && false !== $value ) ? $value : $default;
+	}
+
+	$value = get_post_meta( (int) $post_id, $selector, true );
+	return '' !== $value ? $value : $default;
+}
+
+/**
  * Génère $count champs ACF de type "group" (question + réponse), pour simuler une FAQ à
  * nombre variable sans le champ Repeater (Pro). Chaque groupe est facultatif ; un gabarit ne
  * doit afficher que ceux dont la question n'est pas vide.

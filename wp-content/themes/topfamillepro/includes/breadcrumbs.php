@@ -22,7 +22,7 @@ function tfp_breadcrumb( $items ) {
 		return;
 	}
 
-	echo '<nav class="tfp-breadcrumb" aria-label="Fil d\'Ariane"><ol style="display:flex;flex-wrap:wrap;list-style:none;gap:0;padding:0;margin:0">';
+	echo '<nav class="tfp-breadcrumb" aria-label="Fil d\'Ariane"><ol style="display:flex;flex-wrap:wrap;list-style:none;row-gap:4px;column-gap:0;padding:0;margin:0">';
 
 	$count = count( $items );
 	foreach ( $items as $index => $item ) {
