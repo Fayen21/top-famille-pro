@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 tfp_seo(
 	array(
-		'title'       => 'Nettoyage professionnel de bureaux et locaux en Bourgogne-Franche-Comté',
+		'title'       => 'Nettoyage de bureaux et locaux en Bourgogne-Franche-Comté',
 		'description' => 'Entreprise de nettoyage de bureaux, commerces, cabinets et copropriétés en Bourgogne-Franche-Comté. Devis gratuit sous 24 h, à partir de 24,30 € HT/h.',
 		'type'        => 'website',
 		'robots'      => 'index,follow',

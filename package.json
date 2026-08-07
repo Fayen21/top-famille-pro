@@ -11,9 +11,11 @@
     "images": "node build/optimize-images.mjs",
     "fonts": "node build/fetch-fonts.mjs",
     "lint:php": "node build/lint-php.mjs",
-    "test": "npm run lint:php && npm run build"
+    "test": "npm run lint:php && npm run build",
+    "test:e2e": "playwright test"
   },
   "devDependencies": {
+    "@playwright/test": "^1.62.1",
     "esbuild": "^0.28.1",
     "sharp": "^0.35.3"
   }
