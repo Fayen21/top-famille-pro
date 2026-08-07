@@ -645,10 +645,12 @@
   line-height: 1.2;
 }
 
-/* Espace réservé en bas de page mobile pour que la barre CTA ne masque jamais le footer */
+/* Espace réservé en bas de page mobile pour que la barre CTA ne masque jamais le footer.
+   Hauteur de repli (sans JS) légèrement supérieure à la barre réelle (~76px) par sécurité ;
+   src/js/nav.js (syncMobileCtaBarSpacer) l'ajuste dynamiquement à la hauteur exacte. */
 .tfp-mobile-cta-spacer {
   display: none;
-  height: 76px;
+  height: 84px;
 }
 
 @media (max-width: 819px) {

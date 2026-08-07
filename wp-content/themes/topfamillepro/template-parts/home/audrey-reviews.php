@@ -3,7 +3,9 @@
  * 8. Audrey et avis — fusionne les deux blocs « Pourquoi Top-Famille Pro » et « Avis + Audrey »
  * du prototype (brief phase 1 §6 : redondant de garder deux blocs de réassurance/confiance
  * séparés). Pas de portrait de stock présenté comme Audrey (brief §5/§7, docs/DONNEES-FICTIVES.md) :
- * une pastille avec son initiale tient lieu de visuel tant que la photo réelle n'est pas fournie.
+ * une pastille avec son initiale tient lieu de visuel tant que la photo réelle n'est pas fournie
+ * (remplaçable en un geste depuis Apparence → Personnaliser → Équipe, includes/customizer.php,
+ * sans dépendre d'ACF).
  * Aucune citation inventée en son nom (brief §7 : « n'invente aucune information biographique
  * sur Audrey ») — le texte reste descriptif, à la troisième personne.
  */
@@ -24,14 +26,24 @@ $why_items = array(
 );
 
 $featured_review = ! empty( $reassurance['avis'] ) ? $reassurance['avis'][0] : null;
+$audrey_photo    = tfp_get_audrey_photo_url();
 ?>
 <section class="tfp-section">
 	<div class="tfp-container tfp-two-col" style="align-items:flex-start">
 		<div class="tfp-audrey-portrait">
-			<div style="width:100%;aspect-ratio:4/5;border-radius:var(--radius-xl);background:linear-gradient(160deg,var(--color-primary),var(--color-navy));display:flex;align-items:center;justify-content:center">
-				<span style="font-family:var(--font-heading);font-weight:800;font-size:96px;color:var(--color-turquoise-pale)" aria-hidden="true"><?php echo esc_html( mb_substr( $first_name, 0, 1 ) ); ?></span>
-			</div>
-			<p style="margin-top:10px;font-size:12.5px;color:var(--color-text-tertiary);text-align:center">Photo à venir</p>
+			<?php if ( $audrey_photo ) : ?>
+				<img
+					src="<?php echo esc_url( $audrey_photo ); ?>"
+					alt="<?php echo esc_attr( $site['manager'] . ', gérante de ' . $site['brand_name'] ); ?>"
+					style="width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:var(--radius-xl);background:var(--color-border)"
+					loading="lazy"
+				>
+			<?php else : ?>
+				<div style="width:100%;aspect-ratio:4/5;border-radius:var(--radius-xl);background:linear-gradient(160deg,var(--color-primary),var(--color-navy));display:flex;align-items:center;justify-content:center">
+					<span style="font-family:var(--font-heading);font-weight:800;font-size:96px;color:var(--color-turquoise-pale)" aria-hidden="true"><?php echo esc_html( mb_substr( $first_name, 0, 1 ) ); ?></span>
+				</div>
+				<p style="margin-top:10px;font-size:12.5px;color:var(--color-text-tertiary);text-align:center">Photo à venir</p>
+			<?php endif; ?>
 		</div>
 
 		<div>
@@ -51,6 +63,8 @@ $featured_review = ! empty( $reassurance['avis'] ) ? $reassurance['avis'][0] : n
 					</div>
 				<?php endforeach; ?>
 			</div>
+
+			<a href="<?php echo esc_url( home_url( '/pourquoi-nous/' ) ); ?>" class="tfp-eyebrow-link">Toutes nos preuves →</a>
 
 			<?php if ( $featured_review && ! empty( $featured_review['texte'] ) ) : ?>
 				<div class="tfp-card" style="margin-top:28px">

@@ -50,17 +50,9 @@ function tfp_register_acf_fields_prestation() {
 					'key'          => 'field_tfp_prestation_taches',
 					'label'        => 'Tâches incluses',
 					'name'         => 'taches',
-					'type'         => 'repeater',
-					'layout'       => 'table',
-					'button_label' => 'Ajouter une tâche',
-					'sub_fields'   => array(
-						array(
-							'key'  => 'field_tfp_prestation_tache_libelle',
-							'label' => 'Tâche',
-							'name' => 'libelle',
-							'type' => 'text',
-						),
-					),
+					'type'         => 'textarea',
+					'instructions' => "Une tâche par ligne. Champ texte simple plutôt qu'un Repeater : ACF gratuit ne fournit pas ce type de champ (cf. STATUS.md). À découper avec tfp_get_lines( get_field('taches') ).",
+					'rows'         => 8,
 				),
 				array(
 					'key'          => 'field_tfp_prestation_exclusions',
@@ -80,35 +72,24 @@ function tfp_register_acf_fields_prestation() {
 					'ui'            => 1,
 				),
 				array(
-					'key'          => 'field_tfp_prestation_faq',
-					'label'        => 'FAQ',
-					'name'         => 'faq',
-					'type'         => 'repeater',
-					'layout'       => 'block',
-					'button_label' => 'Ajouter une question',
-					'sub_fields'   => array(
-						array(
-							'key'  => 'field_tfp_prestation_faq_q',
-							'label' => 'Question',
-							'name' => 'question',
-							'type' => 'text',
-						),
-						array(
-							'key'  => 'field_tfp_prestation_faq_a',
-							'label' => 'Réponse',
-							'name' => 'reponse',
-							'type' => 'textarea',
-							'rows' => 3,
-						),
-					),
-				),
-				array(
 					'key'          => 'field_tfp_prestation_villes_prioritaires',
 					'label'        => 'Villes mises en avant (maillage)',
 					'name'         => 'villes_prioritaires',
 					'type'         => 'relationship',
 					'post_type'    => array( 'zone' ),
 					'filters'      => array( 'search' ),
+				),
+				array(
+					'key'   => 'field_tfp_prestation_faq_tab',
+					'label' => 'FAQ',
+					'type'  => 'tab',
+				),
+				array(
+					'key'     => 'field_tfp_prestation_faq_intro',
+					'label'   => 'FAQ',
+					'name'    => 'faq_intro',
+					'type'    => 'message',
+					'message' => "Jusqu'à 8 questions ci-dessous (champs Group plutôt qu'un Repeater — ACF gratuit ne fournit pas le champ Repeater, cf. STATUS.md). N'affiche la FAQ, et n'émet le FAQPage JSON-LD, que pour les blocs dont la question est renseignée.",
 				),
 				array(
 					'key'   => 'field_tfp_prestation_seo_tab',
@@ -131,6 +112,23 @@ function tfp_register_acf_fields_prestation() {
 					'maxlength' => 158,
 				),
 			),
+			'location' => array(
+				array(
+					array(
+						'param'    => 'post_type',
+						'operator' => '==',
+						'value'    => 'prestation',
+					),
+				),
+			),
+		)
+	);
+
+	acf_add_local_field_group(
+		array(
+			'key'      => 'group_tfp_prestation_faq',
+			'title'    => 'Prestation — FAQ',
+			'fields'   => tfp_acf_faq_group_fields( 'field_tfp_prestation_faq', 'faq', 8 ),
 			'location' => array(
 				array(
 					array(

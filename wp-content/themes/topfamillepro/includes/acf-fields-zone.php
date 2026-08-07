@@ -134,29 +134,52 @@ function tfp_register_acf_fields_zone() {
 					'post_type'    => array( 'prestation' ),
 				),
 				array(
-					'key'          => 'field_tfp_zone_faq',
+					'key'   => 'field_tfp_zone_faq_tab',
+					'label' => 'FAQ locale',
+					'type'  => 'tab',
+				),
+				array(
+					'key'          => 'field_tfp_zone_faq_intro',
 					'label'        => 'FAQ locale',
-					'name'         => 'faq',
-					'type'         => 'repeater',
-					'instructions' => "Affichée uniquement si au moins une question est renseignée — sinon, pas de FAQPage en JSON-LD (CLAUDE.md §8).",
-					'layout'       => 'block',
-					'button_label' => 'Ajouter une question',
-					'sub_fields'   => array(
-						array(
-							'key'  => 'field_tfp_zone_faq_q',
-							'label' => 'Question',
-							'name' => 'question',
-							'type' => 'text',
-						),
-						array(
-							'key'  => 'field_tfp_zone_faq_a',
-							'label' => 'Réponse',
-							'name' => 'reponse',
-							'type' => 'textarea',
-							'rows' => 3,
-						),
+					'name'         => 'faq_intro',
+					'type'         => 'message',
+					'message'      => "Jusqu'à 8 questions ci-dessous (champs Group plutôt qu'un Repeater — ACF gratuit ne fournit pas le champ Repeater, cf. STATUS.md). La FAQ ne s'affiche, et le FAQPage JSON-LD n'est émis, que pour les blocs dont la question est renseignée (CLAUDE.md §8).",
+				),
+			),
+			'location' => array(
+				array(
+					array(
+						'param'    => 'post_type',
+						'operator' => '==',
+						'value'    => 'zone',
 					),
 				),
+			),
+		)
+	);
+
+	acf_add_local_field_group(
+		array(
+			'key'      => 'group_tfp_zone_faq',
+			'title'    => 'Zone — FAQ locale',
+			'fields'   => tfp_acf_faq_group_fields( 'field_tfp_zone_faq', 'faq', 8 ),
+			'location' => array(
+				array(
+					array(
+						'param'    => 'post_type',
+						'operator' => '==',
+						'value'    => 'zone',
+					),
+				),
+			),
+		)
+	);
+
+	acf_add_local_field_group(
+		array(
+			'key'      => 'group_tfp_zone_seo',
+			'title'    => 'Zone — SEO',
+			'fields'   => array(
 				array(
 					'key'   => 'field_tfp_zone_seo_tab',
 					'label' => 'SEO',

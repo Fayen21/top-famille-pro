@@ -138,9 +138,32 @@
     if (mq.addEventListener) mq.addEventListener('change', onChange);
   }
 
+  /**
+   * Cale la hauteur du réservataire (.tfp-mobile-cta-spacer) sur la hauteur réelle de la barre
+   * CTA mobile fixe : une valeur figée en CSS peut être décalée de quelques dixièmes de pixel
+   * selon le rendu des polices, laissant apparaître un chevauchement infime avec le footer.
+   */
+  function syncMobileCtaBarSpacer() {
+    var bar = document.querySelector('.tfp-mobile-cta-bar');
+    var spacer = document.querySelector('.tfp-mobile-cta-spacer');
+    if (!bar || !spacer) return;
+
+    var sync = function () {
+      var isVisible = window.getComputedStyle(bar).display !== 'none';
+      spacer.style.height = isVisible ? Math.ceil(bar.getBoundingClientRect().height) + 'px' : '0px';
+    };
+
+    sync();
+    window.addEventListener('resize', sync);
+    if (window.ResizeObserver) {
+      new ResizeObserver(sync).observe(bar);
+    }
+  }
+
   document.addEventListener('DOMContentLoaded', function () {
     initHeaderScroll();
     initDesktopSubmenus();
     initMobileMenu();
+    syncMobileCtaBarSpacer();
   });
 })();
