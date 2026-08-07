@@ -1,8 +1,106 @@
 # STATUS — Top-Famille Pro
 
 > Lien entre deux sessions Claude Code Web. Mis à jour à la fin de chaque phase.
-> Dernière mise à jour : **Phase 4 — maillage interne, formulaire de devis enrichi, analytics**, 7 août 2026.
-> `PHASE_4=PASS`
+> Dernière mise à jour : **Phase 5 — suite de tests automatisés Playwright**, 7 août 2026.
+> `PHASE_5=PASS`
+
+---
+
+## -4. Phase 5 — suite de tests automatisés Playwright
+
+Branche `phase-5-tests-automatises`, créée sur `phase-4-maillage-conversion` (PR #5 pas encore
+fusionnée au moment de la phase 5 — même raison qu'en phase 3 : les fonctionnalités testées
+n'existent que sur cette lignée tant que la PR n'est pas mergée).
+
+### Ce qui a été construit
+
+`@playwright/test` en devDependency, `playwright.config.js` piloté par la variable d'environnement
+`TFP_BASE_URL` (défaut : le rig de test local documenté §11) — aucun `webServer` : aucun serveur
+WordPress « jetable » ne peut être piloté depuis ce dépôt (CLAUDE.md §3, seul le thème enfant est
+versionné). `executablePath` pointe explicitement vers le Chromium préinstallé de l'environnement,
+la version du package pouvant réclamer une révision de navigateur différente.
+
+- `tests/data/routes.js` : manifeste unique des 53 routes publiques (reconstruit depuis
+  `docs/INVENTAIRE-ROUTES.md`), avec la famille et le `robots` **cible** de chacune — base commune
+  aux tests SEO et au crawl, pour ne jamais avoir deux listes à maintenir en parallèle.
+- `tests/data/fictitious-names.js` : les ~25 noms d'avis de démonstration du prototype
+  (`docs/DONNEES-FICTIVES.md`), distincts des 6 noms réels réutilisables (CLAUDE.md §5.5).
+- `tests/seo.spec.js` : par route (53 + 404), statut HTTP, h1 unique, title présent et
+  raisonnablement court, meta description, canonical absolue auto-référente, robots attendu,
+  JSON-LD valide, aucun `href="#"`, aucun fragment `#/`, aucune donnée fictive résiduelle, aucun
+  alt mensonger, aucune erreur JS, aucun débordement horizontal (375px).
+- `tests/uniqueness.spec.js` : title et canonical uniques sur les 53 routes, par requête HTTP brute
+  (plus rapide qu'un navigateur pour une vérification qui ne dépend d'aucun rendu client).
+- `tests/crawl.spec.js` : crawl interne réel depuis l'accueil (suit tous les `<a href>` internes
+  rencontrés), vérifie qu'aucun lien ne meurt et que les 53 routes sont toutes atteignables (aucune
+  page orpheline) — indépendant du manifeste de routes pour la découverte, qui sert seulement à
+  vérifier la couverture a posteriori.
+- `tests/functional/quote-form.spec.js` : soumission complète (téléphone seul, e-mail seul), rejet
+  serveur (ni l'un ni l'autre, e-mail mal formé), consentement bloquant côté client, honeypot,
+  contexte local transmis et pré-rempli, navigation clavier (Tab/Entrée, Espace sur la case à
+  cocher), erreurs annoncées à l'étape 1.
+- `tests/screenshots.spec.js` : les 12 largeurs demandées × une page par famille dans
+  `.screenshots/` (gitignoré, balayage complet — 81 captures), plus une sélection ciblée commitée
+  dans `docs/captures/` (16 fichiers, 8,6 Mo) couvrant les contrôles particuliers du brief : villes à
+  nom long (Fontaine-lès-Dijon, Chalon-sur-Saône) à 320/1440px, formulaire aux étapes 1/2/en erreur,
+  clavier mobile ouvert (approximation par une hauteur de viewport réduite — aucune émulation native
+  de clavier virtuel n'existe dans Chromium piloté par Playwright), footer, page tarifs, accueil.
+
+### Bugs trouvés et corrigés par la suite (« corrige tout ce que les tests révèlent »)
+
+- **Title de l'accueil à 71 caractères** (`front-page.php`), au-delà des ~65c de CLAUDE.md §8 —
+  déjà signalé dans `docs/INVENTAIRE-ROUTES.md` comme dépassement du prototype, jamais corrigé
+  pendant les phases 2/3 (celles-ci avaient corrigé les autres dépassements listés, mais pas
+  l'accueil, créé plus tôt en phase 1, avant que la règle de raccourcissement soit systématisée).
+  Raccourci en « Nettoyage de bureaux et locaux en Bourgogne-Franche-Comté » (57c), intention
+  principale préservée (service + périmètre + région) ; le H1 n'est pas concerné, seule la balise
+  `<title>` a une contrainte de longueur SERP.
+- **Vérification anti-« Top-Entreprise » trop étroite dans le premier jet des tests** : une
+  comparaison sensible à la casse contre `Top-Entreprise` (voir §-3, données fictives) ne détectait
+  pas la variante `TOP-ENTREPRISE` telle qu'affichée dans le pied de page. Corrigé en une
+  comparaison insensible à la casse — après avoir explicitement retiré la seule occurrence légitime,
+  la raison sociale réelle « SARL TOP-ENTREPRISE » (CLAUDE.md §1), pour ne pas la confondre avec
+  l'ancienne marque à supprimer (CLAUDE.md §9). Vérifié que la détection fonctionne réellement (test
+  unitaire du motif hors suite, avant et après correction), pas seulement que la suite passe.
+- **Capture « footer » en pleine page plutôt que recadrée** : la première version utilisait
+  `fullPage: true` uniformément, produisant une image de 1 à 2 Mo qui faisait doublon avec la
+  capture « accueil » (toute la page, pas seulement le pied de page). Corrigée en un `clip` sur la
+  position réelle du `<footer>` après défilement — fichiers réduits à ~45 Ko.
+
+### Constats honnêtes plutôt que des contrôles inventés
+
+- **Aucun bandeau cookies** n'existe sur le site : conforme à CLAUDE.md §6 (« aucun outil de
+  tracking installé »), un bandeau de consentement n'a de sens qu'une fois un outil de mesure
+  effectivement branché. Le contrôle particulier « bandeau cookies » du brief phase 5 n'a donc rien
+  à capturer pour l'instant — non simulé par une fausse bannière.
+- **Aucun élément `<table>` HTML** n'existe sur le site : la grille tarifaire est affichée en
+  cartes (meilleure lisibilité mobile, décision déjà prise en phase 1/2). La capture demandée pour
+  « tableaux » utilise la page `/tarifs/`, la plus proche d'un contenu tabulaire, avec cette
+  précision dans le commentaire du test plutôt qu'un silence qui laisserait croire à un vrai tableau.
+
+### Vérifications
+
+| Contrôle | Résultat |
+|---|---|
+| `npm run test` (lint PHP + build) | ✅ |
+| `tests/seo.spec.js` + `tests/uniqueness.spec.js` + `tests/crawl.spec.js` + `tests/functional/quote-form.spec.js` (exécution combinée) | ✅ 703 passés, 0 échec (après correctifs) |
+| `tests/screenshots.spec.js` (81 captures) | ✅ 81 passés, 0 échec |
+
+### Relancer la suite
+
+```bash
+npm ci
+TFP_BASE_URL=http://votre-wordpress.example npx playwright test        # tout, sauf les captures
+npx playwright test tests/screenshots.spec.js                          # captures (lent, ~1 min)
+```
+
+Sans `TFP_BASE_URL`, la config retombe sur `http://localhost:8899` (rig de test local, §11).
+
+### Base de cette branche
+
+`phase-5-tests-automatises` est branchée sur `phase-4-maillage-conversion`, elle-même non encore
+fusionnée dans `main` au moment de la phase 5 (PR #5). La PR de la phase 5 cible donc PR #5, pas
+`main` ; à fusionner après elle, ou à rebaser sur `main` une fois celle-ci mergée.
 
 ---
 
