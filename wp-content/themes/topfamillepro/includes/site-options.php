@@ -7,8 +7,13 @@
  * absence proprement (masquer le bloc, ou remplacer par [À COMPLÉTER] pour les mentions
  * légales — hors périmètre de la phase 1, aucune page légale n'est construite ici).
  *
- * Aucune donnée d'immatriculation (SIRET, TVA, APE, capital) n'est exposée ici tant que le
- * Kbis n'a pas confirmé les chiffres — c'est un bloqueur de mise en ligne (STATUS.md §6).
+ * Données d'immatriculation (phase 7) : confirmées par extrait Pappers fourni par le client,
+ * qui lève l'incohérence relevée en phase 0 entre deux sources sur le SIREN (l'ancien site
+ * annonçait 938 472 242 ; la valeur confirmée est 938 472 420). SIRET, code APE et TVA
+ * intracommunautaire confirmés dans un second temps par le client, cohérence formelle
+ * recontrôlée indépendamment (clé Luhn du SIRET, clé de contrôle TVA à partir du SIREN) avant
+ * intégration. Date de naissance de la gérante et toute autre donnée personnelle non
+ * nécessaire à la mention légale : jamais recueillies ni publiées (CLAUDE.md §5.1).
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -36,6 +41,24 @@ function tfp_site_data() {
 			'address_city'    => 'Saint-Apollinaire',
 			'address_region'  => 'Bourgogne-Franche-Comté',
 			'address_country' => 'FR',
+			// Données d'immatriculation — confirmées par Kbis/Pappers (phase 7), voir docblock ci-dessus.
+			'legal_form'                  => 'société à responsabilité limitée (SARL)',
+			'legal_capital'               => 600.00,
+			'legal_capital_display'       => '600,00 €',
+			'legal_rcs_city'              => 'Dijon',
+			'legal_siren'                 => '938 472 420',
+			'legal_siret'                 => '938 472 420 00018',
+			'legal_rcs_number'            => '938 472 420 R.C.S. Dijon',
+			'legal_immatriculation_date'  => '16/12/2024',
+			'legal_immatriculation_date_iso' => '2024-12-16',
+			'legal_ape_code'              => '81.21Z',
+			'legal_ape_label'             => 'Nettoyage courant des bâtiments',
+			'legal_tva'                   => 'FR32 938 472 420',
+			'legal_tva_compact'           => 'FR32938472420',
+			'legal_activity'              => 'Nettoyage de locaux professionnels et nettoyage courant des bâtiments',
+			'legal_activity_start_date'   => '01/01/2025',
+			// Formulation complète exacte fournie par le client — à utiliser telle quelle.
+			'legal_full_statement'        => 'TOP-ENTREPRISE, SARL au capital de 600 €, immatriculée au RCS de Dijon sous le numéro 938 472 420, SIRET 938 472 420 00018, code APE 81.21Z, TVA intracommunautaire FR32938472420, siège social : RTE de Gray 650D, 21850 Saint-Apollinaire.',
 			// Domaine cible (PROJECT_INPUTS.md §1). Filtrable pour les environnements de test/preprod.
 			'origin'          => apply_filters( 'tfp_site_origin', home_url( '/' ) ),
 			'logo_path'       => '/wp-content/themes/topfamillepro/assets/dist/images/logo-horizontal.png',

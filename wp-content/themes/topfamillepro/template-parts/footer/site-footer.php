@@ -1,8 +1,9 @@
 <?php
 /**
  * Pied de page complet : coordonnées réelles, colonnes de liens, mentions légales.
- * Aucune donnée d'immatriculation (SIRET, TVA, APE) : bloquée tant que le Kbis ne l'a pas
- * confirmée (STATUS.md §6) — ne pas en ajouter ici avant cette confirmation.
+ * Ligne légale volontairement concise (raison sociale, forme juridique, capital, SIRET, lien
+ * vers les mentions légales) — la version complète (RCS, APE, TVA, activité) est réservée à la
+ * page /mentions-legales/, pas répétée sur les 53 pages du site.
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -64,7 +65,7 @@ $year = gmdate( 'Y' );
 	</div>
 
 	<div class="tfp-footer__bottom">
-		<span>© <?php echo esc_html( $year ); ?> <?php echo esc_html( $site['legal_name'] ); ?> — <?php echo esc_html( $site['brand_name'] ); ?></span>
+		<span>© <?php echo esc_html( $year ); ?> <?php echo esc_html( $site['legal_name'] ); ?> au capital de <?php echo esc_html( $site['legal_capital_display'] ); ?>, SIRET <?php echo esc_html( $site['legal_siret'] ); ?> — <?php echo esc_html( $site['brand_name'] ); ?></span>
 		<nav aria-label="Liens légaux" style="display:flex;flex-wrap:wrap;gap:16px">
 			<a href="<?php echo esc_url( home_url( '/mentions-legales/' ) ); ?>">Mentions légales</a>
 			<a href="<?php echo esc_url( home_url( '/politique-de-confidentialite/' ) ); ?>">Confidentialité</a>
