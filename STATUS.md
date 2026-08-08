@@ -1,9 +1,105 @@
 # STATUS — Top-Famille Pro
 
 > Lien entre deux sessions Claude Code Web. Mis à jour à la fin de chaque phase.
-> Dernière mise à jour : **Phase 6 — accessibilité, performance, recette finale**, 8 août 2026.
-> `PHASE_6=PASS` (techniquement — voir `docs/RAPPORT-FINAL.md` : le site n'est **pas**
-> PRODUCTION READY, Kbis non confirmé)
+> Dernière mise à jour : **Phase 7 — informations légales et livraison Hostinger**, 8 août 2026.
+> `HOSTINGER_PACKAGE=PASS` — voir `docs/RAPPORT-FINAL.md` pour le détail : le code et le contenu
+> sont prêts (plus aucun bloqueur CLAUDE.md §10 actif, données d'immatriculation confirmées), le
+> paquet d'installation Hostinger est prêt et testé, mais **le site n'est pas encore déployé** sur
+> l'hébergement réel et l'envoi effectif des devis (SMTP) n'a pas pu être vérifié en conditions
+> réelles.
+
+---
+
+## -6. Phase 7 — informations légales et livraison Hostinger
+
+Branche `phase-7-livraison-hostinger`, créée sur `main` après fusion contrôlée des PR #5, #6, #7.
+
+### 1. Fusion contrôlée des PR #5 → #6 → #7
+
+Vérifiées propres, sans conflit ni commentaire bloquant, commits conformes aux phases annoncées.
+Fusionnées avec `merge_method="merge"` (jamais squash/rebase) pour préserver les SHA de commit
+d'origine — condition nécessaire pour qu'une PR empilée, une fois retargetée sur `main`, montre un
+diff propre (uniquement ses propres commits) plutôt qu'une duplication de l'historique déjà
+fusionné. Suite de tests complète relancée entre chaque fusion (703, puis 705 tests verts).
+`main` vérifié après coup : aucun marqueur de conflit résiduel, `npm run test` vert, tous les
+fichiers clés des phases 2 à 6 présents, aucun doublon.
+
+### 2. Informations juridiques confirmées
+
+Extrait Pappers fourni par le client (dénomination, SIREN, capital, date d'immatriculation, siège,
+gérante), puis complément (SIRET, code APE, TVA) confirmé directement. Cohérence formelle
+recontrôlée indépendamment avant intégration : clé Luhn du SIRET valide, clé de contrôle TVA
+calculée à partir du SIREN = 32 (conforme à ce qui a été transmis). Détail complet des valeurs :
+`PROJECT_INPUTS.md` §2.
+
+**Le bloqueur juridique posé en phase 0 est levé** : l'incohérence sur le SIREN (l'ancien site
+publiait 938 472 242, la valeur confirmée est 938 472 420) est résolue.
+
+Intégré dans `includes/site-options.php` (source unique, nouveaux champs `legal_*`), les mentions
+légales (RCS/SIREN/SIRET/capital/APE/TVA/date d'immatriculation réels, remplacent les
+`[À COMPLÉTER]`), le pied de page (ligne concise : raison sociale, capital, SIRET, lien vers les
+mentions légales complètes), et les données structurées `Organization` (`taxID`, `vatID`,
+`foundingDate` — propriétés schema.org appropriées ; **pas** de code APE forcé dans le JSON-LD,
+faute de propriété schema.org adaptée). Aucune information personnelle inutile publiée : le nom de
+naissance de la gérante (confirmé par Pappers, différent du nom d'usage déjà utilisé partout sur le
+site) et sa date de naissance ne sont jamais rendus publics.
+
+Un bug trouvé et corrigé par le nouveau test dédié (`tests/legal.spec.js`, 7 assertions) : la page
+mentions légales paraphrasait « RCS » en toutes lettres sans jamais utiliser le sigle demandé par
+la formulation du client.
+
+### 3. Paquet de livraison Hostinger
+
+Quatre livrables dans `release/`, détaillés dans `docs/RAPPORT-FINAL.md` §17 :
+
+- `topfamillepro-theme.zip` — thème enfant, fichiers de production uniquement. Testé sur WordPress
+  vierge (miroir GitHub, aucun accès réseau à wordpress.org depuis cet environnement) : activation
+  propre, dépendance GeneratePress respectée, fonctionnement avec et sans ACF, aucun chemin de
+  développement en dur.
+- `topfamillepro-content-installer.zip` — plugin temporaire (Outils → Installation Top-Famille
+  Pro) qui reproduit les 11 scripts de seed existants depuis l'administration, sans terminal :
+  contrôle préalable en lecture seule, installation avec avertissement de sauvegarde obligatoire,
+  rapport détaillé. Chaque script est inclus dans sa propre fermeture PHP pour isoler ses variables
+  des dix autres — nécessaire car ces scripts étaient conçus pour être lancés séparément
+  (`wp eval-file`), pas concaténés dans une même requête HTTP. Testé exhaustivement : premier
+  passage (11/11 étapes, 0 erreur), idempotence (deuxième passage, delta +0 partout), modification
+  manuelle suivie d'une réexécution (le champ géré est resynchronisé — comportement documenté dans
+  l'avertissement de l'interface — la donnée personnalisée non gérée et une page hors périmètre
+  restent intactes), avec et sans ACF, sécurité (nonce invalide rejeté, accès non authentifié
+  redirigé vers la connexion).
+- `PAGES-A-CREER.md` / `pages-a-creer.csv` — tableau des 53 pages, généré par extraction réelle du
+  contenu (title/H1/meta description/robots/titre WordPress en base), pas recopié à la main.
+- `GUIDE-DEPLOIEMENT-HOSTINGER.md` — 24 étapes pour un utilisateur non développeur, procédure
+  alternative par le gestionnaire de fichiers.
+- `INFORMATIONS-MANQUANTES.md` — mis à jour (SIRET/APE/TVA retirés, désormais confirmés).
+- `SHA256SUMS.txt` + `Top-Famille-Pro-Livraison-Hostinger.zip` — empreintes et ZIP global.
+
+### 4. Tests finaux sur une installation neuve, à partir des deux ZIP
+
+WordPress vierge distinct du rig de développement habituel, thème et plugin réellement
+extraits/activés depuis les ZIP livrés (pas de symlink vers les sources). **722 assertions
+vertes** : `tests/seo.spec.js` + `tests/uniqueness.spec.js` + `tests/crawl.spec.js` +
+`tests/legal.spec.js` (700, sur les 53 routes + 404) puis `tests/functional/quote-form.spec.js` +
+`tests/accessibility.spec.js` (22, formulaire jusqu'à l'appel serveur de `wp_mail()`, axe-core 0
+violation sur les 6 familles + le formulaire, navigation clavier réelle). `tests/screenshots.spec.js`
+non rejoué sur cette instance (mécanisme de capture, pas un test de correction — déjà validé en
+phase 5/6) ; les 796 assertions du rapport de phase 6 incluaient ces captures, non comparables
+1 pour 1 aux 722 ci-dessus qui portent sur un périmètre volontairement plus resserré (correction,
+pas capture).
+
+### 5. Verdict — HOSTINGER_PACKAGE=PASS, site non encore déployé
+
+Distinction volontaire entre quatre états, pour ne rien sous-entendre :
+
+| Aspect | État |
+|---|---|
+| Code et contenu (CLAUDE.md §10) | ✅ **Prêt** — plus aucun bloqueur actif, y compris l'immatriculation (levé cette phase) |
+| Paquet d'installation Hostinger | ✅ **Prêt** (`HOSTINGER_PACKAGE=PASS`) — testé de bout en bout sur WordPress vierge |
+| Déploiement réel sur `top-famille-pro.fr` | ⛔ **Non effectué** — cette session n'a rien déployé sur le domaine réel (CLAUDE.md §6) |
+| Envoi effectif des devis (SMTP) | 🟡 **À tester sur l'hébergement réel** — aucun transport mail disponible dans les environnements de test utilisés sur l'ensemble du projet |
+| Informations commerciales encore facultatives | 🟡 Assurance RC pro, fiche Google (URL/note/avis), portrait réel d'Audrey, texte exact des témoignages, choix d'adresse e-mail, validation des 8 communes secondaires, décision sur `topentreprise.fr` — `release/INFORMATIONS-MANQUANTES.md` |
+
+Aucun nouveau contrôle périodique programmé. Cette session s'arrête après le rapport final.
 
 ---
 
