@@ -33,6 +33,7 @@ $tfp_includes = array(
 	'includes/articles-meta.php', // Réponse directe + FAQ des articles (type post natif) — boîte de méta native, aucune dépendance ACF.
 	'includes/articles-routing.php', // URL réelle /conseils/{slug}/ des articles, indépendante du réglage Permaliens global.
 	'includes/quote-form.php',   // Traitement serveur du formulaire de demande de devis (admin-post.php, wp_mail()).
+	'includes/sitemap-robots.php', // Sitemap XML natif WP filtré (exclut users/taxonomies + communes non validées) + robots.txt.
 );
 
 foreach ( $tfp_includes as $tfp_include ) {
