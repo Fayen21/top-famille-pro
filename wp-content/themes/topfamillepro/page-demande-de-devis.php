@@ -2,10 +2,20 @@
 /**
  * Page statique « Demande de devis » (/demande-de-devis/) — gabarit dédié (CLAUDE.md §3).
  *
- * Formulaire réel à deux étapes (CLAUDE.md §8) : un seul <form>, deux <fieldset> — les données
- * restent dans le DOM en permanence entre les étapes (src/js/quote-form.js gère uniquement
- * l'affichage), donc rien n'est perdu si le visiteur revient en arrière. Sans JavaScript, les deux
- * étapes restent visibles et le formulaire reste soumissible en une fois.
+ * Formulaire réel à deux étapes conforme au brief phase 4 (PROMPT-PHASES.md) :
+ * Étape 1 — type de locaux, régime (régulier/ponctuel), ville, code postal, surface approximative,
+ * nom, téléphone ou e-mail. Étape 2 — entreprise, fréquence, créneau, message, consentement.
+ *
+ * Un seul <form>, deux <fieldset> : les données restent dans le DOM en permanence entre les
+ * étapes (src/js/quote-form.js gère uniquement l'affichage), donc rien n'est perdu si le visiteur
+ * revient en arrière. Sans JavaScript, les deux étapes restent visibles et le formulaire reste
+ * soumissible en une fois.
+ *
+ * Contexte visiteur capté automatiquement (page d'origine, référent, UTM) + préremplissage réel
+ * depuis les pages prestation/zone via les paramètres ?service=&ville=&departement= (les CTA de
+ * ces pages les transmettent désormais, voir single-prestation.php/single-zone.php). Le paramètre
+ * n'est pas nommé « prestation » : ce nom est le query_var natif du CPT du même nom et
+ * détournerait la requête principale de WordPress (voir le commentaire dans single-prestation.php).
  *
  * Traitement serveur réel (includes/quote-form.php, wp_mail() vers l'adresse réelle
  * PROJECT_INPUTS.md §1) : validation, honeypot, limitation des soumissions. La confirmation ne
@@ -21,10 +31,39 @@ $success = isset( $_GET['merci'] );
 $erreur  = isset( $_GET['erreur'] ) ? sanitize_key( wp_unslash( $_GET['erreur'] ) ) : '';
 
 $erreur_messages = array(
-	'champs'  => 'Merci de renseigner votre nom, une adresse e-mail valide et un message décrivant votre besoin.',
+	'champs'  => 'Merci de renseigner votre nom, un moyen de vous joindre (téléphone ou e-mail), votre consentement et un message décrivant votre besoin.',
 	'session' => 'Votre session a expiré, merci de renvoyer le formulaire.',
 	'limite'  => 'Trop de demandes envoyées récemment depuis cette connexion. Merci de réessayer un peu plus tard, ou d\'appeler directement Audrey.',
 	'envoi'   => 'L\'envoi a échoué côté serveur. Merci de réessayer, ou d\'appeler directement Audrey au ' . $site['phone'] . '.',
+);
+
+$types_locaux = array(
+	''              => 'Sélectionnez le type de locaux',
+	'bureaux'       => 'Bureaux',
+	'commerces'     => 'Commerces',
+	'cabinets'      => 'Cabinets & professions libérales',
+	'coproprietes'  => 'Copropriété / parties communes',
+	'meubles'       => 'Location meublée / hébergement',
+	'ponctuel'      => 'Remise en état ponctuelle',
+	'autre'         => 'Autre',
+);
+
+$frequences = array(
+	''                 => 'À définir ensemble',
+	'quotidien'        => 'Quotidien',
+	'plusieurs-semaine' => 'Plusieurs fois par semaine',
+	'hebdomadaire'     => 'Hebdomadaire',
+	'bimensuel'        => 'Toutes les deux semaines',
+	'mensuel'          => 'Mensuel',
+	'ponctuel'         => 'Une seule fois',
+);
+
+$creneaux = array(
+	''         => 'Peu importe',
+	'matin'    => "Tôt le matin, avant l'arrivée des équipes",
+	'soir'     => 'En soirée, après le départ des équipes',
+	'journee'  => 'En journée',
+	'weekend'  => 'Le week-end',
 );
 
 tfp_seo(
@@ -67,7 +106,7 @@ get_header();
 				</div>
 			<?php endif; ?>
 
-			<form class="tfp-quote-form" method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" novalidate>
+			<form class="tfp-quote-form" method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" novalidate data-tfp-analytics="quote">
 				<div class="tfp-form-errors" role="alert" aria-live="polite" data-form-errors></div>
 
 				<input type="hidden" name="action" value="tfp_submit_devis">
@@ -78,7 +117,6 @@ get_header();
 					<input type="text" id="tfp-site-web" name="tfp_site_web" tabindex="-1" autocomplete="off">
 				</div>
 
-				<input type="hidden" name="ville" value="">
 				<input type="hidden" name="departement" value="">
 				<?php $raw_referer = wp_get_raw_referer(); ?>
 				<input type="hidden" name="page_origine" value="<?php echo $raw_referer ? esc_url( $raw_referer ) : ''; ?>">
@@ -88,7 +126,43 @@ get_header();
 				<input type="hidden" name="utm_campaign" value="<?php echo isset( $_GET['utm_campaign'] ) ? esc_attr( sanitize_text_field( wp_unslash( $_GET['utm_campaign'] ) ) ) : ''; ?>">
 
 				<fieldset data-step="0" style="border:none;padding:0;margin:0">
-					<legend style="font-weight:700;font-size:20px;margin-bottom:16px">Étape 1 sur 2 — Vos coordonnées</legend>
+					<legend style="font-weight:700;font-size:20px;margin-bottom:16px">Étape 1 sur 2 — Vos locaux et vos coordonnées</legend>
+
+					<div class="tfp-field">
+						<label for="tfp-type-locaux">Type de locaux *</label>
+						<select id="tfp-type-locaux" name="type_locaux" required>
+							<?php foreach ( $types_locaux as $value => $label ) : ?>
+								<option value="<?php echo esc_attr( $value ); ?>"><?php echo esc_html( $label ); ?></option>
+							<?php endforeach; ?>
+						</select>
+					</div>
+
+					<fieldset class="tfp-field" style="border:none;padding:0;margin:0">
+						<legend style="font-weight:600;font-size:var(--fs-sm);margin-bottom:6px">Besoin régulier ou ponctuel ? *</legend>
+						<div style="display:flex;gap:20px;flex-wrap:wrap">
+							<label style="display:flex;align-items:center;gap:6px;font-weight:400">
+								<input type="radio" name="regime" value="regulier" required> Régulier
+							</label>
+							<label style="display:flex;align-items:center;gap:6px;font-weight:400">
+								<input type="radio" name="regime" value="ponctuel" required> Ponctuel
+							</label>
+						</div>
+					</fieldset>
+
+					<div class="tfp-field">
+						<label for="tfp-ville-visible">Ville</label>
+						<input type="text" id="tfp-ville-visible" name="ville" autocomplete="address-level2">
+					</div>
+
+					<div class="tfp-field">
+						<label for="tfp-code-postal">Code postal</label>
+						<input type="text" id="tfp-code-postal" name="code_postal" inputmode="numeric" pattern="[0-9]{5}" maxlength="5" autocomplete="postal-code">
+					</div>
+
+					<div class="tfp-field">
+						<label for="tfp-surface">Surface approximative (m²)</label>
+						<input type="text" id="tfp-surface" name="surface" inputmode="numeric" placeholder="Ex. 150">
+					</div>
 
 					<div class="tfp-field">
 						<label for="tfp-nom">Nom et prénom *</label>
@@ -96,19 +170,14 @@ get_header();
 					</div>
 
 					<div class="tfp-field">
-						<label for="tfp-email">E-mail *</label>
-						<input type="email" id="tfp-email" name="email" autocomplete="email" required>
-					</div>
-
-					<div class="tfp-field">
 						<label for="tfp-telephone">Téléphone</label>
 						<input type="tel" id="tfp-telephone" name="telephone" autocomplete="tel">
-						<span class="tfp-field__hint">Facultatif — utile si <?php echo esc_html( $site['manager'] ); ?> a besoin de vous rappeler rapidement.</span>
 					</div>
 
 					<div class="tfp-field">
-						<label for="tfp-structure">Structure</label>
-						<input type="text" id="tfp-structure" name="structure" autocomplete="organization">
+						<label for="tfp-email">E-mail</label>
+						<input type="email" id="tfp-email" name="email" autocomplete="email">
+						<span class="tfp-field__hint">Téléphone ou e-mail : au moins l'un des deux est nécessaire pour que <?php echo esc_html( $site['manager'] ); ?> puisse vous répondre.</span>
 					</div>
 
 					<div class="tfp-form-actions">
@@ -125,8 +194,38 @@ get_header();
 					</div>
 
 					<div class="tfp-field">
-						<label for="tfp-message">Décrivez vos locaux et votre besoin *</label>
-						<textarea id="tfp-message" name="message" required placeholder="Type de locaux, surface approximative, fréquence souhaitée, ville…"></textarea>
+						<label for="tfp-entreprise">Entreprise</label>
+						<input type="text" id="tfp-entreprise" name="entreprise" autocomplete="organization">
+					</div>
+
+					<div class="tfp-field">
+						<label for="tfp-frequence">Fréquence souhaitée</label>
+						<select id="tfp-frequence" name="frequence">
+							<?php foreach ( $frequences as $value => $label ) : ?>
+								<option value="<?php echo esc_attr( $value ); ?>"><?php echo esc_html( $label ); ?></option>
+							<?php endforeach; ?>
+						</select>
+					</div>
+
+					<div class="tfp-field">
+						<label for="tfp-creneau">Créneau préféré</label>
+						<select id="tfp-creneau" name="creneau">
+							<?php foreach ( $creneaux as $value => $label ) : ?>
+								<option value="<?php echo esc_attr( $value ); ?>"><?php echo esc_html( $label ); ?></option>
+							<?php endforeach; ?>
+						</select>
+					</div>
+
+					<div class="tfp-field">
+						<label for="tfp-message">Décrivez votre besoin *</label>
+						<textarea id="tfp-message" name="message" required placeholder="Contraintes d'accès, horaires, particularités des locaux…"></textarea>
+					</div>
+
+					<div class="tfp-field">
+						<label style="display:flex;align-items:flex-start;gap:8px;font-weight:400">
+							<input type="checkbox" name="consentement" value="1" required style="margin-top:4px">
+							<span>J'accepte que ces informations soient utilisées par <?php echo esc_html( $site['brand_name'] ); ?> pour traiter ma demande de devis, conformément à la <a class="tfp-underline" href="<?php echo esc_url( home_url( '/politique-de-confidentialite/' ) ); ?>">politique de confidentialité</a>. *</span>
+						</label>
 					</div>
 
 					<div class="tfp-form-actions">

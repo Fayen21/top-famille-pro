@@ -47,11 +47,19 @@ function tfp_handle_quote_submission() {
 		exit;
 	}
 
-	$nom       = isset( $_POST['nom'] ) ? sanitize_text_field( wp_unslash( $_POST['nom'] ) ) : '';
-	$email     = isset( $_POST['email'] ) ? sanitize_email( wp_unslash( $_POST['email'] ) ) : '';
-	$telephone = isset( $_POST['telephone'] ) ? sanitize_text_field( wp_unslash( $_POST['telephone'] ) ) : '';
-	$structure = isset( $_POST['structure'] ) ? sanitize_text_field( wp_unslash( $_POST['structure'] ) ) : '';
-	$message   = isset( $_POST['message'] ) ? sanitize_textarea_field( wp_unslash( $_POST['message'] ) ) : '';
+	$nom        = isset( $_POST['nom'] ) ? sanitize_text_field( wp_unslash( $_POST['nom'] ) ) : '';
+	$email      = isset( $_POST['email'] ) ? sanitize_email( wp_unslash( $_POST['email'] ) ) : '';
+	$telephone  = isset( $_POST['telephone'] ) ? sanitize_text_field( wp_unslash( $_POST['telephone'] ) ) : '';
+	$entreprise = isset( $_POST['entreprise'] ) ? sanitize_text_field( wp_unslash( $_POST['entreprise'] ) ) : '';
+	$message    = isset( $_POST['message'] ) ? sanitize_textarea_field( wp_unslash( $_POST['message'] ) ) : '';
+	$consentement = ! empty( $_POST['consentement'] );
+
+	$type_locaux = isset( $_POST['type_locaux'] ) ? sanitize_text_field( wp_unslash( $_POST['type_locaux'] ) ) : '';
+	$regime      = isset( $_POST['regime'] ) ? sanitize_text_field( wp_unslash( $_POST['regime'] ) ) : '';
+	$code_postal = isset( $_POST['code_postal'] ) ? sanitize_text_field( wp_unslash( $_POST['code_postal'] ) ) : '';
+	$surface     = isset( $_POST['surface'] ) ? sanitize_text_field( wp_unslash( $_POST['surface'] ) ) : '';
+	$frequence   = isset( $_POST['frequence'] ) ? sanitize_text_field( wp_unslash( $_POST['frequence'] ) ) : '';
+	$creneau     = isset( $_POST['creneau'] ) ? sanitize_text_field( wp_unslash( $_POST['creneau'] ) ) : '';
 
 	$prestation  = isset( $_POST['prestation'] ) ? sanitize_text_field( wp_unslash( $_POST['prestation'] ) ) : '';
 	$ville       = isset( $_POST['ville'] ) ? sanitize_text_field( wp_unslash( $_POST['ville'] ) ) : '';
@@ -62,9 +70,13 @@ function tfp_handle_quote_submission() {
 	$utm_medium   = isset( $_POST['utm_medium'] ) ? sanitize_text_field( wp_unslash( $_POST['utm_medium'] ) ) : '';
 	$utm_campaign = isset( $_POST['utm_campaign'] ) ? sanitize_text_field( wp_unslash( $_POST['utm_campaign'] ) ) : '';
 
-	// Validation des champs avant la limitation de fréquence : une requête mal formée ne doit pas
-	// pouvoir consommer le quota d'un visiteur légitime partageant la même adresse IP.
-	if ( empty( $nom ) || ! is_email( $email ) || empty( $message ) ) {
+	// Un moyen de recontacter est requis (téléphone OU e-mail, pas nécessairement les deux), mais si
+	// un e-mail est fourni il doit être valide. Validation des champs avant la limitation de
+	// fréquence : une requête mal formée ne doit pas pouvoir consommer le quota d'un visiteur
+	// légitime partageant la même adresse IP.
+	$email_fourni_invalide = ( '' !== $email ) && ! is_email( $email );
+	$aucun_contact         = empty( $telephone ) && empty( $email );
+	if ( empty( $nom ) || $aucun_contact || $email_fourni_invalide || empty( $message ) || ! $consentement ) {
 		wp_safe_redirect( add_query_arg( 'erreur', 'champs', $redirect_base ) );
 		exit;
 	}
@@ -77,14 +89,25 @@ function tfp_handle_quote_submission() {
 
 	$site = tfp_site_data();
 
+	$type_locaux_labels = array( 'bureaux' => 'Bureaux', 'commerces' => 'Commerces', 'cabinets' => 'Cabinets & professions libérales', 'coproprietes' => 'Copropriété / parties communes', 'meubles' => 'Location meublée / hébergement', 'ponctuel' => 'Remise en état ponctuelle', 'autre' => 'Autre' );
+	$regime_labels      = array( 'regulier' => 'Régulier', 'ponctuel' => 'Ponctuel' );
+	$frequence_labels   = array( 'quotidien' => 'Quotidien', 'plusieurs-semaine' => 'Plusieurs fois par semaine', 'hebdomadaire' => 'Hebdomadaire', 'bimensuel' => 'Toutes les deux semaines', 'mensuel' => 'Mensuel', 'ponctuel' => 'Une seule fois' );
+	$creneau_labels     = array( 'matin' => "Tôt le matin, avant l'arrivée des équipes", 'soir' => 'En soirée, après le départ des équipes', 'journee' => 'En journée', 'weekend' => 'Le week-end' );
+
 	$lines   = array();
 	$lines[] = 'Nom : ' . $nom;
-	$lines[] = 'E-mail : ' . $email;
+	if ( $email ) { $lines[] = 'E-mail : ' . $email; }
 	if ( $telephone ) { $lines[] = 'Téléphone : ' . $telephone; }
-	if ( $structure ) { $lines[] = 'Structure : ' . $structure; }
-	if ( $prestation ) { $lines[] = 'Prestation concernée : ' . $prestation; }
+	if ( $entreprise ) { $lines[] = 'Entreprise : ' . $entreprise; }
+	if ( $type_locaux ) { $lines[] = 'Type de locaux : ' . ( isset( $type_locaux_labels[ $type_locaux ] ) ? $type_locaux_labels[ $type_locaux ] : $type_locaux ); }
+	if ( $regime ) { $lines[] = 'Régime : ' . ( isset( $regime_labels[ $regime ] ) ? $regime_labels[ $regime ] : $regime ); }
 	if ( $ville ) { $lines[] = 'Ville : ' . $ville; }
+	if ( $code_postal ) { $lines[] = 'Code postal : ' . $code_postal; }
+	if ( $surface ) { $lines[] = 'Surface approximative : ' . $surface; }
 	if ( $departement ) { $lines[] = 'Département : ' . $departement; }
+	if ( $prestation ) { $lines[] = 'Prestation concernée : ' . $prestation; }
+	if ( $frequence ) { $lines[] = 'Fréquence souhaitée : ' . ( isset( $frequence_labels[ $frequence ] ) ? $frequence_labels[ $frequence ] : $frequence ); }
+	if ( $creneau ) { $lines[] = 'Créneau souhaité : ' . ( isset( $creneau_labels[ $creneau ] ) ? $creneau_labels[ $creneau ] : $creneau ); }
 	$lines[] = '';
 	$lines[] = 'Message :';
 	$lines[] = $message;
@@ -99,7 +122,10 @@ function tfp_handle_quote_submission() {
 
 	$body    = implode( "\n", $lines );
 	$subject = sprintf( '[Demande de devis] %s', $nom );
-	$headers = array( 'Content-Type: text/plain; charset=UTF-8', 'Reply-To: ' . $nom . ' <' . $email . '>' );
+	$headers = array( 'Content-Type: text/plain; charset=UTF-8' );
+	if ( $email ) {
+		$headers[] = 'Reply-To: ' . $nom . ' <' . $email . '>';
+	}
 
 	$sent = wp_mail( $site['email'], $subject, $body, $headers );
 

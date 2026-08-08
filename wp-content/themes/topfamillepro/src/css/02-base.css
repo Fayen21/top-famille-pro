@@ -77,6 +77,13 @@ summary::-webkit-details-marker {
   display: none;
 }
 
+fieldset {
+  /* Les navigateurs donnent à <fieldset> un min-width: min-content implicite, qui ignore la
+     largeur du parent et peut provoquer un débordement horizontal (ex. formulaire de devis à
+     320px) dès que son contenu a une largeur intrinsèque supérieure au conteneur. */
+  min-width: 0;
+}
+
 input, select, textarea {
   font-family: inherit;
   font-size: inherit;

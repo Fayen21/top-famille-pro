@@ -18,10 +18,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 $post_id = get_queried_object_id();
 $site    = tfp_site_data();
 
-$direct    = get_post_meta( $post_id, '_tfp_direct_answer', true );
-$faq       = tfp_get_article_faq( $post_id );
-$robots    = tfp_article_is_complete( $post_id ) ? 'index,follow' : 'noindex,follow';
-$seo_title = get_post_meta( $post_id, '_tfp_seo_title', true );
+$direct       = get_post_meta( $post_id, '_tfp_direct_answer', true );
+$faq          = tfp_get_article_faq( $post_id );
+$robots       = tfp_article_is_complete( $post_id ) ? 'index,follow' : 'noindex,follow';
+$seo_title    = get_post_meta( $post_id, '_tfp_seo_title', true );
+$related_prestations = tfp_get_article_related_prestations( $post_id );
 
 $categories = get_the_category( $post_id );
 $cat_name   = ! empty( $categories ) ? $categories[0]->name : 'Conseils';
@@ -111,6 +112,19 @@ get_header();
 					<summary style="font-weight:600;font-size:17px;cursor:pointer"><?php echo esc_html( $item['question'] ); ?></summary>
 					<p style="margin-top:12px;color:var(--color-text-secondary)"><?php echo esc_html( $item['reponse'] ); ?></p>
 				</details>
+			<?php endforeach; ?>
+		</div>
+	</div>
+</section>
+<?php endif; ?>
+
+<?php if ( ! empty( $related_prestations ) ) : ?>
+<section class="tfp-section--tight">
+	<div class="tfp-container tfp-container--narrow">
+		<h2 style="font-size:19px">Prestations liées</h2>
+		<div class="tfp-flex" style="margin-top:14px">
+			<?php foreach ( $related_prestations as $prestation ) : ?>
+				<a href="<?php echo esc_url( get_permalink( $prestation ) ); ?>" class="tfp-chip"><?php echo esc_html( get_the_title( $prestation ) ); ?></a>
 			<?php endforeach; ?>
 		</div>
 	</div>

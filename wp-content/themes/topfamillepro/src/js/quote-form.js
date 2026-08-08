@@ -42,16 +42,30 @@ function tfpInitQuoteForm() {
 	function validateStep(index) {
 		const fields = steps[index].querySelectorAll('[required]');
 		const errors = [];
+		const reportedRadioGroups = new Set();
 		fields.forEach((field) => {
 			field.setCustomValidity('');
-			if (!field.checkValidity()) {
-				const label = form.querySelector(`label[for="${field.id}"]`);
-				const name = label ? label.textContent.replace('*', '').trim() : field.name;
-				errors.push(`${name} : champ requis ou invalide.`);
-				field.setAttribute('aria-invalid', 'true');
-			} else {
+			if (field.checkValidity()) {
 				field.removeAttribute('aria-invalid');
+				return;
 			}
+			let name = field.name;
+			if (field.type === 'radio') {
+				// Un groupe de boutons radio requis échoue sur chaque bouton tant qu'aucun n'est
+				// coché : ne signaler le groupe qu'une seule fois, via son <legend>.
+				if (reportedRadioGroups.has(field.name)) return;
+				reportedRadioGroups.add(field.name);
+				const fieldset = field.closest('fieldset');
+				const legend = fieldset && fieldset.querySelector('legend');
+				if (legend) name = legend.textContent;
+			} else {
+				const explicitLabel = field.id && form.querySelector(`label[for="${field.id}"]`);
+				const implicitLabel = field.closest('label');
+				const label = explicitLabel || implicitLabel;
+				if (label) name = label.textContent;
+			}
+			errors.push(`${name.replace('*', '').trim()} : champ requis ou invalide.`);
+			field.setAttribute('aria-invalid', 'true');
 		});
 		return errors;
 	}
@@ -108,8 +122,11 @@ function tfpInitQuoteForm() {
 	setHidden('utm_campaign', params.get('utm_campaign') || '');
 
 	// Préremplissage visible du champ prestation (libellé lisible si fourni, sinon le slug brut).
+	// Paramètres d'URL nommés "service"/"service_label", pas "prestation" : ce dernier est le
+	// query_var natif du CPT `prestation` et détournerait la requête principale de WordPress si un
+	// lien externe l'utilisait (voir le commentaire dans single-prestation.php).
 	const prestationVisible = form.querySelector('#tfp-prestation-visible');
-	const prestationValue = params.get('prestation_label') || params.get('prestation');
+	const prestationValue = params.get('service_label') || params.get('service');
 	if (prestationVisible && prestationValue && !prestationVisible.value) {
 		prestationVisible.value = prestationValue;
 	}

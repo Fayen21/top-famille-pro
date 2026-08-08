@@ -22,9 +22,23 @@ $exclusions  = tfp_get_field( 'exclusions', $post_id );
 $materiel    = tfp_get_field( 'materiel_rappel', $post_id );
 $villes      = tfp_get_field( 'villes_prioritaires', $post_id );
 $faq         = tfp_get_faq_items( 'faq', $post_id, 8 );
+$related_articles = tfp_get_prestation_related_articles( $post_id );
 
 $seo_title = tfp_get_field( 'seo_title', $post_id );
 $seo_desc  = tfp_get_field( 'seo_description', $post_id );
+
+// Contexte transmis au formulaire de devis (préremplissage, src/js/quote-form.js). Le paramètre
+// n'est volontairement pas nommé « prestation » : ce nom est le query_var natif du CPT `prestation`
+// (register_post_type() l'enregistre par défaut) et un `?prestation=bureaux` sur toute URL du site
+// détournerait la requête principale de WordPress vers l'article single « bureaux », quelle que
+// soit la page réellement demandée.
+$devis_url = add_query_arg(
+	array(
+		'service'       => get_post_field( 'post_name', $post_id ),
+		'service_label' => rawurlencode( get_the_title( $post_id ) ),
+	),
+	home_url( '/demande-de-devis/' )
+);
 
 $canonical_path = wp_parse_url( get_permalink( $post_id ), PHP_URL_PATH );
 
@@ -90,7 +104,7 @@ get_header();
 	<?php endif; ?>
 	<div class="tfp-flex" style="margin-top:24px">
 		<?php
-		tfp_button( array( 'label' => 'Demander mon devis', 'href' => home_url( '/demande-de-devis/' ), 'variant' => 'primary' ) );
+		tfp_button( array( 'label' => 'Demander mon devis', 'href' => $devis_url, 'variant' => 'primary' ) );
 		tfp_button( array( 'label' => '☎ Appeler ' . $site['manager'], 'href' => 'tel:' . $site['phone_href'], 'variant' => 'secondary' ) );
 		?>
 	</div>
@@ -186,6 +200,22 @@ get_header();
 </section>
 <?php endif; ?>
 
+<?php if ( ! empty( $related_articles ) ) : ?>
+<section class="tfp-section--tight">
+	<div class="tfp-container">
+		<h2>Nos conseils sur ce sujet</h2>
+		<div class="tfp-grid tfp-grid--autofit-md" style="margin-top:16px">
+			<?php foreach ( $related_articles as $article ) : ?>
+				<a href="<?php echo esc_url( get_permalink( $article ) ); ?>" class="tfp-card" style="display:block;text-decoration:none;color:inherit">
+					<h3 style="font-size:17px"><?php echo esc_html( get_the_title( $article ) ); ?></h3>
+					<span class="tfp-link-arrow" style="margin-top:8px;display:inline-block">Lire l'article →</span>
+				</a>
+			<?php endforeach; ?>
+		</div>
+	</div>
+</section>
+<?php endif; ?>
+
 <?php if ( ! empty( $faq ) ) : ?>
 <section class="tfp-section--alt tfp-section">
 	<div class="tfp-container tfp-container--narrow">
@@ -208,7 +238,7 @@ get_header();
 		<p>Décrivez vos locaux : <?php echo esc_html( explode( ' ', $site['manager'] )[0] ); ?> vous répond sous 24 heures avec une proposition claire.</p>
 		<div class="tfp-cta-block__actions">
 			<?php
-			tfp_button( array( 'label' => 'Demander mon devis', 'href' => home_url( '/demande-de-devis/' ), 'variant' => 'on-primary' ) );
+			tfp_button( array( 'label' => 'Demander mon devis', 'href' => $devis_url, 'variant' => 'on-primary' ) );
 			tfp_button( array( 'label' => '☎ ' . $site['phone'], 'href' => 'tel:' . $site['phone_href'], 'variant' => 'on-dark' ) );
 			?>
 		</div>
