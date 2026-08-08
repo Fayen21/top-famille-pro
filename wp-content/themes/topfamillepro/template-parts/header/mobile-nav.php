@@ -18,7 +18,7 @@ $site            = $args['site'];
 <div class="tfp-mobile-nav" id="tfp-mobile-nav" data-tfp-mobile-panel role="dialog" aria-modal="true" aria-label="Menu" hidden>
 	<div class="tfp-mobile-nav__header">
 		<a class="tfp-logo" href="<?php echo esc_url( home_url( '/' ) ); ?>" aria-label="<?php echo esc_attr( $site['brand_name'] ); ?> — Accueil">
-			<img src="<?php echo esc_url( TFP_THEME_URI . '/assets/dist/images/logo-horizontal.png' ); ?>" alt="<?php echo esc_attr( $site['brand_name'] ); ?>" width="160" height="32">
+			<img src="<?php echo esc_url( TFP_THEME_URI . '/assets/dist/images/logo-horizontal.png' ); ?>" alt="<?php echo esc_attr( $site['brand_name'] ); ?>" width="68" height="36">
 		</a>
 		<button type="button" class="tfp-menu-toggle" data-tfp-mobile-close aria-label="Fermer le menu">
 			<span aria-hidden="true">✕</span>

@@ -100,6 +100,8 @@ get_header();
 			</div>
 		<?php else : ?>
 
+			<h2 class="visually-hidden">Votre demande</h2>
+
 			<?php if ( $erreur && isset( $erreur_messages[ $erreur ] ) ) : ?>
 				<div class="tfp-form-notice tfp-form-notice--error" role="alert">
 					<p><?php echo esc_html( $erreur_messages[ $erreur ] ); ?></p>

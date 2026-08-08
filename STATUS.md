@@ -1,8 +1,94 @@
 # STATUS — Top-Famille Pro
 
 > Lien entre deux sessions Claude Code Web. Mis à jour à la fin de chaque phase.
-> Dernière mise à jour : **Phase 5 — suite de tests automatisés Playwright**, 7 août 2026.
-> `PHASE_5=PASS`
+> Dernière mise à jour : **Phase 6 — accessibilité, performance, recette finale**, 8 août 2026.
+> `PHASE_6=PASS` (techniquement — voir `docs/RAPPORT-FINAL.md` : le site n'est **pas**
+> PRODUCTION READY, Kbis non confirmé)
+
+---
+
+## -5. Phase 6 — accessibilité, performance, recette finale
+
+Branche `phase-6-recette-finale`, créée sur `phase-5-tests-automatises` (PR #6 pas encore
+fusionnée). Quatre chantiers, chacun commité séparément. **Rapport complet : `docs/RAPPORT-FINAL.md`**
+— cette section résume, le rapport détaille et chiffre.
+
+### 1. Accessibilité
+
+Audit axe-core final (WCAG 2A/2AA/2.2AA + best-practice) sur les 6 familles + le formulaire de
+devis : 0 violation. Complété par des interactions clavier réelles (drawer, sous-menus, barre CTA
+mobile, ordre de tabulation) — pas seulement un scan automatisé.
+
+Deux bugs réels trouvés et corrigés :
+- Piège de focus cassé dans les deux sens dès qu'un sous-menu accordéon du drawer mobile est
+  replié (`querySelectorAll(FOCUSABLE)` matchait des liens `display:none`, `.focus()` y échoue
+  silencieusement) — corrigé par un filtre `offsetParent !== null` (`src/js/nav.js`).
+- `/demande-de-devis/` (hors succès) sautait du `<h1>` au premier `<h3>` du pied de page, sans
+  `<h2>` intermédiaire — trouvé par Lighthouse (pas ma propre suite, échantillon par famille
+  n'incluait pas cette page), corrigé par un `<h2>` visually-hidden.
+
+### 2. Performance
+
+Lighthouse mobile réel (rig local, sans LiteSpeed/HTTP2/compression — confirmé, aucun
+`Content-Encoding`) : accueil 91/100/100/100 (LCP 3,0s), prestation/zone/devis 97/100/100/100
+(LCP 2,2-2,3s). Cibles CLAUDE.md §8 atteintes sur 3 pages sur 4 ; l'accueil reste 0,5s au-dessus du
+LCP cible.
+
+Deux corrections réelles :
+- CSS chargé en preload + bascule stylesheet (évite le blocage du rendu, `includes/enqueue.php`) —
+  résout l'audit render-blocking de Lighthouse.
+- Logo du header : attributs `width`/`height` HTML (180×36) ne correspondaient pas au fichier réel
+  (ratio ~1,89:1, affiché à hauteur fixe 36px partout donc ~68px de large réellement, jamais 180) —
+  corrigés, fichier généré réduit de 360px à 140px (11,9 Ko → 3,1 Ko).
+
+Chiffres détaillés et limite honnête de l'environnement de mesure : `docs/RAPPORT-FINAL.md` §11.
+
+### 3. Sitemap XML + robots.txt
+
+Sitemap natif WordPress (`/wp-sitemap.xml`, découpé par famille nativement) plutôt qu'un plugin
+SEO supplémentaire. `includes/sitemap-robots.php` : exclut les sitemaps `users`/`taxonomies` (hors
+périmètre des 53 routes) via `wp_sitemaps_add_provider` (seul point d'extension réel — pas de
+`remove_provider()` côté core, vérifié contre le code source), exclut les 8 communes non validées
+via `wp_sitemaps_posts_query_args` (au niveau de la requête — `wp_sitemaps_posts_entry`, essayé en
+premier, ne permet pas d'exclure une entrée de la liste finale, vérifié aussi contre le code
+source). robots.txt : rien à ajouter, WordPress core gère déjà la ligne `Sitemap:` — une première
+tentative d'ajout dupliquait la ligne, retirée après l'avoir constaté.
+
+`bin/cleanup-wp-defaults.php` (nouveau) : en vérifiant le sitemap, trouvé que l'article
+« Hello world! » et la page « Sample Page » que `wp core install` crée par défaut étaient publiés et
+indexables — mis à la corbeille, idempotent, à relancer une fois après toute installation
+WordPress neuve (y compris la vraie, sur Hostinger).
+
+### 4. Redirections 301
+
+`docs/REDIRECTIONS.md` : 19 redirections depuis les URL confirmées de `PROJECT_INPUTS.md` §9, deux
+destinations corrigées pour correspondre aux slugs réels du site construit. Articles du blog de
+l'ancien site explicitement exclus (non inventoriés). Décision de fond (`topentreprise.fr` redirigé
+ou abandonné) toujours ouverte — plan prêt, pas appliqué.
+
+### Vérifications
+
+| Contrôle | Résultat |
+|---|---|
+| `npm run test` (lint PHP + build), 71 fichiers PHP | ✅ |
+| Suite Playwright complète (seo, uniqueness, crawl, functional, accessibility) | ✅ 796 assertions, 0 échec |
+| `tests/screenshots.spec.js` | ✅ 81 captures |
+| Sitemap : 0 commune non validée, 0 contenu par défaut WordPress | ✅ vérifié par requête HTTP réelle |
+| robots.txt : une seule ligne `Sitemap:` | ✅ |
+| Lighthouse mobile, 4 pages représentatives | ✅ chiffres réels dans `docs/RAPPORT-FINAL.md` §11 |
+
+### Verdict — PAS PRODUCTION READY
+
+CLAUDE.md §10 est explicite : jamais de PRODUCTION READY si une donnée d'immatriculation n'est pas
+confirmée par Kbis. C'est le cas — SIRET, capital, APE, TVA et une incohérence sur le SIREN restent
+non levés (`PROJECT_INPUTS.md` §12, question 1, toujours ouverte depuis la phase 0). Détail complet
+du verdict, des bloqueurs et de ce qu'il reste à fournir : `docs/RAPPORT-FINAL.md` §1, §14, §15.
+
+### Base de cette branche
+
+`phase-6-recette-finale` est branchée sur `phase-5-tests-automatises`, elle-même non encore
+fusionnée dans `main` au moment de la phase 6 (PR #6). La PR de la phase 6 cible donc PR #6, pas
+`main` ; à fusionner après elle, ou à rebaser sur `main` une fois celle-ci mergée.
 
 ---
 

@@ -132,11 +132,16 @@ async function processLogo() {
     console.warn('  (logo ignoré : assets/logo/logo-horizontal.png introuvable)');
     return;
   }
+  // Affiché à hauteur fixe 36px (.tfp-logo img, src/css/04-components.css), quel que soit le
+  // breakpoint : avec le ratio réel du fichier source (759×402, pas 5:1 comme le laissaient croire
+  // d'anciens attributs width/height erronés), ça correspond à ~68px de large. 140px = 2x pour les
+  // écrans à forte densité, avec une marge — pas 360px, mesurément inutile (Lighthouse,
+  // image-delivery-insight, ~10 Ko gaspillés).
   await sharp(srcPath)
-    .resize({ width: 360 }) // 2x la taille d'affichage max (180px) pour les écrans à forte densité.
+    .resize({ width: 140 })
     .png({ quality: 90, compressionLevel: 9 })
     .toFile(path.join(OUT_DIR, 'logo-horizontal.png'));
-  console.log('  logo-horizontal.png (recompressé, 360px)');
+  console.log('  logo-horizontal.png (recompressé, 140px)');
 }
 
 async function main() {
