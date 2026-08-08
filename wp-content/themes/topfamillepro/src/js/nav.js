@@ -7,8 +7,22 @@
 
   var FOCUSABLE = 'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
 
+  /**
+   * querySelectorAll(FOCUSABLE) matche aussi les liens des sous-menus accordéon repliés
+   * (`[hidden]`, donc `display:none`) : un `.focus()` sur un tel élément échoue silencieusement,
+   * ce qui casse le piège de focus dans les deux sens dès qu'un accordéon est fermé.
+   * `offsetParent === null` exclut fiablement ce qui n'est pas réellement rendu (mais pas les
+   * éléments `position: fixed`, ce que n'est aucun des liens ici, seul le conteneur du panneau
+   * l'est).
+   */
+  function visibleFocusable(container) {
+    return Array.prototype.filter.call(container.querySelectorAll(FOCUSABLE), function (el) {
+      return el.offsetParent !== null;
+    });
+  }
+
   function trapFocus(container, event) {
-    var focusable = container.querySelectorAll(FOCUSABLE);
+    var focusable = visibleFocusable(container);
     if (!focusable.length) return;
     var first = focusable[0];
     var last = focusable[focusable.length - 1];
@@ -94,7 +108,7 @@
       panel.hidden = false;
       document.body.classList.add('tfp-scroll-locked');
       openBtn.setAttribute('aria-expanded', 'true');
-      var closeTarget = closeBtn || panel.querySelector(FOCUSABLE);
+      var closeTarget = closeBtn || visibleFocusable(panel)[0];
       if (closeTarget) closeTarget.focus();
       document.addEventListener('keydown', onKeydown);
     }
