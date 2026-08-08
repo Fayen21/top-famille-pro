@@ -45,6 +45,22 @@ function tfp_enqueue_assets() {
 add_action( 'wp_enqueue_scripts', 'tfp_enqueue_assets' );
 
 /**
+ * Charge les deux feuilles de style du thème en `preload` + bascule `stylesheet` au chargement,
+ * plutôt qu'en `<link rel="stylesheet">` classique et bloquant le rendu — technique standard
+ * (web.dev) pour approcher l'effet d'un CSS critique sans extraction par gabarit (54 gabarits
+ * différents rendraient une extraction automatisée fragile). `<noscript>` conserve le
+ * comportement bloquant normal si JavaScript est désactivé.
+ */
+function tfp_defer_stylesheets( $html, $handle ) {
+	if ( ! in_array( $handle, array( 'generatepress-parent', 'topfamillepro' ), true ) ) {
+		return $html;
+	}
+	$preload = str_replace( "rel='stylesheet'", "rel='preload' as='style' onload=\"this.onload=null;this.rel='stylesheet'\"", $html );
+	return $preload . "\n" . '<noscript>' . $html . '</noscript>' . "\n";
+}
+add_filter( 'style_loader_tag', 'tfp_defer_stylesheets', 10, 2 );
+
+/**
  * Précharge la police de titre (poids 700, le plus utilisé au-dessus de la ligne de
  * flottaison : H1 du hero) pour réduire le décalage visuel au chargement.
  */
