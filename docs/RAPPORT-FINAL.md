@@ -422,18 +422,22 @@ de la publication (hypothèse non confirmée explicitement — probablement la g
 
 ### Pull request
 
-`Phase 7 — informations légales et livraison Hostinger` : **[PR_URL_A_COMPLETER]**
+`Phase 7 — informations légales et livraison Hostinger` :
+**https://github.com/Fayen21/top-famille-pro/pull/8**
 
 ### Les trois ZIP
 
 Liens de téléchargement (branche `phase-7-livraison-hostinger`, dossier `release/`) — utiliser les
 liens « Raw » de GitHub pour un téléchargement direct du binaire :
 
-| Fichier | Taille | SHA-256 |
-|---|---|---|
-| `topfamillepro-theme.zip` | 1,8 Mo (1 860 118 octets) | `ee8b5e2d1a03e899992789a4b7d78234c94563f2a5fce504ead1df5d02cd5409` |
-| `topfamillepro-content-installer.zip` | 56 Ko (56 536 octets) | `786fc3a463821ff2d78a98e45618ec9a2b65ba0fa65b425d8871fac1d7a7cd75` |
-| `Top-Famille-Pro-Livraison-Hostinger.zip` (paquet global, contient les deux ci-dessus + guides) | 1,9 Mo (1 935 046 octets) | `80432c3171a2874a8b05b647fe1daf0dd214604bb5f7d6a378ec2bd60ec07517` |
+| Fichier | Lien | Taille | SHA-256 |
+|---|---|---|---|
+| `topfamillepro-theme.zip` | [Télécharger](https://github.com/Fayen21/top-famille-pro/raw/phase-7-livraison-hostinger/release/topfamillepro-theme.zip) | 1,8 Mo (1 860 118 octets) | `ee8b5e2d1a03e899992789a4b7d78234c94563f2a5fce504ead1df5d02cd5409` |
+| `topfamillepro-content-installer.zip` | [Télécharger](https://github.com/Fayen21/top-famille-pro/raw/phase-7-livraison-hostinger/release/topfamillepro-content-installer.zip) | 56 Ko (56 536 octets) | `786fc3a463821ff2d78a98e45618ec9a2b65ba0fa65b425d8871fac1d7a7cd75` |
+| `Top-Famille-Pro-Livraison-Hostinger.zip` (paquet global, contient les deux ci-dessus + guides) | [Télécharger](https://github.com/Fayen21/top-famille-pro/raw/phase-7-livraison-hostinger/release/Top-Famille-Pro-Livraison-Hostinger.zip) | 1,9 Mo (1 935 046 octets) | `80432c3171a2874a8b05b647fe1daf0dd214604bb5f7d6a378ec2bd60ec07517` |
+
+Ces liens pointent sur la branche `phase-7-livraison-hostinger` : ils resteront valides après la
+fusion de la PR, ou changez `phase-7-livraison-hostinger` en `main` dans l'URL une fois fusionnée.
 
 Empreintes également disponibles dans `release/SHA256SUMS.txt` (les deux ZIP installables
 uniquement, comme demandé). À vérifier après téléchargement : `sha256sum <fichier>` doit
