@@ -42,23 +42,34 @@
 
 ## 2. Données légales
 
+**Confirmées en phase 7** par extrait Pappers fourni par le client, puis complément (SIRET, code
+APE, TVA) transmis directement — cohérence formelle recontrôlée indépendamment avant intégration
+(clé Luhn du SIRET, clé de contrôle TVA calculée à partir du SIREN : les deux correspondent).
+L'incohérence relevée en phase 0 est levée : le SIREN correct est **938 472 420**, pas
+938 472 242 comme l'annonçaient les mentions légales de l'ancien site (déjà identifié comme une
+non-conformité de ce dernier).
+
 | Champ | Valeur | Fiab. |
 |---|---|---|
 | Forme juridique | SARL | ✅ |
-| RCS | **RCS Dijon 938 472 242** | ✅ mentions légales |
-| SIREN | **938 472 242** | ✅ mentions légales |
-| SIRET (14 chiffres) | ⛔ **à confirmer sur Kbis** — voir alerte ci-dessous |
-| Capital social | ⛔ |
-| TVA intracommunautaire | ⛔ (probablement FR + clé + SIREN, mais **la clé ne se déduit pas**) |
-| Code APE/NAF | ⛔ (attendu : 81.21Z nettoyage courant des bâtiments) |
-| Date d'immatriculation | ⛔ |
-| Directeur de la publication | 🟡 Audrey Brançon, gérante |
-| Assurance RC professionnelle | ⛔ — le site actuel affirme « nous sommes assurés » : nom de l'assureur et n° de police à récupérer avant de reprendre cette affirmation |
-| Hébergeur à mentionner | Hostinger International Ltd — ⛔ adresse et téléphone exacts à reprendre de la page légale d'Hostinger |
+| Capital social | **600,00 €** | ✅ Pappers |
+| RCS | **938 472 420 R.C.S. Dijon** | ✅ Pappers |
+| SIREN | **938 472 420** | ✅ Pappers |
+| SIRET (siège, 14 chiffres) | **938 472 420 00018** | ✅ confirmé client, clé Luhn recontrôlée |
+| Date d'immatriculation | **16/12/2024** | ✅ Pappers |
+| Date de commencement d'activité | **01/01/2025** | ✅ Pappers |
+| Code APE/NAF | **81.21Z — Nettoyage courant des bâtiments** | ✅ confirmé client |
+| TVA intracommunautaire | **FR32 938 472 420** | ✅ confirmé client, clé recontrôlée (attendue : 32) |
+| Gérante | **Audrey Brançon** (nom d'usage) — nom de naissance Michelin confirmé par Pappers, **non publié** (information personnelle non nécessaire à la mention légale) | ✅ Pappers |
+| Directeur de la publication | 🟡 Audrey Brançon, gérante — toujours non confirmé explicitement, reste `[À COMPLÉTER]` sur le site | — |
+| Assurance RC professionnelle | ⛔ — le site actuel affirme « nous sommes assurés » : nom de l'assureur et n° de police à récupérer avant de reprendre cette affirmation | — |
+| Hébergeur à mentionner | Hostinger International Ltd — ⛔ adresse et téléphone exacts à reprendre de la page légale d'Hostinger | — |
 
-> ⚠️ **Incohérence à lever.** Les mentions légales actuelles annoncent SIREN 938 472 242, mais une fiche publique de l'annuaire des entreprises pour « TOP-ENTREPRISE à Saint-Apollinaire » porte un SIRET dont les 9 premiers chiffres diffèrent (938 472 420). Je n'ai pas pu ouvrir la fiche pour trancher. **Ne rien publier avant vérification sur le Kbis.** Un SIREN erroné en mentions légales est déjà une non-conformité sur le site actuel.
->
-> ⚠️ Les mentions légales actuelles présentent aussi le SIREN comme un « numéro individuel d'identification fiscale », ce qu'il n'est pas, et mentionnent « Top-Famille » dans une clause qui devrait viser Top-Entreprise. **Ne pas recopier ce texte** : les mentions légales du nouveau site sont à rédiger proprement.
+Valeurs intégrées dans `includes/site-options.php` (`tfp_site_data()`), consommées par les
+mentions légales, le pied de page (forme concise) et les données structurées `Organization`
+(`taxID`, `vatID`, `foundingDate` — pas de propriété schema.org appropriée pour le code APE, non
+forcé dans le JSON-LD). Ne jamais publier la date de naissance de la gérante ni son nom de
+naissance : seul le nom d'usage, déjà utilisé partout sur le site, est rendu public.
 
 ---
 
@@ -232,7 +243,7 @@ Correspondances identifiées ✅ (à compléter après relevé exhaustif via le 
 
 | # | Question | Pour qui | Bloque |
 |---|---|---|---|
-| 1 | **Kbis** : SIRET exact, capital, APE, TVA, date d'immatriculation — et lever l'incohérence sur le SIREN | Client | Mise en ligne |
+| 1 | ~~**Kbis** : SIRET exact, capital, APE, TVA, date d'immatriculation — et lever l'incohérence sur le SIREN~~ | Client | **Résolu phase 7** — voir §2 |
 | 2 | Assureur RC pro (nom + police) pour justifier l'affirmation « nous sommes assurés » | Client | Mise en ligne |
 | 3 | Les tarifs relevés sont-ils toujours à jour ? | Audrey | Phase 3 |
 | 4 | Adresse de réception des demandes de devis + configuration SMTP Hostinger | Client | Phase 4 |

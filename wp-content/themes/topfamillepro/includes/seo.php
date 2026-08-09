@@ -123,6 +123,12 @@ function tfp_render_jsonld( $seo, $canonical ) {
 		'@id'         => $org_id,
 		'name'        => $site['brand_name'],
 		'legalName'   => $site['legal_name'],
+		// Identifiants d'immatriculation : uniquement les propriétés schema.org réellement
+		// appropriées (taxID/vatID/foundingDate) — pas de code APE, qui n'a pas d'équivalent
+		// schema.org propre (NAICS est un référentiel américain, pas transposable).
+		'taxID'       => $site['legal_siret'],
+		'vatID'       => $site['legal_tva_compact'],
+		'foundingDate' => $site['legal_immatriculation_date_iso'],
 		'url'         => trailingslashit( $site['origin'] ),
 		'telephone'   => $site['phone_href'],
 		'email'       => $site['email'],

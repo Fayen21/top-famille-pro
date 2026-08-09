@@ -7,13 +7,13 @@
  * capital et APE, et comportaient une clause visant « Top-Famille » au lieu de l'entité éditrice
  * réelle.
  *
- * BLOQUEUR DE MISE EN LIGNE (CLAUDE.md §5.7, STATUS.md §6) : une incohérence non levée existe sur
- * l'identifiant de la société — le SIREN relevé sur les mentions légales actuelles (938 472 242)
- * diffère des 9 premiers chiffres d'un SIRET trouvé par ailleurs pour la même entité
- * (938 472 420). Aucune donnée d'immatriculation n'est donc publiée ici tant que le Kbis ne les a
- * pas confirmées — y compris le SIREN/RCS, malgré sa source apparente, puisque cette source
- * elle-même est en cause. CLAUDE.md §5.1 : une valeur manquante s'écrit [À COMPLÉTER] en clair,
- * jamais une valeur plausible.
+ * Données d'immatriculation confirmées en phase 7 par extrait Pappers puis complément client
+ * (SIRET, APE, TVA) — l'incohérence relevée en phase 0 sur le SIREN (l'ancien site annonçait
+ * 938 472 242, valeur confirmée : 938 472 420) est levée. Toutes les valeurs proviennent de
+ * `tfp_site_data()` (includes/site-options.php), jamais recopiées ni recalculées ici.
+ * CLAUDE.md §5.1 : ce qui reste manquant (assurance RC pro, coordonnées complètes de
+ * l'hébergeur, directrice de la publication) s'écrit [À COMPLÉTER] en clair, jamais une valeur
+ * plausible.
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -51,12 +51,13 @@ get_header();
 		<div>
 			<h2>Éditeur du site</h2>
 			<p style="margin-top:10px;color:var(--color-text-secondary);line-height:1.7">
-				<?php echo esc_html( $site['legal_name'] ); ?>, exploitant la marque commerciale <?php echo esc_html( $site['brand_name'] ); ?>, société à responsabilité limitée (SARL).<br>
+				<?php echo esc_html( $site['legal_name'] ); ?>, exploitant la marque commerciale <?php echo esc_html( $site['brand_name'] ); ?>, <?php echo esc_html( $site['legal_form'] ); ?> au capital social de <?php echo esc_html( $site['legal_capital_display'] ); ?>.<br>
 				Siège social : <?php echo esc_html( $site['address_street'] . ', ' . $site['address_cp'] . ' ' . $site['address_city'] ); ?>.<br>
-				RCS / SIREN / SIRET : [À COMPLÉTER] — donnée en attente de confirmation par extrait Kbis avant publication (incohérence relevée entre deux sources, non résolue à ce jour).<br>
-				Capital social : [À COMPLÉTER].<br>
-				Numéro de TVA intracommunautaire : [À COMPLÉTER].<br>
-				Code APE/NAF : [À COMPLÉTER].<br>
+				Immatriculée au RCS (registre du commerce et des sociétés) de <?php echo esc_html( $site['legal_rcs_city'] ); ?> sous le numéro <?php echo esc_html( $site['legal_siren'] ); ?>, le <?php echo esc_html( $site['legal_immatriculation_date'] ); ?>.<br>
+				SIREN : <?php echo esc_html( $site['legal_siren'] ); ?> — SIRET (siège) : <?php echo esc_html( $site['legal_siret'] ); ?>.<br>
+				Code APE/NAF : <?php echo esc_html( $site['legal_ape_code'] ); ?> (<?php echo esc_html( $site['legal_ape_label'] ); ?>).<br>
+				Numéro de TVA intracommunautaire : <?php echo esc_html( $site['legal_tva'] ); ?>.<br>
+				Activité : <?php echo esc_html( lcfirst( $site['legal_activity'] ) ); ?>, débutée le <?php echo esc_html( $site['legal_activity_start_date'] ); ?>.<br>
 				Gérante : <?php echo esc_html( $site['manager'] ); ?>.<br>
 				Directrice de la publication : [À COMPLÉTER].<br>
 				Contact : <a class="tfp-underline" href="mailto:<?php echo esc_attr( $site['email'] ); ?>"><?php echo esc_html( $site['email'] ); ?></a> — <?php echo esc_html( $site['phone'] ); ?>.

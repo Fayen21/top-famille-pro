@@ -1,6 +1,7 @@
 # RAPPORT FINAL — Top-Famille Pro
 
-> Produit en phase 6 (PROMPT-PHASES.md), à l'issue des phases 0 à 6. Référence unique de l'état du
+> Produit en phase 6 (PROMPT-PHASES.md), à l'issue des phases 0 à 6 ; mis à jour en phase 7
+> (informations légales confirmées + paquet de livraison Hostinger). Référence unique de l'état du
 > projet ; `STATUS.md` reste le journal détaillé phase par phase pour qui veut le détail complet
 > (bugs trouvés, procédures de vérification, décisions signalées).
 
@@ -8,23 +9,28 @@
 
 ## 1. Verdict global
 
-**PAS PRODUCTION READY.**
+**`HOSTINGER_PACKAGE=PASS`** — le code, le contenu et le paquet d'installation sont prêts. **Le
+site n'est pas pour autant déployé ni opérationnel** : ce sont deux choses différentes, détaillées
+ci-dessous plutôt que résumées en un seul mot.
 
-Le site est techniquement complet et vérifié — 53 pages réelles, formulaire de devis fonctionnel,
-suite de tests automatisés verte, accessibilité et performance mesurées et corrigées. Douze des
-treize éléments listés par CLAUDE.md §10 sont déjà réglés (détail §15). Un seul reste, et lui seul
-suffit à maintenir le verdict :
+| Aspect | État |
+|---|---|
+| Code et contenu (CLAUDE.md §10) | ✅ **Prêt** — les treize éléments sont réglés, y compris la donnée d'immatriculation (§15) |
+| Paquet d'installation Hostinger (§17) | ✅ **Prêt**, testé de bout en bout sur WordPress vierge |
+| Déploiement réel sur `top-famille-pro.fr` | ⛔ **Non effectué** — CLAUDE.md §6 interdit tout déploiement depuis cette session |
+| Envoi effectif des devis (SMTP) | 🟡 **À tester sur l'hébergement réel** — aucun transport mail disponible dans les environnements de test utilisés sur l'ensemble du projet |
 
-- **Une donnée d'immatriculation non confirmée par Kbis** — SIRET, capital, APE, TVA, et une
-  incohérence non levée sur le SIREN. Bloqueur de mise en ligne posé dès la phase 0, toujours actif.
-  Il ne peut être levé que par le client (transmission du Kbis), pas par du travail technique
-  supplémentaire.
+Le blocage identifié en phase 6 — donnée d'immatriculation non confirmée par Kbis (SIRET, capital,
+APE, TVA, incohérence sur le SIREN) — **est levé en phase 7** : extrait Pappers fourni par le
+client, puis complément (SIRET, code APE, TVA) confirmé directement, cohérence formelle
+recontrôlée indépendamment avant intégration (détail §6 et §15).
 
-Au-delà de ce bloqueur dur, une note d'avis Google réelle, un portrait authentique d'Audrey et le
-texte exact des avis clients réutilisables restent également manquants (masqués honnêtement plutôt
-que remplacés par du contenu inventé — voir §13). Le site peut être mis en ligne dès que le Kbis est
-confirmé et ces informations transmises ; aucun de ces manques ne nécessite de nouveau développement,
-seulement la saisie de vraies valeurs dans des emplacements déjà prêts à les recevoir.
+Une note d'avis Google réelle, un portrait authentique d'Audrey, le texte exact des avis clients
+réutilisables, l'assurance RC professionnelle et la validation des 8 communes secondaires restent
+manquants (masqués honnêtement plutôt que remplacés par du contenu inventé — voir §13 et
+`release/INFORMATIONS-MANQUANTES.md`). Aucun de ces manques ne nécessite de nouveau développement,
+seulement la saisie de vraies valeurs dans des emplacements déjà prêts à les recevoir, ou une
+décision du client.
 
 ---
 
@@ -69,9 +75,10 @@ complet, un commit par étape fonctionnelle depuis la phase 1) :
 | Design system | `src/css/*.css` (6 fichiers sources) → `assets/dist/css/main.css` | Tokens, base, layout, composants, section accueil |
 | Comportement client | `src/js/*.js` (4 fichiers) → `assets/dist/js/main.js` | Navigation, formulaire, analytics neutre |
 | Contenu réel | `bin/seed-*.php` (13 scripts) + `bin/cleanup-wp-defaults.php` | Source de vérité versionnée du contenu des 53 pages |
-| Tests automatisés | `tests/**/*.spec.js` (7 fichiers) + `playwright.config.js` | 796 assertions, captures responsive |
+| Tests automatisés | `tests/**/*.spec.js` (8 fichiers, dont `legal.spec.js` en phase 7) + `playwright.config.js` | 796 assertions (phase 6) + 722 rejouées en phase 7 sur une installation neuve, captures responsive |
 | Documentation | `docs/*.md` | Inventaire des routes, données fictives neutralisées, maillage, redirections, ce rapport |
 | Suivi de projet | `STATUS.md`, `PROJECT_INPUTS.md` | Journal détaillé phase par phase, données commerciales réelles |
+| Livraison Hostinger (phase 7) | `release/*` | Thème + installateur en ZIP installables, tableau des 53 pages, guide de déploiement, informations manquantes, empreintes SHA-256 |
 
 ---
 
@@ -322,7 +329,7 @@ Reprises de `PROJECT_INPUTS.md` §12 (« Questions ouvertes »), toujours d'actu
 
 | # | Donnée | Bloque |
 |---|---|---|
-| 1 | Kbis : SIRET exact, capital, APE, TVA, date d'immatriculation — incohérence sur le SIREN à lever | **Mise en ligne** |
+| 1 | ~~Kbis : SIRET exact, capital, APE, TVA, date d'immatriculation — incohérence sur le SIREN à lever~~ | **Résolu phase 7** — voir §6 |
 | 2 | Assureur RC professionnelle (nom + n° de police) | **Mise en ligne** |
 | 6 | URL de la fiche Google Business + note réelle + nombre d'avis réels | **Mise en ligne** |
 | 7 | Portrait HD d'Audrey + visuels réels | **Mise en ligne** |
@@ -358,21 +365,143 @@ Selon CLAUDE.md §10, ne jamais déclarer PRODUCTION READY s'il subsiste :
 | Une route en `#/` | ✅ Aucune (vérifié sur les 53 routes) |
 | Un lien mort | ✅ Aucun (crawl interne réel, `tests/crawl.spec.js`) |
 | Une page orpheline | ✅ Aucune (même crawl) |
-| **Une donnée d'immatriculation non confirmée par Kbis** | ⛔ **Bloqueur actif** — SIRET, capital, APE, TVA, SIREN à confirmer |
+| Une donnée d'immatriculation non confirmée par Kbis | ✅ **Résolu phase 7** — SIRET, capital, APE, TVA, SIREN confirmés (§6), cohérence formelle recontrôlée indépendamment |
 | Une erreur JavaScript | ✅ Aucune (53 routes, `tests/seo.spec.js`) |
 | Un débordement horizontal | ✅ Aucun (53 routes à 375px + balayage 320/1440px) |
-| Un test en échec | ✅ 796 assertions vertes |
+| Un test en échec | ✅ 796 assertions vertes en phase 6, 722 rejouées en phase 7 sur une installation neuve à partir des deux ZIP de livraison (§17) |
 
-**Un seul bloqueur technique-au-sens-de-CLAUDE.md reste actif : le Kbis.** Les autres manques du §14
-(note Google, portrait, avis, adresse e-mail, validation des communes, devenir de
-topentreprise.fr) ne sont pas listés dans le §10 comme des bloqueurs de déclaration
-PRODUCTION READY au sens strict, mais restent des informations réelles manquantes qui limitent ce
-que le site peut afficher tant qu'elles ne sont pas fournies — le site reste honnête (masqué plutôt
+**Les treize éléments de CLAUDE.md §10 sont désormais réglés.** Cela ne rend pas le site
+opérationnel pour autant : voir la distinction du §1 entre code prêt, paquet prêt, et déploiement
+réel non effectué. Les manques restants du §14 (assurance RC pro, fiche Google, portrait, avis,
+adresse e-mail, validation des communes, devenir de topentreprise.fr) ne sont pas des bloqueurs au
+sens strict de CLAUDE.md §10, mais restent des informations réelles manquantes qui limitent ce que
+le site peut afficher tant qu'elles ne sont pas fournies — le site reste honnête (masqué plutôt
 qu'inventé) en attendant.
 
 ---
 
-## 16. Étapes exactes pour lancer et prévisualiser le site
+## 16. Phase 7 — Informations légales confirmées
+
+Extrait Pappers fourni par le client, confirmant : dénomination sociale **TOP-ENTREPRISE**, SARL,
+SIREN **938 472 420**, immatriculation **938 472 420 R.C.S. Dijon**, capital **600,00 €**, date
+d'immatriculation **16/12/2024**, siège **RTE de Gray 650D, 21850 Saint-Apollinaire**, activité
+principale **nettoyage de locaux professionnels et nettoyage courant des bâtiments**, date de
+commencement d'activité **01/01/2025**, gérante **Audrey Brançon** (nom d'usage — nom de naissance
+confirmé par Pappers, non publié : information personnelle non nécessaire à la mention légale).
+Complément transmis ensuite : **SIRET 938 472 420 00018**, **code APE 81.21Z** (Nettoyage courant
+des bâtiments), **TVA intracommunautaire FR32 938 472 420**.
+
+**Cohérence formelle recontrôlée indépendamment avant intégration** (pas seulement reprise telle
+quelle) : la clé Luhn du SIRET à 14 chiffres est valide (somme des chiffres pondérés ≡ 0 mod 10) ;
+la clé de contrôle TVA calculée à partir du SIREN — `(12 + 3 × (SIREN mod 97)) mod 97` — donne 32,
+identique à la clé transmise (`FR32…`). Aucune anomalie trouvée.
+
+**L'incohérence relevée en phase 0 est levée** : les mentions légales de l'ancien site
+(topentreprise.fr) annonçaient un SIREN différent (938 472 242) — non conforme, déjà identifié
+comme tel, jamais republié sur le nouveau site.
+
+Formulation légale complète, utilisée telle quelle sur la page mentions légales :
+> TOP-ENTREPRISE, SARL au capital de 600 €, immatriculée au RCS de Dijon sous le numéro
+> 938 472 420, SIRET 938 472 420 00018, code APE 81.21Z, TVA intracommunautaire
+> FR32938472420, siège social : RTE de Gray 650D, 21850 Saint-Apollinaire.
+
+Diffusion volontairement limitée : le détail complet ci-dessus figure sur `/mentions-legales/`
+uniquement ; le pied de page (les 53 pages) n'affiche qu'une forme concise (raison sociale, capital,
+SIRET, lien vers les mentions légales) ; les données structurées `Organization` reçoivent
+`taxID`/`vatID`/`foundingDate` (propriétés schema.org appropriées) mais pas de code APE, faute de
+propriété schema.org adaptée — ne pas forcer une donnée dans un champ qui ne lui correspond pas.
+
+Ce qui reste `[À COMPLÉTER]` sur la page mentions légales, à l'identique d'avant cette phase :
+assurance RC professionnelle (nom + n° de police), coordonnées complètes de l'hébergeur, directrice
+de la publication (hypothèse non confirmée explicitement — probablement la gérante, mais CLAUDE.md
+§5.1 interdit de publier une valeur plausible non confirmée).
+
+---
+
+## 17. Livraison Hostinger (phase 7)
+
+### Pull request
+
+`Phase 7 — informations légales et livraison Hostinger` :
+**https://github.com/Fayen21/top-famille-pro/pull/8**
+
+### Les trois ZIP
+
+Liens de téléchargement (branche `phase-7-livraison-hostinger`, dossier `release/`) — utiliser les
+liens « Raw » de GitHub pour un téléchargement direct du binaire :
+
+| Fichier | Lien | Taille | SHA-256 |
+|---|---|---|---|
+| `topfamillepro-theme.zip` | [Télécharger](https://github.com/Fayen21/top-famille-pro/raw/phase-7-livraison-hostinger/release/topfamillepro-theme.zip) | 1,8 Mo (1 860 118 octets) | `ee8b5e2d1a03e899992789a4b7d78234c94563f2a5fce504ead1df5d02cd5409` |
+| `topfamillepro-content-installer.zip` | [Télécharger](https://github.com/Fayen21/top-famille-pro/raw/phase-7-livraison-hostinger/release/topfamillepro-content-installer.zip) | 56 Ko (56 536 octets) | `786fc3a463821ff2d78a98e45618ec9a2b65ba0fa65b425d8871fac1d7a7cd75` |
+| `Top-Famille-Pro-Livraison-Hostinger.zip` (paquet global, contient les deux ci-dessus + guides) | [Télécharger](https://github.com/Fayen21/top-famille-pro/raw/phase-7-livraison-hostinger/release/Top-Famille-Pro-Livraison-Hostinger.zip) | 1,9 Mo (1 935 046 octets) | `80432c3171a2874a8b05b647fe1daf0dd214604bb5f7d6a378ec2bd60ec07517` |
+
+Ces liens pointent sur la branche `phase-7-livraison-hostinger` : ils resteront valides après la
+fusion de la PR, ou changez `phase-7-livraison-hostinger` en `main` dans l'URL une fois fusionnée.
+
+Empreintes également disponibles dans `release/SHA256SUMS.txt` (les deux ZIP installables
+uniquement, comme demandé). À vérifier après téléchargement : `sha256sum <fichier>` doit
+correspondre exactement.
+
+### Résultats des tests d'installation
+
+Sur WordPress vierge (miroir GitHub du cœur WordPress, aucun accès réseau à wordpress.org depuis
+cet environnement — GeneratePress et ACF simulés par des stubs minimaux reproduisant leur contrat
+d'intégration ; **à revérifier avec les vrais plugins une fois sur Hostinger**, où l'accès réseau
+n'est pas restreint) :
+
+| Test | Résultat |
+|---|---|
+| Thème : activation, dépendance GeneratePress, chargement CSS/JS | ✅ Aucune erreur PHP |
+| Thème : fonctionnement avec ACF (stub) | ✅ Contenu réel affiché (`get_field`/`update_field`) |
+| Thème : fonctionnement sans ACF (repli natif) | ✅ Aucune erreur, pages toujours servies |
+| Thème : aucun chemin de développement en dur | ✅ Recherche `/home/user`, `/tmp/*` : aucune occurrence |
+| Installateur : premier passage (WordPress vierge) | ✅ 11/11 étapes, 0 erreur |
+| Installateur : idempotence (deuxième passage) | ✅ Delta +0 sur page/prestation/zone/post |
+| Installateur : après modification manuelle | ✅ Champ géré resynchronisé (documenté), donnée non gérée préservée, contenu hors périmètre intact |
+| Installateur : sécurité | ✅ Non authentifié → redirection connexion ; nonce invalide → rejeté, aucune écriture |
+| Suite complète sur l'installation obtenue | ✅ **722 assertions vertes** (`seo`, `uniqueness`, `crawl`, `legal`, `functional/quote-form`, `accessibility`) |
+
+### Contenus créés (dernière exécution de test)
+
+52 contenus gérés par l'installateur, comptage exact avant/après (delta net, upsert par slug) :
+
+| Type | Nombre |
+|---|---|
+| Pages WordPress | 17 |
+| Prestations | 6 |
+| Zones (8 départements + 10 villes + 8 communes) | 26 |
+| Articles | 3 |
+| **Total** | **52** (+ la page d'accueil, automatique, aucune page WordPress requise = 53 routes publiques) |
+
+### Informations juridiques intégrées
+
+Dénomination, forme juridique, capital, SIREN, SIRET, RCS, date d'immatriculation, code APE, TVA
+intracommunautaire, siège social, activité — détail complet §16. Aucune information personnelle
+inutile (nom de naissance, date de naissance de la gérante) publiée.
+
+### Informations encore manquantes
+
+Détail complet et à jour dans `release/INFORMATIONS-MANQUANTES.md` : assurance RC professionnelle,
+URL/note/nombre d'avis Google Business, texte exact des témoignages autorisés, portrait réel
+d'Audrey, adresse de réception des devis à confirmer, choix `@top-famille-pro.fr` vs
+`@top-famille.fr`, validation des 8 communes secondaires, décision sur `topentreprise.fr`.
+
+### Procédure de fusion et de déploiement
+
+Fusion des PR #5/#6/#7 : voir §16 de `STATUS.md` (méthode, ordre, vérifications). Déploiement réel :
+`release/GUIDE-DEPLOIEMENT-HOSTINGER.md`, 24 étapes pour un utilisateur non développeur + procédure
+alternative par gestionnaire de fichiers. Aucun déploiement effectué depuis cette session
+(CLAUDE.md §6).
+
+### Verdict
+
+**`HOSTINGER_PACKAGE=PASS`.** Le paquet est prêt, testé de bout en bout, installable sans terminal.
+Cela ne constitue pas une déclaration de mise en ligne réelle : voir §1.
+
+---
+
+## 18. Étapes exactes pour lancer et prévisualiser le site
 
 ### Préviabilité locale (ce qui a servi à toutes les vérifications de ce rapport)
 
