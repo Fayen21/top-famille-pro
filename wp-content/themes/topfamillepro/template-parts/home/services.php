@@ -1,10 +1,14 @@
 <?php
 /**
- * 3. Prestations — fusionne le bloc « Professionnels accompagnés » du prototype (chips) en
- * tête de section plutôt que de lui consacrer une section séparée : il n'apportait qu'un titre
- * et une liste de puces, alourdissant la page pour peu d'information (brief phase 1 §6).
- * Rappelle aussi, dès l'accueil, les exclusions réelles et la fourniture du matériel par le
- * client — deux points qui qualifient les demandes en amont (PROJECT_INPUTS.md §4).
+ * 5. Prestations — bloc 5 du prototype Claude Design.
+ *
+ * Les puces « Professionnels accompagnés » qui figuraient en tête de cette section depuis la
+ * phase 1 ont été retirées le 9 août 2026 : elles avaient été fusionnées ici faute de section
+ * dédiée, mais celle-ci existe désormais (template-parts/home/audiences.php, comme dans la
+ * maquette) et les puces s'affichaient donc en double.
+ *
+ * Rappelle, dès l'accueil, les exclusions réelles et la fourniture du matériel par le client —
+ * deux points qui qualifient les demandes en amont (PROJECT_INPUTS.md §4).
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -21,14 +25,6 @@ $secondary_services = array(
 );
 ?>
 <section class="tfp-container tfp-section">
-	<div class="tfp-chip-row" style="margin-bottom:20px">
-		<span class="tfp-chip">TPE &amp; PME</span>
-		<span class="tfp-chip">Commerces</span>
-		<span class="tfp-chip">Cabinets &amp; professions libérales</span>
-		<span class="tfp-chip">Syndics &amp; gestionnaires</span>
-		<span class="tfp-chip">Propriétaires de meublés</span>
-	</div>
-
 	<div class="tfp-flex tfp-flex--between" style="margin-bottom:24px">
 		<h2 style="max-width:520px">Nos prestations de nettoyage</h2>
 		<a href="<?php echo esc_url( home_url( '/prestations/' ) ); ?>" class="tfp-link-arrow">Toutes les prestations →</a>

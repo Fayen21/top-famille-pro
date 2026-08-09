@@ -33,8 +33,36 @@ function ensureDir(dir) {
 	fs.mkdirSync(dir, { recursive: true });
 }
 
+/**
+ * Fait défiler toute la page pour déclencher le chargement des images en `loading="lazy"`, puis
+ * remonte en haut. Sans cela, une capture `fullPage` photographie les images hors écran avant
+ * qu'elles ne soient chargées : elles apparaissent comme des rectangles gris (la couleur de fond
+ * de l'emplacement) alors que le site est parfaitement sain. Défaut réel de la méthode de capture
+ * — trouvé le 9 août 2026, il rendait les captures de `docs/captures/` trompeuses.
+ */
+async function loadLazyImages(page) {
+	await page.evaluate(async () => {
+		const step = window.innerHeight;
+		for (let y = 0; y < document.body.scrollHeight; y += step) {
+			window.scrollTo(0, y);
+			await new Promise((r) => setTimeout(r, 100));
+		}
+		window.scrollTo(0, 0);
+	});
+	// Laisse le temps aux dernières images déclenchées de terminer leur décodage.
+	await page.waitForFunction(
+		() => Array.from(document.images).every((img) => !img.loading || img.complete),
+		null,
+		{ timeout: 10000 }
+	).catch(() => {});
+	await page.waitForTimeout(300);
+}
+
 async function shoot(page, dir, filename, options = {}) {
 	ensureDir(dir);
+	if (options.fullPage !== false) {
+		await loadLazyImages(page);
+	}
 	await page.screenshot({ path: path.join(dir, filename), fullPage: true, ...options });
 }
 

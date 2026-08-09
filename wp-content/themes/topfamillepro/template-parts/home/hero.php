@@ -13,16 +13,12 @@ $reassurance = tfp_reassurance_data();
 ?>
 <section class="tfp-hero">
 	<div class="tfp-hero__content">
-		<?php if ( $reassurance['note'] && $reassurance['nombre_avis'] ) : ?>
-			<div class="tfp-badge">
-				<span style="color:var(--color-star);letter-spacing:1px;font-size:13px" aria-hidden="true"><?php echo str_repeat( '★', 5 ); ?></span>
-				<span style="font-weight:700;font-size:14px;font-family:var(--font-heading)"><?php echo esc_html( number_format_i18n( $reassurance['note'], 1 ) ); ?>/5</span>
-				<span style="font-size:13px;color:var(--color-text-tertiary)">sur <?php echo (int) $reassurance['nombre_avis']; ?> avis Google</span>
-				<?php if ( $reassurance['google_url'] ) : ?>
-					<a href="<?php echo esc_url( $reassurance['google_url'] ); ?>" style="font-size:12.5px;font-weight:600;color:var(--color-primary);background:var(--color-turquoise-pale);padding:5px 10px;border-radius:100px">Voir les avis</a>
-				<?php endif; ?>
-			</div>
-		<?php endif; ?>
+		<?php
+		// Badge de note Google, à sa place dans la maquette (au-dessus du H1). Rendu uniquement
+		// si une note réelle a été saisie dans Réglages → Réassurance & avis — voir
+		// includes/testimonials.php.
+		tfp_google_rating_badge( 'inline' );
+		?>
 
 		<h1 class="tfp-hero__title">Nettoyage professionnel de bureaux et locaux en Bourgogne-Franche-Comté</h1>
 		<p class="tfp-hero__lede">La rigueur d'un prestataire structuré, avec la proximité d'une entreprise régionale directement joignable. Top-Famille Pro organise l'entretien régulier ou ponctuel de vos bureaux, commerces, cabinets, parties communes et locations meublées.</p>

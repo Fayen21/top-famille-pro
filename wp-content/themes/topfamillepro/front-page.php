@@ -27,10 +27,16 @@ tfp_seo(
 
 get_header();
 
+// Ordre repris de la maquette Claude Design, vérifié par comparaison des rendus réels
+// (docs/AUDIT-PRODUCTION.md §3c) : hero → bandeau tarifaire + réassurance → audiences →
+// prestations → difficultés → pourquoi + témoignage → fonctionnement → tarif → couverture →
+// Audrey → conseils → CTA final.
 get_template_part( 'template-parts/home/hero' );
 get_template_part( 'template-parts/home/pricing-reassurance' );
+get_template_part( 'template-parts/home/audiences' );
 get_template_part( 'template-parts/home/services' );
 get_template_part( 'template-parts/home/problems' );
+get_template_part( 'template-parts/home/why' );
 get_template_part( 'template-parts/home/process' );
 get_template_part( 'template-parts/home/pricing' );
 get_template_part( 'template-parts/home/coverage' );

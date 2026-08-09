@@ -74,9 +74,11 @@
   box-shadow: var(--shadow-md);
 }
 
+/* Carré 1/1, comme la vignette superposée de la maquette (215×215 à 1440px). */
 .tfp-hero__media-secondary img {
   width: 100%;
   height: 100%;
+  aspect-ratio: 1 / 1;
   object-fit: cover;
   background: var(--color-border);
 }
@@ -412,4 +414,220 @@
   display: inline-flex;
   font-weight: var(--fw-semibold);
   color: var(--color-primary);
+}
+
+/* ---------- Audiences — « Pensé pour les professionnels de la région » ----------
+   Bloc 4 du prototype. Dimensions relevées sur le rendu réel de la maquette à 1440px :
+   intro sur 660px, titre 42px, lede 18px, puces de 49px de haut à rayon plein sur fond
+   --color-bg-alt. */
+.tfp-audiences__intro {
+  max-width: 660px;
+}
+
+.tfp-audiences__lede {
+  margin-top: var(--space-4);
+  font-size: clamp(16px, 1.4vw, 18px);
+  color: var(--color-text-secondary);
+}
+
+.tfp-audiences__list {
+  margin-top: var(--space-6);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  list-style: none;
+}
+
+.tfp-audiences__chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 49px;
+  padding: 0 22px;
+  border-radius: 100px;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  font-size: 15.5px;
+  font-weight: var(--fw-semibold);
+  color: var(--color-text);
+}
+
+.tfp-section--alt .tfp-audiences__chip {
+  background: var(--color-white);
+}
+
+/* ---------- « Pourquoi Top-Famille Pro » ----------
+   Bloc 7 du prototype : deux colonnes 612px / 512px, carte témoignage alignée en haut. */
+.tfp-why {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(28px, 4vw, 56px);
+  align-items: flex-start;
+}
+
+.tfp-why__main {
+  flex: 1 1 560px;
+  min-width: min(100%, 320px);
+}
+
+.tfp-why__aside {
+  flex: 0 1 512px;
+  min-width: min(100%, 300px);
+}
+
+/* ---------- Carte témoignage ---------- */
+.tfp-testimonial {
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: 18px;
+  padding: clamp(20px, 2.4vw, 32px);
+  box-shadow: var(--shadow-md);
+}
+
+.tfp-testimonial__quote {
+  font-size: clamp(17px, 1.6vw, 19px);
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--color-text);
+}
+
+.tfp-testimonial__author {
+  margin-top: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.tfp-testimonial__name {
+  font-weight: var(--fw-semibold);
+}
+
+.tfp-testimonial__context {
+  font-size: var(--fs-sm);
+  color: var(--color-text-tertiary);
+}
+
+/* Mention de démonstration — volontairement lisible, jamais rendue en production
+   (includes/testimonials.php). */
+.tfp-demo-notice {
+  margin-bottom: var(--space-3);
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  background: var(--color-turquoise-pale);
+  border: 1px dashed var(--color-turquoise-light);
+  font-size: 12.5px;
+  font-weight: var(--fw-semibold);
+  color: var(--color-navy);
+}
+
+.tfp-testimonial--empty {
+  border-style: dashed;
+  box-shadow: none;
+}
+
+.tfp-testimonial__empty {
+  font-weight: var(--fw-semibold);
+}
+
+.tfp-testimonial__empty-note {
+  margin-top: 6px;
+  font-size: var(--fs-sm);
+  color: var(--color-text-tertiary);
+}
+
+/* ---------- Portrait Audrey ---------- */
+.tfp-audrey-portrait__img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  background: var(--color-border);
+  border-radius: var(--radius-xl);
+}
+
+.tfp-audrey-portrait__note {
+  margin-top: 10px;
+  font-size: 12.5px;
+  color: var(--color-text-tertiary);
+  text-align: center;
+}
+
+.tfp-audrey-portrait__fallback {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  border-radius: var(--radius-xl);
+  background: linear-gradient(160deg, var(--color-primary), var(--color-navy));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tfp-audrey-portrait__fallback span {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 96px;
+  color: var(--color-turquoise-pale);
+}
+
+/* Bandeau tarifaire — collé au hero, sans respiration verticale propre, comme dans la maquette
+   (padding vertical 0 : la section précédente et le bandeau forment un seul ensemble). */
+.tfp-price-band-section {
+  padding-block: 0;
+}
+
+/* ---------- Badge de note Google ----------
+   Deux variantes reprises de la maquette : `inline` au-dessus du H1 du hero (310×44 à 1440px),
+   `floating` superposée au portrait d'Audrey (136×75). Rendues uniquement quand une note réelle
+   est configurée — includes/testimonials.php. */
+.tfp-google-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.tfp-google-badge__stars {
+  color: var(--color-star);
+  letter-spacing: 1px;
+  font-size: 13px;
+}
+
+.tfp-google-badge__text {
+  font-size: 13px;
+  color: var(--color-text-secondary);
+}
+
+.tfp-google-badge__text strong {
+  font-family: var(--font-heading);
+  font-size: 15px;
+  color: var(--color-text);
+}
+
+.tfp-google-badge__count {
+  color: var(--color-text-tertiary);
+}
+
+.tfp-google-badge__link {
+  font-size: 12.5px;
+  font-weight: var(--fw-semibold);
+  color: var(--color-primary);
+  background: var(--color-turquoise-pale);
+  padding: 5px 10px;
+  border-radius: 100px;
+}
+
+.tfp-google-badge--inline {
+  margin-bottom: var(--space-4);
+}
+
+.tfp-google-badge--floating {
+  position: absolute;
+  left: -14px;
+  bottom: 26px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: 14px;
+  padding: 10px 14px;
+  box-shadow: var(--shadow-md);
 }

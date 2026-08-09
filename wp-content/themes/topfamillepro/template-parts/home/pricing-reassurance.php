@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 $site = tfp_site_data();
 ?>
-<section class="tfp-container tfp-section--tight">
+<section class="tfp-container tfp-price-band-section">
 	<div class="tfp-price-band">
 		<span class="tfp-price-band__value">
 			<strong><?php echo esc_html( $site['price_unique_display'] ); ?> HT/h</strong>

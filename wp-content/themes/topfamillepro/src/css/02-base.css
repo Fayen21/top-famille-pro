@@ -57,6 +57,14 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--color-text);
 }
 
+/* Le token --fs-h2 (27→42px) existait dans 00-tokens.css depuis la phase 1 mais n'avait jamais
+   été branché : les titres de section retombaient sur la taille par défaut du navigateur
+   (1.5em = 25,5px), soit 40 % plus petits que la maquette, ce qui écrasait toute la hiérarchie
+   visuelle de l'accueil. Mesuré à 42px sur le rendu réel du prototype à 1440px. */
+h2 {
+  font-size: var(--fs-h2);
+}
+
 p {
   text-wrap: pretty;
 }
@@ -64,6 +72,20 @@ p {
 img, picture, svg {
   display: block;
   max-width: 100%;
+}
+
+/* Toutes les images du pipeline responsive (includes/images.php) portent des attributs
+   `width`/`height` — indispensables pour réserver la place et éviter le décalage de mise en page.
+   Mais ces attributs sont des indications de présentation : sans `height: auto`, la hauteur en
+   pixels qu'ils fixent l'emporte sur tout `aspect-ratio` déclaré en CSS, et le recadrage voulu
+   par le design est silencieusement ignoré.
+
+   Bug réel trouvé le 9 août 2026 en comparant les rendus mesurés à la maquette : l'image
+   principale du hero s'affichait en 512×800 au lieu de 512×448, et les vignettes d'articles en
+   381×427 au lieu de 381×214 — ce qui allongeait l'accueil de plus de 350 px et cassait le rythme
+   vertical. `height: auto` rend la main au CSS sans perdre le bénéfice des attributs. */
+picture img {
+  height: auto;
 }
 
 /* `color` volontairement hors de la règle `a` ci-dessous, même raison que pour les titres

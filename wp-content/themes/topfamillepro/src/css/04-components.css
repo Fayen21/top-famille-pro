@@ -373,6 +373,15 @@
   color: var(--color-text);
 }
 
+/* Vignette 16/9, comme dans la maquette (381×214 à 1440px). Sans cette règle, l'image gardait
+   son ratio naturel (381×427) et allongeait la section « Conseils » de 220 px. */
+.tfp-article-card img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  background: var(--color-border);
+}
+
 .tfp-article-card__body {
   padding: var(--space-5);
 }
@@ -700,11 +709,22 @@
   height: 84px;
 }
 
-@media (max-width: 819px) {
+/* La navigation complète (logo 155px + 7 entrées 621px + actions 225px) ne tient pas sous
+   ~1100px : mesuré à 1024px, elle débordait de 57px horizontalement. La maquette bascule elle
+   aussi sur le menu compact à cette largeur. Le point de bascule du header est donc porté à
+   1099px, indépendamment des autres composants qui restent à 819px. */
+@media (max-width: 1099px) {
   .tfp-nav,
   .tfp-header__phone-label {
     display: none;
   }
+
+  .tfp-menu-toggle {
+    display: flex;
+  }
+}
+
+@media (max-width: 819px) {
 
   /* Le CTA devis du header devient redondant avec la barre CTA mobile fixe,
      et sa largeur de contenu (nowrap) provoquait un débordement horizontal < 375px. */
