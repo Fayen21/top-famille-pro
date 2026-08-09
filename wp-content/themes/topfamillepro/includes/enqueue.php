@@ -45,20 +45,20 @@ function tfp_enqueue_assets() {
 add_action( 'wp_enqueue_scripts', 'tfp_enqueue_assets' );
 
 /**
- * Charge les deux feuilles de style du thème en `preload` + bascule `stylesheet` au chargement,
- * plutôt qu'en `<link rel="stylesheet">` classique et bloquant le rendu — technique standard
- * (web.dev) pour approcher l'effet d'un CSS critique sans extraction par gabarit (54 gabarits
- * différents rendraient une extraction automatisée fragile). `<noscript>` conserve le
- * comportement bloquant normal si JavaScript est désactivé.
+ * Les feuilles de style du thème sont chargées normalement, en `<link rel="stylesheet">` bloquant
+ * le rendu.
+ *
+ * Elles étaient jusqu'au 9 août 2026 chargées en `preload` + bascule `stylesheet` au chargement,
+ * pour approcher l'effet d'un CSS critique sans extraction par gabarit. Mesure Lighthouse à
+ * l'appui, c'était un mauvais compromis : la page peignait sans aucun style puis se remettait
+ * entièrement en page, avec un **CLS de 1,002** — dix fois la limite acceptable de 0,1, et de très
+ * loin le premier facteur de dégradation du score de performance. Lighthouse confirmait d'ailleurs
+ * « aucune ressource bloquante », symptôme exact du problème.
+ *
+ * Le CSS complet du site pèse ~37 Ko (une seule feuille, tous gabarits confondus) : le charger
+ * normalement coûte quelques dizaines de millisecondes de premier rendu et supprime la totalité du
+ * décalage de mise en page. Sur l'hébergement réel, LiteSpeed le sert compressé et mis en cache.
  */
-function tfp_defer_stylesheets( $html, $handle ) {
-	if ( ! in_array( $handle, array( 'generatepress-parent', 'topfamillepro' ), true ) ) {
-		return $html;
-	}
-	$preload = str_replace( "rel='stylesheet'", "rel='preload' as='style' onload=\"this.onload=null;this.rel='stylesheet'\"", $html );
-	return $preload . "\n" . '<noscript>' . $html . '</noscript>' . "\n";
-}
-add_filter( 'style_loader_tag', 'tfp_defer_stylesheets', 10, 2 );
 
 /**
  * Précharge la police de titre (poids 700, le plus utilisé au-dessus de la ligne de

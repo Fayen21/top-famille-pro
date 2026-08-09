@@ -25,7 +25,14 @@ const TFP_REASSURANCE_OPTION = 'tfp_reassurance';
 const TFP_REASSURANCE_AVIS_MAX = 6; // Les six témoignages authentiques listés dans CLAUDE.md §5.5.
 
 /**
- * Valeurs par défaut — toutes vides. Ne jamais mettre une note ou un avis de démonstration ici.
+ * Valeurs par défaut. Ne jamais mettre ici un avis ou une note de démonstration : seules des
+ * valeurs explicitement confirmées par le client y ont leur place, pour qu'elles soient
+ * versionnées et présentes sur toute installation sans ressaisie.
+ *
+ * `note` = 5.0 : note Google réelle, confirmée par Emmanuel le 9 août 2026 (CLAUDE.md §5.5).
+ * `nombre_avis` et `google_url` restent vides — non communiqués à ce jour, jamais inventés. Le
+ * badge s'affiche correctement sans eux (includes/testimonials.php) et les intègre dès qu'ils
+ * sont saisis en administration.
  *
  * @return array
  */
@@ -43,7 +50,7 @@ function tfp_reassurance_defaults() {
 
 	return array(
 		'google_url'  => '',
-		'note'        => '',
+		'note'        => '5.0',
 		'nombre_avis' => '',
 		'avis'        => $avis,
 	);

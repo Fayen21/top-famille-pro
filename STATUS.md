@@ -1,7 +1,22 @@
 # STATUS — Top-Famille Pro
 
 > Lien entre deux sessions Claude Code Web. Mis à jour à la fin de chaque phase.
-> Dernière mise à jour : **Hotfix — fidélité production, deuxième vague**, 9 août 2026.
+> Dernière mise à jour : **Hotfix — fidélité production, troisième vague**, 9 août 2026.
+>
+> **Troisième vague (`docs/AUDIT-PRODUCTION.md` §3c, `docs/RAPPORT-FINAL.md` §21)** : la maquette
+> Claude Design a été **exécutée et mesurée** dans Chromium (c'est un bundle auto-décompressant),
+> puis comparée bloc par bloc au rendu WordPress. Deux sections manquantes rétablies (« Pensé pour
+> les professionnels », « Pourquoi Top-Famille Pro » + carte témoignage) : **13/13 blocs présents et
+> ordonnés**, 7 identiques (±8 px), 5 proches (±40 px), 1 écart assumé. Trois bugs réels trouvés en
+> mesurant : ratios d'images ignorés (`height: auto` manquant, +350 px de hauteur), titres de section
+> à 25,5 px au lieu de 42 px (token `--fs-h2` jamais branché), débordement horizontal de 57 px à
+> 1024 px. Lighthouse : **mobile 90 / desktop 99, accessibilité 100, bonnes pratiques 100, SEO 100**
+> — après avoir corrigé un CLS de 1,002 causé par le chargement asynchrone des feuilles de style.
+> Note Google 5,0/5 **confirmée réelle par Emmanuel** et désormais affichée (CLAUDE.md §5.5 mis à
+> jour) ; le nombre d'avis et l'URL de la fiche restent à fournir. Témoignages : démonstration hors
+> production, état neutre en production, prouvé sur deux instances WordPress réelles.
+> Verdict : `PARTIEL — ÉCARTS RESTANTS` (pages internes moins travaillées que l'accueil, photos
+> définitives toujours absentes).
 > `ROOT_CAUSE_IDENTIFIED=YES` — le site publié (`top-famille-pro.fr`, thème actif signalé
 > `V1top-famille-pro`) **ne fait tourner aucun code de ce dépôt** ; il n'y a jamais eu de
 > déploiement (cohérent avec CLAUDE.md §6 et chaque rapport de phase précédent). Ce n'est pas une

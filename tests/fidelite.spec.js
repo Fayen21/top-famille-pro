@@ -153,11 +153,28 @@ test.describe('Production — aucun faux avis publié', () => {
 
 		const text = await page.locator('body').innerText();
 		expect(text, 'aucun nom de témoin de démonstration ne doit être publié').not.toContain('Camille R.');
-		expect(text, 'aucune note Google inventée ne doit être publiée').not.toMatch(/5,0\s*\/\s*5/);
-		expect(text).not.toMatch(/sur Google/i);
+		// Le compteur « 47 avis » du prototype reste fictif et interdit, même si la note, elle, est
+		// désormais confirmée (CLAUDE.md §5.5).
+		expect(text).not.toMatch(/47\s*avis/i);
 
 		const jsonld = (await page.locator('script[type="application/ld+json"]').allTextContents()).join(' ');
 		expect(jsonld).not.toMatch(/"@type"\s*:\s*"(Review|AggregateRating)"/);
+	});
+
+	test('la note Google confirmée est affichée, sans balisage AggregateRating', async ({ page }) => {
+		let reachable = true;
+		await page.goto(PROD_URL + '/', { waitUntil: 'domcontentloaded' }).catch(() => {
+			reachable = false;
+		});
+		test.skip(!reachable, `instance de production non joignable sur ${PROD_URL}`);
+
+		// Note réelle confirmée le 9 août 2026 : elle doit apparaître, y compris en production.
+		await expect(page.locator('.tfp-google-badge--inline')).toHaveCount(1);
+		await expect(page.locator('.tfp-google-badge--inline')).toContainText('5,0/5');
+
+		// Mais jamais balisée comme note du site : c'est une note de plateforme tierce.
+		const jsonld = (await page.locator('script[type="application/ld+json"]').allTextContents()).join(' ');
+		expect(jsonld).not.toMatch(/aggregateRating|ratingValue/i);
 	});
 
 	test('le composant témoignage reste dans un état neutre, sans casser la mise en page', async ({ page }) => {

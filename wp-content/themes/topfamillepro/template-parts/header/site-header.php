@@ -39,7 +39,7 @@ $main_nav = array(
 <header class="tfp-header" data-tfp-header>
 	<div class="tfp-header__inner">
 		<a class="tfp-logo" href="<?php echo esc_url( home_url( '/' ) ); ?>" aria-label="<?php echo esc_attr( $site['brand_name'] ); ?> — Accueil">
-			<img src="<?php echo esc_url( TFP_THEME_URI . '/assets/dist/images/logo-horizontal.png' ); ?>" alt="<?php echo esc_attr( $site['brand_name'] ); ?>" width="68" height="36">
+			<img src="<?php echo esc_url( TFP_THEME_URI . '/assets/dist/images/logo-horizontal.png' ); ?>" alt="<?php echo esc_attr( $site['brand_name'] ); ?>" width="155" height="82">
 		</a>
 
 		<nav class="tfp-nav" aria-label="Navigation principale">

@@ -79,8 +79,12 @@ Les 8 départements et 10 villes de `PROJECT_INPUTS.md` §6 sont réels et confi
 
 ### 5.5 Preuves — seules les authentiques
 Les **six témoignages publiés sur l'ancien site** (Jean-Louis D., Anna P., Michel G., Laurent, Laura, Anne-Sophie) sont réels et réutilisables.
-Les **~40 avis du prototype, la note 5,0/5 et le compteur de 47 avis sont fictifs** : suppression totale.
-Tant que l'URL de la fiche Google, la note réelle et le nombre réel d'avis ne sont pas fournis : masquer le bloc, ne pas afficher de lien `#`.
+
+**Note Google : 5,0/5 — confirmée par Emmanuel le 9 août 2026.** Elle n'est donc plus considérée comme fictive et peut être affichée (badge du hero et pastille du portrait, comme dans la maquette). Restent à fournir : le **nombre réel d'avis** et l'**URL de la fiche Google Business** — jamais inventés, le badge s'affiche sans eux tant qu'ils manquent.
+
+Les **~40 avis du prototype et le compteur de 47 avis restent fictifs** : suppression totale, aucune exception.
+Ne jamais afficher de lien `#` à la place de l'URL de la fiche.
+Ne jamais générer de balisage `Review` ou `AggregateRating` à partir de la note Google : c'est une note de plateforme tierce, la baliser comme note du site est contraire aux règles de Google sur les résultats enrichis (et il manque de toute façon un nombre d'avis).
 Ne jamais transformer un avis B2C Top-Famille en avis B2B Top-Famille Pro.
 
 ### 5.6 Images — aucun `alt` mensonger

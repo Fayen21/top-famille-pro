@@ -182,6 +182,126 @@ article au-delà des visuels déjà en place, extension complète du modèle de 
 formels aux 6 largeurs demandées avec captures dédiées par largeur, mesure Lighthouse (LiteSpeed
 et outil Lighthouse indisponibles dans cet environnement).
 
+## 3c. Troisième vague — fidélité visuelle mesurée (9 août 2026, suite)
+
+Le fichier `reference/Top-Famille-Pro-HANDOFF-READY.html` est un **bundle auto-décompressant** :
+son contenu et ses images sont reconstruits en JavaScript au chargement. Il a donc été **exécuté
+dans Chromium et mesuré**, pas seulement lu — les écarts ci-dessous viennent de rendus réels
+comparés à 1440 px, pas d'une lecture de classes CSS.
+
+### Matrice de comparaison, section par section
+
+État initial : **13 blocs côté maquette, 11 côté WordPress.**
+
+| # | Section (maquette) | Présente avant | Écart de hauteur après correction | Verdict |
+|---|---|---|---|---|
+| 1 | Hero | oui | −60 px | Écart assumé (voir ci-dessous) |
+| 2 | Bandeau tarifaire | oui | +5 px | Identique |
+| 3 | Réassurance | oui | 0 px | Identique |
+| 4 | Pensé pour les professionnels | **non** | −23 px | Proche — section créée |
+| 5 | Prestations | oui | +4 px | Identique |
+| 6 | Difficultés prises en charge | oui | +9 px | Proche |
+| 7 | Pourquoi + témoignage | **non** (fusionnée) | −4 px | Identique — section rétablie |
+| 8 | Fonctionnement en cinq temps | oui | −11 px | Proche |
+| 9 | Tarif et exemple | oui | −1 px | Identique |
+| 10 | Couverture régionale | oui | +39 px | Proche |
+| 11 | Audrey | oui | +32 px | Proche |
+| 12 | Conseils & repères | oui | +7 px | Identique |
+| 13 | CTA final | oui | −5 px | Identique |
+
+**7 blocs identiques (±8 px), 5 proches (±40 px), 1 écart assumé.** Header et footer encadrent
+l'ensemble dans les deux versions.
+
+### Trois bugs réels trouvés en mesurant
+
+1. **Ratios d'images ignorés.** `tfp_picture()` émet des attributs `width`/`height` — nécessaires
+   pour réserver la place — mais ceux-ci l'emportent sur tout `aspect-ratio` CSS tant que
+   `height: auto` n'est pas déclaré. L'image du hero s'affichait en 512×800 au lieu de 512×448 et
+   les vignettes d'articles en 381×427 au lieu de 381×214, soit plus de 350 px de hauteur en trop.
+   Corrigé par une règle unique `picture img { height: auto }`.
+2. **Titres de section à 25,5 px au lieu de 42 px.** Le token `--fs-h2` (27→42 px) existait depuis
+   la phase 1 mais n'avait jamais été branché sur `h2` : les titres retombaient sur la taille par
+   défaut du navigateur, 40 % plus petits que la maquette.
+3. **Débordement horizontal de 57 px à 1024 px.** La navigation complète ne tient pas sous
+   ~1100 px. Point de bascule du header porté à 1099 px, comme la maquette.
+
+Trouvé aussi : les puces d'audience s'affichaient **en double** une fois la section dédiée
+rétablie (elles avaient été fusionnées dans « Prestations » en phase 1) — retirées de là.
+
+### L'unique écart de structure assumé
+
+Le hero de la maquette place, **au-dessus du H1**, un badge « ★★★★★ 5,0/5 sur Google » de 44 px.
+Cette note ayant été **confirmée comme réelle par Emmanuel le 9 août 2026** (CLAUDE.md §5.5 mis à
+jour en conséquence), le badge est désormais construit et affiché aux deux emplacements de la
+maquette — hero et pastille superposée au portrait d'Audrey. Il reste piloté par les réglages
+« Réassurance & avis » : le **nombre d'avis** et l'**URL de la fiche** n'ayant pas été communiqués,
+ils ne sont pas inventés et le badge s'affiche sans eux, exactement comme dans la maquette.
+
+Aucun balisage `Review` ou `AggregateRating` n'est émis : une note de plateforme tierce ne doit pas
+être balisée comme note du site (règles Google sur les résultats enrichis), et il manquerait de
+toute façon un nombre d'avis.
+
+### Témoignages — conflit résolu sans publier de faux avis
+
+`includes/testimonials.php` rend la carte témoignage de la maquette selon l'environnement :
+
+| Environnement | Comportement |
+|---|---|
+| Production (`wp_get_environment_type() === 'production'`, **valeur par défaut de WordPress**) | Vrais témoignages saisis en administration, ou état neutre « Témoignages authentiques à venir ». Aucun contenu de démonstration. |
+| Local / développement / staging | Carte de démonstration de la maquette, avec la mention visible dans le DOM « Exemple de présentation — contenu de démonstration non publié ». |
+
+Le sens de la condition est **sûr par défaut** : une installation réelle qui n'a rien configuré
+n'affiche jamais de démonstration. Prouvé de bout en bout sur **deux instances WordPress réelles**
+(une en `development`, une en `production`), pas par un simple test unitaire de la condition.
+
+### La cause réelle des « rectangles gris »
+
+Les images signalées comme manquantes ne l'étaient pas : les 10 images de l'accueil se chargent
+correctement. C'est la **méthode de capture** qui était fautive — une capture pleine page
+photographie les images en `loading="lazy"` avant leur chargement, et elles apparaissent alors
+comme des rectangles de la couleur de fond de leur emplacement. `tests/screenshots.spec.js` fait
+désormais défiler toute la page avant de capturer.
+
+### Lighthouse — et le défaut majeur qu'il a révélé
+
+Première mesure mobile : performance 72, **CLS 1,002** (limite acceptable : 0,1) et TBT 170 ms.
+Lighthouse signalait « aucune ressource bloquante » — symptôme exact du problème : les feuilles de
+style étaient chargées en `preload` + bascule JavaScript, si bien que la page peignait **sans aucun
+style** puis se remettait entièrement en page. Ce dispositif, mis en place en phase 6 pour
+approcher un CSS critique, coûtait dix fois la limite de décalage acceptable pour économiser
+quelques dizaines de millisecondes. Il a été retiré : le CSS complet (~37 Ko, une seule feuille)
+est chargé normalement.
+
+| Mesure | Avant | Après |
+|---|---|---|
+| Performance mobile | 72 | **90** |
+| Performance desktop | 76 | **99** |
+| CLS mobile | 1,002 | **0,002** |
+| Total Blocking Time | 170 ms | **0 ms** |
+| Accessibilité | 100 | **100** |
+| Bonnes pratiques | 96 | **100** |
+| SEO | 100 | **100** |
+
+Le dernier point de « bonnes pratiques » venait du logo, servi en 140 px alors qu'il s'affiche
+désormais à 155 px selon la maquette : régénéré en 320 px (2× pour les écrans à forte densité).
+
+Ces mesures sont prises sur le serveur de développement PHP intégré, **sans compression ni cache**.
+Sur l'hébergement réel avec LiteSpeed, les valeurs de chargement seront meilleures.
+
+### Responsive — six largeurs, mesurées sur les deux versions
+
+| Largeur | Débordement horizontal | Images non chargées | Erreurs JS |
+|---|---|---|---|
+| 320 px | non | 0 | 0 |
+| 375 px | non | 0 | 0 |
+| 768 px | non | 0 | 0 |
+| 1024 px | non (corrigé, +57 px avant) | 0 | 0 |
+| 1440 px | non | 0 | 0 |
+| 1920 px | non | 0 | 0 |
+
+Captures de la maquette **et** du rendu WordPress aux six largeurs, plus les pages internes :
+`docs/captures/fidelite-finale/`.
+
 ## 4. Recherche globale — textes et données à ne pas réintroduire
 
 Recherche exhaustive dans `wp-content/themes/topfamillepro/` (thème réel, pas la référence) :
@@ -264,8 +384,8 @@ plutôt qu'à masquer :
 
 ```
 ROOT_CAUSE_IDENTIFIED=YES
-CLAUDE_DESIGN_FIDELITY=PASS   (structure, typographie, palette, grille tarifaire conformes ;
-                                photos toujours provisoires — voir §7)
+CLAUDE_DESIGN_FIDELITY=PASS   (13/13 blocs présents et ordonnés, 7 identiques ±8px, 5 proches
+                                ±40px, 1 écart assumé ; photos toujours provisoires — voir §7)
 IMAGES_INTEGRATED=PASS        (pipeline responsive AVIF/WebP/JPEG complet, favicon et pages de
                                 prestation corrigés dans ce hotfix ; images encore provisoires)
 53_ROUTES=PASS                (803 assertions, 0 route en 404, crawl propre)
@@ -286,9 +406,9 @@ et non levée par ce hotfix faute de photos authentiques fournies — pas un dé
 
 | Fichier | Rôle | Taille | SHA-256 |
 |---|---|---|---|
-| `release/topfamillepro-theme-correctif.zip` | Thème enfant, `Version: 0.3.0`, dossier racine `topfamillepro/` (jamais `V1top-famille-pro`) | 2,2 Mo (2 287 295 o) | `1e71b18acd25678d470a8825269256a5b83fb15ba43e3adaff430c1caa3494ed` |
-| `release/topfamillepro-content-installer-correctif.zip` | Plugin d'installation, `Version: 1.2.0` — scan de contenu existant (§10) + tarif unique + maillage corrigé | 57 Ko (58 559 o) | `23e957bf62bdd3cfe8706b5c99215a621a7d8b047a849e3c2c36c1193ea054e7` |
-| `release/Top-Famille-Pro-Correctif-Production.zip` | ZIP global (les deux ci-dessus + ce document + le guide + les checksums) | 2,3 Mo (2 361 798 o) | `2eade3211c8ed75148293cf0640faf6878a088ab8c87d5b6af7f782d92d3f3f0` |
+| `release/topfamillepro-theme-correctif.zip` | Thème enfant, `Version: 0.4.0`, dossier racine `topfamillepro/` (jamais `V1top-famille-pro`) | 2,3 Mo (2 300 145 o) | `7a4ac3ddcd50656be000d857ad0b719cc5709d5bcdbf774e296f1e4d4c6009e2` |
+| `release/topfamillepro-content-installer-correctif.zip` | Plugin d'installation, `Version: 1.3.0` | 57 Ko (58 559 o) | `271e0764e8b52ce47a6b1e08a75beb51415718f7cffc68482a042aa246210b43` |
+| `release/Top-Famille-Pro-Correctif-Production.zip` | ZIP global (les deux ci-dessus + ce document + le guide + les checksums) | 2,4 Mo (2 377 178 o) | `93181be404ef137b20690fa96eeff2257df1d502945f0a9fb9dfd50085fe4c53` |
 
 Empreintes également dans `release/SHA256SUMS-correctif.txt`.
 

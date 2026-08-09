@@ -763,3 +763,99 @@ matrice complète de tests responsive à 6 largeurs, la mesure Lighthouse et le 
 témoignages temporaires restent à faire ou à trancher — énumérés sans détour au point 3 et au
 point 11 ci-dessus plutôt que déclarés terminés. Aucune fusion dans `main`, aucun déploiement :
 la branche reste ouverte pour validation (PR #9).
+
+## 21. Fidélité visuelle mesurée et performance (9 août 2026, troisième vague)
+
+Méthode et détail complet : `docs/AUDIT-PRODUCTION.md` §3c. Le fichier Claude Design a été
+**exécuté dans Chromium et mesuré** (c'est un bundle auto-décompressant en JavaScript), pas lu.
+
+### 1. Éléments identiques (±8 px sur la hauteur du bloc)
+
+Bandeau tarifaire, réassurance, prestations, « Pourquoi Top-Famille Pro », tarif et exemple
+budgétaire, « Conseils & repères », CTA final. **7 blocs sur 13.**
+
+### 2. Éléments proches (±40 px)
+
+« Pensé pour les professionnels » (−23), difficultés prises en charge (+9), fonctionnement en cinq
+temps (−11), couverture régionale (+39), bloc Audrey (+32). **5 blocs sur 13.**
+
+### 3. Éléments encore différents
+
+Aucun écart de structure : **13 blocs sur 13 présents et dans le même ordre** que la maquette.
+Le seul écart de hauteur restant est le hero (−60 px), expliqué au point 4.
+
+### 4. Différences imposées par l'honnêteté des données
+
+| Élément de la maquette | Traitement |
+|---|---|
+| Note Google 5,0/5 | **Affichée** — confirmée réelle par Emmanuel le 9 août 2026 (CLAUDE.md §5.5 mis à jour). Badge construit aux deux emplacements de la maquette. |
+| Nombre d'avis, URL de la fiche | Non communiqués : jamais inventés. Le badge s'affiche sans eux, comme dans la maquette. |
+| Balisage `Review` / `AggregateRating` | Jamais émis : une note de plateforme tierce ne se balise pas comme note du site (règles Google), et il manquerait le nombre d'avis. |
+| Témoignage « Camille R. » | Rendu **hors production seulement**, avec la mention « Exemple de présentation — contenu de démonstration non publié ». En production : vrais témoignages ACF ou état neutre. |
+| Citation attribuée à Audrey | Non reprise (inventée dans la maquette) — texte descriptif à la troisième personne. |
+| Compteur « 47 avis » | Reste interdit, sans exception. |
+| Photos | Toujours des visuels de stock provisoires ; le portrait d'Audrey porte un alt honnête et une mention « Photo d'illustration ». |
+
+### 5. Résultats des tests
+
+**824 assertions Playwright vertes** (811 + 13 nouvelles dans `tests/fidelite.spec.js`), plus 88
+tests de captures. Lint PHP (74 fichiers) et build : verts. Zéro violation axe-core, zéro erreur
+console, zéro image en 404.
+
+### 6. Lighthouse
+
+| | Performance | Accessibilité | Bonnes pratiques | SEO | CLS |
+|---|---|---|---|---|---|
+| Mobile | **90** | **100** | **100** | **100** | 0,002 |
+| Desktop | **99** | **100** | **100** | **100** | 0,041 |
+
+Tous les objectifs sont atteints. Ils ne l'étaient pas au premier passage (mobile 72, CLS 1,002) :
+les feuilles de style étaient chargées en asynchrone, la page peignait sans style puis se remettait
+entièrement en page. Dispositif retiré — voir `docs/AUDIT-PRODUCTION.md` §3c. Mesures prises sur le
+serveur de développement, sans compression ni cache : LiteSpeed améliorera encore les temps.
+
+### 7. Responsive
+
+Six largeurs mesurées (320, 375, 768, 1024, 1440, 1920) sur la maquette **et** sur WordPress :
+aucun débordement horizontal, aucune image non chargée, aucune erreur JavaScript. Un débordement
+réel de 57 px à 1024 px a été trouvé et corrigé.
+
+### 8. Images intégrées
+
+Hero principal et secondaire, deux cartes de prestation photographiques, trois vignettes
+d'articles, portrait d'Audrey (illustration temporaire), logo header et footer, favicon
+(32/180/512), image Open Graph 1200×630. Toutes en AVIF + WebP + JPEG de secours, avec `srcset`,
+`sizes`, dimensions intrinsèques, lazy-loading hors hero. Ratios alignés sur la maquette.
+
+### 9. Comportement des témoignages selon l'environnement
+
+Prouvé sur **deux instances WordPress réelles** : `development` → carte de démonstration avec
+mention visible ; `production` (valeur par défaut de WordPress) → aucun contenu de démonstration,
+état neutre, mise en page préservée. Test dédié dans `tests/fidelite.spec.js`.
+
+### 10. Captures comparatives
+
+`docs/captures/fidelite-finale/` — maquette et WordPress à 320/375/768/1024/1440/1920, plus page
+prestation, tarifs, zone Dijon, formulaire, article et mentions légales en 375 et 1440.
+
+### 11. Ce qui reste à faire
+
+- Photos définitives (portrait d'Audrey, visuels réels de l'entreprise) : non fournies.
+- Nombre d'avis Google et URL de la fiche : à communiquer, le badge les intègre sans retouche.
+- Modèle étendu des pages prestation (scénarios, planning type, accès et clés) : les six pages
+  partagent le gabarit complet actuel, non enrichi de ces sous-blocs.
+- Page Tarifs : fonctionnelle et conforme au tarif unique, mais son travail visuel n'a pas été
+  poussé au niveau de l'accueil.
+- Mesure Lighthouse sur l'hébergement réel après activation de LiteSpeed.
+
+### 12. Verdict
+
+```
+FIDÉLITÉ CLAUDE DESIGN : PARTIEL — ÉCARTS RESTANTS
+```
+
+L'accueil est fidèle et mesuré (13/13 blocs, 7 identiques, 5 proches, 1 écart assumé), les six
+largeurs et Lighthouse sont au vert, les captures comparatives sont livrées. Le verdict reste
+`PARTIEL` parce que les pages internes (prestation, tarifs) n'ont pas reçu le même niveau de
+travail visuel que l'accueil et que les photos définitives manquent toujours — énumérés au point 11
+plutôt que passés sous silence.

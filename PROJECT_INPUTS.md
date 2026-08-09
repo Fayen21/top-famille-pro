@@ -269,7 +269,7 @@ Correspondances identifiées ✅ (à compléter après relevé exhaustif via le 
 | 3 | Les tarifs relevés sont-ils toujours à jour ? | Audrey | Phase 3 |
 | 4 | Adresse de réception des demandes de devis + configuration SMTP Hostinger | Client | Phase 4 |
 | 5 | E-mails en `@top-famille-pro.fr` ou maintien de `@top-famille.fr` ? | Emmanuel / client | Phase 1 |
-| 6 | URL de la fiche Google Business, note et nombre d'avis réels | Client | Mise en ligne |
+| 6 | ~~Note Google réelle~~ **confirmée 5,0/5 le 9 août 2026** (CLAUDE.md §5.5, badge affiché) — restent à fournir : **nombre d'avis réel** et **URL de la fiche Google Business** | Client | Non bloquant — le badge s'affiche sans eux et les intègre dès leur saisie |
 | 7 | Portrait HD d'Audrey + visuels réels | Client | Mise en ligne |
 | 8 | Validation des 8 communes secondaires du prototype (absentes du site actuel) | Audrey | Phase 3 |
 | 9 | Que devient topentreprise.fr ? | Emmanuel / client | Phase 6 |
