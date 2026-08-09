@@ -59,6 +59,13 @@ function tfp_site_data() {
 			'legal_activity_start_date'   => '01/01/2025',
 			// Formulation complète exacte fournie par le client — à utiliser telle quelle.
 			'legal_full_statement'        => 'TOP-ENTREPRISE, SARL au capital de 600 €, immatriculée au RCS de Dijon sous le numéro 938 472 420, SIRET 938 472 420 00018, code APE 81.21Z, TVA intracommunautaire FR32938472420, siège social : RTE de Gray 650D, 21850 Saint-Apollinaire.',
+			// Directrice de la publication : confirmée le 9 août 2026 (même personne que la gérante).
+			'legal_publication_director'  => 'Audrey Brançon',
+			// Hébergeur — confirmé le 9 août 2026, coordonnées publiques Hostinger.
+			'host_name'      => 'HOSTINGER INTERNATIONAL LIMITED',
+			'host_address'   => '61 Lordou Vironos Street, 6023 Larnaca, Chypre',
+			'host_email'     => 'compliance@hostinger.com',
+			'host_website'   => 'https://www.hostinger.fr/',
 			// Domaine cible (PROJECT_INPUTS.md §1). Filtrable pour les environnements de test/preprod.
 			'origin'          => apply_filters( 'tfp_site_origin', home_url( '/' ) ),
 			'logo_path'       => '/wp-content/themes/topfamillepro/assets/dist/images/logo-horizontal.png',
@@ -73,13 +80,17 @@ function tfp_site_data() {
 				'opens' => '06:00',
 				'closes' => '22:00',
 			),
-			// Grille tarifaire réelle (PROJECT_INPUTS.md §5) — identique partout, jamais différenciée par ville (CLAUDE.md §5.3).
-			'price_entry'          => 24.30,
-			'price_entry_display'  => '24,30 €',
-			'price_autres_locaux'  => 26.00,
-			'price_ponctuel'       => 30.00,
+			// Tarif réel (PROJECT_INPUTS.md §5) — identique partout, jamais différenciée par ville
+			// (CLAUDE.md §5.3). Tarif unique depuis le 9 août 2026 (hotfix fidélité Claude Design) :
+			// remplace l'ancienne grille à trois montants (24,30 € / 26,00 € / 30,00 €) — même
+			// montant en entretien régulier et en intervention ponctuelle, quel que soit le local.
+			'price_unique'         => 27.00,
+			'price_unique_display' => '27 €',
 			'price_gestion'        => 9.00,
 			'price_setup'          => 50.00,
+			'price_km'             => 0.35,
+			'price_km_display'     => '0,35 €',
+			'price_majoration_pct' => 10,
 			'price_currency'       => 'EUR',
 			'price_unit'           => 'heure',
 			// Départements réellement couverts (PROJECT_INPUTS.md §6) — jamais au-delà.
@@ -100,17 +111,16 @@ function tfp_site_data() {
 }
 
 /**
- * Exemple de budget mensuel affiché sur l'accueil (« bureaux réguliers », 12 h/mois).
- * Bureaux = tarif « autres locaux » (26,00 € HT/h), pas le tarif « locations » (24,30 €),
- * qui ne s'applique qu'aux locations meublées — cf. PROJECT_INPUTS.md §5.
- * Exemple non contractuel, calculé (jamais une valeur inventée).
+ * Exemple de budget mensuel affiché sur l'accueil (bureaux réguliers, 12 h/mois).
+ * Tarif unique (27,00 € HT/h) — cf. PROJECT_INPUTS.md §5. Exemple non contractuel, calculé
+ * (jamais une valeur inventée).
  *
  * @return array{hours: int, monthly: float, first_month: float}
  */
 function tfp_home_budget_example() {
 	$site    = tfp_site_data();
 	$hours   = 12;
-	$monthly = ( $hours * $site['price_autres_locaux'] ) + $site['price_gestion'];
+	$monthly = ( $hours * $site['price_unique'] ) + $site['price_gestion'];
 	$first   = $monthly + $site['price_setup'];
 
 	return array(
@@ -121,6 +131,27 @@ function tfp_home_budget_example() {
 }
 
 /**
+ * Table de plusieurs exemples de budget mensuel (page Tarifs, PROJECT_INPUTS.md §5), calculés à
+ * partir du tarif unique — jamais des valeurs codées en dur, pour ne jamais désynchroniser d'un
+ * changement de tarif.
+ *
+ * @return array<int, array{hours: int, monthly: float, first_month: float}>
+ */
+function tfp_budget_examples_table() {
+	$site = tfp_site_data();
+	$rows = array();
+	foreach ( array( 8, 12, 20 ) as $hours ) {
+		$monthly  = ( $hours * $site['price_unique'] ) + $site['price_gestion'];
+		$rows[]   = array(
+			'hours'       => $hours,
+			'monthly'     => $monthly,
+			'first_month' => $monthly + $site['price_setup'],
+		);
+	}
+	return $rows;
+}
+
+/**
  * Formate un montant en euros à la française, sans décimales inutiles.
  *
  * @param float $amount
@@ -128,7 +159,36 @@ function tfp_home_budget_example() {
  */
 function tfp_format_price( $amount ) {
 	$formatted = number_format( $amount, 2, ',', ' ' );
-	// Retire les ",00" superflus (24,30 reste tel quel, 321,00 devient 321).
+	// Retire les ",00" superflus (27,50 reste tel quel, 321,00 devient 321).
 	$formatted = preg_replace( '/,00$/', '', $formatted );
 	return $formatted . ' €';
+}
+
+/**
+ * Formate une date en français (« 9 août 2026 »), sans dépendre du réglage Réglages → Général →
+ * Format de date du site (souvent laissé à l'anglais « F j, Y » par défaut) ni de la locale
+ * WordPress active (WPLANG) : un site sans locale fr_FR configurée afficherait sinon les mois en
+ * anglais malgré un site entièrement rédigé en français. Bug réel trouvé lors du hotfix de
+ * fidélité Claude Design du 9 août 2026 (dates d'articles affichées « Publié le août 9, 2026 »,
+ * mélange de format anglais et de mois traduit).
+ *
+ * @param int|string $post_id_or_timestamp ID de post, ou timestamp Unix.
+ * @param bool       $is_post_id           True (défaut) si le premier argument est un ID de post.
+ * @return string
+ */
+function tfp_format_date_fr( $post_id_or_timestamp, $is_post_id = true ) {
+	$mois = array(
+		1 => 'janvier', 2 => 'février', 3 => 'mars', 4 => 'avril', 5 => 'mai', 6 => 'juin',
+		7 => 'juillet', 8 => 'août', 9 => 'septembre', 10 => 'octobre', 11 => 'novembre', 12 => 'décembre',
+	);
+
+	$timestamp = $is_post_id
+		? (int) get_post_time( 'U', false, $post_id_or_timestamp )
+		: (int) $post_id_or_timestamp;
+
+	$jour       = (int) gmdate( 'j', $timestamp );
+	$mois_index = (int) gmdate( 'n', $timestamp );
+	$annee      = gmdate( 'Y', $timestamp );
+
+	return $jour . ' ' . $mois[ $mois_index ] . ' ' . $annee;
 }

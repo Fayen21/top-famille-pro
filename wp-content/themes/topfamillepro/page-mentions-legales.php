@@ -11,9 +11,11 @@
  * (SIRET, APE, TVA) — l'incohérence relevée en phase 0 sur le SIREN (l'ancien site annonçait
  * 938 472 242, valeur confirmée : 938 472 420) est levée. Toutes les valeurs proviennent de
  * `tfp_site_data()` (includes/site-options.php), jamais recopiées ni recalculées ici.
- * CLAUDE.md §5.1 : ce qui reste manquant (assurance RC pro, coordonnées complètes de
- * l'hébergeur, directrice de la publication) s'écrit [À COMPLÉTER] en clair, jamais une valeur
- * plausible.
+ *
+ * 9 août 2026 (hotfix fidélité Claude Design) : directrice de la publication et coordonnées
+ * complètes de l'hébergeur confirmées, plus aucun [À COMPLÉTER] sur cette page. La section
+ * « Assurance professionnelle » est retirée (sur instruction explicite) plutôt que laissée en
+ * placeholder — l'assureur et le numéro de police restent à transmettre, PROJECT_INPUTS.md §12.
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -59,21 +61,19 @@ get_header();
 				Numéro de TVA intracommunautaire : <?php echo esc_html( $site['legal_tva'] ); ?>.<br>
 				Activité : <?php echo esc_html( lcfirst( $site['legal_activity'] ) ); ?>, débutée le <?php echo esc_html( $site['legal_activity_start_date'] ); ?>.<br>
 				Gérante : <?php echo esc_html( $site['manager'] ); ?>.<br>
-				Directrice de la publication : [À COMPLÉTER].<br>
+				Directrice de la publication : <?php echo esc_html( $site['legal_publication_director'] ); ?>.<br>
 				Contact : <a class="tfp-underline" href="mailto:<?php echo esc_attr( $site['email'] ); ?>"><?php echo esc_html( $site['email'] ); ?></a> — <?php echo esc_html( $site['phone'] ); ?>.
 			</p>
 		</div>
 
 		<div>
-			<h2>Assurance professionnelle</h2>
-			<p style="margin-top:10px;color:var(--color-text-secondary);line-height:1.7">Assureur et numéro de police : [À COMPLÉTER].</p>
-		</div>
-
-		<div>
 			<h2>Hébergement</h2>
 			<p style="margin-top:10px;color:var(--color-text-secondary);line-height:1.7">
-				Ce site est hébergé par Hostinger International Ltd.<br>
-				Adresse et coordonnées complètes de l'hébergeur : [À COMPLÉTER].
+				Le site est hébergé par :<br>
+				<?php echo esc_html( $site['host_name'] ); ?><br>
+				<?php echo esc_html( $site['host_address'] ); ?><br>
+				E-mail : <a class="tfp-underline" href="mailto:<?php echo esc_attr( $site['host_email'] ); ?>"><?php echo esc_html( $site['host_email'] ); ?></a><br>
+				Site : <a class="tfp-underline" href="<?php echo esc_url( $site['host_website'] ); ?>" rel="noopener"><?php echo esc_html( $site['host_website'] ); ?></a>
 			</p>
 		</div>
 

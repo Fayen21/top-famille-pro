@@ -1,6 +1,6 @@
 <?php
 /**
- * Phase 4 — maillage interne : renseigne deux relations laissées vides en phases 2/3.
+ * Phase 4 — maillage interne : renseigne des relations laissées incomplètes en phases 2/3.
  *
  * 1. `villes_prioritaires` sur les 6 prestations : jamais renseigné jusqu'ici (le champ existe et
  *    le gabarit le rendait déjà en chips « Disponible dans ces villes », mais aucune valeur n'y
@@ -10,6 +10,12 @@
  *    article aux prestations concernées. « frequence-bureaux » et « cout-nettoyage-bureaux » sont
  *    spécifiquement sur les bureaux ; « cahier-des-charges-nettoyage » est générique et lié aux 6
  *    prestations.
+ * 3. `prestations_liees` sur les 26 zones (8 départements + 10 villes + 8 communes) : les scripts
+ *    de phase 2/3 ne pouvaient lier chaque zone qu'à « bureaux » (seule prestation existant au
+ *    moment où phase 2 s'exécute dans l'ordre d'installation) — bug réel trouvé lors du hotfix de
+ *    fidélité Claude Design du 9 août 2026 (les pages de zone ne maillaient qu'une seule
+ *    prestation sur six). Ce script s'exécute en dernier, quand les 6 prestations existent déjà :
+ *    il réécrit `prestations_liees` sur les 26 zones avec les 6 prestations, dans l'ordre.
  *
  * Usage : wp eval-file bin/seed-phase4-maillage.php
  */
@@ -71,5 +77,20 @@ if ( $bureaux ) {
 	tfp_seed4_link_article_prestations( 'cout-nettoyage-bureaux', array( $bureaux->ID ) );
 }
 tfp_seed4_link_article_prestations( 'cahier-des-charges-nettoyage', $all_prestation_ids );
+
+/* ------------------------------------------------------------------ */
+/* 3. prestations_liees sur les 26 zones — corrige le lien unique à     */
+/*    « bureaux » hérité de l'ordre d'exécution des scripts phase 2/3   */
+/* ------------------------------------------------------------------ */
+
+if ( empty( $all_prestation_ids ) ) {
+	echo "  ATTENTION : aucune prestation trouvée — les scripts phase 2/3 ont-ils été exécutés ?\n";
+} else {
+	$zones = get_posts( array( 'post_type' => 'zone', 'numberposts' => -1 ) );
+	foreach ( $zones as $zone ) {
+		tfp_seed4_set_field( 'prestations_liees', $all_prestation_ids, $zone->ID );
+	}
+	echo '  prestations_liees -> ' . count( $zones ) . ' zone(s) (' . count( $all_prestation_ids ) . " prestations chacune)\n";
+}
 
 echo "=== Terminé ===\n";

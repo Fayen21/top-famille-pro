@@ -84,9 +84,9 @@ get_header();
 	<span style="font-size:13px;font-weight:600;color:var(--color-primary)"><?php echo esc_html( $cat_name ); ?></span>
 	<h1 style="margin-top:8px"><?php the_title(); ?></h1>
 	<p style="margin-top:8px;font-size:13.5px;color:var(--color-text-tertiary)">
-		Publié le <?php echo esc_html( get_the_date( '' , $post_id ) ); ?>
-		<?php if ( get_the_modified_date( '', $post_id ) !== get_the_date( '', $post_id ) ) : ?>
-			· mis à jour le <?php echo esc_html( get_the_modified_date( '', $post_id ) ); ?>
+		Publié le <?php echo esc_html( tfp_format_date_fr( $post_id ) ); ?>
+		<?php if ( get_the_modified_date( 'Ymd', $post_id ) !== get_the_date( 'Ymd', $post_id ) ) : ?>
+			· mis à jour le <?php echo esc_html( tfp_format_date_fr( (int) get_post_modified_time( 'U', false, $post_id ), false ) ); ?>
 		<?php endif; ?>
 	</p>
 

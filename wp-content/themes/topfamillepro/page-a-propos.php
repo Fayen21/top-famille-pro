@@ -6,8 +6,9 @@
  * capital, APE, TVA) tant que le Kbis ne les a pas confirmées (STATUS.md §6, bloqueur de mise en
  * ligne) — ce n'est pas l'objet de cette page de toute façon, réservé aux mentions légales une
  * fois les données confirmées. Même mécanisme de portrait que l'accueil
- * (tfp_get_audrey_photo_url(), includes/customizer.php) : pas de photo de stock présentée comme
- * Audrey, aucune biographie inventée.
+ * (tfp_get_audrey_photo_url() / tfp_audrey_photo_is_real(), includes/customizer.php) : visuel
+ * d'illustration temporaire avec alt honnête tant que la vraie photo n'est pas fournie, jamais
+ * présenté comme Audrey, aucune biographie inventée.
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -47,10 +48,13 @@ get_header();
 			<?php if ( $audrey_photo ) : ?>
 				<img
 					src="<?php echo esc_url( $audrey_photo ); ?>"
-					alt="<?php echo esc_attr( $site['manager'] . ', gérante de ' . $site['brand_name'] ); ?>"
+					alt="<?php echo esc_attr( tfp_audrey_photo_is_real() ? ( $site['manager'] . ', gérante de ' . $site['brand_name'] ) : 'Photo d’illustration temporaire — portrait définitif à venir' ); ?>"
 					style="width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:var(--radius-xl);background:var(--color-border)"
 					loading="lazy"
 				>
+				<?php if ( ! tfp_audrey_photo_is_real() ) : ?>
+					<p style="margin-top:10px;font-size:12.5px;color:var(--color-text-tertiary);text-align:center">Photo d’illustration</p>
+				<?php endif; ?>
 			<?php else : ?>
 				<div style="width:100%;aspect-ratio:4/5;border-radius:var(--radius-xl);background:linear-gradient(160deg,var(--color-primary),var(--color-navy));display:flex;align-items:center;justify-content:center">
 					<span style="font-family:var(--font-heading);font-weight:800;font-size:96px;color:var(--color-turquoise-pale)" aria-hidden="true"><?php echo esc_html( mb_substr( $first_name, 0, 1 ) ); ?></span>

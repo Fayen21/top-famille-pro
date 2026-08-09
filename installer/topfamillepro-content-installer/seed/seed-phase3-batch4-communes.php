@@ -66,6 +66,10 @@ $cote_dor_term_id = is_array( $cote_dor_term ) ? (int) $cote_dor_term['term_id']
 $bureaux = get_page_by_path( 'bureaux', OBJECT, 'prestation' );
 $bureaux_id = $bureaux ? $bureaux->ID : 0;
 
+// prestations_liees ci-dessous n'est qu'une valeur initiale (seule « bureaux » existe à ce
+// stade de l'installation) : bin/seed-phase4-maillage.php la complète avec les 6 prestations
+// une fois qu'elles existent toutes (bug réel corrigé au hotfix du 9 août 2026).
+
 $commune_ids = array();
 
 /**

@@ -105,8 +105,8 @@ get_header();
 <section class="tfp-container tfp-section--tight">
 	<div class="tfp-price-band">
 		<span class="tfp-price-band__value">
-			<strong>à partir de <?php echo esc_html( $site['price_entry_display'] ); ?> HT/h</strong>
-			<span>tarif indiqué avant le devis</span>
+			<strong><?php echo esc_html( $site['price_unique_display'] ); ?> HT/h</strong>
+			<span>tarif unique, indiqué avant le devis</span>
 		</span>
 		<?php tfp_check_item( 'Devis gratuit sous 24 h' ); ?>
 		<?php tfp_check_item( 'Intervention régulière ou ponctuelle' ); ?>
@@ -331,10 +331,8 @@ get_header();
 		<div>
 			<h2 style="font-size:clamp(24px,3vw,34px)">Le tarif, en toute transparence</h2>
 			<p style="margin-top:12px;font-size:16px;color:var(--color-text-secondary)">
-				<?php echo esc_html( tfp_format_price( $site['price_entry'] ) ); ?> HT/heure pour les locations meublées,
-				<?php echo esc_html( tfp_format_price( $site['price_autres_locaux'] ) ); ?> HT/heure pour les autres locaux, en régulier.
-				En ponctuel : <?php echo esc_html( tfp_format_price( $site['price_ponctuel'] ) ); ?> HT/heure.
-				S'ajoutent <?php echo esc_html( tfp_format_price( $site['price_gestion'] ) ); ?> HT/mois de gestion, <?php echo esc_html( tfp_format_price( $site['price_setup'] ) ); ?> HT de frais de mise en place le cas échéant, une majoration de 10 % (dimanche, jours fériés, nuit) et 0,35 € HT/km d'indemnités kilométriques si applicable.
+				<?php echo esc_html( tfp_format_price( $site['price_unique'] ) ); ?> HT/heure — tarif unique en régulier comme en ponctuel, quel que soit le type de local.
+				S'ajoutent <?php echo esc_html( tfp_format_price( $site['price_gestion'] ) ); ?> HT/mois de gestion, <?php echo esc_html( tfp_format_price( $site['price_setup'] ) ); ?> HT de frais de mise en place le cas échéant, une majoration de <?php echo esc_html( $site['price_majoration_pct'] ); ?> % (dimanche, jours fériés, nuit) et <?php echo esc_html( $site['price_km_display'] ); ?> HT/km d'indemnités kilométriques si applicable.
 			</p>
 			<a href="<?php echo esc_url( home_url( '/tarifs/' ) ); ?>" class="tfp-eyebrow-link">Page Tarifs détaillée →</a>
 		</div>

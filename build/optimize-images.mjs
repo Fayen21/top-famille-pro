@@ -76,6 +76,15 @@ const SLOTS = [
     widths: [480, 760, 960],
     alt: 'Intervention de nettoyage professionnel avec équipement de protection (photo d’illustration)',
   },
+  {
+    // Visuel temporaire (accueil + À propos) tant que le portrait authentique d'Audrey n'est pas
+    // fourni — jamais présenté comme Audrey (alt honnête défini dans les gabarits, pas ici),
+    // CLAUDE.md §5.6. Centralisé sur ce seul slug : remplacer le fichier source suffit.
+    slug: 'audrey-placeholder',
+    src: 'portrait-stock-a-propos.jpg',
+    widths: [320, 480, 640],
+    alt: 'Photo d’illustration temporaire — portrait définitif à venir',
+  },
 ];
 
 async function ensureDir(dir) {

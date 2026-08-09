@@ -4,11 +4,12 @@
  * meublées, ponctuel). Bureaux a été créée en phase 2 (bin/seed-phase2-content.php).
  *
  * Contenu repris du prototype (reference/Top-Famille-Pro-HANDOFF-READY.html), corrigé selon
- * CLAUDE.md §9 : tous les avis de démonstration retirés, tarif réel appliqué (aucun tarif fictif
- * « 27 € HT/h » résiduel — la FAQ « ponctuel » du prototype affirmait à tort un tarif identique au
- * régulier ; en réalité le ponctuel est à 30,00 € HT/h contre 24,30/26,00 € HT/h en régulier,
- * PROJECT_INPUTS.md §5), aucune donnée de délai/distance inventée. Titles vérifiés ≤ 65 caractères
- * (docs/INVENTAIRE-ROUTES.md signalait cabinets/copropriétés/meublés en dépassement).
+ * CLAUDE.md §9 : tous les avis de démonstration retirés, tarif réel appliqué (27,00 € HT/h, tarif
+ * unique en régulier comme en ponctuel — mis à jour le 9 août 2026, hotfix fidélité Claude Design ;
+ * remplace l'ancienne grille à trois montants 24,30/26,00/30,00 € qui avait initialement corrigé le
+ * tarif fictif du prototype, PROJECT_INPUTS.md §5), aucune donnée de délai/distance inventée.
+ * Titles vérifiés ≤ 65 caractères (docs/INVENTAIRE-ROUTES.md signalait cabinets/copropriétés/
+ * meublés en dépassement).
  *
  * Usage : wp eval-file bin/seed-phase3-batch1-prestations.php
  * Idempotent (mêmes fonctions utilitaires que bin/seed-phase2-content.php).
@@ -237,7 +238,7 @@ tfp_seed_set_field( 'exclusions', "Hors prestation : évacuation de gravats et d
 tfp_seed_set_field( 'materiel_rappel', true, $ponctuel_id );
 tfp_seed_faq( 'faq', array(
 	array( 'q' => 'Intervenez-vous juste après la fin des travaux ?', 'a' => "Oui, une fois les corps de métier partis. Nous recommandons un délai court pour éviter que la poussière ne se redépose sur les surfaces déjà traitées." ),
-	array( 'q' => 'Le nettoyage après travaux est-il plus cher qu\'un entretien courant ?', 'a' => "Le taux horaire du ponctuel (30,00 € HT/h) est supérieur à celui du régulier (24,30 à 26,00 € HT/h selon le type de local), et c'est en général aussi le volume d'heures qui est plus important, selon l'ampleur du chantier — voir la page Tarifs pour le détail complet." ),
+	array( 'q' => 'Le nettoyage après travaux est-il plus cher qu\'un entretien courant ?', 'a' => "Le taux horaire est le même (27,00 € HT/h, tarif unique en régulier comme en ponctuel) — c'est en général le volume d'heures qui est plus important, selon l'ampleur du chantier, pas le tarif horaire. Voir la page Tarifs pour le détail complet." ),
 	array( 'q' => "Prenez-vous en charge l'évacuation des déchets de chantier ?", 'a' => "Non. L'évacuation de gravats et de déchets volumineux ne fait pas partie de la prestation. Nous traitons la poussière et les résidus de surface, une fois les déchets évacués par le chantier." ),
 	array( 'q' => "Comment estimez-vous le nombre d'heures nécessaires ?", 'a' => "À partir de la surface, du nombre de pièces, de la nature des résidus et de l'état constaté. Nous demandons des photos, ou une visite lorsque c'est possible. L'estimation est donnée sous forme de fourchette d'heures." ),
 	array( 'q' => 'Intervenez-vous pour une fin de bail ou un état des lieux ?', 'a' => "Oui, c'est un cas fréquent. Nous ne nous engageons pas sur le résultat d'un état des lieux, qui dépend du bailleur : nous nous engageons sur un périmètre de nettoyage défini et sur le temps consacré." ),

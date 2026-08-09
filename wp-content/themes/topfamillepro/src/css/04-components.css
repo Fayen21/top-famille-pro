@@ -470,8 +470,11 @@
 }
 
 .tfp-logo img {
-  height: 36px;
-  width: auto;
+  /* Taille de la maquette Claude Design (reference/Top-Famille-Pro-HANDOFF-READY.html, header) :
+     clamp(120px, 32vw, 155px) sur ordinateur — pas 36px de hauteur (~68px de large), corrigé lors
+     du hotfix de fidélité du 9 août 2026. */
+  width: clamp(120px, 32vw, 155px);
+  height: auto;
 }
 
 .tfp-nav {

@@ -35,8 +35,6 @@ test.describe('Informations juridiques — mentions légales', () => {
 	test('SIRET, code APE et TVA ne sont plus marqués manquants', async ({ page }) => {
 		await page.goto('/mentions-legales/');
 		const text = await page.locator('body').innerText();
-		// [À COMPLÉTER] peut encore apparaître pour l'assurance RC pro, l'hébergeur ou la
-		// directrice de publication (non confirmés) — mais plus juste après ces trois libellés.
 		expect(text).not.toMatch(/SIRET[^\n]*\[À COMPLÉTER\]/i);
 		expect(text).not.toMatch(/APE[^\n]*\[À COMPLÉTER\]/i);
 		expect(text).not.toMatch(/TVA[^\n]*\[À COMPLÉTER\]/i);
@@ -51,10 +49,23 @@ test.describe('Informations juridiques — mentions légales', () => {
 		expect(text).not.toContain('MICHELIN');
 	});
 
-	test('ce qui reste réellement manquant reste marqué [À COMPLÉTER]', async ({ page }) => {
+	test('hébergeur, directrice de la publication : plus aucun placeholder (9 août 2026)', async ({ page }) => {
 		await page.goto('/mentions-legales/');
 		const text = await page.locator('body').innerText();
-		expect(text, 'assurance RC pro non confirmée').toContain('[À COMPLÉTER]');
+		// Confirmé le 9 août 2026 : coordonnées complètes de l'hébergeur et directrice de la
+		// publication. Plus aucun [À COMPLÉTER] ne doit rester sur cette page.
+		expect(text).not.toContain('[À COMPLÉTER]');
+		expect(text).toMatch(/HOSTINGER INTERNATIONAL LIMITED/);
+		expect(text).toMatch(/Larnaca/);
+		expect(text).toMatch(/compliance@hostinger\.com/);
+		expect(text).toMatch(/Directrice de la publication\s*:\s*Audrey Brançon/);
+	});
+
+	test('la section « Assurance professionnelle » est retirée (sur instruction explicite)', async ({ page }) => {
+		await page.goto('/mentions-legales/');
+		const text = await page.locator('body').innerText();
+		expect(text).not.toMatch(/Assurance professionnelle/i);
+		expect(text).not.toMatch(/numéro de police/i);
 	});
 });
 

@@ -15,7 +15,17 @@ html {
   -webkit-text-size-adjust: 100%;
 }
 
-body {
+/**
+ * Sélecteurs préfixés par `body.tfp-body` (et non le simple élément) : le thème parent
+ * GeneratePress peut injecter son propre CSS dynamique (réglages du Customizer, ajouté via
+ * `wp_add_inline_style()`) après la feuille du thème enfant dans le <head>, avec une spécificité
+ * égale à ces règles de base — sur des sélecteurs de même poids, c'est alors l'ordre d'impression
+ * qui gagne, pas la dépendance déclarée. Cette double classe (spécificité 0,0,2 au lieu de 0,0,1)
+ * fait gagner nos règles typographiques et de navigation quel que soit cet ordre, sans recourir à
+ * `!important`. `body.tfp-body` est toujours vrai ici : la classe est posée par
+ * `body_class( 'tfp-body' )` dans header.php sur chaque gabarit du thème.
+ */
+body.tfp-body {
   font-family: var(--font-body);
   color: var(--color-text);
   background: var(--color-bg);
@@ -24,12 +34,26 @@ body {
   font-size: var(--fs-base);
 }
 
-h1, h2, h3, h4, h5, h6 {
+body.tfp-body h1,
+body.tfp-body h2,
+body.tfp-body h3,
+body.tfp-body h4,
+body.tfp-body h5,
+body.tfp-body h6 {
   font-family: var(--font-heading);
   line-height: var(--lh-heading);
   letter-spacing: var(--ls-heading);
   text-wrap: balance;
   font-weight: var(--fw-bold);
+}
+
+/* `color` volontairement hors du bloc ci-dessus, à la spécificité d'origine (0,0,1) : plusieurs
+   sections (.tfp-section--navy h2, .tfp-section--primary h2…) surchargent la couleur des titres
+   selon le fond, avec une spécificité de (0,1,1) — les faire concourir avec une règle de base à
+   (0,1,2) cassait ces surcharges (texte sombre sur fond sombre, échec axe-core color-contrast
+   trouvé lors du hotfix du 9 août 2026). Le risque GeneratePress visé par body.tfp-body porte sur
+   la police, pas sur la couleur des titres. */
+h1, h2, h3, h4, h5, h6 {
   color: var(--color-text);
 }
 
@@ -42,26 +66,42 @@ img, picture, svg {
   max-width: 100%;
 }
 
+/* `color` volontairement hors de la règle `a` ci-dessous, même raison que pour les titres
+   ci-dessus : de nombreux composants (.tfp-btn--primary, .tfp-btn--on-dark…) sont des <a> dont la
+   couleur de texte dépend du fond du bouton, avec une spécificité d'une seule classe (0,1,0) —
+   une règle de base `a{color}` boostée à (0,1,2) les emportait à tort (texte de la même couleur
+   que le fond du bouton, boutons illisibles, échec axe-core color-contrast trouvé lors du hotfix
+   du 9 août 2026). */
 a {
   color: var(--color-primary);
-  text-decoration: none;
-  transition: color var(--transition-fast);
 }
 
 a:hover {
   color: var(--color-primary-hover);
 }
 
-a.tfp-underline {
+body.tfp-body a {
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+body.tfp-body a.tfp-underline {
   text-decoration: underline;
   text-underline-offset: 3px;
 }
 
+/* `background`/`border` volontairement hors de la règle boostée : mêmes raisons que `color`
+   ci-dessus — .tfp-btn--primary { background: var(--color-primary) } (0,1,0) perdait contre une
+   règle `button{background}` boostée à (0,1,2), boutons rendus quasi invisibles (fond presque
+   blanc, texte blanc) — échec axe-core color-contrast trouvé lors du hotfix du 9 août 2026. */
 button {
-  font-family: inherit;
-  cursor: pointer;
   background: none;
   border: none;
+}
+
+body.tfp-body button {
+  font-family: inherit;
+  cursor: pointer;
 }
 
 ul, ol {
@@ -84,7 +124,9 @@ fieldset {
   min-width: 0;
 }
 
-input, select, textarea {
+body.tfp-body input,
+body.tfp-body select,
+body.tfp-body textarea {
   font-family: inherit;
   font-size: inherit;
 }

@@ -154,7 +154,7 @@ function tfp_render_jsonld( $seo, $canonical ) {
 			'addressCountry'  => $site['address_country'],
 		),
 		'areaServed'  => $area_served,
-		'priceRange'  => 'À partir de ' . $site['price_entry_display'] . ' HT/heure',
+		'priceRange'  => $site['price_unique_display'] . ' HT/heure (tarif unique)',
 		'openingHoursSpecification' => array(
 			'@type'     => 'OpeningHoursSpecification',
 			'dayOfWeek' => $site['opening_hours']['days'],

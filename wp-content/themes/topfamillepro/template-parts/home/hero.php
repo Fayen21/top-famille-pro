@@ -56,8 +56,8 @@ $reassurance = tfp_reassurance_data();
 			<?php tfp_picture( 'hero-secondary', array( 'sizes' => '220px' ) ); ?>
 		</div>
 		<div class="tfp-hero__price-tag">
-			<div class="tfp-hero__price-tag-value">à partir de <?php echo esc_html( $site['price_entry_display'] ); ?><span class="tfp-hero__price-tag-unit"> HT/h</span></div>
-			<div class="tfp-hero__price-tag-note">régulier ou ponctuel, selon le type de local</div>
+			<div class="tfp-hero__price-tag-value"><?php echo esc_html( $site['price_unique_display'] ); ?><span class="tfp-hero__price-tag-unit"> HT/h</span></div>
+			<div class="tfp-hero__price-tag-note">tarif unique, régulier ou ponctuel</div>
 		</div>
 	</div>
 </section>

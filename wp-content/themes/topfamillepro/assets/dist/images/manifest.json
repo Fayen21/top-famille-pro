@@ -418,5 +418,56 @@
         }
       ]
     }
+  },
+  "audrey-placeholder": {
+    "slug": "audrey-placeholder",
+    "alt": "Photo d’illustration temporaire — portrait définitif à venir",
+    "lcp": false,
+    "width": 640,
+    "height": 958,
+    "variants": {
+      "avif": [
+        {
+          "width": 320,
+          "file": "audrey-placeholder-320.avif"
+        },
+        {
+          "width": 480,
+          "file": "audrey-placeholder-480.avif"
+        },
+        {
+          "width": 640,
+          "file": "audrey-placeholder-640.avif"
+        }
+      ],
+      "webp": [
+        {
+          "width": 320,
+          "file": "audrey-placeholder-320.webp"
+        },
+        {
+          "width": 480,
+          "file": "audrey-placeholder-480.webp"
+        },
+        {
+          "width": 640,
+          "file": "audrey-placeholder-640.webp"
+        }
+      ],
+      "jpg": [
+        {
+          "width": 320,
+          "file": "audrey-placeholder-320.jpg"
+        },
+        {
+          "width": 480,
+          "file": "audrey-placeholder-480.jpg"
+        },
+        {
+          "width": 640,
+          "file": "audrey-placeholder-640.jpg"
+        }
+      ]
+    }
   }
 }

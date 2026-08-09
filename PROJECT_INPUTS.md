@@ -117,19 +117,40 @@ Locaux commerciaux · entreprises de services · cabinets libéraux (avocat, not
 
 ## 5. Tarifs réels ✅
 
-Relevés sur topentreprise.fr/tarifs-aides. ⛔ **À faire confirmer par Audrey** : ces montants peuvent avoir évolué depuis la dernière mise à jour du site Wix.
+**Mise à jour du 9 août 2026 (hotfix fidélité Claude Design) : tarif unique.** Remplace
+intégralement l'ancienne grille à trois montants (24,30 € / 26,00 € / 30,00 € HT/h) relevée sur
+topentreprise.fr/tarifs-aides, ci-dessous conservée barrée pour traçabilité.
 
 | Prestation | Tarif |
 |---|---|
-| Ménage régulier — locations | 24,30 € HT/heure |
-| Ménage régulier — autres locaux | 26,00 € HT/heure |
-| Ménage ponctuel (≤ 5 interventions) | 30,00 € HT/heure |
-| Majoration dimanche, jours fériés, nuit (22h–7h) | +10 % |
-| Indemnités kilométriques (véhicule personnel de l'intervenant) | 0,35 € HT/km |
+| **Nettoyage, régulier comme ponctuel, tout type de local, toute la région** | **27,00 € HT/heure** |
+| Majoration dimanche, jours fériés, nuit (22h–7h), si applicable | +10 % |
+| Indemnités kilométriques (véhicule personnel de l'intervenant), si applicables | 0,35 € HT/km |
 | Frais de mise en place | 50,00 € HT, une seule fois |
 | Frais de gestion mensuels | 9,00 € HT/mois |
 
-**Point d'entrée à afficher : « à partir de 24,30 € HT/heure ».**
+**Formulation à utiliser partout : « 27 € HT/h — tarif unique en régulier comme en ponctuel, dans
+toute la Bourgogne-Franche-Comté ».**
+
+Exemples de budget mensuel (heures × 27 € + 9 € de frais de gestion ; premier mois + 50 € de mise
+en place) :
+
+| Volume mensuel | Mois courant | Premier mois |
+|---|---|---|
+| 8 h/mois | 8 × 27 € + 9 € = **225 € HT** | 225 € + 50 € = **275 € HT** |
+| 12 h/mois | 12 × 27 € + 9 € = **333 € HT** | 333 € + 50 € = **383 € HT** |
+| 20 h/mois | 20 × 27 € + 9 € = **549 € HT** | 549 € + 50 € = **599 € HT** |
+
+<details>
+<summary>Ancienne grille (remplacée le 9 août 2026, conservée pour traçabilité)</summary>
+
+| Prestation | Tarif |
+|---|---|
+| ~~Ménage régulier — locations~~ | ~~24,30 € HT/heure~~ |
+| ~~Ménage régulier — autres locaux~~ | ~~26,00 € HT/heure~~ |
+| ~~Ménage ponctuel (≤ 5 interventions)~~ | ~~30,00 € HT/heure~~ |
+
+</details>
 
 > ⚠️ Le prototype affiche des blocs tarifaires par ville. **Ces tarifs sont régionaux, pas locaux** : afficher un prix différent selon la ville serait faux. Utiliser la même grille partout, et faire porter la différenciation locale sur autre chose (types de locaux du secteur, contexte, FAQ).
 
@@ -244,7 +265,7 @@ Correspondances identifiées ✅ (à compléter après relevé exhaustif via le 
 | # | Question | Pour qui | Bloque |
 |---|---|---|---|
 | 1 | ~~**Kbis** : SIRET exact, capital, APE, TVA, date d'immatriculation — et lever l'incohérence sur le SIREN~~ | Client | **Résolu phase 7** — voir §2 |
-| 2 | Assureur RC pro (nom + police) pour justifier l'affirmation « nous sommes assurés » | Client | Mise en ligne |
+| 2 | Assureur RC pro (nom + police) — la section « Assurance professionnelle » a été retirée des mentions légales le 9 août 2026 (sur instruction explicite, plutôt que laissée en placeholder) ; si l'information est un jour transmise, une section pourra être réintroduite | Client | Non bloquant — section absente plutôt qu'un `[À COMPLÉTER]` visible |
 | 3 | Les tarifs relevés sont-ils toujours à jour ? | Audrey | Phase 3 |
 | 4 | Adresse de réception des demandes de devis + configuration SMTP Hostinger | Client | Phase 4 |
 | 5 | E-mails en `@top-famille-pro.fr` ou maintien de `@top-famille.fr` ? | Emmanuel / client | Phase 1 |

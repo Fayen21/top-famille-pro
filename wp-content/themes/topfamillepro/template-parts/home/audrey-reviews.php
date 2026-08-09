@@ -2,10 +2,11 @@
 /**
  * 8. Audrey et avis — fusionne les deux blocs « Pourquoi Top-Famille Pro » et « Avis + Audrey »
  * du prototype (brief phase 1 §6 : redondant de garder deux blocs de réassurance/confiance
- * séparés). Pas de portrait de stock présenté comme Audrey (brief §5/§7, docs/DONNEES-FICTIVES.md) :
- * une pastille avec son initiale tient lieu de visuel tant que la photo réelle n'est pas fournie
- * (remplaçable en un geste depuis Apparence → Personnaliser → Équipe, includes/customizer.php,
- * sans dépendre d'ACF).
+ * séparés). Pas de portrait de stock présenté COMME Audrey (CLAUDE.md §5.6) : un visuel
+ * d'illustration temporaire (assets/dist/images, slug 'audrey-placeholder') tient lieu de photo
+ * tant que la vraie n'est pas fournie, avec un alt honnête et une mention visible « Photo
+ * d'illustration » — cf. tfp_audrey_photo_is_real(), includes/customizer.php. Remplaçable en un
+ * geste depuis Apparence → Personnaliser → Équipe dès que la vraie photo est disponible.
  * Aucune citation inventée en son nom (brief §7 : « n'invente aucune information biographique
  * sur Audrey ») — le texte reste descriptif, à la troisième personne.
  */
@@ -34,10 +35,13 @@ $audrey_photo    = tfp_get_audrey_photo_url();
 			<?php if ( $audrey_photo ) : ?>
 				<img
 					src="<?php echo esc_url( $audrey_photo ); ?>"
-					alt="<?php echo esc_attr( $site['manager'] . ', gérante de ' . $site['brand_name'] ); ?>"
+					alt="<?php echo esc_attr( tfp_audrey_photo_is_real() ? ( $site['manager'] . ', gérante de ' . $site['brand_name'] ) : 'Photo d’illustration temporaire — portrait définitif à venir' ); ?>"
 					style="width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:var(--radius-xl);background:var(--color-border)"
 					loading="lazy"
 				>
+				<?php if ( ! tfp_audrey_photo_is_real() ) : ?>
+					<p style="margin-top:10px;font-size:12.5px;color:var(--color-text-tertiary);text-align:center">Photo d’illustration</p>
+				<?php endif; ?>
 			<?php else : ?>
 				<div style="width:100%;aspect-ratio:4/5;border-radius:var(--radius-xl);background:linear-gradient(160deg,var(--color-primary),var(--color-navy));display:flex;align-items:center;justify-content:center">
 					<span style="font-family:var(--font-heading);font-weight:800;font-size:96px;color:var(--color-turquoise-pale)" aria-hidden="true"><?php echo esc_html( mb_substr( $first_name, 0, 1 ) ); ?></span>

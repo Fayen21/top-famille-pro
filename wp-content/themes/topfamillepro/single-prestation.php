@@ -197,9 +197,7 @@ get_header();
 	<div class="tfp-container">
 		<h2>Le tarif, en toute transparence</h2>
 		<p style="margin-top:12px;font-size:16px;color:var(--color-text-secondary);max-width:760px">
-			<?php echo esc_html( tfp_format_price( $site['price_entry'] ) ); ?> HT/heure pour les locations meublées,
-			<?php echo esc_html( tfp_format_price( $site['price_autres_locaux'] ) ); ?> HT/heure pour les autres locaux, en entretien régulier.
-			En intervention ponctuelle : <?php echo esc_html( tfp_format_price( $site['price_ponctuel'] ) ); ?> HT/heure.
+			<?php echo esc_html( tfp_format_price( $site['price_unique'] ) ); ?> HT/heure — tarif unique en entretien régulier comme en intervention ponctuelle, quel que soit le type de local.
 			Frais de gestion <?php echo esc_html( tfp_format_price( $site['price_gestion'] ) ); ?> HT/mois et frais de mise en place
 			<?php echo esc_html( tfp_format_price( $site['price_setup'] ) ); ?> HT, précisés au devis.
 		</p>

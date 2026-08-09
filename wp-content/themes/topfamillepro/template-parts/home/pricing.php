@@ -1,8 +1,8 @@
 <?php
 /**
- * 6. Tarifs — grille réelle (PROJECT_INPUTS.md §5), identique partout, jamais différenciée
- * par ville (CLAUDE.md §5.3). Le prototype affichait un unique tarif fictif de 27 € HT/h :
- * corrigé ici en trois tarifs réels selon le type de local et le régime (régulier/ponctuel).
+ * 6. Tarifs — tarif réel (PROJECT_INPUTS.md §5), identique partout, jamais différencié par
+ * ville (CLAUDE.md §5.3). Tarif unique 27 € HT/h depuis le 9 août 2026 (hotfix fidélité Claude
+ * Design), qui remplace l'ancienne grille à trois montants.
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -17,9 +17,7 @@ $budget = tfp_home_budget_example();
 		<div>
 			<h2>Un tarif clair, affiché avant le devis</h2>
 			<p style="margin-top:14px;font-size:17px;color:var(--color-text-secondary)">
-				<?php echo esc_html( tfp_format_price( $site['price_entry'] ) ); ?> HT/heure pour les locations meublées,
-				<?php echo esc_html( tfp_format_price( $site['price_autres_locaux'] ) ); ?> HT/heure pour les autres locaux, en entretien régulier.
-				En intervention ponctuelle : <?php echo esc_html( tfp_format_price( $site['price_ponctuel'] ) ); ?> HT/heure.
+				<?php echo esc_html( tfp_format_price( $site['price_unique'] ) ); ?> HT/heure — tarif unique en régulier comme en ponctuel, dans toute la <?php echo esc_html( $site['address_region'] ); ?>.
 				Le cas échéant, nous y ajoutons <?php echo esc_html( tfp_format_price( $site['price_gestion'] ) ); ?> HT/mois de frais de gestion
 				et <?php echo esc_html( tfp_format_price( $site['price_setup'] ) ); ?> HT de frais de mise en place — toujours indiqués à l'avance.
 			</p>
@@ -34,8 +32,8 @@ $budget = tfp_home_budget_example();
 		</div>
 
 		<div class="tfp-price-panel">
-			<div class="tfp-price-panel__label">Tarif d'entrée</div>
-			<div class="tfp-price-panel__value">à partir de <?php echo esc_html( $site['price_entry_display'] ); ?><span> HT/h</span></div>
+			<div class="tfp-price-panel__label">Tarif unique</div>
+			<div class="tfp-price-panel__value"><?php echo esc_html( $site['price_unique_display'] ); ?><span> HT/h</span></div>
 			<div class="tfp-price-panel__sub">Régulier ou ponctuel · devis gratuit sous 24 h.</div>
 			<?php
 			tfp_button(

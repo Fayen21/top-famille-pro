@@ -180,10 +180,8 @@ get_header();
 	<div class="tfp-container">
 		<h2>Le tarif, en toute transparence</h2>
 		<p style="margin-top:12px;font-size:16px;color:var(--color-text-secondary);max-width:760px">
-			<?php echo esc_html( tfp_format_price( $site['price_entry'] ) ); ?> HT/heure pour les locations meublées,
-			<?php echo esc_html( tfp_format_price( $site['price_autres_locaux'] ) ); ?> HT/heure pour les autres locaux, en entretien régulier.
-			En intervention ponctuelle : <?php echo esc_html( tfp_format_price( $site['price_ponctuel'] ) ); ?> HT/heure — identique à toute la région
-			(<a href="<?php echo esc_url( home_url( '/tarifs/' ) ); ?>" class="tfp-underline">grille tarifaire complète</a>). Les éventuelles indemnités
+			<?php echo esc_html( tfp_format_price( $site['price_unique'] ) ); ?> HT/heure — tarif unique en régulier comme en ponctuel, identique à toute la région
+			(<a href="<?php echo esc_url( home_url( '/tarifs/' ) ); ?>" class="tfp-underline">détail complet</a>). Les éventuelles indemnités
 			kilométriques dépendent de l'adresse des locaux et sont précisées dans le devis.
 		</p>
 	</div>
