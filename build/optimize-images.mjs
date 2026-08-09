@@ -70,6 +70,12 @@ const SLOTS = [
     widths: [320, 480, 640],
     alt: 'Bureau avec documents et ordinateur (photo d’illustration)',
   },
+  {
+    slug: 'service-generic',
+    src: 'intervenante-stock-materiel.jpg',
+    widths: [480, 760, 960],
+    alt: 'Intervention de nettoyage professionnel avec équipement de protection (photo d’illustration)',
+  },
 ];
 
 async function ensureDir(dir) {
@@ -144,6 +150,32 @@ async function processLogo() {
   console.log('  logo-horizontal.png (recompressé, 140px)');
 }
 
+/**
+ * Favicon et icône Open Graph dédiée, à partir du logo carré (assets/logo/logo-square.jpg).
+ * Absent jusqu'ici (aucune balise <link rel="icon"> n'était émise) — gap réel identifié lors du
+ * hotfix de fidélité production, indépendant du problème de déploiement.
+ */
+async function processFavicon() {
+  const srcPath = path.join(ROOT, 'assets', 'logo', 'logo-square.jpg');
+  try {
+    await stat(srcPath);
+  } catch {
+    console.warn('  (favicon ignoré : assets/logo/logo-square.jpg introuvable)');
+    return;
+  }
+  const sizes = [32, 180, 512];
+  for (const size of sizes) {
+    await sharp(srcPath).resize({ width: size, height: size }).png({ quality: 90 }).toFile(path.join(OUT_DIR, `favicon-${size}.png`));
+  }
+  // og-image : format 1200×630 recommandé pour un aperçu de partage correct (le logo seul, à
+  // 140px, était utilisé jusqu'ici comme image Open Graph — proportions non adaptées).
+  await sharp(srcPath)
+    .resize({ width: 1200, height: 630, fit: 'cover', position: 'centre' })
+    .jpeg({ quality: 82, mozjpeg: true })
+    .toFile(path.join(OUT_DIR, 'og-image.jpg'));
+  console.log('  favicon-32.png, favicon-180.png, favicon-512.png, og-image.jpg (depuis logo-square.jpg)');
+}
+
 async function main() {
   await ensureDir(OUT_DIR);
   const manifest = {};
@@ -151,6 +183,7 @@ async function main() {
     manifest[slot.slug] = await processSlot(slot);
   }
   await processLogo();
+  await processFavicon();
   const manifestPath = path.join(OUT_DIR, 'manifest.json');
   await writeFile(manifestPath, JSON.stringify(manifest, null, 2));
   console.log(`\nManifeste écrit : ${manifestPath}`);

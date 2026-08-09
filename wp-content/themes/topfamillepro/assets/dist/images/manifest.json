@@ -367,5 +367,56 @@
         }
       ]
     }
+  },
+  "service-generic": {
+    "slug": "service-generic",
+    "alt": "Intervention de nettoyage professionnel avec équipement de protection (photo d’illustration)",
+    "lcp": false,
+    "width": 960,
+    "height": 640,
+    "variants": {
+      "avif": [
+        {
+          "width": 480,
+          "file": "service-generic-480.avif"
+        },
+        {
+          "width": 760,
+          "file": "service-generic-760.avif"
+        },
+        {
+          "width": 960,
+          "file": "service-generic-960.avif"
+        }
+      ],
+      "webp": [
+        {
+          "width": 480,
+          "file": "service-generic-480.webp"
+        },
+        {
+          "width": 760,
+          "file": "service-generic-760.webp"
+        },
+        {
+          "width": 960,
+          "file": "service-generic-960.webp"
+        }
+      ],
+      "jpg": [
+        {
+          "width": 480,
+          "file": "service-generic-480.jpg"
+        },
+        {
+          "width": 760,
+          "file": "service-generic-760.jpg"
+        },
+        {
+          "width": 960,
+          "file": "service-generic-960.jpg"
+        }
+      ]
+    }
   }
 }

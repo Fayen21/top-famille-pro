@@ -42,6 +42,19 @@ $devis_url = add_query_arg(
 
 $canonical_path = wp_parse_url( get_permalink( $post_id ), PHP_URL_PATH );
 
+// Visuel d'illustration : un slug dédié pour bureaux/commerces (photos correspondant au
+// prototype Claude Design), un visuel générique honnête pour les 4 autres prestations — pas de
+// photo prétendant montrer un type de local précis qu'elle ne montre pas réellement.
+$image_slug = tfp_get_field( 'image_slug', $post_id );
+if ( ! $image_slug ) {
+	$slug_map   = array(
+		'bureaux'   => 'service-bureaux',
+		'commerces' => 'service-commerces',
+	);
+	$post_name  = get_post_field( 'post_name', $post_id );
+	$image_slug = $slug_map[ $post_name ] ?? 'service-generic';
+}
+
 $schema = array(
 	array(
 		'@type'       => 'Service',
@@ -97,16 +110,23 @@ get_header();
 	<?php tfp_breadcrumb( tfp_seo()['breadcrumb'] ); ?>
 </div>
 
-<section class="tfp-container tfp-section--tight">
-	<h1><?php echo esc_html( $h1 ); ?></h1>
-	<?php if ( $reponse ) : ?>
-		<p style="margin-top:16px;font-size:19px;color:var(--color-text-secondary);max-width:820px;line-height:1.6"><?php echo esc_html( $reponse ); ?></p>
-	<?php endif; ?>
-	<div class="tfp-flex" style="margin-top:24px">
-		<?php
-		tfp_button( array( 'label' => 'Demander mon devis', 'href' => $devis_url, 'variant' => 'primary' ) );
-		tfp_button( array( 'label' => '☎ Appeler ' . $site['manager'], 'href' => 'tel:' . $site['phone_href'], 'variant' => 'secondary' ) );
-		?>
+<section class="tfp-hero">
+	<div class="tfp-hero__content">
+		<h1><?php echo esc_html( $h1 ); ?></h1>
+		<?php if ( $reponse ) : ?>
+			<p style="margin-top:16px;font-size:19px;color:var(--color-text-secondary);max-width:820px;line-height:1.6"><?php echo esc_html( $reponse ); ?></p>
+		<?php endif; ?>
+		<div class="tfp-flex" style="margin-top:24px">
+			<?php
+			tfp_button( array( 'label' => 'Demander mon devis', 'href' => $devis_url, 'variant' => 'primary' ) );
+			tfp_button( array( 'label' => '☎ Appeler ' . $site['manager'], 'href' => 'tel:' . $site['phone_href'], 'variant' => 'secondary' ) );
+			?>
+		</div>
+	</div>
+	<div class="tfp-hero__media">
+		<div class="tfp-hero__media-main">
+			<?php tfp_picture( $image_slug, array( 'sizes' => '(max-width: 819px) 92vw, 600px', 'lcp' => true ) ); ?>
+		</div>
 	</div>
 </section>
 

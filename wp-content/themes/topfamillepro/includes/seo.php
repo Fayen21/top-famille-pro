@@ -75,7 +75,16 @@ function tfp_render_head_meta() {
 	printf( '<meta name="robots" content="%s">' . "\n", esc_attr( $seo['robots'] ) );
 	printf( '<link rel="canonical" href="%s">' . "\n", esc_url( $canonical ) );
 
-	// Open Graph.
+	// Favicon (absent jusqu'au hotfix de fidélité production — généré depuis le logo carré,
+	// build/optimize-images.mjs → assets/dist/images/favicon-*.png).
+	$icons_base = trailingslashit( $site['origin'] ) . 'wp-content/themes/topfamillepro/assets/dist/images/';
+	printf( '<link rel="icon" type="image/png" sizes="32x32" href="%s">' . "\n", esc_url( $icons_base . 'favicon-32.png' ) );
+	printf( '<link rel="icon" type="image/png" sizes="512x512" href="%s">' . "\n", esc_url( $icons_base . 'favicon-512.png' ) );
+	printf( '<link rel="apple-touch-icon" sizes="180x180" href="%s">' . "\n", esc_url( $icons_base . 'favicon-180.png' ) );
+
+	// Open Graph. Image dédiée 1200×630 (og-image.jpg) — le logo seul (140px) était utilisé
+	// jusqu'ici, avec des proportions inadaptées à un aperçu de partage.
+	$og_image = trailingslashit( $site['origin'] ) . 'wp-content/themes/topfamillepro/assets/dist/images/og-image.jpg';
 	printf( '<meta property="og:type" content="%s">' . "\n", esc_attr( $seo['type'] ) );
 	printf( '<meta property="og:site_name" content="%s">' . "\n", esc_attr( $site['brand_name'] ) );
 	printf( '<meta property="og:title" content="%s">' . "\n", esc_attr( $seo['title'] ) );
@@ -84,7 +93,9 @@ function tfp_render_head_meta() {
 	}
 	printf( '<meta property="og:url" content="%s">' . "\n", esc_url( $canonical ) );
 	printf( '<meta property="og:locale" content="fr_FR">' . "\n" );
-	printf( '<meta property="og:image" content="%s">' . "\n", esc_url( trailingslashit( $site['origin'] ) . ltrim( $site['logo_path'], '/' ) ) );
+	printf( '<meta property="og:image" content="%s">' . "\n", esc_url( $og_image ) );
+	printf( '<meta property="og:image:width" content="1200">' . "\n" );
+	printf( '<meta property="og:image:height" content="630">' . "\n" );
 
 	// Twitter Card.
 	printf( '<meta name="twitter:card" content="summary_large_image">' . "\n" );
@@ -92,7 +103,7 @@ function tfp_render_head_meta() {
 	if ( ! empty( $seo['description'] ) ) {
 		printf( '<meta name="twitter:description" content="%s">' . "\n", esc_attr( $seo['description'] ) );
 	}
-	printf( '<meta name="twitter:image" content="%s">' . "\n", esc_url( trailingslashit( $site['origin'] ) . ltrim( $site['logo_path'], '/' ) ) );
+	printf( '<meta name="twitter:image" content="%s">' . "\n", esc_url( $og_image ) );
 
 	tfp_render_jsonld( $seo, $canonical );
 }

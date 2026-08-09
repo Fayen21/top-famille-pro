@@ -137,4 +137,65 @@ test.describe('Contrôles particuliers (sélection commitée dans docs/captures/
 			await shoot(page, CAPTURES_DIR, `accueil-${viewport.name}.png`);
 		}
 	});
+
+	// Complément hotfix fidélité production (comparaison obligatoire, §11) : captures qui
+	// manquaient encore à la sélection commitée.
+	test('hero (mobile et desktop)', async ({ page }) => {
+		for (const viewport of [VIEWPORTS[2], VIEWPORTS[10]]) {
+			await page.setViewportSize({ width: viewport.width, height: viewport.height });
+			await page.goto('/', { waitUntil: 'networkidle' });
+			const hero = page.locator('.tfp-hero').first();
+			const box = await hero.boundingBox();
+			ensureDir(CAPTURES_DIR);
+			await page.screenshot({ path: path.join(CAPTURES_DIR, `hero-${viewport.name}.png`), clip: box ?? undefined });
+		}
+	});
+
+	test('menu mobile ouvert', async ({ page }) => {
+		await page.setViewportSize({ width: VIEWPORTS[2].width, height: VIEWPORTS[2].height });
+		await page.goto('/', { waitUntil: 'networkidle' });
+		await page.click('[data-tfp-mobile-open]');
+		await page.waitForTimeout(350); // transition d'ouverture (CSS)
+		await shoot(page, CAPTURES_DIR, `menu-mobile-ouvert-${VIEWPORTS[2].name}.png`);
+	});
+
+	test('index prestations (mobile et desktop)', async ({ page }) => {
+		for (const viewport of [VIEWPORTS[2], VIEWPORTS[10]]) {
+			await page.setViewportSize({ width: viewport.width, height: viewport.height });
+			await page.goto('/prestations/', { waitUntil: 'networkidle' });
+			await shoot(page, CAPTURES_DIR, `prestations-${viewport.name}.png`);
+		}
+	});
+
+	test('page prestation bureaux (mobile et desktop)', async ({ page }) => {
+		for (const viewport of [VIEWPORTS[2], VIEWPORTS[10]]) {
+			await page.setViewportSize({ width: viewport.width, height: viewport.height });
+			await page.goto('/prestations/bureaux/', { waitUntil: 'networkidle' });
+			await shoot(page, CAPTURES_DIR, `prestation-bureaux-${viewport.name}.png`);
+		}
+	});
+
+	test('page zone Dijon (mobile et desktop)', async ({ page }) => {
+		for (const viewport of [VIEWPORTS[2], VIEWPORTS[10]]) {
+			await page.setViewportSize({ width: viewport.width, height: viewport.height });
+			await page.goto('/zones-intervention/cote-dor/dijon/', { waitUntil: 'networkidle' });
+			await shoot(page, CAPTURES_DIR, `zone-dijon-${viewport.name}.png`);
+		}
+	});
+
+	test('mentions légales (mobile et desktop)', async ({ page }) => {
+		for (const viewport of [VIEWPORTS[2], VIEWPORTS[10]]) {
+			await page.setViewportSize({ width: viewport.width, height: viewport.height });
+			await page.goto('/mentions-legales/', { waitUntil: 'networkidle' });
+			await shoot(page, CAPTURES_DIR, `mentions-legales-${viewport.name}.png`);
+		}
+	});
+
+	test('404 (mobile et desktop)', async ({ page }) => {
+		for (const viewport of [VIEWPORTS[2], VIEWPORTS[10]]) {
+			await page.setViewportSize({ width: viewport.width, height: viewport.height });
+			await page.goto('/cette-page-n-existe-pas/', { waitUntil: 'networkidle' });
+			await shoot(page, CAPTURES_DIR, `404-${viewport.name}.png`);
+		}
+	});
 });
