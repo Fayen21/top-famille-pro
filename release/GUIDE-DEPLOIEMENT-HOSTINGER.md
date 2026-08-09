@@ -10,6 +10,16 @@
 
 ---
 
+> **Site déjà en ligne avec un autre thème actif (ex. `V1top-famille-pro`) ?** Ce guide décrit une
+> installation sur un WordPress neuf. Si le site est déjà publié avec un thème différent, utilisez
+> à la place `topfamillepro-theme-correctif.zip` et `topfamillepro-content-installer-correctif.zip`
+> (mêmes étapes ci-dessous, fichiers renommés), et suivez la procédure pas à pas de
+> `docs/AUDIT-PRODUCTION.md` §11 (staging d'abord, ancien thème conservé le temps de la validation,
+> jamais de modification directe de la production) et §12 (retour arrière). Le plugin correctif
+> ajoute une section « Contenu existant à examiner » qui signale, sans jamais rien supprimer, tout
+> contenu publié qui n'appartient pas aux 53 pages attendues — typiquement les pages d'un thème
+> précédent.
+
 ## Partie A — Installation depuis l'administration WordPress (méthode recommandée)
 
 ### 1. Créer une sauvegarde

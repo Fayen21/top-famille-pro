@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Top-Famille Pro — Installation du contenu
  * Description: Installe et met à jour le contenu réel du thème Top-Famille Pro (53 pages : 18 pages statiques, 6 prestations, 26 zones, 3 articles) depuis l'administration WordPress, sans terminal. Plugin temporaire : à désactiver et supprimer une fois l'installation terminée.
- * Version: 1.0.0
+ * Version: 1.1.0
  * Requires at least: 6.4
  * Requires PHP: 8.0
  * Author: Top-Famille Pro
@@ -12,6 +12,10 @@
  * publique, aucune sortie non échappée, aucune donnée sensible journalisée. Idempotent : les
  * scripts de contenu qu'il exécute (seed/*.php) upsertent par slug, une deuxième exécution ne
  * crée aucun doublon.
+ *
+ * 1.1.0 (correctif fidélité production) : ajoute un scan en lecture seule du contenu page/post
+ * qui n'appartient à aucune des 53 routes attendues (ex. contenu resté d'un thème précédent) —
+ * affiché à l'administrateur, jamais supprimé automatiquement.
  */
 
 if ( ! defined( 'ABSPATH' ) ) {

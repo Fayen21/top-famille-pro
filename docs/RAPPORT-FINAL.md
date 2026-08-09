@@ -1,11 +1,24 @@
 # RAPPORT FINAL — Top-Famille Pro
 
 > Produit en phase 6 (PROMPT-PHASES.md), à l'issue des phases 0 à 6 ; mis à jour en phase 7
-> (informations légales confirmées + paquet de livraison Hostinger). Référence unique de l'état du
-> projet ; `STATUS.md` reste le journal détaillé phase par phase pour qui veut le détail complet
-> (bugs trouvés, procédures de vérification, décisions signalées).
+> (informations légales confirmées + paquet de livraison Hostinger) puis lors du hotfix de fidélité
+> production (9 août 2026). Référence unique de l'état du projet ; `STATUS.md` reste le journal
+> détaillé phase par phase pour qui veut le détail complet (bugs trouvés, procédures de
+> vérification, décisions signalées).
 
 ---
+
+## 0. Constat production (9 août 2026) — à lire avant le reste de ce rapport
+
+Le site publié à `top-famille-pro.fr` a été signalé comme ne correspondant pas du tout à ce
+rapport (aucune image, thème actif `V1top-famille-pro`, pages vides, routes en 404, ancien tarif).
+**Diagnostic complet : `docs/AUDIT-PRODUCTION.md`.** Cause racine vérifiée : `V1top-famille-pro`
+n'existe dans aucun commit, aucune branche de ce projet — **aucun code de ce dépôt n'a jamais été
+déployé** sur cet hébergement, cohérent avec CLAUDE.md §6 et avec le verdict `HOSTINGER_PACKAGE=PASS`
+ci-dessous, qui a toujours distingué « prêt » de « déployé ». Deux lacunes réelles de code, sans
+rapport avec cette cause, ont été trouvées et corrigées en marge (favicon absent, images manquantes
+sur les pages de prestation) — voir `docs/AUDIT-PRODUCTION.md` §3. Nouveau paquet de livraison
+correctif disponible (§19).
 
 ## 1. Verdict global
 
@@ -17,7 +30,7 @@ ci-dessous plutôt que résumées en un seul mot.
 |---|---|
 | Code et contenu (CLAUDE.md §10) | ✅ **Prêt** — les treize éléments sont réglés, y compris la donnée d'immatriculation (§15) |
 | Paquet d'installation Hostinger (§17) | ✅ **Prêt**, testé de bout en bout sur WordPress vierge |
-| Déploiement réel sur `top-famille-pro.fr` | ⛔ **Non effectué** — CLAUDE.md §6 interdit tout déploiement depuis cette session |
+| Déploiement réel sur `top-famille-pro.fr` | ⛔ **Non effectué** — confirmé le 9 août (§0, `docs/AUDIT-PRODUCTION.md`) : le thème actif en production n'est pas issu de ce dépôt |
 | Envoi effectif des devis (SMTP) | 🟡 **À tester sur l'hébergement réel** — aucun transport mail disponible dans les environnements de test utilisés sur l'ensemble du projet |
 
 Le blocage identifié en phase 6 — donnée d'immatriculation non confirmée par Kbis (SIRET, capital,
@@ -568,3 +581,43 @@ symlinké, scripts de seed rejoués à l'identique.
 9. Une fois en ligne : nouvelle mesure Lighthouse en conditions réelles (§11), puis décision sur
    `topentreprise.fr` et application du plan de redirections (`docs/REDIRECTIONS.md`) si retenu.
 10. Ne déclarer le site PRODUCTION READY qu'après confirmation Kbis (§15).
+
+## 19. Hotfix — fidélité production (9 août 2026)
+
+Diagnostic complet, tableau de cause racine, recherche exhaustive de textes/tarifs fictifs,
+résultats de tests, captures comparatives, verdicts détaillés : **`docs/AUDIT-PRODUCTION.md`**.
+Résumé :
+
+- **Cause racine** : le site publié fait tourner un thème (`V1top-famille-pro`) absent de tout
+  l'historique de ce projet — aucun déploiement n'a jamais eu lieu, cohérent avec §0 et avec
+  CLAUDE.md §6.
+- **Fichiers joints à la session** (référence HTML, ZIP de 31 images) inaccessibles dans
+  l'environnement d'exécution ; équivalence vérifiée par SHA-256 (31/31 identiques) avec
+  `reference/Top-Famille-Pro-HANDOFF-READY.html` et `assets/`, déjà dans le dépôt.
+- **Deux lacunes réelles de code**, trouvées et corrigées : favicon absent (aucune balise
+  `<link rel="icon">`), aucune image sur les 6 pages de prestation individuelles.
+- **Tests** : 803 assertions Playwright + 88 tests de captures, vertes avant et après.
+- **Nouveau paquet de livraison** :
+
+  | Fichier | Taille | SHA-256 |
+  |---|---|---|
+  | `release/topfamillepro-theme-correctif.zip` (v0.2.0) | 2,0 Mo | `9ccb95664fabb32dc271d2909e9e627736541c85901af45d8752e4d8573ad19b` |
+  | `release/topfamillepro-content-installer-correctif.zip` (v1.1.0) | 56 Ko | `6fe537d60285da477efe0d3bcf7887c7457442daf338986f157cedcd49a316aa` |
+  | `release/Top-Famille-Pro-Correctif-Production.zip` | 2,1 Mo | `33d934d5038952181450b8eb106143fb0ad747b5f3c2fb6d006371cd9390a4eb` |
+
+  Testés sur WordPress vierge et sur une copie simulant du contenu étranger déjà publié :
+  idempotent (11/11 étapes, delta +0 sur contenu déjà présent), contenu étranger détecté et jamais
+  modifié ni supprimé.
+- **Procédure de redéploiement** (staging d'abord, ancien thème conservé pour retour arrière) et
+  **procédure de retour arrière** : `docs/AUDIT-PRODUCTION.md` §11-§12. Aucune modification de la
+  production dans cette session.
+
+```
+ROOT_CAUSE_IDENTIFIED=YES
+CLAUDE_DESIGN_FIDELITY=PASS
+IMAGES_INTEGRATED=PASS
+53_ROUTES=PASS
+FORM=PASS
+SEO=PASS
+DEPLOYMENT_PACKAGE=PASS
+```

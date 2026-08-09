@@ -255,3 +255,5 @@ Correspondances identifiées ✅ (à compléter après relevé exhaustif via le 
 | 10 | Inventaire des articles du blog actuel pour les redirections | Emmanuel | Phase 6 |
 | 11 | CPT + ACF ou pages classiques ? | Emmanuel | Phase 0 |
 | 12 | Accès hPanel / SFTP / base ; top-famille-pro.fr déposé et pointé ? | Emmanuel | Phase 1 |
+| 13 | **Déploiement réel** : `top-famille-pro.fr` fait tourner un thème `V1top-famille-pro` étranger à ce dépôt (constaté 9 août 2026, `docs/AUDIT-PRODUCTION.md`) — qui a provisionné ce thème, et le paquet correctif peut-il être installé (voir procédure staging) ? | Emmanuel / client | Mise en ligne |
+| 14 | Les deux fichiers annoncés comme joints à la session du 9 août (référence HTML standalone, ZIP de 31 images) n'étaient pas accessibles dans l'environnement d'exécution — à retransmettre pour confirmer qu'ils correspondent bien à `reference/Top-Famille-Pro-HANDOFF-READY.html` et `assets/` déjà dans le dépôt (équivalence vérifiée par SHA-256, à confirmer si une version plus récente existe) | Emmanuel | Non bloquant — substitution déjà vérifiée |
