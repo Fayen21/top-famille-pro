@@ -1,14 +1,16 @@
 # STATUS — Top-Famille Pro
 
 > Lien entre deux sessions Claude Code Web. Mis à jour à la fin de chaque phase.
-> Dernière mise à jour : **Hotfix — fidélité production**, 9 août 2026.
+> Dernière mise à jour : **Hotfix — fidélité production, deuxième vague**, 9 août 2026.
 > `ROOT_CAUSE_IDENTIFIED=YES` — le site publié (`top-famille-pro.fr`, thème actif signalé
 > `V1top-famille-pro`) **ne fait tourner aucun code de ce dépôt** ; il n'y a jamais eu de
 > déploiement (cohérent avec CLAUDE.md §6 et chaque rapport de phase précédent). Ce n'est pas une
 > régression du thème à corriger, c'est un déploiement à faire. Détail complet, diagnostic
-> vérifiable et procédure : `docs/AUDIT-PRODUCTION.md`. Deux lacunes réelles de code trouvées et
-> corrigées au passage (favicon absent, images manquantes sur les pages de prestation) — sans
-> rapport avec la cause principale.
+> vérifiable et procédure : `docs/AUDIT-PRODUCTION.md`. Tarif passé à un montant unique
+> (27,00 € HT/h, décision commerciale) dans le même après-midi — `PROJECT_INPUTS.md` §5. Verdict
+> honnête : `PARTIEL — ÉCARTS RESTANTS` sur la fidélité visuelle pixel-près demandée (reproduction
+> complète des 17 sections de l'accueil, Lighthouse, 6 largeurs testées) — voir
+> `docs/RAPPORT-FINAL.md` §20 pour le détail de ce qui est fait et de ce qui reste.
 
 ---
 
@@ -34,13 +36,20 @@ fictifs, résultats de tests, verdicts) : `docs/AUDIT-PRODUCTION.md`. Résumé :
    qui n'appartient à aucune des 53 routes attendues, affiché à l'administrateur, jamais supprimé
    automatiquement.
 5. 803 assertions Playwright + 88 tests de captures : verts avant et après les corrections.
-6. Nouveau paquet de livraison versionné : `topfamillepro-theme-correctif.zip` (`0.2.0`),
-   `topfamillepro-content-installer-correctif.zip` (`1.1.0`), `Top-Famille-Pro-Correctif-Production.zip`
+6. Nouveau paquet de livraison versionné : `topfamillepro-theme-correctif.zip` (`0.3.0`),
+   `topfamillepro-content-installer-correctif.zip` (`1.2.0`), `Top-Famille-Pro-Correctif-Production.zip`
    — testés sur une copie WordPress vierge **et** sur une copie simulant du contenu étranger déjà
    publié (idempotence confirmée, contenu étranger jamais touché).
 7. Procédure de redéploiement détaillée (staging d'abord, ancien thème conservé pour retour
    arrière) et procédure de retour arrière : `docs/AUDIT-PRODUCTION.md` §11-§12. **Aucune
    modification de la production dans cette session.**
+8. **Deuxième vague (même après-midi, `docs/AUDIT-PRODUCTION.md` §3b)** : tarif unique 27 € HT/h
+   (remplace la grille à trois montants), bug réel de maillage villes/prestations corrigé (26
+   zones ne reliaient qu'une seule prestation sur six), mentions légales finalisées (hébergeur,
+   directrice de publication), cascade de polices renforcée, date d'articles corrigée au format
+   français, photo temporaire d'Audrey avec mention honnête. Un bug de régression (contraste
+   couleur cassé par la même correction de cascade CSS) a été introduit puis détecté et corrigé
+   avant livraison, en rejouant la suite complète (811 tests + 88 captures, verts).
 
 ```
 ROOT_CAUSE_IDENTIFIED=YES

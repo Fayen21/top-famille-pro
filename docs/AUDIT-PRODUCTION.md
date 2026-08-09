@@ -6,6 +6,14 @@
 > phases 0 à 7 complètes). Résultat : **la cause n'est pas une régression du thème, c'est
 > l'absence totale de déploiement** — voir §1. Deux lacunes réelles de code, indépendantes de ce
 > problème, ont été trouvées et corrigées en cours d'audit — voir §3.
+>
+> **Mise à jour du même jour (§3b)** : une deuxième demande a introduit un changement commercial
+> (tarif unique 27,00 € HT/h, qui remplace l'ancienne grille à trois montants) et signalé des
+> écarts de fidélité supplémentaires. Un bug réel de maillage (zones ne reliant qu'une seule
+> prestation sur six) et un bug de date d'article (format anglais) ont été trouvés et corrigés. Un
+> bug de régression a aussi été introduit puis corrigé dans le même lot (spécificité CSS cassant
+> le contraste de plusieurs boutons/titres) — décrit en toute transparence en §3b, avec la
+> vérification qui l'a détecté avant livraison.
 
 ## 0. Ce qui a été vérifié, et comment
 
@@ -111,6 +119,69 @@ Corrigé aussi, en marge (amélioration, pas un bug signalé) : l'image Open Gra
 logo à 140 px (proportions inadaptées à un aperçu de partage social) — remplacée par un visuel
 dédié 1200×630.
 
+## 3b. Deuxième vague — décisions commerciales et fidélité visuelle (9 août 2026, suite)
+
+Demande complémentaire reçue le même jour, avec un changement commercial explicite et des
+constats de fidélité supplémentaires. Ce qui a été fait :
+
+- **Tarif unique 27,00 € HT/h** (régulier comme ponctuel, tout type de local), qui remplace
+  intégralement l'ancienne grille à trois montants. Appliqué dans `includes/site-options.php`
+  (`price_unique`, `price_km`, `price_majoration_pct`), tous les gabarits concernés, tous les
+  scripts de seed (`bin/` + `installer/seed/` en miroir), le JSON-LD (`priceRange`),
+  `PROJECT_INPUTS.md` §5. Nouveaux exemples de budget (`tfp_budget_examples_table()`) : 8 h/mois
+  → 225 € (275 € le 1er mois), 12 h/mois → 333 € (383 €), 20 h/mois → 549 € (599 €) — exactement
+  les montants demandés. Recherche globale : plus aucune occurrence commerciale de 24,30 €,
+  26,00 € ou 30,00 € dans `wp-content/themes/topfamillepro/`.
+- **Bug réel trouvé et corrigé** : les 26 pages de zone ne maillaient qu'une seule prestation
+  (bureaux) sur six — conséquence de l'ordre d'exécution des scripts de seed (une seule
+  prestation existe encore au moment où la phase 2 s'exécute). Corrigé dans
+  `bin/seed-phase4-maillage.php`, qui s'exécute en dernier (les 6 prestations existent alors) et
+  réécrit `prestations_liees` sur les 26 zones. Vérifié : Dijon relie désormais ses 6 prestations,
+  pas seulement bureaux.
+- **Mentions légales** : directrice de la publication (Audrey Brançon) et coordonnées complètes de
+  l'hébergeur (HOSTINGER INTERNATIONAL LIMITED, 61 Lordou Vironos Street, 6023 Larnaca, Chypre)
+  confirmées et publiées. Section « Assurance professionnelle » retirée entièrement, sur
+  instruction explicite, plutôt que laissée en `[À COMPLÉTER]` — assureur et police restent à
+  transmettre (`PROJECT_INPUTS.md` §12, non bloquant).
+- **Cascade de polices** : spécificité augmentée (`body.tfp-body`) sur les propriétés
+  typographiques de base (police, interligne, graisse — pas la couleur, voir plus bas) pour
+  résister à un CSS GeneratePress/Customizer chargé après le thème enfant. Vérifié par styles
+  calculés réels : `body` → Hanken Grotesk, `h1` → Bricolage Grotesque. Logo du header agrandi à
+  `clamp(120px, 32vw, 155px)` (au lieu de ~68px), conforme à la référence.
+- **Bug introduit puis corrigé dans le même lot** : la première version du boost de spécificité
+  incluait `color` sur les titres/liens/boutons. Spécificité égale à des surcharges contextuelles
+  existantes (`.tfp-section--navy h2`, `.tfp-btn--primary`…), qui perdaient alors leur couleur —
+  **7 échecs axe-core `color-contrast`** trouvés en rejouant la suite complète (texte quasi
+  invisible : boutons blancs sur blanc, titres sombres sur fond navy). Corrigé en sortant
+  `color`/`background`/`border` du bloc boosté, qui ne porte plus que sur `font-family`,
+  `line-height`, `letter-spacing`, `font-weight`. Les 811 tests + 88 captures repassent
+  intégralement au vert après correction — leçon retenue : toute augmentation de spécificité CSS
+  doit être suivie d'un rejeu complet de la suite, pas seulement d'une vérification visuelle
+  ponctuelle.
+- **Photo temporaire d'Audrey** (accueil + À propos) : un visuel d'illustration
+  (`assets/dist/images`, slug `audrey-placeholder`, depuis `assets/photos/portrait-stock-a-propos.jpg`)
+  remplace la pastille neutre, avec un alt honnête (« Photo d'illustration temporaire — portrait
+  définitif à venir ») et une mention visible « Photo d'illustration » tant que la vraie photo
+  n'est pas fournie — jamais présenté comme Audrey (CLAUDE.md §5.6). Bascule automatique vers la
+  vraie photo dès qu'elle est renseignée dans le Customizer (`tfp_audrey_photo_is_real()`).
+- **Date des articles corrigée** : « Publié le août 9, 2026 » (format anglais mêlé à un mois
+  traduit, dépendant du réglage Réglages → Général du site, non fiable sur un site entièrement en
+  français) devient « Publié le 9 août 2026 » via `tfp_format_date_fr()`
+  (`includes/site-options.php`), indépendant de la configuration WordPress du site.
+- **Vérifié, pas de bug réel** : la route `/zones-intervention/dijon/dijon/` citée dans la demande
+  n'est pas une page dupliquée. C'est une redirection 301 native de WordPress vers l'unique URL
+  réelle (`/zones-intervention/cote-dor/dijon/`), qui porte déjà une canonical auto-référente
+  correcte. La structure `/zones-intervention/{departement}/{ville}/` est déjà appliquée aux 26
+  zones (`includes/cpt-zone.php`) — aucune redirection, aucun changement de permalien nécessaire.
+
+**Non traité dans ce lot** (périmètre trop large pour être fait avec la même rigueur que ce qui
+précède — voir le rapport final pour le détail complet) : reproduction pixel-fidèle des 17
+sections de l'accueil décrites dans la demande, intégration d'images propres à chaque page ville/
+article au-delà des visuels déjà en place, extension complète du modèle de page prestation/ville
+(scénarios concrets, exemples d'organisation détaillés au-delà de l'existant), tests responsive
+formels aux 6 largeurs demandées avec captures dédiées par largeur, mesure Lighthouse (LiteSpeed
+et outil Lighthouse indisponibles dans cet environnement).
+
 ## 4. Recherche globale — textes et données à ne pas réintroduire
 
 Recherche exhaustive dans `wp-content/themes/topfamillepro/` (thème réel, pas la référence) :
@@ -215,9 +286,9 @@ et non levée par ce hotfix faute de photos authentiques fournies — pas un dé
 
 | Fichier | Rôle | Taille | SHA-256 |
 |---|---|---|---|
-| `release/topfamillepro-theme-correctif.zip` | Thème enfant, `Version: 0.2.0`, dossier racine `topfamillepro/` (jamais `V1top-famille-pro`) | 2,0 Mo (2 088 267 o) | `9ccb95664fabb32dc271d2909e9e627736541c85901af45d8752e4d8573ad19b` |
-| `release/topfamillepro-content-installer-correctif.zip` | Plugin d'installation, `Version: 1.1.0` — ajoute le scan de contenu existant (§10) | 56 Ko (57 627 o) | `6fe537d60285da477efe0d3bcf7887c7457442daf338986f157cedcd49a316aa` |
-| `release/Top-Famille-Pro-Correctif-Production.zip` | ZIP global (les deux ci-dessus + ce document + le guide + les checksums) | 2,1 Mo (2 161 637 o) | `33d934d5038952181450b8eb106143fb0ad747b5f3c2fb6d006371cd9390a4eb` |
+| `release/topfamillepro-theme-correctif.zip` | Thème enfant, `Version: 0.3.0`, dossier racine `topfamillepro/` (jamais `V1top-famille-pro`) | 2,2 Mo (2 287 295 o) | `1e71b18acd25678d470a8825269256a5b83fb15ba43e3adaff430c1caa3494ed` |
+| `release/topfamillepro-content-installer-correctif.zip` | Plugin d'installation, `Version: 1.2.0` — scan de contenu existant (§10) + tarif unique + maillage corrigé | 57 Ko (58 559 o) | `23e957bf62bdd3cfe8706b5c99215a621a7d8b047a849e3c2c36c1193ea054e7` |
+| `release/Top-Famille-Pro-Correctif-Production.zip` | ZIP global (les deux ci-dessus + ce document + le guide + les checksums) | 2,3 Mo (2 361 798 o) | `2eade3211c8ed75148293cf0640faf6878a088ab8c87d5b6af7f782d92d3f3f0` |
 
 Empreintes également dans `release/SHA256SUMS-correctif.txt`.
 
@@ -238,6 +309,11 @@ actif). Affiché à l'administrateur dans une nouvelle section « 0. Contenu exi
   idempotence confirmée sur les ZIP réellement construits, pas seulement sur le code source.
 - Favicon, image OG, image de prestation générique : servies en `200` depuis le thème
   fraîchement extrait du ZIP correctif (pas depuis l'environnement de développement).
+- **Rejoué après la deuxième vague de corrections (§3b)**, sur les ZIP v0.3.0/v1.2.0 : nouvelle
+  installation fraîche, 11/11 étapes sans erreur. Vérifié depuis le thème/plugin réellement
+  extraits du ZIP (pas le rig de développement) : tarif « 27 € HT » affiché sur `/tarifs/`, page
+  Dijon reliée à ses 6 prestations, mentions légales avec l'hébergeur et sans `[À COMPLÉTER]`,
+  date d'article au format français, favicon présent.
 
 Menus et page d'accueil : **rien à recréer/définir**, comme en phase 7 — les menus du site sont
 des tableaux PHP en dur dans le thème (pas des menus WordPress), et `front-page.php` s'applique

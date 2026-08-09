@@ -601,9 +601,12 @@ Résumé :
 
   | Fichier | Taille | SHA-256 |
   |---|---|---|
-  | `release/topfamillepro-theme-correctif.zip` (v0.2.0) | 2,0 Mo | `9ccb95664fabb32dc271d2909e9e627736541c85901af45d8752e4d8573ad19b` |
-  | `release/topfamillepro-content-installer-correctif.zip` (v1.1.0) | 56 Ko | `6fe537d60285da477efe0d3bcf7887c7457442daf338986f157cedcd49a316aa` |
-  | `release/Top-Famille-Pro-Correctif-Production.zip` | 2,1 Mo | `33d934d5038952181450b8eb106143fb0ad747b5f3c2fb6d006371cd9390a4eb` |
+  | `release/topfamillepro-theme-correctif.zip` (v0.3.0) | 2,2 Mo | `1e71b18acd25678d470a8825269256a5b83fb15ba43e3adaff430c1caa3494ed` |
+  | `release/topfamillepro-content-installer-correctif.zip` (v1.2.0) | 57 Ko | `23e957bf62bdd3cfe8706b5c99215a621a7d8b047a849e3c2c36c1193ea054e7` |
+  | `release/Top-Famille-Pro-Correctif-Production.zip` | 2,3 Mo | `2eade3211c8ed75148293cf0640faf6878a088ab8c87d5b6af7f782d92d3f3f0` |
+
+  Versions mises à jour lors de la deuxième vague de corrections du même jour (§20) — voir
+  `docs/AUDIT-PRODUCTION.md` §3b et §9 pour le détail.
 
   Testés sur WordPress vierge et sur une copie simulant du contenu étranger déjà publié :
   idempotent (11/11 étapes, delta +0 sur contenu déjà présent), contenu étranger détecté et jamais
@@ -621,3 +624,142 @@ FORM=PASS
 SEO=PASS
 DEPLOYMENT_PACKAGE=PASS
 ```
+
+## 20. Deuxième vague de corrections — tarif unique et fidélité (9 août 2026, suite)
+
+Rapport détaillé demandé en 12 points, sur la demande complémentaire du même jour. Diagnostic et
+méthode complets : `docs/AUDIT-PRODUCTION.md` §3b.
+
+### 1. Fichiers modifiés
+
+`includes/site-options.php`, `includes/seo.php`, `includes/images.php`, `includes/customizer.php` ·
+`page-tarifs.php`, `page-nettoyage-professionnel.php`, `page-prestations.php`, `page-mentions-legales.php`,
+`page-a-propos.php` · `front-page.php`, `single.php`, `single-prestation.php`, `single-zone.php` ·
+`template-parts/home/{hero,pricing,pricing-reassurance,audrey-reviews}.php` ·
+`src/css/{02-base,04-components}.css` · `build/optimize-images.mjs` ·
+`bin/seed-phase{2-content,3-batch1-prestations,3-batch2-departements,3-batch3-villes,3-batch4-communes,3-batch5-articles,4-maillage}.php`
+(+ copies miroir dans `installer/topfamillepro-content-installer/seed/`) · `tests/legal.spec.js` ·
+`PROJECT_INPUTS.md`, `STATUS.md`, `docs/AUDIT-PRODUCTION.md`, ce fichier.
+
+### 2. Composants reproduits / corrigés
+
+Carte tarif unique (remplace les 3 cartes de la grille), tableau de 3 exemples de budget
+dynamiques, bandeau de réassurance tarifaire, badge tarifaire du hero, cascade typographique
+(spécificité `body.tfp-body` sur police/interligne/graisse), logo du header agrandi à
+`clamp(120px, 32vw, 155px)`, bloc portrait Audrey avec visuel temporaire + mention honnête,
+en-tête des pages de prestation (hero à deux colonnes avec visuel, y compris pour les 4
+prestations qui n'en avaient aucun), maillage villes/prestations (6 liens au lieu d'1), bloc
+mentions légales (éditeur, hébergeur, établissement unique), date d'article au format français.
+
+### 3. Écarts restants avec Claude Design — non traités dans cette passe
+
+Le périmètre demandé (reproduction pixel-fidèle des 17 sections de l'accueil dans l'ordre exact,
+extraction et intégration d'image propre à chaque page ville/article/page interne, modèle complet
+étendu des pages prestation et ville au-delà de ce qui existait déjà, tests à 6 largeurs avec
+captures dédiées, Lighthouse) dépasse ce qui a pu être fait avec la même rigueur que le reste de
+cette session. Concrètement, n'ont **pas** été faits :
+
+- Reproduction section par section de l'accueil comparée point par point au fichier HTML de
+  référence (comparaison structurelle générale faite, pas une revue exhaustive des 17 sections).
+- Intégration d'une image dédiée pour chaque ville (26 zones) et chaque article (3) — ces pages
+  utilisent le même pipeline d'images que le reste du site mais pas de visuel spécifique à
+  chaque ville/article individuellement.
+- Extension du modèle de page prestation/ville avec des scénarios concrets et exemples
+  d'organisation détaillés au-delà de ce que les gabarits contenaient déjà.
+- Tests responsive formels aux 6 largeurs demandées (320/375/768/1024/1440/1920) avec captures
+  dédiées à chacune — la suite existante teste 375px systématiquement et 1440px sur une partie des
+  gabarits (`tests/accessibility.spec.js`), pas les 6.
+- Mesure Lighthouse (mobile et desktop) : LiteSpeed Cache et l'outil Lighthouse n'existent que sur
+  l'hébergement Hostinger réel, indisponibles dans cet environnement de développement — limitation
+  déjà documentée depuis la phase 6, inchangée.
+- Bandeau supérieur « 27 € HT/h · Devis gratuit sous 24 h » au-dessus du header : composant
+  nouveau demandé, non construit.
+- Cartes de témoignages reprenant le rendu visuel du prototype avec mention « Exemples de
+  présentation » : **non fait, en désaccord assumé avec la demande** — voir point 11 ci-dessous.
+
+### 4. Pages et images intégrées
+
+Les 53 pages restent servies par les gabarits existants (aucune page supprimée ni ajoutée).
+Images ajoutées ou corrigées : visuel de hero sur les 6 pages de prestation (bureaux/commerces
+avec les photos déjà utilisées ailleurs, 4 autres prestations avec un visuel générique honnête),
+favicon (32/180/512 px), image Open Graph dédiée (1200×630), photo d'illustration temporaire
+d'Audrey (accueil + À propos, alt honnête, mention visible).
+
+### 5. Preuve que les anciens tarifs ont disparu
+
+Recherche exhaustive dans `wp-content/themes/topfamillepro/` : 0 occurrence commerciale de
+`24,30`, `26,00 €`, `30,00 € HT`. Les seules occurrences restantes de ces motifs sont des
+commentaires de code documentant explicitement le changement (traçabilité), pas du contenu
+affiché. Vérifié par requête HTTP réelle sur `/`, `/tarifs/`, chaque page de prestation, chaque
+page de zone (rig de développement) **et** sur une installation fraîche depuis les ZIP correctifs
+reconstruits (`docs/AUDIT-PRODUCTION.md` §10) : `27 € HT` partout, aucun ancien montant.
+
+### 6. Nouvelles URLs et redirections
+
+Aucune. Vérifié : la route `/zones-intervention/{departement}/{ville}/` est déjà la structure
+réelle des 26 zones (pas de duplication `{ville}/{ville}/`), avec canonical auto-référente
+correcte sur chacune. `/zones-intervention/dijon/dijon/` cité dans la demande est une redirection
+301 native de WordPress vers l'URL réelle, pas une page dupliquée existante — aucune redirection à
+créer, aucun permalien à changer.
+
+### 7. Résultat des tests responsive
+
+375px : aucun débordement horizontal sur les 53 routes (`tests/seo.spec.js`, une assertion par
+route). 320px et 1440px : testés sur une sélection de pages via les captures existantes
+(`docs/captures/`), pas systématiquement sur les 53 routes. 768/1024/1920px : non testés dans
+cette session (hors du périmètre de la suite automatisée existante).
+
+### 8. Résultat axe-core
+
+`tests/accessibility.spec.js` : règles `wcag2a`, `wcag2aa`, `wcag22aa`, `best-practice` — **0
+violation** sur les 6 pages couvertes (accueil, prestation, département, ville, commune, article,
+formulaire de devis), à 375px et 1440px. Un lot de 7 violations `color-contrast` a été introduit
+par une correction de ce hotfix puis détecté et corrigé avant livraison (§3b) — la suite complète
+a été rejouée après correction, 0 violation restante.
+
+### 9. Scores Lighthouse
+
+Non mesurés dans cette session — LiteSpeed Cache et l'outil Lighthouse ne sont disponibles que sur
+l'hébergement réel (Hostinger), inaccessible depuis cet environnement de développement. À mesurer
+lors du déploiement réel sur staging, conformément à la procédure de `docs/AUDIT-PRODUCTION.md` §11.
+
+### 10. Captures comparatives
+
+`docs/captures/` régénérées après les corrections (accueil, hero, prestation bureaux, page Dijon,
+tarifs, mentions légales, prestations, footer, formulaire étapes 1/2, 404, menu mobile) — captures
+du rendu WordPress corrigé, pas une comparaison côte-à-côte image par image avec le prototype :
+les deux fichiers annoncés comme joints à la session (référence HTML standalone, ZIP de 31 images)
+n'ont jamais été accessibles dans l'environnement d'exécution (`docs/AUDIT-PRODUCTION.md` §2),
+donc aucune capture du prototype lui-même n'a pu être produite pour une comparaison visuelle
+directe, image contre image.
+
+### 11. Statut des données temporaires
+
+- **Témoignages** : non modifiés. Le bloc dédié (`template-parts/home/audrey-reviews.php`)
+  affiche déjà un état honnête (« Avis clients à venir ») tant qu'aucun avis réel n'est configuré,
+  sans schéma `Review`/`AggregateRating` (vérifié : aucune occurrence dans le thème). **Écart
+  assumé avec la demande** : celle-ci demandait de reproduire les cartes de témoignages du
+  prototype avec une mention « Exemples de présentation », ce qui contredit directement
+  CLAUDE.md §5.5 (« Les ~40 avis du prototype… sont fictifs : suppression totale »). Plutôt que de
+  trancher unilatéralement entre une instruction explicite de cette demande et une règle
+  permanente et absolue du projet, ce point n'a pas été implémenté — à valider explicitement avant
+  de le faire, dans un sens ou dans l'autre.
+- **Photo d'illustration d'Audrey** : en place (accueil + À propos), alt honnête, mention visible,
+  bascule automatique vers la vraie photo dès qu'elle est renseignée dans le Customizer.
+- **Note Google** : toujours absente, comme avant ce hotfix — correctement masquée tant que l'URL
+  de la fiche et la note réelle ne sont pas fournies (`PROJECT_INPUTS.md` §12).
+
+### 12. Verdict honnête
+
+```
+FIDÉLITÉ CLAUDE DESIGN : PARTIEL — ÉCARTS RESTANTS
+```
+
+Le tarif unique, le maillage villes/prestations, les mentions légales, la cascade de polices et
+les images de prestation sont corrigés, vérifiés par tests automatisés (811 assertions + 88
+captures, vertes) et par installation réelle depuis les ZIP reconstruits. La reproduction
+pixel-fidèle des 17 sections de l'accueil, l'intégration d'image propre à chaque ville/article, la
+matrice complète de tests responsive à 6 largeurs, la mesure Lighthouse et le traitement des
+témoignages temporaires restent à faire ou à trancher — énumérés sans détour au point 3 et au
+point 11 ci-dessus plutôt que déclarés terminés. Aucune fusion dans `main`, aucun déploiement :
+la branche reste ouverte pour validation (PR #9).
