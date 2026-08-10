@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Top-Famille Pro — Installation du contenu
  * Description: Installe et met à jour le contenu réel du thème Top-Famille Pro (53 pages : 18 pages statiques, 6 prestations, 26 zones, 3 articles) depuis l'administration WordPress, sans terminal. Plugin temporaire : à désactiver et supprimer une fois l'installation terminée.
- * Version: 1.4.0
+ * Version: 1.5.0
  * Requires at least: 6.4
  * Requires PHP: 8.0
  * Author: Top-Famille Pro
@@ -18,6 +18,10 @@
  * affiché à l'administrateur, jamais supprimé automatiquement.
  * 1.2.0 : tarif unique 27,00 € HT/h dans les contenus seedés (remplace l'ancienne grille à trois
  * montants), maillage des 26 zones vers les 6 prestations corrigé (bin/seed-phase4-maillage.php).
+ * 1.5.0 (fidélité Claude Design intégrale, 10 août 2026) : ajoute les quatre scripts de contenu
+ * relevé dans la maquette — 6 prestations, 26 zones, 3 articles et leur index, 9 pages statiques
+ * narratives. Ces scripts sont générés par tools/generate-*.mjs depuis le prototype rendu, jamais
+ * rédigés à la main : les rejouer redonne exactement le même contenu.
  */
 
 if ( ! defined( 'ABSPATH' ) ) {

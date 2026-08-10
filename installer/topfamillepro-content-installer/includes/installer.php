@@ -30,7 +30,10 @@ function tfp_installer_seed_files() {
 		'8 pages statiques (confiance et conversion)' => $dir . 'seed-phase3-batch6-pages.php',
 		'4 pages légales et plan du site'             => $dir . 'seed-phase3-batch7-pages.php',
 		'Maillage interne (villes prioritaires, articles ↔ prestations)' => $dir . 'seed-phase4-maillage.php',
-		'Fidélité Claude Design — contenu intégral des 6 prestations' => $dir . 'seed-fidelite-prestations.php',
+		'Fidélité Claude Design — 6 prestations'      => $dir . 'seed-fidelite-prestations.php',
+		'Fidélité Claude Design — 26 zones'          => $dir . 'seed-fidelite-zones.php',
+		'Fidélité Claude Design — 3 articles Conseils' => $dir . 'seed-fidelite-articles.php',
+		'Fidélité Claude Design — 9 pages statiques' => $dir . 'seed-fidelite-pages.php',
 		'Nettoyage du contenu WordPress par défaut'   => $dir . 'cleanup-wp-defaults.php',
 	);
 }

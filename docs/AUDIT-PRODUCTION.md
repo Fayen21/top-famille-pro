@@ -641,3 +641,22 @@ Chacun est corrigé **dans le générateur**, donc reste corrigé au prochain pa
 2. Remplacement des **témoignages provisoires** par de vrais avis (marqués `data-tfp-provisional`).
 3. **Médiation de la consommation** : dispositif applicable, encore en `[À COMPLÉTER]`.
 4. **Nombre d'avis Google** et **URL de la fiche** : le badge s'affiche sans eux, la note seule.
+
+### Paquet correctif reconstruit (10 août 2026)
+
+| Fichier | Version | Taille | SHA-256 |
+|---|---|---|---|
+| `release/topfamillepro-theme-correctif.zip` | 0.6.0 | 2 349 577 o | `5ebf0cada9df284d1100f52487bd4929af7aafffb5ccd7ded764103d8106976d` |
+| `release/topfamillepro-content-installer-correctif.zip` | 1.5.0 | 170 347 o | `739e4193f2e7f816ad4cbc519994cdcb5a3ce7ecaec8b3a4cb6366f177b0a011` |
+| `release/Top-Famille-Pro-Correctif-Production.zip` | — | 2 538 736 o | `a976c95ca844d67a559041fc0aca80a2dc2b1152fc281cfeaaf1659fc9714969` |
+
+Contrôles faits sur les archives elles-mêmes, pas sur le dépôt :
+
+- dossier racine du thème : `topfamillepro/` — **aucune occurrence de `V1top-famille-pro`** ;
+- l'installateur embarque les quatre scripts de contenu relevé
+  (`seed-fidelite-prestations.php`, `-zones.php`, `-articles.php`, `-pages.php`) et les expose
+  comme quatre étapes distinctes de son écran d'administration ;
+- le thème du ZIP a été installé tel quel sur la seconde instance WordPress, laissée en
+  `WP_ENVIRONMENT_TYPE=production` : les témoignages provisoires y sont bien rendus et marqués
+  `data-tfp-provisional`, et ni le compteur « 47 avis » ni l'ancienne marque « Top-Entreprise »
+  n'apparaissent.
