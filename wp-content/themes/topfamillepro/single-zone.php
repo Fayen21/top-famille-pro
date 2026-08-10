@@ -235,11 +235,24 @@ $render_group = function ( array $bloc ) use ( $toutes_prestations, $cities_in_d
 			<p class="tfp-prose"><?php echo esc_html( $texte ); ?></p>
 		<?php endforeach; ?>
 		<?php if ( 'prestations' === $bloc['type'] && 'cartes' === $bloc['variante'] ) : ?>
-			<div class="tfp-grid tfp-grid--autofit-md" style="margin-top:18px">
+			<?php
+			/*
+			 * Bande sombre « Nos prestations sur place » : la maquette la pose sur fond marine avec
+			 * six tuiles bleues (285×147, fond #174A81, rayon 14, filet #1E5C9E, rembourrage 20,
+			 * quatre colonnes, écart 13). Le thème la rendait en bande claire avec des cartes
+			 * blanches — même contenu, tout autre poids visuel, et une section de maillage qui se
+			 * confondait avec le corps de page.
+			 *
+			 * Le texte de la tuile est le **résumé court** relevé sur la maquette (« Open-spaces,
+			 * salles de réunion, accueil »), pas l'accroche complète de la page prestation, qui fait
+			 * trois lignes et déformerait la grille.
+			 */
+			?>
+			<div class="tfp-service-tiles">
 				<?php foreach ( $toutes_prestations as $prestation ) : ?>
-					<a class="tfp-card tfp-card--link" href="<?php echo esc_url( get_permalink( $prestation ) ); ?>">
-						<h3><?php echo esc_html( tfp_get_field( 'nav_label', $prestation->ID ) ?: get_the_title( $prestation ) ); ?></h3>
-						<p><?php echo esc_html( tfp_get_field( 'tease', $prestation->ID ) ); ?></p>
+					<a class="tfp-service-tile" href="<?php echo esc_url( get_permalink( $prestation ) ); ?>">
+						<strong><?php echo esc_html( tfp_get_field( 'nav_label', $prestation->ID ) ?: get_the_title( $prestation ) ); ?></strong>
+						<span><?php echo esc_html( tfp_get_field( 'resume_court', $prestation->ID ) ?: tfp_get_field( 'tease', $prestation->ID ) ); ?></span>
 					</a>
 				<?php endforeach; ?>
 			</div>
@@ -310,9 +323,18 @@ $render_sections = function ( array $groupes, $classe ) use ( $render_group ) {
 			$nb = count( array_filter( $groupes, function ( $g ) use ( $bloc ) {
 				return $g['section'] === $bloc['section'];
 			} ) );
+			/*
+			 * La bande qui porte les six prestations en tuiles est posée sur fond marine dans la
+			 * maquette, pas sur le fond de page : c'est une bande de maillage, et le prototype la
+			 * détache franchement du corps de texte. Les autres bandes gardent leur fond.
+			 */
+			$fond = $classe;
+			if ( 'prestations' === $bloc['type'] && 'cartes' === $bloc['variante'] ) {
+				$fond = trim( str_replace( array( 'tfp-section--alt', 'tfp-section--turquoise' ), '', $classe ) . ' tfp-section--navy' );
+			}
 			printf(
 				'<section class="%s"><div class="tfp-container"><div class="%s">',
-				esc_attr( $classe ),
+				esc_attr( $fond ),
 				esc_attr( $nb > 1 ? 'tfp-zone-links-grid' : '' )
 			);
 			$courante = $bloc['section'];

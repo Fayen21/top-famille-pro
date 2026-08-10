@@ -79,9 +79,16 @@ foreach ( $data['sections'] as $section ) {
 		<div class="tfp-container">
 		<?php
 		foreach ( $sequences as $sequence ) :
-			$en_grille = $colonnes > 1 && count( $sequence ) > 1 && ! empty( $sequence[0]['grille'] );
+			/*
+			 * Le nombre de colonnes est celui de **cette rangée**, relevé sur le rendu, et non le
+			 * maximum de la bande : une bande porte couramment une rangée de quatre cartes puis une
+			 * rangée de trois, et prendre le maximum rangeait la seconde sur quatre colonnes dont une
+			 * restait vide. `$colonnes` sert de repli pour les contenus produits avant ce relevé.
+			 */
+			$colonnes_rangee = max( 1, min( 4, (int) ( $sequence[0]['colonnes'] ?? $colonnes ) ) );
+			$en_grille       = $colonnes_rangee > 1 && count( $sequence ) > 1 && ! empty( $sequence[0]['grille'] );
 			?>
-			<div class="<?php echo $en_grille ? esc_attr( 'tfp-static-grid tfp-static-grid--' . (int) $colonnes ) : 'tfp-static-run'; ?>">
+			<div class="<?php echo $en_grille ? esc_attr( 'tfp-static-grid tfp-static-grid--' . (int) $colonnes_rangee ) : 'tfp-static-run'; ?>">
 			<?php
 			foreach ( $sequence as $bloc ) :
 				// Les clés absentes d'un bloc généré avant l'ajout d'un type de contenu ne doivent pas

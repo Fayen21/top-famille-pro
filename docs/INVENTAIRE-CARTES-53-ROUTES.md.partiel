@@ -11,89 +11,90 @@
 > Un conteneur qui contient visuellement plusieurs micro-cartes n’est jamais compté pour une
 > carte : il compte pour ses enfants.
 
-**6 routes × 1 largeurs · 7 anomalie(s), dont 0 grave(s)** (carte absente ou fusionnée).
+**3 routes × 1 largeurs · 31 anomalie(s), dont 11 grave(s)** (carte absente ou fusionnée).
 
 ## Synthèse
 
 | Route | Cartes 1440 px | Anomalies 1440 px |
 |---|---|---|
-| `#/service/bureaux` | 21 → 21 | ⚠️ 1 |
-| `#/service/commerces` | 20 → 20 | ⚠️ 1 |
-| `#/service/cabinets` | 28 → 28 | ⚠️ 2 |
-| `#/service/coproprietes` | 21 → 21 | ⚠️ 1 |
-| `#/service/meubles` | 21 → 21 | ⚠️ 1 |
-| `#/service/ponctuel` | 21 → 21 | ⚠️ 1 |
+| `#/departement/cote-dor` | 31 → 30 (-1) | ❌ 14 (4) |
+| `#/ville/dijon` | 49 → 48 (-1) | ❌ 10 (3) |
+| `#/ville/dole` | 50 → 48 (-2) | ❌ 7 (4) |
 
 ## Routes à corriger en priorité
 
-Aucune : aucune carte absente ni fusionnée à 1440 px.
+| Route | Cartes absentes ou fusionnées | Anomalies totales |
+|---|---|---|
+| `#/departement/cote-dor` | 4 | 14 |
+| `#/ville/dole` | 4 | 7 |
+| `#/ville/dijon` | 3 | 10 |
 
 ## Archétypes employés par la maquette
 
 | Archétype | Occurrences dans la maquette |
 |---|---|
-| `faq` | 47 |
-| `carte-titre-texte` | 36 |
-| `micro-carte` | 24 |
-| `carte-sombre` | 7 |
-| `chip` | 6 |
-| `tarif` | 6 |
-| `carte-titre` | 6 |
+| `micro-carte` | 34 |
+| `chip` | 29 |
+| `carte-titre-texte` | 26 |
+| `faq` | 19 |
+| `carte-sombre` | 12 |
+| `tarif` | 7 |
+| `temoignage` | 3 |
 
 ## Détail par route
 
-### `#/service/bureaux` → `/prestations/bureaux/`
+### `#/departement/cote-dor` → `/zones-intervention/cote-dor/`
 
-**1440 px** — bandes 14 → 14 · cartes 21 → 21 · 1 anomalie(s)
-
-| Anomalie | Archétype | Bande | Détail |
-|---|---|---|---|
-| type | `carte-titre` | 13 | « Encore une question sur Bureaux ? Audrey vous répond directe » — rendue en `micro-carte` |
-
-
-### `#/service/commerces` → `/prestations/commerces/`
-
-**1440 px** — bandes 14 → 14 · cartes 20 → 20 · 1 anomalie(s)
+**1440 px** — bandes 11 → 11 · cartes 31 → 30 · 14 anomalie(s)
 
 | Anomalie | Archétype | Bande | Détail |
 |---|---|---|---|
-| type | `carte-titre` | 13 | « Encore une question sur Commerces ? Audrey vous répond direc » — rendue en `micro-carte` |
+| absente | `tarif` | 3 | « 27 € HT/htarif unique en région✓Devis gratuit sous 24 h✓Intervention r » |
+| fusionnee | `tarif` | 3 | « 27 € HT/htarif unique en région » rendue dans « 27 € HT/h tarif unique en région Voir les tarifs → » |
+| absente | `micro-carte` | 6 | « Nettoyage de bureaux→Nettoyage de commerces→Cabinets & professions lib » |
+| colonnes | `chip` | 6 | « Beaune » — 4 colonnes attendues, 1 rendues |
+| colonnes | `chip` | 6 | « Chevigny-Saint-Sauveur » — 4 colonnes attendues, 1 rendues |
+| colonnes | `chip` | 6 | « Ahuy » — 4 colonnes attendues, 2 rendues |
+| colonnes | `chip` | 6 | « Plombières-lès-Dijon » — 3 colonnes attendues, 1 rendues |
+| colonnes | `chip` | 6 | « Sennecey-lès-Dijon » — 3 colonnes attendues, 1 rendues |
+| colonnes | `chip` | 6 | « Nuits-Saint-Georges » — 3 colonnes attendues, 1 rendues |
+| fusionnee | `micro-carte` | 7 | « Exemple · bureaux à Dijon, 12 h/mois333 € HT/moisTrois passages de 1 h » rendue dans « Exemple · bureaux à Dijon, 12 h/mois 333 € HT/mois » |
+| colonnes | `temoignage` | 7 | « ★★★★★« Nous cherchions un prestataire capable de passer avan » — 3 colonnes attendues, 1 rendues |
+| surplus | `tarif` | 3 | « 27 € HT/h tarif unique en région Voir les tarifs → » |
+| surplus | `chip` | 6 | « Daix » |
+| surplus | `micro-carte` | 7 | « Exemple · bureaux à Dijon, 12 h/mois 333 € HT/mois Exemple non contrac » |
 
 
-### `#/service/cabinets` → `/prestations/cabinets/`
+### `#/ville/dijon` → `/zones-intervention/cote-dor/dijon/`
 
-**1440 px** — bandes 15 → 15 · cartes 28 → 28 · 2 anomalie(s)
-
-| Anomalie | Archétype | Bande | Détail |
-|---|---|---|---|
-| type | `carte-titre-texte` | 4 | « Cette prestation est un entretien courant de locaux professi » — rendue en `micro-carte` |
-| type | `carte-titre` | 14 | « Encore une question sur Cabinets ? Audrey vous répond direct » — rendue en `micro-carte` |
-
-
-### `#/service/coproprietes` → `/prestations/coproprietes/`
-
-**1440 px** — bandes 14 → 14 · cartes 21 → 21 · 1 anomalie(s)
-
-| Anomalie | Archétype | Bande | Détail |
-|---|---|---|---|
-| type | `carte-titre` | 13 | « Encore une question sur Copropriétés ? Audrey vous répond di » — rendue en `micro-carte` |
-
-
-### `#/service/meubles` → `/prestations/meubles/`
-
-**1440 px** — bandes 14 → 14 · cartes 21 → 21 · 1 anomalie(s)
+**1440 px** — bandes 13 → 13 · cartes 49 → 48 · 10 anomalie(s)
 
 | Anomalie | Archétype | Bande | Détail |
 |---|---|---|---|
-| type | `carte-titre` | 13 | « Encore une question sur Locations meublées ? Audrey vous rép » — rendue en `micro-carte` |
+| absente | `tarif` | 3 | « 27 € HT/htarif unique en région✓Devis gratuit sous 24 h✓Intervention r » |
+| fusionnee | `tarif` | 3 | « 27 € HT/htarif unique en région » rendue dans « 27 € HT/h tarif unique en région Voir les tarifs → » |
+| colonnes | `micro-carte` | 7 | « Exemple · bureaux en secteur tertiaire dijonnais, 12 h/mois3 » — 3 colonnes attendues, 1 rendues |
+| colonnes | `temoignage` | 7 | « ★★★★★« Nous ouvrons à 9 h et le passage est fait avant : bur » — 3 colonnes attendues, 1 rendues |
+| colonnes | `chip` | 9 | « Chevigny-Saint-Sauveur » — 3 colonnes attendues, 4 rendues |
+| colonnes | `chip` | 9 | « Sennecey-lès-Dijon » — 4 colonnes attendues, 2 rendues |
+| colonnes | `chip` | 9 | « Ruffey-lès-Echirey » — 1 colonnes attendues, 2 rendues |
+| absente | `carte-titre-texte` | 12 | « Nous contacterAudrey est votre interlocutrice unique, de la première v » |
+| surplus | `tarif` | 3 | « 27 € HT/h tarif unique en région Voir les tarifs → » |
+| surplus | `chip` | 9 | « Daix » |
 
 
-### `#/service/ponctuel` → `/prestations/ponctuel/`
+### `#/ville/dole` → `/zones-intervention/jura/dole/`
 
-**1440 px** — bandes 14 → 14 · cartes 21 → 21 · 1 anomalie(s)
+**1440 px** — bandes 13 → 13 · cartes 50 → 48 · 7 anomalie(s)
 
 | Anomalie | Archétype | Bande | Détail |
 |---|---|---|---|
-| type | `carte-titre` | 13 | « Encore une question sur Ponctuel ? Audrey vous répond direct » — rendue en `micro-carte` |
+| absente | `tarif` | 3 | « 27 € HT/htarif unique en région✓Devis gratuit sous 24 h✓Intervention r » |
+| fusionnee | `tarif` | 3 | « 27 € HT/htarif unique en région » rendue dans « 27 € HT/h tarif unique en région Voir les tarifs → » |
+| fusionnee | `micro-carte` | 7 | « Exemple · commerce en centre-ville, 16 h/mois441 € HT/moisUn passage d » rendue dans « Exemple · commerce en centre-ville, 16 h/mois 333  » |
+| colonnes | `temoignage` | 7 | « ★★★★★« J'ouvre à 9 h 30 et tout est fait avant mon arrivée,  » — 3 colonnes attendues, 1 rendues |
+| absente | `carte-titre-texte` | 12 | « Nous contacterAudrey est votre interlocutrice unique, de la première v » |
+| surplus | `tarif` | 3 | « 27 € HT/h tarif unique en région Voir les tarifs → » |
+| surplus | `micro-carte` | 7 | « Exemple · commerce en centre-ville, 16 h/mois 333 € HT/mois Exemple no » |
 
 

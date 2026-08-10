@@ -39,10 +39,37 @@ function phpList(items) {
 	return 'array(\n' + items.map((i) => '\t\t' + php(i) + ',').join('\n') + '\n\t)';
 }
 
+/*
+ * Résumés courts des six prestations, tels qu'ils apparaissent dans la bande sombre « Nos
+ * prestations sur place » des pages de zone : « Open-spaces, salles de réunion, accueil », et non
+ * l'accroche complète de la page prestation, qui fait trois lignes. Ils sont relevés une fois sur
+ * une page de ville — la maquette les répète à l'identique sur les dix-neuf routes concernées.
+ */
+async function resumesCourts(page) {
+	await page.evaluate(() => {
+		location.hash = '/ville/dole';
+	});
+	await page.waitForTimeout(1400);
+	return page.evaluate(() => {
+		const txt = (el) => (el ? (el.textContent || '').replace(/\s+/g, ' ').trim() : '');
+		const grille = [...document.querySelectorAll('div')].find(
+			(x) => getComputedStyle(x).display === 'grid' && /^Nettoyage de bureaux/.test(txt(x)) && x.children.length === 6
+		);
+		if (!grille) return [];
+		return [...grille.children].map((k) => ({
+			titre: txt(k.children[0]),
+			resume: txt(k.children[1]),
+		}));
+	});
+}
+
 const browser = await chromium.launch({ executablePath: '/opt/pw-browsers/chromium' });
 const page = await browser.newPage({ viewport: { width: 1440, height: 900 } });
 await page.goto(REF, { waitUntil: 'load', timeout: 90000 });
 await page.waitForTimeout(5500);
+
+const resumes = await resumesCourts(page);
+console.error(`  résumés courts relevés : ${resumes.length}`);
 
 const all = [];
 for (const svc of SERVICES) {
@@ -326,8 +353,10 @@ for (const svc of SERVICES) {
 
 	// Les libellés du pied de page sont dans l'ordre des six prestations : on prend celui du rang
 	// courant plutôt que de rechercher par titre, que la maquette n'emploie pas là.
-	const navLabel = data.navLabels[SERVICES.findIndex((x) => x.slug === svc.slug)] || '';
-	all.push({ ...svc, ...data, navLabel });
+	const rang = SERVICES.findIndex((x) => x.slug === svc.slug);
+	const navLabel = data.navLabels[rang] || '';
+	const resumeCourt = (resumes[rang] || {}).resume || '';
+	all.push({ ...svc, ...data, navLabel, resumeCourt });
 	console.error(
 		`  ${svc.slug.padEnd(14)} pour-qui ${data.pourQui.length} · tâches ${data.taches.length} · ` +
 			`configs ${data.configs.length} · détails ${data.details.length} · organisation ${data.organisation.length} · ` +
@@ -387,6 +416,8 @@ for (const s of all) {
 	const set = (k, v) => L.push(`\ttfp_seed_set_field( ${php(k)}, ${v}, $id );`);
 	set('nav_label', php(s.navLabel));
 	set('label_court', php(s.labelCourt));
+	// Résumé d'une ligne, employé par la bande sombre des pages de zone.
+	set('resume_court', php(s.resumeCourt));
 	set('h1', php(s.h1));
 	set('tease', php(s.tease));
 	set('hero_alt', php(s.heroAlt));

@@ -268,7 +268,7 @@ for (const p of PAGES) {
 					blocs.push(cur);
 				}
 			};
-			const vide = () => ({ titre: '', niveau: 'h2', grille: false, textes: [], liste: [], liens: [], noms: [], citations: [], faq: [], etapes: [] });
+			const vide = () => ({ titre: '', niveau: 'h2', grille: false, colonnes: 1, textes: [], liste: [], liens: [], noms: [], citations: [], faq: [], etapes: [] });
 			// Ordonnées de tous les titres de la bande : sert à décider, titre par titre, s'il est
 			// pleine largeur ou en rangée.
 			const rangs = nodes.filter((n) => n.t === 'h2' || n.t === 'h3').map((n) => n.top);
@@ -290,7 +290,12 @@ for (const p of PAGES) {
 					 * repère est direct — un titre seul sur son ordonnée est pleine largeur, un titre
 					 * qui partage son ordonnée avec d'autres appartient à une rangée.
 					 */
-					cur.grille = rangs.filter((y) => Math.abs(y - n.top) <= 8).length > 1;
+					// Nombre de titres qui partagent l'ordonnée de celui-ci : c'est le nombre de colonnes
+					// de **sa** rangée. Le maximum de la bande ne convient pas — une bande peut porter
+					// une rangée de quatre cartes puis une rangée de trois, et prendre le maximum
+					// rangeait la seconde sur quatre colonnes dont une vide.
+					cur.colonnes = rangs.filter((y) => Math.abs(y - n.top) <= 8).length;
+					cur.grille = cur.colonnes > 1;
 					question = null;
 				} else {
 					if (!cur) cur = vide();

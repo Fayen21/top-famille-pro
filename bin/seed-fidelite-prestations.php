@@ -38,6 +38,7 @@ if ( empty( $posts ) ) {
 	wp_update_post( array( 'ID' => $id, 'menu_order' => 1 ) );
 	tfp_seed_set_field( 'nav_label', 'Nettoyage de bureaux', $id );
 	tfp_seed_set_field( 'label_court', 'Bureaux', $id );
+	tfp_seed_set_field( 'resume_court', 'Open-spaces, salles de réunion, accueil', $id );
 	tfp_seed_set_field( 'h1', 'Nettoyage de bureaux en Bourgogne-Franche-Comté', $id );
 	tfp_seed_set_field( 'tease', 'Un entretien régulier et discret de vos espaces de travail, confié autant que possible à un intervenant habituel, pour des bureaux toujours prêts à recevoir vos équipes et vos visiteurs.', $id );
 	tfp_seed_set_field( 'hero_alt', 'Nettoyage de bureaux en Bourgogne-Franche-Comté', $id );
@@ -151,6 +152,7 @@ if ( empty( $posts ) ) {
 	wp_update_post( array( 'ID' => $id, 'menu_order' => 2 ) );
 	tfp_seed_set_field( 'nav_label', 'Nettoyage de commerces', $id );
 	tfp_seed_set_field( 'label_court', 'Commerces', $id );
+	tfp_seed_set_field( 'resume_court', 'Boutiques, showrooms, surfaces de vente', $id );
 	tfp_seed_set_field( 'h1', 'Nettoyage de commerces et de surfaces de vente', $id );
 	tfp_seed_set_field( 'tease', 'Une surface de vente impeccable à l\'ouverture : sols, vitrines et sanitaires clients entretenus avant l\'arrivée de vos premiers visiteurs.', $id );
 	tfp_seed_set_field( 'hero_alt', 'Nettoyage de commerces et de surfaces de vente', $id );
@@ -260,6 +262,7 @@ if ( empty( $posts ) ) {
 	wp_update_post( array( 'ID' => $id, 'menu_order' => 3 ) );
 	tfp_seed_set_field( 'nav_label', 'Cabinets & professions libérales', $id );
 	tfp_seed_set_field( 'label_court', 'Cabinets', $id );
+	tfp_seed_set_field( 'resume_court', 'Santé, droit, conseil, salles d\'attente', $id );
 	tfp_seed_set_field( 'h1', 'Nettoyage de cabinets et de professions libérales', $id );
 	tfp_seed_set_field( 'tease', 'L\'entretien courant des cabinets médicaux, paramédicaux, juridiques et de conseil : accueil, salle d\'attente, bureaux, sanitaires et sols, en dehors des heures de consultation et dans le respect de la confidentialité.', $id );
 	tfp_seed_set_field( 'hero_alt', 'Nettoyage de cabinets et de professions libérales', $id );
@@ -377,6 +380,7 @@ if ( empty( $posts ) ) {
 	wp_update_post( array( 'ID' => $id, 'menu_order' => 4 ) );
 	tfp_seed_set_field( 'nav_label', 'Copropriétés & parties communes', $id );
 	tfp_seed_set_field( 'label_court', 'Copropriétés', $id );
+	tfp_seed_set_field( 'resume_court', 'Halls, cages d\'escalier, locaux techniques', $id );
 	tfp_seed_set_field( 'h1', 'Entretien de copropriétés et de parties communes', $id );
 	tfp_seed_set_field( 'tease', 'L\'entretien régulier des halls, cages d\'escalier, ascenseurs et locaux communs, pour des résidences et immeubles tertiaires soignés au quotidien.', $id );
 	tfp_seed_set_field( 'hero_alt', 'Entretien de copropriétés et de parties communes', $id );
@@ -490,6 +494,7 @@ if ( empty( $posts ) ) {
 	wp_update_post( array( 'ID' => $id, 'menu_order' => 5 ) );
 	tfp_seed_set_field( 'nav_label', 'Locations meublées & hébergements', $id );
 	tfp_seed_set_field( 'label_court', 'Locations meublées', $id );
+	tfp_seed_set_field( 'resume_court', 'Meublés, gîtes, hébergements pro', $id );
 	tfp_seed_set_field( 'h1', 'Nettoyage de locations meublées et d\'hébergements', $id );
 	tfp_seed_set_field( 'tease', 'La remise en état de vos meublés et hébergements professionnels entre deux occupants, avec un contrôle visuel et un signalement des anomalies selon l\'organisation définie avec le client.', $id );
 	tfp_seed_set_field( 'hero_alt', 'Nettoyage de locations meublées et d\'hébergements', $id );
@@ -601,6 +606,7 @@ if ( empty( $posts ) ) {
 	wp_update_post( array( 'ID' => $id, 'menu_order' => 6 ) );
 	tfp_seed_set_field( 'nav_label', 'Nettoyage ponctuel & remise en état', $id );
 	tfp_seed_set_field( 'label_court', 'Ponctuel', $id );
+	tfp_seed_set_field( 'resume_court', 'Après travaux, grand nettoyage, départ', $id );
 	tfp_seed_set_field( 'h1', 'Nettoyage ponctuel et remise en état', $id );
 	tfp_seed_set_field( 'tease', 'Une intervention ponctuelle pour une remise en état après travaux, un grand nettoyage saisonnier ou une fin de bail, au même tarif horaire que nos prestations régulières.', $id );
 	tfp_seed_set_field( 'hero_alt', 'Nettoyage ponctuel et remise en état', $id );
