@@ -53,8 +53,13 @@ test.describe('Informations juridiques — mentions légales', () => {
 		await page.goto('/mentions-legales/');
 		const text = await page.locator('body').innerText();
 		// Confirmé le 9 août 2026 : coordonnées complètes de l'hébergeur et directrice de la
-		// publication. Plus aucun [À COMPLÉTER] ne doit rester sur cette page.
-		expect(text).not.toContain('[À COMPLÉTER]');
+		// publication. Le seul [À COMPLÉTER] encore admis sur cette page concerne la médiation de
+		// la consommation, dont le dispositif dépend de la nature réelle de la clientèle et n'a pas
+		// été tranché — l'écrire en clair vaut mieux que de l'inventer ou de l'omettre
+		// (CLAUDE.md §5.1).
+		const placeholders = text.match(/\[À COMPLÉTER\]/g) || [];
+		expect(placeholders.length, 'un seul placeholder admis : médiation de la consommation').toBe(1);
+		expect(text).toMatch(/Médiation de la consommation/);
 		expect(text).toMatch(/HOSTINGER INTERNATIONAL LIMITED/);
 		expect(text).toMatch(/Larnaca/);
 		expect(text).toMatch(/compliance@hostinger\.com/);

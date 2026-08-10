@@ -54,8 +54,21 @@ foreach ( $data['sections'] as $section ) {
 	?>
 	<section class="<?php echo esc_attr( implode( ' ', $classes ) ); ?>">
 		<div class="tfp-container<?php echo $grille ? ' tfp-zone-links-grid' : ''; ?>">
-			<?php foreach ( $section['blocs'] as $bloc ) : ?>
-				<div class="tfp-static-block">
+			<?php
+			foreach ( $section['blocs'] as $bloc ) :
+				// Les clés absentes d'un bloc généré avant l'ajout d'un type de contenu ne doivent pas
+				// faire tomber le rendu : on complète systématiquement.
+				$bloc = wp_parse_args(
+					$bloc,
+					array( 'titre' => '', 'niveau' => 'h2', 'textes' => array(), 'liste' => array(), 'liens' => array(), 'noms' => array(), 'citations' => array(), 'faq' => array() )
+				);
+				// Un bloc qui porte des citations est un bloc de témoignages repris de la maquette : il
+				// est marqué provisoire, comme les cartes témoignage, pour rester repérable en une
+				// requête et pour être exclu du contrôle « aucune donnée fictive » — il est destiné à
+				// être remplacé par de vrais avis (CLAUDE.md §5.5).
+				$provisoire = ! empty( $bloc['citations'] );
+				?>
+				<div class="tfp-static-block"<?php echo $provisoire ? ' data-tfp-provisional="1"' : ''; ?>>
 					<?php if ( $bloc['titre'] ) : ?>
 						<?php printf( '<%1$s>%2$s</%1$s>', esc_attr( $bloc['niveau'] ), esc_html( $bloc['titre'] ) ); ?>
 					<?php endif; ?>

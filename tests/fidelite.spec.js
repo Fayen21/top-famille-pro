@@ -111,32 +111,48 @@ test.describe('Fidélité Claude Design — images', () => {
 	}
 });
 
-test.describe('Contenus de démonstration — selon l’environnement', () => {
-	test('hors production : la carte témoignage est rendue avec sa mention explicite', async ({ page }) => {
+test.describe('Témoignages provisoires repris de la maquette', () => {
+	/*
+	 * Décision du 10 août 2026 (Emmanuel) : les témoignages de la maquette Claude Design sont
+	 * reproduits tels quels dans cette version de travail, y compris en production, en attendant
+	 * de vrais avis clients. Ces tests vérifient donc l'inverse de ce qu'ils vérifiaient avant :
+	 * non plus qu'ils sont masqués, mais qu'ils restent **repérables et remplaçables**, et qu'ils
+	 * n'alimentent aucune donnée structurée.
+	 */
+	test('les témoignages provisoires sont marqués, donc retrouvables en une requête', async ({ page }) => {
 		await page.goto('/');
-		const demo = page.locator('[data-tfp-demo-block]');
-		if ((await demo.count()) === 0) {
-			// Environnement de production, ou témoignages réels configurés : rien à vérifier ici,
-			// c'est le test « production » ci-dessous qui fait foi.
-			test.skip(true, 'aucun contenu de démonstration rendu dans cet environnement');
-		}
-		await expect(page.locator('.tfp-demo-notice')).toContainText(
-			'Exemple de présentation — contenu de démonstration non publié'
-		);
+		const provisoires = page.locator('[data-tfp-provisional]');
+		expect(
+			await provisoires.count(),
+			'au moins un témoignage provisoire doit être marqué tant qu’aucun avis réel n’est saisi'
+		).toBeGreaterThan(0);
 	});
 
-	test('la carte témoignage n’émet jamais de schéma Review ou AggregateRating', async ({ page }) => {
+	test('un témoignage provisoire n’émet jamais de schéma Review ou AggregateRating', async ({ page }) => {
 		await page.goto('/');
 		const jsonld = (await page.locator('script[type="application/ld+json"]').allTextContents()).join(' ');
 		expect(jsonld).not.toMatch(/"@type"\s*:\s*"(Review|AggregateRating)"/);
 		expect(jsonld).not.toMatch(/aggregateRating|reviewRating|ratingValue/i);
 	});
+
+	test('la note Google réelle n’est jamais mélangée au balisage des témoignages', async ({ page }) => {
+		await page.goto('/');
+		// La note 5,0/5 est réelle et affichable (CLAUDE.md §5.5), mais c'est une note de plateforme
+		// tierce : la baliser comme note du site serait contraire aux règles de Google sur les
+		// résultats enrichis.
+		const badge = page.locator('.tfp-google-badge').first();
+		if (await badge.count()) {
+			await expect(badge).toContainText('sur Google');
+		}
+		const jsonld = (await page.locator('script[type="application/ld+json"]').allTextContents()).join(' ');
+		expect(jsonld).not.toMatch(/ratingValue/i);
+	});
 });
 
 /**
- * Preuve stricte demandée : sur une installation réellement en `WP_ENVIRONMENT_TYPE=production`,
- * aucun contenu de démonstration n'est publié. Cible une seconde instance WordPress laissée à sa
- * valeur par défaut (production), et non un simple test unitaire de la condition.
+ * Preuve stricte : sur une installation réellement en `WP_ENVIRONMENT_TYPE=production`, aucun
+ * contenu interdit n'est publié. Les témoignages provisoires y sont désormais autorisés (décision
+ * du 10 août 2026) ; le compteur d'avis non confirmé et l'ancienne marque ne le sont pas.
  */
 const PROD_URL = process.env.TFP_PROD_BASE_URL || 'http://localhost:8901';
 
@@ -148,14 +164,11 @@ test.describe('Production — aucun faux avis publié', () => {
 		});
 		test.skip(!reachable, `instance de production non joignable sur ${PROD_URL}`);
 
-		await expect(page.locator('[data-tfp-demo-block]')).toHaveCount(0);
-		await expect(page.locator('.tfp-demo-notice')).toHaveCount(0);
-
 		const text = await page.locator('body').innerText();
-		expect(text, 'aucun nom de témoin de démonstration ne doit être publié').not.toContain('Camille R.');
 		// Le compteur « 47 avis » du prototype reste fictif et interdit, même si la note, elle, est
 		// désormais confirmée (CLAUDE.md §5.5).
 		expect(text).not.toMatch(/47\s*avis/i);
+		expect(text, 'l’ancienne marque ne doit plus apparaître').not.toMatch(/Top-Entreprise/);
 
 		const jsonld = (await page.locator('script[type="application/ld+json"]').allTextContents()).join(' ');
 		expect(jsonld).not.toMatch(/"@type"\s*:\s*"(Review|AggregateRating)"/);

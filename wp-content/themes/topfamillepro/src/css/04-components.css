@@ -1079,12 +1079,28 @@
    bande turquoise #DDF4F3 pour le bloc « organisation ».
    ------------------------------------------------------------------ */
 
+/* Ligne « région + note Google » au-dessus du H1.
+   Sa hauteur est réservée : les polices sont chargées en `font-display: swap`, et la bascule vers
+   Hanken Grotesk change la largeur du texte du badge. Sans réserve, la ligne passe de un à deux
+   rangs au moment du swap et pousse tout le H1 vers le bas — mesuré à 0,155 de CLS sur mobile,
+   au-dessus du seuil de 0,1. En dessous de 600 px la ligne est empilée d'emblée, pour que sa
+   hauteur ne dépende plus du point de retour à la ligne. */
 .tfp-hero__eyebrow {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   gap: 12px;
+  min-height: 36px;
   margin-bottom: 16px;
+}
+
+@media (max-width: 600px) {
+  .tfp-hero__eyebrow {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    min-height: 72px;
+  }
 }
 
 /* Phrase de maillage sous la réponse directe : texte courant, liens visibles autrement que par
@@ -1097,7 +1113,12 @@
   color: var(--color-text-secondary);
 }
 
-.tfp-maillage a {
+/* Le sélecteur est préfixé par `body.tfp-body` pour battre la règle générale qui retire les
+   soulignements : sans cela, un lien dans un paragraphe ne se distingue plus que par sa couleur,
+   ce qu'axe-core signale à juste titre (règle link-in-text-block, WCAG 1.4.1). */
+body.tfp-body .tfp-maillage a,
+body.tfp-body .tfp-prose a,
+body.tfp-body .tfp-article-body p a {
   text-decoration: underline;
   text-underline-offset: 2px;
 }
@@ -1411,13 +1432,22 @@
   margin-top: 14px;
 }
 
-/* Badge de note au pied de page : même composant que le hero, sur fond sombre. */
+/* Badge de note au pied de page : même composant que le hero, mais sur fond marine — la couleur
+   de texte doit être reprise explicitement, sinon elle hérite du texte sombre et tombe à un
+   contraste de 1,03 sur le marine. */
 .tfp-google-badge--footer {
   display: flex;
   align-items: center;
   gap: 8px;
   margin-top: 18px;
   font-size: 14px;
+  color: var(--color-white);
+}
+
+.tfp-google-badge--footer .tfp-google-badge__text,
+.tfp-google-badge--footer .tfp-google-badge__text strong,
+.tfp-google-badge--footer .tfp-google-badge__count {
+  color: var(--color-white);
 }
 
 .tfp-google-badge--footer .tfp-google-badge__stars {
@@ -1971,4 +2001,25 @@
   margin-top: 4px;
   font-size: 14px;
   line-height: 1.5;
+}
+
+/* Cibles tactiles du pied de page (WCAG 2.2, critère 2.5.8 « Target Size (Minimum) », 24 × 24 px).
+   Les villes y sont listées en ligne, séparées par des points médians : sans hauteur ni marge
+   minimales, chaque lien fait 18 px de haut et ses voisins sont à moins de 24 px — axe-core le
+   signale, et c'est réellement difficile à viser au doigt. */
+.tfp-footer__zones a,
+.tfp-footer__contact a,
+.tfp-footer__col ul a,
+.tfp-footer__bottom nav a {
+  display: inline-block;
+  min-height: 24px;
+  padding-block: 3px;
+}
+
+.tfp-footer__villes a {
+  margin-right: 4px;
+}
+
+.tfp-footer__zones li {
+  line-height: 1.7;
 }

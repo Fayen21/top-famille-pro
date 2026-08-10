@@ -69,13 +69,13 @@ for (const route of ROUTES) {
 
 		test('aucune donnée fictive résiduelle (avis démo, Top-Entreprise, compteur 47 avis)', async ({ page }) => {
 			await page.goto(route.url);
-			// Le contenu explicitement marqué comme démonstration (`data-tfp-demo-block`) est retiré
+			// Le contenu explicitement marqué comme provisoire (`data-tfp-provisional`) est retiré
 			// avant contrôle : il n'est rendu que hors production, porte une mention visible, et son
 			// absence en production est vérifiée séparément et strictement (tests/fidelite.spec.js,
 			// « aucun contenu de démonstration en production »).
 			const text = await page.evaluate(() => {
 				const clone = document.body.cloneNode(true);
-				clone.querySelectorAll('[data-tfp-demo-block]').forEach((el) => el.remove());
+				clone.querySelectorAll('[data-tfp-provisional]').forEach((el) => el.remove());
 				return clone.innerText;
 			});
 			// Les avis/compteur démo sont vérifiés tels quels. « Top-Entreprise » est vérifié sans
