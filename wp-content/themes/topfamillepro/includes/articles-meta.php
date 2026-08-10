@@ -160,13 +160,23 @@ function tfp_get_article_related_prestations( $article_id ) {
  * @return WP_Post[]
  */
 function tfp_get_prestation_related_articles( $prestation_id ) {
+	/*
+	 * La maquette liste les **trois** articles sous « À lire aussi » sur chacune des six pages
+	 * prestation, dans le même ordre : fréquence, coût, cahier des charges. Le filtre par
+	 * `_tfp_related_prestation` n'en rendait qu'un sous-ensemble, variable d'une prestation à
+	 * l'autre — deux renvois ici, un seul là — alors que le prototype en montre trois partout.
+	 *
+	 * L'ordre est celui de publication (le plus ancien d'abord), qui est aussi celui de la maquette.
+	 */
+	unset( $prestation_id );
+
 	return get_posts(
 		array(
-			'post_type'      => 'post',
-			'category_name'  => 'conseils',
-			'numberposts'    => -1,
-			'meta_key'       => '_tfp_related_prestation',
-			'meta_value'     => (int) $prestation_id,
+			'post_type'     => 'post',
+			'category_name' => 'conseils',
+			'numberposts'   => 3,
+			'orderby'       => 'date',
+			'order'         => 'ASC',
 		)
 	);
 }

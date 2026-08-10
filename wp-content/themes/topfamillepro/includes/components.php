@@ -87,6 +87,10 @@ function tfp_get_titled_blocks( $prefix, $post_id, $max ) {
 		$blocks[] = array(
 			'titre' => $titre,
 			'texte' => (string) tfp_get_field( $prefix . '_' . $i . '_texte', $post_id ),
+			// Certaines bandes de la maquette mêlent une grille et des cartes pleine largeur : le
+			// champ dit lequel des deux traitements s'applique à ce bloc. Il est relevé sur le rendu
+			// du prototype, pas deviné (tools/generate-prestations.mjs).
+			'carte' => (bool) tfp_get_field( $prefix . '_' . $i . '_carte', $post_id ),
 		);
 	}
 	return $blocks;
@@ -179,6 +183,174 @@ function tfp_static_page_data( $key ) {
 		array( 'h1' => '', 'lede' => array(), 'hero_alt' => '', 'sections' => array() )
 	);
 	return $cache[ $key ];
+}
+
+/* ------------------------------------------------------------------
+ * Vocabulaire de cartes de Claude Design.
+ *
+ * Un composant par archétype réellement employé par le prototype, et non un composant générique
+ * unique : le prototype emploie plusieurs compositions distinctes, et les fondre ferait perdre à
+ * l'écran ce qui les sépare. Les valeurs de rendu sont dans src/css/04-components.css, relevées sur
+ * la maquette ; ces fonctions ne portent que le balisage.
+ * ------------------------------------------------------------------ */
+
+/**
+ * Panneau sombre d'exclusions : titre, introduction, puis grille de micro-cartes sombres.
+ *
+ * C'est la section qui dit ce que l'entreprise **ne** fait **pas** (CLAUDE.md §9 : les exclusions
+ * réelles qualifient les demandes en amont). La maquette lui donne le poids visuel le plus fort de
+ * la page — fond sombre, texte clair — précisément pour qu'elle ne se lise pas en diagonale.
+ *
+ * @param string   $titre Intitulé du panneau.
+ * @param string   $intro Paragraphe d'introduction, facultatif.
+ * @param string[] $items Exclusions, une par micro-carte.
+ */
+function tfp_panel_exclusions( $titre, $intro, array $items ) {
+	if ( ! $titre || ! $items ) {
+		return;
+	}
+	?>
+	<div class="tfp-panel--dark">
+		<h2><?php echo esc_html( $titre ); ?></h2>
+		<?php if ( $intro ) : ?>
+			<p class="tfp-panel__intro"><?php echo esc_html( $intro ); ?></p>
+		<?php endif; ?>
+		<ul class="tfp-tile-grid--dark">
+			<?php foreach ( $items as $item ) : ?>
+				<li><?php echo esc_html( $item ); ?></li>
+			<?php endforeach; ?>
+		</ul>
+	</div>
+	<?php
+}
+
+/**
+ * Carte tarifaire marine : « À partir de … HT/h » et son renvoi vers la page tarifs.
+ *
+ * Le montant n'est jamais écrit ici : il vient de includes/site-options.php, source unique du
+ * tarif (CLAUDE.md §5.3 — grille régionale identique partout).
+ */
+function tfp_price_card() {
+	$site = tfp_site_data();
+	?>
+	<div class="tfp-price-card">
+		<span class="tfp-price-card__label">À partir de</span>
+		<span class="tfp-price-card__value"><?php echo esc_html( tfp_format_price( $site['price_unique'] ) ); ?> HT/h</span>
+		<a class="tfp-price-card__link" href="<?php echo esc_url( home_url( '/tarifs/' ) ); ?>">Détail des tarifs →</a>
+	</div>
+	<?php
+}
+
+/**
+ * Carte de réponse directe : le paragraphe qui répond à la question de la page, en tête de contenu.
+ *
+ * @param string $texte     Réponse directe.
+ * @param string $maillage  Phrase de maillage interne déjà transformée en HTML, facultative.
+ */
+function tfp_answer_card( $texte, $maillage_html = '' ) {
+	if ( ! $texte ) {
+		return;
+	}
+	?>
+	<div class="tfp-answer-card">
+		<span class="tfp-answer-card__label">Réponse directe</span>
+		<p class="tfp-answer-card__text"><?php echo esc_html( $texte ); ?></p>
+	</div>
+	<?php if ( $maillage_html ) : ?>
+		<p class="tfp-maillage"><?php echo wp_kses_post( $maillage_html ); ?></p>
+	<?php endif; ?>
+	<?php
+}
+
+/**
+ * Carte de note : encadré clair de fin de section (limites de périmètre, précision).
+ *
+ * @param string $texte Contenu de la note.
+ * @param string $titre Intertitre facultatif.
+ */
+function tfp_note_card( $texte, $titre = '' ) {
+	if ( ! $texte ) {
+		return;
+	}
+	?>
+	<div class="tfp-note-card">
+		<?php if ( $titre ) : ?>
+			<h3><?php echo esc_html( $titre ); ?></h3>
+		<?php endif; ?>
+		<?php echo esc_html( $texte ); ?>
+	</div>
+	<?php
+}
+
+/**
+ * Cartes de renvoi : une pile de liens encadrés, avec leur flèche.
+ *
+ * Une entrée sans URL réelle n'est pas rendue en lien mort : son libellé reste du texte, dans la
+ * même carte (CLAUDE.md §8).
+ *
+ * @param array $liens Liste de `array( 'texte' => …, 'url' => … )`.
+ */
+function tfp_link_cards( array $liens ) {
+	$liens = array_filter( $liens, static function ( $l ) {
+		return ! empty( $l['texte'] );
+	} );
+	if ( ! $liens ) {
+		return;
+	}
+	?>
+	<div class="tfp-link-cards">
+		<?php
+		foreach ( $liens as $lien ) :
+			$libelle = rtrim( $lien['texte'], '→ ' );
+			if ( empty( $lien['url'] ) ) :
+				?>
+				<span class="tfp-link-card"><?php echo esc_html( $libelle ); ?></span>
+				<?php
+			else :
+				?>
+				<a class="tfp-link-card" href="<?php echo esc_url( $lien['url'] ); ?>">
+					<?php echo esc_html( $libelle ); ?><span class="tfp-link-card__arrow" aria-hidden="true">→</span>
+				</a>
+				<?php
+			endif;
+		endforeach;
+		?>
+	</div>
+	<?php
+}
+
+/**
+ * Liste de chips : communes, secteurs, types de locaux.
+ *
+ * Rendue en `<ul>` parce que c'est une liste : l'énumération a du sens pour qui n'en voit pas la
+ * mise en forme. Une entrée sans URL reste du texte.
+ *
+ * @param array $items Liste de `array( 'texte' => …, 'url' => … )` ou de chaînes.
+ */
+function tfp_chip_list( array $items ) {
+	if ( ! $items ) {
+		return;
+	}
+	?>
+	<ul class="tfp-chip-list">
+		<?php
+		foreach ( $items as $item ) :
+			$texte = is_array( $item ) ? ( $item['texte'] ?? '' ) : (string) $item;
+			$url   = is_array( $item ) ? ( $item['url'] ?? '' ) : '';
+			if ( ! $texte ) {
+				continue;
+			}
+			?>
+			<li>
+				<?php if ( $url ) : ?>
+					<a href="<?php echo esc_url( $url ); ?>"><?php echo esc_html( $texte ); ?></a>
+				<?php else : ?>
+					<span><?php echo esc_html( $texte ); ?></span>
+				<?php endif; ?>
+			</li>
+		<?php endforeach; ?>
+	</ul>
+	<?php
 }
 
 /**

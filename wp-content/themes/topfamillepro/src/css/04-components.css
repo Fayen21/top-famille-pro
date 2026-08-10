@@ -1238,16 +1238,70 @@ body.tfp-body .tfp-article-body p a {
   max-width: 760px;
 }
 
+/* ---------- Trois grilles, trois traitements ----------
+   Relevés sur les six routes `#/service/*`, identiques sur les six :
+
+     « Le détail, espace par espace »  → 3 colonnes, écart 34, filet **supérieur** de 2 px,
+                                          rembourrage 16 en haut, aucun fond ;
+     « Une organisation carrée »       → 4 colonnes, écart 18, aucun ornement ;
+     « Les situations concrètes »      → 2 colonnes, écart 16, filet **gauche** de 2 px,
+                                          rembourrage 16 à gauche.
+
+   Le thème les rendait toutes de la même façon — une grille à deux colonnes de texte nu pour les
+   deux premières, des cartes plates pour la troisième. Ni le rythme ni la hiérarchie n'y étaient. */
 .tfp-detail-grid {
   display: grid;
-  gap: 28px 40px;
-  grid-template-columns: 1fr;
+  gap: 34px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   margin-top: 28px;
 }
 
-@media (min-width: 820px) {
-  .tfp-detail-grid {
+.tfp-detail-grid .tfp-detail-item {
+  padding-top: 16px;
+  border-top: 2px solid var(--color-border-strong);
+}
+
+.tfp-detail-grid--orga {
+  gap: 18px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.tfp-detail-grid--orga .tfp-detail-item {
+  padding-top: 0;
+  border-top: 0;
+}
+
+.tfp-situation-grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: 20px;
+}
+
+.tfp-situation-grid > * {
+  padding-left: 16px;
+  border-left: 2px solid var(--color-turquoise);
+}
+
+.tfp-situation-grid p {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+}
+
+@media (max-width: 1099px) {
+  .tfp-detail-grid,
+  .tfp-detail-grid--orga {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 699px) {
+  .tfp-detail-grid,
+  .tfp-detail-grid--orga,
+  .tfp-situation-grid {
+    grid-template-columns: minmax(0, 1fr);
   }
 }
 
@@ -2460,4 +2514,291 @@ body.tfp-type-legale .tfp-section__lede {
 .tfp-static-grid + .tfp-static-grid,
 .tfp-static-run + .tfp-static-run {
   margin-top: 16px;
+}
+
+/* ==================================================================
+   Vocabulaire de cartes de Claude Design
+   ------------------------------------------------------------------
+   Les archétypes ci-dessous ne sont pas une nomenclature inventée : ce
+   sont les compositions réellement employées par le prototype, relevées
+   sur son rendu à 1440 px (tools/inventaire-cartes.mjs les recense, et
+   `node tools/inventaire-cartes.mjs --detail=…` les liste carte par
+   carte). Chaque valeur — fond, rayon, filet, rembourrage, écart,
+   colonnes — vient de cette mesure.
+
+   Ils sont volontairement distincts. Les fondre en une carte générique
+   unique ferait perdre ce qui les sépare à l'écran : un panneau sombre
+   d'exclusions ne se lit pas comme une carte de scénario, et une chip de
+   commune ne se lit pas comme une carte d'article.
+   ================================================================== */
+
+/* ---------- Panneau sombre d'exclusions ----------
+   Relevé : 1180×398, fond #18232D, rayon 18, rembourrage 40, texte blanc.
+   Il porte un titre, une introduction, puis une grille de micro-cartes
+   sombres. Le thème rendait ce panneau en bande claire avec des puces
+   blanches : à contenu identique, la section la plus importante de la
+   page — celle qui dit ce que l'entreprise ne fait pas — passait
+   inaperçue. */
+.tfp-panel--dark {
+  padding: 40px;
+  border-radius: 18px;
+  background: var(--color-text);
+  color: var(--color-white);
+}
+
+.tfp-panel--dark h2,
+.tfp-panel--dark h3 {
+  color: var(--color-white);
+  margin: 0;
+}
+
+.tfp-panel__intro {
+  margin-top: 12px;
+  max-width: 720px;
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--color-text-on-dark-muted);
+}
+
+/* Micro-cartes sombres : 268×80, fond #10263B, rayon 12, filet 1px #234066,
+   rembourrage 14/16, écart 10, quatre colonnes à 1440 px. */
+.tfp-tile-grid--dark {
+  list-style: none;
+  margin: 22px 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.tfp-tile-grid--dark li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px 16px;
+  border: 1px solid #234066;
+  border-radius: 12px;
+  background: var(--color-navy);
+  font-size: 15px;
+  line-height: 1.45;
+  color: var(--color-text-on-dark-muted);
+}
+
+/* Le « ✕ » est décoratif : le titre du panneau dit déjà qu'il s'agit d'exclusions.
+   Le poser en ::before évite qu'un lecteur d'écran annonce « croix » sur chaque ligne. */
+.tfp-tile-grid--dark li::before {
+  content: "✕";
+  flex: 0 0 auto;
+  font-weight: var(--fw-bold);
+  color: var(--color-turquoise);
+}
+
+@media (max-width: 1099px) {
+  .tfp-tile-grid--dark {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 599px) {
+  .tfp-panel--dark {
+    padding: 24px;
+  }
+
+  .tfp-tile-grid--dark {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* ---------- Carte tarifaire ----------
+   Relevé : 474×137, fond #174A81, rayon 14, rembourrage 20, texte blanc.
+   Le thème la rendait en encadré turquoise pâle : même information, tout
+   autre poids visuel. */
+.tfp-price-card {
+  margin-top: 24px;
+  padding: 20px;
+  border-radius: 14px;
+  background: var(--color-primary);
+  color: var(--color-white);
+  max-width: 474px;
+}
+
+.tfp-price-card__label {
+  display: block;
+  font-size: 14px;
+  color: var(--color-text-on-dark-muted);
+}
+
+.tfp-price-card__value {
+  display: block;
+  margin-top: 2px;
+  font-family: var(--font-heading);
+  font-size: 30px;
+  font-weight: var(--fw-extrabold);
+  line-height: 1.2;
+  color: var(--color-white);
+}
+
+body.tfp-body .tfp-price-card__link {
+  display: inline-block;
+  margin-top: 10px;
+  min-height: 24px;
+  font-size: 14px;
+  font-weight: var(--fw-semibold);
+  color: var(--color-turquoise);
+}
+
+body.tfp-body .tfp-price-card__link:hover,
+body.tfp-body .tfp-price-card__link:focus-visible {
+  color: var(--color-white);
+}
+
+/* ---------- Carte de réponse directe ----------
+   Relevé : fond #F4F7F8, rayon 12, filet 1px #B7CFD7, rembourrage 16/18.
+   C'est une carte, pas un encadré à barre verticale : la barre existe
+   ailleurs dans la maquette (.tfp-callout), pas ici. */
+.tfp-answer-card {
+  max-width: 900px;
+  padding: 16px 18px;
+  border: 1px solid var(--color-border-strong);
+  border-radius: 12px;
+  background: var(--color-bg);
+}
+
+.tfp-answer-card__label {
+  display: block;
+  font-size: var(--fs-3xs);
+  font-weight: var(--fw-bold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+}
+
+.tfp-answer-card__text {
+  margin-top: 8px;
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+}
+
+/* ---------- Carte de note ----------
+   Relevé : fond #F4F7F8, rayon 14, filet 1px #B7CFD7, rembourrage 20/22.
+   Employée pour les limites de périmètre en fin de page. */
+.tfp-note-card {
+  padding: 20px 22px;
+  border: 1px solid var(--color-border-strong);
+  border-radius: 14px;
+  background: var(--color-bg);
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--color-text);
+}
+
+.tfp-note-card h3 {
+  margin-bottom: 8px;
+  font-size: 18px;
+}
+
+/* ---------- Carte de renvoi (article, page) ----------
+   Relevé : 564×58, fond #F4F7F8, rayon 12, filet 1px #DCE7EB,
+   rembourrage 14/16, flèche à droite, empilées avec 10 px d'écart.
+   Le thème rendait ces renvois en simples lignes de texte. */
+.tfp-link-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+body.tfp-body .tfp-link-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 16px;
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  background: var(--color-bg);
+  font-size: 15px;
+  font-weight: var(--fw-semibold);
+  line-height: 1.4;
+  color: var(--color-text);
+  transition: border-color var(--transition-base), background var(--transition-base);
+}
+
+body.tfp-body a.tfp-link-card:hover,
+body.tfp-body a.tfp-link-card:focus-visible {
+  border-color: var(--color-primary);
+  background: var(--color-white);
+  color: var(--color-primary);
+}
+
+.tfp-link-card__arrow {
+  flex: 0 0 auto;
+  color: var(--color-primary);
+}
+
+/* ---------- Chips de couverture ----------
+   Relevé : 41 px de haut, rayon 100, fond #F4F7F8, filet 1px #DCE7EB,
+   rembourrage 8/15, écart 8, enroulées sur la largeur disponible. */
+.tfp-chip-list {
+  list-style: none;
+  margin: 16px 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tfp-chip-list li {
+  display: flex;
+}
+
+body.tfp-body .tfp-chip-list a,
+.tfp-chip-list span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 41px;
+  padding: 8px 15px;
+  border: 1px solid var(--color-border);
+  border-radius: 100px;
+  background: var(--color-bg);
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--color-text);
+}
+
+body.tfp-body .tfp-chip-list a:hover,
+body.tfp-body .tfp-chip-list a:focus-visible {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+/* Bloc d'organisation rendu en carte pleine largeur — relevé item par item sur la maquette : dans
+   cette bande, cinq blocs sont sur la grille de quatre colonnes et un seul est une carte. */
+.tfp-detail-item--carte {
+  margin-top: 20px;
+  padding: 22px;
+  border: 1px solid var(--color-border);
+  border-radius: 14px;
+  background: var(--color-bg-card);
+}
+
+/* Témoignage rendu à plat : sur une page prestation, la maquette ne l'encadre pas. Ailleurs
+   (accueil, page de devis) elle l'encadre, et le composant garde alors sa carte. */
+.tfp-testimonial--plain .tfp-testimonial {
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+/* Rappel de contact de fin de page : carte de 740 px dans la maquette, fond #F4F7F8, rayon 14.
+   Elle est plus étroite que le conteneur — c'est une relance, pas une bande. */
+.tfp-contact-nudge {
+  max-width: 740px;
+  padding: 18px 22px;
+  border: 1px solid var(--color-border);
+  border-radius: 14px;
+  background: var(--color-bg);
 }

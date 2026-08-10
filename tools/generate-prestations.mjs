@@ -106,8 +106,64 @@ for (const svc of SERVICES) {
 					if (p) out.push({ titre: s[i].v, texte: p.v });
 				}
 			}
+			// Une bande mêle couramment une grille et des cartes pleine largeur : sur « Une
+			// organisation carrée », « Exemple de cahier des charges » et « Absence et remplacement »
+			// sont des cartes blanches de 1180 px, tandis que les quatre autres items sont rangés sur
+			// une grille de quatre colonnes sans ornement. Rendre les six pareil se voit.
+			const h2 = [...document.querySelectorAll('h2')].find((h) => txt(h).startsWith(h2text));
+			const bande = h2 ? h2.closest('section') || h2.parentElement : null;
+			if (bande) {
+				for (const item of out) {
+					const h3 = [...bande.querySelectorAll('h3')].find((h) => txt(h) === item.titre);
+					item.carte = false;
+					// On remonte de deux niveaux : selon les prestations, la carte est le parent direct
+					// du titre ou son grand-parent, la maquette n'étant pas régulière là-dessus.
+					for (let el = h3 ? h3.parentElement : null, n = 0; el && el !== bande && n < 2; el = el.parentElement, n++) {
+						const cs = getComputedStyle(el);
+						if (
+							parseFloat(cs.borderTopLeftRadius) >= 8 &&
+							(cs.backgroundColor !== 'rgba(0, 0, 0, 0)' || parseFloat(cs.borderTopWidth) > 0)
+						) {
+							item.carte = true;
+							break;
+						}
+					}
+				}
+			}
 			return out;
 		};
+		/**
+		 * Géométrie réelle de la grille qui suit un intertitre : nombre de colonnes, écart, et
+		 * traitement visuel de ses éléments.
+		 *
+		 * Relevé sur le rendu, pas supposé. Les trois grilles d'une page prestation ne se
+		 * ressemblent pas : « le détail » est sur trois colonnes avec un filet supérieur de 2 px et
+		 * aucun fond, « l'organisation » sur quatre colonnes sans aucun ornement, « les situations »
+		 * sur deux colonnes avec un filet à gauche. Les rendre toutes pareil — en cartes ou en
+		 * texte nu — se voit immédiatement.
+		 */
+		const grilleApres = (h2text) => {
+			const h2 = [...document.querySelectorAll('h2')].find((h) => txt(h).startsWith(h2text));
+			if (!h2) return null;
+			const bande = h2.closest('section') || h2.parentElement;
+			const grille = [...bande.querySelectorAll('div,ul,ol')].find(
+				(g) => getComputedStyle(g).display === 'grid' && g.children.length >= 2
+			);
+			if (!grille) return null;
+			const gs = getComputedStyle(grille);
+			const k = grille.children[0];
+			const ks = getComputedStyle(k);
+			return {
+				colonnes: gs.gridTemplateColumns.split(' ').filter((x) => parseFloat(x) > 1).length || 1,
+				gap: gs.gap,
+				fond: ks.backgroundColor,
+				rayon: ks.borderTopLeftRadius,
+				filetHaut: ks.borderTopWidth,
+				filetGauche: ks.borderLeftWidth,
+				padding: ks.padding,
+			};
+		};
+
 		const after = (h2text, kind = 'p', n = 1) => {
 			const s = find((x) => x.t === 'h2' && x.v.startsWith(h2text));
 			if (!s) return [];
@@ -233,9 +289,28 @@ for (const svc of SERVICES) {
 			configsIntro: after('Trois configurations', 'p', 1)[0] || '',
 			configs: pairs('Trois configurations'),
 			detailTitre: ((find((n) => n.t === 'h2' && n.v.startsWith('Le détail')) || []).find((n) => n.t === 'h2') || {}).v || '',
+			// Note qui clôt la colonne des tâches : la maquette la rend en carte encadrée. C'est un
+			// `span`, pas un paragraphe, et elle était donc perdue à l'extraction sur cinq des six
+			// prestations.
+			noteTaches:
+				(() => {
+					const h2 = [...document.querySelectorAll('h2')].find((h) => /espaces et tâches|tâches pris en charge/i.test(txt(h)));
+					if (!h2) return '';
+					const bande = h2.closest('section') || h2.parentElement;
+					const cand = [...bande.querySelectorAll('span,div')]
+						.filter((e) => !e.children.length && txt(e).length > 80)
+						.pop();
+					return cand ? txt(cand) : '';
+				})(),
 			details: pairs('Le détail'),
+			// Géométrie relevée des trois grilles. Identique sur les six prestations (vérifié à chaque
+			// régénération), donc encodée en CSS plutôt que stockée par prestation : la dupliquer six
+			// fois en base inviterait à ce qu'une seule dérive un jour sans qu'on le voie.
+			detailsGrille: grilleApres('Le détail'),
 			orgTitre: ((find((n) => n.t === 'h2' && n.v.startsWith('Une organisation')) || []).find((n) => n.t === 'h2') || {}).v || '',
 			organisation: pairs('Une organisation'),
+			organisationGrille: grilleApres('Une organisation'),
+			situationsGrille: grilleApres('Les situations'),
 			semaineTitre: 'Une semaine type',
 			semaine: after('Une semaine type', 'p', 1)[0] || '',
 			limitesTitre: 'Les limites de la prestation',
@@ -344,7 +419,10 @@ for (const s of all) {
 	s.organisation.forEach((c, i) => {
 		set(`organisation_${i + 1}_titre`, php(c.titre));
 		set(`organisation_${i + 1}_texte`, php(c.texte));
+		// `carte` dit si la maquette rend cet item en carte pleine largeur ou dans la grille.
+		set(`organisation_${i + 1}_carte`, c.carte ? "'1'" : "''");
 	});
+	set('note_taches', php(s.noteTaches));
 	set('semaine_titre', php(s.semaineTitre));
 	set('semaine_type', php(s.semaine));
 	set('limites_titre', php(s.limitesTitre));
