@@ -234,12 +234,20 @@ $render_group = function ( array $bloc ) use ( $toutes_prestations, $cities_in_d
 		<?php foreach ( $bloc['textes'] as $texte ) : ?>
 			<p class="tfp-prose"><?php echo esc_html( $texte ); ?></p>
 		<?php endforeach; ?>
-		<?php if ( 'prestations' === $bloc['type'] ) : ?>
+		<?php if ( 'prestations' === $bloc['type'] && 'cartes' === $bloc['variante'] ) : ?>
 			<div class="tfp-grid tfp-grid--autofit-md" style="margin-top:18px">
 				<?php foreach ( $toutes_prestations as $prestation ) : ?>
 					<a class="tfp-card tfp-card--link" href="<?php echo esc_url( get_permalink( $prestation ) ); ?>">
 						<h3><?php echo esc_html( tfp_get_field( 'nav_label', $prestation->ID ) ?: get_the_title( $prestation ) ); ?></h3>
 						<p><?php echo esc_html( tfp_get_field( 'tease', $prestation->ID ) ); ?></p>
+					</a>
+				<?php endforeach; ?>
+			</div>
+		<?php elseif ( 'prestations' === $bloc['type'] ) : ?>
+			<div class="tfp-stack" style="margin-top:12px">
+				<?php foreach ( $toutes_prestations as $prestation ) : ?>
+					<a class="tfp-link-row" href="<?php echo esc_url( get_permalink( $prestation ) ); ?>">
+						<?php echo esc_html( tfp_get_field( 'nav_label', $prestation->ID ) ?: get_the_title( $prestation ) ); ?><span aria-hidden="true">→</span>
 					</a>
 				<?php endforeach; ?>
 			</div>

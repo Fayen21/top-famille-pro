@@ -147,6 +147,9 @@ function tfp_get_zone_blocks( $prefix, $post_id, $max ) {
 			'liste'  => tfp_get_lines( tfp_get_field( $prefix . '_' . $i . '_liste', $post_id ) ),
 			'noms'   => tfp_get_lines( tfp_get_field( $prefix . '_' . $i . '_noms', $post_id ) ),
 			'type'   => tfp_get_field( $prefix . '_' . $i . '_type', $post_id ) ?: 'noms',
+			// « cartes » (tuile avec description) ou « liens » (rangée simple) : la maquette emploie
+			// les deux pour le même groupe de prestations, selon le niveau de la page.
+			'variante' => tfp_get_field( $prefix . '_' . $i . '_variante', $post_id ) ?: 'liens',
 			// Numéro de la section d'origine dans la maquette : deux groupes qui la partagent
 			// restent dans la même bande de fond.
 			'section' => (int) tfp_get_field( $prefix . '_' . $i . '_section', $post_id ),

@@ -102,16 +102,19 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'locaux_1_titre', 'Nos villes d\'intervention dans le département', $id );
 	tfp_seed_set_field( 'locaux_1_texte', '', $id );
 	tfp_seed_set_field( 'locaux_1_type', 'villes', $id );
+	tfp_seed_set_field( 'locaux_1_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_1_section', 5, $id );
 	tfp_seed_set_field( 'locaux_1_noms', '', $id );
 	tfp_seed_set_field( 'locaux_2_titre', 'Communes secondaires documentées', $id );
 	tfp_seed_set_field( 'locaux_2_texte', '', $id );
 	tfp_seed_set_field( 'locaux_2_type', 'villes', $id );
+	tfp_seed_set_field( 'locaux_2_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_2_section', 5, $id );
 	tfp_seed_set_field( 'locaux_2_noms', '', $id );
 	tfp_seed_set_field( 'locaux_3_titre', 'Autres communes citées dans ce département', $id );
 	tfp_seed_set_field( 'locaux_3_texte', '', $id );
 	tfp_seed_set_field( 'locaux_3_type', 'noms', $id );
+	tfp_seed_set_field( 'locaux_3_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_3_section', 5, $id );
 	tfp_seed_set_field( 'locaux_3_noms', implode( "\n", array(
 		'Beaune',
@@ -127,6 +130,7 @@ if ( empty( $posts ) ) {
 		'Le périmètre de chaque prestation est détaillé dans notre page nettoyage professionnel.',
 	) ), $id );
 	tfp_seed_set_field( 'locaux_4_type', 'prestations', $id );
+	tfp_seed_set_field( 'locaux_4_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_4_section', 5, $id );
 	tfp_seed_set_field( 'locaux_4_noms', '', $id );
 	tfp_seed_set_field( 'locaux_5_titre', 'Départements limitrophes couverts', $id );
@@ -134,6 +138,7 @@ if ( empty( $posts ) ) {
 		'Départements voisins, également couverts par Top-Famille Pro :',
 	) ), $id );
 	tfp_seed_set_field( 'locaux_5_type', 'departements', $id );
+	tfp_seed_set_field( 'locaux_5_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_5_section', 8, $id );
 	tfp_seed_set_field( 'locaux_5_noms', '', $id );
 	tfp_seed_set_field( 'locaux_avant_tarif', 4, $id );
@@ -218,11 +223,13 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'locaux_1_titre', 'Nos villes d\'intervention dans le département', $id );
 	tfp_seed_set_field( 'locaux_1_texte', '', $id );
 	tfp_seed_set_field( 'locaux_1_type', 'villes', $id );
+	tfp_seed_set_field( 'locaux_1_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_1_section', 5, $id );
 	tfp_seed_set_field( 'locaux_1_noms', '', $id );
 	tfp_seed_set_field( 'locaux_2_titre', 'Autres communes citées dans ce département', $id );
 	tfp_seed_set_field( 'locaux_2_texte', '', $id );
 	tfp_seed_set_field( 'locaux_2_type', 'noms', $id );
+	tfp_seed_set_field( 'locaux_2_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_2_section', 5, $id );
 	tfp_seed_set_field( 'locaux_2_noms', implode( "\n", array(
 		'École-Valentin',
@@ -238,6 +245,7 @@ if ( empty( $posts ) ) {
 		'Le périmètre de chaque prestation est détaillé dans notre page nettoyage professionnel.',
 	) ), $id );
 	tfp_seed_set_field( 'locaux_3_type', 'prestations', $id );
+	tfp_seed_set_field( 'locaux_3_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_3_section', 5, $id );
 	tfp_seed_set_field( 'locaux_3_noms', '', $id );
 	tfp_seed_set_field( 'locaux_4_titre', 'Départements limitrophes couverts', $id );
@@ -245,6 +253,7 @@ if ( empty( $posts ) ) {
 		'Départements voisins, également couverts par Top-Famille Pro :',
 	) ), $id );
 	tfp_seed_set_field( 'locaux_4_type', 'departements', $id );
+	tfp_seed_set_field( 'locaux_4_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_4_section', 8, $id );
 	tfp_seed_set_field( 'locaux_4_noms', '', $id );
 	tfp_seed_set_field( 'locaux_avant_tarif', 3, $id );
@@ -335,11 +344,13 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'locaux_1_titre', 'Nos villes d\'intervention dans le département', $id );
 	tfp_seed_set_field( 'locaux_1_texte', '', $id );
 	tfp_seed_set_field( 'locaux_1_type', 'villes', $id );
+	tfp_seed_set_field( 'locaux_1_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_1_section', 5, $id );
 	tfp_seed_set_field( 'locaux_1_noms', '', $id );
 	tfp_seed_set_field( 'locaux_2_titre', 'Autres communes citées dans ce département', $id );
 	tfp_seed_set_field( 'locaux_2_texte', '', $id );
 	tfp_seed_set_field( 'locaux_2_type', 'noms', $id );
+	tfp_seed_set_field( 'locaux_2_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_2_section', 5, $id );
 	tfp_seed_set_field( 'locaux_2_noms', implode( "\n", array(
 		'Choisey',
@@ -356,6 +367,7 @@ if ( empty( $posts ) ) {
 		'Le périmètre de chaque prestation est détaillé dans notre page nettoyage professionnel.',
 	) ), $id );
 	tfp_seed_set_field( 'locaux_3_type', 'prestations', $id );
+	tfp_seed_set_field( 'locaux_3_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_3_section', 5, $id );
 	tfp_seed_set_field( 'locaux_3_noms', '', $id );
 	tfp_seed_set_field( 'locaux_4_titre', 'Départements limitrophes couverts', $id );
@@ -363,6 +375,7 @@ if ( empty( $posts ) ) {
 		'Départements voisins, également couverts par Top-Famille Pro :',
 	) ), $id );
 	tfp_seed_set_field( 'locaux_4_type', 'departements', $id );
+	tfp_seed_set_field( 'locaux_4_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_4_section', 8, $id );
 	tfp_seed_set_field( 'locaux_4_noms', '', $id );
 	tfp_seed_set_field( 'locaux_avant_tarif', 3, $id );
@@ -453,11 +466,13 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'locaux_1_titre', 'Nos villes d\'intervention dans le département', $id );
 	tfp_seed_set_field( 'locaux_1_texte', '', $id );
 	tfp_seed_set_field( 'locaux_1_type', 'villes', $id );
+	tfp_seed_set_field( 'locaux_1_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_1_section', 5, $id );
 	tfp_seed_set_field( 'locaux_1_noms', '', $id );
 	tfp_seed_set_field( 'locaux_2_titre', 'Autres communes citées dans ce département', $id );
 	tfp_seed_set_field( 'locaux_2_texte', '', $id );
 	tfp_seed_set_field( 'locaux_2_type', 'noms', $id );
+	tfp_seed_set_field( 'locaux_2_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_2_section', 5, $id );
 	tfp_seed_set_field( 'locaux_2_noms', implode( "\n", array(
 		'Varennes-Vauzelles',
@@ -472,6 +487,7 @@ if ( empty( $posts ) ) {
 		'Le périmètre de chaque prestation est détaillé dans notre page nettoyage professionnel.',
 	) ), $id );
 	tfp_seed_set_field( 'locaux_3_type', 'prestations', $id );
+	tfp_seed_set_field( 'locaux_3_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_3_section', 5, $id );
 	tfp_seed_set_field( 'locaux_3_noms', '', $id );
 	tfp_seed_set_field( 'locaux_4_titre', 'Départements limitrophes couverts', $id );
@@ -479,6 +495,7 @@ if ( empty( $posts ) ) {
 		'Départements voisins, également couverts par Top-Famille Pro :',
 	) ), $id );
 	tfp_seed_set_field( 'locaux_4_type', 'departements', $id );
+	tfp_seed_set_field( 'locaux_4_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_4_section', 8, $id );
 	tfp_seed_set_field( 'locaux_4_noms', '', $id );
 	tfp_seed_set_field( 'locaux_avant_tarif', 3, $id );
@@ -569,11 +586,13 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'locaux_1_titre', 'Nos villes d\'intervention dans le département', $id );
 	tfp_seed_set_field( 'locaux_1_texte', '', $id );
 	tfp_seed_set_field( 'locaux_1_type', 'villes', $id );
+	tfp_seed_set_field( 'locaux_1_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_1_section', 5, $id );
 	tfp_seed_set_field( 'locaux_1_noms', '', $id );
 	tfp_seed_set_field( 'locaux_2_titre', 'Autres communes citées dans ce département', $id );
 	tfp_seed_set_field( 'locaux_2_texte', '', $id );
 	tfp_seed_set_field( 'locaux_2_type', 'noms', $id );
+	tfp_seed_set_field( 'locaux_2_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_2_section', 5, $id );
 	tfp_seed_set_field( 'locaux_2_noms', implode( "\n", array(
 		'Navenne',
@@ -588,6 +607,7 @@ if ( empty( $posts ) ) {
 		'Le périmètre de chaque prestation est détaillé dans notre page nettoyage professionnel.',
 	) ), $id );
 	tfp_seed_set_field( 'locaux_3_type', 'prestations', $id );
+	tfp_seed_set_field( 'locaux_3_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_3_section', 5, $id );
 	tfp_seed_set_field( 'locaux_3_noms', '', $id );
 	tfp_seed_set_field( 'locaux_4_titre', 'Départements limitrophes couverts', $id );
@@ -595,6 +615,7 @@ if ( empty( $posts ) ) {
 		'Départements voisins, également couverts par Top-Famille Pro :',
 	) ), $id );
 	tfp_seed_set_field( 'locaux_4_type', 'departements', $id );
+	tfp_seed_set_field( 'locaux_4_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_4_section', 8, $id );
 	tfp_seed_set_field( 'locaux_4_noms', '', $id );
 	tfp_seed_set_field( 'locaux_avant_tarif', 3, $id );
@@ -679,11 +700,13 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'locaux_1_titre', 'Nos villes d\'intervention dans le département', $id );
 	tfp_seed_set_field( 'locaux_1_texte', '', $id );
 	tfp_seed_set_field( 'locaux_1_type', 'villes', $id );
+	tfp_seed_set_field( 'locaux_1_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_1_section', 5, $id );
 	tfp_seed_set_field( 'locaux_1_noms', '', $id );
 	tfp_seed_set_field( 'locaux_2_titre', 'Autres communes citées dans ce département', $id );
 	tfp_seed_set_field( 'locaux_2_texte', '', $id );
 	tfp_seed_set_field( 'locaux_2_type', 'noms', $id );
+	tfp_seed_set_field( 'locaux_2_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_2_section', 5, $id );
 	tfp_seed_set_field( 'locaux_2_noms', implode( "\n", array(
 		'Saint-Rémy',
@@ -699,6 +722,7 @@ if ( empty( $posts ) ) {
 		'Le périmètre de chaque prestation est détaillé dans notre page nettoyage professionnel.',
 	) ), $id );
 	tfp_seed_set_field( 'locaux_3_type', 'prestations', $id );
+	tfp_seed_set_field( 'locaux_3_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_3_section', 5, $id );
 	tfp_seed_set_field( 'locaux_3_noms', '', $id );
 	tfp_seed_set_field( 'locaux_4_titre', 'Départements limitrophes couverts', $id );
@@ -706,6 +730,7 @@ if ( empty( $posts ) ) {
 		'Départements voisins, également couverts par Top-Famille Pro :',
 	) ), $id );
 	tfp_seed_set_field( 'locaux_4_type', 'departements', $id );
+	tfp_seed_set_field( 'locaux_4_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_4_section', 8, $id );
 	tfp_seed_set_field( 'locaux_4_noms', '', $id );
 	tfp_seed_set_field( 'locaux_avant_tarif', 3, $id );
@@ -796,11 +821,13 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'locaux_1_titre', 'Nos villes d\'intervention dans le département', $id );
 	tfp_seed_set_field( 'locaux_1_texte', '', $id );
 	tfp_seed_set_field( 'locaux_1_type', 'villes', $id );
+	tfp_seed_set_field( 'locaux_1_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_1_section', 5, $id );
 	tfp_seed_set_field( 'locaux_1_noms', '', $id );
 	tfp_seed_set_field( 'locaux_2_titre', 'Autres communes citées dans ce département', $id );
 	tfp_seed_set_field( 'locaux_2_texte', '', $id );
 	tfp_seed_set_field( 'locaux_2_type', 'noms', $id );
+	tfp_seed_set_field( 'locaux_2_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_2_section', 5, $id );
 	tfp_seed_set_field( 'locaux_2_noms', implode( "\n", array(
 		'Monéteau',
@@ -815,6 +842,7 @@ if ( empty( $posts ) ) {
 		'Le périmètre de chaque prestation est détaillé dans notre page nettoyage professionnel.',
 	) ), $id );
 	tfp_seed_set_field( 'locaux_3_type', 'prestations', $id );
+	tfp_seed_set_field( 'locaux_3_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_3_section', 5, $id );
 	tfp_seed_set_field( 'locaux_3_noms', '', $id );
 	tfp_seed_set_field( 'locaux_4_titre', 'Départements limitrophes couverts', $id );
@@ -822,6 +850,7 @@ if ( empty( $posts ) ) {
 		'Départements voisins, également couverts par Top-Famille Pro :',
 	) ), $id );
 	tfp_seed_set_field( 'locaux_4_type', 'departements', $id );
+	tfp_seed_set_field( 'locaux_4_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_4_section', 8, $id );
 	tfp_seed_set_field( 'locaux_4_noms', '', $id );
 	tfp_seed_set_field( 'locaux_avant_tarif', 3, $id );
@@ -912,11 +941,13 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'locaux_1_titre', 'Nos villes d\'intervention dans le département', $id );
 	tfp_seed_set_field( 'locaux_1_texte', '', $id );
 	tfp_seed_set_field( 'locaux_1_type', 'villes', $id );
+	tfp_seed_set_field( 'locaux_1_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_1_section', 5, $id );
 	tfp_seed_set_field( 'locaux_1_noms', '', $id );
 	tfp_seed_set_field( 'locaux_2_titre', 'Autres communes citées dans ce département', $id );
 	tfp_seed_set_field( 'locaux_2_texte', '', $id );
 	tfp_seed_set_field( 'locaux_2_type', 'noms', $id );
+	tfp_seed_set_field( 'locaux_2_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_2_section', 5, $id );
 	tfp_seed_set_field( 'locaux_2_noms', implode( "\n", array(
 		'Valdoie',
@@ -931,6 +962,7 @@ if ( empty( $posts ) ) {
 		'Le périmètre de chaque prestation est détaillé dans notre page nettoyage professionnel.',
 	) ), $id );
 	tfp_seed_set_field( 'locaux_3_type', 'prestations', $id );
+	tfp_seed_set_field( 'locaux_3_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_3_section', 5, $id );
 	tfp_seed_set_field( 'locaux_3_noms', '', $id );
 	tfp_seed_set_field( 'locaux_4_titre', 'Départements limitrophes couverts', $id );
@@ -938,6 +970,7 @@ if ( empty( $posts ) ) {
 		'Départements voisins, également couverts par Top-Famille Pro :',
 	) ), $id );
 	tfp_seed_set_field( 'locaux_4_type', 'departements', $id );
+	tfp_seed_set_field( 'locaux_4_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_4_section', 8, $id );
 	tfp_seed_set_field( 'locaux_4_noms', '', $id );
 	tfp_seed_set_field( 'locaux_avant_tarif', 3, $id );
@@ -1049,6 +1082,7 @@ if ( empty( $posts ) ) {
 		'Six prestations, un seul interlocuteur. Nous intervenons sur les espaces compatibles avec notre offre : bureaux, accueils, locaux administratifs, parties communes, commerces et cabinets courants.',
 	) ), $id );
 	tfp_seed_set_field( 'locaux_1_type', 'prestations', $id );
+	tfp_seed_set_field( 'locaux_1_variante', 'cartes', $id );
 	tfp_seed_set_field( 'locaux_1_section', 5, $id );
 	tfp_seed_set_field( 'locaux_1_noms', '', $id );
 	tfp_seed_set_field( 'locaux_2_titre', 'Quartiers et zones d\'activité', $id );
@@ -1056,6 +1090,7 @@ if ( empty( $posts ) ) {
 		'Nous intervenons dans l\'ensemble de la ville, sans secteur réservé :',
 	) ), $id );
 	tfp_seed_set_field( 'locaux_2_type', 'noms', $id );
+	tfp_seed_set_field( 'locaux_2_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_2_section', 8, $id );
 	tfp_seed_set_field( 'locaux_2_noms', implode( "\n", array(
 		'Centre-ville',
@@ -1068,6 +1103,7 @@ if ( empty( $posts ) ) {
 		'Communes proches de Dijon, dans le même bassin géographique. Les demandes situées dans ces communes peuvent être étudiées selon l\'adresse exacte, le volume horaire et les possibilités d\'organisation du planning :',
 	) ), $id );
 	tfp_seed_set_field( 'locaux_3_type', 'villes', $id );
+	tfp_seed_set_field( 'locaux_3_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_3_section', 8, $id );
 	tfp_seed_set_field( 'locaux_3_noms', implode( "\n", array(
 		'Chevigny-Saint-Sauveur',
@@ -1080,6 +1116,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'locaux_4_titre', 'Dans le même département', $id );
 	tfp_seed_set_field( 'locaux_4_texte', '', $id );
 	tfp_seed_set_field( 'locaux_4_type', 'villes', $id );
+	tfp_seed_set_field( 'locaux_4_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_4_section', 9, $id );
 	tfp_seed_set_field( 'locaux_4_noms', '', $id );
 	tfp_seed_set_field( 'locaux_5_titre', 'Autres secteurs couverts en région', $id );
@@ -1087,6 +1124,7 @@ if ( empty( $posts ) ) {
 		'Villes éloignées, couvertes depuis Saint-Apollinaire — ce ne sont pas des communes voisines.',
 	) ), $id );
 	tfp_seed_set_field( 'locaux_5_type', 'villes', $id );
+	tfp_seed_set_field( 'locaux_5_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_5_section', 9, $id );
 	tfp_seed_set_field( 'locaux_5_noms', '', $id );
 	tfp_seed_set_field( 'locaux_6_titre', 'Aller plus loin', $id );
@@ -1094,6 +1132,7 @@ if ( empty( $posts ) ) {
 		'Des guides locaux (fréquences, budget, cahier des charges) viendront compléter cette page.',
 	) ), $id );
 	tfp_seed_set_field( 'locaux_6_type', 'liens', $id );
+	tfp_seed_set_field( 'locaux_6_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_6_section', 9, $id );
 	tfp_seed_set_field( 'locaux_6_noms', '', $id );
 	tfp_seed_set_field( 'locaux_avant_tarif', 1, $id );
@@ -1201,6 +1240,7 @@ if ( empty( $posts ) ) {
 		'Six prestations, un seul interlocuteur. Nous intervenons sur les espaces compatibles avec notre offre : bureaux, accueils, locaux administratifs, parties communes, commerces et cabinets courants.',
 	) ), $id );
 	tfp_seed_set_field( 'locaux_1_type', 'prestations', $id );
+	tfp_seed_set_field( 'locaux_1_variante', 'cartes', $id );
 	tfp_seed_set_field( 'locaux_1_section', 5, $id );
 	tfp_seed_set_field( 'locaux_1_noms', '', $id );
 	tfp_seed_set_field( 'locaux_2_titre', 'Quartiers et zones d\'activité', $id );
@@ -1208,6 +1248,7 @@ if ( empty( $posts ) ) {
 		'Nous intervenons dans l\'ensemble de la ville, sans secteur réservé :',
 	) ), $id );
 	tfp_seed_set_field( 'locaux_2_type', 'noms', $id );
+	tfp_seed_set_field( 'locaux_2_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_2_section', 8, $id );
 	tfp_seed_set_field( 'locaux_2_noms', implode( "\n", array(
 		'Centre-ville',
@@ -1220,6 +1261,7 @@ if ( empty( $posts ) ) {
 		'Communes de la couronne bisontine. Les demandes situées dans ces communes peuvent être étudiées selon l\'adresse exacte, le volume horaire et les possibilités d\'organisation du planning :',
 	) ), $id );
 	tfp_seed_set_field( 'locaux_3_type', 'noms', $id );
+	tfp_seed_set_field( 'locaux_3_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_3_section', 8, $id );
 	tfp_seed_set_field( 'locaux_3_noms', implode( "\n", array(
 		'École-Valentin',
@@ -1234,6 +1276,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'locaux_4_titre', 'Dans le même département', $id );
 	tfp_seed_set_field( 'locaux_4_texte', '', $id );
 	tfp_seed_set_field( 'locaux_4_type', 'departements', $id );
+	tfp_seed_set_field( 'locaux_4_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_4_section', 9, $id );
 	tfp_seed_set_field( 'locaux_4_noms', '', $id );
 	tfp_seed_set_field( 'locaux_5_titre', 'Autres secteurs couverts en région', $id );
@@ -1241,6 +1284,7 @@ if ( empty( $posts ) ) {
 		'Villes éloignées, couvertes depuis Saint-Apollinaire — ce ne sont pas des communes voisines.',
 	) ), $id );
 	tfp_seed_set_field( 'locaux_5_type', 'villes', $id );
+	tfp_seed_set_field( 'locaux_5_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_5_section', 9, $id );
 	tfp_seed_set_field( 'locaux_5_noms', '', $id );
 	tfp_seed_set_field( 'locaux_6_titre', 'Aller plus loin', $id );
@@ -1248,6 +1292,7 @@ if ( empty( $posts ) ) {
 		'Des guides locaux (fréquences, budget, cahier des charges) viendront compléter cette page.',
 	) ), $id );
 	tfp_seed_set_field( 'locaux_6_type', 'liens', $id );
+	tfp_seed_set_field( 'locaux_6_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_6_section', 9, $id );
 	tfp_seed_set_field( 'locaux_6_noms', '', $id );
 	tfp_seed_set_field( 'locaux_avant_tarif', 1, $id );
@@ -1360,6 +1405,7 @@ if ( empty( $posts ) ) {
 		'Six prestations, un seul interlocuteur. Nous intervenons sur les espaces compatibles avec notre offre : bureaux, accueils, locaux administratifs, parties communes, commerces et cabinets courants.',
 	) ), $id );
 	tfp_seed_set_field( 'locaux_1_type', 'prestations', $id );
+	tfp_seed_set_field( 'locaux_1_variante', 'cartes', $id );
 	tfp_seed_set_field( 'locaux_1_section', 5, $id );
 	tfp_seed_set_field( 'locaux_1_noms', '', $id );
 	tfp_seed_set_field( 'locaux_2_titre', 'Quartiers et zones d\'activité', $id );
@@ -1367,6 +1413,7 @@ if ( empty( $posts ) ) {
 		'Nous intervenons dans l\'ensemble de la ville, sans secteur réservé :',
 	) ), $id );
 	tfp_seed_set_field( 'locaux_2_type', 'noms', $id );
+	tfp_seed_set_field( 'locaux_2_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_2_section', 8, $id );
 	tfp_seed_set_field( 'locaux_2_noms', implode( "\n", array(
 		'Centre-ville',
@@ -1379,6 +1426,7 @@ if ( empty( $posts ) ) {
 		'Communes du bassin dolois. Les demandes situées dans ces communes peuvent être étudiées selon l\'adresse exacte, le volume horaire et les possibilités d\'organisation du planning :',
 	) ), $id );
 	tfp_seed_set_field( 'locaux_3_type', 'noms', $id );
+	tfp_seed_set_field( 'locaux_3_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_3_section', 8, $id );
 	tfp_seed_set_field( 'locaux_3_noms', implode( "\n", array(
 		'Choisey',
@@ -1392,6 +1440,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'locaux_4_titre', 'Dans le même département', $id );
 	tfp_seed_set_field( 'locaux_4_texte', '', $id );
 	tfp_seed_set_field( 'locaux_4_type', 'villes', $id );
+	tfp_seed_set_field( 'locaux_4_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_4_section', 9, $id );
 	tfp_seed_set_field( 'locaux_4_noms', '', $id );
 	tfp_seed_set_field( 'locaux_5_titre', 'Autres secteurs couverts en région', $id );
@@ -1399,6 +1448,7 @@ if ( empty( $posts ) ) {
 		'Villes éloignées, couvertes depuis Saint-Apollinaire — ce ne sont pas des communes voisines.',
 	) ), $id );
 	tfp_seed_set_field( 'locaux_5_type', 'villes', $id );
+	tfp_seed_set_field( 'locaux_5_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_5_section', 9, $id );
 	tfp_seed_set_field( 'locaux_5_noms', '', $id );
 	tfp_seed_set_field( 'locaux_6_titre', 'Aller plus loin', $id );
@@ -1406,6 +1456,7 @@ if ( empty( $posts ) ) {
 		'Des guides locaux (fréquences, budget, cahier des charges) viendront compléter cette page.',
 	) ), $id );
 	tfp_seed_set_field( 'locaux_6_type', 'liens', $id );
+	tfp_seed_set_field( 'locaux_6_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_6_section', 9, $id );
 	tfp_seed_set_field( 'locaux_6_noms', '', $id );
 	tfp_seed_set_field( 'locaux_avant_tarif', 1, $id );
@@ -1517,6 +1568,7 @@ if ( empty( $posts ) ) {
 		'Six prestations, un seul interlocuteur. Nous intervenons sur les espaces compatibles avec notre offre : bureaux, accueils, locaux administratifs, parties communes, commerces et cabinets courants.',
 	) ), $id );
 	tfp_seed_set_field( 'locaux_1_type', 'prestations', $id );
+	tfp_seed_set_field( 'locaux_1_variante', 'cartes', $id );
 	tfp_seed_set_field( 'locaux_1_section', 5, $id );
 	tfp_seed_set_field( 'locaux_1_noms', '', $id );
 	tfp_seed_set_field( 'locaux_2_titre', 'Quartiers et zones d\'activité', $id );
@@ -1524,6 +1576,7 @@ if ( empty( $posts ) ) {
 		'Nous intervenons dans l\'ensemble de la ville, sans secteur réservé :',
 	) ), $id );
 	tfp_seed_set_field( 'locaux_2_type', 'noms', $id );
+	tfp_seed_set_field( 'locaux_2_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_2_section', 8, $id );
 	tfp_seed_set_field( 'locaux_2_noms', implode( "\n", array(
 		'Centre-ville',
@@ -1536,6 +1589,7 @@ if ( empty( $posts ) ) {
 		'Communes voisines de Lons-le-Saunier. Les demandes situées dans ces communes peuvent être étudiées selon l\'adresse exacte, le volume horaire et les possibilités d\'organisation du planning :',
 	) ), $id );
 	tfp_seed_set_field( 'locaux_3_type', 'noms', $id );
+	tfp_seed_set_field( 'locaux_3_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_3_section', 8, $id );
 	tfp_seed_set_field( 'locaux_3_noms', implode( "\n", array(
 		'Montmorot',
@@ -1548,6 +1602,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'locaux_4_titre', 'Dans le même département', $id );
 	tfp_seed_set_field( 'locaux_4_texte', '', $id );
 	tfp_seed_set_field( 'locaux_4_type', 'villes', $id );
+	tfp_seed_set_field( 'locaux_4_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_4_section', 9, $id );
 	tfp_seed_set_field( 'locaux_4_noms', '', $id );
 	tfp_seed_set_field( 'locaux_5_titre', 'Autres secteurs couverts en région', $id );
@@ -1555,6 +1610,7 @@ if ( empty( $posts ) ) {
 		'Villes éloignées, couvertes depuis Saint-Apollinaire — ce ne sont pas des communes voisines.',
 	) ), $id );
 	tfp_seed_set_field( 'locaux_5_type', 'villes', $id );
+	tfp_seed_set_field( 'locaux_5_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_5_section', 9, $id );
 	tfp_seed_set_field( 'locaux_5_noms', '', $id );
 	tfp_seed_set_field( 'locaux_6_titre', 'Aller plus loin', $id );
@@ -1562,6 +1618,7 @@ if ( empty( $posts ) ) {
 		'Des guides locaux (fréquences, budget, cahier des charges) viendront compléter cette page.',
 	) ), $id );
 	tfp_seed_set_field( 'locaux_6_type', 'liens', $id );
+	tfp_seed_set_field( 'locaux_6_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_6_section', 9, $id );
 	tfp_seed_set_field( 'locaux_6_noms', '', $id );
 	tfp_seed_set_field( 'locaux_avant_tarif', 1, $id );
@@ -1673,6 +1730,7 @@ if ( empty( $posts ) ) {
 		'Six prestations, un seul interlocuteur. Nous intervenons sur les espaces compatibles avec notre offre : bureaux, accueils, locaux administratifs, parties communes, commerces et cabinets courants.',
 	) ), $id );
 	tfp_seed_set_field( 'locaux_1_type', 'prestations', $id );
+	tfp_seed_set_field( 'locaux_1_variante', 'cartes', $id );
 	tfp_seed_set_field( 'locaux_1_section', 5, $id );
 	tfp_seed_set_field( 'locaux_1_noms', '', $id );
 	tfp_seed_set_field( 'locaux_2_titre', 'Quartiers et zones d\'activité', $id );
@@ -1680,6 +1738,7 @@ if ( empty( $posts ) ) {
 		'Nous intervenons dans l\'ensemble de la ville, sans secteur réservé :',
 	) ), $id );
 	tfp_seed_set_field( 'locaux_2_type', 'noms', $id );
+	tfp_seed_set_field( 'locaux_2_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_2_section', 8, $id );
 	tfp_seed_set_field( 'locaux_2_noms', implode( "\n", array(
 		'Centre-ville',
@@ -1692,6 +1751,7 @@ if ( empty( $posts ) ) {
 		'Communes de l\'agglomération de Nevers. Les demandes situées dans ces communes peuvent être étudiées selon l\'adresse exacte, le volume horaire et les possibilités d\'organisation du planning :',
 	) ), $id );
 	tfp_seed_set_field( 'locaux_3_type', 'noms', $id );
+	tfp_seed_set_field( 'locaux_3_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_3_section', 8, $id );
 	tfp_seed_set_field( 'locaux_3_noms', implode( "\n", array(
 		'Varennes-Vauzelles',
@@ -1705,6 +1765,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'locaux_4_titre', 'Dans le même département', $id );
 	tfp_seed_set_field( 'locaux_4_texte', '', $id );
 	tfp_seed_set_field( 'locaux_4_type', 'departements', $id );
+	tfp_seed_set_field( 'locaux_4_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_4_section', 9, $id );
 	tfp_seed_set_field( 'locaux_4_noms', '', $id );
 	tfp_seed_set_field( 'locaux_5_titre', 'Autres secteurs couverts en région', $id );
@@ -1712,6 +1773,7 @@ if ( empty( $posts ) ) {
 		'Villes éloignées, couvertes depuis Saint-Apollinaire — ce ne sont pas des communes voisines.',
 	) ), $id );
 	tfp_seed_set_field( 'locaux_5_type', 'villes', $id );
+	tfp_seed_set_field( 'locaux_5_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_5_section', 9, $id );
 	tfp_seed_set_field( 'locaux_5_noms', '', $id );
 	tfp_seed_set_field( 'locaux_6_titre', 'Aller plus loin', $id );
@@ -1719,6 +1781,7 @@ if ( empty( $posts ) ) {
 		'Des guides locaux (fréquences, budget, cahier des charges) viendront compléter cette page.',
 	) ), $id );
 	tfp_seed_set_field( 'locaux_6_type', 'liens', $id );
+	tfp_seed_set_field( 'locaux_6_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_6_section', 9, $id );
 	tfp_seed_set_field( 'locaux_6_noms', '', $id );
 	tfp_seed_set_field( 'locaux_avant_tarif', 1, $id );
@@ -1830,6 +1893,7 @@ if ( empty( $posts ) ) {
 		'Six prestations, un seul interlocuteur. Nous intervenons sur les espaces compatibles avec notre offre : bureaux, accueils, locaux administratifs, parties communes, commerces et cabinets courants.',
 	) ), $id );
 	tfp_seed_set_field( 'locaux_1_type', 'prestations', $id );
+	tfp_seed_set_field( 'locaux_1_variante', 'cartes', $id );
 	tfp_seed_set_field( 'locaux_1_section', 5, $id );
 	tfp_seed_set_field( 'locaux_1_noms', '', $id );
 	tfp_seed_set_field( 'locaux_2_titre', 'Quartiers et zones d\'activité', $id );
@@ -1837,6 +1901,7 @@ if ( empty( $posts ) ) {
 		'Nous intervenons dans l\'ensemble de la ville, sans secteur réservé :',
 	) ), $id );
 	tfp_seed_set_field( 'locaux_2_type', 'noms', $id );
+	tfp_seed_set_field( 'locaux_2_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_2_section', 8, $id );
 	tfp_seed_set_field( 'locaux_2_noms', implode( "\n", array(
 		'Centre-ville',
@@ -1849,6 +1914,7 @@ if ( empty( $posts ) ) {
 		'Communes de la couronne vésulienne. Les demandes situées dans ces communes peuvent être étudiées selon l\'adresse exacte, le volume horaire et les possibilités d\'organisation du planning :',
 	) ), $id );
 	tfp_seed_set_field( 'locaux_3_type', 'noms', $id );
+	tfp_seed_set_field( 'locaux_3_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_3_section', 8, $id );
 	tfp_seed_set_field( 'locaux_3_noms', implode( "\n", array(
 		'Navenne',
@@ -1861,6 +1927,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'locaux_4_titre', 'Dans le même département', $id );
 	tfp_seed_set_field( 'locaux_4_texte', '', $id );
 	tfp_seed_set_field( 'locaux_4_type', 'departements', $id );
+	tfp_seed_set_field( 'locaux_4_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_4_section', 9, $id );
 	tfp_seed_set_field( 'locaux_4_noms', '', $id );
 	tfp_seed_set_field( 'locaux_5_titre', 'Autres secteurs couverts en région', $id );
@@ -1868,6 +1935,7 @@ if ( empty( $posts ) ) {
 		'Villes éloignées, couvertes depuis Saint-Apollinaire — ce ne sont pas des communes voisines.',
 	) ), $id );
 	tfp_seed_set_field( 'locaux_5_type', 'villes', $id );
+	tfp_seed_set_field( 'locaux_5_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_5_section', 9, $id );
 	tfp_seed_set_field( 'locaux_5_noms', '', $id );
 	tfp_seed_set_field( 'locaux_6_titre', 'Aller plus loin', $id );
@@ -1875,6 +1943,7 @@ if ( empty( $posts ) ) {
 		'Des guides locaux (fréquences, budget, cahier des charges) viendront compléter cette page.',
 	) ), $id );
 	tfp_seed_set_field( 'locaux_6_type', 'liens', $id );
+	tfp_seed_set_field( 'locaux_6_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_6_section', 9, $id );
 	tfp_seed_set_field( 'locaux_6_noms', '', $id );
 	tfp_seed_set_field( 'locaux_avant_tarif', 1, $id );
@@ -1986,6 +2055,7 @@ if ( empty( $posts ) ) {
 		'Six prestations, un seul interlocuteur. Nous intervenons sur les espaces compatibles avec notre offre : bureaux, accueils, locaux administratifs, parties communes, commerces et cabinets courants.',
 	) ), $id );
 	tfp_seed_set_field( 'locaux_1_type', 'prestations', $id );
+	tfp_seed_set_field( 'locaux_1_variante', 'cartes', $id );
 	tfp_seed_set_field( 'locaux_1_section', 5, $id );
 	tfp_seed_set_field( 'locaux_1_noms', '', $id );
 	tfp_seed_set_field( 'locaux_2_titre', 'Quartiers et zones d\'activité', $id );
@@ -1993,6 +2063,7 @@ if ( empty( $posts ) ) {
 		'Nous intervenons dans l\'ensemble de la ville, sans secteur réservé :',
 	) ), $id );
 	tfp_seed_set_field( 'locaux_2_type', 'noms', $id );
+	tfp_seed_set_field( 'locaux_2_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_2_section', 8, $id );
 	tfp_seed_set_field( 'locaux_2_noms', implode( "\n", array(
 		'Centre-ville',
@@ -2005,6 +2076,7 @@ if ( empty( $posts ) ) {
 		'Communes du Grand Chalon. Les demandes situées dans ces communes peuvent être étudiées selon l\'adresse exacte, le volume horaire et les possibilités d\'organisation du planning :',
 	) ), $id );
 	tfp_seed_set_field( 'locaux_3_type', 'noms', $id );
+	tfp_seed_set_field( 'locaux_3_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_3_section', 8, $id );
 	tfp_seed_set_field( 'locaux_3_noms', implode( "\n", array(
 		'Saint-Rémy',
@@ -2017,6 +2089,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'locaux_4_titre', 'Dans le même département', $id );
 	tfp_seed_set_field( 'locaux_4_texte', '', $id );
 	tfp_seed_set_field( 'locaux_4_type', 'villes', $id );
+	tfp_seed_set_field( 'locaux_4_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_4_section', 9, $id );
 	tfp_seed_set_field( 'locaux_4_noms', '', $id );
 	tfp_seed_set_field( 'locaux_5_titre', 'Autres secteurs couverts en région', $id );
@@ -2024,6 +2097,7 @@ if ( empty( $posts ) ) {
 		'Villes éloignées, couvertes depuis Saint-Apollinaire — ce ne sont pas des communes voisines.',
 	) ), $id );
 	tfp_seed_set_field( 'locaux_5_type', 'villes', $id );
+	tfp_seed_set_field( 'locaux_5_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_5_section', 9, $id );
 	tfp_seed_set_field( 'locaux_5_noms', '', $id );
 	tfp_seed_set_field( 'locaux_6_titre', 'Aller plus loin', $id );
@@ -2031,6 +2105,7 @@ if ( empty( $posts ) ) {
 		'Des guides locaux (fréquences, budget, cahier des charges) viendront compléter cette page.',
 	) ), $id );
 	tfp_seed_set_field( 'locaux_6_type', 'liens', $id );
+	tfp_seed_set_field( 'locaux_6_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_6_section', 9, $id );
 	tfp_seed_set_field( 'locaux_6_noms', '', $id );
 	tfp_seed_set_field( 'locaux_avant_tarif', 1, $id );
@@ -2142,6 +2217,7 @@ if ( empty( $posts ) ) {
 		'Six prestations, un seul interlocuteur. Nous intervenons sur les espaces compatibles avec notre offre : bureaux, accueils, locaux administratifs, parties communes, commerces et cabinets courants.',
 	) ), $id );
 	tfp_seed_set_field( 'locaux_1_type', 'prestations', $id );
+	tfp_seed_set_field( 'locaux_1_variante', 'cartes', $id );
 	tfp_seed_set_field( 'locaux_1_section', 5, $id );
 	tfp_seed_set_field( 'locaux_1_noms', '', $id );
 	tfp_seed_set_field( 'locaux_2_titre', 'Quartiers et zones d\'activité', $id );
@@ -2149,6 +2225,7 @@ if ( empty( $posts ) ) {
 		'Nous intervenons dans l\'ensemble de la ville, sans secteur réservé :',
 	) ), $id );
 	tfp_seed_set_field( 'locaux_2_type', 'noms', $id );
+	tfp_seed_set_field( 'locaux_2_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_2_section', 8, $id );
 	tfp_seed_set_field( 'locaux_2_noms', implode( "\n", array(
 		'Centre-ville',
@@ -2161,6 +2238,7 @@ if ( empty( $posts ) ) {
 		'Communes de l\'agglomération mâconnaise. Les demandes situées dans ces communes peuvent être étudiées selon l\'adresse exacte, le volume horaire et les possibilités d\'organisation du planning :',
 	) ), $id );
 	tfp_seed_set_field( 'locaux_3_type', 'noms', $id );
+	tfp_seed_set_field( 'locaux_3_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_3_section', 8, $id );
 	tfp_seed_set_field( 'locaux_3_noms', implode( "\n", array(
 		'Sancé',
@@ -2173,6 +2251,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'locaux_4_titre', 'Dans le même département', $id );
 	tfp_seed_set_field( 'locaux_4_texte', '', $id );
 	tfp_seed_set_field( 'locaux_4_type', 'villes', $id );
+	tfp_seed_set_field( 'locaux_4_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_4_section', 9, $id );
 	tfp_seed_set_field( 'locaux_4_noms', '', $id );
 	tfp_seed_set_field( 'locaux_5_titre', 'Autres secteurs couverts en région', $id );
@@ -2180,6 +2259,7 @@ if ( empty( $posts ) ) {
 		'Villes éloignées, couvertes depuis Saint-Apollinaire — ce ne sont pas des communes voisines.',
 	) ), $id );
 	tfp_seed_set_field( 'locaux_5_type', 'villes', $id );
+	tfp_seed_set_field( 'locaux_5_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_5_section', 9, $id );
 	tfp_seed_set_field( 'locaux_5_noms', '', $id );
 	tfp_seed_set_field( 'locaux_6_titre', 'Aller plus loin', $id );
@@ -2187,6 +2267,7 @@ if ( empty( $posts ) ) {
 		'Des guides locaux (fréquences, budget, cahier des charges) viendront compléter cette page.',
 	) ), $id );
 	tfp_seed_set_field( 'locaux_6_type', 'liens', $id );
+	tfp_seed_set_field( 'locaux_6_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_6_section', 9, $id );
 	tfp_seed_set_field( 'locaux_6_noms', '', $id );
 	tfp_seed_set_field( 'locaux_avant_tarif', 1, $id );
@@ -2298,6 +2379,7 @@ if ( empty( $posts ) ) {
 		'Six prestations, un seul interlocuteur. Nous intervenons sur les espaces compatibles avec notre offre : bureaux, accueils, locaux administratifs, parties communes, commerces et cabinets courants.',
 	) ), $id );
 	tfp_seed_set_field( 'locaux_1_type', 'prestations', $id );
+	tfp_seed_set_field( 'locaux_1_variante', 'cartes', $id );
 	tfp_seed_set_field( 'locaux_1_section', 5, $id );
 	tfp_seed_set_field( 'locaux_1_noms', '', $id );
 	tfp_seed_set_field( 'locaux_2_titre', 'Quartiers et zones d\'activité', $id );
@@ -2305,6 +2387,7 @@ if ( empty( $posts ) ) {
 		'Nous intervenons dans l\'ensemble de la ville, sans secteur réservé :',
 	) ), $id );
 	tfp_seed_set_field( 'locaux_2_type', 'noms', $id );
+	tfp_seed_set_field( 'locaux_2_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_2_section', 8, $id );
 	tfp_seed_set_field( 'locaux_2_noms', implode( "\n", array(
 		'Centre-ville',
@@ -2317,6 +2400,7 @@ if ( empty( $posts ) ) {
 		'Communes de la couronne auxerroise. Les demandes situées dans ces communes peuvent être étudiées selon l\'adresse exacte, le volume horaire et les possibilités d\'organisation du planning :',
 	) ), $id );
 	tfp_seed_set_field( 'locaux_3_type', 'noms', $id );
+	tfp_seed_set_field( 'locaux_3_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_3_section', 8, $id );
 	tfp_seed_set_field( 'locaux_3_noms', implode( "\n", array(
 		'Monéteau',
@@ -2330,6 +2414,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'locaux_4_titre', 'Dans le même département', $id );
 	tfp_seed_set_field( 'locaux_4_texte', '', $id );
 	tfp_seed_set_field( 'locaux_4_type', 'departements', $id );
+	tfp_seed_set_field( 'locaux_4_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_4_section', 9, $id );
 	tfp_seed_set_field( 'locaux_4_noms', '', $id );
 	tfp_seed_set_field( 'locaux_5_titre', 'Autres secteurs couverts en région', $id );
@@ -2337,6 +2422,7 @@ if ( empty( $posts ) ) {
 		'Villes éloignées, couvertes depuis Saint-Apollinaire — ce ne sont pas des communes voisines.',
 	) ), $id );
 	tfp_seed_set_field( 'locaux_5_type', 'villes', $id );
+	tfp_seed_set_field( 'locaux_5_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_5_section', 9, $id );
 	tfp_seed_set_field( 'locaux_5_noms', '', $id );
 	tfp_seed_set_field( 'locaux_6_titre', 'Aller plus loin', $id );
@@ -2344,6 +2430,7 @@ if ( empty( $posts ) ) {
 		'Des guides locaux (fréquences, budget, cahier des charges) viendront compléter cette page.',
 	) ), $id );
 	tfp_seed_set_field( 'locaux_6_type', 'liens', $id );
+	tfp_seed_set_field( 'locaux_6_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_6_section', 9, $id );
 	tfp_seed_set_field( 'locaux_6_noms', '', $id );
 	tfp_seed_set_field( 'locaux_avant_tarif', 1, $id );
@@ -2455,6 +2542,7 @@ if ( empty( $posts ) ) {
 		'Six prestations, un seul interlocuteur. Nous intervenons sur les espaces compatibles avec notre offre : bureaux, accueils, locaux administratifs, parties communes, commerces et cabinets courants.',
 	) ), $id );
 	tfp_seed_set_field( 'locaux_1_type', 'prestations', $id );
+	tfp_seed_set_field( 'locaux_1_variante', 'cartes', $id );
 	tfp_seed_set_field( 'locaux_1_section', 5, $id );
 	tfp_seed_set_field( 'locaux_1_noms', '', $id );
 	tfp_seed_set_field( 'locaux_2_titre', 'Quartiers et zones d\'activité', $id );
@@ -2462,6 +2550,7 @@ if ( empty( $posts ) ) {
 		'Nous intervenons dans l\'ensemble de la ville, sans secteur réservé :',
 	) ), $id );
 	tfp_seed_set_field( 'locaux_2_type', 'noms', $id );
+	tfp_seed_set_field( 'locaux_2_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_2_section', 8, $id );
 	tfp_seed_set_field( 'locaux_2_noms', implode( "\n", array(
 		'Centre-ville',
@@ -2474,6 +2563,7 @@ if ( empty( $posts ) ) {
 		'Communes de la couronne belfortaine. Les demandes situées dans ces communes peuvent être étudiées selon l\'adresse exacte, le volume horaire et les possibilités d\'organisation du planning :',
 	) ), $id );
 	tfp_seed_set_field( 'locaux_3_type', 'noms', $id );
+	tfp_seed_set_field( 'locaux_3_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_3_section', 8, $id );
 	tfp_seed_set_field( 'locaux_3_noms', implode( "\n", array(
 		'Valdoie',
@@ -2487,6 +2577,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'locaux_4_titre', 'Dans le même département', $id );
 	tfp_seed_set_field( 'locaux_4_texte', '', $id );
 	tfp_seed_set_field( 'locaux_4_type', 'departements', $id );
+	tfp_seed_set_field( 'locaux_4_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_4_section', 9, $id );
 	tfp_seed_set_field( 'locaux_4_noms', '', $id );
 	tfp_seed_set_field( 'locaux_5_titre', 'Autres secteurs couverts en région', $id );
@@ -2494,6 +2585,7 @@ if ( empty( $posts ) ) {
 		'Villes éloignées, couvertes depuis Saint-Apollinaire — ce ne sont pas des communes voisines.',
 	) ), $id );
 	tfp_seed_set_field( 'locaux_5_type', 'villes', $id );
+	tfp_seed_set_field( 'locaux_5_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_5_section', 9, $id );
 	tfp_seed_set_field( 'locaux_5_noms', '', $id );
 	tfp_seed_set_field( 'locaux_6_titre', 'Aller plus loin', $id );
@@ -2501,6 +2593,7 @@ if ( empty( $posts ) ) {
 		'Des guides locaux (fréquences, budget, cahier des charges) viendront compléter cette page.',
 	) ), $id );
 	tfp_seed_set_field( 'locaux_6_type', 'liens', $id );
+	tfp_seed_set_field( 'locaux_6_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_6_section', 9, $id );
 	tfp_seed_set_field( 'locaux_6_noms', '', $id );
 	tfp_seed_set_field( 'locaux_avant_tarif', 1, $id );
@@ -2594,6 +2687,7 @@ if ( empty( $posts ) ) {
 		'Six prestations, un seul interlocuteur. Nous intervenons sur les espaces compatibles avec notre offre : bureaux, accueils, locaux administratifs, parties communes, commerces et cabinets courants.',
 	) ), $id );
 	tfp_seed_set_field( 'locaux_1_type', 'prestations', $id );
+	tfp_seed_set_field( 'locaux_1_variante', 'cartes', $id );
 	tfp_seed_set_field( 'locaux_1_section', 5, $id );
 	tfp_seed_set_field( 'locaux_1_noms', '', $id );
 	tfp_seed_set_field( 'locaux_2_titre', 'Quartiers et zones d\'activité', $id );
@@ -2601,6 +2695,7 @@ if ( empty( $posts ) ) {
 		'Nous intervenons dans l\'ensemble de la commune, sans secteur réservé :',
 	) ), $id );
 	tfp_seed_set_field( 'locaux_2_type', 'noms', $id );
+	tfp_seed_set_field( 'locaux_2_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_2_section', 8, $id );
 	tfp_seed_set_field( 'locaux_2_noms', implode( "\n", array(
 		'Centre',
@@ -2613,6 +2708,7 @@ if ( empty( $posts ) ) {
 		'Communes proches de Saint-Apollinaire, dans le même bassin géographique :',
 	) ), $id );
 	tfp_seed_set_field( 'locaux_3_type', 'villes', $id );
+	tfp_seed_set_field( 'locaux_3_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_3_section', 8, $id );
 	tfp_seed_set_field( 'locaux_3_noms', implode( "\n", array(
 		'Ruffey-lès-Echirey',
@@ -2623,6 +2719,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'locaux_4_titre', 'Dans le même département', $id );
 	tfp_seed_set_field( 'locaux_4_texte', '', $id );
 	tfp_seed_set_field( 'locaux_4_type', 'villes', $id );
+	tfp_seed_set_field( 'locaux_4_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_4_section', 9, $id );
 	tfp_seed_set_field( 'locaux_4_noms', '', $id );
 	tfp_seed_set_field( 'locaux_5_titre', 'Autres secteurs couverts en région', $id );
@@ -2630,6 +2727,7 @@ if ( empty( $posts ) ) {
 		'Villes éloignées, couvertes depuis Saint-Apollinaire — ce ne sont pas des communes voisines.',
 	) ), $id );
 	tfp_seed_set_field( 'locaux_5_type', 'villes', $id );
+	tfp_seed_set_field( 'locaux_5_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_5_section', 9, $id );
 	tfp_seed_set_field( 'locaux_5_noms', '', $id );
 	tfp_seed_set_field( 'locaux_6_titre', 'Aller plus loin', $id );
@@ -2637,6 +2735,7 @@ if ( empty( $posts ) ) {
 		'Des guides locaux (fréquences, budget, cahier des charges) viendront compléter cette page.',
 	) ), $id );
 	tfp_seed_set_field( 'locaux_6_type', 'liens', $id );
+	tfp_seed_set_field( 'locaux_6_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_6_section', 9, $id );
 	tfp_seed_set_field( 'locaux_6_noms', '', $id );
 	tfp_seed_set_field( 'locaux_avant_tarif', 1, $id );
@@ -2730,6 +2829,7 @@ if ( empty( $posts ) ) {
 		'Six prestations, un seul interlocuteur. Nous intervenons sur les espaces compatibles avec notre offre : bureaux, accueils, locaux administratifs, parties communes, commerces et cabinets courants.',
 	) ), $id );
 	tfp_seed_set_field( 'locaux_1_type', 'prestations', $id );
+	tfp_seed_set_field( 'locaux_1_variante', 'cartes', $id );
 	tfp_seed_set_field( 'locaux_1_section', 5, $id );
 	tfp_seed_set_field( 'locaux_1_noms', '', $id );
 	tfp_seed_set_field( 'locaux_2_titre', 'Quartiers et zones d\'activité', $id );
@@ -2737,6 +2837,7 @@ if ( empty( $posts ) ) {
 		'Nous intervenons dans l\'ensemble de la commune, sans secteur réservé :',
 	) ), $id );
 	tfp_seed_set_field( 'locaux_2_type', 'noms', $id );
+	tfp_seed_set_field( 'locaux_2_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_2_section', 8, $id );
 	tfp_seed_set_field( 'locaux_2_noms', implode( "\n", array(
 		'Centre',
@@ -2749,6 +2850,7 @@ if ( empty( $posts ) ) {
 		'Communes proches de Chenôve, dans le même bassin géographique :',
 	) ), $id );
 	tfp_seed_set_field( 'locaux_3_type', 'villes', $id );
+	tfp_seed_set_field( 'locaux_3_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_3_section', 8, $id );
 	tfp_seed_set_field( 'locaux_3_noms', implode( "\n", array(
 		'Perrigny-lès-Dijon',
@@ -2756,6 +2858,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'locaux_4_titre', 'Dans le même département', $id );
 	tfp_seed_set_field( 'locaux_4_texte', '', $id );
 	tfp_seed_set_field( 'locaux_4_type', 'villes', $id );
+	tfp_seed_set_field( 'locaux_4_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_4_section', 9, $id );
 	tfp_seed_set_field( 'locaux_4_noms', '', $id );
 	tfp_seed_set_field( 'locaux_5_titre', 'Autres secteurs couverts en région', $id );
@@ -2763,6 +2866,7 @@ if ( empty( $posts ) ) {
 		'Villes éloignées, couvertes depuis Saint-Apollinaire — ce ne sont pas des communes voisines.',
 	) ), $id );
 	tfp_seed_set_field( 'locaux_5_type', 'villes', $id );
+	tfp_seed_set_field( 'locaux_5_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_5_section', 9, $id );
 	tfp_seed_set_field( 'locaux_5_noms', '', $id );
 	tfp_seed_set_field( 'locaux_6_titre', 'Aller plus loin', $id );
@@ -2770,6 +2874,7 @@ if ( empty( $posts ) ) {
 		'Des guides locaux (fréquences, budget, cahier des charges) viendront compléter cette page.',
 	) ), $id );
 	tfp_seed_set_field( 'locaux_6_type', 'liens', $id );
+	tfp_seed_set_field( 'locaux_6_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_6_section', 9, $id );
 	tfp_seed_set_field( 'locaux_6_noms', '', $id );
 	tfp_seed_set_field( 'locaux_avant_tarif', 1, $id );
@@ -2857,6 +2962,7 @@ if ( empty( $posts ) ) {
 		'Six prestations, un seul interlocuteur. Nous intervenons sur les espaces compatibles avec notre offre : bureaux, accueils, locaux administratifs, parties communes, commerces et cabinets courants.',
 	) ), $id );
 	tfp_seed_set_field( 'locaux_1_type', 'prestations', $id );
+	tfp_seed_set_field( 'locaux_1_variante', 'cartes', $id );
 	tfp_seed_set_field( 'locaux_1_section', 5, $id );
 	tfp_seed_set_field( 'locaux_1_noms', '', $id );
 	tfp_seed_set_field( 'locaux_2_titre', 'Quartiers et zones d\'activité', $id );
@@ -2864,6 +2970,7 @@ if ( empty( $posts ) ) {
 		'Nous intervenons dans l\'ensemble de la commune, sans secteur réservé :',
 	) ), $id );
 	tfp_seed_set_field( 'locaux_2_type', 'noms', $id );
+	tfp_seed_set_field( 'locaux_2_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_2_section', 8, $id );
 	tfp_seed_set_field( 'locaux_2_noms', implode( "\n", array(
 		'Centre',
@@ -2876,6 +2983,7 @@ if ( empty( $posts ) ) {
 		'Communes proches de Quetigny, dans le même bassin géographique :',
 	) ), $id );
 	tfp_seed_set_field( 'locaux_3_type', 'villes', $id );
+	tfp_seed_set_field( 'locaux_3_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_3_section', 8, $id );
 	tfp_seed_set_field( 'locaux_3_noms', implode( "\n", array(
 		'Chevigny-Saint-Sauveur',
@@ -2885,6 +2993,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'locaux_4_titre', 'Dans le même département', $id );
 	tfp_seed_set_field( 'locaux_4_texte', '', $id );
 	tfp_seed_set_field( 'locaux_4_type', 'villes', $id );
+	tfp_seed_set_field( 'locaux_4_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_4_section', 9, $id );
 	tfp_seed_set_field( 'locaux_4_noms', '', $id );
 	tfp_seed_set_field( 'locaux_5_titre', 'Autres secteurs couverts en région', $id );
@@ -2892,6 +3001,7 @@ if ( empty( $posts ) ) {
 		'Villes éloignées, couvertes depuis Saint-Apollinaire — ce ne sont pas des communes voisines.',
 	) ), $id );
 	tfp_seed_set_field( 'locaux_5_type', 'villes', $id );
+	tfp_seed_set_field( 'locaux_5_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_5_section', 9, $id );
 	tfp_seed_set_field( 'locaux_5_noms', '', $id );
 	tfp_seed_set_field( 'locaux_6_titre', 'Aller plus loin', $id );
@@ -2899,6 +3009,7 @@ if ( empty( $posts ) ) {
 		'Des guides locaux (fréquences, budget, cahier des charges) viendront compléter cette page.',
 	) ), $id );
 	tfp_seed_set_field( 'locaux_6_type', 'liens', $id );
+	tfp_seed_set_field( 'locaux_6_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_6_section', 9, $id );
 	tfp_seed_set_field( 'locaux_6_noms', '', $id );
 	tfp_seed_set_field( 'locaux_avant_tarif', 1, $id );
@@ -2992,6 +3103,7 @@ if ( empty( $posts ) ) {
 		'Six prestations, un seul interlocuteur. Nous intervenons sur les espaces compatibles avec notre offre : bureaux, accueils, locaux administratifs, parties communes, commerces et cabinets courants.',
 	) ), $id );
 	tfp_seed_set_field( 'locaux_1_type', 'prestations', $id );
+	tfp_seed_set_field( 'locaux_1_variante', 'cartes', $id );
 	tfp_seed_set_field( 'locaux_1_section', 5, $id );
 	tfp_seed_set_field( 'locaux_1_noms', '', $id );
 	tfp_seed_set_field( 'locaux_2_titre', 'Quartiers et zones d\'activité', $id );
@@ -2999,6 +3111,7 @@ if ( empty( $posts ) ) {
 		'Nous intervenons dans l\'ensemble de la commune, sans secteur réservé :',
 	) ), $id );
 	tfp_seed_set_field( 'locaux_2_type', 'noms', $id );
+	tfp_seed_set_field( 'locaux_2_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_2_section', 8, $id );
 	tfp_seed_set_field( 'locaux_2_noms', implode( "\n", array(
 		'Centre',
@@ -3011,6 +3124,7 @@ if ( empty( $posts ) ) {
 		'Communes proches de Talant, dans le même bassin géographique :',
 	) ), $id );
 	tfp_seed_set_field( 'locaux_3_type', 'villes', $id );
+	tfp_seed_set_field( 'locaux_3_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_3_section', 8, $id );
 	tfp_seed_set_field( 'locaux_3_noms', implode( "\n", array(
 		'Plombières-lès-Dijon',
@@ -3019,6 +3133,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'locaux_4_titre', 'Dans le même département', $id );
 	tfp_seed_set_field( 'locaux_4_texte', '', $id );
 	tfp_seed_set_field( 'locaux_4_type', 'villes', $id );
+	tfp_seed_set_field( 'locaux_4_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_4_section', 9, $id );
 	tfp_seed_set_field( 'locaux_4_noms', '', $id );
 	tfp_seed_set_field( 'locaux_5_titre', 'Autres secteurs couverts en région', $id );
@@ -3026,6 +3141,7 @@ if ( empty( $posts ) ) {
 		'Villes éloignées, couvertes depuis Saint-Apollinaire — ce ne sont pas des communes voisines.',
 	) ), $id );
 	tfp_seed_set_field( 'locaux_5_type', 'villes', $id );
+	tfp_seed_set_field( 'locaux_5_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_5_section', 9, $id );
 	tfp_seed_set_field( 'locaux_5_noms', '', $id );
 	tfp_seed_set_field( 'locaux_6_titre', 'Aller plus loin', $id );
@@ -3033,6 +3149,7 @@ if ( empty( $posts ) ) {
 		'Des guides locaux (fréquences, budget, cahier des charges) viendront compléter cette page.',
 	) ), $id );
 	tfp_seed_set_field( 'locaux_6_type', 'liens', $id );
+	tfp_seed_set_field( 'locaux_6_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_6_section', 9, $id );
 	tfp_seed_set_field( 'locaux_6_noms', '', $id );
 	tfp_seed_set_field( 'locaux_avant_tarif', 1, $id );
@@ -3126,6 +3243,7 @@ if ( empty( $posts ) ) {
 		'Six prestations, un seul interlocuteur. Nous intervenons sur les espaces compatibles avec notre offre : bureaux, accueils, locaux administratifs, parties communes, commerces et cabinets courants.',
 	) ), $id );
 	tfp_seed_set_field( 'locaux_1_type', 'prestations', $id );
+	tfp_seed_set_field( 'locaux_1_variante', 'cartes', $id );
 	tfp_seed_set_field( 'locaux_1_section', 5, $id );
 	tfp_seed_set_field( 'locaux_1_noms', '', $id );
 	tfp_seed_set_field( 'locaux_2_titre', 'Quartiers et zones d\'activité', $id );
@@ -3133,6 +3251,7 @@ if ( empty( $posts ) ) {
 		'Nous intervenons dans l\'ensemble de la commune, sans secteur réservé :',
 	) ), $id );
 	tfp_seed_set_field( 'locaux_2_type', 'noms', $id );
+	tfp_seed_set_field( 'locaux_2_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_2_section', 8, $id );
 	tfp_seed_set_field( 'locaux_2_noms', implode( "\n", array(
 		'Centre',
@@ -3145,6 +3264,7 @@ if ( empty( $posts ) ) {
 		'Communes proches de Longvic, dans le même bassin géographique :',
 	) ), $id );
 	tfp_seed_set_field( 'locaux_3_type', 'villes', $id );
+	tfp_seed_set_field( 'locaux_3_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_3_section', 8, $id );
 	tfp_seed_set_field( 'locaux_3_noms', implode( "\n", array(
 		'Ouges',
@@ -3154,6 +3274,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'locaux_4_titre', 'Dans le même département', $id );
 	tfp_seed_set_field( 'locaux_4_texte', '', $id );
 	tfp_seed_set_field( 'locaux_4_type', 'villes', $id );
+	tfp_seed_set_field( 'locaux_4_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_4_section', 9, $id );
 	tfp_seed_set_field( 'locaux_4_noms', '', $id );
 	tfp_seed_set_field( 'locaux_5_titre', 'Autres secteurs couverts en région', $id );
@@ -3161,6 +3282,7 @@ if ( empty( $posts ) ) {
 		'Villes éloignées, couvertes depuis Saint-Apollinaire — ce ne sont pas des communes voisines.',
 	) ), $id );
 	tfp_seed_set_field( 'locaux_5_type', 'villes', $id );
+	tfp_seed_set_field( 'locaux_5_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_5_section', 9, $id );
 	tfp_seed_set_field( 'locaux_5_noms', '', $id );
 	tfp_seed_set_field( 'locaux_6_titre', 'Aller plus loin', $id );
@@ -3168,6 +3290,7 @@ if ( empty( $posts ) ) {
 		'Des guides locaux (fréquences, budget, cahier des charges) viendront compléter cette page.',
 	) ), $id );
 	tfp_seed_set_field( 'locaux_6_type', 'liens', $id );
+	tfp_seed_set_field( 'locaux_6_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_6_section', 9, $id );
 	tfp_seed_set_field( 'locaux_6_noms', '', $id );
 	tfp_seed_set_field( 'locaux_avant_tarif', 1, $id );
@@ -3267,6 +3390,7 @@ if ( empty( $posts ) ) {
 		'Six prestations, un seul interlocuteur. Nous intervenons sur les espaces compatibles avec notre offre : bureaux, accueils, locaux administratifs, parties communes, commerces et cabinets courants.',
 	) ), $id );
 	tfp_seed_set_field( 'locaux_1_type', 'prestations', $id );
+	tfp_seed_set_field( 'locaux_1_variante', 'cartes', $id );
 	tfp_seed_set_field( 'locaux_1_section', 5, $id );
 	tfp_seed_set_field( 'locaux_1_noms', '', $id );
 	tfp_seed_set_field( 'locaux_2_titre', 'Quartiers et zones d\'activité', $id );
@@ -3274,6 +3398,7 @@ if ( empty( $posts ) ) {
 		'Nous intervenons dans l\'ensemble de la commune, sans secteur réservé :',
 	) ), $id );
 	tfp_seed_set_field( 'locaux_2_type', 'noms', $id );
+	tfp_seed_set_field( 'locaux_2_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_2_section', 8, $id );
 	tfp_seed_set_field( 'locaux_2_noms', implode( "\n", array(
 		'Centre',
@@ -3286,6 +3411,7 @@ if ( empty( $posts ) ) {
 		'Communes proches de Fontaine-lès-Dijon, dans le même bassin géographique :',
 	) ), $id );
 	tfp_seed_set_field( 'locaux_3_type', 'villes', $id );
+	tfp_seed_set_field( 'locaux_3_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_3_section', 8, $id );
 	tfp_seed_set_field( 'locaux_3_noms', implode( "\n", array(
 		'Ahuy',
@@ -3295,6 +3421,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'locaux_4_titre', 'Dans le même département', $id );
 	tfp_seed_set_field( 'locaux_4_texte', '', $id );
 	tfp_seed_set_field( 'locaux_4_type', 'villes', $id );
+	tfp_seed_set_field( 'locaux_4_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_4_section', 9, $id );
 	tfp_seed_set_field( 'locaux_4_noms', '', $id );
 	tfp_seed_set_field( 'locaux_5_titre', 'Autres secteurs couverts en région', $id );
@@ -3302,6 +3429,7 @@ if ( empty( $posts ) ) {
 		'Villes éloignées, couvertes depuis Saint-Apollinaire — ce ne sont pas des communes voisines.',
 	) ), $id );
 	tfp_seed_set_field( 'locaux_5_type', 'villes', $id );
+	tfp_seed_set_field( 'locaux_5_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_5_section', 9, $id );
 	tfp_seed_set_field( 'locaux_5_noms', '', $id );
 	tfp_seed_set_field( 'locaux_6_titre', 'Aller plus loin', $id );
@@ -3309,6 +3437,7 @@ if ( empty( $posts ) ) {
 		'Des guides locaux (fréquences, budget, cahier des charges) viendront compléter cette page.',
 	) ), $id );
 	tfp_seed_set_field( 'locaux_6_type', 'liens', $id );
+	tfp_seed_set_field( 'locaux_6_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_6_section', 9, $id );
 	tfp_seed_set_field( 'locaux_6_noms', '', $id );
 	tfp_seed_set_field( 'locaux_avant_tarif', 1, $id );
@@ -3396,6 +3525,7 @@ if ( empty( $posts ) ) {
 		'Six prestations, un seul interlocuteur. Nous intervenons sur les espaces compatibles avec notre offre : bureaux, accueils, locaux administratifs, parties communes, commerces et cabinets courants.',
 	) ), $id );
 	tfp_seed_set_field( 'locaux_1_type', 'prestations', $id );
+	tfp_seed_set_field( 'locaux_1_variante', 'cartes', $id );
 	tfp_seed_set_field( 'locaux_1_section', 5, $id );
 	tfp_seed_set_field( 'locaux_1_noms', '', $id );
 	tfp_seed_set_field( 'locaux_2_titre', 'Quartiers et zones d\'activité', $id );
@@ -3403,6 +3533,7 @@ if ( empty( $posts ) ) {
 		'Nous intervenons dans l\'ensemble de la commune, sans secteur réservé :',
 	) ), $id );
 	tfp_seed_set_field( 'locaux_2_type', 'noms', $id );
+	tfp_seed_set_field( 'locaux_2_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_2_section', 8, $id );
 	tfp_seed_set_field( 'locaux_2_noms', implode( "\n", array(
 		'Centre',
@@ -3415,6 +3546,7 @@ if ( empty( $posts ) ) {
 		'Communes proches de Marsannay-la-Côte, dans le même bassin géographique :',
 	) ), $id );
 	tfp_seed_set_field( 'locaux_3_type', 'villes', $id );
+	tfp_seed_set_field( 'locaux_3_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_3_section', 8, $id );
 	tfp_seed_set_field( 'locaux_3_noms', implode( "\n", array(
 		'Couchey',
@@ -3423,6 +3555,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'locaux_4_titre', 'Dans le même département', $id );
 	tfp_seed_set_field( 'locaux_4_texte', '', $id );
 	tfp_seed_set_field( 'locaux_4_type', 'villes', $id );
+	tfp_seed_set_field( 'locaux_4_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_4_section', 9, $id );
 	tfp_seed_set_field( 'locaux_4_noms', '', $id );
 	tfp_seed_set_field( 'locaux_5_titre', 'Autres secteurs couverts en région', $id );
@@ -3430,6 +3563,7 @@ if ( empty( $posts ) ) {
 		'Villes éloignées, couvertes depuis Saint-Apollinaire — ce ne sont pas des communes voisines.',
 	) ), $id );
 	tfp_seed_set_field( 'locaux_5_type', 'villes', $id );
+	tfp_seed_set_field( 'locaux_5_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_5_section', 9, $id );
 	tfp_seed_set_field( 'locaux_5_noms', '', $id );
 	tfp_seed_set_field( 'locaux_6_titre', 'Aller plus loin', $id );
@@ -3437,6 +3571,7 @@ if ( empty( $posts ) ) {
 		'Des guides locaux (fréquences, budget, cahier des charges) viendront compléter cette page.',
 	) ), $id );
 	tfp_seed_set_field( 'locaux_6_type', 'liens', $id );
+	tfp_seed_set_field( 'locaux_6_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_6_section', 9, $id );
 	tfp_seed_set_field( 'locaux_6_noms', '', $id );
 	tfp_seed_set_field( 'locaux_avant_tarif', 1, $id );
@@ -3524,6 +3659,7 @@ if ( empty( $posts ) ) {
 		'Six prestations, un seul interlocuteur. Nous intervenons sur les espaces compatibles avec notre offre : bureaux, accueils, locaux administratifs, parties communes, commerces et cabinets courants.',
 	) ), $id );
 	tfp_seed_set_field( 'locaux_1_type', 'prestations', $id );
+	tfp_seed_set_field( 'locaux_1_variante', 'cartes', $id );
 	tfp_seed_set_field( 'locaux_1_section', 5, $id );
 	tfp_seed_set_field( 'locaux_1_noms', '', $id );
 	tfp_seed_set_field( 'locaux_2_titre', 'Quartiers et zones d\'activité', $id );
@@ -3531,6 +3667,7 @@ if ( empty( $posts ) ) {
 		'Nous intervenons dans l\'ensemble de la ville, sans secteur réservé :',
 	) ), $id );
 	tfp_seed_set_field( 'locaux_2_type', 'noms', $id );
+	tfp_seed_set_field( 'locaux_2_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_2_section', 8, $id );
 	tfp_seed_set_field( 'locaux_2_noms', implode( "\n", array(
 		'Centre-ville',
@@ -3543,6 +3680,7 @@ if ( empty( $posts ) ) {
 		'Communes proches de Beaune, dans le même bassin géographique :',
 	) ), $id );
 	tfp_seed_set_field( 'locaux_3_type', 'noms', $id );
+	tfp_seed_set_field( 'locaux_3_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_3_section', 8, $id );
 	tfp_seed_set_field( 'locaux_3_noms', implode( "\n", array(
 		'Chorey-les-Beaune',
@@ -3555,6 +3693,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'locaux_4_titre', 'Dans le même département', $id );
 	tfp_seed_set_field( 'locaux_4_texte', '', $id );
 	tfp_seed_set_field( 'locaux_4_type', 'villes', $id );
+	tfp_seed_set_field( 'locaux_4_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_4_section', 9, $id );
 	tfp_seed_set_field( 'locaux_4_noms', '', $id );
 	tfp_seed_set_field( 'locaux_5_titre', 'Autres secteurs couverts en région', $id );
@@ -3562,6 +3701,7 @@ if ( empty( $posts ) ) {
 		'Villes éloignées, couvertes depuis Saint-Apollinaire — ce ne sont pas des communes voisines.',
 	) ), $id );
 	tfp_seed_set_field( 'locaux_5_type', 'villes', $id );
+	tfp_seed_set_field( 'locaux_5_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_5_section', 9, $id );
 	tfp_seed_set_field( 'locaux_5_noms', '', $id );
 	tfp_seed_set_field( 'locaux_6_titre', 'Aller plus loin', $id );
@@ -3569,6 +3709,7 @@ if ( empty( $posts ) ) {
 		'Des guides locaux (fréquences, budget, cahier des charges) viendront compléter cette page.',
 	) ), $id );
 	tfp_seed_set_field( 'locaux_6_type', 'liens', $id );
+	tfp_seed_set_field( 'locaux_6_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_6_section', 9, $id );
 	tfp_seed_set_field( 'locaux_6_noms', '', $id );
 	tfp_seed_set_field( 'locaux_avant_tarif', 1, $id );

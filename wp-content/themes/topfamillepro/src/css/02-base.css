@@ -61,8 +61,40 @@ h1, h2, h3, h4, h5, h6 {
    été branché : les titres de section retombaient sur la taille par défaut du navigateur
    (1.5em = 25,5px), soit 40 % plus petits que la maquette, ce qui écrasait toute la hiérarchie
    visuelle de l'accueil. Mesuré à 42px sur le rendu réel du prototype à 1440px. */
+h1 {
+  font-size: var(--fs-h1);
+}
+
 h2 {
   font-size: var(--fs-h2);
+}
+
+/* Échelle des titres par type de page.
+   La maquette ne fige pas une taille de H2 unique : elle en emploie 42 px sur l'accueil, 34 à 36
+   sur les pages denses (prestations, pilier, tarifs), 29 sur les zones et les pages légales, 27
+   dans les articles. Un H2 de 42 px partout écrasait cette hiérarchie et allongeait les pages de
+   zone de plus de 150 px à contenu identique. Les classes viennent de tfp_body_class(). */
+body.tfp-type-accueil h1 {
+  font-size: var(--fs-h1-accueil);
+}
+
+body.tfp-type-zone h2,
+body.tfp-type-legale h2 {
+  font-size: var(--fs-h2-dense);
+}
+
+body.tfp-type-prestation h2,
+body.tfp-type-pilier h2,
+body.tfp-type-institutionnelle h2 {
+  font-size: var(--fs-h2-medium);
+}
+
+body.tfp-type-tarifs h2 {
+  font-size: var(--fs-h2-tarifs);
+}
+
+body.tfp-type-article h2 {
+  font-size: var(--fs-h2-article);
 }
 
 p {

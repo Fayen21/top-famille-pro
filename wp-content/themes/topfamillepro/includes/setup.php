@@ -57,3 +57,41 @@ function tfp_ensure_conseils_category() {
 	}
 }
 add_action( 'init', 'tfp_ensure_conseils_category', 20 );
+
+/**
+ * Classe de type de page sur `<body>`, pour l'échelle typographique.
+ *
+ * La maquette Claude Design module la taille des titres selon la densité de la page : 58 px de H1
+ * sur l'accueil, 48 à 54 sur les pages internes ; 42 px de H2 sur l'accueil, 34 à 36 sur les pages
+ * denses, 29 sur les zones, 27 dans les articles. Une taille unique écrase cette hiérarchie et
+ * allonge les pages sans rien apporter. Plutôt que de coder une taille par titre — infidèle au
+ * premier ajout de section — le type de page porte l'échelle, et le CSS en déduit les tailles.
+ *
+ * @param string[] $classes
+ * @return string[]
+ */
+function tfp_body_class( $classes ) {
+	$type = 'institutionnelle';
+
+	if ( is_front_page() ) {
+		$type = 'accueil';
+	} elseif ( is_singular( 'prestation' ) ) {
+		$type = 'prestation';
+	} elseif ( is_singular( 'zone' ) ) {
+		$type = 'zone';
+	} elseif ( is_singular( 'post' ) ) {
+		$type = 'article';
+	} elseif ( is_page( 'tarifs' ) ) {
+		$type = 'tarifs';
+	} elseif ( is_page( 'nettoyage-professionnel' ) ) {
+		$type = 'pilier';
+	} elseif ( is_page( array( 'mentions-legales', 'politique-de-confidentialite', 'gestion-des-cookies', 'plan-du-site' ) ) ) {
+		$type = 'legale';
+	} elseif ( is_page( array( 'zones-intervention', 'bourgogne-franche-comte' ) ) ) {
+		$type = 'zone';
+	}
+
+	$classes[] = 'tfp-type-' . $type;
+	return $classes;
+}
+add_filter( 'body_class', 'tfp_body_class' );

@@ -1268,29 +1268,33 @@ body.tfp-body .tfp-article-body p a {
 .tfp-stack {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 6px;
 }
 
+/* Rangée de renvoi. La maquette la rend en lien texte de 24 px de haut, sans cadre : c'est
+   exactement le minimum du critère WCAG 2.2 AA 2.5.8 (24 × 24 px), et il est satisfait par la
+   taille seule, sans avoir besoin de l'exception d'espacement ni de l'exception inline.
+
+   Le 44 × 44 px imposé auparavant relevait du critère 2.5.5, de niveau AAA, qui n'est pas
+   l'objectif de ce projet : il gonflait la hauteur des pages de zone sans rien apporter à la
+   conformité visée. Vérifié par tools/audit-target-size.mjs, pas seulement par axe-core. */
 .tfp-link-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  /* 44 px de haut minimum : cible tactile WCAG 2.2 (2.5.8). */
-  min-height: 44px;
-  padding: 12px 16px;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  background: var(--color-white);
-  font-size: 16px;
+  min-height: 24px;
+  padding: 3px 0;
+  font-size: 15px;
   font-weight: 600;
   color: var(--color-navy);
   text-decoration: none;
 }
 
 .tfp-link-row:hover {
-  border-color: var(--color-turquoise);
   color: var(--color-primary);
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 .tfp-price-example__disclaimer {
@@ -1960,7 +1964,6 @@ body.tfp-body .tfp-article-body p a {
 .tfp-link-row--static {
   cursor: default;
   color: var(--color-text-secondary);
-  border-style: dashed;
 }
 
 .tfp-section--navy .tfp-prose,
@@ -1979,7 +1982,7 @@ body.tfp-body .tfp-article-body p a {
    ils tripleraient la hauteur de la section à contenu identique. */
 .tfp-zone-links-grid {
   display: grid;
-  gap: 32px 40px;
+  gap: 24px 40px;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
   align-items: start;
 }
@@ -1990,7 +1993,8 @@ body.tfp-body .tfp-article-body p a {
 
 /* Tuile de prestation dans une page de zone : compacte, titre + une ligne. */
 .tfp-zone-links .tfp-card--link {
-  padding: 18px 20px;
+  padding: 20px;
+  border-radius: 14px;
 }
 
 .tfp-zone-links .tfp-card--link h3 {
@@ -2003,11 +2007,12 @@ body.tfp-body .tfp-article-body p a {
   line-height: 1.5;
 }
 
-/* Cibles tactiles du pied de page (WCAG 2.2, critère 2.5.8 « Target Size (Minimum) », 24 × 24 px).
-   Les villes y sont listées en ligne, séparées par des points médians : sans hauteur ni marge
-   minimales, chaque lien fait 18 px de haut et ses voisins sont à moins de 24 px — axe-core le
-   signale, et c'est réellement difficile à viser au doigt. */
-.tfp-footer__zones a,
+/* Cibles du pied de page — critère WCAG 2.2 AA 2.5.8.
+   Les liens des colonnes et de la barre légale sont des cibles à part entière : ils reçoivent la
+   hauteur minimale de 24 px. Les villes listées en ligne dans une phrase, séparées par des points
+   médians, relèvent en revanche de l'exception « inline » du critère : leur taille est contrainte
+   par l'interligne du texte qui les entoure, et leur imposer une hauteur déformerait la colonne
+   sans rien apporter. Vérifié par tools/audit-target-size.mjs. */
 .tfp-footer__contact a,
 .tfp-footer__col ul a,
 .tfp-footer__bottom nav a {
@@ -2022,4 +2027,53 @@ body.tfp-body .tfp-article-body p a {
 
 .tfp-footer__zones li {
   line-height: 1.7;
+}
+
+/* ------------------------------------------------------------------
+   Rythme vertical des pages de zone, aligné sur la maquette.
+   Valeurs relevées sur le rendu du prototype (tools/dump-route.mjs) :
+   carte de prestation 285×147 (padding 20, rayon 14), pastille 41 px de
+   haut, rangée de renvoi 24 px, item de FAQ replié 61 px.
+   ------------------------------------------------------------------ */
+
+/* FAQ : l'item replié fait 61 px dans la maquette. La carte générique, avec ses 24 px de padding,
+   en faisait près de 80 — sur sept questions, l'écart se voyait. */
+.tfp-section--turquoise details.tfp-card,
+.tfp-section--alt details.tfp-card,
+details.tfp-card {
+  padding: 14px 18px;
+  margin-bottom: 8px;
+}
+
+/* Groupes de liens : la maquette les serre nettement plus que la grille générique. */
+.tfp-zone-links h2 {
+  margin-bottom: 6px;
+}
+
+.tfp-zone-links .tfp-prose {
+  margin-top: 8px;
+}
+
+.tfp-zone-links .tfp-flex,
+.tfp-zone-links .tfp-stack {
+  margin-top: 12px !important;
+}
+
+.tfp-zone-links + .tfp-zone-links {
+  margin-top: 28px;
+}
+
+/* Grille des six prestations d'une page de zone : quatre colonnes comme dans la maquette, où
+   les tuiles tiennent sur deux rangs et non trois. */
+@media (min-width: 900px) {
+  .tfp-zone-links .tfp-grid--autofit-md {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
+    gap: 16px;
+  }
+}
+
+/* Hero : la ligne « région + note » garde sa hauteur réservée (elle évite un CLS de 0,155), mais
+   se recolle au titre. */
+.tfp-hero__eyebrow {
+  margin-bottom: 10px;
 }

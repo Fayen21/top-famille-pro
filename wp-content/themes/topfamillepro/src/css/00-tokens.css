@@ -54,7 +54,16 @@
   --fs-xl: 1.375rem;    /* 22px — titre de carte fort */
   --fs-2xl: 1.625rem;   /* 26px — H3 / intertitre */
   --fs-3xl: 2rem;       /* 32px — titre de section compact */
-  --fs-h2: clamp(1.6875rem, 3.6vw, 2.625rem); /* 27–42px — H2 de section */
+  /* Échelle des titres. Relevée sur le rendu réel de la maquette à 1440 px : le prototype ne
+     fige pas une taille unique, il module la hiérarchie selon la densité de la page — 58px sur
+     l'accueil, 48–54 sur les pages internes, et des H2 de 42 (accueil) à 27 (article). */
+  --fs-h1: clamp(2rem, 3.6vw, 3.125rem); /* 32–50px — H1 des pages internes */
+  --fs-h1-accueil: clamp(2.25rem, 4.4vw, 3.625rem); /* 36–58px — H1 du hero d'accueil */
+  --fs-h2: clamp(1.6875rem, 3.6vw, 2.625rem); /* 27–42px — H2 de section, accueil */
+  --fs-h2-dense: clamp(1.375rem, 2.2vw, 1.8125rem); /* 22–29px — pages de zone et légales */
+  --fs-h2-medium: clamp(1.5rem, 2.6vw, 2.125rem); /* 24–34px — prestations et page pilier */
+  --fs-h2-tarifs: clamp(1.5rem, 2.8vw, 2.25rem); /* 24–36px — page tarifs */
+  --fs-h2-article: clamp(1.375rem, 2.1vw, 1.6875rem); /* 22–27px — articles */
   --fs-hero: clamp(2.0625rem, 4.7vw, 3.625rem); /* 33–58px — H1 hero */
 
   --fw-regular: 400;

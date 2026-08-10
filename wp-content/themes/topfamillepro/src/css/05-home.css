@@ -160,11 +160,14 @@
   gap: var(--space-2);
 }
 
+/* Pastille de zone. Géométrie relevée sur le rendu de la maquette : 41 px de haut, padding
+   8px 15px, rayon plein, texte à 14 px. Elle dépasse donc largement le minimum de 24 px du
+   critère WCAG 2.2 AA 2.5.8 — inutile d'imposer davantage. */
 .tfp-chip {
   background: var(--color-bg);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-pill);
-  padding: 11px var(--space-5);
+  padding: 8px 15px;
   font-weight: var(--fw-semibold);
   font-size: var(--fs-sm);
   transition: background var(--transition-base), border-color var(--transition-base);

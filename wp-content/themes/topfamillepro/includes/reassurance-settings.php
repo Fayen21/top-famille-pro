@@ -49,10 +49,15 @@ function tfp_reassurance_defaults() {
 	}
 
 	return array(
-		'google_url'  => '',
-		'note'        => '5.0',
-		'nombre_avis' => '',
-		'avis'        => $avis,
+		'google_url'      => '',
+		'note'            => '5.0',
+		'nombre_avis'     => '',
+		// Citation attribuée à Audrey sur l'accueil, reprise de la maquette Claude Design. Elle est
+		// administrable ici plutôt qu'écrite dans un gabarit : c'est le seul contenu du site qui
+		// fasse parler une personne réelle, et il doit pouvoir être corrigé ou retiré par
+		// l'intéressée sans toucher au code. Vide = la citation n'est pas affichée.
+		'citation_audrey' => "Mon rôle, c'est de rester joignable et de tenir mes engagements. Chaque client sait à qui parler, et sait ce qui a été fait dans ses locaux.",
+		'avis'            => $avis,
 	);
 }
 
@@ -84,6 +89,7 @@ function tfp_sanitize_reassurance_settings( $input ) {
 	}
 
 	$clean['google_url'] = isset( $input['google_url'] ) ? esc_url_raw( trim( $input['google_url'] ) ) : '';
+	$clean['citation_audrey'] = isset( $input['citation_audrey'] ) ? sanitize_textarea_field( trim( $input['citation_audrey'] ) ) : '';
 
 	if ( isset( $input['note'] ) && '' !== trim( (string) $input['note'] ) ) {
 		$note = (float) str_replace( ',', '.', $input['note'] );
@@ -158,6 +164,24 @@ function tfp_render_reassurance_page() {
 				<tr>
 					<th scope="row"><label for="tfp-nombre-avis">Nombre d'avis réel</label></th>
 					<td><input type="number" id="tfp-nombre-avis" name="<?php echo esc_attr( TFP_REASSURANCE_OPTION ); ?>[nombre_avis]" value="<?php echo esc_attr( $values['nombre_avis'] ); ?>" min="0" class="small-text"></td>
+				</tr>
+			</table>
+
+			<h2>Citation de la gérante</h2>
+			<p>
+				Phrase attribuée à <?php echo esc_html( tfp_site_data()['manager'] ); ?> sur la page
+				d'accueil, reprise de la maquette Claude Design. C'est le <strong>seul contenu du site
+				qui fasse parler une personne réelle</strong> : elle doit être validée par l'intéressée
+				avant mise en ligne, et se corrige ou se retire ici, sans toucher au code. Vider le
+				champ retire la citation de l'accueil.
+			</p>
+			<table class="form-table" role="presentation">
+				<tr>
+					<th scope="row"><label for="tfp-citation-audrey">Citation</label></th>
+					<td>
+						<textarea id="tfp-citation-audrey" name="<?php echo esc_attr( TFP_REASSURANCE_OPTION ); ?>[citation_audrey]" rows="3" class="large-text"><?php echo esc_textarea( $values['citation_audrey'] ); ?></textarea>
+						<p class="description">Sans guillemets : ils sont ajoutés à l'affichage.</p>
+					</td>
 				</tr>
 			</table>
 

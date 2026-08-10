@@ -112,6 +112,11 @@ for (const zone of ZONES) {
 			// prestations et les zones depuis le contenu WordPress réel, et n'affiche en texte
 			// simple que les noms de communes ou de quartiers sans page dédiée.
 			for (const g of out) {
+				// Le même groupe « prestations » se rend en cartes sur une page de ville (le libellé
+				// porte une description : « Nettoyage de bureaux — Open-spaces, salles de réunion »)
+				// et en simples liens sur une page de département (« Nettoyage de bureaux → »).
+				// Rendre des cartes dans les deux cas triplait la hauteur de la section.
+				g.variante = g.liens.some((l) => l.v.length > 40) ? 'cartes' : 'liens';
 				if (g.liens.some((l) => l.href.startsWith('#/service/'))) g.kind = 'prestations';
 				else if (g.liens.some((l) => l.href.startsWith('#/ville/'))) g.kind = 'villes';
 				else if (g.liens.some((l) => l.href.startsWith('#/departement/'))) g.kind = 'departements';
@@ -291,6 +296,7 @@ for (const z of all) {
 		set(`locaux_${i + 1}_titre`, php(g.titre));
 		set(`locaux_${i + 1}_texte`, phpLines(g.textes));
 		set(`locaux_${i + 1}_type`, php(g.kind));
+		set(`locaux_${i + 1}_variante`, php(g.variante || 'liens'));
 		set(`locaux_${i + 1}_section`, g.section);
 		// Les noms sans lien sont des communes ou quartiers cités, sans page dédiée : ils restent
 		// du texte, jamais un lien mort.
