@@ -590,3 +590,54 @@ Ce travail est du **contenu rédactionnel distinct par page**, pas de la mise en
 reproduire correctement suppose d'écrire des textes spécifiques à chaque ville et à chaque
 prestation, ce qui n'a pas été fait dans cette passe et ne doit pas être généré en dupliquant un
 gabarit dont seul le nom de commune changerait.
+
+---
+
+## 3e. Cinquième vague — reproduction intégrale de la maquette (10 août 2026)
+
+### Constat qui a déclenché la vague
+
+Les quatre vagues précédentes concluaient qu'il manquait « du contenu rédactionnel distinct par
+page » qu'il aurait fallu écrire, et refusaient de l'inventer. C'était une erreur d'analyse : ce
+contenu **existe dans la maquette**, dans ses routes `#/`. Il n'était pas à rédiger, il était à
+relever.
+
+### Méthode
+
+Le prototype est un bundle auto-décompressant doublé d'une application à routes. Il est **exécuté**
+dans Chromium, jamais lu depuis sa source minifiée. Quatre outils rejouables, versionnés :
+
+| Outil | Sortie |
+|---|---|
+| `tools/extract-routes.mjs` | `tools/reference-routes.json`, `docs/MATRICE-ROUTES-CLAUDE-WORDPRESS.md` |
+| `tools/compare-routes.mjs` | `docs/COMPARAISON-53-ROUTES.md`, `docs/captures/comparaison/` |
+| `tools/diff-text.mjs` | écarts à la phrase près, écarts voulus comptés à part |
+| `tools/image-map.mjs` | `docs/IMAGES-MAQUETTE-WORDPRESS.md` |
+
+Quatre générateurs produisent les scripts de seed depuis ces relevés :
+`generate-prestations.mjs`, `generate-zones.mjs`, `generate-articles.mjs`, `generate-pages.mjs`
+→ `bin/seed-fidelite-{prestations,zones,articles,pages}.php`, tous miroités dans l'installateur.
+
+### Trois pièges du prototype, et leur correction
+
+| Piège | Symptôme | Correction |
+|---|---|---|
+| Conteneur de flux repéré par « le plus d'enfants » | Sur une page courte, la coquille de l'application en a autant : on mesurait la barre haute et le pied de page au lieu du contenu | Ancrage sur l'ancêtre du `<h1>` |
+| Page courte mettant `<h1>` et contenu dans une seule section | Toute la section était écartée avec le hero | On n'écarte que les nœuds précédant le premier `<h2>` |
+| Intitulé d'accordéon en nœud texte, avec le « + » pour seul enfant | Toutes les questions de FAQ perdues | Le parcours relève aussi les nœuds texte directs |
+
+Chacun est corrigé **dans le générateur**, donc reste corrigé au prochain passage.
+
+### Résultat mesuré
+
+- 53 routes découvertes, 53 comparées, **0 phrase de la maquette absente**.
+- 6 écarts voulus, tous nommés (CLAUDE.md §9, §5.7, consigne du 9 août sur l'assurance).
+- 825 tests Playwright au vert, axe-core 0 violation, Lighthouse a11y/BP/SEO 100, CLS ≤ 0,005.
+
+### Ce qui reste à décider (pas à coder)
+
+1. Validation par Audrey de la **citation qui lui est attribuée** — seul contenu du site faisant
+   parler une personne réelle.
+2. Remplacement des **témoignages provisoires** par de vrais avis (marqués `data-tfp-provisional`).
+3. **Médiation de la consommation** : dispositif applicable, encore en `[À COMPLÉTER]`.
+4. **Nombre d'avis Google** et **URL de la fiche** : le badge s'affiche sans eux, la note seule.

@@ -927,3 +927,124 @@ Les modèles des quatre familles demandées (prestations, tarifs, zones, article
 **réellement comparés à leur référence**, mesures à l'appui — condition posée pour pouvoir statuer.
 Le résultat de cette comparaison est que trois d'entre elles restent nettement en deçà de la
 maquette en volume de contenu. Le verdict `VALIDÉE` serait donc faux.
+
+---
+
+## 23. Reproduction intégrale de la maquette Claude Design (10 août 2026, cinquième vague)
+
+### 23.1 Ce qui a changé dans la méthode
+
+Les quatre vagues précédentes comparaient **un exemple par famille** et concluaient qu'il
+« manquait du contenu rédactionnel distinct par page », qu'il aurait fallu écrire. C'était une
+erreur d'analyse : ce contenu **existe déjà**, dans les routes `#/` de la maquette. Il n'était pas
+à rédiger, il était à **relever**.
+
+Le prototype `reference/Top-Famille-Pro-HANDOFF-READY.html` est un bundle auto-décompressant
+doublé d'une application à routes `#/`. Il ne se lit pas : il s'exécute. Toute la vague repose sur
+ce point — quatre outils rejouables ouvrent chaque route dans Chromium, la rendent, et relèvent
+son contenu dans le DOM :
+
+| Outil | Rôle |
+|---|---|
+| `tools/extract-routes.mjs` | découvre les routes par parcours en largeur et extrait tout : titres, paragraphes, listes, FAQ, liens, images, couleurs et polices calculées, dimensions, espacements |
+| `tools/compare-routes.mjs` | compare les deux versions route par route et produit un triptyque « maquette / WordPress / différence » |
+| `tools/diff-text.mjs` | dit, **à la phrase près**, ce qui manque côté WordPress |
+| `tools/dump-route.mjs` | restitue une route section par section, comme cahier des charges de reproduction |
+
+Les générateurs (`generate-prestations`, `generate-zones`, `generate-articles`, `generate-pages`)
+produisent des scripts de seed WordPress à partir de ces relevés. Aucun contenu n'est écrit à la
+main : rejouer un générateur redonne exactement le même résultat.
+
+### 23.2 Résultat
+
+**53 routes découvertes automatiquement, 53 comparées, 0 phrase de la maquette absente.**
+
+| Famille | Mots au départ | Mots à l'arrivée | Blocs de section |
+|---|---|---|---|
+| Accueil | 100 % | 107 % | 13 → 13 |
+| Prestations (6) | 50–56 % | 98–100 % | identique, dont cabinets 15 → 15 |
+| Tarifs | 52 % | 101 % | 7 → 13 (13 attendus) |
+| Départements (8) | 39–51 % | 109–110 % | 11 → 11 |
+| Villes et communes (18) | 32–36 % | 105–107 % | 13 → 13 |
+| Index conseils | 60 % | 102 % | 3 → 7 |
+| Articles (3) | 86–89 % | 95–103 % | 5 → 9 |
+| Page pilier | 75 % | 101 % | 19 → 19 |
+| Institutionnelles (5) | 29–58 % | 102–105 % | identique |
+| Légales et utilitaires (4) | 87–107 % | 106–147 % | identique |
+
+Les blocs qui manquaient entièrement et qui sont désormais en place :
+« Le détail, espace par espace et contrainte par contrainte » (1 162 px, 8 à 9 sous-blocs sur
+chaque prestation), « Une organisation carrée, du planning au suivi » (816 px), « Ce que
+Top-Famille Pro ne réalise pas » (cabinets), les 13 blocs de la page Tarifs, le récit local et le
+bloc méthode des 26 zones, le sommaire et l'encadré « Erreurs à éviter » des articles, et le pied
+de page à quatre colonnes.
+
+### 23.3 Les six écarts qui restent, et pourquoi
+
+Ils sont **voulus**, chacun imposé par une règle qui prime sur la reproduction littérale.
+`tools/diff-text.mjs` les compte à part et les nomme, plutôt que de les passer sous silence.
+
+| Texte de la maquette | Raison |
+|---|---|
+| « Un interlocuteur identifié suit votre dossier… » | CLAUDE.md §9 — « Interlocutrice identifiée » |
+| « Une couverture régionale, pas des agences fictives » | CLAUDE.md §9 — « Une entreprise régionale basée à Saint-Apollinaire » |
+| « …numéro de TVA intracommunautaire : à compléter » | Données confirmées par Kbis, écrites en clair |
+| « …adresse et téléphone de l'hébergeur : à compléter » | Coordonnées réelles de Hostinger |
+| « Assurance et responsabilité » (rubrique entière) | Consigne du 9 août — supprimée tant que l'attestation manque |
+| « Coordonnées de l'assureur… : à compléter » | idem |
+
+Trois écarts de la maquette **vers le haut** subsistent aussi, assumés : les pages légales portent
+139 à 147 % du texte du prototype, parce qu'y retirer les paragraphes RGPD réels pour coller à une
+maquette qui dit « à compléter » serait une régression de conformité, pas une fidélité.
+
+### 23.4 Hauteurs
+
+Le contenu est identique, les hauteurs ne le sont pas partout : les pages de zone rendent 111 à
+123 % de la hauteur de la maquette. La cause principale a été corrigée (les groupes de liens sont
+désormais en colonnes et non empilés — « Dans le même département » passait de 385 px à 845 px
+pour le même contenu). Ce qui reste tient à une exigence d'accessibilité : les rangées de liens
+font 44 px de haut, cible tactile WCAG 2.2 (critère 2.5.8), là où la maquette empile des liens
+texte de 18 px. C'est un choix, pas un défaut.
+
+### 23.5 Contrôles
+
+- **825 tests Playwright au vert**, aucun échec.
+- **axe-core : 0 violation** sur les 7 types de page (WCAG 2.2 AA).
+- **Lighthouse mobile** sur 6 pages : accessibilité **100**, bonnes pratiques **100**, SEO **100**
+  partout ; CLS **0 à 0,005** ; performance **81 à 94**. Le rig local est le serveur de
+  développement mono-thread de PHP, sans cache LiteSpeed : la cible de 90 en production dépend de
+  ce cache (CLAUDE.md §3).
+- **Aucune section ni image supprimée** pour améliorer un score.
+- **106 triptyques comparatifs** (53 routes × 1440 px et 375 px) dans `docs/captures/comparaison/`.
+
+### 23.6 Quatre régressions trouvées et corrigées en rejouant la suite
+
+1. **CLS 0,155 sur mobile** — la ligne « région + note Google » au-dessus du H1 passait d'un à
+   deux rangs au moment du swap de police, poussant tout le H1 vers le bas. Hauteur réservée →
+   0,002.
+2. **Contraste 1,03** sur le badge de note du pied de page (texte sombre hérité sur fond marine).
+3. **Liens non soulignés en paragraphe** — mes règles étaient battues par `body.tfp-body a`, le
+   même piège de spécificité que celui corrigé le 9 août.
+4. **Cibles tactiles du pied de page** — les villes listées en ligne faisaient 18 px de haut.
+
+### 23.7 Verdict
+
+**`PARTIEL — ÉCARTS RESTANTS`**, et la liste des écarts est courte et entièrement nommée :
+
+1. les **six écarts éditoriaux voulus** du §23.3, imposés par CLAUDE.md ou par les données réelles ;
+2. les **hauteurs des pages de zone**, 111 à 123 % de la maquette, dont la part résiduelle tient à
+   la cible tactile de 44 px ;
+3. la **performance Lighthouse** mesurée entre 81 et 94 sur un rig sans cache, la cible de 90
+   restant à confirmer en production avec LiteSpeed.
+
+Sur le critère qui était en cause — la reproduction du contenu de la maquette —, les 53 routes
+sont à **0 phrase manquante**. Aucune famille ne reste à 53 %, 60 %, 61 %, 67 %, 69 % ni 82 %.
+
+Trois points appellent une décision d'Emmanuel avant mise en ligne :
+
+- la **citation attribuée à Audrey**, reprise de la maquette, doit être validée par l'intéressée :
+  c'est le seul contenu du site qui fasse parler une personne réelle ;
+- les **témoignages provisoires** restent à remplacer par de vrais avis (tous marqués
+  `data-tfp-provisional`, une seule requête les retrouve) ;
+- le **dispositif de médiation de la consommation** reste en `[À COMPLÉTER]` sur les mentions
+  légales, faute de savoir si la clientèle relève du droit de la consommation.
