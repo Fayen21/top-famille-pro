@@ -1255,14 +1255,39 @@ compression : 83 à 96. L'écart tient entièrement au premier rendu et à la fe
 non compressée (59 Ko contre 10 Ko en Brotli) — d'où la vérification de compression ajoutée en
 tête de la recette de déploiement.
 
+### Passe « vocabulaire de cartes » — 10 août 2026
+
+Verdict : **PARTIEL — ÉCARTS RESTANTS**. Rapport : `docs/RAPPORT-CARTES.md`, inventaire :
+`docs/INVENTAIRE-CARTES-53-ROUTES.md`.
+
+Le dernier défaut important n'était ni textuel ni fonctionnel. Une page peut contenir **toutes**
+les phrases du prototype, faire **la même hauteur**, et présenter huit contraintes dans deux gros
+pavés là où la maquette en fait huit micro-cartes. Aucun outil existant ne voyait cela :
+`tools/inventaire-cartes.mjs` relève désormais chaque carte des deux côtés — archétype, bande,
+titre, texte, médias, géométrie, colonnes, responsive — et nomme quatre anomalies : carte
+**absente**, cartes **fusionnées**, carte **supplémentaire**, mauvais **type** ou **colonnes**.
+
+Corrigé dans cette passe :
+ - les **six pages prestation**, chacune comparée à sa propre route : 45 anomalies → 1 ou 2, zéro
+   carte absente, zéro carte fusionnée (21→21, 20→20, 28→28, 21→21, 21→21, 21→21) ;
+ - la **bande sombre des six prestations** sur les 19 pages de zone, rendue jusqu'ici en cartes
+   blanches sur fond clair ;
+ - les **colonnes par rangée** dans les pages statiques (le maximum de la bande laissait une
+   colonne vide sur les rangées plus courtes).
+
+Reste, cause unique et identifiée : **`tools/generate-pages.mjs` réduit à un libellé (`noms`) les
+blocs que la maquette rend en micro-carte « titre + description »**. La description est perdue à
+l'extraction, donc la carte ne peut pas être reconstituée à l'affichage. C'est ce qui explique
+`#/zones-intervention` (52 → 19 cartes), `#/nettoyage-professionnel` (53 → 68), `#/nos-prestations`
+(12 → 25) et `#/avis-clients` (14 → 46). La correction est structurelle : elle touche l'extraction,
+pas le CSS.
+
 ### Reste à faire
 
+- **Cartes** : reprendre l'extraction des micro-cartes « titre + description » dans
+  `generate-pages.mjs` (voir §8 de `docs/RAPPORT-CARTES.md` pour les six routes concernées).
 - **Décisions humaines** (pas du code) : validation par Audrey de la citation qui lui est
-  attribuée — texte intégral au §3 du rapport de fidélité ; remplacement des témoignages
-  provisoires par de vrais avis ; nombre d'avis Google et URL de la fiche ; attestation
-  d'assurance ; validation une par une des huit communes secondaires.
-- **Défauts de fidélité restants**, listés au §7 du rapport : dix routes hors de la fourchette
-  95-105 % (hors pages légales, autorisées), le vocabulaire de micro-cartes du prototype que le
-  thème n'emploie pas partout, et le nombre de colonnes de certaines grilles.
+  attribuée ; remplacement des témoignages provisoires par de vrais avis ; nombre d'avis Google et
+  URL de la fiche ; attestation d'assurance ; validation une par une des huit communes secondaires.
 - **Vérifier la compression à la mise en ligne.** C'est la seule action qui sépare 83-96 de
   90-100 en performance, et elle est mesurable en une commande (guide de déploiement, étape 19).

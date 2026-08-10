@@ -26,15 +26,15 @@ const WIDTHS = [1440, 375];
 /** Les douze routes demandées à la validation, dans l'ordre du parcours visiteur. */
 const PLANCHE = [
 	['#/', 'Accueil'],
+	['#/nettoyage-professionnel', 'Page pilier'],
 	['#/service/bureaux', 'Nettoyage de bureaux'],
-	['#/service/commerces', 'Nettoyage de commerces'],
+	['#/service/cabinets', 'Nettoyage de cabinets'],
 	['#/nos-tarifs', 'Tarifs'],
-	['#/departement/cote-dor', 'Côte-d’Or (département)'],
 	['#/ville/dijon', 'Dijon (ville)'],
 	['#/ville/beaune', 'Beaune (ville)'],
+	['#/pourquoi-top-famille-pro', 'Pourquoi nous'],
 	['#/conseils', 'Index Conseils'],
 	['#/article/frequence-bureaux', 'Article — fréquence de nettoyage'],
-	['#/pourquoi-top-famille-pro', 'Pourquoi nous'],
 	['#/demande-de-devis', 'Formulaire de devis'],
 	['#/mentions-legales', 'Mentions légales'],
 ];
