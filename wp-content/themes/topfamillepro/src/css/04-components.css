@@ -2051,10 +2051,17 @@ body.tfp-body .tfp-article-body p a {
   min-height: 24px;
 }
 
-/* Les villes sont rendues en ligne dans la phrase du département, séparées par des points médians :
-   c'est l'exception « inline » du critère, leur hauteur est celle de l'interligne du texte qui les
-   porte. Leur imposer 24 px de haut faisait passer chaque département de 49 à 89 px et gonflait la
-   colonne d'un tiers, sans qu'aucun utilisateur y gagne quoi que ce soit. */
+/*
+ * Villes du pied de page : rendues en ligne, séparées par des points médians, comme dans la
+ * maquette. Leur imposer 24 px de haut faisait passer chaque département de 49 à 89 px et gonflait
+ * la colonne d'un tiers.
+ *
+ * C'est la condition d'**espacement** du critère 2.5.8 qui les couvre, pas l'exception « inline » :
+ * cette exception vise une cible posée dans une phrase, or il s'agit ici d'une liste de liens sans
+ * texte porteur. L'interligne est donc fixé à 26 px, pour que deux cibles successives soient
+ * toujours distantes d'au moins 24 px — à 1,7 (23,8 px) l'audit relevait 23 px et le critère
+ * n'était pas tenu. Vérifié par tools/audit-target-size.mjs, condition par condition.
+ */
 .tfp-footer__col ul .tfp-footer__villes a {
   display: inline;
   min-height: 0;
@@ -2062,7 +2069,7 @@ body.tfp-body .tfp-article-body p a {
 }
 
 .tfp-footer__zones li {
-  line-height: 1.7;
+  line-height: 26px;
 }
 
 /* ------------------------------------------------------------------
@@ -2209,5 +2216,135 @@ details.tfp-card {
 @media (max-width: 599px) {
   .tfp-static-grid {
     grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* ------------------------------------------------------------------
+   Page « Demande de devis » — deux colonnes, comme la maquette.
+   Relevé sur le prototype : conteneur 1260 px, padding 48/40/92, écart
+   56 px ; formulaire 642 px, colonne de réassurance 482 px composée de
+   trois cartes de rayon 16 espacées de 16 px (blanche, marine, gris clair).
+   Sous 900 px, la maquette empile les deux colonnes.
+   ------------------------------------------------------------------ */
+
+.tfp-quote-page {
+  padding-block: 48px 92px;
+}
+
+.tfp-quote-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 642fr) minmax(0, 482fr);
+  gap: 56px;
+  align-items: start;
+}
+
+.tfp-quote-aside {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.tfp-quote-aside__card {
+  border-radius: 16px;
+}
+
+.tfp-quote-aside__manager {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 24px;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+}
+
+.tfp-quote-aside__avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex: 0 0 auto;
+}
+
+.tfp-quote-aside__manager strong {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 17px;
+  color: var(--color-navy);
+}
+
+.tfp-quote-aside__manager span {
+  display: block;
+  font-size: 14px;
+  color: var(--color-text-secondary);
+}
+
+.tfp-quote-aside__phone {
+  padding: 24px;
+  background: var(--color-primary);
+  color: var(--color-white);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.tfp-quote-aside__phone strong {
+  font-family: var(--font-heading);
+  font-size: 17px;
+  color: var(--color-white);
+}
+
+body.tfp-body .tfp-quote-aside__tel {
+  font-family: var(--font-heading);
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--color-white);
+  text-decoration: none;
+}
+
+body.tfp-body .tfp-quote-aside__tel:hover,
+body.tfp-body .tfp-quote-aside__tel:focus-visible {
+  text-decoration: underline;
+}
+
+.tfp-quote-aside__price {
+  font-family: var(--font-heading);
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.tfp-quote-aside__note {
+  font-size: 13px;
+  color: var(--color-text-on-dark-muted);
+}
+
+/* Le badge de note sur la carte marine : même règle que dans le pied de page, la couleur du
+   texte doit être reprise explicitement sous peine d'hériter du texte sombre. */
+.tfp-google-badge--quote {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--color-white);
+}
+
+.tfp-google-badge--quote .tfp-google-badge__text,
+.tfp-google-badge--quote .tfp-google-badge__text strong,
+.tfp-google-badge--quote .tfp-google-badge__count {
+  color: var(--color-white);
+}
+
+.tfp-google-badge--quote .tfp-google-badge__stars {
+  color: var(--color-copper);
+  letter-spacing: 1px;
+}
+
+@media (max-width: 899px) {
+  .tfp-quote-layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 32px;
+  }
+
+  .tfp-quote-page {
+    padding-block: 26px 52px;
   }
 }

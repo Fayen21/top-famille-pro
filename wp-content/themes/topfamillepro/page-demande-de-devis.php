@@ -85,14 +85,19 @@ get_header();
 	<?php tfp_breadcrumb( tfp_seo()['breadcrumb'] ); ?>
 </div>
 
-<section class="tfp-container tfp-section--tight">
-	<h1>Demandez votre devis gratuit</h1>
-	<p class="tfp-section__lede">Décrivez-nous vos locaux et vos besoins. <?php echo esc_html( explode( ' ', $site['manager'] )[0] ); ?> vous répond sous 24 heures avec une proposition claire et chiffrée, sans engagement.</p>
-	<p class="tfp-section__lede">Votre devis est étudié personnellement par <?php echo esc_html( $site['manager'] ); ?> : aucun simulateur automatique, une estimation adaptée à vos locaux.</p>
-</section>
-
-<section class="tfp-section">
-	<div class="tfp-container" style="max-width:640px">
+<?php
+/*
+ * Disposition en deux colonnes de la maquette : le formulaire à gauche (642 px), une colonne de
+ * réassurance à droite (482 px, écart 56 px). Le thème empilait les deux, ce qui allongeait la
+ * page de 700 px et éloignait la preuve du champ à remplir — c'est précisément là qu'elle sert.
+ * Sous 900 px, la maquette empile elle aussi.
+ */
+?>
+<section class="tfp-quote-page">
+	<div class="tfp-container tfp-quote-layout">
+		<div class="tfp-quote-main">
+			<h1>Demandez votre devis gratuit</h1>
+			<p class="tfp-section__lede">Décrivez-nous vos locaux et vos besoins. <?php echo esc_html( explode( ' ', $site['manager'] )[0] ); ?> vous répond sous 24 heures avec une proposition claire et chiffrée, sans engagement.</p>
 
 		<?php if ( $success ) : ?>
 			<div class="tfp-form-notice" role="status">
@@ -242,21 +247,54 @@ get_header();
 			</form>
 
 		<?php endif; ?>
+		</div>
 
+		<aside class="tfp-quote-aside" aria-label="Contact direct et réassurance">
+			<div class="tfp-quote-aside__card tfp-quote-aside__manager">
+				<?php
+				/*
+				 * Photo d'illustration provisoire : elle ne prétend pas représenter Audrey tant que la
+				 * photo authentique n'est pas fournie, et son `alt` le dit (CLAUDE.md §5.6).
+				 */
+				$portrait = tfp_get_audrey_photo_url();
+				if ( $portrait ) :
+					?>
+					<img
+						class="tfp-quote-aside__avatar"
+						src="<?php echo esc_url( $portrait ); ?>"
+						alt="<?php echo esc_attr( tfp_audrey_photo_is_real() ? $site['manager'] . ', gérante de ' . $site['brand_name'] : 'Photo d’illustration temporaire — portrait définitif à venir' ); ?>"
+						width="60" height="60" loading="lazy" decoding="async">
+					<?php
+				endif;
+				?>
+				<div>
+					<strong><?php echo esc_html( explode( ' ', $site['manager'] )[0] ); ?></strong>
+					<span>Votre interlocutrice dédiée</span>
+				</div>
+			</div>
+
+			<div class="tfp-quote-aside__card tfp-quote-aside__phone">
+				<strong>Préférez le téléphone ?</strong>
+				<a class="tfp-quote-aside__tel" href="tel:<?php echo esc_attr( $site['phone_href'] ); ?>"><?php echo esc_html( $site['phone'] ); ?></a>
+				<?php tfp_google_rating_badge( 'quote' ); ?>
+				<span class="tfp-quote-aside__price"><?php echo esc_html( $site['price_unique_display'] ); ?> HT/h</span>
+				<span class="tfp-quote-aside__note">régulier ou ponctuel · devis gratuit et sans engagement</span>
+			</div>
+
+			<?php
+			// Témoignage repris tel quel de la maquette, marqué provisoire et exclu de toute donnée
+			// structurée d'avis (CLAUDE.md §5.5).
+			tfp_testimonial_card(
+				array(
+					'texte'  => 'Devis clair reçu le lendemain, sans surprise. Réactivité au rendez-vous.',
+					'auteur' => 'Sarah B.',
+					'role'   => 'Commerçante',
+					'ville'  => 'Dole',
+				)
+			);
+			?>
+		</aside>
 	</div>
-</section>
-
-<section class="tfp-container tfp-section--tight">
-	<?php
-	tfp_testimonial_card(
-		array(
-			'texte'  => 'Devis clair reçu le lendemain, sans surprise. Réactivité au rendez-vous.',
-			'auteur' => 'Sophie L.',
-			'role'   => 'Cabinet dentaire',
-			'ville'  => 'Besançon',
-		)
-	);
-	?>
 </section>
 
 <?php get_footer(); ?>
