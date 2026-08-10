@@ -109,11 +109,9 @@ function tfp_featured_testimonial() {
 		);
 	}
 
-	if ( ! tfp_demo_content_allowed() ) {
-		return null;
-	}
-
-	// Contenu de démonstration repris du prototype — jamais rendu en production (voir docblock).
+	// Témoignage repris de la maquette Claude Design, provisoire jusqu'à saisie d'un avis réel
+	// (décision du 10 août 2026 : la maquette est reproduite telle quelle dans cette version de
+	// travail, y compris en production).
 	return array(
 		'texte'    => "Même intervenante chaque semaine, un cahier de liaison sérieux et Audrey qui répond dans l'heure. On a enfin arrêté de gérer ça en interne.",
 		'nom'      => 'Camille R.',
@@ -123,14 +121,38 @@ function tfp_featured_testimonial() {
 }
 
 /**
- * Affiche la carte témoignage (colonne droite du bloc « Pourquoi Top-Famille Pro » du prototype).
+ * Affiche une carte témoignage, reproduite à l'identique de la maquette Claude Design.
  *
- * Aucune note en étoiles n'est rendue pour un témoignage de démonstration : les étoiles du
- * prototype matérialisaient une note Google fictive. Un témoignage réel n'affiche sa note que si
- * elle a été saisie.
+ * Décision du 10 août 2026 (Emmanuel) : dans cette version de travail, les témoignages de la
+ * maquette sont reproduits tels quels — auteurs, textes, étoiles, cartes — et ne sont PAS masqués
+ * en production. Ils sont provisoires et destinés à être remplacés par de vrais avis ; ils sont
+ * donc stockés en champs ACF (par prestation) ou dans les réglages « Réassurance & avis », jamais
+ * en dur dans un gabarit, et marqués `data-tfp-provisional` pour rester repérables en une requête.
+ *
+ * Ce qui reste interdit, et n'a pas changé : aucune donnée structurée `Review` ou
+ * `AggregateRating` n'est émise à partir de ces témoignages, et ils ne sont jamais mélangés à la
+ * note Google réelle dans le balisage (CLAUDE.md §5.5). Les étoiles rendues ici sont un élément
+ * graphique de la carte, pas une note revendiquée par le site.
+ *
+ * @param array|null $item Témoignage explicite { texte, auteur, role, ville } — typiquement les
+ *                         champs ACF d'une prestation. À défaut, le témoignage mis en avant des
+ *                         réglages, sinon celui de la maquette.
  */
-function tfp_testimonial_card() {
-	$item = tfp_featured_testimonial();
+function tfp_testimonial_card( $item = null ) {
+	if ( is_array( $item ) && ! empty( $item['texte'] ) ) {
+		$contexte = implode(
+			' · ',
+			array_filter( array( $item['role'] ?? '', $item['ville'] ?? '' ) )
+		);
+		$item = array(
+			'texte'    => $item['texte'],
+			'nom'      => $item['auteur'] ?? '',
+			'contexte' => $contexte,
+			'demo'     => true,
+		);
+	} else {
+		$item = tfp_featured_testimonial();
+	}
 
 	if ( ! $item ) {
 		// État neutre : la mise en page générale est conservée, aucun contenu fictif.
@@ -141,18 +163,15 @@ function tfp_testimonial_card() {
 		return;
 	}
 
-	// `data-tfp-demo-block` marque tout le bloc comme non publiable : la suite de tests s'en sert
-	// pour exclure ce contenu du contrôle « aucune donnée fictive » hors production, tout en le
-	// gardant strictement interdit en production (tests/fidelite.spec.js).
-	printf( '<figure class="tfp-testimonial"%s>', ! empty( $item['demo'] ) ? ' data-tfp-demo-block="1"' : '' );
+	// `data-tfp-provisional` marque un témoignage repris de la maquette et non encore remplacé par
+	// un avis réel : la suite de tests s'en sert pour l'exclure du contrôle « aucune donnée
+	// fictive », et il suffit d'une recherche sur cet attribut pour tous les retrouver.
+	printf( '<figure class="tfp-testimonial"%s>', ! empty( $item['demo'] ) ? ' data-tfp-provisional="1"' : '' );
 
-	if ( ! empty( $item['demo'] ) ) {
-		printf(
-			'<p class="tfp-demo-notice" data-tfp-demo="1">%s</p>',
-			esc_html__( 'Exemple de présentation — contenu de démonstration non publié', 'topfamillepro' )
-		);
-	}
-
+	printf(
+		'<span class="tfp-testimonial__stars" aria-hidden="true">%s</span>',
+		esc_html( str_repeat( '★', 5 ) )
+	);
 	printf( '<blockquote class="tfp-testimonial__quote">« %s »</blockquote>', esc_html( $item['texte'] ) );
 
 	echo '<figcaption class="tfp-testimonial__author">';

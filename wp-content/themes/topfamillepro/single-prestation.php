@@ -1,39 +1,78 @@
 <?php
 /**
  * Gabarit unique du CPT `prestation` (CLAUDE.md §3) — s'applique aux 6 prestations.
- * Phase 2 : une seule entrée réelle (bureaux) sert de référence ; les 5 autres seront créées en
- * phase 3 avec le même gabarit.
+ *
+ * Reproduit l'enchaînement des 14 sections de la route `#/service/*` de la maquette Claude Design,
+ * dans le même ordre et avec la même composition. Le contenu vient des champs ACF, alimentés par
+ * bin/seed-fidelite-prestations.php — lui-même généré par tools/generate-prestations.mjs, qui
+ * relève le texte dans le DOM rendu du prototype plutôt que de le réécrire.
+ *
+ * Les montants ne sont jamais figés dans le contenu : ils sont recalculés depuis
+ * includes/site-options.php, seul point d'entrée du tarif.
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-$post_id  = get_queried_object_id();
-$site     = tfp_site_data();
+$post_id = get_queried_object_id();
+$site    = tfp_site_data();
+$titre   = get_the_title( $post_id );
+// Libellé court employé par la maquette dans le fil d'Ariane, le titre de FAQ et la relance
+// (« Bureaux », pas « Nettoyage de bureaux »). Repli sur le titre complet s'il n'est pas saisi.
+$court   = tfp_get_field( 'label_court', $post_id ) ?: $titre;
+$prenom  = explode( ' ', $site['manager'] )[0];
 
-$h1          = tfp_get_field( 'h1', $post_id ) ?: get_the_title( $post_id );
-$reponse     = tfp_get_field( 'reponse_directe', $post_id );
-$tease       = tfp_get_field( 'tease', $post_id );
-$pour_qui    = tfp_get_field( 'pour_qui', $post_id );
-$taches      = tfp_get_lines( tfp_get_field( 'taches', $post_id ) );
-$problemes   = tfp_get_lines( tfp_get_field( 'problemes', $post_id ) );
-$organisation = tfp_get_field( 'organisation', $post_id );
-$exclusions  = tfp_get_field( 'exclusions', $post_id );
-$materiel    = tfp_get_field( 'materiel_rappel', $post_id );
-$villes      = tfp_get_field( 'villes_prioritaires', $post_id );
-$faq         = tfp_get_faq_items( 'faq', $post_id, 8 );
-$semaine     = tfp_get_field( 'semaine_type', $post_id );
-$configs     = array();
-for ( $i = 1; $i <= 3; $i++ ) {
-	$titre = tfp_get_field( 'config_' . $i . '_titre', $post_id );
-	if ( $titre ) {
-		$configs[] = array( 'titre' => $titre, 'texte' => tfp_get_field( 'config_' . $i . '_texte', $post_id ) );
-	}
-}
-$budget      = tfp_home_budget_example();
+$h1       = tfp_get_field( 'h1', $post_id ) ?: $titre;
+$tease    = tfp_get_field( 'tease', $post_id );
+$reponse  = tfp_get_field( 'reponse_directe', $post_id );
+$maillage = tfp_get_field( 'maillage_texte', $post_id );
+
+$pour_qui_titre = tfp_get_field( 'pour_qui_titre', $post_id ) ?: 'Pour qui ?';
+$pour_qui       = tfp_get_lines( tfp_get_field( 'pour_qui_items', $post_id ) );
+$taches_titre   = tfp_get_field( 'taches_titre', $post_id ) ?: 'Les espaces et tâches pris en charge';
+$taches         = tfp_get_lines( tfp_get_field( 'taches', $post_id ) );
+$hors           = tfp_get_field( 'hors_prestation', $post_id );
+
+$exclusions_titre = tfp_get_field( 'exclusions_titre', $post_id );
+$exclusions_intro = tfp_get_field( 'exclusions_intro', $post_id );
+$exclusions_items = tfp_get_lines( tfp_get_field( 'exclusions_items', $post_id ) );
+
+$situations_titre = tfp_get_field( 'situations_titre', $post_id );
+$situations       = tfp_get_lines( tfp_get_field( 'situations_items', $post_id ) );
+$exemple_label    = tfp_get_field( 'situations_exemple_label', $post_id ) ?: 'Exemple de planning';
+$exemple          = tfp_get_field( 'situations_exemple', $post_id );
+
+$configs_titre = tfp_get_field( 'configs_titre', $post_id );
+$configs_intro = tfp_get_field( 'configs_intro', $post_id );
+$configs       = tfp_get_titled_blocks( 'config', $post_id, 3 );
+
+$detail_titre = tfp_get_field( 'detail_titre', $post_id );
+$details      = tfp_get_titled_blocks( 'detail', $post_id, 9 );
+
+$orga_titre = tfp_get_field( 'organisation_titre', $post_id );
+$orga       = tfp_get_titled_blocks( 'organisation', $post_id, 6 );
+
+$semaine_titre = tfp_get_field( 'semaine_titre', $post_id ) ?: 'Une semaine type';
+$semaine       = tfp_get_field( 'semaine_type', $post_id );
+$limites_titre = tfp_get_field( 'limites_titre', $post_id ) ?: 'Les limites de la prestation';
+$limites       = tfp_get_field( 'limites', $post_id );
+
+$temoignage = array(
+	'texte'  => tfp_get_field( 'temoignage_texte', $post_id ),
+	'auteur' => tfp_get_field( 'temoignage_auteur', $post_id ),
+	'role'   => tfp_get_field( 'temoignage_role', $post_id ),
+	'ville'  => tfp_get_field( 'temoignage_ville', $post_id ),
+);
+
+$villes           = tfp_get_field( 'villes_prioritaires', $post_id );
 $related_articles = tfp_get_prestation_related_articles( $post_id );
+$faq              = tfp_get_faq_items( 'faq', $post_id, 8 );
+$faq_titre        = tfp_get_field( 'faq_titre', $post_id ) ?: 'Questions fréquentes — ' . $court;
+$cta_titre        = tfp_get_field( 'cta_titre', $post_id ) ?: 'Un devis pour ' . $court;
+$cta_texte        = tfp_get_field( 'cta_texte', $post_id );
 
+$budget    = tfp_home_budget_example();
 $seo_title = tfp_get_field( 'seo_title', $post_id );
 $seo_desc  = tfp_get_field( 'seo_description', $post_id );
 
@@ -45,7 +84,7 @@ $seo_desc  = tfp_get_field( 'seo_description', $post_id );
 $devis_url = add_query_arg(
 	array(
 		'service'       => get_post_field( 'post_name', $post_id ),
-		'service_label' => rawurlencode( get_the_title( $post_id ) ),
+		'service_label' => rawurlencode( $titre ),
 	),
 	home_url( '/demande-de-devis/' )
 );
@@ -65,13 +104,33 @@ if ( ! $image_slug ) {
 	$image_slug = $slug_map[ $post_name ] ?? 'service-generic';
 }
 
+// Table de maillage de la phrase d'introduction : les expressions exactes employées par la
+// maquette, associées à leur destination. Une expression absente du texte est simplement ignorée.
+$ville_urls = array();
+if ( ! empty( $villes ) ) {
+	foreach ( $villes as $ville ) {
+		$ville_urls[ get_the_title( $ville ) ] = get_permalink( $ville );
+	}
+}
+$maillage_map = array_merge(
+	array(
+		'nettoyage professionnel' => home_url( '/nettoyage-professionnel/' ),
+		'tarif de ' . tfp_format_price( $site['price_unique'] ) . ' HT/h' => home_url( '/tarifs/' ),
+	),
+	$ville_urls,
+	array( $site['address_region'] => home_url( '/zones-intervention/bourgogne-franche-comte/' ) )
+);
+if ( ! empty( $related_articles ) ) {
+	$maillage_map['à quelle fréquence faire nettoyer ses locaux'] = get_permalink( $related_articles[0] );
+}
+
 $schema = array(
 	array(
 		'@type'       => 'Service',
 		'@id'         => trailingslashit( $site['origin'] ) . ltrim( $canonical_path, '/' ) . '#service',
 		'name'        => $h1,
 		'description' => $seo_desc ?: wp_trim_words( $reponse, 40 ),
-		'serviceType' => get_the_title( $post_id ),
+		'serviceType' => $titre,
 		'provider'    => array( '@id' => trailingslashit( $site['origin'] ) . '#organisation' ),
 		'areaServed'  => array_map(
 			function ( $name ) {
@@ -108,7 +167,7 @@ tfp_seo(
 		'breadcrumb'  => array(
 			array( 'label' => 'Accueil', 'url' => home_url( '/' ) ),
 			array( 'label' => 'Prestations', 'url' => home_url( '/prestations/' ) ),
-			array( 'label' => get_the_title( $post_id ), 'url' => null ),
+			array( 'label' => $court, 'url' => null ),
 		),
 		'schema'      => $schema,
 	)
@@ -122,22 +181,25 @@ get_header();
 
 <section class="tfp-hero">
 	<div class="tfp-hero__content">
-		<p class="tfp-region-badge"><?php echo esc_html( $site['address_region'] ); ?></p>
+		<div class="tfp-hero__eyebrow">
+			<a class="tfp-region-badge" href="<?php echo esc_url( home_url( '/zones-intervention/bourgogne-franche-comte/' ) ); ?>"><?php echo esc_html( $site['address_region'] ); ?></a>
+			<?php tfp_google_rating_badge( 'inline' ); ?>
+		</div>
 		<h1><?php echo esc_html( $h1 ); ?></h1>
 		<?php if ( $tease ) : ?>
 			<p class="tfp-hero__lede"><?php echo esc_html( $tease ); ?></p>
 		<?php endif; ?>
-		<p class="tfp-hero__microcopy"><?php echo esc_html( tfp_format_price( $site['price_unique'] ) ); ?> HT/h · tarif unique · devis gratuit sous 24 h</p>
 		<div class="tfp-flex" style="margin-top:24px">
 			<?php
 			tfp_button( array( 'label' => 'Demander mon devis', 'href' => $devis_url, 'variant' => 'primary' ) );
-			tfp_button( array( 'label' => '☎ Appeler ' . $site['manager'], 'href' => 'tel:' . $site['phone_href'], 'variant' => 'secondary' ) );
+			tfp_button( array( 'label' => '☎ Appeler ' . $prenom, 'href' => 'tel:' . $site['phone_href'], 'variant' => 'secondary' ) );
 			?>
 		</div>
+		<p class="tfp-hero__microcopy"><?php echo esc_html( tfp_format_price( $site['price_unique'] ) ); ?> HT/h · régulier ou ponctuel · réponse sous 24 h</p>
 	</div>
 	<div class="tfp-hero__media">
 		<div class="tfp-hero__media-main">
-			<?php tfp_picture( $image_slug, array( 'sizes' => '(max-width: 819px) 92vw, 600px', 'lcp' => true ) ); ?>
+			<?php tfp_picture( $image_slug, array( 'sizes' => '(max-width: 819px) 92vw, 600px', 'lcp' => true, 'alt' => tfp_get_field( 'hero_alt', $post_id ) ?: null ) ); ?>
 		</div>
 	</div>
 </section>
@@ -148,58 +210,90 @@ get_header();
 		<p class="tfp-direct-answer__label">Réponse directe</p>
 		<p class="tfp-direct-answer__text"><?php echo esc_html( $reponse ); ?></p>
 	</div>
+	<?php if ( $maillage ) : ?>
+		<p class="tfp-maillage"><?php echo wp_kses_post( tfp_link_phrases( $maillage, $maillage_map ) ); ?></p>
+	<?php endif; ?>
 </section>
 <?php endif; ?>
 
-<?php if ( $pour_qui ) : ?>
-<section class="tfp-section--alt tfp-section--tight">
-	<div class="tfp-container">
-		<h2>Pour qui</h2>
-		<p style="margin-top:12px;font-size:17px;color:var(--color-text-secondary);max-width:820px"><?php echo esc_html( $pour_qui ); ?></p>
-	</div>
-</section>
-<?php endif; ?>
-
-<?php if ( ! empty( $taches ) ) : ?>
+<?php if ( ! empty( $pour_qui ) || ! empty( $taches ) ) : ?>
 <section class="tfp-section--tight">
-	<div class="tfp-container">
-		<h2>Ce que couvre la prestation</h2>
-		<div class="tfp-grid tfp-grid--autofit-md" style="margin-top:20px">
-			<?php foreach ( $taches as $tache ) : ?>
-				<div class="tfp-card--flat"><?php echo esc_html( $tache ); ?></div>
-			<?php endforeach; ?>
+	<div class="tfp-container tfp-two-col">
+		<div>
+			<h2><?php echo esc_html( $pour_qui_titre ); ?></h2>
+			<ul class="tfp-list-plain">
+				<?php foreach ( $pour_qui as $item ) : ?>
+					<li><?php echo esc_html( $item ); ?></li>
+				<?php endforeach; ?>
+			</ul>
+			<div class="tfp-price-aside">
+				<span class="tfp-price-aside__label">À partir de</span>
+				<span class="tfp-price-aside__value"><?php echo esc_html( tfp_format_price( $site['price_unique'] ) ); ?> HT/h</span>
+				<a class="tfp-eyebrow-link" href="<?php echo esc_url( home_url( '/tarifs/' ) ); ?>">Détail des tarifs →</a>
+			</div>
+		</div>
+		<div>
+			<h2><?php echo esc_html( $taches_titre ); ?></h2>
+			<ul class="tfp-list-marked">
+				<?php foreach ( $taches as $tache ) : ?>
+					<li><?php echo esc_html( $tache ); ?></li>
+				<?php endforeach; ?>
+			</ul>
+			<?php if ( $hors ) : ?>
+				<p class="tfp-note-inline"><?php echo esc_html( $hors ); ?></p>
+			<?php endif; ?>
 		</div>
 	</div>
 </section>
 <?php endif; ?>
 
-<section class="tfp-section--alt tfp-section--tight">
-	<div class="tfp-container tfp-grid" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr))">
-		<?php if ( $exclusions ) : ?>
-			<div class="tfp-card">
-				<h2 style="font-size:22px">Ce qui n'est pas inclus</h2>
-				<p style="margin-top:10px;color:var(--color-text-secondary)"><?php echo esc_html( $exclusions ); ?></p>
-			</div>
+<?php if ( $exclusions_titre && ! empty( $exclusions_items ) ) : ?>
+<section class="tfp-section--tight">
+	<div class="tfp-container">
+		<h2><?php echo esc_html( $exclusions_titre ); ?></h2>
+		<?php if ( $exclusions_intro ) : ?>
+			<p class="tfp-section__lede"><?php echo esc_html( $exclusions_intro ); ?></p>
 		<?php endif; ?>
-		<?php if ( $materiel ) : ?>
-			<div class="tfp-card">
-				<h2 style="font-size:22px">Matériel et produits</h2>
-				<p style="margin-top:10px;color:var(--color-text-secondary)">Le matériel et les produits d'entretien sont fournis par vos soins — une différence à connaître avant le devis, précisée dans le cahier des charges.</p>
+		<ul class="tfp-list-excluded">
+			<?php foreach ( $exclusions_items as $item ) : ?>
+				<li><?php echo esc_html( $item ); ?></li>
+			<?php endforeach; ?>
+		</ul>
+	</div>
+</section>
+<?php endif; ?>
+
+<?php if ( ! empty( $situations ) || $exemple ) : ?>
+<section class="tfp-section--alt tfp-section--tight">
+	<div class="tfp-container">
+		<h2><?php echo esc_html( $situations_titre ?: 'Les situations concrètes que nous traitons' ); ?></h2>
+		<div class="tfp-grid tfp-grid--autofit-lg" style="margin-top:20px">
+			<?php foreach ( $situations as $item ) : ?>
+				<div class="tfp-card--flat"><p><?php echo esc_html( $item ); ?></p></div>
+			<?php endforeach; ?>
+		</div>
+		<?php if ( $exemple ) : ?>
+			<div class="tfp-callout">
+				<strong><?php echo esc_html( $exemple_label ); ?></strong>
+				<p><?php echo esc_html( $exemple ); ?></p>
 			</div>
 		<?php endif; ?>
 	</div>
 </section>
+<?php endif; ?>
 
 <?php if ( ! empty( $configs ) ) : ?>
 <section class="tfp-section--tight">
 	<div class="tfp-container">
-		<h2>Trois configurations, trois organisations</h2>
-		<p style="margin-top:12px;color:var(--color-text-secondary);max-width:760px">Le volume d'heures et la fréquence ne se déduisent pas d'une surface. Voici les cas de figure les plus courants et le rythme qui leur correspond généralement.</p>
+		<h2><?php echo esc_html( $configs_titre ?: 'Trois configurations, trois organisations' ); ?></h2>
+		<?php if ( $configs_intro ) : ?>
+			<p class="tfp-section__lede"><?php echo esc_html( $configs_intro ); ?></p>
+		<?php endif; ?>
 		<div class="tfp-grid tfp-grid--autofit-lg" style="margin-top:24px">
 			<?php foreach ( $configs as $config ) : ?>
 				<div class="tfp-card">
-					<h3 style="font-size:19px"><?php echo esc_html( $config['titre'] ); ?></h3>
-					<p style="margin-top:10px;color:var(--color-text-secondary);font-size:15px;line-height:1.6"><?php echo esc_html( $config['texte'] ); ?></p>
+					<h3><?php echo esc_html( $config['titre'] ); ?></h3>
+					<p><?php echo esc_html( $config['texte'] ); ?></p>
 				</div>
 			<?php endforeach; ?>
 		</div>
@@ -207,23 +301,15 @@ get_header();
 </section>
 <?php endif; ?>
 
-<?php if ( $semaine ) : ?>
+<?php if ( $detail_titre && ! empty( $details ) ) : ?>
 <section class="tfp-section--alt tfp-section--tight">
-	<div class="tfp-container" style="max-width:860px">
-		<h2>Une semaine type</h2>
-		<p style="margin-top:14px;color:var(--color-text-secondary);line-height:1.7"><?php echo esc_html( $semaine ); ?></p>
-	</div>
-</section>
-<?php endif; ?>
-
-<?php if ( ! empty( $problemes ) ) : ?>
-<section class="tfp-section tfp-section--navy">
 	<div class="tfp-container">
-		<h2>Des situations que nous prenons en charge</h2>
-		<div class="tfp-grid tfp-grid--autofit-lg" style="margin-top:24px">
-			<?php foreach ( $problemes as $probleme ) : ?>
-				<div class="tfp-problem" style="border-top:1px solid #2C5E8C;padding-top:14px">
-					<p class="tfp-problem__desc"><?php echo esc_html( $probleme ); ?></p>
+		<h2><?php echo esc_html( $detail_titre ); ?></h2>
+		<div class="tfp-detail-grid">
+			<?php foreach ( $details as $bloc ) : ?>
+				<div class="tfp-detail-item">
+					<h3><?php echo esc_html( $bloc['titre'] ); ?></h3>
+					<p><?php echo esc_html( $bloc['texte'] ); ?></p>
 				</div>
 			<?php endforeach; ?>
 		</div>
@@ -231,65 +317,97 @@ get_header();
 </section>
 <?php endif; ?>
 
-<?php if ( $organisation ) : ?>
-<section class="tfp-section--tight">
+<?php if ( $orga_titre && ! empty( $orga ) ) : ?>
+<section class="tfp-section--turquoise tfp-section--tight">
 	<div class="tfp-container">
-		<h2>Organisation de la prestation</h2>
-		<p style="margin-top:14px;font-size:16px;color:var(--color-text-secondary);max-width:820px;line-height:1.7;white-space:pre-line"><?php echo esc_html( $organisation ); ?></p>
+		<h2><?php echo esc_html( $orga_titre ); ?></h2>
+		<div class="tfp-detail-grid">
+			<?php foreach ( $orga as $bloc ) : ?>
+				<div class="tfp-detail-item">
+					<h3><?php echo esc_html( $bloc['titre'] ); ?></h3>
+					<p><?php echo esc_html( $bloc['texte'] ); ?></p>
+				</div>
+			<?php endforeach; ?>
+		</div>
 	</div>
 </section>
 <?php endif; ?>
 
+<?php if ( $semaine || $limites ) : ?>
+<section class="tfp-section--tight">
+	<div class="tfp-container tfp-two-col">
+		<?php if ( $semaine ) : ?>
+			<div>
+				<h2><?php echo esc_html( $semaine_titre ); ?></h2>
+				<p class="tfp-prose"><?php echo esc_html( $semaine ); ?></p>
+			</div>
+		<?php endif; ?>
+		<?php if ( $limites ) : ?>
+			<div>
+				<h2><?php echo esc_html( $limites_titre ); ?></h2>
+				<p class="tfp-prose"><?php echo esc_html( $limites ); ?></p>
+			</div>
+		<?php endif; ?>
+	</div>
+</section>
+<?php endif; ?>
+
+<section class="tfp-section--tight">
+	<div class="tfp-container tfp-two-col">
+		<div>
+			<div class="tfp-price-example">
+				<div class="tfp-price-example__label">Exemple · <?php echo (int) $budget['hours']; ?> h/mois</div>
+				<div class="tfp-price-example__value"><?php echo esc_html( tfp_format_price( $budget['monthly'] ) ); ?> <span>HT/mois</span></div>
+				<div class="tfp-price-example__note">
+					<?php echo (int) $budget['hours']; ?> h × <?php echo esc_html( tfp_format_price( $site['price_unique'] ) ); ?> + <?php echo esc_html( tfp_format_price( $site['price_gestion'] ) ); ?> de gestion.
+					Le cas échéant, avec les frais de mise en place : <?php echo esc_html( tfp_format_price( $budget['first_month'] ) ); ?> HT
+				</div>
+				<div class="tfp-price-example__disclaimer">Exemple non contractuel.</div>
+				<a class="tfp-eyebrow-link" href="<?php echo esc_url( home_url( '/tarifs/' ) ); ?>">Tous les tarifs →</a>
+			</div>
+		</div>
+		<?php if ( $temoignage['texte'] ) : ?>
+			<div>
+				<?php tfp_testimonial_card( $temoignage ); ?>
+			</div>
+		<?php endif; ?>
+	</div>
+</section>
+
+<?php if ( ! empty( $villes ) || ! empty( $related_articles ) ) : ?>
 <section class="tfp-section--alt tfp-section--tight">
-	<div class="tfp-container">
-		<h2>Le tarif, en toute transparence</h2>
-		<p style="margin-top:12px;font-size:16px;color:var(--color-text-secondary);max-width:760px">
-			<?php echo esc_html( tfp_format_price( $site['price_unique'] ) ); ?> HT/heure — tarif unique en entretien régulier comme en intervention ponctuelle, quel que soit le type de local.
-			Frais de gestion <?php echo esc_html( tfp_format_price( $site['price_gestion'] ) ); ?> HT/mois et frais de mise en place
-			<?php echo esc_html( tfp_format_price( $site['price_setup'] ) ); ?> HT, précisés au devis.
-		</p>
-		<div class="tfp-price-example" style="max-width:420px">
-			<div class="tfp-price-example__label">Exemple · <?php echo (int) $budget['hours']; ?> h/mois</div>
-			<div class="tfp-price-example__value"><?php echo esc_html( tfp_format_price( $budget['monthly'] ) ); ?> <span>HT/mois</span></div>
-			<div class="tfp-price-example__note"><?php echo (int) $budget['hours']; ?> h × <?php echo esc_html( tfp_format_price( $site['price_unique'] ) ); ?> + <?php echo esc_html( tfp_format_price( $site['price_gestion'] ) ); ?> de gestion. Avec les frais de mise en place : <?php echo esc_html( tfp_format_price( $budget['first_month'] ) ); ?> HT le premier mois. Exemple non contractuel.</div>
-		</div>
-		<a href="<?php echo esc_url( home_url( '/tarifs/' ) ); ?>" class="tfp-eyebrow-link">Voir la page Tarifs complète →</a>
-	</div>
-</section>
-
-<?php if ( ! empty( $villes ) ) : ?>
-<section class="tfp-section--tight">
-	<div class="tfp-container">
-		<h2>Disponible dans ces villes</h2>
-		<div class="tfp-flex" style="margin-top:16px">
-			<?php foreach ( $villes as $ville ) : ?>
-				<a href="<?php echo esc_url( get_permalink( $ville ) ); ?>" class="tfp-chip"><?php echo esc_html( get_the_title( $ville ) ); ?></a>
-			<?php endforeach; ?>
-		</div>
-	</div>
-</section>
-<?php endif; ?>
-
-<?php if ( ! empty( $related_articles ) ) : ?>
-<section class="tfp-section--tight">
-	<div class="tfp-container">
-		<h2>Nos conseils sur ce sujet</h2>
-		<div class="tfp-grid tfp-grid--autofit-md" style="margin-top:16px">
-			<?php foreach ( $related_articles as $article ) : ?>
-				<a href="<?php echo esc_url( get_permalink( $article ) ); ?>" class="tfp-card" style="display:block;text-decoration:none;color:inherit">
-					<h3 style="font-size:17px"><?php echo esc_html( get_the_title( $article ) ); ?></h3>
-					<span class="tfp-link-arrow" style="margin-top:8px;display:inline-block">Lire l'article →</span>
-				</a>
-			<?php endforeach; ?>
-		</div>
+	<div class="tfp-container tfp-two-col">
+		<?php if ( ! empty( $villes ) ) : ?>
+			<div>
+				<h2>Cette prestation près de chez vous</h2>
+				<div class="tfp-flex" style="margin-top:16px">
+					<?php foreach ( $villes as $ville ) : ?>
+						<a href="<?php echo esc_url( get_permalink( $ville ) ); ?>" class="tfp-chip"><?php echo esc_html( get_the_title( $ville ) ); ?></a>
+					<?php endforeach; ?>
+				</div>
+				<a class="tfp-eyebrow-link" href="<?php echo esc_url( home_url( '/zones-intervention/bourgogne-franche-comte/' ) ); ?>">Toute la <?php echo esc_html( $site['address_region'] ); ?> →</a>
+			</div>
+		<?php endif; ?>
+		<?php if ( ! empty( $related_articles ) ) : ?>
+			<div>
+				<h2>À lire aussi</h2>
+				<div class="tfp-stack" style="margin-top:16px">
+					<?php foreach ( $related_articles as $article ) : ?>
+						<a href="<?php echo esc_url( get_permalink( $article ) ); ?>" class="tfp-link-row">
+							<?php echo esc_html( get_the_title( $article ) ); ?><span aria-hidden="true">→</span>
+						</a>
+					<?php endforeach; ?>
+				</div>
+			</div>
+		<?php endif; ?>
 	</div>
 </section>
 <?php endif; ?>
 
 <?php if ( ! empty( $faq ) ) : ?>
-<section class="tfp-section--alt tfp-section">
+<section class="tfp-section">
 	<div class="tfp-container tfp-container--narrow">
-		<h2>Questions fréquentes</h2>
+		<h2><?php echo esc_html( $faq_titre ); ?></h2>
 		<div style="margin-top:20px">
 			<?php foreach ( $faq as $item ) : ?>
 				<details class="tfp-card" style="margin-bottom:10px">
@@ -304,15 +422,15 @@ get_header();
 
 <section class="tfp-container tfp-section--tight">
 	<div class="tfp-contact-nudge">
-		<p>Encore une question sur <?php echo esc_html( mb_strtolower( get_the_title( $post_id ) ) ); ?> ? <?php echo esc_html( explode( ' ', $site['manager'] )[0] ); ?> vous répond directement.</p>
+		<p>Encore une question sur <?php echo esc_html( $court ); ?> ? <?php echo esc_html( $prenom ); ?> vous répond directement.</p>
 		<?php tfp_button( array( 'label' => 'Nous contacter', 'href' => home_url( '/contact/' ), 'variant' => 'secondary', 'size' => 'sm' ) ); ?>
 	</div>
 </section>
 
 <section class="tfp-cta-block">
 	<div class="tfp-cta-block__inner">
-		<h2>Un projet de <?php echo esc_html( mb_strtolower( get_the_title( $post_id ) ) ); ?> ?</h2>
-		<p>Décrivez vos locaux : <?php echo esc_html( explode( ' ', $site['manager'] )[0] ); ?> vous répond sous 24 heures avec une proposition claire.</p>
+		<h2><?php echo esc_html( $cta_titre ); ?></h2>
+		<p><?php echo esc_html( $cta_texte ?: ( $prenom . ' étudie votre demande et vous transmet un devis clair sous 24 heures.' ) ); ?></p>
 		<div class="tfp-cta-block__actions">
 			<?php
 			tfp_button( array( 'label' => 'Demander mon devis', 'href' => $devis_url, 'variant' => 'on-primary' ) );

@@ -63,3 +63,60 @@ function tfp_check_item( $label ) {
 		esc_html( $label )
 	);
 }
+
+/**
+ * Suite de sous-blocs « intitulé + texte » stockés en champs numérotés.
+ *
+ * Structure répétée de la maquette Claude Design : « Le détail, espace par espace » (jusqu'à 9
+ * points), « Une organisation carrée, du planning au suivi » (6 points). ACF gratuit n'ayant pas
+ * de champ Repeater, ces sous-blocs sont des champs numérotés ; un intitulé vide interrompt la
+ * série, ce qui rend la structure impossible à trouer ou à réordonner depuis l'administration.
+ *
+ * @param string $prefix  Préfixe des champs (`detail`, `organisation`…).
+ * @param int    $post_id
+ * @param int    $max     Nombre maximum de sous-blocs lus.
+ * @return array<int,array{titre:string,texte:string}>
+ */
+function tfp_get_titled_blocks( $prefix, $post_id, $max ) {
+	$blocks = array();
+	for ( $i = 1; $i <= $max; $i++ ) {
+		$titre = tfp_get_field( $prefix . '_' . $i . '_titre', $post_id );
+		if ( ! $titre ) {
+			continue;
+		}
+		$blocks[] = array(
+			'titre' => $titre,
+			'texte' => (string) tfp_get_field( $prefix . '_' . $i . '_texte', $post_id ),
+		);
+	}
+	return $blocks;
+}
+
+/**
+ * Pose les liens internes d'une phrase de maillage, à partir d'une table expression → URL.
+ *
+ * La maquette rend ces phrases avec des liens en ligne (page pilier, tarifs, villes, article).
+ * Stocker le HTML dans le champ ACF exposerait un éditeur à casser le balisage ; on stocke donc le
+ * texte nu et on pose les liens ici. Le texte est échappé avant insertion des ancres : aucune
+ * balise saisie en administration n'est interprétée.
+ *
+ * @param string               $text Texte nu.
+ * @param array<string,string> $map  Expression exacte => URL.
+ * @return string HTML prêt à l'affichage.
+ */
+function tfp_link_phrases( $text, array $map ) {
+	$html = esc_html( $text );
+	foreach ( $map as $phrase => $url ) {
+		if ( ! $url || '' === $phrase ) {
+			continue;
+		}
+		$needle = esc_html( $phrase );
+		$pos    = strpos( $html, $needle );
+		if ( false === $pos ) {
+			continue;
+		}
+		$anchor = '<a href="' . esc_url( $url ) . '">' . $needle . '</a>';
+		$html   = substr_replace( $html, $anchor, $pos, strlen( $needle ) );
+	}
+	return $html;
+}

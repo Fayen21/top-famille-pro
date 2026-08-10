@@ -1071,3 +1071,356 @@
 .tfp-footer .tfp-prefooter .tfp-btn--primary {
   color: var(--color-white);
 }
+
+/* ------------------------------------------------------------------
+   Composants des pages prestation, repris de la maquette Claude Design.
+   Mesurés sur le rendu réel du prototype (tools/extract-routes.mjs) :
+   deux colonnes à partir de 820 px, cartes de détail en grille de deux,
+   bande turquoise #DDF4F3 pour le bloc « organisation ».
+   ------------------------------------------------------------------ */
+
+.tfp-hero__eyebrow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+/* Phrase de maillage sous la réponse directe : texte courant, liens visibles autrement que par
+   la seule couleur (soulignement conservé) — WCAG 2.2, critère 1.4.1. */
+.tfp-maillage {
+  margin-top: 18px;
+  max-width: 860px;
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+}
+
+.tfp-maillage a {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.tfp-two-col {
+  display: grid;
+  gap: 40px;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 820px) {
+  .tfp-two-col {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.tfp-list-plain,
+.tfp-list-marked {
+  list-style: none;
+  margin: 18px 0 0;
+  padding: 0;
+}
+
+.tfp-list-plain li,
+.tfp-list-marked li {
+  position: relative;
+  padding: 10px 0 10px 22px;
+  border-bottom: 1px solid var(--color-border);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+}
+
+/* Le marqueur est décoratif : il est posé en ::before plutôt que dans le texte, sinon un lecteur
+   d'écran annonce « carré noir » avant chaque tâche. */
+.tfp-list-plain li::before,
+.tfp-list-marked li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 19px;
+  width: 7px;
+  height: 7px;
+  border-radius: 2px;
+  background: var(--color-turquoise);
+}
+
+.tfp-list-marked li::before {
+  background: var(--color-primary);
+}
+
+.tfp-price-aside {
+  margin-top: 24px;
+  padding: 18px 20px;
+  border: 1px solid var(--color-turquoise-light);
+  border-radius: var(--radius-md);
+  background: var(--color-turquoise-pale);
+}
+
+.tfp-price-aside__label {
+  display: block;
+  font-size: 14px;
+  color: var(--color-text-secondary);
+}
+
+.tfp-price-aside__value {
+  display: block;
+  margin-top: 2px;
+  font-family: var(--font-heading);
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--color-navy);
+}
+
+.tfp-note-inline {
+  margin-top: 16px;
+  padding: 14px 16px;
+  border-left: 3px solid var(--color-copper);
+  background: var(--color-bg-alt);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+}
+
+.tfp-callout {
+  margin-top: 24px;
+  padding: 20px 22px;
+  border: 1px solid var(--color-turquoise-light);
+  border-radius: var(--radius-md);
+  background: var(--color-white);
+}
+
+.tfp-callout strong {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--color-navy);
+}
+
+.tfp-callout p {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+}
+
+.tfp-section__lede {
+  margin-top: 12px;
+  max-width: 760px;
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+}
+
+.tfp-detail-grid {
+  display: grid;
+  gap: 28px 40px;
+  grid-template-columns: 1fr;
+  margin-top: 28px;
+}
+
+@media (min-width: 820px) {
+  .tfp-detail-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.tfp-detail-item h3 {
+  font-size: 19px;
+  margin-bottom: 8px;
+}
+
+.tfp-detail-item p {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+}
+
+.tfp-prose {
+  margin-top: 14px;
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--color-text-secondary);
+}
+
+.tfp-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.tfp-link-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  /* 44 px de haut minimum : cible tactile WCAG 2.2 (2.5.8). */
+  min-height: 44px;
+  padding: 12px 16px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-white);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-navy);
+  text-decoration: none;
+}
+
+.tfp-link-row:hover {
+  border-color: var(--color-turquoise);
+  color: var(--color-primary);
+}
+
+.tfp-price-example__disclaimer {
+  margin-top: 10px;
+  font-size: 13px;
+  color: var(--color-text-secondary);
+}
+
+.tfp-testimonial__stars {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 16px;
+  letter-spacing: 2px;
+  color: var(--color-copper);
+}
+
+/* Liste d'exclusions explicites : le marqueur « ✕ » est décoratif et posé en ::before, jamais
+   dans le texte — un lecteur d'écran annoncerait « multiplication » avant chaque ligne. */
+.tfp-list-excluded {
+  list-style: none;
+  margin: 24px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 820px) {
+  .tfp-list-excluded {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.tfp-list-excluded li {
+  position: relative;
+  padding: 12px 16px 12px 40px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-white);
+  font-size: 16px;
+  color: var(--color-text-secondary);
+}
+
+.tfp-list-excluded li::before {
+  content: "✕";
+  position: absolute;
+  left: 16px;
+  top: 12px;
+  font-weight: 700;
+  color: var(--color-copper-dark);
+}
+
+/* ------------------------------------------------------------------
+   Pied de page à quatre colonnes de la maquette Claude Design : marque,
+   prestations, zones détaillées par département, informations.
+   ------------------------------------------------------------------ */
+
+.tfp-footer__col--brand,
+.tfp-footer__col--zones {
+  grid-column: span 1;
+}
+
+.tfp-footer__brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Le logo du pied de page est décoratif : le nom de la marque est déjà écrit à côté en texte.
+   Son `alt` est donc vide, sinon un lecteur d'écran annonce deux fois « Top-Famille Pro ». */
+.tfp-footer__logo {
+  width: 110px;
+  height: auto;
+}
+
+.tfp-footer__brand-name {
+  font-family: var(--font-heading);
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--color-white);
+}
+
+.tfp-footer__tagline {
+  margin-top: 14px;
+  max-width: 320px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.tfp-footer__contact {
+  margin-top: 16px;
+  list-style: none;
+  padding: 0;
+  font-size: 14px;
+  line-height: 2;
+}
+
+.tfp-footer__more {
+  display: inline-block;
+  margin-top: 10px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.tfp-footer__zones-label {
+  margin-top: 16px;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  opacity: 0.75;
+}
+
+.tfp-footer__zones {
+  margin-top: 10px;
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+}
+
+.tfp-footer__zones li {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.tfp-footer__dept {
+  font-weight: 600;
+}
+
+.tfp-footer__villes {
+  display: block;
+  opacity: 0.85;
+}
+
+.tfp-footer__zones-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin-top: 14px;
+}
+
+/* Badge de note au pied de page : même composant que le hero, sur fond sombre. */
+.tfp-google-badge--footer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 18px;
+  font-size: 14px;
+}
+
+.tfp-google-badge--footer .tfp-google-badge__stars {
+  color: var(--color-copper);
+  letter-spacing: 1px;
+}
