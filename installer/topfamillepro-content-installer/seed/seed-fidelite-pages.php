@@ -30,10 +30,16 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 				'index' => 2,
 				'fond' => '',
 				'colonnes' => 1,
+				'cartes' => '',
+				'liste_grille' => array(
+					'colonnes' => 1,
+					'tuile' => false,
+				),
 				'blocs' => array(
 					array(
 						'titre' => '',
 						'niveau' => 'h2',
+						'grille' => false,
 						'textes' => array(),
 						'liste' => array(),
 						'liens' => array(
@@ -59,10 +65,16 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 				'index' => 3,
 				'fond' => 'blanc',
 				'colonnes' => 1,
+				'cartes' => '',
+				'liste_grille' => array(
+					'colonnes' => 1,
+					'tuile' => false,
+				),
 				'blocs' => array(
 					array(
 						'titre' => '',
 						'niveau' => 'h2',
+						'grille' => false,
 						'textes' => array(
 							'Le nettoyage professionnel désigne l\'entretien récurrent ou ponctuel de locaux à usage professionnel, réalisé par un prestataire extérieur. Chez Top-Famille Pro, chaque prestation repose sur un cahier des charges défini avec vous, un intervenant sélectionné et un cahier de liaison laissé sur place — au tarif de 27 € HT/h, en régulier comme en ponctuel, avec un devis gratuit sous 24 heures.',
 							'Contrairement au ménage à domicile, le nettoyage professionnel s\'organise autour de contraintes propres à l\'entreprise : horaires calés sur l\'activité, accès sécurisé aux locaux, confidentialité des espaces de travail, et un besoin de traçabilité — savoir qui est passé, quand, et pour faire quoi. C\'est cette organisation, plus que le geste de nettoyage lui-même, qui distingue un prestataire structuré d\'une solution improvisée.',
@@ -80,10 +92,16 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 				'index' => 4,
 				'fond' => '',
 				'colonnes' => 2,
+				'cartes' => '',
+				'liste_grille' => array(
+					'colonnes' => 1,
+					'tuile' => false,
+				),
 				'blocs' => array(
 					array(
 						'titre' => 'Les professionnels que nous accompagnons',
 						'niveau' => 'h2',
+						'grille' => true,
 						'textes' => array(
 							'Notre clientèle regroupe des profils très différents, mais partage un même besoin : ne plus avoir à gérer le nettoyage en interne, ni à recruter, encadrer et remplacer un agent d\'entretien salarié.',
 						),
@@ -103,6 +121,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 					array(
 						'titre' => 'Les types de locaux entretenus',
 						'niveau' => 'h2',
+						'grille' => true,
 						'textes' => array(
 							'Chaque type de local a ses propres contraintes : un plateau de bureaux n\'a pas les mêmes priorités qu\'une salle d\'attente médicale ou qu\'un hall d\'immeuble. Nous adaptons le cahier des charges en conséquence, plutôt que d\'appliquer une méthode unique partout.',
 						),
@@ -126,10 +145,20 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 				'index' => 5,
 				'fond' => 'blanc',
 				'colonnes' => 3,
+				'cartes' => array(
+					'padding' => '24px',
+					'rayon' => '16px',
+					'fond' => 'rgb(244, 247, 248)',
+				),
+				'liste_grille' => array(
+					'colonnes' => 1,
+					'tuile' => false,
+				),
 				'blocs' => array(
 					array(
 						'titre' => 'Prestataire de nettoyage ou recrutement direct ?',
 						'niveau' => 'h2',
+						'grille' => false,
 						'textes' => array(
 							'C\'est la première question que se posent la plupart des dirigeants que nous rencontrons. Embaucher directement un agent d\'entretien reste possible, et parfois pertinent au-delà d\'un certain volume horaire. Mais cela suppose d\'assumer des tâches que l\'on sous-estime souvent : rédiger l\'offre, trier les candidatures, mener les entretiens, établir le contrat, gérer la paie et les congés, encadrer le travail, prévoir un remplacement en cas d\'arrêt, et racheter le matériel et les produits. Passer par un prestataire consiste à externaliser cette charge administrative et organisationnelle, en échange d\'un tarif horaire plus élevé qu\'un salaire brut.',
 						),
@@ -143,6 +172,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 					array(
 						'titre' => 'Ce que vous n\'avez plus à gérer',
 						'niveau' => 'h3',
+						'grille' => true,
 						'textes' => array(
 							'Recrutement, contrat de travail, bulletins de paie, déclarations sociales, congés payés, visites médicales, entretiens annuels. Une seule facture mensuelle remplace l\'ensemble, et le suivi passe par une interlocutrice unique.',
 						),
@@ -156,6 +186,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 					array(
 						'titre' => 'Ce que vous gardez la main sur',
 						'niveau' => 'h3',
+						'grille' => true,
 						'textes' => array(
 							'Le périmètre, la fréquence, les horaires et les priorités : tout est écrit dans un cahier des charges que vous validez et pouvez faire évoluer. Vous ne perdez pas le contrôle du travail attendu, vous déléguez son organisation.',
 						),
@@ -169,6 +200,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 					array(
 						'titre' => 'Ce qu\'un prestataire ne remplace pas',
 						'niveau' => 'h3',
+						'grille' => true,
 						'textes' => array(
 							'Un prestataire externe n\'est pas présent en continu dans vos locaux et n\'assure pas les gestes du quotidien entre deux passages. Si votre besoin réel est une présence permanente, une embauche directe reste probablement plus adaptée — nous le disons plutôt que de forcer un devis.',
 						),
@@ -185,10 +217,16 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 				'index' => 6,
 				'fond' => 'navy',
 				'colonnes' => 1,
+				'cartes' => '',
+				'liste_grille' => array(
+					'colonnes' => 1,
+					'tuile' => false,
+				),
 				'blocs' => array(
 					array(
 						'titre' => 'Nos six prestations de nettoyage professionnel',
 						'niveau' => 'h2',
+						'grille' => false,
 						'textes' => array(),
 						'liste' => array(),
 						'liens' => array(),
@@ -216,10 +254,20 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 				'index' => 7,
 				'fond' => '',
 				'colonnes' => 3,
+				'cartes' => array(
+					'padding' => '22px',
+					'rayon' => '14px',
+					'fond' => 'rgba(0, 0, 0, 0)',
+				),
+				'liste_grille' => array(
+					'colonnes' => 1,
+					'tuile' => false,
+				),
 				'blocs' => array(
 					array(
 						'titre' => 'Régulier ou ponctuel, tâches, fréquences et horaires',
 						'niveau' => 'h2',
+						'grille' => false,
 						'textes' => array(
 							'Fréquence définie (quotidienne, plusieurs fois par semaine, hebdomadaire), intervenant habituel recherché et cahier de liaison. Frais de gestion de 9 € HT/mois.',
 							'Prestation unique et approfondie : remise en état, grand nettoyage, fin de bail. Chiffrée selon le volume et l\'état, sans engagement de suite.',
@@ -239,6 +287,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 					array(
 						'titre' => 'Tâches par espace',
 						'niveau' => 'h3',
+						'grille' => true,
 						'textes' => array(),
 						'liste' => array(
 							'Postes de travail & mobilier',
@@ -256,6 +305,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 					array(
 						'titre' => 'Fréquences',
 						'niveau' => 'h3',
+						'grille' => true,
 						'textes' => array(),
 						'liste' => array(
 							'Quotidienne (flux importants)',
@@ -272,6 +322,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 					array(
 						'titre' => 'Produits, matériel & clés',
 						'niveau' => 'h3',
+						'grille' => true,
 						'textes' => array(
 							'Produits et matériel généralement fournis par le client (modalités précisées au devis). Accès défini avec vous : clés, badge, code ou présence.',
 						),
@@ -285,6 +336,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 					array(
 						'titre' => 'Interventions en dehors des horaires d\'ouverture',
 						'niveau' => 'h3',
+						'grille' => false,
 						'textes' => array(
 							'Sur demande, nous organisons des interventions tôt le matin, en soirée ou de nuit, ainsi que le dimanche ou les jours fériés lorsque votre activité l\'exige (commerce fermé un jour précis, salle occupée en continu). Ces créneaux font l\'objet d\'une majoration de 10 % du tarif horaire, indiquée à l\'avance sur le devis — jamais découverte après coup.',
 						),
@@ -301,10 +353,20 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 				'index' => 8,
 				'fond' => 'blanc',
 				'colonnes' => 4,
+				'cartes' => array(
+					'padding' => '22px',
+					'rayon' => '14px',
+					'fond' => 'rgba(0, 0, 0, 0)',
+				),
+				'liste_grille' => array(
+					'colonnes' => 1,
+					'tuile' => false,
+				),
 				'blocs' => array(
 					array(
 						'titre' => 'Comment choisir la bonne fréquence',
 						'niveau' => 'h2',
+						'grille' => false,
 						'textes' => array(
 							'La fréquence dépend moins de la surface que du nombre de personnes réellement présentes, du passage extérieur et du nombre de sanitaires. Un plateau de 200 m² occupé par six personnes ne représente pas la même charge que le même plateau occupé par vingt. Trois éléments décident presque toujours : les sanitaires, la salle de pause et les sols de circulation — ce sont eux qui se dégradent en premier et qui déclenchent les remarques internes.',
 						),
@@ -318,6 +380,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 					array(
 						'titre' => 'Quotidienne',
 						'niveau' => 'h3',
+						'grille' => true,
 						'textes' => array(
 							'Locaux recevant du public en continu, effectif important, restauration sur place, cabinets de groupe. La charge se concentre sur sanitaires, cuisine et circulations ; le reste suit une rotation.',
 						),
@@ -331,6 +394,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 					array(
 						'titre' => 'Deux à trois fois par semaine',
 						'niveau' => 'h3',
+						'grille' => true,
 						'textes' => array(
 							'Le rythme le plus courant en bureaux : dix à trente postes, une cuisine, deux sanitaires. Il permet d\'alterner les tâches lourdes et de garder un niveau constant sans surcoût inutile.',
 						),
@@ -344,6 +408,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 					array(
 						'titre' => 'Hebdomadaire',
 						'niveau' => 'h3',
+						'grille' => true,
 						'textes' => array(
 							'Petites structures, cabinets individuels, copropriétés de taille moyenne, bureaux peu occupés ou en télétravail partiel. Un passage plus long permet de tout traiter en une fois.',
 						),
@@ -357,6 +422,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 					array(
 						'titre' => 'Ponctuelle',
 						'niveau' => 'h3',
+						'grille' => true,
 						'textes' => array(
 							'Fin de chantier, fin de bail, remise en état avant ouverture, grand nettoyage saisonnier. Chiffrée en fourchette d\'heures selon l\'état constaté, sans engagement de suite.',
 							'Nous préférons démarrer sur une fréquence réaliste puis l\'ajuster après quelques semaines, plutôt que de surdimensionner le devis d\'entrée. Dans les deux sens : il nous arrive de proposer de réduire un volume d\'heures lorsque le cahier de liaison montre que le temps prévu n\'est pas nécessaire.',
@@ -374,10 +440,16 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 				'index' => 9,
 				'fond' => '',
 				'colonnes' => 3,
+				'cartes' => '',
+				'liste_grille' => array(
+					'colonnes' => 1,
+					'tuile' => false,
+				),
 				'blocs' => array(
 					array(
 						'titre' => 'Les tâches, espace par espace',
 						'niveau' => 'h2',
+						'grille' => false,
 						'textes' => array(
 							'Un cahier des charges utile ne liste pas des tâches en vrac : il les répartit par espace et leur associe une fréquence. C\'est ce qui permet à l\'intervenant de savoir quoi faire quand le temps manque, et à vous de savoir ce que vous êtes en droit d\'attendre.',
 						),
@@ -391,6 +463,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 					array(
 						'titre' => 'Postes de travail et mobilier',
 						'niveau' => 'h3',
+						'grille' => true,
 						'textes' => array(
 							'Dépoussiérage des plans de travail dégagés, du mobilier et des surfaces de contact. Les écrans et claviers font l\'objet d\'un dépoussiérage prudent selon les consignes et le matériel autorisé. Les documents et effets personnels ne sont jamais déplacés : la surface est reprise autour d\'eux.',
 						),
@@ -404,6 +477,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 					array(
 						'titre' => 'Sols et circulations',
 						'niveau' => 'h3',
+						'grille' => true,
 						'textes' => array(
 							'Aspiration et lavage selon la nature du revêtement : moquette, vinyle, carrelage, parquet, béton ciré, résine. Les circulations et les entrées se salissent trois à quatre fois plus vite que le reste et justifient souvent une fréquence propre, plus élevée que celle des bureaux eux-mêmes.',
 						),
@@ -417,6 +491,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 					array(
 						'titre' => 'Sanitaires',
 						'niveau' => 'h3',
+						'grille' => true,
 						'textes' => array(
 							'Nettoyage et désinfection des cuvettes, lavabos, robinetteries, miroirs, poignées et sols, avec réapprovisionnement du papier, du savon et des sacs lorsque vous fournissez ces consommables. Tout dysfonctionnement est signalé dans le cahier de liaison plutôt que laissé à la découverte d\'un visiteur.',
 						),
@@ -430,6 +505,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 					array(
 						'titre' => 'Cuisine et salle de pause',
 						'niveau' => 'h3',
+						'grille' => true,
 						'textes' => array(
 							'Plan de travail, évier, tables, extérieur des appareils, sol et poubelle. L\'intérieur du réfrigérateur, le dégivrage et le nettoyage intérieur du four sont possibles mais planifiés séparément : ils supposent que la cuisine soit vidée et demandent un temps que le passage courant n\'absorbe pas.',
 						),
@@ -443,6 +519,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 					array(
 						'titre' => 'Accueil et espaces recevant du public',
 						'niveau' => 'h3',
+						'grille' => true,
 						'textes' => array(
 							'Comptoir, assises, tables basses, tapis de propreté, vitrage de la porte d\'entrée, surfaces de contact courantes. C\'est le premier espace vu par un visiteur, et souvent celui sur lequel une négligence se remarque le plus vite : il est traité à chaque passage.',
 						),
@@ -456,6 +533,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 					array(
 						'titre' => 'Vitres et surfaces vitrées',
 						'niveau' => 'h3',
+						'grille' => true,
 						'textes' => array(
 							'Vitres intérieures, cloisons vitrées, portes et vitrophanies accessibles sans équipement spécialisé, à une fréquence plus espacée. Tout ce qui exige une nacelle, une perche télescopique ou un échafaudage est exclu de la prestation courante et relève d\'un prestataire équipé pour le travail en hauteur.',
 						),
@@ -472,10 +550,16 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 				'index' => 10,
 				'fond' => 'blanc',
 				'colonnes' => 2,
+				'cartes' => '',
+				'liste_grille' => array(
+					'colonnes' => 1,
+					'tuile' => false,
+				),
 				'blocs' => array(
 					array(
 						'titre' => 'Un cahier des charges défini avec vous',
 						'niveau' => 'h2',
+						'grille' => true,
 						'textes' => array(
 							'Avant la première intervention, nous formalisons avec vous un cahier des charges précis : les espaces concernés, les tâches attendues dans chacun, la fréquence retenue, les horaires possibles et les points de vigilance propres à vos locaux (zones sensibles, matériel fragile, consignes de sécurité). Ce document sert de référence à l\'intervenant et à Audrey pour le suivi, et peut être ajusté à tout moment si vos besoins évoluent.',
 						),
@@ -489,6 +573,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 					array(
 						'titre' => 'Intervenant habituel et continuité',
 						'niveau' => 'h2',
+						'grille' => true,
 						'textes' => array(
 							'Nous privilégions, autant que possible, un intervenant habituel qui connaît vos locaux, vos consignes et vos habitudes. Cette continuité limite les oublis et accélère la prise en main. En cas d\'absence imprévue (congé, maladie), nous recherchons activement une solution de remplacement pour maintenir la prestation et vous tenons informé de l\'organisation retenue. Un intervenant habituel est recherché. En cas d\'absence, Top-Famille Pro recherche activement une solution selon les disponibilités.',
 						),
@@ -505,10 +590,20 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 				'index' => 11,
 				'fond' => '',
 				'colonnes' => 4,
+				'cartes' => array(
+					'padding' => '22px',
+					'rayon' => '14px',
+					'fond' => 'rgb(255, 255, 255)',
+				),
+				'liste_grille' => array(
+					'colonnes' => 1,
+					'tuile' => false,
+				),
 				'blocs' => array(
 					array(
 						'titre' => 'Comment se construit un cahier des charges',
 						'niveau' => 'h2',
+						'grille' => false,
 						'textes' => array(),
 						'liste' => array(),
 						'liens' => array(),
@@ -522,6 +617,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 					array(
 						'titre' => 'Inventaire des espaces',
 						'niveau' => 'h3',
+						'grille' => true,
 						'textes' => array(
 							'Chaque pièce est listée avec sa surface approximative, son revêtement de sol et son niveau de fréquentation. C\'est cet inventaire, et non une estimation au mètre carré, qui fonde le volume d\'heures.',
 						),
@@ -537,6 +633,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 					array(
 						'titre' => 'Tâches et fréquences',
 						'niveau' => 'h3',
+						'grille' => true,
 						'textes' => array(
 							'Pour chaque espace, on distingue ce qui est fait à chaque passage, une fois par semaine, ou une fois par mois. Cette hiérarchie sert de règle d\'arbitrage lorsqu\'un imprévu réduit le temps disponible.',
 						),
@@ -552,6 +649,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 					array(
 						'titre' => 'Points de vigilance',
 						'niveau' => 'h3',
+						'grille' => true,
 						'textes' => array(
 							'Matériaux fragiles, zones à accès réservé, matériel à ne pas toucher, documents à ne jamais déplacer, consignes de sécurité et d\'alarme. C\'est la partie qui évite les erreurs coûteuses au premier passage.',
 						),
@@ -567,6 +665,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 					array(
 						'titre' => 'Ce qui est explicitement exclu',
 						'niveau' => 'h3',
+						'grille' => true,
 						'textes' => array(
 							'Nous écrivons noir sur blanc ce qui ne fait pas partie de la prestation. Un périmètre clair évite l\'usure progressive de la relation, où les demandes s\'ajoutent sans que le temps prévu ne change.',
 						),
@@ -580,6 +679,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 					array(
 						'titre' => 'Modifier la prestation en cours de route',
 						'niveau' => 'h3',
+						'grille' => false,
 						'textes' => array(
 							'Un déménagement, une embauche, une baisse d\'activité, une nouvelle salle de réunion, un passage en télétravail partiel : les besoins bougent. Une modification se demande simplement, par téléphone ou par e-mail à Audrey. Un ajustement de périmètre à volume d\'heures constant se met en place rapidement ; un changement de volume horaire donne lieu à un devis actualisé avant toute application. Aucune modification de tarif n\'est appliquée sans votre accord écrit préalable, et l\'arrêt de la prestation reste possible dans les conditions prévues au devis, sans engagement de durée.',
 						),
@@ -596,10 +696,16 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 				'index' => 12,
 				'fond' => 'blanc',
 				'colonnes' => 1,
+				'cartes' => '',
+				'liste_grille' => array(
+					'colonnes' => 1,
+					'tuile' => false,
+				),
 				'blocs' => array(
 					array(
 						'titre' => 'Cahier des charges, intervenants et suivi',
 						'niveau' => 'h2',
+						'grille' => false,
 						'textes' => array(
 							'Nous choisissons avec soin les personnes qui interviennent chez vous et privilégions la continuité autant que possible, sans en faire une garantie absolue.',
 							'En cas d\'imprévu, nous recherchons activement une solution et vous informons de l\'organisation retenue et de son délai.',
@@ -627,10 +733,16 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 				'index' => 13,
 				'fond' => '',
 				'colonnes' => 1,
+				'cartes' => '',
+				'liste_grille' => array(
+					'colonnes' => 1,
+					'tuile' => false,
+				),
 				'blocs' => array(
 					array(
 						'titre' => '',
 						'niveau' => 'h2',
+						'grille' => false,
 						'textes' => array(),
 						'liste' => array(),
 						'liens' => array(),
@@ -653,10 +765,20 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 				'index' => 14,
 				'fond' => 'blanc',
 				'colonnes' => 3,
+				'cartes' => array(
+					'padding' => '24px',
+					'rayon' => '16px',
+					'fond' => 'rgb(244, 247, 248)',
+				),
+				'liste_grille' => array(
+					'colonnes' => 1,
+					'tuile' => false,
+				),
 				'blocs' => array(
 					array(
 						'titre' => 'Trois situations concrètes',
 						'niveau' => 'h2',
+						'grille' => false,
 						'textes' => array(
 							'Exemples représentatifs des demandes que nous recevons. Les volumes indiqués sont non contractuels : ils donnent un ordre de grandeur, pas un tarif.',
 						),
@@ -670,6 +792,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 					array(
 						'titre' => 'PME de 18 personnes, Dijon',
 						'niveau' => 'h3',
+						'grille' => true,
 						'textes' => array(
 							'Un plateau, deux sanitaires, une salle de pause, une salle de réunion. Trois passages par semaine entre 6 h 30 et 8 h, soit environ 13 heures par mois. Sanitaires, cuisine et circulations à chaque passage ; bureaux et vitres intérieures en rotation. Accès par badge, alarme gérée par l\'intervenant.',
 						),
@@ -683,6 +806,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 					array(
 						'titre' => 'Cabinet de groupe, Besançon',
 						'niveau' => 'h3',
+						'grille' => true,
 						'textes' => array(
 							'Trois praticiens, une salle d\'attente commune, deux sanitaires. Passage quotidien à partir de 19 h 30, après le départ du dernier patient, soit environ 20 heures par mois. Salle d\'attente, accueil, sanitaires et surfaces de contact courantes chaque soir ; entretien courant des bureaux en rotation.',
 						),
@@ -696,6 +820,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 					array(
 						'titre' => 'Remise en état après travaux, 80 m²',
 						'niveau' => 'h3',
+						'grille' => true,
 						'textes' => array(
 							'Bureaux rénovés, cloisons déposées, peinture refaite. Une intervention unique estimée entre 6 et 8 heures : dépoussiérage descendant, vitres et encadrements, retrait des projections, sanitaires et coin cuisine, sols en dernier. Second passage court proposé 48 heures plus tard si nécessaire.',
 						),
@@ -712,10 +837,16 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 				'index' => 15,
 				'fond' => 'turquoise',
 				'colonnes' => 3,
+				'cartes' => '',
+				'liste_grille' => array(
+					'colonnes' => 1,
+					'tuile' => false,
+				),
 				'blocs' => array(
 					array(
 						'titre' => 'Le tarif, en toute transparence',
 						'niveau' => 'h2',
+						'grille' => true,
 						'textes' => array(
 							'27 € HT/h, identique en régulier et en ponctuel. S\'y ajoutent le cas échéant 9 € HT/mois de gestion, 50 € HT de frais de mise en place, le cas échéant, selon les conditions précisées au devis, une majoration de 10 % (dimanche, jours fériés, nuit) et 0,35 € HT/km.',
 						),
@@ -734,6 +865,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 					array(
 						'titre' => 'Nos départements',
 						'niveau' => 'h2',
+						'grille' => true,
 						'textes' => array(),
 						'liste' => array(),
 						'liens' => array(
@@ -778,6 +910,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 					array(
 						'titre' => 'Nos villes',
 						'niveau' => 'h2',
+						'grille' => true,
 						'textes' => array(),
 						'liste' => array(),
 						'liens' => array(
@@ -829,10 +962,16 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 				'index' => 16,
 				'fond' => '',
 				'colonnes' => 1,
+				'cartes' => '',
+				'liste_grille' => array(
+					'colonnes' => 1,
+					'tuile' => false,
+				),
 				'blocs' => array(
 					array(
 						'titre' => 'Pour aller plus loin',
 						'niveau' => 'h2',
+						'grille' => false,
 						'textes' => array(),
 						'liste' => array(),
 						'liens' => array(
@@ -864,10 +1003,16 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 				'index' => 17,
 				'fond' => 'alt',
 				'colonnes' => 1,
+				'cartes' => '',
+				'liste_grille' => array(
+					'colonnes' => 1,
+					'tuile' => false,
+				),
 				'blocs' => array(
 					array(
 						'titre' => 'Questions fréquentes',
 						'niveau' => 'h2',
+						'grille' => false,
 						'textes' => array(),
 						'liste' => array(),
 						'liens' => array(),
@@ -923,10 +1068,16 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 				'index' => 18,
 				'fond' => 'primary',
 				'colonnes' => 1,
+				'cartes' => '',
+				'liste_grille' => array(
+					'colonnes' => 1,
+					'tuile' => false,
+				),
 				'blocs' => array(
 					array(
 						'titre' => 'Un projet d\'entretien pour vos locaux ?',
 						'niveau' => 'h2',
+						'grille' => false,
 						'textes' => array(
 							'Devis gratuit sous 24 h, sans engagement.',
 						),
@@ -960,10 +1111,16 @@ update_option( 'tfp_page_prestations', array(
 				'index' => 2,
 				'fond' => '',
 				'colonnes' => 1,
+				'cartes' => '',
+				'liste_grille' => array(
+					'colonnes' => 1,
+					'tuile' => false,
+				),
 				'blocs' => array(
 					array(
 						'titre' => 'Comment choisir la bonne prestation ?',
 						'niveau' => 'h2',
+						'grille' => false,
 						'textes' => array(),
 						'liste' => array(),
 						'liens' => array(),
@@ -1003,10 +1160,16 @@ update_option( 'tfp_page_prestations', array(
 				'index' => 3,
 				'fond' => '',
 				'colonnes' => 2,
+				'cartes' => '',
+				'liste_grille' => array(
+					'colonnes' => 1,
+					'tuile' => false,
+				),
 				'blocs' => array(
 					array(
 						'titre' => 'Ce qui est commun aux six prestations',
 						'niveau' => 'h2',
+						'grille' => true,
 						'textes' => array(
 							'Quel que soit le type de locaux, l\'organisation est la même : un cahier des charges écrit et validé avec vous avant le premier passage, un intervenant sélectionné dont nous recherchons la continuité d\'un passage à l\'autre, un cahier de liaison laissé sur place pour tracer ce qui a été fait et ce qui n\'a pas pu l\'être, et Audrey comme interlocutrice unique du devis au suivi. Le tarif est identique — 27 € HT/h en régulier comme en ponctuel — et les frais éventuels sont annoncés avant le devis plutôt que découverts sur une facture.',
 						),
@@ -1020,6 +1183,7 @@ update_option( 'tfp_page_prestations', array(
 					array(
 						'titre' => 'Ce qui change d\'une prestation à l\'autre',
 						'niveau' => 'h2',
+						'grille' => true,
 						'textes' => array(
 							'Ce sont les contraintes qui diffèrent, et elles déterminent tout : l\'heure du passage, l\'ordre des priorités, la gestion des accès, le périmètre exclu. Un commerce se traite avant l\'ouverture sur un créneau non extensible ; un cabinet, après le départ du dernier patient ; une copropriété, à jour fixe validé par le syndic ; un meublé, sur le créneau disponible entre deux occupants. Chaque page détaille ces contraintes, une semaine type et les limites explicites de la prestation.',
 						),
@@ -1036,10 +1200,16 @@ update_option( 'tfp_page_prestations', array(
 				'index' => 4,
 				'fond' => '',
 				'colonnes' => 1,
+				'cartes' => '',
+				'liste_grille' => array(
+					'colonnes' => 1,
+					'tuile' => false,
+				),
 				'blocs' => array(
 					array(
 						'titre' => '',
 						'niveau' => 'h2',
+						'grille' => false,
 						'textes' => array(),
 						'liste' => array(),
 						'liens' => array(),
@@ -1073,10 +1243,16 @@ update_option( 'tfp_page_prestations', array(
 				'index' => 5,
 				'fond' => 'primary',
 				'colonnes' => 1,
+				'cartes' => '',
+				'liste_grille' => array(
+					'colonnes' => 1,
+					'tuile' => false,
+				),
 				'blocs' => array(
 					array(
 						'titre' => 'Besoin d\'aide pour choisir ?',
 						'niveau' => 'h2',
+						'grille' => false,
 						'textes' => array(
 							'Décrivez vos locaux : Audrey identifie avec vous la formule adaptée et vous répond sous 24 h.',
 						),
@@ -1109,10 +1285,16 @@ update_option( 'tfp_page_zones-intervention', array(
 				'index' => 2,
 				'fond' => '',
 				'colonnes' => 1,
+				'cartes' => '',
+				'liste_grille' => array(
+					'colonnes' => 1,
+					'tuile' => false,
+				),
 				'blocs' => array(
 					array(
 						'titre' => '',
 						'niveau' => 'h2',
+						'grille' => false,
 						'textes' => array(),
 						'liste' => array(),
 						'liens' => array(
@@ -1138,10 +1320,16 @@ update_option( 'tfp_page_zones-intervention', array(
 				'index' => 3,
 				'fond' => 'blanc',
 				'colonnes' => 1,
+				'cartes' => '',
+				'liste_grille' => array(
+					'colonnes' => 1,
+					'tuile' => false,
+				),
 				'blocs' => array(
 					array(
 						'titre' => '',
 						'niveau' => 'h2',
+						'grille' => false,
 						'textes' => array(
 							'Nous intervenons uniquement en Bourgogne-Franche-Comté : Côte-d\'Or, Doubs, Jura, Nièvre, Haute-Saône, Saône-et-Loire, Yonne et Territoire de Belfort. Le tarif est le même partout, 27 € HT/h, en entretien régulier comme en intervention ponctuelle, avec un devis gratuit transmis sous 24 heures. Les éventuelles indemnités kilométriques dépendent de l\'adresse des locaux, du planning et des conditions d\'intervention. Elles sont précisées dans le devis.',
 						),
@@ -1160,10 +1348,20 @@ update_option( 'tfp_page_zones-intervention', array(
 				'index' => 4,
 				'fond' => '',
 				'colonnes' => 1,
+				'cartes' => array(
+					'padding' => '32px',
+					'rayon' => '18px',
+					'fond' => 'rgb(255, 255, 255)',
+				),
+				'liste_grille' => array(
+					'colonnes' => 3,
+					'tuile' => true,
+				),
 				'blocs' => array(
 					array(
 						'titre' => 'Une couverture régionale organisée depuis Saint-Apollinaire',
 						'niveau' => 'h2',
+						'grille' => false,
 						'textes' => array(
 							'Top-Famille Pro est implantée à Saint-Apollinaire, commune de la périphérie est de Dijon, en Côte-d\'Or. C\'est de cette adresse que partent les plannings, que sont préparés les devis et que sont cherchées les solutions de remplacement. Nous n\'avons pas d\'agence à Besançon, à Chalon-sur-Saône ni ailleurs dans la région : une seule adresse, une seule interlocutrice, un seul numéro de téléphone pour tous nos clients.',
 							'Cette organisation a une conséquence concrète : les conditions d\'intervention dépendent de la distance réelle entre vos locaux et Saint-Apollinaire, et non d\'un tarif différent affiché ville par ville. Le taux horaire reste de 27 € HT/h dans toute la région. Les éventuelles indemnités kilométriques dépendent de l\'adresse des locaux, du planning et des conditions d\'intervention. Elles sont précisées dans le devis.',
@@ -1178,6 +1376,7 @@ update_option( 'tfp_page_zones-intervention', array(
 					array(
 						'titre' => 'Comment nous organisons les déplacements',
 						'niveau' => 'h2',
+						'grille' => false,
 						'textes' => array(
 							'Le regroupement des interventions par secteur et par journée est étudié selon le planning. Un intervenant qui travaille sur l\'agglomération dijonnaise peut enchaîner des sites proches les uns des autres ; sur les secteurs plus éloignés, nous privilégions des créneaux plus longs et des fréquences régulières, ce qui limite les trajets et stabilise le planning. C\'est aussi ce qui nous permet de tenir un tarif unique dans toute la région.',
 							'Pour vous, cela signifie que la première question posée au téléphone porte sur votre adresse exacte, la surface concernée et le rythme souhaité. Les éventuelles indemnités kilométriques dépendent de l\'adresse des locaux, du planning et des conditions d\'intervention. Elles sont précisées dans le devis.',
@@ -1192,6 +1391,7 @@ update_option( 'tfp_page_zones-intervention', array(
 					array(
 						'titre' => 'Ce qui change selon votre adresse',
 						'niveau' => 'h2',
+						'grille' => false,
 						'textes' => array(
 							'Nous ne pratiquons pas de tarif à la carte selon la commune, mais l\'organisation n\'est pas identique partout. Voici ce qui varie réellement :',
 						),
@@ -1214,10 +1414,16 @@ update_option( 'tfp_page_zones-intervention', array(
 				'index' => 5,
 				'fond' => '',
 				'colonnes' => 1,
+				'cartes' => '',
+				'liste_grille' => array(
+					'colonnes' => 1,
+					'tuile' => false,
+				),
 				'blocs' => array(
 					array(
 						'titre' => '',
 						'niveau' => 'h2',
+						'grille' => false,
 						'textes' => array(),
 						'liste' => array(),
 						'liens' => array(
@@ -1237,10 +1443,16 @@ update_option( 'tfp_page_zones-intervention', array(
 				'index' => 6,
 				'fond' => '',
 				'colonnes' => 1,
+				'cartes' => '',
+				'liste_grille' => array(
+					'colonnes' => 1,
+					'tuile' => false,
+				),
 				'blocs' => array(
 					array(
 						'titre' => 'Les huit départements',
 						'niveau' => 'h2',
+						'grille' => false,
 						'textes' => array(
 							'Chaque département a sa page : villes couvertes, tissu professionnel, organisation des déplacements et questions fréquentes.',
 						),
@@ -1290,10 +1502,16 @@ update_option( 'tfp_page_zones-intervention', array(
 				'index' => 7,
 				'fond' => '',
 				'colonnes' => 1,
+				'cartes' => '',
+				'liste_grille' => array(
+					'colonnes' => 1,
+					'tuile' => false,
+				),
 				'blocs' => array(
 					array(
 						'titre' => 'Nos dix villes principales',
 						'niveau' => 'h2',
+						'grille' => false,
 						'textes' => array(
 							'Pages détaillées : prestations, espaces traités, fréquences, quartiers et zones d\'activité, communes proches.',
 						),
@@ -1351,10 +1569,16 @@ update_option( 'tfp_page_zones-intervention', array(
 				'index' => 8,
 				'fond' => '',
 				'colonnes' => 1,
+				'cartes' => '',
+				'liste_grille' => array(
+					'colonnes' => 1,
+					'tuile' => false,
+				),
 				'blocs' => array(
 					array(
 						'titre' => 'Premières communes secondaires',
 						'niveau' => 'h2',
+						'grille' => false,
 						'textes' => array(
 							'Autour de Dijon et de Beaune, ces communes disposent déjà de leur page. D\'autres suivront selon les demandes reçues.',
 						),
@@ -1404,10 +1628,20 @@ update_option( 'tfp_page_zones-intervention', array(
 				'index' => 9,
 				'fond' => '',
 				'colonnes' => 1,
+				'cartes' => array(
+					'padding' => '32px',
+					'rayon' => '18px',
+					'fond' => 'rgb(255, 255, 255)',
+				),
+				'liste_grille' => array(
+					'colonnes' => 1,
+					'tuile' => false,
+				),
 				'blocs' => array(
 					array(
 						'titre' => 'Départements, villes et communes : comment lire ces pages',
 						'niveau' => 'h2',
+						'grille' => false,
 						'textes' => array(
 							'Chaque département dispose de sa page : villes couvertes, tissu professionnel local, types de locaux les plus fréquents, organisation des déplacements et questions fréquentes. Chaque ville principale a également la sienne, plus détaillée : espaces et tâches, fréquences, horaires, accès aux locaux, exemple de budget, quartiers et zones d\'activité, communes réellement proches.',
 							'Nous distinguons volontairement trois niveaux de proximité : les communes voisines, les autres villes du même département, et les autres secteurs couverts en région. Besançon, Nevers ou Vesoul sont des secteurs régionaux couverts, pas des communes voisines de Dijon : nous préférons l\'écrire clairement plutôt que de gonfler artificiellement une liste de liens.',
@@ -1422,6 +1656,7 @@ update_option( 'tfp_page_zones-intervention', array(
 					array(
 						'titre' => 'Les espaces que nous traitons — et ceux que nous ne traitons pas',
 						'niveau' => 'h2',
+						'grille' => false,
 						'textes' => array(
 							'Notre offre couvre les bureaux, les accueils, les locaux administratifs, les parties communes d\'immeubles, les commerces et les cabinets courants. Lorsqu\'une zone d\'activité accueille de l\'industrie, de la logistique, de l\'agroalimentaire ou des établissements de santé, nous intervenons uniquement sur les espaces compatibles avec cette offre : bureaux administratifs, salles de réunion, vestiaires de bureau, halls et sanitaires.',
 							'Nous ne réalisons pas de nettoyage industriel lourd, de nettoyage de chaînes de production, de nettoyage agroalimentaire spécialisé, de bio-nettoyage hospitalier, de traitement chimique, de désamiantage ni d\'intervention en locaux à risque. Si votre besoin relève de ces domaines, nous le disons dès le premier échange plutôt que de vous faire perdre du temps.',
@@ -1436,6 +1671,7 @@ update_option( 'tfp_page_zones-intervention', array(
 					array(
 						'titre' => 'Votre commune n\'apparaît pas encore ?',
 						'niveau' => 'h2',
+						'grille' => false,
 						'textes' => array(
 							'Les pages publiées correspondent à nos secteurs prioritaires. Elles ne délimitent pas notre périmètre : nous intervenons dans de nombreuses communes qui n\'ont pas encore de page dédiée, dès lors que le trajet et la fréquence permettent une organisation stable.',
 							'Le plus simple reste de nous donner votre adresse et votre besoin : nous vous confirmons sous 24 heures si nous pouvons intervenir, à quel rythme, et à quelles conditions. Si nous ne sommes pas en mesure de tenir un planning fiable chez vous, nous vous le disons plutôt que de nous engager à moitié.',
@@ -1453,10 +1689,16 @@ update_option( 'tfp_page_zones-intervention', array(
 				'index' => 10,
 				'fond' => '',
 				'colonnes' => 1,
+				'cartes' => '',
+				'liste_grille' => array(
+					'colonnes' => 1,
+					'tuile' => false,
+				),
 				'blocs' => array(
 					array(
 						'titre' => '',
 						'niveau' => 'h2',
+						'grille' => false,
 						'textes' => array(),
 						'liste' => array(),
 						'liens' => array(
@@ -1484,10 +1726,16 @@ update_option( 'tfp_page_zones-intervention', array(
 				'index' => 11,
 				'fond' => 'turquoise',
 				'colonnes' => 1,
+				'cartes' => '',
+				'liste_grille' => array(
+					'colonnes' => 1,
+					'tuile' => false,
+				),
 				'blocs' => array(
 					array(
 						'titre' => 'Questions fréquentes sur nos zones d\'intervention',
 						'niveau' => 'h2',
+						'grille' => false,
 						'textes' => array(),
 						'liste' => array(),
 						'liens' => array(),
@@ -1527,10 +1775,16 @@ update_option( 'tfp_page_zones-intervention', array(
 				'index' => 12,
 				'fond' => 'primary',
 				'colonnes' => 1,
+				'cartes' => '',
+				'liste_grille' => array(
+					'colonnes' => 1,
+					'tuile' => false,
+				),
 				'blocs' => array(
 					array(
 						'titre' => 'Votre commune est-elle couverte ?',
 						'niveau' => 'h2',
+						'grille' => false,
 						'textes' => array(
 							'Dites-nous votre adresse : nous confirmons notre intervention et vous transmettons un devis gratuit sous 24 h.',
 						),
@@ -1563,10 +1817,16 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 				'index' => 2,
 				'fond' => '',
 				'colonnes' => 1,
+				'cartes' => '',
+				'liste_grille' => array(
+					'colonnes' => 1,
+					'tuile' => false,
+				),
 				'blocs' => array(
 					array(
 						'titre' => '',
 						'niveau' => 'h2',
+						'grille' => false,
 						'textes' => array(),
 						'liste' => array(),
 						'liens' => array(
@@ -1592,10 +1852,16 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 				'index' => 3,
 				'fond' => 'blanc',
 				'colonnes' => 1,
+				'cartes' => '',
+				'liste_grille' => array(
+					'colonnes' => 1,
+					'tuile' => false,
+				),
 				'blocs' => array(
 					array(
 						'titre' => '',
 						'niveau' => 'h2',
+						'grille' => false,
 						'textes' => array(
 							'Top-Famille Pro est une entreprise de nettoyage régionale implantée à Saint-Apollinaire (21850), près de Dijon. Elle intervient en Bourgogne-Franche-Comté auprès des TPE, PME, commerces, professions libérales, syndics et propriétaires bailleurs, en entretien régulier ou en intervention ponctuelle, au tarif de 27 € HT/h, avec un devis gratuit transmis sous 24 heures et une interlocutrice unique, Audrey, au 06 36 17 63 39.',
 						),
@@ -1614,10 +1880,20 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 				'index' => 4,
 				'fond' => '',
 				'colonnes' => 1,
+				'cartes' => array(
+					'padding' => '32px',
+					'rayon' => '18px',
+					'fond' => 'rgb(255, 255, 255)',
+				),
+				'liste_grille' => array(
+					'colonnes' => 3,
+					'tuile' => true,
+				),
 				'blocs' => array(
 					array(
 						'titre' => 'Notre implantation réelle : Saint-Apollinaire, près de Dijon',
 						'niveau' => 'h2',
+						'grille' => false,
 						'textes' => array(
 							'Top-Famille Pro n\'est pas une enseigne nationale déclinée en franchises. L\'entreprise est installée à Saint-Apollinaire, commune limitrophe de Dijon en Côte-d\'Or, et c\'est de là que tout est organisé : rendez-vous de visite, cahiers des charges, plannings, recherche de remplacement, suivi mensuel. Audrey est l\'interlocutrice de tous les clients, quel que soit leur département.',
 							'Nous le précisons parce que le secteur du nettoyage compte beaucoup de sites annonçant une « agence » dans chaque ville. Chez nous, il n\'y en a qu\'une, et le numéro affiché est le même partout : 06 36 17 63 39. Vous savez donc exactement qui vous appelez et qui suivra votre dossier dans six mois.',
@@ -1632,6 +1908,7 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 					array(
 						'titre' => 'Le territoire que nous couvrons — et celui que nous ne couvrons pas',
 						'niveau' => 'h2',
+						'grille' => false,
 						'textes' => array(
 							'Nous intervenons sur les huit départements de la Bourgogne-Franche-Comté : Côte-d\'Or, Doubs, Jura, Nièvre, Haute-Saône, Saône-et-Loire, Yonne et Territoire de Belfort. Les éventuelles indemnités kilométriques dépendent de l\'adresse des locaux, du planning et des conditions d\'intervention. Elles sont précisées dans le devis.',
 							'À l\'intérieur de la région, la densité de nos interventions n\'est pas uniforme. L\'agglomération dijonnaise est notre secteur prioritaire ; les autres pôles urbains — Besançon, Chalon-sur-Saône, Mâcon, Dole, Auxerre, Nevers, Lons-le-Saunier, Vesoul, Belfort — sont couverts avec des plannings regroupés. Les communes intermédiaires sont traitées au cas par cas, selon le trajet et la fréquence.',
@@ -1646,6 +1923,7 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 					array(
 						'titre' => 'Les professionnels que nous accompagnons',
 						'niveau' => 'h2',
+						'grille' => false,
 						'textes' => array(
 							'Parmi les professionnels susceptibles de faire appel à Top-Famille Pro, on trouve surtout des structures qui n\'ont pas de service d\'entretien interne et qui cherchent un prestataire joignable directement, pas un centre d\'appels. Concrètement :',
 						),
@@ -1666,6 +1944,7 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 					array(
 						'titre' => 'Les types de locaux les plus fréquents en région',
 						'niveau' => 'h2',
+						'grille' => false,
 						'textes' => array(
 							'Un plateau de bureaux dijonnais, une boutique de centre-ville à Besançon, un cabinet dentaire à Chalon-sur-Saône ou une copropriété de Beaune ne demandent ni le même matériel, ni les mêmes horaires, ni la même fréquence. Le cahier des charges est donc établi local par local, après visite ou après un échange détaillé si le site est éloigné.',
 						),
@@ -1686,6 +1965,7 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 					array(
 						'titre' => 'Notre organisation à l\'échelle régionale',
 						'niveau' => 'h2',
+						'grille' => false,
 						'textes' => array(
 							'Le regroupement des interventions par secteur est étudié selon le planning : un même intervenant peut enchaîner plusieurs sites proches sur une même journée, ce qui réduit les trajets et permet de tenir le tarif régional unique. Sur les départements les plus éloignés, nous privilégions des créneaux plus longs et des fréquences stables plutôt qu\'une multiplication de passages courts.',
 							'Chaque site dispose d\'un cahier de liaison, sur place ou numérique, où l\'intervenant note ce qui a été fait et ce qui mérite votre attention : consommable à recommander, dégât constaté, accès défectueux. Vous n\'avez pas besoin d\'être présent pour savoir ce qui s\'est passé.',
@@ -1703,10 +1983,16 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 				'index' => 5,
 				'fond' => 'navy',
 				'colonnes' => 1,
+				'cartes' => '',
+				'liste_grille' => array(
+					'colonnes' => 1,
+					'tuile' => false,
+				),
 				'blocs' => array(
 					array(
 						'titre' => 'Nos prestations partout en Bourgogne-Franche-Comté',
 						'niveau' => 'h2',
+						'grille' => false,
 						'textes' => array(
 							'Six prestations, un seul interlocuteur. Nous intervenons sur les espaces compatibles avec notre offre : bureaux, accueils, locaux administratifs, parties communes, commerces et cabinets courants.',
 						),
@@ -1748,10 +2034,16 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 				'index' => 6,
 				'fond' => 'blanc',
 				'colonnes' => 1,
+				'cartes' => '',
+				'liste_grille' => array(
+					'colonnes' => 1,
+					'tuile' => false,
+				),
 				'blocs' => array(
 					array(
 						'titre' => 'Les huit départements couverts',
 						'niveau' => 'h2',
+						'grille' => false,
 						'textes' => array(
 							'Une couverture régionale réelle, organisée depuis un seul point d\'attache à Saint-Apollinaire — sans agences locales.',
 							'De la métropole dijonnaise aux zones d\'activité de la Côte, nous entretenons bureaux, commerces et copropriétés partout en Côte-d\'Or.',
@@ -1817,10 +2109,16 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 				'index' => 7,
 				'fond' => '',
 				'colonnes' => 1,
+				'cartes' => '',
+				'liste_grille' => array(
+					'colonnes' => 1,
+					'tuile' => false,
+				),
 				'blocs' => array(
 					array(
 						'titre' => 'Nos dix villes principales',
 						'niveau' => 'h2',
+						'grille' => false,
 						'textes' => array(),
 						'liste' => array(),
 						'liens' => array(
@@ -1873,6 +2171,7 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 					array(
 						'titre' => 'Secteurs secondaires déjà documentés',
 						'niveau' => 'h3',
+						'grille' => false,
 						'textes' => array(),
 						'liste' => array(),
 						'liens' => array(
@@ -1920,10 +2219,16 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 				'index' => 8,
 				'fond' => 'turquoise',
 				'colonnes' => 1,
+				'cartes' => '',
+				'liste_grille' => array(
+					'colonnes' => 1,
+					'tuile' => false,
+				),
 				'blocs' => array(
 					array(
 						'titre' => 'Un tarif régional unique',
 						'niveau' => 'h2',
+						'grille' => false,
 						'textes' => array(
 							'Le taux horaire est de 27 € HT/h dans les huit départements, en régulier comme en ponctuel. S\'y ajoutent 9 € HT/mois de gestion pour les contrats réguliers, 50 € HT de frais de mise en place, le cas échéant, selon les conditions précisées au devis, et, le cas échéant, des indemnités kilométriques de 0,35 € HT/km. Les éventuelles indemnités kilométriques dépendent de l\'adresse des locaux, du planning et des conditions d\'intervention. Aucun de ces éléments n\'apparaît après coup : tout est écrit au devis.',
 							'12 h × 27 € HT + 9 € HT de gestion = 333 € HT/mois. Premier mois : 383 € HT si les frais de mise en place s\'appliquent. Les éventuelles indemnités kilométriques dépendent de l\'adresse des locaux, du planning et des conditions d\'intervention. Elles sont précisées dans le devis.',
@@ -1957,10 +2262,20 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 				'index' => 9,
 				'fond' => '',
 				'colonnes' => 1,
+				'cartes' => array(
+					'padding' => '32px',
+					'rayon' => '18px',
+					'fond' => 'rgb(255, 255, 255)',
+				),
+				'liste_grille' => array(
+					'colonnes' => 1,
+					'tuile' => false,
+				),
 				'blocs' => array(
 					array(
 						'titre' => 'Sélection des intervenants et suivi',
 						'niveau' => 'h2',
+						'grille' => false,
 						'textes' => array(
 							'Les intervenants sont recrutés par Audrey, en entretien individuel, avec vérification des références et une période d\'observation sur site. Nous cherchons à confier un site au même intervenant d\'une semaine sur l\'autre : c\'est ce qui fait la différence sur la qualité, parce qu\'une personne qui connaît vos locaux repère ce qu\'un remplaçant ne verra pas.',
 							'En cas d\'absence, de congés ou de départ, nous cherchons une solution de remplacement et nous vous prévenons du changement. Nous ne promettons pas une continuité automatique : nous nous engageons à vous informer, à transmettre les consignes écrites au remplaçant et à repasser sur site si nécessaire.',
@@ -1975,6 +2290,7 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 					array(
 						'titre' => 'Entretien régulier ou intervention ponctuelle',
 						'niveau' => 'h2',
+						'grille' => false,
 						'textes' => array(
 							'L\'entretien régulier représente l\'essentiel de notre activité : un à cinq passages par semaine, un volume d\'heures défini, un planning convenu et un tarif mensuel prévisible. C\'est le format qui donne les meilleurs résultats, parce que l\'intervenant connaît le site et que les consignes s\'affinent au fil des semaines.',
 							'L\'intervention ponctuelle répond à un besoin daté : remise en état après travaux, fin de bail, avant ouverture, grand nettoyage saisonnier, nettoyage après sinistre léger. Le tarif horaire est identique, 27 € HT/h, avec une estimation du volume d\'heures nécessaire au devis et une date confirmée selon nos disponibilités sur le secteur.',
@@ -1989,6 +2305,7 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 					array(
 						'titre' => 'Ce que nous ne faisons pas',
 						'niveau' => 'h2',
+						'grille' => false,
 						'textes' => array(
 							'La Bourgogne-Franche-Comté est une région industrielle, avec de la métallurgie, de l\'automobile, de la plasturgie, de l\'agroalimentaire, de la logistique et des établissements de santé importants. Sur ces sites, nous intervenons uniquement dans les espaces compatibles avec notre offre : bureaux administratifs, accueils, salles de réunion, sanitaires et vestiaires de bureau.',
 							'Nous ne réalisons pas de nettoyage industriel lourd, ni de nettoyage de chaînes de production, ni de nettoyage agroalimentaire spécialisé, ni de bio-nettoyage hospitalier, ni de traitement chimique, ni de désamiantage, ni d\'intervention en locaux à risque. Ces prestations relèvent d\'entreprises spécialisées, avec des protocoles et des habilitations que nous n\'avons pas.',
@@ -2003,6 +2320,7 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 					array(
 						'titre' => 'Comment démarre une collaboration',
 						'niveau' => 'h2',
+						'grille' => false,
 						'textes' => array(
 							'Tout commence par un appel ou une demande de devis en ligne. Nous parlons de votre adresse, de la surface, des espaces concernés, du rythme souhaité et de vos contraintes d\'horaires. Une visite est organisée quand la configuration le justifie ; sinon, un échange précis et quelques photos suffisent pour établir un cahier des charges honnête.',
 							'Les éventuelles indemnités kilométriques dépendent de l\'adresse des locaux, du planning et des conditions d\'intervention. Elles sont précisées dans le devis, qui reste gratuit et sans engagement. Les conditions d\'arrêt de la prestation y figurent également. Si l\'organisation ne convient pas après quelques semaines, elle est ajustée — c\'est plus simple que de renégocier un contrat annuel.',
@@ -2020,10 +2338,16 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 				'index' => 10,
 				'fond' => 'turquoise',
 				'colonnes' => 1,
+				'cartes' => '',
+				'liste_grille' => array(
+					'colonnes' => 1,
+					'tuile' => false,
+				),
 				'blocs' => array(
 					array(
 						'titre' => 'Questions fréquentes — Bourgogne-Franche-Comté',
 						'niveau' => 'h2',
+						'grille' => false,
 						'textes' => array(),
 						'liste' => array(),
 						'liens' => array(),
@@ -2067,10 +2391,16 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 				'index' => 11,
 				'fond' => 'primary',
 				'colonnes' => 1,
+				'cartes' => '',
+				'liste_grille' => array(
+					'colonnes' => 1,
+					'tuile' => false,
+				),
 				'blocs' => array(
 					array(
 						'titre' => 'Vos locaux, où que vous soyez en région',
 						'niveau' => 'h2',
+						'grille' => false,
 						'textes' => array(
 							'Devis gratuit sous 24 h, sans engagement, au même tarif de 27 € HT/h.',
 						),
@@ -2104,10 +2434,16 @@ update_option( 'tfp_page_pourquoi-nous', array(
 				'index' => 2,
 				'fond' => 'blanc',
 				'colonnes' => 1,
+				'cartes' => '',
+				'liste_grille' => array(
+					'colonnes' => 1,
+					'tuile' => false,
+				),
 				'blocs' => array(
 					array(
 						'titre' => '',
 						'niveau' => 'h2',
+						'grille' => false,
 						'textes' => array(
 							'Audrey est votre interlocutrice identifiée du premier contact au suivi dans la durée. Elle connaît votre dossier, vos consignes et l\'historique de vos échanges — vous ne répétez jamais votre situation à un nouvel interlocuteur anonyme.',
 							'Nous choisissons avec soin les personnes qui interviennent dans vos locaux, en particulier leur fiabilité et leur sérieux, et recherchons un intervenant habituel qui connaît vos habitudes, continuité privilégiée autant que possible sans être garantie de façon absolue.',
@@ -2136,10 +2472,16 @@ update_option( 'tfp_page_pourquoi-nous', array(
 				'index' => 3,
 				'fond' => '',
 				'colonnes' => 1,
+				'cartes' => '',
+				'liste_grille' => array(
+					'colonnes' => 1,
+					'tuile' => false,
+				),
 				'blocs' => array(
 					array(
 						'titre' => 'Des preuves plutôt que des slogans',
 						'niveau' => 'h2',
+						'grille' => false,
 						'textes' => array(
 							'Nous préférons ces quelques chiffres, vérifiables, à des formules comme « satisfaction garantie » que nous nous interdisons volontairement d\'employer tant qu\'elles ne reposent pas sur une mesure réelle. Ce que nous nous engageons à faire est décrit, sans superlatif, dans notre page nettoyage professionnel.',
 						),
@@ -2164,10 +2506,16 @@ update_option( 'tfp_page_pourquoi-nous', array(
 				'index' => 4,
 				'fond' => 'blanc',
 				'colonnes' => 3,
+				'cartes' => '',
+				'liste_grille' => array(
+					'colonnes' => 1,
+					'tuile' => false,
+				),
 				'blocs' => array(
 					array(
 						'titre' => 'Ce qui nous distingue, concrètement',
 						'niveau' => 'h2',
+						'grille' => false,
 						'textes' => array(),
 						'liste' => array(),
 						'liens' => array(),
@@ -2179,6 +2527,7 @@ update_option( 'tfp_page_pourquoi-nous', array(
 					array(
 						'titre' => 'Face à une plateforme de mise en relation',
 						'niveau' => 'h3',
+						'grille' => true,
 						'textes' => array(
 							'Une plateforme met en relation et prélève une commission : l\'intervenant change souvent, le cahier des charges n\'existe pas vraiment, et il n\'y a personne à appeler quand quelque chose ne va pas. Nous faisons l\'inverse : un cahier des charges écrit, une interlocutrice identifiée, un cahier de liaison sur place, et un tarif unique annoncé avant le devis. Vous ne gérez pas une succession de prestataires, vous avez un prestataire.',
 						),
@@ -2192,6 +2541,7 @@ update_option( 'tfp_page_pourquoi-nous', array(
 					array(
 						'titre' => 'Face à un recrutement direct',
 						'niveau' => 'h3',
+						'grille' => true,
 						'textes' => array(
 							'Embaucher un agent d\'entretien suppose de rédiger l\'offre, trier les candidatures, établir le contrat, gérer la paie, les congés et les arrêts, encadrer le travail et acheter le matériel. Notre tarif horaire est plus élevé qu\'un salaire brut, mais il absorbe l\'ensemble de cette charge. Si votre besoin réel est une présence permanente sur site, nous vous dirons franchement qu\'une embauche est plus adaptée.',
 						),
@@ -2205,6 +2555,7 @@ update_option( 'tfp_page_pourquoi-nous', array(
 					array(
 						'titre' => 'Le rôle d\'Audrey',
 						'niveau' => 'h3',
+						'grille' => true,
 						'textes' => array(
 							'Audrey établit le devis, rédige le cahier des charges avec vous, choisit l\'intervenant, transmet les consignes, suit le cahier de liaison et gère les ajustements. Ce n\'est pas un rôle commercial suivi d\'un transfert vers un service anonyme : c\'est la même personne du premier appel au suivi dans la durée, joignable directement, sans standard ni ticket.',
 						),
@@ -2218,6 +2569,7 @@ update_option( 'tfp_page_pourquoi-nous', array(
 					array(
 						'titre' => 'La gestion administrative',
 						'niveau' => 'h3',
+						'grille' => true,
 						'textes' => array(
 							'Une facture mensuelle unique, un devis écrit avant toute intervention, des tarifs annoncés à l\'avance et aucune modification appliquée sans votre accord écrit. Les frais annexes — gestion mensuelle, mise en place, majoration des créneaux particuliers, indemnités kilométriques — sont détaillés sur la page Tarifs et repris sur le devis, jamais découverts sur une facture.',
 						),
@@ -2231,6 +2583,7 @@ update_option( 'tfp_page_pourquoi-nous', array(
 					array(
 						'titre' => 'Le suivi dans la durée',
 						'niveau' => 'h3',
+						'grille' => true,
 						'textes' => array(
 							'Un cahier de liaison reste sur place et trace chaque passage : ce qui a été fait, ce qui n\'a pas pu l\'être et pourquoi, les remarques et les consommables à renouveler. C\'est un outil simple, mais c\'est la seule façon honnête de savoir ce qui se passe réellement dans vos locaux quand vous n\'êtes pas là.',
 						),
@@ -2244,6 +2597,7 @@ update_option( 'tfp_page_pourquoi-nous', array(
 					array(
 						'titre' => 'Les limites de nos engagements',
 						'niveau' => 'h3',
+						'grille' => true,
 						'textes' => array(
 							'Nous recherchons un intervenant habituel sans le garantir de façon absolue. Nous recherchons activement une solution en cas d\'absence sans promettre un remplacement immédiat systématique. Nous n\'écrivons pas « satisfaction garantie » et n\'affichons aucun chiffre que nous ne pouvons pas justifier. Dire ce que nous ne faisons pas fait partie de ce que nous vendons.',
 						),
@@ -2260,10 +2614,16 @@ update_option( 'tfp_page_pourquoi-nous', array(
 				'index' => 5,
 				'fond' => '',
 				'colonnes' => 1,
+				'cartes' => '',
+				'liste_grille' => array(
+					'colonnes' => 1,
+					'tuile' => false,
+				),
 				'blocs' => array(
 					array(
 						'titre' => 'Les objections que l\'on nous adresse',
 						'niveau' => 'h2',
+						'grille' => false,
 						'textes' => array(),
 						'liste' => array(),
 						'liens' => array(),
@@ -2295,10 +2655,16 @@ update_option( 'tfp_page_pourquoi-nous', array(
 				'index' => 6,
 				'fond' => 'blanc',
 				'colonnes' => 1,
+				'cartes' => '',
+				'liste_grille' => array(
+					'colonnes' => 1,
+					'tuile' => false,
+				),
 				'blocs' => array(
 					array(
 						'titre' => 'Vérifier par vous-même',
 						'niveau' => 'h2',
+						'grille' => false,
 						'textes' => array(
 							'Nos arguments valent surtout s\'ils sont vérifiables. Ces pages détaillent ce que nous venons d\'affirmer.',
 						),
@@ -2332,10 +2698,16 @@ update_option( 'tfp_page_pourquoi-nous', array(
 				'index' => 7,
 				'fond' => 'primary',
 				'colonnes' => 1,
+				'cartes' => '',
+				'liste_grille' => array(
+					'colonnes' => 1,
+					'tuile' => false,
+				),
 				'blocs' => array(
 					array(
 						'titre' => 'Faisons connaissance',
 						'niveau' => 'h2',
+						'grille' => false,
 						'textes' => array(
 							'Un devis gratuit, ou simplement un échange sur vos besoins.',
 						),
@@ -2369,10 +2741,16 @@ update_option( 'tfp_page_notre-fonctionnement', array(
 				'index' => 2,
 				'fond' => 'blanc',
 				'colonnes' => 1,
+				'cartes' => '',
+				'liste_grille' => array(
+					'colonnes' => 1,
+					'tuile' => false,
+				),
 				'blocs' => array(
 					array(
 						'titre' => '',
 						'niveau' => 'h2',
+						'grille' => false,
 						'textes' => array(),
 						'liste' => array(),
 						'liens' => array(),
@@ -2413,10 +2791,20 @@ update_option( 'tfp_page_notre-fonctionnement', array(
 				'index' => 3,
 				'fond' => '',
 				'colonnes' => 3,
+				'cartes' => array(
+					'padding' => '20px 22px',
+					'rayon' => '14px',
+					'fond' => 'rgb(255, 255, 255)',
+				),
+				'liste_grille' => array(
+					'colonnes' => 1,
+					'tuile' => false,
+				),
 				'blocs' => array(
 					array(
 						'titre' => 'Les informations dont nous avons besoin',
 						'niveau' => 'h2',
+						'grille' => false,
 						'textes' => array(
 							'Si vous découvrez le sujet, commencez par notre page nettoyage professionnel : elle explique ce que recouvre une prestation avant même le premier échange.',
 							'Plus votre première description est précise, plus le devis est juste. Six éléments suffisent le plus souvent : le type de locaux et leur usage, la surface approximative et le nombre de pièces, le nombre de personnes réellement présentes chaque jour, le nombre de sanitaires et la présence d\'une cuisine, la fréquence souhaitée et les créneaux possibles, enfin les contraintes particulières — accès, alarme, confidentialité, revêtements fragiles, matériel à ne pas toucher. Nous ne demandons rien de plus à ce stade, et aucune information n\'est utilisée à d\'autres fins que l\'établissement du devis.',
@@ -2431,6 +2819,7 @@ update_option( 'tfp_page_notre-fonctionnement', array(
 					array(
 						'titre' => 'Transmission des consignes et premier passage',
 						'niveau' => 'h2',
+						'grille' => false,
 						'textes' => array(
 							'Une fois le devis accepté, le cahier des charges est transmis à l\'intervenant avant sa première venue, accompagné des modalités d\'accès et des points de vigilance. Le premier passage est un passage de mise en place : il sert autant à réaliser la prestation qu\'à vérifier que le temps prévu correspond à la réalité du terrain. Il n\'est pas rare qu\'il fasse apparaître un ajustement — une pièce plus longue à traiter que prévu, un créneau mal calé, un accès à revoir. Nous préférons corriger à ce moment-là, quand c\'est encore simple, plutôt que de laisser un écart s\'installer.',
 						),
@@ -2444,6 +2833,7 @@ update_option( 'tfp_page_notre-fonctionnement', array(
 					array(
 						'titre' => 'Modifier, suspendre ou arrêter',
 						'niveau' => 'h2',
+						'grille' => false,
 						'textes' => array(),
 						'liste' => array(),
 						'liens' => array(),
@@ -2455,6 +2845,7 @@ update_option( 'tfp_page_notre-fonctionnement', array(
 					array(
 						'titre' => 'Modifier la prestation',
 						'niveau' => 'h3',
+						'grille' => true,
 						'textes' => array(
 							'Un ajustement de périmètre à volume d\'heures constant se met en place rapidement, après un échange avec Audrey. Un changement de volume horaire donne lieu à un devis actualisé, soumis à votre accord avant application. Aucun tarif n\'est modifié sans accord écrit préalable.',
 						),
@@ -2468,6 +2859,7 @@ update_option( 'tfp_page_notre-fonctionnement', array(
 					array(
 						'titre' => 'Absence de l\'intervenant',
 						'niveau' => 'h3',
+						'grille' => true,
 						'textes' => array(
 							'En cas d\'absence imprévue, nous recherchons activement une solution et vous informons de l\'organisation retenue et de son délai. Nous ne promettons pas un remplacement immédiat dans tous les cas : sur certains créneaux, une information rapide vaut mieux qu\'un engagement intenable.',
 						),
@@ -2481,6 +2873,7 @@ update_option( 'tfp_page_notre-fonctionnement', array(
 					array(
 						'titre' => 'Suspendre ou arrêter',
 						'niveau' => 'h3',
+						'grille' => true,
 						'textes' => array(
 							'Une suspension temporaire — fermeture annuelle, travaux, déménagement — se demande simplement et se reprend à la date que vous fixez. L\'arrêt de la prestation est possible dans les conditions prévues au devis, sans engagement de durée et sans pénalité de sortie.',
 						),
@@ -2494,6 +2887,7 @@ update_option( 'tfp_page_notre-fonctionnement', array(
 					array(
 						'titre' => 'Faire évoluer le périmètre',
 						'niveau' => 'h3',
+						'grille' => false,
 						'textes' => array(
 							'Nouveaux locaux, étage supplémentaire, ouverture d\'un second site, passage du régulier au ponctuel : le cahier des charges est repris et un devis actualisé vous est transmis, selon le même délai de 24 heures que pour une première demande.',
 						),
@@ -2527,10 +2921,16 @@ update_option( 'tfp_page_notre-fonctionnement', array(
 				'index' => 4,
 				'fond' => 'primary',
 				'colonnes' => 1,
+				'cartes' => '',
+				'liste_grille' => array(
+					'colonnes' => 1,
+					'tuile' => false,
+				),
 				'blocs' => array(
 					array(
 						'titre' => 'Prêt à démarrer ?',
 						'niveau' => 'h2',
+						'grille' => false,
 						'textes' => array(
 							'Un devis gratuit sous 24 h, sans engagement.',
 						),
@@ -2563,10 +2963,16 @@ update_option( 'tfp_page_avis-clients', array(
 				'index' => 2,
 				'fond' => '',
 				'colonnes' => 1,
+				'cartes' => '',
+				'liste_grille' => array(
+					'colonnes' => 1,
+					'tuile' => false,
+				),
 				'blocs' => array(
 					array(
 						'titre' => '',
 						'niveau' => 'h2',
+						'grille' => false,
 						'textes' => array(),
 						'liste' => array(),
 						'liens' => array(
@@ -2593,10 +2999,16 @@ update_option( 'tfp_page_avis-clients', array(
 				'index' => 3,
 				'fond' => '',
 				'colonnes' => 1,
+				'cartes' => '',
+				'liste_grille' => array(
+					'colonnes' => 1,
+					'tuile' => false,
+				),
 				'blocs' => array(
 					array(
 						'titre' => '',
 						'niveau' => 'h2',
+						'grille' => false,
 						'textes' => array(
 							'« Devis clair reçu le lendemain, sans surprise. Le respect des consignes de confidentialité dans le cabinet a tout de suite été un point fort. »',
 							'« Nettoyage de la boutique avant l\'ouverture, vitrines nickel. Les horaires ont été adaptés à nos jours de marché sans discuter. »',
@@ -2624,10 +3036,16 @@ update_option( 'tfp_page_avis-clients', array(
 				'index' => 4,
 				'fond' => '',
 				'colonnes' => 1,
+				'cartes' => '',
+				'liste_grille' => array(
+					'colonnes' => 1,
+					'tuile' => false,
+				),
 				'blocs' => array(
 					array(
 						'titre' => '',
 						'niveau' => 'h2',
+						'grille' => false,
 						'textes' => array(),
 						'liste' => array(),
 						'liens' => array(),
@@ -2692,10 +3110,16 @@ update_option( 'tfp_page_avis-clients', array(
 				'index' => 5,
 				'fond' => '',
 				'colonnes' => 1,
+				'cartes' => '',
+				'liste_grille' => array(
+					'colonnes' => 1,
+					'tuile' => false,
+				),
 				'blocs' => array(
 					array(
 						'titre' => 'Un avis ne remplace pas un devis',
 						'niveau' => 'h2',
+						'grille' => false,
 						'textes' => array(
 							'Le plus utile reste de comparer notre organisation et notre tarif à votre situation réelle.',
 						),
@@ -2729,10 +3153,16 @@ update_option( 'tfp_page_avis-clients', array(
 				'index' => 6,
 				'fond' => 'primary',
 				'colonnes' => 1,
+				'cartes' => '',
+				'liste_grille' => array(
+					'colonnes' => 1,
+					'tuile' => false,
+				),
 				'blocs' => array(
 					array(
 						'titre' => 'À votre tour ?',
 						'niveau' => 'h2',
+						'grille' => false,
 						'textes' => array(
 							'Un devis gratuit sous 24 h, au tarif de 27 € HT/h.',
 						),
@@ -2767,10 +3197,16 @@ update_option( 'tfp_page_a-propos', array(
 				'index' => 2,
 				'fond' => '',
 				'colonnes' => 1,
+				'cartes' => '',
+				'liste_grille' => array(
+					'colonnes' => 1,
+					'tuile' => false,
+				),
 				'blocs' => array(
 					array(
 						'titre' => '',
 						'niveau' => 'h2',
+						'grille' => false,
 						'textes' => array(
 							'« Mon rôle, c\'est de rester joignable et de tenir mes engagements. Chaque client sait à qui parler, et sait ce qui a été fait dans ses locaux. »',
 						),
@@ -2790,10 +3226,16 @@ update_option( 'tfp_page_a-propos', array(
 				'index' => 3,
 				'fond' => '',
 				'colonnes' => 1,
+				'cartes' => '',
+				'liste_grille' => array(
+					'colonnes' => 1,
+					'tuile' => false,
+				),
 				'blocs' => array(
 					array(
 						'titre' => '',
 						'niveau' => 'h2',
+						'grille' => false,
 						'textes' => array(
 							'Basée à Saint-Apollinaire, nous restons une entreprise régionale, pas une plateforme nationale. Audrey reste joignable directement, sans standard ni ticket à ouvrir.',
 							'Un cahier des charges défini avant chaque prestation, un cahier de liaison à chaque passage, et une organisation identique pour tous nos clients, quel que soit le département.',
@@ -2818,10 +3260,16 @@ update_option( 'tfp_page_a-propos', array(
 				'index' => 4,
 				'fond' => 'blanc',
 				'colonnes' => 1,
+				'cartes' => '',
+				'liste_grille' => array(
+					'colonnes' => 1,
+					'tuile' => false,
+				),
 				'blocs' => array(
 					array(
 						'titre' => 'Qui nous sommes',
 						'niveau' => 'h2',
+						'grille' => false,
 						'textes' => array(
 							'Top-Famille Pro est l\'activité dédiée aux professionnels de Top-Famille. Notre métier est l\'entretien de locaux à usage professionnel : bureaux, commerces, cabinets, parties communes de copropriété, locations meublées et interventions ponctuelles de remise en état. Nous ne sommes ni une plateforme de mise en relation, ni un réseau de franchises : une seule structure, une seule implantation, une seule personne responsable de la relation client.',
 						),
@@ -2835,6 +3283,7 @@ update_option( 'tfp_page_a-propos', array(
 					array(
 						'titre' => 'Notre implantation',
 						'niveau' => 'h2',
+						'grille' => false,
 						'textes' => array(
 							'Nous sommes basés à Saint-Apollinaire, aux portes de Dijon, en Côte-d\'Or. C\'est notre unique implantation : nous n\'avons pas d\'agence dans les autres départements et nous ne le prétendons pas. Depuis Saint-Apollinaire, nous intervenons sur les huit départements de la Bourgogne-Franche-Comté. Selon la distance, des indemnités kilométriques peuvent s\'appliquer ; elles sont indiquées sur le devis, avant toute intervention.',
 						),
@@ -2848,6 +3297,7 @@ update_option( 'tfp_page_a-propos', array(
 					array(
 						'titre' => 'Le rôle d\'Audrey',
 						'niveau' => 'h2',
+						'grille' => false,
 						'textes' => array(
 							'Audrey est votre interlocutrice du premier appel au suivi dans la durée. Elle établit le devis, rédige le cahier des charges avec vous, choisit l\'intervenant, lui transmet les consignes, suit le cahier de liaison et traite les ajustements. Cela signifie qu\'elle connaît votre dossier sans avoir à le relire, et que vous n\'avez jamais à réexpliquer votre situation à quelqu\'un d\'autre. Cela signifie aussi qu\'elle est parfois en intervention ou en rendez-vous : dans ce cas, elle rappelle.',
 						),
@@ -2861,6 +3311,7 @@ update_option( 'tfp_page_a-propos', array(
 					array(
 						'titre' => 'Le lien avec Top-Famille',
 						'niveau' => 'h2',
+						'grille' => false,
 						'textes' => array(
 							'Top-Famille accompagne les particuliers ; Top-Famille Pro reprend la même logique de service pour les professionnels. Ce qui est commun : la sélection des intervenants, le suivi écrit, un interlocuteur identifié, la transparence sur le tarif. Ce qui change : les horaires calés sur une activité, la confidentialité des locaux, la gestion des accès et de l\'alarme, la formalisation d\'un cahier des charges validé avec le client. Les deux activités partagent une organisation, pas un catalogue de prestations.',
 						),
@@ -2874,6 +3325,7 @@ update_option( 'tfp_page_a-propos', array(
 					array(
 						'titre' => 'Un fonctionnement régional',
 						'niveau' => 'h2',
+						'grille' => false,
 						'textes' => array(
 							'Travailler à l\'échelle d\'une région avec une seule implantation impose des choix. Nous regroupons les interventions par secteur, nous privilégions les intervenants domiciliés près des locaux à entretenir, et nous acceptons les missions dont nous pouvons réellement assurer la continuité. C\'est aussi pour cette raison que nous refusons certaines demandes trop éloignées ou trop contraintes en horaires : mieux vaut un refus clair qu\'une prestation qui se dégrade au bout de deux mois.',
 						),
@@ -2887,6 +3339,7 @@ update_option( 'tfp_page_a-propos', array(
 					array(
 						'titre' => 'Nos valeurs, traduites en actions',
 						'niveau' => 'h2',
+						'grille' => false,
 						'textes' => array(
 							'Une valeur qui ne se traduit pas en action concrète n\'a aucun intérêt. La transparence, chez nous, c\'est un tarif horaire affiché avant même le devis et des frais annexes détaillés. La rigueur, c\'est un cahier des charges écrit et un cahier de liaison rempli à chaque passage. La proximité, c\'est un numéro direct plutôt qu\'un formulaire. L\'honnêteté, c\'est écrire noir sur blanc ce que nous ne réalisons pas, et le dire dès le premier échange plutôt qu\'après la signature.',
 						),
@@ -2900,6 +3353,7 @@ update_option( 'tfp_page_a-propos', array(
 					array(
 						'titre' => 'Les limites de notre offre',
 						'niveau' => 'h2',
+						'grille' => false,
 						'textes' => array(
 							'Nous n\'intervenons pas en bio-nettoyage hospitalier, en stérilisation, sur les DASRI ni sur du matériel médical. Nous ne réalisons pas de travail en hauteur nécessitant un équipement spécialisé, ni de traitement de l\'amiante, du plomb ou des moisissures étendues. Nous n\'évacuons pas les gravats et déchets de chantier, n\'effectuons pas de petites réparations, ne gérons pas d\'espaces verts et n\'assurons pas de conciergerie. Nous ne garantissons pas non plus un même intervenant à chaque passage : nous recherchons cette continuité et la privilégions autant que possible.',
 						),
@@ -2913,6 +3367,7 @@ update_option( 'tfp_page_a-propos', array(
 					array(
 						'titre' => 'Nous contacter',
 						'niveau' => 'h2',
+						'grille' => false,
 						'textes' => array(
 							'Le plus simple reste le téléphone : décrivez vos locaux en quelques minutes et vous saurez immédiatement si nous sommes le bon prestataire. Vous pouvez aussi passer par le formulaire de demande de devis, auquel nous répondons sous 24 heures, ou par e-mail. Le devis est gratuit et sans engagement, et nous vous dirons franchement si votre besoin relève plutôt d\'une embauche directe ou d\'un prestataire spécialisé.',
 						),
@@ -2950,10 +3405,16 @@ update_option( 'tfp_page_a-propos', array(
 				'index' => 5,
 				'fond' => 'primary',
 				'colonnes' => 1,
+				'cartes' => '',
+				'liste_grille' => array(
+					'colonnes' => 1,
+					'tuile' => false,
+				),
 				'blocs' => array(
 					array(
 						'titre' => 'Parlons de vos locaux',
 						'niveau' => 'h2',
+						'grille' => false,
 						'textes' => array(),
 						'liste' => array(),
 						'liens' => array(
@@ -2988,10 +3449,16 @@ update_option( 'tfp_page_recrutement', array(
 				'index' => 2,
 				'fond' => 'blanc',
 				'colonnes' => 1,
+				'cartes' => '',
+				'liste_grille' => array(
+					'colonnes' => 1,
+					'tuile' => false,
+				),
 				'blocs' => array(
 					array(
 						'titre' => 'Les missions que nous confions',
 						'niveau' => 'h2',
+						'grille' => false,
 						'textes' => array(
 							'Entretien matinal ou en soirée, hors présence des équipes.',
 							'Avant ouverture ou après fermeture, selon les horaires du commerce.',
@@ -3016,10 +3483,16 @@ update_option( 'tfp_page_recrutement', array(
 				'index' => 3,
 				'fond' => '',
 				'colonnes' => 1,
+				'cartes' => '',
+				'liste_grille' => array(
+					'colonnes' => 1,
+					'tuile' => false,
+				),
 				'blocs' => array(
 					array(
 						'titre' => 'Ce que nous attendons',
 						'niveau' => 'h2',
+						'grille' => false,
 						'textes' => array(),
 						'liste' => array(
 							'Sérieux et ponctualité sur les créneaux convenus',
@@ -3036,6 +3509,7 @@ update_option( 'tfp_page_recrutement', array(
 					array(
 						'titre' => 'Les étapes de candidature',
 						'niveau' => 'h2',
+						'grille' => false,
 						'textes' => array(),
 						'liste' => array(),
 						'liens' => array(),
@@ -3057,10 +3531,16 @@ update_option( 'tfp_page_recrutement', array(
 				'index' => 4,
 				'fond' => 'blanc',
 				'colonnes' => 1,
+				'cartes' => '',
+				'liste_grille' => array(
+					'colonnes' => 1,
+					'tuile' => false,
+				),
 				'blocs' => array(
 					array(
 						'titre' => 'Envie de nous rejoindre ?',
 						'niveau' => 'h2',
+						'grille' => false,
 						'textes' => array(
 							'Envoyez-nous votre candidature et vos disponibilités. Nous étudions chaque profil avec attention.',
 						),

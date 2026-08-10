@@ -182,6 +182,40 @@ function tfp_static_page_data( $key ) {
 }
 
 /**
+ * Regroupe les blocs consécutifs d'une bande qui appartiennent à une même rangée.
+ *
+ * Une bande de la maquette mêle couramment un bloc d'introduction sur toute la largeur et une
+ * rangée de cartes. Appliquer la grille à la bande entière rangeait l'introduction dans la
+ * première colonne, à côté des cartes — sur la page pilier, cela déformait cinq bandes sur dix-sept.
+ *
+ * Chaque bloc porte un indicateur `grille`, relevé sur le rendu du prototype par
+ * tools/generate-pages.mjs : vrai si son titre partage son ordonnée avec un autre titre. Cette
+ * fonction ne fait que découper la suite de blocs en séquences homogènes.
+ *
+ * @param array $blocs Blocs de la bande, dans l'ordre.
+ * @return array Liste de séquences, chacune étant une liste de blocs.
+ */
+function tfp_static_runs( array $blocs ) {
+	$sequences = array();
+	$courante  = array();
+	$etat      = null;
+
+	foreach ( $blocs as $bloc ) {
+		$en_rangee = ! empty( $bloc['grille'] );
+		if ( null !== $etat && $en_rangee !== $etat ) {
+			$sequences[] = $courante;
+			$courante    = array();
+		}
+		$etat       = $en_rangee;
+		$courante[] = $bloc;
+	}
+	if ( $courante ) {
+		$sequences[] = $courante;
+	}
+	return $sequences;
+}
+
+/**
  * Traduit une route interne de la maquette (`#/nos-tarifs`) en URL réelle du site.
  *
  * Le prototype est une application à routes `#/` : aucune de ces adresses n'existe côté serveur.

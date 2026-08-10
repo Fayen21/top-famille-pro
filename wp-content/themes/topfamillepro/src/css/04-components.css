@@ -171,10 +171,12 @@
 .tfp-breadcrumb__current {
   display: inline-flex;
   align-items: center;
-  /* Cible tactile : le fil d'Ariane reste en petit texte (lecture rapide), mais chaque lien
-     garde une hauteur de zone cliquable suffisante (WCAG 2.5.8) même sur mobile en cas de
-     retour à la ligne — voir includes/breadcrumbs.php pour le row-gap associé. */
-  padding: 8px 2px;
+  /* Cible tactile : le fil d'Ariane reste en petit texte (lecture rapide), mais chaque lien garde
+     la hauteur minimale de 24 px du critère WCAG 2.2 AA 2.5.8, y compris sur mobile en cas de
+     retour à la ligne — voir includes/breadcrumbs.php pour le row-gap associé.
+     Le rembourrage de 8 px portait le lien à 37 px, soit 15 px de plus que la maquette (18 px) sur
+     chacune des 53 pages, sans qu'aucune règle ne l'exige : 24 px est le seuil, pas 37. */
+  padding: 3px 2px;
   min-height: 24px;
 }
 
@@ -2427,4 +2429,35 @@ body.tfp-type-legale .tfp-section__lede {
   .tfp-zone-chapter .tfp-list-plain {
     grid-template-columns: minmax(0, 1fr);
   }
+}
+
+/* Bande de page statique dont la maquette pose les blocs en cartes. Le relevé est fait bande par
+   bande par tools/generate-pages.mjs — présence des cartes, mais aussi leur rembourrage et leur
+   rayon, qui varient de 20 à 32 px et de 12 à 18 px selon la bande. Les valeurs arrivent en
+   propriétés personnalisées posées par le composant ; celles écrites ici ne servent que de
+   repli. */
+.tfp-static-block--carte {
+  padding: var(--tfp-carte-padding, 24px);
+  border: 1px solid var(--color-border);
+  border-radius: var(--tfp-carte-rayon, 16px);
+  background: var(--color-bg-card);
+}
+
+.tfp-static-block--carte + .tfp-static-block--carte {
+  margin-top: 16px;
+}
+
+@media (max-width: 599px) {
+  .tfp-static-block--carte {
+    padding: 18px;
+  }
+}
+
+/* Séquence de blocs pleine largeur dans une bande : simple conteneur de flux, il ne sert qu'à
+   séparer les rangées en grille du reste (voir tfp_static_runs()). */
+.tfp-static-run + .tfp-static-grid,
+.tfp-static-grid + .tfp-static-run,
+.tfp-static-grid + .tfp-static-grid,
+.tfp-static-run + .tfp-static-run {
+  margin-top: 16px;
 }

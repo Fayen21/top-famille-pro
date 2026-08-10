@@ -50,6 +50,9 @@ function php(v, indent = '\t') {
 		);
 	}
 	if (typeof v === 'number') return String(v);
+	// Un booléen sérialisé en chaîne devient `'false'`, qui est **vrai** en PHP. Bug silencieux et
+	// exactement inversé : la disposition en cartes s'appliquait partout au lieu de nulle part.
+	if (typeof v === 'boolean') return v ? 'true' : 'false';
 	return "'" + String(v ?? '').replace(/\\/g, '\\\\').replace(/'/g, "\\'") + "'";
 }
 
@@ -121,12 +124,77 @@ for (const p of PAGES) {
 			return Math.max(...paliers.values());
 		};
 
+		/**
+		 * La maquette pose-t-elle les blocs de cette bande dans des cartes ?
+		 *
+		 * Même principe que pour les colonnes : c'est relevé, pas deviné. Un intertitre est « en
+		 * carte » si l'un de ses ancêtres, sous la bande, est arrondi et porte un fond ou un filet.
+		 * On tranche à la majorité — une bande mélange rarement les deux traitements, et une
+		 * exception isolée ne doit pas décider pour toute la bande.
+		 *
+		 * Sans ce relevé, /nettoyage-professionnel/ rendait 40 cartes de la maquette en texte nu,
+		 * /zones-intervention/ 18, la page région 31 : à hauteur voisine, l'écran n'avait rien à voir.
+		 */
+		const cartesOf = (sec) => {
+			const titres = [...sec.querySelectorAll('h2,h3')];
+			if (!titres.length) return null;
+			const trouvees = [];
+			for (const t of titres) {
+				for (let el = t.parentElement; el && el !== sec; el = el.parentElement) {
+					const s = getComputedStyle(el);
+					if (
+						parseFloat(s.borderRadius) >= 8 &&
+						(parseFloat(s.borderTopWidth) > 0 || s.backgroundColor !== 'rgba(0, 0, 0, 0)')
+					) {
+						trouvees.push(s);
+						break;
+					}
+				}
+			}
+			if (trouvees.length <= titres.length / 2) return null;
+			// La géométrie est relevée sur la carte réelle, pas supposée : le rembourrage varie de
+			// 16 à 32 px selon la bande, et poser 32 partout allongeait /nettoyage-professionnel/
+			// de 15 %. Le mode le plus fréquent l'emporte.
+			const mode = (cle) => {
+				const m = new Map();
+				for (const s of trouvees) m.set(s[cle], (m.get(s[cle]) || 0) + 1);
+				return [...m.entries()].sort((a, b) => b[1] - a[1])[0][0];
+			};
+			return { padding: mode('padding'), rayon: mode('borderRadius'), fond: mode('backgroundColor') };
+		};
+
+		/**
+		 * Sur combien de colonnes la maquette range-t-elle les listes d'une bande ?
+		 *
+		 * Les listes du prototype ne sont pas toutes des listes à puces : beaucoup sont des tuiles
+		 * rangées sur deux ou trois colonnes. Rendues sur une seule, elles doublaient la hauteur des
+		 * bandes concernées — 700 px de maquette rendus en 1 420 px sur « Comment choisir la bonne
+		 * fréquence » de la page pilier. Mesuré sur le premier rang de la plus grande liste.
+		 */
+		const listeColonnesOf = (sec) => {
+			const listes = [...sec.querySelectorAll('ul,ol')].filter((l) => l.children.length >= 3);
+			if (!listes.length) return { colonnes: 1, tuile: false };
+			const plus = listes.sort((a, b) => b.children.length - a.children.length)[0];
+			const y0 = Math.round(plus.children[0].getBoundingClientRect().top);
+			const rang0 = [...plus.children].filter((c) => Math.abs(Math.round(c.getBoundingClientRect().top) - y0) <= 8);
+			// Une tuile porte un fond ou un filet ; une puce n'en a pas. La distinction évite de
+			// transformer une vraie liste à puces en grille au seul motif qu'elle tient sur un rang.
+			const s = getComputedStyle(plus.children[0]);
+			const tuile = parseFloat(s.borderRadius) >= 6 || s.backgroundColor !== 'rgba(0, 0, 0, 0)';
+			return { colonnes: Math.min(4, Math.max(1, rang0.length)), tuile };
+		};
+
 		const flatten = (sec) => {
 			const out = [];
 			const walk = (el) => {
 				for (const n of el.children) {
 					const tag = n.tagName.toLowerCase();
-					if (/^h[1-6]$/.test(tag)) out.push({ t: tag, v: txt(n) });
+					if (/^h[1-6]$/.test(tag)) {
+						// L'ordonnée du titre sert à savoir, plus bas, s'il est seul sur son rang (bloc
+						// pleine largeur) ou côte à côte avec d'autres (bloc de grille).
+						const r = n.getBoundingClientRect();
+						out.push({ t: tag, v: txt(n), top: Math.round(r.top + window.scrollY) });
+					}
 					else if (tag === 'p') out.push({ t: 'p', v: txt(n) });
 					else if (tag === 'li') out.push({ t: 'li', v: txt(n) });
 					else if (tag === 'img') out.push({ t: 'img', v: n.getAttribute('alt') || '' });
@@ -200,7 +268,10 @@ for (const p of PAGES) {
 					blocs.push(cur);
 				}
 			};
-			const vide = () => ({ titre: '', niveau: 'h2', textes: [], liste: [], liens: [], noms: [], citations: [], faq: [], etapes: [] });
+			const vide = () => ({ titre: '', niveau: 'h2', grille: false, textes: [], liste: [], liens: [], noms: [], citations: [], faq: [], etapes: [] });
+			// Ordonnées de tous les titres de la bande : sert à décider, titre par titre, s'il est
+			// pleine largeur ou en rangée.
+			const rangs = nodes.filter((n) => n.t === 'h2' || n.t === 'h3').map((n) => n.top);
 			// Une question de FAQ est un `<span>` terminé par « ? » (la maquette y accole le « + » de
 			// l'accordéon) ; sa réponse est le paragraphe qui suit. Sans ce cas particulier, les
 			// questions finiraient en pastilles et les réponses en paragraphes détachés.
@@ -212,6 +283,14 @@ for (const p of PAGES) {
 					cur = vide();
 					cur.titre = n.v;
 					cur.niveau = n.t;
+					/*
+					 * Une bande de la maquette mélange souvent un bloc d'introduction sur toute la
+					 * largeur et une rangée de cartes. Une grille uniforme ne sait pas exprimer cela :
+					 * elle rangeait l'introduction dans la première colonne, à côté des cartes. Le
+					 * repère est direct — un titre seul sur son ordonnée est pleine largeur, un titre
+					 * qui partage son ordonnée avec d'autres appartient à une rangée.
+					 */
+					cur.grille = rangs.filter((y) => Math.abs(y - n.top) <= 8).length > 1;
 					question = null;
 				} else {
 					if (!cur) cur = vide();
@@ -250,7 +329,7 @@ for (const p of PAGES) {
 				}
 			}
 			push();
-			if (blocs.length) out.push({ index: i, fond: fondOf(sec), colonnes: colonnesOf(sec), blocs });
+			if (blocs.length) out.push({ index: i, fond: fondOf(sec), colonnes: colonnesOf(sec), cartes: cartesOf(sec), liste_grille: listeColonnesOf(sec), blocs });
 		});
 
 		// Accroche du hero : les paragraphes qui précèdent le premier H2 de la section du H1.

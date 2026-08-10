@@ -51,12 +51,39 @@ foreach ( $data['sections'] as $section ) {
 	 * ce qui reste lisible — l'inverse ne l'est pas.
 	 */
 	$colonnes = max( 1, min( 4, (int) ( $section['colonnes'] ?? 1 ) ) );
-	$grille   = $colonnes > 1 && count( $section['blocs'] ) > 1;
+
+	/*
+	 * Traitement en cartes : relevé lui aussi sur le rendu de la maquette, bande par bande. Le
+	 * composant rendait tout en texte nu ; le prototype pose une partie de ces bandes dans des
+	 * cartes blanches encadrées. À hauteur voisine, l'écran n'avait pas le même aspect.
+	 */
+	$carte = is_array( $section['cartes'] ?? null ) ? $section['cartes'] : null;
+	// Rembourrage et rayon relevés sur la carte réelle de la bande : ils vont de 20 à 32 px selon
+	// la bande, et en poser 32 partout allongeait /nettoyage-professionnel/ de 15 %.
+	$carte_style = $carte
+		? sprintf(
+			'--tfp-carte-padding:%s;--tfp-carte-rayon:%s',
+			preg_replace( '/[^0-9a-z%. ]/i', '', (string) $carte['padding'] ),
+			preg_replace( '/[^0-9a-z%. ]/i', '', (string) $carte['rayon'] )
+		)
+		: '';
+
+	/*
+	 * La grille s'applique par rangée, pas à toute la bande : le prototype mêle couramment un bloc
+	 * d'introduction sur toute la largeur et une rangée de cartes. Posée sur la bande entière, la
+	 * grille rangeait l'introduction dans la première colonne, à côté des cartes.
+	 */
+	$sequences = tfp_static_runs( $section['blocs'] );
 	?>
 	<section class="<?php echo esc_attr( implode( ' ', $classes ) ); ?>">
-		<div class="tfp-container<?php echo $grille ? ' tfp-static-grid tfp-static-grid--' . (int) $colonnes : ''; ?>">
+		<div class="tfp-container">
+		<?php
+		foreach ( $sequences as $sequence ) :
+			$en_grille = $colonnes > 1 && count( $sequence ) > 1 && ! empty( $sequence[0]['grille'] );
+			?>
+			<div class="<?php echo $en_grille ? esc_attr( 'tfp-static-grid tfp-static-grid--' . (int) $colonnes ) : 'tfp-static-run'; ?>">
 			<?php
-			foreach ( $section['blocs'] as $bloc ) :
+			foreach ( $sequence as $bloc ) :
 				// Les clés absentes d'un bloc généré avant l'ajout d'un type de contenu ne doivent pas
 				// faire tomber le rendu : on complète systématiquement.
 				$bloc = wp_parse_args(
@@ -69,7 +96,7 @@ foreach ( $data['sections'] as $section ) {
 				// être remplacé par de vrais avis (CLAUDE.md §5.5).
 				$provisoire = ! empty( $bloc['citations'] );
 				?>
-				<div class="tfp-static-block"<?php echo $provisoire ? ' data-tfp-provisional="1"' : ''; ?>>
+				<div class="tfp-static-block<?php echo $carte ? ' tfp-static-block--carte' : ''; ?>"<?php echo $carte_style ? ' style="' . esc_attr( $carte_style ) . '"' : ''; ?><?php echo $provisoire ? ' data-tfp-provisional="1"' : ''; ?>>
 					<?php if ( $bloc['titre'] ) : ?>
 						<?php printf( '<%1$s>%2$s</%1$s>', esc_attr( $bloc['niveau'] ), esc_html( $bloc['titre'] ) ); ?>
 					<?php endif; ?>
@@ -153,6 +180,8 @@ foreach ( $data['sections'] as $section ) {
 					<?php endif; ?>
 				</div>
 			<?php endforeach; ?>
+			</div>
+		<?php endforeach; ?>
 		</div>
 	</section>
 	<?php
