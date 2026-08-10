@@ -2861,3 +2861,7 @@ body.tfp-body a.tfp-service-tile:focus-visible {
     grid-template-columns: minmax(0, 1fr);
   }
 }
+
+.tfp-note-card p {
+  margin: 0;
+}

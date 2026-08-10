@@ -11,13 +11,13 @@
 > Un conteneur qui contient visuellement plusieurs micro-cartes n’est jamais compté pour une
 > carte : il compte pour ses enfants.
 
-**53 routes × 1 largeurs · 925 anomalie(s), dont 367 grave(s)** (carte absente ou fusionnée).
+**53 routes × 1 largeurs · 713 anomalie(s), dont 259 grave(s)** (carte absente ou fusionnée).
 
 ## Synthèse
 
 | Route | Cartes 1440 px | Anomalies 1440 px |
 |---|---|---|
-| `#/` | 27 → 30 (+3) | ❌ 20 (7) |
+| `#/` | 27 → 33 (+6) | ❌ 24 (7) |
 | `#/nettoyage-professionnel` | 53 → 68 (+15) | ❌ 75 (19) |
 | `#/nos-prestations` | 12 → 25 (+13) | ❌ 31 (6) |
 | `#/service/bureaux` | 21 → 21 | ⚠️ 1 |
@@ -37,24 +37,24 @@
 | `#/departement/saone-et-loire` | 31 → 29 (-2) | ❌ 14 (4) |
 | `#/departement/yonne` | 31 → 29 (-2) | ❌ 12 (4) |
 | `#/departement/territoire-de-belfort` | 31 → 29 (-2) | ❌ 16 (4) |
-| `#/ville/dijon` | 49 → 48 (-1) | ❌ 22 (9) |
-| `#/ville/besancon` | 51 → 49 (-2) | ❌ 19 (10) |
-| `#/ville/dole` | 50 → 48 (-2) | ❌ 19 (10) |
-| `#/ville/lons-le-saunier` | 49 → 47 (-2) | ❌ 19 (10) |
-| `#/ville/nevers` | 50 → 48 (-2) | ❌ 25 (10) |
-| `#/ville/vesoul` | 49 → 47 (-2) | ❌ 22 (10) |
-| `#/ville/chalon-sur-saone` | 48 → 46 (-2) | ❌ 19 (10) |
-| `#/ville/macon` | 49 → 47 (-2) | ❌ 19 (10) |
-| `#/ville/auxerre` | 50 → 48 (-2) | ❌ 19 (10) |
-| `#/ville/belfort` | 50 → 48 (-2) | ❌ 26 (10) |
-| `#/ville/saint-apollinaire` | 44 → 42 (-2) | ❌ 23 (10) |
-| `#/ville/chenove` | 41 → 39 (-2) | ❌ 20 (10) |
-| `#/ville/quetigny` | 37 → 35 (-2) | ❌ 26 (10) |
-| `#/ville/talant` | 41 → 40 (-1) | ❌ 21 (10) |
-| `#/ville/longvic` | 43 → 41 (-2) | ❌ 25 (10) |
-| `#/ville/fontaine-les-dijon` | 43 → 42 (-1) | ❌ 22 (10) |
-| `#/ville/marsannay-la-cote` | 36 → 34 (-2) | ❌ 21 (10) |
-| `#/ville/beaune` | 41 → 39 (-2) | ❌ 22 (10) |
+| `#/ville/dijon` | 49 → 48 (-1) | ❌ 10 (3) |
+| `#/ville/besancon` | 51 → 49 (-2) | ❌ 7 (4) |
+| `#/ville/dole` | 50 → 48 (-2) | ❌ 7 (4) |
+| `#/ville/lons-le-saunier` | 49 → 47 (-2) | ❌ 7 (4) |
+| `#/ville/nevers` | 50 → 48 (-2) | ❌ 13 (4) |
+| `#/ville/vesoul` | 49 → 47 (-2) | ❌ 10 (4) |
+| `#/ville/chalon-sur-saone` | 48 → 46 (-2) | ❌ 7 (4) |
+| `#/ville/macon` | 49 → 47 (-2) | ❌ 7 (4) |
+| `#/ville/auxerre` | 50 → 48 (-2) | ❌ 7 (4) |
+| `#/ville/belfort` | 50 → 48 (-2) | ❌ 14 (4) |
+| `#/ville/saint-apollinaire` | 44 → 42 (-2) | ❌ 11 (4) |
+| `#/ville/chenove` | 41 → 39 (-2) | ❌ 8 (4) |
+| `#/ville/quetigny` | 37 → 35 (-2) | ❌ 14 (4) |
+| `#/ville/talant` | 41 → 40 (-1) | ❌ 9 (4) |
+| `#/ville/longvic` | 43 → 41 (-2) | ❌ 13 (4) |
+| `#/ville/fontaine-les-dijon` | 43 → 42 (-1) | ❌ 10 (4) |
+| `#/ville/marsannay-la-cote` | 36 → 34 (-2) | ❌ 9 (4) |
+| `#/ville/beaune` | 41 → 39 (-2) | ❌ 10 (4) |
 | `#/conseils` | 11 → 14 (+3) | ❌ 5 (1) |
 | `#/article/frequence-bureaux` | 9 → 8 (-1) | ❌ 8 (4) |
 | `#/article/cout-nettoyage-bureaux` | 5 → 7 (+2) | ⚠️ 3 |
@@ -79,25 +79,7 @@
 | `#/bourgogne-franche-comte` | 34 | 80 |
 | `#/nettoyage-professionnel` | 19 | 75 |
 | `#/avis-clients` | 14 | 60 |
-| `#/ville/besancon` | 10 | 19 |
-| `#/ville/dole` | 10 | 19 |
-| `#/ville/lons-le-saunier` | 10 | 19 |
-| `#/ville/nevers` | 10 | 25 |
-| `#/ville/vesoul` | 10 | 22 |
-| `#/ville/chalon-sur-saone` | 10 | 19 |
-| `#/ville/macon` | 10 | 19 |
-| `#/ville/auxerre` | 10 | 19 |
-| `#/ville/belfort` | 10 | 26 |
-| `#/ville/saint-apollinaire` | 10 | 23 |
-| `#/ville/chenove` | 10 | 20 |
-| `#/ville/quetigny` | 10 | 26 |
-| `#/ville/talant` | 10 | 21 |
-| `#/ville/longvic` | 10 | 25 |
-| `#/ville/fontaine-les-dijon` | 10 | 22 |
-| `#/ville/marsannay-la-cote` | 10 | 21 |
-| `#/ville/beaune` | 10 | 22 |
-| `#/ville/dijon` | 9 | 22 |
-| `#/` | 7 | 20 |
+| `#/` | 7 | 24 |
 | `#/pourquoi-top-famille-pro` | 7 | 21 |
 | `#/contact` | 7 | 9 |
 | `#/nos-prestations` | 6 | 31 |
@@ -111,7 +93,25 @@
 | `#/departement/saone-et-loire` | 4 | 14 |
 | `#/departement/yonne` | 4 | 12 |
 | `#/departement/territoire-de-belfort` | 4 | 16 |
+| `#/ville/besancon` | 4 | 7 |
+| `#/ville/dole` | 4 | 7 |
+| `#/ville/lons-le-saunier` | 4 | 7 |
+| `#/ville/nevers` | 4 | 13 |
+| `#/ville/vesoul` | 4 | 10 |
+| `#/ville/chalon-sur-saone` | 4 | 7 |
+| `#/ville/macon` | 4 | 7 |
+| `#/ville/auxerre` | 4 | 7 |
+| `#/ville/belfort` | 4 | 14 |
+| `#/ville/saint-apollinaire` | 4 | 11 |
+| `#/ville/chenove` | 4 | 8 |
+| `#/ville/quetigny` | 4 | 14 |
+| `#/ville/talant` | 4 | 9 |
+| `#/ville/longvic` | 4 | 13 |
+| `#/ville/fontaine-les-dijon` | 4 | 10 |
+| `#/ville/marsannay-la-cote` | 4 | 9 |
+| `#/ville/beaune` | 4 | 10 |
 | `#/article/frequence-bureaux` | 4 | 8 |
+| `#/ville/dijon` | 3 | 10 |
 | `#/nos-tarifs` | 2 | 13 |
 | `#/conseils` | 1 | 5 |
 | `#/demande-de-devis` | 1 | 1 |
@@ -139,7 +139,7 @@
 
 ### `#/` → `/`
 
-**1440 px** — bandes 13 → 13 · cartes 27 → 30 · 20 anomalie(s)
+**1440 px** — bandes 13 → 13 · cartes 27 → 33 · 24 anomalie(s)
 
 | Anomalie | Archétype | Bande | Détail |
 |---|---|---|---|
@@ -148,6 +148,7 @@
 | absente | `tarif` | 2 | « 27 € HT/htarif unique en région✓Devis gratuit sous 24 h✓Intervention r » |
 | absente | `tarif` | 2 | « 27 € HT/htarif unique en région » |
 | absente | `micro-carte` | 3 | « ★★★★★5,0/5 sur Google Saint-ApollinaireEntreprise régionale basée en B » |
+| type | `micro-carte` | 5 | « Cabinets & professions libéralesSanté, droit, conseil, salle » — rendue en `carte-sombre` |
 | colonnes | `temoignage` | 7 | « ★★★★★ « Même intervenante chaque semaine, un cahier de liais » — 2 colonnes attendues, 1 rendues |
 | absente | `tarif` | 9 | « Tarif horaire de base 27 € HT/h Régulier ou ponctuel · devis gratuit s » |
 | colonnes | `carte-image` | 10 | « 21 25 39 58 70 71 89 90 » — 2 colonnes attendues, 1 rendues |
@@ -158,6 +159,9 @@
 | surplus | `tarif` | 2 | « 27 € HT/h tarif unique, indiqué avant le devis ✓Devis gratuit sous 24  » |
 | surplus | `tarif` | 2 | « 27 € HT/h tarif unique, indiqué avant le devis » |
 | surplus | `micro-carte` | 3 | « Saint-Apollinaire Entreprise régionale basée en BFC Interlocutrice ide » |
+| surplus | `carte-sombre` | 5 | « Copropriétés & parties communes Halls, cages d'escalier, locaux commun » |
+| surplus | `carte-sombre` | 5 | « Locations meublées & hébergements Remise en état entre deux occupants » |
+| surplus | `carte-sombre` | 5 | « Ponctuel & remise en état Après travaux, grand nettoyage, fin de bail » |
 | surplus | `tarif` | 9 | « Tarif unique 27 € HT/h Régulier ou ponctuel · devis gratuit sous 24 h. » |
 | surplus | `micro-carte` | 10 | « Yonne 89 » |
 | surplus | `micro-carte` | 10 | « Territoire de Belfort 90 » |
@@ -573,18 +577,12 @@
 
 ### `#/ville/dijon` → `/zones-intervention/cote-dor/dijon/`
 
-**1440 px** — bandes 13 → 13 · cartes 49 → 48 · 22 anomalie(s)
+**1440 px** — bandes 13 → 13 · cartes 49 → 48 · 10 anomalie(s)
 
 | Anomalie | Archétype | Bande | Détail |
 |---|---|---|---|
 | absente | `tarif` | 3 | « 27 € HT/htarif unique en région✓Devis gratuit sous 24 h✓Intervention r » |
 | fusionnee | `tarif` | 3 | « 27 € HT/htarif unique en région » rendue dans « 27 € HT/h tarif unique en région Voir les tarifs → » |
-| absente | `carte-sombre` | 6 | « Nettoyage de bureauxOpen-spaces, salles de réunion, accueil » |
-| absente | `carte-sombre` | 6 | « Nettoyage de commercesBoutiques, showrooms, surfaces de vente » |
-| absente | `carte-sombre` | 6 | « Cabinets & professions libéralesSanté, droit, conseil, salles d'attent » |
-| absente | `carte-sombre` | 6 | « Copropriétés & parties communesHalls, cages d'escalier, locaux techniq » |
-| absente | `carte-sombre` | 6 | « Locations meublées & hébergementsMeublés, gîtes, hébergements pro » |
-| absente | `carte-sombre` | 6 | « Nettoyage ponctuel & remise en étatAprès travaux, grand nettoyage, dép » |
 | colonnes | `micro-carte` | 7 | « Exemple · bureaux en secteur tertiaire dijonnais, 12 h/mois3 » — 3 colonnes attendues, 1 rendues |
 | colonnes | `temoignage` | 7 | « ★★★★★« Nous ouvrons à 9 h et le passage est fait avant : bur » — 3 colonnes attendues, 1 rendues |
 | colonnes | `chip` | 9 | « Chevigny-Saint-Sauveur » — 3 colonnes attendues, 4 rendues |
@@ -592,110 +590,62 @@
 | colonnes | `chip` | 9 | « Ruffey-lès-Echirey » — 1 colonnes attendues, 2 rendues |
 | absente | `carte-titre-texte` | 12 | « Nous contacterAudrey est votre interlocutrice unique, de la première v » |
 | surplus | `tarif` | 3 | « 27 € HT/h tarif unique en région Voir les tarifs → » |
-| surplus | `carte-titre-texte` | 6 | « Nettoyage de bureaux Un entretien régulier et discret de vos espaces d » |
-| surplus | `carte-titre-texte` | 6 | « Nettoyage de commerces Une surface de vente impeccable à l'ouverture : » |
-| surplus | `carte-titre-texte` | 6 | « Cabinets & professions libérales L'entretien courant des cabinets médi » |
-| surplus | `carte-titre-texte` | 6 | « Copropriétés & parties communes L'entretien régulier des halls, cages  » |
-| surplus | `carte-titre-texte` | 6 | « Locations meublées & hébergements La remise en état de vos meublés et  » |
-| surplus | `carte-titre-texte` | 6 | « Nettoyage ponctuel & remise en état Une intervention ponctuelle pour u » |
 | surplus | `chip` | 9 | « Daix » |
 
 
 ### `#/ville/besancon` → `/zones-intervention/doubs/besancon/`
 
-**1440 px** — bandes 13 → 13 · cartes 51 → 49 · 19 anomalie(s)
+**1440 px** — bandes 13 → 13 · cartes 51 → 49 · 7 anomalie(s)
 
 | Anomalie | Archétype | Bande | Détail |
 |---|---|---|---|
 | absente | `tarif` | 3 | « 27 € HT/htarif unique en région✓Devis gratuit sous 24 h✓Intervention r » |
 | fusionnee | `tarif` | 3 | « 27 € HT/htarif unique en région » rendue dans « 27 € HT/h tarif unique en région Voir les tarifs → » |
-| absente | `carte-sombre` | 6 | « Nettoyage de bureauxOpen-spaces, salles de réunion, accueil » |
-| absente | `carte-sombre` | 6 | « Nettoyage de commercesBoutiques, showrooms, surfaces de vente » |
-| absente | `carte-sombre` | 6 | « Cabinets & professions libéralesSanté, droit, conseil, salles d'attent » |
-| absente | `carte-sombre` | 6 | « Copropriétés & parties communesHalls, cages d'escalier, locaux techniq » |
-| absente | `carte-sombre` | 6 | « Locations meublées & hébergementsMeublés, gîtes, hébergements pro » |
-| absente | `carte-sombre` | 6 | « Nettoyage ponctuel & remise en étatAprès travaux, grand nettoyage, dép » |
 | fusionnee | `micro-carte` | 7 | « Exemple · cabinet paramédical, 10 h/mois279 € HT/moisDeux passages de  » rendue dans « Exemple · cabinet paramédical, 10 h/mois 333 € HT/ » |
 | colonnes | `temoignage` | 7 | « ★★★★★« Le passage se fait après le dernier patient et la sal » — 3 colonnes attendues, 1 rendues |
 | absente | `carte-titre-texte` | 12 | « Nous contacterAudrey est votre interlocutrice unique, de la première v » |
 | surplus | `tarif` | 3 | « 27 € HT/h tarif unique en région Voir les tarifs → » |
-| surplus | `carte-titre-texte` | 6 | « Nettoyage de bureaux Un entretien régulier et discret de vos espaces d » |
-| surplus | `carte-titre-texte` | 6 | « Nettoyage de commerces Une surface de vente impeccable à l'ouverture : » |
-| surplus | `carte-titre-texte` | 6 | « Cabinets & professions libérales L'entretien courant des cabinets médi » |
-| surplus | `carte-titre-texte` | 6 | « Copropriétés & parties communes L'entretien régulier des halls, cages  » |
-| surplus | `carte-titre-texte` | 6 | « Locations meublées & hébergements La remise en état de vos meublés et  » |
-| surplus | `carte-titre-texte` | 6 | « Nettoyage ponctuel & remise en état Une intervention ponctuelle pour u » |
 | surplus | `micro-carte` | 7 | « Exemple · cabinet paramédical, 10 h/mois 333 € HT/mois Exemple non con » |
 
 
 ### `#/ville/dole` → `/zones-intervention/jura/dole/`
 
-**1440 px** — bandes 13 → 13 · cartes 50 → 48 · 19 anomalie(s)
+**1440 px** — bandes 13 → 13 · cartes 50 → 48 · 7 anomalie(s)
 
 | Anomalie | Archétype | Bande | Détail |
 |---|---|---|---|
 | absente | `tarif` | 3 | « 27 € HT/htarif unique en région✓Devis gratuit sous 24 h✓Intervention r » |
 | fusionnee | `tarif` | 3 | « 27 € HT/htarif unique en région » rendue dans « 27 € HT/h tarif unique en région Voir les tarifs → » |
-| absente | `carte-sombre` | 6 | « Nettoyage de bureauxOpen-spaces, salles de réunion, accueil » |
-| absente | `carte-sombre` | 6 | « Nettoyage de commercesBoutiques, showrooms, surfaces de vente » |
-| absente | `carte-sombre` | 6 | « Cabinets & professions libéralesSanté, droit, conseil, salles d'attent » |
-| absente | `carte-sombre` | 6 | « Copropriétés & parties communesHalls, cages d'escalier, locaux techniq » |
-| absente | `carte-sombre` | 6 | « Locations meublées & hébergementsMeublés, gîtes, hébergements pro » |
-| absente | `carte-sombre` | 6 | « Nettoyage ponctuel & remise en étatAprès travaux, grand nettoyage, dép » |
 | fusionnee | `micro-carte` | 7 | « Exemple · commerce en centre-ville, 16 h/mois441 € HT/moisUn passage d » rendue dans « Exemple · commerce en centre-ville, 16 h/mois 333  » |
 | colonnes | `temoignage` | 7 | « ★★★★★« J'ouvre à 9 h 30 et tout est fait avant mon arrivée,  » — 3 colonnes attendues, 1 rendues |
 | absente | `carte-titre-texte` | 12 | « Nous contacterAudrey est votre interlocutrice unique, de la première v » |
 | surplus | `tarif` | 3 | « 27 € HT/h tarif unique en région Voir les tarifs → » |
-| surplus | `carte-titre-texte` | 6 | « Nettoyage de bureaux Un entretien régulier et discret de vos espaces d » |
-| surplus | `carte-titre-texte` | 6 | « Nettoyage de commerces Une surface de vente impeccable à l'ouverture : » |
-| surplus | `carte-titre-texte` | 6 | « Cabinets & professions libérales L'entretien courant des cabinets médi » |
-| surplus | `carte-titre-texte` | 6 | « Copropriétés & parties communes L'entretien régulier des halls, cages  » |
-| surplus | `carte-titre-texte` | 6 | « Locations meublées & hébergements La remise en état de vos meublés et  » |
-| surplus | `carte-titre-texte` | 6 | « Nettoyage ponctuel & remise en état Une intervention ponctuelle pour u » |
 | surplus | `micro-carte` | 7 | « Exemple · commerce en centre-ville, 16 h/mois 333 € HT/mois Exemple no » |
 
 
 ### `#/ville/lons-le-saunier` → `/zones-intervention/jura/lons-le-saunier/`
 
-**1440 px** — bandes 13 → 13 · cartes 49 → 47 · 19 anomalie(s)
+**1440 px** — bandes 13 → 13 · cartes 49 → 47 · 7 anomalie(s)
 
 | Anomalie | Archétype | Bande | Détail |
 |---|---|---|---|
 | absente | `tarif` | 3 | « 27 € HT/htarif unique en région✓Devis gratuit sous 24 h✓Intervention r » |
 | fusionnee | `tarif` | 3 | « 27 € HT/htarif unique en région » rendue dans « 27 € HT/h tarif unique en région Voir les tarifs → » |
-| absente | `carte-sombre` | 6 | « Nettoyage de bureauxOpen-spaces, salles de réunion, accueil » |
-| absente | `carte-sombre` | 6 | « Nettoyage de commercesBoutiques, showrooms, surfaces de vente » |
-| absente | `carte-sombre` | 6 | « Cabinets & professions libéralesSanté, droit, conseil, salles d'attent » |
-| absente | `carte-sombre` | 6 | « Copropriétés & parties communesHalls, cages d'escalier, locaux techniq » |
-| absente | `carte-sombre` | 6 | « Locations meublées & hébergementsMeublés, gîtes, hébergements pro » |
-| absente | `carte-sombre` | 6 | « Nettoyage ponctuel & remise en étatAprès travaux, grand nettoyage, dép » |
 | absente | `micro-carte` | 7 | « Exemple · cabinet comptable, 8 h/mois225 € HT/moisDeux heures par sema » |
 | colonnes | `temoignage` | 7 | « ★★★★★« Le passage du vendredi soir nous permet de retrouver  » — 3 colonnes attendues, 1 rendues |
 | absente | `carte-titre-texte` | 12 | « Nous contacterAudrey est votre interlocutrice unique, de la première v » |
 | surplus | `tarif` | 3 | « 27 € HT/h tarif unique en région Voir les tarifs → » |
-| surplus | `carte-titre-texte` | 6 | « Nettoyage de bureaux Un entretien régulier et discret de vos espaces d » |
-| surplus | `carte-titre-texte` | 6 | « Nettoyage de commerces Une surface de vente impeccable à l'ouverture : » |
-| surplus | `carte-titre-texte` | 6 | « Cabinets & professions libérales L'entretien courant des cabinets médi » |
-| surplus | `carte-titre-texte` | 6 | « Copropriétés & parties communes L'entretien régulier des halls, cages  » |
-| surplus | `carte-titre-texte` | 6 | « Locations meublées & hébergements La remise en état de vos meublés et  » |
-| surplus | `carte-titre-texte` | 6 | « Nettoyage ponctuel & remise en état Une intervention ponctuelle pour u » |
 | surplus | `micro-carte` | 7 | « Exemple · cabinet comptable, 8 h/mois 333 € HT/mois Exemple non contra » |
 
 
 ### `#/ville/nevers` → `/zones-intervention/nievre/nevers/`
 
-**1440 px** — bandes 13 → 13 · cartes 50 → 48 · 25 anomalie(s)
+**1440 px** — bandes 13 → 13 · cartes 50 → 48 · 13 anomalie(s)
 
 | Anomalie | Archétype | Bande | Détail |
 |---|---|---|---|
 | absente | `tarif` | 3 | « 27 € HT/htarif unique en région✓Devis gratuit sous 24 h✓Intervention r » |
 | fusionnee | `tarif` | 3 | « 27 € HT/htarif unique en région » rendue dans « 27 € HT/h tarif unique en région Voir les tarifs → » |
-| absente | `carte-sombre` | 6 | « Nettoyage de bureauxOpen-spaces, salles de réunion, accueil » |
-| absente | `carte-sombre` | 6 | « Nettoyage de commercesBoutiques, showrooms, surfaces de vente » |
-| absente | `carte-sombre` | 6 | « Cabinets & professions libéralesSanté, droit, conseil, salles d'attent » |
-| absente | `carte-sombre` | 6 | « Copropriétés & parties communesHalls, cages d'escalier, locaux techniq » |
-| absente | `carte-sombre` | 6 | « Locations meublées & hébergementsMeublés, gîtes, hébergements pro » |
-| absente | `carte-sombre` | 6 | « Nettoyage ponctuel & remise en étatAprès travaux, grand nettoyage, dép » |
 | absente | `micro-carte` | 7 | « Exemple · copropriété, 8 h/mois225 € HT/moisDeux heures par semaine :  » |
 | colonnes | `temoignage` | 7 | « ★★★★★« Nous avions des retards de passage avec notre ancien  » — 3 colonnes attendues, 1 rendues |
 | colonnes | `chip` | 9 | « Varennes-Vauzelles » — 4 colonnes attendues, 3 rendues |
@@ -706,18 +656,12 @@
 | colonnes | `chip` | 9 | « Sermoise-sur-Loire » — 3 colonnes attendues, 4 rendues |
 | absente | `carte-titre-texte` | 12 | « Nous contacterAudrey est votre interlocutrice unique, de la première v » |
 | surplus | `tarif` | 3 | « 27 € HT/h tarif unique en région Voir les tarifs → » |
-| surplus | `carte-titre-texte` | 6 | « Nettoyage de bureaux Un entretien régulier et discret de vos espaces d » |
-| surplus | `carte-titre-texte` | 6 | « Nettoyage de commerces Une surface de vente impeccable à l'ouverture : » |
-| surplus | `carte-titre-texte` | 6 | « Cabinets & professions libérales L'entretien courant des cabinets médi » |
-| surplus | `carte-titre-texte` | 6 | « Copropriétés & parties communes L'entretien régulier des halls, cages  » |
-| surplus | `carte-titre-texte` | 6 | « Locations meublées & hébergements La remise en état de vos meublés et  » |
-| surplus | `carte-titre-texte` | 6 | « Nettoyage ponctuel & remise en état Une intervention ponctuelle pour u » |
 | surplus | `micro-carte` | 7 | « Exemple · copropriété, 8 h/mois 333 € HT/mois Exemple non contractuel. » |
 
 
 ### `#/ville/vesoul` → `/zones-intervention/haute-saone/vesoul/`
 
-**1440 px** — bandes 13 → 13 · cartes 49 → 47 · 22 anomalie(s)
+**1440 px** — bandes 13 → 13 · cartes 49 → 47 · 10 anomalie(s)
 
 | Anomalie | Archétype | Bande | Détail |
 |---|---|---|---|
@@ -726,120 +670,66 @@
 | type | `micro-carte` | 5 | « Cabinets et professions libérales » — rendue en `chip` |
 | type | `micro-carte` | 5 | « Parties communes de résidences » — rendue en `chip` |
 | type | `micro-carte` | 5 | « Locaux associatifs et de formation » — rendue en `chip` |
-| absente | `carte-sombre` | 6 | « Nettoyage de bureauxOpen-spaces, salles de réunion, accueil » |
-| absente | `carte-sombre` | 6 | « Nettoyage de commercesBoutiques, showrooms, surfaces de vente » |
-| absente | `carte-sombre` | 6 | « Cabinets & professions libéralesSanté, droit, conseil, salles d'attent » |
-| absente | `carte-sombre` | 6 | « Copropriétés & parties communesHalls, cages d'escalier, locaux techniq » |
-| absente | `carte-sombre` | 6 | « Locations meublées & hébergementsMeublés, gîtes, hébergements pro » |
-| absente | `carte-sombre` | 6 | « Nettoyage ponctuel & remise en étatAprès travaux, grand nettoyage, dép » |
 | fusionnee | `micro-carte` | 7 | « Exemple · bureaux administratifs, 10 h/mois279 € HT/moisDeux passages  » rendue dans « Exemple · bureaux administratifs, 10 h/mois 333 €  » |
 | colonnes | `temoignage` | 7 | « ★★★★★« L'intervention se fait en soirée avec un badge, sans  » — 3 colonnes attendues, 1 rendues |
 | absente | `carte-titre-texte` | 12 | « Nous contacterAudrey est votre interlocutrice unique, de la première v » |
 | surplus | `tarif` | 3 | « 27 € HT/h tarif unique en région Voir les tarifs → » |
-| surplus | `carte-titre-texte` | 6 | « Nettoyage de bureaux Un entretien régulier et discret de vos espaces d » |
-| surplus | `carte-titre-texte` | 6 | « Nettoyage de commerces Une surface de vente impeccable à l'ouverture : » |
-| surplus | `carte-titre-texte` | 6 | « Cabinets & professions libérales L'entretien courant des cabinets médi » |
-| surplus | `carte-titre-texte` | 6 | « Copropriétés & parties communes L'entretien régulier des halls, cages  » |
-| surplus | `carte-titre-texte` | 6 | « Locations meublées & hébergements La remise en état de vos meublés et  » |
-| surplus | `carte-titre-texte` | 6 | « Nettoyage ponctuel & remise en état Une intervention ponctuelle pour u » |
 | surplus | `micro-carte` | 7 | « Exemple · bureaux administratifs, 10 h/mois 333 € HT/mois Exemple non  » |
 
 
 ### `#/ville/chalon-sur-saone` → `/zones-intervention/saone-et-loire/chalon-sur-saone/`
 
-**1440 px** — bandes 13 → 13 · cartes 48 → 46 · 19 anomalie(s)
+**1440 px** — bandes 13 → 13 · cartes 48 → 46 · 7 anomalie(s)
 
 | Anomalie | Archétype | Bande | Détail |
 |---|---|---|---|
 | absente | `tarif` | 3 | « 27 € HT/htarif unique en région✓Devis gratuit sous 24 h✓Intervention r » |
 | fusionnee | `tarif` | 3 | « 27 € HT/htarif unique en région » rendue dans « 27 € HT/h tarif unique en région Voir les tarifs → » |
-| absente | `carte-sombre` | 6 | « Nettoyage de bureauxOpen-spaces, salles de réunion, accueil » |
-| absente | `carte-sombre` | 6 | « Nettoyage de commercesBoutiques, showrooms, surfaces de vente » |
-| absente | `carte-sombre` | 6 | « Cabinets & professions libéralesSanté, droit, conseil, salles d'attent » |
-| absente | `carte-sombre` | 6 | « Copropriétés & parties communesHalls, cages d'escalier, locaux techniq » |
-| absente | `carte-sombre` | 6 | « Locations meublées & hébergementsMeublés, gîtes, hébergements pro » |
-| absente | `carte-sombre` | 6 | « Nettoyage ponctuel & remise en étatAprès travaux, grand nettoyage, dép » |
 | absente | `micro-carte` | 7 | « Exemple · bureaux, 12 h/mois333 € HT/moisTrois passages d'une heure pa » |
 | colonnes | `temoignage` | 7 | « ★★★★★« Trois passages par semaine tôt le matin, avant l'arri » — 3 colonnes attendues, 1 rendues |
 | absente | `carte-titre-texte` | 12 | « Nous contacterAudrey est votre interlocutrice unique, de la première v » |
 | surplus | `tarif` | 3 | « 27 € HT/h tarif unique en région Voir les tarifs → » |
-| surplus | `carte-titre-texte` | 6 | « Nettoyage de bureaux Un entretien régulier et discret de vos espaces d » |
-| surplus | `carte-titre-texte` | 6 | « Nettoyage de commerces Une surface de vente impeccable à l'ouverture : » |
-| surplus | `carte-titre-texte` | 6 | « Cabinets & professions libérales L'entretien courant des cabinets médi » |
-| surplus | `carte-titre-texte` | 6 | « Copropriétés & parties communes L'entretien régulier des halls, cages  » |
-| surplus | `carte-titre-texte` | 6 | « Locations meublées & hébergements La remise en état de vos meublés et  » |
-| surplus | `carte-titre-texte` | 6 | « Nettoyage ponctuel & remise en état Une intervention ponctuelle pour u » |
 | surplus | `micro-carte` | 7 | « Exemple · bureaux, 12 h/mois 333 € HT/mois Exemple non contractuel. » |
 
 
 ### `#/ville/macon` → `/zones-intervention/saone-et-loire/macon/`
 
-**1440 px** — bandes 13 → 13 · cartes 49 → 47 · 19 anomalie(s)
+**1440 px** — bandes 13 → 13 · cartes 49 → 47 · 7 anomalie(s)
 
 | Anomalie | Archétype | Bande | Détail |
 |---|---|---|---|
 | absente | `tarif` | 3 | « 27 € HT/htarif unique en région✓Devis gratuit sous 24 h✓Intervention r » |
 | fusionnee | `tarif` | 3 | « 27 € HT/htarif unique en région » rendue dans « 27 € HT/h tarif unique en région Voir les tarifs → » |
-| absente | `carte-sombre` | 6 | « Nettoyage de bureauxOpen-spaces, salles de réunion, accueil » |
-| absente | `carte-sombre` | 6 | « Nettoyage de commercesBoutiques, showrooms, surfaces de vente » |
-| absente | `carte-sombre` | 6 | « Cabinets & professions libéralesSanté, droit, conseil, salles d'attent » |
-| absente | `carte-sombre` | 6 | « Copropriétés & parties communesHalls, cages d'escalier, locaux techniq » |
-| absente | `carte-sombre` | 6 | « Locations meublées & hébergementsMeublés, gîtes, hébergements pro » |
-| absente | `carte-sombre` | 6 | « Nettoyage ponctuel & remise en étatAprès travaux, grand nettoyage, dép » |
 | absente | `micro-carte` | 7 | « Exemple · cabinet de conseil, 8 h/mois225 € HT/moisDeux heures par sem » |
 | colonnes | `temoignage` | 7 | « ★★★★★« Nous recevons des clients le lundi matin : la salle d » — 3 colonnes attendues, 1 rendues |
 | absente | `carte-titre-texte` | 12 | « Nous contacterAudrey est votre interlocutrice unique, de la première v » |
 | surplus | `tarif` | 3 | « 27 € HT/h tarif unique en région Voir les tarifs → » |
-| surplus | `carte-titre-texte` | 6 | « Nettoyage de bureaux Un entretien régulier et discret de vos espaces d » |
-| surplus | `carte-titre-texte` | 6 | « Nettoyage de commerces Une surface de vente impeccable à l'ouverture : » |
-| surplus | `carte-titre-texte` | 6 | « Cabinets & professions libérales L'entretien courant des cabinets médi » |
-| surplus | `carte-titre-texte` | 6 | « Copropriétés & parties communes L'entretien régulier des halls, cages  » |
-| surplus | `carte-titre-texte` | 6 | « Locations meublées & hébergements La remise en état de vos meublés et  » |
-| surplus | `carte-titre-texte` | 6 | « Nettoyage ponctuel & remise en état Une intervention ponctuelle pour u » |
 | surplus | `micro-carte` | 7 | « Exemple · cabinet de conseil, 8 h/mois 333 € HT/mois Exemple non contr » |
 
 
 ### `#/ville/auxerre` → `/zones-intervention/yonne/auxerre/`
 
-**1440 px** — bandes 13 → 13 · cartes 50 → 48 · 19 anomalie(s)
+**1440 px** — bandes 13 → 13 · cartes 50 → 48 · 7 anomalie(s)
 
 | Anomalie | Archétype | Bande | Détail |
 |---|---|---|---|
 | absente | `tarif` | 3 | « 27 € HT/htarif unique en région✓Devis gratuit sous 24 h✓Intervention r » |
 | fusionnee | `tarif` | 3 | « 27 € HT/htarif unique en région » rendue dans « 27 € HT/h tarif unique en région Voir les tarifs → » |
-| absente | `carte-sombre` | 6 | « Nettoyage de bureauxOpen-spaces, salles de réunion, accueil » |
-| absente | `carte-sombre` | 6 | « Nettoyage de commercesBoutiques, showrooms, surfaces de vente » |
-| absente | `carte-sombre` | 6 | « Cabinets & professions libéralesSanté, droit, conseil, salles d'attent » |
-| absente | `carte-sombre` | 6 | « Copropriétés & parties communesHalls, cages d'escalier, locaux techniq » |
-| absente | `carte-sombre` | 6 | « Locations meublées & hébergementsMeublés, gîtes, hébergements pro » |
-| absente | `carte-sombre` | 6 | « Nettoyage ponctuel & remise en étatAprès travaux, grand nettoyage, dép » |
 | absente | `micro-carte` | 7 | « Exemple · bureaux de PME, 8 h/mois225 € HT/moisDeux passages d'une heu » |
 | colonnes | `temoignage` | 7 | « ★★★★★« Deux passages par semaine après la fermeture, sans qu » — 3 colonnes attendues, 1 rendues |
 | absente | `carte-titre-texte` | 12 | « Nous contacterAudrey est votre interlocutrice unique, de la première v » |
 | surplus | `tarif` | 3 | « 27 € HT/h tarif unique en région Voir les tarifs → » |
-| surplus | `carte-titre-texte` | 6 | « Nettoyage de bureaux Un entretien régulier et discret de vos espaces d » |
-| surplus | `carte-titre-texte` | 6 | « Nettoyage de commerces Une surface de vente impeccable à l'ouverture : » |
-| surplus | `carte-titre-texte` | 6 | « Cabinets & professions libérales L'entretien courant des cabinets médi » |
-| surplus | `carte-titre-texte` | 6 | « Copropriétés & parties communes L'entretien régulier des halls, cages  » |
-| surplus | `carte-titre-texte` | 6 | « Locations meublées & hébergements La remise en état de vos meublés et  » |
-| surplus | `carte-titre-texte` | 6 | « Nettoyage ponctuel & remise en état Une intervention ponctuelle pour u » |
 | surplus | `micro-carte` | 7 | « Exemple · bureaux de PME, 8 h/mois 333 € HT/mois Exemple non contractu » |
 
 
 ### `#/ville/belfort` → `/zones-intervention/territoire-de-belfort/belfort/`
 
-**1440 px** — bandes 13 → 13 · cartes 50 → 48 · 26 anomalie(s)
+**1440 px** — bandes 13 → 13 · cartes 50 → 48 · 14 anomalie(s)
 
 | Anomalie | Archétype | Bande | Détail |
 |---|---|---|---|
 | absente | `tarif` | 3 | « 27 € HT/htarif unique en région✓Devis gratuit sous 24 h✓Intervention r » |
 | fusionnee | `tarif` | 3 | « 27 € HT/htarif unique en région » rendue dans « 27 € HT/h tarif unique en région Voir les tarifs → » |
-| absente | `carte-sombre` | 6 | « Nettoyage de bureauxOpen-spaces, salles de réunion, accueil » |
-| absente | `carte-sombre` | 6 | « Nettoyage de commercesBoutiques, showrooms, surfaces de vente » |
-| absente | `carte-sombre` | 6 | « Cabinets & professions libéralesSanté, droit, conseil, salles d'attent » |
-| absente | `carte-sombre` | 6 | « Copropriétés & parties communesHalls, cages d'escalier, locaux techniq » |
-| absente | `carte-sombre` | 6 | « Locations meublées & hébergementsMeublés, gîtes, hébergements pro » |
-| absente | `carte-sombre` | 6 | « Nettoyage ponctuel & remise en étatAprès travaux, grand nettoyage, dép » |
 | fusionnee | `micro-carte` | 7 | « Exemple · bureaux d'ingénierie, 10 h/mois279 € HT/moisDeux passages de » rendue dans « Exemple · bureaux d'ingénierie, 10 h/mois 333 € HT » |
 | colonnes | `temoignage` | 7 | « ★★★★★« Le passage a lieu après le départ des équipes techniq » — 3 colonnes attendues, 1 rendues |
 | colonnes | `chip` | 9 | « Valdoie » — 6 colonnes attendues, 5 rendues |
@@ -851,29 +741,17 @@
 | colonnes | `chip` | 9 | « Pérouse » — 1 colonnes attendues, 2 rendues |
 | absente | `carte-titre-texte` | 12 | « Nous contacterAudrey est votre interlocutrice unique, de la première v » |
 | surplus | `tarif` | 3 | « 27 € HT/h tarif unique en région Voir les tarifs → » |
-| surplus | `carte-titre-texte` | 6 | « Nettoyage de bureaux Un entretien régulier et discret de vos espaces d » |
-| surplus | `carte-titre-texte` | 6 | « Nettoyage de commerces Une surface de vente impeccable à l'ouverture : » |
-| surplus | `carte-titre-texte` | 6 | « Cabinets & professions libérales L'entretien courant des cabinets médi » |
-| surplus | `carte-titre-texte` | 6 | « Copropriétés & parties communes L'entretien régulier des halls, cages  » |
-| surplus | `carte-titre-texte` | 6 | « Locations meublées & hébergements La remise en état de vos meublés et  » |
-| surplus | `carte-titre-texte` | 6 | « Nettoyage ponctuel & remise en état Une intervention ponctuelle pour u » |
 | surplus | `micro-carte` | 7 | « Exemple · bureaux d'ingénierie, 10 h/mois 333 € HT/mois Exemple non co » |
 
 
 ### `#/ville/saint-apollinaire` → `/zones-intervention/cote-dor/saint-apollinaire/`
 
-**1440 px** — bandes 13 → 13 · cartes 44 → 42 · 23 anomalie(s)
+**1440 px** — bandes 13 → 13 · cartes 44 → 42 · 11 anomalie(s)
 
 | Anomalie | Archétype | Bande | Détail |
 |---|---|---|---|
 | absente | `tarif` | 3 | « 27 € HT/htarif unique en région✓Devis gratuit sous 24 h✓Intervention r » |
 | fusionnee | `tarif` | 3 | « 27 € HT/htarif unique en région » rendue dans « 27 € HT/h tarif unique en région Voir les tarifs → » |
-| absente | `carte-sombre` | 6 | « Nettoyage de bureauxOpen-spaces, salles de réunion, accueil » |
-| absente | `carte-sombre` | 6 | « Nettoyage de commercesBoutiques, showrooms, surfaces de vente » |
-| absente | `carte-sombre` | 6 | « Cabinets & professions libéralesSanté, droit, conseil, salles d'attent » |
-| absente | `carte-sombre` | 6 | « Copropriétés & parties communesHalls, cages d'escalier, locaux techniq » |
-| absente | `carte-sombre` | 6 | « Locations meublées & hébergementsMeublés, gîtes, hébergements pro » |
-| absente | `carte-sombre` | 6 | « Nettoyage ponctuel & remise en étatAprès travaux, grand nettoyage, dép » |
 | fusionnee | `micro-carte` | 7 | « Exemple · bureaux en zone d'activité, 12 h/mois333 € HT/moisTrois pass » rendue dans « Exemple · bureaux en zone d'activité, 12 h/mois 33 » |
 | colonnes | `temoignage` | 7 | « ★★★★★« Nous sommes suivis depuis deux ans, avec le même crén » — 3 colonnes attendues, 1 rendues |
 | colonnes | `chip` | 9 | « Ruffey-lès-Echirey » — 4 colonnes attendues, 3 rendues |
@@ -882,57 +760,33 @@
 | colonnes | `chip` | 9 | « Norges-la-Ville » — 2 colonnes attendues, 1 rendues |
 | absente | `carte-titre-texte` | 12 | « Nous contacterAudrey est votre interlocutrice unique, de la première v » |
 | surplus | `tarif` | 3 | « 27 € HT/h tarif unique en région Voir les tarifs → » |
-| surplus | `carte-titre-texte` | 6 | « Nettoyage de bureaux Un entretien régulier et discret de vos espaces d » |
-| surplus | `carte-titre-texte` | 6 | « Nettoyage de commerces Une surface de vente impeccable à l'ouverture : » |
-| surplus | `carte-titre-texte` | 6 | « Cabinets & professions libérales L'entretien courant des cabinets médi » |
-| surplus | `carte-titre-texte` | 6 | « Copropriétés & parties communes L'entretien régulier des halls, cages  » |
-| surplus | `carte-titre-texte` | 6 | « Locations meublées & hébergements La remise en état de vos meublés et  » |
-| surplus | `carte-titre-texte` | 6 | « Nettoyage ponctuel & remise en état Une intervention ponctuelle pour u » |
 | surplus | `micro-carte` | 7 | « Exemple · bureaux en zone d'activité, 12 h/mois 333 € HT/mois Exemple  » |
 
 
 ### `#/ville/chenove` → `/zones-intervention/cote-dor/chenove/`
 
-**1440 px** — bandes 13 → 13 · cartes 41 → 39 · 20 anomalie(s)
+**1440 px** — bandes 13 → 13 · cartes 41 → 39 · 8 anomalie(s)
 
 | Anomalie | Archétype | Bande | Détail |
 |---|---|---|---|
 | absente | `tarif` | 3 | « 27 € HT/htarif unique en région✓Devis gratuit sous 24 h✓Intervention r » |
 | fusionnee | `tarif` | 3 | « 27 € HT/htarif unique en région » rendue dans « 27 € HT/h tarif unique en région Voir les tarifs → » |
-| absente | `carte-sombre` | 6 | « Nettoyage de bureauxOpen-spaces, salles de réunion, accueil » |
-| absente | `carte-sombre` | 6 | « Nettoyage de commercesBoutiques, showrooms, surfaces de vente » |
-| absente | `carte-sombre` | 6 | « Cabinets & professions libéralesSanté, droit, conseil, salles d'attent » |
-| absente | `carte-sombre` | 6 | « Copropriétés & parties communesHalls, cages d'escalier, locaux techniq » |
-| absente | `carte-sombre` | 6 | « Locations meublées & hébergementsMeublés, gîtes, hébergements pro » |
-| absente | `carte-sombre` | 6 | « Nettoyage ponctuel & remise en étatAprès travaux, grand nettoyage, dép » |
 | absente | `micro-carte` | 7 | « Exemple · copropriété, 8 h/mois225 € HT/moisDeux heures par semaine :  » |
 | colonnes | `temoignage` | 7 | « ★★★★★« L'entretien de nos parties communes est régulier et l » — 3 colonnes attendues, 1 rendues |
 | colonnes | `chip` | 9 | « Perrigny-lès-Dijon » — 4 colonnes attendues, 1 rendues |
 | absente | `carte-titre-texte` | 12 | « Nous contacterAudrey est votre interlocutrice unique, de la première v » |
 | surplus | `tarif` | 3 | « 27 € HT/h tarif unique en région Voir les tarifs → » |
-| surplus | `carte-titre-texte` | 6 | « Nettoyage de bureaux Un entretien régulier et discret de vos espaces d » |
-| surplus | `carte-titre-texte` | 6 | « Nettoyage de commerces Une surface de vente impeccable à l'ouverture : » |
-| surplus | `carte-titre-texte` | 6 | « Cabinets & professions libérales L'entretien courant des cabinets médi » |
-| surplus | `carte-titre-texte` | 6 | « Copropriétés & parties communes L'entretien régulier des halls, cages  » |
-| surplus | `carte-titre-texte` | 6 | « Locations meublées & hébergements La remise en état de vos meublés et  » |
-| surplus | `carte-titre-texte` | 6 | « Nettoyage ponctuel & remise en état Une intervention ponctuelle pour u » |
 | surplus | `micro-carte` | 7 | « Exemple · copropriété, 8 h/mois 333 € HT/mois Exemple non contractuel. » |
 
 
 ### `#/ville/quetigny` → `/zones-intervention/cote-dor/quetigny/`
 
-**1440 px** — bandes 13 → 13 · cartes 37 → 35 · 26 anomalie(s)
+**1440 px** — bandes 13 → 13 · cartes 37 → 35 · 14 anomalie(s)
 
 | Anomalie | Archétype | Bande | Détail |
 |---|---|---|---|
 | absente | `tarif` | 3 | « 27 € HT/htarif unique en région✓Devis gratuit sous 24 h✓Intervention r » |
 | fusionnee | `tarif` | 3 | « 27 € HT/htarif unique en région » rendue dans « 27 € HT/h tarif unique en région Voir les tarifs → » |
-| absente | `carte-sombre` | 6 | « Nettoyage de bureauxOpen-spaces, salles de réunion, accueil » |
-| absente | `carte-sombre` | 6 | « Nettoyage de commercesBoutiques, showrooms, surfaces de vente » |
-| absente | `carte-sombre` | 6 | « Cabinets & professions libéralesSanté, droit, conseil, salles d'attent » |
-| absente | `carte-sombre` | 6 | « Copropriétés & parties communesHalls, cages d'escalier, locaux techniq » |
-| absente | `carte-sombre` | 6 | « Locations meublées & hébergementsMeublés, gîtes, hébergements pro » |
-| absente | `carte-sombre` | 6 | « Nettoyage ponctuel & remise en étatAprès travaux, grand nettoyage, dép » |
 | absente | `micro-carte` | 7 | « Exemple · commerce, 20 h/mois549 € HT/moisUn passage d'une heure avant » |
 | colonnes | `temoignage` | 7 | « ★★★★★« Le passage a lieu avant l'ouverture, tous les jours t » — 3 colonnes attendues, 1 rendues |
 | colonnes | `chip` | 9 | « Centre » — 4 colonnes attendues, 3 rendues |
@@ -944,47 +798,29 @@
 | colonnes | `chip` | 9 | « Bretenière » — 1 colonnes attendues, 3 rendues |
 | absente | `carte-titre-texte` | 12 | « Nous contacterAudrey est votre interlocutrice unique, de la première v » |
 | surplus | `tarif` | 3 | « 27 € HT/h tarif unique en région Voir les tarifs → » |
-| surplus | `carte-titre-texte` | 6 | « Nettoyage de bureaux Un entretien régulier et discret de vos espaces d » |
-| surplus | `carte-titre-texte` | 6 | « Nettoyage de commerces Une surface de vente impeccable à l'ouverture : » |
-| surplus | `carte-titre-texte` | 6 | « Cabinets & professions libérales L'entretien courant des cabinets médi » |
-| surplus | `carte-titre-texte` | 6 | « Copropriétés & parties communes L'entretien régulier des halls, cages  » |
-| surplus | `carte-titre-texte` | 6 | « Locations meublées & hébergements La remise en état de vos meublés et  » |
-| surplus | `carte-titre-texte` | 6 | « Nettoyage ponctuel & remise en état Une intervention ponctuelle pour u » |
 | surplus | `micro-carte` | 7 | « Exemple · commerce, 20 h/mois 333 € HT/mois Exemple non contractuel. » |
 
 
 ### `#/ville/talant` → `/zones-intervention/cote-dor/talant/`
 
-**1440 px** — bandes 13 → 13 · cartes 41 → 40 · 21 anomalie(s)
+**1440 px** — bandes 13 → 13 · cartes 41 → 40 · 9 anomalie(s)
 
 | Anomalie | Archétype | Bande | Détail |
 |---|---|---|---|
 | absente | `tarif` | 3 | « 27 € HT/htarif unique en région✓Devis gratuit sous 24 h✓Intervention r » |
 | fusionnee | `tarif` | 3 | « 27 € HT/htarif unique en région » rendue dans « 27 € HT/h tarif unique en région Voir les tarifs → » |
-| absente | `carte-sombre` | 6 | « Nettoyage de bureauxOpen-spaces, salles de réunion, accueil » |
-| absente | `carte-sombre` | 6 | « Nettoyage de commercesBoutiques, showrooms, surfaces de vente » |
-| absente | `carte-sombre` | 6 | « Cabinets & professions libéralesSanté, droit, conseil, salles d'attent » |
-| absente | `carte-sombre` | 6 | « Copropriétés & parties communesHalls, cages d'escalier, locaux techniq » |
-| absente | `carte-sombre` | 6 | « Locations meublées & hébergementsMeublés, gîtes, hébergements pro » |
-| absente | `carte-sombre` | 6 | « Nettoyage ponctuel & remise en étatAprès travaux, grand nettoyage, dép » |
 | absente | `micro-carte` | 7 | « Exemple · résidence, 6 h/mois171 € HT/moisUn passage de 1 h 30 par sem » |
 | colonnes | `temoignage` | 7 | « ★★★★★« Le hall et l'ascenseur sont repris chaque semaine, à  » — 3 colonnes attendues, 1 rendues |
 | colonnes | `chip` | 9 | « Plombières-lès-Dijon » — 4 colonnes attendues, 2 rendues |
 | absente | `carte-titre-texte` | 12 | « Nous contacterAudrey est votre interlocutrice unique, de la première v » |
 | surplus | `tarif` | 3 | « 27 € HT/h tarif unique en région Voir les tarifs → » |
-| surplus | `carte-titre-texte` | 6 | « Nettoyage de bureaux Un entretien régulier et discret de vos espaces d » |
-| surplus | `carte-titre-texte` | 6 | « Nettoyage de commerces Une surface de vente impeccable à l'ouverture : » |
-| surplus | `carte-titre-texte` | 6 | « Cabinets & professions libérales L'entretien courant des cabinets médi » |
-| surplus | `carte-titre-texte` | 6 | « Copropriétés & parties communes L'entretien régulier des halls, cages  » |
-| surplus | `carte-titre-texte` | 6 | « Locations meublées & hébergements La remise en état de vos meublés et  » |
-| surplus | `carte-titre-texte` | 6 | « Nettoyage ponctuel & remise en état Une intervention ponctuelle pour u » |
 | surplus | `micro-carte` | 7 | « Exemple · résidence, 6 h/mois 333 € HT/mois Exemple non contractuel. » |
 | surplus | `chip` | 9 | « Daix » |
 
 
 ### `#/ville/longvic` → `/zones-intervention/cote-dor/longvic/`
 
-**1440 px** — bandes 13 → 13 · cartes 43 → 41 · 25 anomalie(s)
+**1440 px** — bandes 13 → 13 · cartes 43 → 41 · 13 anomalie(s)
 
 | Anomalie | Archétype | Bande | Détail |
 |---|---|---|---|
@@ -993,12 +829,6 @@
 | type | `micro-carte` | 5 | « Cabinets et professions libérales » — rendue en `chip` |
 | type | `micro-carte` | 5 | « Copropriétés et résidences » — rendue en `chip` |
 | type | `micro-carte` | 5 | « Locaux associatifs et de formation » — rendue en `chip` |
-| absente | `carte-sombre` | 6 | « Nettoyage de bureauxOpen-spaces, salles de réunion, accueil » |
-| absente | `carte-sombre` | 6 | « Nettoyage de commercesBoutiques, showrooms, surfaces de vente » |
-| absente | `carte-sombre` | 6 | « Cabinets & professions libéralesSanté, droit, conseil, salles d'attent » |
-| absente | `carte-sombre` | 6 | « Copropriétés & parties communesHalls, cages d'escalier, locaux techniq » |
-| absente | `carte-sombre` | 6 | « Locations meublées & hébergementsMeublés, gîtes, hébergements pro » |
-| absente | `carte-sombre` | 6 | « Nettoyage ponctuel & remise en étatAprès travaux, grand nettoyage, dép » |
 | fusionnee | `micro-carte` | 7 | « Exemple · bureaux de zone d'activité, 12 h/mois333 € HT/moisTrois pass » rendue dans « Exemple · bureaux de zone d'activité, 12 h/mois 33 » |
 | colonnes | `temoignage` | 7 | « ★★★★★« Nos bureaux sont entretenus trois matins par semaine  » — 3 colonnes attendues, 1 rendues |
 | colonnes | `chip` | 9 | « Ouges » — 5 colonnes attendues, 3 rendues |
@@ -1006,77 +836,47 @@
 | colonnes | `chip` | 9 | « Perrigny-lès-Dijon » — 5 colonnes attendues, 3 rendues |
 | absente | `carte-titre-texte` | 12 | « Nous contacterAudrey est votre interlocutrice unique, de la première v » |
 | surplus | `tarif` | 3 | « 27 € HT/h tarif unique en région Voir les tarifs → » |
-| surplus | `carte-titre-texte` | 6 | « Nettoyage de bureaux Un entretien régulier et discret de vos espaces d » |
-| surplus | `carte-titre-texte` | 6 | « Nettoyage de commerces Une surface de vente impeccable à l'ouverture : » |
-| surplus | `carte-titre-texte` | 6 | « Cabinets & professions libérales L'entretien courant des cabinets médi » |
-| surplus | `carte-titre-texte` | 6 | « Copropriétés & parties communes L'entretien régulier des halls, cages  » |
-| surplus | `carte-titre-texte` | 6 | « Locations meublées & hébergements La remise en état de vos meublés et  » |
-| surplus | `carte-titre-texte` | 6 | « Nettoyage ponctuel & remise en état Une intervention ponctuelle pour u » |
 | surplus | `micro-carte` | 7 | « Exemple · bureaux de zone d'activité, 12 h/mois 333 € HT/mois Exemple  » |
 
 
 ### `#/ville/fontaine-les-dijon` → `/zones-intervention/cote-dor/fontaine-les-dijon/`
 
-**1440 px** — bandes 13 → 13 · cartes 43 → 42 · 22 anomalie(s)
+**1440 px** — bandes 13 → 13 · cartes 43 → 42 · 10 anomalie(s)
 
 | Anomalie | Archétype | Bande | Détail |
 |---|---|---|---|
 | absente | `tarif` | 3 | « 27 € HT/htarif unique en région✓Devis gratuit sous 24 h✓Intervention r » |
 | fusionnee | `tarif` | 3 | « 27 € HT/htarif unique en région » rendue dans « 27 € HT/h tarif unique en région Voir les tarifs → » |
-| absente | `carte-sombre` | 6 | « Nettoyage de bureauxOpen-spaces, salles de réunion, accueil » |
-| absente | `carte-sombre` | 6 | « Nettoyage de commercesBoutiques, showrooms, surfaces de vente » |
-| absente | `carte-sombre` | 6 | « Cabinets & professions libéralesSanté, droit, conseil, salles d'attent » |
-| absente | `carte-sombre` | 6 | « Copropriétés & parties communesHalls, cages d'escalier, locaux techniq » |
-| absente | `carte-sombre` | 6 | « Locations meublées & hébergementsMeublés, gîtes, hébergements pro » |
-| absente | `carte-sombre` | 6 | « Nettoyage ponctuel & remise en étatAprès travaux, grand nettoyage, dép » |
 | absente | `micro-carte` | 7 | « Exemple · cabinet paramédical, 8 h/mois225 € HT/moisDeux passages d'un » |
 | colonnes | `temoignage` | 7 | « ★★★★★« Le passage se fait après la fermeture, deux fois par  » — 3 colonnes attendues, 1 rendues |
 | colonnes | `chip` | 9 | « Ahuy » — 5 colonnes attendues, 3 rendues |
 | colonnes | `chip` | 9 | « Hauteville-lès-Dijon » — 5 colonnes attendues, 3 rendues |
 | absente | `carte-titre-texte` | 12 | « Nous contacterAudrey est votre interlocutrice unique, de la première v » |
 | surplus | `tarif` | 3 | « 27 € HT/h tarif unique en région Voir les tarifs → » |
-| surplus | `carte-titre-texte` | 6 | « Nettoyage de bureaux Un entretien régulier et discret de vos espaces d » |
-| surplus | `carte-titre-texte` | 6 | « Nettoyage de commerces Une surface de vente impeccable à l'ouverture : » |
-| surplus | `carte-titre-texte` | 6 | « Cabinets & professions libérales L'entretien courant des cabinets médi » |
-| surplus | `carte-titre-texte` | 6 | « Copropriétés & parties communes L'entretien régulier des halls, cages  » |
-| surplus | `carte-titre-texte` | 6 | « Locations meublées & hébergements La remise en état de vos meublés et  » |
-| surplus | `carte-titre-texte` | 6 | « Nettoyage ponctuel & remise en état Une intervention ponctuelle pour u » |
 | surplus | `micro-carte` | 7 | « Exemple · cabinet paramédical, 8 h/mois 333 € HT/mois Exemple non cont » |
 | surplus | `chip` | 9 | « Daix » |
 
 
 ### `#/ville/marsannay-la-cote` → `/zones-intervention/cote-dor/marsannay-la-cote/`
 
-**1440 px** — bandes 13 → 13 · cartes 36 → 34 · 21 anomalie(s)
+**1440 px** — bandes 13 → 13 · cartes 36 → 34 · 9 anomalie(s)
 
 | Anomalie | Archétype | Bande | Détail |
 |---|---|---|---|
 | absente | `tarif` | 3 | « 27 € HT/htarif unique en région✓Devis gratuit sous 24 h✓Intervention r » |
 | fusionnee | `tarif` | 3 | « 27 € HT/htarif unique en région » rendue dans « 27 € HT/h tarif unique en région Voir les tarifs → » |
-| absente | `carte-sombre` | 6 | « Nettoyage de bureauxOpen-spaces, salles de réunion, accueil » |
-| absente | `carte-sombre` | 6 | « Nettoyage de commercesBoutiques, showrooms, surfaces de vente » |
-| absente | `carte-sombre` | 6 | « Cabinets & professions libéralesSanté, droit, conseil, salles d'attent » |
-| absente | `carte-sombre` | 6 | « Copropriétés & parties communesHalls, cages d'escalier, locaux techniq » |
-| absente | `carte-sombre` | 6 | « Locations meublées & hébergementsMeublés, gîtes, hébergements pro » |
-| absente | `carte-sombre` | 6 | « Nettoyage ponctuel & remise en étatAprès travaux, grand nettoyage, dép » |
 | fusionnee | `micro-carte` | 7 | « Exemple · espace d'accueil et bureaux, 10 h/mois279 € HT/moisDeux pass » rendue dans « Exemple · espace d'accueil et bureaux, 10 h/mois 3 » |
 | colonnes | `temoignage` | 7 | « ★★★★★« Nous recevons des visiteurs plusieurs jours par semai » — 3 colonnes attendues, 1 rendues |
 | colonnes | `chip` | 9 | « Couchey » — 4 colonnes attendues, 2 rendues |
 | colonnes | `chip` | 9 | « Perrigny-lès-Dijon » — 4 colonnes attendues, 2 rendues |
 | absente | `carte-titre-texte` | 12 | « Nous contacterAudrey est votre interlocutrice unique, de la première v » |
 | surplus | `tarif` | 3 | « 27 € HT/h tarif unique en région Voir les tarifs → » |
-| surplus | `carte-titre-texte` | 6 | « Nettoyage de bureaux Un entretien régulier et discret de vos espaces d » |
-| surplus | `carte-titre-texte` | 6 | « Nettoyage de commerces Une surface de vente impeccable à l'ouverture : » |
-| surplus | `carte-titre-texte` | 6 | « Cabinets & professions libérales L'entretien courant des cabinets médi » |
-| surplus | `carte-titre-texte` | 6 | « Copropriétés & parties communes L'entretien régulier des halls, cages  » |
-| surplus | `carte-titre-texte` | 6 | « Locations meublées & hébergements La remise en état de vos meublés et  » |
-| surplus | `carte-titre-texte` | 6 | « Nettoyage ponctuel & remise en état Une intervention ponctuelle pour u » |
 | surplus | `micro-carte` | 7 | « Exemple · espace d'accueil et bureaux, 10 h/mois 333 € HT/mois Exemple » |
 
 
 ### `#/ville/beaune` → `/zones-intervention/cote-dor/beaune/`
 
-**1440 px** — bandes 13 → 13 · cartes 41 → 39 · 22 anomalie(s)
+**1440 px** — bandes 13 → 13 · cartes 41 → 39 · 10 anomalie(s)
 
 | Anomalie | Archétype | Bande | Détail |
 |---|---|---|---|
@@ -1085,22 +885,10 @@
 | type | `micro-carte` | 5 | « Cabinets et professions libérales » — rendue en `chip` |
 | type | `micro-carte` | 5 | « Bureaux de PME et sièges locaux » — rendue en `chip` |
 | type | `micro-carte` | 5 | « Copropriétés et résidences » — rendue en `chip` |
-| absente | `carte-sombre` | 6 | « Nettoyage de bureauxOpen-spaces, salles de réunion, accueil » |
-| absente | `carte-sombre` | 6 | « Nettoyage de commercesBoutiques, showrooms, surfaces de vente » |
-| absente | `carte-sombre` | 6 | « Cabinets & professions libéralesSanté, droit, conseil, salles d'attent » |
-| absente | `carte-sombre` | 6 | « Copropriétés & parties communesHalls, cages d'escalier, locaux techniq » |
-| absente | `carte-sombre` | 6 | « Locations meublées & hébergementsMeublés, gîtes, hébergements pro » |
-| absente | `carte-sombre` | 6 | « Nettoyage ponctuel & remise en étatAprès travaux, grand nettoyage, dép » |
 | fusionnee | `micro-carte` | 7 | « Exemple · commerce intra-muros, 16 h/mois441 € HT/moisUn passage d'une » rendue dans « Exemple · commerce intra-muros, 16 h/mois 333 € HT » |
 | colonnes | `temoignage` | 7 | « ★★★★★« En haute saison, le passage avant ouverture fait une  » — 3 colonnes attendues, 1 rendues |
 | absente | `carte-titre-texte` | 12 | « Nous contacterAudrey est votre interlocutrice unique, de la première v » |
 | surplus | `tarif` | 3 | « 27 € HT/h tarif unique en région Voir les tarifs → » |
-| surplus | `carte-titre-texte` | 6 | « Nettoyage de bureaux Un entretien régulier et discret de vos espaces d » |
-| surplus | `carte-titre-texte` | 6 | « Nettoyage de commerces Une surface de vente impeccable à l'ouverture : » |
-| surplus | `carte-titre-texte` | 6 | « Cabinets & professions libérales L'entretien courant des cabinets médi » |
-| surplus | `carte-titre-texte` | 6 | « Copropriétés & parties communes L'entretien régulier des halls, cages  » |
-| surplus | `carte-titre-texte` | 6 | « Locations meublées & hébergements La remise en état de vos meublés et  » |
-| surplus | `carte-titre-texte` | 6 | « Nettoyage ponctuel & remise en état Une intervention ponctuelle pour u » |
 | surplus | `micro-carte` | 7 | « Exemple · commerce intra-muros, 16 h/mois 333 € HT/mois Exemple non co » |
 
 

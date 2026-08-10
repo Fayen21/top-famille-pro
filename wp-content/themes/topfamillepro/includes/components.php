@@ -277,7 +277,9 @@ function tfp_note_card( $texte, $titre = '' ) {
 		<?php if ( $titre ) : ?>
 			<h3><?php echo esc_html( $titre ); ?></h3>
 		<?php endif; ?>
-		<?php echo esc_html( $texte ); ?>
+		<?php // Le texte est un paragraphe, pas un nœud texte nu : un nœud nu n'est ni un bloc de
+			// contenu pour un lecteur d'écran, ni un bloc relevé par les outils de comparaison. ?>
+		<p><?php echo esc_html( $texte ); ?></p>
 	</div>
 	<?php
 }
