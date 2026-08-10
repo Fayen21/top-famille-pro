@@ -22,6 +22,9 @@
   --color-text: #18232D;
   --color-text-secondary: #4A6273;
   --color-text-tertiary: #58717F;
+  /* Couleur de l'accroche du hero, relevée sur la maquette : plus sombre que le texte secondaire,
+     elle assoit le chapeau sous le H1 sans le confondre avec le corps de texte. */
+  --color-text-lede: #34485A;
   --color-text-on-dark: #FFFFFF;
   --color-text-on-dark-muted: #B8E4E4;
   --color-border: #DCE7EB;
@@ -57,8 +60,16 @@
   /* Échelle des titres. Relevée sur le rendu réel de la maquette à 1440 px : le prototype ne
      fige pas une taille unique, il module la hiérarchie selon la densité de la page — 58px sur
      l'accueil, 48–54 sur les pages internes, et des H2 de 42 (accueil) à 27 (article). */
-  --fs-h1: clamp(2rem, 3.6vw, 3.125rem); /* 32–50px — H1 des pages internes */
+  /* Échelle des H1, relevée route par route sur la maquette à 1440 px : 58 accueil, 54 page
+     pilier et tarifs, 52 index et pages institutionnelles, 50 départements, 49 villes,
+     48 prestations et plan du site, 46 pages légales, 44 articles. */
+  --fs-h1: clamp(2rem, 3.6vw, 3.25rem); /* 32–52px — H1 des pages internes */
   --fs-h1-accueil: clamp(2.25rem, 4.4vw, 3.625rem); /* 36–58px — H1 du hero d'accueil */
+  --fs-h1-pilier: clamp(2.125rem, 3.9vw, 3.375rem); /* 34–54px — page pilier, tarifs */
+  --fs-h1-zone: clamp(2rem, 3.5vw, 3.0625rem); /* 32–49px — villes et communes */
+  --fs-h1-prestation: clamp(1.9375rem, 3.4vw, 3rem); /* 31–48px — prestations, plan du site */
+  --fs-h1-legale: clamp(1.875rem, 3.3vw, 2.875rem); /* 30–46px — pages légales */
+  --fs-h1-article: clamp(1.8125rem, 3.1vw, 2.75rem); /* 29–44px — articles */
   --fs-h2: clamp(1.6875rem, 3.6vw, 2.625rem); /* 27–42px — H2 de section, accueil */
   --fs-h2-dense: clamp(1.375rem, 2.2vw, 1.8125rem); /* 22–29px — pages de zone et légales */
   --fs-h2-medium: clamp(1.5rem, 2.6vw, 2.125rem); /* 24–34px — prestations et page pilier */
@@ -70,6 +81,8 @@
   --fw-medium: 500;
   --fw-semibold: 600;
   --fw-bold: 700;
+  /* La maquette rend tous ses H1 en 800, jamais en 700. */
+  --fw-extrabold: 800;
   --fw-black: 800;
 
   --lh-heading: 1.04;

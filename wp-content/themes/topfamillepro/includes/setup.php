@@ -92,6 +92,36 @@ function tfp_body_class( $classes ) {
 	}
 
 	$classes[] = 'tfp-type-' . $type;
+
+	/*
+	 * Largeur du hero, relevée sur la maquette route par route (tools/compare-styles.mjs).
+	 *
+	 * Le prototype n'a pas une seule largeur de hero : il en a deux familles. Les pages dont le
+	 * hero est sur deux colonnes (accueil, prestation, ville, page pilier, à-propos, devis) posent
+	 * leur texte dans une colonne d'environ 610 px, gérée par la mise en page de ces gabarits. Les
+	 * autres centrent un bloc étroit — 900 px pour la plupart, 820 px pour l'index des prestations
+	 * et les pages légales, 1260 px pour le plan du site. Le thème les rendait toutes à 1260 px :
+	 * les lignes de texte étaient trop longues et les pages, mécaniquement, trop courtes.
+	 *
+	 * Une classe par largeur relevée, plutôt qu'une règle par gabarit : la valeur vient de la
+	 * mesure, elle ne se déduit ni du type de contenu ni d'une intuition de mise en page.
+	 */
+	$hero = '';
+	if ( is_page( array( 'tarifs', 'zones-intervention', 'conseils', 'pourquoi-nous', 'notre-fonctionnement', 'avis-clients', 'contact' ) ) || is_home() ) {
+		$hero = '900';
+	} elseif ( is_singular( 'post' ) ) {
+		$hero = '900';
+	} elseif ( is_page( array( 'prestations', 'mentions-legales', 'politique-de-confidentialite', 'gestion-des-cookies' ) ) ) {
+		$hero = '820';
+	} elseif ( is_page( 'plan-du-site' ) ) {
+		$hero = '1260';
+	} elseif ( is_singular( 'zone' ) && 'departement' === tfp_get_field( 'niveau' ) ) {
+		$hero = '900';
+	}
+	if ( $hero ) {
+		$classes[] = 'tfp-hero-w-' . $hero;
+	}
+
 	return $classes;
 }
 add_filter( 'body_class', 'tfp_body_class' );

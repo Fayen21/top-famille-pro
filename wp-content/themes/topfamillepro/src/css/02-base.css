@@ -65,6 +65,13 @@ h1 {
   font-size: var(--fs-h1);
 }
 
+/* La maquette rend tous ses H1 en 800, sans exception — relevé sur les 53 routes. Le sélecteur est
+   préfixé par `body.tfp-body` pour la même raison que le bloc ci-dessus : il doit l'emporter sur
+   `body.tfp-body h1 { font-weight: var(--fw-bold) }`, qui pose 700 sur tous les niveaux de titre. */
+body.tfp-body h1 {
+  font-weight: var(--fw-extrabold);
+}
+
 h2 {
   font-size: var(--fs-h2);
 }
@@ -76,6 +83,38 @@ h2 {
    zone de plus de 150 px à contenu identique. Les classes viennent de tfp_body_class(). */
 body.tfp-type-accueil h1 {
   font-size: var(--fs-h1-accueil);
+}
+
+body.tfp-type-pilier h1,
+body.tfp-type-tarifs h1 {
+  font-size: var(--fs-h1-pilier);
+}
+
+body.tfp-type-zone h1 {
+  font-size: var(--fs-h1-zone);
+}
+
+/* Une page de département porte un H1 de 50 px dans la maquette, une page de ville 49 :
+   la classe de largeur de hero distingue déjà les deux, on s'en sert plutôt que d'ajouter
+   une classe de plus. */
+body.tfp-type-zone.tfp-hero-w-900 h1 {
+  font-size: var(--fs-h1);
+}
+
+body.tfp-type-prestation h1 {
+  font-size: var(--fs-h1-prestation);
+}
+
+body.tfp-type-legale h1 {
+  font-size: var(--fs-h1-legale);
+}
+
+body.tfp-type-legale.tfp-hero-w-1260 h1 {
+  font-size: var(--fs-h1-prestation);
+}
+
+body.tfp-type-article h1 {
+  font-size: var(--fs-h1-article);
 }
 
 body.tfp-type-zone h2,

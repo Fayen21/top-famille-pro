@@ -26,8 +26,11 @@
 
 .tfp-hero__lede {
   margin-top: var(--space-5);
-  font-size: clamp(17px, 1.5vw, 20px);
-  color: var(--color-text-secondary);
+  /* Même accroche que `.tfp-section__lede` : 20 px, interligne 32 px, #34485A — relevé identique
+     sur les 53 routes de la maquette. Elle était ici légèrement plus claire et plus petite. */
+  font-size: 20px;
+  line-height: 32px;
+  color: var(--color-text-lede);
   max-width: 560px;
 }
 

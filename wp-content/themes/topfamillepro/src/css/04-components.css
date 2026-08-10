@@ -8,11 +8,15 @@
   align-items: center;
   justify-content: center;
   gap: var(--space-2);
-  min-height: var(--tap-target-min);
-  padding: 14px 24px;
-  border-radius: var(--radius-md);
+  /* Géométrie relevée sur la maquette : 60 px de haut, padding 15/26, texte de 17 px, rayon 12.
+     Le thème rendait ce bouton en 52 px — moins présent que dans le prototype, sur les 53 pages,
+     alors que c'est le point de conversion du site. Le bouton compact de la barre de navigation
+     garde sa propre géométrie, elle aussi relevée (47 px, padding 12/20, 14,5 px, rayon 11). */
+  min-height: 60px;
+  padding: 15px 26px;
+  border-radius: 12px;
   font-weight: var(--fw-semibold);
-  font-size: var(--fs-md);
+  font-size: 17px;
   line-height: 1.2;
   border: 1px solid transparent;
   transition: transform var(--transition-base), box-shadow var(--transition-base), background var(--transition-base), color var(--transition-base), border-color var(--transition-base);
@@ -70,9 +74,11 @@
 }
 
 .tfp-btn--sm {
-  padding: 11px 17px;
-  font-size: var(--fs-xs);
-  min-height: 40px;
+  padding: 12px 20px;
+  border-radius: 11px;
+  font-size: 14.5px;
+  font-weight: var(--fw-bold);
+  min-height: 47px;
 }
 
 .tfp-link-arrow {
@@ -1228,9 +1234,6 @@ body.tfp-body .tfp-article-body p a {
 .tfp-section__lede {
   margin-top: 12px;
   max-width: 760px;
-  font-size: 17px;
-  line-height: 1.7;
-  color: var(--color-text-secondary);
 }
 
 .tfp-detail-grid {
@@ -2346,5 +2349,82 @@ body.tfp-body .tfp-quote-aside__tel:focus-visible {
 
   .tfp-quote-page {
     padding-block: 26px 52px;
+  }
+}
+
+/* Accroche du hero : 20 px, interligne 32 px, #34485A — relevé sur la maquette, identique sur les
+   53 routes (19 px sur les pages légales seules). Le thème la rendait en 17 px sur la couleur du
+   texte secondaire : plus petite et plus claire que le prototype, sur toutes les pages. */
+.tfp-section__lede {
+  font-size: 20px;
+  line-height: 32px;
+  color: var(--color-text-lede);
+}
+
+body.tfp-type-legale .tfp-section__lede {
+  font-size: 19px;
+  line-height: 31px;
+}
+
+/* ------------------------------------------------------------------
+   Chapitres de contenu des pages de zone — en cartes, comme la maquette.
+
+   Relevé sur le prototype (#/ville/dijon, #/departement/cote-dor) : le
+   corps de la page est une colonne de 900 px centrée, dans laquelle
+   chaque chapitre est une carte blanche de 820 px — padding 32, rayon
+   18, filet 1 px #DCE7EB, sans ombre — posée sur le fond gris clair de
+   la page. Le thème rendait ces chapitres en texte nu sur fond blanc :
+   à hauteur presque identique, l'écran n'avait pas le même aspect. Les
+   listes qu'ils contiennent deviennent des tuiles, sur trois colonnes,
+   au lieu d'une liste à puces.
+   ------------------------------------------------------------------ */
+
+.tfp-zone-chapter {
+  padding: 32px;
+  border: 1px solid var(--color-border);
+  border-radius: 18px;
+  background: var(--color-bg-card);
+}
+
+.tfp-zone-chapter + .tfp-zone-chapter {
+  margin-top: 16px;
+}
+
+.tfp-zone-chapter .tfp-list-plain {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.tfp-zone-chapter .tfp-list-plain li {
+  padding: 10px 13px;
+  border: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+  border-radius: 10px;
+  background: var(--color-bg);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* Le marqueur décoratif de la liste courante n'a pas de sens dans une tuile : la tuile est
+   elle-même le repère visuel. */
+.tfp-zone-chapter .tfp-list-plain li::before {
+  content: none;
+}
+
+@media (max-width: 899px) {
+  .tfp-zone-chapter .tfp-list-plain {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 599px) {
+  .tfp-zone-chapter {
+    padding: 20px;
+  }
+
+  .tfp-zone-chapter .tfp-list-plain {
+    grid-template-columns: minmax(0, 1fr);
   }
 }
