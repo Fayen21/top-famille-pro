@@ -2,7 +2,8 @@
 /**
  * 7. Couverture régionale.
  * Titre corrigé selon CLAUDE.md §9 : « Une couverture régionale, pas des agences fictives »
- * → « Une entreprise régionale basée à Saint-Apollinaire ». Un seul établissement (§5.2) :
+ * Titre repris mot pour mot de la maquette (décision du 10 août 2026). Il ne contredit d'ailleurs
+ * pas CLAUDE.md §5.2 : il affirme précisément qu'il n'y a pas d'agences. Un seul établissement :
  * les liens ci-dessous pointent vers des pages de zone desservie, jamais une adresse locale.
  */
 
@@ -26,7 +27,7 @@ $dept_nums = array(
 <section class="tfp-section tfp-section--turquoise">
 	<div class="tfp-container tfp-two-col">
 		<div>
-			<h2>Une entreprise régionale basée à <?php echo esc_html( $site['address_city'] ); ?></h2>
+			<h2>Une couverture régionale, pas des agences fictives</h2>
 			<p style="margin-top:14px;font-size:17px;color:var(--color-text-secondary)">
 				Nous intervenons depuis <?php echo esc_html( $site['address_city'] ); ?> sur les huit départements de la <?php echo esc_html( $site['address_region'] ); ?>, avec la même organisation partout.
 			</p>

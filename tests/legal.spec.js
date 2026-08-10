@@ -53,13 +53,12 @@ test.describe('Informations juridiques — mentions légales', () => {
 		await page.goto('/mentions-legales/');
 		const text = await page.locator('body').innerText();
 		// Confirmé le 9 août 2026 : coordonnées complètes de l'hébergeur et directrice de la
-		// publication. Le seul [À COMPLÉTER] encore admis sur cette page concerne la médiation de
-		// la consommation, dont le dispositif dépend de la nature réelle de la clientèle et n'a pas
-		// été tranché — l'écrire en clair vaut mieux que de l'inventer ou de l'omettre
-		// (CLAUDE.md §5.1).
-		const placeholders = text.match(/\[À COMPLÉTER\]/g) || [];
-		expect(placeholders.length, 'un seul placeholder admis : médiation de la consommation').toBe(1);
-		expect(text).toMatch(/Médiation de la consommation/);
+		// publication. Décision du 10 août : plus aucun placeholder visible sur le site.
+		expect(text).not.toContain('[À COMPLÉTER]');
+		// La médiation de la consommation ne concerne que les litiges avec des consommateurs
+		// (code de la consommation, art. L612-1). Top-Famille Pro vend à des professionnels : la
+		// rubrique est retirée plutôt qu'affichée vide ou remplie d'un médiateur inventé.
+		expect(text, 'la médiation de la consommation ne s’applique pas en B2B').not.toMatch(/médiation de la consommation/i);
 		expect(text).toMatch(/HOSTINGER INTERNATIONAL LIMITED/);
 		expect(text).toMatch(/Larnaca/);
 		expect(text).toMatch(/compliance@hostinger\.com/);
@@ -111,4 +110,20 @@ test.describe('Informations juridiques — données structurées', () => {
 		// graphe (CLAUDE.md — n'ajouter des données structurées que lorsque le champ est approprié).
 		expect(JSON.stringify(org)).not.toMatch(/81\.21Z/);
 	});
+});
+
+/**
+ * Contrôle transverse : aucun placeholder ne doit rester visible, sur aucune page du site.
+ * Un `[À COMPLÉTER]` publié est au mieux un aveu d'inachèvement, au pire une information légale
+ * manquante affichée au visiteur.
+ */
+test.describe('Aucun placeholder visible sur le site', () => {
+	for (const url of ['/', '/tarifs/', '/mentions-legales/', '/politique-de-confidentialite/', '/gestion-des-cookies/', '/prestations/bureaux/', '/zones-intervention/cote-dor/dijon/', '/conseils/frequence-bureaux/']) {
+		test(`aucun [À COMPLÉTER] sur ${url}`, async ({ page }) => {
+			await page.goto(url);
+			const text = await page.locator('body').innerText();
+			expect(text).not.toContain('[À COMPLÉTER]');
+			expect(text).not.toContain('À COMPLETER');
+		});
+	}
 });

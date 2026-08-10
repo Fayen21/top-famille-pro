@@ -249,3 +249,29 @@ vérifiés. Ne considérez le site prêt pour l'indexation publique qu'une fois 
 
 Le plugin `topfamillepro-content-installer.zip` suit exactement la même procédure, dans
 `public_html/wp-content/plugins/` au lieu de `themes/`.
+
+---
+
+## Décision juridique à réexaminer si la clientèle change
+
+**La rubrique « Médiation de la consommation » n'est pas publiée sur les mentions légales.**
+
+Le dispositif de médiation de la consommation (code de la consommation, articles L612-1 et
+suivants) impose à un professionnel de garantir au **consommateur** l'accès gratuit à un médiateur,
+et d'en publier les coordonnées. Il ne couvre pas les litiges entre professionnels.
+
+Top-Famille Pro vend des prestations de nettoyage à des clients professionnels — entreprises,
+commerces, cabinets, syndics, gestionnaires de meublés. Dans ce périmètre, la rubrique n'aurait
+rien à annoncer ; y afficher un médiateur non désigné serait une information fausse, et un
+placeholder visible n'a pas sa place sur des mentions légales publiées.
+
+**À réexaminer sans délai si l'un de ces cas se présente :**
+
+- vente d'une prestation à un particulier, même ponctuelle (déménagement, remise en état d'un
+  logement, entretien d'une résidence secondaire) ;
+- contrat avec un client dont l'activité relève du non-professionnel au sens du code de la
+  consommation (certaines associations, copropriétaires agissant à titre privé) ;
+- ouverture d'une offre destinée aux particuliers, distincte de l'offre Top-Famille B2C existante.
+
+Dans ces cas : adhérer à un médiateur de la consommation agréé, puis publier son nom, son adresse
+postale et son site sur les mentions légales et dans les conditions de vente.

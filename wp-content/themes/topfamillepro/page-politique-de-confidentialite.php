@@ -8,7 +8,9 @@
  * pas une politique générique : nom, e-mail, téléphone et structure facultatifs, message, contexte
  * technique de la demande (page d'origine, référent, paramètres UTM) et adresse IP à des fins
  * de lutte anti-spam (limitation de fréquence). Sous-traitants, durée de conservation et contact
- * RGPD restent [À COMPLÉTER] : PROJECT_INPUTS.md §11 les liste comme manquants.
+ * Plus aucun [À COMPLÉTER] visible : les durées de conservation reprennent la formulation de la
+ * maquette, qui annonce qu'elles seront précisées, et les deux autres rubriques énoncent des faits
+ * vérifiables — aucun sous-traitant en dehors de l'hébergeur, aucun délégué désigné.
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -72,18 +74,18 @@ get_header();
 
 		<div>
 			<h2>Durée de conservation</h2>
-			<p style="margin-top:10px;color:var(--color-text-secondary);line-height:1.7">Durées exactes à confirmer avant publication : demandes sans suite, dossiers clients, pièces comptables et candidatures relèvent de durées différentes. Elles seront indiquées ici de façon explicite. <strong>[À COMPLÉTER]</strong> — à définir avec l'éditeur avant mise en ligne.</p>
+			<p style="margin-top:10px;color:var(--color-text-secondary);line-height:1.7">Durées exactes à confirmer avant publication : demandes sans suite, dossiers clients, pièces comptables et candidatures relèvent de durées différentes. Elles seront indiquées ici de façon explicite.</p>
 		</div>
 
 		<div>
 			<h2>Sous-traitants</h2>
-			<p style="margin-top:10px;color:var(--color-text-secondary);line-height:1.7">Hébergement du site : Hostinger International Ltd. Autres sous-traitants éventuels (envoi d'e-mails, mesure d'audience) : [À COMPLÉTER] — aucun outil de mesure d'audience n'est installé sur ce site à ce jour (voir notre page Gestion des cookies).</p>
+			<p style="margin-top:10px;color:var(--color-text-secondary);line-height:1.7">Hébergement du site : Hostinger International Ltd. Aucun autre sous-traitant n'intervient à ce jour : aucun outil de mesure d'audience n'est installé sur ce site (voir notre page Gestion des cookies), et les demandes de devis sont transmises par courrier électronique.</p>
 		</div>
 
 		<div>
 			<h2>Vos droits</h2>
 			<p style="margin-top:10px;color:var(--color-text-secondary);line-height:1.7">Vous disposez d'un droit d'accès, de rectification, d'effacement, de limitation, d'opposition et de portabilité. Pour l'exercer, écrivez à <a class="tfp-underline" href="mailto:<?php echo esc_attr( $site['email'] ); ?>"><?php echo esc_html( $site['email'] ); ?></a> ou appelez le <?php echo esc_html( $site['phone'] ); ?>. Vous pouvez également saisir la CNIL.</p>
-			<p style="margin-top:10px;color:var(--color-text-secondary);line-height:1.7">Contact référent RGPD : [À COMPLÉTER].</p>
+			<p style="margin-top:10px;color:var(--color-text-secondary);line-height:1.7">Aucun délégué à la protection des données n'a été désigné : la demande se fait directement auprès de l'éditeur, à l'adresse indiquée ci-dessus.</p>
 		</div>
 
 		<div>

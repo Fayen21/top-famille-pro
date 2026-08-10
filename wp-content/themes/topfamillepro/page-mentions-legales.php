@@ -13,7 +13,15 @@
  * `tfp_site_data()` (includes/site-options.php), jamais recopiées ni recalculées ici.
  *
  * 9 août 2026 (hotfix fidélité Claude Design) : directrice de la publication et coordonnées
- * complètes de l'hébergeur confirmées, plus aucun [À COMPLÉTER] sur cette page. La section
+ * complètes de l'hébergeur confirmées, plus aucun [À COMPLÉTER] sur cette page.
+ *
+ * La rubrique « Médiation de la consommation » de la maquette n'est pas reproduite : le dispositif
+ * de médiation ne concerne que les litiges avec des consommateurs (code de la consommation,
+ * art. L612-1). Top-Famille Pro vend à des professionnels — la rubrique n'aurait rien à annoncer,
+ * et un médiateur inventé serait pire que son absence. À réexaminer si l'entreprise contracte un
+ * jour avec des particuliers (voir release/GUIDE-DEPLOIEMENT-HOSTINGER.md).
+ *
+ * La section
  * « Assurance professionnelle » est retirée (sur instruction explicite) plutôt que laissée en
  * placeholder — l'assureur et le numéro de police restent à transmettre, PROJECT_INPUTS.md §12.
  */
@@ -105,9 +113,6 @@ get_header();
 
 		<div>
 			<h2>Droit applicable</h2>
-			<h2 style="font-size:20px;margin-top:28px">Médiation de la consommation</h2>
-			<p style="margin-top:10px;color:var(--color-text-secondary);line-height:1.7">Dispositif applicable et coordonnées du médiateur : à confirmer selon la nature des clients concernés. <strong>[À COMPLÉTER]</strong> avant mise en ligne.</p>
-
 			<h2 style="font-size:20px;margin-top:28px">Droit applicable</h2>
 			<p style="margin-top:10px;color:var(--color-text-secondary);line-height:1.7">Le présent site est soumis au droit français. En cas de litige, et à défaut de résolution amiable, les tribunaux français seront seuls compétents.</p>
 		</div>
