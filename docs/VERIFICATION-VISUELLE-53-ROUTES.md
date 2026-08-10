@@ -8,7 +8,7 @@
 > cartes, taille et rayon du bouton principal, nombre de colonnes des grilles, cadrage des
 > images, fond du pied de page.
 
-**53 routes × 2 largeurs · 697 écart(s) relevé(s).**
+**53 routes × 2 largeurs · 695 écart(s) relevé(s).**
 
 ## Synthèse
 
@@ -57,7 +57,7 @@
 | `#/article/cout-nettoyage-bureaux` | ⚠️ 7 | ⚠️ 5 |
 | `#/article/cahier-des-charges-nettoyage` | ⚠️ 7 | ⚠️ 5 |
 | `#/pourquoi-top-famille-pro` | ⚠️ 8 | ⚠️ 8 |
-| `#/notre-fonctionnement` | ⚠️ 7 | ⚠️ 8 |
+| `#/notre-fonctionnement` | ⚠️ 6 | ⚠️ 7 |
 | `#/avis-clients` | ⚠️ 5 | ⚠️ 6 |
 | `#/a-propos` | ⚠️ 3 | ⚠️ 6 |
 | `#/recrutement` | ⚠️ 10 | ⚠️ 12 |
@@ -74,8 +74,8 @@
 
 - `#/ @375px — maquette 14px×5 16px×4 20px×2 18px×1 · WordPress 16px×9 20px×2 12px×1 18px×1`
 - `#/ @1440px — maquette 16px×5 14px×5 20px×2 18px×1 · WordPress 16px×10 20px×2 12px×1 18px×1`
-- `#/nettoyage-professionnel @375px — maquette 14px×13 16px×10 12px×10 11px×6 · WordPress 16px×9`
-- `#/nettoyage-professionnel @1440px — maquette 14px×13 16px×10 12px×10 11px×6 · WordPress `
+- `#/nettoyage-professionnel @375px — maquette 14px×13 16px×10 12px×10 11px×6 · WordPress 16px×17 14px×16`
+- `#/nettoyage-professionnel @1440px — maquette 14px×13 16px×10 12px×10 11px×6 · WordPress 14px×16 16px×8`
 - `#/nos-prestations @375px — maquette 14px×6 · WordPress 16px×2`
 - `#/nos-prestations @1440px — maquette 14px×6 · WordPress `
 - `#/service/bureaux @375px — maquette 12px×9 14px×5 16px×3 18px×1 · WordPress 16px×15 12px×2 18px×1`
@@ -98,8 +98,8 @@
 
 - `#/ @375px — maquette rgb(244, 247, 248)×5 rgb(255, 255, 255)×3 rgb(220, 231, 235)×2 rgb(221, 244, 243)×1 · WordPress rgb(244, 247, 248)×5 rgb(255, 255, 255)×4 rgb(220, 231, 235)×2 rgb(221, 244, 243)×1`
 - `#/ @1440px — maquette rgb(244, 247, 248)×5 rgb(255, 255, 255)×3 rgb(220, 231, 235)×2 rgba(0, 0, 0, 0)×1 · WordPress rgb(244, 247, 248)×5 rgb(255, 255, 255)×4 rgb(220, 231, 235)×2 rgba(0, 0, 0, 0)×1`
-- `#/nettoyage-professionnel @375px — maquette rgb(255, 255, 255)×23 rgba(0, 0, 0, 0)×7 rgb(244, 247, 248)×6 rgb(221, 244, 243)×4 · WordPress rgb(255, 255, 255)×9`
-- `#/nettoyage-professionnel @1440px — maquette rgb(255, 255, 255)×23 rgba(0, 0, 0, 0)×7 rgb(244, 247, 248)×6 rgb(221, 244, 243)×4 · WordPress `
+- `#/nettoyage-professionnel @375px — maquette rgb(255, 255, 255)×23 rgba(0, 0, 0, 0)×7 rgb(244, 247, 248)×6 rgb(221, 244, 243)×4 · WordPress rgb(255, 255, 255)×33`
+- `#/nettoyage-professionnel @1440px — maquette rgb(255, 255, 255)×23 rgba(0, 0, 0, 0)×7 rgb(244, 247, 248)×6 rgb(221, 244, 243)×4 · WordPress rgb(255, 255, 255)×24`
 - `#/nos-prestations @375px — maquette rgb(244, 247, 248)×6 · WordPress rgb(255, 255, 255)×2`
 - `#/nos-prestations @1440px — maquette rgb(244, 247, 248)×6 · WordPress `
 - `#/service/bureaux @375px — maquette rgb(255, 255, 255)×13 rgb(244, 247, 248)×3 rgb(23, 74, 129)×1 rgb(221, 244, 243)×1 · WordPress rgb(255, 255, 255)×14 rgb(244, 247, 248)×3 rgb(221, 244, 243)×1`
@@ -122,8 +122,8 @@
 
 - `#/ @375px — maquette 1px×11 0px×1 · WordPress 1px×12 0px×1`
 - `#/ @1440px — maquette 1px×11 5px×1 0px×1 · WordPress 1px×12 5px×1 0px×1`
-- `#/nettoyage-professionnel @375px — maquette 1px×40 · WordPress 1px×9`
-- `#/nettoyage-professionnel @1440px — maquette 1px×40 · WordPress `
+- `#/nettoyage-professionnel @375px — maquette 1px×40 · WordPress 1px×33`
+- `#/nettoyage-professionnel @1440px — maquette 1px×40 · WordPress 1px×24`
 - `#/nos-prestations @375px — maquette 1px×6 · WordPress 1px×2`
 - `#/nos-prestations @1440px — maquette 1px×6 · WordPress `
 - `#/service/bureaux @375px — maquette 1px×17 0px×1 · WordPress 1px×18`
@@ -190,10 +190,10 @@
 - `#/departement/territoire-de-belfort @375px — maquette 17 · WordPress 20 (écart 3)`
 - … et 35 autres
 
-### Nombre de cartes — 55 cas
+### Nombre de cartes — 53 cas
 
-- `#/nettoyage-professionnel @375px — maquette 40 · WordPress 9 (écart 31)`
-- `#/nettoyage-professionnel @1440px — maquette 40 · WordPress 0 (écart 40)`
+- `#/nettoyage-professionnel @375px — maquette 40 · WordPress 33 (écart 7)`
+- `#/nettoyage-professionnel @1440px — maquette 40 · WordPress 24 (écart 16)`
 - `#/nos-prestations @375px — maquette 6 · WordPress 2 (écart 4)`
 - `#/nos-prestations @1440px — maquette 6 · WordPress 0 (écart 6)`
 - `#/service/bureaux @1440px — maquette 18 · WordPress 10 (écart 8)`
@@ -203,16 +203,16 @@
 - `#/service/meubles @1440px — maquette 18 · WordPress 10 (écart 8)`
 - `#/service/ponctuel @1440px — maquette 18 · WordPress 10 (écart 8)`
 - `#/nos-tarifs @1440px — maquette 17 · WordPress 11 (écart 6)`
-- `#/zones-intervention @375px — maquette 18 · WordPress 4 (écart 14)`
-- `#/zones-intervention @1440px — maquette 18 · WordPress 0 (écart 18)`
-- `#/bourgogne-franche-comte @375px — maquette 27 · WordPress 6 (écart 21)`
-- `#/bourgogne-franche-comte @1440px — maquette 31 · WordPress 0 (écart 31)`
+- `#/zones-intervention @375px — maquette 18 · WordPress 10 (écart 8)`
+- `#/zones-intervention @1440px — maquette 18 · WordPress 6 (écart 12)`
+- `#/bourgogne-franche-comte @375px — maquette 27 · WordPress 15 (écart 12)`
+- `#/bourgogne-franche-comte @1440px — maquette 31 · WordPress 9 (écart 22)`
 - `#/departement/cote-dor @1440px — maquette 23 · WordPress 16 (écart 7)`
 - `#/departement/doubs @1440px — maquette 22 · WordPress 15 (écart 7)`
 - `#/departement/jura @1440px — maquette 23 · WordPress 16 (écart 7)`
 - `#/departement/nievre @1440px — maquette 23 · WordPress 16 (écart 7)`
 - `#/departement/haute-saone @1440px — maquette 23 · WordPress 13 (écart 10)`
-- … et 35 autres
+- … et 33 autres
 
 ### Interligne du texte — 52 cas
 
@@ -240,7 +240,7 @@
 
 ### Colonnes des grilles — 38 cas
 
-- `#/nettoyage-professionnel @1440px — maquette 3 col × 6 / 3 col × 3 / 4 col × 6 / 3 col × 3 / 3 col × 3 / 4 col × 4 · WordPress 5 col × 5 / 2 col × 6 / 4 col × 12 / 3 col × 3 / 5 col × 5`
+- `#/nettoyage-professionnel @1440px — maquette 3 col × 6 / 3 col × 3 / 4 col × 6 / 3 col × 3 / 3 col × 3 / 4 col × 4 · WordPress 5 col × 5 / 2 col × 6 / 4 col × 12 / 3 col × 3 / 3 col × 3 / 5 col × 5`
 - `#/nos-prestations @1440px — maquette 4 col × 6 / 3 col × 6 · WordPress `
 - `#/service/bureaux @1440px — maquette 3 col × 3 / 6 col × 8 · WordPress 3 col × 3 / 5 col × 10`
 - `#/service/commerces @1440px — maquette 3 col × 3 / 6 col × 8 · WordPress 3 col × 3 / 5 col × 10`
@@ -507,14 +507,14 @@
 | Largeur du conteneur | 612 | 1260 | ⚠️ |
 | Marge gauche du conteneur | 130 | 90 | ⚠️ |
 | Nombre de bandes | 19 | 19 | ✅ |
-| Nombre de cartes | 40 | 0 | ⚠️ |
-| Rayons de cartes employés | 14px×13 16px×10 12px×10 11px×6 |  | ⚠️ |
-| Fonds de cartes employés | rgb(255, 255, 255)×23 rgba(0, 0, 0, 0)×7 rgb(244, 247, 248)×6 rgb(221, 244, 243)×4 |  | ⚠️ |
-| Filets de cartes employés | 1px×40 |  | ⚠️ |
+| Nombre de cartes | 40 | 24 | ⚠️ |
+| Rayons de cartes employés | 14px×13 16px×10 12px×10 11px×6 | 14px×16 16px×8 | ⚠️ |
+| Fonds de cartes employés | rgb(255, 255, 255)×23 rgba(0, 0, 0, 0)×7 rgb(244, 247, 248)×6 rgb(221, 244, 243)×4 | rgb(255, 255, 255)×24 | ⚠️ |
+| Filets de cartes employés | 1px×40 | 1px×24 | ⚠️ |
 | Taille du bouton principal | 201×58 | 216×60 | ✅ |
 | Rayon du bouton | 12px | 12px | ✅ |
 | Fond du bouton | rgb(23, 74, 129) | rgb(23, 74, 129) | ✅ |
-| Colonnes des grilles | 3 col × 6 / 3 col × 3 / 4 col × 6 / 3 col × 3 / 3 col × 3 / 4 col × 4 | 5 col × 5 / 2 col × 6 / 4 col × 12 / 3 col × 3 / 5 col × 5 | ⚠️ |
+| Colonnes des grilles | 3 col × 6 / 3 col × 3 / 4 col × 6 / 3 col × 3 / 3 col × 3 / 4 col × 4 | 5 col × 5 / 2 col × 6 / 4 col × 12 / 3 col × 3 / 3 col × 3 / 5 col × 5 | ⚠️ |
 | Cadrage de l’image | fill | fill | ✅ |
 | Fond du pied de page | rgb(16, 38, 59) | rgb(16, 38, 59) | ✅ |
 
@@ -536,10 +536,10 @@
 | Largeur du conteneur | 339 | 375 | ⚠️ |
 | Marge gauche du conteneur | 18 | 0 | ⚠️ |
 | Nombre de bandes | 19 | 19 | ✅ |
-| Nombre de cartes | 40 | 9 | ⚠️ |
-| Rayons de cartes employés | 14px×13 16px×10 12px×10 11px×6 | 16px×9 | ⚠️ |
-| Fonds de cartes employés | rgb(255, 255, 255)×23 rgba(0, 0, 0, 0)×7 rgb(244, 247, 248)×6 rgb(221, 244, 243)×4 | rgb(255, 255, 255)×9 | ⚠️ |
-| Filets de cartes employés | 1px×40 | 1px×9 | ⚠️ |
+| Nombre de cartes | 40 | 33 | ⚠️ |
+| Rayons de cartes employés | 14px×13 16px×10 12px×10 11px×6 | 16px×17 14px×16 | ⚠️ |
+| Fonds de cartes employés | rgb(255, 255, 255)×23 rgba(0, 0, 0, 0)×7 rgb(244, 247, 248)×6 rgb(221, 244, 243)×4 | rgb(255, 255, 255)×33 | ⚠️ |
+| Filets de cartes employés | 1px×40 | 1px×33 | ⚠️ |
 | Taille du bouton principal | 201×56 | 216×60 | ✅ |
 | Rayon du bouton | 12px | 12px | ✅ |
 | Fond du bouton | rgb(23, 74, 129) | rgb(23, 74, 129) | ✅ |
@@ -1047,10 +1047,10 @@
 | Largeur du conteneur | 900 | 900 | ✅ |
 | Marge gauche du conteneur | 270 | 270 | ✅ |
 | Nombre de bandes | 13 | 13 | ✅ |
-| Nombre de cartes | 18 | 0 | ⚠️ |
-| Rayons de cartes employés | 18px×6 12px×6 10px×5 16px×1 |  | ⚠️ |
-| Fonds de cartes employés | rgb(255, 255, 255)×12 rgb(244, 247, 248)×5 rgb(221, 244, 243)×1 |  | ⚠️ |
-| Filets de cartes employés | 1px×18 |  | ⚠️ |
+| Nombre de cartes | 18 | 6 | ⚠️ |
+| Rayons de cartes employés | 18px×6 12px×6 10px×5 16px×1 | 18px×6 | ⚠️ |
+| Fonds de cartes employés | rgb(255, 255, 255)×12 rgb(244, 247, 248)×5 rgb(221, 244, 243)×1 | rgb(255, 255, 255)×6 | ⚠️ |
+| Filets de cartes employés | 1px×18 | 1px×6 | ⚠️ |
 | Taille du bouton principal | — | 216×60 | ⚠️ |
 | Rayon du bouton | — | 12px | ⚠️ |
 | Fond du bouton | — | rgb(23, 74, 129) | ⚠️ |
@@ -1076,10 +1076,10 @@
 | Largeur du conteneur | 375 | 375 | ✅ |
 | Marge gauche du conteneur | 0 | 0 | ✅ |
 | Nombre de bandes | 13 | 13 | ✅ |
-| Nombre de cartes | 18 | 4 | ⚠️ |
-| Rayons de cartes employés | 18px×6 12px×6 10px×5 16px×1 | 16px×4 | ⚠️ |
-| Fonds de cartes employés | rgb(255, 255, 255)×12 rgb(244, 247, 248)×5 rgb(221, 244, 243)×1 | rgb(255, 255, 255)×4 | ⚠️ |
-| Filets de cartes employés | 1px×18 | 1px×4 | ⚠️ |
+| Nombre de cartes | 18 | 10 | ⚠️ |
+| Rayons de cartes employés | 18px×6 12px×6 10px×5 16px×1 | 18px×6 16px×4 | ⚠️ |
+| Fonds de cartes employés | rgb(255, 255, 255)×12 rgb(244, 247, 248)×5 rgb(221, 244, 243)×1 | rgb(255, 255, 255)×10 | ⚠️ |
+| Filets de cartes employés | 1px×18 | 1px×10 | ⚠️ |
 | Taille du bouton principal | — | 216×60 | ⚠️ |
 | Rayon du bouton | — | 12px | ⚠️ |
 | Fond du bouton | — | rgb(23, 74, 129) | ⚠️ |
@@ -1107,10 +1107,10 @@
 | Largeur du conteneur | 612 | 1260 | ⚠️ |
 | Marge gauche du conteneur | 130 | 90 | ⚠️ |
 | Nombre de bandes | 12 | 12 | ✅ |
-| Nombre de cartes | 31 | 0 | ⚠️ |
-| Rayons de cartes employés | 10px×12 18px×9 12px×7 16px×3 |  | ⚠️ |
-| Fonds de cartes employés | rgb(255, 255, 255)×18 rgb(244, 247, 248)×12 rgb(221, 244, 243)×1 |  | ⚠️ |
-| Filets de cartes employés | 1px×31 |  | ⚠️ |
+| Nombre de cartes | 31 | 9 | ⚠️ |
+| Rayons de cartes employés | 10px×12 18px×9 12px×7 16px×3 | 18px×9 | ⚠️ |
+| Fonds de cartes employés | rgb(255, 255, 255)×18 rgb(244, 247, 248)×12 rgb(221, 244, 243)×1 | rgb(255, 255, 255)×9 | ⚠️ |
+| Filets de cartes employés | 1px×31 | 1px×9 | ⚠️ |
 | Taille du bouton principal | 210×60 | 216×60 | ✅ |
 | Rayon du bouton | 12px | 12px | ✅ |
 | Fond du bouton | rgb(23, 74, 129) | rgb(23, 74, 129) | ✅ |
@@ -1136,10 +1136,10 @@
 | Largeur du conteneur | 339 | 375 | ⚠️ |
 | Marge gauche du conteneur | 18 | 0 | ⚠️ |
 | Nombre de bandes | 12 | 12 | ✅ |
-| Nombre de cartes | 27 | 6 | ⚠️ |
-| Rayons de cartes employés | 18px×9 10px×8 12px×7 16px×3 | 16px×6 | ⚠️ |
-| Fonds de cartes employés | rgb(255, 255, 255)×18 rgb(244, 247, 248)×8 rgb(221, 244, 243)×1 | rgb(255, 255, 255)×6 | ⚠️ |
-| Filets de cartes employés | 1px×27 | 1px×6 | ⚠️ |
+| Nombre de cartes | 27 | 15 | ⚠️ |
+| Rayons de cartes employés | 18px×9 10px×8 12px×7 16px×3 | 18px×9 16px×6 | ⚠️ |
+| Fonds de cartes employés | rgb(255, 255, 255)×18 rgb(244, 247, 248)×8 rgb(221, 244, 243)×1 | rgb(255, 255, 255)×15 | ⚠️ |
+| Filets de cartes employés | 1px×27 | 1px×15 | ⚠️ |
 | Taille du bouton principal | 210×58 | 216×60 | ✅ |
 | Rayon du bouton | 12px | 12px | ✅ |
 | Fond du bouton | rgb(23, 74, 129) | rgb(23, 74, 129) | ✅ |
@@ -3009,7 +3009,7 @@
 
 ### `#/notre-fonctionnement` → `/notre-fonctionnement/`
 
-**1440 px** — ⚠️ 7 écart(s)
+**1440 px** — ⚠️ 6 écart(s)
 
 | Relevé | Maquette | WordPress | État |
 |---|---|---|---|
@@ -3027,10 +3027,10 @@
 | Largeur du conteneur | 900 | 900 | ✅ |
 | Marge gauche du conteneur | 270 | 270 | ✅ |
 | Nombre de bandes | 5 | 5 | ✅ |
-| Nombre de cartes | 9 | 5 | ⚠️ |
-| Rayons de cartes employés | 16px×5 14px×4 | 16px×5 | ⚠️ |
-| Fonds de cartes employés | rgb(244, 247, 248)×5 rgb(255, 255, 255)×4 | rgb(244, 247, 248)×5 | ⚠️ |
-| Filets de cartes employés | 1px×9 | 1px×5 | ⚠️ |
+| Nombre de cartes | 9 | 12 | ✅ |
+| Rayons de cartes employés | 16px×5 14px×4 | 14px×7 16px×5 | ⚠️ |
+| Fonds de cartes employés | rgb(244, 247, 248)×5 rgb(255, 255, 255)×4 | rgb(255, 255, 255)×7 rgb(244, 247, 248)×5 | ⚠️ |
+| Filets de cartes employés | 1px×9 | 1px×12 | ⚠️ |
 | Taille du bouton principal | 215×58 | 216×60 | ✅ |
 | Rayon du bouton | 12px | 12px | ✅ |
 | Fond du bouton | rgb(255, 255, 255) | rgb(23, 74, 129) | ⚠️ |
@@ -3038,7 +3038,7 @@
 | Cadrage de l’image | fill | fill | ✅ |
 | Fond du pied de page | rgb(16, 38, 59) | rgb(16, 38, 59) | ✅ |
 
-**375 px** — ⚠️ 8 écart(s)
+**375 px** — ⚠️ 7 écart(s)
 
 | Relevé | Maquette | WordPress | État |
 |---|---|---|---|
@@ -3056,10 +3056,10 @@
 | Largeur du conteneur | 375 | 375 | ✅ |
 | Marge gauche du conteneur | 0 | 0 | ✅ |
 | Nombre de bandes | 5 | 5 | ✅ |
-| Nombre de cartes | 9 | 5 | ⚠️ |
-| Rayons de cartes employés | 16px×5 14px×4 | 16px×5 | ⚠️ |
-| Fonds de cartes employés | rgb(244, 247, 248)×5 rgb(255, 255, 255)×4 | rgb(244, 247, 248)×5 | ⚠️ |
-| Filets de cartes employés | 1px×9 | 1px×5 | ⚠️ |
+| Nombre de cartes | 9 | 12 | ✅ |
+| Rayons de cartes employés | 16px×5 14px×4 | 14px×7 16px×5 | ⚠️ |
+| Fonds de cartes employés | rgb(244, 247, 248)×5 rgb(255, 255, 255)×4 | rgb(255, 255, 255)×7 rgb(244, 247, 248)×5 | ⚠️ |
+| Filets de cartes employés | 1px×9 | 1px×12 | ⚠️ |
 | Taille du bouton principal | 215×58 | 216×60 | ✅ |
 | Rayon du bouton | 12px | 12px | ✅ |
 | Fond du bouton | rgb(255, 255, 255) | rgb(23, 74, 129) | ⚠️ |
