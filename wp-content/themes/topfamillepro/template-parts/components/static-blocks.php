@@ -41,26 +41,27 @@ foreach ( $data['sections'] as $section ) {
 	} elseif ( 'alt' === $section['fond'] ) {
 		$classes[] = 'tfp-section--alt';
 	}
-	// Plusieurs blocs courts dans une même bande se répartissent en colonnes, comme dans la
-	// maquette. Un bloc long (plusieurs paragraphes, une FAQ) garde toute la largeur : le mettre
-	// en colonne étroite rendrait la lecture pénible pour gagner quelques pixels.
-	$courts = 0;
-	foreach ( $section['blocs'] as $b ) {
-		if ( count( $b['textes'] ?? array() ) <= 1 && empty( $b['faq'] ) ) {
-			$courts++;
-		}
-	}
-	$grille = count( $section['blocs'] ) > 1 && $courts === count( $section['blocs'] );
+	/*
+	 * Nombre de colonnes : relevé sur le rendu de la maquette par tools/generate-pages.mjs, et non
+	 * deviné d'après la longueur des blocs. L'heuristique précédente (« plusieurs blocs courts ⇒
+	 * colonnes ») se trompait notamment sur « Qui nous sommes » de /a-propos/, que la maquette
+	 * empile sur toute la largeur.
+	 *
+	 * Le `?:` couvre les contenus produits avant l'ajout du champ : sans valeur relevée, on empile,
+	 * ce qui reste lisible — l'inverse ne l'est pas.
+	 */
+	$colonnes = max( 1, min( 4, (int) ( $section['colonnes'] ?? 1 ) ) );
+	$grille   = $colonnes > 1 && count( $section['blocs'] ) > 1;
 	?>
 	<section class="<?php echo esc_attr( implode( ' ', $classes ) ); ?>">
-		<div class="tfp-container<?php echo $grille ? ' tfp-zone-links-grid' : ''; ?>">
+		<div class="tfp-container<?php echo $grille ? ' tfp-static-grid tfp-static-grid--' . (int) $colonnes : ''; ?>">
 			<?php
 			foreach ( $section['blocs'] as $bloc ) :
 				// Les clés absentes d'un bloc généré avant l'ajout d'un type de contenu ne doivent pas
 				// faire tomber le rendu : on complète systématiquement.
 				$bloc = wp_parse_args(
 					$bloc,
-					array( 'titre' => '', 'niveau' => 'h2', 'textes' => array(), 'liste' => array(), 'liens' => array(), 'noms' => array(), 'citations' => array(), 'faq' => array() )
+					array( 'titre' => '', 'niveau' => 'h2', 'textes' => array(), 'liste' => array(), 'liens' => array(), 'noms' => array(), 'citations' => array(), 'faq' => array(), 'etapes' => array() )
 				);
 				// Un bloc qui porte des citations est un bloc de témoignages repris de la maquette : il
 				// est marqué provisoire, comme les cartes témoignage, pour rester repérable en une
@@ -76,6 +77,28 @@ foreach ( $data['sections'] as $section ) {
 					<?php foreach ( $bloc['textes'] as $texte ) : ?>
 						<p class="tfp-prose"><?php echo esc_html( $texte ); ?></p>
 					<?php endforeach; ?>
+
+					<?php if ( ! empty( $bloc['etapes'] ) ) : ?>
+						<?php
+						/*
+						 * Étapes numérotées de la maquette : pastille à gauche, intitulé et texte à
+						 * droite, dans une carte. Une liste ordonnée est le balisage juste — l'ordre
+						 * porte du sens ici — et le numéro visible est donc `aria-hidden`, sinon un
+						 * lecteur d'écran annonce deux fois le rang de chaque étape.
+						 */
+						?>
+						<ol class="tfp-steps">
+							<?php foreach ( $bloc['etapes'] as $etape ) : ?>
+								<li class="tfp-step">
+									<span class="tfp-step__num" aria-hidden="true"><?php echo esc_html( $etape['numero'] ); ?></span>
+									<div class="tfp-step__body">
+										<strong class="tfp-step__titre"><?php echo esc_html( $etape['titre'] ); ?></strong>
+										<p class="tfp-prose"><?php echo esc_html( $etape['texte'] ); ?></p>
+									</div>
+								</li>
+							<?php endforeach; ?>
+						</ol>
+					<?php endif; ?>
 
 					<?php foreach ( $bloc['citations'] as $citation ) : ?>
 						<blockquote class="tfp-quote"><?php echo esc_html( $citation ); ?></blockquote>

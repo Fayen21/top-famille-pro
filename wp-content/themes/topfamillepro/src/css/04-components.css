@@ -2113,3 +2113,101 @@ details.tfp-card {
 .tfp-hero__eyebrow {
   margin-bottom: 10px;
 }
+
+/* ------------------------------------------------------------------
+   Étapes numérotées (« 01 Prise de contact »), reprises de la maquette.
+   Valeurs relevées sur le rendu du prototype : carte 820×162, padding 24,
+   rayon 16, fond #F4F7F8, filet #DCE7EB, écart 20 px entre la pastille et
+   le texte, 14 px entre deux cartes ; pastille de 26 px, graisse 800.
+   ------------------------------------------------------------------ */
+
+.tfp-steps {
+  list-style: none;
+  margin: 20px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.tfp-step {
+  display: flex;
+  gap: 20px;
+  padding: 24px;
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  background: var(--color-bg);
+}
+
+.tfp-step__num {
+  flex: 0 0 auto;
+  min-width: 44px;
+  font-family: var(--font-heading);
+  font-size: 26px;
+  font-weight: 800;
+  line-height: 1.2;
+  color: var(--color-primary);
+}
+
+.tfp-step__titre {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--color-navy);
+  margin-bottom: 6px;
+}
+
+.tfp-step__body .tfp-prose {
+  margin: 0;
+}
+
+@media (max-width: 599px) {
+  .tfp-step {
+    gap: 14px;
+    padding: 18px;
+  }
+
+  .tfp-step__num {
+    min-width: 34px;
+    font-size: 22px;
+  }
+}
+
+/* ------------------------------------------------------------------
+   Bandes de pages statiques réparties en colonnes.
+   Le nombre de colonnes n'est plus deviné : il est relevé sur le rendu de
+   la maquette par tools/generate-pages.mjs et posé en classe par le
+   composant. Une bande que la maquette empile reste empilée.
+   ------------------------------------------------------------------ */
+
+.tfp-static-grid {
+  display: grid;
+  gap: 24px 40px;
+  align-items: start;
+}
+
+.tfp-static-grid--2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.tfp-static-grid--3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.tfp-static-grid--4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+@media (max-width: 899px) {
+  .tfp-static-grid--3,
+  .tfp-static-grid--4 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 599px) {
+  .tfp-static-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

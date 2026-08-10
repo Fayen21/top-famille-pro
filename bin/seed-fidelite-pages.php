@@ -29,6 +29,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 			array(
 				'index' => 2,
 				'fond' => '',
+				'colonnes' => 1,
 				'blocs' => array(
 					array(
 						'titre' => '',
@@ -50,12 +51,14 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 						),
 						'citations' => array(),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 				),
 			),
 			array(
 				'index' => 3,
 				'fond' => 'blanc',
+				'colonnes' => 1,
 				'blocs' => array(
 					array(
 						'titre' => '',
@@ -69,12 +72,14 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 						'noms' => array(),
 						'citations' => array(),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 				),
 			),
 			array(
 				'index' => 4,
 				'fond' => '',
+				'colonnes' => 2,
 				'blocs' => array(
 					array(
 						'titre' => 'Les professionnels que nous accompagnons',
@@ -93,6 +98,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 						'noms' => array(),
 						'citations' => array(),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 					array(
 						'titre' => 'Les types de locaux entretenus',
@@ -112,12 +118,14 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 						),
 						'citations' => array(),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 				),
 			),
 			array(
 				'index' => 5,
 				'fond' => 'blanc',
+				'colonnes' => 3,
 				'blocs' => array(
 					array(
 						'titre' => 'Prestataire de nettoyage ou recrutement direct ?',
@@ -130,6 +138,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 						'noms' => array(),
 						'citations' => array(),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 					array(
 						'titre' => 'Ce que vous n\'avez plus à gérer',
@@ -142,6 +151,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 						'noms' => array(),
 						'citations' => array(),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 					array(
 						'titre' => 'Ce que vous gardez la main sur',
@@ -154,6 +164,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 						'noms' => array(),
 						'citations' => array(),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 					array(
 						'titre' => 'Ce qu\'un prestataire ne remplace pas',
@@ -166,12 +177,14 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 						'noms' => array(),
 						'citations' => array(),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 				),
 			),
 			array(
 				'index' => 6,
 				'fond' => 'navy',
+				'colonnes' => 1,
 				'blocs' => array(
 					array(
 						'titre' => 'Nos six prestations de nettoyage professionnel',
@@ -195,12 +208,14 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 						),
 						'citations' => array(),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 				),
 			),
 			array(
 				'index' => 7,
 				'fond' => '',
+				'colonnes' => 3,
 				'blocs' => array(
 					array(
 						'titre' => 'Régulier ou ponctuel, tâches, fréquences et horaires',
@@ -219,6 +234,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 						),
 						'citations' => array(),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 					array(
 						'titre' => 'Tâches par espace',
@@ -235,6 +251,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 						'noms' => array(),
 						'citations' => array(),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 					array(
 						'titre' => 'Fréquences',
@@ -250,6 +267,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 						'noms' => array(),
 						'citations' => array(),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 					array(
 						'titre' => 'Produits, matériel & clés',
@@ -262,6 +280,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 						'noms' => array(),
 						'citations' => array(),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 					array(
 						'titre' => 'Interventions en dehors des horaires d\'ouverture',
@@ -274,12 +293,14 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 						'noms' => array(),
 						'citations' => array(),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 				),
 			),
 			array(
 				'index' => 8,
 				'fond' => 'blanc',
+				'colonnes' => 4,
 				'blocs' => array(
 					array(
 						'titre' => 'Comment choisir la bonne fréquence',
@@ -292,6 +313,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 						'noms' => array(),
 						'citations' => array(),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 					array(
 						'titre' => 'Quotidienne',
@@ -304,6 +326,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 						'noms' => array(),
 						'citations' => array(),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 					array(
 						'titre' => 'Deux à trois fois par semaine',
@@ -316,6 +339,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 						'noms' => array(),
 						'citations' => array(),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 					array(
 						'titre' => 'Hebdomadaire',
@@ -328,6 +352,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 						'noms' => array(),
 						'citations' => array(),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 					array(
 						'titre' => 'Ponctuelle',
@@ -341,12 +366,14 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 						'noms' => array(),
 						'citations' => array(),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 				),
 			),
 			array(
 				'index' => 9,
 				'fond' => '',
+				'colonnes' => 3,
 				'blocs' => array(
 					array(
 						'titre' => 'Les tâches, espace par espace',
@@ -359,6 +386,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 						'noms' => array(),
 						'citations' => array(),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 					array(
 						'titre' => 'Postes de travail et mobilier',
@@ -371,6 +399,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 						'noms' => array(),
 						'citations' => array(),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 					array(
 						'titre' => 'Sols et circulations',
@@ -383,6 +412,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 						'noms' => array(),
 						'citations' => array(),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 					array(
 						'titre' => 'Sanitaires',
@@ -395,6 +425,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 						'noms' => array(),
 						'citations' => array(),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 					array(
 						'titre' => 'Cuisine et salle de pause',
@@ -407,6 +438,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 						'noms' => array(),
 						'citations' => array(),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 					array(
 						'titre' => 'Accueil et espaces recevant du public',
@@ -419,6 +451,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 						'noms' => array(),
 						'citations' => array(),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 					array(
 						'titre' => 'Vitres et surfaces vitrées',
@@ -431,12 +464,14 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 						'noms' => array(),
 						'citations' => array(),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 				),
 			),
 			array(
 				'index' => 10,
 				'fond' => 'blanc',
+				'colonnes' => 2,
 				'blocs' => array(
 					array(
 						'titre' => 'Un cahier des charges défini avec vous',
@@ -449,6 +484,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 						'noms' => array(),
 						'citations' => array(),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 					array(
 						'titre' => 'Intervenant habituel et continuité',
@@ -461,12 +497,14 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 						'noms' => array(),
 						'citations' => array(),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 				),
 			),
 			array(
 				'index' => 11,
 				'fond' => '',
+				'colonnes' => 4,
 				'blocs' => array(
 					array(
 						'titre' => 'Comment se construit un cahier des charges',
@@ -479,6 +517,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 						),
 						'citations' => array(),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 					array(
 						'titre' => 'Inventaire des espaces',
@@ -493,6 +532,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 						),
 						'citations' => array(),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 					array(
 						'titre' => 'Tâches et fréquences',
@@ -507,6 +547,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 						),
 						'citations' => array(),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 					array(
 						'titre' => 'Points de vigilance',
@@ -521,6 +562,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 						),
 						'citations' => array(),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 					array(
 						'titre' => 'Ce qui est explicitement exclu',
@@ -533,6 +575,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 						'noms' => array(),
 						'citations' => array(),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 					array(
 						'titre' => 'Modifier la prestation en cours de route',
@@ -545,12 +588,14 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 						'noms' => array(),
 						'citations' => array(),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 				),
 			),
 			array(
 				'index' => 12,
 				'fond' => 'blanc',
+				'colonnes' => 1,
 				'blocs' => array(
 					array(
 						'titre' => 'Cahier des charges, intervenants et suivi',
@@ -574,12 +619,14 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 						),
 						'citations' => array(),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 				),
 			),
 			array(
 				'index' => 13,
 				'fond' => '',
+				'colonnes' => 1,
 				'blocs' => array(
 					array(
 						'titre' => '',
@@ -598,12 +645,14 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 							'« Nous avons comparé une embauche et un prestataire. Ce qui a tranché, c\'est le cahier des charges écrit noir sur blanc et le fait de savoir dès le départ ce qui n\'était pas inclus. »',
 						),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 				),
 			),
 			array(
 				'index' => 14,
 				'fond' => 'blanc',
+				'colonnes' => 3,
 				'blocs' => array(
 					array(
 						'titre' => 'Trois situations concrètes',
@@ -616,6 +665,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 						'noms' => array(),
 						'citations' => array(),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 					array(
 						'titre' => 'PME de 18 personnes, Dijon',
@@ -628,6 +678,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 						'noms' => array(),
 						'citations' => array(),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 					array(
 						'titre' => 'Cabinet de groupe, Besançon',
@@ -640,6 +691,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 						'noms' => array(),
 						'citations' => array(),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 					array(
 						'titre' => 'Remise en état après travaux, 80 m²',
@@ -652,12 +704,14 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 						'noms' => array(),
 						'citations' => array(),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 				),
 			),
 			array(
 				'index' => 15,
 				'fond' => 'turquoise',
+				'colonnes' => 3,
 				'blocs' => array(
 					array(
 						'titre' => 'Le tarif, en toute transparence',
@@ -675,6 +729,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 						'noms' => array(),
 						'citations' => array(),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 					array(
 						'titre' => 'Nos départements',
@@ -718,6 +773,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 						'noms' => array(),
 						'citations' => array(),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 					array(
 						'titre' => 'Nos villes',
@@ -765,12 +821,14 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 						'noms' => array(),
 						'citations' => array(),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 				),
 			),
 			array(
 				'index' => 16,
 				'fond' => '',
+				'colonnes' => 1,
 				'blocs' => array(
 					array(
 						'titre' => 'Pour aller plus loin',
@@ -798,12 +856,14 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 						'noms' => array(),
 						'citations' => array(),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 				),
 			),
 			array(
 				'index' => 17,
 				'fond' => 'alt',
+				'colonnes' => 1,
 				'blocs' => array(
 					array(
 						'titre' => 'Questions fréquentes',
@@ -855,12 +915,14 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 								'reponse' => 'Oui, sur demande, lorsque votre activité l\'exige. Ces créneaux font l\'objet d\'une majoration de 10 % du tarif horaire, indiquée à l\'avance sur le devis et jamais découverte après coup.',
 							),
 						),
+						'etapes' => array(),
 					),
 				),
 			),
 			array(
 				'index' => 18,
 				'fond' => 'primary',
+				'colonnes' => 1,
 				'blocs' => array(
 					array(
 						'titre' => 'Un projet d\'entretien pour vos locaux ?',
@@ -878,6 +940,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 						'noms' => array(),
 						'citations' => array(),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 				),
 			),
@@ -896,6 +959,7 @@ update_option( 'tfp_page_prestations', array(
 			array(
 				'index' => 2,
 				'fond' => '',
+				'colonnes' => 1,
 				'blocs' => array(
 					array(
 						'titre' => 'Comment choisir la bonne prestation ?',
@@ -931,12 +995,14 @@ update_option( 'tfp_page_prestations', array(
 								'reponse' => 'Décrivez-nous vos locaux : Audrey vous oriente vers la formule adaptée.',
 							),
 						),
+						'etapes' => array(),
 					),
 				),
 			),
 			array(
 				'index' => 3,
 				'fond' => '',
+				'colonnes' => 2,
 				'blocs' => array(
 					array(
 						'titre' => 'Ce qui est commun aux six prestations',
@@ -949,6 +1015,7 @@ update_option( 'tfp_page_prestations', array(
 						'noms' => array(),
 						'citations' => array(),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 					array(
 						'titre' => 'Ce qui change d\'une prestation à l\'autre',
@@ -961,12 +1028,14 @@ update_option( 'tfp_page_prestations', array(
 						'noms' => array(),
 						'citations' => array(),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 				),
 			),
 			array(
 				'index' => 4,
 				'fond' => '',
+				'colonnes' => 1,
 				'blocs' => array(
 					array(
 						'titre' => '',
@@ -996,12 +1065,14 @@ update_option( 'tfp_page_prestations', array(
 						),
 						'citations' => array(),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 				),
 			),
 			array(
 				'index' => 5,
 				'fond' => 'primary',
+				'colonnes' => 1,
 				'blocs' => array(
 					array(
 						'titre' => 'Besoin d\'aide pour choisir ?',
@@ -1019,6 +1090,7 @@ update_option( 'tfp_page_prestations', array(
 						'noms' => array(),
 						'citations' => array(),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 				),
 			),
@@ -1036,6 +1108,7 @@ update_option( 'tfp_page_zones-intervention', array(
 			array(
 				'index' => 2,
 				'fond' => '',
+				'colonnes' => 1,
 				'blocs' => array(
 					array(
 						'titre' => '',
@@ -1057,12 +1130,14 @@ update_option( 'tfp_page_zones-intervention', array(
 						),
 						'citations' => array(),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 				),
 			),
 			array(
 				'index' => 3,
 				'fond' => 'blanc',
+				'colonnes' => 1,
 				'blocs' => array(
 					array(
 						'titre' => '',
@@ -1077,12 +1152,14 @@ update_option( 'tfp_page_zones-intervention', array(
 						),
 						'citations' => array(),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 				),
 			),
 			array(
 				'index' => 4,
 				'fond' => '',
+				'colonnes' => 1,
 				'blocs' => array(
 					array(
 						'titre' => 'Une couverture régionale organisée depuis Saint-Apollinaire',
@@ -1096,6 +1173,7 @@ update_option( 'tfp_page_zones-intervention', array(
 						'noms' => array(),
 						'citations' => array(),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 					array(
 						'titre' => 'Comment nous organisons les déplacements',
@@ -1109,6 +1187,7 @@ update_option( 'tfp_page_zones-intervention', array(
 						'noms' => array(),
 						'citations' => array(),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 					array(
 						'titre' => 'Ce qui change selon votre adresse',
@@ -1127,12 +1206,14 @@ update_option( 'tfp_page_zones-intervention', array(
 						'noms' => array(),
 						'citations' => array(),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 				),
 			),
 			array(
 				'index' => 5,
 				'fond' => '',
+				'colonnes' => 1,
 				'blocs' => array(
 					array(
 						'titre' => '',
@@ -1148,12 +1229,14 @@ update_option( 'tfp_page_zones-intervention', array(
 						'noms' => array(),
 						'citations' => array(),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 				),
 			),
 			array(
 				'index' => 6,
 				'fond' => '',
+				'colonnes' => 1,
 				'blocs' => array(
 					array(
 						'titre' => 'Les huit départements',
@@ -1199,12 +1282,14 @@ update_option( 'tfp_page_zones-intervention', array(
 						'noms' => array(),
 						'citations' => array(),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 				),
 			),
 			array(
 				'index' => 7,
 				'fond' => '',
+				'colonnes' => 1,
 				'blocs' => array(
 					array(
 						'titre' => 'Nos dix villes principales',
@@ -1258,12 +1343,14 @@ update_option( 'tfp_page_zones-intervention', array(
 						'noms' => array(),
 						'citations' => array(),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 				),
 			),
 			array(
 				'index' => 8,
 				'fond' => '',
+				'colonnes' => 1,
 				'blocs' => array(
 					array(
 						'titre' => 'Premières communes secondaires',
@@ -1309,12 +1396,14 @@ update_option( 'tfp_page_zones-intervention', array(
 						'noms' => array(),
 						'citations' => array(),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 				),
 			),
 			array(
 				'index' => 9,
 				'fond' => '',
+				'colonnes' => 1,
 				'blocs' => array(
 					array(
 						'titre' => 'Départements, villes et communes : comment lire ces pages',
@@ -1328,6 +1417,7 @@ update_option( 'tfp_page_zones-intervention', array(
 						'noms' => array(),
 						'citations' => array(),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 					array(
 						'titre' => 'Les espaces que nous traitons — et ceux que nous ne traitons pas',
@@ -1341,6 +1431,7 @@ update_option( 'tfp_page_zones-intervention', array(
 						'noms' => array(),
 						'citations' => array(),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 					array(
 						'titre' => 'Votre commune n\'apparaît pas encore ?',
@@ -1354,12 +1445,14 @@ update_option( 'tfp_page_zones-intervention', array(
 						'noms' => array(),
 						'citations' => array(),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 				),
 			),
 			array(
 				'index' => 10,
 				'fond' => '',
+				'colonnes' => 1,
 				'blocs' => array(
 					array(
 						'titre' => '',
@@ -1383,12 +1476,14 @@ update_option( 'tfp_page_zones-intervention', array(
 						'noms' => array(),
 						'citations' => array(),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 				),
 			),
 			array(
 				'index' => 11,
 				'fond' => 'turquoise',
+				'colonnes' => 1,
 				'blocs' => array(
 					array(
 						'titre' => 'Questions fréquentes sur nos zones d\'intervention',
@@ -1424,12 +1519,14 @@ update_option( 'tfp_page_zones-intervention', array(
 								'reponse' => 'Oui. Nous réalisons des interventions ponctuelles : remise en état après travaux, fin de bail, avant ouverture, grand nettoyage saisonnier. Le tarif reste de 27 € HT/h et la date est confirmée au devis, selon nos disponibilités sur votre secteur.',
 							),
 						),
+						'etapes' => array(),
 					),
 				),
 			),
 			array(
 				'index' => 12,
 				'fond' => 'primary',
+				'colonnes' => 1,
 				'blocs' => array(
 					array(
 						'titre' => 'Votre commune est-elle couverte ?',
@@ -1447,6 +1544,7 @@ update_option( 'tfp_page_zones-intervention', array(
 						'noms' => array(),
 						'citations' => array(),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 				),
 			),
@@ -1464,6 +1562,7 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 			array(
 				'index' => 2,
 				'fond' => '',
+				'colonnes' => 1,
 				'blocs' => array(
 					array(
 						'titre' => '',
@@ -1485,12 +1584,14 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 						),
 						'citations' => array(),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 				),
 			),
 			array(
 				'index' => 3,
 				'fond' => 'blanc',
+				'colonnes' => 1,
 				'blocs' => array(
 					array(
 						'titre' => '',
@@ -1505,12 +1606,14 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 						),
 						'citations' => array(),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 				),
 			),
 			array(
 				'index' => 4,
 				'fond' => '',
+				'colonnes' => 1,
 				'blocs' => array(
 					array(
 						'titre' => 'Notre implantation réelle : Saint-Apollinaire, près de Dijon',
@@ -1524,6 +1627,7 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 						'noms' => array(),
 						'citations' => array(),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 					array(
 						'titre' => 'Le territoire que nous couvrons — et celui que nous ne couvrons pas',
@@ -1537,6 +1641,7 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 						'noms' => array(),
 						'citations' => array(),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 					array(
 						'titre' => 'Les professionnels que nous accompagnons',
@@ -1556,6 +1661,7 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 						'noms' => array(),
 						'citations' => array(),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 					array(
 						'titre' => 'Les types de locaux les plus fréquents en région',
@@ -1575,6 +1681,7 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 						'noms' => array(),
 						'citations' => array(),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 					array(
 						'titre' => 'Notre organisation à l\'échelle régionale',
@@ -1588,12 +1695,14 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 						'noms' => array(),
 						'citations' => array(),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 				),
 			),
 			array(
 				'index' => 5,
 				'fond' => 'navy',
+				'colonnes' => 1,
 				'blocs' => array(
 					array(
 						'titre' => 'Nos prestations partout en Bourgogne-Franche-Comté',
@@ -1631,12 +1740,14 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 						'noms' => array(),
 						'citations' => array(),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 				),
 			),
 			array(
 				'index' => 6,
 				'fond' => 'blanc',
+				'colonnes' => 1,
 				'blocs' => array(
 					array(
 						'titre' => 'Les huit départements couverts',
@@ -1698,12 +1809,14 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 						),
 						'citations' => array(),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 				),
 			),
 			array(
 				'index' => 7,
 				'fond' => '',
+				'colonnes' => 1,
 				'blocs' => array(
 					array(
 						'titre' => 'Nos dix villes principales',
@@ -1755,6 +1868,7 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 						'noms' => array(),
 						'citations' => array(),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 					array(
 						'titre' => 'Secteurs secondaires déjà documentés',
@@ -1798,12 +1912,14 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 						'noms' => array(),
 						'citations' => array(),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 				),
 			),
 			array(
 				'index' => 8,
 				'fond' => 'turquoise',
+				'colonnes' => 1,
 				'blocs' => array(
 					array(
 						'titre' => 'Un tarif régional unique',
@@ -1833,12 +1949,14 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 							'« Nous avions besoin d\'un prestataire capable de suivre trois sites dans deux départements sans multiplier les interlocuteurs. Le planning est tenu et les consignes circulent bien entre les passages. »',
 						),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 				),
 			),
 			array(
 				'index' => 9,
 				'fond' => '',
+				'colonnes' => 1,
 				'blocs' => array(
 					array(
 						'titre' => 'Sélection des intervenants et suivi',
@@ -1852,6 +1970,7 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 						'noms' => array(),
 						'citations' => array(),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 					array(
 						'titre' => 'Entretien régulier ou intervention ponctuelle',
@@ -1865,6 +1984,7 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 						'noms' => array(),
 						'citations' => array(),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 					array(
 						'titre' => 'Ce que nous ne faisons pas',
@@ -1878,6 +1998,7 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 						'noms' => array(),
 						'citations' => array(),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 					array(
 						'titre' => 'Comment démarre une collaboration',
@@ -1891,12 +2012,14 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 						'noms' => array(),
 						'citations' => array(),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 				),
 			),
 			array(
 				'index' => 10,
 				'fond' => 'turquoise',
+				'colonnes' => 1,
 				'blocs' => array(
 					array(
 						'titre' => 'Questions fréquentes — Bourgogne-Franche-Comté',
@@ -1936,12 +2059,14 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 								'reponse' => 'La même personne : Audrey, au 06 36 17 63 39. Nous n\'utilisons pas de numéro local différent selon la ville, et votre dossier n\'est pas transféré à un autre interlocuteur.',
 							),
 						),
+						'etapes' => array(),
 					),
 				),
 			),
 			array(
 				'index' => 11,
 				'fond' => 'primary',
+				'colonnes' => 1,
 				'blocs' => array(
 					array(
 						'titre' => 'Vos locaux, où que vous soyez en région',
@@ -1959,6 +2084,7 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 						'noms' => array(),
 						'citations' => array(),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 				),
 			),
@@ -1977,6 +2103,7 @@ update_option( 'tfp_page_pourquoi-nous', array(
 			array(
 				'index' => 2,
 				'fond' => 'blanc',
+				'colonnes' => 1,
 				'blocs' => array(
 					array(
 						'titre' => '',
@@ -2001,12 +2128,14 @@ update_option( 'tfp_page_pourquoi-nous', array(
 						),
 						'citations' => array(),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 				),
 			),
 			array(
 				'index' => 3,
 				'fond' => '',
+				'colonnes' => 1,
 				'blocs' => array(
 					array(
 						'titre' => 'Des preuves plutôt que des slogans',
@@ -2027,12 +2156,14 @@ update_option( 'tfp_page_pourquoi-nous', array(
 						),
 						'citations' => array(),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 				),
 			),
 			array(
 				'index' => 4,
 				'fond' => 'blanc',
+				'colonnes' => 3,
 				'blocs' => array(
 					array(
 						'titre' => 'Ce qui nous distingue, concrètement',
@@ -2043,6 +2174,7 @@ update_option( 'tfp_page_pourquoi-nous', array(
 						'noms' => array(),
 						'citations' => array(),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 					array(
 						'titre' => 'Face à une plateforme de mise en relation',
@@ -2055,6 +2187,7 @@ update_option( 'tfp_page_pourquoi-nous', array(
 						'noms' => array(),
 						'citations' => array(),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 					array(
 						'titre' => 'Face à un recrutement direct',
@@ -2067,6 +2200,7 @@ update_option( 'tfp_page_pourquoi-nous', array(
 						'noms' => array(),
 						'citations' => array(),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 					array(
 						'titre' => 'Le rôle d\'Audrey',
@@ -2079,6 +2213,7 @@ update_option( 'tfp_page_pourquoi-nous', array(
 						'noms' => array(),
 						'citations' => array(),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 					array(
 						'titre' => 'La gestion administrative',
@@ -2091,6 +2226,7 @@ update_option( 'tfp_page_pourquoi-nous', array(
 						'noms' => array(),
 						'citations' => array(),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 					array(
 						'titre' => 'Le suivi dans la durée',
@@ -2103,6 +2239,7 @@ update_option( 'tfp_page_pourquoi-nous', array(
 						'noms' => array(),
 						'citations' => array(),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 					array(
 						'titre' => 'Les limites de nos engagements',
@@ -2115,12 +2252,14 @@ update_option( 'tfp_page_pourquoi-nous', array(
 						'noms' => array(),
 						'citations' => array(),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 				),
 			),
 			array(
 				'index' => 5,
 				'fond' => '',
+				'colonnes' => 1,
 				'blocs' => array(
 					array(
 						'titre' => 'Les objections que l\'on nous adresse',
@@ -2148,12 +2287,14 @@ update_option( 'tfp_page_pourquoi-nous', array(
 								'reponse' => 'Par le cahier de liaison laissé sur place, qui trace chaque passage et mentionne aussi ce qui n\'a pas pu être réalisé. C\'est moins spectaculaire qu\'une application avec des photos, mais c\'est lu, rempli à la main et vérifiable par n\'importe qui dans vos locaux.',
 							),
 						),
+						'etapes' => array(),
 					),
 				),
 			),
 			array(
 				'index' => 6,
 				'fond' => 'blanc',
+				'colonnes' => 1,
 				'blocs' => array(
 					array(
 						'titre' => 'Vérifier par vous-même',
@@ -2183,12 +2324,14 @@ update_option( 'tfp_page_pourquoi-nous', array(
 						'noms' => array(),
 						'citations' => array(),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 				),
 			),
 			array(
 				'index' => 7,
 				'fond' => 'primary',
+				'colonnes' => 1,
 				'blocs' => array(
 					array(
 						'titre' => 'Faisons connaissance',
@@ -2206,6 +2349,7 @@ update_option( 'tfp_page_pourquoi-nous', array(
 						'noms' => array(),
 						'citations' => array(),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 				),
 			),
@@ -2224,39 +2368,51 @@ update_option( 'tfp_page_notre-fonctionnement', array(
 			array(
 				'index' => 2,
 				'fond' => 'blanc',
+				'colonnes' => 1,
 				'blocs' => array(
 					array(
 						'titre' => '',
 						'niveau' => 'h2',
-						'textes' => array(
-							'Vous nous décrivez vos locaux (surface, type d\'activité, effectif présent), vos besoins et vos contraintes d\'horaires, par téléphone ou via le formulaire de devis. Cet échange initial, généralement bref, nous permet déjà d\'orienter la prestation adaptée parmi nos six formules.',
-							'Nous étudions le volume d\'heures nécessaire selon la surface, la fréquence souhaitée et le niveau d\'exigence de vos locaux (standard ou renforcé pour les espaces recevant du public). C\'est cette étape qui détermine un devis réaliste, plutôt qu\'une estimation automatique.',
-							'Vous recevez une proposition claire et chiffrée, basée sur 27 € HT/h, détaillant le volume d\'heures estimé, les frais éventuels de gestion et de mise en place, et l\'organisation envisagée. Sans engagement de votre part.',
-							'Nous sélectionnons l\'intervenant le plus adapté à vos locaux, en recherchant autant que possible une personne habituelle qui interviendra durablement chez vous. Le planning est établi avec vous, les modalités d\'accès (clés, badge, code) sont définies et consignées par écrit, et un premier passage de mise en place permet de vérifier que le cahier des charges est bien compris sur le terrain.',
-							'Un cahier de liaison reste sur place à chaque passage, pour tracer les tâches réalisées et vos remarques éventuelles. Audrey suit la prestation dans la durée, ajuste la fréquence ou le cahier des charges si vos besoins évoluent, et recherche activement une solution en cas d\'absence imprévue de l\'intervenant habituel, sans que ce remplacement puisse être garanti dans tous les cas.',
-						),
+						'textes' => array(),
 						'liste' => array(),
 						'liens' => array(),
-						'noms' => array(
-							'01',
-							'Prise de contact',
-							'02',
-							'Analyse du besoin',
-							'03',
-							'Devis sous 24 h',
-							'04',
-							'Sélection & mise en place',
-							'05',
-							'Suivi & liaison',
-						),
+						'noms' => array(),
 						'citations' => array(),
 						'faq' => array(),
+						'etapes' => array(
+							array(
+								'numero' => '01',
+								'titre' => 'Prise de contact',
+								'texte' => 'Vous nous décrivez vos locaux (surface, type d\'activité, effectif présent), vos besoins et vos contraintes d\'horaires, par téléphone ou via le formulaire de devis. Cet échange initial, généralement bref, nous permet déjà d\'orienter la prestation adaptée parmi nos six formules.',
+							),
+							array(
+								'numero' => '02',
+								'titre' => 'Analyse du besoin',
+								'texte' => 'Nous étudions le volume d\'heures nécessaire selon la surface, la fréquence souhaitée et le niveau d\'exigence de vos locaux (standard ou renforcé pour les espaces recevant du public). C\'est cette étape qui détermine un devis réaliste, plutôt qu\'une estimation automatique.',
+							),
+							array(
+								'numero' => '03',
+								'titre' => 'Devis sous 24 h',
+								'texte' => 'Vous recevez une proposition claire et chiffrée, basée sur 27 € HT/h, détaillant le volume d\'heures estimé, les frais éventuels de gestion et de mise en place, et l\'organisation envisagée. Sans engagement de votre part.',
+							),
+							array(
+								'numero' => '04',
+								'titre' => 'Sélection & mise en place',
+								'texte' => 'Nous sélectionnons l\'intervenant le plus adapté à vos locaux, en recherchant autant que possible une personne habituelle qui interviendra durablement chez vous. Le planning est établi avec vous, les modalités d\'accès (clés, badge, code) sont définies et consignées par écrit, et un premier passage de mise en place permet de vérifier que le cahier des charges est bien compris sur le terrain.',
+							),
+							array(
+								'numero' => '05',
+								'titre' => 'Suivi & liaison',
+								'texte' => 'Un cahier de liaison reste sur place à chaque passage, pour tracer les tâches réalisées et vos remarques éventuelles. Audrey suit la prestation dans la durée, ajuste la fréquence ou le cahier des charges si vos besoins évoluent, et recherche activement une solution en cas d\'absence imprévue de l\'intervenant habituel, sans que ce remplacement puisse être garanti dans tous les cas.',
+							),
+						),
 					),
 				),
 			),
 			array(
 				'index' => 3,
 				'fond' => '',
+				'colonnes' => 3,
 				'blocs' => array(
 					array(
 						'titre' => 'Les informations dont nous avons besoin',
@@ -2270,6 +2426,7 @@ update_option( 'tfp_page_notre-fonctionnement', array(
 						'noms' => array(),
 						'citations' => array(),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 					array(
 						'titre' => 'Transmission des consignes et premier passage',
@@ -2282,6 +2439,7 @@ update_option( 'tfp_page_notre-fonctionnement', array(
 						'noms' => array(),
 						'citations' => array(),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 					array(
 						'titre' => 'Modifier, suspendre ou arrêter',
@@ -2292,6 +2450,7 @@ update_option( 'tfp_page_notre-fonctionnement', array(
 						'noms' => array(),
 						'citations' => array(),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 					array(
 						'titre' => 'Modifier la prestation',
@@ -2304,6 +2463,7 @@ update_option( 'tfp_page_notre-fonctionnement', array(
 						'noms' => array(),
 						'citations' => array(),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 					array(
 						'titre' => 'Absence de l\'intervenant',
@@ -2316,6 +2476,7 @@ update_option( 'tfp_page_notre-fonctionnement', array(
 						'noms' => array(),
 						'citations' => array(),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 					array(
 						'titre' => 'Suspendre ou arrêter',
@@ -2328,6 +2489,7 @@ update_option( 'tfp_page_notre-fonctionnement', array(
 						'noms' => array(),
 						'citations' => array(),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 					array(
 						'titre' => 'Faire évoluer le périmètre',
@@ -2357,12 +2519,14 @@ update_option( 'tfp_page_notre-fonctionnement', array(
 						'noms' => array(),
 						'citations' => array(),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 				),
 			),
 			array(
 				'index' => 4,
 				'fond' => 'primary',
+				'colonnes' => 1,
 				'blocs' => array(
 					array(
 						'titre' => 'Prêt à démarrer ?',
@@ -2380,6 +2544,7 @@ update_option( 'tfp_page_notre-fonctionnement', array(
 						'noms' => array(),
 						'citations' => array(),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 				),
 			),
@@ -2397,6 +2562,7 @@ update_option( 'tfp_page_avis-clients', array(
 			array(
 				'index' => 2,
 				'fond' => '',
+				'colonnes' => 1,
 				'blocs' => array(
 					array(
 						'titre' => '',
@@ -2419,12 +2585,14 @@ update_option( 'tfp_page_avis-clients', array(
 						),
 						'citations' => array(),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 				),
 			),
 			array(
 				'index' => 3,
 				'fond' => '',
+				'colonnes' => 1,
 				'blocs' => array(
 					array(
 						'titre' => '',
@@ -2448,12 +2616,14 @@ update_option( 'tfp_page_avis-clients', array(
 							'« Nous avons comparé une embauche et un prestataire. Ce qui a tranché, c\'est le cahier des charges écrit noir sur blanc et le fait de savoir dès le départ ce qui n\'était pas inclus. »',
 						),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 				),
 			),
 			array(
 				'index' => 4,
 				'fond' => '',
+				'colonnes' => 1,
 				'blocs' => array(
 					array(
 						'titre' => '',
@@ -2514,12 +2684,14 @@ update_option( 'tfp_page_avis-clients', array(
 							'« Remise en état ponctuelle après travaux, devis précis et résultat au rendez-vous dans les délais annoncés. Interlocuteur unique appréciable. »',
 						),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 				),
 			),
 			array(
 				'index' => 5,
 				'fond' => '',
+				'colonnes' => 1,
 				'blocs' => array(
 					array(
 						'titre' => 'Un avis ne remplace pas un devis',
@@ -2549,12 +2721,14 @@ update_option( 'tfp_page_avis-clients', array(
 						'noms' => array(),
 						'citations' => array(),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 				),
 			),
 			array(
 				'index' => 6,
 				'fond' => 'primary',
+				'colonnes' => 1,
 				'blocs' => array(
 					array(
 						'titre' => 'À votre tour ?',
@@ -2572,6 +2746,7 @@ update_option( 'tfp_page_avis-clients', array(
 						'noms' => array(),
 						'citations' => array(),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 				),
 			),
@@ -2591,6 +2766,7 @@ update_option( 'tfp_page_a-propos', array(
 			array(
 				'index' => 2,
 				'fond' => '',
+				'colonnes' => 1,
 				'blocs' => array(
 					array(
 						'titre' => '',
@@ -2606,12 +2782,14 @@ update_option( 'tfp_page_a-propos', array(
 						),
 						'citations' => array(),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 				),
 			),
 			array(
 				'index' => 3,
 				'fond' => '',
+				'colonnes' => 1,
 				'blocs' => array(
 					array(
 						'titre' => '',
@@ -2632,12 +2810,14 @@ update_option( 'tfp_page_a-propos', array(
 						),
 						'citations' => array(),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 				),
 			),
 			array(
 				'index' => 4,
 				'fond' => 'blanc',
+				'colonnes' => 1,
 				'blocs' => array(
 					array(
 						'titre' => 'Qui nous sommes',
@@ -2650,6 +2830,7 @@ update_option( 'tfp_page_a-propos', array(
 						'noms' => array(),
 						'citations' => array(),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 					array(
 						'titre' => 'Notre implantation',
@@ -2662,6 +2843,7 @@ update_option( 'tfp_page_a-propos', array(
 						'noms' => array(),
 						'citations' => array(),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 					array(
 						'titre' => 'Le rôle d\'Audrey',
@@ -2674,6 +2856,7 @@ update_option( 'tfp_page_a-propos', array(
 						'noms' => array(),
 						'citations' => array(),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 					array(
 						'titre' => 'Le lien avec Top-Famille',
@@ -2686,6 +2869,7 @@ update_option( 'tfp_page_a-propos', array(
 						'noms' => array(),
 						'citations' => array(),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 					array(
 						'titre' => 'Un fonctionnement régional',
@@ -2698,6 +2882,7 @@ update_option( 'tfp_page_a-propos', array(
 						'noms' => array(),
 						'citations' => array(),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 					array(
 						'titre' => 'Nos valeurs, traduites en actions',
@@ -2710,6 +2895,7 @@ update_option( 'tfp_page_a-propos', array(
 						'noms' => array(),
 						'citations' => array(),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 					array(
 						'titre' => 'Les limites de notre offre',
@@ -2722,6 +2908,7 @@ update_option( 'tfp_page_a-propos', array(
 						'noms' => array(),
 						'citations' => array(),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 					array(
 						'titre' => 'Nous contacter',
@@ -2755,12 +2942,14 @@ update_option( 'tfp_page_a-propos', array(
 						'noms' => array(),
 						'citations' => array(),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 				),
 			),
 			array(
 				'index' => 5,
 				'fond' => 'primary',
+				'colonnes' => 1,
 				'blocs' => array(
 					array(
 						'titre' => 'Parlons de vos locaux',
@@ -2780,6 +2969,7 @@ update_option( 'tfp_page_a-propos', array(
 						'noms' => array(),
 						'citations' => array(),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 				),
 			),
@@ -2797,6 +2987,7 @@ update_option( 'tfp_page_recrutement', array(
 			array(
 				'index' => 2,
 				'fond' => 'blanc',
+				'colonnes' => 1,
 				'blocs' => array(
 					array(
 						'titre' => 'Les missions que nous confions',
@@ -2817,12 +3008,14 @@ update_option( 'tfp_page_recrutement', array(
 						),
 						'citations' => array(),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 				),
 			),
 			array(
 				'index' => 3,
 				'fond' => '',
+				'colonnes' => 1,
 				'blocs' => array(
 					array(
 						'titre' => 'Ce que nous attendons',
@@ -2838,6 +3031,7 @@ update_option( 'tfp_page_recrutement', array(
 						'noms' => array(),
 						'citations' => array(),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 					array(
 						'titre' => 'Les étapes de candidature',
@@ -2855,12 +3049,14 @@ update_option( 'tfp_page_recrutement', array(
 						),
 						'citations' => array(),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 				),
 			),
 			array(
 				'index' => 4,
 				'fond' => 'blanc',
+				'colonnes' => 1,
 				'blocs' => array(
 					array(
 						'titre' => 'Envie de nous rejoindre ?',
@@ -2873,6 +3069,7 @@ update_option( 'tfp_page_recrutement', array(
 						'noms' => array(),
 						'citations' => array(),
 						'faq' => array(),
+						'etapes' => array(),
 					),
 				),
 			),

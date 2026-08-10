@@ -99,6 +99,28 @@ for (const p of PAGES) {
 			return '';
 		};
 
+		/**
+		 * Nombre de colonnes sur lesquelles la maquette répartit les blocs d'une section.
+		 *
+		 * Relevé sur le rendu, pas déduit du contenu : le thème devinait jusqu'ici la disposition
+		 * (« plusieurs blocs courts ⇒ colonnes »), et cette heuristique se trompait. Sur la section
+		 * « Qui nous sommes » de /a-propos/, neuf paires titre + paragraphe étaient rangées en
+		 * colonnes alors que la maquette les empile sur toute la largeur : 2 083 px de maquette
+		 * rendus en 1 338 px.
+		 *
+		 * Le signal est direct : deux intertitres qui partagent la même ordonnée sont côte à côte.
+		 */
+		const colonnesOf = (sec) => {
+			const tops = [...sec.querySelectorAll('h2,h3')].map((h) => Math.round(h.getBoundingClientRect().top));
+			if (tops.length < 2) return 1;
+			const paliers = new Map();
+			for (const t of tops) {
+				const cle = [...paliers.keys()].find((k) => Math.abs(k - t) <= 8);
+				paliers.set(cle ?? t, (paliers.get(cle ?? t) || 0) + 1);
+			}
+			return Math.max(...paliers.values());
+		};
+
 		const flatten = (sec) => {
 			const out = [];
 			const walk = (el) => {
@@ -166,12 +188,19 @@ for (const p of PAGES) {
 			const push = () => {
 				if (
 					cur &&
-					(cur.titre || cur.textes.length || cur.liste.length || cur.liens.length || cur.noms.length || cur.citations.length || cur.faq.length)
+						(cur.titre ||
+						cur.textes.length ||
+						cur.liste.length ||
+						cur.liens.length ||
+						cur.noms.length ||
+						cur.citations.length ||
+						cur.faq.length ||
+						cur.etapes.length)
 				) {
 					blocs.push(cur);
 				}
 			};
-			const vide = () => ({ titre: '', niveau: 'h2', textes: [], liste: [], liens: [], noms: [], citations: [], faq: [] });
+			const vide = () => ({ titre: '', niveau: 'h2', textes: [], liste: [], liens: [], noms: [], citations: [], faq: [], etapes: [] });
 			// Une question de FAQ est un `<span>` terminé par « ? » (la maquette y accole le « + » de
 			// l'accordéon) ; sa réponse est le paragraphe qui suit. Sans ce cas particulier, les
 			// questions finiraient en pastilles et les réponses en paragraphes détachés.
@@ -195,7 +224,21 @@ for (const p of PAGES) {
 						n.t === 'span' &&
 						propre.length > 8 &&
 						((suivant && suivant.t === 'span' && suivant.v.trim() === '+') || /\?\s*\+?$/.test(n.v));
-					if (estQuestion) question = propre;
+					// Étape numérotée : la maquette la rend en carte — pastille « 01 » à gauche, titre
+					// et paragraphe à droite. Aplatie, elle devenait une file de pastilles suivie de
+					// paragraphes détachés : le lien entre un numéro, son titre et son texte était
+					// perdu, et la section perdait la moitié de sa hauteur.
+					const etape =
+						n.t === 'span' &&
+						/^\d{2}$/.test(propre) &&
+						suivant &&
+						suivant.t === 'span' &&
+						nodes[k + 2] &&
+						nodes[k + 2].t === 'p';
+					if (etape) {
+						cur.etapes.push({ numero: propre, titre: suivant.v.trim(), texte: nodes[k + 2].v });
+						k += 2;
+					} else if (estQuestion) question = propre;
 					else if (n.t === 'p' && question) {
 						cur.faq.push({ question, reponse: n.v });
 						question = null;
@@ -207,7 +250,7 @@ for (const p of PAGES) {
 				}
 			}
 			push();
-			if (blocs.length) out.push({ index: i, fond: fondOf(sec), blocs });
+			if (blocs.length) out.push({ index: i, fond: fondOf(sec), colonnes: colonnesOf(sec), blocs });
 		});
 
 		// Accroche du hero : les paragraphes qui précèdent le premier H2 de la section du H1.

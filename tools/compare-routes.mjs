@@ -143,7 +143,15 @@ async function main() {
 		.map(Number);
 
 	const refData = JSON.parse(readFileSync('tools/reference-routes.json', 'utf8'));
-	let routes = refData.routes.filter((r) => !only || r === only);
+	// `--only` accepte une liste séparée par des virgules : mesurer une famille de pages après une
+	// correction ciblée est le geste courant, et relancer les 53 routes pour trois pages coûte
+	// vingt minutes.
+	const seules = only ? only.split(',').map((s) => s.trim()).filter(Boolean) : null;
+	let routes = refData.routes.filter((r) => !seules || seules.includes(r));
+	if (seules && routes.length !== seules.length) {
+		const absentes = seules.filter((s) => !routes.includes(s));
+		console.error(`⚠️  routes inconnues, ignorées : ${absentes.join(', ')}`);
+	}
 	if (shots) mkdirSync(SHOT_DIR, { recursive: true });
 
 	const browser = await chromium.launch({ executablePath: '/opt/pw-browsers/chromium' });
@@ -253,8 +261,11 @@ async function main() {
 		}
 		L.push('');
 	}
-	writeFileSync(REPORT, L.join('\n') + '\n');
-	console.error(`\nÉcrit : ${REPORT}` + (shots ? ` et ${SHOT_DIR}/` : ''));
+	// Une mesure partielle (`--only`) ne doit jamais écraser le rapport des 53 routes : un rapport
+	// amputé se lit exactement comme un rapport complet, et il a déjà fallu le restaurer une fois.
+	const sortie = seules ? REPORT.replace(/\.md$/, '.partiel.md') : REPORT;
+	writeFileSync(sortie, L.join('\n') + '\n');
+	console.error(`\nÉcrit : ${sortie}` + (shots ? ` et ${SHOT_DIR}/` : ''));
 }
 
 main().catch((e) => {
