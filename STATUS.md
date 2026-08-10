@@ -1166,3 +1166,60 @@ php -S localhost:8899
 Puis Playwright (Chromium préinstallé de l'environnement) pour les 6 largeurs, les interactions
 clavier/souris et un scan `axe-core`. **Sur un WordPress réel (MySQL, vrai GeneratePress, ACF
 actif)**, suivre plutôt la procédure standard du `README.md` du thème.
+
+---
+
+## 12. Reproduction intégrale de la maquette Claude Design (10 août 2026)
+
+Branche : `hotfix-production-fidelite-claude-design`. **Rien n'est fusionné dans `main`, rien
+n'est déployé.**
+
+### Fait
+
+Le contenu des 53 pages est désormais **relevé dans la maquette**, plus jamais rédigé. Le
+prototype est un bundle auto-décompressant doublé d'une application à routes `#/` : il s'exécute
+dans Chromium, il ne se lit pas. C'est le point qui débloque tout le reste.
+
+Outils rejouables ajoutés (`tools/`) :
+
+| Fichier | Rôle |
+|---|---|
+| `route-map.mjs` | table route maquette → route WordPress, partagée, sans effet de bord |
+| `extract-routes.mjs` | découvre les routes et extrait tout leur contenu et leurs styles calculés |
+| `compare-routes.mjs` | compare les 53 routes, produit les triptyques de différence |
+| `diff-text.mjs` | dit à la phrase près ce qui manque, et compte à part les écarts voulus |
+| `dump-route.mjs` | restitue une route section par section |
+| `image-map.mjs` | croise maquette, manifeste d'images et fichiers réellement servis |
+| `generate-{prestations,zones,articles,pages}.mjs` | produisent les scripts de seed |
+
+Fichiers de référence versionnés : `tools/reference-routes.json`,
+`docs/MATRICE-ROUTES-CLAUDE-WORDPRESS.md`, `docs/COMPARAISON-53-ROUTES.md`,
+`docs/IMAGES-MAQUETTE-WORDPRESS.md`, `docs/captures/comparaison/` (106 triptyques).
+
+Résultat : **53 routes, 0 phrase de la maquette absente**, 6 écarts voulus nommés.
+
+### Ce qu'il faut savoir avant de reprendre
+
+1. **Ne pas éditer `bin/seed-fidelite-*.php` à la main.** Ils sont générés ; toute correction se
+   fait dans `tools/generate-*.mjs`, sinon la prochaine régénération l'écrase.
+2. **Une extraction partielle n'écrase plus l'extraction complète** : `extract-routes.mjs --only=…`
+   écrit vers des fichiers `.partiel`. Ce garde-fou existe parce que l'inverse s'est produit —
+   les fichiers de référence tronqués à une route, et tous les outils comparant une page sur 53
+   sans le signaler.
+3. **Les rigs WordPress** : `localhost:8899` (thème en lien symbolique, environnement
+   `development`) et `localhost:8901` (thème **copié**, environnement `production` par défaut).
+   Le second sert à prouver le comportement réel en production — penser à y recopier le thème
+   après modification, sinon il teste une version périmée.
+4. **Politique des témoignages** : voir CLAUDE.md §5.5, réécrit le 10 août. Ils sont reproduits et
+   visibles, marqués `data-tfp-provisional`.
+
+### Reste à faire
+
+- **Décisions humaines** (pas du code) : validation par Audrey de la citation qui lui est
+  attribuée ; remplacement des témoignages provisoires par de vrais avis ; dispositif de médiation
+  de la consommation ; nombre d'avis Google et URL de la fiche.
+- **Hauteurs des pages de zone** : 111 à 123 % de la maquette. La part résiduelle tient à la cible
+  tactile de 44 px (WCAG 2.2, 2.5.8) là où la maquette empile des liens de 18 px. À trancher :
+  fidélité visuelle ou confort tactile — les deux ne sont pas conciliables ici.
+- **Performance Lighthouse** : 81 à 94 sur un rig sans cache. La cible de 90 reste à confirmer en
+  production, cache LiteSpeed activé.
