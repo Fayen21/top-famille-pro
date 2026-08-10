@@ -907,3 +907,167 @@
   flex-wrap: wrap;
   margin-top: var(--space-4);
 }
+
+/* ---------- Bandeau supérieur ----------
+   Mesuré sur le rendu réel de la maquette : 30px de haut, fond turquoise pâle #DDF4F3, texte
+   bleu nuit à 13px, contenu centré sur la même largeur que le reste du site. */
+.tfp-topbar {
+  background: var(--color-turquoise-pale);
+  color: var(--color-navy);
+  font-size: 13px;
+}
+
+.tfp-topbar__inner {
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding: 0 var(--container-padding);
+  min-height: 30px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-4);
+}
+
+.tfp-topbar__rating,
+.tfp-topbar__offer {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.tfp-topbar__stars {
+  color: var(--color-star);
+  letter-spacing: 1px;
+}
+
+.tfp-topbar__phone {
+  margin-left: auto;
+  font-weight: var(--fw-semibold);
+  color: var(--color-navy);
+}
+
+/* Sous 560px, le téléphone du bandeau ferait passer la ligne à deux niveaux : il reste accessible
+   par le bouton d'appel du header et la barre CTA mobile. */
+@media (max-width: 559px) {
+  .tfp-topbar__phone {
+    display: none;
+  }
+}
+
+/* ---------- Bouton cuivre ----------
+   Variante du CTA principal du header dans la maquette : fond #D9A062, texte bleu nuit. */
+.tfp-btn--copper {
+  background: var(--color-copper);
+  color: var(--color-navy);
+  border-color: var(--color-copper);
+}
+
+.tfp-btn--copper:hover,
+.tfp-btn--copper:focus-visible {
+  background: var(--color-copper-dark);
+  border-color: var(--color-copper-dark);
+  color: var(--color-white);
+}
+
+/* ---------- Bande de rappel avant le pied de page ----------
+   Section turquoise de 158px placée entre le grand CTA bleu et le footer dans la maquette. */
+.tfp-prefooter {
+  background: var(--color-turquoise-pale);
+  border-top: 1px solid var(--color-turquoise-light);
+}
+
+.tfp-prefooter__inner {
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding: var(--space-6) var(--container-padding);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-4) var(--space-6);
+}
+
+.tfp-prefooter__text {
+  flex: 1 1 420px;
+  color: var(--color-navy);
+}
+
+.tfp-prefooter__text strong {
+  font-family: var(--font-heading);
+  font-size: var(--fs-lg);
+  display: block;
+  margin-bottom: 4px;
+}
+
+/* ---------- Badge régional (hero des pages prestation et zone) ---------- */
+.tfp-region-badge {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  margin-bottom: var(--space-3);
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  background: var(--color-turquoise-pale);
+  border: 1px solid var(--color-turquoise-light);
+  color: var(--color-navy);
+  font-size: var(--fs-2xs);
+  font-weight: var(--fw-semibold);
+}
+
+/* ---------- Réponse directe ----------
+   Encadré à barre verticale de la maquette, placé juste sous le hero. */
+.tfp-direct-answer {
+  border-left: 3px solid var(--color-turquoise);
+  padding-left: clamp(16px, 2vw, 24px);
+  max-width: 900px;
+}
+
+.tfp-direct-answer__label {
+  font-size: var(--fs-3xs);
+  font-weight: var(--fw-bold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+}
+
+.tfp-direct-answer__text {
+  margin-top: var(--space-3);
+  font-size: clamp(17px, 1.6vw, 19px);
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+}
+
+/* ---------- Rappel de contact avant le CTA final ---------- */
+.tfp-contact-nudge {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding: var(--space-5) var(--space-6);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-bg);
+}
+
+.tfp-contact-nudge p {
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+/* La bande de rappel est un enfant de <footer> (pour que tout le contenu appartienne à un repère
+   ARIA, règle axe « region ») : elle hérite donc des couleurs de lien claires du pied de page,
+   pensées pour un fond bleu nuit. Sur son fond turquoise clair, les boutons doivent retrouver
+   leurs couleurs propres — sans cela, le bouton secondaire s'affichait en #C6DCE4 sur blanc,
+   soit un contraste de 1,42 (échec axe-core color-contrast). */
+.tfp-footer .tfp-prefooter .tfp-btn--secondary {
+  color: var(--color-text);
+}
+
+.tfp-footer .tfp-prefooter .tfp-btn--secondary:hover,
+.tfp-footer .tfp-prefooter .tfp-btn--secondary:focus-visible {
+  color: var(--color-primary);
+}
+
+.tfp-footer .tfp-prefooter .tfp-btn--primary {
+  color: var(--color-white);
+}

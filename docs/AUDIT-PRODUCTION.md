@@ -384,8 +384,9 @@ plutôt qu'à masquer :
 
 ```
 ROOT_CAUSE_IDENTIFIED=YES
-CLAUDE_DESIGN_FIDELITY=PASS   (13/13 blocs présents et ordonnés, 7 identiques ±8px, 5 proches
-                                ±40px, 1 écart assumé ; photos toujours provisoires — voir §7)
+CLAUDE_DESIGN_FIDELITY=PARTIEL (accueil 98 % de la maquette, 13/13 blocs ordonnés ; formulaire et
+                                mentions légales complets ; prestations à 82 % ; tarifs, zones,
+                                index conseils et institutionnelles entre 53 % et 69 % — §3d)
 IMAGES_INTEGRATED=PASS        (pipeline responsive AVIF/WebP/JPEG complet, favicon et pages de
                                 prestation corrigés dans ce hotfix ; images encore provisoires)
 53_ROUTES=PASS                (803 assertions, 0 route en 404, crawl propre)
@@ -406,9 +407,9 @@ et non levée par ce hotfix faute de photos authentiques fournies — pas un dé
 
 | Fichier | Rôle | Taille | SHA-256 |
 |---|---|---|---|
-| `release/topfamillepro-theme-correctif.zip` | Thème enfant, `Version: 0.4.0`, dossier racine `topfamillepro/` (jamais `V1top-famille-pro`) | 2,3 Mo (2 300 145 o) | `7a4ac3ddcd50656be000d857ad0b719cc5709d5bcdbf774e296f1e4d4c6009e2` |
-| `release/topfamillepro-content-installer-correctif.zip` | Plugin d'installation, `Version: 1.3.0` | 57 Ko (58 559 o) | `271e0764e8b52ce47a6b1e08a75beb51415718f7cffc68482a042aa246210b43` |
-| `release/Top-Famille-Pro-Correctif-Production.zip` | ZIP global (les deux ci-dessus + ce document + le guide + les checksums) | 2,4 Mo (2 377 178 o) | `93181be404ef137b20690fa96eeff2257df1d502945f0a9fb9dfd50085fe4c53` |
+| `release/topfamillepro-theme-correctif.zip` | Thème enfant, `Version: 0.5.0`, dossier racine `topfamillepro/` (jamais `V1top-famille-pro`) | 2,3 Mo (2 302 251 o) | `30846991ed1dcdae10501b8da1f6eef933a3e306d69e2d9f1f399c0b06b81de5` |
+| `release/topfamillepro-content-installer-correctif.zip` | Plugin d'installation, `Version: 1.4.0` | 60 Ko (61 222 o) | `47aff06b3df6275ae386e9fbc44b23ccda27a8edb911e91e15155b29a755f0b8` |
+| `release/Top-Famille-Pro-Correctif-Production.zip` | ZIP global (les deux ci-dessus + ce document + le guide + les checksums) | 2,4 Mo (2 386 722 o) | `6995c107228c5ce4e15a248841797192dd7b3459ffa518f2c82a6ae86cbd4a37` |
 
 Empreintes également dans `release/SHA256SUMS-correctif.txt`.
 
@@ -495,3 +496,97 @@ Si un problème apparaît après activation de `topfamillepro` (staging ou produ
    hPanel Hostinger → Sauvegardes → Restaurer, à la date précédant la manipulation.
 4. Désactiver et supprimer le plugin `topfamillepro-content-installer` dans tous les cas, une fois
    la décision (garder ou revenir en arrière) prise — il ne doit jamais rester actif durablement.
+
+## 3d. Quatrième vague — pages internes, famille par famille (9 août 2026)
+
+Le fichier de référence n'est pas seulement un bundle auto-décompressant : c'est aussi une
+**application à routes `#/`**. Toutes ses pages internes ont donc pu être ouvertes et mesurées,
+et non plus seulement l'accueil. L'outil `tools/compare-fidelite.mjs` navigue les deux versions
+dans le même navigateur, neutralise les animations, force le chargement des images en lazy-loading
+puis mesure les blocs de premier niveau.
+
+### Matrice par famille (1440 px, après corrections)
+
+| Famille | Route maquette | Route WordPress | Maquette | WordPress | Couverture |
+|---|---|---|---|---|---|
+| Accueil | `#/` | `/` | 13 blocs / 7825 px | 13 blocs / 7658 px | **98 %** |
+| Prestation | `#/service/bureaux` | `/prestations/bureaux/` | 14 / 7745 | 16 / 6374 | 82 % |
+| Tarifs | `#/nos-tarifs` | `/tarifs/` | 13 / 5852 | 7 / 3594 | 61 % |
+| Département | `#/departement/cote-dor` | `/zones-intervention/cote-dor/` | 11 / 6456 | 13 / 4347 | 67 % |
+| Ville | `#/ville/dijon` | `/zones-intervention/cote-dor/dijon/` | 13 / 8508 | 13 / 4518 | 53 % |
+| Commune | `#/ville/beaune` | `/zones-intervention/cote-dor/beaune/` | 13 / 7106 | 12 / 3745 | 53 % |
+| Index conseils | `#/conseils` | `/conseils/` | 7 / 2834 | 3 / 1688 | 60 % |
+| Institutionnelle | `#/pourquoi-top-famille-pro` | `/pourquoi-nous/` | 8 / 4047 | 5 / 2776 | 69 % |
+| Formulaire | `#/demande-de-devis` | `/demande-de-devis/` | 4 / 1947 | 3 / 2042 | **105 %** |
+| Mentions légales | `#/mentions-legales` | `/mentions-legales/` | 4 / 2014 | 6 / 2326 | **116 %** |
+| 404 | *(sans équivalent)* | `/cette-page-n-existe-pas/` | — | 2 / 1190 | — |
+
+La « couverture » compare la hauteur totale rendue : c'est une mesure de **densité de contenu**,
+pas de qualité. Une page à 53 % n'est pas cassée — elle contient réellement moins de contenu que
+la maquette.
+
+### Ce qui a été corrigé dans cette vague
+
+**Accueil** — les quatre écarts encore visibles :
+- bandeau supérieur turquoise (`#DDF4F3`, 30 px) rétabli dans le header : tarif, promesse de délai,
+  note Google et téléphone ;
+- CTA du header repassé en **cuivre** (`#D9A062`, texte bleu nuit) — couleur mesurée sur le rendu
+  réel de la maquette, pas supposée ;
+- bande turquoise de rappel rétablie entre le grand CTA bleu et le pied de page ;
+- hero passé de « écart » à « proche » (744 px contre 762 px).
+
+**Prestations** — le gabarit partagé par les six pages a reçu les composants manquants de la
+maquette : badge régional, mention du tarif unique dans le hero, encadré « Réponse directe » à
+barre verticale, section « Trois configurations, trois organisations », section « Une semaine
+type », exemple tarifaire chiffré, et rappel de contact avant le CTA final. Ces sections sont
+pilotées par de nouveaux champs ACF (`config_1..3_titre/texte`, `semaine_type`) : **le contenu est
+distinct pour chacune des six prestations**, pas dupliqué dans le PHP. Résultat mesuré : de
+12 blocs / 4816 px à 16 blocs / 6374 px.
+
+### Deux régressions introduites puis corrigées dans la même vague
+
+1. La bande de rappel, placée entre `</main>` et `<footer>`, n'appartenait à aucun repère ARIA —
+   axe-core signalait « Some page content is not contained by landmarks » sur les 7 pages
+   auditées. Corrigée en la plaçant à l'intérieur du `<footer>`.
+2. Devenue enfant du pied de page, elle héritait de ses couleurs de lien claires : le bouton
+   secondaire s'affichait en `#C6DCE4` sur blanc, soit un contraste de 1,42. Corrigé par une règle
+   explicite.
+
+Les deux ont été trouvées en rejouant la suite complète, avant livraison.
+
+### Lighthouse — six pages, une par famille
+
+| Page | Performance | Accessibilité | Bonnes pratiques | SEO | CLS |
+|---|---|---|---|---|---|
+| Accueil | 86 | 100 | 100 | 100 | 0,002 |
+| Prestation | 89 | 100 | 100 | 100 | 0,002 |
+| Ville | 95 | 100 | 100 | 100 | 0,010 |
+| Tarifs | 95 | 100 | 100 | 100 | 0,004 |
+| Article | 96 | 100 | 100 | 100 | 0,010 |
+| Formulaire | 96 | 100 | 100 | 100 | 0,018 |
+
+Accessibilité, bonnes pratiques et SEO à **100 partout**, CLS très en dessous de la limite de 0,1.
+La performance de l'accueil et de la page prestation passe légèrement sous 90 — ce sont les deux
+pages les plus lourdes en images, mesurées sur le serveur de développement PHP intégré, **sans
+compression ni cache**. La même page d'accueil avait été mesurée à 90 lors de la vague précédente :
+l'écart relève de la variabilité de mesure sur ce serveur, pas d'une régression identifiée. À
+remesurer sur l'hébergement réel après activation de LiteSpeed.
+
+### Ce qui reste à faire, sans détour
+
+Les familles tarifs, ville, commune, département, index conseils et institutionnelle contiennent
+encore **moitié à deux tiers du contenu de la maquette**. Les sections identifiées comme absentes,
+par ordre d'importance :
+
+- **Page prestation** : le bloc « Le détail, espace par espace et contrainte par contrainte »
+  (1162 px dans la maquette, le plus gros de la page) n'a pas été construit.
+- **Pages ville et commune** : tissu économique local détaillé, types de locaux du secteur,
+  secteurs et communes proches, méthode d'intervention locale — la maquette y consacre plusieurs
+  sections que le gabarit actuel résume.
+- **Page tarifs** : la maquette compte 13 blocs contre 7 ici.
+- **Index conseils et pages institutionnelles** : sections éditoriales supplémentaires.
+
+Ce travail est du **contenu rédactionnel distinct par page**, pas de la mise en page : le
+reproduire correctement suppose d'écrire des textes spécifiques à chaque ville et à chaque
+prestation, ce qui n'a pas été fait dans cette passe et ne doit pas être généré en dupliquant un
+gabarit dont seul le nom de commune changerait.

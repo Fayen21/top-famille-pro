@@ -14,6 +14,30 @@ $site = tfp_site_data();
 $year = gmdate( 'Y' );
 ?>
 <footer class="tfp-footer">
+	<section class="tfp-prefooter">
+		<div class="tfp-prefooter__inner">
+			<p class="tfp-prefooter__text">
+				<strong>Un besoin d'entretien pour vos locaux ?</strong>
+				<?php echo esc_html( explode( ' ', $site['manager'] )[0] ); ?> étudie votre demande et vous transmet un devis clair sous 24 heures, gratuit et sans engagement.
+			</p>
+			<?php
+			tfp_button(
+				array(
+					'label'   => 'Demander mon devis',
+					'href'    => home_url( '/demande-de-devis/' ),
+					'variant' => 'primary',
+				)
+			);
+			tfp_button(
+				array(
+					'label'   => '☎ ' . $site['phone'],
+					'href'    => 'tel:' . $site['phone_href'],
+					'variant' => 'secondary',
+				)
+			);
+			?>
+		</div>
+	</section>
 	<div class="tfp-footer__inner">
 		<div class="tfp-footer__col">
 			<h3><?php echo esc_html( $site['brand_name'] ); ?></h3>

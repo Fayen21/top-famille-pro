@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @param array $args {
  *   @type string $label   Texte visible (obligatoire).
  *   @type string $href    URL (obligatoire).
- *   @type string $variant 'primary' | 'secondary' | 'on-primary' | 'on-dark'. Défaut 'primary'.
+ *   @type string $variant 'primary' | 'secondary' | 'copper' | 'on-primary' | 'on-dark'. Défaut 'primary'.
  *   @type string $size    '' | 'sm'. Défaut ''.
  *   @type bool   $block   Pleine largeur. Défaut false.
  *   @type string $icon    HTML brut optionnel affiché avant le label (ex. picto téléphone).

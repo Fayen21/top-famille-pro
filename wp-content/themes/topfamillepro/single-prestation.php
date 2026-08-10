@@ -14,6 +14,7 @@ $site     = tfp_site_data();
 
 $h1          = tfp_get_field( 'h1', $post_id ) ?: get_the_title( $post_id );
 $reponse     = tfp_get_field( 'reponse_directe', $post_id );
+$tease       = tfp_get_field( 'tease', $post_id );
 $pour_qui    = tfp_get_field( 'pour_qui', $post_id );
 $taches      = tfp_get_lines( tfp_get_field( 'taches', $post_id ) );
 $problemes   = tfp_get_lines( tfp_get_field( 'problemes', $post_id ) );
@@ -22,6 +23,15 @@ $exclusions  = tfp_get_field( 'exclusions', $post_id );
 $materiel    = tfp_get_field( 'materiel_rappel', $post_id );
 $villes      = tfp_get_field( 'villes_prioritaires', $post_id );
 $faq         = tfp_get_faq_items( 'faq', $post_id, 8 );
+$semaine     = tfp_get_field( 'semaine_type', $post_id );
+$configs     = array();
+for ( $i = 1; $i <= 3; $i++ ) {
+	$titre = tfp_get_field( 'config_' . $i . '_titre', $post_id );
+	if ( $titre ) {
+		$configs[] = array( 'titre' => $titre, 'texte' => tfp_get_field( 'config_' . $i . '_texte', $post_id ) );
+	}
+}
+$budget      = tfp_home_budget_example();
 $related_articles = tfp_get_prestation_related_articles( $post_id );
 
 $seo_title = tfp_get_field( 'seo_title', $post_id );
@@ -112,10 +122,12 @@ get_header();
 
 <section class="tfp-hero">
 	<div class="tfp-hero__content">
+		<p class="tfp-region-badge"><?php echo esc_html( $site['address_region'] ); ?></p>
 		<h1><?php echo esc_html( $h1 ); ?></h1>
-		<?php if ( $reponse ) : ?>
-			<p style="margin-top:16px;font-size:19px;color:var(--color-text-secondary);max-width:820px;line-height:1.6"><?php echo esc_html( $reponse ); ?></p>
+		<?php if ( $tease ) : ?>
+			<p class="tfp-hero__lede"><?php echo esc_html( $tease ); ?></p>
 		<?php endif; ?>
+		<p class="tfp-hero__microcopy"><?php echo esc_html( tfp_format_price( $site['price_unique'] ) ); ?> HT/h · tarif unique · devis gratuit sous 24 h</p>
 		<div class="tfp-flex" style="margin-top:24px">
 			<?php
 			tfp_button( array( 'label' => 'Demander mon devis', 'href' => $devis_url, 'variant' => 'primary' ) );
@@ -129,6 +141,15 @@ get_header();
 		</div>
 	</div>
 </section>
+
+<?php if ( $reponse ) : ?>
+<section class="tfp-container tfp-section--tight">
+	<div class="tfp-direct-answer">
+		<p class="tfp-direct-answer__label">Réponse directe</p>
+		<p class="tfp-direct-answer__text"><?php echo esc_html( $reponse ); ?></p>
+	</div>
+</section>
+<?php endif; ?>
 
 <?php if ( $pour_qui ) : ?>
 <section class="tfp-section--alt tfp-section--tight">
@@ -169,6 +190,32 @@ get_header();
 	</div>
 </section>
 
+<?php if ( ! empty( $configs ) ) : ?>
+<section class="tfp-section--tight">
+	<div class="tfp-container">
+		<h2>Trois configurations, trois organisations</h2>
+		<p style="margin-top:12px;color:var(--color-text-secondary);max-width:760px">Le volume d'heures et la fréquence ne se déduisent pas d'une surface. Voici les cas de figure les plus courants et le rythme qui leur correspond généralement.</p>
+		<div class="tfp-grid tfp-grid--autofit-lg" style="margin-top:24px">
+			<?php foreach ( $configs as $config ) : ?>
+				<div class="tfp-card">
+					<h3 style="font-size:19px"><?php echo esc_html( $config['titre'] ); ?></h3>
+					<p style="margin-top:10px;color:var(--color-text-secondary);font-size:15px;line-height:1.6"><?php echo esc_html( $config['texte'] ); ?></p>
+				</div>
+			<?php endforeach; ?>
+		</div>
+	</div>
+</section>
+<?php endif; ?>
+
+<?php if ( $semaine ) : ?>
+<section class="tfp-section--alt tfp-section--tight">
+	<div class="tfp-container" style="max-width:860px">
+		<h2>Une semaine type</h2>
+		<p style="margin-top:14px;color:var(--color-text-secondary);line-height:1.7"><?php echo esc_html( $semaine ); ?></p>
+	</div>
+</section>
+<?php endif; ?>
+
 <?php if ( ! empty( $problemes ) ) : ?>
 <section class="tfp-section tfp-section--navy">
 	<div class="tfp-container">
@@ -201,6 +248,11 @@ get_header();
 			Frais de gestion <?php echo esc_html( tfp_format_price( $site['price_gestion'] ) ); ?> HT/mois et frais de mise en place
 			<?php echo esc_html( tfp_format_price( $site['price_setup'] ) ); ?> HT, précisés au devis.
 		</p>
+		<div class="tfp-price-example" style="max-width:420px">
+			<div class="tfp-price-example__label">Exemple · <?php echo (int) $budget['hours']; ?> h/mois</div>
+			<div class="tfp-price-example__value"><?php echo esc_html( tfp_format_price( $budget['monthly'] ) ); ?> <span>HT/mois</span></div>
+			<div class="tfp-price-example__note"><?php echo (int) $budget['hours']; ?> h × <?php echo esc_html( tfp_format_price( $site['price_unique'] ) ); ?> + <?php echo esc_html( tfp_format_price( $site['price_gestion'] ) ); ?> de gestion. Avec les frais de mise en place : <?php echo esc_html( tfp_format_price( $budget['first_month'] ) ); ?> HT le premier mois. Exemple non contractuel.</div>
+		</div>
 		<a href="<?php echo esc_url( home_url( '/tarifs/' ) ); ?>" class="tfp-eyebrow-link">Voir la page Tarifs complète →</a>
 	</div>
 </section>
@@ -249,6 +301,13 @@ get_header();
 	</div>
 </section>
 <?php endif; ?>
+
+<section class="tfp-container tfp-section--tight">
+	<div class="tfp-contact-nudge">
+		<p>Encore une question sur <?php echo esc_html( mb_strtolower( get_the_title( $post_id ) ) ); ?> ? <?php echo esc_html( explode( ' ', $site['manager'] )[0] ); ?> vous répond directement.</p>
+		<?php tfp_button( array( 'label' => 'Nous contacter', 'href' => home_url( '/contact/' ), 'variant' => 'secondary', 'size' => 'sm' ) ); ?>
+	</div>
+</section>
 
 <section class="tfp-cta-block">
 	<div class="tfp-cta-block__inner">

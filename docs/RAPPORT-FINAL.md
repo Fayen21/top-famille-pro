@@ -859,3 +859,71 @@ largeurs et Lighthouse sont au vert, les captures comparatives sont livrées. Le
 `PARTIEL` parce que les pages internes (prestation, tarifs) n'ont pas reçu le même niveau de
 travail visuel que l'accueil et que les photos définitives manquent toujours — énumérés au point 11
 plutôt que passés sous silence.
+
+## 22. Pages internes — comparaison mesurée famille par famille (9 août 2026, quatrième vague)
+
+Détail complet : `docs/AUDIT-PRODUCTION.md` §3d. Le fichier de référence est une application à
+routes `#/` : **toutes ses pages internes ont été ouvertes et mesurées**, plus seulement l'accueil.
+Outil rejouable : `tools/compare-fidelite.mjs`.
+
+### 1. Fichiers modifiés
+
+`template-parts/header/site-header.php` (bandeau supérieur, CTA cuivre) ·
+`template-parts/footer/site-footer.php` (bande de rappel) · `single-prestation.php` (7 composants
+ajoutés) · `includes/acf-fields-prestation.php` (7 champs) · `includes/components.php` ·
+`src/css/{02-base,04-components,05-home}.css` · `bin/seed-phase2-content.php` et
+`bin/seed-phase3-batch1-prestations.php` (+ miroirs `installer/`) · `tools/compare-fidelite.mjs`
+(nouveau) · docs et `release/`.
+
+### 2. Composants reproduits dans cette vague
+
+Bandeau supérieur turquoise (`#DDF4F3`, 30 px), CTA cuivre du header (`#D9A062`), bande de rappel
+avant pied de page, badge régional, encadré « Réponse directe » à barre verticale, section « Trois
+configurations, trois organisations », section « Une semaine type », exemple tarifaire chiffré,
+rappel de contact avant CTA final.
+
+### 3. Couverture par famille (hauteur mesurée à 1440 px)
+
+| Famille | Couverture | | Famille | Couverture |
+|---|---|---|---|---|
+| Mentions légales | **116 %** | | Département | 67 % |
+| Formulaire | **105 %** | | Index conseils | 60 % |
+| Accueil | **98 %** | | Ville | 53 % |
+| Prestation | 82 % | | Commune | 53 % |
+| Institutionnelle | 69 % | | Tarifs | 61 % |
+
+### 4. Lighthouse — six pages, une par famille
+
+Accessibilité **100**, bonnes pratiques **100**, SEO **100** sur les six. CLS entre 0,002 et 0,018,
+très en dessous de la limite de 0,1. Performance : 86 (accueil), 89 (prestation), 95 (ville), 95
+(tarifs), 96 (article), 96 (formulaire) — mesures sur serveur de développement sans compression ni
+cache.
+
+### 5. Tests
+
+**829 assertions Playwright vertes** (824 + 5). Zéro violation axe-core sur les 7 pages auditées,
+après correction de deux régressions introduites dans cette même vague (bande de rappel hors
+repère ARIA, puis contraste du bouton secondaire hérité du pied de page) — les deux trouvées en
+rejouant la suite avant livraison.
+
+### 6. Écarts visuels encore présents
+
+Les familles tarifs, ville, commune, département, index conseils et institutionnelle contiennent
+**moitié à deux tiers du contenu de la maquette**. Sections identifiées comme absentes : le bloc
+« Le détail, espace par espace » des pages prestation (1162 px), le tissu économique local
+détaillé et les secteurs proches des pages ville, et plusieurs sections éditoriales des pages
+tarifs et institutionnelles. C'est du **contenu rédactionnel distinct par page**, pas de la mise en
+page : le produire correctement suppose d'écrire des textes propres à chaque ville et à chaque
+prestation, ce qui n'a pas été fait dans cette passe et ne doit pas être fabriqué en dupliquant un
+gabarit dont seul le nom de commune changerait.
+
+### 7. Verdict
+
+```
+FIDÉLITÉ CLAUDE DESIGN : PARTIEL — ÉCARTS RESTANTS
+```
+
+Les modèles des quatre familles demandées (prestations, tarifs, zones, articles) ont bien été
+**réellement comparés à leur référence**, mesures à l'appui — condition posée pour pouvoir statuer.
+Le résultat de cette comparaison est que trois d'entre elles restent nettement en deçà de la
+maquette en volume de contenu. Le verdict `VALIDÉE` serait donc faux.
