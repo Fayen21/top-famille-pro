@@ -295,16 +295,25 @@ $render_sections = function ( array $groupes, $classe ) use ( $render_group ) {
 	foreach ( $groupes as $bloc ) {
 		if ( $bloc['section'] !== $courante ) {
 			if ( $ouverte ) {
-				echo '</div></section>';
+				echo '</div></div></section>';
 			}
-			printf( '<section class="%s"><div class="tfp-container">', esc_attr( $classe ) );
+			// Plusieurs groupes dans une même section se répartissent en colonnes, comme dans la
+			// maquette : les empiler ferait tripler la hauteur de la bande à contenu identique.
+			$nb = count( array_filter( $groupes, function ( $g ) use ( $bloc ) {
+				return $g['section'] === $bloc['section'];
+			} ) );
+			printf(
+				'<section class="%s"><div class="tfp-container"><div class="%s">',
+				esc_attr( $classe ),
+				esc_attr( $nb > 1 ? 'tfp-zone-links-grid' : '' )
+			);
 			$courante = $bloc['section'];
 			$ouverte  = true;
 		}
 		$render_group( $bloc );
 	}
 	if ( $ouverte ) {
-		echo '</div></section>';
+		echo '</div></div></section>';
 	}
 };
 ?>

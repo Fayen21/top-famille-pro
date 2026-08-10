@@ -54,15 +54,15 @@ async function settle(page) {
 async function measure(page) {
 	return page.evaluate(() => {
 		const txt = (el) => (el ? (el.textContent || '').replace(/\s+/g, ' ').trim() : '');
+		// Conteneur du flux de page : le plus proche ancêtre du H1 portant plusieurs `<section>`.
+		// Prendre « l'élément qui a le plus d'enfants » comparerait, sur une page courte, la
+		// coquille de l'application d'un côté (barre haute, contenu, pré-pied, pied) aux vraies
+		// sections de l'autre — deux choses différentes, et un écart de comptage sans signification.
 		let root = document.body;
-		let count = 0;
-		for (const el of document.querySelectorAll('body *')) {
-			const n = el.querySelectorAll(
-				':scope > section, :scope > header, :scope > footer, :scope > main, :scope > div'
-			).length;
-			if (n > count && el.getBoundingClientRect().height > 1000) {
-				count = n;
+		for (let el = document.querySelector('h1'); el; el = el.parentElement) {
+			if (el.querySelectorAll(':scope > section').length >= 2) {
 				root = el;
+				break;
 			}
 		}
 		return {

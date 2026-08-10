@@ -41,9 +41,19 @@ foreach ( $data['sections'] as $section ) {
 	} elseif ( 'alt' === $section['fond'] ) {
 		$classes[] = 'tfp-section--alt';
 	}
+	// Plusieurs blocs courts dans une même bande se répartissent en colonnes, comme dans la
+	// maquette. Un bloc long (plusieurs paragraphes, une FAQ) garde toute la largeur : le mettre
+	// en colonne étroite rendrait la lecture pénible pour gagner quelques pixels.
+	$courts = 0;
+	foreach ( $section['blocs'] as $b ) {
+		if ( count( $b['textes'] ?? array() ) <= 1 && empty( $b['faq'] ) ) {
+			$courts++;
+		}
+	}
+	$grille = count( $section['blocs'] ) > 1 && $courts === count( $section['blocs'] );
 	?>
 	<section class="<?php echo esc_attr( implode( ' ', $classes ) ); ?>">
-		<div class="tfp-container">
+		<div class="tfp-container<?php echo $grille ? ' tfp-zone-links-grid' : ''; ?>">
 			<?php foreach ( $section['blocs'] as $bloc ) : ?>
 				<div class="tfp-static-block">
 					<?php if ( $bloc['titre'] ) : ?>

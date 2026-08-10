@@ -15,21 +15,19 @@
 
 | Route Claude | Route WordPress | Blocs | Hauteur | Mots | Titres | Puces | Images | Débord. | Triptyque |
 |---|---|---|---|---|---|---|---|---|---|
-| `#/article/cahier-des-charges-nettoyage` | `/conseils/cahier-des-charges-nettoyage/` | 9 → 9 | 4643 → 5520 (119 %) | 741 → 766 (103 %) | 10 → 12 | 32 → 46 | 3 → 4 | non | — |
+| `#/conseils` | `/conseils/` | 7 → 7 | 2834 → 3410 (120 %) | 465 → 472 (102 %) | 3 → 12 | 15 → 32 | 5 → 6 | non | — |
 
 ## Détail bloc par bloc à 1440 px
 
-### `#/article/cahier-des-charges-nettoyage` → `/conseils/cahier-des-charges-nettoyage/`
+### `#/conseils` → `/conseils/`
 
 | # | Bloc maquette | Bloc WordPress | Hauteur | État |
 |---|---|---|---|---|
-| 1 | (Accueil / Conseils / Comment rédiger u) | (Accueil/Conseils/Comment rédiger un ca) | 42 → 57 | ≈ proche |
-| 2 | Comment rédiger un cahier des charges de netto | Comment rédiger un cahier des charges de netto | 728 → 732 | ✅ identique |
-| 3 | (Un cahier des charges de nettoyage pro) | (Un cahier des charges de nettoyage pro) | 242 → 270 | ≈ proche |
-| 4 | (Sommaire Pourquoi un cahier des charge) | (Sommaire Pourquoi un cahier des charge) | 397 → 420 | ≈ proche |
-| 5 | Pourquoi un cahier des charges change tout | Pourquoi un cahier des charges change tout | 1324 → 1455 | ⚠️ écart +131 px |
-| 6 | Erreurs à éviter | Erreurs à éviter | 227 → 365 | ⚠️ écart +138 px |
-| 7 | Questions fréquentes | Questions fréquentes | 342 → 501 | ⚠️ écart +159 px |
-| 8 | (Pour situer ces repères dans une prest) | (Pour situer ces repères dans une prest) | 202 → 373 | ⚠️ écart +171 px |
-| 9 | Un devis pour vos locaux ? | Un devis pour vos locaux ? | 317 → 363 | ≈ proche |
+| 1 | (Accueil / Conseils) | (Accueil/Conseils) | 42 → 57 | ≈ proche |
+| 2 | Conseils & repères | Conseils & repères | 339 → 337 | ✅ identique |
+| 3 | (Toutes les catégories Bureaux Tarifs O) | (Toutes les catégories Bureaux Tarifs O) | 75 → 145 | ⚠️ écart +70 px |
+| 4 | (À la une · Bureaux À quelle fréquence ) | À quelle fréquence faire nettoyer ses bureaux  | 427 → 578 | ⚠️ écart +151 px |
+| 5 | Les autres articles | Les autres articles | 642 → 723 | ⚠️ écart +81 px |
+| 6 | Passer du conseil à votre situation | Passer du conseil à votre situation | 314 → 368 | ≈ proche |
+| 7 | (Un besoin précis pour vos locaux ?Nos ) | (Un besoin précis pour vos locaux ? Nos) | 174 → 218 | ≈ proche |
 

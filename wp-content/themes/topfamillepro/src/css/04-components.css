@@ -1944,3 +1944,31 @@
 .tfp-section--primary .tfp-list-plain li {
   border-bottom-color: rgba(255, 255, 255, 0.18);
 }
+
+/* Plusieurs groupes de liens dans une même bande : colonnes, comme dans la maquette. Empilés,
+   ils tripleraient la hauteur de la section à contenu identique. */
+.tfp-zone-links-grid {
+  display: grid;
+  gap: 32px 40px;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+  align-items: start;
+}
+
+.tfp-zone-links-grid .tfp-zone-links + .tfp-zone-links {
+  margin-top: 0;
+}
+
+/* Tuile de prestation dans une page de zone : compacte, titre + une ligne. */
+.tfp-zone-links .tfp-card--link {
+  padding: 18px 20px;
+}
+
+.tfp-zone-links .tfp-card--link h3 {
+  font-size: 17px;
+}
+
+.tfp-zone-links .tfp-card--link p {
+  margin-top: 4px;
+  font-size: 14px;
+  line-height: 1.5;
+}
