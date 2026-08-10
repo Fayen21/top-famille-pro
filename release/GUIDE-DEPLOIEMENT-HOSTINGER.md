@@ -164,9 +164,24 @@ en quelques minutes. **C'est le seul test qui ne peut pas être fait avant la mi
 
 **Extensions → Ajouter une extension**, installez et activez **LiteSpeed Cache** (généralement déjà
 disponible ou pré-suggéré sur l'hébergement Hostinger). Activez au minimum : la mise en cache des
-pages, la compression, et l'optimisation CSS/JS différée. C'est une étape obligatoire, pas
-optionnelle : sans elle, les cibles de performance mesurées en développement (Lighthouse mobile
-91-97/100) ne seront pas atteintes sur un hébergement mutualisé.
+pages **et la compression (Brotli ou gzip)**. C'est une étape obligatoire, pas optionnelle.
+
+**Vérifiez la compression avant de considérer l'étape faite.** C'est le point qui décide de la note
+de performance, et il est mesurable en une commande :
+
+```bash
+curl -s -o /dev/null -D - -H 'Accept-Encoding: br, gzip' \
+  https://top-famille-pro.fr/wp-content/themes/topfamillepro/assets/dist/css/main.css | grep -i 'content-encoding'
+```
+
+La réponse doit contenir `content-encoding: br` (ou `gzip`). Si cette ligne est absente, la feuille
+de style est servie en 59 Ko au lieu de 10 : sur un lien mobile, cela coûte à soi seul près d'une
+seconde de premier rendu, et fait passer la note de performance de 92-100 à 83-96. Les deux séries
+de mesures sont dans `docs/RAPPORT-FIDELITE-FINALE.md` §6.
+
+N'activez **pas** le chargement asynchrone ou différé du CSS principal proposé par LiteSpeed : la
+feuille de style du thème est volontairement synchrone, sinon la page s'affiche un instant sans
+style.
 
 ### 20. Vérifier le sitemap et robots.txt
 

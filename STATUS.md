@@ -1213,13 +1213,56 @@ Résultat : **53 routes, 0 phrase de la maquette absente**, 6 écarts voulus nom
 4. **Politique des témoignages** : voir CLAUDE.md §5.5, réécrit le 10 août. Ils sont reproduits et
    visibles, marqués `data-tfp-provisional`.
 
+### Passe finale de fidélité — 10 août 2026
+
+Verdict : **PARTIEL — ÉCARTS RESTANTS**. Rapport complet dans
+`docs/RAPPORT-FIDELITE-FINALE.md`, écarts autorisés dans `docs/ECARTS-MAQUETTE-AUTORISES.md`.
+
+**Le critère WCAG 2.5.8 avait été mal lu.** Le seuil AA est de **24 × 24 px**, ou un espacement
+suffisant, ou l'exception « inline » ; les 44 × 44 px relèvent de 2.5.5, de niveau **AAA**. Cette
+erreur avait été propagée dans le CSS et dans le rapport précédent, et gonflait les pages de zone
+de 11 à 23 %. Le point 2 de « Reste à faire » de la version précédente de ce fichier — « à
+trancher : fidélité visuelle ou confort tactile » — était donc un faux dilemme : les deux sont
+conciliables, il suffisait d'appliquer le bon critère.
+
+`tools/audit-target-size.mjs` vérifie désormais la règle telle qu'elle est écrite, condition par
+condition. Aucune violation sur les 53 routes, à 1440 et 375 px.
+
+**Principe posé pour toute la mise en page : elle se relève sur le rendu du prototype, elle ne se
+devine pas.** Le nombre de colonnes d'une bande, son traitement en cartes, la géométrie de ces
+cartes et l'appartenance de chaque bloc à une rangée sont mesurés par `tools/generate-pages.mjs`
+puis stockés avec le contenu. L'heuristique précédente (« plusieurs blocs courts ⇒ colonnes »)
+rendait 2 083 px de maquette en 1 338 px sur `/a-propos/`.
+
+Trois outils s'ajoutent :
+
+| Outil | Rôle |
+|---|---|
+| `compare-styles.mjs` | styles calculés des 53 routes : polices résolues, couleurs, largeurs, cartes, boutons, grilles |
+| `validation-finale.mjs` | 12 routes × 2 largeurs × 3 images (maquette / WordPress / différence) |
+| `audit-jsonld.mjs` | `FAQPage` sans FAQ visible, `Review`/`AggregateRating` interdits, graphes illisibles |
+| `audit-target-size.mjs` | WCAG 2.2 AA 2.5.8, les trois conditions |
+| `measure-chrome.mjs` | sépare la coquille de page (en-tête, pied) du flux de contenu |
+| `banc-production.mjs` | compression Brotli/gzip + cache devant le rig, pour mesurer comme en production |
+
+Résultats : **833 tests au vert**, 0 bloc de texte manquant, 0 violation axe-core, 0 violation
+2.5.8, JSON-LD conforme, 0 `[À COMPLÉTER]` visible, sitemap à 45 URL avec les 8 communes non
+validées correctement exclues.
+
+Performance mobile, ZIP final installé, sur banc avec compression et cache : **90 à 100** sur les
+six pages, Accessibilité 100, Bonnes pratiques 100, SEO 100, CLS ≤ 0,010. Sur banc nu, sans
+compression : 83 à 96. L'écart tient entièrement au premier rendu et à la feuille de style servie
+non compressée (59 Ko contre 10 Ko en Brotli) — d'où la vérification de compression ajoutée en
+tête de la recette de déploiement.
+
 ### Reste à faire
 
 - **Décisions humaines** (pas du code) : validation par Audrey de la citation qui lui est
-  attribuée ; remplacement des témoignages provisoires par de vrais avis ; dispositif de médiation
-  de la consommation ; nombre d'avis Google et URL de la fiche.
-- **Hauteurs des pages de zone** : 111 à 123 % de la maquette. La part résiduelle tient à la cible
-  tactile de 44 px (WCAG 2.2, 2.5.8) là où la maquette empile des liens de 18 px. À trancher :
-  fidélité visuelle ou confort tactile — les deux ne sont pas conciliables ici.
-- **Performance Lighthouse** : 81 à 94 sur un rig sans cache. La cible de 90 reste à confirmer en
-  production, cache LiteSpeed activé.
+  attribuée — texte intégral au §3 du rapport de fidélité ; remplacement des témoignages
+  provisoires par de vrais avis ; nombre d'avis Google et URL de la fiche ; attestation
+  d'assurance ; validation une par une des huit communes secondaires.
+- **Défauts de fidélité restants**, listés au §7 du rapport : dix routes hors de la fourchette
+  95-105 % (hors pages légales, autorisées), le vocabulaire de micro-cartes du prototype que le
+  thème n'emploie pas partout, et le nombre de colonnes de certaines grilles.
+- **Vérifier la compression à la mise en ligne.** C'est la seule action qui sépare 83-96 de
+  90-100 en performance, et elle est mesurable en une commande (guide de déploiement, étape 19).

@@ -70,14 +70,6 @@ async function settle(page) {
  */
 const CORRECTIONS_VOULUES = [
 	{
-		maquette: 'Un interlocuteur identifié suit votre dossier',
-		raison: 'CLAUDE.md §9 — « Interlocuteur identifié » → « Interlocutrice identifiée »',
-	},
-	{
-		maquette: 'Une couverture régionale, pas des agences fictives',
-		raison: 'CLAUDE.md §9 — remplacé par « Une entreprise régionale basée à Saint-Apollinaire »',
-	},
-	{
 		maquette: 'Des guides locaux',
 		raison: 'CLAUDE.md §9 — mention supprimée (promet un contenu qui n’existe pas)',
 	},
@@ -86,6 +78,17 @@ const CORRECTIONS_VOULUES = [
 		raison: 'CLAUDE.md §9 — remplacé par « Devis étudié personnellement par Audrey »',
 	},
 	{ maquette: '47 avis', raison: 'CLAUDE.md §5.5 — compteur d’avis non confirmé' },
+	{
+		maquette: 'Médiation de la consommation',
+		raison:
+			'Décision du 10 août 2026 — site strictement B2B : la médiation de la consommation ne ' +
+			's’applique pas (code de la consommation, art. L612-1). Section supprimée, sans médiateur ' +
+			'de substitution. À réexaminer si Top-Famille Pro contracte avec des consommateurs.',
+	},
+	{
+		maquette: 'coordonnées du médiateur',
+		raison: 'Décision du 10 août 2026 — voir ci-dessus, section « Médiation de la consommation » retirée',
+	},
 	{
 		maquette: 'numéro de TVA intracommunautaire : à compléter',
 		raison: 'CLAUDE.md §5.7 — données d’immatriculation confirmées par Kbis, écrites en clair',

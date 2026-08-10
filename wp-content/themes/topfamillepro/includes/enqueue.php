@@ -61,11 +61,17 @@ add_action( 'wp_enqueue_scripts', 'tfp_enqueue_assets' );
  */
 
 /**
- * Précharge la police de titre (poids 700, le plus utilisé au-dessus de la ligne de
- * flottaison : H1 du hero) pour réduire le décalage visuel au chargement.
+ * Précharge la police du H1 — la seule ressource réellement critique au-dessus de la ligne de
+ * flottaison, et la seule préchargée : un préchargement qui ne sert pas au premier écran retarde
+ * ce qui en a besoin.
+ *
+ * Poids 800, et non 700 : la maquette rend tous ses H1 en 800 (relevé sur les 53 routes), le
+ * thème le fait donc aussi depuis la passe de fidélité visuelle. Précharger le 700 laissait le
+ * H1 attendre un fichier non préchargé, ou pire, s'afficher en gras synthétique — plus large que
+ * la vraie graisse 800, donc avec un décalage au remplacement.
  */
 function tfp_preload_fonts() {
-	$font = TFP_THEME_URI . '/assets/dist/fonts/bricolage-grotesque-700-latin.woff2';
+	$font = TFP_THEME_URI . '/assets/dist/fonts/bricolage-grotesque-800-latin.woff2';
 	printf(
 		'<link rel="preload" href="%s" as="font" type="font/woff2" crossorigin="anonymous">' . "\n",
 		esc_url( $font )

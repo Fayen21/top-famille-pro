@@ -82,11 +82,11 @@
 | `service-generic-760.avif` | 600x400 | 512×448 | eager | high | 4 | non |
 | `service-bureaux-640.avif` | 648x432 | 580×278 | lazy | — | 2 | non |
 | `service-commerces-640.avif` | 648x432 | 580×278 | lazy | — | 2 | non |
+| `audrey-placeholder-640.jpg` | 640x958 | 420×525 | lazy | — | 2 | non |
 | `article-2-480.avif` | 400x266 | 381×214 | lazy | — | 2 | non |
 | `article-1-640.avif` | 590x393 | 707×472 | eager | high | 2 | non |
 | `hero-main-760.avif` | 600x399 | 512×448 | eager | high | 1 | non |
 | `hero-secondary-220.avif` | 220x147 | 215×215 | lazy | — | 1 | non |
-| `audrey-placeholder-640.jpg` | 640x958 | 420×525 | lazy | — | 1 | non |
 | `article-1-480.avif` | 400x267 | 381×214 | lazy | — | 1 | non |
 | `article-3-480.avif` | 400x266 | 381×214 | lazy | — | 1 | non |
 | `article-2-640.avif` | 820x547 | 820×461 | eager | high | 1 | non |
