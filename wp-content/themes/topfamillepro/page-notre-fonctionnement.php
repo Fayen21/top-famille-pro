@@ -67,55 +67,35 @@ tfp_seo(
 );
 
 get_header();
+
+/*
+ * Corps de page rendu par le composant commun : le contenu vient de la maquette Claude Design,
+ * relevé par tools/generate-pages.mjs et stocké en option (CLAUDE.md §3 — page WordPress
+ * classique, sans champs ACF). L'ordre des sections et leur fond sont ceux du prototype.
+ */
+$page = tfp_static_page_data( 'notre-fonctionnement' );
 ?>
 <div class="tfp-container">
 	<?php tfp_breadcrumb( tfp_seo()['breadcrumb'] ); ?>
 </div>
 
 <section class="tfp-container tfp-section--tight">
-	<h1>Notre fonctionnement, du devis au suivi</h1>
-	<p style="max-width:680px;font-size:18px;color:var(--color-text-secondary);margin-top:12px">Quatre étapes, toujours les mêmes, pour que l'entretien de vos locaux reste prévisible.</p>
-</section>
-
-<section class="tfp-section">
-	<div class="tfp-container">
-		<?php foreach ( $etapes as $i => $etape ) : ?>
-			<div class="tfp-card" style="margin-bottom:16px;display:flex;gap:20px;align-items:flex-start">
-				<span aria-hidden="true" style="flex-shrink:0;width:40px;height:40px;border-radius:50%;background:var(--color-primary);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700"><?php echo (int) ( $i + 1 ); ?></span>
-				<div>
-					<h2 style="font-size:19px;margin-bottom:8px"><?php echo esc_html( $etape['titre'] ); ?></h2>
-					<p style="color:var(--color-text-secondary)"><?php echo esc_html( $etape['texte'] ); ?></p>
-				</div>
-			</div>
-		<?php endforeach; ?>
+	<div class="tfp-hero__eyebrow">
+		<a class="tfp-region-badge" href="<?php echo esc_url( home_url( '/zones-intervention/bourgogne-franche-comte/' ) ); ?>"><?php echo esc_html( $site['address_region'] ); ?></a>
+		<?php tfp_google_rating_badge( 'inline' ); ?>
+	</div>
+	<h1><?php echo esc_html( $page['h1'] ); ?></h1>
+	<?php foreach ( $page['lede'] as $lede ) : ?>
+		<p class="tfp-section__lede"><?php echo esc_html( $lede ); ?></p>
+	<?php endforeach; ?>
+	<div class="tfp-flex" style="margin-top:24px">
+		<?php
+		tfp_button( array( 'label' => 'Demander mon devis', 'href' => home_url( '/demande-de-devis/' ), 'variant' => 'primary' ) );
+		tfp_button( array( 'label' => '☎ Appeler ' . explode( ' ', $site['manager'] )[0], 'href' => 'tel:' . $site['phone_href'], 'variant' => 'secondary' ) );
+		?>
 	</div>
 </section>
 
-<section class="tfp-section--alt tfp-section">
-	<div class="tfp-container" style="max-width:820px">
-		<h2>Questions fréquentes</h2>
-		<div style="margin-top:20px">
-			<?php foreach ( $faqs as $item ) : ?>
-				<details class="tfp-card" style="margin-bottom:10px">
-					<summary style="font-weight:600;cursor:pointer"><?php echo esc_html( $item['q'] ); ?></summary>
-					<p style="margin-top:10px;color:var(--color-text-secondary)"><?php echo esc_html( $item['a'] ); ?></p>
-				</details>
-			<?php endforeach; ?>
-		</div>
-	</div>
-</section>
-
-<section class="tfp-cta-block">
-	<div class="tfp-cta-block__inner">
-		<h2>Un devis étudié personnellement par <?php echo esc_html( $site['manager'] ); ?></h2>
-		<p>Gratuit · Sans engagement · Réponse sous 24 h</p>
-		<div class="tfp-cta-block__actions">
-			<?php
-			tfp_button( array( 'label' => 'Demander mon devis', 'href' => home_url( '/demande-de-devis/' ), 'variant' => 'on-primary' ) );
-			tfp_button( array( 'label' => '☎ Appeler ' . $site['manager'], 'href' => 'tel:' . $site['phone_href'], 'variant' => 'on-dark' ) );
-			?>
-		</div>
-	</div>
-</section>
+<?php get_template_part( 'template-parts/components/static-blocks', null, array( 'key' => 'notre-fonctionnement' ) ); ?>
 
 <?php get_footer(); ?>

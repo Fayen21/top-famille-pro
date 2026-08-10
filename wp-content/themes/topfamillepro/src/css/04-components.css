@@ -1899,3 +1899,48 @@
     font-size: 26px;
   }
 }
+
+/* Blocs des pages statiques narratives (template-parts/components/static-blocks.php). */
+
+.tfp-static-block + .tfp-static-block {
+  margin-top: 36px;
+}
+
+.tfp-static-block h2 {
+  margin-bottom: 8px;
+}
+
+.tfp-static-block h3 {
+  margin-bottom: 6px;
+  font-size: 20px;
+}
+
+.tfp-quote {
+  margin: 16px 0 0;
+  padding: 18px 22px;
+  border-left: 3px solid var(--color-turquoise);
+  background: var(--color-turquoise-pale);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--color-navy);
+}
+
+/* Renvoi sans destination réelle : rendu comme une ligne inerte plutôt qu'en lien mort. */
+.tfp-link-row--static {
+  cursor: default;
+  color: var(--color-text-secondary);
+  border-style: dashed;
+}
+
+.tfp-section--navy .tfp-prose,
+.tfp-section--navy .tfp-list-plain li,
+.tfp-section--primary .tfp-prose,
+.tfp-section--primary .tfp-list-plain li {
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.tfp-section--navy .tfp-list-plain li,
+.tfp-section--primary .tfp-list-plain li {
+  border-bottom-color: rgba(255, 255, 255, 0.18);
+}

@@ -33,63 +33,35 @@ tfp_seo(
 );
 
 get_header();
+
+/*
+ * Corps de page rendu par le composant commun : le contenu vient de la maquette Claude Design,
+ * relevé par tools/generate-pages.mjs et stocké en option (CLAUDE.md §3 — page WordPress
+ * classique, sans champs ACF). L'ordre des sections et leur fond sont ceux du prototype.
+ */
+$page = tfp_static_page_data( 'a-propos' );
 ?>
 <div class="tfp-container">
 	<?php tfp_breadcrumb( tfp_seo()['breadcrumb'] ); ?>
 </div>
 
 <section class="tfp-container tfp-section--tight">
-	<h1>À propos de <?php echo esc_html( $site['brand_name'] ); ?></h1>
-</section>
-
-<section class="tfp-section">
-	<div class="tfp-container tfp-two-col" style="align-items:flex-start">
-		<div class="tfp-audrey-portrait">
-			<?php if ( $audrey_photo ) : ?>
-				<img
-					src="<?php echo esc_url( $audrey_photo ); ?>"
-					alt="<?php echo esc_attr( tfp_audrey_photo_is_real() ? ( $site['manager'] . ', gérante de ' . $site['brand_name'] ) : 'Photo d’illustration temporaire — portrait définitif à venir' ); ?>"
-					style="width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:var(--radius-xl);background:var(--color-border)"
-					loading="lazy"
-				>
-				<?php if ( ! tfp_audrey_photo_is_real() ) : ?>
-					<p style="margin-top:10px;font-size:12.5px;color:var(--color-text-tertiary);text-align:center">Photo d’illustration</p>
-				<?php endif; ?>
-			<?php else : ?>
-				<div style="width:100%;aspect-ratio:4/5;border-radius:var(--radius-xl);background:linear-gradient(160deg,var(--color-primary),var(--color-navy));display:flex;align-items:center;justify-content:center">
-					<span style="font-family:var(--font-heading);font-weight:800;font-size:96px;color:var(--color-turquoise-pale)" aria-hidden="true"><?php echo esc_html( mb_substr( $first_name, 0, 1 ) ); ?></span>
-				</div>
-				<p style="margin-top:10px;font-size:12.5px;color:var(--color-text-tertiary);text-align:center">Photo à venir</p>
-			<?php endif; ?>
-		</div>
-
-		<div>
-			<h2 style="font-size:clamp(26px,3.4vw,34px)"><?php echo esc_html( $site['manager'] ); ?>, gérante</h2>
-			<p style="margin-top:12px;color:var(--color-text-secondary);line-height:1.7"><?php echo esc_html( $site['brand_name'] ); ?> est la branche professionnelle du groupe Top-Famille : nettoyage de locaux professionnels en <?php echo esc_html( $site['address_region'] ); ?>. L'entreprise a un seul établissement, à <?php echo esc_html( $site['address_city'] ); ?> (<?php echo esc_html( $site['address_cp'] ); ?>) — pas d'agences locales, pas de franchise.</p>
-			<p style="margin-top:12px;color:var(--color-text-secondary);line-height:1.7">Du premier échange au suivi mensuel, <?php echo esc_html( $first_name ); ?> reste votre interlocutrice unique : devis, sélection de l'intervenant, cahier des charges, suivi de la prestation.</p>
-			<p style="margin-top:12px;color:var(--color-text-secondary);line-height:1.7">L'activité est exercée en prestataire : les intervenants sont salariés de l'entreprise, sélectionnés et suivis directement, pas mis à disposition par un tiers.</p>
-		</div>
+	<div class="tfp-hero__eyebrow">
+		<a class="tfp-region-badge" href="<?php echo esc_url( home_url( '/zones-intervention/bourgogne-franche-comte/' ) ); ?>"><?php echo esc_html( $site['address_region'] ); ?></a>
+		<?php tfp_google_rating_badge( 'inline' ); ?>
+	</div>
+	<h1><?php echo esc_html( $page['h1'] ); ?></h1>
+	<?php foreach ( $page['lede'] as $lede ) : ?>
+		<p class="tfp-section__lede"><?php echo esc_html( $lede ); ?></p>
+	<?php endforeach; ?>
+	<div class="tfp-flex" style="margin-top:24px">
+		<?php
+		tfp_button( array( 'label' => 'Demander mon devis', 'href' => home_url( '/demande-de-devis/' ), 'variant' => 'primary' ) );
+		tfp_button( array( 'label' => '☎ Appeler ' . explode( ' ', $site['manager'] )[0], 'href' => 'tel:' . $site['phone_href'], 'variant' => 'secondary' ) );
+		?>
 	</div>
 </section>
 
-<section class="tfp-section--alt tfp-section">
-	<div class="tfp-container" style="max-width:820px">
-		<h2>Notre marque sœur</h2>
-		<p style="margin-top:12px;color:var(--color-text-secondary);line-height:1.7">Top-Famille Pro est la branche professionnelle de <strong>Top-Famille</strong>, spécialisée dans les services à la personne pour les particuliers. Les deux marques partagent la même exigence de sélection et de suivi des intervenants, sur des publics différents : professionnels d'un côté, particuliers de l'autre.</p>
-	</div>
-</section>
-
-<section class="tfp-cta-block">
-	<div class="tfp-cta-block__inner">
-		<h2>Échanger avec <?php echo esc_html( $first_name ); ?></h2>
-		<p>Gratuit · Sans engagement · Réponse sous 24 h</p>
-		<div class="tfp-cta-block__actions">
-			<?php
-			tfp_button( array( 'label' => 'Demander mon devis', 'href' => home_url( '/demande-de-devis/' ), 'variant' => 'on-primary' ) );
-			tfp_button( array( 'label' => '☎ Appeler ' . $site['manager'], 'href' => 'tel:' . $site['phone_href'], 'variant' => 'on-dark' ) );
-			?>
-		</div>
-	</div>
-</section>
+<?php get_template_part( 'template-parts/components/static-blocks', null, array( 'key' => 'a-propos' ) ); ?>
 
 <?php get_footer(); ?>

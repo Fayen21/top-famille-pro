@@ -154,3 +154,85 @@ function tfp_get_zone_blocks( $prefix, $post_id, $max ) {
 	}
 	return $blocks;
 }
+
+/**
+ * Contenu d'une page statique narrative, relevé dans la maquette Claude Design.
+ *
+ * Stocké en option plutôt qu'en champs : ces pages sont des pages WordPress classiques
+ * (CLAUDE.md §3), et un contenu de 40 blocs n'a pas à être ressaisi dans dix gabarits PHP.
+ * Le contenu est produit par tools/generate-pages.mjs → bin/seed-fidelite-pages.php.
+ *
+ * @param string $key
+ * @return array{h1:string,lede:string[],hero_alt:string,sections:array}
+ */
+function tfp_static_page_data( $key ) {
+	static $cache = array();
+	if ( isset( $cache[ $key ] ) ) {
+		return $cache[ $key ];
+	}
+	$data = get_option( 'tfp_page_' . $key, array() );
+	$cache[ $key ] = wp_parse_args(
+		is_array( $data ) ? $data : array(),
+		array( 'h1' => '', 'lede' => array(), 'hero_alt' => '', 'sections' => array() )
+	);
+	return $cache[ $key ];
+}
+
+/**
+ * Traduit une route interne de la maquette (`#/nos-tarifs`) en URL réelle du site.
+ *
+ * Le prototype est une application à routes `#/` : aucune de ces adresses n'existe côté serveur.
+ * Les recopier produirait des liens morts, ce que CLAUDE.md §8 proscrit. Une route sans équivalent
+ * connu renvoie une chaîne vide, et l'appelant rend alors son libellé en texte simple.
+ *
+ * @param string $route
+ * @return string URL absolue, ou '' si la route n'a pas d'équivalent.
+ */
+function tfp_route_to_url( $route ) {
+	$route = preg_replace( '#[?].*$#', '', (string) $route );
+	$route = rtrim( $route, '/' );
+
+	static $fixes = array(
+		'#/'                             => '/',
+		'#/nettoyage-professionnel'      => '/nettoyage-professionnel/',
+		'#/nos-prestations'              => '/prestations/',
+		'#/nos-tarifs'                   => '/tarifs/',
+		'#/zones-intervention'           => '/zones-intervention/',
+		'#/bourgogne-franche-comte'      => '/zones-intervention/bourgogne-franche-comte/',
+		'#/pourquoi-top-famille-pro'     => '/pourquoi-nous/',
+		'#/notre-fonctionnement'         => '/notre-fonctionnement/',
+		'#/avis-clients'                 => '/avis-clients/',
+		'#/a-propos'                     => '/a-propos/',
+		'#/recrutement'                  => '/recrutement/',
+		'#/conseils'                     => '/conseils/',
+		'#/demande-de-devis'             => '/demande-de-devis/',
+		'#/contact'                      => '/contact/',
+		'#/plan-du-site'                 => '/plan-du-site/',
+		'#/mentions-legales'             => '/mentions-legales/',
+		'#/politique-de-confidentialite' => '/politique-de-confidentialite/',
+		'#/gestion-des-cookies'          => '/gestion-des-cookies/',
+	);
+
+	if ( isset( $fixes[ $route ] ) ) {
+		return home_url( $fixes[ $route ] );
+	}
+
+	// Routes de contenu : le permalien réel est demandé à WordPress, pas reconstruit à la main —
+	// une zone déplacée dans la hiérarchie garde ainsi un lien juste.
+	if ( preg_match( '#^\#/service/(.+)$#', $route, $m ) ) {
+		$posts = get_posts( array( 'post_type' => 'prestation', 'name' => $m[1], 'numberposts' => 1 ) );
+		return ! empty( $posts ) ? get_permalink( $posts[0] ) : '';
+	}
+	if ( preg_match( '#^\#/(?:ville|departement)/(.+)$#', $route, $m ) ) {
+		$posts = get_posts( array( 'post_type' => 'zone', 'name' => $m[1], 'numberposts' => 1 ) );
+		return ! empty( $posts ) ? get_permalink( $posts[0] ) : '';
+	}
+	if ( preg_match( '#^\#/article/(.+)$#', $route, $m ) ) {
+		$posts = get_posts( array( 'post_type' => 'post', 'name' => $m[1], 'numberposts' => 1 ) );
+		return ! empty( $posts ) ? get_permalink( $posts[0] ) : '';
+	}
+	if ( 0 === strpos( $route, 'tel:' ) || 0 === strpos( $route, 'mailto:' ) || 0 === strpos( $route, 'http' ) ) {
+		return $route;
+	}
+	return '';
+}

@@ -32,52 +32,35 @@ tfp_seo(
 );
 
 get_header();
+
+/*
+ * Corps de page rendu par le composant commun : le contenu vient de la maquette Claude Design,
+ * relevé par tools/generate-pages.mjs et stocké en option (CLAUDE.md §3 — page WordPress
+ * classique, sans champs ACF). L'ordre des sections et leur fond sont ceux du prototype.
+ */
+$page = tfp_static_page_data( 'avis-clients' );
 ?>
 <div class="tfp-container">
 	<?php tfp_breadcrumb( tfp_seo()['breadcrumb'] ); ?>
 </div>
 
 <section class="tfp-container tfp-section--tight">
-	<h1>Avis clients</h1>
-	<?php if ( $reassurance['note'] && $reassurance['nombre_avis'] ) : ?>
-		<p style="margin-top:8px;font-size:18px;color:var(--color-text-secondary)"><strong><?php echo esc_html( number_format_i18n( $reassurance['note'], 1 ) ); ?>/5</strong> sur <?php echo (int) $reassurance['nombre_avis']; ?> avis<?php echo $reassurance['google_url'] ? ' Google' : ''; ?>.</p>
-	<?php endif; ?>
-</section>
-
-<section class="tfp-section">
-	<div class="tfp-container">
-		<?php if ( ! empty( $reassurance['avis'] ) ) : ?>
-			<div class="tfp-grid tfp-grid--autofit-md">
-				<?php foreach ( $reassurance['avis'] as $avis ) : ?>
-					<div class="tfp-card">
-						<p>« <?php echo esc_html( $avis['texte'] ); ?> »</p>
-						<p style="margin-top:12px;font-weight:600"><?php echo esc_html( $avis['nom'] ?? '' ); ?></p>
-						<?php if ( ! empty( $avis['source'] ) ) : ?><p style="color:var(--color-text-tertiary);font-size:13px"><?php echo esc_html( $avis['source'] ); ?></p><?php endif; ?>
-					</div>
-				<?php endforeach; ?>
-			</div>
-		<?php else : ?>
-			<div class="tfp-card" style="max-width:640px">
-				<p>Les avis clients réels de Top-Famille Pro sont en cours d'intégration sur ce site. Six témoignages authentiques existent déjà sur nos supports (signés Jean-Louis D., Anna P., Michel G., Laurent, Laura et Anne-Sophie) et seront publiés ici dès que leur contenu exact nous sera transmis.</p>
-				<?php if ( $reassurance['google_url'] ) : ?>
-					<p style="margin-top:12px"><a href="<?php echo esc_url( $reassurance['google_url'] ); ?>" class="tfp-link-arrow" rel="noopener" target="_blank">Voir nos avis sur Google →</a></p>
-				<?php endif; ?>
-			</div>
-		<?php endif; ?>
+	<div class="tfp-hero__eyebrow">
+		<a class="tfp-region-badge" href="<?php echo esc_url( home_url( '/zones-intervention/bourgogne-franche-comte/' ) ); ?>"><?php echo esc_html( $site['address_region'] ); ?></a>
+		<?php tfp_google_rating_badge( 'inline' ); ?>
+	</div>
+	<h1><?php echo esc_html( $page['h1'] ); ?></h1>
+	<?php foreach ( $page['lede'] as $lede ) : ?>
+		<p class="tfp-section__lede"><?php echo esc_html( $lede ); ?></p>
+	<?php endforeach; ?>
+	<div class="tfp-flex" style="margin-top:24px">
+		<?php
+		tfp_button( array( 'label' => 'Demander mon devis', 'href' => home_url( '/demande-de-devis/' ), 'variant' => 'primary' ) );
+		tfp_button( array( 'label' => '☎ Appeler ' . explode( ' ', $site['manager'] )[0], 'href' => 'tel:' . $site['phone_href'], 'variant' => 'secondary' ) );
+		?>
 	</div>
 </section>
 
-<section class="tfp-cta-block">
-	<div class="tfp-cta-block__inner">
-		<h2>Un devis étudié personnellement par <?php echo esc_html( $site['manager'] ); ?></h2>
-		<p>Gratuit · Sans engagement · Réponse sous 24 h</p>
-		<div class="tfp-cta-block__actions">
-			<?php
-			tfp_button( array( 'label' => 'Demander mon devis', 'href' => home_url( '/demande-de-devis/' ), 'variant' => 'on-primary' ) );
-			tfp_button( array( 'label' => '☎ Appeler ' . $site['manager'], 'href' => 'tel:' . $site['phone_href'], 'variant' => 'on-dark' ) );
-			?>
-		</div>
-	</div>
-</section>
+<?php get_template_part( 'template-parts/components/static-blocks', null, array( 'key' => 'avis-clients' ) ); ?>
 
 <?php get_footer(); ?>

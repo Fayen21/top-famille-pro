@@ -28,26 +28,35 @@ tfp_seo(
 );
 
 get_header();
+
+/*
+ * Corps de page rendu par le composant commun : le contenu vient de la maquette Claude Design,
+ * relevé par tools/generate-pages.mjs et stocké en option (CLAUDE.md §3 — page WordPress
+ * classique, sans champs ACF). L'ordre des sections et leur fond sont ceux du prototype.
+ */
+$page = tfp_static_page_data( 'recrutement' );
 ?>
 <div class="tfp-container">
 	<?php tfp_breadcrumb( tfp_seo()['breadcrumb'] ); ?>
 </div>
 
 <section class="tfp-container tfp-section--tight">
-	<h1>Recrutement — agents d'entretien</h1>
-	<p style="max-width:640px;font-size:18px;color:var(--color-text-secondary);margin-top:12px">Nous recrutons des agents d'entretien en <?php echo esc_html( $site['address_region'] ); ?>, avec vérification des références et une prestation d'essai avant tout engagement durable.</p>
-</section>
-
-<section class="tfp-section">
-	<div class="tfp-container" style="max-width:640px">
-		<div class="tfp-card">
-			<h2 style="font-size:19px;margin-bottom:10px">Postuler</h2>
-			<p style="color:var(--color-text-secondary)">Les offres d'emploi et les candidatures sont gérées sur notre site carrière, partagé avec Top-Famille. C'est là que vous trouverez les postes ouverts et le formulaire de candidature.</p>
-			<p style="margin-top:16px">
-				<a href="<?php echo esc_url( $careers_url ); ?>" class="tfp-btn tfp-btn--primary" rel="noopener" target="_blank">Voir les offres et postuler →</a>
-			</p>
-		</div>
+	<div class="tfp-hero__eyebrow">
+		<a class="tfp-region-badge" href="<?php echo esc_url( home_url( '/zones-intervention/bourgogne-franche-comte/' ) ); ?>"><?php echo esc_html( $site['address_region'] ); ?></a>
+		<?php tfp_google_rating_badge( 'inline' ); ?>
+	</div>
+	<h1><?php echo esc_html( $page['h1'] ); ?></h1>
+	<?php foreach ( $page['lede'] as $lede ) : ?>
+		<p class="tfp-section__lede"><?php echo esc_html( $lede ); ?></p>
+	<?php endforeach; ?>
+	<div class="tfp-flex" style="margin-top:24px">
+		<?php
+		tfp_button( array( 'label' => 'Demander mon devis', 'href' => home_url( '/demande-de-devis/' ), 'variant' => 'primary' ) );
+		tfp_button( array( 'label' => '☎ Appeler ' . explode( ' ', $site['manager'] )[0], 'href' => 'tel:' . $site['phone_href'], 'variant' => 'secondary' ) );
+		?>
 	</div>
 </section>
+
+<?php get_template_part( 'template-parts/components/static-blocks', null, array( 'key' => 'recrutement' ) ); ?>
 
 <?php get_footer(); ?>

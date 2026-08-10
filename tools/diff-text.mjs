@@ -63,6 +63,32 @@ async function settle(page) {
 	await page.waitForTimeout(150);
 }
 
+/**
+ * Écarts voulus, imposés par CLAUDE.md §9 : corrections éditoriales demandées par Emmanuel qui
+ * priment sur la reproduction littérale de la maquette. Elles sont listées ici plutôt que passées
+ * sous silence — l'outil les compte à part et les nomme, pour qu'aucune ne se perde.
+ */
+const CORRECTIONS_VOULUES = [
+	{
+		maquette: 'Un interlocuteur identifié suit votre dossier',
+		raison: 'CLAUDE.md §9 — « Interlocuteur identifié » → « Interlocutrice identifiée »',
+	},
+	{
+		maquette: 'Une couverture régionale, pas des agences fictives',
+		raison: 'CLAUDE.md §9 — remplacé par « Une entreprise régionale basée à Saint-Apollinaire »',
+	},
+	{
+		maquette: 'Des guides locaux',
+		raison: 'CLAUDE.md §9 — mention supprimée (promet un contenu qui n’existe pas)',
+	},
+	{
+		maquette: 'Aucun simulateur',
+		raison: 'CLAUDE.md §9 — remplacé par « Devis étudié personnellement par Audrey »',
+	},
+	{ maquette: '47 avis', raison: 'CLAUDE.md §5.5 — compteur d’avis non confirmé' },
+	{ maquette: 'Top-Entreprise', raison: 'CLAUDE.md §9 — ancienne marque à faire disparaître' },
+];
+
 const arg = process.argv.slice(2).find((a) => !a.startsWith('--'));
 const all = process.argv.includes('--all');
 const type = (process.argv.find((a) => a.startsWith('--type=')) || '').split('=')[1];
@@ -79,6 +105,7 @@ await refPage.waitForTimeout(5500);
 const wpPage = await browser.newPage({ viewport: { width: 1440, height: 900 } });
 
 let totalMissing = 0;
+let totalVoulus = 0;
 for (const hash of routes) {
 	const map = ROUTE_MAP[hash];
 	await refPage.evaluate((h) => {
@@ -101,14 +128,26 @@ for (const hash of routes) {
 		return !wpSet.has(n) && !wpJoined.includes(n);
 	});
 
-	totalMissing += missing.length;
+	const voulus = [];
+	const reels = [];
+	for (const m of missing) {
+		const c = CORRECTIONS_VOULUES.find((x) => m.includes(x.maquette));
+		(c ? voulus : reels).push(c ? { texte: m, raison: c.raison } : m);
+	}
+
+	totalMissing += reels.length;
+	totalVoulus += voulus.length;
 	console.log(
 		`${hash.padEnd(42)} ${String(ref.length).padStart(3)} blocs de texte · ` +
-			`${String(missing.length).padStart(3)} absents côté WordPress`
+			`${String(reels.length).padStart(3)} absents côté WordPress` +
+			(voulus.length ? ` · ${voulus.length} écart(s) voulu(s)` : '')
 	);
-	if (verbose || (missing.length && type)) {
-		for (const m of missing) console.log('    ✕ ' + m.slice(0, 150));
+	if (verbose || (reels.length && type)) {
+		for (const m of reels) console.log('    ✕ ' + m.slice(0, 150));
+	}
+	if (verbose) {
+		for (const v of voulus) console.log('    ± ' + v.texte.slice(0, 90) + '  [' + v.raison + ']');
 	}
 }
-console.log(`\nTotal manquant : ${totalMissing}`);
+console.log(`\nTotal manquant : ${totalMissing}` + (totalVoulus ? ` · écarts voulus (CLAUDE.md) : ${totalVoulus}` : ''));
 await browser.close();
