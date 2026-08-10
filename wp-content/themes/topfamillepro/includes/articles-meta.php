@@ -170,3 +170,21 @@ function tfp_get_prestation_related_articles( $prestation_id ) {
 		)
 	);
 }
+
+/**
+ * Visuel d'illustration d'un article, par ordre de préférence : image mise en avant WordPress,
+ * puis le visuel du pipeline correspondant à son rang de publication (article-1/2/3, mêmes
+ * fichiers que la maquette). Aucun visuel ne prétend montrer un lieu ou une personne réels.
+ *
+ * @param int $post_id
+ * @return string Slug du manifeste d'images.
+ */
+function tfp_article_image_slug( $post_id ) {
+	$map = array(
+		'frequence-bureaux'            => 'article-1',
+		'cout-nettoyage-bureaux'       => 'article-2',
+		'cahier-des-charges-nettoyage' => 'article-3',
+	);
+	$slug = get_post_field( 'post_name', $post_id );
+	return $map[ $slug ] ?? 'article-1';
+}

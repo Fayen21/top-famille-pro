@@ -15,25 +15,21 @@
 
 | Route Claude | Route WordPress | Blocs | Hauteur | Mots | Titres | Puces | Images | Débord. | Triptyque |
 |---|---|---|---|---|---|---|---|---|---|
-| `#/ville/beaune` | `/zones-intervention/cote-dor/beaune/` | 13 → 13 | 7106 → 8466 (119 %) | 1445 → 1536 (106 %) | 17 → 25 | 21 → 36 | 3 → 4 | non | — |
+| `#/article/cahier-des-charges-nettoyage` | `/conseils/cahier-des-charges-nettoyage/` | 9 → 9 | 4643 → 5520 (119 %) | 741 → 766 (103 %) | 10 → 12 | 32 → 46 | 3 → 4 | non | — |
 
 ## Détail bloc par bloc à 1440 px
 
-### `#/ville/beaune` → `/zones-intervention/cote-dor/beaune/`
+### `#/article/cahier-des-charges-nettoyage` → `/conseils/cahier-des-charges-nettoyage/`
 
 | # | Bloc maquette | Bloc WordPress | Hauteur | État |
 |---|---|---|---|---|
-| 1 | (Accueil / BFC / Côte-d'Or / Beaune) | (Accueil/Zones d'intervention/Côte-d’Or) | 42 → 57 | ≈ proche |
-| 2 | Entreprise de nettoyage à Beaune | Entreprise de nettoyage à Beaune | 474 → 546 | ⚠️ écart +72 px |
-| 3 | (27 € HT/htarif unique en région✓Devis ) | (27 € HT/h tarif unique en région Voir ) | 186 → 216 | ≈ proche |
-| 4 | (Réponse directeBeaune est une commune ) | (Réponse directe Beaune est une commune) | 323 → 289 | ≈ proche |
-| 5 | Beaune, second pôle de notre présence en Côte- | Beaune, second pôle de notre présence en Côte- | 1059 → 1162 | ⚠️ écart +103 px |
-| 6 | Nos prestations sur place | Nos prestations sur place | 640 → 935 | ⚠️ écart +295 px |
-| 7 | Tarif et exemple local | Tarif et exemple local | 478 → 564 | ⚠️ écart +86 px |
-| 8 | Hébergements et locations meublées | Hébergements et locations meublées | 1174 → 1031 | ⚠️ écart -143 px |
-| 9 | Quartiers et zones d'activité | Quartiers et zones d'activité | 228 → 446 | ⚠️ écart +218 px |
-| 10 | Dans le même département | Dans le même département | 386 → 845 | ⚠️ écart +459 px |
-| 11 | Questions fréquentes — Beaune | Questions fréquentes — Beaune | 684 → 782 | ⚠️ écart +98 px |
-| 12 | Nous contacter | Nous contacter | 291 → 246 | ≈ proche |
-| 13 | Un devis pour vos locaux | Un devis pour vos locaux | 319 → 363 | ≈ proche |
+| 1 | (Accueil / Conseils / Comment rédiger u) | (Accueil/Conseils/Comment rédiger un ca) | 42 → 57 | ≈ proche |
+| 2 | Comment rédiger un cahier des charges de netto | Comment rédiger un cahier des charges de netto | 728 → 732 | ✅ identique |
+| 3 | (Un cahier des charges de nettoyage pro) | (Un cahier des charges de nettoyage pro) | 242 → 270 | ≈ proche |
+| 4 | (Sommaire Pourquoi un cahier des charge) | (Sommaire Pourquoi un cahier des charge) | 397 → 420 | ≈ proche |
+| 5 | Pourquoi un cahier des charges change tout | Pourquoi un cahier des charges change tout | 1324 → 1455 | ⚠️ écart +131 px |
+| 6 | Erreurs à éviter | Erreurs à éviter | 227 → 365 | ⚠️ écart +138 px |
+| 7 | Questions fréquentes | Questions fréquentes | 342 → 501 | ⚠️ écart +159 px |
+| 8 | (Pour situer ces repères dans une prest) | (Pour situer ces repères dans une prest) | 202 → 373 | ⚠️ écart +171 px |
+| 9 | Un devis pour vos locaux ? | Un devis pour vos locaux ? | 317 → 363 | ≈ proche |
 
