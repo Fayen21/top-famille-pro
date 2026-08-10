@@ -305,6 +305,10 @@ for (const s of all) {
 	L.push(`\techo "  ! prestation ${s.slug} absente — lancer d'abord les seeds de phase 2/3\\n";`);
 	L.push('} else {');
 	L.push('\t$id = $posts[0]->ID;');
+	// L'ordre des six prestations est celui de la maquette (bureaux, commerces, cabinets,
+	// copropriétés, meublés, ponctuel) — pas l'ordre alphabétique des titres. Sans `menu_order`,
+	// le pied de page et les index les listaient dans un ordre différent de la maquette.
+	L.push(`\twp_update_post( array( 'ID' => $id, 'menu_order' => ${SERVICES.findIndex((x) => x.slug === s.slug) + 1} ) );`);
 	const set = (k, v) => L.push(`\ttfp_seed_set_field( ${php(k)}, ${v}, $id );`);
 	set('nav_label', php(s.navLabel));
 	set('label_court', php(s.labelCourt));

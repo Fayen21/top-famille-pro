@@ -35,6 +35,7 @@ if ( empty( $posts ) ) {
 	echo "  ! prestation bureaux absente — lancer d'abord les seeds de phase 2/3\n";
 } else {
 	$id = $posts[0]->ID;
+	wp_update_post( array( 'ID' => $id, 'menu_order' => 1 ) );
 	tfp_seed_set_field( 'nav_label', 'Nettoyage de bureaux', $id );
 	tfp_seed_set_field( 'label_court', 'Bureaux', $id );
 	tfp_seed_set_field( 'h1', 'Nettoyage de bureaux en Bourgogne-Franche-Comté', $id );
@@ -140,6 +141,7 @@ if ( empty( $posts ) ) {
 	echo "  ! prestation commerces absente — lancer d'abord les seeds de phase 2/3\n";
 } else {
 	$id = $posts[0]->ID;
+	wp_update_post( array( 'ID' => $id, 'menu_order' => 2 ) );
 	tfp_seed_set_field( 'nav_label', 'Nettoyage de commerces', $id );
 	tfp_seed_set_field( 'label_court', 'Commerces', $id );
 	tfp_seed_set_field( 'h1', 'Nettoyage de commerces et de surfaces de vente', $id );
@@ -241,6 +243,7 @@ if ( empty( $posts ) ) {
 	echo "  ! prestation cabinets absente — lancer d'abord les seeds de phase 2/3\n";
 } else {
 	$id = $posts[0]->ID;
+	wp_update_post( array( 'ID' => $id, 'menu_order' => 3 ) );
 	tfp_seed_set_field( 'nav_label', 'Cabinets & professions libérales', $id );
 	tfp_seed_set_field( 'label_court', 'Cabinets', $id );
 	tfp_seed_set_field( 'h1', 'Nettoyage de cabinets et de professions libérales', $id );
@@ -350,6 +353,7 @@ if ( empty( $posts ) ) {
 	echo "  ! prestation coproprietes absente — lancer d'abord les seeds de phase 2/3\n";
 } else {
 	$id = $posts[0]->ID;
+	wp_update_post( array( 'ID' => $id, 'menu_order' => 4 ) );
 	tfp_seed_set_field( 'nav_label', 'Copropriétés & parties communes', $id );
 	tfp_seed_set_field( 'label_court', 'Copropriétés', $id );
 	tfp_seed_set_field( 'h1', 'Entretien de copropriétés et de parties communes', $id );
@@ -455,6 +459,7 @@ if ( empty( $posts ) ) {
 	echo "  ! prestation meubles absente — lancer d'abord les seeds de phase 2/3\n";
 } else {
 	$id = $posts[0]->ID;
+	wp_update_post( array( 'ID' => $id, 'menu_order' => 5 ) );
 	tfp_seed_set_field( 'nav_label', 'Locations meublées & hébergements', $id );
 	tfp_seed_set_field( 'label_court', 'Locations meublées', $id );
 	tfp_seed_set_field( 'h1', 'Nettoyage de locations meublées et d\'hébergements', $id );
@@ -558,6 +563,7 @@ if ( empty( $posts ) ) {
 	echo "  ! prestation ponctuel absente — lancer d'abord les seeds de phase 2/3\n";
 } else {
 	$id = $posts[0]->ID;
+	wp_update_post( array( 'ID' => $id, 'menu_order' => 6 ) );
 	tfp_seed_set_field( 'nav_label', 'Nettoyage ponctuel & remise en état', $id );
 	tfp_seed_set_field( 'label_court', 'Ponctuel', $id );
 	tfp_seed_set_field( 'h1', 'Nettoyage ponctuel et remise en état', $id );

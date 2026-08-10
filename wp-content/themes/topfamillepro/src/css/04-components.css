@@ -1407,12 +1407,32 @@ body.tfp-body .tfp-article-body p a {
   opacity: 0.75;
 }
 
-.tfp-footer__zones {
+/*
+ * Colonne « Zones d'intervention » — deux colonnes, comme la maquette.
+ *
+ * C'est le poste le plus coûteux du site : la maquette range les huit départements sur deux
+ * colonnes de quatre (238 px de haut), le thème les empilait sur une seule (533 px). Les colonnes
+ * du pied de page s'étirant à la hauteur de la plus haute, ces 295 px se répercutaient sur la
+ * hauteur totale des 53 pages — soit +21 % sur une page courte comme /contact/ et +4 % sur une
+ * page de ville. Beaucoup d'écarts de hauteur imputés au contenu venaient en réalité d'ici.
+ *
+ * Sous 820 px, la maquette repasse elle-même à une seule colonne.
+ */
+/* Sélecteur porté à la même spécificité que `.tfp-footer__col ul` (0,0,2,1), qui met les listes du
+   pied de page en colonne flex : une classe seule perdait l'arbitrage et la grille restait à plat. */
+.tfp-footer__col ul.tfp-footer__zones {
   margin-top: 10px;
   list-style: none;
   padding: 0;
   display: grid;
-  gap: 8px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px 12px;
+}
+
+@media (max-width: 819px) {
+  .tfp-footer__col ul.tfp-footer__zones {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }
 
 .tfp-footer__zones li {
@@ -1429,21 +1449,32 @@ body.tfp-body .tfp-article-body p a {
   opacity: 0.85;
 }
 
+/* Les deux renvois de bas de colonne sont empilés dans la maquette (51 px à deux lignes), pas
+   côte à côte : en ligne, ils repassaient à la ligne d'eux-mêmes et occupaient 83 px. */
 .tfp-footer__zones-links {
   display: flex;
-  flex-wrap: wrap;
-  gap: 18px;
+  flex-direction: column;
+  gap: 6px;
   margin-top: 14px;
+}
+
+.tfp-footer__zones-links .tfp-footer__more {
+  margin-top: 0;
 }
 
 /* Badge de note au pied de page : même composant que le hero, mais sur fond marine — la couleur
    de texte doit être reprise explicitement, sinon elle hérite du texte sombre et tombe à un
    contraste de 1,03 sur le marine. */
+/* La maquette rend ce badge en pastille : fond #1B3550, rayon 10 px, padding 8/12, 39 px de haut.
+   Le thème l'affichait à plat, ce qui le faisait disparaître dans le marine du pied de page. */
 .tfp-google-badge--footer {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 8px;
   margin-top: 18px;
+  padding: 8px 12px;
+  border-radius: 10px;
+  background: #1B3550;
   font-size: 14px;
   color: var(--color-white);
 }
@@ -2018,10 +2049,15 @@ body.tfp-body .tfp-article-body p a {
 .tfp-footer__bottom nav a {
   display: inline-block;
   min-height: 24px;
-  padding-block: 3px;
 }
 
-.tfp-footer__villes a {
+/* Les villes sont rendues en ligne dans la phrase du département, séparées par des points médians :
+   c'est l'exception « inline » du critère, leur hauteur est celle de l'interligne du texte qui les
+   porte. Leur imposer 24 px de haut faisait passer chaque département de 49 à 89 px et gonflait la
+   colonne d'un tiers, sans qu'aucun utilisateur y gagne quoi que ce soit. */
+.tfp-footer__col ul .tfp-footer__villes a {
+  display: inline;
+  min-height: 0;
   margin-right: 4px;
 }
 
