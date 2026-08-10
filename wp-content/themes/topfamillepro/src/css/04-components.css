@@ -2963,6 +2963,7 @@ body.tfp-body a.tfp-card-tile:focus-visible {
 }
 
 .tfp-card-tile__desc {
+  margin: 0;
   display: block;
   margin-top: 4px;
   font-size: 14px;
@@ -3018,4 +3019,18 @@ body.tfp-body a.tfp-card-tile:focus-visible {
   .tfp-card-grid {
     grid-template-columns: minmax(0, 1fr) !important;
   }
+}
+
+/* Lignes complémentaires d'une carte : auteur, rôle, ville d'un témoignage, ou toute précision que
+   la maquette pose sur sa propre ligne. Elles restent des paragraphes distincts — les fondre dans
+   la description effacerait des frontières que le prototype a posées. */
+.tfp-card-tile__line {
+  margin: 4px 0 0;
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--color-text-tertiary);
+}
+
+.tfp-card-grid--dark .tfp-card-tile__line {
+  color: var(--color-text-on-dark-muted);
 }

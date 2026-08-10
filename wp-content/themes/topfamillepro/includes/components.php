@@ -390,7 +390,9 @@ function tfp_card_grid( array $grille ) {
 				$item,
 				array(
 					'titre'        => '',
+					'titre_tag'    => '',
 					'description'  => '',
+					'lignes'       => array(),
 					'badge'        => '',
 					'surtitre'     => '',
 					'icone'        => '',
@@ -399,6 +401,7 @@ function tfp_card_grid( array $grille ) {
 					'libelle_lien' => '',
 					'aria'         => '',
 					'span'         => '',
+					'provisoire'   => false,
 				)
 			);
 			if ( '' === $item['titre'] && '' === $item['description'] ) {
@@ -411,30 +414,46 @@ function tfp_card_grid( array $grille ) {
 				$attributs .= ' aria-label="' . esc_attr( $item['aria'] ) . '"';
 			}
 			?>
-			<li>
+			<li<?php echo ! empty( $item['provisoire'] ) ? ' data-tfp-provisional="1"' : ''; ?>>
 				<<?php echo $balise; ?> class="tfp-card-tile tfp-card-tile--<?php echo esc_attr( $variante ); ?>"<?php echo $attributs; // phpcs:ignore WordPress.Security.EscapeOutput ?>>
 					<?php if ( $item['icone'] ) : ?>
 						<span class="tfp-card-tile__icon" aria-hidden="true"><?php echo esc_html( $item['icone'] ); ?></span>
 					<?php endif; ?>
-					<span class="tfp-card-tile__body">
+					<?php
+					/*
+					 * Contenu de flux, et non une suite de `span` : la description est un paragraphe.
+					 * Un `span` n'est ni un bloc de contenu pour un lecteur d'écran, ni un bloc relevé
+					 * par les outils de comparaison — huit citations de /avis-clients/ étaient
+					 * présentes à l'écran et comptées manquantes. `<a>` peut contenir du flux en
+					 * HTML5 ; `<span>` ne le peut pas, d'où le `<div>` intermédiaire.
+					 */
+					?>
+					<div class="tfp-card-tile__body">
 						<?php if ( $item['surtitre'] ) : ?>
 							<span class="tfp-card-tile__eyebrow"><?php echo esc_html( $item['surtitre'] ); ?></span>
 						<?php endif; ?>
-						<?php if ( $item['titre'] ) : ?>
-							<span class="tfp-card-tile__title">
+						<?php
+						// Intertitre ou simple libellé : la balise est celle relevée sur la maquette.
+						$balise_titre = 'h3' === $item['titre_tag'] ? 'h3' : 'strong';
+						if ( $item['titre'] ) :
+							?>
+							<<?php echo $balise_titre; ?> class="tfp-card-tile__title">
 								<?php echo esc_html( $item['titre'] ); ?>
 								<?php if ( $item['badge'] ) : ?>
 									<span class="tfp-card-tile__badge"><?php echo esc_html( $item['badge'] ); ?></span>
 								<?php endif; ?>
-							</span>
+							</<?php echo $balise_titre; ?>>
 						<?php endif; ?>
 						<?php if ( $item['description'] ) : ?>
-							<span class="tfp-card-tile__desc"><?php echo esc_html( $item['description'] ); ?></span>
+							<p class="tfp-card-tile__desc"><?php echo esc_html( $item['description'] ); ?></p>
 						<?php endif; ?>
+						<?php foreach ( (array) $item['lignes'] as $ligne ) : ?>
+							<p class="tfp-card-tile__line"><?php echo esc_html( $ligne ); ?></p>
+						<?php endforeach; ?>
 						<?php if ( $item['libelle_lien'] && $url ) : ?>
 							<span class="tfp-card-tile__more"><?php echo esc_html( $item['libelle_lien'] ); ?><span aria-hidden="true"> →</span></span>
 						<?php endif; ?>
-					</span>
+					</div>
 				</<?php echo $balise; ?>>
 			</li>
 		<?php endforeach; ?>

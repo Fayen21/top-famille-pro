@@ -242,27 +242,52 @@ for (const p of PAGES) {
 			const cs = getComputedStyle(el);
 
 			// Nœuds textuels porteurs, dans l'ordre, en ignorant les conteneurs sans texte propre.
+			/*
+			 * Les fragments sont collectés **par bloc rendu**, et non par nœud texte direct.
+			 *
+			 * Prendre le texte propre de chaque élément découpait une phrase répartie sur plusieurs
+			 * balises en ligne : la citation « … » d'un témoignage se scindait en un morceau
+			 * « «  » » et un morceau sans ses guillemets, et la carte ne correspondait plus à celle
+			 * de la maquette. Un lecteur voit des lignes ; on relève donc des lignes — un élément
+			 * dont le rendu n'est pas `inline` prend tout son texte, et l'on ne descend pas dedans.
+			 */
 			const morceaux = [];
 			const collecter = (n) => {
 				for (const c of n.children) {
 					const t = c.tagName.toLowerCase();
 					if (t === 'img' || t === 'svg' || t === 'picture') continue;
-					const direct = [...c.childNodes]
-						.filter((x) => x.nodeType === 3)
-						.map((x) => x.textContent.replace(/\s+/g, ' ').trim())
-						.filter(Boolean)
-						.join(' ');
-					if (direct) {
-						const s = getComputedStyle(c);
+					const s = getComputedStyle(c);
+					const enLigne = /^inline/.test(s.display);
+					const contenu = txt(c);
+					if (!contenu) continue;
+					if (!enLigne) {
 						morceaux.push({
-							texte: direct,
+							texte: contenu,
 							tag: t,
 							taille: parseFloat(s.fontSize) || 0,
 							graisse: parseInt(s.fontWeight, 10) || 400,
 							majuscules: s.textTransform === 'uppercase',
 						});
+						continue;
 					}
-					collecter(c);
+					// Élément en ligne : son texte appartient à la ligne de son parent. On ne le
+					// relève séparément que s'il constitue à lui seul tout un rang de la carte.
+					const propre = [...c.childNodes]
+						.filter((x) => x.nodeType === 3)
+						.map((x) => x.textContent.replace(/\s+/g, ' ').trim())
+						.filter(Boolean)
+						.join(' ');
+					if (propre && !c.children.length) {
+						morceaux.push({
+							texte: propre,
+							tag: t,
+							taille: parseFloat(s.fontSize) || 0,
+							graisse: parseInt(s.fontWeight, 10) || 400,
+							majuscules: s.textTransform === 'uppercase',
+						});
+					} else {
+						collecter(c);
+					}
 				}
 			};
 			collecter(el);
@@ -294,7 +319,13 @@ for (const p of PAGES) {
 				surtitre = morceaux.shift().texte;
 			}
 
-			const titre = morceaux.length ? morceaux.shift().texte : '';
+			const premier = morceaux.length ? morceaux.shift() : null;
+			const titre = premier ? premier.texte : '';
+			// Balise d'origine de l'intitulé : la maquette emploie un vrai intertitre sur certaines
+			// cartes et un simple libellé sur d'autres. Le reproduire garde la structure de titres du
+			// document — et rend l'intitulé repérable comme bloc de contenu, ce qu'un `strong` n'est
+			// pas.
+			const titreTag = premier && /^h[2-4]$/.test(premier.tag) ? 'h3' : '';
 
 			// Pastille : un fragment très court et purement numérique juste après l'intitulé — c'est
 			// le numéro de département que la maquette pose à côté du nom. Laissé dans la
@@ -304,12 +335,31 @@ for (const p of PAGES) {
 				badge = morceaux.shift().texte;
 			}
 
-			const description = morceaux.map((m) => m.texte).join(' ').trim();
+			/*
+			 * La description est le **premier** fragment restant, et les suivants sont conservés
+			 * séparément. Les joindre en une seule chaîne effaçait les frontières de blocs : sur une
+			 * carte témoignage, citation, auteur, rôle et ville formaient un seul paragraphe, que ni
+			 * un lecteur d'écran ni la comparaison de textes ne pouvaient plus rapprocher de la
+			 * maquette. Ce sont des lignes distinctes dans le prototype ; elles le restent ici.
+			 */
+			const description = morceaux.length ? morceaux.shift().texte : '';
+			const lignes = morceaux.map((m) => m.texte);
+
+			/*
+			 * Témoignage repris de la maquette : il est provisoire et doit rester repérable en une
+			 * requête, comme les cartes témoignage des autres gabarits (CLAUDE.md §5.5). Le repère
+			 * est le rendu — étoiles ou citation entre guillemets — et non un nom d'auteur, qu'on ne
+			 * saurait pas reconnaître de façon fiable.
+			 */
+			const provisoire = /★{3,}/.test(txt(el)) || !!el.querySelector('blockquote') || /[«"]/.test(description);
 
 			return {
 				titre,
+				titre_tag: titreTag,
 				description,
+				lignes,
 				badge,
+				provisoire,
 				surtitre,
 				icone,
 				image: img ? img.getAttribute('alt') || '' : '',

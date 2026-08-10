@@ -235,3 +235,127 @@ ni `AggregateRating`. Texte intégral, à valider avant déploiement :
 
 > « Mon rôle, c'est de rester joignable et de tenir mes engagements. Chaque client sait à qui
 > parler, et sait ce qui a été fait dans ses locaux. »
+
+---
+
+# Passe 2 — correction structurelle du pipeline d'extraction
+
+> 10 août 2026. Verdict inchangé : **PARTIEL — ÉCARTS RESTANTS**.
+
+## 1. La cause technique exacte, dans l'ancien générateur
+
+`tools/generate-pages.mjs` aplatissait chaque bande en une suite de nœuds typés `h2`, `h3`, `p`,
+`li` et `span`. La maquette range une grande partie de son contenu en **micro-cartes composées d'un
+intitulé et d'une description** — parfois d'un surtitre, d'une pastille, d'une icône, d'une image,
+d'un lien et de son libellé. À l'aplatissement, seul l'intitulé survivait : il partait dans `noms`
+et se rendait en pastille, la description était jetée ou détachée dans `textes`.
+
+La carte devenait alors **impossible à reconstituer à l'affichage**, quel que soit le gabarit ou le
+CSS : la donnée n'existait plus après l'étape 1 de la chaîne.
+
+## 2. Le nouveau schéma
+
+Chaque grille est relevée **avant** l'aplatissement, avec sa géométrie :
+`colonnes`, `theme` (clair/sombre), `variante` (texte/lien/image), `gap`, `fond`, `rayon`, `filet`,
+`padding`. Chaque carte porte :
+
+| Champ | Contenu |
+|---|---|
+| `titre`, `titre_tag` | intitulé, et la balise employée par la maquette (`h3` ou libellé) |
+| `description` | premier fragment de texte, dans sa forme d'origine |
+| `lignes[]` | fragments suivants, **restés distincts** (auteur, rôle, ville d'un témoignage) |
+| `badge` | pastille courte accolée au titre (numéro de département) |
+| `surtitre` | étiquette au-dessus de l'intitulé |
+| `icone`, `image` | pictogramme, `alt` du visuel |
+| `route`, `libelle_lien` | cible et libellé du lien |
+| `aria` | nom accessible explicite s'il existe |
+| `ordre`, `span` | rang dans la grille, `grid-column` |
+| `provisoire` | témoignage repris de la maquette (CLAUDE.md §5.5) |
+
+Rien n'est fabriqué : un champ absent du prototype reste vide, et **aucune description n'est déduite
+d'un titre**. Les nœuds d'une grille sont retirés du flux aplati, un repère prenant leur place, pour
+que l'ordre de lecture soit conservé.
+
+La donnée traverse maintenant toute la chaîne sans perte : extraction → format intermédiaire →
+générateur → seed → installateur → base WordPress → gabarit → rendu.
+
+## 3. Fichiers corrigés
+
+| Fichier | Correction |
+|---|---|
+| `tools/generate-pages.mjs` | relevé des grilles, détail des cartes, collecte **par bloc rendu** et non par nœud texte |
+| `tools/inventaire-cartes.mjs` | remontée des wrappers techniques avant de compter les colonnes |
+| `tools/diff-text.mjs` | `strong` ajouté au relevé — un intitulé de carte est un bloc de contenu |
+| `includes/components.php` | `tfp_card_grid()` : rendu d'une grille de micro-cartes |
+| `template-parts/components/static-blocks.php` | rendu des grilles à leur place dans l'ordre |
+| `src/css/04-components.css` | `.tfp-card-grid`, `.tfp-card-tile` et leurs variantes |
+
+Contenus régénérés : **31 grilles, 154 micro-cartes** sur les neuf pages statiques.
+
+## 4. Installateur et migration
+
+Installateur **v1.8.0**, thème **v0.9.0**.
+
+- **Idempotence** — deux relectures consécutives des seeds : empreintes identiques
+  (`c3f1318f 48440e3a b146c1e1 b49293de` avant et après), mêmes identifiants de page
+  (10, 50, 54, 48, 60), mêmes slugs, mêmes permaliens.
+- **Migration sur installation existante** — le rig portant la version précédente est passé de
+  0 grille à 9 / 6 / 3 / 2 grilles et 35 / 36 / 12 / 12 cartes, **sans changer un seul identifiant**
+  (13 et 57 avant, 13 et 57 après). Aucune suppression préalable des 53 pages n'est nécessaire.
+- **Aucun doublon** : 56 contenus, aucun slug en double.
+- **Données légales et tarifaires intactes** : SIRET et Hostinger présents, aucun ancien tarif,
+  aucun `[À COMPLÉTER]`.
+
+## 5. Résultats
+
+Cartes maquette → WordPress à 1440 px, et cartes absentes ou fusionnées :
+
+| Route | Avant | Après |
+|---|---|---|
+| `#/zones-intervention` | 52 → 19 (40 graves) | 52 → 54 (5) |
+| `#/nettoyage-professionnel` | 53 → 68 (19) | 53 → 65 (3) |
+| `#/nos-prestations` | 12 → 25 | 12 → 13 (0) |
+| `#/avis-clients` | 14 → 46 (14) | 14 → 20 (2) |
+| `#/bourgogne-franche-comte` | 51 → 62 (34) | 51 → 61 (2) |
+
+Sur les 53 routes : 1 conforme, 11 en anomalies mineures, 41 avec au moins une carte absente ou
+fusionnée — contre 43 avant. Le total d'anomalies passe de 713 à 560, les graves de 259 à 147.
+
+## 6. Non-régression
+
+833 tests au vert · 0 violation axe-core · 0 violation WCAG 2.5.8 (53 routes × 2 largeurs) ·
+JSON-LD conforme · aucun doublon · données légales intactes.
+
+**Deux régressions ont été introduites puis corrigées dans cette même passe**, toutes deux du même
+genre : du contenu rendu à l'écran mais invisible comme bloc de contenu.
+
+1. Le rendu des cartes plaçait descriptions et intitulés dans des `span`. Huit citations de
+   `/avis-clients/` étaient affichées et comptées manquantes. Corrigé par du contenu de flux —
+   `<div>` porteur, `<p>` pour la description, `<h3>` ou `<strong>` selon ce que fait la maquette.
+2. La première version de la collecte prenait le texte propre de chaque élément, ce qui coupait une
+   citation répartie sur plusieurs balises en ligne : `« »` d'un côté, le texte de l'autre. La
+   collecte se fait désormais **par bloc rendu**.
+
+Un test a par ailleurs détecté un vrai défaut de conformité : les témoignages repris en micro-cartes
+n'étaient pas marqués `data-tfp-provisional`. Le repère est maintenant posé à l'extraction, sur le
+rendu (étoiles ou citation), et non sur un nom d'auteur qu'on ne saurait pas reconnaître.
+
+## 7. Ce qui reste
+
+**Deux blocs de texte manquants**, tous deux sur `/zones-intervention/bourgogne-franche-comte/` :
+la bande turquoise « Un tarif régional unique » et son paragraphe. La bande existe dans la maquette
+(section 9) et n'apparaît pas dans le contenu relevé. C'est le seul contenu manquant des 53 routes ;
+il est localisé, et sa correction n'est pas engagée dans cette passe.
+
+**Cartes.** Les surplus restants viennent d'un point unique et identifié : les bandes qui **mêlent**
+cartes et éléments non-cartes ne sont pas reconnues comme grilles (la règle exige que presque tous
+les enfants soient des cartes), et leur contenu retombe alors sur le rendu générique en pastilles.
+C'est ce qui produit les trois pastilles en trop de la bande tarifaire sur
+`/nettoyage-professionnel/`, `/zones-intervention/bourgogne-franche-comte/` et `/avis-clients/`.
+
+**Hauteurs.** 39 routes sur 53 sont dans la plage 95-105 %. Les pages statiques les plus retouchées
+sont passées sous la plage (`/nettoyage-professionnel/` 84 %, `/zones-intervention/` 93 %,
+`/prestations/` 90 %, `/notre-fonctionnement/` 88 %) : les micro-cartes sont plus compactes que les
+blocs de texte qu'elles remplacent, et il reste à ajuster leur rembourrage sur celui du prototype —
+qui est relevé et disponible dans les données (`padding`, `gap`, `rayon`), mais pas encore appliqué
+carte par carte.

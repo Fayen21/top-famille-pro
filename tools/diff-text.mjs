@@ -42,7 +42,10 @@ function norm(s) {
 const HARVEST = () => {
 	const txt = (el) => (el.textContent || '').replace(/\s+/g, ' ').trim();
 	const out = [];
-	for (const el of document.querySelectorAll('h1,h2,h3,h4,p,li,summary,blockquote')) {
+	// `strong` fait partie du relevé : la maquette comme le thème posent des intitulés de carte en
+	// gras plutôt qu'en intertitre lorsque la carte n'ouvre pas une section. Ce sont des blocs de
+	// contenu que le visiteur lit — les ignorer laissait passer des citations entières.
+	for (const el of document.querySelectorAll('h1,h2,h3,h4,p,li,summary,blockquote,strong')) {
 		// On ignore les conteneurs : seul le nœud le plus profond porte la phrase, sinon chaque
 		// texte serait compté plusieurs fois avec ses ancêtres.
 		if (el.querySelector('h1,h2,h3,h4,p,li,summary,blockquote')) continue;

@@ -163,10 +163,31 @@ const RELEVE = () => {
 		return 'micro-carte';
 	};
 
-	/** Nombre de colonnes du rang où se trouve la carte, mesuré sur ses sœurs de même ordonnée. */
+	/**
+	 * Nombre de colonnes du rang où se trouve la carte, mesuré sur ses sœurs de même ordonnée.
+	 *
+	 * On remonte d'abord les **wrappers techniques** : un élément qui n'a qu'un seul enfant et
+	 * n'apporte ni fond, ni filet, ni rayon n'est pas un niveau de mise en page. C'est le cas d'un
+	 * `<li>` autour d'une tuile — balisage juste pour une liste de liens, mais qui ferait mesurer
+	 * « une colonne » à une grille qui en a six. Le wrapper n'est jamais compté comme une carte ;
+	 * il n'est pas non plus pris pour le conteneur de grille.
+	 */
 	const colonnesDuRang = (el) => {
-		const parent = el.parentElement;
+		let cible = el;
+		for (let i = 0; i < 3; i++) {
+			const p = cible.parentElement;
+			if (!p || p.children.length !== 1) break;
+			const s = getComputedStyle(p);
+			const nu =
+				parseFloat(s.borderTopLeftRadius) < 6 &&
+				parseFloat(s.borderTopWidth) === 0 &&
+				(s.backgroundColor === 'rgba(0, 0, 0, 0)' || s.backgroundColor === 'transparent');
+			if (!nu) break;
+			cible = p;
+		}
+		const parent = cible.parentElement;
 		if (!parent) return 1;
+		el = cible;
 		const y = Math.round(el.getBoundingClientRect().top);
 		const soeurs = [...parent.children].filter(
 			(c) => Math.abs(Math.round(c.getBoundingClientRect().top) - y) <= 8 && c.getBoundingClientRect().height > 20
