@@ -45,6 +45,7 @@ get_header();
 
 <section class="tfp-container tfp-section--tight">
 	<h1>Mentions légales</h1>
+	<p class="tfp-section__lede">Informations légales relatives au site top-famille-pro.fr et à son éditeur.</p>
 </section>
 
 <section class="tfp-section">
@@ -79,11 +80,21 @@ get_header();
 
 		<div>
 			<h2>Établissement unique</h2>
+			<?php
+			/*
+			 * Phrase reprise de la maquette, à une exception près, la seule autorisée : elle y
+			 * annonce « forme juridique, capital, SIREN/SIRET, RCS et TVA : à compléter ». Ces
+			 * données sont désormais confirmées par le Kbis, donc écrites en clair — publier
+			 * « à compléter » sur des mentions légales serait une non-conformité, pas une fidélité.
+			 */
+			?>
+			<p style="margin-top:10px;color:var(--color-text-secondary);line-height:1.7"><?php echo esc_html( $site['brand_name'] ); ?> — activité dédiée aux professionnels de Top-Famille. Implantation : <?php echo esc_html( $site['address_city'] ); ?> (<?php echo esc_html( $site['address_cp'] ); ?>), Côte-d'Or, <?php echo esc_html( $site['address_region'] ); ?>. Responsable de la publication : <?php echo esc_html( $site['legal_publication_director'] ); ?>. Téléphone : <?php echo esc_html( $site['phone'] ); ?>. E-mail : <?php echo esc_html( $site['email'] ); ?>.</p>
 			<p style="margin-top:10px;color:var(--color-text-secondary);line-height:1.7"><?php echo esc_html( $site['brand_name'] ); ?> dispose d'un seul établissement, à l'adresse indiquée ci-dessus. Les pages de zones d'intervention de ce site présentent des secteurs géographiques desservis, pas des agences ou des implantations locales.</p>
 		</div>
 
 		<div>
 			<h2>Propriété intellectuelle</h2>
+			<p style="margin-top:10px;color:var(--color-text-secondary);line-height:1.7">Les textes, la charte graphique et les logos <?php echo esc_html( $site['brand_name'] ); ?> sont la propriété de leur éditeur. Les photographies actuellement affichées sont des visuels sous licence, utilisés à titre provisoire ; leur auteur et leur licence seront précisés lors de la mise en ligne. Elles ne représentent ni les locaux de nos clients, ni nos intervenants, ni la gérante.</p>
 			<p style="margin-top:10px;color:var(--color-text-secondary);line-height:1.7">L'ensemble des contenus de ce site (textes, structure, mise en page) est la propriété de <?php echo esc_html( $site['legal_name'] ); ?>, sauf mention contraire. Toute reproduction non autorisée est interdite.</p>
 		</div>
 
@@ -94,6 +105,10 @@ get_header();
 
 		<div>
 			<h2>Droit applicable</h2>
+			<h2 style="font-size:20px;margin-top:28px">Médiation de la consommation</h2>
+			<p style="margin-top:10px;color:var(--color-text-secondary);line-height:1.7">Dispositif applicable et coordonnées du médiateur : à confirmer selon la nature des clients concernés. <strong>[À COMPLÉTER]</strong> avant mise en ligne.</p>
+
+			<h2 style="font-size:20px;margin-top:28px">Droit applicable</h2>
 			<p style="margin-top:10px;color:var(--color-text-secondary);line-height:1.7">Le présent site est soumis au droit français. En cas de litige, et à défaut de résolution amiable, les tribunaux français seront seuls compétents.</p>
 		</div>
 

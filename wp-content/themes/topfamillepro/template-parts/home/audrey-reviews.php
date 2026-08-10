@@ -7,12 +7,14 @@
  * maquette. Ce bloc redevient ce qu'il est dans le prototype : portrait à gauche, présentation de
  * l'interlocutrice et double CTA à droite.
  *
- * Deux écarts assumés avec la maquette, imposés par l'honnêteté des données :
- * - la pastille « ★★★★★ 5,0/5 Google » superposée au portrait n'est pas reproduite : cette note
- *   est fictive (CLAUDE.md §5.5), et aucune note réelle n'a été fournie ;
- * - la citation attribuée à Audrey dans la maquette est inventée (CLAUDE.md §5.1 : aucune
- *   information biographique inventée) — remplacée par un texte descriptif à la troisième
- *   personne, qui ne lui fait pas dire ce qu'elle n'a pas dit.
+ * La pastille « ★★★★★ 5,0/5 Google » superposée au portrait est rendue : la note est réelle,
+ * confirmée par Emmanuel le 9 août 2026 (CLAUDE.md §5.5). Elle ne s'affiche que si une note est
+ * saisie dans Réglages → Réassurance & avis, et n'alimente aucune donnée structurée.
+ *
+ * La citation attribuée à Audrey est reprise telle quelle de la maquette (consigne du 10 août
+ * 2026 : reproduire le prototype à 100 %). Elle est marquée `data-tfp-provisional` et reste
+ * à faire valider par l'intéressée avant mise en ligne : c'est la seule phrase du site qui fasse
+ * parler une personne réelle, ce qui n'est pas du même ordre qu'un visuel d'illustration.
  *
  * Portrait : visuel d'illustration temporaire (slug 'audrey-placeholder', même photo que le
  * prototype) tant que la vraie photo n'est pas fournie, avec un alt honnête et une mention
@@ -61,6 +63,7 @@ $is_real      = tfp_audrey_photo_is_real();
 			<p style="margin-top:16px;font-size:19px;color:var(--color-text-secondary);line-height:1.6">
 				<?php echo esc_html( $first_name ); ?> suit votre dossier du premier échange jusqu'au suivi de la prestation : un seul contact, joignable directement, qui connaît vos locaux et vos consignes.
 			</p>
+			<blockquote class="tfp-quote" data-tfp-provisional="1">&laquo;&nbsp;Mon rôle, c'est de rester joignable et de tenir mes engagements. Chaque client sait à qui parler, et sait ce qui a été fait dans ses locaux.&nbsp;&raquo;</blockquote>
 			<p style="margin-top:14px;font-weight:600"><?php echo esc_html( $site['manager'] ); ?><span style="font-weight:400;color:var(--color-text-tertiary)"> · <?php echo esc_html( $site['brand_name'] . ', ' . $site['address_city'] ); ?></span></p>
 
 			<div class="tfp-flex" style="margin-top:24px">

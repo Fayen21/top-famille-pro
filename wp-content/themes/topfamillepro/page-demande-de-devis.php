@@ -86,8 +86,9 @@ get_header();
 </div>
 
 <section class="tfp-container tfp-section--tight">
-	<h1>Demande de devis gratuit</h1>
-	<p style="max-width:640px;font-size:18px;color:var(--color-text-secondary);margin-top:12px">Décrivez vos locaux en deux étapes. Votre devis est étudié personnellement par <?php echo esc_html( $site['manager'] ); ?> et transmis sous 24 heures, gratuitement et sans engagement.</p>
+	<h1>Demandez votre devis gratuit</h1>
+	<p class="tfp-section__lede">Décrivez-nous vos locaux et vos besoins. <?php echo esc_html( explode( ' ', $site['manager'] )[0] ); ?> vous répond sous 24 heures avec une proposition claire et chiffrée, sans engagement.</p>
+	<p class="tfp-section__lede">Votre devis est étudié personnellement par <?php echo esc_html( $site['manager'] ); ?> : aucun simulateur automatique, une estimation adaptée à vos locaux.</p>
 </section>
 
 <section class="tfp-section">
@@ -128,7 +129,8 @@ get_header();
 				<input type="hidden" name="utm_campaign" value="<?php echo isset( $_GET['utm_campaign'] ) ? esc_attr( sanitize_text_field( wp_unslash( $_GET['utm_campaign'] ) ) ) : ''; ?>">
 
 				<fieldset data-step="0" style="border:none;padding:0;margin:0">
-					<legend style="font-weight:700;font-size:20px;margin-bottom:16px">Étape 1 sur 2 — Vos locaux et vos coordonnées</legend>
+					<legend style="font-weight:700;font-size:20px;margin-bottom:8px">Étape 1 sur 2 — Vos locaux et vos coordonnées</legend>
+					<p style="margin-bottom:16px;color:var(--color-text-secondary)">L'essentiel d'abord : de quoi vous rappeler et chiffrer. Les détails viennent à l'étape suivante.</p>
 
 					<div class="tfp-field">
 						<label for="tfp-type-locaux">Type de locaux *</label>
@@ -242,6 +244,19 @@ get_header();
 		<?php endif; ?>
 
 	</div>
+</section>
+
+<section class="tfp-container tfp-section--tight">
+	<?php
+	tfp_testimonial_card(
+		array(
+			'texte'  => 'Devis clair reçu le lendemain, sans surprise. Réactivité au rendez-vous.',
+			'auteur' => 'Sophie L.',
+			'role'   => 'Cabinet dentaire',
+			'ville'  => 'Besançon',
+		)
+	);
+	?>
 </section>
 
 <?php get_footer(); ?>

@@ -12,7 +12,7 @@ $site = tfp_site_data();
 $steps = array(
 	array( 'num' => '01', 'title' => 'Prise de contact', 'desc' => 'Vous décrivez vos locaux et vos contraintes.' ),
 	array( 'num' => '02', 'title' => 'Analyse', 'desc' => 'Nous étudions le cahier des charges et le volume.' ),
-	array( 'num' => '03', 'title' => 'Devis sous 24 h', 'desc' => 'Une proposition claire, sans engagement.' ),
+	array( 'num' => '03', 'title' => 'Devis sous 24 h', 'desc' => 'Une proposition claire à ' . tfp_format_price( $site['price_unique'] ) . ' HT/h, sans engagement.' ),
 	array( 'num' => '04', 'title' => 'Sélection & mise en place', 'desc' => 'Intervenant attitré, planning et accès organisés.' ),
 	array( 'num' => '05', 'title' => 'Suivi', 'desc' => 'Cahier de liaison, ajustements et remplacement si besoin.' ),
 );

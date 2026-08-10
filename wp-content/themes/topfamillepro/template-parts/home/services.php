@@ -34,7 +34,7 @@ $secondary_services = array(
 		Toutes reposent sur la même méthode : celle décrite dans notre page
 		<a class="tfp-underline" href="<?php echo esc_url( home_url( '/nettoyage-professionnel/' ) ); ?>">nettoyage professionnel</a> —
 		périmètre écrit, intervenant habituel recherché,
-		<a class="tfp-underline" href="<?php echo esc_url( home_url( '/tarifs/' ) ); ?>">tarif indiqué avant le devis</a>.
+		<a class="tfp-underline" href="<?php echo esc_url( home_url( '/tarifs/' ) ); ?>">tarif unique de <?php echo esc_html( tfp_format_price( $site['price_unique'] ) ); ?> HT/h</a>.
 		Hors locaux industriels, alimentaires et locaux médicaux nécessitant une asepsie complète ; matériel et produits fournis par vos soins.
 	</p>
 

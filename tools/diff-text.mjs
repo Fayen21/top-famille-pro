@@ -86,6 +86,22 @@ const CORRECTIONS_VOULUES = [
 		raison: 'CLAUDE.md §9 — remplacé par « Devis étudié personnellement par Audrey »',
 	},
 	{ maquette: '47 avis', raison: 'CLAUDE.md §5.5 — compteur d’avis non confirmé' },
+	{
+		maquette: 'numéro de TVA intracommunautaire : à compléter',
+		raison: 'CLAUDE.md §5.7 — données d’immatriculation confirmées par Kbis, écrites en clair',
+	},
+	{
+		maquette: "adresse postale et téléphone de l'hébergeur : à compléter",
+		raison: 'CLAUDE.md §5.7 — remplacé par les coordonnées réelles de Hostinger',
+	},
+	{
+		maquette: 'Assurance et responsabilité',
+		raison: 'Consigne du 9 août 2026 — section supprimée tant que l’attestation n’est pas fournie',
+	},
+	{
+		maquette: "Coordonnées de l'assureur en responsabilité civile",
+		raison: 'Consigne du 9 août 2026 — section supprimée tant que l’attestation n’est pas fournie',
+	},
 	{ maquette: 'Top-Entreprise', raison: 'CLAUDE.md §9 — ancienne marque à faire disparaître' },
 ];
 

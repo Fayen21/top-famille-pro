@@ -17,9 +17,9 @@ $budget = tfp_home_budget_example();
 		<div>
 			<h2>Un tarif clair, affiché avant le devis</h2>
 			<p style="margin-top:14px;font-size:17px;color:var(--color-text-secondary)">
-				<?php echo esc_html( tfp_format_price( $site['price_unique'] ) ); ?> HT/heure — tarif unique en régulier comme en ponctuel, dans toute la <?php echo esc_html( $site['address_region'] ); ?>.
-				Le cas échéant, nous y ajoutons <?php echo esc_html( tfp_format_price( $site['price_gestion'] ) ); ?> HT/mois de frais de gestion
-				et <?php echo esc_html( tfp_format_price( $site['price_setup'] ) ); ?> HT de frais de mise en place — toujours indiqués à l'avance.
+				<?php echo esc_html( tfp_format_price( $site['price_unique'] ) ); ?> HT/h en régulier comme en ponctuel. Nous y ajoutons, le cas échéant,
+				<?php echo esc_html( tfp_format_price( $site['price_gestion'] ) ); ?> HT/mois de gestion et <?php echo esc_html( tfp_format_price( $site['price_setup'] ) ); ?> HT de frais de mise en place,
+				le cas échéant, selon les conditions précisées au devis, toujours indiqués à l'avance.
 			</p>
 
 			<div class="tfp-price-example">

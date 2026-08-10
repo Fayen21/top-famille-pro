@@ -34,7 +34,7 @@ get_header();
 
 <section class="tfp-container tfp-section--tight">
 	<h1>Contacter Top-Famille Pro</h1>
-	<p style="max-width:640px;font-size:18px;color:var(--color-text-secondary);margin-top:12px">Une question sur les prestations, les tarifs ou une zone couverte ? <?php echo esc_html( $site['manager'] ); ?> répond sous 24 heures.</p>
+	<p class="tfp-section__lede">Une question, un projet d'entretien ? <?php echo esc_html( explode( ' ', $site['manager'] )[0] ); ?> vous répond directement, sous 24 heures.</p>
 </section>
 
 <section class="tfp-section">

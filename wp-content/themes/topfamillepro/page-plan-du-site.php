@@ -18,7 +18,7 @@ $static_pages = array(
 	array( 'title' => 'Accueil', 'url' => home_url( '/' ) ),
 	array( 'title' => 'Nettoyage professionnel', 'url' => home_url( '/nettoyage-professionnel/' ) ),
 	array( 'title' => 'Nos prestations', 'url' => home_url( '/prestations/' ) ),
-	array( 'title' => 'Tarifs', 'url' => home_url( '/tarifs/' ) ),
+	array( 'title' => 'Nos tarifs', 'url' => home_url( '/tarifs/' ) ),
 	array( 'title' => "Zones d'intervention", 'url' => home_url( '/zones-intervention/' ) ),
 	array( 'title' => 'Bourgogne-Franche-Comté', 'url' => home_url( '/zones-intervention/bourgogne-franche-comte/' ) ),
 	array( 'title' => 'Pourquoi nous', 'url' => home_url( '/pourquoi-nous/' ) ),
@@ -41,6 +41,10 @@ $prestations = get_posts( array( 'post_type' => 'prestation', 'posts_per_page' =
 
 $departements = get_posts( array( 'post_type' => 'zone', 'numberposts' => -1, 'meta_key' => 'niveau', 'meta_value' => 'departement', 'orderby' => 'title', 'order' => 'ASC' ) );
 $villes       = get_posts( array( 'post_type' => 'zone', 'numberposts' => -1, 'meta_key' => 'niveau', 'meta_value' => 'ville', 'orderby' => 'title', 'order' => 'ASC' ) );
+// Les communes secondaires figurent au plan du site comme dans la maquette : elles sont
+// `noindex,follow` (CLAUDE.md §5.4), ce qui n'empêche ni de les lister ni de les suivre — c'est
+// même le seul chemin interne qui y mène tant qu'elles ne sont pas validées.
+$communes     = get_posts( array( 'post_type' => 'zone', 'numberposts' => -1, 'meta_key' => 'niveau', 'meta_value' => 'commune', 'orderby' => 'title', 'order' => 'ASC' ) );
 
 $articles = get_posts( array( 'post_type' => 'post', 'posts_per_page' => -1, 'category_name' => 'conseils', 'orderby' => 'title', 'order' => 'ASC' ) );
 
@@ -107,20 +111,31 @@ get_header();
 		</div>
 
 		<div>
-			<h2>Conseils</h2>
+			<h2>Communes secondaires</h2>
 			<ul style="margin-top:12px;display:flex;flex-direction:column;gap:8px">
-				<?php foreach ( $articles as $a ) : ?>
-					<li><a href="<?php echo esc_url( get_permalink( $a ) ); ?>"><?php echo esc_html( get_the_title( $a ) ); ?></a></li>
+				<?php foreach ( $communes as $c ) : ?>
+					<li><a href="<?php echo esc_url( get_permalink( $c ) ); ?>"><?php echo esc_html( get_the_title( $c ) ); ?></a></li>
 				<?php endforeach; ?>
 			</ul>
 		</div>
 
 		<div>
-			<h2>Informations légales</h2>
+			<h2>Conseils</h2>
+			<ul style="margin-top:12px;display:flex;flex-direction:column;gap:8px">
+				<?php foreach ( $articles as $a ) : ?>
+					<li><a href="<?php echo esc_url( get_permalink( $a ) ); ?>"><?php echo esc_html( get_the_title( $a ) ); ?></a></li>
+				<?php endforeach; ?>
+				<li><a href="<?php echo esc_url( home_url( '/conseils/' ) ); ?>">Tous les conseils</a></li>
+			</ul>
+		</div>
+
+		<div>
+			<h2>Pages légales et utilitaires</h2>
 			<ul style="margin-top:12px;display:flex;flex-direction:column;gap:8px">
 				<?php foreach ( $legal_pages as $p ) : ?>
 					<li><a href="<?php echo esc_url( $p['url'] ); ?>"><?php echo esc_html( $p['title'] ); ?></a></li>
 				<?php endforeach; ?>
+				<li><a href="<?php echo esc_url( home_url( '/plan-du-site/' ) ); ?>">Plan du site</a></li>
 			</ul>
 		</div>
 
