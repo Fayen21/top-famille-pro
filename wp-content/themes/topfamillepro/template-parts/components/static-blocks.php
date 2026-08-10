@@ -134,6 +134,17 @@ foreach ( $data['sections'] as $section ) {
 						</ol>
 					<?php endif; ?>
 
+					<?php
+					/*
+					 * Grilles de micro-cartes relevées sur la maquette, à leur place dans l'ordre de
+					 * lecture. Elles portent leur intitulé **et** leur description : c'est ce que
+					 * l'ancienne extraction perdait, et qui rendait la carte irreconstituable.
+					 */
+					foreach ( $bloc['cartes'] as $grille ) {
+						tfp_card_grid( $grille );
+					}
+					?>
+
 					<?php foreach ( $bloc['citations'] as $citation ) : ?>
 						<blockquote class="tfp-quote"><?php echo esc_html( $citation ); ?></blockquote>
 					<?php endforeach; ?>

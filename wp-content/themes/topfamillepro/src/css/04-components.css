@@ -2865,3 +2865,157 @@ body.tfp-body a.tfp-service-tile:focus-visible {
 .tfp-note-card p {
   margin: 0;
 }
+
+/* ==================================================================
+   Grille de micro-cartes
+   ------------------------------------------------------------------
+   Le composant qui manquait, et dont l'absence était structurelle : le
+   générateur réduisait ces cartes à un simple libellé, la description
+   était perdue **à l'extraction**, et la carte devenait irreconstituable
+   à l'affichage quel que soit le CSS.
+
+   Géométrie relevée sur le prototype : tuiles de 188 à 385 px de large,
+   rayon 10 à 14, fond blanc ou #F4F7F8 selon la bande, filet 1 px,
+   rembourrage 14 à 20, écart 8 à 16, sur 2 à 6 colonnes selon la grille.
+   Le nombre de colonnes vient du relevé, pas d'un `auto-fit`.
+   ================================================================== */
+
+.tfp-card-grid {
+  list-style: none;
+  margin: 18px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 12px;
+}
+
+.tfp-card-grid--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.tfp-card-grid--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.tfp-card-grid--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.tfp-card-grid--5 { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+.tfp-card-grid--6 { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+
+.tfp-card-grid > li {
+  display: flex;
+}
+
+body.tfp-body .tfp-card-tile {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  width: 100%;
+  padding: 16px 18px;
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  background: var(--color-bg-card);
+  color: var(--color-text);
+  transition: border-color var(--transition-base), transform var(--transition-base);
+}
+
+body.tfp-body a.tfp-card-tile:hover,
+body.tfp-body a.tfp-card-tile:focus-visible {
+  border-color: var(--color-primary);
+  transform: translateY(-2px);
+  color: var(--color-text);
+}
+
+.tfp-card-tile__body {
+  display: block;
+  min-width: 0;
+}
+
+.tfp-card-tile__icon {
+  flex: 0 0 auto;
+  font-size: 18px;
+  line-height: 1.2;
+  color: var(--color-primary);
+}
+
+.tfp-card-tile__eyebrow {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 11px;
+  font-weight: var(--fw-bold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+}
+
+.tfp-card-tile__title {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 16px;
+  font-weight: var(--fw-bold);
+  line-height: 1.35;
+  color: var(--color-navy);
+}
+
+/* Pastille du numéro de département : posée à côté du nom, comme dans la maquette. */
+.tfp-card-tile__badge {
+  display: inline-block;
+  margin-left: 6px;
+  padding: 1px 7px;
+  border-radius: 100px;
+  background: var(--color-bg-alt);
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: var(--fw-semibold);
+  color: var(--color-text-secondary);
+}
+
+.tfp-card-tile__desc {
+  display: block;
+  margin-top: 4px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--color-text-secondary);
+}
+
+.tfp-card-tile__more {
+  display: block;
+  margin-top: 8px;
+  font-size: 13px;
+  font-weight: var(--fw-semibold);
+  color: var(--color-primary);
+}
+
+/* Bande sombre : la carte suit le thème relevé, elle ne l'invente pas. */
+.tfp-card-grid--dark .tfp-card-tile {
+  border-color: #234066;
+  background: var(--color-navy);
+}
+
+.tfp-card-grid--dark .tfp-card-tile__title {
+  color: var(--color-white);
+}
+
+.tfp-card-grid--dark .tfp-card-tile__desc {
+  color: var(--color-text-on-dark-muted);
+}
+
+.tfp-card-grid--dark .tfp-card-tile__badge {
+  background: rgba(255, 255, 255, 0.14);
+  color: var(--color-white);
+}
+
+@media (max-width: 1099px) {
+  .tfp-card-grid--4,
+  .tfp-card-grid--5,
+  .tfp-card-grid--6 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 819px) {
+  .tfp-card-grid--3,
+  .tfp-card-grid--4,
+  .tfp-card-grid--5,
+  .tfp-card-grid--6 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 599px) {
+  .tfp-card-grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+}

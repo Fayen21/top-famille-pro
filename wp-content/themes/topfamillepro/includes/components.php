@@ -356,6 +356,93 @@ function tfp_chip_list( array $items ) {
 }
 
 /**
+ * Grille de micro-cartes relevée sur la maquette.
+ *
+ * C'est le composant qui manquait, et son absence était **structurelle** : le générateur réduisait
+ * ces cartes à un simple libellé, la description était perdue à l'extraction, et la carte devenait
+ * impossible à reconstituer à l'affichage quel que soit le gabarit. Chaque carte porte désormais
+ * son intitulé, sa description, son surtitre, sa pastille, son icône, son image, son lien et le
+ * libellé de ce lien.
+ *
+ * Rien n'est fabriqué au rendu : un champ vide reste vide. Une carte sans URL réelle n'est pas
+ * rendue en lien mort — elle reste un bloc de texte (CLAUDE.md §8).
+ *
+ * @param array $grille {
+ *     @type int    $colonnes  Nombre de colonnes relevé sur le prototype (1 à 6).
+ *     @type string $theme     `clair` ou `sombre`.
+ *     @type string $variante  `texte`, `lien` ou `image`.
+ *     @type array  $items     Cartes, dans l'ordre de la maquette.
+ * }
+ */
+function tfp_card_grid( array $grille ) {
+	$items = $grille['items'] ?? array();
+	if ( ! $items ) {
+		return;
+	}
+	$colonnes = max( 1, min( 6, (int) ( $grille['colonnes'] ?? 1 ) ) );
+	$theme    = 'sombre' === ( $grille['theme'] ?? 'clair' ) ? ' tfp-card-grid--dark' : '';
+	$variante = preg_replace( '/[^a-z]/', '', (string) ( $grille['variante'] ?? 'texte' ) );
+	?>
+	<ul class="tfp-card-grid tfp-card-grid--<?php echo (int) $colonnes; ?><?php echo esc_attr( $theme ); ?>">
+		<?php
+		foreach ( $items as $item ) :
+			$item = wp_parse_args(
+				$item,
+				array(
+					'titre'        => '',
+					'description'  => '',
+					'badge'        => '',
+					'surtitre'     => '',
+					'icone'        => '',
+					'image'        => '',
+					'route'        => '',
+					'libelle_lien' => '',
+					'aria'         => '',
+					'span'         => '',
+				)
+			);
+			if ( '' === $item['titre'] && '' === $item['description'] ) {
+				continue;
+			}
+			$url      = $item['route'] ? tfp_route_to_url( $item['route'] ) : '';
+			$balise   = $url ? 'a' : 'div';
+			$attributs = $url ? ' href="' . esc_url( $url ) . '"' : '';
+			if ( $item['aria'] ) {
+				$attributs .= ' aria-label="' . esc_attr( $item['aria'] ) . '"';
+			}
+			?>
+			<li>
+				<<?php echo $balise; ?> class="tfp-card-tile tfp-card-tile--<?php echo esc_attr( $variante ); ?>"<?php echo $attributs; // phpcs:ignore WordPress.Security.EscapeOutput ?>>
+					<?php if ( $item['icone'] ) : ?>
+						<span class="tfp-card-tile__icon" aria-hidden="true"><?php echo esc_html( $item['icone'] ); ?></span>
+					<?php endif; ?>
+					<span class="tfp-card-tile__body">
+						<?php if ( $item['surtitre'] ) : ?>
+							<span class="tfp-card-tile__eyebrow"><?php echo esc_html( $item['surtitre'] ); ?></span>
+						<?php endif; ?>
+						<?php if ( $item['titre'] ) : ?>
+							<span class="tfp-card-tile__title">
+								<?php echo esc_html( $item['titre'] ); ?>
+								<?php if ( $item['badge'] ) : ?>
+									<span class="tfp-card-tile__badge"><?php echo esc_html( $item['badge'] ); ?></span>
+								<?php endif; ?>
+							</span>
+						<?php endif; ?>
+						<?php if ( $item['description'] ) : ?>
+							<span class="tfp-card-tile__desc"><?php echo esc_html( $item['description'] ); ?></span>
+						<?php endif; ?>
+						<?php if ( $item['libelle_lien'] && $url ) : ?>
+							<span class="tfp-card-tile__more"><?php echo esc_html( $item['libelle_lien'] ); ?><span aria-hidden="true"> →</span></span>
+						<?php endif; ?>
+					</span>
+				</<?php echo $balise; ?>>
+			</li>
+		<?php endforeach; ?>
+	</ul>
+	<?php
+}
+
+/**
  * Regroupe les blocs consécutifs d'une bande qui appartiennent à une même rangée.
  *
  * Une bande de la maquette mêle couramment un bloc d'introduction sur toute la largeur et une

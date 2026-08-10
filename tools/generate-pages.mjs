@@ -184,11 +184,224 @@ for (const p of PAGES) {
 			return { colonnes: Math.min(4, Math.max(1, rang0.length)), tuile };
 		};
 
-		const flatten = (sec) => {
+		/*
+		 * ------------------------------------------------------------------
+		 * Grilles de micro-cartes
+		 * ------------------------------------------------------------------
+		 *
+		 * **La cause structurelle des écarts de cartes était ici.** L'aplatissement ci-dessous ne
+		 * connaît que des titres, des paragraphes, des puces et des `span`. Or la maquette range une
+		 * grande partie de son contenu en **micro-cartes** composées d'un intitulé *et* d'une
+		 * description — parfois d'une icône, d'une image, d'un lien et de son libellé. Aplaties,
+		 * elles perdaient leur description : le titre finissait en pastille (`noms`) et le texte
+		 * partait ailleurs, ou disparaissait. La carte devenait alors **impossible à reconstituer à
+		 * l'affichage**, quel que soit le gabarit ou le CSS — la donnée n'existait plus.
+		 *
+		 * On relève donc chaque grille de cartes **avant** l'aplatissement, avec sa géométrie et le
+		 * détail de chacune de ses cartes, puis on retire ses nœuds du flux aplati en laissant un
+		 * repère à leur place, pour que l'ordre de lecture soit conservé.
+		 *
+		 * Ce qui est une carte, et ce qui n'en est pas — mêmes critères que tools/inventaire-cartes.mjs,
+		 * afin que l'extraction et la vérification ne puissent pas diverger :
+		 *  - **carte** : bloc arrondi (rayon ≥ 6 px) distingué du fond par une couleur, un filet ou
+		 *    une ombre, d'au moins 60 × 24 px ;
+		 *  - **commande** (bouton, champ, lien court) : exclue — un bouton est arrondi et coloré,
+		 *    mais il appartient au vocabulaire des commandes, pas à celui des blocs de contenu ;
+		 *  - **conteneur de grille** : le parent n'est jamais compté, seules ses cartes le sont ;
+		 *  - **wrapper technique** : un élément sans fond, sans filet et sans rayon n'est pas une
+		 *    carte, quel que soit son rôle dans la mise en page ;
+		 *  - **élément décoratif** : une image seule, sans texte, n'ouvre pas une carte.
+		 */
+		const estCommande = (el) => {
+			const tag = el.tagName.toLowerCase();
+			if (['button', 'input', 'select', 'textarea'].includes(tag)) return true;
+			if (tag === 'a') {
+				const r = el.getBoundingClientRect();
+				return r.height <= 64 && el.children.length <= 2 && txt(el).length <= 40;
+			}
+			return false;
+		};
+
+		/** Luminance perçue : sert à dire si une carte est claire ou sombre. */
+		const estSombre = (couleur) => {
+			const m = (couleur || '').match(/\d+/g);
+			if (!m || m.length < 3) return false;
+			const [r, v, b] = m.map(Number);
+			return 0.299 * r + 0.587 * v + 0.114 * b < 128;
+		};
+
+		/**
+		 * Détail d'une carte : intitulé, description, surtitre, icône, image, lien, libellé du lien.
+		 *
+		 * Rien n'est fabriqué ici. Chaque champ est **lu** dans la carte du prototype ; s'il n'y est
+		 * pas, il reste vide. En particulier, une description n'est jamais déduite d'un titre.
+		 */
+		const detailCarte = (el, rangIndex) => {
+			const lien = el.matches('a[href]') ? el : el.querySelector('a[href]');
+			const img = el.querySelector('img');
+			const cs = getComputedStyle(el);
+
+			// Nœuds textuels porteurs, dans l'ordre, en ignorant les conteneurs sans texte propre.
+			const morceaux = [];
+			const collecter = (n) => {
+				for (const c of n.children) {
+					const t = c.tagName.toLowerCase();
+					if (t === 'img' || t === 'svg' || t === 'picture') continue;
+					const direct = [...c.childNodes]
+						.filter((x) => x.nodeType === 3)
+						.map((x) => x.textContent.replace(/\s+/g, ' ').trim())
+						.filter(Boolean)
+						.join(' ');
+					if (direct) {
+						const s = getComputedStyle(c);
+						morceaux.push({
+							texte: direct,
+							tag: t,
+							taille: parseFloat(s.fontSize) || 0,
+							graisse: parseInt(s.fontWeight, 10) || 400,
+							majuscules: s.textTransform === 'uppercase',
+						});
+					}
+					collecter(c);
+				}
+			};
+			collecter(el);
+			if (!morceaux.length) {
+				const propre = txt(el);
+				if (propre) morceaux.push({ texte: propre, tag: 'span', taille: 16, graisse: 400, majuscules: false });
+			}
+
+			// Icône : un premier morceau très court, fait de symboles ou d'un pictogramme.
+			let icone = '';
+			if (morceaux.length && morceaux[0].texte.length <= 3 && !/[a-zA-Z0-9]/.test(morceaux[0].texte)) {
+				icone = morceaux.shift().texte;
+			}
+
+			// Libellé de lien : un dernier morceau terminé par une flèche.
+			let libelleLien = '';
+			if (morceaux.length > 1 && /→\s*$/.test(morceaux[morceaux.length - 1].texte)) {
+				libelleLien = morceaux.pop().texte.replace(/\s*→\s*$/, '').trim();
+			}
+
+			// Surtitre : un premier morceau court, en petites capitales ou nettement plus petit que
+			// le suivant. C'est l'étiquette que la maquette pose au-dessus de certains intitulés.
+			let surtitre = '';
+			if (
+				morceaux.length > 2 &&
+				(morceaux[0].majuscules || (morceaux[1] && morceaux[0].taille < morceaux[1].taille - 1)) &&
+				morceaux[0].texte.length <= 40
+			) {
+				surtitre = morceaux.shift().texte;
+			}
+
+			const titre = morceaux.length ? morceaux.shift().texte : '';
+
+			// Pastille : un fragment très court et purement numérique juste après l'intitulé — c'est
+			// le numéro de département que la maquette pose à côté du nom. Laissé dans la
+			// description, il produisait « 21 Préfecture : Dijon », qui ne veut rien dire.
+			let badge = '';
+			if (morceaux.length > 1 && /^\d{1,3}$/.test(morceaux[0].texte)) {
+				badge = morceaux.shift().texte;
+			}
+
+			const description = morceaux.map((m) => m.texte).join(' ').trim();
+
+			return {
+				titre,
+				description,
+				badge,
+				surtitre,
+				icone,
+				image: img ? img.getAttribute('alt') || '' : '',
+				route: lien ? lien.getAttribute('href') || '' : '',
+				libelle_lien: libelleLien,
+				aria: el.getAttribute('aria-label') || (lien ? lien.getAttribute('aria-label') || '' : ''),
+				ordre: rangIndex,
+				span: cs.gridColumn && cs.gridColumn !== 'auto' ? cs.gridColumn : '',
+			};
+		};
+
+		/**
+		 * Grilles de cartes d'une bande, avec leur géométrie relevée et le détail de leurs cartes.
+		 * Renvoie aussi l'ensemble des nœuds concernés, pour que l'aplatissement les ignore.
+		 */
+		const grillesDeCartes = (sec) => {
+			const grilles = [];
+			const pris = new Set();
+
+			for (const g of sec.querySelectorAll('div,ul,ol')) {
+				if (pris.has(g)) continue;
+				const gs = getComputedStyle(g);
+				if (!/grid|flex/.test(gs.display) || g.children.length < 2) continue;
+
+				const enfants = [...g.children].filter((c) => {
+					const r = c.getBoundingClientRect();
+					const s = getComputedStyle(c);
+					return (
+						r.width >= 60 &&
+						r.height >= 24 &&
+						parseFloat(s.borderTopLeftRadius) >= 6 &&
+						(s.backgroundColor !== 'rgba(0, 0, 0, 0)' || parseFloat(s.borderTopWidth) > 0 || (s.boxShadow && s.boxShadow !== 'none'))
+					);
+				});
+				// Une grille de cartes : (presque) tous ses enfants en sont, et ce ne sont pas des
+				// commandes. Une barre de boutons a la même forme mais un autre rôle.
+				if (enfants.length < 2 || enfants.length < g.children.length - 1) continue;
+				if (enfants.every(estCommande)) continue;
+				// Une carte qui contient elle-même la grille entière est un conteneur : on ne prend
+				// que la grille la plus profonde.
+				if (enfants.some((c) => c.querySelector('div,ul,ol') && [...c.querySelectorAll('div,ul,ol')].some((x) => grilles.some((gr) => gr.el === x)))) continue;
+
+				const k = enfants[0];
+				const ks = getComputedStyle(k);
+				const y0 = Math.round(k.getBoundingClientRect().top);
+				const colonnes = enfants.filter((c) => Math.abs(Math.round(c.getBoundingClientRect().top) - y0) <= 8).length;
+
+				grilles.push({
+					el: g,
+					colonnes: Math.min(6, Math.max(1, colonnes)),
+					gap: gs.gap,
+					fond: ks.backgroundColor,
+					rayon: ks.borderTopLeftRadius,
+					filet: ks.borderTopWidth,
+					padding: ks.padding,
+					theme: estSombre(ks.backgroundColor) ? 'sombre' : 'clair',
+					// Variante : ce que la carte porte, et non ce à quoi elle ressemble.
+					variante: k.querySelector('img')
+						? 'image'
+						: k.matches('a[href]') || k.querySelector('a[href]')
+							? 'lien'
+							: 'texte',
+					cartes: enfants.map((c, i) => detailCarte(c, i + 1)),
+				});
+				for (const c of enfants) {
+					pris.add(c);
+					for (const d of c.querySelectorAll('*')) pris.add(d);
+				}
+				pris.add(g);
+			}
+			return grilles;
+		};
+
+		const flatten = (sec, grilles = []) => {
 			const out = [];
+			// Nœuds appartenant à une grille de cartes : ils sont déjà relevés en structure et ne
+			// doivent pas repasser dans le flux aplati — sinon chaque carte ressortirait une seconde
+			// fois, son intitulé en pastille et sa description en paragraphe détaché.
+			const dansGrille = new Set();
+			for (const g of grilles) {
+				for (const d of g.el.querySelectorAll('*')) dansGrille.add(d);
+			}
 			const walk = (el) => {
 				for (const n of el.children) {
 					const tag = n.tagName.toLowerCase();
+					// Repère de position : la grille reprend sa place exacte dans l'ordre de lecture.
+					const rang = grilles.findIndex((g) => g.el === n);
+					if (rang >= 0) {
+						out.push({ t: 'grille', i: rang });
+						continue;
+					}
+					if (dansGrille.has(n)) continue;
 					if (/^h[1-6]$/.test(tag)) {
 						// L'ordonnée du titre sert à savoir, plus bas, s'il est seul sur son rang (bloc
 						// pleine largeur) ou côte à côte avec d'autres (bloc de grille).
@@ -234,7 +447,10 @@ for (const p of PAGES) {
 
 		const out = [];
 		sections.forEach((sec, i) => {
-			let nodes = flatten(sec);
+			// Les grilles de cartes sont relevées **avant** l'aplatissement : leurs nœuds sont
+			// ensuite retirés du flux, un repère prenant leur place pour conserver l'ordre.
+			const grilles = grillesDeCartes(sec);
+			let nodes = flatten(sec, grilles);
 			if (!nodes.length) return;
 			// Le fil d'Ariane est rendu par le gabarit, pas par le composant générique.
 			if (sec.tagName.toLowerCase() === 'nav') return;
@@ -263,12 +479,13 @@ for (const p of PAGES) {
 						cur.noms.length ||
 						cur.citations.length ||
 						cur.faq.length ||
-						cur.etapes.length)
+						cur.etapes.length ||
+						cur.cartes.length)
 				) {
 					blocs.push(cur);
 				}
 			};
-			const vide = () => ({ titre: '', niveau: 'h2', grille: false, colonnes: 1, textes: [], liste: [], liens: [], noms: [], citations: [], faq: [], etapes: [] });
+			const vide = () => ({ titre: '', niveau: 'h2', grille: false, colonnes: 1, cartes: [], textes: [], liste: [], liens: [], noms: [], citations: [], faq: [], etapes: [] });
 			// Ordonnées de tous les titres de la bande : sert à décider, titre par titre, s'il est
 			// pleine largeur ou en rangée.
 			const rangs = nodes.filter((n) => n.t === 'h2' || n.t === 'h3').map((n) => n.top);
@@ -299,6 +516,27 @@ for (const p of PAGES) {
 					question = null;
 				} else {
 					if (!cur) cur = vide();
+					/*
+					 * Repère de grille : rattaché au bloc courant, à sa place dans l'ordre de lecture.
+					 * Traité avant toute lecture de texte — un repère n'en porte pas.
+					 */
+					if (n.t === 'grille') {
+						const g = grilles[n.i];
+						if (g) {
+							cur.cartes.push({
+								colonnes: g.colonnes,
+								theme: g.theme,
+								variante: g.variante,
+								gap: g.gap,
+								fond: g.fond,
+								rayon: g.rayon,
+								filet: g.filet,
+								padding: g.padding,
+								items: g.cartes,
+							});
+						}
+						continue;
+					}
 					const propre = n.v.replace(/\s*\+$/, '').trim();
 					// Le repère fiable d'un accordéon est le « + » qui suit son intitulé — la
 					// maquette y met aussi bien des questions que des objections entre guillemets,
@@ -338,7 +576,7 @@ for (const p of PAGES) {
 		});
 
 		// Accroche du hero : les paragraphes qui précèdent le premier H2 de la section du H1.
-		const heroNodes = heroSec ? flatten(heroSec) : [];
+		const heroNodes = heroSec ? flatten(heroSec, grillesDeCartes(heroSec)) : [];
 		const finHero = heroNodes.findIndex((n) => n.t === 'h2');
 		const heroSeulement = finHero < 0 ? heroNodes : heroNodes.slice(0, finHero);
 		return {
