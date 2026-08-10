@@ -15,26 +15,25 @@
 
 | Route Claude | Route WordPress | Blocs | Hauteur | Mots | Titres | Puces | Images | Débord. | Triptyque |
 |---|---|---|---|---|---|---|---|---|---|
-| `#/service/ponctuel` | `/prestations/ponctuel/` | 14 → 14 | 7588 → 8032 (106 %) | 1950 → 1941 (100 %) | 31 → 33 | 25 → 39 | 3 → 4 | non | [voir](captures/comparaison/service-ponctuel-1440.jpg) |
+| `#/nos-tarifs` | `/tarifs/` | 13 → 13 | 5852 → 6151 (105 %) | 951 → 962 (101 %) | 10 → 16 | 24 → 51 | 2 → 3 | non | [voir](captures/comparaison/nos-tarifs-1440.jpg) |
 
 ## Détail bloc par bloc à 1440 px
 
-### `#/service/ponctuel` → `/prestations/ponctuel/`
+### `#/nos-tarifs` → `/tarifs/`
 
 | # | Bloc maquette | Bloc WordPress | Hauteur | État |
 |---|---|---|---|---|
-| 1 | (Accueil / Prestations / Ponctuel) | (Accueil/Prestations/Ponctuel) | 42 → 57 | ≈ proche |
-| 2 | Nettoyage ponctuel et remise en état | Nettoyage ponctuel et remise en état | 483 → 546 | ⚠️ écart +63 px |
-| 3 | (Réponse directeCertaines situations de) | (Réponse directe Certaines situations d) | 363 → 331 | ≈ proche |
-| 4 | Pour qui ? | Pour qui ? | 561 → 629 | ⚠️ écart +68 px |
-| 5 | Les situations concrètes que nous traitons | Les situations concrètes que nous traitons | 360 → 425 | ⚠️ écart +65 px |
-| 6 | Trois configurations, trois organisations | Trois configurations, trois organisations | 606 → 560 | ≈ proche |
-| 7 | Le détail, espace par espace et contrainte par | Le détail, espace par espace et contrainte par | 1136 → 1162 | ≈ proche |
-| 8 | Une organisation carrée, du planning au suivi | Une organisation carrée, du planning au suivi | 744 → 670 | ⚠️ écart -74 px |
-| 9 | Une semaine type | Une semaine type | 452 → 358 | ⚠️ écart -94 px |
-| 10 | (Exemple · 12 h/mois333 € HT/mois12 h ×) | (Exemple · 12 h/mois 333 € HT/mois 12 h) | 425 → 390 | ≈ proche |
-| 11 | Cette prestation près de chez vous | Cette prestation près de chez vous | 384 → 434 | ≈ proche |
-| 12 | Questions fréquentes — Ponctuel | Questions fréquentes — Ponctuel | 797 → 937 | ⚠️ écart +140 px |
-| 13 | (Encore une question sur Ponctuel ? Aud) | (Encore une question sur Ponctuel ? Aud) | 97 → 187 | ⚠️ écart +90 px |
-| 14 | Un devis pour Ponctuel | Un devis pour Ponctuel | 317 → 363 | ≈ proche |
+| 1 | (Accueil / Nos tarifs) | (Accueil/Nos tarifs) | 42 → 57 | ≈ proche |
+| 2 | Nos tarifs de nettoyage professionnel | Nos tarifs de nettoyage professionnel | 362 → 301 | ⚠️ écart -61 px |
+| 3 | (Tarif horaire de base27 € HT/hIdentiqu) | (Tarif horaire de base 27 € HT/h Identi) | 277 → 302 | ≈ proche |
+| 4 | (Le nettoyage professionnel est facturé) | (Le nettoyage professionnel est facturé) | 277 → 204 | ⚠️ écart -73 px |
+| 5 | (Ce tarif s'applique au périmètre décri) | (Ce tarif s'applique au périmètre décri) | 131 → 180 | ≈ proche |
+| 6 | Le détail de nos frais | Le détail de nos frais | 638 → 623 | ≈ proche |
+| 7 | Ce qui est inclus | Ce qui est inclus | 313 → 426 | ⚠️ écart +113 px |
+| 8 | Ce qui influence le volume d'heures | Ce qui influence le volume d'heures | 403 → 302 | ⚠️ écart -101 px |
+| 9 | Trois exemples de budgets | Trois exemples de budgets | 606 → 632 | ≈ proche |
+| 10 | Comparer plusieurs besoins en un coup d'œil | Comparer plusieurs besoins en un coup d'œil | 492 → 523 | ≈ proche |
+| 11 | Questions sur les tarifs | Questions sur les tarifs | 745 → 868 | ⚠️ écart +123 px |
+| 12 | Avant de demander votre devis | Avant de demander votre devis | 405 → 385 | ≈ proche |
+| 13 | Recevez un devis clair et chiffré | Recevez un devis clair et chiffré | 339 → 363 | ≈ proche |
 
