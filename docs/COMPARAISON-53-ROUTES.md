@@ -15,25 +15,25 @@
 
 | Route Claude | Route WordPress | Blocs | Hauteur | Mots | Titres | Puces | Images | Débord. | Triptyque |
 |---|---|---|---|---|---|---|---|---|---|
-| `#/nos-tarifs` | `/tarifs/` | 13 → 13 | 5852 → 6151 (105 %) | 951 → 962 (101 %) | 10 → 16 | 24 → 51 | 2 → 3 | non | [voir](captures/comparaison/nos-tarifs-1440.jpg) |
+| `#/ville/beaune` | `/zones-intervention/cote-dor/beaune/` | 13 → 13 | 7106 → 8466 (119 %) | 1445 → 1536 (106 %) | 17 → 25 | 21 → 36 | 3 → 4 | non | — |
 
 ## Détail bloc par bloc à 1440 px
 
-### `#/nos-tarifs` → `/tarifs/`
+### `#/ville/beaune` → `/zones-intervention/cote-dor/beaune/`
 
 | # | Bloc maquette | Bloc WordPress | Hauteur | État |
 |---|---|---|---|---|
-| 1 | (Accueil / Nos tarifs) | (Accueil/Nos tarifs) | 42 → 57 | ≈ proche |
-| 2 | Nos tarifs de nettoyage professionnel | Nos tarifs de nettoyage professionnel | 362 → 301 | ⚠️ écart -61 px |
-| 3 | (Tarif horaire de base27 € HT/hIdentiqu) | (Tarif horaire de base 27 € HT/h Identi) | 277 → 302 | ≈ proche |
-| 4 | (Le nettoyage professionnel est facturé) | (Le nettoyage professionnel est facturé) | 277 → 204 | ⚠️ écart -73 px |
-| 5 | (Ce tarif s'applique au périmètre décri) | (Ce tarif s'applique au périmètre décri) | 131 → 180 | ≈ proche |
-| 6 | Le détail de nos frais | Le détail de nos frais | 638 → 623 | ≈ proche |
-| 7 | Ce qui est inclus | Ce qui est inclus | 313 → 426 | ⚠️ écart +113 px |
-| 8 | Ce qui influence le volume d'heures | Ce qui influence le volume d'heures | 403 → 302 | ⚠️ écart -101 px |
-| 9 | Trois exemples de budgets | Trois exemples de budgets | 606 → 632 | ≈ proche |
-| 10 | Comparer plusieurs besoins en un coup d'œil | Comparer plusieurs besoins en un coup d'œil | 492 → 523 | ≈ proche |
-| 11 | Questions sur les tarifs | Questions sur les tarifs | 745 → 868 | ⚠️ écart +123 px |
-| 12 | Avant de demander votre devis | Avant de demander votre devis | 405 → 385 | ≈ proche |
-| 13 | Recevez un devis clair et chiffré | Recevez un devis clair et chiffré | 339 → 363 | ≈ proche |
+| 1 | (Accueil / BFC / Côte-d'Or / Beaune) | (Accueil/Zones d'intervention/Côte-d’Or) | 42 → 57 | ≈ proche |
+| 2 | Entreprise de nettoyage à Beaune | Entreprise de nettoyage à Beaune | 474 → 546 | ⚠️ écart +72 px |
+| 3 | (27 € HT/htarif unique en région✓Devis ) | (27 € HT/h tarif unique en région Voir ) | 186 → 216 | ≈ proche |
+| 4 | (Réponse directeBeaune est une commune ) | (Réponse directe Beaune est une commune) | 323 → 289 | ≈ proche |
+| 5 | Beaune, second pôle de notre présence en Côte- | Beaune, second pôle de notre présence en Côte- | 1059 → 1162 | ⚠️ écart +103 px |
+| 6 | Nos prestations sur place | Nos prestations sur place | 640 → 935 | ⚠️ écart +295 px |
+| 7 | Tarif et exemple local | Tarif et exemple local | 478 → 564 | ⚠️ écart +86 px |
+| 8 | Hébergements et locations meublées | Hébergements et locations meublées | 1174 → 1031 | ⚠️ écart -143 px |
+| 9 | Quartiers et zones d'activité | Quartiers et zones d'activité | 228 → 446 | ⚠️ écart +218 px |
+| 10 | Dans le même département | Dans le même département | 386 → 845 | ⚠️ écart +459 px |
+| 11 | Questions fréquentes — Beaune | Questions fréquentes — Beaune | 684 → 782 | ⚠️ écart +98 px |
+| 12 | Nous contacter | Nous contacter | 291 → 246 | ≈ proche |
+| 13 | Un devis pour vos locaux | Un devis pour vos locaux | 319 → 363 | ≈ proche |
 

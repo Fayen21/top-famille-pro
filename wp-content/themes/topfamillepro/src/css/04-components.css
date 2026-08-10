@@ -1631,3 +1631,70 @@
 .tfp-card--link:hover {
   border-color: var(--color-turquoise);
 }
+
+/* ------------------------------------------------------------------
+   Composants des pages de zone (département, ville, commune).
+   ------------------------------------------------------------------ */
+
+/* Bandeau tarifaire sous le hero : montant, mentions cochées, lien vers la page Tarifs. */
+.tfp-zone-band {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px 28px;
+  padding: 20px 24px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-white);
+}
+
+.tfp-zone-band__price strong {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--color-navy);
+}
+
+.tfp-zone-band__price span {
+  font-size: 14px;
+  color: var(--color-text-secondary);
+}
+
+.tfp-zone-band__items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 20px;
+  flex: 1 1 320px;
+}
+
+/* Chapitres narratifs : colonne de lecture, respiration entre chapitres. */
+.tfp-zone-chapter + .tfp-zone-chapter {
+  margin-top: 40px;
+}
+
+.tfp-zone-chapter h2 {
+  margin-bottom: 8px;
+}
+
+.tfp-zone-links + .tfp-zone-links {
+  margin-top: 40px;
+}
+
+/* Un nom de commune sans page dédiée : même forme qu'une puce cliquable, mais inerte — et
+   visiblement inerte, sinon l'utilisateur clique dans le vide. */
+.tfp-chip--static {
+  cursor: default;
+  background: var(--color-bg-alt);
+  color: var(--color-text-secondary);
+  border-style: dashed;
+}
+
+/* Hero sans visuel (pages département de la maquette) : le texte occupe toute la largeur. */
+.tfp-hero--text {
+  grid-template-columns: 1fr;
+}
+
+.tfp-hero--text .tfp-hero__content {
+  max-width: 820px;
+}

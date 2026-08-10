@@ -120,3 +120,37 @@ function tfp_link_phrases( $text, array $map ) {
 	}
 	return $html;
 }
+
+/**
+ * Groupes « titre + paragraphes + liste + noms » d'une zone, stockés en champs numérotés.
+ *
+ * Les pages de zone de la maquette enchaînent des blocs de même forme mais en nombre variable
+ * (3 à 5 selon le niveau et la ville). Les numéroter plutôt que les nommer permet à un seul
+ * gabarit de servir départements, villes et communes sans branche par niveau, tout en gardant un
+ * ordre non modifiable depuis l'administration.
+ *
+ * @param string $prefix  `recit`, `methode` ou `locaux`.
+ * @param int    $post_id
+ * @param int    $max
+ * @return array<int,array{titre:string,textes:string[],liste:string[],noms:string[],type:string}>
+ */
+function tfp_get_zone_blocks( $prefix, $post_id, $max ) {
+	$blocks = array();
+	for ( $i = 1; $i <= $max; $i++ ) {
+		$titre = tfp_get_field( $prefix . '_' . $i . '_titre', $post_id );
+		if ( ! $titre ) {
+			continue;
+		}
+		$blocks[] = array(
+			'titre'  => $titre,
+			'textes' => tfp_get_lines( tfp_get_field( $prefix . '_' . $i . '_texte', $post_id ) ),
+			'liste'  => tfp_get_lines( tfp_get_field( $prefix . '_' . $i . '_liste', $post_id ) ),
+			'noms'   => tfp_get_lines( tfp_get_field( $prefix . '_' . $i . '_noms', $post_id ) ),
+			'type'   => tfp_get_field( $prefix . '_' . $i . '_type', $post_id ) ?: 'noms',
+			// Numéro de la section d'origine dans la maquette : deux groupes qui la partagent
+			// restent dans la même bande de fond.
+			'section' => (int) tfp_get_field( $prefix . '_' . $i . '_section', $post_id ),
+		);
+	}
+	return $blocks;
+}
