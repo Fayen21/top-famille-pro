@@ -179,15 +179,25 @@ get_header();
 </section>
 
 <section class="tfp-container tfp-section--tight">
+	<?php
+	/*
+	 * Bandeau tarifaire. Deux lignes dans la maquette : la pastille de prix et les trois garanties
+	 * sur la première, le renvoi vers les tarifs seul et aligné à droite sur la seconde. La
+	 * rangée est explicite ici plutôt que laissée au retour à la ligne d'un `flex-wrap` : ce
+	 * dernier faisait dépendre la mise en page de la largeur du plus long libellé.
+	 */
+	?>
 	<div class="tfp-zone-band">
-		<div class="tfp-zone-band__price">
-			<strong><?php echo esc_html( tfp_format_price( $site['price_unique'] ) ); ?> HT/h</strong>
-			<span>tarif unique en région</span>
-		</div>
-		<div class="tfp-zone-band__items">
-			<?php foreach ( $band_items as $item ) : ?>
-				<?php tfp_check_item( $item ); ?>
-			<?php endforeach; ?>
+		<div class="tfp-zone-band__row">
+			<div class="tfp-zone-band__price">
+				<strong><?php echo esc_html( tfp_format_price( $site['price_unique'] ) ); ?> HT/h</strong>
+				<span>tarif unique en région</span>
+			</div>
+			<div class="tfp-zone-band__items">
+				<?php foreach ( $band_items as $item ) : ?>
+					<?php tfp_check_item( $item ); ?>
+				<?php endforeach; ?>
+			</div>
 		</div>
 		<a class="tfp-eyebrow-link" href="<?php echo esc_url( home_url( '/tarifs/' ) ); ?>">Voir les tarifs →</a>
 	</div>
@@ -234,8 +244,16 @@ get_header();
  */
 $render_group = function ( array $bloc ) use ( $toutes_prestations, $cities_in_dept, $communes_proches, $dept_post ) {
 	?>
-	<div class="tfp-zone-links">
-		<h2><?php echo esc_html( $bloc['titre'] ); ?></h2>
+	<div class="tfp-zone-links<?php echo 3 === (int) ( $bloc['niveau'] ?? 2 ) ? ' tfp-zone-links--sous' : ''; ?>">
+		<?php
+		/*
+		 * Le titre garde le niveau relevé sur la maquette : « Communes secondaires documentées » y
+		 * est un `h3` sous « Nos villes d'intervention dans le département », pas un `h2` de plus.
+		 * Le promouvoir cassait la hiérarchie des titres et, par ricochet, la mise en colonnes.
+		 */
+		$balise_groupe = 3 === (int) ( $bloc['niveau'] ?? 2 ) ? 'h3' : 'h2';
+		printf( '<%1$s>%2$s</%1$s>', $balise_groupe, esc_html( $bloc['titre'] ) ); // phpcs:ignore WordPress.Security.EscapeOutput
+		?>
 		<?php foreach ( $bloc['textes'] as $texte ) : ?>
 			<p class="tfp-prose"><?php echo esc_html( $texte ); ?></p>
 		<?php endforeach; ?>
@@ -262,9 +280,20 @@ $render_group = function ( array $bloc ) use ( $toutes_prestations, $cities_in_d
 				<?php endforeach; ?>
 			</div>
 		<?php elseif ( 'prestations' === $bloc['type'] ) : ?>
-			<div class="tfp-stack" style="margin-top:12px">
+			<?php
+			/*
+			 * Panneau de maillage vers les six prestations.
+			 *
+			 * Ce n'est pas une simple pile de liens : la maquette pose un panneau de 566×338, fond
+			 * #DCE7EB, rayon 14, dont les six rangées sont blanches (564×55, rembourrage 15/18) et
+			 * séparées par un filet d'un pixel obtenu par l'écart de la colonne. Rendu en liens nus,
+			 * le bloc perdait son poids visuel et se confondait avec le corps de page — c'est
+			 * pourtant le seul composant de maillage de la bande.
+			 */
+			?>
+			<div class="tfp-link-panel">
 				<?php foreach ( $toutes_prestations as $prestation ) : ?>
-					<a class="tfp-link-row" href="<?php echo esc_url( get_permalink( $prestation ) ); ?>">
+					<a class="tfp-link-row tfp-link-row--panel" href="<?php echo esc_url( get_permalink( $prestation ) ); ?>">
 						<?php echo esc_html( tfp_get_field( 'nav_label', $prestation->ID ) ?: get_the_title( $prestation ) ); ?><span aria-hidden="true">→</span>
 					</a>
 				<?php endforeach; ?>
@@ -318,15 +347,27 @@ $groupes_apres = array_slice( $groupes_liens, $avant_tarif );
 $render_sections = function ( array $groupes, $classe ) use ( $render_group ) {
 	$courante = null;
 	$ouverte  = false;
+	$colonne  = false;
 	foreach ( $groupes as $bloc ) {
 		if ( $bloc['section'] !== $courante ) {
 			if ( $ouverte ) {
+				if ( $colonne ) {
+					echo '</div>';
+					$colonne = false;
+				}
 				echo '</div></div></section>';
 			}
-			// Plusieurs groupes dans une même section se répartissent en colonnes, comme dans la
-			// maquette : les empiler ferait tripler la hauteur de la bande à contenu identique.
+			/*
+			 * Nombre de colonnes de la bande : **un par groupe de premier rang**, pas un par groupe.
+			 *
+			 * Sur une page de département, la maquette pose deux colonnes de 566 px — « Nos villes
+			 * d'intervention » à gauche, avec ses deux sous-groupes h3 empilés dessous, et « Nos
+			 * prestations » à droite. Compter les sous-groupes donnait quatre colonnes de 265 px :
+			 * les pastilles de communes tombaient à une ou deux par ligne au lieu de quatre, et la
+			 * bande ne ressemblait plus à la maquette malgré une hauteur voisine.
+			 */
 			$nb = count( array_filter( $groupes, function ( $g ) use ( $bloc ) {
-				return $g['section'] === $bloc['section'];
+				return $g['section'] === $bloc['section'] && 3 !== (int) ( $g['niveau'] ?? 2 );
 			} ) );
 			/*
 			 * La bande qui porte les six prestations en tuiles est posée sur fond marine dans la
@@ -345,9 +386,20 @@ $render_sections = function ( array $groupes, $classe ) use ( $render_group ) {
 			$courante = $bloc['section'];
 			$ouverte  = true;
 		}
+		// Un groupe de premier rang ouvre une colonne ; les sous-groupes s'empilent dans la sienne.
+		if ( 3 !== (int) ( $bloc['niveau'] ?? 2 ) ) {
+			if ( $colonne ) {
+				echo '</div>';
+			}
+			echo '<div class="tfp-zone-col">';
+			$colonne = true;
+		}
 		$render_group( $bloc );
 	}
 	if ( $ouverte ) {
+		if ( $colonne ) {
+			echo '</div>';
+		}
 		echo '</div></div></section>';
 	}
 };
@@ -359,7 +411,17 @@ $render_sections = function ( array $groupes, $classe ) use ( $render_group ) {
 
 <?php if ( $tarif_titre ) : ?>
 <section class="tfp-section--turquoise tfp-section--tight">
-	<div class="tfp-container tfp-two-col">
+	<?php
+	/*
+	 * Bande tarifaire d'une page de zone : **trois colonnes**, pas deux.
+	 *
+	 * Relevé à 1440 px sur la maquette : texte 394 px, carte d'exemple 344 px (blanche, rayon 16),
+	 * témoignage 374 px (blanc, rayon 16), écart 34. Le gabarit empilait l'exemple et le témoignage
+	 * dans une seule colonne de droite : même contenu, mais une bande deux fois plus haute et deux
+	 * cartes deux fois plus étroites que dans le prototype.
+	 */
+	?>
+	<div class="tfp-container tfp-zone-tarif">
 		<div>
 			<h2><?php echo esc_html( $tarif_titre ); ?></h2>
 			<?php foreach ( $tarif_texte as $texte ) : ?>
@@ -367,18 +429,25 @@ $render_sections = function ( array $groupes, $classe ) use ( $render_group ) {
 			<?php endforeach; ?>
 			<a class="tfp-eyebrow-link" href="<?php echo esc_url( home_url( '/tarifs/' ) ); ?>">Voir les tarifs →</a>
 		</div>
-		<div>
-			<?php if ( $exemple_label ) : ?>
-				<div class="tfp-price-example">
-					<div class="tfp-price-example__label"><?php echo esc_html( $exemple_label ); ?></div>
-					<div class="tfp-price-example__value"><?php echo esc_html( tfp_format_price( $budget['monthly'] ) ); ?> <span>HT/mois</span></div>
-					<div class="tfp-price-example__disclaimer">Exemple non contractuel.</div>
-				</div>
-			<?php endif; ?>
-			<?php if ( $temoignage['texte'] ) : ?>
-				<?php tfp_testimonial_card( $temoignage ); ?>
-			<?php endif; ?>
-		</div>
+		<?php if ( $exemple_label ) : ?>
+			<div class="tfp-price-example">
+				<div class="tfp-price-example__label"><?php echo esc_html( $exemple_label ); ?></div>
+				<div class="tfp-price-example__value"><?php echo esc_html( tfp_format_price( $budget['monthly'] ) ); ?> <span>HT/mois</span></div>
+				<?php
+				// Phrase qui explique d'où sort le montant (« Trois passages de 1 h par semaine… ») :
+				// elle appartient à la carte dans la maquette, où elle justifie le chiffre affiché
+				// juste au-dessus. Le gabarit la rendait dans la colonne de texte, loin du montant.
+				$exemple_texte = tfp_get_field( 'exemple_texte', $post_id );
+				if ( $exemple_texte ) :
+					?>
+					<p class="tfp-price-example__note"><?php echo esc_html( $exemple_texte ); ?></p>
+				<?php endif; ?>
+				<div class="tfp-price-example__disclaimer">Exemple non contractuel.</div>
+			</div>
+		<?php endif; ?>
+		<?php if ( $temoignage['texte'] ) : ?>
+			<?php tfp_testimonial_card( $temoignage ); ?>
+		<?php endif; ?>
 	</div>
 </section>
 <?php endif; ?>

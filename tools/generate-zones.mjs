@@ -78,7 +78,29 @@ for (const zone of ZONES) {
 					else if (tag === 'img') out.push({ t: 'img', v: n.getAttribute('alt') || '' });
 					else if (tag === 'a' && !n.querySelector('h1,h2,h3,h4,p,li,img')) out.push({ t: 'a', v: txt(n), href: n.getAttribute('href') || '' });
 					else if (!n.children.length && txt(n)) out.push({ t: 'span', v: txt(n) });
-					else walk(n);
+					else {
+						/*
+						 * Cas « icône + libellé » : `<span><span>✓</span>Devis gratuit sous 24 h</span>`.
+						 *
+						 * La descente ne relevait que les feuilles, et le libellé — un simple nœud
+						 * texte à côté de l'icône — était perdu. Les trois garanties du bandeau
+						 * tarifaire des 26 pages de zone disparaissaient ainsi silencieusement : le
+						 * bandeau se rendait avec un conteneur vide de 0 px de haut.
+						 *
+						 * Le relevé du texte propre est volontairement limité aux éléments dont tous
+						 * les enfants sont des icônes ou des puces (deux caractères au plus) : partout
+						 * ailleurs, il ferait double emploi avec la descente.
+						 */
+						const enfantsDecoratifs = [...n.children].every((c) => txt(c).length <= 2);
+						const propre = [...n.childNodes]
+							.filter((x) => x.nodeType === 3)
+							.map((x) => x.textContent)
+							.join(' ')
+							.replace(/\s+/g, ' ')
+							.trim();
+						walk(n);
+						if (enfantsDecoratifs && propre.length > 2) out.push({ t: 'span', v: propre });
+					}
 				}
 			};
 			walk(sec);
@@ -99,7 +121,18 @@ for (const zone of ZONES) {
 			let cur = null;
 			for (const n of sec) {
 				if (n.t === 'h2' || n.t === 'h3') {
-					cur = { titre: n.v, textes: [], liste: [], chips: [], liens: [] };
+					/*
+					 * Le **niveau** du titre est conservé, et ce n'est pas un détail de sémantique.
+					 *
+					 * Dans la maquette, la bande « Nos villes d'intervention » d'une page de
+					 * département est **un seul groupe** en h2, dont « Communes secondaires
+					 * documentées » et « Autres communes citées » sont deux sous-titres h3. Le
+					 * niveau perdu, le gabarit en faisait trois groupes de premier rang : la bande
+					 * passait de deux colonnes de 566 px à quatre de 265 px, les pastilles de
+					 * communes se retrouvaient à une ou deux par ligne au lieu de quatre, et la
+					 * hiérarchie des titres devenait fausse pour les lecteurs d'écran.
+					 */
+					cur = { titre: n.v, niveau: n.t === 'h3' ? 3 : 2, textes: [], liste: [], chips: [], liens: [] };
 					out.push(cur);
 				} else if (cur) {
 					if (n.t === 'p') cur.textes.push(n.v);
@@ -144,8 +177,20 @@ for (const zone of ZONES) {
 		const iTarif = idxOf((n) => n.t === 'h2' && /^Tarif/.test(n.v));
 		const tarifSec = secs[iTarif] || [];
 		const tarifTitre = (tarifSec.find((n) => n.t === 'h2') || {}).v || '';
-		const tarifTextes = tarifSec.filter((n) => n.t === 'p').map((n) => n.v);
-		const exempleLabel = (tarifSec.find((n) => n.t === 'span' && n.v.startsWith('Exemple ·')) || {}).v || '';
+		/*
+		 * La bande tarifaire porte **deux** paragraphes, dans deux colonnes différentes : celui de
+		 * la colonne de gauche (« 27 € HT/h, comme dans le reste de la région… ») et celui de la
+		 * carte d'exemple (« Trois passages de 1 h par semaine… »), qui explique d'où sort le
+		 * montant. Les prendre tous les deux pour la colonne de gauche vidait la carte d'exemple de
+		 * sa justification et allongeait la colonne de texte d'autant.
+		 *
+		 * Ils se distinguent à leur position : la carte d'exemple s'ouvre sur son libellé
+		 * « Exemple · … », et tout paragraphe qui le suit lui appartient.
+		 */
+		const iExemple = tarifSec.findIndex((n) => n.t === 'span' && n.v.startsWith('Exemple ·'));
+		const tarifTextes = tarifSec.filter((n, i) => n.t === 'p' && (iExemple < 0 || i < iExemple)).map((n) => n.v);
+		const exempleTexte = iExemple < 0 ? '' : (tarifSec.find((n, i) => i > iExemple && n.t === 'p') || {}).v || '';
+		const exempleLabel = iExemple < 0 ? '' : tarifSec[iExemple].v;
 		const tSpans = tarifSec.filter((n) => n.t === 'span').map((n) => n.v);
 		const tTexte = tSpans.find((v) => v.length > 80) || '';
 		const ti = tSpans.indexOf(tTexte);
@@ -198,6 +243,7 @@ for (const zone of ZONES) {
 			tarifTitre,
 			tarifTextes,
 			exempleLabel,
+			exempleTexte,
 			temoignage,
 			methode,
 			locaux,
@@ -280,6 +326,9 @@ for (const z of all) {
 	set('tarif_titre', php(z.tarifTitre));
 	set('tarif_texte', phpLines(z.tarifTextes));
 	set('exemple_label', php(z.exempleLabel));
+	// Phrase qui justifie le montant, dans la carte d'exemple de la maquette — pas dans la colonne
+	// de texte, où elle allongeait la bande sans expliquer le chiffre affiché juste à côté.
+	set('exemple_texte', php(z.exempleTexte));
 	if (z.temoignage) {
 		set('temoignage_texte', php(z.temoignage.texte));
 		set('temoignage_auteur', php(z.temoignage.auteur));
@@ -298,6 +347,9 @@ for (const z of all) {
 		set(`locaux_${i + 1}_type`, php(g.kind));
 		set(`locaux_${i + 1}_variante`, php(g.variante || 'liens'));
 		set(`locaux_${i + 1}_section`, g.section);
+		// Niveau du titre relevé sur la maquette : un groupe de niveau 3 est un sous-groupe du
+		// précédent — il reste dans sa colonne et son titre est un `h3`.
+		set(`locaux_${i + 1}_niveau`, g.niveau || 2);
 		// Les noms sans lien sont des communes ou quartiers cités, sans page dédiée : ils restent
 		// du texte, jamais un lien mort.
 		set(`locaux_${i + 1}_noms`, phpLines(g.chips));

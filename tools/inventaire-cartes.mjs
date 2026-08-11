@@ -484,4 +484,29 @@ for (const hash of routes) {
 }
 
 writeFileSync(RAPPORT + (seules ? '.partiel' : ''), L.join('\n') + '\n');
+
+/*
+ * Vidage brut, en plus du rapport lisible.
+ *
+ * Le rapport tronque le détail par route — utile à lire, inexploitable pour **classer une par une**
+ * les anomalies d'une famille sur les 53 routes. Le JSON, lui, est exhaustif.
+ */
+writeFileSync(
+	'docs/inventaire-cartes.json' + (seules ? '.partiel' : ''),
+	JSON.stringify(
+		Object.fromEntries(
+			Object.entries(resultats).map(([hash, parLargeur]) => [
+				hash,
+				Object.fromEntries(
+					Object.entries(parLargeur).map(([largeur, d]) => [
+						largeur,
+						{ cartesRef: d.ref.cartes.length, cartesWp: d.wp.cartes.length, anomalies: d.anomalies },
+					])
+				),
+			])
+		),
+		null,
+		1
+	) + '\n'
+);
 console.error(`\nÉcrit : ${RAPPORT}${seules ? '.partiel' : ''} — ${totalAnos} anomalie(s), ${totalGraves} grave(s)`);

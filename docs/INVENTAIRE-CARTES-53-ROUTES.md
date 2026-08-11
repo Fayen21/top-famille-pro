@@ -11,7 +11,7 @@
 > Un conteneur qui contient visuellement plusieurs micro-cartes n’est jamais compté pour une
 > carte : il compte pour ses enfants.
 
-**53 routes × 2 largeurs · 927 anomalie(s), dont 283 grave(s)** (carte absente ou fusionnée).
+**53 routes × 2 largeurs · 934 anomalie(s), dont 283 grave(s)** (carte absente ou fusionnée).
 
 ## Synthèse
 
@@ -21,11 +21,11 @@
 | `#/nettoyage-professionnel` | 53 → 54 (+1) | 53 → 51 (-2) | ❌ 14 (2) | ❌ 12 (3) |
 | `#/nos-prestations` | 12 → 13 (+1) | 12 → 13 (+1) | ⚠️ 1 | ⚠️ 1 |
 | `#/service/bureaux` | 21 → 21 | 22 → 22 | ✅ | ✅ |
-| `#/service/commerces` | 20 → 20 | 21 → 21 | ✅ | ✅ |
-| `#/service/cabinets` | 28 → 28 | 29 → 29 | ⚠️ 1 | ⚠️ 1 |
-| `#/service/coproprietes` | 21 → 21 | 22 → 22 | ✅ | ✅ |
-| `#/service/meubles` | 21 → 21 | 22 → 22 | ⚠️ 1 | ⚠️ 1 |
-| `#/service/ponctuel` | 21 → 21 | 22 → 22 | ✅ | ✅ |
+| `#/service/commerces` | 20 → 20 | 21 → 21 | ⚠️ 1 | ✅ |
+| `#/service/cabinets` | 28 → 28 | 29 → 29 | ⚠️ 2 | ⚠️ 1 |
+| `#/service/coproprietes` | 21 → 21 | 22 → 22 | ⚠️ 1 | ✅ |
+| `#/service/meubles` | 21 → 21 | 22 → 22 | ⚠️ 2 | ⚠️ 1 |
+| `#/service/ponctuel` | 21 → 21 | 22 → 22 | ⚠️ 1 | ✅ |
 | `#/nos-tarifs` | 22 → 21 (-1) | 22 → 21 (-1) | ❌ 10 (2) | ❌ 3 (2) |
 | `#/zones-intervention` | 52 → 49 (-3) | 35 → 49 (+14) | ❌ 11 (4) | ❌ 30 (5) |
 | `#/bourgogne-franche-comte` | 51 → 56 (+5) | 48 → 56 (+8) | ❌ 22 (1) | ❌ 26 (2) |
@@ -49,10 +49,10 @@
 | `#/ville/belfort` | 50 → 48 (-2) | 51 → 49 (-2) | ❌ 14 (4) | ❌ 13 (4) |
 | `#/ville/saint-apollinaire` | 44 → 42 (-2) | 47 → 45 (-2) | ❌ 11 (4) | ❌ 17 (4) |
 | `#/ville/chenove` | 41 → 39 (-2) | 42 → 40 (-2) | ❌ 8 (4) | ❌ 14 (4) |
-| `#/ville/quetigny` | 37 → 35 (-2) | 38 → 36 (-2) | ❌ 14 (4) | ❌ 10 (4) |
-| `#/ville/talant` | 41 → 40 (-1) | 42 → 41 (-1) | ❌ 9 (4) | ❌ 15 (4) |
+| `#/ville/quetigny` | 37 → 35 (-2) | 38 → 38 | ❌ 14 (4) | ❌ 13 (4) |
+| `#/ville/talant` | 41 → 40 (-1) | 42 → 41 (-1) | ❌ 9 (4) | ❌ 14 (4) |
 | `#/ville/longvic` | 43 → 41 (-2) | 44 → 42 (-2) | ❌ 13 (4) | ❌ 19 (4) |
-| `#/ville/fontaine-les-dijon` | 43 → 42 (-1) | 46 → 45 (-1) | ❌ 10 (4) | ❌ 16 (4) |
+| `#/ville/fontaine-les-dijon` | 43 → 42 (-1) | 46 → 45 (-1) | ❌ 10 (4) | ❌ 14 (4) |
 | `#/ville/marsannay-la-cote` | 36 → 34 (-2) | 39 → 37 (-2) | ❌ 9 (4) | ❌ 16 (4) |
 | `#/ville/beaune` | 41 → 39 (-2) | 42 → 40 (-2) | ❌ 10 (4) | ❌ 14 (4) |
 | `#/conseils` | 11 → 14 (+3) | 11 → 14 (+3) | ❌ 5 (1) | ❌ 5 (1) |
@@ -65,7 +65,7 @@
 | `#/a-propos` | 1 → 1 | 1 → 1 | ⚠️ 1 | ⚠️ 1 |
 | `#/recrutement` | 6 → 5 (-1) | 6 → 5 (-1) | ❌ 2 (1) | ❌ 2 (1) |
 | `#/demande-de-devis` | 5 → 4 (-1) | 5 → 4 (-1) | ❌ 1 (1) | ❌ 1 (1) |
-| `#/contact` | 7 → 6 (-1) | 7 → 6 (-1) | ❌ 5 (3) | ❌ 5 (3) |
+| `#/contact` | 7 → 7 | 7 → 7 | ❌ 6 (3) | ❌ 6 (3) |
 | `#/plan-du-site` | 0 → 0 | 0 → 0 | ✅ | ✅ |
 | `#/mentions-legales` | 1 → 0 (-1) | 1 → 0 (-1) | ❌ 1 (1) | ❌ 1 (1) |
 | `#/politique-de-confidentialite` | 1 → 0 (-1) | 1 → 0 (-1) | ❌ 1 (1) | ❌ 1 (1) |
@@ -105,7 +105,7 @@
 | `#/ville/beaune` | 4 | 10 |
 | `#/article/frequence-bureaux` | 4 | 8 |
 | `#/ville/dijon` | 3 | 10 |
-| `#/contact` | 3 | 5 |
+| `#/contact` | 3 | 6 |
 | `#/nettoyage-professionnel` | 2 | 14 |
 | `#/nos-tarifs` | 2 | 10 |
 | `#/avis-clients` | 2 | 9 |
@@ -254,18 +254,23 @@
 
 ### `#/service/commerces` → `/prestations/commerces/`
 
-**1440 px** — bandes 14 → 14 · cartes 20 → 20 · 0 anomalie(s)
+**1440 px** — bandes 14 → 14 · cartes 20 → 20 · 1 anomalie(s)
+
+| Anomalie | Archétype | Bande | Détail |
+|---|---|---|---|
+| colonnes | `tarif` | 10 | « Exemple · 12 h/mois333 € HT/mois12 h × 27 € + 9 € de gestion » — 1 colonnes attendues, 2 rendues |
 
 **375 px** — bandes 14 → 14 · cartes 21 → 21 · 0 anomalie(s)
 
 
 ### `#/service/cabinets` → `/prestations/cabinets/`
 
-**1440 px** — bandes 15 → 15 · cartes 28 → 28 · 1 anomalie(s)
+**1440 px** — bandes 15 → 15 · cartes 28 → 28 · 2 anomalie(s)
 
 | Anomalie | Archétype | Bande | Détail |
 |---|---|---|---|
 | type | `carte-titre-texte` | 4 | « Cette prestation est un entretien courant de locaux professi » — rendue en `micro-carte` |
+| colonnes | `tarif` | 11 | « Exemple · 12 h/mois333 € HT/mois12 h × 27 € + 9 € de gestion » — 1 colonnes attendues, 2 rendues |
 
 **375 px** — bandes 15 → 15 · cartes 29 → 29 · 1 anomalie(s)
 
@@ -276,17 +281,22 @@
 
 ### `#/service/coproprietes` → `/prestations/coproprietes/`
 
-**1440 px** — bandes 14 → 14 · cartes 21 → 21 · 0 anomalie(s)
+**1440 px** — bandes 14 → 14 · cartes 21 → 21 · 1 anomalie(s)
+
+| Anomalie | Archétype | Bande | Détail |
+|---|---|---|---|
+| colonnes | `tarif` | 10 | « Exemple · 12 h/mois333 € HT/mois12 h × 27 € + 9 € de gestion » — 1 colonnes attendues, 2 rendues |
 
 **375 px** — bandes 14 → 14 · cartes 22 → 22 · 0 anomalie(s)
 
 
 ### `#/service/meubles` → `/prestations/meubles/`
 
-**1440 px** — bandes 14 → 14 · cartes 21 → 21 · 1 anomalie(s)
+**1440 px** — bandes 14 → 14 · cartes 21 → 21 · 2 anomalie(s)
 
 | Anomalie | Archétype | Bande | Détail |
 |---|---|---|---|
+| colonnes | `tarif` | 10 | « Exemple · 12 h/mois333 € HT/mois12 h × 27 € + 9 € de gestion » — 1 colonnes attendues, 2 rendues |
 | type | `carte-titre` | 13 | « Encore une question sur Locations meublées ? Audrey vous rép » — rendue en `carte-titre-texte` |
 
 **375 px** — bandes 14 → 14 · cartes 22 → 22 · 1 anomalie(s)
@@ -298,7 +308,11 @@
 
 ### `#/service/ponctuel` → `/prestations/ponctuel/`
 
-**1440 px** — bandes 14 → 14 · cartes 21 → 21 · 0 anomalie(s)
+**1440 px** — bandes 14 → 14 · cartes 21 → 21 · 1 anomalie(s)
+
+| Anomalie | Archétype | Bande | Détail |
+|---|---|---|---|
+| colonnes | `tarif` | 10 | « Exemple · 12 h/mois333 € HT/mois12 h × 27 € + 9 € de gestion » — 1 colonnes attendues, 2 rendues |
 
 **375 px** — bandes 14 → 14 · cartes 22 → 22 · 0 anomalie(s)
 
@@ -501,10 +515,10 @@
 | colonnes | `chip` | 6 | « Pirey » — 5 colonnes attendues, 3 rendues |
 | colonnes | `chip` | 6 | « Serre-les-Sapins » — 2 colonnes attendues, 3 rendues |
 | colonnes | `chip` | 6 | « Beure » — 2 colonnes attendues, 1 rendues |
-| absente | `tarif` | 7 | « Exemple · cabinet à Besançon, 10 h/mois279 € HT/moisDeux passages de 1 » |
+| fusionnee | `tarif` | 7 | « Exemple · cabinet à Besançon, 10 h/mois279 € HT/moisDeux passages de 1 » rendue dans « Exemple · cabinet à Besançon, 10 h/mois 279 € HT/m » |
 | colonnes | `temoignage` | 7 | « ★★★★★« La salle d'attente et les sanitaires sont repris selo » — 3 colonnes attendues, 1 rendues |
 | surplus | `tarif` | 3 | « 27 € HT/h tarif unique en région Voir les tarifs → » |
-| surplus | `tarif` | 7 | « Exemple · cabinet à Besançon, 10 h/mois 333 € HT/mois Exemple non cont » |
+| surplus | `tarif` | 7 | « Exemple · cabinet à Besançon, 10 h/mois 279 € HT/mois Exemple non cont » |
 
 **375 px** — bandes 11 → 11 · cartes 32 → 30 · 9 anomalie(s)
 
@@ -515,10 +529,10 @@
 | type | `micro-carte` | 5 | « Bureaux tertiaires et sièges régionaux » — rendue en `chip` |
 | type | `micro-carte` | 5 | « Commerces du centre historique » — rendue en `chip` |
 | absente | `carte-titre-texte` | 6 | « Nettoyage de bureaux→Nettoyage de commerces→Cabinets & professions lib » |
-| absente | `tarif` | 7 | « Exemple · cabinet à Besançon, 10 h/mois279 € HT/moisDeux passages de 1 » |
+| fusionnee | `tarif` | 7 | « Exemple · cabinet à Besançon, 10 h/mois279 € HT/moisDeux passages de 1 » rendue dans « Exemple · cabinet à Besançon, 10 h/mois 279 € HT/m » |
 | type | `carte-titre` | 11 | « ☎ Échanger avec Audrey · 06 36 17 63 39 » — rendue en `micro-carte` |
 | surplus | `tarif` | 3 | « 27 € HT/h tarif unique en région Voir les tarifs → » |
-| surplus | `tarif` | 7 | « Exemple · cabinet à Besançon, 10 h/mois 333 € HT/mois Exemple non cont » |
+| surplus | `tarif` | 7 | « Exemple · cabinet à Besançon, 10 h/mois 279 € HT/mois Exemple non cont » |
 
 
 ### `#/departement/jura` → `/zones-intervention/jura/`
@@ -537,10 +551,10 @@
 | colonnes | `chip` | 6 | « Authume » — 5 colonnes attendues, 3 rendues |
 | colonnes | `chip` | 6 | « Perrigny » — 3 colonnes attendues, 2 rendues |
 | colonnes | `chip` | 6 | « Macornay » — 3 colonnes attendues, 2 rendues |
-| absente | `tarif` | 7 | « Exemple · commerce à Dole, 16 h/mois441 € HT/moisUn passage d'une heur » |
+| fusionnee | `tarif` | 7 | « Exemple · commerce à Dole, 16 h/mois441 € HT/moisUn passage d'une heur » rendue dans « Exemple · commerce à Dole, 16 h/mois 441 € HT/mois » |
 | colonnes | `temoignage` | 7 | « ★★★★★« Le passage se fait avant l'ouverture, tous les matins » — 3 colonnes attendues, 1 rendues |
 | surplus | `tarif` | 3 | « 27 € HT/h tarif unique en région Voir les tarifs → » |
-| surplus | `tarif` | 7 | « Exemple · commerce à Dole, 16 h/mois 333 € HT/mois Exemple non contrac » |
+| surplus | `tarif` | 7 | « Exemple · commerce à Dole, 16 h/mois 441 € HT/mois Exemple non contrac » |
 
 **375 px** — bandes 11 → 11 · cartes 34 → 32 · 14 anomalie(s)
 
@@ -556,10 +570,10 @@
 | colonnes | `chip` | 6 | « Perrigny » — 2 colonnes attendues, 3 rendues |
 | colonnes | `chip` | 6 | « Macornay » — 2 colonnes attendues, 3 rendues |
 | absente | `carte-titre-texte` | 6 | « Nettoyage de bureaux→Nettoyage de commerces→Cabinets & professions lib » |
-| absente | `tarif` | 7 | « Exemple · commerce à Dole, 16 h/mois441 € HT/moisUn passage d'une heur » |
+| fusionnee | `tarif` | 7 | « Exemple · commerce à Dole, 16 h/mois441 € HT/moisUn passage d'une heur » rendue dans « Exemple · commerce à Dole, 16 h/mois 441 € HT/mois » |
 | type | `carte-titre` | 11 | « ☎ Échanger avec Audrey · 06 36 17 63 39 » — rendue en `micro-carte` |
 | surplus | `tarif` | 3 | « 27 € HT/h tarif unique en région Voir les tarifs → » |
-| surplus | `tarif` | 7 | « Exemple · commerce à Dole, 16 h/mois 333 € HT/mois Exemple non contrac » |
+| surplus | `tarif` | 7 | « Exemple · commerce à Dole, 16 h/mois 441 € HT/mois Exemple non contrac » |
 
 
 ### `#/departement/nievre` → `/zones-intervention/nievre/`
@@ -575,10 +589,10 @@
 | colonnes | `chip` | 6 | « Fourchambault » — 4 colonnes attendues, 2 rendues |
 | colonnes | `chip` | 6 | « Marzy » — 4 colonnes attendues, 2 rendues |
 | colonnes | `chip` | 6 | « Coulanges-lès-Nevers » — 4 colonnes attendues, 2 rendues |
-| absente | `tarif` | 7 | « Exemple · copropriété à Nevers, 8 h/mois225 € HT/moisDeux heures par s » |
+| fusionnee | `tarif` | 7 | « Exemple · copropriété à Nevers, 8 h/mois225 € HT/moisDeux heures par s » rendue dans « Exemple · copropriété à Nevers, 8 h/mois 225 € HT/ » |
 | colonnes | `temoignage` | 7 | « ★★★★★« Le hall et les escaliers sont repris chaque semaine e » — 3 colonnes attendues, 1 rendues |
 | surplus | `tarif` | 3 | « 27 € HT/h tarif unique en région Voir les tarifs → » |
-| surplus | `tarif` | 7 | « Exemple · copropriété à Nevers, 8 h/mois 333 € HT/mois Exemple non con » |
+| surplus | `tarif` | 7 | « Exemple · copropriété à Nevers, 8 h/mois 225 € HT/mois Exemple non con » |
 
 **375 px** — bandes 11 → 11 · cartes 32 → 30 · 15 anomalie(s)
 
@@ -595,10 +609,10 @@
 | colonnes | `chip` | 6 | « Challuy » — 3 colonnes attendues, 2 rendues |
 | colonnes | `chip` | 6 | « Garchizy » — 1 colonnes attendues, 2 rendues |
 | absente | `carte-titre-texte` | 6 | « Nettoyage de bureaux→Nettoyage de commerces→Cabinets & professions lib » |
-| absente | `tarif` | 7 | « Exemple · copropriété à Nevers, 8 h/mois225 € HT/moisDeux heures par s » |
+| fusionnee | `tarif` | 7 | « Exemple · copropriété à Nevers, 8 h/mois225 € HT/moisDeux heures par s » rendue dans « Exemple · copropriété à Nevers, 8 h/mois 225 € HT/ » |
 | type | `carte-titre` | 11 | « ☎ Échanger avec Audrey · 06 36 17 63 39 » — rendue en `micro-carte` |
 | surplus | `tarif` | 3 | « 27 € HT/h tarif unique en région Voir les tarifs → » |
-| surplus | `tarif` | 7 | « Exemple · copropriété à Nevers, 8 h/mois 333 € HT/mois Exemple non con » |
+| surplus | `tarif` | 7 | « Exemple · copropriété à Nevers, 8 h/mois 225 € HT/mois Exemple non con » |
 
 
 ### `#/departement/haute-saone` → `/zones-intervention/haute-saone/`
@@ -618,10 +632,10 @@
 | colonnes | `chip` | 6 | « Pusey » — 4 colonnes attendues, 3 rendues |
 | colonnes | `chip` | 6 | « Noidans-lès-Vesoul » — 4 colonnes attendues, 2 rendues |
 | colonnes | `chip` | 6 | « Frotey-lès-Vesoul » — 2 colonnes attendues, 1 rendues |
-| absente | `tarif` | 7 | « Exemple · bureaux à Vesoul, 10 h/mois279 € HT/moisDeux passages de 1 h » |
+| fusionnee | `tarif` | 7 | « Exemple · bureaux à Vesoul, 10 h/mois279 € HT/moisDeux passages de 1 h » rendue dans « Exemple · bureaux à Vesoul, 10 h/mois 279 € HT/moi » |
 | colonnes | `temoignage` | 7 | « ★★★★★« Nous avions besoin d'un passage en dehors des horaire » — 3 colonnes attendues, 1 rendues |
 | surplus | `tarif` | 3 | « 27 € HT/h tarif unique en région Voir les tarifs → » |
-| surplus | `tarif` | 7 | « Exemple · bureaux à Vesoul, 10 h/mois 333 € HT/mois Exemple non contra » |
+| surplus | `tarif` | 7 | « Exemple · bureaux à Vesoul, 10 h/mois 279 € HT/mois Exemple non contra » |
 
 **375 px** — bandes 11 → 11 · cartes 32 → 30 · 15 anomalie(s)
 
@@ -638,10 +652,10 @@
 | colonnes | `chip` | 6 | « Pusey » — 3 colonnes attendues, 2 rendues |
 | colonnes | `chip` | 6 | « Frotey-lès-Vesoul » — 1 colonnes attendues, 2 rendues |
 | absente | `carte-titre-texte` | 6 | « Nettoyage de bureaux→Nettoyage de commerces→Cabinets & professions lib » |
-| absente | `tarif` | 7 | « Exemple · bureaux à Vesoul, 10 h/mois279 € HT/moisDeux passages de 1 h » |
+| fusionnee | `tarif` | 7 | « Exemple · bureaux à Vesoul, 10 h/mois279 € HT/moisDeux passages de 1 h » rendue dans « Exemple · bureaux à Vesoul, 10 h/mois 279 € HT/moi » |
 | type | `carte-titre` | 11 | « ☎ Échanger avec Audrey · 06 36 17 63 39 » — rendue en `micro-carte` |
 | surplus | `tarif` | 3 | « 27 € HT/h tarif unique en région Voir les tarifs → » |
-| surplus | `tarif` | 7 | « Exemple · bureaux à Vesoul, 10 h/mois 333 € HT/mois Exemple non contra » |
+| surplus | `tarif` | 7 | « Exemple · bureaux à Vesoul, 10 h/mois 279 € HT/mois Exemple non contra » |
 
 
 ### `#/departement/saone-et-loire` → `/zones-intervention/saone-et-loire/`
@@ -695,10 +709,10 @@
 | colonnes | `chip` | 6 | « Perrigny » — 4 colonnes attendues, 3 rendues |
 | colonnes | `chip` | 6 | « Saint-Georges-sur-Baulche » — 4 colonnes attendues, 2 rendues |
 | colonnes | `chip` | 6 | « Chevannes » — 2 colonnes attendues, 1 rendues |
-| absente | `tarif` | 7 | « Exemple · bureaux à Auxerre, 8 h/mois225 € HT/moisDeux passages d'une  » |
+| fusionnee | `tarif` | 7 | « Exemple · bureaux à Auxerre, 8 h/mois225 € HT/moisDeux passages d'une  » rendue dans « Exemple · bureaux à Auxerre, 8 h/mois 225 € HT/moi » |
 | colonnes | `temoignage` | 7 | « ★★★★★« Nos bureaux administratifs sont entretenus deux fois  » — 3 colonnes attendues, 1 rendues |
 | surplus | `tarif` | 3 | « 27 € HT/h tarif unique en région Voir les tarifs → » |
-| surplus | `tarif` | 7 | « Exemple · bureaux à Auxerre, 8 h/mois 333 € HT/mois Exemple non contra » |
+| surplus | `tarif` | 7 | « Exemple · bureaux à Auxerre, 8 h/mois 225 € HT/mois Exemple non contra » |
 
 **375 px** — bandes 11 → 11 · cartes 32 → 30 · 12 anomalie(s)
 
@@ -712,10 +726,10 @@
 | type | `micro-carte` | 5 | « Espaces d'accueil et de dégustation » — rendue en `chip` |
 | type | `micro-carte` | 5 | « Parties communes de résidences » — rendue en `chip` |
 | absente | `carte-titre-texte` | 6 | « Nettoyage de bureaux→Nettoyage de commerces→Cabinets & professions lib » |
-| absente | `tarif` | 7 | « Exemple · bureaux à Auxerre, 8 h/mois225 € HT/moisDeux passages d'une  » |
+| fusionnee | `tarif` | 7 | « Exemple · bureaux à Auxerre, 8 h/mois225 € HT/moisDeux passages d'une  » rendue dans « Exemple · bureaux à Auxerre, 8 h/mois 225 € HT/moi » |
 | type | `carte-titre` | 11 | « ☎ Échanger avec Audrey · 06 36 17 63 39 » — rendue en `micro-carte` |
 | surplus | `tarif` | 3 | « 27 € HT/h tarif unique en région Voir les tarifs → » |
-| surplus | `tarif` | 7 | « Exemple · bureaux à Auxerre, 8 h/mois 333 € HT/mois Exemple non contra » |
+| surplus | `tarif` | 7 | « Exemple · bureaux à Auxerre, 8 h/mois 225 € HT/mois Exemple non contra » |
 
 
 ### `#/departement/territoire-de-belfort` → `/zones-intervention/territoire-de-belfort/`
@@ -736,10 +750,10 @@
 | colonnes | `chip` | 6 | « Danjoutin » — 6 colonnes attendues, 3 rendues |
 | colonnes | `chip` | 6 | « Cravanche » — 6 colonnes attendues, 3 rendues |
 | colonnes | `chip` | 6 | « Essert » — 6 colonnes attendues, 3 rendues |
-| absente | `tarif` | 7 | « Exemple · bureaux à Belfort, 10 h/mois279 € HT/moisDeux passages de 1  » |
+| fusionnee | `tarif` | 7 | « Exemple · bureaux à Belfort, 10 h/mois279 € HT/moisDeux passages de 1  » rendue dans « Exemple · bureaux à Belfort, 10 h/mois 279 € HT/mo » |
 | colonnes | `temoignage` | 7 | « ★★★★★« Le passage se fait en soirée, après le départ des équ » — 3 colonnes attendues, 1 rendues |
 | surplus | `tarif` | 3 | « 27 € HT/h tarif unique en région Voir les tarifs → » |
-| surplus | `tarif` | 7 | « Exemple · bureaux à Belfort, 10 h/mois 333 € HT/mois Exemple non contr » |
+| surplus | `tarif` | 7 | « Exemple · bureaux à Belfort, 10 h/mois 279 € HT/mois Exemple non contr » |
 
 **375 px** — bandes 11 → 11 · cartes 32 → 30 · 11 anomalie(s)
 
@@ -752,10 +766,10 @@
 | type | `micro-carte` | 5 | « Cabinets et professions libérales » — rendue en `chip` |
 | type | `micro-carte` | 5 | « Parties communes de résidences » — rendue en `chip` |
 | absente | `carte-titre-texte` | 6 | « Nettoyage de bureaux→Nettoyage de commerces→Cabinets & professions lib » |
-| absente | `tarif` | 7 | « Exemple · bureaux à Belfort, 10 h/mois279 € HT/moisDeux passages de 1  » |
+| fusionnee | `tarif` | 7 | « Exemple · bureaux à Belfort, 10 h/mois279 € HT/moisDeux passages de 1  » rendue dans « Exemple · bureaux à Belfort, 10 h/mois 279 € HT/mo » |
 | type | `carte-titre` | 11 | « ☎ Échanger avec Audrey · 06 36 17 63 39 » — rendue en `micro-carte` |
 | surplus | `tarif` | 3 | « 27 € HT/h tarif unique en région Voir les tarifs → » |
-| surplus | `tarif` | 7 | « Exemple · bureaux à Belfort, 10 h/mois 333 € HT/mois Exemple non contr » |
+| surplus | `tarif` | 7 | « Exemple · bureaux à Belfort, 10 h/mois 279 € HT/mois Exemple non contr » |
 
 
 ### `#/ville/dijon` → `/zones-intervention/cote-dor/dijon/`
@@ -800,11 +814,11 @@
 |---|---|---|---|
 | absente | `tarif` | 3 | « 27 € HT/htarif unique en région✓Devis gratuit sous 24 h✓Intervention r » |
 | fusionnee | `tarif` | 3 | « 27 € HT/htarif unique en région » rendue dans « 27 € HT/h tarif unique en région Voir les tarifs → » |
-| fusionnee | `tarif` | 7 | « Exemple · cabinet paramédical, 10 h/mois279 € HT/moisDeux passages de  » rendue dans « Exemple · cabinet paramédical, 10 h/mois 333 € HT/ » |
+| fusionnee | `tarif` | 7 | « Exemple · cabinet paramédical, 10 h/mois279 € HT/moisDeux passages de  » rendue dans « Exemple · cabinet paramédical, 10 h/mois 279 € HT/ » |
 | colonnes | `temoignage` | 7 | « ★★★★★« Le passage se fait après le dernier patient et la sal » — 3 colonnes attendues, 1 rendues |
 | absente | `carte-titre-texte` | 12 | « Nous contacterAudrey est votre interlocutrice unique, de la première v » |
 | surplus | `tarif` | 3 | « 27 € HT/h tarif unique en région Voir les tarifs → » |
-| surplus | `tarif` | 7 | « Exemple · cabinet paramédical, 10 h/mois 333 € HT/mois Exemple non con » |
+| surplus | `tarif` | 7 | « Exemple · cabinet paramédical, 10 h/mois 279 € HT/mois Exemple non con » |
 
 **375 px** — bandes 13 → 13 · cartes 52 → 50 · 12 anomalie(s)
 
@@ -815,13 +829,13 @@
 | type | `micro-carte` | 5 | « Bureaux tertiaires et sièges régionaux » — rendue en `chip` |
 | type | `micro-carte` | 5 | « Commerces du centre historique » — rendue en `chip` |
 | type | `micro-carte` | 5 | « Syndics et copropriétés de l'agglomération » — rendue en `chip` |
-| fusionnee | `tarif` | 7 | « Exemple · cabinet paramédical, 10 h/mois279 € HT/moisDeux passages de  » rendue dans « Exemple · cabinet paramédical, 10 h/mois 333 € HT/ » |
+| fusionnee | `tarif` | 7 | « Exemple · cabinet paramédical, 10 h/mois279 € HT/moisDeux passages de  » rendue dans « Exemple · cabinet paramédical, 10 h/mois 279 € HT/ » |
 | colonnes | `chip` | 9 | « Zones d'activité » — 2 colonnes attendues, 1 rendues |
 | colonnes | `chip` | 9 | « Secteurs commerçants » — 2 colonnes attendues, 1 rendues |
 | absente | `carte-titre-texte` | 12 | « Nous contacterAudrey est votre interlocutrice unique, de la première v » |
 | type | `carte-titre` | 13 | « ☎ Échanger avec Audrey · 06 36 17 63 39 » — rendue en `micro-carte` |
 | surplus | `tarif` | 3 | « 27 € HT/h tarif unique en région Voir les tarifs → » |
-| surplus | `tarif` | 7 | « Exemple · cabinet paramédical, 10 h/mois 333 € HT/mois Exemple non con » |
+| surplus | `tarif` | 7 | « Exemple · cabinet paramédical, 10 h/mois 279 € HT/mois Exemple non con » |
 
 
 ### `#/ville/dole` → `/zones-intervention/jura/dole/`
@@ -832,11 +846,11 @@
 |---|---|---|---|
 | absente | `tarif` | 3 | « 27 € HT/htarif unique en région✓Devis gratuit sous 24 h✓Intervention r » |
 | fusionnee | `tarif` | 3 | « 27 € HT/htarif unique en région » rendue dans « 27 € HT/h tarif unique en région Voir les tarifs → » |
-| fusionnee | `tarif` | 7 | « Exemple · commerce en centre-ville, 16 h/mois441 € HT/moisUn passage d » rendue dans « Exemple · commerce en centre-ville, 16 h/mois 333  » |
+| fusionnee | `tarif` | 7 | « Exemple · commerce en centre-ville, 16 h/mois441 € HT/moisUn passage d » rendue dans « Exemple · commerce en centre-ville, 16 h/mois 441  » |
 | colonnes | `temoignage` | 7 | « ★★★★★« J'ouvre à 9 h 30 et tout est fait avant mon arrivée,  » — 3 colonnes attendues, 1 rendues |
 | absente | `carte-titre-texte` | 12 | « Nous contacterAudrey est votre interlocutrice unique, de la première v » |
 | surplus | `tarif` | 3 | « 27 € HT/h tarif unique en région Voir les tarifs → » |
-| surplus | `tarif` | 7 | « Exemple · commerce en centre-ville, 16 h/mois 333 € HT/mois Exemple no » |
+| surplus | `tarif` | 7 | « Exemple · commerce en centre-ville, 16 h/mois 441 € HT/mois Exemple no » |
 
 **375 px** — bandes 13 → 13 · cartes 51 → 49 · 11 anomalie(s)
 
@@ -847,12 +861,12 @@
 | type | `micro-carte` | 5 | « Bureaux de PME et locaux administratifs » — rendue en `chip` |
 | type | `micro-carte` | 5 | « Syndics et petites copropriétés » — rendue en `chip` |
 | type | `micro-carte` | 5 | « Locations meublées et gîtes urbains » — rendue en `chip` |
-| fusionnee | `tarif` | 7 | « Exemple · commerce en centre-ville, 16 h/mois441 € HT/moisUn passage d » rendue dans « Exemple · commerce en centre-ville, 16 h/mois 333  » |
+| fusionnee | `tarif` | 7 | « Exemple · commerce en centre-ville, 16 h/mois441 € HT/moisUn passage d » rendue dans « Exemple · commerce en centre-ville, 16 h/mois 441  » |
 | type | `micro-carte` | 8 | « Bureaux : 1 à 3 passages par semaine » — rendue en `chip` |
 | absente | `carte-titre-texte` | 12 | « Nous contacterAudrey est votre interlocutrice unique, de la première v » |
 | type | `carte-titre` | 13 | « ☎ Échanger avec Audrey · 06 36 17 63 39 » — rendue en `micro-carte` |
 | surplus | `tarif` | 3 | « 27 € HT/h tarif unique en région Voir les tarifs → » |
-| surplus | `tarif` | 7 | « Exemple · commerce en centre-ville, 16 h/mois 333 € HT/mois Exemple no » |
+| surplus | `tarif` | 7 | « Exemple · commerce en centre-ville, 16 h/mois 441 € HT/mois Exemple no » |
 
 
 ### `#/ville/lons-le-saunier` → `/zones-intervention/jura/lons-le-saunier/`
@@ -863,11 +877,11 @@
 |---|---|---|---|
 | absente | `tarif` | 3 | « 27 € HT/htarif unique en région✓Devis gratuit sous 24 h✓Intervention r » |
 | fusionnee | `tarif` | 3 | « 27 € HT/htarif unique en région » rendue dans « 27 € HT/h tarif unique en région Voir les tarifs → » |
-| absente | `tarif` | 7 | « Exemple · cabinet comptable, 8 h/mois225 € HT/moisDeux heures par sema » |
+| fusionnee | `tarif` | 7 | « Exemple · cabinet comptable, 8 h/mois225 € HT/moisDeux heures par sema » rendue dans « Exemple · cabinet comptable, 8 h/mois 225 € HT/moi » |
 | colonnes | `temoignage` | 7 | « ★★★★★« Le passage du vendredi soir nous permet de retrouver  » — 3 colonnes attendues, 1 rendues |
 | absente | `carte-titre-texte` | 12 | « Nous contacterAudrey est votre interlocutrice unique, de la première v » |
 | surplus | `tarif` | 3 | « 27 € HT/h tarif unique en région Voir les tarifs → » |
-| surplus | `tarif` | 7 | « Exemple · cabinet comptable, 8 h/mois 333 € HT/mois Exemple non contra » |
+| surplus | `tarif` | 7 | « Exemple · cabinet comptable, 8 h/mois 225 € HT/mois Exemple non contra » |
 
 **375 px** — bandes 13 → 13 · cartes 50 → 48 · 11 anomalie(s)
 
@@ -879,11 +893,11 @@
 | type | `micro-carte` | 5 | « Commerces indépendants du centre-ville » — rendue en `chip` |
 | type | `micro-carte` | 5 | « Cabinets paramédicaux courants » — rendue en `chip` |
 | type | `micro-carte` | 5 | « Syndics et petites copropriétés » — rendue en `chip` |
-| absente | `tarif` | 7 | « Exemple · cabinet comptable, 8 h/mois225 € HT/moisDeux heures par sema » |
+| fusionnee | `tarif` | 7 | « Exemple · cabinet comptable, 8 h/mois225 € HT/moisDeux heures par sema » rendue dans « Exemple · cabinet comptable, 8 h/mois 225 € HT/moi » |
 | absente | `carte-titre-texte` | 12 | « Nous contacterAudrey est votre interlocutrice unique, de la première v » |
 | type | `carte-titre` | 13 | « ☎ Échanger avec Audrey · 06 36 17 63 39 » — rendue en `micro-carte` |
 | surplus | `tarif` | 3 | « 27 € HT/h tarif unique en région Voir les tarifs → » |
-| surplus | `tarif` | 7 | « Exemple · cabinet comptable, 8 h/mois 333 € HT/mois Exemple non contra » |
+| surplus | `tarif` | 7 | « Exemple · cabinet comptable, 8 h/mois 225 € HT/mois Exemple non contra » |
 
 
 ### `#/ville/nevers` → `/zones-intervention/nievre/nevers/`
@@ -894,7 +908,7 @@
 |---|---|---|---|
 | absente | `tarif` | 3 | « 27 € HT/htarif unique en région✓Devis gratuit sous 24 h✓Intervention r » |
 | fusionnee | `tarif` | 3 | « 27 € HT/htarif unique en région » rendue dans « 27 € HT/h tarif unique en région Voir les tarifs → » |
-| absente | `tarif` | 7 | « Exemple · copropriété, 8 h/mois225 € HT/moisDeux heures par semaine :  » |
+| fusionnee | `tarif` | 7 | « Exemple · copropriété, 8 h/mois225 € HT/moisDeux heures par semaine :  » rendue dans « Exemple · copropriété, 8 h/mois 225 € HT/mois Exem » |
 | colonnes | `temoignage` | 7 | « ★★★★★« Nous avions des retards de passage avec notre ancien  » — 3 colonnes attendues, 1 rendues |
 | colonnes | `chip` | 9 | « Varennes-Vauzelles » — 4 colonnes attendues, 3 rendues |
 | colonnes | `chip` | 9 | « Fourchambault » — 4 colonnes attendues, 3 rendues |
@@ -904,7 +918,7 @@
 | colonnes | `chip` | 9 | « Sermoise-sur-Loire » — 3 colonnes attendues, 4 rendues |
 | absente | `carte-titre-texte` | 12 | « Nous contacterAudrey est votre interlocutrice unique, de la première v » |
 | surplus | `tarif` | 3 | « 27 € HT/h tarif unique en région Voir les tarifs → » |
-| surplus | `tarif` | 7 | « Exemple · copropriété, 8 h/mois 333 € HT/mois Exemple non contractuel. » |
+| surplus | `tarif` | 7 | « Exemple · copropriété, 8 h/mois 225 € HT/mois Exemple non contractuel. » |
 
 **375 px** — bandes 13 → 13 · cartes 51 → 49 · 14 anomalie(s)
 
@@ -915,7 +929,7 @@
 | type | `micro-carte` | 5 | « Commerces indépendants du centre-ville » — rendue en `chip` |
 | type | `micro-carte` | 5 | « Cabinets et professions libérales » — rendue en `chip` |
 | type | `micro-carte` | 5 | « Cabinet : 1 à 2 passages par semaine » — rendue en `chip` |
-| absente | `tarif` | 7 | « Exemple · copropriété, 8 h/mois225 € HT/moisDeux heures par semaine :  » |
+| fusionnee | `tarif` | 7 | « Exemple · copropriété, 8 h/mois225 € HT/moisDeux heures par semaine :  » rendue dans « Exemple · copropriété, 8 h/mois 225 € HT/mois Exem » |
 | colonnes | `chip` | 9 | « Marzy » — 3 colonnes attendues, 2 rendues |
 | colonnes | `chip` | 9 | « Coulanges-lès-Nevers » — 3 colonnes attendues, 2 rendues |
 | colonnes | `chip` | 9 | « Challuy » — 3 colonnes attendues, 2 rendues |
@@ -923,7 +937,7 @@
 | absente | `carte-titre-texte` | 12 | « Nous contacterAudrey est votre interlocutrice unique, de la première v » |
 | type | `carte-titre` | 13 | « ☎ Échanger avec Audrey · 06 36 17 63 39 » — rendue en `micro-carte` |
 | surplus | `tarif` | 3 | « 27 € HT/h tarif unique en région Voir les tarifs → » |
-| surplus | `tarif` | 7 | « Exemple · copropriété, 8 h/mois 333 € HT/mois Exemple non contractuel. » |
+| surplus | `tarif` | 7 | « Exemple · copropriété, 8 h/mois 225 € HT/mois Exemple non contractuel. » |
 
 
 ### `#/ville/vesoul` → `/zones-intervention/haute-saone/vesoul/`
@@ -937,11 +951,11 @@
 | type | `micro-carte` | 5 | « Cabinets et professions libérales » — rendue en `chip` |
 | type | `micro-carte` | 5 | « Parties communes de résidences » — rendue en `chip` |
 | type | `micro-carte` | 5 | « Locaux associatifs et de formation » — rendue en `chip` |
-| fusionnee | `tarif` | 7 | « Exemple · bureaux administratifs, 10 h/mois279 € HT/moisDeux passages  » rendue dans « Exemple · bureaux administratifs, 10 h/mois 333 €  » |
+| fusionnee | `tarif` | 7 | « Exemple · bureaux administratifs, 10 h/mois279 € HT/moisDeux passages  » rendue dans « Exemple · bureaux administratifs, 10 h/mois 279 €  » |
 | colonnes | `temoignage` | 7 | « ★★★★★« L'intervention se fait en soirée avec un badge, sans  » — 3 colonnes attendues, 1 rendues |
 | absente | `carte-titre-texte` | 12 | « Nous contacterAudrey est votre interlocutrice unique, de la première v » |
 | surplus | `tarif` | 3 | « 27 € HT/h tarif unique en région Voir les tarifs → » |
-| surplus | `tarif` | 7 | « Exemple · bureaux administratifs, 10 h/mois 333 € HT/mois Exemple non  » |
+| surplus | `tarif` | 7 | « Exemple · bureaux administratifs, 10 h/mois 279 € HT/mois Exemple non  » |
 
 **375 px** — bandes 13 → 13 · cartes 50 → 48 · 17 anomalie(s)
 
@@ -953,7 +967,7 @@
 | type | `micro-carte` | 5 | « Cabinets et professions libérales » — rendue en `chip` |
 | type | `micro-carte` | 5 | « Parties communes de résidences » — rendue en `chip` |
 | type | `micro-carte` | 5 | « Locaux associatifs et de formation » — rendue en `chip` |
-| fusionnee | `tarif` | 7 | « Exemple · bureaux administratifs, 10 h/mois279 € HT/moisDeux passages  » rendue dans « Exemple · bureaux administratifs, 10 h/mois 333 €  » |
+| fusionnee | `tarif` | 7 | « Exemple · bureaux administratifs, 10 h/mois279 € HT/moisDeux passages  » rendue dans « Exemple · bureaux administratifs, 10 h/mois 279 €  » |
 | colonnes | `chip` | 9 | « Zones d'activité » — 2 colonnes attendues, 1 rendues |
 | colonnes | `chip` | 9 | « Secteurs commerçants » — 2 colonnes attendues, 1 rendues |
 | colonnes | `chip` | 9 | « Navenne » — 3 colonnes attendues, 2 rendues |
@@ -963,7 +977,7 @@
 | absente | `carte-titre-texte` | 12 | « Nous contacterAudrey est votre interlocutrice unique, de la première v » |
 | type | `carte-titre` | 13 | « ☎ Échanger avec Audrey · 06 36 17 63 39 » — rendue en `micro-carte` |
 | surplus | `tarif` | 3 | « 27 € HT/h tarif unique en région Voir les tarifs → » |
-| surplus | `tarif` | 7 | « Exemple · bureaux administratifs, 10 h/mois 333 € HT/mois Exemple non  » |
+| surplus | `tarif` | 7 | « Exemple · bureaux administratifs, 10 h/mois 279 € HT/mois Exemple non  » |
 
 
 ### `#/ville/chalon-sur-saone` → `/zones-intervention/saone-et-loire/chalon-sur-saone/`
@@ -1007,11 +1021,11 @@
 |---|---|---|---|
 | absente | `tarif` | 3 | « 27 € HT/htarif unique en région✓Devis gratuit sous 24 h✓Intervention r » |
 | fusionnee | `tarif` | 3 | « 27 € HT/htarif unique en région » rendue dans « 27 € HT/h tarif unique en région Voir les tarifs → » |
-| absente | `tarif` | 7 | « Exemple · cabinet de conseil, 8 h/mois225 € HT/moisDeux heures par sem » |
+| fusionnee | `tarif` | 7 | « Exemple · cabinet de conseil, 8 h/mois225 € HT/moisDeux heures par sem » rendue dans « Exemple · cabinet de conseil, 8 h/mois 225 € HT/mo » |
 | colonnes | `temoignage` | 7 | « ★★★★★« Nous recevons des clients le lundi matin : la salle d » — 3 colonnes attendues, 1 rendues |
 | absente | `carte-titre-texte` | 12 | « Nous contacterAudrey est votre interlocutrice unique, de la première v » |
 | surplus | `tarif` | 3 | « 27 € HT/h tarif unique en région Voir les tarifs → » |
-| surplus | `tarif` | 7 | « Exemple · cabinet de conseil, 8 h/mois 333 € HT/mois Exemple non contr » |
+| surplus | `tarif` | 7 | « Exemple · cabinet de conseil, 8 h/mois 225 € HT/mois Exemple non contr » |
 
 **375 px** — bandes 13 → 13 · cartes 50 → 48 · 10 anomalie(s)
 
@@ -1022,11 +1036,11 @@
 | type | `micro-carte` | 5 | « Bureaux de PME et sièges locaux » — rendue en `chip` |
 | type | `micro-carte` | 5 | « Commerces indépendants du centre-ville » — rendue en `chip` |
 | type | `micro-carte` | 5 | « Bureaux rattachés aux zones logistiques » — rendue en `chip` |
-| absente | `tarif` | 7 | « Exemple · cabinet de conseil, 8 h/mois225 € HT/moisDeux heures par sem » |
+| fusionnee | `tarif` | 7 | « Exemple · cabinet de conseil, 8 h/mois225 € HT/moisDeux heures par sem » rendue dans « Exemple · cabinet de conseil, 8 h/mois 225 € HT/mo » |
 | absente | `carte-titre-texte` | 12 | « Nous contacterAudrey est votre interlocutrice unique, de la première v » |
 | type | `carte-titre` | 13 | « ☎ Échanger avec Audrey · 06 36 17 63 39 » — rendue en `micro-carte` |
 | surplus | `tarif` | 3 | « 27 € HT/h tarif unique en région Voir les tarifs → » |
-| surplus | `tarif` | 7 | « Exemple · cabinet de conseil, 8 h/mois 333 € HT/mois Exemple non contr » |
+| surplus | `tarif` | 7 | « Exemple · cabinet de conseil, 8 h/mois 225 € HT/mois Exemple non contr » |
 
 
 ### `#/ville/auxerre` → `/zones-intervention/yonne/auxerre/`
@@ -1037,11 +1051,11 @@
 |---|---|---|---|
 | absente | `tarif` | 3 | « 27 € HT/htarif unique en région✓Devis gratuit sous 24 h✓Intervention r » |
 | fusionnee | `tarif` | 3 | « 27 € HT/htarif unique en région » rendue dans « 27 € HT/h tarif unique en région Voir les tarifs → » |
-| absente | `tarif` | 7 | « Exemple · bureaux de PME, 8 h/mois225 € HT/moisDeux passages d'une heu » |
+| fusionnee | `tarif` | 7 | « Exemple · bureaux de PME, 8 h/mois225 € HT/moisDeux passages d'une heu » rendue dans « Exemple · bureaux de PME, 8 h/mois 225 € HT/mois E » |
 | colonnes | `temoignage` | 7 | « ★★★★★« Deux passages par semaine après la fermeture, sans qu » — 3 colonnes attendues, 1 rendues |
 | absente | `carte-titre-texte` | 12 | « Nous contacterAudrey est votre interlocutrice unique, de la première v » |
 | surplus | `tarif` | 3 | « 27 € HT/h tarif unique en région Voir les tarifs → » |
-| surplus | `tarif` | 7 | « Exemple · bureaux de PME, 8 h/mois 333 € HT/mois Exemple non contractu » |
+| surplus | `tarif` | 7 | « Exemple · bureaux de PME, 8 h/mois 225 € HT/mois Exemple non contractu » |
 
 **375 px** — bandes 13 → 13 · cartes 51 → 49 · 12 anomalie(s)
 
@@ -1051,14 +1065,14 @@
 | fusionnee | `tarif` | 3 | « 27 € HT/htarif unique en région » rendue dans « 27 € HT/h tarif unique en région Voir les tarifs → » |
 | type | `micro-carte` | 5 | « Bureaux de PME et sièges locaux » — rendue en `chip` |
 | type | `micro-carte` | 5 | « Cabinets et professions libérales » — rendue en `chip` |
-| absente | `tarif` | 7 | « Exemple · bureaux de PME, 8 h/mois225 € HT/moisDeux passages d'une heu » |
+| fusionnee | `tarif` | 7 | « Exemple · bureaux de PME, 8 h/mois225 € HT/moisDeux passages d'une heu » rendue dans « Exemple · bureaux de PME, 8 h/mois 225 € HT/mois E » |
 | type | `micro-carte` | 8 | « Cabinet : 1 à 2 passages par semaine » — rendue en `chip` |
 | colonnes | `chip` | 9 | « Zones d'activité » — 2 colonnes attendues, 1 rendues |
 | colonnes | `chip` | 9 | « Secteurs commerçants » — 2 colonnes attendues, 1 rendues |
 | absente | `carte-titre-texte` | 12 | « Nous contacterAudrey est votre interlocutrice unique, de la première v » |
 | type | `carte-titre` | 13 | « ☎ Échanger avec Audrey · 06 36 17 63 39 » — rendue en `micro-carte` |
 | surplus | `tarif` | 3 | « 27 € HT/h tarif unique en région Voir les tarifs → » |
-| surplus | `tarif` | 7 | « Exemple · bureaux de PME, 8 h/mois 333 € HT/mois Exemple non contractu » |
+| surplus | `tarif` | 7 | « Exemple · bureaux de PME, 8 h/mois 225 € HT/mois Exemple non contractu » |
 
 
 ### `#/ville/belfort` → `/zones-intervention/territoire-de-belfort/belfort/`
@@ -1069,7 +1083,7 @@
 |---|---|---|---|
 | absente | `tarif` | 3 | « 27 € HT/htarif unique en région✓Devis gratuit sous 24 h✓Intervention r » |
 | fusionnee | `tarif` | 3 | « 27 € HT/htarif unique en région » rendue dans « 27 € HT/h tarif unique en région Voir les tarifs → » |
-| fusionnee | `tarif` | 7 | « Exemple · bureaux d'ingénierie, 10 h/mois279 € HT/moisDeux passages de » rendue dans « Exemple · bureaux d'ingénierie, 10 h/mois 333 € HT » |
+| fusionnee | `tarif` | 7 | « Exemple · bureaux d'ingénierie, 10 h/mois279 € HT/moisDeux passages de » rendue dans « Exemple · bureaux d'ingénierie, 10 h/mois 279 € HT » |
 | colonnes | `temoignage` | 7 | « ★★★★★« Le passage a lieu après le départ des équipes techniq » — 3 colonnes attendues, 1 rendues |
 | colonnes | `chip` | 9 | « Valdoie » — 6 colonnes attendues, 5 rendues |
 | colonnes | `chip` | 9 | « Offemont » — 6 colonnes attendues, 5 rendues |
@@ -1080,7 +1094,7 @@
 | colonnes | `chip` | 9 | « Pérouse » — 1 colonnes attendues, 2 rendues |
 | absente | `carte-titre-texte` | 12 | « Nous contacterAudrey est votre interlocutrice unique, de la première v » |
 | surplus | `tarif` | 3 | « 27 € HT/h tarif unique en région Voir les tarifs → » |
-| surplus | `tarif` | 7 | « Exemple · bureaux d'ingénierie, 10 h/mois 333 € HT/mois Exemple non co » |
+| surplus | `tarif` | 7 | « Exemple · bureaux d'ingénierie, 10 h/mois 279 € HT/mois Exemple non co » |
 
 **375 px** — bandes 13 → 13 · cartes 51 → 49 · 13 anomalie(s)
 
@@ -1093,12 +1107,12 @@
 | type | `micro-carte` | 5 | « Commerces indépendants du centre-ville » — rendue en `chip` |
 | type | `micro-carte` | 5 | « Cabinets et professions libérales » — rendue en `chip` |
 | type | `micro-carte` | 5 | « Parties communes de résidences » — rendue en `chip` |
-| fusionnee | `tarif` | 7 | « Exemple · bureaux d'ingénierie, 10 h/mois279 € HT/moisDeux passages de » rendue dans « Exemple · bureaux d'ingénierie, 10 h/mois 333 € HT » |
+| fusionnee | `tarif` | 7 | « Exemple · bureaux d'ingénierie, 10 h/mois279 € HT/moisDeux passages de » rendue dans « Exemple · bureaux d'ingénierie, 10 h/mois 279 € HT » |
 | type | `micro-carte` | 8 | « Cabinet : 1 à 2 passages par semaine » — rendue en `chip` |
 | absente | `carte-titre-texte` | 12 | « Nous contacterAudrey est votre interlocutrice unique, de la première v » |
 | type | `carte-titre` | 13 | « ☎ Échanger avec Audrey · 06 36 17 63 39 » — rendue en `micro-carte` |
 | surplus | `tarif` | 3 | « 27 € HT/h tarif unique en région Voir les tarifs → » |
-| surplus | `tarif` | 7 | « Exemple · bureaux d'ingénierie, 10 h/mois 333 € HT/mois Exemple non co » |
+| surplus | `tarif` | 7 | « Exemple · bureaux d'ingénierie, 10 h/mois 279 € HT/mois Exemple non co » |
 
 
 ### `#/ville/saint-apollinaire` → `/zones-intervention/cote-dor/saint-apollinaire/`
@@ -1150,12 +1164,12 @@
 |---|---|---|---|
 | absente | `tarif` | 3 | « 27 € HT/htarif unique en région✓Devis gratuit sous 24 h✓Intervention r » |
 | fusionnee | `tarif` | 3 | « 27 € HT/htarif unique en région » rendue dans « 27 € HT/h tarif unique en région Voir les tarifs → » |
-| absente | `tarif` | 7 | « Exemple · copropriété, 8 h/mois225 € HT/moisDeux heures par semaine :  » |
+| fusionnee | `tarif` | 7 | « Exemple · copropriété, 8 h/mois225 € HT/moisDeux heures par semaine :  » rendue dans « Exemple · copropriété, 8 h/mois 225 € HT/mois Exem » |
 | colonnes | `temoignage` | 7 | « ★★★★★« L'entretien de nos parties communes est régulier et l » — 3 colonnes attendues, 1 rendues |
 | colonnes | `chip` | 9 | « Perrigny-lès-Dijon » — 4 colonnes attendues, 1 rendues |
 | absente | `carte-titre-texte` | 12 | « Nous contacterAudrey est votre interlocutrice unique, de la première v » |
 | surplus | `tarif` | 3 | « 27 € HT/h tarif unique en région Voir les tarifs → » |
-| surplus | `tarif` | 7 | « Exemple · copropriété, 8 h/mois 333 € HT/mois Exemple non contractuel. » |
+| surplus | `tarif` | 7 | « Exemple · copropriété, 8 h/mois 225 € HT/mois Exemple non contractuel. » |
 
 **375 px** — bandes 13 → 13 · cartes 42 → 40 · 14 anomalie(s)
 
@@ -1167,14 +1181,14 @@
 | type | `micro-carte` | 5 | « Bureaux de PME et locaux administratifs » — rendue en `chip` |
 | type | `micro-carte` | 5 | « Cabinets et professions libérales » — rendue en `chip` |
 | type | `micro-carte` | 5 | « Locaux associatifs et de formation » — rendue en `chip` |
-| absente | `tarif` | 7 | « Exemple · copropriété, 8 h/mois225 € HT/moisDeux heures par semaine :  » |
+| fusionnee | `tarif` | 7 | « Exemple · copropriété, 8 h/mois225 € HT/moisDeux heures par semaine :  » rendue dans « Exemple · copropriété, 8 h/mois 225 € HT/mois Exem » |
 | type | `micro-carte` | 8 | « Bureaux : 1 à 3 passages par semaine » — rendue en `chip` |
 | colonnes | `chip` | 9 | « Zones d'activité » — 2 colonnes attendues, 1 rendues |
 | colonnes | `chip` | 9 | « Commerces de proximité » — 2 colonnes attendues, 1 rendues |
 | absente | `carte-titre-texte` | 12 | « Nous contacterAudrey est votre interlocutrice unique, de la première v » |
 | type | `carte-titre` | 13 | « ☎ Échanger avec Audrey · 06 36 17 63 39 » — rendue en `micro-carte` |
 | surplus | `tarif` | 3 | « 27 € HT/h tarif unique en région Voir les tarifs → » |
-| surplus | `tarif` | 7 | « Exemple · copropriété, 8 h/mois 333 € HT/mois Exemple non contractuel. » |
+| surplus | `tarif` | 7 | « Exemple · copropriété, 8 h/mois 225 € HT/mois Exemple non contractuel. » |
 
 
 ### `#/ville/quetigny` → `/zones-intervention/cote-dor/quetigny/`
@@ -1196,22 +1210,25 @@
 | colonnes | `chip` | 9 | « Bretenière » — 1 colonnes attendues, 3 rendues |
 | absente | `carte-titre-texte` | 12 | « Nous contacterAudrey est votre interlocutrice unique, de la première v » |
 | surplus | `tarif` | 3 | « 27 € HT/h tarif unique en région Voir les tarifs → » |
-| surplus | `tarif` | 7 | « Exemple · commerce, 20 h/mois 333 € HT/mois Exemple non contractuel. » |
+| surplus | `tarif` | 7 | « Exemple · commerce, 20 h/mois 549 € HT/mois Exemple non contractuel. » |
 
-**375 px** — bandes 13 → 13 · cartes 38 → 36 · 10 anomalie(s)
+**375 px** — bandes 13 → 13 · cartes 38 → 38 · 13 anomalie(s)
 
 | Anomalie | Archétype | Bande | Détail |
 |---|---|---|---|
 | absente | `tarif` | 3 | « 27 € HT/htarif unique en région✓Devis gratuit sous 24 h✓Intervention r » |
 | fusionnee | `tarif` | 3 | « 27 € HT/htarif unique en région » rendue dans « 27 € HT/h tarif unique en région Voir les tarifs → » |
-| type | `micro-carte` | 5 | « Bureaux de PME et locaux administratifs » — rendue en `chip` |
 | type | `micro-carte` | 5 | « Copropriétés et résidences » — rendue en `chip` |
 | type | `micro-carte` | 5 | « Locaux associatifs et de formation » — rendue en `chip` |
 | absente | `tarif` | 7 | « Exemple · commerce, 20 h/mois549 € HT/moisUn passage d'une heure avant » |
+| colonnes | `chip` | 9 | « Zones d'activité » — 2 colonnes attendues, 1 rendues |
+| colonnes | `chip` | 9 | « Pôle commercial » — 2 colonnes attendues, 1 rendues |
 | absente | `carte-titre-texte` | 12 | « Nous contacterAudrey est votre interlocutrice unique, de la première v » |
 | type | `carte-titre` | 13 | « ☎ Échanger avec Audrey · 06 36 17 63 39 » — rendue en `micro-carte` |
+| surplus | `carte-sombre` | 2 | « Demander un devis à Quetigny » |
 | surplus | `tarif` | 3 | « 27 € HT/h tarif unique en région Voir les tarifs → » |
-| surplus | `tarif` | 7 | « Exemple · commerce, 20 h/mois 333 € HT/mois Exemple non contractuel. » |
+| surplus | `tarif` | 7 | « Exemple · commerce, 20 h/mois 549 € HT/mois Exemple non contractuel. » |
+| surplus | `micro-carte` | 13 | « Demander un devis à Quetigny » |
 
 
 ### `#/ville/talant` → `/zones-intervention/cote-dor/talant/`
@@ -1227,16 +1244,15 @@
 | colonnes | `chip` | 9 | « Plombières-lès-Dijon » — 4 colonnes attendues, 2 rendues |
 | absente | `carte-titre-texte` | 12 | « Nous contacterAudrey est votre interlocutrice unique, de la première v » |
 | surplus | `tarif` | 3 | « 27 € HT/h tarif unique en région Voir les tarifs → » |
-| surplus | `tarif` | 7 | « Exemple · résidence, 6 h/mois 333 € HT/mois Exemple non contractuel. » |
+| surplus | `tarif` | 7 | « Exemple · résidence, 6 h/mois 171 € HT/mois Exemple non contractuel. » |
 | surplus | `chip` | 9 | « Daix » |
 
-**375 px** — bandes 13 → 13 · cartes 42 → 41 · 15 anomalie(s)
+**375 px** — bandes 13 → 13 · cartes 42 → 41 · 14 anomalie(s)
 
 | Anomalie | Archétype | Bande | Détail |
 |---|---|---|---|
 | absente | `tarif` | 3 | « 27 € HT/htarif unique en région✓Devis gratuit sous 24 h✓Intervention r » |
 | fusionnee | `tarif` | 3 | « 27 € HT/htarif unique en région » rendue dans « 27 € HT/h tarif unique en région Voir les tarifs → » |
-| type | `micro-carte` | 5 | « Résidences et petits immeubles collectifs » — rendue en `chip` |
 | type | `micro-carte` | 5 | « Cabinets et professions libérales » — rendue en `chip` |
 | type | `micro-carte` | 5 | « Commerces de proximité » — rendue en `chip` |
 | type | `micro-carte` | 5 | « Bureaux de petites structures » — rendue en `chip` |
@@ -1247,7 +1263,7 @@
 | absente | `carte-titre-texte` | 12 | « Nous contacterAudrey est votre interlocutrice unique, de la première v » |
 | type | `carte-titre` | 13 | « ☎ Échanger avec Audrey · 06 36 17 63 39 » — rendue en `micro-carte` |
 | surplus | `tarif` | 3 | « 27 € HT/h tarif unique en région Voir les tarifs → » |
-| surplus | `tarif` | 7 | « Exemple · résidence, 6 h/mois 333 € HT/mois Exemple non contractuel. » |
+| surplus | `tarif` | 7 | « Exemple · résidence, 6 h/mois 171 € HT/mois Exemple non contractuel. » |
 | surplus | `chip` | 9 | « Daix » |
 
 
@@ -1304,16 +1320,16 @@
 |---|---|---|---|
 | absente | `tarif` | 3 | « 27 € HT/htarif unique en région✓Devis gratuit sous 24 h✓Intervention r » |
 | fusionnee | `tarif` | 3 | « 27 € HT/htarif unique en région » rendue dans « 27 € HT/h tarif unique en région Voir les tarifs → » |
-| absente | `tarif` | 7 | « Exemple · cabinet paramédical, 8 h/mois225 € HT/moisDeux passages d'un » |
+| fusionnee | `tarif` | 7 | « Exemple · cabinet paramédical, 8 h/mois225 € HT/moisDeux passages d'un » rendue dans « Exemple · cabinet paramédical, 8 h/mois 225 € HT/m » |
 | colonnes | `temoignage` | 7 | « ★★★★★« Le passage se fait après la fermeture, deux fois par  » — 3 colonnes attendues, 1 rendues |
 | colonnes | `chip` | 9 | « Ahuy » — 5 colonnes attendues, 3 rendues |
 | colonnes | `chip` | 9 | « Hauteville-lès-Dijon » — 5 colonnes attendues, 3 rendues |
 | absente | `carte-titre-texte` | 12 | « Nous contacterAudrey est votre interlocutrice unique, de la première v » |
 | surplus | `tarif` | 3 | « 27 € HT/h tarif unique en région Voir les tarifs → » |
-| surplus | `tarif` | 7 | « Exemple · cabinet paramédical, 8 h/mois 333 € HT/mois Exemple non cont » |
+| surplus | `tarif` | 7 | « Exemple · cabinet paramédical, 8 h/mois 225 € HT/mois Exemple non cont » |
 | surplus | `chip` | 9 | « Daix » |
 
-**375 px** — bandes 13 → 13 · cartes 46 → 45 · 16 anomalie(s)
+**375 px** — bandes 13 → 13 · cartes 46 → 45 · 14 anomalie(s)
 
 | Anomalie | Archétype | Bande | Détail |
 |---|---|---|---|
@@ -1321,17 +1337,15 @@
 | fusionnee | `tarif` | 3 | « 27 € HT/htarif unique en région » rendue dans « 27 € HT/h tarif unique en région Voir les tarifs → » |
 | type | `micro-carte` | 5 | « Commerces et services de proximité » — rendue en `chip` |
 | type | `micro-carte` | 5 | « Locaux associatifs » — rendue en `chip` |
-| absente | `tarif` | 7 | « Exemple · cabinet paramédical, 8 h/mois225 € HT/moisDeux passages d'un » |
-| type | `micro-carte` | 8 | « Petit bureau : 1 à 2 passages par semaine » — rendue en `chip` |
+| fusionnee | `tarif` | 7 | « Exemple · cabinet paramédical, 8 h/mois225 € HT/moisDeux passages d'un » rendue dans « Exemple · cabinet paramédical, 8 h/mois 225 € HT/m » |
 | colonnes | `chip` | 9 | « Zones d'activité » — 2 colonnes attendues, 1 rendues |
 | colonnes | `chip` | 9 | « Commerces de proximité » — 2 colonnes attendues, 1 rendues |
-| colonnes | `chip` | 9 | « Ahuy » — 4 colonnes attendues, 3 rendues |
-| colonnes | `chip` | 9 | « Hauteville-lès-Dijon » — 1 colonnes attendues, 3 rendues |
+| colonnes | `chip` | 9 | « Ahuy » — 4 colonnes attendues, 2 rendues |
 | absente | `carte-titre-texte` | 12 | « Nous contacterAudrey est votre interlocutrice unique, de la première v » |
 | type | `carte-titre` | 13 | « Demander un devis à Fontaine-lès-Dijon » — rendue en `micro-carte` |
 | type | `carte-titre` | 13 | « ☎ Échanger avec Audrey · 06 36 17 63 39 » — rendue en `micro-carte` |
 | surplus | `tarif` | 3 | « 27 € HT/h tarif unique en région Voir les tarifs → » |
-| surplus | `tarif` | 7 | « Exemple · cabinet paramédical, 8 h/mois 333 € HT/mois Exemple non cont » |
+| surplus | `tarif` | 7 | « Exemple · cabinet paramédical, 8 h/mois 225 € HT/mois Exemple non cont » |
 | surplus | `chip` | 9 | « Daix » |
 
 
@@ -1343,13 +1357,13 @@
 |---|---|---|---|
 | absente | `tarif` | 3 | « 27 € HT/htarif unique en région✓Devis gratuit sous 24 h✓Intervention r » |
 | fusionnee | `tarif` | 3 | « 27 € HT/htarif unique en région » rendue dans « 27 € HT/h tarif unique en région Voir les tarifs → » |
-| fusionnee | `tarif` | 7 | « Exemple · espace d'accueil et bureaux, 10 h/mois279 € HT/moisDeux pass » rendue dans « Exemple · espace d'accueil et bureaux, 10 h/mois 3 » |
+| fusionnee | `tarif` | 7 | « Exemple · espace d'accueil et bureaux, 10 h/mois279 € HT/moisDeux pass » rendue dans « Exemple · espace d'accueil et bureaux, 10 h/mois 2 » |
 | colonnes | `temoignage` | 7 | « ★★★★★« Nous recevons des visiteurs plusieurs jours par semai » — 3 colonnes attendues, 1 rendues |
 | colonnes | `chip` | 9 | « Couchey » — 4 colonnes attendues, 2 rendues |
 | colonnes | `chip` | 9 | « Perrigny-lès-Dijon » — 4 colonnes attendues, 2 rendues |
 | absente | `carte-titre-texte` | 12 | « Nous contacterAudrey est votre interlocutrice unique, de la première v » |
 | surplus | `tarif` | 3 | « 27 € HT/h tarif unique en région Voir les tarifs → » |
-| surplus | `tarif` | 7 | « Exemple · espace d'accueil et bureaux, 10 h/mois 333 € HT/mois Exemple » |
+| surplus | `tarif` | 7 | « Exemple · espace d'accueil et bureaux, 10 h/mois 279 € HT/mois Exemple » |
 
 **375 px** — bandes 13 → 13 · cartes 39 → 37 · 16 anomalie(s)
 
@@ -1361,7 +1375,7 @@
 | type | `micro-carte` | 5 | « Commerces et services de proximité » — rendue en `chip` |
 | type | `micro-carte` | 5 | « Cabinets et professions libérales » — rendue en `chip` |
 | type | `micro-carte` | 5 | « Copropriétés et résidences » — rendue en `chip` |
-| fusionnee | `tarif` | 7 | « Exemple · espace d'accueil et bureaux, 10 h/mois279 € HT/moisDeux pass » rendue dans « Exemple · espace d'accueil et bureaux, 10 h/mois 3 » |
+| fusionnee | `tarif` | 7 | « Exemple · espace d'accueil et bureaux, 10 h/mois279 € HT/moisDeux pass » rendue dans « Exemple · espace d'accueil et bureaux, 10 h/mois 2 » |
 | colonnes | `chip` | 9 | « Zones d'activité » — 2 colonnes attendues, 1 rendues |
 | colonnes | `chip` | 9 | « Commerces de proximité » — 2 colonnes attendues, 1 rendues |
 | colonnes | `chip` | 9 | « Couchey » — 3 colonnes attendues, 2 rendues |
@@ -1370,7 +1384,7 @@
 | type | `carte-titre` | 13 | « Demander un devis à Marsannay-la-Côte » — rendue en `micro-carte` |
 | type | `carte-titre` | 13 | « ☎ Échanger avec Audrey · 06 36 17 63 39 » — rendue en `micro-carte` |
 | surplus | `tarif` | 3 | « 27 € HT/h tarif unique en région Voir les tarifs → » |
-| surplus | `tarif` | 7 | « Exemple · espace d'accueil et bureaux, 10 h/mois 333 € HT/mois Exemple » |
+| surplus | `tarif` | 7 | « Exemple · espace d'accueil et bureaux, 10 h/mois 279 € HT/mois Exemple » |
 
 
 ### `#/ville/beaune` → `/zones-intervention/cote-dor/beaune/`
@@ -1384,11 +1398,11 @@
 | type | `micro-carte` | 5 | « Cabinets et professions libérales » — rendue en `chip` |
 | type | `micro-carte` | 5 | « Bureaux de PME et sièges locaux » — rendue en `chip` |
 | type | `micro-carte` | 5 | « Copropriétés et résidences » — rendue en `chip` |
-| fusionnee | `tarif` | 7 | « Exemple · commerce intra-muros, 16 h/mois441 € HT/moisUn passage d'une » rendue dans « Exemple · commerce intra-muros, 16 h/mois 333 € HT » |
+| fusionnee | `tarif` | 7 | « Exemple · commerce intra-muros, 16 h/mois441 € HT/moisUn passage d'une » rendue dans « Exemple · commerce intra-muros, 16 h/mois 441 € HT » |
 | colonnes | `temoignage` | 7 | « ★★★★★« En haute saison, le passage avant ouverture fait une  » — 3 colonnes attendues, 1 rendues |
 | absente | `carte-titre-texte` | 12 | « Nous contacterAudrey est votre interlocutrice unique, de la première v » |
 | surplus | `tarif` | 3 | « 27 € HT/h tarif unique en région Voir les tarifs → » |
-| surplus | `tarif` | 7 | « Exemple · commerce intra-muros, 16 h/mois 333 € HT/mois Exemple non co » |
+| surplus | `tarif` | 7 | « Exemple · commerce intra-muros, 16 h/mois 441 € HT/mois Exemple non co » |
 
 **375 px** — bandes 13 → 13 · cartes 42 → 40 · 14 anomalie(s)
 
@@ -1399,7 +1413,7 @@
 | type | `micro-carte` | 5 | « Cabinets et professions libérales » — rendue en `chip` |
 | type | `micro-carte` | 5 | « Bureaux de PME et sièges locaux » — rendue en `chip` |
 | type | `micro-carte` | 5 | « Copropriétés et résidences » — rendue en `chip` |
-| fusionnee | `tarif` | 7 | « Exemple · commerce intra-muros, 16 h/mois441 € HT/moisUn passage d'une » rendue dans « Exemple · commerce intra-muros, 16 h/mois 333 € HT » |
+| fusionnee | `tarif` | 7 | « Exemple · commerce intra-muros, 16 h/mois441 € HT/moisUn passage d'une » rendue dans « Exemple · commerce intra-muros, 16 h/mois 441 € HT » |
 | colonnes | `chip` | 9 | « Zones d'activité » — 2 colonnes attendues, 1 rendues |
 | colonnes | `chip` | 9 | « Secteurs commerçants » — 2 colonnes attendues, 1 rendues |
 | colonnes | `chip` | 9 | « Chorey-les-Beaune » — 2 colonnes attendues, 1 rendues |
@@ -1407,7 +1421,7 @@
 | absente | `carte-titre-texte` | 12 | « Nous contacterAudrey est votre interlocutrice unique, de la première v » |
 | type | `carte-titre` | 13 | « ☎ Échanger avec Audrey · 06 36 17 63 39 » — rendue en `micro-carte` |
 | surplus | `tarif` | 3 | « 27 € HT/h tarif unique en région Voir les tarifs → » |
-| surplus | `tarif` | 7 | « Exemple · commerce intra-muros, 16 h/mois 333 € HT/mois Exemple non co » |
+| surplus | `tarif` | 7 | « Exemple · commerce intra-muros, 16 h/mois 441 € HT/mois Exemple non co » |
 
 
 ### `#/conseils` → `/conseils/`
@@ -1646,7 +1660,7 @@
 
 ### `#/contact` → `/contact/`
 
-**1440 px** — bandes 4 → 4 · cartes 7 → 6 · 5 anomalie(s)
+**1440 px** — bandes 4 → 4 · cartes 7 → 7 · 6 anomalie(s)
 
 | Anomalie | Archétype | Bande | Détail |
 |---|---|---|---|
@@ -1655,8 +1669,9 @@
 | absente | `tarif` | 4 | « ★★★★★5,0/527 € HT/h » |
 | surplus | `carte-titre` | 3 | « J’ai une question Formulaire court, réponse par e-mail ou téléphone. » |
 | surplus | `carte-titre` | 4 | « 🕑 Horaires de contact Du lundi au vendredi · réponse sous 24 h » |
+| surplus | `tarif` | 4 | « ★★★★★ 5,0/5 sur Google 27 € HT/h — tarif unique en région » |
 
-**375 px** — bandes 4 → 4 · cartes 7 → 6 · 5 anomalie(s)
+**375 px** — bandes 4 → 4 · cartes 7 → 7 · 6 anomalie(s)
 
 | Anomalie | Archétype | Bande | Détail |
 |---|---|---|---|
@@ -1665,6 +1680,7 @@
 | absente | `tarif` | 4 | « ★★★★★5,0/527 € HT/h » |
 | surplus | `carte-titre` | 3 | « J’ai une question Formulaire court, réponse par e-mail ou téléphone. » |
 | surplus | `carte-titre` | 4 | « 🕑 Horaires de contact Du lundi au vendredi · réponse sous 24 h » |
+| surplus | `tarif` | 4 | « ★★★★★ 5,0/5 sur Google 27 € HT/h — tarif unique en région » |
 
 
 ### `#/plan-du-site` → `/plan-du-site/`

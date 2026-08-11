@@ -157,6 +157,10 @@ function tfp_get_zone_blocks( $prefix, $post_id, $max ) {
 			// Numéro de la section d'origine dans la maquette : deux groupes qui la partagent
 			// restent dans la même bande de fond.
 			'section' => (int) tfp_get_field( $prefix . '_' . $i . '_section', $post_id ),
+			// Niveau du titre relevé sur la maquette. Un groupe de niveau 3 est un **sous-groupe**
+			// du précédent : il reste dans sa colonne au lieu d'en ouvrir une nouvelle. Défaut 2,
+			// pour un contenu saisi avant l'introduction du champ.
+			'niveau'  => (int) ( tfp_get_field( $prefix . '_' . $i . '_niveau', $post_id ) ?: 2 ),
 		);
 	}
 	return $blocks;

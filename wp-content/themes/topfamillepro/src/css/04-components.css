@@ -1356,6 +1356,39 @@ body.tfp-body .tfp-article-body p a {
   text-underline-offset: 3px;
 }
 
+/* Panneau de liens de maillage — géométrie relevée sur la maquette : fond #DCE7EB, rayon 14,
+   rangées blanches séparées par le filet d'un pixel que laisse l'écart de la colonne. Le filet
+   est donc du fond qui transparaît, pas une bordure : c'est ce qui donne des angles nets aux
+   deux rangées extrêmes sans règle supplémentaire. */
+.tfp-link-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  margin-top: 12px;
+  overflow: hidden;
+  background: rgb(220, 231, 235);
+  border-radius: 14px;
+}
+
+.tfp-link-row--panel {
+  padding: 15px 18px;
+  background: var(--color-surface, #fff);
+}
+
+.tfp-link-row--panel:hover {
+  background: rgb(244, 247, 248);
+  text-decoration: none;
+}
+
+/* Justification du montant, dans la carte, sous le chiffre — relevée à 15 px / 1,6 sur la
+   maquette, comme le corps de texte de la carte. */
+.tfp-price-example__note {
+  margin-top: 12px;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+}
+
 .tfp-price-example__disclaimer {
   margin-top: 10px;
   font-size: 13px;
@@ -1761,28 +1794,61 @@ body.tfp-body .tfp-article-body p a {
    ------------------------------------------------------------------ */
 
 /* Bandeau tarifaire sous le hero : montant, mentions cochées, lien vers la page Tarifs. */
+/* Bandeau tarifaire d'une page de zone — géométrie relevée à 1440 px sur la maquette :
+   barre 1180×146 sur fond #DDF4F3, rayon 16, rembourrage 15/17, et surtout une **pastille
+   marine** de 238×56 (rayon 12) qui porte le prix. Le thème la rendait en texte nu sur fond
+   blanc : le montant, qui est le seul chiffre que le visiteur retient de la page, n'avait plus
+   aucun poids visuel. */
 .tfp-zone-band {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 15px 17px;
+  border: 0;
+  border-radius: 16px;
+  background: rgb(221, 244, 243);
+}
+
+.tfp-zone-band__row {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 16px 28px;
-  padding: 20px 24px;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  background: var(--color-white);
+  gap: 16px 26px;
+}
+
+.tfp-zone-band__price {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 14px;
+  border-radius: 12px;
+  background: var(--color-navy);
 }
 
 .tfp-zone-band__price strong {
-  display: block;
   font-family: var(--font-heading);
   font-size: 26px;
   font-weight: 800;
-  color: var(--color-navy);
+  color: var(--color-white);
 }
 
 .tfp-zone-band__price span {
-  font-size: 14px;
-  color: var(--color-text-secondary);
+  max-width: 100px;
+  font-size: 13px;
+  line-height: 1.15;
+  color: rgba(255, 255, 255, 0.86);
+}
+
+/* Renvoi vers les tarifs : bouton blanc dans la maquette (136×47, rayon 10), pas un lien nu —
+   c'est la seule action de la bande. */
+.tfp-zone-band > .tfp-eyebrow-link {
+  align-self: flex-end;
+  /* La marge que ce lien porte ailleurs ajoutait 20 px à la hauteur de la bande : ici, c'est
+     l'écart de la colonne qui règle l'espacement. */
+  margin: 0;
+  padding: 10px 16px;
+  border-radius: 10px;
+  background: var(--color-white);
 }
 
 .tfp-zone-band__items {
@@ -2068,17 +2134,57 @@ body.tfp-body .tfp-article-body p a {
   border-bottom-color: rgba(255, 255, 255, 0.18);
 }
 
-/* Plusieurs groupes de liens dans une même bande : colonnes, comme dans la maquette. Empilés,
-   ils tripleraient la hauteur de la section à contenu identique. */
+/* Bande tarifaire d'une page de zone : trois colonnes, relevées à 1440 px sur la maquette —
+   texte 394, exemple 344, témoignage 374, écart 34. Les proportions sont conservées en `fr`
+   pour que la bande se comporte de la même façon à toutes les largeurs. */
+.tfp-zone-tarif {
+  display: grid;
+  grid-template-columns: 1.14fr 1fr 1.09fr;
+  gap: 34px;
+  /* La maquette étire ses trois colonnes à la même hauteur : les deux cartes blanches y font
+     bloc avec la colonne de texte au lieu de flotter en haut de la bande. */
+  align-items: stretch;
+}
+
+/* Les marges verticales que ces deux cartes portent quand elles sont empilées n'ont plus lieu
+   d'être en colonnes : elles décalaient la carte d'exemple de 20 px sous ses deux voisines, et
+   les trois colonnes ne partageaient plus la même ligne. */
+.tfp-zone-tarif > * {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+@media (max-width: 979px) {
+  .tfp-zone-tarif {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+
+/* Plusieurs groupes de premier rang dans une même bande : une colonne chacun, comme dans la
+   maquette (deux colonnes de 566 px avec un écart de 48 sur une page de département, mesurées à
+   1440 px). Les sous-groupes s'empilent dans leur colonne — c'est `.tfp-zone-col` qui porte la
+   cellule de grille, pas chaque groupe, sans quoi un sous-titre ouvrait sa propre colonne. */
 .tfp-zone-links-grid {
   display: grid;
-  gap: 24px 40px;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+  gap: 24px 48px;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
   align-items: start;
+}
+
+.tfp-zone-col > .tfp-zone-links + .tfp-zone-links {
+  margin-top: 28px;
 }
 
 .tfp-zone-links-grid .tfp-zone-links + .tfp-zone-links {
   margin-top: 0;
+}
+
+/* Sous-groupe : son titre est un `h3`, plus discret que le `h2` qui ouvre la colonne. */
+.tfp-zone-links--sous > h3 {
+  font-size: var(--fs-sm, 0.9375rem);
+  font-weight: var(--fw-semibold, 600);
+  margin-bottom: 0;
 }
 
 /* Tuile de prestation dans une page de zone : compacte, titre + une ligne. */
