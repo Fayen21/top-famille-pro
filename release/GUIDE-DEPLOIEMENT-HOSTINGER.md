@@ -190,6 +190,27 @@ et articles réels, **sans** les 8 communes secondaires non validées (elles res
 `noindex,follow`, exclues du sitemap par le thème). Visitez `https://top-famille-pro.fr/robots.txt`
 : il doit contenir une ligne `Sitemap:` pointant vers l'URL ci-dessus.
 
+**Puis, impérativement, contrôler ce que le site publie en plus des 53 routes livrées.**
+L'installation n'est pas vierge : elle succède à une migration Wix et à des essais. Sur le banc de
+recette, trois pages restées d'un essai antérieur — « Devis rapide (V1) », « Nettoyage écologique -
+ancienne offre » et « Page perso de l'administrateur » — étaient **publiées et référencées au
+sitemap** alors qu'aucun script d'installation ne les crée. Une ancienne offre indexée promet une
+prestation qui n'existe plus, sous une URL que personne ne surveille.
+
+Depuis la racine WordPress :
+
+```
+wp eval-file bin/verifier-installation.php
+```
+
+Le script ne supprime rien : il liste les contenus publiés qui ne font pas partie des 53 routes, en
+signalant ceux qui figurent au sitemap, et vérifie en retour qu'aucune route attendue ne manque.
+Pour chaque contenu inattendu, trancher entre **conserver**, **dépublier**, ou **supprimer avec une
+redirection 301** vers la page qui le remplace. Ne rien laisser en `publish` sans décision.
+
+Sans accès à WP-CLI, le même contrôle se fait à la main : Pages → Toutes les pages, puis Articles,
+et comparer à `PAGES-A-CREER.md`.
+
 ### 21. Tester la version mobile
 
 Sur un vrai téléphone (ou l'outil d'inspection mobile de votre navigateur), parcourez l'accueil, une
