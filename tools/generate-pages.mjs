@@ -407,6 +407,21 @@ for (const p of PAGES) {
 				const y0 = Math.round(k.getBoundingClientRect().top);
 				const colonnes = enfants.filter((c) => Math.abs(Math.round(c.getBoundingClientRect().top) - y0) <= 8).length;
 
+				/*
+				 * Typographie interne de la tuile, relevée sur la carte réelle.
+				 *
+				 * Le prototype ne compose pas toutes ses cartes de la même façon : l'intitulé va de
+				 * 16 à 20 px selon la grille, la description de 13,5 à 15 px, et l'espace qui les
+				 * sépare de 4 à 10 px. Poser une valeur unique rendait les pages plus courtes que la
+				 * référence — 86 % sur la page pilier — sans qu'aucun contenu ne manque.
+				 */
+				const blocsTuile = [...k.querySelectorAll('*')].filter((x) => {
+					const cs = getComputedStyle(x);
+					return !/^inline/.test(cs.display) && txt(x) && x.tagName !== 'IMG';
+				});
+				const styleTitre = blocsTuile.length ? getComputedStyle(blocsTuile[0]) : ks;
+				const styleDesc = blocsTuile.length > 1 ? getComputedStyle(blocsTuile[1]) : null;
+
 				grilles.push({
 					el: g,
 					colonnes: Math.min(6, Math.max(1, colonnes)),
@@ -416,6 +431,11 @@ for (const p of PAGES) {
 					filet: ks.borderTopWidth,
 					padding: ks.padding,
 					theme: estSombre(ks.backgroundColor) ? 'sombre' : 'clair',
+					titre_taille: styleTitre.fontSize,
+					titre_interligne: styleTitre.lineHeight,
+					desc_taille: styleDesc ? styleDesc.fontSize : '',
+					desc_interligne: styleDesc ? styleDesc.lineHeight : '',
+					desc_marge: styleDesc ? styleDesc.marginTop : '',
 					// Variante : ce que la carte porte, et non ce à quoi elle ressemble.
 					variante: k.querySelector('img')
 						? 'image'
@@ -628,17 +648,10 @@ for (const p of PAGES) {
 					if (n.t === 'grille') {
 						const g = grilles[n.i];
 						if (g) {
-							const grille = {
-								colonnes: g.colonnes,
-								theme: g.theme,
-								variante: g.variante,
-								gap: g.gap,
-								fond: g.fond,
-								rayon: g.rayon,
-								filet: g.filet,
-								padding: g.padding,
-								items: g.cartes,
-							};
+							// Toute la géométrie relevée est transmise : la filtrer clé par clé, c'était
+							// exactement le genre de perte que cette passe corrige.
+							const { el: _el, cartes: _cartes, ...geometrie } = g;
+							const grille = { ...geometrie, items: g.cartes };
 							cur.cartes.push(grille);
 							seq('grid', grille);
 						}
@@ -706,7 +719,23 @@ for (const p of PAGES) {
 				}
 			}
 			push();
-			if (blocs.length) out.push({ index: i, fond: fondOf(sec), colonnes: colonnesOf(sec), cartes: cartesOf(sec), liste_grille: listeColonnesOf(sec), blocs });
+			if (blocs.length) {
+				// Rembourrage vertical relevé sur la bande : le prototype respire beaucoup plus que le
+				// thème (84 px en haut comme en bas sur la plupart des bandes, 72 ou 48 sur d'autres,
+				// contre 52 partout côté thème). Sur la page pilier, cet écart seul représentait
+				// 64 px × 17 bandes, soit l'essentiel des 1 486 px manquants.
+				const cs = getComputedStyle(sec);
+				out.push({
+					index: i,
+					fond: fondOf(sec),
+					padding_haut: cs.paddingTop,
+					padding_bas: cs.paddingBottom,
+					colonnes: colonnesOf(sec),
+					cartes: cartesOf(sec),
+					liste_grille: listeColonnesOf(sec),
+					blocs,
+				});
+			}
 		});
 
 		// Accroche du hero : les paragraphes qui précèdent le premier H2 de la section du H1.

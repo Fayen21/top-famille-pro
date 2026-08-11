@@ -2908,7 +2908,7 @@ body.tfp-body .tfp-card-tile {
   padding: var(--tfp-tuile-padding, 16px 18px);
   border: var(--tfp-tuile-filet, 1px) solid var(--color-border);
   border-radius: var(--tfp-tuile-rayon, 12px);
-  background: var(--color-bg-card);
+  background: var(--tfp-tuile-fond, var(--color-bg-card));
   color: var(--color-text);
   transition: border-color var(--transition-base), transform var(--transition-base);
 }
@@ -2942,12 +2942,15 @@ body.tfp-body a.tfp-card-tile:focus-visible {
   color: var(--color-primary);
 }
 
+/* Taille et interligne relevés sur la carte du prototype : l'intitulé va de 16 à 20 px selon la
+   grille, la description de 13,5 à 15 px, et l'espace qui les sépare de 4 à 10 px. Une valeur
+   unique raccourcissait les pages sans qu'aucun contenu ne manque. */
 .tfp-card-tile__title {
   display: block;
   font-family: var(--font-heading);
-  font-size: 16px;
+  font-size: var(--tfp-tuile-titre, 16px);
   font-weight: var(--fw-bold);
-  line-height: 1.35;
+  line-height: var(--tfp-tuile-titre-lh, 1.35);
   color: var(--color-navy);
 }
 
@@ -3062,4 +3065,18 @@ body.tfp-body a.tfp-card-tile:focus-visible {
 .tfp-faq-item > p {
   margin-top: 12px;
   color: var(--color-text-secondary);
+}
+
+/* Rembourrage vertical d'une bande de page statique : la valeur relevée sur la maquette l'emporte,
+   celle du thème ne sert que de repli. La maquette respire nettement plus (84 px en haut comme en
+   bas sur la plupart de ses bandes) que les 52 px que le thème posait partout. */
+.tfp-section--tight {
+  padding-top: var(--tfp-bande-haut, 52px);
+  padding-bottom: var(--tfp-bande-bas, 52px);
+}
+
+/* Bande blanche : la maquette alterne blanc et fond de page. L'alternance était relevée mais
+   jamais rendue, et la lecture par bandes disparaissait. */
+.tfp-section--blanc {
+  background: var(--color-white);
 }

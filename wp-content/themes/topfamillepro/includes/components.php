@@ -399,11 +399,27 @@ function tfp_card_grid( array $grille ) {
 		return trim( $v );
 	};
 	$vars     = array();
-	foreach ( array( 'padding' => '--tfp-tuile-padding', 'gap' => '--tfp-tuile-gap', 'rayon' => '--tfp-tuile-rayon', 'filet' => '--tfp-tuile-filet' ) as $cle => $var ) {
+	$mesures = array(
+		'padding'         => '--tfp-tuile-padding',
+		'gap'             => '--tfp-tuile-gap',
+		'rayon'           => '--tfp-tuile-rayon',
+		'filet'           => '--tfp-tuile-filet',
+		'titre_taille'    => '--tfp-tuile-titre',
+		'titre_interligne' => '--tfp-tuile-titre-lh',
+		'desc_taille'     => '--tfp-tuile-desc',
+		'desc_interligne' => '--tfp-tuile-desc-lh',
+		'desc_marge'      => '--tfp-tuile-desc-mt',
+	);
+	foreach ( $mesures as $cle => $var ) {
 		$valeur = $px( $grille[ $cle ] ?? '' );
 		if ( '' !== $valeur ) {
 			$vars[] = $var . ':' . $valeur;
 		}
+	}
+	// Fond relevé sur la carte du prototype. Il ne se déduit pas du thème : deux grilles claires
+	// d'une même page peuvent être l'une blanche et l'autre sur #F4F7F8, et la nuance se voit.
+	if ( preg_match( '/^rgba?\([0-9, .]+\)$/', (string) ( $grille['fond'] ?? '' ) ) ) {
+		$vars[] = '--tfp-tuile-fond:' . $grille['fond'];
 	}
 	$style = $vars ? ' style="' . esc_attr( implode( ';', $vars ) ) . '"' : '';
 	?>

@@ -29,6 +29,8 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 			array(
 				'index' => 2,
 				'fond' => '',
+				'padding_haut' => '0px',
+				'padding_bas' => '56px',
 				'colonnes' => 1,
 				'cartes' => '',
 				'liste_grille' => array(
@@ -87,6 +89,8 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 			array(
 				'index' => 3,
 				'fond' => 'blanc',
+				'padding_haut' => '72px',
+				'padding_bas' => '72px',
 				'colonnes' => 1,
 				'cartes' => '',
 				'liste_grille' => array(
@@ -126,6 +130,8 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 			array(
 				'index' => 4,
 				'fond' => '',
+				'padding_haut' => '84px',
+				'padding_bas' => '84px',
 				'colonnes' => 2,
 				'cartes' => '',
 				'liste_grille' => array(
@@ -184,13 +190,18 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 							array(
 								'type' => 'grid',
 								'colonnes' => 3,
-								'theme' => 'clair',
-								'variante' => 'texte',
 								'gap' => '10px',
 								'fond' => 'rgb(255, 255, 255)',
 								'rayon' => '11px',
 								'filet' => '1px',
 								'padding' => '13px 15px',
+								'theme' => 'clair',
+								'titre_taille' => '15px',
+								'titre_interligne' => '24.3px',
+								'desc_taille' => '',
+								'desc_interligne' => '',
+								'desc_marge' => '',
+								'variante' => 'texte',
 								'items' => array(
 									array(
 										'titre' => 'Bureaux & open-spaces',
@@ -294,13 +305,18 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 						'cartes' => array(
 							array(
 								'colonnes' => 3,
-								'theme' => 'clair',
-								'variante' => 'texte',
 								'gap' => '10px',
 								'fond' => 'rgb(255, 255, 255)',
 								'rayon' => '11px',
 								'filet' => '1px',
 								'padding' => '13px 15px',
+								'theme' => 'clair',
+								'titre_taille' => '15px',
+								'titre_interligne' => '24.3px',
+								'desc_taille' => '',
+								'desc_interligne' => '',
+								'desc_marge' => '',
+								'variante' => 'texte',
 								'items' => array(
 									array(
 										'titre' => 'Bureaux & open-spaces',
@@ -416,6 +432,8 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 			array(
 				'index' => 5,
 				'fond' => 'blanc',
+				'padding_haut' => '84px',
+				'padding_bas' => '84px',
 				'colonnes' => 3,
 				'cartes' => array(
 					'padding' => '24px',
@@ -440,13 +458,18 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 							array(
 								'type' => 'grid',
 								'colonnes' => 3,
-								'theme' => 'clair',
-								'variante' => 'texte',
 								'gap' => '16px',
 								'fond' => 'rgb(244, 247, 248)',
 								'rayon' => '16px',
 								'filet' => '1px',
 								'padding' => '24px',
+								'theme' => 'clair',
+								'titre_taille' => '18px',
+								'titre_interligne' => '18.72px',
+								'desc_taille' => '15px',
+								'desc_interligne' => '24.75px',
+								'desc_marge' => '9px',
+								'variante' => 'texte',
 								'items' => array(
 									array(
 										'titre' => 'Ce que vous n\'avez plus à gérer',
@@ -502,13 +525,18 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 						'cartes' => array(
 							array(
 								'colonnes' => 3,
-								'theme' => 'clair',
-								'variante' => 'texte',
 								'gap' => '16px',
 								'fond' => 'rgb(244, 247, 248)',
 								'rayon' => '16px',
 								'filet' => '1px',
 								'padding' => '24px',
+								'theme' => 'clair',
+								'titre_taille' => '18px',
+								'titre_interligne' => '18.72px',
+								'desc_taille' => '15px',
+								'desc_interligne' => '24.75px',
+								'desc_marge' => '9px',
+								'variante' => 'texte',
 								'items' => array(
 									array(
 										'titre' => 'Ce que vous n\'avez plus à gérer',
@@ -576,6 +604,8 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 			array(
 				'index' => 6,
 				'fond' => 'navy',
+				'padding_haut' => '84px',
+				'padding_bas' => '84px',
 				'colonnes' => 1,
 				'cartes' => '',
 				'liste_grille' => array(
@@ -592,13 +622,18 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 							array(
 								'type' => 'grid',
 								'colonnes' => 4,
-								'theme' => 'sombre',
-								'variante' => 'image',
 								'gap' => '14px',
 								'fond' => 'rgb(23, 74, 129)',
 								'rayon' => '14px',
 								'filet' => '1px',
 								'padding' => '16px',
+								'theme' => 'sombre',
+								'titre_taille' => '17px',
+								'titre_interligne' => '27.54px',
+								'desc_taille' => '16.5px',
+								'desc_interligne' => '26.73px',
+								'desc_marge' => '0px',
+								'variante' => 'image',
 								'items' => array(
 									array(
 										'titre' => 'Nettoyage de bureauxOpen-spaces, salles de réunion, accueil',
@@ -702,13 +737,18 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 						'cartes' => array(
 							array(
 								'colonnes' => 4,
-								'theme' => 'sombre',
-								'variante' => 'image',
 								'gap' => '14px',
 								'fond' => 'rgb(23, 74, 129)',
 								'rayon' => '14px',
 								'filet' => '1px',
 								'padding' => '16px',
+								'theme' => 'sombre',
+								'titre_taille' => '17px',
+								'titre_interligne' => '27.54px',
+								'desc_taille' => '16.5px',
+								'desc_interligne' => '26.73px',
+								'desc_marge' => '0px',
+								'variante' => 'image',
 								'items' => array(
 									array(
 										'titre' => 'Nettoyage de bureauxOpen-spaces, salles de réunion, accueil',
@@ -822,6 +862,8 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 			array(
 				'index' => 7,
 				'fond' => '',
+				'padding_haut' => '84px',
+				'padding_bas' => '84px',
 				'colonnes' => 3,
 				'cartes' => array(
 					'padding' => '22px',
@@ -842,13 +884,18 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 							array(
 								'type' => 'grid',
 								'colonnes' => 3,
-								'theme' => 'clair',
-								'variante' => 'texte',
 								'gap' => '16px',
 								'fond' => 'rgb(255, 255, 255)',
 								'rayon' => '16px',
 								'filet' => '1px',
 								'padding' => '26px',
+								'theme' => 'clair',
+								'titre_taille' => '20px',
+								'titre_interligne' => '32.4px',
+								'desc_taille' => '15px',
+								'desc_interligne' => '24.3px',
+								'desc_marge' => '10px',
+								'variante' => 'texte',
 								'items' => array(
 									array(
 										'titre' => 'Entretien régulier',
@@ -903,13 +950,18 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 							array(
 								'type' => 'grid',
 								'colonnes' => 3,
-								'theme' => 'sombre',
-								'variante' => 'texte',
 								'gap' => '16px',
 								'fond' => 'rgba(0, 0, 0, 0)',
 								'rayon' => '14px',
 								'filet' => '1px',
 								'padding' => '22px',
+								'theme' => 'sombre',
+								'titre_taille' => '17px',
+								'titre_interligne' => '17.68px',
+								'desc_taille' => '14.5px',
+								'desc_interligne' => '23.49px',
+								'desc_marge' => '10px',
+								'variante' => 'texte',
 								'items' => array(
 									array(
 										'titre' => 'Tâches par espace',
@@ -965,13 +1017,18 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 						'cartes' => array(
 							array(
 								'colonnes' => 3,
-								'theme' => 'clair',
-								'variante' => 'texte',
 								'gap' => '16px',
 								'fond' => 'rgb(255, 255, 255)',
 								'rayon' => '16px',
 								'filet' => '1px',
 								'padding' => '26px',
+								'theme' => 'clair',
+								'titre_taille' => '20px',
+								'titre_interligne' => '32.4px',
+								'desc_taille' => '15px',
+								'desc_interligne' => '24.3px',
+								'desc_marge' => '10px',
+								'variante' => 'texte',
 								'items' => array(
 									array(
 										'titre' => 'Entretien régulier',
@@ -1025,13 +1082,18 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 							),
 							array(
 								'colonnes' => 3,
-								'theme' => 'sombre',
-								'variante' => 'texte',
 								'gap' => '16px',
 								'fond' => 'rgba(0, 0, 0, 0)',
 								'rayon' => '14px',
 								'filet' => '1px',
 								'padding' => '22px',
+								'theme' => 'sombre',
+								'titre_taille' => '17px',
+								'titre_interligne' => '17.68px',
+								'desc_taille' => '14.5px',
+								'desc_interligne' => '23.49px',
+								'desc_marge' => '10px',
+								'variante' => 'texte',
 								'items' => array(
 									array(
 										'titre' => 'Tâches par espace',
@@ -1119,6 +1181,8 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 			array(
 				'index' => 8,
 				'fond' => 'blanc',
+				'padding_haut' => '84px',
+				'padding_bas' => '84px',
 				'colonnes' => 4,
 				'cartes' => array(
 					'padding' => '22px',
@@ -1143,13 +1207,18 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 							array(
 								'type' => 'grid',
 								'colonnes' => 4,
-								'theme' => 'sombre',
-								'variante' => 'texte',
 								'gap' => '16px',
 								'fond' => 'rgba(0, 0, 0, 0)',
 								'rayon' => '14px',
 								'filet' => '1px',
 								'padding' => '22px',
+								'theme' => 'sombre',
+								'titre_taille' => '17px',
+								'titre_interligne' => '17.68px',
+								'desc_taille' => '15px',
+								'desc_interligne' => '24px',
+								'desc_marge' => '8px',
+								'variante' => 'texte',
 								'items' => array(
 									array(
 										'titre' => 'Quotidienne',
@@ -1225,13 +1294,18 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 						'cartes' => array(
 							array(
 								'colonnes' => 4,
-								'theme' => 'sombre',
-								'variante' => 'texte',
 								'gap' => '16px',
 								'fond' => 'rgba(0, 0, 0, 0)',
 								'rayon' => '14px',
 								'filet' => '1px',
 								'padding' => '22px',
+								'theme' => 'sombre',
+								'titre_taille' => '17px',
+								'titre_interligne' => '17.68px',
+								'desc_taille' => '15px',
+								'desc_interligne' => '24px',
+								'desc_marge' => '8px',
+								'variante' => 'texte',
 								'items' => array(
 									array(
 										'titre' => 'Quotidienne',
@@ -1316,6 +1390,8 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 			array(
 				'index' => 9,
 				'fond' => '',
+				'padding_haut' => '84px',
+				'padding_bas' => '84px',
 				'colonnes' => 3,
 				'cartes' => '',
 				'liste_grille' => array(
@@ -1482,6 +1558,8 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 			array(
 				'index' => 10,
 				'fond' => 'blanc',
+				'padding_haut' => '84px',
+				'padding_bas' => '84px',
 				'colonnes' => 2,
 				'cartes' => '',
 				'liste_grille' => array(
@@ -1538,6 +1616,8 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 			array(
 				'index' => 11,
 				'fond' => '',
+				'padding_haut' => '84px',
+				'padding_bas' => '84px',
 				'colonnes' => 4,
 				'cartes' => array(
 					'padding' => '22px',
@@ -1558,13 +1638,18 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 							array(
 								'type' => 'grid',
 								'colonnes' => 4,
-								'theme' => 'clair',
-								'variante' => 'texte',
 								'gap' => '16px',
 								'fond' => 'rgb(255, 255, 255)',
 								'rayon' => '14px',
 								'filet' => '1px',
 								'padding' => '22px',
+								'theme' => 'clair',
+								'titre_taille' => '15px',
+								'titre_interligne' => '24.3px',
+								'desc_taille' => '17px',
+								'desc_interligne' => '17.68px',
+								'desc_marge' => '6px',
+								'variante' => 'texte',
 								'items' => array(
 									array(
 										'titre' => 'Inventaire des espaces',
@@ -1636,13 +1721,18 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 						'cartes' => array(
 							array(
 								'colonnes' => 4,
-								'theme' => 'clair',
-								'variante' => 'texte',
 								'gap' => '16px',
 								'fond' => 'rgb(255, 255, 255)',
 								'rayon' => '14px',
 								'filet' => '1px',
 								'padding' => '22px',
+								'theme' => 'clair',
+								'titre_taille' => '15px',
+								'titre_interligne' => '24.3px',
+								'desc_taille' => '17px',
+								'desc_interligne' => '17.68px',
+								'desc_marge' => '6px',
+								'variante' => 'texte',
 								'items' => array(
 									array(
 										'titre' => 'Inventaire des espaces',
@@ -1746,6 +1836,8 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 			array(
 				'index' => 12,
 				'fond' => 'blanc',
+				'padding_haut' => '84px',
+				'padding_bas' => '84px',
 				'colonnes' => 1,
 				'cartes' => '',
 				'liste_grille' => array(
@@ -1812,6 +1904,8 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 			array(
 				'index' => 13,
 				'fond' => '',
+				'padding_haut' => '72px',
+				'padding_bas' => '72px',
 				'colonnes' => 1,
 				'cartes' => '',
 				'liste_grille' => array(
@@ -1866,6 +1960,8 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 			array(
 				'index' => 14,
 				'fond' => 'blanc',
+				'padding_haut' => '84px',
+				'padding_bas' => '84px',
 				'colonnes' => 3,
 				'cartes' => array(
 					'padding' => '24px',
@@ -1890,13 +1986,18 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 							array(
 								'type' => 'grid',
 								'colonnes' => 3,
-								'theme' => 'clair',
-								'variante' => 'texte',
 								'gap' => '16px',
 								'fond' => 'rgb(244, 247, 248)',
 								'rayon' => '16px',
 								'filet' => '1px',
 								'padding' => '24px',
+								'theme' => 'clair',
+								'titre_taille' => '18px',
+								'titre_interligne' => '18.72px',
+								'desc_taille' => '15px',
+								'desc_interligne' => '24.75px',
+								'desc_marge' => '9px',
+								'variante' => 'texte',
 								'items' => array(
 									array(
 										'titre' => 'PME de 18 personnes, Dijon',
@@ -1952,13 +2053,18 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 						'cartes' => array(
 							array(
 								'colonnes' => 3,
-								'theme' => 'clair',
-								'variante' => 'texte',
 								'gap' => '16px',
 								'fond' => 'rgb(244, 247, 248)',
 								'rayon' => '16px',
 								'filet' => '1px',
 								'padding' => '24px',
+								'theme' => 'clair',
+								'titre_taille' => '18px',
+								'titre_interligne' => '18.72px',
+								'desc_taille' => '15px',
+								'desc_interligne' => '24.75px',
+								'desc_marge' => '9px',
+								'variante' => 'texte',
 								'items' => array(
 									array(
 										'titre' => 'PME de 18 personnes, Dijon',
@@ -2026,6 +2132,8 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 			array(
 				'index' => 15,
 				'fond' => 'turquoise',
+				'padding_haut' => '84px',
+				'padding_bas' => '84px',
 				'colonnes' => 3,
 				'cartes' => '',
 				'liste_grille' => array(
@@ -2257,6 +2365,8 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 			array(
 				'index' => 16,
 				'fond' => '',
+				'padding_haut' => '72px',
+				'padding_bas' => '72px',
 				'colonnes' => 1,
 				'cartes' => '',
 				'liste_grille' => array(
@@ -2278,13 +2388,18 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 							array(
 								'type' => 'grid',
 								'colonnes' => 3,
-								'theme' => 'clair',
-								'variante' => 'lien',
 								'gap' => '14px',
 								'fond' => 'rgb(244, 247, 248)',
 								'rayon' => '12px',
 								'filet' => '1px',
 								'padding' => '16px 18px',
+								'theme' => 'clair',
+								'titre_taille' => '15px',
+								'titre_interligne' => '24.3px',
+								'desc_taille' => '17px',
+								'desc_interligne' => '27.54px',
+								'desc_marge' => '0px',
+								'variante' => 'lien',
 								'items' => array(
 									array(
 										'titre' => 'À quelle fréquence faire nettoyer ses bureaux ?',
@@ -2340,13 +2455,18 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 						'cartes' => array(
 							array(
 								'colonnes' => 3,
-								'theme' => 'clair',
-								'variante' => 'lien',
 								'gap' => '14px',
 								'fond' => 'rgb(244, 247, 248)',
 								'rayon' => '12px',
 								'filet' => '1px',
 								'padding' => '16px 18px',
+								'theme' => 'clair',
+								'titre_taille' => '15px',
+								'titre_interligne' => '24.3px',
+								'desc_taille' => '17px',
+								'desc_interligne' => '27.54px',
+								'desc_marge' => '0px',
+								'variante' => 'lien',
 								'items' => array(
 									array(
 										'titre' => 'À quelle fréquence faire nettoyer ses bureaux ?',
@@ -2417,6 +2537,8 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 			array(
 				'index' => 17,
 				'fond' => 'alt',
+				'padding_haut' => '84px',
+				'padding_bas' => '84px',
 				'colonnes' => 1,
 				'cartes' => '',
 				'liste_grille' => array(
@@ -2536,6 +2658,8 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 			array(
 				'index' => 18,
 				'fond' => 'primary',
+				'padding_haut' => '0px',
+				'padding_bas' => '0px',
 				'colonnes' => 1,
 				'cartes' => '',
 				'liste_grille' => array(
@@ -2592,6 +2716,8 @@ update_option( 'tfp_page_prestations', array(
 			array(
 				'index' => 2,
 				'fond' => '',
+				'padding_haut' => '0px',
+				'padding_bas' => '32px',
 				'colonnes' => 1,
 				'cartes' => '',
 				'liste_grille' => array(
@@ -2608,13 +2734,18 @@ update_option( 'tfp_page_prestations', array(
 							array(
 								'type' => 'grid',
 								'colonnes' => 4,
-								'theme' => 'clair',
-								'variante' => 'texte',
 								'gap' => '14px',
 								'fond' => 'rgb(244, 247, 248)',
 								'rayon' => '14px',
 								'filet' => '1px',
 								'padding' => '18px 20px',
+								'theme' => 'clair',
+								'titre_taille' => '15px',
+								'titre_interligne' => '24.3px',
+								'desc_taille' => '14.5px',
+								'desc_interligne' => '23.49px',
+								'desc_marge' => '0px',
+								'variante' => 'texte',
 								'items' => array(
 									array(
 										'titre' => 'Vous avez des équipes sur place ?',
@@ -2718,13 +2849,18 @@ update_option( 'tfp_page_prestations', array(
 						'cartes' => array(
 							array(
 								'colonnes' => 4,
-								'theme' => 'clair',
-								'variante' => 'texte',
 								'gap' => '14px',
 								'fond' => 'rgb(244, 247, 248)',
 								'rayon' => '14px',
 								'filet' => '1px',
 								'padding' => '18px 20px',
+								'theme' => 'clair',
+								'titre_taille' => '15px',
+								'titre_interligne' => '24.3px',
+								'desc_taille' => '14.5px',
+								'desc_interligne' => '23.49px',
+								'desc_marge' => '0px',
+								'variante' => 'texte',
 								'items' => array(
 									array(
 										'titre' => 'Vous avez des équipes sur place ?',
@@ -2838,6 +2974,8 @@ update_option( 'tfp_page_prestations', array(
 			array(
 				'index' => 3,
 				'fond' => '',
+				'padding_haut' => '36px',
+				'padding_bas' => '12px',
 				'colonnes' => 2,
 				'cartes' => '',
 				'liste_grille' => array(
@@ -2894,6 +3032,8 @@ update_option( 'tfp_page_prestations', array(
 			array(
 				'index' => 4,
 				'fond' => '',
+				'padding_haut' => '32px',
+				'padding_bas' => '86.4px',
 				'colonnes' => 1,
 				'cartes' => '',
 				'liste_grille' => array(
@@ -2910,13 +3050,18 @@ update_option( 'tfp_page_prestations', array(
 							array(
 								'type' => 'grid',
 								'colonnes' => 3,
-								'theme' => 'clair',
-								'variante' => 'image',
 								'gap' => '16px',
 								'fond' => 'rgb(255, 255, 255)',
 								'rayon' => '18px',
 								'filet' => '1px',
 								'padding' => '0px',
+								'theme' => 'clair',
+								'titre_taille' => '17px',
+								'titre_interligne' => '27.54px',
+								'desc_taille' => '23px',
+								'desc_interligne' => '37.26px',
+								'desc_marge' => '0px',
+								'variante' => 'image',
 								'items' => array(
 									array(
 										'titre' => 'Nettoyage de bureauxUn entretien régulier et discret de vos espaces de travail, confié autant que possible à un intervenant habituel, pour des bureaux toujours prêts à recevoir vos équipes et vos visiteurs.En savoir plus →',
@@ -3020,13 +3165,18 @@ update_option( 'tfp_page_prestations', array(
 						'cartes' => array(
 							array(
 								'colonnes' => 3,
-								'theme' => 'clair',
-								'variante' => 'image',
 								'gap' => '16px',
 								'fond' => 'rgb(255, 255, 255)',
 								'rayon' => '18px',
 								'filet' => '1px',
 								'padding' => '0px',
+								'theme' => 'clair',
+								'titre_taille' => '17px',
+								'titre_interligne' => '27.54px',
+								'desc_taille' => '23px',
+								'desc_interligne' => '37.26px',
+								'desc_marge' => '0px',
+								'variante' => 'image',
 								'items' => array(
 									array(
 										'titre' => 'Nettoyage de bureauxUn entretien régulier et discret de vos espaces de travail, confié autant que possible à un intervenant habituel, pour des bureaux toujours prêts à recevoir vos équipes et vos visiteurs.En savoir plus →',
@@ -3140,6 +3290,8 @@ update_option( 'tfp_page_prestations', array(
 			array(
 				'index' => 5,
 				'fond' => 'primary',
+				'padding_haut' => '0px',
+				'padding_bas' => '0px',
 				'colonnes' => 1,
 				'cartes' => '',
 				'liste_grille' => array(
@@ -3195,6 +3347,8 @@ update_option( 'tfp_page_zones-intervention', array(
 			array(
 				'index' => 2,
 				'fond' => '',
+				'padding_haut' => '0px',
+				'padding_bas' => '40px',
 				'colonnes' => 1,
 				'cartes' => '',
 				'liste_grille' => array(
@@ -3253,6 +3407,8 @@ update_option( 'tfp_page_zones-intervention', array(
 			array(
 				'index' => 3,
 				'fond' => 'blanc',
+				'padding_haut' => '50px',
+				'padding_bas' => '50px',
 				'colonnes' => 1,
 				'cartes' => '',
 				'liste_grille' => array(
@@ -3291,6 +3447,8 @@ update_option( 'tfp_page_zones-intervention', array(
 			array(
 				'index' => 4,
 				'fond' => '',
+				'padding_haut' => '57.6px',
+				'padding_bas' => '57.6px',
 				'colonnes' => 1,
 				'cartes' => array(
 					'padding' => '32px',
@@ -3369,13 +3527,18 @@ update_option( 'tfp_page_zones-intervention', array(
 							array(
 								'type' => 'grid',
 								'colonnes' => 3,
-								'theme' => 'clair',
-								'variante' => 'texte',
 								'gap' => '8px',
 								'fond' => 'rgb(244, 247, 248)',
 								'rayon' => '10px',
 								'filet' => '1px',
 								'padding' => '10px 13px',
+								'theme' => 'clair',
+								'titre_taille' => '14.5px',
+								'titre_interligne' => '23.49px',
+								'desc_taille' => '',
+								'desc_interligne' => '',
+								'desc_marge' => '',
+								'variante' => 'texte',
 								'items' => array(
 									array(
 										'titre' => 'Agglomération dijonnaise : créneaux souples, passages courts possibles, organisation étudiée selon le planning',
@@ -3463,13 +3626,18 @@ update_option( 'tfp_page_zones-intervention', array(
 						'cartes' => array(
 							array(
 								'colonnes' => 3,
-								'theme' => 'clair',
-								'variante' => 'texte',
 								'gap' => '8px',
 								'fond' => 'rgb(244, 247, 248)',
 								'rayon' => '10px',
 								'filet' => '1px',
 								'padding' => '10px 13px',
+								'theme' => 'clair',
+								'titre_taille' => '14.5px',
+								'titre_interligne' => '23.49px',
+								'desc_taille' => '',
+								'desc_interligne' => '',
+								'desc_marge' => '',
+								'variante' => 'texte',
 								'items' => array(
 									array(
 										'titre' => 'Agglomération dijonnaise : créneaux souples, passages courts possibles, organisation étudiée selon le planning',
@@ -3569,6 +3737,8 @@ update_option( 'tfp_page_zones-intervention', array(
 			array(
 				'index' => 5,
 				'fond' => '',
+				'padding_haut' => '0px',
+				'padding_bas' => '54px',
 				'colonnes' => 1,
 				'cartes' => '',
 				'liste_grille' => array(
@@ -3607,6 +3777,8 @@ update_option( 'tfp_page_zones-intervention', array(
 			array(
 				'index' => 6,
 				'fond' => '',
+				'padding_haut' => '0px',
+				'padding_bas' => '54px',
 				'colonnes' => 1,
 				'cartes' => '',
 				'liste_grille' => array(
@@ -3627,13 +3799,18 @@ update_option( 'tfp_page_zones-intervention', array(
 							array(
 								'type' => 'grid',
 								'colonnes' => 4,
-								'theme' => 'clair',
-								'variante' => 'lien',
 								'gap' => '12px',
 								'fond' => 'rgb(255, 255, 255)',
 								'rayon' => '14px',
 								'filet' => '1px',
 								'padding' => '20px',
+								'theme' => 'clair',
+								'titre_taille' => '17px',
+								'titre_interligne' => '27.54px',
+								'desc_taille' => '18px',
+								'desc_interligne' => '29.16px',
+								'desc_marge' => '0px',
+								'variante' => 'lien',
 								'items' => array(
 									array(
 										'titre' => 'Côte-d\'Or21',
@@ -3769,13 +3946,18 @@ update_option( 'tfp_page_zones-intervention', array(
 						'cartes' => array(
 							array(
 								'colonnes' => 4,
-								'theme' => 'clair',
-								'variante' => 'lien',
 								'gap' => '12px',
 								'fond' => 'rgb(255, 255, 255)',
 								'rayon' => '14px',
 								'filet' => '1px',
 								'padding' => '20px',
+								'theme' => 'clair',
+								'titre_taille' => '17px',
+								'titre_interligne' => '27.54px',
+								'desc_taille' => '18px',
+								'desc_interligne' => '29.16px',
+								'desc_marge' => '0px',
+								'variante' => 'lien',
 								'items' => array(
 									array(
 										'titre' => 'Côte-d\'Or21',
@@ -3923,6 +4105,8 @@ update_option( 'tfp_page_zones-intervention', array(
 			array(
 				'index' => 7,
 				'fond' => '',
+				'padding_haut' => '0px',
+				'padding_bas' => '54px',
 				'colonnes' => 1,
 				'cartes' => '',
 				'liste_grille' => array(
@@ -3943,13 +4127,18 @@ update_option( 'tfp_page_zones-intervention', array(
 							array(
 								'type' => 'grid',
 								'colonnes' => 6,
-								'theme' => 'clair',
-								'variante' => 'lien',
 								'gap' => '10px',
 								'fond' => 'rgb(255, 255, 255)',
 								'rayon' => '12px',
 								'filet' => '1px',
 								'padding' => '15px 17px',
+								'theme' => 'clair',
+								'titre_taille' => '17px',
+								'titre_interligne' => '27.54px',
+								'desc_taille' => '12px',
+								'desc_interligne' => '19.44px',
+								'desc_marge' => '0px',
+								'variante' => 'lien',
 								'items' => array(
 									array(
 										'titre' => 'Dijon',
@@ -4117,13 +4306,18 @@ update_option( 'tfp_page_zones-intervention', array(
 						'cartes' => array(
 							array(
 								'colonnes' => 6,
-								'theme' => 'clair',
-								'variante' => 'lien',
 								'gap' => '10px',
 								'fond' => 'rgb(255, 255, 255)',
 								'rayon' => '12px',
 								'filet' => '1px',
 								'padding' => '15px 17px',
+								'theme' => 'clair',
+								'titre_taille' => '17px',
+								'titre_interligne' => '27.54px',
+								'desc_taille' => '12px',
+								'desc_interligne' => '19.44px',
+								'desc_marge' => '0px',
+								'variante' => 'lien',
 								'items' => array(
 									array(
 										'titre' => 'Dijon',
@@ -4303,6 +4497,8 @@ update_option( 'tfp_page_zones-intervention', array(
 			array(
 				'index' => 8,
 				'fond' => '',
+				'padding_haut' => '0px',
+				'padding_bas' => '54px',
 				'colonnes' => 1,
 				'cartes' => '',
 				'liste_grille' => array(
@@ -4323,13 +4519,18 @@ update_option( 'tfp_page_zones-intervention', array(
 							array(
 								'type' => 'grid',
 								'colonnes' => 6,
-								'theme' => 'clair',
-								'variante' => 'lien',
 								'gap' => '10px',
 								'fond' => 'rgb(244, 247, 248)',
 								'rayon' => '12px',
 								'filet' => '1px',
 								'padding' => '14px 16px',
+								'theme' => 'clair',
+								'titre_taille' => '15px',
+								'titre_interligne' => '24.3px',
+								'desc_taille' => '12px',
+								'desc_interligne' => '19.44px',
+								'desc_marge' => '0px',
+								'variante' => 'lien',
 								'items' => array(
 									array(
 										'titre' => 'Saint-Apollinaire',
@@ -4465,13 +4666,18 @@ update_option( 'tfp_page_zones-intervention', array(
 						'cartes' => array(
 							array(
 								'colonnes' => 6,
-								'theme' => 'clair',
-								'variante' => 'lien',
 								'gap' => '10px',
 								'fond' => 'rgb(244, 247, 248)',
 								'rayon' => '12px',
 								'filet' => '1px',
 								'padding' => '14px 16px',
+								'theme' => 'clair',
+								'titre_taille' => '15px',
+								'titre_interligne' => '24.3px',
+								'desc_taille' => '12px',
+								'desc_interligne' => '19.44px',
+								'desc_marge' => '0px',
+								'variante' => 'lien',
 								'items' => array(
 									array(
 										'titre' => 'Saint-Apollinaire',
@@ -4619,6 +4825,8 @@ update_option( 'tfp_page_zones-intervention', array(
 			array(
 				'index' => 9,
 				'fond' => '',
+				'padding_haut' => '0px',
+				'padding_bas' => '64px',
 				'colonnes' => 1,
 				'cartes' => array(
 					'padding' => '32px',
@@ -4716,6 +4924,8 @@ update_option( 'tfp_page_zones-intervention', array(
 			array(
 				'index' => 10,
 				'fond' => '',
+				'padding_haut' => '0px',
+				'padding_bas' => '68px',
 				'colonnes' => 1,
 				'cartes' => '',
 				'liste_grille' => array(
@@ -4732,13 +4942,18 @@ update_option( 'tfp_page_zones-intervention', array(
 							array(
 								'type' => 'grid',
 								'colonnes' => 3,
-								'theme' => 'clair',
-								'variante' => 'lien',
 								'gap' => '12px',
 								'fond' => 'rgb(255, 255, 255)',
 								'rayon' => '14px',
 								'filet' => '1px',
 								'padding' => '20px',
+								'theme' => 'clair',
+								'titre_taille' => '17px',
+								'titre_interligne' => '27.54px',
+								'desc_taille' => '',
+								'desc_interligne' => '',
+								'desc_marge' => '',
+								'variante' => 'lien',
 								'items' => array(
 									array(
 										'titre' => 'Découvrir nos prestations',
@@ -4794,13 +5009,18 @@ update_option( 'tfp_page_zones-intervention', array(
 						'cartes' => array(
 							array(
 								'colonnes' => 3,
-								'theme' => 'clair',
-								'variante' => 'lien',
 								'gap' => '12px',
 								'fond' => 'rgb(255, 255, 255)',
 								'rayon' => '14px',
 								'filet' => '1px',
 								'padding' => '20px',
+								'theme' => 'clair',
+								'titre_taille' => '17px',
+								'titre_interligne' => '27.54px',
+								'desc_taille' => '',
+								'desc_interligne' => '',
+								'desc_marge' => '',
+								'variante' => 'lien',
 								'items' => array(
 									array(
 										'titre' => 'Découvrir nos prestations',
@@ -4866,6 +5086,8 @@ update_option( 'tfp_page_zones-intervention', array(
 			array(
 				'index' => 11,
 				'fond' => 'turquoise',
+				'padding_haut' => '68px',
+				'padding_bas' => '68px',
 				'colonnes' => 1,
 				'cartes' => '',
 				'liste_grille' => array(
@@ -4949,6 +5171,8 @@ update_option( 'tfp_page_zones-intervention', array(
 			array(
 				'index' => 12,
 				'fond' => 'primary',
+				'padding_haut' => '0px',
+				'padding_bas' => '0px',
 				'colonnes' => 1,
 				'cartes' => '',
 				'liste_grille' => array(
@@ -4969,13 +5193,18 @@ update_option( 'tfp_page_zones-intervention', array(
 							array(
 								'type' => 'grid',
 								'colonnes' => 2,
-								'theme' => 'clair',
-								'variante' => 'lien',
 								'gap' => '12px',
 								'fond' => 'rgb(255, 255, 255)',
 								'rayon' => '12px',
 								'filet' => '0px',
 								'padding' => '15px 26px',
+								'theme' => 'clair',
+								'titre_taille' => '17px',
+								'titre_interligne' => '27.54px',
+								'desc_taille' => '',
+								'desc_interligne' => '',
+								'desc_marge' => '',
+								'variante' => 'lien',
 								'items' => array(
 									array(
 										'titre' => 'Vérifier notre intervention dans ma commune',
@@ -5015,13 +5244,18 @@ update_option( 'tfp_page_zones-intervention', array(
 						'cartes' => array(
 							array(
 								'colonnes' => 2,
-								'theme' => 'clair',
-								'variante' => 'lien',
 								'gap' => '12px',
 								'fond' => 'rgb(255, 255, 255)',
 								'rayon' => '12px',
 								'filet' => '0px',
 								'padding' => '15px 26px',
+								'theme' => 'clair',
+								'titre_taille' => '17px',
+								'titre_interligne' => '27.54px',
+								'desc_taille' => '',
+								'desc_interligne' => '',
+								'desc_marge' => '',
+								'variante' => 'lien',
 								'items' => array(
 									array(
 										'titre' => 'Vérifier notre intervention dans ma commune',
@@ -5084,6 +5318,8 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 			array(
 				'index' => 2,
 				'fond' => '',
+				'padding_haut' => '0px',
+				'padding_bas' => '40px',
 				'colonnes' => 1,
 				'cartes' => '',
 				'liste_grille' => array(
@@ -5142,6 +5378,8 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 			array(
 				'index' => 3,
 				'fond' => 'blanc',
+				'padding_haut' => '50px',
+				'padding_bas' => '50px',
 				'colonnes' => 1,
 				'cartes' => '',
 				'liste_grille' => array(
@@ -5180,6 +5418,8 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 			array(
 				'index' => 4,
 				'fond' => '',
+				'padding_haut' => '57.6px',
+				'padding_bas' => '57.6px',
 				'colonnes' => 1,
 				'cartes' => array(
 					'padding' => '32px',
@@ -5258,13 +5498,18 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 							array(
 								'type' => 'grid',
 								'colonnes' => 3,
-								'theme' => 'clair',
-								'variante' => 'texte',
 								'gap' => '8px',
 								'fond' => 'rgb(244, 247, 248)',
 								'rayon' => '10px',
 								'filet' => '1px',
 								'padding' => '10px 13px',
+								'theme' => 'clair',
+								'titre_taille' => '14.5px',
+								'titre_interligne' => '23.49px',
+								'desc_taille' => '',
+								'desc_interligne' => '',
+								'desc_marge' => '',
+								'variante' => 'texte',
 								'items' => array(
 									array(
 										'titre' => 'TPE et PME : bureaux, open-spaces, salles de réunion, locaux techniques administratifs',
@@ -5368,13 +5613,18 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 						'cartes' => array(
 							array(
 								'colonnes' => 3,
-								'theme' => 'clair',
-								'variante' => 'texte',
 								'gap' => '8px',
 								'fond' => 'rgb(244, 247, 248)',
 								'rayon' => '10px',
 								'filet' => '1px',
 								'padding' => '10px 13px',
+								'theme' => 'clair',
+								'titre_taille' => '14.5px',
+								'titre_interligne' => '23.49px',
+								'desc_taille' => '',
+								'desc_interligne' => '',
+								'desc_marge' => '',
+								'variante' => 'texte',
 								'items' => array(
 									array(
 										'titre' => 'TPE et PME : bureaux, open-spaces, salles de réunion, locaux techniques administratifs',
@@ -5498,13 +5748,18 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 							array(
 								'type' => 'grid',
 								'colonnes' => 3,
-								'theme' => 'clair',
-								'variante' => 'texte',
 								'gap' => '8px',
 								'fond' => 'rgb(244, 247, 248)',
 								'rayon' => '10px',
 								'filet' => '1px',
 								'padding' => '10px 13px',
+								'theme' => 'clair',
+								'titre_taille' => '14.5px',
+								'titre_interligne' => '23.49px',
+								'desc_taille' => '',
+								'desc_interligne' => '',
+								'desc_marge' => '',
+								'variante' => 'texte',
 								'items' => array(
 									array(
 										'titre' => 'Plateaux de bureaux et open-spaces',
@@ -5608,13 +5863,18 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 						'cartes' => array(
 							array(
 								'colonnes' => 3,
-								'theme' => 'clair',
-								'variante' => 'texte',
 								'gap' => '8px',
 								'fond' => 'rgb(244, 247, 248)',
 								'rayon' => '10px',
 								'filet' => '1px',
 								'padding' => '10px 13px',
+								'theme' => 'clair',
+								'titre_taille' => '14.5px',
+								'titre_interligne' => '23.49px',
+								'desc_taille' => '',
+								'desc_interligne' => '',
+								'desc_marge' => '',
+								'variante' => 'texte',
 								'items' => array(
 									array(
 										'titre' => 'Plateaux de bureaux et open-spaces',
@@ -5757,6 +6017,8 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 			array(
 				'index' => 5,
 				'fond' => 'navy',
+				'padding_haut' => '72px',
+				'padding_bas' => '72px',
 				'colonnes' => 1,
 				'cartes' => '',
 				'liste_grille' => array(
@@ -5777,13 +6039,18 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 							array(
 								'type' => 'grid',
 								'colonnes' => 4,
-								'theme' => 'sombre',
-								'variante' => 'lien',
 								'gap' => '13px',
 								'fond' => 'rgb(23, 74, 129)',
 								'rayon' => '14px',
 								'filet' => '1px',
 								'padding' => '20px',
+								'theme' => 'sombre',
+								'titre_taille' => '17px',
+								'titre_interligne' => '27.54px',
+								'desc_taille' => '13.5px',
+								'desc_interligne' => '21.87px',
+								'desc_marge' => '6px',
+								'variante' => 'lien',
 								'items' => array(
 									array(
 										'titre' => 'Nettoyage de bureaux',
@@ -5887,13 +6154,18 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 						'cartes' => array(
 							array(
 								'colonnes' => 4,
-								'theme' => 'sombre',
-								'variante' => 'lien',
 								'gap' => '13px',
 								'fond' => 'rgb(23, 74, 129)',
 								'rayon' => '14px',
 								'filet' => '1px',
 								'padding' => '20px',
+								'theme' => 'sombre',
+								'titre_taille' => '17px',
+								'titre_interligne' => '27.54px',
+								'desc_taille' => '13.5px',
+								'desc_interligne' => '21.87px',
+								'desc_marge' => '6px',
+								'variante' => 'lien',
 								'items' => array(
 									array(
 										'titre' => 'Nettoyage de bureaux',
@@ -6009,6 +6281,8 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 			array(
 				'index' => 6,
 				'fond' => 'blanc',
+				'padding_haut' => '64px',
+				'padding_bas' => '64px',
 				'colonnes' => 1,
 				'cartes' => '',
 				'liste_grille' => array(
@@ -6029,13 +6303,18 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 							array(
 								'type' => 'grid',
 								'colonnes' => 4,
-								'theme' => 'clair',
-								'variante' => 'lien',
 								'gap' => '14px',
 								'fond' => 'rgb(244, 247, 248)',
 								'rayon' => '16px',
 								'filet' => '1px',
 								'padding' => '22px',
+								'theme' => 'clair',
+								'titre_taille' => '17px',
+								'titre_interligne' => '27.54px',
+								'desc_taille' => '19px',
+								'desc_interligne' => '30.78px',
+								'desc_marge' => '0px',
+								'variante' => 'lien',
 								'items' => array(
 									array(
 										'titre' => 'Côte-d\'Or21',
@@ -6187,13 +6466,18 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 						'cartes' => array(
 							array(
 								'colonnes' => 4,
-								'theme' => 'clair',
-								'variante' => 'lien',
 								'gap' => '14px',
 								'fond' => 'rgb(244, 247, 248)',
 								'rayon' => '16px',
 								'filet' => '1px',
 								'padding' => '22px',
+								'theme' => 'clair',
+								'titre_taille' => '17px',
+								'titre_interligne' => '27.54px',
+								'desc_taille' => '19px',
+								'desc_interligne' => '30.78px',
+								'desc_marge' => '0px',
+								'variante' => 'lien',
 								'items' => array(
 									array(
 										'titre' => 'Côte-d\'Or21',
@@ -6357,6 +6641,8 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 			array(
 				'index' => 7,
 				'fond' => '',
+				'padding_haut' => '64px',
+				'padding_bas' => '64px',
 				'colonnes' => 1,
 				'cartes' => '',
 				'liste_grille' => array(
@@ -6373,13 +6659,18 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 							array(
 								'type' => 'grid',
 								'colonnes' => 6,
-								'theme' => 'clair',
-								'variante' => 'lien',
 								'gap' => '10px',
 								'fond' => 'rgb(255, 255, 255)',
 								'rayon' => '11px',
 								'filet' => '1px',
 								'padding' => '14px 16px',
+								'theme' => 'clair',
+								'titre_taille' => '15px',
+								'titre_interligne' => '24.3px',
+								'desc_taille' => '12px',
+								'desc_interligne' => '19.44px',
+								'desc_marge' => '0px',
+								'variante' => 'lien',
 								'items' => array(
 									array(
 										'titre' => 'Dijon',
@@ -6547,13 +6838,18 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 						'cartes' => array(
 							array(
 								'colonnes' => 6,
-								'theme' => 'clair',
-								'variante' => 'lien',
 								'gap' => '10px',
 								'fond' => 'rgb(255, 255, 255)',
 								'rayon' => '11px',
 								'filet' => '1px',
 								'padding' => '14px 16px',
+								'theme' => 'clair',
+								'titre_taille' => '15px',
+								'titre_interligne' => '24.3px',
+								'desc_taille' => '12px',
+								'desc_interligne' => '19.44px',
+								'desc_marge' => '0px',
+								'variante' => 'lien',
 								'items' => array(
 									array(
 										'titre' => 'Dijon',
@@ -6820,6 +7116,8 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 			array(
 				'index' => 8,
 				'fond' => 'turquoise',
+				'padding_haut' => '68px',
+				'padding_bas' => '68px',
 				'colonnes' => 1,
 				'cartes' => '',
 				'liste_grille' => array(
@@ -6836,13 +7134,18 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 							array(
 								'type' => 'grid',
 								'colonnes' => 2,
-								'theme' => 'clair',
-								'variante' => 'texte',
 								'gap' => '34px',
 								'fond' => 'rgb(255, 255, 255)',
 								'rayon' => '16px',
 								'filet' => '1px',
 								'padding' => '24px',
+								'theme' => 'clair',
+								'titre_taille' => '13px',
+								'titre_interligne' => '21.06px',
+								'desc_taille' => '32px',
+								'desc_interligne' => '51.84px',
+								'desc_marge' => '4px',
+								'variante' => 'texte',
 								'items' => array(
 									array(
 										'titre' => '333 € HT/mois',
@@ -6886,13 +7189,18 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 						'cartes' => array(
 							array(
 								'colonnes' => 2,
-								'theme' => 'clair',
-								'variante' => 'texte',
 								'gap' => '34px',
 								'fond' => 'rgb(255, 255, 255)',
 								'rayon' => '16px',
 								'filet' => '1px',
 								'padding' => '24px',
+								'theme' => 'clair',
+								'titre_taille' => '13px',
+								'titre_interligne' => '21.06px',
+								'desc_taille' => '32px',
+								'desc_interligne' => '51.84px',
+								'desc_marge' => '4px',
+								'variante' => 'texte',
 								'items' => array(
 									array(
 										'titre' => '333 € HT/mois',
@@ -6946,6 +7254,8 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 			array(
 				'index' => 9,
 				'fond' => '',
+				'padding_haut' => '64px',
+				'padding_bas' => '64px',
 				'colonnes' => 1,
 				'cartes' => array(
 					'padding' => '32px',
@@ -7070,6 +7380,8 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 			array(
 				'index' => 10,
 				'fond' => 'turquoise',
+				'padding_haut' => '68px',
+				'padding_bas' => '68px',
 				'colonnes' => 1,
 				'cartes' => '',
 				'liste_grille' => array(
@@ -7162,6 +7474,8 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 			array(
 				'index' => 11,
 				'fond' => 'primary',
+				'padding_haut' => '0px',
+				'padding_bas' => '0px',
 				'colonnes' => 1,
 				'cartes' => '',
 				'liste_grille' => array(
@@ -7218,6 +7532,8 @@ update_option( 'tfp_page_pourquoi-nous', array(
 			array(
 				'index' => 2,
 				'fond' => 'blanc',
+				'padding_haut' => '57.6px',
+				'padding_bas' => '57.6px',
 				'colonnes' => 1,
 				'cartes' => '',
 				'liste_grille' => array(
@@ -7301,6 +7617,8 @@ update_option( 'tfp_page_pourquoi-nous', array(
 			array(
 				'index' => 3,
 				'fond' => '',
+				'padding_haut' => '72px',
+				'padding_bas' => '72px',
 				'colonnes' => 1,
 				'cartes' => '',
 				'liste_grille' => array(
@@ -7321,13 +7639,18 @@ update_option( 'tfp_page_pourquoi-nous', array(
 							array(
 								'type' => 'grid',
 								'colonnes' => 4,
-								'theme' => 'clair',
-								'variante' => 'texte',
 								'gap' => '12px',
 								'fond' => 'rgb(221, 244, 243)',
 								'rayon' => '14px',
 								'filet' => '1px',
 								'padding' => '20px',
+								'theme' => 'clair',
+								'titre_taille' => '26px',
+								'titre_interligne' => '42.12px',
+								'desc_taille' => '13px',
+								'desc_interligne' => '21.06px',
+								'desc_marge' => '0px',
+								'variante' => 'texte',
 								'items' => array(
 									array(
 										'titre' => '5,0/5',
@@ -7399,13 +7722,18 @@ update_option( 'tfp_page_pourquoi-nous', array(
 						'cartes' => array(
 							array(
 								'colonnes' => 4,
-								'theme' => 'clair',
-								'variante' => 'texte',
 								'gap' => '12px',
 								'fond' => 'rgb(221, 244, 243)',
 								'rayon' => '14px',
 								'filet' => '1px',
 								'padding' => '20px',
+								'theme' => 'clair',
+								'titre_taille' => '26px',
+								'titre_interligne' => '42.12px',
+								'desc_taille' => '13px',
+								'desc_interligne' => '21.06px',
+								'desc_marge' => '0px',
+								'variante' => 'texte',
 								'items' => array(
 									array(
 										'titre' => '5,0/5',
@@ -7489,6 +7817,8 @@ update_option( 'tfp_page_pourquoi-nous', array(
 			array(
 				'index' => 4,
 				'fond' => 'blanc',
+				'padding_haut' => '80px',
+				'padding_bas' => '80px',
 				'colonnes' => 3,
 				'cartes' => '',
 				'liste_grille' => array(
@@ -7648,6 +7978,8 @@ update_option( 'tfp_page_pourquoi-nous', array(
 			array(
 				'index' => 5,
 				'fond' => '',
+				'padding_haut' => '72px',
+				'padding_bas' => '72px',
 				'colonnes' => 1,
 				'cartes' => '',
 				'liste_grille' => array(
@@ -7713,6 +8045,8 @@ update_option( 'tfp_page_pourquoi-nous', array(
 			array(
 				'index' => 6,
 				'fond' => 'blanc',
+				'padding_haut' => '64px',
+				'padding_bas' => '64px',
 				'colonnes' => 1,
 				'cartes' => '',
 				'liste_grille' => array(
@@ -7733,13 +8067,18 @@ update_option( 'tfp_page_pourquoi-nous', array(
 							array(
 								'type' => 'grid',
 								'colonnes' => 4,
-								'theme' => 'clair',
-								'variante' => 'lien',
 								'gap' => '12px',
 								'fond' => 'rgb(244, 247, 248)',
 								'rayon' => '14px',
 								'filet' => '1px',
 								'padding' => '18px 20px',
+								'theme' => 'clair',
+								'titre_taille' => '16.5px',
+								'titre_interligne' => '26.73px',
+								'desc_taille' => '',
+								'desc_interligne' => '',
+								'desc_marge' => '',
+								'variante' => 'lien',
 								'items' => array(
 									array(
 										'titre' => 'La transparence tarifaire',
@@ -7811,13 +8150,18 @@ update_option( 'tfp_page_pourquoi-nous', array(
 						'cartes' => array(
 							array(
 								'colonnes' => 4,
-								'theme' => 'clair',
-								'variante' => 'lien',
 								'gap' => '12px',
 								'fond' => 'rgb(244, 247, 248)',
 								'rayon' => '14px',
 								'filet' => '1px',
 								'padding' => '18px 20px',
+								'theme' => 'clair',
+								'titre_taille' => '16.5px',
+								'titre_interligne' => '26.73px',
+								'desc_taille' => '',
+								'desc_interligne' => '',
+								'desc_marge' => '',
+								'variante' => 'lien',
 								'items' => array(
 									array(
 										'titre' => 'La transparence tarifaire',
@@ -7901,6 +8245,8 @@ update_option( 'tfp_page_pourquoi-nous', array(
 			array(
 				'index' => 7,
 				'fond' => 'primary',
+				'padding_haut' => '0px',
+				'padding_bas' => '0px',
 				'colonnes' => 1,
 				'cartes' => '',
 				'liste_grille' => array(
@@ -7957,6 +8303,8 @@ update_option( 'tfp_page_notre-fonctionnement', array(
 			array(
 				'index' => 2,
 				'fond' => 'blanc',
+				'padding_haut' => '57.6px',
+				'padding_bas' => '57.6px',
 				'colonnes' => 1,
 				'cartes' => '',
 				'liste_grille' => array(
@@ -7973,13 +8321,18 @@ update_option( 'tfp_page_notre-fonctionnement', array(
 							array(
 								'type' => 'grid',
 								'colonnes' => 1,
-								'theme' => 'clair',
-								'variante' => 'texte',
 								'gap' => '14px',
 								'fond' => 'rgb(244, 247, 248)',
 								'rayon' => '16px',
 								'filet' => '1px',
 								'padding' => '24px',
+								'theme' => 'clair',
+								'titre_taille' => '26px',
+								'titre_interligne' => '42.12px',
+								'desc_taille' => '17px',
+								'desc_interligne' => '27.54px',
+								'desc_marge' => '0px',
+								'variante' => 'texte',
 								'items' => array(
 									array(
 										'titre' => '01',
@@ -8067,13 +8420,18 @@ update_option( 'tfp_page_notre-fonctionnement', array(
 						'cartes' => array(
 							array(
 								'colonnes' => 1,
-								'theme' => 'clair',
-								'variante' => 'texte',
 								'gap' => '14px',
 								'fond' => 'rgb(244, 247, 248)',
 								'rayon' => '16px',
 								'filet' => '1px',
 								'padding' => '24px',
+								'theme' => 'clair',
+								'titre_taille' => '26px',
+								'titre_interligne' => '42.12px',
+								'desc_taille' => '17px',
+								'desc_interligne' => '27.54px',
+								'desc_marge' => '0px',
+								'variante' => 'texte',
 								'items' => array(
 									array(
 										'titre' => '01',
@@ -8171,6 +8529,8 @@ update_option( 'tfp_page_notre-fonctionnement', array(
 			array(
 				'index' => 3,
 				'fond' => '',
+				'padding_haut' => '80px',
+				'padding_bas' => '80px',
 				'colonnes' => 3,
 				'cartes' => array(
 					'padding' => '20px 22px',
@@ -8240,13 +8600,18 @@ update_option( 'tfp_page_notre-fonctionnement', array(
 							array(
 								'type' => 'grid',
 								'colonnes' => 3,
-								'theme' => 'clair',
-								'variante' => 'texte',
 								'gap' => '14px',
 								'fond' => 'rgb(255, 255, 255)',
 								'rayon' => '14px',
 								'filet' => '1px',
 								'padding' => '20px 22px',
+								'theme' => 'clair',
+								'titre_taille' => '17px',
+								'titre_interligne' => '17.68px',
+								'desc_taille' => '15px',
+								'desc_interligne' => '24px',
+								'desc_marge' => '8px',
+								'variante' => 'texte',
 								'items' => array(
 									array(
 										'titre' => 'Modifier la prestation',
@@ -8338,13 +8703,18 @@ update_option( 'tfp_page_notre-fonctionnement', array(
 						'cartes' => array(
 							array(
 								'colonnes' => 3,
-								'theme' => 'clair',
-								'variante' => 'texte',
 								'gap' => '14px',
 								'fond' => 'rgb(255, 255, 255)',
 								'rayon' => '14px',
 								'filet' => '1px',
 								'padding' => '20px 22px',
+								'theme' => 'clair',
+								'titre_taille' => '17px',
+								'titre_interligne' => '17.68px',
+								'desc_taille' => '15px',
+								'desc_interligne' => '24px',
+								'desc_marge' => '8px',
+								'variante' => 'texte',
 								'items' => array(
 									array(
 										'titre' => 'Modifier la prestation',
@@ -8443,6 +8813,8 @@ update_option( 'tfp_page_notre-fonctionnement', array(
 			array(
 				'index' => 4,
 				'fond' => 'primary',
+				'padding_haut' => '0px',
+				'padding_bas' => '0px',
 				'colonnes' => 1,
 				'cartes' => '',
 				'liste_grille' => array(
@@ -8498,6 +8870,8 @@ update_option( 'tfp_page_avis-clients', array(
 			array(
 				'index' => 2,
 				'fond' => '',
+				'padding_haut' => '0px',
+				'padding_bas' => '32px',
 				'colonnes' => 1,
 				'cartes' => '',
 				'liste_grille' => array(
@@ -8560,6 +8934,8 @@ update_option( 'tfp_page_avis-clients', array(
 			array(
 				'index' => 3,
 				'fond' => '',
+				'padding_haut' => '20px',
+				'padding_bas' => '40px',
 				'colonnes' => 1,
 				'cartes' => '',
 				'liste_grille' => array(
@@ -8600,13 +8976,18 @@ update_option( 'tfp_page_avis-clients', array(
 							array(
 								'type' => 'grid',
 								'colonnes' => 1,
-								'theme' => 'sombre',
-								'variante' => 'texte',
 								'gap' => '10px',
 								'fond' => 'rgb(23, 74, 129)',
 								'rayon' => '12px',
 								'filet' => '0px',
 								'padding' => '14px 16px',
+								'theme' => 'sombre',
+								'titre_taille' => '12px',
+								'titre_interligne' => '19.44px',
+								'desc_taille' => '13.5px',
+								'desc_interligne' => '20.25px',
+								'desc_marge' => '6px',
+								'variante' => 'texte',
 								'items' => array(
 									array(
 										'titre' => '★★★★★',
@@ -8646,13 +9027,18 @@ update_option( 'tfp_page_avis-clients', array(
 						'cartes' => array(
 							array(
 								'colonnes' => 1,
-								'theme' => 'sombre',
-								'variante' => 'texte',
 								'gap' => '10px',
 								'fond' => 'rgb(23, 74, 129)',
 								'rayon' => '12px',
 								'filet' => '0px',
 								'padding' => '14px 16px',
+								'theme' => 'sombre',
+								'titre_taille' => '12px',
+								'titre_interligne' => '19.44px',
+								'desc_taille' => '13.5px',
+								'desc_interligne' => '20.25px',
+								'desc_marge' => '6px',
+								'variante' => 'texte',
 								'items' => array(
 									array(
 										'titre' => '★★★★★',
@@ -8704,6 +9090,8 @@ update_option( 'tfp_page_avis-clients', array(
 			array(
 				'index' => 4,
 				'fond' => '',
+				'padding_haut' => '14.4px',
+				'padding_bas' => '86.4px',
 				'colonnes' => 1,
 				'cartes' => '',
 				'liste_grille' => array(
@@ -8720,13 +9108,18 @@ update_option( 'tfp_page_avis-clients', array(
 							array(
 								'type' => 'grid',
 								'colonnes' => 3,
-								'theme' => 'clair',
-								'variante' => 'texte',
 								'gap' => '16px',
 								'fond' => 'rgb(255, 255, 255)',
 								'rayon' => '16px',
 								'filet' => '1px',
 								'padding' => '26px',
+								'theme' => 'clair',
+								'titre_taille' => '17px',
+								'titre_interligne' => '27.54px',
+								'desc_taille' => '17px',
+								'desc_interligne' => '27.54px',
+								'desc_marge' => '0px',
+								'variante' => 'texte',
 								'items' => array(
 									array(
 										'titre' => '★★★★★Google',
@@ -8842,13 +9235,18 @@ update_option( 'tfp_page_avis-clients', array(
 						'cartes' => array(
 							array(
 								'colonnes' => 3,
-								'theme' => 'clair',
-								'variante' => 'texte',
 								'gap' => '16px',
 								'fond' => 'rgb(255, 255, 255)',
 								'rayon' => '16px',
 								'filet' => '1px',
 								'padding' => '26px',
+								'theme' => 'clair',
+								'titre_taille' => '17px',
+								'titre_interligne' => '27.54px',
+								'desc_taille' => '17px',
+								'desc_interligne' => '27.54px',
+								'desc_marge' => '0px',
+								'variante' => 'texte',
 								'items' => array(
 									array(
 										'titre' => '★★★★★Google',
@@ -8974,6 +9372,8 @@ update_option( 'tfp_page_avis-clients', array(
 			array(
 				'index' => 5,
 				'fond' => '',
+				'padding_haut' => '0px',
+				'padding_bas' => '80px',
 				'colonnes' => 1,
 				'cartes' => '',
 				'liste_grille' => array(
@@ -8994,13 +9394,18 @@ update_option( 'tfp_page_avis-clients', array(
 							array(
 								'type' => 'grid',
 								'colonnes' => 4,
-								'theme' => 'clair',
-								'variante' => 'lien',
 								'gap' => '12px',
 								'fond' => 'rgb(255, 255, 255)',
 								'rayon' => '14px',
 								'filet' => '1px',
 								'padding' => '18px 20px',
+								'theme' => 'clair',
+								'titre_taille' => '16.5px',
+								'titre_interligne' => '26.73px',
+								'desc_taille' => '',
+								'desc_interligne' => '',
+								'desc_marge' => '',
+								'variante' => 'lien',
 								'items' => array(
 									array(
 										'titre' => 'Nos tarifs',
@@ -9072,13 +9477,18 @@ update_option( 'tfp_page_avis-clients', array(
 						'cartes' => array(
 							array(
 								'colonnes' => 4,
-								'theme' => 'clair',
-								'variante' => 'lien',
 								'gap' => '12px',
 								'fond' => 'rgb(255, 255, 255)',
 								'rayon' => '14px',
 								'filet' => '1px',
 								'padding' => '18px 20px',
+								'theme' => 'clair',
+								'titre_taille' => '16.5px',
+								'titre_interligne' => '26.73px',
+								'desc_taille' => '',
+								'desc_interligne' => '',
+								'desc_marge' => '',
+								'variante' => 'lien',
 								'items' => array(
 									array(
 										'titre' => 'Nos tarifs',
@@ -9162,6 +9572,8 @@ update_option( 'tfp_page_avis-clients', array(
 			array(
 				'index' => 6,
 				'fond' => 'primary',
+				'padding_haut' => '0px',
+				'padding_bas' => '0px',
 				'colonnes' => 1,
 				'cartes' => '',
 				'liste_grille' => array(
@@ -9219,6 +9631,8 @@ update_option( 'tfp_page_a-propos', array(
 			array(
 				'index' => 2,
 				'fond' => '',
+				'padding_haut' => '57.6px',
+				'padding_bas' => '57.6px',
 				'colonnes' => 1,
 				'cartes' => '',
 				'liste_grille' => array(
@@ -9261,6 +9675,8 @@ update_option( 'tfp_page_a-propos', array(
 			array(
 				'index' => 3,
 				'fond' => '',
+				'padding_haut' => '72px',
+				'padding_bas' => '72px',
 				'colonnes' => 1,
 				'cartes' => '',
 				'liste_grille' => array(
@@ -9326,6 +9742,8 @@ update_option( 'tfp_page_a-propos', array(
 			array(
 				'index' => 4,
 				'fond' => 'blanc',
+				'padding_haut' => '80px',
+				'padding_bas' => '80px',
 				'colonnes' => 1,
 				'cartes' => '',
 				'liste_grille' => array(
@@ -9560,6 +9978,8 @@ update_option( 'tfp_page_a-propos', array(
 			array(
 				'index' => 5,
 				'fond' => 'primary',
+				'padding_haut' => '0px',
+				'padding_bas' => '0px',
 				'colonnes' => 1,
 				'cartes' => '',
 				'liste_grille' => array(
@@ -9618,6 +10038,8 @@ update_option( 'tfp_page_recrutement', array(
 			array(
 				'index' => 2,
 				'fond' => 'blanc',
+				'padding_haut' => '57.6px',
+				'padding_bas' => '57.6px',
 				'colonnes' => 1,
 				'cartes' => '',
 				'liste_grille' => array(
@@ -9634,13 +10056,18 @@ update_option( 'tfp_page_recrutement', array(
 							array(
 								'type' => 'grid',
 								'colonnes' => 4,
-								'theme' => 'clair',
-								'variante' => 'texte',
 								'gap' => '14px',
 								'fond' => 'rgb(244, 247, 248)',
 								'rayon' => '14px',
 								'filet' => '1px',
 								'padding' => '20px',
+								'theme' => 'clair',
+								'titre_taille' => '16.5px',
+								'titre_interligne' => '26.73px',
+								'desc_taille' => '14px',
+								'desc_interligne' => '22.68px',
+								'desc_marge' => '6px',
+								'variante' => 'texte',
 								'items' => array(
 									array(
 										'titre' => 'Bureaux & sièges d\'entreprise',
@@ -9712,13 +10139,18 @@ update_option( 'tfp_page_recrutement', array(
 						'cartes' => array(
 							array(
 								'colonnes' => 4,
-								'theme' => 'clair',
-								'variante' => 'texte',
 								'gap' => '14px',
 								'fond' => 'rgb(244, 247, 248)',
 								'rayon' => '14px',
 								'filet' => '1px',
 								'padding' => '20px',
+								'theme' => 'clair',
+								'titre_taille' => '16.5px',
+								'titre_interligne' => '26.73px',
+								'desc_taille' => '14px',
+								'desc_interligne' => '22.68px',
+								'desc_marge' => '6px',
+								'variante' => 'texte',
 								'items' => array(
 									array(
 										'titre' => 'Bureaux & sièges d\'entreprise',
@@ -9800,6 +10232,8 @@ update_option( 'tfp_page_recrutement', array(
 			array(
 				'index' => 3,
 				'fond' => '',
+				'padding_haut' => '72px',
+				'padding_bas' => '72px',
 				'colonnes' => 1,
 				'cartes' => '',
 				'liste_grille' => array(
@@ -9882,6 +10316,8 @@ update_option( 'tfp_page_recrutement', array(
 			array(
 				'index' => 4,
 				'fond' => 'blanc',
+				'padding_haut' => '72px',
+				'padding_bas' => '72px',
 				'colonnes' => 1,
 				'cartes' => '',
 				'liste_grille' => array(

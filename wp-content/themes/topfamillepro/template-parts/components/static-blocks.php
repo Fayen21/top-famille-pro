@@ -40,7 +40,26 @@ foreach ( $data['sections'] as $section ) {
 		$classes[] = 'tfp-section--primary';
 	} elseif ( 'alt' === $section['fond'] ) {
 		$classes[] = 'tfp-section--alt';
+	} elseif ( 'blanc' === $section['fond'] ) {
+		// La maquette alterne bandes blanches et bandes sur le fond de page. Le fond blanc était
+		// relevé mais jamais rendu : l'alternance disparaissait, et avec elle la lecture par bandes.
+		$classes[] = 'tfp-section--blanc';
 	}
+
+	/*
+	 * Rembourrage vertical relevé sur la bande du prototype. Le thème en posait 52 px partout ; la
+	 * maquette en pose 84 sur la plupart de ses bandes, 72 ou 48 sur d'autres. Ce n'est pas un
+	 * rembourrage de compensation destiné à atteindre un ratio : c'est la valeur mesurée, passée en
+	 * variable pour rester administrable et ne pas produire de style en ligne page par page.
+	 */
+	$pad = array();
+	foreach ( array( 'padding_haut' => '--tfp-bande-haut', 'padding_bas' => '--tfp-bande-bas' ) as $cle => $var ) {
+		$valeur = trim( preg_replace( '/[^0-9a-z%. ]/i', '', (string) ( $section[ $cle ] ?? '' ) ) );
+		if ( '' !== $valeur ) {
+			$pad[] = $var . ':' . $valeur;
+		}
+	}
+	$pad_style = $pad ? ' style="' . esc_attr( implode( ';', $pad ) ) . '"' : '';
 	/*
 	 * Nombre de colonnes : relevé sur le rendu de la maquette par tools/generate-pages.mjs, et non
 	 * deviné d'après la longueur des blocs. L'heuristique précédente (« plusieurs blocs courts ⇒
@@ -75,7 +94,7 @@ foreach ( $data['sections'] as $section ) {
 	 */
 	$sequences = tfp_static_runs( $section['blocs'] );
 	?>
-	<section class="<?php echo esc_attr( implode( ' ', $classes ) ); ?>">
+	<section class="<?php echo esc_attr( implode( ' ', $classes ) ); ?>"<?php echo $pad_style; // phpcs:ignore WordPress.Security.EscapeOutput ?>>
 		<div class="tfp-container">
 		<?php
 		foreach ( $sequences as $sequence ) :
