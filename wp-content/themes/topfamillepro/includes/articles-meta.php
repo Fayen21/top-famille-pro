@@ -198,3 +198,31 @@ function tfp_article_image_slug( $post_id ) {
 	$slug = get_post_field( 'post_name', $post_id );
 	return $map[ $slug ] ?? 'article-1';
 }
+
+/**
+ * URL absolue du visuel d'un article, pour la propriété `image` du schéma `Article`.
+ *
+ * Le manifeste du pipeline d'images porte, pour chaque emplacement, les variantes générées et
+ * leurs largeurs. On déclare la plus grande variante JPEG : c'est le format que tous les
+ * consommateurs de données structurées savent lire, contrairement à l'AVIF.
+ *
+ * Le repli reste le logo, mais il ne devrait jamais servir : les trois articles ont leur visuel.
+ *
+ * @param int $post_id
+ * @return string
+ */
+function tfp_article_schema_image( $post_id ) {
+	$site      = tfp_site_data();
+	$manifeste = function_exists( 'tfp_image_manifest' ) ? tfp_image_manifest() : array();
+	$slug      = tfp_article_image_slug( $post_id );
+
+	if ( ! empty( $manifeste[ $slug ]['variants']['jpg'] ) ) {
+		$variantes = $manifeste[ $slug ]['variants']['jpg'];
+		$plus      = end( $variantes );
+		if ( ! empty( $plus['file'] ) ) {
+			return TFP_THEME_URI . '/assets/dist/images/' . $plus['file'];
+		}
+	}
+
+	return trailingslashit( $site['origin'] ) . ltrim( $site['logo_path'], '/' );
+}

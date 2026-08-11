@@ -56,7 +56,18 @@ $schema = array(
 		'@id'           => get_permalink( $post_id ) . '#article',
 		'headline'      => wp_strip_all_tags( get_the_title( $post_id ) ),
 		'description'   => get_the_excerpt( $post_id ),
-		'image'         => has_post_thumbnail( $post_id ) ? get_the_post_thumbnail_url( $post_id, 'full' ) : trailingslashit( $site['origin'] ) . ltrim( $site['logo_path'], '/' ),
+		/*
+		 * Image de l'article, jamais le logo du site.
+		 *
+		 * Sans image mise en avant, le schéma retombait sur le logo : les trois articles déclaraient
+		 * donc à Google un visuel qui n'illustre pas leur contenu, ce que les recommandations sur les
+		 * résultats enrichis proscrivent — l'image d'un `Article` doit représenter l'article. Le
+		 * visuel réellement affiché en tête vient du pipeline d'images du thème ; c'est lui qu'on
+		 * déclare, dans sa plus grande variante.
+		 */
+		'image'         => has_post_thumbnail( $post_id )
+			? get_the_post_thumbnail_url( $post_id, 'full' )
+			: tfp_article_schema_image( $post_id ),
 		'datePublished' => get_the_date( 'c', $post_id ),
 		'dateModified'  => get_the_modified_date( 'c', $post_id ),
 		'author'        => array( '@type' => 'Person', 'name' => get_the_author_meta( 'display_name', get_post_field( 'post_author', $post_id ) ) ?: $site['manager'] ),

@@ -3264,3 +3264,126 @@ body.tfp-body .tfp-section--primary .tfp-link-row:focus-visible {
 .tfp-budget-table tbody tr:last-child td {
   border-bottom: 0;
 }
+
+/* ---------- Formulaire de contact ----------
+   Géométrie relevée sur la maquette : champs courts sur deux colonnes (299 px), objet, message et
+   consentement sur toute la largeur (612 px), champs de 49-51 px de haut, rayon 10. */
+.tfp-contact-form {
+  margin-top: 18px;
+}
+
+.tfp-contact-form__row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 16px;
+}
+
+@media (max-width: 599px) {
+  .tfp-contact-form__row {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.tfp-field {
+  margin: 0 0 14px;
+}
+
+.tfp-field > label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 14px;
+  font-weight: var(--fw-semibold);
+  color: var(--color-navy);
+}
+
+.tfp-field input[type="text"],
+.tfp-field input[type="email"],
+.tfp-field input[type="tel"],
+.tfp-field select,
+.tfp-field textarea {
+  width: 100%;
+  padding: 13px 14px;
+  border: 1px solid var(--color-border-strong);
+  border-radius: 10px;
+  background: var(--color-white);
+  font-family: inherit;
+  font-size: 15px;
+  color: var(--color-text);
+}
+
+.tfp-field textarea {
+  min-height: 112px;
+  resize: vertical;
+}
+
+.tfp-field input:focus-visible,
+.tfp-field select:focus-visible,
+.tfp-field textarea:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Un champ en erreur se signale par son filet **et** par son message : jamais par la couleur
+   seule, que ne perçoit pas tout le monde. */
+.tfp-field [aria-invalid="true"] {
+  border-color: var(--color-copper-dark);
+}
+
+.tfp-field__error {
+  display: block;
+  margin-top: 6px;
+  font-size: 13px;
+  color: var(--color-copper-dark);
+}
+
+.tfp-field--check {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 10px;
+  align-items: start;
+}
+
+.tfp-field--check input {
+  margin-top: 3px;
+  width: 18px;
+  height: 18px;
+}
+
+.tfp-field--check > label {
+  margin: 0;
+  font-weight: var(--fw-regular);
+  color: var(--color-text-secondary);
+}
+
+.tfp-field--check .tfp-field__error {
+  grid-column: 1 / -1;
+}
+
+/* Honeypot : hors de l'écran et hors du parcours clavier, sans `display:none` — certains
+   automates ignorent les champs ainsi masqués et remplissent les autres. */
+.tfp-honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.tfp-form-message {
+  margin: 14px 0;
+  padding: 12px 14px;
+  border-radius: 10px;
+  font-size: 15px;
+}
+
+.tfp-form-message--ok {
+  border: 1px solid var(--color-turquoise);
+  background: var(--color-turquoise-pale);
+  color: var(--color-navy);
+}
+
+.tfp-form-message--err {
+  border: 1px solid var(--color-copper-dark);
+  background: #FDF3EC;
+  color: var(--color-text);
+}

@@ -57,6 +57,13 @@ function tfp_reassurance_defaults() {
 		// fasse parler une personne réelle, et il doit pouvoir être corrigé ou retiré par
 		// l'intéressée sans toucher au code. Vide = la citation n'est pas affichée.
 		'citation_audrey' => "Mon rôle, c'est de rester joignable et de tenir mes engagements. Chaque client sait à qui parler, et sait ce qui a été fait dans ses locaux.",
+		// Horaires de contact affichés sur /contact/. La maquette écrit « Du lundi au vendredi ·
+		// à confirmer · réponse sous 24 h » : l'amplitude n'a jamais été arrêtée. Elle est donc
+		// reprise, mais présentée pour ce qu'elle est — une indication provisoire, signalée
+		// visiblement et corrigible ici — et elle n'est **jamais** déclarée en
+		// `openingHoursSpecification` : une amplitude non confirmée publiée en donnée structurée
+		// est un engagement d'ouverture opposable, pas une illustration.
+		'horaires_contact' => 'Du lundi au vendredi · réponse sous 24 h',
 		'avis'            => $avis,
 	);
 }
@@ -90,6 +97,10 @@ function tfp_sanitize_reassurance_settings( $input ) {
 
 	$clean['google_url'] = isset( $input['google_url'] ) ? esc_url_raw( trim( $input['google_url'] ) ) : '';
 	$clean['citation_audrey'] = isset( $input['citation_audrey'] ) ? sanitize_textarea_field( trim( $input['citation_audrey'] ) ) : '';
+
+	if ( isset( $input['horaires_contact'] ) ) {
+		$clean['horaires_contact'] = sanitize_text_field( trim( $input['horaires_contact'] ) );
+	}
 
 	if ( isset( $input['note'] ) && '' !== trim( (string) $input['note'] ) ) {
 		$note = (float) str_replace( ',', '.', $input['note'] );
@@ -185,6 +196,27 @@ function tfp_render_reassurance_page() {
 				</tr>
 			</table>
 
+			<h2>Horaires de contact</h2>
+			<p>
+				Affichés sur la page Contact. L'amplitude reprise de la maquette
+				n'a <strong>jamais été confirmée</strong> : elle est présentée sur le site comme une
+				indication provisoire, avec une mention visible, et n'est déclarée dans
+				<strong>aucune donnée structurée</strong> — une amplitude d'ouverture publiée en
+				<code>openingHoursSpecification</code> est un engagement opposable, pas une
+				illustration. Dès que les horaires réels sont arrêtés, les saisir ici ; la mention
+				provisoire se retire alors dans le gabarit, en connaissance de cause.
+				Vider le champ retire la carte.
+			</p>
+			<table class="form-table" role="presentation">
+				<tr>
+					<th scope="row"><label for="tfp-horaires-contact">Horaires affichés</label></th>
+					<td>
+						<input type="text" id="tfp-horaires-contact" name="<?php echo esc_attr( TFP_REASSURANCE_OPTION ); ?>[horaires_contact]" value="<?php echo esc_attr( $values['horaires_contact'] ); ?>" class="regular-text">
+						<p class="description">Ex. « Du lundi au vendredi, 8 h – 18 h · réponse sous 24 h ».</p>
+					</td>
+				</tr>
+			</table>
+
 			<h2>Avis clients authentiques</h2>
 			<p>
 				Uniquement les six témoignages authentiques déjà publiés sur le site actuel
@@ -244,9 +276,10 @@ function tfp_reassurance_data() {
 	);
 
 	return array(
-		'google_url'  => $values['google_url'],
-		'note'        => '' !== $values['note'] ? (float) $values['note'] : null,
-		'nombre_avis' => '' !== $values['nombre_avis'] ? (int) $values['nombre_avis'] : null,
-		'avis'        => $avis,
+		'google_url'       => $values['google_url'],
+		'note'             => '' !== $values['note'] ? (float) $values['note'] : null,
+		'nombre_avis'      => '' !== $values['nombre_avis'] ? (int) $values['nombre_avis'] : null,
+		'horaires_contact' => (string) $values['horaires_contact'],
+		'avis'             => $avis,
 	);
 }

@@ -475,9 +475,15 @@ function tfp_card_grid( array $grille ) {
 	$style = $vars ? ' style="' . esc_attr( implode( ';', $vars ) ) . '"' : '';
 	?>
 	<?php
-	// Une grille qui contient au moins une carte provisoire l'annonce, une fois, au-dessus d'elle.
+	/*
+	 * Une grille qui contient au moins une carte provisoire l'annonce, une fois, au-dessus d'elle.
+	 *
+	 * Sauf si la carte porte sa propre mention (`note`) : une grille de coordonnées dont seule la
+	 * ligne « horaires » est provisoire ne doit pas préfixer le téléphone et l'adresse d'un
+	 * avertissement qui ne les concerne pas. La mention est alors rendue dans la carte elle-même.
+	 */
 	$provisoires = array_filter( $items, static function ( $i ) {
-		return ! empty( $i['provisoire'] );
+		return ! empty( $i['provisoire'] ) && empty( $i['note'] );
 	} );
 	if ( $provisoires && function_exists( 'tfp_provisional_notice' ) ) {
 		tfp_provisional_notice();
@@ -502,6 +508,7 @@ function tfp_card_grid( array $grille ) {
 					'aria'         => '',
 					'span'         => '',
 					'provisoire'   => false,
+					'note'         => '',
 				)
 			);
 			if ( '' === $item['titre'] && '' === $item['description'] ) {
@@ -569,6 +576,12 @@ function tfp_card_grid( array $grille ) {
 						<?php endif; ?>
 					</div>
 				</<?php echo $balise; ?>>
+				<?php
+				// Mention propre à cette carte — placée dans la carte, hors du lien éventuel.
+				if ( $item['note'] && function_exists( 'tfp_provisional_notice' ) ) {
+					tfp_provisional_notice( $item['note'] );
+				}
+				?>
 			</li>
 		<?php endforeach; ?>
 	</ul>

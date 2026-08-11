@@ -11,95 +11,33 @@
 > Un conteneur qui contient visuellement plusieurs micro-cartes n’est jamais compté pour une
 > carte : il compte pour ses enfants.
 
-**4 routes × 1 largeurs · 31 anomalie(s), dont 9 grave(s)** (carte absente ou fusionnée).
+**1 routes × 1 largeurs · 6 anomalie(s), dont 3 grave(s)** (carte absente ou fusionnée).
 
 ## Synthèse
 
 | Route | Cartes 1440 px | Anomalies 1440 px |
 |---|---|---|
-| `#/nettoyage-professionnel` | 53 → 54 (+1) | ❌ 14 (2) |
-| `#/nos-prestations` | 12 → 13 (+1) | ⚠️ 1 |
-| `#/zones-intervention` | 52 → 49 (-3) | ❌ 11 (4) |
-| `#/contact` | 7 → 6 (-1) | ❌ 5 (3) |
+| `#/contact` | 7 → 7 | ❌ 6 (3) |
 
 ## Routes à corriger en priorité
 
 | Route | Cartes absentes ou fusionnées | Anomalies totales |
 |---|---|---|
-| `#/zones-intervention` | 4 | 11 |
-| `#/contact` | 3 | 5 |
-| `#/nettoyage-professionnel` | 2 | 14 |
+| `#/contact` | 3 | 6 |
 
 ## Archétypes employés par la maquette
 
 | Archétype | Occurrences dans la maquette |
 |---|---|
-| `carte-titre` | 37 |
-| `carte-titre-texte` | 32 |
-| `faq` | 16 |
-| `micro-carte` | 14 |
-| `tarif` | 8 |
-| `carte-sombre` | 8 |
-| `carte-image` | 6 |
-| `chip` | 1 |
-| `temoignage` | 1 |
+| `carte-titre` | 5 |
 | `carte-icone` | 1 |
+| `tarif` | 1 |
 
 ## Détail par route
 
-### `#/nettoyage-professionnel` → `/nettoyage-professionnel/`
-
-**1440 px** — bandes 19 → 19 · cartes 53 → 54 · 14 anomalie(s)
-
-| Anomalie | Archétype | Bande | Détail |
-|---|---|---|---|
-| colonnes | `chip` | 2 | « ★★★★★5,0/5sur Google » — 1 colonnes attendues, 2 rendues |
-| absente | `tarif` | 3 | « 27 € HT/htarif unique en région✓Devis gratuit sous 24 h✓Intervention r » |
-| type | `micro-carte` | 5 | « Bureaux & open-spaces » — rendue en `carte-titre` |
-| type | `micro-carte` | 5 | « Surfaces de vente » — rendue en `carte-titre` |
-| type | `micro-carte` | 5 | « Cabinets & salles d'attente » — rendue en `carte-titre` |
-| type | `micro-carte` | 5 | « Parties communes » — rendue en `carte-titre` |
-| type | `micro-carte` | 5 | « Meublés & hébergements » — rendue en `carte-titre` |
-| type | `micro-carte` | 5 | « Sanitaires & cuisines » — rendue en `carte-titre` |
-| absente | `temoignage` | 14 | « ★★★★★« Nous avons comparé une embauche et un prestataire. Ce qui a tra » |
-| surplus | `carte-titre-texte` | 6 | « Prestataire de nettoyage ou recrutement direct ? C'est la première que » |
-| surplus | `tarif` | 8 | « Régulier ou ponctuel, tâches, fréquences et horaires Entretien régulie » |
-| surplus | `carte-titre-texte` | 9 | « Comment choisir la bonne fréquence La fréquence dépend moins de la sur » |
-| surplus | `carte-titre-texte` | 12 | « Comment se construit un cahier des charges 01 Inventaire des espaces C » |
-| surplus | `carte-titre-texte` | 15 | « Trois situations concrètes Exemples représentatifs des demandes que no » |
-
-
-### `#/nos-prestations` → `/prestations/`
-
-**1440 px** — bandes 6 → 6 · cartes 12 → 13 · 1 anomalie(s)
-
-| Anomalie | Archétype | Bande | Détail |
-|---|---|---|---|
-| surplus | `chip` | 2 | « ★★★★★5,0/5 sur Google » |
-
-
-### `#/zones-intervention` → `/zones-intervention/`
-
-**1440 px** — bandes 13 → 13 · cartes 52 → 49 · 11 anomalie(s)
-
-| Anomalie | Archétype | Bande | Détail |
-|---|---|---|---|
-| type | `carte-sombre` | 2 | « Vérifier notre intervention dans ma commune » — rendue en `carte-titre` |
-| absente | `tarif` | 3 | « 27 € HT/htarif unique en région✓Devis gratuit sous 24 h✓Intervention r » |
-| type | `micro-carte` | 5 | « Agglomération dijonnaise : créneaux souples, passages courts » — rendue en `carte-titre-texte` |
-| type | `micro-carte` | 5 | « Villes principales de la région : passages regroupés, planni » — rendue en `carte-titre` |
-| type | `micro-carte` | 5 | « Communes plus éloignées : fréquence hebdomadaire ou bimensue » — rendue en `carte-titre` |
-| type | `micro-carte` | 5 | « Interventions ponctuelles : selon disponibilité, avec une da » — rendue en `carte-titre` |
-| type | `micro-carte` | 5 | « Les éventuelles indemnités kilométriques dépendent de l'adre » — rendue en `carte-titre-texte` |
-| absente | `carte-sombre` | 6 | « Bourgogne-Franche-ComtéLa page régionale · huit départements couverts  » |
-| absente | `micro-carte` | 6 | « Voir la page régionale → » |
-| absente | `carte-titre` | 13 | « Vérifier notre intervention dans ma commune » |
-| surplus | `chip` | 2 | « ★★★★★5,0/5 sur Google » |
-
-
 ### `#/contact` → `/contact/`
 
-**1440 px** — bandes 4 → 4 · cartes 7 → 6 · 5 anomalie(s)
+**1440 px** — bandes 4 → 4 · cartes 7 → 7 · 6 anomalie(s)
 
 | Anomalie | Archétype | Bande | Détail |
 |---|---|---|---|
@@ -108,5 +46,6 @@
 | absente | `tarif` | 4 | « ★★★★★5,0/527 € HT/h » |
 | surplus | `carte-titre` | 3 | « J’ai une question Formulaire court, réponse par e-mail ou téléphone. » |
 | surplus | `carte-titre` | 4 | « 🕑 Horaires de contact Du lundi au vendredi · réponse sous 24 h » |
+| surplus | `tarif` | 4 | « ★★★★★ /5 sur Google 27 € HT/h — tarif unique en région » |
 
 

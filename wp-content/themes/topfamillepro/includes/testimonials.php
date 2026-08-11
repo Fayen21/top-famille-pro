@@ -201,9 +201,9 @@ function tfp_testimonial_card( $item = null ) {
  * corrige. Elle est discrète mais lisible, et dans le flux normal : ni masquée, ni réservée aux
  * lecteurs d'écran.
  */
-function tfp_provisional_notice() {
+function tfp_provisional_notice( $texte = '' ) {
 	echo '<p class="tfp-provisional-notice" data-tfp-provisional-notice="1">'
-		. 'Exemples de présentation — témoignages authentiques en cours d’intégration.'
+		. esc_html( '' !== $texte ? $texte : 'Exemples de présentation — témoignages authentiques en cours d’intégration.' )
 		. '</p>';
 }
 
