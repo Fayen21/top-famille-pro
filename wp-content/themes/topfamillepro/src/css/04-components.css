@@ -3179,3 +3179,18 @@ body.tfp-body a.tfp-card-tile:focus-visible {
   font-size: 14px;
   color: var(--color-text-secondary);
 }
+
+/* Lien de séquence posé dans une bande sombre. Le contraste tombait à 1,71 sur la page pilier :
+   la couleur du lien restait le marine du thème alors que la bande, elle, a le fond relevé sur la
+   maquette. C'est la couleur du texte qui suit le fond, jamais l'inverse. */
+body.tfp-body .tfp-section--navy .tfp-link-row,
+body.tfp-body .tfp-section--primary .tfp-link-row {
+  color: var(--color-white);
+}
+
+body.tfp-body .tfp-section--navy .tfp-link-row:hover,
+body.tfp-body .tfp-section--navy .tfp-link-row:focus-visible,
+body.tfp-body .tfp-section--primary .tfp-link-row:hover,
+body.tfp-body .tfp-section--primary .tfp-link-row:focus-visible {
+  color: var(--color-turquoise);
+}

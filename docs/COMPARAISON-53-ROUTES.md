@@ -17,19 +17,19 @@
 |---|---|---|---|---|---|---|---|---|---|
 | `#/` | `/` | 13 → 13 | 7825 → 7943 (102 %) | 1058 → 1129 (107 %) | 11 → 13 | 15 → 31 | 11 → 11 | non | — |
 | `#/nos-tarifs` | `/tarifs/` | 13 → 13 | 5852 → 5996 (102 %) | 951 → 962 (101 %) | 10 → 16 | 24 → 51 | 2 → 3 | non | — |
-| `#/pourquoi-top-famille-pro` | `/pourquoi-nous/` | 8 → 8 | 4047 → 4272 (106 %) | 1038 → 1059 (102 %) | 12 → 14 | 15 → 36 | 2 → 3 | non | — |
+| `#/pourquoi-top-famille-pro` | `/pourquoi-nous/` | 8 → 8 | 4047 → 4328 (107 %) | 1038 → 1059 (102 %) | 12 → 14 | 15 → 36 | 2 → 3 | non | — |
 | `#/avis-clients` | `/avis-clients/` | 7 → 7 | 2938 → 3035 (103 %) | 613 → 632 (103 %) | 3 → 5 | 15 → 40 | 2 → 3 | non | — |
 | `#/conseils` | `/conseils/` | 7 → 7 | 2834 → 3309 (117 %) | 465 → 472 (102 %) | 3 → 12 | 15 → 32 | 5 → 6 | non | — |
 | `#/demande-de-devis` | `/demande-de-devis/` | 1 → 2 | 1947 → 2196 (113 %) | 366 → 385 (105 %) | 1 → 4 | 15 → 28 | 3 → 4 | non | — |
-| `#/nos-prestations` | `/prestations/` | 6 → 6 | 3510 → 3518 (100 %) | 808 → 822 (102 %) | 5 → 7 | 15 → 40 | 8 → 9 | non | — |
-| `#/nettoyage-professionnel` | `/nettoyage-professionnel/` | 19 → 19 | 11192 → 10602 (95 %) | 2560 → 2563 (100 %) | 44 → 46 | 29 → 70 | 10 → 3 | non | — |
+| `#/nos-prestations` | `/prestations/` | 6 → 6 | 3510 → 3546 (101 %) | 808 → 822 (102 %) | 5 → 7 | 15 → 40 | 8 → 9 | non | — |
+| `#/nettoyage-professionnel` | `/nettoyage-professionnel/` | 19 → 19 | 11192 → 11009 (98 %) | 2560 → 2563 (100 %) | 44 → 46 | 29 → 70 | 10 → 3 | non | — |
 | `#/service/bureaux` | `/prestations/bureaux/` | 14 → 14 | 7745 → 8036 (104 %) | 2074 → 2079 (100 %) | 30 → 32 | 28 → 52 | 3 → 4 | non | — |
 | `#/service/commerces` | `/prestations/commerces/` | 14 → 14 | 7484 → 7609 (102 %) | 1868 → 1877 (100 %) | 30 → 32 | 25 → 49 | 3 → 4 | non | — |
 | `#/service/cabinets` | `/prestations/cabinets/` | 15 → 15 | 8321 → 8460 (102 %) | 2055 → 2055 (100 %) | 31 → 33 | 33 → 57 | 3 → 4 | non | — |
 | `#/service/coproprietes` | `/prestations/coproprietes/` | 14 → 14 | 7684 → 7810 (102 %) | 2010 → 2017 (100 %) | 31 → 33 | 26 → 50 | 3 → 4 | non | — |
 | `#/service/meubles` | `/prestations/meubles/` | 14 → 14 | 7955 → 8237 (104 %) | 2086 → 2093 (100 %) | 30 → 32 | 26 → 50 | 3 → 4 | non | — |
 | `#/service/ponctuel` | `/prestations/ponctuel/` | 14 → 14 | 7588 → 7679 (101 %) | 1950 → 1958 (100 %) | 31 → 33 | 25 → 49 | 3 → 4 | non | — |
-| `#/notre-fonctionnement` | `/notre-fonctionnement/` | 5 → 5 | 4095 → 3727 (91 %) | 966 → 993 (103 %) | 9 → 11 | 15 → 37 | 2 → 3 | non | — |
+| `#/notre-fonctionnement` | `/notre-fonctionnement/` | 5 → 5 | 4095 → 3867 (94 %) | 966 → 993 (103 %) | 9 → 11 | 15 → 37 | 2 → 3 | non | — |
 | `#/departement/cote-dor` | `/zones-intervention/cote-dor/` | 11 → 11 | 6456 → 6701 (104 %) | 1376 → 1357 (99 %) | 16 → 18 | 21 → 35 | 2 → 3 | non | — |
 | `#/departement/doubs` | `/zones-intervention/doubs/` | 11 → 11 | 6140 → 6346 (103 %) | 1271 → 1241 (98 %) | 14 → 16 | 21 → 35 | 2 → 3 | non | — |
 | `#/departement/jura` | `/zones-intervention/jura/` | 11 → 11 | 6271 → 6398 (102 %) | 1261 → 1232 (98 %) | 15 → 17 | 21 → 35 | 2 → 3 | non | — |
@@ -38,9 +38,9 @@
 | `#/departement/saone-et-loire` | `/zones-intervention/saone-et-loire/` | 11 → 11 | 6034 → 6176 (102 %) | 1222 → 1191 (97 %) | 14 → 16 | 21 → 35 | 2 → 3 | non | — |
 | `#/departement/yonne` | `/zones-intervention/yonne/` | 11 → 11 | 6270 → 6455 (103 %) | 1278 → 1254 (98 %) | 15 → 17 | 21 → 35 | 2 → 3 | non | — |
 | `#/departement/territoire-de-belfort` | `/zones-intervention/territoire-de-belfort/` | 11 → 11 | 6333 → 6491 (102 %) | 1310 → 1282 (98 %) | 15 → 17 | 21 → 35 | 2 → 3 | non | — |
-| `#/zones-intervention` | `/zones-intervention/` | 13 → 13 | 6753 → 5962 (88 %) | 1321 → 1318 (100 %) | 12 → 14 | 20 → 66 | 2 → 3 | non | — |
-| `#/contact` | `/contact/` | 4 → 4 | 1924 → 1916 (100 %) | 309 → 302 (98 %) | 1 → 6 | 15 → 28 | 3 → 3 | non | — |
-| `#/bourgogne-franche-comte` | `/zones-intervention/bourgogne-franche-comte/` | 12 → 12 | 8674 → 8048 (93 %) | 1955 → 1959 (100 %) | 17 → 19 | 27 → 69 | 3 → 3 | non | — |
+| `#/zones-intervention` | `/zones-intervention/` | 13 → 13 | 6753 → 6585 (98 %) | 1321 → 1318 (100 %) | 12 → 14 | 20 → 66 | 2 → 3 | non | — |
+| `#/contact` | `/contact/` | 4 → 4 | 1924 → 1993 (104 %) | 309 → 352 (114 %) | 1 → 4 | 15 → 37 | 3 → 4 | non | — |
+| `#/bourgogne-franche-comte` | `/zones-intervention/bourgogne-franche-comte/` | 12 → 12 | 8674 → 8701 (100 %) | 1955 → 1959 (100 %) | 17 → 19 | 27 → 69 | 3 → 3 | non | — |
 | `#/ville/dijon` | `/zones-intervention/cote-dor/dijon/` | 13 → 13 | 8508 → 8512 (100 %) | 1918 → 1905 (99 %) | 20 → 22 | 27 → 42 | 3 → 4 | non | — |
 | `#/ville/beaune` | `/zones-intervention/cote-dor/beaune/` | 13 → 13 | 7106 → 7085 (100 %) | 1445 → 1410 (98 %) | 17 → 19 | 21 → 36 | 3 → 4 | non | — |
 | `#/ville/besancon` | `/zones-intervention/doubs/besancon/` | 13 → 13 | 8076 → 8211 (102 %) | 1822 → 1801 (99 %) | 19 → 21 | 27 → 42 | 3 → 4 | non | — |
@@ -52,8 +52,8 @@
 | `#/ville/macon` | `/zones-intervention/saone-et-loire/macon/` | 13 → 13 | 8072 → 8117 (101 %) | 1690 → 1663 (98 %) | 20 → 22 | 27 → 42 | 3 → 4 | non | — |
 | `#/ville/auxerre` | `/zones-intervention/yonne/auxerre/` | 13 → 13 | 8089 → 8239 (102 %) | 1759 → 1741 (99 %) | 20 → 22 | 27 → 42 | 3 → 4 | non | — |
 | `#/ville/belfort` | `/zones-intervention/territoire-de-belfort/belfort/` | 13 → 13 | 8098 → 8155 (101 %) | 1758 → 1736 (99 %) | 20 → 22 | 27 → 42 | 3 → 4 | non | — |
-| `#/a-propos` | `/a-propos/` | 6 → 6 | 4433 → 4197 (95 %) | 1108 → 1135 (102 %) | 10 → 12 | 15 → 28 | 3 → 3 | non | — |
-| `#/recrutement` | `/recrutement/` | 5 → 5 | 2394 → 2556 (107 %) | 387 → 400 (103 %) | 5 → 7 | 19 → 36 | 3 → 3 | non | — |
+| `#/a-propos` | `/a-propos/` | 6 → 6 | 4433 → 4561 (103 %) | 1108 → 1135 (102 %) | 10 → 12 | 15 → 28 | 3 → 3 | non | — |
+| `#/recrutement` | `/recrutement/` | 5 → 5 | 2394 → 2584 (108 %) | 387 → 400 (103 %) | 5 → 7 | 19 → 36 | 3 → 3 | non | — |
 | `#/mentions-legales` | `/mentions-legales/` | 3 → 3 | 2014 → 2763 (137 %) | 409 → 559 (137 %) | 6 → 10 | 15 → 28 | 2 → 3 | non | — |
 | `#/politique-de-confidentialite` | `/politique-de-confidentialite/` | 3 → 3 | 1936 → 2877 (149 %) | 399 → 598 (150 %) | 5 → 11 | 15 → 33 | 2 → 3 | non | — |
 | `#/gestion-des-cookies` | `/gestion-des-cookies/` | 3 → 3 | 1718 → 2159 (126 %) | 345 → 479 (139 %) | 4 → 9 | 15 → 28 | 2 → 3 | non | — |
@@ -114,10 +114,10 @@
 | 1 | (Accueil / Pourquoi Top-Famille Pro) | (Accueil/Pourquoi nous) | 42 → 47 | ✅ identique |
 | 2 | Pourquoi choisir Top-Famille Pro | Pourquoi choisir Top-Famille Pro | 314 → 522 | ⚠️ écart +208 px |
 | 3 | (Directement joignableAudrey est votre ) | (Directement joignableAudrey est votre ) | 509 → 688 | ⚠️ écart +179 px |
-| 4 | Des preuves plutôt que des slogans | Des preuves plutôt que des slogans | 376 → 376 | ✅ identique |
+| 4 | Des preuves plutôt que des slogans | Des preuves plutôt que des slogans | 376 → 404 | ≈ proche |
 | 5 | Ce qui nous distingue, concrètement | Ce qui nous distingue, concrètement | 789 → 853 | ⚠️ écart +64 px |
 | 6 | Les objections que l'on nous adresse | Les objections que l'on nous adresse | 488 → 449 | ≈ proche |
-| 7 | Vérifier par vous-même | Vérifier par vous-même | 390 → 361 | ≈ proche |
+| 7 | Vérifier par vous-même | Vérifier par vous-même | 390 → 389 | ✅ identique |
 | 8 | Faisons connaissance | Faisons connaissance | 319 → 108 | ⚠️ écart -211 px |
 
 ### `#/avis-clients` → `/avis-clients/`
@@ -160,7 +160,7 @@
 | 3 | Comment choisir la bonne prestation ? | Comment choisir la bonne prestation ? | 359 → 386 | ≈ proche |
 | 4 | Ce qui est commun aux six prestations | Ce qui est commun aux six prestations | 307 → 365 | ≈ proche |
 | 5 | (Nettoyage de bureauxUn entretien régul) | (Nettoyage de bureauxUn entretien régul) | 1197 → 1074 | ⚠️ écart -123 px |
-| 6 | Besoin d'aide pour choisir ? | Besoin d'aide pour choisir ? | 334 → 108 | ⚠️ écart -226 px |
+| 6 | Besoin d'aide pour choisir ? | Besoin d'aide pour choisir ? | 334 → 136 | ⚠️ écart -198 px |
 
 ### `#/nettoyage-professionnel` → `/nettoyage-professionnel/`
 
@@ -169,18 +169,18 @@
 | 1 | (Accueil / Nettoyage professionnel) | (Accueil/Nettoyage professionnel) | 42 → 47 | ✅ identique |
 | 2 | Le nettoyage professionnel de vos locaux en Bo | Le nettoyage professionnel de vos locaux en Bo | 661 → 505 | ⚠️ écart -156 px |
 | 3 | (27 € HT/htarif unique en région✓Devis ) | (27 € HT/h tarif unique en région Voir ) | 202 → 311 | ⚠️ écart +109 px |
-| 4 | (Le nettoyage professionnel désigne l'e) | (Le nettoyage professionnel désigne l'e) | 492 → 340 | ⚠️ écart -152 px |
+| 4 | (Le nettoyage professionnel désigne l'e) | (Le nettoyage professionnel désigne l'e) | 492 → 424 | ⚠️ écart -68 px |
 | 5 | Les professionnels que nous accompagnons | Les professionnels que nous accompagnons | 516 → 588 | ⚠️ écart +72 px |
-| 6 | Prestataire de nettoyage ou recrutement direct | Prestataire de nettoyage ou recrutement direct | 731 → 649 | ⚠️ écart -82 px |
+| 6 | Prestataire de nettoyage ou recrutement direct | Prestataire de nettoyage ou recrutement direct | 731 → 740 | ≈ proche |
 | 7 | Nos six prestations de nettoyage professionnel | Nos six prestations de nettoyage professionnel | 560 → 588 | ≈ proche |
 | 8 | Régulier ou ponctuel, tâches, fréquences et ho | Régulier ou ponctuel, tâches, fréquences et ho | 862 → 776 | ⚠️ écart -86 px |
-| 9 | Comment choisir la bonne fréquence | Comment choisir la bonne fréquence | 700 → 655 | ≈ proche |
-| 10 | Les tâches, espace par espace | Les tâches, espace par espace | 763 → 847 | ⚠️ écart +84 px |
+| 9 | Comment choisir la bonne fréquence | Comment choisir la bonne fréquence | 700 → 739 | ≈ proche |
+| 10 | Les tâches, espace par espace | Les tâches, espace par espace | 763 → 875 | ⚠️ écart +112 px |
 | 11 | Un cahier des charges défini avec vous | Un cahier des charges défini avec vous | 433 → 449 | ≈ proche |
 | 12 | Comment se construit un cahier des charges | Comment se construit un cahier des charges | 735 → 718 | ≈ proche |
-| 13 | Cahier des charges, intervenants et suivi | Cahier des charges, intervenants et suivi | 674 → 464 | ⚠️ écart -210 px |
+| 13 | Cahier des charges, intervenants et suivi | Cahier des charges, intervenants et suivi | 674 → 555 | ⚠️ écart -119 px |
 | 14 | (★★★★★« Nous avons comparé une embauche) | (★★★★★« Nous avons comparé une embauche) | 396 → 427 | ≈ proche |
-| 15 | Trois situations concrètes | Trois situations concrètes | 552 → 537 | ≈ proche |
+| 15 | Trois situations concrètes | Trois situations concrètes | 552 → 565 | ≈ proche |
 | 16 | Le tarif, en toute transparence | Le tarif, en toute transparence | 450 → 522 | ⚠️ écart +72 px |
 | 17 | Pour aller plus loin | Pour aller plus loin | 286 → 318 | ≈ proche |
 | 18 | Questions fréquentes | Questions fréquentes | 976 → 869 | ⚠️ écart -107 px |
@@ -308,7 +308,7 @@
 | 1 | (Accueil / Notre fonctionnement) | (Accueil/Notre fonctionnement) | 42 → 47 | ✅ identique |
 | 2 | Notre fonctionnement | Notre fonctionnement | 314 → 522 | ⚠️ écart +208 px |
 | 3 | (01Prise de contactVous nous décrivez v) | (01 Prise de contactVous nous décrivez ) | 1034 → 922 | ⚠️ écart -112 px |
-| 4 | Les informations dont nous avons besoin | Les informations dont nous avons besoin | 1567 → 1261 | ⚠️ écart -306 px |
+| 4 | Les informations dont nous avons besoin | Les informations dont nous avons besoin | 1567 → 1401 | ⚠️ écart -166 px |
 | 5 | Prêt à démarrer ? | Prêt à démarrer ? | 317 → 108 | ⚠️ écart -209 px |
 
 ### `#/departement/cote-dor` → `/zones-intervention/cote-dor/`
@@ -446,16 +446,16 @@
 | 1 | (Accueil / Zones d'intervention) | (Accueil/Zones d'intervention) | 42 → 47 | ✅ identique |
 | 2 | Nos zones d'intervention en Bourgogne-Franche- | Nos zones d'intervention en Bourgogne-Franche- | 383 → 468 | ⚠️ écart +85 px |
 | 3 | (27 € HT/htarif unique en région✓Devis ) | (27 € HT/h tarif unique en région Voir ) | 186 → 295 | ⚠️ écart +109 px |
-| 4 | (Réponse directeNous intervenons unique) | (Réponse directeNous intervenons unique) | 323 → 233 | ⚠️ écart -90 px |
-| 5 | Une couverture régionale organisée depuis Sain | Une couverture régionale organisée depuis Sain | 1391 → 1076 | ⚠️ écart -315 px |
+| 4 | (Réponse directeNous intervenons unique) | (Réponse directeNous intervenons unique) | 323 → 289 | ≈ proche |
+| 5 | Une couverture régionale organisée depuis Sain | Une couverture régionale organisée depuis Sain | 1391 → 1274 | ⚠️ écart -117 px |
 | 6 | (Bourgogne-Franche-ComtéLa page régiona) | (Bourgogne-Franche-ComtéLa page régiona) | 192 → 84 | ⚠️ écart -108 px |
-| 7 | Les huit départements | Les huit départements | 429 → 403 | ≈ proche |
-| 8 | Nos dix villes principales | Nos dix villes principales | 344 → 323 | ≈ proche |
-| 9 | Premières communes secondaires | Premières communes secondaires | 327 → 313 | ≈ proche |
-| 10 | Départements, villes et communes : comment lir | Départements, villes et communes : comment lir | 1163 → 916 | ⚠️ écart -247 px |
+| 7 | Les huit départements | Les huit départements | 429 → 431 | ✅ identique |
+| 8 | Nos dix villes principales | Nos dix villes principales | 344 → 351 | ✅ identique |
+| 9 | Premières communes secondaires | Premières communes secondaires | 327 → 341 | ≈ proche |
+| 10 | Départements, villes et communes : comment lir | Départements, villes et communes : comment lir | 1163 → 1173 | ≈ proche |
 | 11 | (Découvrir nos prestationsBureaux, comm) | (Découvrir nos prestations Bureaux, com) | 193 → 184 | ≈ proche |
 | 12 | Questions fréquentes sur nos zones d'intervent | Questions fréquentes sur nos zones d'intervent | 614 → 569 | ≈ proche |
-| 13 | Votre commune est-elle couverte ? | Votre commune est-elle couverte ? | 346 → 148 | ⚠️ écart -198 px |
+| 13 | Votre commune est-elle couverte ? | Votre commune est-elle couverte ? | 346 → 176 | ⚠️ écart -170 px |
 
 ### `#/contact` → `/contact/`
 
@@ -463,8 +463,8 @@
 |---|---|---|---|---|
 | 1 | (Accueil / Contact) | (Accueil/Contact) | 42 → 47 | ✅ identique |
 | 2 | Contacter Top-Famille Pro | Contacter Top-Famille Pro | 178 → 234 | ≈ proche |
-| 3 | (J'ai une question Formulaire court, ré) | Audrey Brançon | 152 → 387 | ⚠️ écart +235 px |
-| 4 | (Nom Entreprise (facultatif) E-mail Tél) | Une demande précise ? | 731 → 381 | ⚠️ écart -350 px |
+| 3 | (J'ai une question Formulaire court, ré) | (J’ai une question Formulaire court, ré) | 152 → 244 | ⚠️ écart +92 px |
+| 4 | (Nom Entreprise (facultatif) E-mail Tél) | Une demande précise ? | 731 → 601 | ⚠️ écart -130 px |
 
 ### `#/bourgogne-franche-comte` → `/zones-intervention/bourgogne-franche-comte/`
 
@@ -473,15 +473,15 @@
 | 1 | (Accueil / Zones d'intervention / Bourg) | (Accueil/Zones d'intervention/Bourgogne) | 42 → 47 | ✅ identique |
 | 2 | Entreprise de nettoyage en Bourgogne-Franche-C | Entreprise de nettoyage en Bourgogne-Franche-C | 526 → 462 | ⚠️ écart -64 px |
 | 3 | (27 € HT/htarif unique en région✓Devis ) | (27 € HT/h tarif unique en région Voir ) | 186 → 295 | ⚠️ écart +109 px |
-| 4 | (Réponse directeTop-Famille Pro est une) | (Réponse directeTop-Famille Pro est une) | 323 → 233 | ⚠️ écart -90 px |
-| 5 | Notre implantation réelle : Saint-Apollinaire, | Notre implantation réelle : Saint-Apollinaire, | 2022 → 1688 | ⚠️ écart -334 px |
-| 6 | Nos prestations partout en Bourgogne-Franche-C | Nos prestations partout en Bourgogne-Franche-C | 576 → 561 | ≈ proche |
-| 7 | Les huit départements couverts | Les huit départements couverts | 733 → 627 | ⚠️ écart -106 px |
+| 4 | (Réponse directeTop-Famille Pro est une) | (Réponse directeTop-Famille Pro est une) | 323 → 289 | ≈ proche |
+| 5 | Notre implantation réelle : Saint-Apollinaire, | Notre implantation réelle : Saint-Apollinaire, | 2022 → 1972 | ≈ proche |
+| 6 | Nos prestations partout en Bourgogne-Franche-C | Nos prestations partout en Bourgogne-Franche-C | 576 → 620 | ≈ proche |
+| 7 | Les huit départements couverts | Les huit départements couverts | 733 → 655 | ⚠️ écart -78 px |
 | 8 | Nos dix villes principales | Nos dix villes principales | 424 → 650 | ⚠️ écart +226 px |
 | 9 | Un tarif régional unique | Un tarif régional unique | 478 → 546 | ⚠️ écart +68 px |
-| 10 | Sélection des intervenants et suivi | Sélection des intervenants et suivi | 1540 → 1317 | ⚠️ écart -223 px |
+| 10 | Sélection des intervenants et suivi | Sélection des intervenants et suivi | 1540 → 1513 | ≈ proche |
 | 11 | Questions fréquentes — Bourgogne-Franche-Comté | Questions fréquentes — Bourgogne-Franche-Comté | 684 → 635 | ≈ proche |
-| 12 | Vos locaux, où que vous soyez en région | Vos locaux, où que vous soyez en région | 319 → 102 | ⚠️ écart -217 px |
+| 12 | Vos locaux, où que vous soyez en région | Vos locaux, où que vous soyez en région | 319 → 133 | ⚠️ écart -186 px |
 
 ### `#/ville/dijon` → `/zones-intervention/cote-dor/dijon/`
 
@@ -687,9 +687,9 @@
 |---|---|---|---|---|
 | 1 | (Accueil / À propos) | (Accueil/À propos) | 42 → 47 | ✅ identique |
 | 2 | Une entreprise régionale, un visage | Une entreprise régionale, un visage | 612 → 758 | ⚠️ écart +146 px |
-| 3 | (« Mon rôle, c'est de rester joignable ) | (« Mon rôle, c'est de rester joignable ) | 277 → 227 | ≈ proche |
+| 3 | (« Mon rôle, c'est de rester joignable ) | (« Mon rôle, c'est de rester joignable ) | 277 → 255 | ≈ proche |
 | 4 | (ProximitéBasée à Saint-Apollinaire, no) | (ProximitéBasée à Saint-Apollinaire, no) | 321 → 507 | ⚠️ écart +186 px |
-| 5 | Qui nous sommes | Qui nous sommes | 2083 → 1686 | ⚠️ écart -397 px |
+| 5 | Qui nous sommes | Qui nous sommes | 2083 → 2022 | ⚠️ écart -61 px |
 | 6 | Parlons de vos locaux | Parlons de vos locaux | 277 → 104 | ⚠️ écart -173 px |
 
 ### `#/recrutement` → `/recrutement/`
@@ -700,7 +700,7 @@
 | 2 | Rejoindre Top-Famille Pro | Rejoindre Top-Famille Pro | 496 → 446 | ≈ proche |
 | 3 | Les missions que nous confions | Les missions que nous confions | 321 → 310 | ≈ proche |
 | 4 | Ce que nous attendons | Ce que nous attendons | 384 → 664 | ⚠️ écart +280 px |
-| 5 | Envie de nous rejoindre ? | Envie de nous rejoindre ? | 329 → 221 | ⚠️ écart -108 px |
+| 5 | Envie de nous rejoindre ? | Envie de nous rejoindre ? | 329 → 249 | ⚠️ écart -80 px |
 
 ### `#/mentions-legales` → `/mentions-legales/`
 

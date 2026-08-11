@@ -134,7 +134,22 @@ const RELEVE = () => {
 		const s = getComputedStyle(el);
 		const t = txt(el);
 		const img = el.querySelector('img,picture,svg');
-		const titre = el.querySelector('h2,h3,h4,strong,b');
+		/*
+		 * **Faux positif corrigé.** Le classement se faisait sur les balises (`h2,h3,h4,strong,b`),
+		 * alors que le contrat de cet outil est de classer sur le **rendu**. La maquette compose ses
+		 * intitulés de carte en `div` nu ; le thème emploie `strong` ou `h3` selon ce que fait le
+		 * prototype, ce qui est plus juste sémantiquement. Résultat : à écran identique, la référence
+		 * était classée `micro-carte` et le thème `carte-titre`, sur 115 cartes.
+		 *
+		 * Un intitulé est donc reconnu à ce qui le distingue visuellement du corps de la carte :
+		 * une graisse d'au moins 600, ou une taille supérieure à celle du texte courant de la carte.
+		 */
+		const tailleCorps = parseFloat(getComputedStyle(el).fontSize) || 16;
+		const titre = [...el.querySelectorAll('*')].find((x) => {
+			if (!(x.textContent || '').trim()) return false;
+			const xs = getComputedStyle(x);
+			return (parseInt(xs.fontWeight, 10) || 400) >= 600 || parseFloat(xs.fontSize) > tailleCorps + 0.5;
+		});
 		const numero = [...el.children].some((c) => /^\d{1,2}$/.test(txt(c)) && parseFloat(getComputedStyle(c).fontSize) >= 18);
 		const etoiles = /★{3,}/.test(t);
 		const citation = !!el.querySelector('blockquote') || /^[«"]/.test(t);

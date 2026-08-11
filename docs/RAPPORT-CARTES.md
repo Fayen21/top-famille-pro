@@ -496,3 +496,148 @@ jamais le fond relevé.
 - **`/zones-intervention/`** reste à 88 % avec 4 cartes graves.
 - Onze routes restent hors de la plage 95-105 %, dont les trois pages légales, qui portent
   légitimement plus de texte que la maquette (exception documentée).
+
+---
+
+# Passe 4 — Contact reproduite, cause de /zones-intervention/ localisée
+
+> 11 août 2026. Verdict : **PARTIEL — ÉCARTS RESTANTS**.
+
+## 1. Contact — chemin de rendu avant / après
+
+**Avant** : gabarit propre, deux cartes génériques `tfp-card` avec styles en ligne, aucune
+micro-carte, aucun composant partagé. 7 cartes dans la maquette, **2** côté thème.
+
+**Après** : le gabarit reste spécifique — c'est légitime, la page n'est pas une page de bandes —
+mais ses cartes passent par `tfp_card_grid()` et `tfp_chip_list()`, avec le **même schéma
+structuré** et la même géométrie relevée que les bandes statiques. Aucune seconde architecture.
+
+Aucune coordonnée n'est recopiée : téléphone, adresse électronique, ville et région viennent toutes
+de `tfp_site_data()`. Le formulaire de devis n'est pas touché — Contact y renvoie, comme la
+maquette : deux étapes, validation client et serveur, nonce, honeypot, consentement, UTM, messages
+d'erreur, anti-double-envoi et confirmation accessible restent intacts sur `/demande-de-devis/`.
+
+## 2. Les micro-cartes reproduites
+
+| Groupe | Relevé sur la maquette |
+|---|---|
+| 2 cartes d'orientation | 403×104, fond #EFEFEF, rayon 16, filet 1 px, rembourrage 22, 2 colonnes, écart 14 |
+| 4 cartes de coordonnées | 512×86, blanc, rayon 12, filet 1 px, rembourrage 16/18, 1 colonne, écart 12 — icône, intitulé, valeur, nom accessible |
+| 3 pastilles de renvoi | 118×43, #F4F7F8, rayon 100, filet 1 px, écart 10 |
+| Portrait | 64×64, rond, `alt` vide, nom écrit à côté en texte |
+
+Cartes maquette → WordPress : **7 → 6** (était 7 → 2). Hauteur 100 % → 104 %.
+
+## 3. `/zones-intervention/` — diagnostic bande par bande
+
+`tools/diagnostic-sections.mjs` aligne les bandes des deux côtés et donne le delta en pixels de
+chacune. **Contrôle de validité** : la somme des deltas donnait −874 px pour un écart total mesuré
+de −791, les 83 px restants étant l'en-tête et le pied de page. Le diagnostic tenait donc, et
+désignait deux bandes.
+
+| Bande | H réf | H WP | Δ | Largeur conteneur |
+|---|---|---|---|---|
+| Une couverture régionale organisée depuis Saint-Apollinaire | 1391 | 1076 | **−315** | 900 → 1260 |
+| Départements, villes et communes : comment lire | 1163 | 916 | **−247** | 900 → 1260 |
+| Votre commune est-elle couverte ? | 346 | 148 | −198 | 1040 → 1260 |
+| (bande de rappel) | 192 | 84 | −108 | — |
+
+Même signature partout : **la colonne de lecture**. Le prototype borne son texte narratif à
+740-780 px ; le thème le laissait occuper les 1 114 px du conteneur. Une ligne plus large tient
+plus de mots, donc moins de lignes : chaque paragraphe passait de 134 px de haut à 84.
+
+La largeur est désormais relevée sur les **paragraphes réels** de chaque bande — seuls eux portent
+la colonne de lecture — et appliquée en variable CSS. Les grilles de cartes gardent toute la
+largeur. Aucun rembourrage global, aucune hauteur forcée, aucune règle créée pour atteindre un
+pourcentage.
+
+**Deltas après correction : somme −251 px pour un écart total de −168 px.** `/zones-intervention/`
+passe de **88 % à 98 %**.
+
+## 4. Effet sur les autres routes
+
+| Route | Avant | Après |
+|---|---|---|
+| `/zones-intervention/` | 88 % | **98 %** |
+| `/nettoyage-professionnel/` | 96 % | **98 %** |
+| `/zones-intervention/bourgogne-franche-comte/` | 93 % | **100 %** |
+| `/prestations/` | 99 % | **101 %** |
+| `/a-propos/` | 95 % | 103 % |
+| `/notre-fonctionnement/` | 91 % | 94 % |
+
+**42 routes sur 53 dans la plage 95-105 %, dont 33 dans 98-102 %.**
+
+## 5. Faux positif de l'outil, corrigé
+
+Le classement d'archétype se faisait sur les **balises** (`h2,h3,h4,strong,b`), alors que le contrat
+de l'outil est de classer sur le **rendu**. La maquette compose ses intitulés de carte en `div` nu ;
+le thème emploie `strong` ou `h3` selon ce que fait le prototype — ce qui est plus juste
+sémantiquement. À écran identique, la référence était donc classée `micro-carte` et le thème
+`carte-titre`, sur 115 cartes.
+
+Un intitulé est maintenant reconnu à ce qui le distingue visuellement du corps de la carte : une
+graisse d'au moins 600, ou une taille supérieure à celle du texte courant. Correction reproductible,
+appliquée dans l'outil et non ignorée à la main.
+
+Effet immédiat : `/zones-intervention/` 41 → 11 anomalies, `/nettoyage-professionnel/` 20 → 14,
+`/contact/` 9 → 5.
+
+## 6. Total des anomalies
+
+| Étape | Graves (absente + fusionnée), 1440 px |
+|---|---|
+| Avant cette passe | 144 |
+| Après correction de Contact | 140 |
+| Après correction du faux positif de l'outil | **86** |
+
+Sur les 53 routes aux **deux largeurs** : 927 anomalies, 283 graves, 10 routes sans aucune anomalie.
+Répartition : 205 absente · 78 fusionnée · 239 supplémentaire · 220 type · 185 colonnes.
+
+## 7. Migration
+
+Installateur **v1.10.0**, thème **v0.11.0**.
+
+- Identifiants **inchangés** : 54, 47, 57 avant comme après.
+- 56 contenus, **aucun doublon**, aucun slug modifié.
+- Deux exécutions successives : empreintes stables.
+- Données légales présentes, **0 ancien tarif**.
+
+## 8. Tests
+
+| Contrôle | Résultat |
+|---|---|
+| Suite Playwright | **833 / 833** |
+| Blocs de texte manquants | **0** |
+| WCAG 2.2 AA 2.5.8 | 0 violation |
+| axe-core + clavier | 0 violation |
+| JSON-LD | conforme |
+| Images cassées sur `/contact/` | 2 → **0** |
+
+Lighthouse, banc avec compression et cache :
+
+| Page | Perf. | A11y | BP | SEO | CLS |
+|---|---|---|---|---|---|
+| Accueil | 91 | 100 | 100 | 100 | 0,008 |
+| Contact | **100** | 100 | 100 | 100 | 0,006 |
+| Zones d'intervention | 97 | 100 | 100 | 100 | 0,006 |
+| Nettoyage professionnel | 96 | **100** | 100 | 100 | 0,001 |
+| Prestations / bureaux | 92 | 100 | 100 | 100 | 0,009 |
+| Tarifs | 92 | 100 | 100 | 100 | 0,005 |
+
+Deux régressions détectées et corrigées dans la passe, toutes deux nées de l'emploi des couleurs
+**relevées** : le fond de tuile pouvant être plus clair que celui qu'attendait le thème, et une
+bande sombre gardant un lien en marine — contraste 1,71. C'est la couleur du texte qui suit le
+fond, jamais l'inverse.
+
+## 9. Écarts encore visibles
+
+- **`/contact/`** : 6 cartes sur 7. Manquent la carte d'attribution du portrait (rendue à plat) et
+  une carte d'aparté « ★★★★★ 5,0/5 · 27 € HT/h ». Le reste correspond.
+- **Horaires de contact** : la maquette écrit « Du lundi au vendredi · à confirmer · réponse sous
+  24 h ». La mention « à confirmer » est retirée — aucun marqueur d'information non arrêtée ne doit
+  rester visible en production. **Écart éditorial assumé.**
+- **Onze routes hors plage**, dont les trois pages légales (exception documentée : elles portent
+  plus de texte réel que la maquette), `/conseils/` à 117 %, `/demande-de-devis/` à 113 % et les
+  trois articles à 106-114 %.
+- **`surplus` et `colonnes`** restent les deux familles d'anomalies les plus nombreuses. Elles n'ont
+  pas été analysées une par une dans cette passe.
