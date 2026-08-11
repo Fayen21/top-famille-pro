@@ -3134,3 +3134,48 @@ body.tfp-body a.tfp-card-tile:focus-visible {
 .tfp-static-block > .tfp-faq-item {
   max-width: var(--tfp-bande-texte, none);
 }
+
+/* ---------- Page Contact ----------
+   Deux colonnes : coordonnées à gauche, orientation vers le devis à droite, comme la maquette. */
+.tfp-contact-cols {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  gap: 40px;
+  align-items: start;
+}
+
+@media (max-width: 899px) {
+  .tfp-contact-cols {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* Portrait de la gérante : 64 px, rond. Le visuel est provisoire et ne prétend représenter
+   personne — son `alt` est vide et le nom est écrit à côté en texte (CLAUDE.md §5.6). */
+.tfp-contact-person {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.tfp-contact-person__photo {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.tfp-contact-person strong {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 18px;
+  color: var(--color-navy);
+}
+
+.tfp-contact-person span {
+  display: block;
+  margin-top: 2px;
+  font-size: 14px;
+  color: var(--color-text-secondary);
+}

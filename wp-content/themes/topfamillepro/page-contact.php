@@ -37,29 +37,130 @@ get_header();
 	<p class="tfp-section__lede">Une question, un projet d'entretien ? <?php echo esc_html( explode( ' ', $site['manager'] )[0] ); ?> vous répond directement, sous 24 heures.</p>
 </section>
 
-<section class="tfp-section">
-	<div class="tfp-container tfp-grid tfp-grid--autofit-md">
-		<div class="tfp-card">
-			<h2 style="font-size:19px;margin-bottom:10px"><?php echo esc_html( $site['manager'] ); ?></h2>
-			<p style="color:var(--color-text-tertiary);margin-bottom:10px">Gérante — votre interlocutrice pour les devis et le suivi</p>
-			<p><a href="tel:<?php echo esc_attr( $site['phone_href'] ); ?>" class="tfp-link-arrow">☎ <?php echo esc_html( $site['phone'] ); ?></a></p>
-			<p style="margin-top:6px"><a href="mailto:<?php echo esc_attr( $site['email'] ); ?>" class="tfp-link-arrow">✉ <?php echo esc_html( $site['email'] ); ?></a></p>
-		</div>
-		<div class="tfp-card">
-			<h2 style="font-size:19px;margin-bottom:10px">Siège social</h2>
-			<p style="color:var(--color-text-secondary)"><?php echo esc_html( $site['brand_name'] ); ?><br><?php echo esc_html( $site['address_street'] ); ?><br><?php echo esc_html( $site['address_cp'] . ' ' . $site['address_city'] ); ?></p>
-			<p style="margin-top:10px;font-size:13px;color:var(--color-text-tertiary)">Adresse administrative — intervention sur site chez vous, pas d'accueil du public à cette adresse.</p>
-		</div>
+<?php
+/*
+ * Micro-cartes de la page Contact.
+ *
+ * Cette page a son propre gabarit, mais **pas sa propre architecture** : ses cartes passent par
+ * `tfp_card_grid()` et `tfp_chip_list()`, les mêmes composants que les bandes statiques, avec le
+ * même schéma structuré. Une seconde implémentation aurait divergé à la première correction.
+ *
+ * Les coordonnées viennent toutes de `tfp_site_data()` : aucun numéro, aucune adresse et aucune
+ * adresse électronique n'est recopiée ici.
+ *
+ * Géométrie relevée sur la maquette à 1440 px :
+ *  - deux cartes d'orientation : 403×104, fond #EFEFEF, rayon 16, filet 1 px, rembourrage 22,
+ *    deux colonnes, écart 14 ;
+ *  - quatre cartes de coordonnées : 512×86, fond blanc, rayon 12, filet 1 px, rembourrage 16/18,
+ *    une colonne, écart 12 ;
+ *  - trois pastilles de renvoi : 118×43, fond #F4F7F8, rayon 100, filet 1 px, écart 10.
+ */
+$prenom = explode( ' ', $site['manager'] )[0];
+
+$orientation = array(
+	'colonnes' => 2,
+	'theme'    => 'clair',
+	'variante' => 'lien',
+	'gap'      => '14px',
+	'fond'     => 'rgb(239, 239, 239)',
+	'rayon'    => '16px',
+	'filet'    => '1px',
+	'padding'  => '22px',
+	'items'    => array(
+		array(
+			'titre'       => 'J’ai une question',
+			'description' => 'Formulaire court, réponse par e-mail ou téléphone.',
+			'route'       => '',
+		),
+		array(
+			'titre'        => 'J’ai un besoin de nettoyage',
+			'description'  => 'Direction le formulaire de devis détaillé',
+			'route'        => '#/demande-de-devis',
+			'libelle_lien' => 'Demander mon devis',
+		),
+	),
+);
+
+$coordonnees = array(
+	'colonnes' => 1,
+	'theme'    => 'clair',
+	'variante' => 'lien',
+	'gap'      => '12px',
+	'fond'     => 'rgb(255, 255, 255)',
+	'rayon'    => '12px',
+	'filet'    => '1px',
+	'padding'  => '16px 18px',
+	'items'    => array(
+		array(
+			'icone'       => '☎',
+			'titre'       => 'Téléphone',
+			'description' => $site['phone'],
+			'route'       => 'tel:' . $site['phone_href'],
+			'aria'        => 'Appeler ' . $prenom . ' au ' . $site['phone'],
+		),
+		array(
+			'icone'       => '✉',
+			'titre'       => 'E-mail',
+			'description' => $site['email'],
+			'route'       => 'mailto:' . $site['email'],
+			'aria'        => 'Écrire à ' . $site['email'],
+		),
+		array(
+			'icone'       => '📍',
+			'titre'       => 'Implantation',
+			'description' => $site['address_city'] . ' (' . substr( $site['address_cp'], 0, 2 ) . ') · ' . $site['address_region'],
+		),
+		array(
+			'icone'       => '🕑',
+			'titre'       => 'Horaires de contact',
+			// La maquette écrit « Du lundi au vendredi · à confirmer · réponse sous 24 h ». La
+			// mention « à confirmer » est retirée : c'est un marqueur d'information non arrêtée, et
+			// aucun ne doit rester visible en production. Écart documenté au rapport.
+			'description' => 'Du lundi au vendredi · réponse sous 24 h',
+		),
+	),
+);
+?>
+
+<section class="tfp-section--tight">
+	<div class="tfp-container">
+		<?php tfp_card_grid( $orientation ); ?>
 	</div>
 </section>
 
-<section class="tfp-section--alt tfp-section">
-	<div class="tfp-container" style="max-width:640px">
-		<h2>Une demande précise ?</h2>
-		<p style="margin-top:12px;color:var(--color-text-secondary)">Pour un devis, décrivez directement vos locaux et votre besoin via le formulaire dédié : la réponse est plus rapide et plus précise qu'un échange initial par téléphone.</p>
-		<p style="margin-top:16px">
-			<?php tfp_button( array( 'label' => 'Demander mon devis', 'href' => home_url( '/demande-de-devis/' ), 'variant' => 'primary' ) ); ?>
-		</p>
+<section class="tfp-section--tight">
+	<div class="tfp-container tfp-contact-cols">
+		<div>
+			<div class="tfp-contact-person">
+				<?php tfp_picture( 'audrey-placeholder', array( 'sizes' => '64px', 'alt' => '', 'class' => 'tfp-contact-person__photo' ) ); ?>
+				<div>
+					<strong><?php echo esc_html( $prenom ); ?></strong>
+					<span>Votre interlocutrice, du devis au suivi</span>
+				</div>
+			</div>
+			<?php
+			tfp_card_grid( $coordonnees );
+			tfp_chip_list(
+				array(
+					array( 'texte' => 'Voir les tarifs', 'url' => home_url( '/tarifs/' ) ),
+					array( 'texte' => 'Zones d’intervention', 'url' => home_url( '/zones-intervention/' ) ),
+					array( 'texte' => 'Fonctionnement', 'url' => home_url( '/notre-fonctionnement/' ) ),
+				)
+			);
+			?>
+		</div>
+		<div>
+			<h2>Une demande précise ?</h2>
+			<p class="tfp-prose">Pour un devis, décrivez directement vos locaux et votre besoin via le formulaire dédié : la réponse est plus rapide et plus précise qu'un échange initial par téléphone.</p>
+			<p style="margin-top:16px">
+				<?php tfp_button( array( 'label' => 'Demander mon devis', 'href' => home_url( '/demande-de-devis/' ), 'variant' => 'primary' ) ); ?>
+			</p>
+			<p class="tfp-static-note">
+				<?php echo esc_html( $site['brand_name'] ); ?> — <?php echo esc_html( $site['address_street'] ); ?>,
+				<?php echo esc_html( $site['address_cp'] . ' ' . $site['address_city'] ); ?>.
+				Adresse administrative : l'intervention a lieu dans vos locaux, il n'y a pas d'accueil du public à cette adresse.
+			</p>
+		</div>
 	</div>
 </section>
 

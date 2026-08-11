@@ -11,172 +11,44 @@
 > Un conteneur qui contient visuellement plusieurs micro-cartes n’est jamais compté pour une
 > carte : il compte pour ses enfants.
 
-**5 routes × 1 largeurs · 104 anomalie(s), dont 9 grave(s)** (carte absente ou fusionnée).
+**1 routes × 1 largeurs · 9 anomalie(s), dont 3 grave(s)** (carte absente ou fusionnée).
 
 ## Synthèse
 
 | Route | Cartes 1440 px | Anomalies 1440 px |
 |---|---|---|
-| `#/nettoyage-professionnel` | 53 → 54 (+1) | ❌ 20 (2) |
-| `#/nos-prestations` | 12 → 13 (+1) | ⚠️ 1 |
-| `#/zones-intervention` | 52 → 49 (-3) | ❌ 40 (4) |
-| `#/bourgogne-franche-comte` | 51 → 56 (+5) | ❌ 34 (1) |
-| `#/avis-clients` | 14 → 13 (-1) | ❌ 9 (2) |
+| `#/contact` | 7 → 6 (-1) | ❌ 9 (3) |
 
 ## Routes à corriger en priorité
 
 | Route | Cartes absentes ou fusionnées | Anomalies totales |
 |---|---|---|
-| `#/zones-intervention` | 4 | 40 |
-| `#/nettoyage-professionnel` | 2 | 20 |
-| `#/avis-clients` | 2 | 9 |
-| `#/bourgogne-franche-comte` | 1 | 34 |
+| `#/contact` | 3 | 9 |
 
 ## Archétypes employés par la maquette
 
 | Archétype | Occurrences dans la maquette |
 |---|---|
-| `micro-carte` | 76 |
-| `carte-titre-texte` | 37 |
-| `faq` | 23 |
-| `carte-sombre` | 16 |
-| `tarif` | 9 |
-| `temoignage` | 9 |
-| `carte-image` | 6 |
-| `carte-titre` | 5 |
-| `chip` | 1 |
+| `micro-carte` | 5 |
+| `carte-icone` | 1 |
+| `tarif` | 1 |
 
 ## Détail par route
 
-### `#/nettoyage-professionnel` → `/nettoyage-professionnel/`
+### `#/contact` → `/contact/`
 
-**1440 px** — bandes 19 → 19 · cartes 53 → 54 · 20 anomalie(s)
-
-| Anomalie | Archétype | Bande | Détail |
-|---|---|---|---|
-| colonnes | `chip` | 2 | « ★★★★★5,0/5sur Google » — 1 colonnes attendues, 2 rendues |
-| absente | `tarif` | 3 | « 27 € HT/htarif unique en région✓Devis gratuit sous 24 h✓Intervention r » |
-| type | `micro-carte` | 5 | « Bureaux & open-spaces » — rendue en `carte-titre` |
-| type | `micro-carte` | 5 | « Surfaces de vente » — rendue en `carte-titre` |
-| type | `micro-carte` | 5 | « Cabinets & salles d'attente » — rendue en `carte-titre` |
-| type | `micro-carte` | 5 | « Parties communes » — rendue en `carte-titre` |
-| type | `micro-carte` | 5 | « Meublés & hébergements » — rendue en `carte-titre` |
-| type | `micro-carte` | 5 | « Sanitaires & cuisines » — rendue en `carte-titre` |
-| type | `micro-carte` | 8 | « Entretien régulierFréquence définie (quotidienne, plusieurs  » — rendue en `tarif` |
-| type | `micro-carte` | 8 | « Intervention ponctuellePrestation unique et approfondie : re » — rendue en `carte-titre-texte` |
-| type | `micro-carte` | 8 | « Horaires adaptésTôt le matin, en soirée ou en dehors des heu » — rendue en `carte-titre-texte` |
-| absente | `temoignage` | 14 | « ★★★★★« Nous avons comparé une embauche et un prestataire. Ce qui a tra » |
-| type | `micro-carte` | 17 | « À quelle fréquence faire nettoyer ses bureaux ?→ » — rendue en `carte-titre` |
-| type | `micro-carte` | 17 | « Combien coûte le nettoyage de bureaux ?→ » — rendue en `carte-titre` |
-| type | `micro-carte` | 17 | « Comment rédiger un cahier des charges de nettoyage ?→ » — rendue en `carte-titre` |
-| surplus | `carte-titre-texte` | 6 | « Prestataire de nettoyage ou recrutement direct ? C'est la première que » |
-| surplus | `tarif` | 8 | « Régulier ou ponctuel, tâches, fréquences et horaires Entretien régulie » |
-| surplus | `carte-titre-texte` | 9 | « Comment choisir la bonne fréquence La fréquence dépend moins de la sur » |
-| surplus | `carte-titre-texte` | 12 | « Comment se construit un cahier des charges 01 Inventaire des espaces C » |
-| surplus | `carte-titre-texte` | 15 | « Trois situations concrètes Exemples représentatifs des demandes que no » |
-
-
-### `#/nos-prestations` → `/prestations/`
-
-**1440 px** — bandes 6 → 6 · cartes 12 → 13 · 1 anomalie(s)
+**1440 px** — bandes 4 → 4 · cartes 7 → 6 · 9 anomalie(s)
 
 | Anomalie | Archétype | Bande | Détail |
 |---|---|---|---|
-| surplus | `chip` | 2 | « ★★★★★5,0/5 sur Google » |
-
-
-### `#/zones-intervention` → `/zones-intervention/`
-
-**1440 px** — bandes 13 → 13 · cartes 52 → 49 · 40 anomalie(s)
-
-| Anomalie | Archétype | Bande | Détail |
-|---|---|---|---|
-| type | `carte-sombre` | 2 | « Vérifier notre intervention dans ma commune » — rendue en `carte-titre` |
-| absente | `tarif` | 3 | « 27 € HT/htarif unique en région✓Devis gratuit sous 24 h✓Intervention r » |
-| type | `micro-carte` | 5 | « Agglomération dijonnaise : créneaux souples, passages courts » — rendue en `carte-titre-texte` |
-| type | `micro-carte` | 5 | « Villes principales de la région : passages regroupés, planni » — rendue en `carte-titre` |
-| type | `micro-carte` | 5 | « Communes plus éloignées : fréquence hebdomadaire ou bimensue » — rendue en `carte-titre` |
-| type | `micro-carte` | 5 | « Interventions ponctuelles : selon disponibilité, avec une da » — rendue en `carte-titre` |
-| type | `micro-carte` | 5 | « Les éventuelles indemnités kilométriques dépendent de l'adre » — rendue en `carte-titre-texte` |
-| absente | `carte-sombre` | 6 | « Bourgogne-Franche-ComtéLa page régionale · huit départements couverts  » |
-| absente | `micro-carte` | 6 | « Voir la page régionale → » |
-| type | `micro-carte` | 7 | « Côte-d'Or21Préfecture : DijonVoir le département → » — rendue en `carte-titre` |
-| type | `micro-carte` | 7 | « Doubs25Préfecture : BesançonVoir le département → » — rendue en `carte-titre` |
-| type | `micro-carte` | 7 | « Jura39Préfecture : Lons-le-SaunierVoir le département → » — rendue en `carte-titre` |
-| type | `micro-carte` | 7 | « Nièvre58Préfecture : NeversVoir le département → » — rendue en `carte-titre` |
-| type | `micro-carte` | 7 | « Haute-Saône70Préfecture : VesoulVoir le département → » — rendue en `carte-titre` |
-| type | `micro-carte` | 7 | « Saône-et-Loire71Préfecture : MâconVoir le département → » — rendue en `carte-titre` |
-| type | `micro-carte` | 7 | « Yonne89Préfecture : AuxerreVoir le département → » — rendue en `carte-titre` |
-| type | `micro-carte` | 7 | « Territoire de Belfort90Préfecture : BelfortVoir le départeme » — rendue en `carte-titre` |
-| type | `micro-carte` | 8 | « Dijon21000 » — rendue en `carte-titre` |
-| type | `micro-carte` | 8 | « Besançon25000 » — rendue en `carte-titre` |
-| type | `micro-carte` | 8 | « Dole39100 » — rendue en `carte-titre` |
-| type | `micro-carte` | 8 | « Lons-le-Saunier39000 » — rendue en `carte-titre` |
-| type | `micro-carte` | 8 | « Nevers58000 » — rendue en `carte-titre` |
-| type | `micro-carte` | 8 | « Vesoul70000 » — rendue en `carte-titre` |
-| type | `micro-carte` | 8 | « Chalon-sur-Saône71100 » — rendue en `carte-titre` |
-| type | `micro-carte` | 8 | « Mâcon71000 » — rendue en `carte-titre` |
-| type | `micro-carte` | 8 | « Auxerre89000 » — rendue en `carte-titre` |
-| type | `micro-carte` | 8 | « Belfort90000 » — rendue en `carte-titre` |
-| type | `micro-carte` | 9 | « Saint-Apollinaire21850 » — rendue en `carte-titre` |
-| type | `micro-carte` | 9 | « Chenôve21300 » — rendue en `carte-titre` |
-| type | `micro-carte` | 9 | « Quetigny21800 » — rendue en `carte-titre` |
-| … | | | 10 autres |
-
-
-### `#/bourgogne-franche-comte` → `/zones-intervention/bourgogne-franche-comte/`
-
-**1440 px** — bandes 12 → 12 · cartes 51 → 56 · 34 anomalie(s)
-
-| Anomalie | Archétype | Bande | Détail |
-|---|---|---|---|
-| absente | `tarif` | 3 | « 27 € HT/htarif unique en région✓Devis gratuit sous 24 h✓Intervention r » |
-| type | `micro-carte` | 5 | « TPE et PME : bureaux, open-spaces, salles de réunion, locaux » — rendue en `carte-titre` |
-| type | `micro-carte` | 5 | « Commerces et boutiques : surfaces de vente, réserves, sanita » — rendue en `carte-titre` |
-| type | `micro-carte` | 5 | « Professions libérales et cabinets : cabinets médicaux couran » — rendue en `carte-titre-texte` |
-| type | `micro-carte` | 5 | « Syndics et conseils syndicaux : halls, cages d'escalier, asc » — rendue en `carte-titre` |
-| type | `micro-carte` | 5 | « Propriétaires bailleurs et gestionnaires : locations meublée » — rendue en `carte-titre` |
-| type | `micro-carte` | 5 | « Associations, agences, coworkings et structures de formation » — rendue en `carte-titre` |
-| type | `micro-carte` | 5 | « Plateaux de bureaux et open-spaces » — rendue en `carte-titre` |
-| type | `micro-carte` | 5 | « Locaux d'accueil et salles d'attente » — rendue en `carte-titre` |
-| type | `micro-carte` | 5 | « Surfaces de vente et réserves » — rendue en `carte-titre` |
-| type | `micro-carte` | 5 | « Cabinets paramédicaux et dentaires courants » — rendue en `carte-titre` |
-| type | `micro-carte` | 5 | « Parties communes d'immeubles » — rendue en `carte-titre` |
-| type | `micro-carte` | 5 | « Locations meublées et logements de courte durée » — rendue en `carte-titre` |
-| type | `micro-carte` | 7 | « Côte-d'Or21Préfecture : DijonDe la métropole dijonnaise aux  » — rendue en `carte-titre-texte` |
-| type | `micro-carte` | 7 | « Doubs25Préfecture : BesançonBesançon et son agglomération, c » — rendue en `carte-titre-texte` |
-| type | `micro-carte` | 7 | « Jura39Préfecture : Lons-le-SaunierDole, Lons-le-Saunier et l » — rendue en `carte-titre-texte` |
-| type | `micro-carte` | 7 | « Nièvre58Préfecture : NeversNevers et son agglomération, pour » — rendue en `carte-titre-texte` |
-| type | `micro-carte` | 7 | « Haute-Saône70Préfecture : VesoulVesoul et les zones d'activi » — rendue en `carte-titre-texte` |
-| type | `micro-carte` | 7 | « Saône-et-Loire71Préfecture : MâconDe Chalon-sur-Saône à Mâco » — rendue en `carte-titre-texte` |
-| type | `micro-carte` | 7 | « Yonne89Préfecture : AuxerreAuxerre et le nord de la région,  » — rendue en `carte-titre-texte` |
-| type | `micro-carte` | 7 | « Territoire de Belfort90Préfecture : BelfortBelfort et son ag » — rendue en `carte-titre-texte` |
-| type | `micro-carte` | 8 | « Chalon-sur-Saône71100 » — rendue en `carte-titre` |
-| type | `micro-carte` | 8 | « Mâcon71000 » — rendue en `carte-titre` |
-| type | `micro-carte` | 8 | « Auxerre89000 » — rendue en `carte-titre` |
-| type | `micro-carte` | 8 | « Belfort90000 » — rendue en `carte-titre` |
-| type | `micro-carte` | 9 | « Exemple · bureaux réguliers, 12 h/mois333 € HT/mois12 h × 27 » — rendue en `tarif` |
-| type | `temoignage` | 9 | « ★★★★★« Nous avions besoin d'un prestataire capable de suivre » — rendue en `carte-titre-texte` |
-| surplus | `chip` | 2 | « ★★★★★5,0/5 sur Google » |
-| surplus | `carte-titre` | 8 | « Dijon 21000 » |
-| surplus | `carte-titre` | 8 | « Besançon 25000 » |
-| … | | | 4 autres |
-
-
-### `#/avis-clients` → `/avis-clients/`
-
-**1440 px** — bandes 7 → 7 · cartes 14 → 13 · 9 anomalie(s)
-
-| Anomalie | Archétype | Bande | Détail |
-|---|---|---|---|
-| absente | `carte-titre` | 3 | « 5,0/5★★★★★Sur Google · 47 avis clientsDemander mon devis » |
-| absente | `temoignage` | 4 | « ★★★★★« Nous avons comparé une embauche et un prestataire. Ce qui a tra » |
-| type | `temoignage` | 5 | « ★★★★★Google« Même intervenante chaque semaine dans nos burea » — rendue en `carte-titre-texte` |
-| type | `temoignage` | 5 | « ★★★★★Google« Devis clair reçu le lendemain, sans surprise. L » — rendue en `carte-titre-texte` |
-| type | `temoignage` | 5 | « ★★★★★Google« Nettoyage de la boutique avant l'ouverture, vit » — rendue en `carte-titre-texte` |
-| type | `temoignage` | 5 | « ★★★★★Google« Pour nos copropriétés, le suivi est réel : hall » — rendue en `carte-titre-texte` |
-| type | `temoignage` | 5 | « ★★★★★Google« Remises en état entre deux locataires impeccabl » — rendue en `carte-titre-texte` |
-| type | `temoignage` | 5 | « ★★★★★Google« Remise en état ponctuelle après travaux, devis  » — rendue en `carte-titre-texte` |
-| surplus | `chip` | 2 | « ★★★★★5,0/5 sur Google » |
+| type | `micro-carte` | 3 | « J'ai un besoin de nettoyage Direction le formulaire de devis » — rendue en `carte-titre` |
+| absente | `carte-icone` | 4 | « AudreyVotre interlocutrice, du devis au suivi » |
+| type | `micro-carte` | 4 | « ☎Téléphone06 36 17 63 39 » — rendue en `carte-titre` |
+| type | `micro-carte` | 4 | « ✉E-mailaudrey.b@top-famille.fr » — rendue en `carte-titre` |
+| type | `micro-carte` | 4 | « 📍ImplantationSaint-Apollinaire (21) · Bourgogne-Franche-Com » — rendue en `carte-icone` |
+| fusionnee | `micro-carte` | 4 | « 🕑Horaires de contactDu lundi au vendredi · à confirmer · réponse sous » rendue dans « Horaires de contact Du lundi au vendredi · réponse » |
+| absente | `tarif` | 4 | « ★★★★★5,0/527 € HT/h » |
+| surplus | `carte-titre` | 3 | « J’ai une question Formulaire court, réponse par e-mail ou téléphone. » |
+| surplus | `carte-icone` | 4 | « Horaires de contact Du lundi au vendredi · réponse sous 24 h » |
 
 
