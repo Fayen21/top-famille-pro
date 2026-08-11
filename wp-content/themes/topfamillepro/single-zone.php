@@ -440,7 +440,7 @@ $render_sections = function ( array $groupes, $classe ) use ( $render_group ) {
 				$exemple_texte = tfp_get_field( 'exemple_texte', $post_id );
 				if ( $exemple_texte ) :
 					?>
-					<p class="tfp-price-example__note"><?php echo esc_html( $exemple_texte ); ?></p>
+					<p class="tfp-price-example__why"><?php echo esc_html( $exemple_texte ); ?></p>
 				<?php endif; ?>
 				<div class="tfp-price-example__disclaimer">Exemple non contractuel.</div>
 			</div>

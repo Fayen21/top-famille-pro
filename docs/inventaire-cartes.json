@@ -1,0 +1,4414 @@
+{
+ "#/": {
+  "375": {
+   "cartesRef": 29,
+   "cartesWp": 32,
+   "anomalies": [
+    {
+     "genre": "type",
+     "type": "carte-titre",
+     "recu": "chip",
+     "bande": 1,
+     "texte": "★★★★★ 5,0/5 sur Google Voir les avis"
+    },
+    {
+     "genre": "fusionnee",
+     "type": "tarif",
+     "bande": 1,
+     "texte": "✦27 € HT/hrégulier ou ponctuel",
+     "dans": "Tarif unique 27 € HT/h Régulier ou ponctuel · devi"
+    },
+    {
+     "genre": "texte",
+     "type": "tarif",
+     "bande": 2,
+     "texte": "27 € HT/htarif unique en région✓Devis gratuit sous 24 h✓Intervention r",
+     "recu": "27 € HT/h tarif unique, indiqué avant le devis ✓Devis gratuit sous 24 ",
+     "proximite": 56
+    },
+    {
+     "genre": "absente",
+     "type": "tarif",
+     "bande": 2,
+     "texte": "27 € HT/htarif unique en région"
+    },
+    {
+     "genre": "absente",
+     "type": "carte-titre-texte",
+     "bande": 3,
+     "texte": "★★★★★5,0/5 sur Google Saint-ApollinaireEntreprise régionale basée en B"
+    },
+    {
+     "genre": "type",
+     "type": "carte-titre-texte",
+     "recu": "carte-sombre",
+     "bande": 5,
+     "texte": "Cabinets & professions libéralesSanté, droit, conseil, salle"
+    },
+    {
+     "genre": "texte",
+     "type": "tarif",
+     "bande": 9,
+     "texte": "Tarif horaire de base 27 € HT/h Régulier ou ponctuel · devis gratuit s",
+     "recu": "Tarif unique 27 € HT/h Régulier ou ponctuel · devis gratuit sous 24 h.",
+     "proximite": 78
+    },
+    {
+     "genre": "texte",
+     "type": "carte-titre",
+     "bande": 11,
+     "texte": "★★★★★5,0/5 Google",
+     "recu": "★★★★★5,0/5 sur Google",
+     "proximite": 67
+    },
+    {
+     "genre": "surplus",
+     "type": "tarif",
+     "bande": 1,
+     "texte": "27 € HT/h tarif unique, régulier ou ponctuel"
+    },
+    {
+     "genre": "surplus",
+     "type": "carte-icone",
+     "bande": 1,
+     "texte": ""
+    },
+    {
+     "genre": "surplus",
+     "type": "tarif",
+     "bande": 2,
+     "texte": "27 € HT/h tarif unique, indiqué avant le devis"
+    },
+    {
+     "genre": "surplus",
+     "type": "carte-titre-texte",
+     "bande": 3,
+     "texte": "Saint-Apollinaire Entreprise régionale basée en BFC Interlocutrice ide"
+    },
+    {
+     "genre": "surplus",
+     "type": "carte-sombre",
+     "bande": 5,
+     "texte": "Copropriétés & parties communes Halls, cages d'escalier, locaux commun"
+    },
+    {
+     "genre": "surplus",
+     "type": "carte-sombre",
+     "bande": 5,
+     "texte": "Locations meublées & hébergements Remise en état entre deux occupants"
+    },
+    {
+     "genre": "surplus",
+     "type": "carte-sombre",
+     "bande": 5,
+     "texte": "Ponctuel & remise en état Après travaux, grand nettoyage, fin de bail"
+    }
+   ]
+  },
+  "1440": {
+   "cartesRef": 27,
+   "cartesWp": 32,
+   "anomalies": [
+    {
+     "genre": "type",
+     "type": "carte-titre",
+     "recu": "chip",
+     "bande": 1,
+     "texte": "★★★★★ 5,0/5 sur Google Voir les avis"
+    },
+    {
+     "genre": "fusionnee",
+     "type": "tarif",
+     "bande": 1,
+     "texte": "✦27 € HT/hrégulier ou ponctuel",
+     "dans": "Tarif unique 27 € HT/h Régulier ou ponctuel · devi"
+    },
+    {
+     "genre": "texte",
+     "type": "tarif",
+     "bande": 2,
+     "texte": "27 € HT/htarif unique en région✓Devis gratuit sous 24 h✓Intervention r",
+     "recu": "27 € HT/h tarif unique, indiqué avant le devis ✓Devis gratuit sous 24 ",
+     "proximite": 56
+    },
+    {
+     "genre": "absente",
+     "type": "tarif",
+     "bande": 2,
+     "texte": "27 € HT/htarif unique en région"
+    },
+    {
+     "genre": "absente",
+     "type": "carte-titre-texte",
+     "bande": 3,
+     "texte": "★★★★★5,0/5 sur Google Saint-ApollinaireEntreprise régionale basée en B"
+    },
+    {
+     "genre": "type",
+     "type": "carte-titre-texte",
+     "recu": "carte-sombre",
+     "bande": 5,
+     "texte": "Cabinets & professions libéralesSanté, droit, conseil, salle"
+    },
+    {
+     "genre": "texte",
+     "type": "tarif",
+     "bande": 9,
+     "texte": "Tarif horaire de base 27 € HT/h Régulier ou ponctuel · devis gratuit s",
+     "recu": "Tarif unique 27 € HT/h Régulier ou ponctuel · devis gratuit sous 24 h.",
+     "proximite": 78
+    },
+    {
+     "genre": "colonnes",
+     "type": "carte-image",
+     "bande": 10,
+     "texte": "21 25 39 58 70 71 89 90",
+     "attendu": 2,
+     "recu": 1
+    },
+    {
+     "genre": "texte",
+     "type": "carte-titre",
+     "bande": 11,
+     "texte": "★★★★★5,0/5 Google",
+     "recu": "★★★★★5,0/5 sur Google",
+     "proximite": 67
+    },
+    {
+     "genre": "surplus",
+     "type": "tarif",
+     "bande": 1,
+     "texte": "27 € HT/h tarif unique, régulier ou ponctuel"
+    },
+    {
+     "genre": "surplus",
+     "type": "carte-image",
+     "bande": 1,
+     "texte": ""
+    },
+    {
+     "genre": "surplus",
+     "type": "tarif",
+     "bande": 2,
+     "texte": "27 € HT/h tarif unique, indiqué avant le devis"
+    },
+    {
+     "genre": "surplus",
+     "type": "carte-titre-texte",
+     "bande": 3,
+     "texte": "Saint-Apollinaire Entreprise régionale basée en BFC Interlocutrice ide"
+    },
+    {
+     "genre": "surplus",
+     "type": "carte-sombre",
+     "bande": 5,
+     "texte": "Copropriétés & parties communes Halls, cages d'escalier, locaux commun"
+    },
+    {
+     "genre": "surplus",
+     "type": "carte-sombre",
+     "bande": 5,
+     "texte": "Locations meublées & hébergements Remise en état entre deux occupants"
+    },
+    {
+     "genre": "surplus",
+     "type": "carte-sombre",
+     "bande": 5,
+     "texte": "Ponctuel & remise en état Après travaux, grand nettoyage, fin de bail"
+    },
+    {
+     "genre": "surplus",
+     "type": "carte-titre",
+     "bande": 10,
+     "texte": "Yonne 89"
+    },
+    {
+     "genre": "surplus",
+     "type": "carte-titre",
+     "bande": 10,
+     "texte": "Territoire de Belfort 90"
+    }
+   ]
+  }
+ },
+ "#/nettoyage-professionnel": {
+  "375": {
+   "cartesRef": 51,
+   "cartesWp": 51,
+   "anomalies": [
+    {
+     "genre": "absente",
+     "type": "tarif",
+     "bande": 3,
+     "texte": "27 € HT/htarif unique en région✓Devis gratuit sous 24 h✓Intervention r"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "carte-titre",
+     "bande": 5,
+     "texte": "Bureaux & open-spaces"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "carte-titre",
+     "bande": 5,
+     "texte": "Surfaces de vente"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "carte-titre",
+     "bande": 5,
+     "texte": "Cabinets & salles d'attente"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "carte-titre",
+     "bande": 5,
+     "texte": "Parties communes"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "carte-titre",
+     "bande": 5,
+     "texte": "Meublés & hébergements"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "carte-titre",
+     "bande": 5,
+     "texte": "Sanitaires & cuisines"
+    },
+    {
+     "genre": "absente",
+     "type": "temoignage",
+     "bande": 14,
+     "texte": "★★★★★« Nous avons comparé une embauche et un prestataire. Ce qui a tra"
+    },
+    {
+     "genre": "absente",
+     "type": "carte-titre",
+     "bande": 17,
+     "texte": "Combien coûte le nettoyage de bureaux ?→"
+    },
+    {
+     "genre": "surplus",
+     "type": "carte-titre-texte",
+     "bande": 6,
+     "texte": "Prestataire de nettoyage ou recrutement direct ? C'est la première que"
+    },
+    {
+     "genre": "surplus",
+     "type": "carte-titre-texte",
+     "bande": 9,
+     "texte": "Comment choisir la bonne fréquence La fréquence dépend moins de la sur"
+    },
+    {
+     "genre": "surplus",
+     "type": "carte-titre-texte",
+     "bande": 15,
+     "texte": "Trois situations concrètes Exemples représentatifs des demandes que no"
+    }
+   ]
+  },
+  "1440": {
+   "cartesRef": 51,
+   "cartesWp": 54,
+   "anomalies": [
+    {
+     "genre": "colonnes",
+     "type": "chip",
+     "bande": 2,
+     "texte": "★★★★★5,0/5sur Google",
+     "attendu": 1,
+     "recu": 2
+    },
+    {
+     "genre": "absente",
+     "type": "tarif",
+     "bande": 3,
+     "texte": "27 € HT/htarif unique en région✓Devis gratuit sous 24 h✓Intervention r"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "carte-titre",
+     "bande": 5,
+     "texte": "Bureaux & open-spaces"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "carte-titre",
+     "bande": 5,
+     "texte": "Surfaces de vente"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "carte-titre",
+     "bande": 5,
+     "texte": "Cabinets & salles d'attente"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "carte-titre",
+     "bande": 5,
+     "texte": "Parties communes"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "carte-titre",
+     "bande": 5,
+     "texte": "Meublés & hébergements"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "carte-titre",
+     "bande": 5,
+     "texte": "Sanitaires & cuisines"
+    },
+    {
+     "genre": "absente",
+     "type": "temoignage",
+     "bande": 14,
+     "texte": "★★★★★« Nous avons comparé une embauche et un prestataire. Ce qui a tra"
+    },
+    {
+     "genre": "surplus",
+     "type": "carte-titre-texte",
+     "bande": 6,
+     "texte": "Prestataire de nettoyage ou recrutement direct ? C'est la première que"
+    },
+    {
+     "genre": "surplus",
+     "type": "tarif",
+     "bande": 8,
+     "texte": "Régulier ou ponctuel, tâches, fréquences et horaires Entretien régulie"
+    },
+    {
+     "genre": "surplus",
+     "type": "carte-titre-texte",
+     "bande": 9,
+     "texte": "Comment choisir la bonne fréquence La fréquence dépend moins de la sur"
+    },
+    {
+     "genre": "surplus",
+     "type": "carte-titre-texte",
+     "bande": 12,
+     "texte": "Comment se construit un cahier des charges 01 Inventaire des espaces C"
+    },
+    {
+     "genre": "surplus",
+     "type": "carte-titre-texte",
+     "bande": 15,
+     "texte": "Trois situations concrètes Exemples représentatifs des demandes que no"
+    }
+   ]
+  }
+ },
+ "#/nos-prestations": {
+  "375": {
+   "cartesRef": 12,
+   "cartesWp": 13,
+   "anomalies": [
+    {
+     "genre": "surplus",
+     "type": "chip",
+     "bande": 2,
+     "texte": "★★★★★5,0/5 sur Google"
+    }
+   ]
+  },
+  "1440": {
+   "cartesRef": 12,
+   "cartesWp": 13,
+   "anomalies": [
+    {
+     "genre": "surplus",
+     "type": "chip",
+     "bande": 2,
+     "texte": "★★★★★5,0/5 sur Google"
+    }
+   ]
+  }
+ },
+ "#/service/bureaux": {
+  "375": {
+   "cartesRef": 22,
+   "cartesWp": 22,
+   "anomalies": []
+  },
+  "1440": {
+   "cartesRef": 21,
+   "cartesWp": 21,
+   "anomalies": []
+  }
+ },
+ "#/service/commerces": {
+  "375": {
+   "cartesRef": 21,
+   "cartesWp": 21,
+   "anomalies": []
+  },
+  "1440": {
+   "cartesRef": 20,
+   "cartesWp": 20,
+   "anomalies": [
+    {
+     "genre": "colonnes",
+     "type": "tarif",
+     "bande": 10,
+     "texte": "Exemple · 12 h/mois333 € HT/mois12 h × 27 € + 9 € de gestion",
+     "attendu": 1,
+     "recu": 2
+    }
+   ]
+  }
+ },
+ "#/service/cabinets": {
+  "375": {
+   "cartesRef": 29,
+   "cartesWp": 29,
+   "anomalies": [
+    {
+     "genre": "type",
+     "type": "carte-titre-texte",
+     "recu": "micro-carte",
+     "bande": 4,
+     "texte": "Cette prestation est un entretien courant de locaux professi"
+    }
+   ]
+  },
+  "1440": {
+   "cartesRef": 28,
+   "cartesWp": 28,
+   "anomalies": [
+    {
+     "genre": "type",
+     "type": "carte-titre-texte",
+     "recu": "micro-carte",
+     "bande": 4,
+     "texte": "Cette prestation est un entretien courant de locaux professi"
+    },
+    {
+     "genre": "colonnes",
+     "type": "tarif",
+     "bande": 11,
+     "texte": "Exemple · 12 h/mois333 € HT/mois12 h × 27 € + 9 € de gestion",
+     "attendu": 1,
+     "recu": 2
+    }
+   ]
+  }
+ },
+ "#/service/coproprietes": {
+  "375": {
+   "cartesRef": 22,
+   "cartesWp": 22,
+   "anomalies": []
+  },
+  "1440": {
+   "cartesRef": 21,
+   "cartesWp": 21,
+   "anomalies": [
+    {
+     "genre": "colonnes",
+     "type": "tarif",
+     "bande": 10,
+     "texte": "Exemple · 12 h/mois333 € HT/mois12 h × 27 € + 9 € de gestion",
+     "attendu": 1,
+     "recu": 2
+    }
+   ]
+  }
+ },
+ "#/service/meubles": {
+  "375": {
+   "cartesRef": 22,
+   "cartesWp": 22,
+   "anomalies": [
+    {
+     "genre": "type",
+     "type": "carte-titre",
+     "recu": "carte-titre-texte",
+     "bande": 13,
+     "texte": "Encore une question sur Locations meublées ? Audrey vous rép"
+    }
+   ]
+  },
+  "1440": {
+   "cartesRef": 21,
+   "cartesWp": 21,
+   "anomalies": [
+    {
+     "genre": "colonnes",
+     "type": "tarif",
+     "bande": 10,
+     "texte": "Exemple · 12 h/mois333 € HT/mois12 h × 27 € + 9 € de gestion",
+     "attendu": 1,
+     "recu": 2
+    },
+    {
+     "genre": "type",
+     "type": "carte-titre",
+     "recu": "carte-titre-texte",
+     "bande": 13,
+     "texte": "Encore une question sur Locations meublées ? Audrey vous rép"
+    }
+   ]
+  }
+ },
+ "#/service/ponctuel": {
+  "375": {
+   "cartesRef": 22,
+   "cartesWp": 22,
+   "anomalies": []
+  },
+  "1440": {
+   "cartesRef": 21,
+   "cartesWp": 21,
+   "anomalies": [
+    {
+     "genre": "colonnes",
+     "type": "tarif",
+     "bande": 10,
+     "texte": "Exemple · 12 h/mois333 € HT/mois12 h × 27 € + 9 € de gestion",
+     "attendu": 1,
+     "recu": 2
+    }
+   ]
+  }
+ },
+ "#/nos-tarifs": {
+  "375": {
+   "cartesRef": 22,
+   "cartesWp": 21,
+   "anomalies": [
+    {
+     "genre": "absente",
+     "type": "carte-titre-texte",
+     "bande": 3,
+     "texte": "Devis sous 24 hGratuit, personnalisé et sans engagement. Aucun simulat"
+    },
+    {
+     "genre": "absente",
+     "type": "tarif",
+     "bande": 6,
+     "texte": "Tarif horaireRégulier ou ponctuel27 € HT/h Frais de gestionPlanning, a"
+    },
+    {
+     "genre": "surplus",
+     "type": "temoignage",
+     "bande": 11,
+     "texte": "★★★★★« Un devis clair, sans surprise, et le même tarif horaire annoncé"
+    }
+   ]
+  },
+  "1440": {
+   "cartesRef": 22,
+   "cartesWp": 21,
+   "anomalies": [
+    {
+     "genre": "colonnes",
+     "type": "tarif",
+     "bande": 3,
+     "texte": "Tarif horaire de base27 € HT/hIdentique en régulier et en po",
+     "attendu": 2,
+     "recu": 1
+    },
+    {
+     "genre": "absente",
+     "type": "carte-titre-texte",
+     "bande": 3,
+     "texte": "Devis sous 24 hGratuit, personnalisé et sans engagement. Aucun simulat"
+    },
+    {
+     "genre": "absente",
+     "type": "tarif",
+     "bande": 6,
+     "texte": "Tarif horaireRégulier ou ponctuel27 € HT/h Frais de gestionPlanning, a"
+    },
+    {
+     "genre": "colonnes",
+     "type": "carte-titre-texte",
+     "bande": 7,
+     "texte": "Ce qui est inclusMain-d'œuvre de l'intervenant sélectionnéOr",
+     "attendu": 2,
+     "recu": 1
+    },
+    {
+     "genre": "colonnes",
+     "type": "carte-titre-texte",
+     "bande": 7,
+     "texte": "Fourni par le clientProduits d'entretien (généralement)Matér",
+     "attendu": 2,
+     "recu": 1
+    },
+    {
+     "genre": "colonnes",
+     "type": "carte-titre",
+     "bande": 8,
+     "texte": "SurfaceSuperficie et nombre de pièces",
+     "attendu": 3,
+     "recu": 4
+    },
+    {
+     "genre": "colonnes",
+     "type": "carte-titre",
+     "bande": 8,
+     "texte": "FréquenceNombre de passages par semaine",
+     "attendu": 3,
+     "recu": 4
+    },
+    {
+     "genre": "colonnes",
+     "type": "carte-titre",
+     "bande": 8,
+     "texte": "Type de locauxBureaux, commerce, cabinet, meublé",
+     "attendu": 3,
+     "recu": 4
+    },
+    {
+     "genre": "colonnes",
+     "type": "carte-titre",
+     "bande": 8,
+     "texte": "Niveau d'exigenceStandard ou renforcé (hygiène)",
+     "attendu": 1,
+     "recu": 4
+    },
+    {
+     "genre": "surplus",
+     "type": "temoignage",
+     "bande": 11,
+     "texte": "★★★★★« Un devis clair, sans surprise, et le même tarif horaire annoncé"
+    }
+   ]
+  }
+ },
+ "#/zones-intervention": {
+  "375": {
+   "cartesRef": 35,
+   "cartesWp": 49,
+   "anomalies": [
+    {
+     "genre": "type",
+     "type": "carte-sombre",
+     "recu": "carte-titre",
+     "bande": 2,
+     "texte": "Vérifier notre intervention dans ma commune"
+    },
+    {
+     "genre": "absente",
+     "type": "tarif",
+     "bande": 3,
+     "texte": "27 € HT/htarif unique en région✓Devis gratuit sous 24 h✓Intervention r"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "carte-titre-texte",
+     "bande": 5,
+     "texte": "Agglomération dijonnaise : créneaux souples, passages courts"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "carte-titre",
+     "bande": 5,
+     "texte": "Villes principales de la région : passages regroupés, planni"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "carte-titre",
+     "bande": 5,
+     "texte": "Communes plus éloignées : fréquence hebdomadaire ou bimensue"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "carte-titre",
+     "bande": 5,
+     "texte": "Interventions ponctuelles : selon disponibilité, avec une da"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "carte-titre-texte",
+     "bande": 5,
+     "texte": "Les éventuelles indemnités kilométriques dépendent de l'adre"
+    },
+    {
+     "genre": "absente",
+     "type": "carte-sombre",
+     "bande": 6,
+     "texte": "Bourgogne-Franche-ComtéLa page régionale · huit départements couverts "
+    },
+    {
+     "genre": "absente",
+     "type": "micro-carte",
+     "bande": 6,
+     "texte": "Voir la page régionale →"
+    },
+    {
+     "genre": "absente",
+     "type": "carte-titre",
+     "bande": 13,
+     "texte": "Vérifier notre intervention dans ma commune"
+    },
+    {
+     "genre": "absente",
+     "type": "carte-titre",
+     "bande": 13,
+     "texte": "☎ Échanger avec Audrey · 06 36 17 63 39"
+    },
+    {
+     "genre": "surplus",
+     "type": "chip",
+     "bande": 2,
+     "texte": "★★★★★5,0/5 sur Google"
+    },
+    {
+     "genre": "surplus",
+     "type": "carte-titre",
+     "bande": 8,
+     "texte": "Dijon 21000"
+    },
+    {
+     "genre": "surplus",
+     "type": "carte-titre",
+     "bande": 8,
+     "texte": "Besançon 25000"
+    },
+    {
+     "genre": "surplus",
+     "type": "carte-titre",
+     "bande": 8,
+     "texte": "Dole 39100"
+    },
+    {
+     "genre": "surplus",
+     "type": "carte-titre",
+     "bande": 8,
+     "texte": "Lons-le-Saunier 39000"
+    },
+    {
+     "genre": "surplus",
+     "type": "carte-titre",
+     "bande": 8,
+     "texte": "Nevers 58000"
+    },
+    {
+     "genre": "surplus",
+     "type": "carte-titre",
+     "bande": 8,
+     "texte": "Vesoul 70000"
+    },
+    {
+     "genre": "surplus",
+     "type": "carte-titre",
+     "bande": 8,
+     "texte": "Chalon-sur-Saône 71100"
+    },
+    {
+     "genre": "surplus",
+     "type": "carte-titre",
+     "bande": 8,
+     "texte": "Mâcon 71000"
+    },
+    {
+     "genre": "surplus",
+     "type": "carte-titre",
+     "bande": 8,
+     "texte": "Auxerre 89000"
+    },
+    {
+     "genre": "surplus",
+     "type": "carte-titre",
+     "bande": 8,
+     "texte": "Belfort 90000"
+    },
+    {
+     "genre": "surplus",
+     "type": "carte-titre",
+     "bande": 9,
+     "texte": "Saint-Apollinaire 21850"
+    },
+    {
+     "genre": "surplus",
+     "type": "carte-titre",
+     "bande": 9,
+     "texte": "Chenôve 21300"
+    },
+    {
+     "genre": "surplus",
+     "type": "carte-titre",
+     "bande": 9,
+     "texte": "Quetigny 21800"
+    },
+    {
+     "genre": "surplus",
+     "type": "carte-titre",
+     "bande": 9,
+     "texte": "Talant 21240"
+    },
+    {
+     "genre": "surplus",
+     "type": "carte-titre",
+     "bande": 9,
+     "texte": "Longvic 21600"
+    },
+    {
+     "genre": "surplus",
+     "type": "carte-titre",
+     "bande": 9,
+     "texte": "Fontaine-lès-Dijon 21121"
+    },
+    {
+     "genre": "surplus",
+     "type": "carte-titre",
+     "bande": 9,
+     "texte": "Marsannay-la-Côte 21160"
+    },
+    {
+     "genre": "surplus",
+     "type": "carte-titre",
+     "bande": 9,
+     "texte": "Beaune 21200"
+    }
+   ]
+  },
+  "1440": {
+   "cartesRef": 52,
+   "cartesWp": 49,
+   "anomalies": [
+    {
+     "genre": "type",
+     "type": "carte-sombre",
+     "recu": "carte-titre",
+     "bande": 2,
+     "texte": "Vérifier notre intervention dans ma commune"
+    },
+    {
+     "genre": "absente",
+     "type": "tarif",
+     "bande": 3,
+     "texte": "27 € HT/htarif unique en région✓Devis gratuit sous 24 h✓Intervention r"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "carte-titre-texte",
+     "bande": 5,
+     "texte": "Agglomération dijonnaise : créneaux souples, passages courts"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "carte-titre",
+     "bande": 5,
+     "texte": "Villes principales de la région : passages regroupés, planni"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "carte-titre",
+     "bande": 5,
+     "texte": "Communes plus éloignées : fréquence hebdomadaire ou bimensue"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "carte-titre",
+     "bande": 5,
+     "texte": "Interventions ponctuelles : selon disponibilité, avec une da"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "carte-titre-texte",
+     "bande": 5,
+     "texte": "Les éventuelles indemnités kilométriques dépendent de l'adre"
+    },
+    {
+     "genre": "absente",
+     "type": "carte-sombre",
+     "bande": 6,
+     "texte": "Bourgogne-Franche-ComtéLa page régionale · huit départements couverts "
+    },
+    {
+     "genre": "absente",
+     "type": "micro-carte",
+     "bande": 6,
+     "texte": "Voir la page régionale →"
+    },
+    {
+     "genre": "absente",
+     "type": "carte-titre",
+     "bande": 13,
+     "texte": "Vérifier notre intervention dans ma commune"
+    },
+    {
+     "genre": "surplus",
+     "type": "chip",
+     "bande": 2,
+     "texte": "★★★★★5,0/5 sur Google"
+    }
+   ]
+  }
+ },
+ "#/bourgogne-franche-comte": {
+  "375": {
+   "cartesRef": 47,
+   "cartesWp": 56,
+   "anomalies": [
+    {
+     "genre": "absente",
+     "type": "tarif",
+     "bande": 3,
+     "texte": "27 € HT/htarif unique en région✓Devis gratuit sous 24 h✓Intervention r"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "carte-titre",
+     "bande": 5,
+     "texte": "TPE et PME : bureaux, open-spaces, salles de réunion, locaux"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "carte-titre",
+     "bande": 5,
+     "texte": "Commerces et boutiques : surfaces de vente, réserves, sanita"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "carte-titre-texte",
+     "bande": 5,
+     "texte": "Professions libérales et cabinets : cabinets médicaux couran"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "carte-titre",
+     "bande": 5,
+     "texte": "Syndics et conseils syndicaux : halls, cages d'escalier, asc"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "carte-titre",
+     "bande": 5,
+     "texte": "Propriétaires bailleurs et gestionnaires : locations meublée"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "carte-titre",
+     "bande": 5,
+     "texte": "Associations, agences, coworkings et structures de formation"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "carte-titre",
+     "bande": 5,
+     "texte": "Plateaux de bureaux et open-spaces"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "carte-titre",
+     "bande": 5,
+     "texte": "Locaux d'accueil et salles d'attente"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "carte-titre",
+     "bande": 5,
+     "texte": "Surfaces de vente et réserves"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "carte-titre",
+     "bande": 5,
+     "texte": "Cabinets paramédicaux et dentaires courants"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "carte-titre",
+     "bande": 5,
+     "texte": "Parties communes d'immeubles"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "carte-titre",
+     "bande": 5,
+     "texte": "Locations meublées et logements de courte durée"
+    },
+    {
+     "genre": "type",
+     "type": "temoignage",
+     "recu": "carte-titre-texte",
+     "bande": 9,
+     "texte": "★★★★★« Nous avions besoin d'un prestataire capable de suivre"
+    },
+    {
+     "genre": "absente",
+     "type": "carte-titre",
+     "bande": 12,
+     "texte": "☎ Échanger avec Audrey · 06 36 17 63 39"
+    },
+    {
+     "genre": "surplus",
+     "type": "chip",
+     "bande": 2,
+     "texte": "★★★★★5,0/5 sur Google"
+    },
+    {
+     "genre": "surplus",
+     "type": "carte-titre",
+     "bande": 8,
+     "texte": "Dijon 21000"
+    },
+    {
+     "genre": "surplus",
+     "type": "carte-titre",
+     "bande": 8,
+     "texte": "Besançon 25000"
+    },
+    {
+     "genre": "surplus",
+     "type": "carte-titre",
+     "bande": 8,
+     "texte": "Dole 39100"
+    },
+    {
+     "genre": "surplus",
+     "type": "carte-titre",
+     "bande": 8,
+     "texte": "Lons-le-Saunier 39000"
+    },
+    {
+     "genre": "surplus",
+     "type": "carte-titre",
+     "bande": 8,
+     "texte": "Nevers 58000"
+    },
+    {
+     "genre": "surplus",
+     "type": "carte-titre",
+     "bande": 8,
+     "texte": "Vesoul 70000"
+    },
+    {
+     "genre": "surplus",
+     "type": "carte-titre",
+     "bande": 8,
+     "texte": "Chalon-sur-Saône 71100"
+    },
+    {
+     "genre": "surplus",
+     "type": "carte-titre",
+     "bande": 8,
+     "texte": "Mâcon 71000"
+    },
+    {
+     "genre": "surplus",
+     "type": "carte-titre",
+     "bande": 8,
+     "texte": "Auxerre 89000"
+    },
+    {
+     "genre": "surplus",
+     "type": "carte-titre",
+     "bande": 8,
+     "texte": "Belfort 90000"
+    }
+   ]
+  },
+  "1440": {
+   "cartesRef": 50,
+   "cartesWp": 56,
+   "anomalies": [
+    {
+     "genre": "absente",
+     "type": "tarif",
+     "bande": 3,
+     "texte": "27 € HT/htarif unique en région✓Devis gratuit sous 24 h✓Intervention r"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "carte-titre",
+     "bande": 5,
+     "texte": "TPE et PME : bureaux, open-spaces, salles de réunion, locaux"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "carte-titre",
+     "bande": 5,
+     "texte": "Commerces et boutiques : surfaces de vente, réserves, sanita"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "carte-titre-texte",
+     "bande": 5,
+     "texte": "Professions libérales et cabinets : cabinets médicaux couran"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "carte-titre",
+     "bande": 5,
+     "texte": "Syndics et conseils syndicaux : halls, cages d'escalier, asc"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "carte-titre",
+     "bande": 5,
+     "texte": "Propriétaires bailleurs et gestionnaires : locations meublée"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "carte-titre",
+     "bande": 5,
+     "texte": "Associations, agences, coworkings et structures de formation"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "carte-titre",
+     "bande": 5,
+     "texte": "Plateaux de bureaux et open-spaces"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "carte-titre",
+     "bande": 5,
+     "texte": "Locaux d'accueil et salles d'attente"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "carte-titre",
+     "bande": 5,
+     "texte": "Surfaces de vente et réserves"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "carte-titre",
+     "bande": 5,
+     "texte": "Cabinets paramédicaux et dentaires courants"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "carte-titre",
+     "bande": 5,
+     "texte": "Parties communes d'immeubles"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "carte-titre",
+     "bande": 5,
+     "texte": "Locations meublées et logements de courte durée"
+    },
+    {
+     "genre": "colonnes",
+     "type": "tarif",
+     "bande": 9,
+     "texte": "Exemple · bureaux réguliers, 12 h/mois333 € HT/mois12 h × 27",
+     "attendu": 3,
+     "recu": 2
+    },
+    {
+     "genre": "type",
+     "type": "temoignage",
+     "recu": "carte-titre-texte",
+     "bande": 9,
+     "texte": "★★★★★« Nous avions besoin d'un prestataire capable de suivre"
+    },
+    {
+     "genre": "surplus",
+     "type": "chip",
+     "bande": 2,
+     "texte": "★★★★★5,0/5 sur Google"
+    },
+    {
+     "genre": "surplus",
+     "type": "carte-titre",
+     "bande": 8,
+     "texte": "Dijon 21000"
+    },
+    {
+     "genre": "surplus",
+     "type": "carte-titre",
+     "bande": 8,
+     "texte": "Besançon 25000"
+    },
+    {
+     "genre": "surplus",
+     "type": "carte-titre",
+     "bande": 8,
+     "texte": "Dole 39100"
+    },
+    {
+     "genre": "surplus",
+     "type": "carte-titre",
+     "bande": 8,
+     "texte": "Lons-le-Saunier 39000"
+    },
+    {
+     "genre": "surplus",
+     "type": "carte-titre",
+     "bande": 8,
+     "texte": "Nevers 58000"
+    },
+    {
+     "genre": "surplus",
+     "type": "carte-titre",
+     "bande": 8,
+     "texte": "Vesoul 70000"
+    }
+   ]
+  }
+ },
+ "#/departement/cote-dor": {
+  "375": {
+   "cartesRef": 32,
+   "cartesWp": 32,
+   "anomalies": [
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "chip",
+     "bande": 5,
+     "texte": "Plateaux de bureaux et open-spaces"
+    },
+    {
+     "genre": "colonnes",
+     "type": "chip",
+     "bande": 6,
+     "texte": "Beaune",
+     "attendu": 3,
+     "recu": 2
+    },
+    {
+     "genre": "colonnes",
+     "type": "chip",
+     "bande": 6,
+     "texte": "Chevigny-Saint-Sauveur",
+     "attendu": 3,
+     "recu": 2
+    },
+    {
+     "genre": "colonnes",
+     "type": "chip",
+     "bande": 6,
+     "texte": "Plombières-lès-Dijon",
+     "attendu": 2,
+     "recu": 3
+    },
+    {
+     "genre": "type",
+     "type": "carte-titre",
+     "recu": "micro-carte",
+     "bande": 11,
+     "texte": "☎ Échanger avec Audrey · 06 36 17 63 39"
+    }
+   ]
+  },
+  "1440": {
+   "cartesRef": 31,
+   "cartesWp": 31,
+   "anomalies": []
+  }
+ },
+ "#/departement/doubs": {
+  "375": {
+   "cartesRef": 32,
+   "cartesWp": 32,
+   "anomalies": [
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "chip",
+     "bande": 5,
+     "texte": "Bureaux tertiaires et sièges régionaux"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "chip",
+     "bande": 5,
+     "texte": "Commerces du centre historique"
+    },
+    {
+     "genre": "type",
+     "type": "carte-titre",
+     "recu": "micro-carte",
+     "bande": 11,
+     "texte": "☎ Échanger avec Audrey · 06 36 17 63 39"
+    }
+   ]
+  },
+  "1440": {
+   "cartesRef": 31,
+   "cartesWp": 31,
+   "anomalies": []
+  }
+ },
+ "#/departement/jura": {
+  "375": {
+   "cartesRef": 34,
+   "cartesWp": 34,
+   "anomalies": [
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "chip",
+     "bande": 5,
+     "texte": "Bureaux de PME et locaux administratifs"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "chip",
+     "bande": 5,
+     "texte": "Locations meublées et gîtes urbains"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "chip",
+     "bande": 5,
+     "texte": "Locaux associatifs et espaces de réunion"
+    },
+    {
+     "genre": "type",
+     "type": "carte-titre",
+     "recu": "micro-carte",
+     "bande": 11,
+     "texte": "☎ Échanger avec Audrey · 06 36 17 63 39"
+    }
+   ]
+  },
+  "1440": {
+   "cartesRef": 33,
+   "cartesWp": 33,
+   "anomalies": []
+  }
+ },
+ "#/departement/nievre": {
+  "375": {
+   "cartesRef": 32,
+   "cartesWp": 32,
+   "anomalies": [
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "chip",
+     "bande": 5,
+     "texte": "Commerces de centre-ville"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "chip",
+     "bande": 5,
+     "texte": "Cabinets et professions libérales"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "chip",
+     "bande": 5,
+     "texte": "Locaux associatifs et de formation"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "chip",
+     "bande": 5,
+     "texte": "Bureaux rattachés aux zones d'activité"
+    },
+    {
+     "genre": "colonnes",
+     "type": "chip",
+     "bande": 6,
+     "texte": "Marzy",
+     "attendu": 3,
+     "recu": 2
+    },
+    {
+     "genre": "colonnes",
+     "type": "chip",
+     "bande": 6,
+     "texte": "Coulanges-lès-Nevers",
+     "attendu": 3,
+     "recu": 2
+    },
+    {
+     "genre": "colonnes",
+     "type": "chip",
+     "bande": 6,
+     "texte": "Challuy",
+     "attendu": 3,
+     "recu": 2
+    },
+    {
+     "genre": "colonnes",
+     "type": "chip",
+     "bande": 6,
+     "texte": "Garchizy",
+     "attendu": 1,
+     "recu": 2
+    },
+    {
+     "genre": "type",
+     "type": "carte-titre",
+     "recu": "micro-carte",
+     "bande": 11,
+     "texte": "☎ Échanger avec Audrey · 06 36 17 63 39"
+    }
+   ]
+  },
+  "1440": {
+   "cartesRef": 31,
+   "cartesWp": 31,
+   "anomalies": [
+    {
+     "genre": "colonnes",
+     "type": "chip",
+     "bande": 6,
+     "texte": "Varennes-Vauzelles",
+     "attendu": 4,
+     "recu": 3
+    },
+    {
+     "genre": "colonnes",
+     "type": "chip",
+     "bande": 6,
+     "texte": "Fourchambault",
+     "attendu": 4,
+     "recu": 3
+    },
+    {
+     "genre": "colonnes",
+     "type": "chip",
+     "bande": 6,
+     "texte": "Marzy",
+     "attendu": 4,
+     "recu": 3
+    },
+    {
+     "genre": "colonnes",
+     "type": "chip",
+     "bande": 6,
+     "texte": "Coulanges-lès-Nevers",
+     "attendu": 4,
+     "recu": 3
+    },
+    {
+     "genre": "colonnes",
+     "type": "chip",
+     "bande": 6,
+     "texte": "Challuy",
+     "attendu": 2,
+     "recu": 3
+    },
+    {
+     "genre": "colonnes",
+     "type": "chip",
+     "bande": 6,
+     "texte": "Garchizy",
+     "attendu": 2,
+     "recu": 3
+    }
+   ]
+  }
+ },
+ "#/departement/haute-saone": {
+  "375": {
+   "cartesRef": 32,
+   "cartesWp": 32,
+   "anomalies": [
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "chip",
+     "bande": 5,
+     "texte": "Commerces de centre-ville"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "chip",
+     "bande": 5,
+     "texte": "Cabinets et professions libérales"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "chip",
+     "bande": 5,
+     "texte": "Parties communes de résidences"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "chip",
+     "bande": 5,
+     "texte": "Locaux associatifs et de formation"
+    },
+    {
+     "genre": "colonnes",
+     "type": "chip",
+     "bande": 6,
+     "texte": "Navenne",
+     "attendu": 3,
+     "recu": 2
+    },
+    {
+     "genre": "colonnes",
+     "type": "chip",
+     "bande": 6,
+     "texte": "Vaivre-et-Montoille",
+     "attendu": 3,
+     "recu": 2
+    },
+    {
+     "genre": "colonnes",
+     "type": "chip",
+     "bande": 6,
+     "texte": "Pusey",
+     "attendu": 3,
+     "recu": 2
+    },
+    {
+     "genre": "colonnes",
+     "type": "chip",
+     "bande": 6,
+     "texte": "Frotey-lès-Vesoul",
+     "attendu": 1,
+     "recu": 2
+    },
+    {
+     "genre": "type",
+     "type": "carte-titre",
+     "recu": "micro-carte",
+     "bande": 11,
+     "texte": "☎ Échanger avec Audrey · 06 36 17 63 39"
+    }
+   ]
+  },
+  "1440": {
+   "cartesRef": 31,
+   "cartesWp": 31,
+   "anomalies": [
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "chip",
+     "bande": 5,
+     "texte": "Cabinets et professions libérales"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "chip",
+     "bande": 5,
+     "texte": "Parties communes de résidences"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "chip",
+     "bande": 5,
+     "texte": "Locaux associatifs et de formation"
+    }
+   ]
+  }
+ },
+ "#/departement/saone-et-loire": {
+  "375": {
+   "cartesRef": 33,
+   "cartesWp": 34,
+   "anomalies": [
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "chip",
+     "bande": 5,
+     "texte": "Bureaux de PME et bureaux d'études"
+    },
+    {
+     "genre": "type",
+     "type": "carte-titre",
+     "recu": "carte-sombre",
+     "bande": 11,
+     "texte": "Demander un devis en Saône-et-Loire"
+    },
+    {
+     "genre": "type",
+     "type": "carte-titre",
+     "recu": "micro-carte",
+     "bande": 11,
+     "texte": "☎ Échanger avec Audrey · 06 36 17 63 39"
+    },
+    {
+     "genre": "surplus",
+     "type": "micro-carte",
+     "bande": 11,
+     "texte": "Demander un devis en Saône-et-Loire"
+    }
+   ]
+  },
+  "1440": {
+   "cartesRef": 31,
+   "cartesWp": 31,
+   "anomalies": []
+  }
+ },
+ "#/departement/yonne": {
+  "375": {
+   "cartesRef": 32,
+   "cartesWp": 32,
+   "anomalies": [
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "chip",
+     "bande": 5,
+     "texte": "Bureaux de PME et sièges locaux"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "chip",
+     "bande": 5,
+     "texte": "Commerces de centre-ville"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "chip",
+     "bande": 5,
+     "texte": "Cabinets et professions libérales"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "chip",
+     "bande": 5,
+     "texte": "Espaces d'accueil et de dégustation"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "chip",
+     "bande": 5,
+     "texte": "Parties communes de résidences"
+    },
+    {
+     "genre": "type",
+     "type": "carte-titre",
+     "recu": "micro-carte",
+     "bande": 11,
+     "texte": "☎ Échanger avec Audrey · 06 36 17 63 39"
+    }
+   ]
+  },
+  "1440": {
+   "cartesRef": 31,
+   "cartesWp": 31,
+   "anomalies": []
+  }
+ },
+ "#/departement/territoire-de-belfort": {
+  "375": {
+   "cartesRef": 32,
+   "cartesWp": 32,
+   "anomalies": [
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "chip",
+     "bande": 5,
+     "texte": "Bureaux d'études et d'ingénierie"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "chip",
+     "bande": 5,
+     "texte": "Commerces de centre-ville"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "chip",
+     "bande": 5,
+     "texte": "Cabinets et professions libérales"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "chip",
+     "bande": 5,
+     "texte": "Parties communes de résidences"
+    },
+    {
+     "genre": "type",
+     "type": "carte-titre",
+     "recu": "micro-carte",
+     "bande": 11,
+     "texte": "☎ Échanger avec Audrey · 06 36 17 63 39"
+    }
+   ]
+  },
+  "1440": {
+   "cartesRef": 31,
+   "cartesWp": 31,
+   "anomalies": [
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "chip",
+     "bande": 5,
+     "texte": "Commerces de centre-ville"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "chip",
+     "bande": 5,
+     "texte": "Cabinets et professions libérales"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "chip",
+     "bande": 5,
+     "texte": "Parties communes de résidences"
+    },
+    {
+     "genre": "colonnes",
+     "type": "chip",
+     "bande": 6,
+     "texte": "Valdoie",
+     "attendu": 6,
+     "recu": 5
+    },
+    {
+     "genre": "colonnes",
+     "type": "chip",
+     "bande": 6,
+     "texte": "Offemont",
+     "attendu": 6,
+     "recu": 5
+    },
+    {
+     "genre": "colonnes",
+     "type": "chip",
+     "bande": 6,
+     "texte": "Bavilliers",
+     "attendu": 6,
+     "recu": 5
+    },
+    {
+     "genre": "colonnes",
+     "type": "chip",
+     "bande": 6,
+     "texte": "Danjoutin",
+     "attendu": 6,
+     "recu": 5
+    },
+    {
+     "genre": "colonnes",
+     "type": "chip",
+     "bande": 6,
+     "texte": "Cravanche",
+     "attendu": 6,
+     "recu": 5
+    },
+    {
+     "genre": "colonnes",
+     "type": "chip",
+     "bande": 6,
+     "texte": "Essert",
+     "attendu": 6,
+     "recu": 1
+    }
+   ]
+  }
+ },
+ "#/ville/dijon": {
+  "375": {
+   "cartesRef": 50,
+   "cartesWp": 49,
+   "anomalies": [
+    {
+     "genre": "colonnes",
+     "type": "chip",
+     "bande": 9,
+     "texte": "Chevigny-Saint-Sauveur",
+     "attendu": 3,
+     "recu": 2
+    },
+    {
+     "genre": "colonnes",
+     "type": "chip",
+     "bande": 9,
+     "texte": "Ahuy",
+     "attendu": 3,
+     "recu": 2
+    },
+    {
+     "genre": "colonnes",
+     "type": "chip",
+     "bande": 9,
+     "texte": "Ruffey-lès-Echirey",
+     "attendu": 1,
+     "recu": 2
+    },
+    {
+     "genre": "absente",
+     "type": "carte-titre-texte",
+     "bande": 12,
+     "texte": "Nous contacterAudrey est votre interlocutrice unique, de la première v"
+    },
+    {
+     "genre": "type",
+     "type": "carte-titre",
+     "recu": "micro-carte",
+     "bande": 13,
+     "texte": "☎ Échanger avec Audrey · 06 36 17 63 39"
+    }
+   ]
+  },
+  "1440": {
+   "cartesRef": 49,
+   "cartesWp": 48,
+   "anomalies": [
+    {
+     "genre": "colonnes",
+     "type": "chip",
+     "bande": 9,
+     "texte": "Chevigny-Saint-Sauveur",
+     "attendu": 3,
+     "recu": 4
+    },
+    {
+     "genre": "colonnes",
+     "type": "chip",
+     "bande": 9,
+     "texte": "Sennecey-lès-Dijon",
+     "attendu": 4,
+     "recu": 2
+    },
+    {
+     "genre": "colonnes",
+     "type": "chip",
+     "bande": 9,
+     "texte": "Ruffey-lès-Echirey",
+     "attendu": 1,
+     "recu": 2
+    },
+    {
+     "genre": "absente",
+     "type": "carte-titre-texte",
+     "bande": 12,
+     "texte": "Nous contacterAudrey est votre interlocutrice unique, de la première v"
+    }
+   ]
+  }
+ },
+ "#/ville/besancon": {
+  "375": {
+   "cartesRef": 52,
+   "cartesWp": 51,
+   "anomalies": [
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "chip",
+     "bande": 5,
+     "texte": "Bureaux tertiaires et sièges régionaux"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "chip",
+     "bande": 5,
+     "texte": "Commerces du centre historique"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "chip",
+     "bande": 5,
+     "texte": "Syndics et copropriétés de l'agglomération"
+    },
+    {
+     "genre": "absente",
+     "type": "carte-titre-texte",
+     "bande": 12,
+     "texte": "Nous contacterAudrey est votre interlocutrice unique, de la première v"
+    },
+    {
+     "genre": "type",
+     "type": "carte-titre",
+     "recu": "micro-carte",
+     "bande": 13,
+     "texte": "☎ Échanger avec Audrey · 06 36 17 63 39"
+    }
+   ]
+  },
+  "1440": {
+   "cartesRef": 51,
+   "cartesWp": 50,
+   "anomalies": [
+    {
+     "genre": "absente",
+     "type": "carte-titre-texte",
+     "bande": 12,
+     "texte": "Nous contacterAudrey est votre interlocutrice unique, de la première v"
+    }
+   ]
+  }
+ },
+ "#/ville/dole": {
+  "375": {
+   "cartesRef": 51,
+   "cartesWp": 50,
+   "anomalies": [
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "chip",
+     "bande": 5,
+     "texte": "Bureaux de PME et locaux administratifs"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "chip",
+     "bande": 5,
+     "texte": "Syndics et petites copropriétés"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "chip",
+     "bande": 5,
+     "texte": "Locations meublées et gîtes urbains"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "chip",
+     "bande": 8,
+     "texte": "Bureaux : 1 à 3 passages par semaine"
+    },
+    {
+     "genre": "absente",
+     "type": "carte-titre-texte",
+     "bande": 12,
+     "texte": "Nous contacterAudrey est votre interlocutrice unique, de la première v"
+    },
+    {
+     "genre": "type",
+     "type": "carte-titre",
+     "recu": "micro-carte",
+     "bande": 13,
+     "texte": "☎ Échanger avec Audrey · 06 36 17 63 39"
+    }
+   ]
+  },
+  "1440": {
+   "cartesRef": 50,
+   "cartesWp": 49,
+   "anomalies": [
+    {
+     "genre": "absente",
+     "type": "carte-titre-texte",
+     "bande": 12,
+     "texte": "Nous contacterAudrey est votre interlocutrice unique, de la première v"
+    }
+   ]
+  }
+ },
+ "#/ville/lons-le-saunier": {
+  "375": {
+   "cartesRef": 50,
+   "cartesWp": 49,
+   "anomalies": [
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "chip",
+     "bande": 5,
+     "texte": "Bureaux de PME et locaux administratifs"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "chip",
+     "bande": 5,
+     "texte": "Commerces indépendants du centre-ville"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "chip",
+     "bande": 5,
+     "texte": "Cabinets paramédicaux courants"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "chip",
+     "bande": 5,
+     "texte": "Syndics et petites copropriétés"
+    },
+    {
+     "genre": "absente",
+     "type": "carte-titre-texte",
+     "bande": 12,
+     "texte": "Nous contacterAudrey est votre interlocutrice unique, de la première v"
+    },
+    {
+     "genre": "type",
+     "type": "carte-titre",
+     "recu": "micro-carte",
+     "bande": 13,
+     "texte": "☎ Échanger avec Audrey · 06 36 17 63 39"
+    }
+   ]
+  },
+  "1440": {
+   "cartesRef": 49,
+   "cartesWp": 48,
+   "anomalies": [
+    {
+     "genre": "absente",
+     "type": "carte-titre-texte",
+     "bande": 12,
+     "texte": "Nous contacterAudrey est votre interlocutrice unique, de la première v"
+    }
+   ]
+  }
+ },
+ "#/ville/nevers": {
+  "375": {
+   "cartesRef": 51,
+   "cartesWp": 50,
+   "anomalies": [
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "chip",
+     "bande": 5,
+     "texte": "Commerces indépendants du centre-ville"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "chip",
+     "bande": 5,
+     "texte": "Cabinets et professions libérales"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "chip",
+     "bande": 5,
+     "texte": "Cabinet : 1 à 2 passages par semaine"
+    },
+    {
+     "genre": "colonnes",
+     "type": "chip",
+     "bande": 9,
+     "texte": "Marzy",
+     "attendu": 3,
+     "recu": 2
+    },
+    {
+     "genre": "colonnes",
+     "type": "chip",
+     "bande": 9,
+     "texte": "Coulanges-lès-Nevers",
+     "attendu": 3,
+     "recu": 2
+    },
+    {
+     "genre": "colonnes",
+     "type": "chip",
+     "bande": 9,
+     "texte": "Challuy",
+     "attendu": 3,
+     "recu": 2
+    },
+    {
+     "genre": "colonnes",
+     "type": "chip",
+     "bande": 9,
+     "texte": "Sermoise-sur-Loire",
+     "attendu": 2,
+     "recu": 1
+    },
+    {
+     "genre": "absente",
+     "type": "carte-titre-texte",
+     "bande": 12,
+     "texte": "Nous contacterAudrey est votre interlocutrice unique, de la première v"
+    },
+    {
+     "genre": "type",
+     "type": "carte-titre",
+     "recu": "micro-carte",
+     "bande": 13,
+     "texte": "☎ Échanger avec Audrey · 06 36 17 63 39"
+    }
+   ]
+  },
+  "1440": {
+   "cartesRef": 50,
+   "cartesWp": 49,
+   "anomalies": [
+    {
+     "genre": "colonnes",
+     "type": "chip",
+     "bande": 9,
+     "texte": "Varennes-Vauzelles",
+     "attendu": 4,
+     "recu": 3
+    },
+    {
+     "genre": "colonnes",
+     "type": "chip",
+     "bande": 9,
+     "texte": "Fourchambault",
+     "attendu": 4,
+     "recu": 3
+    },
+    {
+     "genre": "colonnes",
+     "type": "chip",
+     "bande": 9,
+     "texte": "Marzy",
+     "attendu": 4,
+     "recu": 3
+    },
+    {
+     "genre": "colonnes",
+     "type": "chip",
+     "bande": 9,
+     "texte": "Challuy",
+     "attendu": 3,
+     "recu": 4
+    },
+    {
+     "genre": "colonnes",
+     "type": "chip",
+     "bande": 9,
+     "texte": "Garchizy",
+     "attendu": 3,
+     "recu": 4
+    },
+    {
+     "genre": "colonnes",
+     "type": "chip",
+     "bande": 9,
+     "texte": "Sermoise-sur-Loire",
+     "attendu": 3,
+     "recu": 4
+    },
+    {
+     "genre": "absente",
+     "type": "carte-titre-texte",
+     "bande": 12,
+     "texte": "Nous contacterAudrey est votre interlocutrice unique, de la première v"
+    }
+   ]
+  }
+ },
+ "#/ville/vesoul": {
+  "375": {
+   "cartesRef": 50,
+   "cartesWp": 49,
+   "anomalies": [
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "chip",
+     "bande": 5,
+     "texte": "Commerces indépendants du centre-ville"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "chip",
+     "bande": 5,
+     "texte": "Cabinets et professions libérales"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "chip",
+     "bande": 5,
+     "texte": "Parties communes de résidences"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "chip",
+     "bande": 5,
+     "texte": "Locaux associatifs et de formation"
+    },
+    {
+     "genre": "colonnes",
+     "type": "chip",
+     "bande": 9,
+     "texte": "Navenne",
+     "attendu": 3,
+     "recu": 2
+    },
+    {
+     "genre": "colonnes",
+     "type": "chip",
+     "bande": 9,
+     "texte": "Vaivre-et-Montoille",
+     "attendu": 3,
+     "recu": 2
+    },
+    {
+     "genre": "colonnes",
+     "type": "chip",
+     "bande": 9,
+     "texte": "Pusey",
+     "attendu": 3,
+     "recu": 2
+    },
+    {
+     "genre": "colonnes",
+     "type": "chip",
+     "bande": 9,
+     "texte": "Frotey-lès-Vesoul",
+     "attendu": 1,
+     "recu": 2
+    },
+    {
+     "genre": "absente",
+     "type": "carte-titre-texte",
+     "bande": 12,
+     "texte": "Nous contacterAudrey est votre interlocutrice unique, de la première v"
+    },
+    {
+     "genre": "type",
+     "type": "carte-titre",
+     "recu": "micro-carte",
+     "bande": 13,
+     "texte": "☎ Échanger avec Audrey · 06 36 17 63 39"
+    }
+   ]
+  },
+  "1440": {
+   "cartesRef": 49,
+   "cartesWp": 48,
+   "anomalies": [
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "chip",
+     "bande": 5,
+     "texte": "Cabinets et professions libérales"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "chip",
+     "bande": 5,
+     "texte": "Parties communes de résidences"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "chip",
+     "bande": 5,
+     "texte": "Locaux associatifs et de formation"
+    },
+    {
+     "genre": "absente",
+     "type": "carte-titre-texte",
+     "bande": 12,
+     "texte": "Nous contacterAudrey est votre interlocutrice unique, de la première v"
+    }
+   ]
+  }
+ },
+ "#/ville/chalon-sur-saone": {
+  "375": {
+   "cartesRef": 51,
+   "cartesWp": 50,
+   "anomalies": [
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "chip",
+     "bande": 5,
+     "texte": "Sièges d'entreprise et bureaux de services"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "chip",
+     "bande": 5,
+     "texte": "Commerces indépendants du centre-ville"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "chip",
+     "bande": 5,
+     "texte": "Syndics et copropriétés urbaines"
+    },
+    {
+     "genre": "absente",
+     "type": "carte-titre-texte",
+     "bande": 12,
+     "texte": "Nous contacterAudrey est votre interlocutrice unique, de la première v"
+    },
+    {
+     "genre": "type",
+     "type": "carte-titre",
+     "recu": "micro-carte",
+     "bande": 13,
+     "texte": "Demander un devis à Chalon-sur-Saône"
+    },
+    {
+     "genre": "type",
+     "type": "carte-titre",
+     "recu": "micro-carte",
+     "bande": 13,
+     "texte": "☎ Échanger avec Audrey · 06 36 17 63 39"
+    }
+   ]
+  },
+  "1440": {
+   "cartesRef": 48,
+   "cartesWp": 47,
+   "anomalies": [
+    {
+     "genre": "absente",
+     "type": "carte-titre-texte",
+     "bande": 12,
+     "texte": "Nous contacterAudrey est votre interlocutrice unique, de la première v"
+    }
+   ]
+  }
+ },
+ "#/ville/macon": {
+  "375": {
+   "cartesRef": 50,
+   "cartesWp": 49,
+   "anomalies": [
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "chip",
+     "bande": 5,
+     "texte": "Bureaux de PME et sièges locaux"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "chip",
+     "bande": 5,
+     "texte": "Commerces indépendants du centre-ville"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "chip",
+     "bande": 5,
+     "texte": "Bureaux rattachés aux zones logistiques"
+    },
+    {
+     "genre": "absente",
+     "type": "carte-titre-texte",
+     "bande": 12,
+     "texte": "Nous contacterAudrey est votre interlocutrice unique, de la première v"
+    },
+    {
+     "genre": "type",
+     "type": "carte-titre",
+     "recu": "micro-carte",
+     "bande": 13,
+     "texte": "☎ Échanger avec Audrey · 06 36 17 63 39"
+    }
+   ]
+  },
+  "1440": {
+   "cartesRef": 49,
+   "cartesWp": 48,
+   "anomalies": [
+    {
+     "genre": "absente",
+     "type": "carte-titre-texte",
+     "bande": 12,
+     "texte": "Nous contacterAudrey est votre interlocutrice unique, de la première v"
+    }
+   ]
+  }
+ },
+ "#/ville/auxerre": {
+  "375": {
+   "cartesRef": 51,
+   "cartesWp": 50,
+   "anomalies": [
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "chip",
+     "bande": 5,
+     "texte": "Bureaux de PME et sièges locaux"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "chip",
+     "bande": 5,
+     "texte": "Cabinets et professions libérales"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "chip",
+     "bande": 8,
+     "texte": "Cabinet : 1 à 2 passages par semaine"
+    },
+    {
+     "genre": "absente",
+     "type": "carte-titre-texte",
+     "bande": 12,
+     "texte": "Nous contacterAudrey est votre interlocutrice unique, de la première v"
+    },
+    {
+     "genre": "type",
+     "type": "carte-titre",
+     "recu": "micro-carte",
+     "bande": 13,
+     "texte": "☎ Échanger avec Audrey · 06 36 17 63 39"
+    }
+   ]
+  },
+  "1440": {
+   "cartesRef": 50,
+   "cartesWp": 49,
+   "anomalies": [
+    {
+     "genre": "absente",
+     "type": "carte-titre-texte",
+     "bande": 12,
+     "texte": "Nous contacterAudrey est votre interlocutrice unique, de la première v"
+    }
+   ]
+  }
+ },
+ "#/ville/belfort": {
+  "375": {
+   "cartesRef": 51,
+   "cartesWp": 50,
+   "anomalies": [
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "chip",
+     "bande": 5,
+     "texte": "Bureaux d'études et d'ingénierie"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "chip",
+     "bande": 5,
+     "texte": "PME de services et sièges locaux"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "chip",
+     "bande": 5,
+     "texte": "Commerces indépendants du centre-ville"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "chip",
+     "bande": 5,
+     "texte": "Cabinets et professions libérales"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "chip",
+     "bande": 5,
+     "texte": "Parties communes de résidences"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "chip",
+     "bande": 8,
+     "texte": "Cabinet : 1 à 2 passages par semaine"
+    },
+    {
+     "genre": "absente",
+     "type": "carte-titre-texte",
+     "bande": 12,
+     "texte": "Nous contacterAudrey est votre interlocutrice unique, de la première v"
+    },
+    {
+     "genre": "type",
+     "type": "carte-titre",
+     "recu": "micro-carte",
+     "bande": 13,
+     "texte": "☎ Échanger avec Audrey · 06 36 17 63 39"
+    }
+   ]
+  },
+  "1440": {
+   "cartesRef": 50,
+   "cartesWp": 49,
+   "anomalies": [
+    {
+     "genre": "colonnes",
+     "type": "chip",
+     "bande": 9,
+     "texte": "Valdoie",
+     "attendu": 6,
+     "recu": 5
+    },
+    {
+     "genre": "colonnes",
+     "type": "chip",
+     "bande": 9,
+     "texte": "Offemont",
+     "attendu": 6,
+     "recu": 5
+    },
+    {
+     "genre": "colonnes",
+     "type": "chip",
+     "bande": 9,
+     "texte": "Bavilliers",
+     "attendu": 6,
+     "recu": 5
+    },
+    {
+     "genre": "colonnes",
+     "type": "chip",
+     "bande": 9,
+     "texte": "Danjoutin",
+     "attendu": 6,
+     "recu": 5
+    },
+    {
+     "genre": "colonnes",
+     "type": "chip",
+     "bande": 9,
+     "texte": "Cravanche",
+     "attendu": 6,
+     "recu": 5
+    },
+    {
+     "genre": "colonnes",
+     "type": "chip",
+     "bande": 9,
+     "texte": "Essert",
+     "attendu": 6,
+     "recu": 2
+    },
+    {
+     "genre": "colonnes",
+     "type": "chip",
+     "bande": 9,
+     "texte": "Pérouse",
+     "attendu": 1,
+     "recu": 2
+    },
+    {
+     "genre": "absente",
+     "type": "carte-titre-texte",
+     "bande": 12,
+     "texte": "Nous contacterAudrey est votre interlocutrice unique, de la première v"
+    }
+   ]
+  }
+ },
+ "#/ville/saint-apollinaire": {
+  "375": {
+   "cartesRef": 47,
+   "cartesWp": 46,
+   "anomalies": [
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "chip",
+     "bande": 5,
+     "texte": "Commerces et services de proximité"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "chip",
+     "bande": 5,
+     "texte": "Cabinets et professions libérales"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "chip",
+     "bande": 5,
+     "texte": "Copropriétés et résidences"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "chip",
+     "bande": 5,
+     "texte": "Associations et locaux de formation"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "chip",
+     "bande": 8,
+     "texte": "Prestations courtes possibles (1 h ou 2 h)"
+    },
+    {
+     "genre": "colonnes",
+     "type": "chip",
+     "bande": 9,
+     "texte": "Ruffey-lès-Echirey",
+     "attendu": 3,
+     "recu": 2
+    },
+    {
+     "genre": "colonnes",
+     "type": "chip",
+     "bande": 9,
+     "texte": "Norges-la-Ville",
+     "attendu": 1,
+     "recu": 2
+    },
+    {
+     "genre": "absente",
+     "type": "carte-titre-texte",
+     "bande": 12,
+     "texte": "Nous contacterAudrey est votre interlocutrice unique, de la première v"
+    },
+    {
+     "genre": "type",
+     "type": "carte-titre",
+     "recu": "micro-carte",
+     "bande": 13,
+     "texte": "Demander un devis à Saint-Apollinaire"
+    },
+    {
+     "genre": "type",
+     "type": "carte-titre",
+     "recu": "micro-carte",
+     "bande": 13,
+     "texte": "☎ Échanger avec Audrey · 06 36 17 63 39"
+    }
+   ]
+  },
+  "1440": {
+   "cartesRef": 44,
+   "cartesWp": 43,
+   "anomalies": [
+    {
+     "genre": "colonnes",
+     "type": "chip",
+     "bande": 9,
+     "texte": "Ruffey-lès-Echirey",
+     "attendu": 4,
+     "recu": 3
+    },
+    {
+     "genre": "colonnes",
+     "type": "chip",
+     "bande": 9,
+     "texte": "Bressey-sur-Tille",
+     "attendu": 4,
+     "recu": 3
+    },
+    {
+     "genre": "colonnes",
+     "type": "chip",
+     "bande": 9,
+     "texte": "Varois-et-Chaignot",
+     "attendu": 2,
+     "recu": 3
+    },
+    {
+     "genre": "colonnes",
+     "type": "chip",
+     "bande": 9,
+     "texte": "Norges-la-Ville",
+     "attendu": 2,
+     "recu": 1
+    },
+    {
+     "genre": "absente",
+     "type": "carte-titre-texte",
+     "bande": 12,
+     "texte": "Nous contacterAudrey est votre interlocutrice unique, de la première v"
+    }
+   ]
+  }
+ },
+ "#/ville/chenove": {
+  "375": {
+   "cartesRef": 42,
+   "cartesWp": 41,
+   "anomalies": [
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "chip",
+     "bande": 5,
+     "texte": "Commerces et services de proximité"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "chip",
+     "bande": 5,
+     "texte": "Bureaux de PME et locaux administratifs"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "chip",
+     "bande": 5,
+     "texte": "Cabinets et professions libérales"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "chip",
+     "bande": 5,
+     "texte": "Locaux associatifs et de formation"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "chip",
+     "bande": 8,
+     "texte": "Bureaux : 1 à 3 passages par semaine"
+    },
+    {
+     "genre": "absente",
+     "type": "carte-titre-texte",
+     "bande": 12,
+     "texte": "Nous contacterAudrey est votre interlocutrice unique, de la première v"
+    },
+    {
+     "genre": "type",
+     "type": "carte-titre",
+     "recu": "micro-carte",
+     "bande": 13,
+     "texte": "☎ Échanger avec Audrey · 06 36 17 63 39"
+    }
+   ]
+  },
+  "1440": {
+   "cartesRef": 41,
+   "cartesWp": 40,
+   "anomalies": [
+    {
+     "genre": "colonnes",
+     "type": "chip",
+     "bande": 9,
+     "texte": "Perrigny-lès-Dijon",
+     "attendu": 4,
+     "recu": 1
+    },
+    {
+     "genre": "absente",
+     "type": "carte-titre-texte",
+     "bande": 12,
+     "texte": "Nous contacterAudrey est votre interlocutrice unique, de la première v"
+    }
+   ]
+  }
+ },
+ "#/ville/quetigny": {
+  "375": {
+   "cartesRef": 38,
+   "cartesWp": 37,
+   "anomalies": [
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "chip",
+     "bande": 5,
+     "texte": "Bureaux de PME et locaux administratifs"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "chip",
+     "bande": 5,
+     "texte": "Copropriétés et résidences"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "chip",
+     "bande": 5,
+     "texte": "Locaux associatifs et de formation"
+    },
+    {
+     "genre": "absente",
+     "type": "carte-titre-texte",
+     "bande": 12,
+     "texte": "Nous contacterAudrey est votre interlocutrice unique, de la première v"
+    },
+    {
+     "genre": "type",
+     "type": "carte-titre",
+     "recu": "micro-carte",
+     "bande": 13,
+     "texte": "☎ Échanger avec Audrey · 06 36 17 63 39"
+    }
+   ]
+  },
+  "1440": {
+   "cartesRef": 37,
+   "cartesWp": 36,
+   "anomalies": [
+    {
+     "genre": "colonnes",
+     "type": "chip",
+     "bande": 9,
+     "texte": "Chevigny-Saint-Sauveur",
+     "attendu": 4,
+     "recu": 3
+    },
+    {
+     "genre": "colonnes",
+     "type": "chip",
+     "bande": 9,
+     "texte": "Sennecey-lès-Dijon",
+     "attendu": 4,
+     "recu": 3
+    },
+    {
+     "genre": "colonnes",
+     "type": "chip",
+     "bande": 9,
+     "texte": "Bretenière",
+     "attendu": 1,
+     "recu": 3
+    },
+    {
+     "genre": "absente",
+     "type": "carte-titre-texte",
+     "bande": 12,
+     "texte": "Nous contacterAudrey est votre interlocutrice unique, de la première v"
+    }
+   ]
+  }
+ },
+ "#/ville/talant": {
+  "375": {
+   "cartesRef": 42,
+   "cartesWp": 41,
+   "anomalies": [
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "chip",
+     "bande": 5,
+     "texte": "Résidences et petits immeubles collectifs"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "chip",
+     "bande": 5,
+     "texte": "Cabinets et professions libérales"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "chip",
+     "bande": 5,
+     "texte": "Commerces de proximité"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "chip",
+     "bande": 5,
+     "texte": "Bureaux de petites structures"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "chip",
+     "bande": 8,
+     "texte": "Petit bureau : 1 passage par semaine"
+    },
+    {
+     "genre": "absente",
+     "type": "carte-titre-texte",
+     "bande": 12,
+     "texte": "Nous contacterAudrey est votre interlocutrice unique, de la première v"
+    },
+    {
+     "genre": "type",
+     "type": "carte-titre",
+     "recu": "micro-carte",
+     "bande": 13,
+     "texte": "☎ Échanger avec Audrey · 06 36 17 63 39"
+    }
+   ]
+  },
+  "1440": {
+   "cartesRef": 41,
+   "cartesWp": 40,
+   "anomalies": [
+    {
+     "genre": "colonnes",
+     "type": "chip",
+     "bande": 9,
+     "texte": "Plombières-lès-Dijon",
+     "attendu": 4,
+     "recu": 2
+    },
+    {
+     "genre": "absente",
+     "type": "carte-titre-texte",
+     "bande": 12,
+     "texte": "Nous contacterAudrey est votre interlocutrice unique, de la première v"
+    }
+   ]
+  }
+ },
+ "#/ville/longvic": {
+  "375": {
+   "cartesRef": 44,
+   "cartesWp": 43,
+   "anomalies": [
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "chip",
+     "bande": 5,
+     "texte": "Bureaux administratifs de sites d'activité"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "chip",
+     "bande": 5,
+     "texte": "Bureaux de PME et sièges locaux"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "chip",
+     "bande": 5,
+     "texte": "Commerces et services de proximité"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "chip",
+     "bande": 5,
+     "texte": "Cabinets et professions libérales"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "chip",
+     "bande": 5,
+     "texte": "Copropriétés et résidences"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "chip",
+     "bande": 5,
+     "texte": "Locaux associatifs et de formation"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "chip",
+     "bande": 8,
+     "texte": "Cabinet : 1 à 2 passages par semaine"
+    },
+    {
+     "genre": "colonnes",
+     "type": "chip",
+     "bande": 9,
+     "texte": "Ouges",
+     "attendu": 4,
+     "recu": 3
+    },
+    {
+     "genre": "colonnes",
+     "type": "chip",
+     "bande": 9,
+     "texte": "Fénay",
+     "attendu": 4,
+     "recu": 3
+    },
+    {
+     "genre": "colonnes",
+     "type": "chip",
+     "bande": 9,
+     "texte": "Perrigny-lès-Dijon",
+     "attendu": 1,
+     "recu": 3
+    },
+    {
+     "genre": "absente",
+     "type": "carte-titre-texte",
+     "bande": 12,
+     "texte": "Nous contacterAudrey est votre interlocutrice unique, de la première v"
+    },
+    {
+     "genre": "type",
+     "type": "carte-titre",
+     "recu": "micro-carte",
+     "bande": 13,
+     "texte": "☎ Échanger avec Audrey · 06 36 17 63 39"
+    }
+   ]
+  },
+  "1440": {
+   "cartesRef": 43,
+   "cartesWp": 42,
+   "anomalies": [
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "chip",
+     "bande": 5,
+     "texte": "Cabinets et professions libérales"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "chip",
+     "bande": 5,
+     "texte": "Copropriétés et résidences"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "chip",
+     "bande": 5,
+     "texte": "Locaux associatifs et de formation"
+    },
+    {
+     "genre": "colonnes",
+     "type": "chip",
+     "bande": 9,
+     "texte": "Ouges",
+     "attendu": 5,
+     "recu": 3
+    },
+    {
+     "genre": "colonnes",
+     "type": "chip",
+     "bande": 9,
+     "texte": "Fénay",
+     "attendu": 5,
+     "recu": 3
+    },
+    {
+     "genre": "colonnes",
+     "type": "chip",
+     "bande": 9,
+     "texte": "Perrigny-lès-Dijon",
+     "attendu": 5,
+     "recu": 3
+    },
+    {
+     "genre": "absente",
+     "type": "carte-titre-texte",
+     "bande": 12,
+     "texte": "Nous contacterAudrey est votre interlocutrice unique, de la première v"
+    }
+   ]
+  }
+ },
+ "#/ville/fontaine-les-dijon": {
+  "375": {
+   "cartesRef": 46,
+   "cartesWp": 45,
+   "anomalies": [
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "chip",
+     "bande": 5,
+     "texte": "Commerces et services de proximité"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "chip",
+     "bande": 5,
+     "texte": "Locaux associatifs"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "chip",
+     "bande": 8,
+     "texte": "Petit bureau : 1 à 2 passages par semaine"
+    },
+    {
+     "genre": "colonnes",
+     "type": "chip",
+     "bande": 9,
+     "texte": "Ahuy",
+     "attendu": 4,
+     "recu": 3
+    },
+    {
+     "genre": "colonnes",
+     "type": "chip",
+     "bande": 9,
+     "texte": "Hauteville-lès-Dijon",
+     "attendu": 1,
+     "recu": 3
+    },
+    {
+     "genre": "absente",
+     "type": "carte-titre-texte",
+     "bande": 12,
+     "texte": "Nous contacterAudrey est votre interlocutrice unique, de la première v"
+    },
+    {
+     "genre": "type",
+     "type": "carte-titre",
+     "recu": "micro-carte",
+     "bande": 13,
+     "texte": "Demander un devis à Fontaine-lès-Dijon"
+    },
+    {
+     "genre": "type",
+     "type": "carte-titre",
+     "recu": "micro-carte",
+     "bande": 13,
+     "texte": "☎ Échanger avec Audrey · 06 36 17 63 39"
+    }
+   ]
+  },
+  "1440": {
+   "cartesRef": 43,
+   "cartesWp": 42,
+   "anomalies": [
+    {
+     "genre": "colonnes",
+     "type": "chip",
+     "bande": 9,
+     "texte": "Ahuy",
+     "attendu": 5,
+     "recu": 3
+    },
+    {
+     "genre": "colonnes",
+     "type": "chip",
+     "bande": 9,
+     "texte": "Hauteville-lès-Dijon",
+     "attendu": 5,
+     "recu": 3
+    },
+    {
+     "genre": "absente",
+     "type": "carte-titre-texte",
+     "bande": 12,
+     "texte": "Nous contacterAudrey est votre interlocutrice unique, de la première v"
+    }
+   ]
+  }
+ },
+ "#/ville/marsannay-la-cote": {
+  "375": {
+   "cartesRef": 39,
+   "cartesWp": 38,
+   "anomalies": [
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "chip",
+     "bande": 5,
+     "texte": "Bureaux de petites structures"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "chip",
+     "bande": 5,
+     "texte": "Commerces et services de proximité"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "chip",
+     "bande": 5,
+     "texte": "Cabinets et professions libérales"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "chip",
+     "bande": 5,
+     "texte": "Copropriétés et résidences"
+    },
+    {
+     "genre": "colonnes",
+     "type": "chip",
+     "bande": 9,
+     "texte": "Couchey",
+     "attendu": 3,
+     "recu": 2
+    },
+    {
+     "genre": "colonnes",
+     "type": "chip",
+     "bande": 9,
+     "texte": "Perrigny-lès-Dijon",
+     "attendu": 1,
+     "recu": 2
+    },
+    {
+     "genre": "absente",
+     "type": "carte-titre-texte",
+     "bande": 12,
+     "texte": "Nous contacterAudrey est votre interlocutrice unique, de la première v"
+    },
+    {
+     "genre": "type",
+     "type": "carte-titre",
+     "recu": "micro-carte",
+     "bande": 13,
+     "texte": "Demander un devis à Marsannay-la-Côte"
+    },
+    {
+     "genre": "type",
+     "type": "carte-titre",
+     "recu": "micro-carte",
+     "bande": 13,
+     "texte": "☎ Échanger avec Audrey · 06 36 17 63 39"
+    }
+   ]
+  },
+  "1440": {
+   "cartesRef": 36,
+   "cartesWp": 35,
+   "anomalies": [
+    {
+     "genre": "colonnes",
+     "type": "chip",
+     "bande": 9,
+     "texte": "Couchey",
+     "attendu": 4,
+     "recu": 2
+    },
+    {
+     "genre": "colonnes",
+     "type": "chip",
+     "bande": 9,
+     "texte": "Perrigny-lès-Dijon",
+     "attendu": 4,
+     "recu": 2
+    },
+    {
+     "genre": "absente",
+     "type": "carte-titre-texte",
+     "bande": 12,
+     "texte": "Nous contacterAudrey est votre interlocutrice unique, de la première v"
+    }
+   ]
+  }
+ },
+ "#/ville/beaune": {
+  "375": {
+   "cartesRef": 42,
+   "cartesWp": 41,
+   "anomalies": [
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "chip",
+     "bande": 5,
+     "texte": "Cabinets et professions libérales"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "chip",
+     "bande": 5,
+     "texte": "Bureaux de PME et sièges locaux"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "chip",
+     "bande": 5,
+     "texte": "Copropriétés et résidences"
+    },
+    {
+     "genre": "absente",
+     "type": "carte-titre-texte",
+     "bande": 12,
+     "texte": "Nous contacterAudrey est votre interlocutrice unique, de la première v"
+    },
+    {
+     "genre": "type",
+     "type": "carte-titre",
+     "recu": "micro-carte",
+     "bande": 13,
+     "texte": "☎ Échanger avec Audrey · 06 36 17 63 39"
+    }
+   ]
+  },
+  "1440": {
+   "cartesRef": 41,
+   "cartesWp": 40,
+   "anomalies": [
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "chip",
+     "bande": 5,
+     "texte": "Cabinets et professions libérales"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "chip",
+     "bande": 5,
+     "texte": "Bureaux de PME et sièges locaux"
+    },
+    {
+     "genre": "type",
+     "type": "micro-carte",
+     "recu": "chip",
+     "bande": 5,
+     "texte": "Copropriétés et résidences"
+    },
+    {
+     "genre": "absente",
+     "type": "carte-titre-texte",
+     "bande": 12,
+     "texte": "Nous contacterAudrey est votre interlocutrice unique, de la première v"
+    }
+   ]
+  }
+ },
+ "#/conseils": {
+  "375": {
+   "cartesRef": 11,
+   "cartesWp": 14,
+   "anomalies": [
+    {
+     "genre": "texte",
+     "type": "carte-image",
+     "bande": 4,
+     "texte": "À la une · Bureaux À quelle fréquence faire nettoyer ses bureaux ? Quo",
+     "recu": "Bureaux À quelle fréquence faire nettoyer ses bureaux ? Quotidien, plu",
+     "proximite": 80
+    },
+    {
+     "genre": "surplus",
+     "type": "chip",
+     "bande": 4,
+     "texte": "Bureaux"
+    },
+    {
+     "genre": "surplus",
+     "type": "chip",
+     "bande": 5,
+     "texte": "Tarifs"
+    },
+    {
+     "genre": "surplus",
+     "type": "chip",
+     "bande": 5,
+     "texte": "Organisation"
+    }
+   ]
+  },
+  "1440": {
+   "cartesRef": 11,
+   "cartesWp": 14,
+   "anomalies": [
+    {
+     "genre": "texte",
+     "type": "carte-image",
+     "bande": 4,
+     "texte": "À la une · Bureaux À quelle fréquence faire nettoyer ses bureaux ? Quo",
+     "recu": "Bureaux À quelle fréquence faire nettoyer ses bureaux ? Quotidien, plu",
+     "proximite": 80
+    },
+    {
+     "genre": "surplus",
+     "type": "chip",
+     "bande": 4,
+     "texte": "Bureaux"
+    },
+    {
+     "genre": "surplus",
+     "type": "chip",
+     "bande": 5,
+     "texte": "Tarifs"
+    },
+    {
+     "genre": "surplus",
+     "type": "chip",
+     "bande": 5,
+     "texte": "Organisation"
+    }
+   ]
+  }
+ },
+ "#/article/frequence-bureaux": {
+  "375": {
+   "cartesRef": 8,
+   "cartesWp": 8,
+   "anomalies": [
+    {
+     "genre": "absente",
+     "type": "micro-carte",
+     "bande": 5,
+     "texte": "▪Plus de 15 postes ou forte fréquentation : passage quotidien recomman"
+    },
+    {
+     "genre": "absente",
+     "type": "micro-carte",
+     "bande": 5,
+     "texte": "▪5 à 15 postes, activité courante : 2 à 3 passages par semaine"
+    },
+    {
+     "genre": "absente",
+     "type": "micro-carte",
+     "bande": 5,
+     "texte": "▪Moins de 5 postes, cabinet ou bureau individuel : passage hebdomadair"
+    },
+    {
+     "genre": "absente",
+     "type": "micro-carte",
+     "bande": 5,
+     "texte": "▪Salle de réunion utilisée en continu : remise en état après chaque us"
+    },
+    {
+     "genre": "surplus",
+     "type": "chip",
+     "bande": 2,
+     "texte": "Bureaux"
+    },
+    {
+     "genre": "surplus",
+     "type": "micro-carte",
+     "bande": 6,
+     "texte": "Sous-estimer la fréquence nécessaire pour des sanitaires très fréquent"
+    },
+    {
+     "genre": "surplus",
+     "type": "micro-carte",
+     "bande": 6,
+     "texte": "Demander un passage quotidien par habitude, sans effectif réel qui le "
+    },
+    {
+     "genre": "surplus",
+     "type": "micro-carte",
+     "bande": 6,
+     "texte": "Ne jamais réévaluer la fréquence après un changement d'effectif ou d'o"
+    }
+   ]
+  },
+  "1440": {
+   "cartesRef": 8,
+   "cartesWp": 8,
+   "anomalies": [
+    {
+     "genre": "absente",
+     "type": "micro-carte",
+     "bande": 5,
+     "texte": "▪Plus de 15 postes ou forte fréquentation : passage quotidien recomman"
+    },
+    {
+     "genre": "absente",
+     "type": "micro-carte",
+     "bande": 5,
+     "texte": "▪5 à 15 postes, activité courante : 2 à 3 passages par semaine"
+    },
+    {
+     "genre": "absente",
+     "type": "micro-carte",
+     "bande": 5,
+     "texte": "▪Moins de 5 postes, cabinet ou bureau individuel : passage hebdomadair"
+    },
+    {
+     "genre": "absente",
+     "type": "micro-carte",
+     "bande": 5,
+     "texte": "▪Salle de réunion utilisée en continu : remise en état après chaque us"
+    },
+    {
+     "genre": "surplus",
+     "type": "chip",
+     "bande": 2,
+     "texte": "Bureaux"
+    },
+    {
+     "genre": "surplus",
+     "type": "micro-carte",
+     "bande": 6,
+     "texte": "Sous-estimer la fréquence nécessaire pour des sanitaires très fréquent"
+    },
+    {
+     "genre": "surplus",
+     "type": "micro-carte",
+     "bande": 6,
+     "texte": "Demander un passage quotidien par habitude, sans effectif réel qui le "
+    },
+    {
+     "genre": "surplus",
+     "type": "micro-carte",
+     "bande": 6,
+     "texte": "Ne jamais réévaluer la fréquence après un changement d'effectif ou d'o"
+    }
+   ]
+  }
+ },
+ "#/article/cout-nettoyage-bureaux": {
+  "375": {
+   "cartesRef": 4,
+   "cartesWp": 7,
+   "anomalies": [
+    {
+     "genre": "surplus",
+     "type": "micro-carte",
+     "bande": 6,
+     "texte": "Comparer des prix au m² entre prestataires sans vérifier le volume hor"
+    },
+    {
+     "genre": "surplus",
+     "type": "micro-carte",
+     "bande": 6,
+     "texte": "Choisir uniquement sur le prix affiché, sans vérifier ce qui est inclu"
+    },
+    {
+     "genre": "surplus",
+     "type": "micro-carte",
+     "bande": 6,
+     "texte": "Ignorer les frais de mise en place et découvrir un premier mois plus é"
+    }
+   ]
+  },
+  "1440": {
+   "cartesRef": 4,
+   "cartesWp": 7,
+   "anomalies": [
+    {
+     "genre": "surplus",
+     "type": "micro-carte",
+     "bande": 6,
+     "texte": "Comparer des prix au m² entre prestataires sans vérifier le volume hor"
+    },
+    {
+     "genre": "surplus",
+     "type": "micro-carte",
+     "bande": 6,
+     "texte": "Choisir uniquement sur le prix affiché, sans vérifier ce qui est inclu"
+    },
+    {
+     "genre": "surplus",
+     "type": "micro-carte",
+     "bande": 6,
+     "texte": "Ignorer les frais de mise en place et découvrir un premier mois plus é"
+    }
+   ]
+  }
+ },
+ "#/article/cahier-des-charges-nettoyage": {
+  "375": {
+   "cartesRef": 10,
+   "cartesWp": 8,
+   "anomalies": [
+    {
+     "genre": "absente",
+     "type": "micro-carte",
+     "bande": 5,
+     "texte": "▪Postes de travail et open-spaces"
+    },
+    {
+     "genre": "absente",
+     "type": "micro-carte",
+     "bande": 5,
+     "texte": "▪Salles de réunion"
+    },
+    {
+     "genre": "absente",
+     "type": "micro-carte",
+     "bande": 5,
+     "texte": "▪Accueil et zones de circulation"
+    },
+    {
+     "genre": "absente",
+     "type": "micro-carte",
+     "bande": 5,
+     "texte": "▪Sanitaires (nombre et emplacement)"
+    },
+    {
+     "genre": "absente",
+     "type": "micro-carte",
+     "bande": 5,
+     "texte": "▪Cuisine ou salle de pause"
+    },
+    {
+     "genre": "fusionnee",
+     "type": "micro-carte",
+     "bande": 5,
+     "texte": "▪Zones sensibles à exclure (salle serveur, archives, coffre)",
+     "dans": "Oublier de mentionner les zones sensibles à exclur"
+    },
+    {
+     "genre": "surplus",
+     "type": "chip",
+     "bande": 2,
+     "texte": "Organisation"
+    },
+    {
+     "genre": "surplus",
+     "type": "micro-carte",
+     "bande": 6,
+     "texte": "Rester trop vague (« nettoyer les bureaux ») sans détailler les tâches"
+    },
+    {
+     "genre": "surplus",
+     "type": "micro-carte",
+     "bande": 6,
+     "texte": "Oublier de mentionner les zones sensibles à exclure (salle serveur, ar"
+    },
+    {
+     "genre": "surplus",
+     "type": "micro-carte",
+     "bande": 6,
+     "texte": "Ne jamais mettre à jour le document après un changement d'organisation"
+    }
+   ]
+  },
+  "1440": {
+   "cartesRef": 10,
+   "cartesWp": 8,
+   "anomalies": [
+    {
+     "genre": "absente",
+     "type": "micro-carte",
+     "bande": 5,
+     "texte": "▪Postes de travail et open-spaces"
+    },
+    {
+     "genre": "absente",
+     "type": "micro-carte",
+     "bande": 5,
+     "texte": "▪Salles de réunion"
+    },
+    {
+     "genre": "absente",
+     "type": "micro-carte",
+     "bande": 5,
+     "texte": "▪Accueil et zones de circulation"
+    },
+    {
+     "genre": "absente",
+     "type": "micro-carte",
+     "bande": 5,
+     "texte": "▪Sanitaires (nombre et emplacement)"
+    },
+    {
+     "genre": "absente",
+     "type": "micro-carte",
+     "bande": 5,
+     "texte": "▪Cuisine ou salle de pause"
+    },
+    {
+     "genre": "fusionnee",
+     "type": "micro-carte",
+     "bande": 5,
+     "texte": "▪Zones sensibles à exclure (salle serveur, archives, coffre)",
+     "dans": "Oublier de mentionner les zones sensibles à exclur"
+    },
+    {
+     "genre": "surplus",
+     "type": "chip",
+     "bande": 2,
+     "texte": "Organisation"
+    },
+    {
+     "genre": "surplus",
+     "type": "micro-carte",
+     "bande": 6,
+     "texte": "Rester trop vague (« nettoyer les bureaux ») sans détailler les tâches"
+    },
+    {
+     "genre": "surplus",
+     "type": "micro-carte",
+     "bande": 6,
+     "texte": "Oublier de mentionner les zones sensibles à exclure (salle serveur, ar"
+    },
+    {
+     "genre": "surplus",
+     "type": "micro-carte",
+     "bande": 6,
+     "texte": "Ne jamais mettre à jour le document après un changement d'organisation"
+    }
+   ]
+  }
+ },
+ "#/pourquoi-top-famille-pro": {
+  "375": {
+   "cartesRef": 12,
+   "cartesWp": 13,
+   "anomalies": [
+    {
+     "genre": "type",
+     "type": "carte-titre",
+     "recu": "chip",
+     "bande": 4,
+     "texte": "5,0/5sur Google"
+    },
+    {
+     "genre": "colonnes",
+     "type": "carte-titre",
+     "bande": 4,
+     "texte": "24 hdevis transmis",
+     "attendu": 2,
+     "recu": 1
+    },
+    {
+     "genre": "type",
+     "type": "etape",
+     "recu": "carte-titre",
+     "bande": 4,
+     "texte": "8départements"
+    },
+    {
+     "genre": "colonnes",
+     "type": "tarif",
+     "bande": 4,
+     "texte": "27 €HT/h, transparent",
+     "attendu": 2,
+     "recu": 1
+    },
+    {
+     "genre": "surplus",
+     "type": "carte-titre",
+     "bande": 4,
+     "texte": "5,0/5 sur Google"
+    }
+   ]
+  },
+  "1440": {
+   "cartesRef": 12,
+   "cartesWp": 13,
+   "anomalies": [
+    {
+     "genre": "type",
+     "type": "carte-titre",
+     "recu": "chip",
+     "bande": 4,
+     "texte": "5,0/5sur Google"
+    },
+    {
+     "genre": "type",
+     "type": "etape",
+     "recu": "carte-titre",
+     "bande": 4,
+     "texte": "8départements"
+    },
+    {
+     "genre": "surplus",
+     "type": "carte-titre",
+     "bande": 4,
+     "texte": "5,0/5 sur Google"
+    }
+   ]
+  }
+ },
+ "#/notre-fonctionnement": {
+  "375": {
+   "cartesRef": 9,
+   "cartesWp": 13,
+   "anomalies": [
+    {
+     "genre": "type",
+     "type": "etape",
+     "recu": "carte-titre-texte",
+     "bande": 3,
+     "texte": "01Prise de contactVous nous décrivez vos locaux (surface, ty"
+    },
+    {
+     "genre": "type",
+     "type": "etape",
+     "recu": "carte-titre-texte",
+     "bande": 3,
+     "texte": "02Analyse du besoinNous étudions le volume d'heures nécessai"
+    },
+    {
+     "genre": "type",
+     "type": "etape",
+     "recu": "tarif",
+     "bande": 3,
+     "texte": "03Devis sous 24 hVous recevez une proposition claire et chif"
+    },
+    {
+     "genre": "type",
+     "type": "etape",
+     "recu": "carte-titre-texte",
+     "bande": 3,
+     "texte": "04Sélection & mise en placeNous sélectionnons l'intervenant "
+    },
+    {
+     "genre": "type",
+     "type": "etape",
+     "recu": "carte-titre-texte",
+     "bande": 3,
+     "texte": "05Suivi & liaisonUn cahier de liaison reste sur place à chaq"
+    },
+    {
+     "genre": "surplus",
+     "type": "chip",
+     "bande": 2,
+     "texte": "★★★★★5,0/5 sur Google"
+    },
+    {
+     "genre": "surplus",
+     "type": "carte-titre-texte",
+     "bande": 4,
+     "texte": "Les informations dont nous avons besoin Si vous découvrez le sujet, co"
+    },
+    {
+     "genre": "surplus",
+     "type": "carte-titre-texte",
+     "bande": 4,
+     "texte": "Transmission des consignes et premier passage Une fois le devis accept"
+    },
+    {
+     "genre": "surplus",
+     "type": "carte-titre-texte",
+     "bande": 4,
+     "texte": "Modifier, suspendre ou arrêter Modifier la prestation Un ajustement de"
+    }
+   ]
+  },
+  "1440": {
+   "cartesRef": 9,
+   "cartesWp": 13,
+   "anomalies": [
+    {
+     "genre": "type",
+     "type": "etape",
+     "recu": "carte-titre-texte",
+     "bande": 3,
+     "texte": "01Prise de contactVous nous décrivez vos locaux (surface, ty"
+    },
+    {
+     "genre": "type",
+     "type": "etape",
+     "recu": "carte-titre-texte",
+     "bande": 3,
+     "texte": "02Analyse du besoinNous étudions le volume d'heures nécessai"
+    },
+    {
+     "genre": "type",
+     "type": "etape",
+     "recu": "tarif",
+     "bande": 3,
+     "texte": "03Devis sous 24 hVous recevez une proposition claire et chif"
+    },
+    {
+     "genre": "type",
+     "type": "etape",
+     "recu": "carte-titre-texte",
+     "bande": 3,
+     "texte": "04Sélection & mise en placeNous sélectionnons l'intervenant "
+    },
+    {
+     "genre": "type",
+     "type": "etape",
+     "recu": "carte-titre-texte",
+     "bande": 3,
+     "texte": "05Suivi & liaisonUn cahier de liaison reste sur place à chaq"
+    },
+    {
+     "genre": "surplus",
+     "type": "chip",
+     "bande": 2,
+     "texte": "★★★★★5,0/5 sur Google"
+    },
+    {
+     "genre": "surplus",
+     "type": "carte-titre-texte",
+     "bande": 4,
+     "texte": "Les informations dont nous avons besoin Si vous découvrez le sujet, co"
+    },
+    {
+     "genre": "surplus",
+     "type": "carte-titre-texte",
+     "bande": 4,
+     "texte": "Transmission des consignes et premier passage Une fois le devis accept"
+    },
+    {
+     "genre": "surplus",
+     "type": "carte-titre-texte",
+     "bande": 4,
+     "texte": "Modifier, suspendre ou arrêter Modifier la prestation Un ajustement de"
+    }
+   ]
+  }
+ },
+ "#/avis-clients": {
+  "375": {
+   "cartesRef": 14,
+   "cartesWp": 13,
+   "anomalies": [
+    {
+     "genre": "type",
+     "type": "carte-titre",
+     "recu": "chip",
+     "bande": 3,
+     "texte": "5,0/5★★★★★Sur Google · 47 avis clientsDemander mon devis"
+    },
+    {
+     "genre": "absente",
+     "type": "temoignage",
+     "bande": 4,
+     "texte": "★★★★★« Nous avons comparé une embauche et un prestataire. Ce qui a tra"
+    },
+    {
+     "genre": "type",
+     "type": "temoignage",
+     "recu": "carte-titre-texte",
+     "bande": 5,
+     "texte": "★★★★★Google« Même intervenante chaque semaine dans nos burea"
+    },
+    {
+     "genre": "type",
+     "type": "temoignage",
+     "recu": "carte-titre-texte",
+     "bande": 5,
+     "texte": "★★★★★Google« Devis clair reçu le lendemain, sans surprise. L"
+    },
+    {
+     "genre": "type",
+     "type": "temoignage",
+     "recu": "carte-titre-texte",
+     "bande": 5,
+     "texte": "★★★★★Google« Nettoyage de la boutique avant l'ouverture, vit"
+    },
+    {
+     "genre": "type",
+     "type": "temoignage",
+     "recu": "carte-titre-texte",
+     "bande": 5,
+     "texte": "★★★★★Google« Pour nos copropriétés, le suivi est réel : hall"
+    },
+    {
+     "genre": "type",
+     "type": "temoignage",
+     "recu": "carte-titre-texte",
+     "bande": 5,
+     "texte": "★★★★★Google« Remises en état entre deux locataires impeccabl"
+    },
+    {
+     "genre": "type",
+     "type": "temoignage",
+     "recu": "carte-titre-texte",
+     "bande": 5,
+     "texte": "★★★★★Google« Remise en état ponctuelle après travaux, devis "
+    }
+   ]
+  },
+  "1440": {
+   "cartesRef": 14,
+   "cartesWp": 13,
+   "anomalies": [
+    {
+     "genre": "type",
+     "type": "carte-titre",
+     "recu": "chip",
+     "bande": 3,
+     "texte": "5,0/5★★★★★Sur Google · 47 avis clientsDemander mon devis"
+    },
+    {
+     "genre": "absente",
+     "type": "temoignage",
+     "bande": 4,
+     "texte": "★★★★★« Nous avons comparé une embauche et un prestataire. Ce qui a tra"
+    },
+    {
+     "genre": "type",
+     "type": "temoignage",
+     "recu": "carte-titre-texte",
+     "bande": 5,
+     "texte": "★★★★★Google« Même intervenante chaque semaine dans nos burea"
+    },
+    {
+     "genre": "type",
+     "type": "temoignage",
+     "recu": "carte-titre-texte",
+     "bande": 5,
+     "texte": "★★★★★Google« Devis clair reçu le lendemain, sans surprise. L"
+    },
+    {
+     "genre": "type",
+     "type": "temoignage",
+     "recu": "carte-titre-texte",
+     "bande": 5,
+     "texte": "★★★★★Google« Nettoyage de la boutique avant l'ouverture, vit"
+    },
+    {
+     "genre": "type",
+     "type": "temoignage",
+     "recu": "carte-titre-texte",
+     "bande": 5,
+     "texte": "★★★★★Google« Pour nos copropriétés, le suivi est réel : hall"
+    },
+    {
+     "genre": "type",
+     "type": "temoignage",
+     "recu": "carte-titre-texte",
+     "bande": 5,
+     "texte": "★★★★★Google« Remises en état entre deux locataires impeccabl"
+    },
+    {
+     "genre": "type",
+     "type": "temoignage",
+     "recu": "carte-titre-texte",
+     "bande": 5,
+     "texte": "★★★★★Google« Remise en état ponctuelle après travaux, devis "
+    }
+   ]
+  }
+ },
+ "#/a-propos": {
+  "375": {
+   "cartesRef": 0,
+   "cartesWp": 1,
+   "anomalies": [
+    {
+     "genre": "surplus",
+     "type": "chip",
+     "bande": 2,
+     "texte": "★★★★★5,0/5 sur Google"
+    }
+   ]
+  },
+  "1440": {
+   "cartesRef": 0,
+   "cartesWp": 1,
+   "anomalies": [
+    {
+     "genre": "surplus",
+     "type": "chip",
+     "bande": 2,
+     "texte": "★★★★★5,0/5 sur Google"
+    }
+   ]
+  }
+ },
+ "#/recrutement": {
+  "375": {
+   "cartesRef": 5,
+   "cartesWp": 5,
+   "anomalies": [
+    {
+     "genre": "absente",
+     "type": "carte-sombre",
+     "bande": 4,
+     "texte": "Les étapes de candidature 01Vous envoyez votre candidature et vos disp"
+    },
+    {
+     "genre": "surplus",
+     "type": "chip",
+     "bande": 2,
+     "texte": "★★★★★5,0/5 sur Google"
+    }
+   ]
+  },
+  "1440": {
+   "cartesRef": 5,
+   "cartesWp": 5,
+   "anomalies": [
+    {
+     "genre": "absente",
+     "type": "carte-sombre",
+     "bande": 4,
+     "texte": "Les étapes de candidature 01Vous envoyez votre candidature et vos disp"
+    },
+    {
+     "genre": "surplus",
+     "type": "chip",
+     "bande": 2,
+     "texte": "★★★★★5,0/5 sur Google"
+    }
+   ]
+  }
+ },
+ "#/demande-de-devis": {
+  "375": {
+   "cartesRef": 5,
+   "cartesWp": 4,
+   "anomalies": [
+    {
+     "genre": "absente",
+     "type": "carte-sombre",
+     "bande": 1,
+     "texte": "Google★★★★★5,0/547 avis"
+    }
+   ]
+  },
+  "1440": {
+   "cartesRef": 5,
+   "cartesWp": 4,
+   "anomalies": [
+    {
+     "genre": "absente",
+     "type": "carte-sombre",
+     "bande": 1,
+     "texte": "Google★★★★★5,0/547 avis"
+    }
+   ]
+  }
+ },
+ "#/contact": {
+  "375": {
+   "cartesRef": 7,
+   "cartesWp": 7,
+   "anomalies": [
+    {
+     "genre": "absente",
+     "type": "carte-icone",
+     "bande": 4,
+     "texte": "AudreyVotre interlocutrice, du devis au suivi"
+    },
+    {
+     "genre": "fusionnee",
+     "type": "carte-titre",
+     "bande": 4,
+     "texte": "🕑Horaires de contactDu lundi au vendredi · à confirmer · réponse sous",
+     "dans": "🕑 Horaires de contact Du lundi au vendredi · répo"
+    },
+    {
+     "genre": "absente",
+     "type": "tarif",
+     "bande": 4,
+     "texte": "★★★★★5,0/527 € HT/h"
+    },
+    {
+     "genre": "surplus",
+     "type": "carte-titre",
+     "bande": 3,
+     "texte": "J’ai une question Formulaire court, réponse par e-mail ou téléphone."
+    },
+    {
+     "genre": "surplus",
+     "type": "carte-titre",
+     "bande": 4,
+     "texte": "🕑 Horaires de contact Du lundi au vendredi · réponse sous 24 h"
+    },
+    {
+     "genre": "surplus",
+     "type": "tarif",
+     "bande": 4,
+     "texte": "★★★★★ 5,0/5 sur Google 27 € HT/h — tarif unique en région"
+    }
+   ]
+  },
+  "1440": {
+   "cartesRef": 7,
+   "cartesWp": 7,
+   "anomalies": [
+    {
+     "genre": "absente",
+     "type": "carte-icone",
+     "bande": 4,
+     "texte": "AudreyVotre interlocutrice, du devis au suivi"
+    },
+    {
+     "genre": "fusionnee",
+     "type": "carte-titre",
+     "bande": 4,
+     "texte": "🕑Horaires de contactDu lundi au vendredi · à confirmer · réponse sous",
+     "dans": "🕑 Horaires de contact Du lundi au vendredi · répo"
+    },
+    {
+     "genre": "absente",
+     "type": "tarif",
+     "bande": 4,
+     "texte": "★★★★★5,0/527 € HT/h"
+    },
+    {
+     "genre": "surplus",
+     "type": "carte-titre",
+     "bande": 3,
+     "texte": "J’ai une question Formulaire court, réponse par e-mail ou téléphone."
+    },
+    {
+     "genre": "surplus",
+     "type": "carte-titre",
+     "bande": 4,
+     "texte": "🕑 Horaires de contact Du lundi au vendredi · réponse sous 24 h"
+    },
+    {
+     "genre": "surplus",
+     "type": "tarif",
+     "bande": 4,
+     "texte": "★★★★★ 5,0/5 sur Google 27 € HT/h — tarif unique en région"
+    }
+   ]
+  }
+ },
+ "#/plan-du-site": {
+  "375": {
+   "cartesRef": 0,
+   "cartesWp": 0,
+   "anomalies": []
+  },
+  "1440": {
+   "cartesRef": 0,
+   "cartesWp": 0,
+   "anomalies": []
+  }
+ },
+ "#/mentions-legales": {
+  "375": {
+   "cartesRef": 1,
+   "cartesWp": 0,
+   "anomalies": [
+    {
+     "genre": "absente",
+     "type": "micro-carte",
+     "bande": 2,
+     "texte": "Page à compléter avant publication : forme juridique, capital, SIREN/S"
+    }
+   ]
+  },
+  "1440": {
+   "cartesRef": 1,
+   "cartesWp": 0,
+   "anomalies": [
+    {
+     "genre": "absente",
+     "type": "micro-carte",
+     "bande": 2,
+     "texte": "Page à compléter avant publication : forme juridique, capital, SIREN/S"
+    }
+   ]
+  }
+ },
+ "#/politique-de-confidentialite": {
+  "375": {
+   "cartesRef": 1,
+   "cartesWp": 0,
+   "anomalies": [
+    {
+     "genre": "absente",
+     "type": "micro-carte",
+     "bande": 2,
+     "texte": "Page à compléter avant publication : identité du responsable de traite"
+    }
+   ]
+  },
+  "1440": {
+   "cartesRef": 1,
+   "cartesWp": 0,
+   "anomalies": [
+    {
+     "genre": "absente",
+     "type": "micro-carte",
+     "bande": 2,
+     "texte": "Page à compléter avant publication : identité du responsable de traite"
+    }
+   ]
+  }
+ },
+ "#/gestion-des-cookies": {
+  "375": {
+   "cartesRef": 1,
+   "cartesWp": 1,
+   "anomalies": [
+    {
+     "genre": "absente",
+     "type": "micro-carte",
+     "bande": 2,
+     "texte": "Page à compléter avant publication : la liste définitive dépend des ou"
+    },
+    {
+     "genre": "surplus",
+     "type": "carte-titre-texte",
+     "bande": 3,
+     "texte": "Aucun cookie de mesure d'audience ni de traçage publicitaire À ce jour"
+    }
+   ]
+  },
+  "1440": {
+   "cartesRef": 1,
+   "cartesWp": 1,
+   "anomalies": [
+    {
+     "genre": "absente",
+     "type": "micro-carte",
+     "bande": 2,
+     "texte": "Page à compléter avant publication : la liste définitive dépend des ou"
+    },
+    {
+     "genre": "surplus",
+     "type": "carte-titre-texte",
+     "bande": 3,
+     "texte": "Aucun cookie de mesure d'audience ni de traçage publicitaire À ce jour"
+    }
+   ]
+  }
+ }
+}

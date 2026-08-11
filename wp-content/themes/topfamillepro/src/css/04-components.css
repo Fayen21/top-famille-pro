@@ -1381,8 +1381,9 @@ body.tfp-body .tfp-article-body p a {
 }
 
 /* Justification du montant, dans la carte, sous le chiffre — relevée à 15 px / 1,6 sur la
-   maquette, comme le corps de texte de la carte. */
-.tfp-price-example__note {
+   maquette, comme le corps de texte de la carte. Classe distincte de `__note`, qui désigne
+   déjà la mention en petits caractères sous le prix : ce sont deux contenus différents. */
+.tfp-price-example__why {
   margin-top: 12px;
   font-size: 15px;
   line-height: 1.6;
@@ -2148,7 +2149,10 @@ body.tfp-body .tfp-article-body p a {
 
 /* Les marges verticales que ces deux cartes portent quand elles sont empilées n'ont plus lieu
    d'être en colonnes : elles décalaient la carte d'exemple de 20 px sous ses deux voisines, et
-   les trois colonnes ne partageaient plus la même ligne. */
+   les trois colonnes ne partageaient plus la même ligne. La classe du parent est répétée pour
+   passer devant `.tfp-price-example`, déclarée dans une feuille chargée plus tard. */
+.tfp-zone-tarif > .tfp-price-example,
+.tfp-zone-tarif > .tfp-testimonial,
 .tfp-zone-tarif > * {
   margin-top: 0;
   margin-bottom: 0;

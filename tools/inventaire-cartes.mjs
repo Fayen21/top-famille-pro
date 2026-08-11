@@ -240,6 +240,13 @@ const RELEVE = () => {
 					y: Math.round(r.top + window.scrollY),
 				};
 			})
+			/*
+			 * Une carte sans texte, sans image et sans icône n'est pas une carte : c'est un cadre
+			 * décoratif, un séparateur ou un conteneur de mise en page que le relevé a retenu pour
+			 * son fond ou son rayon. Rien à comparer d'un côté à l'autre — vingt et une de ces
+			 * coquilles vides étaient comptées « cartes supplémentaires ».
+			 */
+			.filter((c) => c.texte || c.image || c.icone)
 			// Ordre de lecture : c'est celui qui compte pour dire « même ordre ».
 			.sort((a, b) => a.y - b.y),
 	};
@@ -264,6 +271,31 @@ const norm = (s) =>
 		.toLowerCase()
 		.replace(/[^a-z0-9]/g, '');
 
+/** Mots significatifs d'une carte, pour la comparaison approch\u00e9e. */
+const mots = (s) =>
+	new Set(
+		(s || '')
+			.normalize('NFD')
+			.replace(/[\u0300-\u036f]/g, '')
+			.toLowerCase()
+			.replace(/[^a-z0-9]+/g, ' ')
+			.trim()
+			.split(' ')
+			.filter((m) => m.length > 2)
+	);
+
+/** Coefficient de Dice sur les mots : 1 = m\u00eames mots, 0 = aucun mot commun. */
+function similarite(a, b) {
+	const A = mots(a);
+	const B = mots(b);
+	if (!A.size || !B.size) return 0;
+	let commun = 0;
+	for (const m of A) {
+		if (B.has(m)) commun++;
+	}
+	return (2 * commun) / (A.size + B.size);
+}
+
 /**
  * Apparie les cartes des deux côtés, dans l'ordre, sur leur contenu.
  *
@@ -286,13 +318,63 @@ function diagnostiquer(ref, wp) {
 
 		// 2. Sinon, une carte WordPress qui contient ce texte : c'est une fusion.
 		let fusion = null;
+		let corrige = null;
 		if (!b) {
 			fusion = restants.find((x) => !x.pris && norm(x.texte).includes(cle.slice(0, 32)) && cle.length > 12);
 			if (!fusion) {
-				// 3. Ou bien la carte n'existe pas du tout côté WordPress.
-				anomalies.push({ genre: 'absente', type: a.type, bande: a.bande, texte: a.texte.slice(0, 70) });
-				continue;
+				/*
+				 * 3. Correspondance **approchée**, avant de conclure à une absence.
+				 *
+				 * Le site corrige volontairement des textes de la maquette : la note Google n'est
+				 * plus répétée sur l'accueil, les tarifs différenciés par ville sont remplacés par
+				 * le tarif régional unique, « Interlocuteur identifié » devient « Interlocutrice
+				 * identifiée » (CLAUDE.md §5 et §9). Chacune de ces corrections produisait, sur une
+				 * comparaison stricte, **une carte absente et une carte supplémentaire** — deux
+				 * anomalies pour une carte présente et voulue. « ★★★★★5,0/5 Google » contre
+				 * « ★★★★★5,0/5 sur Google » suffisait : un mot d'écart, deux anomalies.
+				 *
+				 * L'appariement approché est volontairement étroit — même archétype, même bande à
+				 * une près, moitié des mots en commun — et il ne masque rien : il produit sa propre
+				 * famille `texte`, listée à part, pour que chaque écart reste relisible.
+				 */
+				corrige = restants
+					.filter(
+						(x) =>
+							!x.pris &&
+							Math.abs((x.bande ?? 0) - (a.bande ?? 0)) <= 1 &&
+							similarite(a.texte, x.texte) >= 0.5
+					)
+					.sort((x, y) => similarite(a.texte, y.texte) - similarite(a.texte, x.texte))[0];
+				if (!corrige) {
+					// 4. Ou bien la carte n'existe pas du tout côté WordPress.
+					anomalies.push({ genre: 'absente', type: a.type, bande: a.bande, texte: a.texte.slice(0, 70) });
+					continue;
+				}
 			}
+		}
+
+		if (corrige) {
+			corrige.pris = true;
+			apparies.push([a, corrige]);
+			/*
+			 * Même carte, archétype différent : c'est un écart de **forme**, pas une carte absente
+			 * doublée d'une carte en trop. Le badge Google de l'accueil en est l'exemple type — rendu
+			 * en pastille d'un côté, en carte de l'autre, il comptait deux anomalies au lieu d'une,
+			 * et la vraie information (« la forme diffère ») se perdait entre les deux.
+			 */
+			if (corrige.type !== a.type) {
+				anomalies.push({ genre: 'type', type: a.type, recu: corrige.type, bande: a.bande, texte: a.texte.slice(0, 60) });
+			} else {
+				anomalies.push({
+					genre: 'texte',
+					type: a.type,
+					bande: a.bande,
+					texte: a.texte.slice(0, 70),
+					recu: corrige.texte.slice(0, 70),
+					proximite: Math.round(similarite(a.texte, corrige.texte) * 100),
+				});
+			}
+			continue;
 		}
 
 		if (fusion) {
@@ -473,7 +555,9 @@ for (const hash of routes) {
 							? `« ${x.texte} » — ${x.attendu} colonnes attendues, ${x.recu} rendues`
 							: x.genre === 'type'
 								? `« ${x.texte} » — rendue en \`${x.recu}\``
-								: `« ${x.texte} »`;
+								: x.genre === 'texte'
+									? `« ${x.texte} » → « ${x.recu} » (${x.proximite} % de mots communs)`
+									: `« ${x.texte} »`;
 				L.push(`| ${x.genre} | \`${x.type}\` | ${x.bande} | ${det.replace(/\|/g, '/')} |`);
 			}
 			if (r.anomalies.length > 30) L.push(`| … | | | ${r.anomalies.length - 30} autres |`);
