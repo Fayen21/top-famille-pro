@@ -66,7 +66,12 @@ $contact_titre   = tfp_get_field( 'contact_titre', $post_id );
 $contact_texte   = tfp_get_field( 'contact_texte', $post_id );
 $cta_titre       = tfp_get_field( 'cta_titre', $post_id ) ?: $cta_label;
 $cta_texte       = tfp_get_field( 'cta_texte', $post_id );
-$budget          = tfp_home_budget_example();
+/*
+ * Le montant est calculé d'après les heures annoncées par le **libellé de cette zone**, et non
+ * d'après un exemple fixe : chaque zone porte son propre volume (« 8 h/mois », « 16 h/mois »…) et
+ * afficher partout le total d'un exemple à 12 heures contredisait le libellé voisin.
+ */
+$budget          = tfp_budget_example( tfp_hours_from_label( $exemple_label ) );
 
 /* Cibles réelles des groupes de liens, reconstruites depuis le contenu WordPress : la maquette
    pointe vers des routes `#/`, jamais reprises telles quelles. */

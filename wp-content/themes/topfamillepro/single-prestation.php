@@ -72,7 +72,8 @@ $faq_titre        = tfp_get_field( 'faq_titre', $post_id ) ?: 'Questions fréque
 $cta_titre        = tfp_get_field( 'cta_titre', $post_id ) ?: 'Un devis pour ' . $court;
 $cta_texte        = tfp_get_field( 'cta_texte', $post_id );
 
-$budget    = tfp_home_budget_example();
+// Même règle que sur les pages de zone : les heures viennent du libellé affiché.
+$budget    = tfp_budget_example( tfp_hours_from_label( tfp_get_field( 'exemple_label', $post_id ) ) );
 $seo_title = tfp_get_field( 'seo_title', $post_id );
 $seo_desc  = tfp_get_field( 'seo_description', $post_id );
 

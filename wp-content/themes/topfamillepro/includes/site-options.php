@@ -111,6 +111,56 @@ function tfp_site_data() {
 }
 
 /**
+ * Exemple de budget mensuel pour un nombre d'heures donné — **source unique de vérité**.
+ *
+ * Tout exemple tarifaire du site passe par ici. Aucun total n'est stocké ni saisi : le seul
+ * paramètre est le nombre d'heures, et le montant s'en déduit.
+ *
+ *     mensuel      = heures × tarif horaire + frais de gestion
+ *     premier mois = mensuel + frais de mise en place
+ *
+ * Le défaut que cette fonction supprime était structurel, et il n'était visible d'aucune
+ * recherche de texte : le libellé de l'exemple portait les heures propres à chaque zone
+ * (« 8 h/mois », « 16 h/mois »…) tandis que le montant venait d'un exemple **fixe** à 12 heures.
+ * Vingt exemples sur trente-trois affichaient donc 333 € HT/mois pour des volumes qui ne
+ * donnaient pas ce total. Les montants employaient bien le tarif officiel de 27 € : chercher les
+ * anciens tarifs ne pouvait pas les trouver, seul un contrôle par le calcul le pouvait.
+ *
+ * @param int $hours Nombre d'heures mensuelles.
+ * @return array{hours: int, monthly: float, first_month: float}
+ */
+function tfp_budget_example( $hours ) {
+	$site    = tfp_site_data();
+	$hours   = max( 1, (int) $hours );
+	$monthly = ( $hours * $site['price_unique'] ) + $site['price_gestion'];
+
+	return array(
+		'hours'       => $hours,
+		'monthly'     => $monthly,
+		'first_month' => $monthly + $site['price_setup'],
+	);
+}
+
+/**
+ * Nombre d'heures lu dans un libellé d'exemple (« Exemple · bureaux de PME, 8 h/mois »).
+ *
+ * Le libellé est la donnée éditoriale relevée sur la maquette ; les heures qu'il annonce sont donc
+ * la seule intention fiable. Les extraire du libellé garantit que le montant affiché à côté ne
+ * peut pas le contredire — c'est exactement la contradiction qui produisait les vingt exemples
+ * faux.
+ *
+ * @param string $label
+ * @param int    $defaut Heures à retenir si le libellé n'en annonce aucune.
+ * @return int
+ */
+function tfp_hours_from_label( $label, $defaut = 12 ) {
+	if ( preg_match( '/(\d+)\s*(?:h|heures?)\s*\/\s*mois/ui', (string) $label, $m ) ) {
+		return max( 1, (int) $m[1] );
+	}
+	return $defaut;
+}
+
+/**
  * Exemple de budget mensuel affiché sur l'accueil (bureaux réguliers, 12 h/mois).
  * Tarif unique (27,00 € HT/h) — cf. PROJECT_INPUTS.md §5. Exemple non contractuel, calculé
  * (jamais une valeur inventée).
@@ -118,16 +168,7 @@ function tfp_site_data() {
  * @return array{hours: int, monthly: float, first_month: float}
  */
 function tfp_home_budget_example() {
-	$site    = tfp_site_data();
-	$hours   = 12;
-	$monthly = ( $hours * $site['price_unique'] ) + $site['price_gestion'];
-	$first   = $monthly + $site['price_setup'];
-
-	return array(
-		'hours'       => $hours,
-		'monthly'     => $monthly,
-		'first_month' => $first,
-	);
+	return tfp_budget_example( 12 );
 }
 
 /**
@@ -138,15 +179,9 @@ function tfp_home_budget_example() {
  * @return array<int, array{hours: int, monthly: float, first_month: float}>
  */
 function tfp_budget_examples_table() {
-	$site = tfp_site_data();
 	$rows = array();
 	foreach ( array( 8, 12, 20 ) as $hours ) {
-		$monthly  = ( $hours * $site['price_unique'] ) + $site['price_gestion'];
-		$rows[]   = array(
-			'hours'       => $hours,
-			'monthly'     => $monthly,
-			'first_month' => $monthly + $site['price_setup'],
-		);
+		$rows[] = tfp_budget_example( $hours );
 	}
 	return $rows;
 }
