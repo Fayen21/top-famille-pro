@@ -155,13 +155,18 @@ function tfp_render_jsonld( $seo, $canonical ) {
 		),
 		'areaServed'  => $area_served,
 		'priceRange'  => $site['price_unique_display'] . ' HT/heure (tarif unique)',
-		'openingHoursSpecification' => array(
-			'@type'     => 'OpeningHoursSpecification',
-			'dayOfWeek' => $site['opening_hours']['days'],
-			'opens'     => $site['opening_hours']['opens'],
-			'closes'    => $site['opening_hours']['closes'],
-		),
 	);
+
+	/*
+	 * Pas de `openingHoursSpecification`.
+	 *
+	 * Les horaires lundi-samedi 06:00-22:00 n'ont jamais été confirmés par Audrey. Une donnée
+	 * structurée est une **déclaration officielle** exploitée par Google : publier une amplitude
+	 * inventée expose à des appels hors horaires et à une information trompeuse dans les résultats
+	 * de recherche. Tant que l'amplitude réelle n'est pas fournie, aucune n'est déclarée — et on
+	 * n'en substitue pas une autre. La seule promesse structurée reste celle qui est confirmée :
+	 * la réponse sous 24 heures, portée par le contenu visible.
+	 */
 
 	if ( ! empty( $site['same_as'] ) ) {
 		$organization['sameAs'] = array_values( $site['same_as'] );

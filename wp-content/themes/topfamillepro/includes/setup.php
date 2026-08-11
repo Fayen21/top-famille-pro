@@ -152,3 +152,41 @@ function tfp_disable_emoji_images() {
 	add_filter( 'emoji_svg_url', '__return_false' );
 }
 add_action( 'init', 'tfp_disable_emoji_images' );
+
+/**
+ * Déclare la langue du document en français.
+ *
+ * `WPLANG` est posé à `fr_FR` par l'installateur, mais WordPress ne renvoie cette locale que si le
+ * **pack de langue** correspondant est présent : sur une installation où il manque, `get_locale()`
+ * retombe sur `en_US` et les 53 pages déclarent `<html lang="en-US">` alors que tout leur contenu
+ * est rédigé en français. Un lecteur d'écran prononce alors le texte avec la phonétique anglaise,
+ * ce qui le rend inintelligible — c'est une violation du critère WCAG 3.1.1 « Langue de la page ».
+ *
+ * Ce thème est monolingue français par construction : il l'affirme donc, indépendamment de la
+ * présence du pack. Le filtre reste sans effet en administration, où la langue de l'interface
+ * relève du choix de chaque utilisateur.
+ */
+function tfp_force_locale_fr( $locale ) {
+	return is_admin() ? $locale : 'fr_FR';
+}
+add_filter( 'locale', 'tfp_force_locale_fr' );
+
+/**
+ * Retire les liens de découverte oEmbed.
+ *
+ * WordPress publie sur chaque page deux `<link rel="alternate" type="application/json+oembed">`
+ * pointant vers `/wp-json/oembed/1.0/embed?url=…`, l'URL de la page étant encodée en paramètre.
+ * Aucun contenu de ce site n'est destiné à être intégré ailleurs : ces liens n'apportent rien, et
+ * ils dupliquent l'URL absolue du site dans le HTML — d'où 104 occurrences de l'hôte du bac
+ * d'essai dans l'export d'audit. Les retirer supprime la fuite à sa source plutôt qu'au moment de
+ * l'export.
+ */
+function tfp_disable_oembed_discovery() {
+	remove_action( 'wp_head', 'wp_oembed_add_discovery_links' );
+	remove_action( 'wp_head', 'wp_oembed_add_host_js' );
+	remove_action( 'wp_head', 'rest_output_link_wp_head', 10 );
+	remove_action( 'wp_head', 'wlwmanifest_link' );
+	remove_action( 'wp_head', 'rsd_link' );
+	remove_action( 'wp_head', 'wp_shortlink_wp_head', 10 );
+}
+add_action( 'init', 'tfp_disable_oembed_discovery' );

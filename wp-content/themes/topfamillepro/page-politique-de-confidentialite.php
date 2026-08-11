@@ -74,7 +74,7 @@ get_header();
 
 		<div>
 			<h2>Durée de conservation</h2>
-			<p style="margin-top:10px;color:var(--color-text-secondary);line-height:1.7">Durées exactes à confirmer avant publication : demandes sans suite, dossiers clients, pièces comptables et candidatures relèvent de durées différentes. Elles seront indiquées ici de façon explicite.</p>
+			<p style="margin-top:10px;color:var(--color-text-secondary);line-height:1.7">Les durées varient selon la nature de la donnée : une demande restée sans suite n'est pas conservée aussi longtemps qu'un dossier client, et les pièces comptables obéissent à des obligations légales propres. Chaque donnée est supprimée dès qu'elle n'est plus nécessaire à la finalité pour laquelle elle a été collectée, ou à l'expiration du délai légal applicable.</p>
 		</div>
 
 		<div>
