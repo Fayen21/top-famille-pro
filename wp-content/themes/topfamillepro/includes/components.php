@@ -382,8 +382,32 @@ function tfp_card_grid( array $grille ) {
 	$colonnes = max( 1, min( 6, (int) ( $grille['colonnes'] ?? 1 ) ) );
 	$theme    = 'sombre' === ( $grille['theme'] ?? 'clair' ) ? ' tfp-card-grid--dark' : '';
 	$variante = preg_replace( '/[^a-z]/', '', (string) ( $grille['variante'] ?? 'texte' ) );
+
+	/*
+	 * Géométrie relevée sur le prototype, passée en **variables CSS** plutôt qu'en styles en dur.
+	 *
+	 * Le rembourrage d'une carte va de 14 à 26 px selon la bande, l'écart de 8 à 16, le rayon de 10
+	 * à 18 : poser une valeur moyenne partout rendait les pages plus compactes que la maquette, et
+	 * en poser une par page aurait produit du style en ligne page par page, impossible à
+	 * administrer. Les variables gardent le composant unique et sa géométrie fidèle.
+	 *
+	 * Les valeurs sont filtrées : seuls chiffres, unités et espaces passent, jamais une chaîne
+	 * arbitraire venue de la base.
+	 */
+	$px       = static function ( $v ) {
+		$v = preg_replace( '/[^0-9a-z%. ]/i', '', (string) $v );
+		return trim( $v );
+	};
+	$vars     = array();
+	foreach ( array( 'padding' => '--tfp-tuile-padding', 'gap' => '--tfp-tuile-gap', 'rayon' => '--tfp-tuile-rayon', 'filet' => '--tfp-tuile-filet' ) as $cle => $var ) {
+		$valeur = $px( $grille[ $cle ] ?? '' );
+		if ( '' !== $valeur ) {
+			$vars[] = $var . ':' . $valeur;
+		}
+	}
+	$style = $vars ? ' style="' . esc_attr( implode( ';', $vars ) ) . '"' : '';
 	?>
-	<ul class="tfp-card-grid tfp-card-grid--<?php echo (int) $colonnes; ?><?php echo esc_attr( $theme ); ?>">
+	<ul class="tfp-card-grid tfp-card-grid--<?php echo (int) $colonnes; ?><?php echo esc_attr( $theme ); ?>"<?php echo $style; // phpcs:ignore WordPress.Security.EscapeOutput ?>>
 		<?php
 		foreach ( $items as $item ) :
 			$item = wp_parse_args(

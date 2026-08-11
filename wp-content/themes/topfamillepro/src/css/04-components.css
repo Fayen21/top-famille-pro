@@ -2885,7 +2885,9 @@ body.tfp-body a.tfp-service-tile:focus-visible {
   margin: 18px 0 0;
   padding: 0;
   display: grid;
-  gap: 12px;
+  /* Écart et géométrie viennent du relevé de la bande, passés en variables par le composant.
+     Les valeurs ci-dessous ne servent que de repli lorsqu'une grille n'a pas été mesurée. */
+  gap: var(--tfp-tuile-gap, 12px);
 }
 
 .tfp-card-grid--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -2903,9 +2905,9 @@ body.tfp-body .tfp-card-tile {
   align-items: flex-start;
   gap: 12px;
   width: 100%;
-  padding: 16px 18px;
-  border: 1px solid var(--color-border);
-  border-radius: 12px;
+  padding: var(--tfp-tuile-padding, 16px 18px);
+  border: var(--tfp-tuile-filet, 1px) solid var(--color-border);
+  border-radius: var(--tfp-tuile-rayon, 12px);
   background: var(--color-bg-card);
   color: var(--color-text);
   transition: border-color var(--transition-base), transform var(--transition-base);
@@ -3033,4 +3035,31 @@ body.tfp-body a.tfp-card-tile:focus-visible {
 
 .tfp-card-grid--dark .tfp-card-tile__line {
   color: var(--color-text-on-dark-muted);
+}
+
+/* Note d'une bande statique : phrase de transition, précision ou conclusion que la maquette pose en
+   texte courant. Elle finissait auparavant enfermée dans une pastille par un repli du générateur,
+   ce qui inventait des cartes que le prototype n'a pas. */
+.tfp-static-note {
+  margin-top: 10px;
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--color-text-secondary);
+}
+
+/* Accordéon de FAQ d'une bande statique — même géométrie que celle relevée sur la maquette
+   (rayon 12, question en 17 px/600), posée en classe plutôt qu'en style en ligne. */
+.tfp-faq-item {
+  margin-bottom: 10px;
+}
+
+.tfp-faq-item > summary {
+  font-weight: var(--fw-semibold);
+  font-size: 17px;
+  cursor: pointer;
+}
+
+.tfp-faq-item > p {
+  margin-top: 12px;
+  color: var(--color-text-secondary);
 }

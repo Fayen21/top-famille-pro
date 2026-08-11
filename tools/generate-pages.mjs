@@ -463,7 +463,22 @@ for (const p of PAGES) {
 					else if (tag === 'img') out.push({ t: 'img', v: n.getAttribute('alt') || '' });
 					else if (tag === 'a' && !n.querySelector('h1,h2,h3,h4,p,li,img')) out.push({ t: 'a', v: txt(n), href: n.getAttribute('href') || '' });
 					else if (tag === 'blockquote') out.push({ t: 'quote', v: txt(n) });
-					else if (!n.children.length && txt(n)) out.push({ t: 'span', v: txt(n) });
+					else if (!n.children.length && txt(n)) {
+						/*
+						 * On relève si ce fragment est **rendu en pastille** par la maquette — fond ou
+						 * filet, et rayon d'au moins 40 px. Sans cette mesure, tout `span` finissait en
+						 * pastille par défaut : des phrases de transition, des notes et des conclusions
+						 * se retrouvaient enfermées dans des chips qui n'existent pas dans le prototype.
+						 * Un élément n'est une pastille que si la maquette le présente comme telle.
+						 */
+						const sp = getComputedStyle(n);
+						const fond = sp.backgroundColor !== 'rgba(0, 0, 0, 0)' && sp.backgroundColor !== 'transparent';
+						out.push({
+							t: 'span',
+							v: txt(n),
+							pastille: parseFloat(sp.borderTopLeftRadius) >= 40 && (fond || parseFloat(sp.borderTopWidth) > 0),
+						});
+					}
 					else {
 						// Un élément peut porter à la fois du texte direct et des enfants : c'est le cas
 						// des intitulés d'accordéon de la maquette, dont la question est un nœud texte
@@ -530,12 +545,52 @@ for (const p of PAGES) {
 						cur.citations.length ||
 						cur.faq.length ||
 						cur.etapes.length ||
-						cur.cartes.length)
+						cur.cartes.length ||
+						cur.sequence.length)
 				) {
 					blocs.push(cur);
 				}
 			};
-			const vide = () => ({ titre: '', niveau: 'h2', grille: false, colonnes: 1, cartes: [], textes: [], liste: [], liens: [], noms: [], citations: [], faq: [], etapes: [] });
+			/*
+			 * ------------------------------------------------------------------
+			 * Séquence hétérogène ordonnée
+			 * ------------------------------------------------------------------
+			 *
+			 * Une bande de la maquette n'est **ni** une grille de cartes **ni** un empilement de
+			 * paragraphes : c'est couramment les deux, dans un ordre précis — surtitre, titre,
+			 * introduction, grille, note, citation, liste, lien, appel à l'action, second groupe de
+			 * cartes, conclusion. Le modèle précédent rangeait chaque type dans son propre tiroir
+			 * (`textes`, `liste`, `noms`, `cartes`…), ce qui effaçait l'ordre et les frontières :
+			 * une note écrite entre deux grilles ressortait après elles, et tout `span` non classé
+			 * finissait en pastille.
+			 *
+			 * `sequence` porte donc les enfants d'une bande **dans leur ordre de lecture**, chacun
+			 * avec son type explicite. Les tiroirs restent alimentés pour les consommateurs
+			 * existants, mais le rendu s'appuie sur la séquence.
+			 */
+			const vide = () => ({
+				titre: '',
+				niveau: 'h2',
+				grille: false,
+				colonnes: 1,
+				sequence: [],
+				cartes: [],
+				textes: [],
+				liste: [],
+				liens: [],
+				noms: [],
+				citations: [],
+				faq: [],
+				etapes: [],
+			});
+			/** Ajoute un enfant typé à la séquence du bloc courant. */
+			const seq = (type, charge) => cur.sequence.push({ type, ...charge });
+			/** Les puces consécutives forment une seule liste : c'est ainsi que la maquette les rend. */
+			const seqListe = (item) => {
+				const dernier = cur.sequence[cur.sequence.length - 1];
+				if (dernier && dernier.type === 'list') dernier.items.push(item);
+				else seq('list', { items: [item] });
+			};
 			// Ordonnées de tous les titres de la bande : sert à décider, titre par titre, s'il est
 			// pleine largeur ou en rangée.
 			const rangs = nodes.filter((n) => n.t === 'h2' || n.t === 'h3').map((n) => n.top);
@@ -573,7 +628,7 @@ for (const p of PAGES) {
 					if (n.t === 'grille') {
 						const g = grilles[n.i];
 						if (g) {
-							cur.cartes.push({
+							const grille = {
 								colonnes: g.colonnes,
 								theme: g.theme,
 								variante: g.variante,
@@ -583,7 +638,9 @@ for (const p of PAGES) {
 								filet: g.filet,
 								padding: g.padding,
 								items: g.cartes,
-							});
+							};
+							cur.cartes.push(grille);
+							seq('grid', grille);
 						}
 						continue;
 					}
@@ -608,17 +665,44 @@ for (const p of PAGES) {
 						nodes[k + 2] &&
 						nodes[k + 2].t === 'p';
 					if (etape) {
-						cur.etapes.push({ numero: propre, titre: suivant.v.trim(), texte: nodes[k + 2].v });
+						const e = { numero: propre, titre: suivant.v.trim(), texte: nodes[k + 2].v };
+						cur.etapes.push(e);
+						seq('step', e);
 						k += 2;
 					} else if (estQuestion) question = propre;
 					else if (n.t === 'p' && question) {
-						cur.faq.push({ question, reponse: n.v });
+						const f = { question, reponse: n.v };
+						cur.faq.push(f);
+						seq('faq', f);
 						question = null;
-					} else if (n.t === 'p') cur.textes.push(n.v);
-					else if (n.t === 'li') cur.liste.push(n.v.replace(/^[▪✕✓]\s*/, ''));
-					else if (n.t === 'quote') cur.citations.push(n.v);
-					else if (n.t === 'a' && n.href.startsWith('#/')) cur.liens.push({ texte: n.v, route: n.href });
-					else if (n.t === 'span' && n.v.length > 1 && !/^[✓✕·+]$/.test(n.v)) cur.noms.push(n.v);
+					} else if (n.t === 'p') {
+						cur.textes.push(n.v);
+						seq('paragraph', { texte: n.v });
+					} else if (n.t === 'li') {
+						const item = n.v.replace(/^[▪✕✓]\s*/, '');
+						cur.liste.push(item);
+						seqListe(item);
+					} else if (n.t === 'quote') {
+						cur.citations.push(n.v);
+						seq('quote', { texte: n.v });
+					} else if (n.t === 'a' && n.href.startsWith('#/')) {
+						cur.liens.push({ texte: n.v, route: n.href });
+						seq('link', { texte: n.v, route: n.href });
+					} else if (n.t === 'span' && n.v.length > 1 && !/^[✓✕·+]$/.test(n.v)) {
+						/*
+						 * **Plus de repli destructeur.** Un fragment n'est rendu en pastille que si la
+						 * maquette le rend en pastille — mesuré au moment de l'extraction. Sinon c'est
+						 * une note : une phrase de transition, une précision, une conclusion. Les
+						 * enfermer dans des chips inventait des cartes que le prototype n'a pas, et
+						 * privait ces phrases de leur forme réelle.
+						 */
+						if (n.pastille) {
+							cur.noms.push(n.v);
+							seq('chip', { texte: n.v });
+						} else {
+							seq('note', { texte: n.v });
+						}
+					}
 				}
 			}
 			push();

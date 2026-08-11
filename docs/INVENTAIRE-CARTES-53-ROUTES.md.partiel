@@ -11,46 +11,51 @@
 > Un conteneur qui contient visuellement plusieurs micro-cartes n’est jamais compté pour une
 > carte : il compte pour ses enfants.
 
-**5 routes × 1 largeurs · 158 anomalie(s), dont 12 grave(s)** (carte absente ou fusionnée).
+**7 routes × 1 largeurs · 145 anomalie(s), dont 19 grave(s)** (carte absente ou fusionnée).
 
 ## Synthèse
 
 | Route | Cartes 1440 px | Anomalies 1440 px |
 |---|---|---|
-| `#/nettoyage-professionnel` | 53 → 65 (+12) | ❌ 39 (3) |
+| `#/nettoyage-professionnel` | 53 → 53 | ❌ 27 (3) |
 | `#/nos-prestations` | 12 → 13 (+1) | ⚠️ 7 |
-| `#/zones-intervention` | 52 → 54 (+2) | ❌ 47 (5) |
-| `#/bourgogne-franche-comte` | 51 → 61 (+10) | ❌ 47 (2) |
-| `#/avis-clients` | 14 → 20 (+6) | ❌ 18 (2) |
+| `#/zones-intervention` | 52 → 48 (-4) | ❌ 41 (5) |
+| `#/bourgogne-franche-comte` | 51 → 55 (+4) | ❌ 41 (2) |
+| `#/notre-fonctionnement` | 9 → 13 (+4) | ⚠️ 9 |
+| `#/avis-clients` | 14 → 13 (-1) | ❌ 11 (2) |
+| `#/contact` | 7 → 2 (-5) | ❌ 9 (7) |
 
 ## Routes à corriger en priorité
 
 | Route | Cartes absentes ou fusionnées | Anomalies totales |
 |---|---|---|
-| `#/zones-intervention` | 5 | 47 |
-| `#/nettoyage-professionnel` | 3 | 39 |
-| `#/bourgogne-franche-comte` | 2 | 47 |
-| `#/avis-clients` | 2 | 18 |
+| `#/contact` | 7 | 9 |
+| `#/zones-intervention` | 5 | 41 |
+| `#/nettoyage-professionnel` | 3 | 27 |
+| `#/bourgogne-franche-comte` | 2 | 41 |
+| `#/avis-clients` | 2 | 11 |
 
 ## Archétypes employés par la maquette
 
 | Archétype | Occurrences dans la maquette |
 |---|---|
-| `micro-carte` | 76 |
-| `carte-titre-texte` | 37 |
+| `micro-carte` | 81 |
+| `carte-titre-texte` | 41 |
 | `faq` | 23 |
 | `carte-sombre` | 16 |
-| `tarif` | 9 |
+| `tarif` | 10 |
 | `temoignage` | 9 |
 | `carte-image` | 6 |
 | `carte-titre` | 5 |
+| `etape` | 5 |
 | `chip` | 1 |
+| `carte-icone` | 1 |
 
 ## Détail par route
 
 ### `#/nettoyage-professionnel` → `/nettoyage-professionnel/`
 
-**1440 px** — bandes 19 → 19 · cartes 53 → 65 · 39 anomalie(s)
+**1440 px** — bandes 19 → 19 · cartes 53 → 53 · 27 anomalie(s)
 
 | Anomalie | Archétype | Bande | Détail |
 |---|---|---|---|
@@ -76,15 +81,11 @@
 | type | `micro-carte` | 17 | « À quelle fréquence faire nettoyer ses bureaux ?→ » — rendue en `carte-titre` |
 | type | `micro-carte` | 17 | « Combien coûte le nettoyage de bureaux ?→ » — rendue en `carte-titre` |
 | type | `micro-carte` | 17 | « Comment rédiger un cahier des charges de nettoyage ?→ » — rendue en `carte-titre` |
-| surplus | `chip` | 3 | « 27 € HT/h » |
-| surplus | `chip` | 3 | « tarif unique en région » |
-| surplus | `chip` | 3 | « Devis gratuit sous 24 h » |
-| surplus | `chip` | 3 | « Intervention régulière ou ponctuelle » |
-| surplus | `chip` | 3 | « Conditions d'arrêt précisées au devis » |
 | surplus | `carte-titre-texte` | 6 | « Prestataire de nettoyage ou recrutement direct ? C'est la première que » |
 | surplus | `tarif` | 8 | « Régulier ou ponctuel, tâches, fréquences et horaires Entretien régulie » |
 | surplus | `carte-titre-texte` | 9 | « Comment choisir la bonne fréquence La fréquence dépend moins de la sur » |
-| … | | | 9 autres |
+| surplus | `carte-titre-texte` | 12 | « Comment se construit un cahier des charges 01 Inventaire des espaces C » |
+| surplus | `carte-titre-texte` | 15 | « Trois situations concrètes Exemples représentatifs des demandes que no » |
 
 
 ### `#/nos-prestations` → `/prestations/`
@@ -104,7 +105,7 @@
 
 ### `#/zones-intervention` → `/zones-intervention/`
 
-**1440 px** — bandes 13 → 13 · cartes 52 → 54 · 47 anomalie(s)
+**1440 px** — bandes 13 → 13 · cartes 52 → 48 · 41 anomalie(s)
 
 | Anomalie | Archétype | Bande | Détail |
 |---|---|---|---|
@@ -138,12 +139,12 @@
 | type | `micro-carte` | 8 | « Belfort90000 » — rendue en `carte-titre` |
 | type | `micro-carte` | 9 | « Saint-Apollinaire21850 » — rendue en `carte-titre` |
 | type | `micro-carte` | 9 | « Chenôve21300 » — rendue en `carte-titre` |
-| … | | | 17 autres |
+| … | | | 11 autres |
 
 
 ### `#/bourgogne-franche-comte` → `/zones-intervention/bourgogne-franche-comte/`
 
-**1440 px** — bandes 12 → 12 · cartes 51 → 61 · 47 anomalie(s)
+**1440 px** — bandes 12 → 12 · cartes 51 → 55 · 41 anomalie(s)
 
 | Anomalie | Archétype | Bande | Détail |
 |---|---|---|---|
@@ -155,9 +156,9 @@
 | type | `micro-carte` | 5 | « Syndics et conseils syndicaux : halls, cages d'escalier, asc » — rendue en `carte-titre` |
 | type | `micro-carte` | 5 | « Propriétaires bailleurs et gestionnaires : locations meublée » — rendue en `carte-titre` |
 | type | `micro-carte` | 5 | « Associations, agences, coworkings et structures de formation » — rendue en `carte-titre` |
-| type | `micro-carte` | 5 | « Plateaux de bureaux et open-spaces » — rendue en `carte-titre` |
-| type | `micro-carte` | 5 | « Locaux d'accueil et salles d'attente » — rendue en `carte-titre` |
-| type | `micro-carte` | 5 | « Surfaces de vente et réserves » — rendue en `carte-titre` |
+| type | `micro-carte` | 5 | « Plateaux de bureaux et open-spaces » — rendue en `chip` |
+| type | `micro-carte` | 5 | « Locaux d'accueil et salles d'attente » — rendue en `chip` |
+| type | `micro-carte` | 5 | « Surfaces de vente et réserves » — rendue en `chip` |
 | type | `micro-carte` | 5 | « Cabinets paramédicaux et dentaires courants » — rendue en `carte-titre` |
 | type | `micro-carte` | 5 | « Parties communes d'immeubles » — rendue en `carte-titre` |
 | type | `micro-carte` | 5 | « Locations meublées et logements de courte durée » — rendue en `carte-titre` |
@@ -177,12 +178,29 @@
 | type | `micro-carte` | 7 | « Territoire de Belfort90Préfecture : BelfortBelfort et son ag » — rendue en `carte-titre-texte` |
 | type | `micro-carte` | 8 | « Chalon-sur-Saône71100 » — rendue en `carte-titre` |
 | type | `micro-carte` | 8 | « Mâcon71000 » — rendue en `carte-titre` |
-| … | | | 17 autres |
+| … | | | 11 autres |
+
+
+### `#/notre-fonctionnement` → `/notre-fonctionnement/`
+
+**1440 px** — bandes 5 → 5 · cartes 9 → 13 · 9 anomalie(s)
+
+| Anomalie | Archétype | Bande | Détail |
+|---|---|---|---|
+| type | `etape` | 3 | « 01Prise de contactVous nous décrivez vos locaux (surface, ty » — rendue en `carte-titre-texte` |
+| type | `etape` | 3 | « 02Analyse du besoinNous étudions le volume d'heures nécessai » — rendue en `carte-titre-texte` |
+| type | `etape` | 3 | « 03Devis sous 24 hVous recevez une proposition claire et chif » — rendue en `tarif` |
+| type | `etape` | 3 | « 04Sélection & mise en placeNous sélectionnons l'intervenant  » — rendue en `carte-titre-texte` |
+| type | `etape` | 3 | « 05Suivi & liaisonUn cahier de liaison reste sur place à chaq » — rendue en `carte-titre-texte` |
+| surplus | `chip` | 2 | « ★★★★★5,0/5 sur Google » |
+| surplus | `carte-titre-texte` | 4 | « Les informations dont nous avons besoin Si vous découvrez le sujet, co » |
+| surplus | `carte-titre-texte` | 4 | « Transmission des consignes et premier passage Une fois le devis accept » |
+| surplus | `carte-titre-texte` | 4 | « Modifier, suspendre ou arrêter Modifier la prestation Un ajustement de » |
 
 
 ### `#/avis-clients` → `/avis-clients/`
 
-**1440 px** — bandes 7 → 7 · cartes 14 → 20 · 18 anomalie(s)
+**1440 px** — bandes 7 → 7 · cartes 14 → 13 · 11 anomalie(s)
 
 | Anomalie | Archétype | Bande | Détail |
 |---|---|---|---|
@@ -197,12 +215,22 @@
 | type | `temoignage` | 5 | « ★★★★★Google« Remises en état entre deux locataires impeccabl » — rendue en `carte-titre-texte` |
 | type | `temoignage` | 5 | « ★★★★★Google« Remise en état ponctuelle après travaux, devis  » — rendue en `carte-titre-texte` |
 | surplus | `chip` | 2 | « ★★★★★5,0/5 sur Google » |
-| surplus | `chip` | 3 | « ★★★★★ » |
-| surplus | `chip` | 3 | « Sur · avis clients » |
-| surplus | `chip` | 3 | « Google » |
-| surplus | `chip` | 4 | « ★★★★★ » |
-| surplus | `chip` | 4 | « Marc V. » |
-| surplus | `chip` | 4 | « Directeur administratif » |
-| surplus | `chip` | 4 | « Chalon-sur-Saône » |
+
+
+### `#/contact` → `/contact/`
+
+**1440 px** — bandes 4 → 4 · cartes 7 → 2 · 9 anomalie(s)
+
+| Anomalie | Archétype | Bande | Détail |
+|---|---|---|---|
+| absente | `micro-carte` | 3 | « J'ai un besoin de nettoyage Direction le formulaire de devis détaillé  » |
+| absente | `carte-icone` | 4 | « AudreyVotre interlocutrice, du devis au suivi » |
+| absente | `micro-carte` | 4 | « ☎Téléphone06 36 17 63 39 » |
+| absente | `micro-carte` | 4 | « ✉E-mailaudrey.b@top-famille.fr » |
+| absente | `micro-carte` | 4 | « 📍ImplantationSaint-Apollinaire (21) · Bourgogne-Franche-Comté » |
+| absente | `micro-carte` | 4 | « 🕑Horaires de contactDu lundi au vendredi · à confirmer · réponse sous » |
+| absente | `tarif` | 4 | « ★★★★★5,0/527 € HT/h » |
+| surplus | `carte-titre-texte` | 3 | « Audrey Brançon Gérante — votre interlocutrice pour les devis et le sui » |
+| surplus | `carte-titre-texte` | 3 | « Siège social Top-Famille Pro650D route de Gray21850 Saint-Apollinaire  » |
 
 

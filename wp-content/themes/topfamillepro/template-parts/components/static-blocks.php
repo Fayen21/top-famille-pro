@@ -103,100 +103,130 @@ foreach ( $data['sections'] as $section ) {
 				// être remplacé par de vrais avis (CLAUDE.md §5.5).
 				$provisoire = ! empty( $bloc['citations'] );
 				?>
-				<div class="tfp-static-block<?php echo $carte ? ' tfp-static-block--carte' : ''; ?>"<?php echo $carte_style ? ' style="' . esc_attr( $carte_style ) . '"' : ''; ?><?php echo $provisoire ? ' data-tfp-provisional="1"' : ''; ?>>
-					<?php if ( $bloc['titre'] ) : ?>
-						<?php printf( '<%1$s>%2$s</%1$s>', esc_attr( $bloc['niveau'] ), esc_html( $bloc['titre'] ) ); ?>
-					<?php endif; ?>
+					<div class="tfp-static-block<?php echo $carte ? ' tfp-static-block--carte' : ''; ?>"<?php echo $carte_style ? ' style="' . esc_attr( $carte_style ) . '"' : ''; ?><?php echo $provisoire ? ' data-tfp-provisional="1"' : ''; ?>>
+						<?php if ( $bloc['titre'] ) : ?>
+							<?php printf( '<%1$s>%2$s</%1$s>', esc_attr( $bloc['niveau'] ), esc_html( $bloc['titre'] ) ); ?>
+						<?php endif; ?>
 
-					<?php foreach ( $bloc['textes'] as $texte ) : ?>
-						<p class="tfp-prose"><?php echo esc_html( $texte ); ?></p>
-					<?php endforeach; ?>
-
-					<?php if ( ! empty( $bloc['etapes'] ) ) : ?>
 						<?php
 						/*
-						 * Étapes numérotées de la maquette : pastille à gauche, intitulé et texte à
-						 * droite, dans une carte. Une liste ordonnée est le balisage juste — l'ordre
-						 * porte du sens ici — et le numéro visible est donc `aria-hidden`, sinon un
-						 * lecteur d'écran annonce deux fois le rang de chaque étape.
+						 * Rendu de la **séquence hétérogène ordonnée** de la bande.
+						 *
+						 * Le composant rendait auparavant un tiroir après l'autre — tous les paragraphes,
+						 * puis toutes les listes, puis toutes les pastilles — ce qui effaçait l'ordre
+						 * voulu par la maquette : une note écrite entre deux grilles ressortait après
+						 * elles. La séquence porte chaque enfant avec son type, dans son ordre de
+						 * lecture, et chacun garde l'archétype que le prototype lui donne.
+						 *
+						 * Il n'y a **plus de repli** vers la pastille : un fragment n'est rendu en chip
+						 * que si la maquette le rend en chip, ce qui est relevé à l'extraction.
 						 */
+						$sequence_bloc = is_array( $bloc['sequence'] ?? null ) ? $bloc['sequence'] : array();
+						if ( ! $sequence_bloc ) {
+							// Repli de compatibilité pour un contenu produit avant l'introduction de la
+							// séquence : on reconstitue l'ordre le plus probable, sans jamais inventer de
+							// pastille.
+							foreach ( $bloc['textes'] as $t ) {
+								$sequence_bloc[] = array( 'type' => 'paragraph', 'texte' => $t );
+							}
+							foreach ( $bloc['cartes'] as $g ) {
+								$sequence_bloc[] = array_merge( array( 'type' => 'grid' ), $g );
+							}
+							if ( ! empty( $bloc['liste'] ) ) {
+								$sequence_bloc[] = array( 'type' => 'list', 'items' => $bloc['liste'] );
+							}
+						}
+
+						$chips_en_attente = array();
+						/** Vide la file de pastilles consécutives en une seule rangée, comme la maquette. */
+						$vider_chips = static function () use ( &$chips_en_attente ) {
+							if ( ! $chips_en_attente ) {
+								return;
+							}
+							tfp_chip_list(
+								array_map(
+									static function ( $t ) {
+										return array( 'texte' => $t );
+									},
+									$chips_en_attente
+								)
+							);
+							$chips_en_attente = array();
+						};
+
+						foreach ( $sequence_bloc as $enfant ) {
+							$type = $enfant['type'] ?? '';
+							if ( 'chip' !== $type ) {
+								$vider_chips();
+							}
+							switch ( $type ) {
+								case 'paragraph':
+									printf( '<p class="tfp-prose">%s</p>', esc_html( $enfant['texte'] ) );
+									break;
+
+								case 'note':
+									// Phrase de transition, précision, conclusion : du texte courant, et
+									// non une pastille. C'est exactement ce que produisait le repli
+									// supprimé, et cela inventait des cartes absentes du prototype.
+									printf( '<p class="tfp-static-note">%s</p>', esc_html( $enfant['texte'] ) );
+									break;
+
+								case 'grid':
+									tfp_card_grid( $enfant );
+									break;
+
+								case 'list':
+									echo '<ul class="tfp-list-plain">';
+									foreach ( (array) ( $enfant['items'] ?? array() ) as $item ) {
+										printf( '<li>%s</li>', esc_html( $item ) );
+									}
+									echo '</ul>';
+									break;
+
+								case 'quote':
+									printf( '<blockquote class="tfp-quote">%s</blockquote>', esc_html( $enfant['texte'] ) );
+									break;
+
+								case 'link':
+									$url = tfp_route_to_url( $enfant['route'] ?? '' );
+									if ( $url ) {
+										printf(
+											'<a class="tfp-link-row" href="%s">%s<span aria-hidden="true">→</span></a>',
+											esc_url( $url ),
+											esc_html( rtrim( $enfant['texte'], '→ ' ) )
+										);
+									} else {
+										// Aucun lien mort publié : le libellé reste du texte (CLAUDE.md §8).
+										printf( '<span class="tfp-link-row tfp-link-row--static">%s</span>', esc_html( $enfant['texte'] ) );
+									}
+									break;
+
+								case 'chip':
+									$chips_en_attente[] = $enfant['texte'];
+									break;
+
+								case 'step':
+									printf(
+										'<ol class="tfp-steps"><li class="tfp-step"><span class="tfp-step__num" aria-hidden="true">%s</span>'
+											. '<div class="tfp-step__body"><strong class="tfp-step__titre">%s</strong><p class="tfp-prose">%s</p></div></li></ol>',
+										esc_html( $enfant['numero'] ),
+										esc_html( $enfant['titre'] ),
+										esc_html( $enfant['texte'] )
+									);
+									break;
+
+								case 'faq':
+									printf(
+										'<details class="tfp-card tfp-faq-item"><summary>%s</summary><p>%s</p></details>',
+										esc_html( $enfant['question'] ),
+										esc_html( $enfant['reponse'] )
+									);
+									break;
+							}
+						}
+						$vider_chips();
 						?>
-						<ol class="tfp-steps">
-							<?php foreach ( $bloc['etapes'] as $etape ) : ?>
-								<li class="tfp-step">
-									<span class="tfp-step__num" aria-hidden="true"><?php echo esc_html( $etape['numero'] ); ?></span>
-									<div class="tfp-step__body">
-										<strong class="tfp-step__titre"><?php echo esc_html( $etape['titre'] ); ?></strong>
-										<p class="tfp-prose"><?php echo esc_html( $etape['texte'] ); ?></p>
-									</div>
-								</li>
-							<?php endforeach; ?>
-						</ol>
-					<?php endif; ?>
-
-					<?php
-					/*
-					 * Grilles de micro-cartes relevées sur la maquette, à leur place dans l'ordre de
-					 * lecture. Elles portent leur intitulé **et** leur description : c'est ce que
-					 * l'ancienne extraction perdait, et qui rendait la carte irreconstituable.
-					 */
-					foreach ( $bloc['cartes'] as $grille ) {
-						tfp_card_grid( $grille );
-					}
-					?>
-
-					<?php foreach ( $bloc['citations'] as $citation ) : ?>
-						<blockquote class="tfp-quote"><?php echo esc_html( $citation ); ?></blockquote>
-					<?php endforeach; ?>
-
-					<?php if ( ! empty( $bloc['faq'] ) ) : ?>
-						<div style="margin-top:20px">
-							<?php foreach ( $bloc['faq'] as $item ) : ?>
-								<details class="tfp-card" style="margin-bottom:10px">
-									<summary style="font-weight:600;font-size:17px;cursor:pointer"><?php echo esc_html( $item['question'] ); ?></summary>
-									<p style="margin-top:12px;color:var(--color-text-secondary)"><?php echo esc_html( $item['reponse'] ); ?></p>
-								</details>
-							<?php endforeach; ?>
-						</div>
-					<?php endif; ?>
-
-					<?php if ( ! empty( $bloc['liste'] ) ) : ?>
-						<ul class="tfp-list-plain">
-							<?php foreach ( $bloc['liste'] as $item ) : ?>
-								<li><?php echo esc_html( $item ); ?></li>
-							<?php endforeach; ?>
-						</ul>
-					<?php endif; ?>
-
-					<?php if ( ! empty( $bloc['liens'] ) ) : ?>
-						<div class="tfp-stack" style="margin-top:16px">
-							<?php
-							foreach ( $bloc['liens'] as $lien ) :
-								$url = tfp_route_to_url( $lien['route'] );
-								if ( ! $url ) :
-									?>
-									<span class="tfp-link-row tfp-link-row--static"><?php echo esc_html( $lien['texte'] ); ?></span>
-									<?php
-								else :
-									?>
-									<a class="tfp-link-row" href="<?php echo esc_url( $url ); ?>">
-										<?php echo esc_html( rtrim( $lien['texte'], '→ ' ) ); ?><span aria-hidden="true">→</span>
-									</a>
-									<?php
-								endif;
-							endforeach;
-							?>
-						</div>
-					<?php endif; ?>
-
-					<?php if ( ! empty( $bloc['noms'] ) ) : ?>
-						<div class="tfp-flex" style="margin-top:14px">
-							<?php foreach ( $bloc['noms'] as $nom ) : ?>
-								<span class="tfp-chip tfp-chip--static"><?php echo esc_html( $nom ); ?></span>
-							<?php endforeach; ?>
-						</div>
-					<?php endif; ?>
-				</div>
+					</div>
 			<?php endforeach; ?>
 			</div>
 		<?php endforeach; ?>
