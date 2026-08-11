@@ -181,5 +181,66 @@ function tfp_testimonial_card( $item = null ) {
 	}
 	echo '</figcaption>';
 
+	// La mention accompagne la carte elle-même : elle ne peut donc pas être oubliée sur une route.
+	if ( ! empty( $item['demo'] ) ) {
+		echo '<figcaption class="tfp-provisional-notice" data-tfp-provisional-notice="1">'
+			. 'Exemple de présentation — témoignages authentiques en cours d’intégration.'
+			. '</figcaption>';
+	}
+
 	echo '</figure>';
+}
+
+/**
+ * Mention de transparence des contenus provisoires.
+ *
+ * Les témoignages repris de la maquette servent à reproduire le design, mais ce ne sont pas de
+ * vrais avis. L'attribut `data-tfp-provisional` les rend repérables **pour l'équipe** ; il ne dit
+ * rien au visiteur, qui ne lit pas le code source. Trente-huit routes affichaient donc des avis
+ * d'apparence authentique sans que rien ne signale leur statut — c'est ce que cette mention
+ * corrige. Elle est discrète mais lisible, et dans le flux normal : ni masquée, ni réservée aux
+ * lecteurs d'écran.
+ */
+function tfp_provisional_notice() {
+	echo '<p class="tfp-provisional-notice" data-tfp-provisional-notice="1">'
+		. 'Exemples de présentation — témoignages authentiques en cours d’intégration.'
+		. '</p>';
+}
+
+/**
+ * Y a-t-il encore des témoignages provisoires à l'écran ?
+ *
+ * Vrai tant qu'aucun avis réel n'a été saisi dans Réglages → Réassurance & avis : les cartes
+ * affichent alors les exemples repris de la maquette.
+ */
+function tfp_has_provisional_testimonials() {
+	$reels = function_exists( 'tfp_real_testimonials' ) ? tfp_real_testimonials() : array();
+	return empty( $reels );
+}
+
+/**
+ * Neutralise, dans le contenu d'une page, l'affirmation d'authenticité des avis.
+ *
+ * Voir `tfp_static_page_data()` : la phrase est exacte comme intention, fausse comme description
+ * de ce qui est actuellement affiché. On la remplace par une formulation qui dit la même chose au
+ * futur, sans rien affirmer sur les contenus visibles aujourd'hui.
+ *
+ * @param mixed $data Contenu de page, tel que stocké.
+ * @return mixed
+ */
+function tfp_neutralise_authenticity_claim( $data ) {
+	$avant = 'Nous ne publions que des avis authentiques et autorisés.';
+	$apres = 'Seuls des avis authentiques et autorisés y seront publiés.';
+
+	$parcourir = static function ( $valeur ) use ( &$parcourir, $avant, $apres ) {
+		if ( is_string( $valeur ) ) {
+			return str_replace( $avant, $apres, $valeur );
+		}
+		if ( is_array( $valeur ) ) {
+			return array_map( $parcourir, $valeur );
+		}
+		return $valeur;
+	};
+
+	return $parcourir( $data );
 }

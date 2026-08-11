@@ -133,6 +133,13 @@ foreach ( $data['sections'] as $section ) {
 				$provisoire = ! empty( $bloc['citations'] );
 				?>
 					<div class="tfp-static-block<?php echo $carte ? ' tfp-static-block--carte' : ''; ?>"<?php echo $carte_style ? ' style="' . esc_attr( $carte_style ) . '"' : ''; ?><?php echo $provisoire ? ' data-tfp-provisional="1"' : ''; ?>>
+						<?php
+						// Le visiteur ne lit pas le code source : un attribut ne l'informe de rien. La
+						// mention est donc visible, dans le flux, au plus près du contenu concerné.
+						if ( $provisoire ) {
+							tfp_provisional_notice();
+						}
+						?>
 						<?php if ( $bloc['titre'] ) : ?>
 							<?php printf( '<%1$s>%2$s</%1$s>', esc_attr( $bloc['niveau'] ), esc_html( $bloc['titre'] ) ); ?>
 						<?php endif; ?>

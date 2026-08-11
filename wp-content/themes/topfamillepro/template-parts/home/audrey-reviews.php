@@ -64,6 +64,14 @@ $is_real      = tfp_audrey_photo_is_real();
 				<?php echo esc_html( $first_name ); ?> suit votre dossier du premier échange jusqu'au suivi de la prestation : un seul contact, joignable directement, qui connaît vos locaux et vos consignes.
 			</p>
 			<blockquote class="tfp-quote" data-tfp-provisional="1">&laquo;&nbsp;Mon rôle, c'est de rester joignable et de tenir mes engagements. Chaque client sait à qui parler, et sait ce qui a été fait dans ses locaux.&nbsp;&raquo;</blockquote>
+			<?php
+			/*
+			 * La citation n'est pas un avis client : c'est la gérante qui parle. Sa mention doit donc
+			 * dire autre chose que celle des témoignages — elle porte sur une validation par
+			 * l'intéressée, seul contenu du site à faire parler une personne réelle (CLAUDE.md §5.5).
+			 */
+			?>
+			<p class="tfp-provisional-notice" data-tfp-provisional-notice="1">Citation en attente de validation par l’intéressée.</p>
 			<p style="margin-top:14px;font-weight:600"><?php echo esc_html( $site['manager'] ); ?><span style="font-weight:400;color:var(--color-text-tertiary)"> · <?php echo esc_html( $site['brand_name'] . ', ' . $site['address_city'] ); ?></span></p>
 
 			<div class="tfp-flex" style="margin-top:24px">

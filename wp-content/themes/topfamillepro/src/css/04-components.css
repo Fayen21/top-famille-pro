@@ -3194,3 +3194,24 @@ body.tfp-body .tfp-section--primary .tfp-link-row:hover,
 body.tfp-body .tfp-section--primary .tfp-link-row:focus-visible {
   color: var(--color-turquoise);
 }
+
+/* Mention de transparence des contenus provisoires. Discrète mais lisible, dans le flux normal :
+   ni masquée, ni réservée aux lecteurs d'écran. Le contraste tient le critère 1.4.3. */
+.tfp-provisional-notice {
+  margin: 10px 0 0;
+  font-size: 13px;
+  line-height: 1.5;
+  font-style: italic;
+  color: var(--color-text-secondary);
+}
+
+.tfp-card-grid + .tfp-provisional-notice,
+.tfp-provisional-notice + .tfp-card-grid {
+  margin-top: 8px;
+}
+
+.tfp-section--navy .tfp-provisional-notice,
+.tfp-section--primary .tfp-provisional-notice,
+.tfp-card-grid--dark .tfp-provisional-notice {
+  color: var(--color-text-on-dark-muted);
+}

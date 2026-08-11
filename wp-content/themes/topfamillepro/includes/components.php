@@ -178,6 +178,21 @@ function tfp_static_page_data( $key ) {
 		return $cache[ $key ];
 	}
 	$data = get_option( 'tfp_page_' . $key, array() );
+
+	/*
+	 * Une phrase de la maquette devient fausse tant que les témoignages affichés sont provisoires.
+	 *
+	 * `/avis-clients/` annonce « Nous ne publions que des avis authentiques et autorisés » — c'est
+	 * l'intention, et ce sera vrai. Mais les témoignages actuellement à l'écran viennent du
+	 * prototype : afficher cette phrase au-dessus d'eux revient à présenter des exemples de
+	 * présentation comme des avis vérifiés. La phrase est donc neutralisée **tant que** du
+	 * provisoire est affiché, et elle revient d'elle-même le jour où de vrais avis sont saisis
+	 * dans Réglages → Réassurance & avis. Rien n'est perdu, rien n'est promis à tort.
+	 */
+	if ( function_exists( 'tfp_has_provisional_testimonials' ) && tfp_has_provisional_testimonials() ) {
+		$data = tfp_neutralise_authenticity_claim( $data );
+	}
+
 	$cache[ $key ] = wp_parse_args(
 		is_array( $data ) ? $data : array(),
 		array( 'h1' => '', 'lede' => array(), 'hero_alt' => '', 'sections' => array() )
@@ -458,6 +473,15 @@ function tfp_card_grid( array $grille ) {
 		$vars[] = '--tfp-tuile-fond:' . $grille['fond'];
 	}
 	$style = $vars ? ' style="' . esc_attr( implode( ';', $vars ) ) . '"' : '';
+	?>
+	<?php
+	// Une grille qui contient au moins une carte provisoire l'annonce, une fois, au-dessus d'elle.
+	$provisoires = array_filter( $items, static function ( $i ) {
+		return ! empty( $i['provisoire'] );
+	} );
+	if ( $provisoires && function_exists( 'tfp_provisional_notice' ) ) {
+		tfp_provisional_notice();
+	}
 	?>
 	<ul class="tfp-card-grid tfp-card-grid--<?php echo (int) $colonnes; ?><?php echo esc_attr( $theme ); ?>"<?php echo $style; // phpcs:ignore WordPress.Security.EscapeOutput ?>>
 		<?php
