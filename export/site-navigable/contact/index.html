@@ -37,7 +37,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 </style>
 
 <link rel='stylesheet' id='generatepress-parent-css' href='../wp-content/themes/generatepress/style.css?ver=0.1.0' media='all' />
-<link rel='stylesheet' id='topfamillepro-css' href='../wp-content/themes/topfamillepro/assets/dist/css/main.css?ver=1786473791' media='all' />
+<link rel='stylesheet' id='topfamillepro-css' href='../wp-content/themes/topfamillepro/assets/dist/css/main.css?ver=1786485837' media='all' />
 </head>
 <body class="wp-singular page-template-default page page-id-54 wp-theme-generatepress wp-child-theme-topfamillepro tfp-body tfp-type-institutionnelle tfp-hero-w-900">
 <a class="skip-link" href="#tfp-main">Aller au contenu principal</a>
@@ -176,7 +176,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 																			<p class="tfp-card-tile__desc">Formulaire court, réponse par e-mail ou téléphone.</p>
 																							</div>
 				</div>
-			</li>
+							</li>
 					<li>
 				<a class="tfp-card-tile tfp-card-tile--lien" href="../demande-de-devis/index.html">
 																				<div class="tfp-card-tile__body">
@@ -186,7 +186,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 																									<span class="tfp-card-tile__more">Demander mon devis<span aria-hidden="true"> →</span></span>
 											</div>
 				</a>
-			</li>
+							</li>
 			</ul>
 		</div>
 </section>
@@ -210,7 +210,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 																			<p class="tfp-card-tile__desc">06 36 17 63 39</p>
 																							</div>
 				</a>
-			</li>
+							</li>
 					<li>
 				<a class="tfp-card-tile tfp-card-tile--lien" href="mailto:audrey.b@top-famille.fr" aria-label="Écrire à audrey.b@top-famille.fr">
 																<span class="tfp-card-tile__icon" aria-hidden="true">✉</span>
@@ -220,7 +220,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 																			<p class="tfp-card-tile__desc">audrey.b@top-famille.fr</p>
 																							</div>
 				</a>
-			</li>
+							</li>
 					<li>
 				<div class="tfp-card-tile tfp-card-tile--lien">
 																<span class="tfp-card-tile__icon" aria-hidden="true">📍</span>
@@ -230,8 +230,8 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 																			<p class="tfp-card-tile__desc">Saint-Apollinaire (21) · Bourgogne-Franche-Comté</p>
 																							</div>
 				</div>
-			</li>
-					<li>
+							</li>
+					<li data-tfp-provisional="1">
 				<div class="tfp-card-tile tfp-card-tile--lien">
 																<span class="tfp-card-tile__icon" aria-hidden="true">🕑</span>
 															<div class="tfp-card-tile__body">
@@ -240,7 +240,19 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 																			<p class="tfp-card-tile__desc">Du lundi au vendredi · réponse sous 24 h</p>
 																							</div>
 				</div>
-			</li>
+				<p class="tfp-provisional-notice" data-tfp-provisional-notice="1">Horaires indicatifs, en cours de confirmation.</p>			</li>
+			</ul>
+			<ul class="tfp-card-grid tfp-card-grid--1 tfp-card-grid--dark" style="--tfp-tuile-padding:14px 18px;--tfp-tuile-gap:12px;--tfp-tuile-rayon:14px;--tfp-tuile-filet:0px;--tfp-tuile-fond:rgb(23, 74, 129)">
+					<li>
+				<div class="tfp-card-tile tfp-card-tile--texte">
+																<span class="tfp-card-tile__icon" aria-hidden="true">★★★★★</span>
+															<div class="tfp-card-tile__body">
+																			<strong class="tfp-card-tile__title">
+								5,0/5 sur Google															</strong>
+																			<p class="tfp-card-tile__desc">27 € HT/h — tarif unique en région</p>
+																							</div>
+				</div>
+							</li>
 			</ul>
 		<ul class="tfp-chip-list">
 					<li>
@@ -255,6 +267,70 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 			</ul>
 			</div>
 		<div>
+						<h2 id="formulaire-contact">J’ai une question</h2>
+			<p class="tfp-prose">Formulaire court : décrivez votre question, Audrey vous répond par e-mail ou par téléphone sous 24 heures.</p>
+
+			
+						<form class="tfp-contact-form" method="post" action="../wp-admin/admin-post/index.html.php" novalidate>
+				<input type="hidden" name="action" value="tfp_submit_contact">
+				<input type="hidden" id="tfp_contact_nonce" name="tfp_contact_nonce" value="c5e79d62dc" /><input type="hidden" name="_wp_http_referer" value="/contact/" />
+								<div class="tfp-honeypot" aria-hidden="true">
+					<label for="tfp_contact_site">Ne pas remplir</label>
+					<input type="text" id="tfp_contact_site" name="tfp_contact_site" tabindex="-1" autocomplete="off">
+				</div>
+
+				<div class="tfp-contact-form__row">
+					<p class="tfp-field">
+						<label for="contact-nom">Nom <span aria-hidden="true">*</span></label>
+						<input type="text" id="contact-nom" name="tfp_contact_nom" required autocomplete="name"
+							value=""
+							>
+											</p>
+					<p class="tfp-field">
+						<label for="contact-entreprise">Entreprise (facultatif)</label>
+						<input type="text" id="contact-entreprise" name="tfp_contact_entreprise" autocomplete="organization" value="">
+					</p>
+					<p class="tfp-field">
+						<label for="contact-email">E-mail <span aria-hidden="true">*</span></label>
+						<input type="email" id="contact-email" name="tfp_contact_email" required autocomplete="email"
+							value=""
+							>
+											</p>
+					<p class="tfp-field">
+						<label for="contact-telephone">Téléphone (facultatif)</label>
+						<input type="tel" id="contact-telephone" name="tfp_contact_telephone" autocomplete="tel" value="">
+					</p>
+				</div>
+
+				<p class="tfp-field">
+					<label for="contact-objet">Objet <span aria-hidden="true">*</span></label>
+					<select id="contact-objet" name="tfp_contact_objet" required
+						>
+													<option value="prestation" >Question sur une prestation</option>
+													<option value="tarifs" >Question sur les tarifs</option>
+													<option value="zone" >Question sur une zone d’intervention</option>
+													<option value="recrutement" >Recrutement</option>
+													<option value="autre" >Autre</option>
+											</select>
+									</p>
+
+				<p class="tfp-field">
+					<label for="contact-message">Message <span aria-hidden="true">*</span></label>
+					<textarea id="contact-message" name="tfp_contact_message" rows="5" required
+						></textarea>
+									</p>
+
+				<p class="tfp-field tfp-field--check">
+					<input type="checkbox" id="contact-consentement" name="tfp_contact_consentement" value="1" required
+												>
+					<label for="contact-consentement">J’accepte que mes informations soient utilisées pour me répondre.</label>
+									</p>
+
+				<p>
+					<button type="submit" class="tfp-btn tfp-btn--primary" data-tfp-once>Envoyer mon message</button>
+				</p>
+			</form>
+
 			<h2>Une demande précise ?</h2>
 			<p class="tfp-prose">Pour un devis, décrivez directement vos locaux et votre besoin via le formulaire dédié : la réponse est plus rapide et plus précise qu'un échange initial par téléphone.</p>
 			<p style="margin-top:16px">
@@ -408,6 +484,6 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <script type="speculationrules">
 {"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/wp-content/uploads/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/topfamillepro/*","/wp-content/themes/generatepress/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
 </script>
-<script data-wp-strategy="defer" defer id="topfamillepro-js" src="../wp-content/themes/topfamillepro/assets/dist/js/main.js?ver=1786473791"></script>
+<script data-wp-strategy="defer" defer id="topfamillepro-js" src="../wp-content/themes/topfamillepro/assets/dist/js/main.js?ver=1786485837"></script>
 </body>
 </html>
