@@ -356,6 +356,42 @@ function tfp_chip_list( array $items ) {
 }
 
 /**
+ * Slug de visuel correspondant à une carte, d'après le manifeste d'images du thème.
+ *
+ * La maquette encode ses visuels en base64 et ne porte aucun nom de fichier : la
+ * correspondance se fait donc sur la route de la carte, puis sur son intitulé. Une carte sans
+ * équivalent au manifeste renvoie une chaîne vide et se rend sans image — jamais avec un
+ * fichier deviné, qui donnerait une image cassée en production.
+ *
+ * @param string $titre Intitulé de la carte.
+ * @param string $route Route interne visée par la carte (`#/service/bureaux`…).
+ * @return string Slug du manifeste, ou chaîne vide.
+ */
+function tfp_card_image_slug( $titre, $route ) {
+	$manifeste = function_exists( 'tfp_image_manifest' ) ? tfp_image_manifest() : array();
+	if ( ! $manifeste ) {
+		return '';
+	}
+	$route = (string) $route;
+	if ( preg_match( '~#/service/([a-z-]+)~', $route, $m ) ) {
+		foreach ( array( 'service-' . $m[1], 'service-generic' ) as $slug ) {
+			if ( isset( $manifeste[ $slug ] ) ) {
+				return $slug;
+			}
+		}
+	}
+	if ( preg_match( '~#/article/~', $route ) ) {
+		foreach ( array( 'article-1', 'article-2', 'article-3' ) as $slug ) {
+			if ( isset( $manifeste[ $slug ] ) ) {
+				return $slug;
+			}
+		}
+	}
+	unset( $titre );
+	return '';
+}
+
+/**
  * Grille de micro-cartes relevée sur la maquette.
  *
  * C'est le composant qui manquait, et son absence était **structurelle** : le générateur réduisait
@@ -456,6 +492,20 @@ function tfp_card_grid( array $grille ) {
 			?>
 			<li<?php echo ! empty( $item['provisoire'] ) ? ' data-tfp-provisional="1"' : ''; ?>>
 				<<?php echo $balise; ?> class="tfp-card-tile tfp-card-tile--<?php echo esc_attr( $variante ); ?>"<?php echo $attributs; // phpcs:ignore WordPress.Security.EscapeOutput ?>>
+					<?php
+					/*
+					 * Visuel de la carte. Le slug vient du manifeste d'images du thème, jamais d'un
+					 * nom de fichier deviné : la maquette encode ses visuels en base64 et n'a pas de
+					 * noms. Une carte dont le visuel n'a pas d'équivalent au manifeste se rend sans
+					 * image plutôt qu'avec une image cassée.
+					 */
+					$slug_image = $item['image'] ? tfp_card_image_slug( $item['titre'], $item['route'] ) : '';
+					if ( $slug_image ) {
+						echo '<span class="tfp-card-tile__media">';
+						tfp_picture( $slug_image, array( 'sizes' => '(max-width: 819px) 100vw, 383px', 'alt' => '' ) );
+						echo '</span>';
+					}
+					?>
 					<?php if ( $item['icone'] ) : ?>
 						<span class="tfp-card-tile__icon" aria-hidden="true"><?php echo esc_html( $item['icone'] ); ?></span>
 					<?php endif; ?>

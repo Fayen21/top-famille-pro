@@ -394,9 +394,14 @@ for (const p of PAGES) {
 						(s.backgroundColor !== 'rgba(0, 0, 0, 0)' || parseFloat(s.borderTopWidth) > 0 || (s.boxShadow && s.boxShadow !== 'none'))
 					);
 				});
-				// Une grille de cartes : (presque) tous ses enfants en sont, et ce ne sont pas des
-				// commandes. Une barre de boutons a la même forme mais un autre rôle.
-				if (enfants.length < 2 || enfants.length < g.children.length - 1) continue;
+				/*
+				 * Deux cartes suffisent. La contrainte « presque tous les enfants sont des cartes »
+				 * existait pour éviter d'engloutir une bande mixte avec son conteneur ; ce risque a
+				 * disparu depuis que le repère est posé sur la première carte et non sur le
+				 * conteneur. La garder revenait à ignorer les grilles d'une bande mixte — la carte
+				 * tarifaire de la bande « 27 € HT/h » notamment, absente sur trois routes.
+				 */
+				if (enfants.length < 2) continue;
 				if (enfants.every(estCommande)) continue;
 				// Une carte qui contient elle-même la grille entière est un conteneur : on ne prend
 				// que la grille la plus profonde.

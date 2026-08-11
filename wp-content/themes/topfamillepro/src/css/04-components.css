@@ -3080,3 +3080,26 @@ body.tfp-body a.tfp-card-tile:focus-visible {
 .tfp-section--blanc {
   background: var(--color-white);
 }
+
+/* Visuel d'une carte : la maquette pose l'image en tête de tuile, pleine largeur, et le texte
+   dessous. La tuile passe donc en colonne quand elle porte un visuel. */
+.tfp-card-tile--image {
+  flex-direction: column;
+  padding: 0;
+  overflow: hidden;
+}
+
+.tfp-card-tile__media {
+  display: block;
+  width: 100%;
+}
+
+.tfp-card-tile__media img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.tfp-card-tile--image .tfp-card-tile__body {
+  padding: var(--tfp-tuile-padding, 16px 18px);
+}
