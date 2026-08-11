@@ -1291,3 +1291,55 @@ pas le CSS.
   URL de la fiche ; attestation d'assurance ; validation une par une des huit communes secondaires.
 - **Vérifier la compression à la mise en ligne.** C'est la seule action qui sépare 83-96 de
   90-100 en performance, et elle est mesurable en une commande (guide de déploiement, étape 19).
+
+---
+
+## Passe finale — 11 août 2026 (branche `hotfix-production-fidelite-claude-design`, PR #9)
+
+Rapport complet : `docs/RAPPORT-PASSE-FINALE.md`. Verdict : **PARTIEL — ÉCARTS RESTANTS**.
+
+### Fait
+
+- **`/contact/` reproduite** : sept cartes sur sept, plus le formulaire de contact court qui
+  manquait — distinct du formulaire de devis en deux étapes, qui n'a pas été touché. La carte de
+  note Google lisait une clé inexistante et affichait « /5 sur Google » sans chiffre devant.
+- **Horaires provisoires** : repris de la maquette, marqués provisoires avec mention visible,
+  administrables dans Réglages → Réassurance & avis, et jamais déclarés en
+  `openingHoursSpecification` — une amplitude non confirmée en donnée structurée est un engagement
+  opposable.
+- **Sécurité du formulaire** : nonce, honeypot hors écran et hors clavier, limitation, validation
+  serveur complète, saisie conservée en cas d'erreur. Aucun test ne peut faire partir un e-mail :
+  le formulaire porte `data-tfp-mail-disabled` en local, et la suite refuse de soumettre sans lui.
+- **Pages de zone, quatre défauts structurels** : niveau des titres perdu à l'extraction (la bande
+  passait de 2 colonnes de 566 px à 4 de 265), bande tarifaire à trois colonnes et non deux, phrase
+  de justification du montant rendue loin du montant, et **les trois garanties du bandeau tarifaire
+  perdues sur les 26 pages** — l'extraction ne relevait que les feuilles, et le libellé est un nœud
+  texte à côté de l'icône.
+- **Inventaire des cartes** : trois faux positifs d'outil corrigés (texte volontairement corrigé
+  compté deux fois, archétype différent compté deux fois, coquilles vides), et la seule cause des
+  ~110 rangées de pastilles mal coupées — `.tfp-chip` appliquait 15 px là où son commentaire
+  annonçait les 14 px relevés. **934 anomalies dont 283 graves → 542 dont 101.**
+- **Classement exhaustif** des 209 anomalies « supplémentaire » et « colonnes » :
+  `docs/ANOMALIES-SURPLUS-COLONNES.md`, une ligne par occurrence, dix causes nommées.
+- **Contrôle post-installation** : `bin/verifier-installation.php` retrouve les trois URL parasites
+  du banc, publiées et référencées au sitemap. Étape 20 du guide de déploiement.
+- **Décalage de mise en page** : il venait de l'en-tête, pas du hero. CLS bureau 0,255 → 0,028,
+  CLS mobile 0,000 partout, performance 92–100, et 100 en accessibilité, bonnes pratiques et SEO
+  sur les quatorze mesures.
+- **Exports** reconstruits depuis une installation propre : 53/53 routes hors ligne, 0 ressource
+  manquante, 0 image cassée, 0 requête externe, 0 fuite de `localhost`.
+- **965 tests Playwright**, tous verts.
+
+### Reste à faire
+
+- **CLS de 0,028 en profil bureau** sur les sept pages : sous le seuil « bon » de Google (0,10),
+  au-dessus de la cible interne de 0,010. L'en-tête se réagence encore de quelques pixels.
+- **Fidélité à 768 px** : 7 routes sur 53 dans la tolérance. Cause identifiée — la maquette garde
+  deux colonnes tant que la place le permet, le thème s'empile dès 819 px. La liste de tâches a été
+  alignée ; l'abaissement global des points de rupture reste à faire et à re-vérifier sur les
+  53 routes aux six largeurs.
+- **Sept causes d'anomalies « à instruire »** sur les dix du classement (129 occurrences).
+- **Décisions humaines** : nombre réel d'avis Google et URL de la fiche · validation de la citation
+  par Audrey · validation une par une des huit communes secondaires · remplacement des témoignages
+  provisoires · horaires de contact réels · sort des contenus que `verifier-installation.php`
+  signalera sur l'installation réelle.
