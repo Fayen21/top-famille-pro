@@ -88,6 +88,7 @@ if ( empty( $posts ) ) {
 <p>Le nombre d\'heures nécessaires dépend de la surface, du type de locaux, de la fréquence retenue et du niveau d\'exigence (standard ou renforcé, notamment pour les espaces recevant du public). Deux bureaux de même surface peuvent ainsi nécessiter des volumes différents selon leur usage.</p>
 <h2>Exemples de budgets réels</h2>
 <p>À titre indicatif, calculé à 27 € HT/h + 9 € HT de gestion :</p>
+[tfp_budget_table]
 <h2>Ce qui est inclus, ce qui ne l\'est pas</h2>
 <p>Le tarif couvre la main-d\'œuvre de l\'intervenant sélectionné, l\'organisation du planning, le suivi par une interlocutrice dédiée et le cahier de liaison. Les produits et le matériel sont généralement fournis par le client. Les indemnités kilométriques (0,35 € HT/km) et la majoration de 10 % (dimanche, jours fériés, nuit) ne s\'appliquent que dans certains cas, toujours précisés au devis.</p>
 <h2>Comment obtenir un devis fiable</h2>

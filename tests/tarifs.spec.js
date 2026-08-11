@@ -100,6 +100,29 @@ test.describe('Exemples tarifaires — vérifiés par le calcul', () => {
 		});
 	}
 
+	test('/conseils/cout-nettoyage-bureaux/ : le tableau de budgets est présent et exact', async ({ page }) => {
+		await page.goto('/conseils/cout-nettoyage-bureaux/', { waitUntil: 'domcontentloaded' });
+
+		const tableau = page.locator('table.tfp-budget-table');
+		await expect(tableau, 'le tableau de budgets de la maquette doit être rendu').toHaveCount(1);
+
+		// En-têtes : la relation ligne ↔ colonne doit exister, pas seulement l'apparence.
+		await expect(tableau.locator('thead th')).toHaveCount(4);
+
+		const lignes = await tableau.locator('tbody tr').evaluateAll((trs) =>
+			trs.map((tr) => [...tr.querySelectorAll('th,td')].map((c) => c.textContent.replace(/\s+/g, ' ').trim()))
+		);
+		expect(lignes.length, 'trois volumes officiels attendus').toBe(3);
+
+		for (const [, volume, mensuel, premier] of lignes) {
+			const h = parseInt(volume.match(/(\d+)/)[1], 10);
+			const m = parseInt(mensuel.replace(/[^0-9]/g, ''), 10);
+			const p = parseInt(premier.replace(/[^0-9]/g, ''), 10);
+			expect(m, `${h} h : budget mensuel`).toBe(h * TARIF_HORAIRE + FRAIS_GESTION);
+			expect(p, `${h} h : premier mois`).toBe(h * TARIF_HORAIRE + FRAIS_GESTION + FRAIS_MISE_EN_PLACE);
+		}
+	});
+
 	test('aucun ancien tarif commercial ne subsiste', async ({ page }) => {
 		for (const route of ROUTES.slice(0, 12)) {
 			await page.goto(route.url, { waitUntil: 'domcontentloaded' });

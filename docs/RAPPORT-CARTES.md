@@ -641,3 +641,66 @@ fond, jamais l'inverse.
   trois articles à 106-114 %.
 - **`surplus` et `colonnes`** restent les deux familles d'anomalies les plus nombreuses. Elles n'ont
   pas été analysées une par une dans cette passe.
+
+---
+
+# Passe 5 — défauts de l'audit indépendant
+
+> 11 août 2026. Verdict : **PARTIEL — ÉCARTS RESTANTS**.
+
+## Commits
+
+`598245e` langue, horaires, oEmbed, identité · `05a0926` tarifs centralisés · `c6d47df`
+témoignages provisoires · puis tableau de budgets, exporteur statique et paquets.
+
+## Causes racines corrigées
+
+| Défaut | Cause racine | Correction |
+|---|---|---|
+| 20 exemples tarifaires faux sur 33 | Le libellé portait les heures de la zone, le montant venait d'un exemple **fixe à 12 h** | `tfp_budget_example($heures)` seule source ; `tfp_hours_from_label()` lit les heures du libellé affiché |
+| `lang="en-US"` sur 53 routes | `WPLANG` absent **et** pack de langue non installé | Installateur pose `fr_FR` ; le thème, monolingue par construction, l'affirme via le filtre `locale` |
+| Horaires structurés non validés | `openingHoursSpecification` codé dans `seo.php` | Supprimé, **aucun autre substitué** |
+| 104 fuites d'URL | Liens de découverte oEmbed encodant l'URL absolue | Retirés à la source (avec RSD, WLW, shortlink, lien REST) |
+| « Test vierge ZIP » | `blogname` du bac d'essai | Identité du site posée par l'installateur |
+| Tableau de budgets absent | Le générateur d'articles aplatit en titres/paragraphes/listes | Code court `[tfp_budget_table]` rendu en `<table>` sémantique, alimenté par la source tarifaire |
+| Témoignages provisoires muets sur 38 routes | `data-tfp-provisional` ne s'adresse qu'à l'équipe | Mention visible attachée au composant lui-même |
+| Phrase d'authenticité contradictoire | Texte de la maquette devenu faux | Neutralisée **tant que** du provisoire est affiché |
+| « Durées à confirmer avant publication » | Marqueur d'équipe publié | Formulation exacte et prudente, aucune durée inventée |
+| Export navigable cassé | `wget --page-requisites` ne suit ni `srcset` ni `<source>` — 32 fichiers sur 112 | `tools/export-statique.mjs` copie `assets/dist` et **vérifie** |
+
+## Preuves
+
+**Tarifs.** Auxerre 333 € → **225 €** (8 h), Belfort 333 € → **279 €** (10 h), Dijon **333 €**
+(12 h). `tests/tarifs.spec.js` recalcule chaque exemple des 53 routes, y compris dans les
+accordéons repliés : **55 tests au vert**. Deux faux positifs du test corrigés dans le test.
+
+**Export navigable** — `node tools/export-statique.mjs` :
+
+```
+Ressources locales manquantes : 0
+Fichiers contenant « localhost » : 0
+Images cassées (53 routes × 2 largeurs) : 0
+Requêtes vers un domaine externe : 0
+Routes ouvrables hors ligne sans image cassée : 53 / 53
+```
+
+**Textes** : 0 bloc manquant sur 53 routes, 8 écarts volontaires documentés.
+**Tests** : 942 au vert. **axe-core** : 0 violation. **WCAG 2.5.8** : 0 violation.
+**JSON-LD** : conforme, aucun `Review`/`AggregateRating`.
+
+**Migration** — installateur v1.11.0, thème v0.12.0 : identifiants inchangés (54, 47, 43),
+56 contenus, aucun doublon, empreintes stables après deux exécutions.
+
+## Écarts restants, nommés
+
+1. **Formulaire de contact non reproduit.** La maquette en contient un ; `/contact/` affiche
+   les sept cartes attendues moins une, et renvoie vers le formulaire de devis. Le formulaire
+   de contact propre n'est pas implémenté.
+2. **Trois URL parasites au sitemap** — `/page-perso-de-ladministrateur/`,
+   `/nettoyage-ecologique-ancienne-offre/`, `/devis-rapide/`. Vérifié : **absentes des seeds**,
+   ce sont des résidus d'un test antérieur sur le banc, pas du livrable. Aucune redirection
+   n'est donc justifiée ; un contrôle post-installation reste à ajouter au guide.
+3. **Auteur JSON-LD des articles** : non revérifié dans cette passe.
+4. **Fidélité mobile** : 22 routes sur 53 dans 95-105 % à 375 px. Non traité ici.
+5. **Lighthouse** : non rejoué après les corrections de cette passe.
+6. **Catégories `surplus` et `colonnes`** de l'inventaire : toujours pas analysées une par une.

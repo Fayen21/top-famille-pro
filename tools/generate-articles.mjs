@@ -189,6 +189,21 @@ L.push(" * Contenu intégral des 3 articles « Conseils » et de leur index, rel
 L.push(' *');
 L.push(' * Fichier **généré** par `node tools/generate-articles.mjs` — ne pas éditer à la main.');
 L.push(' *');
+
+/*
+ * Le tableau des budgets de l'article sur le coût.
+ *
+ * La maquette le compose en grille de `span`, que l'aplatissement en titres, paragraphes et
+ * listes ne savait pas rendre : il disparaissait, ne laissant que son intertitre et sa phrase
+ * d'introduction. On pose à sa place le code court `[tfp_budget_table]`, que le thème rend en
+ * `<table>` sémantique **alimenté par la source tarifaire centralisée** — recopier les montants
+ * en dur dans le HTML de l'article les aurait figés au prochain changement de tarif.
+ */
+function poserTableauBudget(html) {
+	const apres = '<p>À titre indicatif, calculé à 27 € HT/h + 9 € HT de gestion :</p>';
+	if (!html.includes(apres) || html.includes('[tfp_budget_table]')) return html;
+	return html.replace(apres, apres + '\n[tfp_budget_table]');
+}
 L.push(' * Le corps de chaque article est du HTML dans `post_content` : il reste éditable dans');
 L.push(" * l'éditeur WordPress, ce qui est l'intérêt du type `post` natif. La réponse directe, la FAQ,");
 L.push(' * la phrase de maillage et le bloc de conversion restent des champs structurés.');
@@ -236,7 +251,7 @@ for (const a of all) {
 	L.push('\twp_update_post( array(');
 	L.push('\t\t\'ID\'            => $id,');
 	L.push(`\t\t'post_title'    => ${php(a.h1)},`);
-	L.push(`\t\t'post_content'  => ${php(html.join('\n'))},`);
+	L.push(`\t\t'post_content'  => ${php(poserTableauBudget(html.join('\n')))},`);
 	L.push(`\t\t'post_date'     => ${php(a.dateIso)},`);
 	L.push(`\t\t'post_date_gmt' => ${php(a.dateIso)},`);
 	L.push('\t) );');

@@ -3215,3 +3215,52 @@ body.tfp-body .tfp-section--primary .tfp-link-row:focus-visible {
 .tfp-card-grid--dark .tfp-provisional-notice {
   color: var(--color-text-on-dark-muted);
 }
+
+/* ---------- Tableau de budgets ----------
+   Mêmes lignes que la maquette, en balisage sémantique. Le conteneur défile horizontalement sur
+   mobile plutôt que de déborder : un tableau de quatre colonnes ne se replie pas honnêtement. */
+.tfp-table-wrap {
+  margin-top: 18px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.tfp-budget-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 15px;
+  min-width: 520px;
+}
+
+.tfp-budget-table__caption {
+  caption-side: top;
+  padding-bottom: 10px;
+  text-align: left;
+  font-size: 14px;
+  color: var(--color-text-secondary);
+}
+
+.tfp-budget-table th,
+.tfp-budget-table td {
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--color-border);
+  text-align: left;
+  vertical-align: top;
+}
+
+.tfp-budget-table thead th {
+  border-bottom: 2px solid var(--color-border-strong);
+  font-size: 13px;
+  font-weight: var(--fw-bold);
+  color: var(--color-navy);
+}
+
+.tfp-budget-table tbody th {
+  font-weight: var(--fw-semibold);
+  color: var(--color-text);
+}
+
+.tfp-budget-table tbody tr:last-child th,
+.tfp-budget-table tbody tr:last-child td {
+  border-bottom: 0;
+}

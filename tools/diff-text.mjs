@@ -73,6 +73,19 @@ async function settle(page) {
  */
 const CORRECTIONS_VOULUES = [
 	{
+		maquette: 'Nous ne publions que des avis authentiques et autorisés',
+		raison:
+			'Phrase exacte comme intention, fausse comme description de ce qui est affiché : les ' +
+			'témoignages visibles viennent de la maquette. Reformulée au futur tant que du provisoire ' +
+			'est affiché, elle revient d’elle-même dès que de vrais avis sont saisis.',
+	},
+	{
+		maquette: 'Durées exactes à confirmer avant publication',
+		raison:
+			'Marqueur destiné à l’équipe, jamais publiable. Remplacé par une formulation exacte et ' +
+			'prudente ; aucune durée n’est inventée.',
+	},
+	{
 		maquette: 'Des guides locaux',
 		raison: 'CLAUDE.md §9 — mention supprimée (promet un contenu qui n’existe pas)',
 	},

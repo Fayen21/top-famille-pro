@@ -188,5 +188,18 @@ function tfp_disable_oembed_discovery() {
 	remove_action( 'wp_head', 'wlwmanifest_link' );
 	remove_action( 'wp_head', 'rsd_link' );
 	remove_action( 'wp_head', 'wp_shortlink_wp_head', 10 );
+
+	/*
+	 * Flux de commentaires : les commentaires sont désactivés sur l'ensemble du site. WordPress
+	 * publiait pourtant sur chaque page un lien de découverte vers un flux de commentaires vide,
+	 * global et par article. Ce sont des URL qui n'ont pas de contenu à servir.
+	 *
+	 * Le flux principal du site, lui, est conservé : trois articles y sont publiés, et un flux est
+	 * la façon normale de les suivre.
+	 */
+	remove_action( 'wp_head', 'feed_links_extra', 3 );
+	// `feed_links()` publie aussi le flux global des commentaires : ce filtre est le seul point qui
+	// le supprime sans retirer le flux du site.
+	add_filter( 'feed_links_show_comments_feed', '__return_false' );
 }
 add_action( 'init', 'tfp_disable_oembed_discovery' );

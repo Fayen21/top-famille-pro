@@ -1,0 +1,473 @@
+{
+  "hero-main": {
+    "slug": "hero-main",
+    "alt": "Espace de bureaux professionnels, lumineux et rangé (photo d’illustration)",
+    "lcp": true,
+    "width": 1200,
+    "height": 800,
+    "variants": {
+      "avif": [
+        {
+          "width": 480,
+          "file": "hero-main-480.avif"
+        },
+        {
+          "width": 760,
+          "file": "hero-main-760.avif"
+        },
+        {
+          "width": 1040,
+          "file": "hero-main-1040.avif"
+        },
+        {
+          "width": 1200,
+          "file": "hero-main-1200.avif"
+        }
+      ],
+      "webp": [
+        {
+          "width": 480,
+          "file": "hero-main-480.webp"
+        },
+        {
+          "width": 760,
+          "file": "hero-main-760.webp"
+        },
+        {
+          "width": 1040,
+          "file": "hero-main-1040.webp"
+        },
+        {
+          "width": 1200,
+          "file": "hero-main-1200.webp"
+        }
+      ],
+      "jpg": [
+        {
+          "width": 480,
+          "file": "hero-main-480.jpg"
+        },
+        {
+          "width": 760,
+          "file": "hero-main-760.jpg"
+        },
+        {
+          "width": 1040,
+          "file": "hero-main-1040.jpg"
+        },
+        {
+          "width": 1200,
+          "file": "hero-main-1200.jpg"
+        }
+      ]
+    }
+  },
+  "hero-secondary": {
+    "slug": "hero-secondary",
+    "alt": "Nettoyage de vitres avec équipement de protection (photo d’illustration)",
+    "lcp": false,
+    "width": 460,
+    "height": 306,
+    "variants": {
+      "avif": [
+        {
+          "width": 220,
+          "file": "hero-secondary-220.avif"
+        },
+        {
+          "width": 340,
+          "file": "hero-secondary-340.avif"
+        },
+        {
+          "width": 460,
+          "file": "hero-secondary-460.avif"
+        }
+      ],
+      "webp": [
+        {
+          "width": 220,
+          "file": "hero-secondary-220.webp"
+        },
+        {
+          "width": 340,
+          "file": "hero-secondary-340.webp"
+        },
+        {
+          "width": 460,
+          "file": "hero-secondary-460.webp"
+        }
+      ],
+      "jpg": [
+        {
+          "width": 220,
+          "file": "hero-secondary-220.jpg"
+        },
+        {
+          "width": 340,
+          "file": "hero-secondary-340.jpg"
+        },
+        {
+          "width": 460,
+          "file": "hero-secondary-460.jpg"
+        }
+      ]
+    }
+  },
+  "service-bureaux": {
+    "slug": "service-bureaux",
+    "alt": "Nettoyage de bureaux et open-spaces (photo d’illustration)",
+    "lcp": false,
+    "width": 640,
+    "height": 427,
+    "variants": {
+      "avif": [
+        {
+          "width": 320,
+          "file": "service-bureaux-320.avif"
+        },
+        {
+          "width": 480,
+          "file": "service-bureaux-480.avif"
+        },
+        {
+          "width": 640,
+          "file": "service-bureaux-640.avif"
+        }
+      ],
+      "webp": [
+        {
+          "width": 320,
+          "file": "service-bureaux-320.webp"
+        },
+        {
+          "width": 480,
+          "file": "service-bureaux-480.webp"
+        },
+        {
+          "width": 640,
+          "file": "service-bureaux-640.webp"
+        }
+      ],
+      "jpg": [
+        {
+          "width": 320,
+          "file": "service-bureaux-320.jpg"
+        },
+        {
+          "width": 480,
+          "file": "service-bureaux-480.jpg"
+        },
+        {
+          "width": 640,
+          "file": "service-bureaux-640.jpg"
+        }
+      ]
+    }
+  },
+  "service-commerces": {
+    "slug": "service-commerces",
+    "alt": "Nettoyage de commerces et de surfaces de vente (photo d’illustration)",
+    "lcp": false,
+    "width": 640,
+    "height": 427,
+    "variants": {
+      "avif": [
+        {
+          "width": 320,
+          "file": "service-commerces-320.avif"
+        },
+        {
+          "width": 480,
+          "file": "service-commerces-480.avif"
+        },
+        {
+          "width": 640,
+          "file": "service-commerces-640.avif"
+        }
+      ],
+      "webp": [
+        {
+          "width": 320,
+          "file": "service-commerces-320.webp"
+        },
+        {
+          "width": 480,
+          "file": "service-commerces-480.webp"
+        },
+        {
+          "width": 640,
+          "file": "service-commerces-640.webp"
+        }
+      ],
+      "jpg": [
+        {
+          "width": 320,
+          "file": "service-commerces-320.jpg"
+        },
+        {
+          "width": 480,
+          "file": "service-commerces-480.jpg"
+        },
+        {
+          "width": 640,
+          "file": "service-commerces-640.jpg"
+        }
+      ]
+    }
+  },
+  "article-1": {
+    "slug": "article-1",
+    "alt": "Couloir de bureaux et kitchenette (photo d’illustration)",
+    "lcp": false,
+    "width": 640,
+    "height": 427,
+    "variants": {
+      "avif": [
+        {
+          "width": 320,
+          "file": "article-1-320.avif"
+        },
+        {
+          "width": 480,
+          "file": "article-1-480.avif"
+        },
+        {
+          "width": 640,
+          "file": "article-1-640.avif"
+        }
+      ],
+      "webp": [
+        {
+          "width": 320,
+          "file": "article-1-320.webp"
+        },
+        {
+          "width": 480,
+          "file": "article-1-480.webp"
+        },
+        {
+          "width": 640,
+          "file": "article-1-640.webp"
+        }
+      ],
+      "jpg": [
+        {
+          "width": 320,
+          "file": "article-1-320.jpg"
+        },
+        {
+          "width": 480,
+          "file": "article-1-480.jpg"
+        },
+        {
+          "width": 640,
+          "file": "article-1-640.jpg"
+        }
+      ]
+    }
+  },
+  "article-2": {
+    "slug": "article-2",
+    "alt": "Poste de travail avec ordinateur (photo d’illustration)",
+    "lcp": false,
+    "width": 640,
+    "height": 427,
+    "variants": {
+      "avif": [
+        {
+          "width": 320,
+          "file": "article-2-320.avif"
+        },
+        {
+          "width": 480,
+          "file": "article-2-480.avif"
+        },
+        {
+          "width": 640,
+          "file": "article-2-640.avif"
+        }
+      ],
+      "webp": [
+        {
+          "width": 320,
+          "file": "article-2-320.webp"
+        },
+        {
+          "width": 480,
+          "file": "article-2-480.webp"
+        },
+        {
+          "width": 640,
+          "file": "article-2-640.webp"
+        }
+      ],
+      "jpg": [
+        {
+          "width": 320,
+          "file": "article-2-320.jpg"
+        },
+        {
+          "width": 480,
+          "file": "article-2-480.jpg"
+        },
+        {
+          "width": 640,
+          "file": "article-2-640.jpg"
+        }
+      ]
+    }
+  },
+  "article-3": {
+    "slug": "article-3",
+    "alt": "Bureau avec documents et ordinateur (photo d’illustration)",
+    "lcp": false,
+    "width": 640,
+    "height": 427,
+    "variants": {
+      "avif": [
+        {
+          "width": 320,
+          "file": "article-3-320.avif"
+        },
+        {
+          "width": 480,
+          "file": "article-3-480.avif"
+        },
+        {
+          "width": 640,
+          "file": "article-3-640.avif"
+        }
+      ],
+      "webp": [
+        {
+          "width": 320,
+          "file": "article-3-320.webp"
+        },
+        {
+          "width": 480,
+          "file": "article-3-480.webp"
+        },
+        {
+          "width": 640,
+          "file": "article-3-640.webp"
+        }
+      ],
+      "jpg": [
+        {
+          "width": 320,
+          "file": "article-3-320.jpg"
+        },
+        {
+          "width": 480,
+          "file": "article-3-480.jpg"
+        },
+        {
+          "width": 640,
+          "file": "article-3-640.jpg"
+        }
+      ]
+    }
+  },
+  "service-generic": {
+    "slug": "service-generic",
+    "alt": "Intervention de nettoyage professionnel avec équipement de protection (photo d’illustration)",
+    "lcp": false,
+    "width": 960,
+    "height": 640,
+    "variants": {
+      "avif": [
+        {
+          "width": 480,
+          "file": "service-generic-480.avif"
+        },
+        {
+          "width": 760,
+          "file": "service-generic-760.avif"
+        },
+        {
+          "width": 960,
+          "file": "service-generic-960.avif"
+        }
+      ],
+      "webp": [
+        {
+          "width": 480,
+          "file": "service-generic-480.webp"
+        },
+        {
+          "width": 760,
+          "file": "service-generic-760.webp"
+        },
+        {
+          "width": 960,
+          "file": "service-generic-960.webp"
+        }
+      ],
+      "jpg": [
+        {
+          "width": 480,
+          "file": "service-generic-480.jpg"
+        },
+        {
+          "width": 760,
+          "file": "service-generic-760.jpg"
+        },
+        {
+          "width": 960,
+          "file": "service-generic-960.jpg"
+        }
+      ]
+    }
+  },
+  "audrey-placeholder": {
+    "slug": "audrey-placeholder",
+    "alt": "Photo d’illustration temporaire — portrait définitif à venir",
+    "lcp": false,
+    "width": 640,
+    "height": 958,
+    "variants": {
+      "avif": [
+        {
+          "width": 320,
+          "file": "audrey-placeholder-320.avif"
+        },
+        {
+          "width": 480,
+          "file": "audrey-placeholder-480.avif"
+        },
+        {
+          "width": 640,
+          "file": "audrey-placeholder-640.avif"
+        }
+      ],
+      "webp": [
+        {
+          "width": 320,
+          "file": "audrey-placeholder-320.webp"
+        },
+        {
+          "width": 480,
+          "file": "audrey-placeholder-480.webp"
+        },
+        {
+          "width": 640,
+          "file": "audrey-placeholder-640.webp"
+        }
+      ],
+      "jpg": [
+        {
+          "width": 320,
+          "file": "audrey-placeholder-320.jpg"
+        },
+        {
+          "width": 480,
+          "file": "audrey-placeholder-480.jpg"
+        },
+        {
+          "width": 640,
+          "file": "audrey-placeholder-640.jpg"
+        }
+      ]
+    }
+  }
+}

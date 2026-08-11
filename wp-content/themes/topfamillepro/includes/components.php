@@ -667,3 +667,57 @@ function tfp_route_to_url( $route ) {
 	}
 	return '';
 }
+
+/**
+ * Tableau des exemples de budget, tel que la maquette le compose dans l'article sur le coût.
+ *
+ * Rendu par le code court `[tfp_budget_table]` placé dans le corps de l'article : le contenu
+ * reste éditable en administration, et les montants ne peuvent pas s'y désynchroniser du tarif —
+ * ils viennent de `tfp_budget_examples_table()`, la même source que la page Tarifs.
+ *
+ * Le générateur d'articles aplatissait le corps en titres, paragraphes et listes : le tableau de
+ * la maquette disparaissait purement et simplement, ne laissant que son intertitre et sa phrase
+ * d'introduction. Trois lignes de budget manquaient sur la page qui traite précisément du budget.
+ *
+ * Balisage sémantique : `<table>` avec `<caption>`, `<thead>` et en-têtes `scope="col"`. Une
+ * suite de paragraphes aurait la même apparence mais perdrait la relation ligne ↔ colonne, que
+ * les lecteurs d'écran restituent.
+ */
+function tfp_budget_table_shortcode() {
+	$lignes = tfp_budget_examples_table();
+	if ( ! $lignes ) {
+		return '';
+	}
+
+	// Intitulé du besoin, relevé sur la maquette, associé au volume horaire correspondant.
+	$besoins = array(
+		8  => 'Petit bureau ou cabinet',
+		12 => 'Bureaux réguliers',
+		20 => 'Besoin plus important',
+	);
+
+	$html  = '<div class="tfp-table-wrap"><table class="tfp-budget-table">';
+	$html .= '<caption class="tfp-budget-table__caption">Exemples de budget mensuel, calculés à '
+		. esc_html( tfp_format_price( tfp_site_data()['price_unique'] ) ) . ' HT/h plus '
+		. esc_html( tfp_format_price( tfp_site_data()['price_gestion'] ) ) . ' HT de gestion.</caption>';
+	$html .= '<thead><tr>'
+		. '<th scope="col">Besoin</th>'
+		. '<th scope="col">Volume</th>'
+		. '<th scope="col">Budget mensuel</th>'
+		. '<th scope="col">1<sup>er</sup> mois (+ ' . esc_html( tfp_format_price( tfp_site_data()['price_setup'] ) ) . ' HT)</th>'
+		. '</tr></thead><tbody>';
+
+	foreach ( $lignes as $ligne ) {
+		$html .= sprintf(
+			'<tr><th scope="row">%s</th><td>%d h / mois</td><td>%s HT</td><td>%s HT</td></tr>',
+			esc_html( $besoins[ $ligne['hours'] ] ?? 'Volume sur mesure' ),
+			(int) $ligne['hours'],
+			esc_html( tfp_format_price( $ligne['monthly'] ) ),
+			esc_html( tfp_format_price( $ligne['first_month'] ) )
+		);
+	}
+
+	$html .= '</tbody></table></div>';
+	return $html;
+}
+add_shortcode( 'tfp_budget_table', 'tfp_budget_table_shortcode' );
