@@ -424,6 +424,13 @@ for (const p of PAGES) {
 
 				grilles.push({
 					el: g,
+					// Première carte de la grille : c'est **elle** qui porte le repère de position, et
+					// non le conteneur. Une bande mixte — une colonne de texte à côté de deux cartes —
+					// verrait sinon sa colonne de texte engloutie avec le conteneur. C'est ce qui
+					// faisait disparaître « Un tarif régional unique » et son paragraphe de la page
+					// région : le seul contenu manquant des 53 routes.
+					premier: enfants[0],
+					enfants,
 					colonnes: Math.min(6, Math.max(1, colonnes)),
 					gap: gs.gap,
 					fond: ks.backgroundColor,
@@ -448,7 +455,6 @@ for (const p of PAGES) {
 					pris.add(c);
 					for (const d of c.querySelectorAll('*')) pris.add(d);
 				}
-				pris.add(g);
 			}
 			return grilles;
 		};
@@ -460,13 +466,20 @@ for (const p of PAGES) {
 			// fois, son intitulé en pastille et sa description en paragraphe détaché.
 			const dansGrille = new Set();
 			for (const g of grilles) {
-				for (const d of g.el.querySelectorAll('*')) dansGrille.add(d);
+				// Seules les **cartes** sont retirées du flux, pas leur conteneur : une bande mixte
+				// garde ainsi ses paragraphes, ses notes et ses liens, qui ne sont pas des cartes.
+				for (const c of g.enfants) {
+					dansGrille.add(c);
+					for (const d of c.querySelectorAll('*')) dansGrille.add(d);
+				}
 			}
 			const walk = (el) => {
 				for (const n of el.children) {
 					const tag = n.tagName.toLowerCase();
 					// Repère de position : la grille reprend sa place exacte dans l'ordre de lecture.
-					const rang = grilles.findIndex((g) => g.el === n);
+					// Le repère est posé à l'emplacement de la première carte : la grille reprend donc
+					// sa place exacte parmi les paragraphes et les notes de la bande.
+					const rang = grilles.findIndex((g) => g.premier === n);
 					if (rang >= 0) {
 						out.push({ t: 'grille', i: rang });
 						continue;

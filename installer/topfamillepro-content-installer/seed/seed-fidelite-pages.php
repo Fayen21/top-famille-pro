@@ -189,6 +189,15 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 							),
 							array(
 								'type' => 'grid',
+								'premier' => 'ref: <Node>',
+								'enfants' => array(
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+								),
 								'colonnes' => 3,
 								'gap' => '10px',
 								'fond' => 'rgb(255, 255, 255)',
@@ -304,6 +313,15 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 						),
 						'cartes' => array(
 							array(
+								'premier' => 'ref: <Node>',
+								'enfants' => array(
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+								),
 								'colonnes' => 3,
 								'gap' => '10px',
 								'fond' => 'rgb(255, 255, 255)',
@@ -457,6 +475,12 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 							),
 							array(
 								'type' => 'grid',
+								'premier' => 'ref: <Node>',
+								'enfants' => array(
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+								),
 								'colonnes' => 3,
 								'gap' => '16px',
 								'fond' => 'rgb(244, 247, 248)',
@@ -524,6 +548,12 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 						),
 						'cartes' => array(
 							array(
+								'premier' => 'ref: <Node>',
+								'enfants' => array(
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+								),
 								'colonnes' => 3,
 								'gap' => '16px',
 								'fond' => 'rgb(244, 247, 248)',
@@ -621,6 +651,15 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 						'sequence' => array(
 							array(
 								'type' => 'grid',
+								'premier' => 'ref: <Node>',
+								'enfants' => array(
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+								),
 								'colonnes' => 4,
 								'gap' => '14px',
 								'fond' => 'rgb(23, 74, 129)',
@@ -736,6 +775,15 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 						),
 						'cartes' => array(
 							array(
+								'premier' => 'ref: <Node>',
+								'enfants' => array(
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+								),
 								'colonnes' => 4,
 								'gap' => '14px',
 								'fond' => 'rgb(23, 74, 129)',
@@ -883,6 +931,12 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 						'sequence' => array(
 							array(
 								'type' => 'grid',
+								'premier' => 'ref: <Node>',
+								'enfants' => array(
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+								),
 								'colonnes' => 3,
 								'gap' => '16px',
 								'fond' => 'rgb(255, 255, 255)',
@@ -949,6 +1003,12 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 							),
 							array(
 								'type' => 'grid',
+								'premier' => 'ref: <Node>',
+								'enfants' => array(
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+								),
 								'colonnes' => 3,
 								'gap' => '16px',
 								'fond' => 'rgba(0, 0, 0, 0)',
@@ -1016,6 +1076,12 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 						),
 						'cartes' => array(
 							array(
+								'premier' => 'ref: <Node>',
+								'enfants' => array(
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+								),
 								'colonnes' => 3,
 								'gap' => '16px',
 								'fond' => 'rgb(255, 255, 255)',
@@ -1081,6 +1147,12 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 								),
 							),
 							array(
+								'premier' => 'ref: <Node>',
+								'enfants' => array(
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+								),
 								'colonnes' => 3,
 								'gap' => '16px',
 								'fond' => 'rgba(0, 0, 0, 0)',
@@ -1206,6 +1278,13 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 							),
 							array(
 								'type' => 'grid',
+								'premier' => 'ref: <Node>',
+								'enfants' => array(
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+								),
 								'colonnes' => 4,
 								'gap' => '16px',
 								'fond' => 'rgba(0, 0, 0, 0)',
@@ -1293,6 +1372,13 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 						),
 						'cartes' => array(
 							array(
+								'premier' => 'ref: <Node>',
+								'enfants' => array(
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+								),
 								'colonnes' => 4,
 								'gap' => '16px',
 								'fond' => 'rgba(0, 0, 0, 0)',
@@ -1637,6 +1723,13 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 						'sequence' => array(
 							array(
 								'type' => 'grid',
+								'premier' => 'ref: <Node>',
+								'enfants' => array(
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+								),
 								'colonnes' => 4,
 								'gap' => '16px',
 								'fond' => 'rgb(255, 255, 255)',
@@ -1720,6 +1813,13 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 						),
 						'cartes' => array(
 							array(
+								'premier' => 'ref: <Node>',
+								'enfants' => array(
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+								),
 								'colonnes' => 4,
 								'gap' => '16px',
 								'fond' => 'rgb(255, 255, 255)',
@@ -1985,6 +2085,12 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 							),
 							array(
 								'type' => 'grid',
+								'premier' => 'ref: <Node>',
+								'enfants' => array(
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+								),
 								'colonnes' => 3,
 								'gap' => '16px',
 								'fond' => 'rgb(244, 247, 248)',
@@ -2052,6 +2158,12 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 						),
 						'cartes' => array(
 							array(
+								'premier' => 'ref: <Node>',
+								'enfants' => array(
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+								),
 								'colonnes' => 3,
 								'gap' => '16px',
 								'fond' => 'rgb(244, 247, 248)',
@@ -2387,6 +2499,12 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 							),
 							array(
 								'type' => 'grid',
+								'premier' => 'ref: <Node>',
+								'enfants' => array(
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+								),
 								'colonnes' => 3,
 								'gap' => '14px',
 								'fond' => 'rgb(244, 247, 248)',
@@ -2454,6 +2572,12 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 						),
 						'cartes' => array(
 							array(
+								'premier' => 'ref: <Node>',
+								'enfants' => array(
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+								),
 								'colonnes' => 3,
 								'gap' => '14px',
 								'fond' => 'rgb(244, 247, 248)',
@@ -2733,6 +2857,15 @@ update_option( 'tfp_page_prestations', array(
 						'sequence' => array(
 							array(
 								'type' => 'grid',
+								'premier' => 'ref: <Node>',
+								'enfants' => array(
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+								),
 								'colonnes' => 4,
 								'gap' => '14px',
 								'fond' => 'rgb(244, 247, 248)',
@@ -2848,6 +2981,15 @@ update_option( 'tfp_page_prestations', array(
 						),
 						'cartes' => array(
 							array(
+								'premier' => 'ref: <Node>',
+								'enfants' => array(
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+								),
 								'colonnes' => 4,
 								'gap' => '14px',
 								'fond' => 'rgb(244, 247, 248)',
@@ -3049,6 +3191,15 @@ update_option( 'tfp_page_prestations', array(
 						'sequence' => array(
 							array(
 								'type' => 'grid',
+								'premier' => 'ref: <Node>',
+								'enfants' => array(
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+								),
 								'colonnes' => 3,
 								'gap' => '16px',
 								'fond' => 'rgb(255, 255, 255)',
@@ -3164,6 +3315,15 @@ update_option( 'tfp_page_prestations', array(
 						),
 						'cartes' => array(
 							array(
+								'premier' => 'ref: <Node>',
+								'enfants' => array(
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+								),
 								'colonnes' => 3,
 								'gap' => '16px',
 								'fond' => 'rgb(255, 255, 255)',
@@ -3526,6 +3686,14 @@ update_option( 'tfp_page_zones-intervention', array(
 							),
 							array(
 								'type' => 'grid',
+								'premier' => 'ref: <Node>',
+								'enfants' => array(
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+								),
 								'colonnes' => 3,
 								'gap' => '8px',
 								'fond' => 'rgb(244, 247, 248)',
@@ -3625,6 +3793,14 @@ update_option( 'tfp_page_zones-intervention', array(
 						),
 						'cartes' => array(
 							array(
+								'premier' => 'ref: <Node>',
+								'enfants' => array(
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+								),
 								'colonnes' => 3,
 								'gap' => '8px',
 								'fond' => 'rgb(244, 247, 248)',
@@ -3798,6 +3974,17 @@ update_option( 'tfp_page_zones-intervention', array(
 							),
 							array(
 								'type' => 'grid',
+								'premier' => 'ref: <Node>',
+								'enfants' => array(
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+								),
 								'colonnes' => 4,
 								'gap' => '12px',
 								'fond' => 'rgb(255, 255, 255)',
@@ -3945,6 +4132,17 @@ update_option( 'tfp_page_zones-intervention', array(
 						),
 						'cartes' => array(
 							array(
+								'premier' => 'ref: <Node>',
+								'enfants' => array(
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+								),
 								'colonnes' => 4,
 								'gap' => '12px',
 								'fond' => 'rgb(255, 255, 255)',
@@ -4126,6 +4324,19 @@ update_option( 'tfp_page_zones-intervention', array(
 							),
 							array(
 								'type' => 'grid',
+								'premier' => 'ref: <Node>',
+								'enfants' => array(
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+								),
 								'colonnes' => 6,
 								'gap' => '10px',
 								'fond' => 'rgb(255, 255, 255)',
@@ -4305,6 +4516,19 @@ update_option( 'tfp_page_zones-intervention', array(
 						),
 						'cartes' => array(
 							array(
+								'premier' => 'ref: <Node>',
+								'enfants' => array(
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+								),
 								'colonnes' => 6,
 								'gap' => '10px',
 								'fond' => 'rgb(255, 255, 255)',
@@ -4518,6 +4742,17 @@ update_option( 'tfp_page_zones-intervention', array(
 							),
 							array(
 								'type' => 'grid',
+								'premier' => 'ref: <Node>',
+								'enfants' => array(
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+								),
 								'colonnes' => 6,
 								'gap' => '10px',
 								'fond' => 'rgb(244, 247, 248)',
@@ -4665,6 +4900,17 @@ update_option( 'tfp_page_zones-intervention', array(
 						),
 						'cartes' => array(
 							array(
+								'premier' => 'ref: <Node>',
+								'enfants' => array(
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+								),
 								'colonnes' => 6,
 								'gap' => '10px',
 								'fond' => 'rgb(244, 247, 248)',
@@ -4941,6 +5187,12 @@ update_option( 'tfp_page_zones-intervention', array(
 						'sequence' => array(
 							array(
 								'type' => 'grid',
+								'premier' => 'ref: <Node>',
+								'enfants' => array(
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+								),
 								'colonnes' => 3,
 								'gap' => '12px',
 								'fond' => 'rgb(255, 255, 255)',
@@ -5008,6 +5260,12 @@ update_option( 'tfp_page_zones-intervention', array(
 						),
 						'cartes' => array(
 							array(
+								'premier' => 'ref: <Node>',
+								'enfants' => array(
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+								),
 								'colonnes' => 3,
 								'gap' => '12px',
 								'fond' => 'rgb(255, 255, 255)',
@@ -5192,6 +5450,11 @@ update_option( 'tfp_page_zones-intervention', array(
 							),
 							array(
 								'type' => 'grid',
+								'premier' => 'ref: <Node>',
+								'enfants' => array(
+									'ref: <Node>',
+									'ref: <Node>',
+								),
 								'colonnes' => 2,
 								'gap' => '12px',
 								'fond' => 'rgb(255, 255, 255)',
@@ -5243,6 +5506,11 @@ update_option( 'tfp_page_zones-intervention', array(
 						),
 						'cartes' => array(
 							array(
+								'premier' => 'ref: <Node>',
+								'enfants' => array(
+									'ref: <Node>',
+									'ref: <Node>',
+								),
 								'colonnes' => 2,
 								'gap' => '12px',
 								'fond' => 'rgb(255, 255, 255)',
@@ -5497,6 +5765,15 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 							),
 							array(
 								'type' => 'grid',
+								'premier' => 'ref: <Node>',
+								'enfants' => array(
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+								),
 								'colonnes' => 3,
 								'gap' => '8px',
 								'fond' => 'rgb(244, 247, 248)',
@@ -5612,6 +5889,15 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 						),
 						'cartes' => array(
 							array(
+								'premier' => 'ref: <Node>',
+								'enfants' => array(
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+								),
 								'colonnes' => 3,
 								'gap' => '8px',
 								'fond' => 'rgb(244, 247, 248)',
@@ -5747,6 +6033,15 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 							),
 							array(
 								'type' => 'grid',
+								'premier' => 'ref: <Node>',
+								'enfants' => array(
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+								),
 								'colonnes' => 3,
 								'gap' => '8px',
 								'fond' => 'rgb(244, 247, 248)',
@@ -5862,6 +6157,15 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 						),
 						'cartes' => array(
 							array(
+								'premier' => 'ref: <Node>',
+								'enfants' => array(
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+								),
 								'colonnes' => 3,
 								'gap' => '8px',
 								'fond' => 'rgb(244, 247, 248)',
@@ -6038,6 +6342,15 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 							),
 							array(
 								'type' => 'grid',
+								'premier' => 'ref: <Node>',
+								'enfants' => array(
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+								),
 								'colonnes' => 4,
 								'gap' => '13px',
 								'fond' => 'rgb(23, 74, 129)',
@@ -6153,6 +6466,15 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 						),
 						'cartes' => array(
 							array(
+								'premier' => 'ref: <Node>',
+								'enfants' => array(
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+								),
 								'colonnes' => 4,
 								'gap' => '13px',
 								'fond' => 'rgb(23, 74, 129)',
@@ -6302,6 +6624,17 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 							),
 							array(
 								'type' => 'grid',
+								'premier' => 'ref: <Node>',
+								'enfants' => array(
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+								),
 								'colonnes' => 4,
 								'gap' => '14px',
 								'fond' => 'rgb(244, 247, 248)',
@@ -6465,6 +6798,17 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 						),
 						'cartes' => array(
 							array(
+								'premier' => 'ref: <Node>',
+								'enfants' => array(
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+								),
 								'colonnes' => 4,
 								'gap' => '14px',
 								'fond' => 'rgb(244, 247, 248)',
@@ -6658,6 +7002,19 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 						'sequence' => array(
 							array(
 								'type' => 'grid',
+								'premier' => 'ref: <Node>',
+								'enfants' => array(
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+								),
 								'colonnes' => 6,
 								'gap' => '10px',
 								'fond' => 'rgb(255, 255, 255)',
@@ -6837,6 +7194,19 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 						),
 						'cartes' => array(
 							array(
+								'premier' => 'ref: <Node>',
+								'enfants' => array(
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+								),
 								'colonnes' => 6,
 								'gap' => '10px',
 								'fond' => 'rgb(255, 255, 255)',
@@ -7126,13 +7496,27 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 				),
 				'blocs' => array(
 					array(
-						'titre' => '',
+						'titre' => 'Un tarif régional unique',
 						'niveau' => 'h2',
 						'grille' => false,
 						'colonnes' => 1,
 						'sequence' => array(
 							array(
+								'type' => 'paragraph',
+								'texte' => 'Le taux horaire est de 27 € HT/h dans les huit départements, en régulier comme en ponctuel. S\'y ajoutent 9 € HT/mois de gestion pour les contrats réguliers, 50 € HT de frais de mise en place, le cas échéant, selon les conditions précisées au devis, et, le cas échéant, des indemnités kilométriques de 0,35 € HT/km. Les éventuelles indemnités kilométriques dépendent de l\'adresse des locaux, du planning et des conditions d\'intervention. Aucun de ces éléments n\'apparaît après coup : tout est écrit au devis.',
+							),
+							array(
+								'type' => 'link',
+								'texte' => 'Voir les tarifs →',
+								'route' => '#/nos-tarifs',
+							),
+							array(
 								'type' => 'grid',
+								'premier' => 'ref: <Node>',
+								'enfants' => array(
+									'ref: <Node>',
+									'ref: <Node>',
+								),
 								'colonnes' => 2,
 								'gap' => '34px',
 								'fond' => 'rgb(255, 255, 255)',
@@ -7188,6 +7572,11 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 						),
 						'cartes' => array(
 							array(
+								'premier' => 'ref: <Node>',
+								'enfants' => array(
+									'ref: <Node>',
+									'ref: <Node>',
+								),
 								'colonnes' => 2,
 								'gap' => '34px',
 								'fond' => 'rgb(255, 255, 255)',
@@ -7241,9 +7630,16 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 								),
 							),
 						),
-						'textes' => array(),
+						'textes' => array(
+							'Le taux horaire est de 27 € HT/h dans les huit départements, en régulier comme en ponctuel. S\'y ajoutent 9 € HT/mois de gestion pour les contrats réguliers, 50 € HT de frais de mise en place, le cas échéant, selon les conditions précisées au devis, et, le cas échéant, des indemnités kilométriques de 0,35 € HT/km. Les éventuelles indemnités kilométriques dépendent de l\'adresse des locaux, du planning et des conditions d\'intervention. Aucun de ces éléments n\'apparaît après coup : tout est écrit au devis.',
+						),
 						'liste' => array(),
-						'liens' => array(),
+						'liens' => array(
+							array(
+								'texte' => 'Voir les tarifs →',
+								'route' => '#/nos-tarifs',
+							),
+						),
 						'noms' => array(),
 						'citations' => array(),
 						'faq' => array(),
@@ -7638,6 +8034,13 @@ update_option( 'tfp_page_pourquoi-nous', array(
 							),
 							array(
 								'type' => 'grid',
+								'premier' => 'ref: <Node>',
+								'enfants' => array(
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+								),
 								'colonnes' => 4,
 								'gap' => '12px',
 								'fond' => 'rgb(221, 244, 243)',
@@ -7721,6 +8124,13 @@ update_option( 'tfp_page_pourquoi-nous', array(
 						),
 						'cartes' => array(
 							array(
+								'premier' => 'ref: <Node>',
+								'enfants' => array(
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+								),
 								'colonnes' => 4,
 								'gap' => '12px',
 								'fond' => 'rgb(221, 244, 243)',
@@ -8066,6 +8476,13 @@ update_option( 'tfp_page_pourquoi-nous', array(
 							),
 							array(
 								'type' => 'grid',
+								'premier' => 'ref: <Node>',
+								'enfants' => array(
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+								),
 								'colonnes' => 4,
 								'gap' => '12px',
 								'fond' => 'rgb(244, 247, 248)',
@@ -8149,6 +8566,13 @@ update_option( 'tfp_page_pourquoi-nous', array(
 						),
 						'cartes' => array(
 							array(
+								'premier' => 'ref: <Node>',
+								'enfants' => array(
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+								),
 								'colonnes' => 4,
 								'gap' => '12px',
 								'fond' => 'rgb(244, 247, 248)',
@@ -8320,6 +8744,14 @@ update_option( 'tfp_page_notre-fonctionnement', array(
 						'sequence' => array(
 							array(
 								'type' => 'grid',
+								'premier' => 'ref: <Node>',
+								'enfants' => array(
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+								),
 								'colonnes' => 1,
 								'gap' => '14px',
 								'fond' => 'rgb(244, 247, 248)',
@@ -8419,6 +8851,14 @@ update_option( 'tfp_page_notre-fonctionnement', array(
 						),
 						'cartes' => array(
 							array(
+								'premier' => 'ref: <Node>',
+								'enfants' => array(
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+								),
 								'colonnes' => 1,
 								'gap' => '14px',
 								'fond' => 'rgb(244, 247, 248)',
@@ -8599,6 +9039,13 @@ update_option( 'tfp_page_notre-fonctionnement', array(
 						'sequence' => array(
 							array(
 								'type' => 'grid',
+								'premier' => 'ref: <Node>',
+								'enfants' => array(
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+								),
 								'colonnes' => 3,
 								'gap' => '14px',
 								'fond' => 'rgb(255, 255, 255)',
@@ -8702,6 +9149,13 @@ update_option( 'tfp_page_notre-fonctionnement', array(
 						),
 						'cartes' => array(
 							array(
+								'premier' => 'ref: <Node>',
+								'enfants' => array(
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+								),
 								'colonnes' => 3,
 								'gap' => '14px',
 								'fond' => 'rgb(255, 255, 255)',
@@ -8975,6 +9429,11 @@ update_option( 'tfp_page_avis-clients', array(
 							),
 							array(
 								'type' => 'grid',
+								'premier' => 'ref: <Node>',
+								'enfants' => array(
+									'ref: <Node>',
+									'ref: <Node>',
+								),
 								'colonnes' => 1,
 								'gap' => '10px',
 								'fond' => 'rgb(23, 74, 129)',
@@ -9026,6 +9485,11 @@ update_option( 'tfp_page_avis-clients', array(
 						),
 						'cartes' => array(
 							array(
+								'premier' => 'ref: <Node>',
+								'enfants' => array(
+									'ref: <Node>',
+									'ref: <Node>',
+								),
 								'colonnes' => 1,
 								'gap' => '10px',
 								'fond' => 'rgb(23, 74, 129)',
@@ -9107,6 +9571,15 @@ update_option( 'tfp_page_avis-clients', array(
 						'sequence' => array(
 							array(
 								'type' => 'grid',
+								'premier' => 'ref: <Node>',
+								'enfants' => array(
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+								),
 								'colonnes' => 3,
 								'gap' => '16px',
 								'fond' => 'rgb(255, 255, 255)',
@@ -9234,6 +9707,15 @@ update_option( 'tfp_page_avis-clients', array(
 						),
 						'cartes' => array(
 							array(
+								'premier' => 'ref: <Node>',
+								'enfants' => array(
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+								),
 								'colonnes' => 3,
 								'gap' => '16px',
 								'fond' => 'rgb(255, 255, 255)',
@@ -9393,6 +9875,13 @@ update_option( 'tfp_page_avis-clients', array(
 							),
 							array(
 								'type' => 'grid',
+								'premier' => 'ref: <Node>',
+								'enfants' => array(
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+								),
 								'colonnes' => 4,
 								'gap' => '12px',
 								'fond' => 'rgb(255, 255, 255)',
@@ -9476,6 +9965,13 @@ update_option( 'tfp_page_avis-clients', array(
 						),
 						'cartes' => array(
 							array(
+								'premier' => 'ref: <Node>',
+								'enfants' => array(
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+								),
 								'colonnes' => 4,
 								'gap' => '12px',
 								'fond' => 'rgb(255, 255, 255)',
@@ -10055,6 +10551,13 @@ update_option( 'tfp_page_recrutement', array(
 						'sequence' => array(
 							array(
 								'type' => 'grid',
+								'premier' => 'ref: <Node>',
+								'enfants' => array(
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+								),
 								'colonnes' => 4,
 								'gap' => '14px',
 								'fond' => 'rgb(244, 247, 248)',
@@ -10138,6 +10641,13 @@ update_option( 'tfp_page_recrutement', array(
 						),
 						'cartes' => array(
 							array(
+								'premier' => 'ref: <Node>',
+								'enfants' => array(
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+									'ref: <Node>',
+								),
 								'colonnes' => 4,
 								'gap' => '14px',
 								'fond' => 'rgb(244, 247, 248)',
