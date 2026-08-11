@@ -1144,10 +1144,18 @@ body.tfp-body .tfp-article-body p a {
 }
 
 .tfp-list-plain,
+/* Liste de tâches : deux colonnes dès que la place le permet, une seule sinon.
+   Relevé sur la maquette — `repeat(auto-fit, minmax(min(100%, 320px), 1fr))`, écart 10 :
+   deux colonnes dans une colonne de 654 px à 1440 px comme dans les 707 px pleine largeur d'une
+   tablette, une seule à 339 px. Le thème l'empilait toujours ; c'est ce qui rendait les pages
+   prestation 15 à 22 % plus hautes que la maquette à 768 px, la largeur la moins fidèle des six. */
 .tfp-list-marked {
   list-style: none;
   margin: 18px 0 0;
   padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+  gap: 0 10px;
 }
 
 .tfp-list-plain li,

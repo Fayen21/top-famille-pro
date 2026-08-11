@@ -61,21 +61,37 @@ add_action( 'wp_enqueue_scripts', 'tfp_enqueue_assets' );
  */
 
 /**
- * Précharge la police du H1 — la seule ressource réellement critique au-dessus de la ligne de
- * flottaison, et la seule préchargée : un préchargement qui ne sert pas au premier écran retarde
- * ce qui en a besoin.
+ * Précharge les deux polices réellement présentes au-dessus de la ligne de flottaison.
  *
- * Poids 800, et non 700 : la maquette rend tous ses H1 en 800 (relevé sur les 53 routes), le
- * thème le fait donc aussi depuis la passe de fidélité visuelle. Précharger le 700 laissait le
- * H1 attendre un fichier non préchargé, ou pire, s'afficher en gras synthétique — plus large que
- * la vraie graisse 800, donc avec un décalage au remplacement.
+ * Poids 800 pour le titre, et non 700 : la maquette rend tous ses H1 en 800 (relevé sur les
+ * 53 routes). Précharger le 700 laissait le H1 attendre un fichier non préchargé, ou pire,
+ * s'afficher en gras synthétique — plus large que la vraie graisse 800, donc avec un décalage
+ * au remplacement.
+ *
+ * **Le corps de texte compte autant que le titre.** Le H1 seul était préchargé, et le hero
+ * mesurait 76 px de moins avec Hanken Grotesk qu'avec la police système de repli : accroche,
+ * boutons et pastilles se replaçaient tous au remplacement. Comme le hero est centré
+ * verticalement, ces 76 px déplaçaient aussi le visuel — d'où un CLS de 0,255 sur une page de
+ * ville en profil bureau, très au-dessus de la cible de 0,010. Un préchargement inutile retarde
+ * ce qui en a besoin ; celui-ci sert le premier écran de chacune des 53 routes.
  */
 function tfp_preload_fonts() {
-	$font = TFP_THEME_URI . '/assets/dist/fonts/bricolage-grotesque-800-latin.woff2';
-	printf(
-		'<link rel="preload" href="%s" as="font" type="font/woff2" crossorigin="anonymous">' . "\n",
-		esc_url( $font )
+	$polices = array(
+		'bricolage-grotesque-800-latin.woff2',
+		'hanken-grotesk-400-latin.woff2',
+		// Semi-gras : les deux boutons de l'en-tête, présents au premier écran des 53 routes.
+		// Sans lui, ils s'affichaient d'abord dans la police système, plus large : ils passaient
+		// sur deux lignes, l'en-tête faisait 73 px au lieu de 48, et **toute la page** remontait
+		// de 25 px au remplacement. C'était l'origine du CLS de 0,25 mesuré en profil bureau —
+		// le décalage était relevé sur le hero, mais il venait de l'en-tête au-dessus.
+		'hanken-grotesk-600-latin.woff2',
 	);
+	foreach ( $polices as $fichier ) {
+		printf(
+			'<link rel="preload" href="%s" as="font" type="font/woff2" crossorigin="anonymous">' . "\n",
+			esc_url( TFP_THEME_URI . '/assets/dist/fonts/' . $fichier )
+		);
+	}
 }
 add_action( 'wp_head', 'tfp_preload_fonts', 1 );
 

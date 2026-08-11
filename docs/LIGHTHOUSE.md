@@ -10,8 +10,8 @@ Cibles : Performance ≥ 90 · Accessibilité, Bonnes pratiques, SEO = 100 · CL
 
 | Page | Profil | Perf. | A11y | BP | SEO | LCP | CLS | TBT |
 |---|---|---:|---:|---:|---:|---:|---:|---:|
-| Contact | mobile | 95 | 100 | 100 | 100 | 2.23 s | 0.000 | 0 ms |
-| Contact | bureau | 100 | 100 | 100 | 100 | 0.52 s | 0.002 | 0 ms |
+| Ville | mobile | 99 | 100 | 100 | 100 | 2.04 s | 0.000 | 0 ms |
+| Ville | bureau | 82 | 100 | 100 | 100 | 0.41 s | 0.375 | 0 ms |
 
-**Toutes les mesures atteignent leur cible.**
+**1 mesure(s) sous la cible** : Ville (bureau).
 
