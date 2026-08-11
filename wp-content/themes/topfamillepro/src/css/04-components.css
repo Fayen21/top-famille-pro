@@ -2994,8 +2994,25 @@ body.tfp-body a.tfp-card-tile:focus-visible {
   color: var(--color-white);
 }
 
-.tfp-card-grid--dark .tfp-card-tile__desc {
-  color: var(--color-text-on-dark-muted);
+/* Sur fond sombre relevé, la description prend le blanc plutôt que le turquoise atténué : le fond
+   vient de la maquette et peut être plus clair que le marine du thème, auquel cas le turquoise
+   passait sous 4,5:1. C'est la couleur du texte qui s'ajuste, jamais le fond relevé. */
+.tfp-card-grid--dark .tfp-card-tile__desc,
+.tfp-card-grid--dark .tfp-card-tile__line {
+  color: var(--color-white);
+}
+
+/*
+ * Contraste de la description sur une tuile dont le fond est **relevé** sur la maquette.
+ *
+ * Le fond mesuré peut être un gris clair (#F4F7F8) là où le thème attendait du blanc : le gris
+ * secondaire tombait alors sous 4,5:1 et le critère 1.4.3 n'était plus tenu. Le texte secondaire
+ * d'une tuile passe donc à la couleur de texte principale, qui garde son contraste sur les deux
+ * fonds. C'est la couleur qui s'ajuste, jamais le fond relevé — celui-ci vient de la référence.
+ */
+.tfp-card-grid:not(.tfp-card-grid--dark) .tfp-card-tile__desc,
+.tfp-card-grid:not(.tfp-card-grid--dark) .tfp-card-tile__line {
+  color: var(--color-text);
 }
 
 .tfp-card-grid--dark .tfp-card-tile__badge {

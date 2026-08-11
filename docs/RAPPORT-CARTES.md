@@ -359,3 +359,140 @@ sont passées sous la plage (`/nettoyage-professionnel/` 84 %, `/zones-intervent
 blocs de texte qu'elles remplacent, et il reste à ajuster leur rembourrage sur celui du prototype —
 qui est relevé et disponible dans les données (`padding`, `gap`, `rayon`), mais pas encore appliqué
 carte par carte.
+
+---
+
+# Passe 3 — bandes mixtes, styles relevés, zéro texte manquant
+
+> 11 août 2026. Verdict : **PARTIEL — ÉCARTS RESTANTS**.
+
+## 1. L'ancien et le nouveau schéma d'une bande mixte
+
+**Avant** — un modèle binaire, où chaque type allait dans son propre tiroir :
+
+```
+bloc = { titre, niveau, textes[], liste[], liens[], noms[], citations[], faq[], etapes[] }
+```
+
+L'ordre était perdu : une note écrite entre deux grilles ressortait après elles, et tout `span`
+non classé tombait dans `noms`, donc en pastille.
+
+**Après** — une séquence hétérogène ordonnée :
+
+```
+bloc = { titre, niveau, sequence: [ {type, …} ] }
+type ∈ paragraph | grid | list | note | quote | link | chip | step | faq
+grid = { colonnes, theme, variante, gap, fond, rayon, filet, padding,
+         titre_taille, titre_interligne, desc_taille, desc_interligne, desc_marge,
+         items: [ {titre, titre_tag, description, lignes[], badge, surtitre,
+                   icone, image, route, libelle_lien, aria, ordre, span, provisoire} ] }
+```
+
+L'ordre et les frontières traversent maintenant toute la chaîne sans perte.
+
+## 2. Le repli en pastilles, supprimé
+
+Un fragment n'est rendu en pastille que si la maquette le rend en pastille — mesuré à
+l'extraction (rayon ≥ 40 px **et** fond ou filet), jamais supposé. Sur les neuf pages statiques,
+le relevé est net : **aucun** fragment n'est une pastille dans le prototype, alors que 54 le
+devenaient. C'étaient des morceaux de la bande tarifaire, des phrases de transition, des
+précisions et des conclusions.
+
+## 3. Fichiers modifiés
+
+| Fichier | Correction |
+|---|---|
+| `tools/generate-pages.mjs` | séquence ordonnée ; relevé du caractère « pastille » ; typographie interne des tuiles ; rembourrage des bandes ; repère de grille posé sur la première carte |
+| `template-parts/components/static-blocks.php` | rendu de la séquence, un archétype par type ; plus de repli |
+| `includes/components.php` | géométrie relevée passée en variables CSS ; visuels des cartes via le manifeste |
+| `src/css/04-components.css` | variables de tuile et de bande, bande blanche, note statique, contraste |
+
+Installateur **v1.9.0**, thème **v0.10.0**.
+
+## 4. Les deux blocs régionaux restaurés
+
+La bande turquoise « Un tarif régional unique » de `/zones-intervention/bourgogne-franche-comte/`
+tient dans un flex de trois enfants : une colonne de texte (titre, paragraphe, lien) et deux
+cartes. Deux cartes suffisaient à faire reconnaître une grille, et le repère de position était
+posé sur le **conteneur** : l'aplatissement passait donc au-dessus de tous ses enfants, colonne de
+texte comprise.
+
+Le repère est désormais posé sur la **première carte**, et seules les cartes sont retirées du flux.
+Le titre et le paragraphe sont restaurés tels quels, à leur place, dans leur bande, avec leur fond
+turquoise — rien n'a été réécrit ni déduit.
+
+**Blocs de texte manquants sur les 53 routes : 2 → 0.**
+
+## 5. Anomalies des cinq routes prioritaires
+
+| Route | Cartes réf. → WP (début de passe) | Cartes réf. → WP (fin) | Graves avant | Graves après |
+|---|---|---|---|---|
+| `/zones-intervention/` | 52 → 54 | 52 → 49 | 5 | 4 |
+| `/nettoyage-professionnel/` | 53 → 65 | 53 → 54 | 3 | 2 |
+| `/prestations/` | 12 → 13 | 12 → 13 | 0 | 0 |
+| `/avis-clients/` | 14 → 20 | 14 → 13 | 2 | 2 |
+| `/zones-intervention/bourgogne-franche-comte/` | 51 → 61 | 51 → 56 | 2 | 1 |
+| `/contact/` | 7 → 2 | 7 → 2 | 7 | 7 |
+
+Total sur les 53 routes : **560 → 491 anomalies**, **147 → 144 graves**.
+
+## 6. Les quatre pages devenues trop courtes
+
+| Route | Avant | Après |
+|---|---|---|
+| `/nettoyage-professionnel/` | 84 % | **96 %** ✅ |
+| `/prestations/` | 90 % | **99 %** ✅ |
+| `/notre-fonctionnement/` | 88 % | 91 % |
+| `/zones-intervention/` | 93 % | 88 % |
+
+Deux sont rentrées dans la plage, uniquement par application des valeurs relevées : rembourrage
+vertical des bandes (84 px dans la maquette contre 52 px posés partout par le thème), fond blanc
+des bandes alternées, typographie interne des tuiles (intitulé de 15 à 20 px, description de 13,5
+à 15 px, espace de 4 à 10 px), et fond de tuile mesuré.
+
+Aucune compensation artificielle n'a été employée. `/zones-intervention/` a **baissé** parce que
+ses bandes ont, dans la maquette, un rembourrage plus **faible** que les 52 px du thème : le
+rendu est maintenant fidèle, et le déficit restant vient d'ailleurs.
+
+**40 routes sur 53 sont dans la plage 95-105 %.**
+
+## 7. Migration et installation
+
+- **Installation portant la version précédente** : 0 élément de séquence → 78 / 34 / 19 / 6 selon
+  la page, **sans changer un seul identifiant** (13, 57, 45 avant comme après), 56 contenus,
+  **aucun doublon**, aucun slug modifié.
+- **Deux exécutions successives** : empreintes stables, aucun contenu dupliqué.
+- **Intégrité** : données légales présentes (SIRET, hébergeur), **0 ancien tarif**, **0
+  `[À COMPLÉTER]`**.
+
+## 8. Tests
+
+| Contrôle | Résultat |
+|---|---|
+| Suite Playwright | **833 / 833** |
+| axe-core + navigation clavier | **12 / 12**, 0 violation |
+| WCAG 2.2 AA 2.5.8 (53 routes × 2 largeurs) | 0 violation |
+| JSON-LD | conforme |
+| Blocs de texte manquants | **0** |
+
+Lighthouse, banc avec compression et cache : accueil 92, prestations/bureaux 90, tarifs 100,
+Dijon 96, article 97, page pilier 97 — Accessibilité 100, Bonnes pratiques 100, SEO 100,
+CLS ≤ 0,009.
+
+Une régression a été introduite puis corrigée dans la passe : le fond de tuile étant désormais
+celui **relevé** sur la maquette, il peut être plus clair que celui qu'attendait le thème, et le
+gris secondaire de la description tombait sous 4,5:1. C'est la couleur du texte qui s'ajuste,
+jamais le fond relevé.
+
+## 9. Écarts restants
+
+- **`/contact/`** (7 → 2 cartes) n'a pas été traité : cette page a son propre gabarit et ne passe
+  pas par le composant de bandes statiques. Ses cinq micro-cartes de coordonnées demandent le même
+  travail d'extraction, sur un autre chemin de code.
+- **Écarts de `type`** : la maquette compose ses intitulés de carte en `div` nu ; le thème emploie
+  `strong` ou `h3` selon ce que fait le prototype. L'outil classe donc `carte-titre` là où la
+  référence dit `micro-carte`. Le rendu est identique, la sémantique est meilleure — c'est un écart
+  d'outil, pas d'écran.
+- **`/zones-intervention/`** reste à 88 % avec 4 cartes graves.
+- Onze routes restent hors de la plage 95-105 %, dont les trois pages légales, qui portent
+  légitimement plus de texte que la maquette (exception documentée).

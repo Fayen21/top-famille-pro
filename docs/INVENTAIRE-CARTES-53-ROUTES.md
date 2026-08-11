@@ -11,15 +11,15 @@
 > Un conteneur qui contient visuellement plusieurs micro-cartes n’est jamais compté pour une
 > carte : il compte pour ses enfants.
 
-**53 routes × 1 largeurs · 560 anomalie(s), dont 147 grave(s)** (carte absente ou fusionnée).
+**53 routes × 1 largeurs · 491 anomalie(s), dont 144 grave(s)** (carte absente ou fusionnée).
 
 ## Synthèse
 
 | Route | Cartes 1440 px | Anomalies 1440 px |
 |---|---|---|
 | `#/` | 27 → 33 (+6) | ❌ 23 (7) |
-| `#/nettoyage-professionnel` | 53 → 65 (+12) | ❌ 39 (3) |
-| `#/nos-prestations` | 12 → 13 (+1) | ⚠️ 7 |
+| `#/nettoyage-professionnel` | 53 → 54 (+1) | ❌ 20 (2) |
+| `#/nos-prestations` | 12 → 13 (+1) | ⚠️ 1 |
 | `#/service/bureaux` | 21 → 21 | ⚠️ 1 |
 | `#/service/commerces` | 20 → 20 | ⚠️ 1 |
 | `#/service/cabinets` | 28 → 28 | ⚠️ 2 |
@@ -27,8 +27,8 @@
 | `#/service/meubles` | 21 → 21 | ⚠️ 1 |
 | `#/service/ponctuel` | 21 → 21 | ⚠️ 1 |
 | `#/nos-tarifs` | 22 → 21 (-1) | ❌ 13 (2) |
-| `#/zones-intervention` | 52 → 54 (+2) | ❌ 47 (5) |
-| `#/bourgogne-franche-comte` | 51 → 61 (+10) | ❌ 47 (2) |
+| `#/zones-intervention` | 52 → 49 (-3) | ❌ 40 (4) |
+| `#/bourgogne-franche-comte` | 51 → 56 (+5) | ❌ 34 (1) |
 | `#/departement/cote-dor` | 31 → 30 (-1) | ❌ 14 (4) |
 | `#/departement/doubs` | 31 → 29 (-2) | ❌ 14 (4) |
 | `#/departement/jura` | 33 → 31 (-2) | ❌ 14 (4) |
@@ -59,11 +59,11 @@
 | `#/article/frequence-bureaux` | 9 → 8 (-1) | ❌ 8 (4) |
 | `#/article/cout-nettoyage-bureaux` | 5 → 7 (+2) | ⚠️ 3 |
 | `#/article/cahier-des-charges-nettoyage` | 11 → 8 (-3) | ❌ 10 (6) |
-| `#/pourquoi-top-famille-pro` | 12 → 19 (+7) | ⚠️ 11 |
+| `#/pourquoi-top-famille-pro` | 12 → 13 (+1) | ⚠️ 5 |
 | `#/notre-fonctionnement` | 9 → 13 (+4) | ⚠️ 9 |
-| `#/avis-clients` | 14 → 20 (+6) | ❌ 18 (2) |
-| `#/a-propos` | 1 → 7 (+6) | ⚠️ 7 |
-| `#/recrutement` | 6 → 8 (+2) | ❌ 9 (1) |
+| `#/avis-clients` | 14 → 13 (-1) | ❌ 9 (2) |
+| `#/a-propos` | 1 → 1 | ⚠️ 1 |
+| `#/recrutement` | 6 → 5 (-1) | ❌ 6 (1) |
 | `#/demande-de-devis` | 5 → 4 (-1) | ❌ 1 (1) |
 | `#/contact` | 7 → 2 (-5) | ❌ 9 (7) |
 | `#/plan-du-site` | 0 → 0 | ✅ |
@@ -78,7 +78,7 @@
 | `#/` | 7 | 23 |
 | `#/contact` | 7 | 9 |
 | `#/article/cahier-des-charges-nettoyage` | 6 | 10 |
-| `#/zones-intervention` | 5 | 47 |
+| `#/zones-intervention` | 4 | 40 |
 | `#/departement/cote-dor` | 4 | 14 |
 | `#/departement/doubs` | 4 | 14 |
 | `#/departement/jura` | 4 | 14 |
@@ -105,13 +105,13 @@
 | `#/ville/marsannay-la-cote` | 4 | 9 |
 | `#/ville/beaune` | 4 | 10 |
 | `#/article/frequence-bureaux` | 4 | 8 |
-| `#/nettoyage-professionnel` | 3 | 39 |
 | `#/ville/dijon` | 3 | 10 |
+| `#/nettoyage-professionnel` | 2 | 20 |
 | `#/nos-tarifs` | 2 | 13 |
-| `#/bourgogne-franche-comte` | 2 | 47 |
-| `#/avis-clients` | 2 | 18 |
+| `#/avis-clients` | 2 | 9 |
+| `#/bourgogne-franche-comte` | 1 | 34 |
 | `#/conseils` | 1 | 5 |
-| `#/recrutement` | 1 | 9 |
+| `#/recrutement` | 1 | 6 |
 | `#/demande-de-devis` | 1 | 1 |
 | `#/mentions-legales` | 1 | 1 |
 | `#/politique-de-confidentialite` | 1 | 1 |
@@ -168,25 +168,18 @@
 
 ### `#/nettoyage-professionnel` → `/nettoyage-professionnel/`
 
-**1440 px** — bandes 19 → 19 · cartes 53 → 65 · 39 anomalie(s)
+**1440 px** — bandes 19 → 19 · cartes 53 → 54 · 20 anomalie(s)
 
 | Anomalie | Archétype | Bande | Détail |
 |---|---|---|---|
 | colonnes | `chip` | 2 | « ★★★★★5,0/5sur Google » — 1 colonnes attendues, 2 rendues |
 | absente | `tarif` | 3 | « 27 € HT/htarif unique en région✓Devis gratuit sous 24 h✓Intervention r » |
-| absente | `tarif` | 3 | « 27 € HT/htarif unique en région » |
 | type | `micro-carte` | 5 | « Bureaux & open-spaces » — rendue en `carte-titre` |
 | type | `micro-carte` | 5 | « Surfaces de vente » — rendue en `carte-titre` |
 | type | `micro-carte` | 5 | « Cabinets & salles d'attente » — rendue en `carte-titre` |
 | type | `micro-carte` | 5 | « Parties communes » — rendue en `carte-titre` |
 | type | `micro-carte` | 5 | « Meublés & hébergements » — rendue en `carte-titre` |
 | type | `micro-carte` | 5 | « Sanitaires & cuisines » — rendue en `carte-titre` |
-| type | `carte-sombre` | 7 | « Nettoyage de bureauxOpen-spaces, salles de réunion, accueil » — rendue en `carte-titre` |
-| type | `carte-sombre` | 7 | « Nettoyage de commercesBoutiques, showrooms, surfaces de vent » — rendue en `carte-titre` |
-| type | `carte-sombre` | 7 | « Cabinets & professions libéralesSanté, droit, conseil, salle » — rendue en `carte-titre` |
-| type | `carte-sombre` | 7 | « Copropriétés & parties communesHalls, cages d'escalier, loca » — rendue en `carte-titre` |
-| type | `carte-sombre` | 7 | « Locations meublées & hébergementsMeublés, gîtes, hébergement » — rendue en `carte-titre` |
-| type | `carte-sombre` | 7 | « Nettoyage ponctuel & remise en étatAprès travaux, grand nett » — rendue en `carte-titre` |
 | type | `micro-carte` | 8 | « Entretien régulierFréquence définie (quotidienne, plusieurs  » — rendue en `tarif` |
 | type | `micro-carte` | 8 | « Intervention ponctuellePrestation unique et approfondie : re » — rendue en `carte-titre-texte` |
 | type | `micro-carte` | 8 | « Horaires adaptésTôt le matin, en soirée ou en dehors des heu » — rendue en `carte-titre-texte` |
@@ -194,29 +187,19 @@
 | type | `micro-carte` | 17 | « À quelle fréquence faire nettoyer ses bureaux ?→ » — rendue en `carte-titre` |
 | type | `micro-carte` | 17 | « Combien coûte le nettoyage de bureaux ?→ » — rendue en `carte-titre` |
 | type | `micro-carte` | 17 | « Comment rédiger un cahier des charges de nettoyage ?→ » — rendue en `carte-titre` |
-| surplus | `chip` | 3 | « 27 € HT/h » |
-| surplus | `chip` | 3 | « tarif unique en région » |
-| surplus | `chip` | 3 | « Devis gratuit sous 24 h » |
-| surplus | `chip` | 3 | « Intervention régulière ou ponctuelle » |
-| surplus | `chip` | 3 | « Conditions d'arrêt précisées au devis » |
 | surplus | `carte-titre-texte` | 6 | « Prestataire de nettoyage ou recrutement direct ? C'est la première que » |
 | surplus | `tarif` | 8 | « Régulier ou ponctuel, tâches, fréquences et horaires Entretien régulie » |
 | surplus | `carte-titre-texte` | 9 | « Comment choisir la bonne fréquence La fréquence dépend moins de la sur » |
-| … | | | 9 autres |
+| surplus | `carte-titre-texte` | 12 | « Comment se construit un cahier des charges 01 Inventaire des espaces C » |
+| surplus | `carte-titre-texte` | 15 | « Trois situations concrètes Exemples représentatifs des demandes que no » |
 
 
 ### `#/nos-prestations` → `/prestations/`
 
-**1440 px** — bandes 6 → 6 · cartes 12 → 13 · 7 anomalie(s)
+**1440 px** — bandes 6 → 6 · cartes 12 → 13 · 1 anomalie(s)
 
 | Anomalie | Archétype | Bande | Détail |
 |---|---|---|---|
-| type | `carte-image` | 5 | « Nettoyage de bureauxUn entretien régulier et discret de vos  » — rendue en `carte-titre-texte` |
-| type | `carte-image` | 5 | « Nettoyage de commercesUne surface de vente impeccable à l'ou » — rendue en `carte-titre-texte` |
-| type | `carte-image` | 5 | « Cabinets & professions libéralesL'entretien courant des cabi » — rendue en `carte-titre-texte` |
-| type | `carte-image` | 5 | « Copropriétés & parties communesL'entretien régulier des hall » — rendue en `carte-titre-texte` |
-| type | `carte-image` | 5 | « Locations meublées & hébergementsLa remise en état de vos me » — rendue en `carte-titre-texte` |
-| type | `carte-image` | 5 | « Nettoyage ponctuel & remise en étatUne intervention ponctuel » — rendue en `carte-titre-texte` |
 | surplus | `chip` | 2 | « ★★★★★5,0/5 sur Google » |
 
 
@@ -298,13 +281,12 @@
 
 ### `#/zones-intervention` → `/zones-intervention/`
 
-**1440 px** — bandes 13 → 13 · cartes 52 → 54 · 47 anomalie(s)
+**1440 px** — bandes 13 → 13 · cartes 52 → 49 · 40 anomalie(s)
 
 | Anomalie | Archétype | Bande | Détail |
 |---|---|---|---|
 | type | `carte-sombre` | 2 | « Vérifier notre intervention dans ma commune » — rendue en `carte-titre` |
 | absente | `tarif` | 3 | « 27 € HT/htarif unique en région✓Devis gratuit sous 24 h✓Intervention r » |
-| absente | `tarif` | 3 | « 27 € HT/htarif unique en région » |
 | type | `micro-carte` | 5 | « Agglomération dijonnaise : créneaux souples, passages courts » — rendue en `carte-titre-texte` |
 | type | `micro-carte` | 5 | « Villes principales de la région : passages regroupés, planni » — rendue en `carte-titre` |
 | type | `micro-carte` | 5 | « Communes plus éloignées : fréquence hebdomadaire ou bimensue » — rendue en `carte-titre` |
@@ -332,17 +314,17 @@
 | type | `micro-carte` | 8 | « Belfort90000 » — rendue en `carte-titre` |
 | type | `micro-carte` | 9 | « Saint-Apollinaire21850 » — rendue en `carte-titre` |
 | type | `micro-carte` | 9 | « Chenôve21300 » — rendue en `carte-titre` |
-| … | | | 17 autres |
+| type | `micro-carte` | 9 | « Quetigny21800 » — rendue en `carte-titre` |
+| … | | | 10 autres |
 
 
 ### `#/bourgogne-franche-comte` → `/zones-intervention/bourgogne-franche-comte/`
 
-**1440 px** — bandes 12 → 12 · cartes 51 → 61 · 47 anomalie(s)
+**1440 px** — bandes 12 → 12 · cartes 51 → 56 · 34 anomalie(s)
 
 | Anomalie | Archétype | Bande | Détail |
 |---|---|---|---|
 | absente | `tarif` | 3 | « 27 € HT/htarif unique en région✓Devis gratuit sous 24 h✓Intervention r » |
-| absente | `tarif` | 3 | « 27 € HT/htarif unique en région » |
 | type | `micro-carte` | 5 | « TPE et PME : bureaux, open-spaces, salles de réunion, locaux » — rendue en `carte-titre` |
 | type | `micro-carte` | 5 | « Commerces et boutiques : surfaces de vente, réserves, sanita » — rendue en `carte-titre` |
 | type | `micro-carte` | 5 | « Professions libérales et cabinets : cabinets médicaux couran » — rendue en `carte-titre-texte` |
@@ -355,12 +337,6 @@
 | type | `micro-carte` | 5 | « Cabinets paramédicaux et dentaires courants » — rendue en `carte-titre` |
 | type | `micro-carte` | 5 | « Parties communes d'immeubles » — rendue en `carte-titre` |
 | type | `micro-carte` | 5 | « Locations meublées et logements de courte durée » — rendue en `carte-titre` |
-| type | `carte-sombre` | 6 | « Nettoyage de bureauxOpen-spaces, salles de réunion, accueil » — rendue en `carte-titre` |
-| type | `carte-sombre` | 6 | « Nettoyage de commercesBoutiques, showrooms, surfaces de vent » — rendue en `carte-titre` |
-| type | `carte-sombre` | 6 | « Cabinets & professions libéralesSanté, droit, conseil, salle » — rendue en `carte-titre` |
-| type | `carte-sombre` | 6 | « Copropriétés & parties communesHalls, cages d'escalier, loca » — rendue en `carte-titre` |
-| type | `carte-sombre` | 6 | « Locations meublées & hébergementsMeublés, gîtes, hébergement » — rendue en `carte-titre` |
-| type | `carte-sombre` | 6 | « Nettoyage ponctuel & remise en étatAprès travaux, grand nett » — rendue en `carte-titre` |
 | type | `micro-carte` | 7 | « Côte-d'Or21Préfecture : DijonDe la métropole dijonnaise aux  » — rendue en `carte-titre-texte` |
 | type | `micro-carte` | 7 | « Doubs25Préfecture : BesançonBesançon et son agglomération, c » — rendue en `carte-titre-texte` |
 | type | `micro-carte` | 7 | « Jura39Préfecture : Lons-le-SaunierDole, Lons-le-Saunier et l » — rendue en `carte-titre-texte` |
@@ -371,7 +347,14 @@
 | type | `micro-carte` | 7 | « Territoire de Belfort90Préfecture : BelfortBelfort et son ag » — rendue en `carte-titre-texte` |
 | type | `micro-carte` | 8 | « Chalon-sur-Saône71100 » — rendue en `carte-titre` |
 | type | `micro-carte` | 8 | « Mâcon71000 » — rendue en `carte-titre` |
-| … | | | 17 autres |
+| type | `micro-carte` | 8 | « Auxerre89000 » — rendue en `carte-titre` |
+| type | `micro-carte` | 8 | « Belfort90000 » — rendue en `carte-titre` |
+| type | `micro-carte` | 9 | « Exemple · bureaux réguliers, 12 h/mois333 € HT/mois12 h × 27 » — rendue en `tarif` |
+| type | `temoignage` | 9 | « ★★★★★« Nous avions besoin d'un prestataire capable de suivre » — rendue en `carte-titre-texte` |
+| surplus | `chip` | 2 | « ★★★★★5,0/5 sur Google » |
+| surplus | `carte-titre` | 8 | « Dijon 21000 » |
+| surplus | `carte-titre` | 8 | « Besançon 25000 » |
+| … | | | 4 autres |
 
 
 ### `#/departement/cote-dor` → `/zones-intervention/cote-dor/`
@@ -925,7 +908,7 @@
 
 ### `#/pourquoi-top-famille-pro` → `/pourquoi-nous/`
 
-**1440 px** — bandes 8 → 8 · cartes 12 → 19 · 11 anomalie(s)
+**1440 px** — bandes 8 → 8 · cartes 12 → 13 · 5 anomalie(s)
 
 | Anomalie | Archétype | Bande | Détail |
 |---|---|---|---|
@@ -933,12 +916,6 @@
 | type | `micro-carte` | 4 | « 24 hdevis transmis » — rendue en `carte-titre` |
 | type | `etape` | 4 | « 8départements » — rendue en `carte-titre` |
 | type | `micro-carte` | 4 | « 27 €HT/h, transparent » — rendue en `tarif` |
-| surplus | `chip` | 3 | « Directement joignable » |
-| surplus | `chip` | 3 | « Intervenants sélectionnés » |
-| surplus | `chip` | 3 | « Suivi réel » |
-| surplus | `chip` | 3 | « Tarif transparent » |
-| surplus | `chip` | 3 | « Gestion prise en charge » |
-| surplus | `chip` | 3 | « Ancrage régional » |
 | surplus | `carte-titre` | 4 | « 5,0/5 sur Google » |
 
 
@@ -961,14 +938,12 @@
 
 ### `#/avis-clients` → `/avis-clients/`
 
-**1440 px** — bandes 7 → 7 · cartes 14 → 20 · 18 anomalie(s)
+**1440 px** — bandes 7 → 7 · cartes 14 → 13 · 9 anomalie(s)
 
 | Anomalie | Archétype | Bande | Détail |
 |---|---|---|---|
 | absente | `carte-titre` | 3 | « 5,0/5★★★★★Sur Google · 47 avis clientsDemander mon devis » |
 | absente | `temoignage` | 4 | « ★★★★★« Nous avons comparé une embauche et un prestataire. Ce qui a tra » |
-| type | `carte-sombre` | 4 | « ★★★★★« Devis clair reçu le lendemain, sans surprise. Le resp » — rendue en `carte-titre-texte` |
-| type | `carte-sombre` | 4 | « ★★★★★« Nettoyage de la boutique avant l'ouverture, vitrines  » — rendue en `carte-titre-texte` |
 | type | `temoignage` | 5 | « ★★★★★Google« Même intervenante chaque semaine dans nos burea » — rendue en `carte-titre-texte` |
 | type | `temoignage` | 5 | « ★★★★★Google« Devis clair reçu le lendemain, sans surprise. L » — rendue en `carte-titre-texte` |
 | type | `temoignage` | 5 | « ★★★★★Google« Nettoyage de la boutique avant l'ouverture, vit » — rendue en `carte-titre-texte` |
@@ -976,33 +951,20 @@
 | type | `temoignage` | 5 | « ★★★★★Google« Remises en état entre deux locataires impeccabl » — rendue en `carte-titre-texte` |
 | type | `temoignage` | 5 | « ★★★★★Google« Remise en état ponctuelle après travaux, devis  » — rendue en `carte-titre-texte` |
 | surplus | `chip` | 2 | « ★★★★★5,0/5 sur Google » |
-| surplus | `chip` | 3 | « ★★★★★ » |
-| surplus | `chip` | 3 | « Sur · avis clients » |
-| surplus | `chip` | 3 | « Google » |
-| surplus | `chip` | 4 | « ★★★★★ » |
-| surplus | `chip` | 4 | « Marc V. » |
-| surplus | `chip` | 4 | « Directeur administratif » |
-| surplus | `chip` | 4 | « Chalon-sur-Saône » |
 
 
 ### `#/a-propos` → `/a-propos/`
 
-**1440 px** — bandes 6 → 6 · cartes 1 → 7 · 7 anomalie(s)
+**1440 px** — bandes 6 → 6 · cartes 1 → 1 · 1 anomalie(s)
 
 | Anomalie | Archétype | Bande | Détail |
 |---|---|---|---|
 | surplus | `chip` | 2 | « ★★★★★5,0/5 sur Google » |
-| surplus | `chip` | 3 | « Audrey » |
-| surplus | `chip` | 3 | « · Top-Famille Pro » |
-| surplus | `chip` | 4 | « Proximité » |
-| surplus | `chip` | 4 | « Rigueur » |
-| surplus | `chip` | 4 | « Transparence » |
-| surplus | `chip` | 4 | « Filiation Top-Famille » |
 
 
 ### `#/recrutement` → `/recrutement/`
 
-**1440 px** — bandes 5 → 5 · cartes 6 → 8 · 9 anomalie(s)
+**1440 px** — bandes 5 → 5 · cartes 6 → 5 · 6 anomalie(s)
 
 | Anomalie | Archétype | Bande | Détail |
 |---|---|---|---|
@@ -1012,9 +974,6 @@
 | type | `micro-carte` | 3 | « Copropriétés & parties communesHalls, cages d'escalier et lo » — rendue en `carte-titre` |
 | absente | `carte-sombre` | 4 | « Les étapes de candidature 01Vous envoyez votre candidature et vos disp » |
 | surplus | `chip` | 2 | « ★★★★★5,0/5 sur Google » |
-| surplus | `micro-carte` | 4 | « Vous envoyez votre candidature et vos disponibilités. » |
-| surplus | `micro-carte` | 4 | « Audrey vous recontacte pour un échange sur votre profil et votre secte » |
-| surplus | `micro-carte` | 4 | « Selon les missions disponibles près de chez vous, une proposition vous » |
 
 
 ### `#/demande-de-devis` → `/demande-de-devis/`
