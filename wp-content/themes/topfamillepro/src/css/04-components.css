@@ -3120,3 +3120,17 @@ body.tfp-body a.tfp-card-tile:focus-visible {
 .tfp-card-tile--image .tfp-card-tile__body {
   padding: var(--tfp-tuile-padding, 16px 18px);
 }
+
+/* Colonne de lecture d'une bande statique, relevée sur les paragraphes du prototype (740 à 780 px
+   sur les bandes narratives, contre 1 114 px laissés par le thème). Une ligne plus large tient plus
+   de mots, donc moins de lignes : chaque paragraphe perdait un tiers de sa hauteur. Les grilles de
+   cartes gardent toute la largeur — la contrainte ne porte que sur le texte suivi. */
+.tfp-static-block > .tfp-prose,
+.tfp-static-block > .tfp-static-note,
+.tfp-static-block > h2,
+.tfp-static-block > h3,
+.tfp-static-block > .tfp-list-plain,
+.tfp-static-block > .tfp-quote,
+.tfp-static-block > .tfp-faq-item {
+  max-width: var(--tfp-bande-texte, none);
+}

@@ -31,6 +31,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 				'fond' => '',
 				'padding_haut' => '0px',
 				'padding_bas' => '56px',
+				'largeur_texte' => 0,
 				'colonnes' => 1,
 				'cartes' => '',
 				'liste_grille' => array(
@@ -183,6 +184,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 				'fond' => 'blanc',
 				'padding_haut' => '72px',
 				'padding_bas' => '72px',
+				'largeur_texte' => 740,
 				'colonnes' => 1,
 				'cartes' => '',
 				'liste_grille' => array(
@@ -224,6 +226,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 				'fond' => '',
 				'padding_haut' => '84px',
 				'padding_bas' => '84px',
+				'largeur_texte' => 562,
 				'colonnes' => 2,
 				'cartes' => '',
 				'liste_grille' => array(
@@ -544,6 +547,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 				'fond' => 'blanc',
 				'padding_haut' => '84px',
 				'padding_bas' => '84px',
+				'largeur_texte' => 760,
 				'colonnes' => 3,
 				'cartes' => array(
 					'padding' => '24px',
@@ -728,6 +732,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 				'fond' => 'navy',
 				'padding_haut' => '84px',
 				'padding_bas' => '84px',
+				'largeur_texte' => 0,
 				'colonnes' => 1,
 				'cartes' => '',
 				'liste_grille' => array(
@@ -1004,6 +1009,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 				'fond' => '',
 				'padding_haut' => '84px',
 				'padding_bas' => '84px',
+				'largeur_texte' => 1134,
 				'colonnes' => 3,
 				'cartes' => array(
 					'padding' => '22px',
@@ -1347,6 +1353,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 				'fond' => 'blanc',
 				'padding_haut' => '84px',
 				'padding_bas' => '84px',
+				'largeur_texte' => 760,
 				'colonnes' => 4,
 				'cartes' => array(
 					'padding' => '22px',
@@ -1570,6 +1577,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 				'fond' => '',
 				'padding_haut' => '84px',
 				'padding_bas' => '84px',
+				'largeur_texte' => 760,
 				'colonnes' => 3,
 				'cartes' => '',
 				'liste_grille' => array(
@@ -1738,6 +1746,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 				'fond' => 'blanc',
 				'padding_haut' => '84px',
 				'padding_bas' => '84px',
+				'largeur_texte' => 594,
 				'colonnes' => 2,
 				'cartes' => '',
 				'liste_grille' => array(
@@ -1796,6 +1805,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 				'fond' => '',
 				'padding_haut' => '84px',
 				'padding_bas' => '84px',
+				'largeur_texte' => 1130,
 				'colonnes' => 4,
 				'cartes' => array(
 					'padding' => '22px',
@@ -2030,6 +2040,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 				'fond' => 'blanc',
 				'padding_haut' => '84px',
 				'padding_bas' => '84px',
+				'largeur_texte' => 624,
 				'colonnes' => 1,
 				'cartes' => '',
 				'liste_grille' => array(
@@ -2098,6 +2109,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 				'fond' => '',
 				'padding_haut' => '72px',
 				'padding_bas' => '72px',
+				'largeur_texte' => 0,
 				'colonnes' => 1,
 				'cartes' => '',
 				'liste_grille' => array(
@@ -2154,6 +2166,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 				'fond' => 'blanc',
 				'padding_haut' => '84px',
 				'padding_bas' => '84px',
+				'largeur_texte' => 700,
 				'colonnes' => 3,
 				'cartes' => array(
 					'padding' => '24px',
@@ -2338,6 +2351,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 				'fond' => 'turquoise',
 				'padding_haut' => '84px',
 				'padding_bas' => '84px',
+				'largeur_texte' => 356,
 				'colonnes' => 3,
 				'cartes' => '',
 				'liste_grille' => array(
@@ -2571,6 +2585,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 				'fond' => '',
 				'padding_haut' => '72px',
 				'padding_bas' => '72px',
+				'largeur_texte' => 0,
 				'colonnes' => 1,
 				'cartes' => '',
 				'liste_grille' => array(
@@ -2755,6 +2770,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 				'fond' => 'alt',
 				'padding_haut' => '84px',
 				'padding_bas' => '84px',
+				'largeur_texte' => 698,
 				'colonnes' => 1,
 				'cartes' => '',
 				'liste_grille' => array(
@@ -2876,6 +2892,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 				'fond' => 'primary',
 				'padding_haut' => '0px',
 				'padding_bas' => '0px',
+				'largeur_texte' => 0,
 				'colonnes' => 1,
 				'cartes' => '',
 				'liste_grille' => array(
@@ -2934,6 +2951,7 @@ update_option( 'tfp_page_prestations', array(
 				'fond' => '',
 				'padding_haut' => '0px',
 				'padding_bas' => '32px',
+				'largeur_texte' => 243,
 				'colonnes' => 1,
 				'cartes' => '',
 				'liste_grille' => array(
@@ -3210,6 +3228,7 @@ update_option( 'tfp_page_prestations', array(
 				'fond' => '',
 				'padding_haut' => '36px',
 				'padding_bas' => '12px',
+				'largeur_texte' => 616,
 				'colonnes' => 2,
 				'cartes' => '',
 				'liste_grille' => array(
@@ -3268,6 +3287,7 @@ update_option( 'tfp_page_prestations', array(
 				'fond' => '',
 				'padding_haut' => '32px',
 				'padding_bas' => '86.4px',
+				'largeur_texte' => 0,
 				'colonnes' => 1,
 				'cartes' => '',
 				'liste_grille' => array(
@@ -3544,6 +3564,7 @@ update_option( 'tfp_page_prestations', array(
 				'fond' => 'primary',
 				'padding_haut' => '0px',
 				'padding_bas' => '0px',
+				'largeur_texte' => 520,
 				'colonnes' => 1,
 				'cartes' => '',
 				'liste_grille' => array(
@@ -3601,6 +3622,7 @@ update_option( 'tfp_page_zones-intervention', array(
 				'fond' => '',
 				'padding_haut' => '0px',
 				'padding_bas' => '40px',
+				'largeur_texte' => 0,
 				'colonnes' => 1,
 				'cartes' => '',
 				'liste_grille' => array(
@@ -3753,6 +3775,7 @@ update_option( 'tfp_page_zones-intervention', array(
 				'fond' => 'blanc',
 				'padding_haut' => '50px',
 				'padding_bas' => '50px',
+				'largeur_texte' => 760,
 				'colonnes' => 1,
 				'cartes' => '',
 				'liste_grille' => array(
@@ -3793,6 +3816,7 @@ update_option( 'tfp_page_zones-intervention', array(
 				'fond' => '',
 				'padding_haut' => '57.6px',
 				'padding_bas' => '57.6px',
+				'largeur_texte' => 754,
 				'colonnes' => 1,
 				'cartes' => array(
 					'padding' => '32px',
@@ -4099,6 +4123,7 @@ update_option( 'tfp_page_zones-intervention', array(
 				'fond' => '',
 				'padding_haut' => '0px',
 				'padding_bas' => '54px',
+				'largeur_texte' => 0,
 				'colonnes' => 1,
 				'cartes' => '',
 				'liste_grille' => array(
@@ -4139,6 +4164,7 @@ update_option( 'tfp_page_zones-intervention', array(
 				'fond' => '',
 				'padding_haut' => '0px',
 				'padding_bas' => '54px',
+				'largeur_texte' => 660,
 				'colonnes' => 1,
 				'cartes' => '',
 				'liste_grille' => array(
@@ -4489,6 +4515,7 @@ update_option( 'tfp_page_zones-intervention', array(
 				'fond' => '',
 				'padding_haut' => '0px',
 				'padding_bas' => '54px',
+				'largeur_texte' => 660,
 				'colonnes' => 1,
 				'cartes' => '',
 				'liste_grille' => array(
@@ -4907,6 +4934,7 @@ update_option( 'tfp_page_zones-intervention', array(
 				'fond' => '',
 				'padding_haut' => '0px',
 				'padding_bas' => '54px',
+				'largeur_texte' => 660,
 				'colonnes' => 1,
 				'cartes' => '',
 				'liste_grille' => array(
@@ -5257,6 +5285,7 @@ update_option( 'tfp_page_zones-intervention', array(
 				'fond' => '',
 				'padding_haut' => '0px',
 				'padding_bas' => '64px',
+				'largeur_texte' => 754,
 				'colonnes' => 1,
 				'cartes' => array(
 					'padding' => '32px',
@@ -5356,6 +5385,7 @@ update_option( 'tfp_page_zones-intervention', array(
 				'fond' => '',
 				'padding_haut' => '0px',
 				'padding_bas' => '68px',
+				'largeur_texte' => 0,
 				'colonnes' => 1,
 				'cartes' => '',
 				'liste_grille' => array(
@@ -5530,6 +5560,7 @@ update_option( 'tfp_page_zones-intervention', array(
 				'fond' => 'turquoise',
 				'padding_haut' => '68px',
 				'padding_bas' => '68px',
+				'largeur_texte' => 740,
 				'colonnes' => 1,
 				'cartes' => '',
 				'liste_grille' => array(
@@ -5615,6 +5646,7 @@ update_option( 'tfp_page_zones-intervention', array(
 				'fond' => 'primary',
 				'padding_haut' => '0px',
 				'padding_bas' => '0px',
+				'largeur_texte' => 540,
 				'colonnes' => 1,
 				'cartes' => '',
 				'liste_grille' => array(
@@ -5772,6 +5804,7 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 				'fond' => '',
 				'padding_haut' => '0px',
 				'padding_bas' => '40px',
+				'largeur_texte' => 0,
 				'colonnes' => 1,
 				'cartes' => '',
 				'liste_grille' => array(
@@ -5924,6 +5957,7 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 				'fond' => 'blanc',
 				'padding_haut' => '50px',
 				'padding_bas' => '50px',
+				'largeur_texte' => 760,
 				'colonnes' => 1,
 				'cartes' => '',
 				'liste_grille' => array(
@@ -5964,6 +5998,7 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 				'fond' => '',
 				'padding_haut' => '57.6px',
 				'padding_bas' => '57.6px',
+				'largeur_texte' => 754,
 				'colonnes' => 1,
 				'cartes' => array(
 					'padding' => '32px',
@@ -6599,6 +6634,7 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 				'fond' => 'navy',
 				'padding_haut' => '72px',
 				'padding_bas' => '72px',
+				'largeur_texte' => 640,
 				'colonnes' => 1,
 				'cartes' => '',
 				'liste_grille' => array(
@@ -6881,6 +6917,7 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 				'fond' => 'blanc',
 				'padding_haut' => '64px',
 				'padding_bas' => '64px',
+				'largeur_texte' => 660,
 				'colonnes' => 1,
 				'cartes' => '',
 				'liste_grille' => array(
@@ -7263,6 +7300,7 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 				'fond' => '',
 				'padding_haut' => '64px',
 				'padding_bas' => '64px',
+				'largeur_texte' => 0,
 				'colonnes' => 1,
 				'cartes' => '',
 				'liste_grille' => array(
@@ -7764,6 +7802,7 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 				'fond' => 'turquoise',
 				'padding_haut' => '68px',
 				'padding_bas' => '68px',
+				'largeur_texte' => 394,
 				'colonnes' => 1,
 				'cartes' => '',
 				'liste_grille' => array(
@@ -7928,6 +7967,7 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 				'fond' => '',
 				'padding_haut' => '64px',
 				'padding_bas' => '64px',
+				'largeur_texte' => 754,
 				'colonnes' => 1,
 				'cartes' => array(
 					'padding' => '32px',
@@ -8054,6 +8094,7 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 				'fond' => 'turquoise',
 				'padding_haut' => '68px',
 				'padding_bas' => '68px',
+				'largeur_texte' => 740,
 				'colonnes' => 1,
 				'cartes' => '',
 				'liste_grille' => array(
@@ -8148,6 +8189,7 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 				'fond' => 'primary',
 				'padding_haut' => '0px',
 				'padding_bas' => '0px',
+				'largeur_texte' => 540,
 				'colonnes' => 1,
 				'cartes' => '',
 				'liste_grille' => array(
@@ -8206,6 +8248,7 @@ update_option( 'tfp_page_pourquoi-nous', array(
 				'fond' => 'blanc',
 				'padding_haut' => '57.6px',
 				'padding_bas' => '57.6px',
+				'largeur_texte' => 375,
 				'colonnes' => 1,
 				'cartes' => '',
 				'liste_grille' => array(
@@ -8291,6 +8334,7 @@ update_option( 'tfp_page_pourquoi-nous', array(
 				'fond' => '',
 				'padding_haut' => '72px',
 				'padding_bas' => '72px',
+				'largeur_texte' => 820,
 				'colonnes' => 1,
 				'cartes' => '',
 				'liste_grille' => array(
@@ -8505,6 +8549,7 @@ update_option( 'tfp_page_pourquoi-nous', array(
 				'fond' => 'blanc',
 				'padding_haut' => '80px',
 				'padding_bas' => '80px',
+				'largeur_texte' => 371,
 				'colonnes' => 3,
 				'cartes' => '',
 				'liste_grille' => array(
@@ -8666,6 +8711,7 @@ update_option( 'tfp_page_pourquoi-nous', array(
 				'fond' => '',
 				'padding_haut' => '72px',
 				'padding_bas' => '72px',
+				'largeur_texte' => 778,
 				'colonnes' => 1,
 				'cartes' => '',
 				'liste_grille' => array(
@@ -8733,6 +8779,7 @@ update_option( 'tfp_page_pourquoi-nous', array(
 				'fond' => 'blanc',
 				'padding_haut' => '64px',
 				'padding_bas' => '64px',
+				'largeur_texte' => 680,
 				'colonnes' => 1,
 				'cartes' => '',
 				'liste_grille' => array(
@@ -8947,6 +8994,7 @@ update_option( 'tfp_page_pourquoi-nous', array(
 				'fond' => 'primary',
 				'padding_haut' => '0px',
 				'padding_bas' => '0px',
+				'largeur_texte' => 0,
 				'colonnes' => 1,
 				'cartes' => '',
 				'liste_grille' => array(
@@ -9005,6 +9053,7 @@ update_option( 'tfp_page_notre-fonctionnement', array(
 				'fond' => 'blanc',
 				'padding_haut' => '57.6px',
 				'padding_bas' => '57.6px',
+				'largeur_texte' => 706,
 				'colonnes' => 1,
 				'cartes' => '',
 				'liste_grille' => array(
@@ -9247,6 +9296,7 @@ update_option( 'tfp_page_notre-fonctionnement', array(
 				'fond' => '',
 				'padding_haut' => '80px',
 				'padding_bas' => '80px',
+				'largeur_texte' => 820,
 				'colonnes' => 3,
 				'cartes' => array(
 					'padding' => '20px 22px',
@@ -9545,6 +9595,7 @@ update_option( 'tfp_page_notre-fonctionnement', array(
 				'fond' => 'primary',
 				'padding_haut' => '0px',
 				'padding_bas' => '0px',
+				'largeur_texte' => 0,
 				'colonnes' => 1,
 				'cartes' => '',
 				'liste_grille' => array(
@@ -9602,6 +9653,7 @@ update_option( 'tfp_page_avis-clients', array(
 				'fond' => '',
 				'padding_haut' => '0px',
 				'padding_bas' => '32px',
+				'largeur_texte' => 0,
 				'colonnes' => 1,
 				'cartes' => '',
 				'liste_grille' => array(
@@ -9666,6 +9718,7 @@ update_option( 'tfp_page_avis-clients', array(
 				'fond' => '',
 				'padding_haut' => '20px',
 				'padding_bas' => '40px',
+				'largeur_texte' => 340,
 				'colonnes' => 1,
 				'cartes' => '',
 				'liste_grille' => array(
@@ -9832,6 +9885,7 @@ update_option( 'tfp_page_avis-clients', array(
 				'fond' => '',
 				'padding_haut' => '14.4px',
 				'padding_bas' => '86.4px',
+				'largeur_texte' => 0,
 				'colonnes' => 1,
 				'cartes' => '',
 				'liste_grille' => array(
@@ -10132,6 +10186,7 @@ update_option( 'tfp_page_avis-clients', array(
 				'fond' => '',
 				'padding_haut' => '0px',
 				'padding_bas' => '80px',
+				'largeur_texte' => 680,
 				'colonnes' => 1,
 				'cartes' => '',
 				'liste_grille' => array(
@@ -10346,6 +10401,7 @@ update_option( 'tfp_page_avis-clients', array(
 				'fond' => 'primary',
 				'padding_haut' => '0px',
 				'padding_bas' => '0px',
+				'largeur_texte' => 0,
 				'colonnes' => 1,
 				'cartes' => '',
 				'liste_grille' => array(
@@ -10405,6 +10461,7 @@ update_option( 'tfp_page_a-propos', array(
 				'fond' => '',
 				'padding_haut' => '57.6px',
 				'padding_bas' => '57.6px',
+				'largeur_texte' => 740,
 				'colonnes' => 1,
 				'cartes' => '',
 				'liste_grille' => array(
@@ -10449,6 +10506,7 @@ update_option( 'tfp_page_a-propos', array(
 				'fond' => '',
 				'padding_haut' => '72px',
 				'padding_bas' => '72px',
+				'largeur_texte' => 283,
 				'colonnes' => 1,
 				'cartes' => '',
 				'liste_grille' => array(
@@ -10516,6 +10574,7 @@ update_option( 'tfp_page_a-propos', array(
 				'fond' => 'blanc',
 				'padding_haut' => '80px',
 				'padding_bas' => '80px',
+				'largeur_texte' => 820,
 				'colonnes' => 1,
 				'cartes' => '',
 				'liste_grille' => array(
@@ -10752,6 +10811,7 @@ update_option( 'tfp_page_a-propos', array(
 				'fond' => 'primary',
 				'padding_haut' => '0px',
 				'padding_bas' => '0px',
+				'largeur_texte' => 0,
 				'colonnes' => 1,
 				'cartes' => '',
 				'liste_grille' => array(
@@ -10812,6 +10872,7 @@ update_option( 'tfp_page_recrutement', array(
 				'fond' => 'blanc',
 				'padding_haut' => '57.6px',
 				'padding_bas' => '57.6px',
+				'largeur_texte' => 243,
 				'colonnes' => 1,
 				'cartes' => '',
 				'liste_grille' => array(
@@ -11020,6 +11081,7 @@ update_option( 'tfp_page_recrutement', array(
 				'fond' => '',
 				'padding_haut' => '72px',
 				'padding_bas' => '72px',
+				'largeur_texte' => 0,
 				'colonnes' => 1,
 				'cartes' => '',
 				'liste_grille' => array(
@@ -11104,6 +11166,7 @@ update_option( 'tfp_page_recrutement', array(
 				'fond' => 'blanc',
 				'padding_haut' => '72px',
 				'padding_bas' => '72px',
+				'largeur_texte' => 560,
 				'colonnes' => 1,
 				'cartes' => '',
 				'liste_grille' => array(

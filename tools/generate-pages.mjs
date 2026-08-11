@@ -743,11 +743,29 @@ for (const p of PAGES) {
 				// contre 52 partout côté thème). Sur la page pilier, cet écart seul représentait
 				// 64 px × 17 bandes, soit l'essentiel des 1 486 px manquants.
 				const cs = getComputedStyle(sec);
+				/*
+				 * Largeur de la colonne de lecture de la bande.
+				 *
+				 * Le prototype borne son texte narratif à 740-780 px là où le thème le laissait
+				 * occuper les 1 114 px du conteneur. Une ligne plus large tient plus de mots, donc
+				 * moins de lignes : chaque paragraphe passait de 134 px de haut à 84. Sur
+				 * /zones-intervention/, les deux bandes narratives perdaient à elles seules 562 px,
+				 * soit les deux tiers de l'écart de la page. Ce n'est pas un confort typographique
+				 * facultatif — c'est la mesure du prototype, et elle décide de la hauteur.
+				 *
+				 * Relevée sur les paragraphes réels, pas sur un conteneur : seuls eux portent la
+				 * colonne de lecture. Les grilles de cartes gardent toute la largeur.
+				 */
+				const paragraphes = [...sec.querySelectorAll('p')].filter((x) => txt(x).length > 60);
+				const largeurTexte = paragraphes.length
+					? Math.round(Math.max(...paragraphes.map((x) => x.getBoundingClientRect().width)))
+					: 0;
 				out.push({
 					index: i,
 					fond: fondOf(sec),
 					padding_haut: cs.paddingTop,
 					padding_bas: cs.paddingBottom,
+					largeur_texte: largeurTexte,
 					colonnes: colonnesOf(sec),
 					cartes: cartesOf(sec),
 					liste_grille: listeColonnesOf(sec),

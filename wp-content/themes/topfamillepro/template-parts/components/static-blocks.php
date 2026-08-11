@@ -59,6 +59,16 @@ foreach ( $data['sections'] as $section ) {
 			$pad[] = $var . ':' . $valeur;
 		}
 	}
+	/*
+	 * Largeur de la colonne de lecture, relevée sur les paragraphes de la bande du prototype.
+	 * Le thème laissait le texte occuper toute la largeur du conteneur : une ligne plus large tient
+	 * plus de mots, donc moins de lignes, et chaque paragraphe perdait un tiers de sa hauteur. Les
+	 * grilles de cartes ne sont pas concernées — elles gardent toute la largeur.
+	 */
+	$largeur = (int) ( $section['largeur_texte'] ?? 0 );
+	if ( $largeur >= 400 && $largeur <= 1400 ) {
+		$pad[] = '--tfp-bande-texte:' . $largeur . 'px';
+	}
 	$pad_style = $pad ? ' style="' . esc_attr( implode( ';', $pad ) ) . '"' : '';
 	/*
 	 * Nombre de colonnes : relevé sur le rendu de la maquette par tools/generate-pages.mjs, et non
