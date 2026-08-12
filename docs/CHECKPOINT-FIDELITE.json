@@ -212,7 +212,7 @@
       "dans_95_105": 200,
       "sur": 318
     },
-    "apres": "non remesuré — la baseline complète (45 min) reste à rejouer"
+    "apres": "NON REMESURÉ. La baseline complète (45 min) n'a pas été rejouée : la passe a porté sur les causes, pas sur l'indicateur. À rejouer avant tout verdict — `node tools/baseline.mjs --sortie=docs/baseline-apres.json`."
   },
   "chantiers_non_ouverts": [
     "rejouer les 318 contrôles de baseline",
@@ -222,5 +222,11 @@
     "reconstruction des captures",
     "Lighthouse final 14 mesures"
   ],
-  "methode_relevé_responsive": "Leçon générale de G07 : le prototype écrit ses valeurs responsives en style en ligne (`clamp()`, `flex: 1 1 Npx`, `repeat(auto-fit, minmax(min(100%, Npx), 1fr))`). Les RELEVER telles quelles vaut toujours mieux que mesurer un rendu à une largeur puis reconstruire un seuil : la valeur déclarée est juste à toutes les largeurs, un seuil reconstruit est faux des deux côtés du point de bascule. Avant de figer une mesure, vérifier `element.style` sur le prototype."
+  "methode_relevé_responsive": "Leçon générale de G07 : le prototype écrit ses valeurs responsives en style en ligne (`clamp()`, `flex: 1 1 Npx`, `repeat(auto-fit, minmax(min(100%, Npx), 1fr))`). Les RELEVER telles quelles vaut toujours mieux que mesurer un rendu à une largeur puis reconstruire un seuil : la valeur déclarée est juste à toutes les largeurs, un seuil reconstruit est faux des deux côtés du point de bascule. Avant de figer une mesure, vérifier `element.style` sur le prototype.",
+  "controles_de_la_passe": {
+    "date": "12 août 2026",
+    "53_routes_x_6_largeurs": "balayage de débordement, erreurs de console et requêtes en échec — 0 / 0 / 0. Les cinq « requêtes échouées » d'un premier passage étaient un artefact de mesure : une navigation en `domcontentloaded` interrompt les requêtes encore en vol. En `networkidle`, il n'y en a aucune.",
+    "suite_fonctionnelle": "la suite complète a été rejouée VERTE avant G07 (958 réussis, 6 ignorés, 1 échec de configuration de banc — l'installation était en environnement `production`, où l'envoi n'est pas neutralisé ; en `development` les 20 tests de la page Contact passent). Après G07 et G08, une nouvelle exécution était encore en cours à la clôture de la passe, sans aucun échec sur les 239 premiers tests. À REJOUER EN ENTIER au début de la passe suivante — c'est le premier geste à faire.",
+    "cadence": "la suite est très lente sur ce banc : environ 5 tests par minute, soit près de trois heures pour les 877 tests d'assertion. Les scans axe-core et le parcours de crawl en sont l'essentiel. `tests/screenshots.spec.js` ne porte AUCUNE assertion — il ne produit que des captures — et peut être écarté d'une vérification de correction par `--grep-invert Captures`, ce qui retire 88 tests parmi les plus lents."
+  }
 }
