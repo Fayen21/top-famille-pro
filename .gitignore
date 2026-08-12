@@ -14,3 +14,7 @@ docs/composants.partiel.json
 docs/GROUPES-ECARTS.partiel.md
 # Sondes de diagnostic jetables, écrites au cours d'une passe et sans valeur hors de celle-ci.
 .tfp-diag/
+# Relevé de baseline en cours d'écriture : le fichier est réécrit après CHAQUE contrôle, il ne
+# peut donc pas rester propre tant que le relevé tourne. Le versionner une fois terminé, en le
+# forçant (`git add -f`).
+docs/baseline-2026-*.json
