@@ -1143,17 +1143,11 @@ body.tfp-body .tfp-article-body p a {
   text-underline-offset: 2px;
 }
 
-.tfp-two-col {
-  display: grid;
-  gap: 40px;
-  grid-template-columns: 1fr;
-}
-
-@media (min-width: 820px) {
-  .tfp-two-col {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
+/* La double colonne est définie une seule fois, dans 03-layout.css, à repli intrinsèque — c'est
+   l'écriture du prototype : `flex: 1 1 380px; min-width: min(100%, 320px)` et un écart en
+   `clamp(30px, 4vw, 56px)`. Une seconde définition la redéclarait ici en grille, avec un écart de
+   40 px fixe et une bascule à 820 px ; étant plus bas dans la feuille, c'est elle qui l'emportait.
+   L'écart mesuré à 768 px était de 30,72 px côté maquette — exactement 4vw — contre 40 posés ici. */
 
 .tfp-list-plain,
 /* Liste de tâches : deux colonnes dès que la place le permet, une seule sinon.
@@ -2201,10 +2195,14 @@ body.tfp-body .tfp-article-body p a {
    maquette (deux colonnes de 566 px avec un écart de 48 sur une page de département, mesurées à
    1440 px). Les sous-groupes s'empilent dans leur colonne — c'est `.tfp-zone-col` qui porte la
    cellule de grille, pas chaque groupe, sans quoi un sous-titre ouvrait sa propre colonne. */
+/* Base de colonne et écart **relevés sur le prototype** : `flex: 1 1 340px` et
+   `gap: clamp(28px, 4vw, 48px)`. Le thème posait 320 px et 48 px fixes ; à 768 px, cela laissait
+   deux colonnes de 329 px là où la maquette est déjà repliée sur une seule de 707 — 303 px de
+   hauteur en trop sur la bande, et ce sur les 26 pages de zone. */
 .tfp-zone-links-grid {
   display: grid;
-  gap: 24px 48px;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+  gap: clamp(28px, 4vw, 48px);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
   align-items: start;
 }
 
@@ -2655,8 +2653,20 @@ body.tfp-type-legale .tfp-section__lede {
   background: var(--color-bg-card);
 }
 
+/*
+ * La marge est posée **sous** chaque bloc encadré, comme le prototype l'écrit — et non entre deux
+ * blocs consécutifs. L'espacement entre deux cartes est le même dans les deux écritures ; celui
+ * qui suit la **dernière** carte d'une suite ne l'est pas, et manquait. Le relevé signalait la
+ * chose en deux moitiés : quinze fois « marge basse 14 → 0 » et onze fois « marge haute 0 → 14 ».
+ */
+.tfp-static-block--carte {
+  margin-bottom: var(--tfp-carte-marge-bas, 16px);
+}
+
+/* La règle générique d'espacement entre blocs ne doit pas s'ajouter à celle-ci : deux marges
+   verticales adjacentes ne fusionnent pas ici, le bloc encadré ayant un filet. */
 .tfp-static-block--carte + .tfp-static-block--carte {
-  margin-top: var(--tfp-carte-marge-bas, 16px);
+  margin-top: 0;
 }
 
 

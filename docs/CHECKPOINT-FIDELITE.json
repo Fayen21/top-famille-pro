@@ -6,7 +6,8 @@
     "avertissement": "Le rig WordPress est hors dépôt et disparaît avec le conteneur. Il faut le remonter au début de chaque session (STATUS.md §11). CONTRÔLE OBLIGATOIRE APRÈS MONTAGE : `wp option get siteurl` doit valoir exactement http://localhost:8901. Une valeur avec un chemin (http://localhost:8901/wp-core) fait répondre 404 à la feuille de style : les pages restent servies, le HTML est correct, et TOUTES les mesures géométriques portent alors sur une page non stylée — polices, marges et interlignes du navigateur par défaut. L'erreur ne se voit sur aucun code HTTP de page.",
     "verification_rapide": "curl -s -o /dev/null -w '%{http_code}' http://localhost:8901/wp-content/themes/topfamillepro/assets/dist/css/main.css → doit valoir 200",
     "reference_de_non_regression": "#/nettoyage-professionnel à 375 px, avant la passe du 12 août : 330→377 composants, 222 appariés, Σ|ΔH| 7791. Un banc correctement monté reproduit ce chiffre à l'unité.",
-    "deux_environnements": "Le rig sert deux usages qui n'ont pas le même environnement WordPress. Les MESURES géométriques se font en `production` (valeur par défaut). La SUITE FONCTIONNELLE exige `development` : sans cela le test « la soumission est neutralisée sur cette installation » échoue et six tests de soumission sont ignorés — ce n'est pas une régression du thème. Les hauteurs de page sont identiques dans les deux environnements (vérifié sur quatre routes), la bascule est donc sans effet sur la géométrie. Lancer avec `WP_ENVIRONMENT_TYPE=development php -S localhost:8901` après avoir ajouté au wp-config la lecture de cette variable d'environnement."
+    "deux_environnements": "Le rig sert deux usages qui n'ont pas le même environnement WordPress. Les MESURES géométriques se font en `production` (valeur par défaut). La SUITE FONCTIONNELLE exige `development` : sans cela le test « la soumission est neutralisée sur cette installation » échoue et six tests de soumission sont ignorés — ce n'est pas une régression du thème. Les hauteurs de page sont identiques dans les deux environnements (vérifié sur quatre routes), la bascule est donc sans effet sur la géométrie. Lancer avec `WP_ENVIRONMENT_TYPE=development php -S localhost:8901` après avoir ajouté au wp-config la lecture de cette variable d'environnement.",
+    "script": "bash tools/banc-local.sh — monte le banc de zéro (cœur WordPress, SQLite, wp-cli, thème copié, 15 scripts de seed, serveur multi-processus) et se termine par le contrôle de la feuille de style. `--development` pour la suite fonctionnelle, `--seed-only` pour rejouer les contenus seuls. Ne plus remonter le banc à la main : la procédure a été perdue deux fois, et une erreur de siteurl a fait mesurer une page servie sans sa feuille de style pendant vingt minutes."
   },
   "outillage": {
     "baseline": {
@@ -113,6 +114,19 @@
       "note_securite": "un filtre de longueur CSS strict (tfp_longueur_css) remplace l'ancien, qui effaçait silencieusement les fonctions : `clamp(22px, 3vw, 32px)` devenait « 22px3vw32px ». Le nouveau n'admet que chiffres, unités, séparateurs et les fonctions clamp/min/max/calc/var, refuse la valeur entière au moindre caractère hors jeu, et vérifie l'équilibre des parenthèses.",
       "statut": "CORRIGE",
       "pied_de_page": "Le pied est partagé par les 53 routes, et c'est le composant où l'écart de seuil coûtait le plus cher : la maquette passe de quatre colonnes à deux à 1 179 px et de deux à une à 560 px, le thème le faisait à 819 et 479. Entre 480 et 1 180 px, le pied n'avait donc le même nombre de colonnes que la maquette à AUCUNE largeur de contrôle. Son rembourrage est lui aussi une fonction — `clamp(40px, 5.5vw, 56px)` en haut, `clamp(16px, 4vw, 40px)` sur les côtés, 36 px en bas — là où le thème posait 48 / 40 / 32, justes nulle part. Seuils relevés au pixel près par balayage, puis vérifiés des deux côtés à 1920, 1440, 1181, 1179, 1024, 768, 600, 561, 560, 480, 375 et 320 px."
+    },
+    {
+      "id": "G08",
+      "selecteur": ".tfp-static-block--carte, .tfp-two-col, .tfp-zone-links-grid",
+      "titre": "Marge posée du mauvais côté, et deux définitions concurrentes",
+      "causes": [
+        "la maquette pose `margin-bottom: 14px` sur CHAQUE bloc encadré ; le thème posait `margin-top` entre deux blocs consécutifs. L'espacement entre deux cartes était le même, celui qui suit la dernière manquait. Le relevé le signalait en deux moitiés — 15 fois « marge basse 14 → 0 » et 11 fois « marge haute 0 → 14 ».",
+        "`.tfp-two-col` était défini deux fois : à repli intrinsèque dans 03-layout.css (l'écriture du prototype, `flex: 1 1 380px` et `gap: clamp(30px, 4vw, 56px)`), puis redéfini en grille dans 04-components.css avec 40 px fixes et une bascule à 820 px. Étant plus bas dans la feuille, c'est la seconde qui l'emportait. À 768 px la maquette mesure 30,72 px d'écart — exactement 4vw — contre 40 posés.",
+        "`.tfp-zone-links-grid` posait une base de colonne de 320 px et un écart de 48 px fixes ; le prototype écrit `flex: 1 1 340px` et `gap: clamp(28px, 4vw, 48px)`. À 768 px, le thème tenait deux colonnes de 329 px là où la maquette est repliée sur une seule de 707 — 303 px de hauteur en trop, sur les 26 pages de zone."
+      ],
+      "verification": "largeur de colonne identique à la maquette à 1440, 1024, 900, 800, 768, 600 et 375 px sur /zones-intervention/cote-dor/dijon/ ; marges 0 / 14 px comme la maquette sur les blocs encadrés.",
+      "effet_mesure": "cinq routes à 768 px : 770 → 748 écarts, Σ|ΔH| 16 162 → 13 998, propriétés divergentes 1 555 → 1 489. Sur la seule correction de marge : 49 composants rapprochés contre 1 éloigné.",
+      "statut": "CORRIGE"
     }
   ],
   "faux_positifs_corriges_dans_outil": [
@@ -144,44 +158,48 @@
     }
   ],
   "prochain_groupe_a_traiter": {
-    "id": "G08",
+    "id": "G09",
     "priorite": 1,
-    "selecteur": ".tfp-static-block--carte",
-    "propriete": "marge inter-blocs : côté sur lequel elle est posée",
-    "constat": "la maquette pose `margin-bottom: 14px` sur CHAQUE bloc encadré ; le thème pose `margin-top: 14px` entre deux blocs encadrés consécutifs. L'espacement entre deux blocs est donc identique, mais le dernier bloc d'une suite perd ses 14 px, et le relevé signale 15 fois `mBottom 14→0` et 11 fois `mTop 0→14` — deux moitiés d'un même écart.",
-    "correction_pressentie": "poser la marge relevée en `margin-bottom` sur `.tfp-static-block--carte` plutôt qu'en `margin-top` sur `.tfp-static-block--carte + .tfp-static-block--carte`. Vérifier ensuite qu'aucune marge fusionnée n'apparaît avec `.tfp-static-block + .tfp-static-block { margin-top: 36px }`.",
-    "reste_a_instruire": "deux occurrences `mTop 16px→36px` et `mTop 18px→36px` (ΔH +52 et +54) : le thème pose 36 px entre deux blocs statiques quelconques là où la maquette en pose 16 ou 18. Relever le déclaré côté prototype avant de corriger — la valeur peut être une fonction, comme le rembourrage.",
+    "selecteur": ".tfp-card-tile (toutes variantes)",
+    "propriete": "écart de grille : maquette `normal`, thème 12px",
+    "occurrences": "75 à 768 px sur cinq routes, en tête du classement",
+    "constat": "la tuile du thème est un conteneur flex avec `gap: 12px` pour séparer l'icône du corps ; la maquette la compose en bloc. Les deltas de hauteur sont FAIBLES (0 à 4 px sur la plupart des occurrences) — c'est le nombre d'occurrences qui hisse le groupe en tête, pas son amplitude. Vérifier d'abord si l'écart a un effet horizontal (icône à côté du texte contre au-dessus) avant de conclure : si l'effet est nul des deux côtés, c'est un sixième faux positif à corriger dans l'outil, pas dans le thème.",
     "commande_de_verification": "node tools/composants.mjs --routes='#/nettoyage-professionnel,#/zones-intervention,#/bourgogne-franche-comte,#/service/bureaux,#/ville/dijon' --widths=768"
   },
   "groupes_suivants": [
     {
-      "id": "G08bis",
-      "selecteur": "grilles des gabarits zone / prestation / accueil",
-      "propriete": "seuils de repli",
-      "remarque": "tools/breakpoints.mjs sur #/ville/dijon montre quatre conteneurs dont le seuil diffère dans les DEUX sens (maquette 1024 → thème 1200 ; maquette 1100 → thème 1024 ; maquette 768 → thème 1100 ; maquette 600 → thème 900). Ces grilles sont construites par les gabarits, pas par le générateur de pages : elles n'ont pas encore de relevé de base de colonne. Même méthode que G07 — lire la valeur déclarée par le prototype, la poser en variable, replier par auto-fit."
-    },
-    {
-      "id": "G09",
-      "selecteur": ".tfp-static-block",
-      "propriete": "rembourrage gauche/droit 40px → 0px à 1440 px",
-      "occurrences": 9,
-      "remarque": "vérifier d'abord s'il s'agit d'un décalage de niveau dans la chaîne de conteneurs : l'outil ne retient plus ces écarts que sur un composant encadré ou quand la largeur utile diffère, donc ceux-ci sont réels"
-    },
-    {
       "id": "G10",
-      "selecteur": "titre sans classe",
-      "propriete": "marge basse 0px → 8px",
-      "occurrences": 59,
-      "remarque": "nombreux mais de faible amplitude ; à traiter par archétype de titre"
+      "selecteur": ".tfp-static-block",
+      "propriete": "rembourrage haut/bas 46.08px → 0px",
+      "occurrences": 2,
+      "remarque": "46,08 = 6vw à 768 px : encore une fonction relevée en pixels. Chercher le déclaré côté prototype."
     },
     {
       "id": "G11",
+      "selecteur": ".tfp-prose",
+      "propriete": "interligne 25.6px → 28px",
+      "occurrences": 7
+    },
+    {
+      "id": "G12",
+      "selecteur": ".tfp-card-tile--lien",
+      "propriete": "nombre de colonnes 2 → 1",
+      "occurrences": 16
+    },
+    {
+      "id": "G13",
+      "selecteur": "grilles des gabarits zone / prestation / accueil",
+      "propriete": "seuils de repli restants",
+      "remarque": "tools/breakpoints.mjs sur #/ville/dijon montrait quatre conteneurs divergents ; un a été corrigé (G08). Reprendre l'outil pour les trois autres, et le passer sur #/service/bureaux et #/."
+    },
+    {
+      "id": "G14",
       "selecteur": ".tfp-link-row",
       "propriete": "font-size, padding, min-height",
       "remarque": "min-height 24px posé pour WCAG 2.5.8 — vérifier avec tools/audit-target-size.mjs avant de toucher"
     },
     {
-      "id": "G12",
+      "id": "G15",
       "selecteur": ".tfp-google-badge__text",
       "propriete": "font-size 17px → 13px",
       "occurrences": 12
