@@ -155,6 +155,14 @@ for (const largeur of LARGEURS) {
 		await wp.goto(WP + ROUTE_MAP[hash].wp, { waitUntil: 'networkidle', timeout: 60000 });
 		await wp.evaluate(STABILISER);
 		const b = await wp.evaluate(RELEVE);
+		/*
+		 * CLS **indicatif seulement**, et il faut le dire : le relevé fait défiler toute la page
+		 * pour déclencher le chargement différé, et chaque image qui arrive sous les yeux compte
+		 * alors comme un déplacement. La valeur obtenue est donc structurellement supérieure au CLS
+		 * qu'un visiteur subit. Le chiffre qui fait foi est celui de Lighthouse
+		 * (tools/lighthouse.mjs), mesuré sans défilement forcé. Ici, il ne sert qu'à repérer une
+		 * route qui se déplacerait beaucoup plus que ses voisines.
+		 */
 		const cls = await wp.evaluate(() => Number(window.__cls || 0));
 
 		const ratio = a.hauteur ? Math.round((b.hauteur / a.hauteur) * 100) : 0;
