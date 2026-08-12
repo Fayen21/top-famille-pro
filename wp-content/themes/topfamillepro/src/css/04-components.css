@@ -1158,13 +1158,15 @@ body.tfp-body .tfp-article-body p a {
   gap: 0 10px;
 }
 
+/* 15 px, relevé sur la maquette — le thème en posait 16. Sur une page prestation, ce sont une
+   trentaine d'éléments de liste, dont beaucoup tiennent sur deux ou trois lignes. */
 .tfp-list-plain li,
 .tfp-list-marked li {
   position: relative;
   padding: 10px 0 10px 22px;
   border-bottom: 1px solid var(--color-border);
-  font-size: 16px;
-  line-height: 1.6;
+  font-size: 15px;
+  line-height: 1.705;
   color: var(--color-text-secondary);
 }
 
@@ -1317,15 +1319,21 @@ body.tfp-body .tfp-article-body p a {
   }
 }
 
+/* Typographie relevée sur la maquette : titre 17 px / 17,68 et texte 15 px / 25,575.
+   Le thème employait 19 px et 16 px. Deux pixels sur un titre et un sur un corps de texte ne se
+   voient pas isolément ; répétés sur les quatorze éléments d'une bande, dont plusieurs occupent
+   trois à cinq lignes, ils ajoutent quelques dizaines de pixels par bande — et c'est l'une des
+   causes partagées du surplus de hauteur aux largeurs étroites. */
 .tfp-detail-item h3 {
-  font-size: 19px;
+  font-size: 17px;
+  line-height: 1.04;
   margin-bottom: 8px;
 }
 
 .tfp-detail-item p {
   margin: 0;
-  font-size: 16px;
-  line-height: 1.7;
+  font-size: 15px;
+  line-height: 1.705;
   color: var(--color-text-secondary);
 }
 
