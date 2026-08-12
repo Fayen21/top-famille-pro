@@ -212,7 +212,18 @@
       "dans_95_105": 200,
       "sur": 318
     },
-    "apres": "NON REMESURÉ. La baseline complète (45 min) n'a pas été rejouée : la passe a porté sur les causes, pas sur l'indicateur. À rejouer avant tout verdict — `node tools/baseline.mjs --sortie=docs/baseline-apres.json`."
+    "apres": "INCOMPLET — 50 contrôles relevés sur 318, tous à 320 px, avant l'arrêt du relevé.",
+    "ce_qui_a_ete_mesure_a_320px": {
+      "controles": 50,
+      "dans_95_105": 41,
+      "hors_tolerance": 9,
+      "debordements": 0,
+      "hors_tolerance_detail": "#/contact 121 %, #/article/cahier-des-charges-nettoyage 117 %, #/conseils et les deux autres articles 113 %, #/nos-tarifs 112 %, #/pourquoi-top-famille-pro 111 %, #/nettoyage-professionnel 107 %, #/recrutement 106 %. Les trois articles perdent aussi deux bandes sur huit (8→6) : à instruire avant la hauteur, une bande manquante n'est pas un écart de géométrie.",
+      "CLS": "une seule route au-dessus de 0,01 : #/demande-de-devis à 0,668. À rapprocher du chantier CLS, en gardant à l'esprit que la mesure de baseline n'est PAS comparable à celle de Lighthouse (le relevé fait défiler toute la page)."
+    },
+    "pourquoi_le_releve_a_ete_arrete": "L'outil ne tient pas la distance sur un relevé long. Un contrôle isolé (`--only` sur une route, une largeur) s'exécute en 10 secondes ; sur un relevé complet, la cadence tombe à 3 à 5 MINUTES par contrôle dès les premiers, machine par ailleurs au repos — soit plus de vingt heures pour les 318. L'estimation de 45 minutes portée par les versions précédentes de ce fichier est FAUSSE et ferait perdre une passe entière.",
+    "a_faire_avant_de_rejouer": "Diagnostiquer la dégradation avant de relancer. Deux pistes non vérifiées : la maquette est une application à routes `#/` de 4,7 Mo dont l'état s'accumule peut-être d'une route à l'autre sur une même page (elle n'est rechargée qu'une fois par largeur) ; et la stabilisation par défilement intégral coûte cher sur les pages très hautes aux largeurs étroites. Un remède simple à éprouver : recharger la page de référence toutes les N routes, ou lancer une largeur par invocation.",
+    "piege_de_mesure": "Ne JAMAIS lancer deux relevés en parallèle, ni un relevé pendant la suite Playwright. Quatre processus `baseline.mjs` ont tourné simultanément au cours de cette passe sans que rien ne le signale, et la cadence observée n'avait alors plus aucun sens. Vérifier `pgrep -f tools/baseline` avant de lancer."
   },
   "chantiers_non_ouverts": [
     "rejouer les 318 contrôles de baseline",
