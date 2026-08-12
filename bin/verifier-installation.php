@@ -115,3 +115,72 @@ if ( $manquants ) {
 } else {
 	echo "\n✅ Les 53 routes attendues sont présentes.\n";
 }
+
+/*
+ * Les trois URL relevées sur un banc de recette, nommément.
+ *
+ * Elles ne sont pas créées par l'installation : ce sont des résidus d'essais antérieurs. Mais
+ * l'installation réelle succède à une migration Wix et à des essais, et une ancienne offre restée
+ * publiée promet une prestation qui n'existe plus, sous une URL que personne ne surveille. On les
+ * vérifie donc nommément, en plus du contrôle général, et **le script échoue** si l'une d'elles
+ * est encore publiée ou référencée au sitemap.
+ */
+$parasites  = array( 'page-perso-de-ladministrateur', 'nettoyage-ecologique-ancienne-offre', 'devis-rapide' );
+$sitemap    = '';
+$url_map    = home_url( '/wp-sitemap.xml' );
+$reponse    = wp_remote_get( $url_map, array( 'timeout' => 10 ) );
+if ( ! is_wp_error( $reponse ) ) {
+	$sitemap = wp_remote_retrieve_body( $reponse );
+	// Le sitemap racine n'est qu'un index : on suit ses sous-sitemaps.
+	if ( preg_match_all( '#<loc>([^<]+\.xml)</loc>#', $sitemap, $m ) ) {
+		foreach ( $m[1] as $sous ) {
+			$r = wp_remote_get( $sous, array( 'timeout' => 10 ) );
+			if ( ! is_wp_error( $r ) ) {
+				$sitemap .= wp_remote_retrieve_body( $r );
+			}
+		}
+	}
+}
+
+$echecs = array();
+foreach ( $parasites as $slug ) {
+	$page = get_page_by_path( $slug, OBJECT, array( 'page', 'post', 'prestation', 'zone' ) );
+	if ( $page && 'publish' === $page->post_status ) {
+		$echecs[] = sprintf( '« %s » est publiée (%s)', $slug, get_permalink( $page ) );
+	}
+	if ( $sitemap && false !== strpos( $sitemap, '/' . $slug . '/' ) ) {
+		$echecs[] = sprintf( '« %s » figure au sitemap', $slug );
+	}
+}
+
+echo "\n" . str_repeat( '-', 60 ) . "\n";
+printf( "URL héritées vérifiées nommément : %s\n", implode( ', ', $parasites ) );
+foreach ( $echecs as $e ) {
+	echo "  ❌ $e\n";
+}
+
+/*
+ * Verdict explicite. Un script qui se contente de « retrouver » les URL ne prouve rien : c'est le
+ * code de sortie qui permet de l'enchaîner dans une recette et de bloquer une mise en ligne.
+ */
+$ok = empty( $echecs ) && empty( $manquants );
+echo "\n" . ( $ok
+	? "PASS — aucune URL héritée publiée ou référencée, et les 53 routes sont présentes.\n"
+	: "FAIL — l'installation ne doit pas être ouverte à l'indexation en l'état.\n" );
+
+// Les contenus inattendus sans être des parasites connus n'échouent pas : ils demandent un arbitrage.
+if ( $inattendu && $ok ) {
+	echo "Note : " . count( $inattendu ) . " contenu(s) inattendu(s) ci-dessus demandent un arbitrage humain.\n";
+}
+
+/*
+ * Code de sortie non nul en cas d'échec : c'est ce qui permet d'enchaîner ce contrôle dans une
+ * recette et de bloquer une mise en ligne. `WP_CLI::halt()` court-circuite la fin de commande de
+ * WP-CLI, qui remettrait 0.
+ */
+if ( ! $ok ) {
+	if ( class_exists( 'WP_CLI' ) ) {
+		WP_CLI::halt( 1 );
+	}
+	exit( 1 );
+}

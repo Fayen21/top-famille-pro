@@ -1257,9 +1257,13 @@ body.tfp-body .tfp-article-body p a {
 
    Le thème les rendait toutes de la même façon — une grille à deux colonnes de texte nu pour les
    deux premières, des cartes plates pour la troisième. Ni le rythme ni la hiérarchie n'y étaient. */
+/* Écart relevé sur la maquette : 22 px, et non 34. Sur une bande qui empile quatorze éléments en
+   une colonne à 375 px, douze pixels d'écart en trop par intervalle ajoutent près de 160 px à la
+   hauteur — à contenu strictement identique. C'est l'un des postes qui rendaient les pages
+   prestation 10 à 14 % plus hautes que le prototype aux largeurs étroites. */
 .tfp-detail-grid {
   display: grid;
-  gap: 34px;
+  gap: 22px;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   margin-top: 28px;
 }

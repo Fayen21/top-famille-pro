@@ -72,7 +72,18 @@ $zones = tfp_footer_zones_tree();
 				<li><a href="mailto:<?php echo esc_attr( $site['email'] ); ?>"><?php echo esc_html( $site['email'] ); ?></a></li>
 				<li><?php echo esc_html( $site['address_city'] . ' (' . $site['address_cp'] . ')' ); ?></li>
 			</ul>
-			<?php tfp_google_rating_badge( 'footer' ); ?>
+			<?php
+			/*
+			 * Pas de badge de note dans le pied de page.
+			 *
+			 * Le pied de la maquette n'en porte aucun : relevé sur l'accueil, elle n'affiche la note
+			 * qu'une fois dans le corps, plus le rappel discret de la barre supérieure. Le thème
+			 * l'ajoutait ici, sur les 53 routes — une troisième occurrence par page, au-delà des
+			 * deux que CLAUDE.md §9 autorise (« une preuve dans le hero + une section avis
+			 * suffisent »). Répéter une note trois fois ne la rend pas plus crédible ; cela
+			 * ressemble à un site qui insiste.
+			 */
+			?>
 		</div>
 
 		<div class="tfp-footer__col">

@@ -1,0 +1,193 @@
+{
+ "#/service/bureaux": {
+  "768": {
+   "ratio": 113,
+   "ref": {
+    "hauteur": 9731,
+    "sections": 13,
+    "bandes": [
+     957,
+     301,
+     986,
+     359,
+     806,
+     1420,
+     961,
+     528,
+     379,
+     375,
+     723,
+     93,
+     244
+    ],
+    "cartes": 43,
+    "microCartes": 18,
+    "grilles": [
+     2,
+     2,
+     2,
+     2,
+     2
+    ],
+    "ordre": [
+     "Nettoyage de bureaux en Bourgogne-Franch",
+     "Réponse directeLe nettoyage ",
+     "Pour qui ?",
+     "Les situations concrètes que nous traito",
+     "Trois configurations, trois organisation",
+     "Le détail, espace par espace et contrain",
+     "Une organisation carrée, du planning au ",
+     "Une semaine type",
+     "Exemple · 12 h/mois333 € HT/",
+     "Cette prestation près de chez vous",
+     "Questions fréquentes — Bureaux",
+     "Encore une question sur Bure",
+     "Un devis pour Bureaux"
+    ],
+    "images": 1,
+    "imagesCassees": 0,
+    "tableaux": 0,
+    "formulaires": 0,
+    "faq": 8,
+    "cta": 4,
+    "mots": 2115,
+    "titres": 29,
+    "debordement": 0,
+    "horsEcran": 0
+   },
+   "wp": {
+    "hauteur": 10972,
+    "sections": 13,
+    "bandes": [
+     1069,
+     351,
+     896,
+     414,
+     935,
+     1559,
+     1242,
+     554,
+     573,
+     538,
+     681,
+     233,
+     270
+    ],
+    "cartes": 44,
+    "microCartes": 17,
+    "grilles": [
+     1,
+     2,
+     2,
+     2,
+     2,
+     2,
+     2,
+     1,
+     1,
+     1
+    ],
+    "ordre": [
+     "Nettoyage de bureaux en Bourgogne-Franch",
+     "Réponse directe Le nettoyage",
+     "Pour qui ?",
+     "Les situations concrètes que nous traito",
+     "Trois configurations, trois organisation",
+     "Le détail, espace par espace et contrain",
+     "Une organisation carrée, du planning au ",
+     "Une semaine type",
+     "Exemple · 12 h/mois 333 € HT",
+     "Cette prestation près de chez vous",
+     "Questions fréquentes — Bureaux",
+     "Encore une question sur Bure",
+     "Un devis pour Bureaux"
+    ],
+    "images": 1,
+    "imagesCassees": 0,
+    "tableaux": 0,
+    "formulaires": 0,
+    "faq": 8,
+    "cta": 4,
+    "mots": 2171,
+    "titres": 29,
+    "debordement": 0,
+    "horsEcran": 0
+   },
+   "cls": 0.0001,
+   "erreursConsole": [],
+   "erreursReseau": []
+  }
+ },
+ "#/contact": {
+  "768": {
+   "ratio": 121,
+   "ref": {
+    "hauteur": 3125,
+    "sections": 3,
+    "bandes": [
+     130,
+     141,
+     1254
+    ],
+    "cartes": 18,
+    "microCartes": 10,
+    "grilles": [
+     2,
+     3,
+     3
+    ],
+    "ordre": [
+     "Contacter Top-Famille Pro",
+     "J'ai une question Formulaire",
+     "Nom Entreprise (facultatif) "
+    ],
+    "images": 1,
+    "imagesCassees": 0,
+    "tableaux": 0,
+    "formulaires": 1,
+    "faq": 0,
+    "cta": 1,
+    "mots": 108,
+    "titres": 0,
+    "debordement": 0,
+    "horsEcran": 0
+   },
+   "wp": {
+    "hauteur": 3773,
+    "sections": 3,
+    "bandes": [
+     213,
+     244,
+     1657
+    ],
+    "cartes": 18,
+    "microCartes": 11,
+    "grilles": [
+     2,
+     1,
+     1,
+     2,
+     2
+    ],
+    "ordre": [
+     "Contacter Top-Famille Pro",
+     "J’ai une question Formulaire",
+     "J’ai une question"
+    ],
+    "images": 1,
+    "imagesCassees": 0,
+    "tableaux": 0,
+    "formulaires": 1,
+    "faq": 0,
+    "cta": 2,
+    "mots": 227,
+    "titres": 2,
+    "debordement": 0,
+    "horsEcran": 0
+   },
+   "cls": 0.0002,
+   "erreursConsole": [],
+   "erreursReseau": []
+  }
+ }
+}
