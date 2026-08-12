@@ -95,13 +95,17 @@ foreach ( $data['sections'] as $section ) {
 	 * /nettoyage-professionnel/ de 15 %.
 	 */
 	$carte_style_de = static function ( $c ) {
-		return is_array( $c )
-			? sprintf(
-				'--tfp-carte-padding:%s;--tfp-carte-rayon:%s',
-				preg_replace( '/[^0-9a-z%. ]/i', '', (string) ( $c['padding'] ?? '' ) ),
-				preg_replace( '/[^0-9a-z%. ]/i', '', (string) ( $c['rayon'] ?? '' ) )
-			)
-			: '';
+		if ( ! is_array( $c ) ) {
+			return '';
+		}
+		$parts = array();
+		foreach ( array( 'padding' => '--tfp-carte-padding', 'rayon' => '--tfp-carte-rayon', 'marge_bas' => '--tfp-carte-marge-bas' ) as $cle => $var ) {
+			$valeur = tfp_longueur_css( $c[ $cle ] ?? '' );
+			if ( '' !== $valeur ) {
+				$parts[] = $var . ':' . $valeur;
+			}
+		}
+		return implode( ';', $parts );
 	};
 
 	/*
@@ -123,8 +127,26 @@ foreach ( $data['sections'] as $section ) {
 			 */
 			$colonnes_rangee = max( 1, min( 4, (int) ( $sequence[0]['colonnes'] ?? $colonnes ) ) );
 			$en_grille       = $colonnes_rangee > 1 && count( $sequence ) > 1 && ! empty( $sequence[0]['grille'] );
+
+			/*
+			 * Repli **intrinsèque** de la rangée, relevé sur le prototype.
+			 *
+			 * La maquette ne replie pas ses rangées sur des seuils de fenêtre : chaque colonne
+			 * porte `flex: 1 1 340px` et la rangée se replie quand la place manque. Le seuil réel
+			 * varie donc de 600 à 900 px d'une bande à l'autre, et aucune valeur globale ne les
+			 * reproduit toutes. À 768 px, la maquette donnait 707 px de large à ses bandes de
+			 * texte quand le thème en donnait 333.
+			 */
+			$rangee_vars = array();
+			if ( '' !== tfp_longueur_css( $sequence[0]['colonne_min'] ?? '' ) ) {
+				$rangee_vars[] = '--tfp-rangee-colonne:' . tfp_longueur_css( $sequence[0]['colonne_min'] );
+			}
+			if ( '' !== tfp_longueur_css( $sequence[0]['rangee_gap'] ?? '' ) ) {
+				$rangee_vars[] = '--tfp-rangee-gap:' . tfp_longueur_css( $sequence[0]['rangee_gap'] );
+			}
+			$rangee_style = $en_grille && $rangee_vars ? ' style="' . esc_attr( implode( ';', $rangee_vars ) ) . '"' : '';
 			?>
-			<div class="<?php echo $en_grille ? esc_attr( 'tfp-static-grid tfp-static-grid--' . (int) $colonnes_rangee ) : 'tfp-static-run'; ?>">
+			<div class="<?php echo $en_grille ? esc_attr( 'tfp-static-grid tfp-static-grid--' . (int) $colonnes_rangee ) : 'tfp-static-run'; ?>"<?php echo $rangee_style; // phpcs:ignore WordPress.Security.EscapeOutput ?>>
 			<?php
 			foreach ( $sequence as $bloc ) :
 				// Les clés absentes d'un bloc généré avant l'ajout d'un type de contenu ne doivent pas

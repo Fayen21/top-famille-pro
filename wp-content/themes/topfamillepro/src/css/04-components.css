@@ -768,13 +768,16 @@
   color: var(--color-white);
 }
 
+/* Rembourrage relevé sur le prototype, qui l'écrit en fonction : `clamp(40px, 5.5vw, 56px)` en
+   haut et `clamp(16px, 4vw, 40px)` sur les côtés, 36 px en bas. Le thème posait 48 / 40 / 32 px,
+   justes à aucune largeur. */
 .tfp-footer__inner {
   max-width: var(--container-max);
   margin-inline: auto;
-  padding: var(--space-9) var(--container-padding) var(--space-7);
+  padding: clamp(40px, 5.5vw, 56px) clamp(16px, 4vw, 40px) 36px;
   display: grid;
   grid-template-columns: 2fr 1fr 1.3fr 1fr;
-  gap: var(--space-7);
+  gap: 32px 30px;
 }
 
 .tfp-footer__col h3 {
@@ -801,16 +804,25 @@
   color: #8FAEB9;
 }
 
-@media (max-width: 819px) {
+/*
+ * Seuils de repli du pied de page, **relevés sur le prototype** au pixel près : quatre colonnes
+ * jusqu'à 1 180 px, deux jusqu'à 561, une en dessous. Le thème repliait à 819 et 479 px, si bien
+ * que le pied — présent sur les 53 routes — n'avait le même nombre de colonnes que la maquette
+ * sur aucune des largeurs de contrôle entre 480 et 1 180 px.
+ */
+@media (max-width: 1179px) {
   .tfp-footer__inner {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media (max-width: 479px) {
+@media (max-width: 560px) {
   .tfp-footer__inner {
     grid-template-columns: 1fr;
   }
+}
+
+@media (max-width: 479px) {
 
   /*
    * white-space: nowrap sur .tfp-btn (ligne 19) tient sur tous les libellés courts fixes, mais
@@ -2395,15 +2407,26 @@ details.tfp-card {
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
+/* Rangée dont la base de colonne a été relevée : elle se replie d'elle-même, comme la maquette,
+   et l'écart entre colonnes est celui du prototype. Les seuils fixes ci-dessous ne concernent que
+   les rangées sans relevé. */
+.tfp-static-grid[style*="--tfp-rangee-colonne"] {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--tfp-rangee-colonne)), 1fr));
+}
+
+.tfp-static-grid[style*="--tfp-rangee-gap"] {
+  gap: var(--tfp-rangee-gap);
+}
+
 @media (max-width: 899px) {
-  .tfp-static-grid--3,
-  .tfp-static-grid--4 {
+  .tfp-static-grid--3:not([style*="--tfp-rangee-colonne"]),
+  .tfp-static-grid--4:not([style*="--tfp-rangee-colonne"]) {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
 @media (max-width: 599px) {
-  .tfp-static-grid {
+  .tfp-static-grid:not([style*="--tfp-rangee-colonne"]) {
     grid-template-columns: minmax(0, 1fr);
   }
 }
@@ -2620,6 +2643,11 @@ body.tfp-type-legale .tfp-section__lede {
    rayon, qui varient de 20 à 32 px et de 12 à 18 px selon la bande. Les valeurs arrivent en
    propriétés personnalisées posées par le composant ; celles écrites ici ne servent que de
    repli. */
+/* Le rembourrage est celui **relevé sur le prototype**, y compris quand il y écrit une fonction :
+   `clamp(22px, 3vw, 32px)`. Un seuil fixe posait auparavant 18 px sous 600 px, ce qui écrasait la
+   valeur relevée au lieu de la suivre et se trompait des deux côtés du point de bascule — 18 px là
+   où la maquette en pose 22, puis 32 là où elle en pose 23. La valeur écrite ici n'est qu'un repli,
+   pour un contenu produit avant ce relevé. */
 .tfp-static-block--carte {
   padding: var(--tfp-carte-padding, 24px);
   border: 1px solid var(--color-border);
@@ -2628,14 +2656,10 @@ body.tfp-type-legale .tfp-section__lede {
 }
 
 .tfp-static-block--carte + .tfp-static-block--carte {
-  margin-top: 16px;
+  margin-top: var(--tfp-carte-marge-bas, 16px);
 }
 
-@media (max-width: 599px) {
-  .tfp-static-block--carte {
-    padding: 18px;
-  }
-}
+
 
 /* Séquence de blocs pleine largeur dans une bande : simple conteneur de flux, il ne sert qu'à
    séparer les rangées en grille du reste (voir tfp_static_runs()). */
@@ -3026,6 +3050,23 @@ body.tfp-body a.tfp-service-tile:focus-visible {
 .tfp-card-grid--5 { grid-template-columns: repeat(5, minmax(0, 1fr)); }
 .tfp-card-grid--6 { grid-template-columns: repeat(6, minmax(0, 1fr)); }
 
+/*
+ * Repli **intrinsèque**, relevé sur le prototype.
+ *
+ * Quand la base de colonne a été relevée, la grille se replie d'elle-même selon la place dont
+ * elle dispose, exactement comme la maquette. Le nombre de colonnes ci-dessus reste la borne
+ * haute : `auto-fit` ne crée jamais plus de pistes qu'il n'y a de cartes.
+ *
+ * Ce que cela corrige : à 768 px, le thème tenait deux colonnes là où la maquette était déjà
+ * repliée sur une seule, et cinq bandes de la page pilier s'en trouvaient allongées de 200 px
+ * chacune. Le seuil ne peut pas être global — la maquette emploie de 150 à 340 px selon la
+ * grille — ni exprimé en largeur de fenêtre, puisqu'une grille placée dans une colonne étroite
+ * doit se replier plus tôt qu'une grille pleine largeur.
+ */
+.tfp-card-grid[style*="--tfp-grille-colonne"] {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--tfp-grille-colonne)), 1fr));
+}
+
 .tfp-card-grid > li {
   display: flex;
 }
@@ -3173,26 +3214,29 @@ body.tfp-body a.tfp-card-tile:focus-visible {
   color: var(--color-white);
 }
 
+/* Seuils de repli des grilles dont la base de colonne n'a pas été relevée — contenu produit avant
+   ce relevé, ou grille construite par un gabarit plutôt que par le générateur. Ils ne s'appliquent
+   pas aux grilles qui portent leur base : celles-ci se replient d'elles-mêmes, au bon moment. */
 @media (max-width: 1099px) {
-  .tfp-card-grid--4,
-  .tfp-card-grid--5,
-  .tfp-card-grid--6 {
+  .tfp-card-grid--4:not([style*="--tfp-grille-colonne"]),
+  .tfp-card-grid--5:not([style*="--tfp-grille-colonne"]),
+  .tfp-card-grid--6:not([style*="--tfp-grille-colonne"]) {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 
 @media (max-width: 819px) {
-  .tfp-card-grid--3,
-  .tfp-card-grid--4,
-  .tfp-card-grid--5,
-  .tfp-card-grid--6 {
+  .tfp-card-grid--3:not([style*="--tfp-grille-colonne"]),
+  .tfp-card-grid--4:not([style*="--tfp-grille-colonne"]),
+  .tfp-card-grid--5:not([style*="--tfp-grille-colonne"]),
+  .tfp-card-grid--6:not([style*="--tfp-grille-colonne"]) {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
 @media (max-width: 599px) {
-  .tfp-card-grid {
-    grid-template-columns: minmax(0, 1fr) !important;
+  .tfp-card-grid:not([style*="--tfp-grille-colonne"]) {
+    grid-template-columns: minmax(0, 1fr);
   }
 }
 

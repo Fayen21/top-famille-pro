@@ -182,10 +182,22 @@ for (const p of PAGES) {
 						(parseFloat(s.borderTopWidth) > 0 || s.backgroundColor !== 'rgba(0, 0, 0, 0)')
 					) {
 						trouvees.push(s);
+						/*
+						 * Rembourrage **déclaré**, pas calculé.
+						 *
+						 * Le prototype écrit `clamp(22px, 3vw, 32px)` : la carte respire moins sur
+						 * un petit écran, et le relevé, fait à 1440 px, n'en gardait que la borne
+						 * haute. À 768 px, le thème posait 32 px là où la maquette en pose 23,04 —
+						 * 9 px de trop de chaque côté, sur quinze blocs de la seule page des zones.
+						 * Le thème compensait par un seuil fixe à 599 px, qui écrasait la valeur
+						 * relevée au lieu de la suivre, et se trompait des deux côtés du seuil.
+						 */
+						const declare = (el.style && el.style.padding) || '';
 						parTitre[(t.textContent || '').replace(/\s+/g, ' ').trim()] = {
-							padding: s.padding,
-							rayon: s.borderRadius,
+							padding: declare || s.padding,
+							rayon: (el.style && el.style.borderRadius) || s.borderRadius,
 							fond: s.backgroundColor,
+							marge_bas: (el.style && el.style.marginBottom) || s.marginBottom,
 						};
 						break;
 					}
@@ -208,6 +220,52 @@ for (const p of PAGES) {
 				majoritaire: trouvees.length > titres.length / 2,
 				parTitre,
 			};
+		};
+
+		/**
+		 * Géométrie de **rangée** d'une bande : ce qui décide du moment où elle passe à une colonne.
+		 *
+		 * Le relevé était fait à 1440 px et le nombre de colonnes figé dans une classe, le thème
+		 * basculant ensuite sur des seuils fixes — deux colonnes sous 900 px, une seule sous 600.
+		 * La maquette ne procède pas ainsi : elle laisse ses rangées se replier **d'elles-mêmes**,
+		 * chaque colonne portant `flex: 1 1 340px`. Le seuil dépend donc de la largeur disponible,
+		 * et non de celle de la fenêtre — c'est pourquoi il varie de 600 à 900 px d'une bande à
+		 * l'autre, et pourquoi aucun seuil global ne peut les reproduire toutes.
+		 *
+		 * À 768 px, la conséquence était nette : la maquette donnait 707 px de large à ses bandes
+		 * de texte, le thème 333, et cinq bandes de la page pilier s'en trouvaient allongées de
+		 * 200 px chacune. Sept routes sur 53 tenaient dans la tolérance à cette largeur.
+		 *
+		 * Le prototype écrit ces valeurs en style en ligne : on les lit, on ne les devine pas.
+		 */
+		const rangeesOf = (sec) => {
+			const parTitre = {};
+			for (const t of sec.querySelectorAll('h2,h3')) {
+				for (let el = t; el && el.parentElement && el !== sec; el = el.parentElement) {
+					const parent = el.parentElement;
+					const ps = getComputedStyle(parent);
+					if (!/grid|flex/.test(ps.display) || parent.children.length < 2) continue;
+					const cs = getComputedStyle(el);
+					/*
+					 * Base de colonne : la valeur **déclarée**, jamais la largeur mesurée — celle-ci
+					 * ne vaut que pour la largeur du relevé. Le prototype emploie deux écritures :
+					 * une rangée en `flex-wrap` dont chaque colonne porte `flex: 1 1 340px`, et une
+					 * grille en `repeat(auto-fit, minmax(min(100%, 280px), 1fr))`. Dans les deux
+					 * cas, c'est ce nombre qui décide du repli, et le repli dépend de la largeur
+					 * disponible — pas de celle de la fenêtre.
+					 */
+					const declareGrille = (parent.style && parent.style.gridTemplateColumns) || '';
+					const m = declareGrille.match(/minmax\(\s*(?:min\([^,]+,\s*)?([\d.]+px)/);
+					const base = m ? m[1] : /^[\d.]+px$/.test(cs.flexBasis) ? cs.flexBasis : '';
+					const mini = /^[\d.]+px$/.test(cs.minWidth) ? cs.minWidth : '';
+					parTitre[(t.textContent || '').replace(/\s+/g, ' ').trim()] = {
+						colonne_min: base || mini || '',
+						gap: ps.gap && ps.gap !== 'normal' ? ps.gap : '',
+					};
+					break;
+				}
+			}
+			return parTitre;
 		};
 
 		/**
@@ -544,6 +602,22 @@ for (const p of PAGES) {
 					premier: enfants[0],
 					enfants,
 					colonnes: Math.min(6, Math.max(1, colonnes)),
+					/*
+					 * Base de colonne déclarée de la grille. Le prototype écrit
+					 * `repeat(auto-fit, minmax(min(100%, 280px), 1fr))` : la grille se replie
+					 * d'elle-même selon la place disponible, et la valeur change d'une grille à
+					 * l'autre — 220 px pour les tâches par espace, 250 pour les fréquences, 280
+					 * pour les blocs de responsabilité. Un nombre de colonnes figé, replié sur des
+					 * seuils de fenêtre communs à toutes les grilles, ne peut pas reproduire cela.
+					 */
+					colonne_min: (() => {
+						const d = (g.style && g.style.gridTemplateColumns) || '';
+						const m = d.match(/minmax\(\s*(?:min\([^,]+,\s*)?([\d.]+px)/);
+						if (m) return m[1];
+						const e0 = enfants[0];
+						const es = e0 ? getComputedStyle(e0) : null;
+						return es && /^[\d.]+px$/.test(es.flexBasis) ? es.flexBasis : '';
+					})(),
 					gap: gs.gap,
 					fond: ks.backgroundColor,
 					rayon: ks.borderTopLeftRadius,
@@ -661,6 +735,7 @@ for (const p of PAGES) {
 			// ensuite retirés du flux, un repère prenant leur place pour conserver l'ordre.
 			const grilles = grillesDeCartes(sec);
 			const cadres = cartesOf(sec, grilles);
+			const rangees = rangeesOf(sec);
 			let nodes = flatten(sec, grilles);
 			if (!nodes.length) return;
 			// Le fil d'Ariane est rendu par le gabarit, pas par le composant générique.
@@ -718,6 +793,8 @@ for (const p of PAGES) {
 				titre: '',
 				niveau: 'h2',
 				carte: '',
+				colonne_min: '',
+				rangee_gap: '',
 				grille: false,
 				colonnes: 1,
 				sequence: [],
@@ -754,6 +831,10 @@ for (const p of PAGES) {
 					cur.niveau = n.t;
 					// Encadrement propre à ce bloc, relevé sur la maquette. Vide = bloc plat.
 					cur.carte = ( cadres && cadres.parTitre && cadres.parTitre[n.v] ) || '';
+					// Repli intrinsèque de la rangée : relevé sur le prototype, pas déduit d'un seuil.
+					const rangee = rangees[n.v] || null;
+					cur.colonne_min = rangee ? rangee.colonne_min : '';
+					cur.rangee_gap = rangee ? rangee.gap : '';
 					/*
 					 * Une bande de la maquette mélange souvent un bloc d'introduction sur toute la
 					 * largeur et une rangée de cartes. Une grille uniforme ne sait pas exprimer cela :

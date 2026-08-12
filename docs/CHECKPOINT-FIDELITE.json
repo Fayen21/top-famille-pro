@@ -5,7 +5,8 @@
   "banc_de_mesure": {
     "avertissement": "Le rig WordPress est hors dépôt et disparaît avec le conteneur. Il faut le remonter au début de chaque session (STATUS.md §11). CONTRÔLE OBLIGATOIRE APRÈS MONTAGE : `wp option get siteurl` doit valoir exactement http://localhost:8901. Une valeur avec un chemin (http://localhost:8901/wp-core) fait répondre 404 à la feuille de style : les pages restent servies, le HTML est correct, et TOUTES les mesures géométriques portent alors sur une page non stylée — polices, marges et interlignes du navigateur par défaut. L'erreur ne se voit sur aucun code HTTP de page.",
     "verification_rapide": "curl -s -o /dev/null -w '%{http_code}' http://localhost:8901/wp-content/themes/topfamillepro/assets/dist/css/main.css → doit valoir 200",
-    "reference_de_non_regression": "#/nettoyage-professionnel à 375 px, avant la passe du 12 août : 330→377 composants, 222 appariés, Σ|ΔH| 7791. Un banc correctement monté reproduit ce chiffre à l'unité."
+    "reference_de_non_regression": "#/nettoyage-professionnel à 375 px, avant la passe du 12 août : 330→377 composants, 222 appariés, Σ|ΔH| 7791. Un banc correctement monté reproduit ce chiffre à l'unité.",
+    "deux_environnements": "Le rig sert deux usages qui n'ont pas le même environnement WordPress. Les MESURES géométriques se font en `production` (valeur par défaut). La SUITE FONCTIONNELLE exige `development` : sans cela le test « la soumission est neutralisée sur cette installation » échoue et six tests de soumission sont ignorés — ce n'est pas une régression du thème. Les hauteurs de page sont identiques dans les deux environnements (vérifié sur quatre routes), la bascule est donc sans effet sur la géométrie. Lancer avec `WP_ENVIRONMENT_TYPE=development php -S localhost:8901` après avoir ajouté au wp-config la lecture de cette variable d'environnement."
   },
   "outillage": {
     "baseline": {
@@ -25,13 +26,39 @@
         "la largeur de lecture se compare sur la largeur utile MESURÉE, plus sur la max-width déclarée"
       ]
     },
-    "breakpoints": { "commande": "node tools/breakpoints.mjs" }
+    "breakpoints": {
+      "commande": "node tools/breakpoints.mjs"
+    }
   },
   "groupes_traites": [
-    { "id": "G01", "selecteur": ".tfp-list-plain li, .tfp-list-marked li", "propriete": "font-size", "correction": "15px / 1.705", "statut": "CORRIGE" },
-    { "id": "G02", "selecteur": ".tfp-detail-item h3 / p", "propriete": "font-size, line-height", "correction": "17px/1.04 et 15px/1.705", "statut": "CORRIGE" },
-    { "id": "G03", "selecteur": ".tfp-detail-grid", "propriete": "gap", "correction": "22px", "statut": "CORRIGE" },
-    { "id": "G04", "selecteur": "template-parts/footer/site-footer.php", "propriete": "occurrence en trop", "correction": "badge Google retiré du pied", "statut": "CORRIGE" },
+    {
+      "id": "G01",
+      "selecteur": ".tfp-list-plain li, .tfp-list-marked li",
+      "propriete": "font-size",
+      "correction": "15px / 1.705",
+      "statut": "CORRIGE"
+    },
+    {
+      "id": "G02",
+      "selecteur": ".tfp-detail-item h3 / p",
+      "propriete": "font-size, line-height",
+      "correction": "17px/1.04 et 15px/1.705",
+      "statut": "CORRIGE"
+    },
+    {
+      "id": "G03",
+      "selecteur": ".tfp-detail-grid",
+      "propriete": "gap",
+      "correction": "22px",
+      "statut": "CORRIGE"
+    },
+    {
+      "id": "G04",
+      "selecteur": "template-parts/footer/site-footer.php",
+      "propriete": "occurrence en trop",
+      "correction": "badge Google retiré du pied",
+      "statut": "CORRIGE"
+    },
     {
       "id": "G05",
       "selecteur": ".tfp-card-tile__desc",
@@ -65,6 +92,27 @@
         "neuf_pages_statiques_x_3_largeurs": "écarts .tfp-card-tile__desc 237 → 48 ; Σ|ΔH| sur les composants communs −5,7 % ; 367 composants rapprochés contre 126 éloignés"
       },
       "statut": "CORRIGE"
+    },
+    {
+      "id": "G06",
+      "selecteur": ".tfp-faq-item / .tfp-faq-item > p",
+      "cause": "la maquette compose la question en 17 px sur 27,54 et la réponse en 15,5 sur 25,11 ; le thème laissait la réponse hériter du texte courant. Rembourrage de l'accordéon : 18 px en vertical, 20 en horizontal.",
+      "controle_responsive": "valeurs vérifiées identiques à 320, 375, 768, 1440 et 1920 px — rien n'est responsive ici, une valeur unique est fidèle.",
+      "effet_mesure": "triplet de contrôle à 375 px : 511 → 490 écarts, Σ|ΔH| 11 198 → 10 516, aucun composant éloigné",
+      "statut": "CORRIGE"
+    },
+    {
+      "id": "G07",
+      "selecteur": ".tfp-static-grid, .tfp-card-grid, .tfp-static-block--carte, .tfp-footer__inner",
+      "titre": "Le repli des rangées et des grilles, et le rembourrage des blocs encadrés",
+      "cause": "Le relevé était fait à 1440 px et figé : nombre de colonnes en classe, rembourrage en pixels. Le thème repliait ensuite sur des seuils de fenêtre communs à tout le site (1099, 819, 599 px). La maquette ne procède pas ainsi : elle déclare `flex: 1 1 340px` sur ses colonnes et `repeat(auto-fit, minmax(min(100%, 280px), 1fr))` sur ses grilles, et laisse le repli se faire selon la place DISPONIBLE — qui n'est pas la largeur de la fenêtre. Le seuil réel varie donc de 600 à 900 px d'une bande à l'autre, et la base de colonne de 150 à 340 px d'une grille à l'autre. Même chose pour le rembourrage des blocs encadrés : `clamp(22px, 3vw, 32px)`, dont le relevé ne gardait que la borne haute.",
+      "consequence_mesuree": "à 768 px, la maquette donnait 707 px de large à ses bandes de texte quand le thème en donnait 333 : cinq bandes de la page pilier allongées de 200 px chacune. C'était le premier groupe du classement à cette largeur, celle où seules 7 routes sur 53 tenaient dans la tolérance.",
+      "correction": "le générateur relève les valeurs DÉCLARÉES par le prototype (style en ligne) au lieu de mesurer un rendu à une largeur ; le thème les pose en variables et se replie par `auto-fit`. Les seuils fixes ne s'appliquent plus qu'aux contenus sans relevé.",
+      "verification": "largeur du bloc « Les professionnels que nous accompagnons » identique à la maquette à 320, 375, 480, 600, 700, 768, 800, 900, 1024, 1440 et 1920 px. Rembourrage du bloc encadré de /zones-intervention/ : 22 / 23,04 / 32 px à 375 / 768 / 1440, comme la maquette.",
+      "effet_mesure": "cinq routes à 768 px : Σ|ΔH| 16 614 → 14 760 après le repli intrinsèque ; propriétés divergentes 1 793 → 1 555 après le rembourrage déclaré. Le cumul de hauteur remonte à 16 162 : des compensations qui s'annulaient sont désormais visibles, ce qui est attendu (voir la leçon de la passe).",
+      "note_securite": "un filtre de longueur CSS strict (tfp_longueur_css) remplace l'ancien, qui effaçait silencieusement les fonctions : `clamp(22px, 3vw, 32px)` devenait « 22px3vw32px ». Le nouveau n'admet que chiffres, unités, séparateurs et les fonctions clamp/min/max/calc/var, refuse la valeur entière au moindre caractère hors jeu, et vérifie l'équilibre des parenthèses.",
+      "statut": "CORRIGE",
+      "pied_de_page": "Le pied est partagé par les 53 routes, et c'est le composant où l'écart de seuil coûtait le plus cher : la maquette passe de quatre colonnes à deux à 1 179 px et de deux à une à 560 px, le thème le faisait à 819 et 479. Entre 480 et 1 180 px, le pied n'avait donc le même nombre de colonnes que la maquette à AUCUNE largeur de contrôle. Son rembourrage est lui aussi une fonction — `clamp(40px, 5.5vw, 56px)` en haut, `clamp(16px, 4vw, 40px)` sur les côtés, 36 px en bas — là où le thème posait 48 / 40 / 32, justes nulle part. Seuils relevés au pixel près par balayage, puis vérifiés des deux côtés à 1920, 1440, 1181, 1179, 1024, 768, 600, 561, 560, 480, 375 et 320 px."
     }
   ],
   "faux_positifs_corriges_dans_outil": [
@@ -87,29 +135,65 @@
       "cause": "appariement par préfixe d'empreinte. Une étiquette de 74 px était appariée au conteneur de bande WordPress tout entier (3 619 px) parce que l'empreinte de celui-ci commence par la sienne — et l'empreinte étant tronquée à 60 caractères, les deux avaient même longueur apparente.",
       "correction": "la longueur entière du texte est relevée ; un appariement est refusé quand le volume diffère de plus du double, et la correspondance par préfixe exige des longueurs comparables",
       "effet": "classement du triplet de routes de contrôle : impact de tête 33 814 → 1 909. 219 appariements au lieu de 227, sans perte d'écart réel (196 dans les deux cas)."
+    },
+    {
+      "id": "FP04",
+      "symptome": "46 occurrences de « écart de grille normal → 12px » sur les micro-cartes, en tête du classement.",
+      "cause": "le `gap` était comparé sans regarder le nombre d'enfants. Le thème le pose sur la tuile pour séparer l'icône du corps ; sur une tuile sans icône, il n'y a qu'un enfant et la valeur ne produit rien.",
+      "correction": "l'écart entre pistes n'est retenu que si au moins un des deux côtés a deux enfants"
     }
   ],
   "prochain_groupe_a_traiter": {
-    "id": "G06",
+    "id": "G08",
     "priorite": 1,
-    "role": "carte",
-    "selecteur": ".tfp-static-block / .tfp-static-block--carte",
-    "propriete": "rembourrage gauche et droit 18px → 0px, puis rembourrage haut et bas 22px → 18px",
-    "occurrences": "18 et 17 sur le triplet de contrôle, en tête du classement une fois les faux positifs écartés",
-    "precaution": "vérifier d'abord le SIGNE : la maquette pose 18 px là où le thème n'en pose aucun sur les blocs plats, et 22 px là où le thème en pose 18 sur les blocs encadrés. Deux archétypes distincts, à ne pas traiter dans le même groupe correctif.",
-    "commande_de_verification": "node tools/composants.mjs --routes='#/nettoyage-professionnel,#/zones-intervention,#/bourgogne-franche-comte' --widths=375"
+    "selecteur": ".tfp-static-block--carte",
+    "propriete": "marge inter-blocs : côté sur lequel elle est posée",
+    "constat": "la maquette pose `margin-bottom: 14px` sur CHAQUE bloc encadré ; le thème pose `margin-top: 14px` entre deux blocs encadrés consécutifs. L'espacement entre deux blocs est donc identique, mais le dernier bloc d'une suite perd ses 14 px, et le relevé signale 15 fois `mBottom 14→0` et 11 fois `mTop 0→14` — deux moitiés d'un même écart.",
+    "correction_pressentie": "poser la marge relevée en `margin-bottom` sur `.tfp-static-block--carte` plutôt qu'en `margin-top` sur `.tfp-static-block--carte + .tfp-static-block--carte`. Vérifier ensuite qu'aucune marge fusionnée n'apparaît avec `.tfp-static-block + .tfp-static-block { margin-top: 36px }`.",
+    "reste_a_instruire": "deux occurrences `mTop 16px→36px` et `mTop 18px→36px` (ΔH +52 et +54) : le thème pose 36 px entre deux blocs statiques quelconques là où la maquette en pose 16 ou 18. Relever le déclaré côté prototype avant de corriger — la valeur peut être une fonction, comme le rembourrage.",
+    "commande_de_verification": "node tools/composants.mjs --routes='#/nettoyage-professionnel,#/zones-intervention,#/bourgogne-franche-comte,#/service/bureaux,#/ville/dijon' --widths=768"
   },
   "groupes_suivants": [
-    { "id": "G07", "selecteur": ".tfp-card-tile--lien", "propriete": "gap normal → 12px, et colonnes 2 → 1", "occurrences": "46 et 23", "remarque": "micro-cartes de liens ; la bascule de colonnes est un seuil responsive propre à l'archétype, à relever avec tools/breakpoints.mjs" },
-    { "id": "G08", "selecteur": ".tfp-card-grid--6", "propriete": "marge haute 0px → 18px", "occurrences": 3 },
-    { "id": "G09", "selecteur": "texte sans classe", "propriete": "taille 15.5px → 17px, interligne 24.8px → 27.54px", "occurrences": "23 et 13", "remarque": "citations de témoignage : le thème les écrit en 17 px, la maquette en 15,5" },
-    { "id": "G10", "selecteur": ".tfp-link-row", "propriete": "font-size, padding, min-height", "maquette": "17px/27.54, pad 0, min-height 0", "theme": "15px/24.3, pad 3px, min-height 24px", "remarque": "min-height 24px pose pour WCAG 2.5.8 — ne pas retirer sans vérifier le critère avec tools/audit-target-size.mjs" },
-    { "id": "G11", "selecteur": ".tfp-google-badge__text", "propriete": "font-size", "maquette": "17px", "theme": "13px", "occurrences": 12 }
+    {
+      "id": "G08bis",
+      "selecteur": "grilles des gabarits zone / prestation / accueil",
+      "propriete": "seuils de repli",
+      "remarque": "tools/breakpoints.mjs sur #/ville/dijon montre quatre conteneurs dont le seuil diffère dans les DEUX sens (maquette 1024 → thème 1200 ; maquette 1100 → thème 1024 ; maquette 768 → thème 1100 ; maquette 600 → thème 900). Ces grilles sont construites par les gabarits, pas par le générateur de pages : elles n'ont pas encore de relevé de base de colonne. Même méthode que G07 — lire la valeur déclarée par le prototype, la poser en variable, replier par auto-fit."
+    },
+    {
+      "id": "G09",
+      "selecteur": ".tfp-static-block",
+      "propriete": "rembourrage gauche/droit 40px → 0px à 1440 px",
+      "occurrences": 9,
+      "remarque": "vérifier d'abord s'il s'agit d'un décalage de niveau dans la chaîne de conteneurs : l'outil ne retient plus ces écarts que sur un composant encadré ou quand la largeur utile diffère, donc ceux-ci sont réels"
+    },
+    {
+      "id": "G10",
+      "selecteur": "titre sans classe",
+      "propriete": "marge basse 0px → 8px",
+      "occurrences": 59,
+      "remarque": "nombreux mais de faible amplitude ; à traiter par archétype de titre"
+    },
+    {
+      "id": "G11",
+      "selecteur": ".tfp-link-row",
+      "propriete": "font-size, padding, min-height",
+      "remarque": "min-height 24px posé pour WCAG 2.5.8 — vérifier avec tools/audit-target-size.mjs avant de toucher"
+    },
+    {
+      "id": "G12",
+      "selecteur": ".tfp-google-badge__text",
+      "propriete": "font-size 17px → 13px",
+      "occurrences": 12
+    }
   ],
   "avertissement_methode": "Le classement par impact attribue le delta de hauteur du composant à CHACUNE de ses propriétés divergentes. Une propriété peut donc figurer haut sans être la cause. Toujours : (1) établir le signe du delta ; (2) vérifier la largeur utile et le nombre de lignes avant la typographie — un repli différent explique à lui seul des écarts de 24 px et fait dépasser la cible si l'on corrige la police d'abord ; (3) simuler avec --surcharge avant d'écrire dans le thème ; (4) mesurer l'effet réel et le comparer à l'effet attendu.",
   "lecon_de_la_passe": "Deux erreurs de sens opposé se compensaient sur les cartes : 38 px de largeur utile en moins faisaient replier une ligne de plus, et une typographie plus petite raccourcissait chaque ligne. La hauteur totale paraissait presque juste. Corriger l'une sans l'autre DÉGRADE la mesure globale — c'est attendu, et ce n'est pas une raison de s'arrêter.",
   "etat_318_controles": {
-    "avant_la_passe_du_12_aout": { "dans_95_105": 200, "sur": 318 },
+    "avant_la_passe_du_12_aout": {
+      "dans_95_105": 200,
+      "sur": 318
+    },
     "apres": "non remesuré — la baseline complète (45 min) reste à rejouer"
   },
   "chantiers_non_ouverts": [
@@ -119,5 +203,6 @@
     "reconstruction des exports",
     "reconstruction des captures",
     "Lighthouse final 14 mesures"
-  ]
+  ],
+  "methode_relevé_responsive": "Leçon générale de G07 : le prototype écrit ses valeurs responsives en style en ligne (`clamp()`, `flex: 1 1 Npx`, `repeat(auto-fit, minmax(min(100%, Npx), 1fr))`). Les RELEVER telles quelles vaut toujours mieux que mesurer un rendu à une largeur puis reconstruire un seuil : la valeur déclarée est juste à toutes les largeurs, un seuil reconstruit est faux des deux côtés du point de bascule. Avant de figer une mesure, vérifier `element.style` sur le prototype."
 }

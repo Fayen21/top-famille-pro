@@ -411,6 +411,47 @@ function tfp_card_image_slug( $titre, $route ) {
 }
 
 /**
+ * Filtre une longueur CSS **relevée sur le prototype**, avant de la poser en variable.
+ *
+ * La valeur vient de la base de données : rien n'y entre sans être vérifié. Le filtre précédent
+ * n'acceptait que chiffres, unités et espaces ; il effaçait donc silencieusement les fonctions
+ * que le prototype emploie réellement — `clamp(22px, 3vw, 32px)` devenait « 22px3vw32px ». Le
+ * relevé perdait la responsivité de la maquette, et le thème la remplaçait par des seuils fixes
+ * qui se trompaient des deux côtés du point de bascule.
+ *
+ * Sont admis : chiffres, unités, séparateurs, et les seules fonctions de calcul de longueur.
+ * Tout le reste — `url(`, `expression(`, `;`, `}`, `<` — fait rejeter la valeur entière plutôt
+ * que d'en garder un fragment : une longueur à demi filtrée n'a aucun sens, et la variable non
+ * posée retombe simplement sur le repli écrit dans la feuille de style.
+ *
+ * @param mixed $v Valeur relevée.
+ * @return string Longueur utilisable, ou chaîne vide.
+ */
+function tfp_longueur_css( $v ) {
+	$v = trim( (string) $v );
+	if ( '' === $v || strlen( $v ) > 120 ) {
+		return '';
+	}
+	// Jeu de caractères admis : rien qui puisse fermer une déclaration ou une balise.
+	if ( preg_match( '/[^0-9a-zA-Z%.,()\/\s+*-]/', $v ) ) {
+		return '';
+	}
+	// Seules ces fonctions calculent une longueur ; toute autre suite « nom( » est refusée.
+	if ( preg_match_all( '/([a-zA-Z-]+)\s*\(/', $v, $m ) ) {
+		foreach ( $m[1] as $fonction ) {
+			if ( ! in_array( strtolower( $fonction ), array( 'clamp', 'min', 'max', 'calc', 'var' ), true ) ) {
+				return '';
+			}
+		}
+	}
+	// Parenthèses équilibrées : une valeur tronquée casserait la déclaration suivante.
+	if ( substr_count( $v, '(' ) !== substr_count( $v, ')' ) ) {
+		return '';
+	}
+	return $v;
+}
+
+/**
  * Grille de micro-cartes relevée sur la maquette.
  *
  * C'est le composant qui manquait, et son absence était **structurelle** : le générateur réduisait
@@ -449,10 +490,7 @@ function tfp_card_grid( array $grille ) {
 	 * Les valeurs sont filtrées : seuls chiffres, unités et espaces passent, jamais une chaîne
 	 * arbitraire venue de la base.
 	 */
-	$px       = static function ( $v ) {
-		$v = preg_replace( '/[^0-9a-z%. ]/i', '', (string) $v );
-		return trim( $v );
-	};
+	$px       = 'tfp_longueur_css';
 	$vars     = array();
 	$mesures = array(
 		'padding'         => '--tfp-tuile-padding',
@@ -464,6 +502,15 @@ function tfp_card_grid( array $grille ) {
 		'desc_taille'     => '--tfp-tuile-desc',
 		'desc_interligne' => '--tfp-tuile-desc-lh',
 		'desc_marge'      => '--tfp-tuile-desc-mt',
+		/*
+		 * Base de colonne déclarée par le prototype. La grille se replie **d'elle-même** quand la
+		 * place manque, comme la maquette : `repeat(auto-fit, minmax(min(100%, 280px), 1fr))`. Le
+		 * thème repliait auparavant sur des seuils de fenêtre communs à toutes les grilles —
+		 * trois colonnes sous 1100 px, deux sous 820, une sous 600 — alors que la maquette emploie
+		 * 150 à 340 px selon la grille, et se replie selon la largeur **disponible**, qui n'est
+		 * pas celle de la fenêtre : une grille dans une colonne étroite se replie plus tôt.
+		 */
+		'colonne_min'     => '--tfp-grille-colonne',
 	);
 	foreach ( $mesures as $cle => $var ) {
 		$valeur = $px( $grille[ $cle ] ?? '' );

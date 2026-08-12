@@ -428,7 +428,15 @@ function ecarts(paires, route, famille, largeur) {
 		 */
 		const cadre = /carte|pastille|media/.test(a.role) || /carte|pastille|media/.test(b.role);
 		const memeLargeurUtile = Math.abs(b.wUtile - a.wUtile) <= 8;
+		/*
+		 * Un écart entre pistes ne se voit qu'entre deux enfants. Le thème pose `gap: 12px` sur la
+		 * tuile pour séparer l'icône du corps ; sur une tuile sans icône, elle n'a qu'un enfant et
+		 * la valeur ne produit rien. Comparée quand même, elle formait le premier groupe de
+		 * micro-cartes du classement — 46 occurrences pour un écart inexistant.
+		 */
+		const unSeulEnfant = a.enfants < 2 && b.enfants < 2;
 		for (const [cle, seuil, libelle] of PROPRIETES) {
+			if ((cle === 'rowGap' || cle === 'colGap') && unSeulEnfant) continue;
 			if ((cle === 'padLeft' || cle === 'padRight') && memeLargeurUtile && !cadre) continue;
 			const va = px(a[cle]);
 			const vb = px(b[cle]);
