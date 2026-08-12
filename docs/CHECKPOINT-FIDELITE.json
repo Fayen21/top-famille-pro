@@ -219,8 +219,8 @@
     "classement des 129 occurrences surplus/colonnes restantes",
     "CLS bureau 0,028 -> cible 0,010",
     "reconstruction des exports",
-    "reconstruction des captures",
-    "Lighthouse final 14 mesures"
+    "Lighthouse final 14 mesures",
+    "reconstruction des captures — chantier ENTIER, à ne pas faire par morceaux. `tests/screenshots.spec.js` produit une centaine d'images ; une exécution interrompue en laisse quelques-unes régénérées et le reste périmé, et le jeu committé montre alors certaines pages corrigées et d'autres non. Dix images de ce type ont été rétablies à leur version d'origine à la clôture de cette passe plutôt que committées."
   ],
   "methode_relevé_responsive": "Leçon générale de G07 : le prototype écrit ses valeurs responsives en style en ligne (`clamp()`, `flex: 1 1 Npx`, `repeat(auto-fit, minmax(min(100%, Npx), 1fr))`). Les RELEVER telles quelles vaut toujours mieux que mesurer un rendu à une largeur puis reconstruire un seuil : la valeur déclarée est juste à toutes les largeurs, un seuil reconstruit est faux des deux côtés du point de bascule. Avant de figer une mesure, vérifier `element.style` sur le prototype.",
   "controles_de_la_passe": {
