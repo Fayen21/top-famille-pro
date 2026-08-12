@@ -241,6 +241,11 @@ if ( '' !== $horaires ) {
 			?>
 			<form class="tfp-contact-form" method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" novalidate<?php echo tfp_contact_mail_disabled() ? ' data-tfp-mail-disabled="1"' : ''; ?>>
 				<input type="hidden" name="action" value="tfp_submit_contact">
+				<?php
+				// Jeton propre à cet envoi : il rattache la saisie conservée à cette tentative-ci,
+				// et non à l'adresse IP, que deux visiteurs peuvent partager.
+				?>
+				<input type="hidden" name="tfp_contact_ticket" value="<?php echo esc_attr( wp_generate_password( 12, false, false ) ); ?>">
 				<?php wp_nonce_field( 'tfp_contact_submit', 'tfp_contact_nonce' ); ?>
 
 				<?php

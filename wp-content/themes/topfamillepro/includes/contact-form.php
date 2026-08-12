@@ -126,8 +126,18 @@ function tfp_handle_contact_submission() {
 	}
 
 	if ( $erreurs ) {
-		set_transient( 'tfp_contact_err_' . md5( $ip ), array( 'erreurs' => $erreurs, 'valeurs' => $champs ), 5 * MINUTE_IN_SECONDS );
-		wp_safe_redirect( add_query_arg( 'contact', 'erreur', $retour ) . '#formulaire-contact' );
+		/*
+		 * La saisie conservée est rattachée à un **jeton propre à cet envoi**, pas à l'adresse IP.
+		 *
+		 * Rattachée à l'IP, elle se mélangeait dès que deux envois se croisaient depuis la même
+		 * adresse — deux collègues derrière la même sortie internet, ou simplement deux onglets. Le
+		 * second envoi écrasait la saisie du premier, qui retrouvait au retour les valeurs de
+		 * quelqu'un d'autre. Le jeton fait le tour par l'URL de retour : chaque tentative retrouve
+		 * exactement la sienne.
+		 */
+		$jeton = sanitize_key( wp_unslash( $_POST['tfp_contact_ticket'] ?? '' ) ) ?: wp_generate_password( 12, false, false );
+		set_transient( 'tfp_contact_err_' . $jeton, array( 'erreurs' => $erreurs, 'valeurs' => $champs ), 5 * MINUTE_IN_SECONDS );
+		wp_safe_redirect( add_query_arg( array( 'contact' => 'erreur', 'tfpt' => $jeton ), $retour ) . '#formulaire-contact' );
 		exit;
 	}
 
@@ -169,8 +179,11 @@ add_action( 'admin_post_tfp_submit_contact', 'tfp_handle_contact_submission' );
  * @return array{erreurs: array<string,string>, valeurs: array<string,mixed>}
  */
 function tfp_contact_previous_attempt() {
-	$ip  = isset( $_SERVER['REMOTE_ADDR'] ) ? sanitize_text_field( wp_unslash( $_SERVER['REMOTE_ADDR'] ) ) : '';
-	$cle = 'tfp_contact_err_' . md5( $ip );
+	$jeton = isset( $_GET['tfpt'] ) ? sanitize_key( wp_unslash( $_GET['tfpt'] ) ) : '';
+	if ( '' === $jeton ) {
+		return array( 'erreurs' => array(), 'valeurs' => array() );
+	}
+	$cle = 'tfp_contact_err_' . $jeton;
 	$don = get_transient( $cle );
 	if ( ! is_array( $don ) ) {
 		return array( 'erreurs' => array(), 'valeurs' => array() );
