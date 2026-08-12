@@ -3220,20 +3220,27 @@ body.tfp-body a.tfp-card-tile:focus-visible {
   color: var(--color-text-secondary);
 }
 
-/* Accordéon de FAQ d'une bande statique — même géométrie que celle relevée sur la maquette
-   (rayon 12, question en 17 px/600), posée en classe plutôt qu'en style en ligne. */
+/* Accordéon de FAQ d'une bande statique — géométrie relevée sur la maquette, et vérifiée
+   identique à 320, 375, 768, 1440 et 1920 px : rien ici n'est responsive, la valeur unique est
+   donc fidèle. La question est en 17 px sur 27,54 ; la réponse en 15,5 sur 25,11, et non dans la
+   taille courante du texte — l'écart faisait 8 à 33 px par réponse, sur les dix questions de la
+   page pilier. Le rembourrage horizontal est de 20 px, contre 18 en vertical. */
 .tfp-faq-item {
   margin-bottom: 10px;
+  padding: 18px 20px;
 }
 
 .tfp-faq-item > summary {
   font-weight: var(--fw-semibold);
   font-size: 17px;
+  line-height: 27.54px;
   cursor: pointer;
 }
 
 .tfp-faq-item > p {
   margin-top: 12px;
+  font-size: 15.5px;
+  line-height: 25.11px;
   color: var(--color-text-secondary);
 }
 

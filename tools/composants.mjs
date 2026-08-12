@@ -400,6 +400,8 @@ const PROPRIETES = [
 	['colGap', 2, 'écart horizontal de grille'],
 	['padTop', 2, 'rembourrage haut'],
 	['padBottom', 2, 'rembourrage bas'],
+	// Rembourrages horizontaux : voir le filtre ci-dessous, ils ne sont retenus que là où ils se
+	// voient. Le seuil et le libellé restent définis ici.
 	['padLeft', 3, 'rembourrage gauche'],
 	['padRight', 3, 'rembourrage droit'],
 	['mTop', 3, 'marge haute'],
@@ -416,9 +418,20 @@ function ecarts(paires, route, famille, largeur) {
 	for (const [a, b] of paires) {
 		const dh = b.h - a.h;
 		const props = [];
+		/*
+		 * Un rembourrage horizontal ne se voit que de deux façons : par la largeur qu'il laisse au
+		 * texte, ou par la distance entre un fond et son contenu. Quand la largeur utile est la
+		 * même des deux côtés et que le composant n'a ni fond ni filet, la différence de
+		 * rembourrage dit seulement que la maquette et le thème la posent à des niveaux différents
+		 * d'une chaîne de conteneurs équivalente. C'était le premier groupe du classement — 18
+		 * occurrences sur la page pilier — pour un écart que rien ne rend visible.
+		 */
+		const cadre = /carte|pastille|media/.test(a.role) || /carte|pastille|media/.test(b.role);
+		const memeLargeurUtile = Math.abs(b.wUtile - a.wUtile) <= 8;
 		for (const [cle, seuil, libelle] of PROPRIETES) {
+			if ((cle === 'padLeft' || cle === 'padRight') && memeLargeurUtile && !cadre) continue;
 			const va = px(a[cle]);
-            const vb = px(b[cle]);
+			const vb = px(b[cle]);
 			if (Math.abs(vb - va) > seuil) props.push({ propriete: cle, libelle, ref: a[cle], wp: b[cle], delta: Math.round((vb - va) * 10) / 10 });
 		}
 		/*
