@@ -128,6 +128,26 @@ for (const largeur of LARGEURS) {
 	await ref.waitForTimeout(5500);
 
 	const wp = await navigateur.newPage({ viewport: { width: largeur, height: 900 } });
+
+	/*
+	 * Observateur de décalage cumulé, enregistré **une fois par page** — et non à chaque route.
+	 *
+	 * `addInitScript` s'ajoute, il ne remplace pas : appelé dans la boucle, il faisait injecter à
+	 * la cinquante-troisième route cinquante-trois copies du script, donc cinquante-trois
+	 * observateurs, sur chaque chargement. Le relevé partait à dix secondes par contrôle et
+	 * tombait à trois ou quatre minutes ; les 318 contrôles demandaient plus de vingt heures au
+	 * lieu d'une demi-heure, et la lenteur se lisait comme une faiblesse du banc.
+	 *
+	 * Enregistré ici, le script s'exécute toujours à chaque navigation — c'est ce que fait
+	 * `addInitScript` — et `window.__cls` repart donc bien de zéro à chaque route.
+	 */
+	await wp.addInitScript(() => {
+		window.__cls = 0;
+		new PerformanceObserver((l) => {
+			for (const e of l.getEntries()) if (!e.hadRecentInput) window.__cls += e.value;
+		}).observe({ type: 'layout-shift', buffered: true });
+	});
+
 	// Erreurs console et réseau : une page qui « a la bonne hauteur » mais jette une erreur
 	// JavaScript n'est pas conforme (CLAUDE.md §10).
 	let erreursConsole = [];
@@ -146,12 +166,6 @@ for (const largeur of LARGEURS) {
 
 		erreursConsole = [];
 		erreursReseau = [];
-		await wp.addInitScript(() => {
-			window.__cls = 0;
-			new PerformanceObserver((l) => {
-				for (const e of l.getEntries()) if (!e.hadRecentInput) window.__cls += e.value;
-			}).observe({ type: 'layout-shift', buffered: true });
-		});
 		await wp.goto(WP + ROUTE_MAP[hash].wp, { waitUntil: 'networkidle', timeout: 60000 });
 		await wp.evaluate(STABILISER);
 		const b = await wp.evaluate(RELEVE);
