@@ -160,11 +160,10 @@
   "prochain_groupe_a_traiter": {
     "id": "G09",
     "priorite": 1,
-    "selecteur": ".tfp-card-tile (toutes variantes)",
-    "propriete": "écart de grille : maquette `normal`, thème 12px",
-    "occurrences": "75 à 768 px sur cinq routes, en tête du classement",
-    "constat": "la tuile du thème est un conteneur flex avec `gap: 12px` pour séparer l'icône du corps ; la maquette la compose en bloc. Les deltas de hauteur sont FAIBLES (0 à 4 px sur la plupart des occurrences) — c'est le nombre d'occurrences qui hisse le groupe en tête, pas son amplitude. Vérifier d'abord si l'écart a un effet horizontal (icône à côté du texte contre au-dessus) avant de conclure : si l'effet est nul des deux côtés, c'est un sixième faux positif à corriger dans l'outil, pas dans le thème.",
-    "commande_de_verification": "node tools/composants.mjs --routes='#/nettoyage-professionnel,#/zones-intervention,#/bourgogne-franche-comte,#/service/bureaux,#/ville/dijon' --widths=768"
+    "titre": "768 px : les grilles des gabarits n'ont pas de base de colonne relevée",
+    "constat": "5 routes sur 53 dans la tolérance à 768 px, contre 38 à 41 aux autres largeurs. G07 a posé le repli intrinsèque sur les pages statiques ; les gabarits zone, prestation et accueil construisent leurs grilles eux-mêmes et gardent des seuils de fenêtre fixes.",
+    "methode": "celle de G07, qui a fonctionné : lire la valeur DÉCLARÉE par le prototype (`flex: 1 1 Npx`, `repeat(auto-fit, minmax(min(100%, Npx), 1fr))`, `clamp()`), la poser en variable, replier par auto-fit. Relever les seuils réels avec tools/breakpoints.mjs avant de toucher quoi que ce soit.",
+    "commande_de_verification": "node tools/breakpoints.mjs '#/ville/dijon' /zones-intervention/cote-dor/dijon/ puis node tools/composants.mjs --routes='#/ville/dijon,#/service/bureaux,#/' --widths=768"
   },
   "groupes_suivants": [
     {
@@ -208,18 +207,21 @@
   "avertissement_methode": "Le classement par impact attribue le delta de hauteur du composant à CHACUNE de ses propriétés divergentes. Une propriété peut donc figurer haut sans être la cause. Toujours : (1) établir le signe du delta ; (2) vérifier la largeur utile et le nombre de lignes avant la typographie — un repli différent explique à lui seul des écarts de 24 px et fait dépasser la cible si l'on corrige la police d'abord ; (3) simuler avec --surcharge avant d'écrire dans le thème ; (4) mesurer l'effet réel et le comparer à l'effet attendu.",
   "lecon_de_la_passe": "Deux erreurs de sens opposé se compensaient sur les cartes : 38 px de largeur utile en moins faisaient replier une ligne de plus, et une typographie plus petite raccourcissait chaque ligne. La hauteur totale paraissait presque juste. Corriger l'une sans l'autre DÉGRADE la mesure globale — c'est attendu, et ce n'est pas une raison de s'arrêter.",
   "etat_318_controles": {
-    "verdict_sur_la_lenteur": "RÉSOLU, et l'explication n'était pas dans le code. Un chronomètre posé DANS le processus donne 2 300 à 3 600 ms par contrôle, toutes phases attribuées, zéro temps inexpliqué — moyenne mesurée sur les premiers contrôles : 3 074 ms. Le relevé complet ne demande donc qu'un quart d'heure de calcul. Ce qui l'interrompait : le conteneur de travail REDÉMARRE à intervalles irréguliers et emporte tout processus long, et l'horloge de ce bac à sable est fausse — `date +%s` y rend vingt-trois secondes là où plusieurs minutes se sont écoulées, ce qui faisait lire une lenteur là où il n'y avait qu'une interruption. Trois passes s'y sont usées.",
-    "outil_rendu_reprenable": "`tools/baseline.mjs` écrit son résultat après CHAQUE contrôle et accepte `--resume`, qui repart d'un fichier existant en sautant ce qui s'y trouve. Un redémarrage ne coûte plus qu'un contrôle. S'y ajoutent `--lot=N` (ferme et rouvre le navigateur toutes les N routes, un seul Chromium vivant à la fois), `--routes-file`, et `--chrono` qui détaille les phases.",
-    "commande_de_reprise": "node tools/baseline.mjs --sortie=docs/baseline-2026-08-12.json --resume --lot=10 — à relancer jusqu'à ce que le résumé annonce 318/318. Le résumé dit explicitement ce qui manque et ne compte plus les contrôles attendus comme s'ils étaient faits.",
-    "superviseur": "Une boucle de relance automatique tient en dix lignes de shell : appeler la commande ci-dessus, compter les contrôles du JSON, recommencer tant que le compte est inférieur à 318. C'est ce qui a été employé ici.",
-    "avancement_a_la_cloture": "relevé en cours, écrit dans docs/baseline-2026-08-12.json. Reprendre avec la commande ci-dessus.",
-    "reference_precedente": {
-      "avant_la_passe_du_12_aout": {
-        "dans_95_105": 200,
-        "sur": 318
-      },
-      "releve_partiel_320px": "50 contrôles, 41 dans la tolérance, 0 débordement — à confirmer par le relevé complet."
-    }
+    "resultat": "318/318 OBTENUS, en un seul passage, sur docs/baseline-2026-08-12.json (versionné avec `git add -f`). Le verrou de trois passes est levé.",
+    "synthese": "189 contrôles sur 318 dans la tolérance 95-105 % · 0 débordement · 0 image cassée · 0 CTA hors écran · 0 erreur console ou réseau, sur les 53 routes aux six largeurs.",
+    "par_largeur": {
+      "320": "41/53",
+      "375": "27/53",
+      "768": "5/53",
+      "1024": "38/53",
+      "1440": "39/53",
+      "1920": "39/53"
+    },
+    "lecture": "768 px reste de très loin la largeur la moins fidèle — 5 routes sur 53 — malgré le repli intrinsèque posé en G07. C'est LE chantier suivant, et il concerne les gabarits (zone, prestation, accueil) dont les grilles n'ont pas encore de base de colonne relevée, pas les pages statiques qui l'ont. 375 px vient ensuite avec 27/53.",
+    "hors_tolerance_a_768": "136 % politique-de-confidentialite, 127 % mentions-legales, 116 % gestion-des-cookies (les trois pages légales, exception prévue) ; puis 120 % contact, 119 % nos-tarifs, 117 % et 115 % les départements, 116 % les trois articles.",
+    "ecarts_de_bandes": "18 contrôles seulement, soit 3 routes à chacune des six largeurs — contre 35 routes à 320 px avant le correctif de la FAQ. Les trois restantes sont les articles, dont le corps n'est pas sectionné : faux positif du compteur, déjà instruit.",
+    "CLS": "107 contrôles au-dessus de 0,010, concentrés sur 1440 et 1920 px (0,018 à 0,026). Rappel : cette mesure fait défiler toute la page et majore structurellement le CLS ; le chiffre qui fait foi est celui de Lighthouse. À instruire après la géométrie, en commençant par 1440 px où le déplacement est le plus marqué.",
+    "commande": "node tools/baseline.mjs --sortie=docs/baseline-<date>.json --resume --lot=10 — relancer jusqu'à 318/318 ; le fichier s'écrit après chaque contrôle et la reprise ne recommence rien."
   },
   "chantiers_non_ouverts": [
     "rejouer les 318 contrôles de baseline",
