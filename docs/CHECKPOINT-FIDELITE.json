@@ -242,5 +242,20 @@
     "cause": "`RELEVE` compte les `:scope > section` sous l'ancêtre du h1. Le thème rend le corps d'article en flux continu, hors de tout `<section>` : le `<h2>` « Ce qui détermine la bonne fréquence » a bien un `closest('section')` NUL. Le contenu est là, la sectionnation ne l'est pas.",
     "consequence": "ne pas chercher à ajouter du contenu sur ces pages. Deux suites possibles, à trancher à la mesure : soit sectionner le corps d'article comme la maquette (fidélité sémantique), soit apprendre au compteur à reconnaître une bande non sectionnée. La seconde est la moins risquée ; la première est plus fidèle. Aucune ne relève de la hauteur.",
     "statut": "FAUX_POSITIF_CORRIGÉ_DANS_OUTIL — à appliquer : le compteur doit être corrigé, ce n'est pas encore fait."
+  },
+  "bande_manquante_trouvee": {
+    "verdict": "UNE BANDE RÉELLEMENT MANQUANTE, trouvée et corrigée : la FAQ des pages de prestation.",
+    "constat": "la maquette pose une bande « Questions fréquentes — {prestation} » de 1 042 px à 320 px ; le rendu WordPress n'avait ni « Questions fréquentes », ni un seul `<details>`, ni aucune classe `tfp-faq`. Six pages concernées, et l'écart de bandes 13→12 relevé sur toutes.",
+    "cause": "`tfp_get_faq_items()` rendait un tableau vide dès que `get_field()` n'existait pas, c'est-à-dire dès qu'ACF n'est pas installé. Tous les autres accesseurs du thème retombent sur `get_post_meta()` — celui-ci était le seul à ne pas le faire, alors que le projet exige que le thème fonctionne sans ACF. Les questions et leurs réponses étaient bien en base, sous `faq_1` à `faq_8`, et le gabarit était prêt.",
+    "correction": "repli `get_post_meta()` ajouté, comme les accesseurs voisins. La FAQ s'affiche, et le `FAQPage` est désormais émis — à bon droit, puisque la FAQ est réellement visible (CLAUDE.md §8). Auparavant le gabarit n'en émettait aucun, ce qui était correct mais masquait le défaut.",
+    "a_verifier_ensuite": "les pages de département montrent 10→9 : vérifier si la même FAQ leur manque (single-zone.php emploie le même accesseur). Contrôler aussi que le `FAQPage` n'apparaît QUE là où la FAQ est visible, avec tools/audit-jsonld.mjs.",
+    "statut": "CORRIGÉE"
+  },
+  "releve_320px": {
+    "date": "12 août 2026, après les correctifs G05 à G08",
+    "resultat": "53 contrôles · 41 dans 95-105 % · 0 débordement · 0 image cassée · 0 CTA hors écran · 0 erreur console ou réseau",
+    "hors_tolerance": "141 % politique-de-confidentialite, 130 % mentions-legales, 126 % gestion-des-cookies (les trois pages légales — exception prévue, contenu légal absent de la maquette), puis 121 % contact, 117 % et 113 % ×3 les articles et l'index conseils, 112 % nos-tarifs, 111 % pourquoi-nous, 107 % nettoyage-professionnel, 106 % recrutement.",
+    "CLS": "une seule route au-dessus de 0,01 : #/demande-de-devis à 0,0139. La valeur de 0,668 annoncée par la passe précédente était un ARTEFACT des observateurs de décalage accumulés — le correctif `addInitScript` a donc bien servi, non à la vitesse mais à la justesse de la mesure. 0,0139 reste au-dessus de la cible de 0,010, mais l'anomalie n'a plus rien de prioritaire.",
+    "ecarts_de_bandes": "35 routes. Trois causes distinctes : la FAQ absente des prestations (corrigée), le corps d'article non sectionné (faux positif du compteur), et les départements 10→9 (à instruire)."
   }
 }
