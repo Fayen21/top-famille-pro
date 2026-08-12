@@ -135,23 +135,63 @@ for (const p of PAGES) {
 		 * Sans ce relevé, /nettoyage-professionnel/ rendait 40 cartes de la maquette en texte nu,
 		 * /zones-intervention/ 18, la page région 31 : à hauteur voisine, l'écran n'avait rien à voir.
 		 */
-		const cartesOf = (sec) => {
-			const titres = [...sec.querySelectorAll('h2,h3')];
+		const cartesOf = (sec, grilles = []) => {
+			/*
+			 * Les intitulés qui appartiennent à une **tuile de grille** ne votent pas.
+			 *
+			 * Ils trouvent forcément un ancêtre arrondi et encadré — leur propre tuile — et la
+			 * majorité bascule alors sur « bande en cartes ». La bande recevait ainsi un second
+			 * encadrement, autour de cartes qui en portaient déjà un : une carte dans une carte,
+			 * absente de la référence. Le coût n'était pas décoratif. Ce cadre ajoutait 18 px de
+			 * rembourrage et un filet de chaque côté, soit **38 px de largeur utile en moins** :
+			 * à 375 px, la description d'une tuile se repliait sur une ligne de plus que la
+			 * maquette, et l'écart de hauteur qui en résultait était ensuite compensé par une
+			 * typographie plus petite. Deux erreurs qui s'annulaient à peu près, et qu'aucune
+			 * mesure de hauteur seule ne pouvait distinguer.
+			 *
+			 * Les grilles sont relevées avant, par grillesDeCartes() : leurs tuiles sont donc
+			 * connues ici, et le composant de grille les rend déjà en cartes.
+			 */
+			const tuiles = new Set();
+			for (const g of grilles) for (const c of g.enfants || []) tuiles.add(c);
+			const dansTuile = (el) => {
+				for (let n = el; n && n !== sec; n = n.parentElement) if (tuiles.has(n)) return true;
+				return false;
+			};
+
+			const titres = [...sec.querySelectorAll('h2,h3')].filter((t) => !dansTuile(t));
 			if (!titres.length) return null;
 			const trouvees = [];
+			/*
+			 * L'encadrement se relève **bloc par bloc**, et non pour la bande entière.
+			 *
+			 * La règle de majorité ne sait pas exprimer ce que la maquette fait couramment : une
+			 * bande où un seul bloc est encadré — un encart turquoise au milieu de texte suivi.
+			 * Avec un encadré sur deux blocs, la majorité tranchait « bande plate » et l'encart
+			 * disparaissait ; avec deux sur trois, elle encadrait aussi le bloc qui ne l'est pas.
+			 * Chaque bloc porte donc sa propre réponse, et la valeur de bande ne subsiste que comme
+			 * repli pour les contenus produits avant ce relevé.
+			 */
+			const parTitre = {};
 			for (const t of titres) {
 				for (let el = t.parentElement; el && el !== sec; el = el.parentElement) {
+					if (tuiles.has(el)) break;
 					const s = getComputedStyle(el);
 					if (
 						parseFloat(s.borderRadius) >= 8 &&
 						(parseFloat(s.borderTopWidth) > 0 || s.backgroundColor !== 'rgba(0, 0, 0, 0)')
 					) {
 						trouvees.push(s);
+						parTitre[(t.textContent || '').replace(/\s+/g, ' ').trim()] = {
+							padding: s.padding,
+							rayon: s.borderRadius,
+							fond: s.backgroundColor,
+						};
 						break;
 					}
 				}
 			}
-			if (trouvees.length <= titres.length / 2) return null;
+			if (!trouvees.length) return null;
 			// La géométrie est relevée sur la carte réelle, pas supposée : le rembourrage varie de
 			// 16 à 32 px selon la bande, et poser 32 partout allongeait /nettoyage-professionnel/
 			// de 15 %. Le mode le plus fréquent l'emporte.
@@ -160,7 +200,14 @@ for (const p of PAGES) {
 				for (const s of trouvees) m.set(s[cle], (m.get(s[cle]) || 0) + 1);
 				return [...m.entries()].sort((a, b) => b[1] - a[1])[0][0];
 			};
-			return { padding: mode('padding'), rayon: mode('borderRadius'), fond: mode('backgroundColor') };
+			return {
+				padding: mode('padding'),
+				rayon: mode('borderRadius'),
+				fond: mode('backgroundColor'),
+				// Majoritaire : conservé pour les consommateurs qui lisent encore la valeur de bande.
+				majoritaire: trouvees.length > titres.length / 2,
+				parTitre,
+			};
 		};
 
 		/**
@@ -260,11 +307,38 @@ for (const p of PAGES) {
 					const enLigne = /^inline/.test(s.display);
 					const contenu = txt(c);
 					if (!contenu) continue;
+					/*
+					 * Une liste dans une carte reste une liste.
+					 *
+					 * Elle était relevée comme un bloc de texte parmi d'autres, donc rendue en un
+					 * seul paragraphe où les items se touchaient : « Postes de travail & mobilierSols
+					 * : aspiration et lavageSanitaires & réapprovisionnement ». Ce n'est pas
+					 * seulement une différence de géométrie — le texte devient illisible, et la
+					 * carte tient sur quatre lignes là où la maquette en pose une par item.
+					 */
+					if ((t === 'ul' || t === 'ol') && c.querySelectorAll(':scope > li').length >= 2) {
+						const items = [...c.querySelectorAll(':scope > li')].map((li) => txt(li)).filter(Boolean);
+						if (items.length >= 2) {
+							morceaux.push({
+								texte: items.join(' · '),
+								items,
+								tag: t,
+								taille: parseFloat(s.fontSize) || 0,
+								interligne: s.lineHeight,
+								marge: s.marginTop,
+								graisse: parseInt(s.fontWeight, 10) || 400,
+								majuscules: false,
+							});
+							continue;
+						}
+					}
 					if (!enLigne) {
 						morceaux.push({
 							texte: contenu,
 							tag: t,
 							taille: parseFloat(s.fontSize) || 0,
+							interligne: s.lineHeight,
+							marge: s.marginTop,
 							graisse: parseInt(s.fontWeight, 10) || 400,
 							majuscules: s.textTransform === 'uppercase',
 						});
@@ -282,6 +356,8 @@ for (const p of PAGES) {
 							texte: propre,
 							tag: t,
 							taille: parseFloat(s.fontSize) || 0,
+							interligne: s.lineHeight,
+							marge: s.marginTop,
 							graisse: parseInt(s.fontWeight, 10) || 400,
 							majuscules: s.textTransform === 'uppercase',
 						});
@@ -319,7 +395,8 @@ for (const p of PAGES) {
 				surtitre = morceaux.shift().texte;
 			}
 
-			const premier = morceaux.length ? morceaux.shift() : null;
+			// Une liste ne fait pas un intitulé : la carte qui commence par une liste n'a pas de titre.
+			const premier = morceaux.length && !morceaux[0].items ? morceaux.shift() : null;
 			const titre = premier ? premier.texte : '';
 			// Balise d'origine de l'intitulé : la maquette emploie un vrai intertitre sur certaines
 			// cartes et un simple libellé sur d'autres. Le reproduire garde la structure de titres du
@@ -342,8 +419,11 @@ for (const p of PAGES) {
 			 * un lecteur d'écran ni la comparaison de textes ne pouvaient plus rapprocher de la
 			 * maquette. Ce sont des lignes distinctes dans le prototype ; elles le restent ici.
 			 */
-			const description = morceaux.length ? morceaux.shift().texte : '';
-			const lignes = morceaux.map((m) => m.texte);
+			const mDesc = morceaux.length && !morceaux[0].items ? morceaux.shift() : null;
+			const description = mDesc ? mDesc.texte : '';
+			const mListe = morceaux.length && morceaux[0].items ? morceaux.shift() : null;
+			const liste = mListe ? mListe.items : [];
+			const lignes = morceaux.filter((m) => !m.items).map((m) => m.texte);
 
 			/*
 			 * Témoignage repris de la maquette : il est provisoire et doit rester repérable en une
@@ -357,7 +437,22 @@ for (const p of PAGES) {
 				titre,
 				titre_tag: titreTag,
 				description,
+				liste,
 				lignes,
+				/*
+				 * Géométrie relevée **sur cette carte**, et non sur la première de la grille.
+				 *
+				 * Une grille du prototype mêle couramment des archétypes : sur la page région, un
+				 * exemple tarifaire dont le montant est écrit en 32 px voisine avec un témoignage
+				 * dont la citation fait 15,5. Relever la première carte et imposer sa géométrie aux
+				 * suivantes posait 32 px sur la citation — 726 px de carte pour 50 attendus. Les
+				 * valeurs de grille restent écrites, comme repli.
+				 */
+				titre_taille: premier ? premier.taille + 'px' : '',
+				titre_interligne: premier ? premier.interligne || '' : '',
+				desc_taille: mDesc || mListe ? (mDesc || mListe).taille + 'px' : '',
+				desc_interligne: mDesc || mListe ? (mDesc || mListe).interligne || '' : '',
+				desc_marge: mDesc || mListe ? (mDesc || mListe).marge || '' : '',
 				badge,
 				provisoire,
 				surtitre,
@@ -413,19 +508,31 @@ for (const p of PAGES) {
 				const colonnes = enfants.filter((c) => Math.abs(Math.round(c.getBoundingClientRect().top) - y0) <= 8).length;
 
 				/*
-				 * Typographie interne de la tuile, relevée sur la carte réelle.
+				 * Typographie interne des tuiles, relevée sur les cartes réelles.
 				 *
 				 * Le prototype ne compose pas toutes ses cartes de la même façon : l'intitulé va de
-				 * 16 à 20 px selon la grille, la description de 13,5 à 15 px, et l'espace qui les
-				 * sépare de 4 à 10 px. Poser une valeur unique rendait les pages plus courtes que la
-				 * référence — 86 % sur la page pilier — sans qu'aucun contenu ne manque.
+				 * 13 à 32 px selon la grille et même à l'intérieur d'une grille, la description de
+				 * 11,5 à 17, et l'espace qui les sépare de 0 à 12 px. Poser une valeur unique rendait
+				 * les pages plus courtes que la référence — 86 % sur la page pilier — sans qu'aucun
+				 * contenu ne manque.
+				 *
+				 * Le titre et la description sont désignés par la **décomposition sémantique** de la
+				 * carte, pas par leur rang parmi ses blocs : beaucoup de cartes s'ouvrent sur une
+				 * pastille numérotée, un surtitre ou une icône, et le rang se décalait alors d'un
+				 * cran — la géométrie de la pastille finissait sur l'intitulé, et celle de
+				 * l'intitulé sur la description.
 				 */
-				const blocsTuile = [...k.querySelectorAll('*')].filter((x) => {
-					const cs = getComputedStyle(x);
-					return !/^inline/.test(cs.display) && txt(x) && x.tagName !== 'IMG';
-				});
-				const styleTitre = blocsTuile.length ? getComputedStyle(blocsTuile[0]) : ks;
-				const styleDesc = blocsTuile.length > 1 ? getComputedStyle(blocsTuile[1]) : null;
+				const details = enfants.map((c, i) => detailCarte(c, i + 1));
+				/*
+				 * La géométrie de grille est celle de sa **première carte**, telle que la carte
+				 * elle-même la relève. Elle ne sert plus que de repli : chaque carte porte
+				 * désormais la sienne, ce qui est la seule façon de rendre fidèlement une grille
+				 * qui mêle des archétypes. Passer par la décomposition de detailCarte() évite de
+				 * désigner le titre et la description par leur rang parmi les blocs — beaucoup de
+				 * cartes s'ouvrent sur une pastille, un surtitre ou une icône, et le rang se
+                 * décalait alors d'un cran.
+				 */
+				const g0 = details[0] || {};
 
 				grilles.push({
 					el: g,
@@ -443,18 +550,18 @@ for (const p of PAGES) {
 					filet: ks.borderTopWidth,
 					padding: ks.padding,
 					theme: estSombre(ks.backgroundColor) ? 'sombre' : 'clair',
-					titre_taille: styleTitre.fontSize,
-					titre_interligne: styleTitre.lineHeight,
-					desc_taille: styleDesc ? styleDesc.fontSize : '',
-					desc_interligne: styleDesc ? styleDesc.lineHeight : '',
-					desc_marge: styleDesc ? styleDesc.marginTop : '',
+					titre_taille: g0.titre_taille || '',
+					titre_interligne: g0.titre_interligne || '',
+					desc_taille: g0.desc_taille || '',
+					desc_interligne: g0.desc_interligne || '',
+					desc_marge: g0.desc_marge || '',
 					// Variante : ce que la carte porte, et non ce à quoi elle ressemble.
 					variante: k.querySelector('img')
 						? 'image'
 						: k.matches('a[href]') || k.querySelector('a[href]')
 							? 'lien'
 							: 'texte',
-					cartes: enfants.map((c, i) => detailCarte(c, i + 1)),
+					cartes: details,
 				});
 				for (const c of enfants) {
 					pris.add(c);
@@ -553,6 +660,7 @@ for (const p of PAGES) {
 			// Les grilles de cartes sont relevées **avant** l'aplatissement : leurs nœuds sont
 			// ensuite retirés du flux, un repère prenant leur place pour conserver l'ordre.
 			const grilles = grillesDeCartes(sec);
+			const cadres = cartesOf(sec, grilles);
 			let nodes = flatten(sec, grilles);
 			if (!nodes.length) return;
 			// Le fil d'Ariane est rendu par le gabarit, pas par le composant générique.
@@ -609,6 +717,7 @@ for (const p of PAGES) {
 			const vide = () => ({
 				titre: '',
 				niveau: 'h2',
+				carte: '',
 				grille: false,
 				colonnes: 1,
 				sequence: [],
@@ -643,6 +752,8 @@ for (const p of PAGES) {
 					cur = vide();
 					cur.titre = n.v;
 					cur.niveau = n.t;
+					// Encadrement propre à ce bloc, relevé sur la maquette. Vide = bloc plat.
+					cur.carte = ( cadres && cadres.parTitre && cadres.parTitre[n.v] ) || '';
 					/*
 					 * Une bande de la maquette mélange souvent un bloc d'introduction sur toute la
 					 * largeur et une rangée de cartes. Une grille uniforme ne sait pas exprimer cela :
@@ -767,7 +878,7 @@ for (const p of PAGES) {
 					padding_bas: cs.paddingBottom,
 					largeur_texte: largeurTexte,
 					colonnes: colonnesOf(sec),
-					cartes: cartesOf(sec),
+					cartes: cadres && cadres.majoritaire ? cadres : null,
 					liste_grille: listeColonnesOf(sec),
 					blocs,
 				});

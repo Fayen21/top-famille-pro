@@ -2,97 +2,118 @@
   "note": "Point de reprise du chantier de fidélité visuelle. Machine-readable, à relire au début de la passe suivante. Généré à la main, pas par un outil : c'est un état de travail, pas une mesure.",
   "branche": "hotfix-production-fidelite-claude-design",
   "pr": 9,
+  "banc_de_mesure": {
+    "avertissement": "Le rig WordPress est hors dépôt et disparaît avec le conteneur. Il faut le remonter au début de chaque session (STATUS.md §11). CONTRÔLE OBLIGATOIRE APRÈS MONTAGE : `wp option get siteurl` doit valoir exactement http://localhost:8901. Une valeur avec un chemin (http://localhost:8901/wp-core) fait répondre 404 à la feuille de style : les pages restent servies, le HTML est correct, et TOUTES les mesures géométriques portent alors sur une page non stylée — polices, marges et interlignes du navigateur par défaut. L'erreur ne se voit sur aucun code HTTP de page.",
+    "verification_rapide": "curl -s -o /dev/null -w '%{http_code}' http://localhost:8901/wp-content/themes/topfamillepro/assets/dist/css/main.css → doit valoir 200",
+    "reference_de_non_regression": "#/nettoyage-professionnel à 375 px, avant la passe du 12 août : 330→377 composants, 222 appariés, Σ|ΔH| 7791. Un banc correctement monté reproduit ce chiffre à l'unité."
+  },
   "outillage": {
     "baseline": {
       "commande": "node tools/baseline.mjs --sortie=docs/baseline-apres.json",
-      "sortie": "docs/baseline-avant.json (état initial), docs/baseline-apres.json (état courant)",
       "couverture": "53 routes x 6 largeurs = 318 controles",
       "duree_approximative_minutes": 45
     },
     "comparateur_composants": {
-      "commande": "node tools/composants.mjs [--toutes] [--widths=375,768,1440] [--routes=#/x]",
-      "sortie": "docs/composants.json (ecarts + groupes), docs/GROUPES-ECARTS.md (classement)",
-      "couverture_derniere_execution": "18 familles representatives x 3 largeurs",
-      "resultat_derniere_execution": { "ecarts": 5163, "groupes": 1238, "groupes_hors_conteneurs": 1147 },
-      "duree_approximative_minutes": 25
+      "commande": "node tools/composants.mjs [--toutes] [--widths=375,768,1440] [--routes=#/x] [--surcharge=diag.css]",
+      "sortie_complete": "docs/composants.json + docs/GROUPES-ECARTS.md",
+      "sortie_partielle": "docs/composants.partiel.json + docs/GROUPES-ECARTS.partiel.md (non versionnés)",
+      "duree_approximative_minutes": 25,
+      "ajouts_du_12_aout": [
+        "garde-fou de relevé partiel : un passage restreint n'écrase plus le relevé complet",
+        "--surcharge=fichier.css : injecte une feuille de diagnostic côté WordPress seulement, pour valider une hypothèse avant de l'écrire dans le thème",
+        "largeur utile et nombre réel de lignes relevés des deux côtés, et comparés",
+        "la largeur de lecture se compare sur la largeur utile MESURÉE, plus sur la max-width déclarée"
+      ]
     },
-    "breakpoints": {
-      "commande": "node tools/breakpoints.mjs",
-      "usage": "seuils de bascule reels par famille, releves sur le rendu"
-    }
+    "breakpoints": { "commande": "node tools/breakpoints.mjs" }
   },
   "groupes_traites": [
+    { "id": "G01", "selecteur": ".tfp-list-plain li, .tfp-list-marked li", "propriete": "font-size", "correction": "15px / 1.705", "statut": "CORRIGE" },
+    { "id": "G02", "selecteur": ".tfp-detail-item h3 / p", "propriete": "font-size, line-height", "correction": "17px/1.04 et 15px/1.705", "statut": "CORRIGE" },
+    { "id": "G03", "selecteur": ".tfp-detail-grid", "propriete": "gap", "correction": "22px", "statut": "CORRIGE" },
+    { "id": "G04", "selecteur": "template-parts/footer/site-footer.php", "propriete": "occurrence en trop", "correction": "badge Google retiré du pied", "statut": "CORRIGE" },
     {
-      "id": "G01",
-      "role": "texte",
-      "selecteur": ".tfp-list-plain li, .tfp-list-marked li",
-      "propriete": "font-size",
-      "maquette": "15px",
-      "theme_avant": "16px",
-      "correction": "font-size 15px, line-height 1.705",
-      "statut": "CORRIGE",
-      "effet_mesure": "page prestation 375px 110% -> 106%"
+      "id": "G05",
+      "selecteur": ".tfp-card-tile__desc",
+      "hypothese_du_checkpoint_precedent": "margin-top 4px → 0px, 133 occurrences",
+      "verdict": "HYPOTHÈSE ÉCARTÉE — la marge n'était pas la cause. Le classement l'attribuait à toutes les occurrences parce que le thème posait une valeur unique là où la maquette en a cinq.",
+      "signe_du_delta": "majoritairement NÉGATIF : la carte WordPress était plus COURTE que la maquette (−15 à −38 px selon la largeur), l'inverse de ce que la correction proposée aurait produit.",
+      "causes_reelles_validees": [
+        {
+          "sous_groupe": "G05a",
+          "cause": "la feuille de style ne lisait pas la géométrie relevée. Le composant posait déjà --tfp-tuile-desc / -lh / -mt ; .tfp-card-tile__desc imposait 14px/21px/4px partout, là où la maquette va de 12,5 à 20 px, de 14,75 à 30,78 d'interligne et de 0 à 12 px d'écart au titre.",
+          "correction": "src/css/04-components.css — la description consomme les variables, comme le titre le fait déjà"
+        },
+        {
+          "sous_groupe": "G05b",
+          "cause": "encadrement de bande faussement détecté. cartesOf() remontait depuis CHAQUE intertitre, y compris ceux situés dans une tuile de grille : la tuile faisait office d'encadrement, la majorité basculait, et la bande entière recevait une carte autour de cartes qui en portaient déjà une. Coût mesuré : 38 px de largeur utile en moins (18 px de rembourrage + 1 px de filet de chaque côté), donc une ligne de repli supplémentaire par description.",
+          "correction": "tools/generate-pages.mjs — les intitulés d'une tuile ne votent plus ; l'encadrement est relevé BLOC PAR BLOC et non plus à la majorité de la bande ; template-parts/components/static-blocks.php lit $bloc['carte'], la valeur de bande ne servant plus que de repli"
+        },
+        {
+          "sous_groupe": "G05c",
+          "cause": "une liste portée par une carte était relevée comme un bloc de texte : les items ressortaient concaténés sans séparateur — « Postes de travail & mobilierSols : aspiration et lavage ». Défaut de contenu, pas seulement de géométrie.",
+          "correction": "relevée comme liste, rendue en <ul class=\"tfp-card-tile__list\">"
+        },
+        {
+          "sous_groupe": "G05d",
+          "cause": "la géométrie de tuile était relevée sur la PREMIÈRE carte de la grille et imposée aux autres, et le titre y était désigné par son RANG parmi les blocs. Une carte qui s'ouvre sur une pastille numérotée décalait tout d'un cran ; une grille mêlant un exemple tarifaire (montant en 32 px) et un témoignage (citation en 15,5 px) portait la citation à 726 px pour 50 attendus.",
+          "correction": "géométrie relevée CARTE PAR CARTE, par la décomposition sémantique de detailCarte() ; le composant pose les variables sur chaque tuile, celles de la grille servant de repli"
+        }
+      ],
+      "effet_mesure": {
+        "route_representative": "#/nettoyage-professionnel 375px : 214 → 192 écarts, Σ|ΔH| 7764 → 6513",
+        "neuf_pages_statiques_x_3_largeurs": "écarts .tfp-card-tile__desc 237 → 48 ; Σ|ΔH| sur les composants communs −5,7 % ; 367 composants rapprochés contre 126 éloignés"
+      },
+      "statut": "CORRIGE"
+    }
+  ],
+  "faux_positifs_corriges_dans_outil": [
+    {
+      "id": "FP01",
+      "symptome": "77 différences de repli signalées sur .tfp-card-tile__body — « une ligne dans la maquette, quatre dans le thème » sur des cartes de ville d'une seule ligne, hautes de 47 px.",
+      "cause": "le nombre de lignes était mesuré sur les conteneurs. Les rectangles du domaine n'y décrivent pas des lignes : un intitulé de 17 px et une description de 13 px posent des rectangles à des ordonnées voisines mais distinctes.",
+      "correction": "mesure restreinte aux feuilles de texte, et fusion des rectangles distants de moins de 4 px",
+      "controle": "les écarts de repli réels subsistent (h1 de la page pilier, 4 lignes contre 5 ; .tfp-prose 15 contre 14)"
     },
     {
-      "id": "G02",
-      "role": "texte",
-      "selecteur": ".tfp-detail-item h3 / .tfp-detail-item p",
-      "propriete": "font-size, line-height",
-      "maquette": "17px/1.04 et 15px/1.705",
-      "theme_avant": "19px et 16px/1.7",
-      "correction": "alignes sur la mesure",
-      "statut": "CORRIGE",
-      "effet_mesure": "page prestation 768px 113% -> 109%, 1440px 104% -> 101%"
+      "id": "FP02",
+      "symptome": "705 écarts de « largeur de lecture » sur neuf pages, dont une majorité sans effet visible.",
+      "cause": "la max-width DÉCLARÉE était comparée. Une contrainte de 754 px posée sur une colonne de 339 px ne change rien, et la maquette obtient la même largeur sans rien déclarer.",
+      "correction": "comparaison sur la largeur utile MESURÉE des deux côtés ; la valeur déclarée reste au relevé pour instruire, mais ne constitue plus un écart"
     },
     {
-      "id": "G03",
-      "role": "grille",
-      "selecteur": ".tfp-detail-grid",
-      "propriete": "gap",
-      "maquette": "22px",
-      "theme_avant": "34px",
-      "correction": "gap 22px",
-      "statut": "CORRIGE",
-      "effet_mesure": "~160px sur une bande de 14 elements empiles a 375px"
-    },
-    {
-      "id": "G04",
-      "role": "composant",
-      "selecteur": "template-parts/footer/site-footer.php",
-      "propriete": "occurrence en trop",
-      "maquette": "0 badge Google au pied",
-      "theme_avant": "1 badge sur les 53 routes",
-      "correction": "badge retire du pied de page",
-      "statut": "CORRIGE",
-      "regle": "CLAUDE.md §9 - hero + section avis suffisent"
+      "id": "FP03",
+      "symptome": "les six premiers groupes du classement par impact étaient des conteneurs .tfp-container, avec des deltas de 2 000 à 3 545 px.",
+      "cause": "appariement par préfixe d'empreinte. Une étiquette de 74 px était appariée au conteneur de bande WordPress tout entier (3 619 px) parce que l'empreinte de celui-ci commence par la sienne — et l'empreinte étant tronquée à 60 caractères, les deux avaient même longueur apparente.",
+      "correction": "la longueur entière du texte est relevée ; un appariement est refusé quand le volume diffère de plus du double, et la correspondance par préfixe exige des longueurs comparables",
+      "effet": "classement du triplet de routes de contrôle : impact de tête 33 814 → 1 909. 219 appariements au lieu de 227, sans perte d'écart réel (196 dans les deux cas)."
     }
   ],
   "prochain_groupe_a_traiter": {
-    "id": "G05",
+    "id": "G06",
     "priorite": 1,
-    "role": "texte",
-    "selecteur": ".tfp-card-tile__desc",
-    "propriete": "margin-top",
-    "maquette": "0px",
-    "theme": "4px",
-    "occurrences": 133,
-    "familles_touchees": 8,
-    "precaution": "verifier d'abord la hauteur nette du composant : plusieurs occurrences montrent une carte WordPress PLUS COURTE que la maquette (23px -> 84px en sens inverse sur #/nettoyage-professionnel). Ne pas corriger la propriete sans verifier le signe du delta de hauteur du composant complet.",
-    "commande_de_verification": "node tools/composants.mjs --routes='#/nettoyage-professionnel' --widths=375"
+    "role": "carte",
+    "selecteur": ".tfp-static-block / .tfp-static-block--carte",
+    "propriete": "rembourrage gauche et droit 18px → 0px, puis rembourrage haut et bas 22px → 18px",
+    "occurrences": "18 et 17 sur le triplet de contrôle, en tête du classement une fois les faux positifs écartés",
+    "precaution": "vérifier d'abord le SIGNE : la maquette pose 18 px là où le thème n'en pose aucun sur les blocs plats, et 22 px là où le thème en pose 18 sur les blocs encadrés. Deux archétypes distincts, à ne pas traiter dans le même groupe correctif.",
+    "commande_de_verification": "node tools/composants.mjs --routes='#/nettoyage-professionnel,#/zones-intervention,#/bourgogne-franche-comte' --widths=375"
   },
   "groupes_suivants": [
-    { "id": "G06", "selecteur": ".tfp-card-tile__body", "propriete": "font-size/line-height", "maquette": "19px/30.78", "theme": "17px/27.54", "occurrences": 33, "remarque": "le theme est PLUS PETIT que la maquette : corriger augmentera la hauteur" },
-    { "id": "G07", "selecteur": ".tfp-link-row", "propriete": "font-size, padding, min-height", "maquette": "17px/27.54, pad 0, min-height 0", "theme": "15px/24.3, pad 3px, min-height 24px", "occurrences": 27, "remarque": "min-height 24px pose pour WCAG 2.5.8 - ne pas retirer sans verifier le critere" },
-    { "id": "G08", "selecteur": ".tfp-google-badge__text", "propriete": "font-size", "maquette": "17px", "theme": "13px", "occurrences": 12 },
-    { "id": "G09", "selecteur": ".tfp-static-block", "propriete": "max-width (largeur de lecture)", "maquette": "1040px puis 1260px", "theme": "none", "occurrences": 21, "remarque": "impact le plus eleve hors conteneurs - une largeur de lecture absente elargit le texte et raccourcit la page" },
-    { "id": "G10", "selecteur": ".tfp-card-tile", "propriete": "gap", "maquette": "normal (pas de grille)", "theme": "12px", "occurrences": 242 }
+    { "id": "G07", "selecteur": ".tfp-card-tile--lien", "propriete": "gap normal → 12px, et colonnes 2 → 1", "occurrences": "46 et 23", "remarque": "micro-cartes de liens ; la bascule de colonnes est un seuil responsive propre à l'archétype, à relever avec tools/breakpoints.mjs" },
+    { "id": "G08", "selecteur": ".tfp-card-grid--6", "propriete": "marge haute 0px → 18px", "occurrences": 3 },
+    { "id": "G09", "selecteur": "texte sans classe", "propriete": "taille 15.5px → 17px, interligne 24.8px → 27.54px", "occurrences": "23 et 13", "remarque": "citations de témoignage : le thème les écrit en 17 px, la maquette en 15,5" },
+    { "id": "G10", "selecteur": ".tfp-link-row", "propriete": "font-size, padding, min-height", "maquette": "17px/27.54, pad 0, min-height 0", "theme": "15px/24.3, pad 3px, min-height 24px", "remarque": "min-height 24px pose pour WCAG 2.5.8 — ne pas retirer sans vérifier le critère avec tools/audit-target-size.mjs" },
+    { "id": "G11", "selecteur": ".tfp-google-badge__text", "propriete": "font-size", "maquette": "17px", "theme": "13px", "occurrences": 12 }
   ],
-  "avertissement_methode": "Le classement par impact attribue le delta de hauteur du composant a CHACUNE de ses proprietes divergentes. Une propriete peut donc figurer haut sans etre la cause. Toujours confirmer par la decomposition verticale (champ composition dans docs/composants.json) avant de corriger, et verifier le signe du delta.",
+  "avertissement_methode": "Le classement par impact attribue le delta de hauteur du composant à CHACUNE de ses propriétés divergentes. Une propriété peut donc figurer haut sans être la cause. Toujours : (1) établir le signe du delta ; (2) vérifier la largeur utile et le nombre de lignes avant la typographie — un repli différent explique à lui seul des écarts de 24 px et fait dépasser la cible si l'on corrige la police d'abord ; (3) simuler avec --surcharge avant d'écrire dans le thème ; (4) mesurer l'effet réel et le comparer à l'effet attendu.",
+  "lecon_de_la_passe": "Deux erreurs de sens opposé se compensaient sur les cartes : 38 px de largeur utile en moins faisaient replier une ligne de plus, et une typographie plus petite raccourcissait chaque ligne. La hauteur totale paraissait presque juste. Corriger l'une sans l'autre DÉGRADE la mesure globale — c'est attendu, et ce n'est pas une raison de s'arrêter.",
   "etat_318_controles": {
-    "avant_cette_passe": { "dans_95_105": 192, "sur": 318 },
-    "apres_cette_passe": { "dans_95_105": 200, "sur": 318 }
+    "avant_la_passe_du_12_aout": { "dans_95_105": 200, "sur": 318 },
+    "apres": "non remesuré — la baseline complète (45 min) reste à rejouer"
   },
   "chantiers_non_ouverts": [
+    "rejouer les 318 contrôles de baseline",
     "classement des 129 occurrences surplus/colonnes restantes",
     "CLS bureau 0,028 -> cible 0,010",
     "reconstruction des exports",

@@ -8,3 +8,9 @@ Thumbs.db
 test-results/
 # Mesures partielles de tools/compare-routes.mjs --only (jamais le rapport complet)
 docs/COMPARAISON-53-ROUTES.partiel.md
+# Relevés partiels de tools/composants.mjs (une route, une largeur, une surcharge de diagnostic) :
+# ils n'écrasent plus le relevé complet, et n'ont pas à être versionnés.
+docs/composants.partiel.json
+docs/GROUPES-ECARTS.partiel.md
+# Sondes de diagnostic jetables, écrites au cours d'une passe et sans valeur hors de celle-ci.
+.tfp-diag/

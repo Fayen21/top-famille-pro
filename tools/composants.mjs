@@ -21,9 +21,22 @@
  *   node tools/composants.mjs --widths=375
  *   node tools/composants.mjs --routes='#/service/bureaux'
  *   node tools/composants.mjs --toutes                 → les 53 routes
+ *   node tools/composants.mjs --routes='#/x' --surcharge=diag.css   → simule une correction
+ *
+ * Deux garde-fous ajoutés lors de la reprise du chantier :
+ *
+ *  - **Un relevé partiel n'écrase jamais le relevé complet.** Un passage `--routes=` ou
+ *    `--widths=` restreint écrit vers `docs/composants.partiel.json` et
+ *    `docs/GROUPES-ECARTS.partiel.md`. Sans cela, une vérification d'un groupe sur une route
+ *    remplaçait les 5 163 écarts des 18 familles par les 180 de cette route — et le classement
+ *    par impact, lu au passage suivant, ne portait plus que sur une page.
+ *  - **La simulation avant correction.** `--surcharge=fichier.css` injecte une feuille de style
+ *    dans la seule page WordPress, après chargement. Elle sert à vérifier qu'une propriété est
+ *    réellement causale — effet mesuré sur le composant, ses enfants, sa bande et la page —
+ *    avant de l'écrire dans le thème. Ce n'est jamais la correction finale.
  */
 import { chromium } from '@playwright/test';
-import { writeFileSync } from 'node:fs';
+import { writeFileSync, readFileSync } from 'node:fs';
 import { ROUTE_MAP } from './route-map.mjs';
 
 const REF = 'file://' + process.cwd() + '/reference/Top-Famille-Pro-HANDOFF-READY.html';
@@ -31,6 +44,9 @@ const WP = process.env.TFP_BASE_URL || 'http://localhost:8901';
 
 const arg = (n, d) => (process.argv.find((a) => a.startsWith(`--${n}=`)) || `=${d}`).split('=').slice(1).join('=');
 const LARGEURS = arg('widths', '375,768,1440').split(',').map(Number);
+
+/** Feuille de style de diagnostic, injectée côté WordPress seulement. Jamais une correction. */
+const SURCHARGE = arg('surcharge', '') ? readFileSync(arg('surcharge', ''), 'utf8') : '';
 
 /** Une route représentative par famille de gabarit — suffisant pour trouver les causes partagées. */
 const REPRESENTATIVES = [
@@ -112,6 +128,55 @@ const RELEVE = () => {
 		return 'texte';
 	};
 
+	/**
+	 * Nombre réel de lignes d'un bloc de texte, relevé et non déduit.
+	 *
+	 * Sans lui, une correction de typographie ne se valide pas : un composant peut avoir la bonne
+	 * taille de police et la bonne hauteur de ligne et rester trop haut de 24 px, simplement parce
+	 * que sa largeur utile lui fait replier une ligne de plus. Le rapport hauteur/interligne ne
+	 * suffit pas — il arrondit et masque exactement ce cas. Les rectangles du domaine, eux, le
+	 * disent : une ordonnée distincte, une ligne.
+	 */
+	const lignes = (el) => {
+		/*
+		 * Mesuré sur les **feuilles** de texte seulement.
+		 *
+		 * Sur un conteneur, les rectangles du domaine ne décrivent plus des lignes : un intitulé
+		 * de 17 px et une description de 13 px posent des rectangles à des ordonnées voisines mais
+		 * distinctes, et la carte « Besançon » — une ligne à l'écran, 47 px de haut — était comptée
+		 * pour quatre. Le repli comptait alors 77 différences de repli qui n'existaient pas.
+		 */
+		if (el.children.length) return 0;
+		try {
+			const r = document.createRange();
+			r.selectNodeContents(el);
+			const tops = [];
+			for (const rect of r.getClientRects()) {
+				if (rect.height <= 2 || rect.width <= 0) continue;
+				// Deux rectangles à moins de 4 px l'un de l'autre appartiennent à la même ligne :
+				// une exposante, une puce ou un fragment plus petit décalent la boîte sans en créer.
+				if (!tops.some((t) => Math.abs(t - rect.top) < 4)) tops.push(rect.top);
+			}
+			return tops.length;
+		} catch {
+			return 0;
+		}
+	};
+
+	/**
+	 * Largeur utile : ce dans quoi le texte se replie réellement, rembourrages déduits.
+	 *
+	 * `clientWidth` vaut zéro sur un élément en ligne — il n'a pas de boîte de contenu au sens du
+	 * modèle de boîte. Le relevé affichait alors « util 0 → 273 » sur des intitulés parfaitement
+	 * normaux, ce qui se lit comme une anomalie et n'en est pas une. On retombe dans ce cas sur la
+	 * largeur du rectangle englobant, qui est bien ce dans quoi le texte se replie.
+	 */
+	const utile = (el) => {
+		const s = getComputedStyle(el);
+		if (!el.clientWidth) return Math.round(el.getBoundingClientRect().width);
+		return Math.round(el.clientWidth - (parseFloat(s.paddingLeft) || 0) - (parseFloat(s.paddingRight) || 0));
+	};
+
 	/** Nombre de colonnes réellement occupées : les enfants qui partagent une ordonnée. */
 	const colonnes = (el) => {
 		const enfants = [...el.children].filter((c) => c.getBoundingClientRect().height > 12);
@@ -171,6 +236,11 @@ const RELEVE = () => {
 				ordre,
 				role: role(el),
 				empreinte: empreinte(t).slice(0, 60),
+				// Longueur **entière** du texte : l'empreinte est tronquée à 60 caractères, si bien
+				// qu'une étiquette et le conteneur de bande qui commence par elle ont la même
+				// empreinte et la même longueur apparente. Sans cette mesure, l'appariement ne peut
+				// pas les distinguer.
+				longueur: t.length,
 				texte: t.slice(0, 60),
 				balise: el.tagName,
 				classe: (el.className || '').toString().slice(0, 40),
@@ -180,6 +250,8 @@ const RELEVE = () => {
 				y: Math.round(r.top + window.scrollY),
 				w: Math.round(r.width),
 				h: Math.round(r.height),
+				wUtile: utile(el),
+				lignes: lignes(el),
 				colonnes: colonnes(el),
 				rangs: Math.max(1, Math.round([...el.children].filter((c) => c.getBoundingClientRect().height > 12).length / Math.max(1, colonnes(el)))),
 				display: s.display,
@@ -254,8 +326,29 @@ function apparier(refs, wps) {
 	const score = (a, b) => {
 		if (a.role !== b.role) return 0;
 		let s = 0;
+		// Deux textes dont les 60 premiers caractères coïncident mais dont le volume total diffère
+		// d'un ordre de grandeur ne sont pas le même composant : c'est l'étiquette contre la bande
+		// qui la contient.
+		if (Math.min(a.longueur, b.longueur) < 0.5 * Math.max(a.longueur, b.longueur)) return 0;
 		if (a.empreinte && a.empreinte === b.empreinte) s += 60;
-		else if (a.empreinte && b.empreinte && (a.empreinte.startsWith(b.empreinte.slice(0, 24)) || b.empreinte.startsWith(a.empreinte.slice(0, 24)))) s += 40;
+		/*
+		 * Correspondance par préfixe : elle ne vaut qu'entre empreintes de **longueur comparable**.
+		 *
+		 * Sans cette condition, une étiquette courte est le préfixe de tout conteneur qui commence
+		 * par elle. « Notre implantation réelle : Saint-Apollinaire… », 74 px de haut dans la
+		 * maquette, était ainsi appariée au conteneur de bande WordPress tout entier — 3 619 px —
+		 * et l'outil rapportait un écart de hauteur de 3 545 px, en tête du classement par impact,
+		 * pour un composant qui n'a rien d'anormal. Une empreinte tronquée à 60 caractères est déjà
+		 * un préfixe ; exiger que la plus courte fasse au moins 60 % de la plus longue écarte le
+		 * conteneur sans écarter la reformulation.
+		 */
+		else if (
+			a.empreinte &&
+			b.empreinte &&
+			Math.min(a.longueur, b.longueur) >= 0.6 * Math.max(a.longueur, b.longueur) &&
+			(a.empreinte.startsWith(b.empreinte.slice(0, 24)) || b.empreinte.startsWith(a.empreinte.slice(0, 24)))
+		)
+			s += 40;
 		else {
 			// Similarité de mots : tolère une reformulation, refuse deux composants différents.
 			const mots = (x) => new Set((x.texte || '').toLowerCase().split(/[^a-zà-ÿ0-9]+/).filter((m) => m.length > 3));
@@ -315,7 +408,6 @@ const PROPRIETES = [
 	['interligne', 1.5, 'interligne'],
 	['rayon', 2, 'rayon'],
 	['bordure', 0.6, 'bordure'],
-	['maxWidth', 20, 'largeur de lecture'],
 	['minHeight', 8, 'hauteur minimale'],
 ];
 
@@ -329,7 +421,27 @@ function ecarts(paires, route, famille, largeur) {
             const vb = px(b[cle]);
 			if (Math.abs(vb - va) > seuil) props.push({ propriete: cle, libelle, ref: a[cle], wp: b[cle], delta: Math.round((vb - va) * 10) / 10 });
 		}
+		/*
+		 * Largeur de lecture : la **mesurée**, pas la déclarée.
+		 *
+		 * Comparer les `max-width` calculées faisait ressortir 705 écarts sur neuf pages, dont la
+		 * plupart n'en sont pas : une contrainte de 754 px posée sur une colonne qui n'en fait que
+		 * 339 ne change rien à l'écran, et la maquette qui n'en déclare aucune obtient la même
+		 * largeur par son conteneur. Ce qui décide du repli du texte — donc de la hauteur — est la
+		 * largeur utile réelle. C'est elle qu'on compare ; la valeur déclarée reste lisible dans le
+		 * relevé pour instruire un écart, mais elle n'en constitue plus un à elle seule.
+		 */
+		if (Math.abs(b.wUtile - a.wUtile) > 8)
+			props.push({ propriete: 'largeurUtile', libelle: 'largeur utile', ref: a.wUtile + 'px', wp: b.wUtile + 'px', delta: b.wUtile - a.wUtile });
 		if (a.colonnes !== b.colonnes) props.push({ propriete: 'colonnes', libelle: 'nombre de colonnes', ref: a.colonnes, wp: b.colonnes, delta: b.colonnes - a.colonnes });
+		/*
+		 * Un repli différent est une cause à part entière, et souvent la vraie. Deux blocs peuvent
+		 * partager taille, interligne et marges et différer de 24 px parce que l'un tient sur six
+		 * lignes et l'autre sur sept. Corriger la typographie sans voir ce repli fait dépasser la
+		 * cible au lieu de l'atteindre.
+		 */
+		if (a.lignes && b.lignes && a.lignes !== b.lignes && a.lignes <= 40 && b.lignes <= 40)
+			props.push({ propriete: 'lignes', libelle: 'nombre de lignes', ref: a.lignes, wp: b.lignes, delta: b.lignes - a.lignes });
 		if (!props.length && Math.abs(dh) < 3) continue;
 		out.push({
 			id: `${route}|${largeur}|${a.bande}|${a.empreinte.slice(0, 20)}|${a.role}`,
@@ -343,6 +455,12 @@ function ecarts(paires, route, famille, largeur) {
 			hRef: a.h,
 			hWp: b.h,
 			deltaH: dh,
+			wRef: a.w,
+			wWp: b.w,
+			utileRef: a.wUtile,
+			utileWp: b.wUtile,
+			lignesRef: a.lignes,
+			lignesWp: b.lignes,
 			proprietes: props,
 			compositionRef: a.composition,
 			compositionWp: b.composition,
@@ -431,6 +549,7 @@ for (const largeur of LARGEURS) {
 		const a = await ref.evaluate(RELEVE);
 
 		await wp.goto(WP + ROUTE_MAP[hash].wp, { waitUntil: 'networkidle', timeout: 60000 });
+		if (SURCHARGE) await wp.addStyleTag({ content: SURCHARGE });
 		await wp.evaluate(STABILISER);
 		const b = await wp.evaluate(RELEVE);
 
@@ -449,10 +568,22 @@ for (const largeur of LARGEURS) {
 await navigateur.close();
 
 const groupes = grouper(tousEcarts);
-writeFileSync('docs/composants.json', JSON.stringify({ detail, ecarts: tousEcarts, groupes }, null, 1) + '\n');
+
+/*
+ * Un relevé partiel n'écrase pas le relevé complet — même garde-fou que `extract-routes.mjs`.
+ * Est partiel tout passage qui ne couvre pas au moins les 18 familles représentatives aux trois
+ * largeurs de référence : vérifier un groupe sur une route ne doit pas remplacer le classement
+ * par impact dont dépend la passe suivante.
+ */
+const COMPLET = routes.length >= REPRESENTATIVES.length && LARGEURS.length >= 3 && !SURCHARGE;
+const suffixe = COMPLET ? '' : '.partiel';
+const F_JSON = `docs/composants${suffixe}.json`;
+const F_MD = suffixe ? 'docs/GROUPES-ECARTS.partiel.md' : 'docs/GROUPES-ECARTS.md';
+
+writeFileSync(F_JSON, JSON.stringify({ partiel: !COMPLET, surcharge: SURCHARGE ? arg('surcharge', '') : null, detail, ecarts: tousEcarts, groupes }, null, 1) + '\n');
 
 const L = [];
-L.push('# Groupes d’écarts géométriques — classés par impact');
+L.push('# Groupes d’écarts géométriques — classés par impact' + (COMPLET ? '' : ' (relevé partiel)'));
 L.push('');
 L.push('> Fichier **généré** par `node tools/composants.mjs`. Ne pas éditer à la main.');
 L.push('>');
@@ -472,9 +603,9 @@ groupes.slice(0, 60).forEach((g, i) => {
 	);
 });
 L.push('');
-writeFileSync('docs/GROUPES-ECARTS.md', L.join('\n') + '\n');
+writeFileSync(F_MD, L.join('\n') + '\n');
 
-console.log(`\ndocs/composants.json + docs/GROUPES-ECARTS.md — ${tousEcarts.length} écarts, ${groupes.length} groupes`);
+console.log(`\n${F_JSON} + ${F_MD} — ${tousEcarts.length} écarts, ${groupes.length} groupes${COMPLET ? '' : ' (relevé PARTIEL)'}`);
 console.log('\nDix premiers groupes par impact :');
 for (const g of groupes.slice(0, 10)) {
 	console.log(

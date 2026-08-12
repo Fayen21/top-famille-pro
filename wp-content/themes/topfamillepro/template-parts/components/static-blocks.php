@@ -87,15 +87,22 @@ foreach ( $data['sections'] as $section ) {
 	 * cartes blanches encadrées. À hauteur voisine, l'écran n'avait pas le même aspect.
 	 */
 	$carte = is_array( $section['cartes'] ?? null ) ? $section['cartes'] : null;
-	// Rembourrage et rayon relevés sur la carte réelle de la bande : ils vont de 20 à 32 px selon
-	// la bande, et en poser 32 partout allongeait /nettoyage-professionnel/ de 15 %.
-	$carte_style = $carte
-		? sprintf(
-			'--tfp-carte-padding:%s;--tfp-carte-rayon:%s',
-			preg_replace( '/[^0-9a-z%. ]/i', '', (string) $carte['padding'] ),
-			preg_replace( '/[^0-9a-z%. ]/i', '', (string) $carte['rayon'] )
-		)
-		: '';
+
+	/**
+	 * Style d'un encadrement relevé : rembourrage et rayon viennent de la carte réelle.
+	 *
+	 * Ils vont de 20 à 32 px et de 12 à 18 px selon la bande ; en poser 32 partout allongeait
+	 * /nettoyage-professionnel/ de 15 %.
+	 */
+	$carte_style_de = static function ( $c ) {
+		return is_array( $c )
+			? sprintf(
+				'--tfp-carte-padding:%s;--tfp-carte-rayon:%s',
+				preg_replace( '/[^0-9a-z%. ]/i', '', (string) ( $c['padding'] ?? '' ) ),
+				preg_replace( '/[^0-9a-z%. ]/i', '', (string) ( $c['rayon'] ?? '' ) )
+			)
+			: '';
+	};
 
 	/*
 	 * La grille s'applique par rangée, pas à toute la bande : le prototype mêle couramment un bloc
@@ -132,7 +139,24 @@ foreach ( $data['sections'] as $section ) {
 				// être remplacé par de vrais avis (CLAUDE.md §5.5).
 				$provisoire = ! empty( $bloc['citations'] );
 				?>
-					<div class="tfp-static-block<?php echo $carte ? ' tfp-static-block--carte' : ''; ?>"<?php echo $carte_style ? ' style="' . esc_attr( $carte_style ) . '"' : ''; ?><?php echo $provisoire ? ' data-tfp-provisional="1"' : ''; ?>>
+					<?php
+					/*
+					 * L'encadrement se lit **sur le bloc**, pas sur la bande.
+					 *
+					 * La maquette encadre couramment un seul bloc au milieu d'une bande de texte
+					 * suivi. Une décision prise à la majorité pour toute la bande ne sait pas
+					 * l'exprimer : elle encadrait tout, ou rien. Elle encadrait notamment des
+					 * bandes dont le contenu est déjà une grille de cartes — une carte dans une
+					 * carte, absente de la référence, qui retirait 38 px de largeur utile et
+					 * faisait replier chaque description sur une ligne de plus.
+					 *
+					 * La valeur de bande ne sert plus que de repli, pour un contenu produit avant
+					 * l'introduction du relevé par bloc.
+					 */
+					$carte_bloc  = array_key_exists( 'carte', $bloc ) ? ( is_array( $bloc['carte'] ) ? $bloc['carte'] : null ) : $carte;
+					$carte_style = $carte_style_de( $carte_bloc );
+					?>
+					<div class="tfp-static-block<?php echo $carte_bloc ? ' tfp-static-block--carte' : ''; ?>"<?php echo $carte_style ? ' style="' . esc_attr( $carte_style ) . '"' : ''; ?><?php echo $provisoire ? ' data-tfp-provisional="1"' : ''; ?>>
 						<?php
 						// Le visiteur ne lit pas le code source : un attribut ne l'informe de rien. La
 						// mention est donc visible, dans le flux, au plus près du contenu concerné.

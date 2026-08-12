@@ -3097,13 +3097,36 @@ body.tfp-body a.tfp-card-tile:focus-visible {
   color: var(--color-text-secondary);
 }
 
+/* La description suit la géométrie **relevée** sur la carte du prototype, comme l'intitulé au-dessus
+   d'elle. Le composant pose déjà ces mesures en propriétés personnalisées ; la feuille de style ne
+   les lisait pas, et imposait 14 px sur 21 partout — là où la maquette va de 12,5 à 20 px, avec un
+   interligne de 14,75 à 30,78 et un écart au titre de 0 à 12 px. Les valeurs écrites ici ne servent
+   que de repli, pour une carte dont la géométrie n'a pas été relevée. */
 .tfp-card-tile__desc {
   margin: 0;
   display: block;
-  margin-top: 4px;
-  font-size: 14px;
-  line-height: 1.5;
+  margin-top: var(--tfp-tuile-desc-mt, 4px);
+  font-size: var(--tfp-tuile-desc, 14px);
+  line-height: var(--tfp-tuile-desc-lh, 1.5);
   color: var(--color-text-secondary);
+}
+
+/* Liste portée par une carte : géométrie relevée sur la maquette, qui met un item par ligne et les
+   sépare d'un écart franc. Le repli reprend la description, dont la liste tient la place. */
+.tfp-card-tile__list {
+  margin: var(--tfp-tuile-desc-mt, 4px) 0 0;
+  padding-left: 1.1em;
+  font-size: var(--tfp-tuile-desc, 14px);
+  line-height: var(--tfp-tuile-desc-lh, 1.5);
+  color: var(--color-text-secondary);
+}
+
+.tfp-card-grid:not(.tfp-card-grid--dark) .tfp-card-tile__list {
+  color: var(--color-text);
+}
+
+.tfp-card-grid--dark .tfp-card-tile__list {
+  color: var(--color-white);
 }
 
 .tfp-card-tile__more {

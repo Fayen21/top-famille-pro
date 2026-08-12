@@ -502,6 +502,7 @@ function tfp_card_grid( array $grille ) {
 					'titre'        => '',
 					'titre_tag'    => '',
 					'description'  => '',
+					'liste'        => array(),
 					'lignes'       => array(),
 					'badge'        => '',
 					'surtitre'     => '',
@@ -513,11 +514,40 @@ function tfp_card_grid( array $grille ) {
 					'span'         => '',
 					'provisoire'   => false,
 					'note'         => '',
+					'titre_taille'     => '',
+					'titre_interligne' => '',
+					'desc_taille'      => '',
+					'desc_interligne'  => '',
+					'desc_marge'       => '',
 				)
 			);
-			if ( '' === $item['titre'] && '' === $item['description'] ) {
+			if ( '' === $item['titre'] && '' === $item['description'] && ! $item['liste'] ) {
 				continue;
 			}
+			/*
+			 * Géométrie propre à **cette** carte, relevée sur le prototype.
+			 *
+			 * Les mesures de grille restent posées sur la liste et servent de repli ; celles-ci les
+			 * précisent carte par carte. Une grille du prototype mêle couramment des archétypes —
+			 * sur la page région, un exemple tarifaire dont le montant est écrit en 32 px voisine
+			 * avec un témoignage dont la citation fait 15,5. Imposer la géométrie de la première
+			 * carte aux suivantes portait cette citation à 726 px pour 50 attendus.
+			 */
+			$vars_item = array();
+			foreach ( array(
+				'titre_taille'     => '--tfp-tuile-titre',
+				'titre_interligne' => '--tfp-tuile-titre-lh',
+				'desc_taille'      => '--tfp-tuile-desc',
+				'desc_interligne'  => '--tfp-tuile-desc-lh',
+				'desc_marge'       => '--tfp-tuile-desc-mt',
+			) as $cle => $var ) {
+				$valeur = $px( $item[ $cle ] ?? '' );
+				if ( '' !== $valeur ) {
+					$vars_item[] = $var . ':' . $valeur;
+				}
+			}
+			$style_item = $vars_item ? ' style="' . esc_attr( implode( ';', $vars_item ) ) . '"' : '';
+
 			$url      = $item['route'] ? tfp_route_to_url( $item['route'] ) : '';
 			$balise   = $url ? 'a' : 'div';
 			$attributs = $url ? ' href="' . esc_url( $url ) . '"' : '';
@@ -526,7 +556,7 @@ function tfp_card_grid( array $grille ) {
 			}
 			?>
 			<li<?php echo ! empty( $item['provisoire'] ) ? ' data-tfp-provisional="1"' : ''; ?>>
-				<<?php echo $balise; ?> class="tfp-card-tile tfp-card-tile--<?php echo esc_attr( $variante ); ?>"<?php echo $attributs; // phpcs:ignore WordPress.Security.EscapeOutput ?>>
+				<<?php echo $balise; ?> class="tfp-card-tile tfp-card-tile--<?php echo esc_attr( $variante ); ?>"<?php echo $style_item; // phpcs:ignore WordPress.Security.EscapeOutput ?><?php echo $attributs; // phpcs:ignore WordPress.Security.EscapeOutput ?>>
 					<?php
 					/*
 					 * Visuel de la carte. Le slug vient du manifeste d'images du thème, jamais d'un
@@ -571,6 +601,22 @@ function tfp_card_grid( array $grille ) {
 						<?php endif; ?>
 						<?php if ( $item['description'] ) : ?>
 							<p class="tfp-card-tile__desc"><?php echo esc_html( $item['description'] ); ?></p>
+						<?php endif; ?>
+						<?php
+						/*
+						 * Liste portée par la carte : la maquette en pose une par item, le thème les
+						 * rendait concaténées en un seul paragraphe — « Postes de travail &
+						 * mobilierSols : aspiration et lavage ». Ce n'était pas qu'une différence de
+						 * hauteur : le texte lui-même devenait illisible, et la structure de liste
+						 * disparaissait pour un lecteur d'écran.
+						 */
+						if ( ! empty( $item['liste'] ) ) :
+							?>
+							<ul class="tfp-card-tile__list">
+								<?php foreach ( (array) $item['liste'] as $entree ) : ?>
+									<li><?php echo esc_html( $entree ); ?></li>
+								<?php endforeach; ?>
+							</ul>
 						<?php endif; ?>
 						<?php foreach ( (array) $item['lignes'] as $ligne ) : ?>
 							<p class="tfp-card-tile__line"><?php echo esc_html( $ligne ); ?></p>
