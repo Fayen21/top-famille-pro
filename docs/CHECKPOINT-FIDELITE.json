@@ -1,0 +1,102 @@
+{
+  "note": "Point de reprise du chantier de fidélité visuelle. Machine-readable, à relire au début de la passe suivante. Généré à la main, pas par un outil : c'est un état de travail, pas une mesure.",
+  "branche": "hotfix-production-fidelite-claude-design",
+  "pr": 9,
+  "outillage": {
+    "baseline": {
+      "commande": "node tools/baseline.mjs --sortie=docs/baseline-apres.json",
+      "sortie": "docs/baseline-avant.json (état initial), docs/baseline-apres.json (état courant)",
+      "couverture": "53 routes x 6 largeurs = 318 controles",
+      "duree_approximative_minutes": 45
+    },
+    "comparateur_composants": {
+      "commande": "node tools/composants.mjs [--toutes] [--widths=375,768,1440] [--routes=#/x]",
+      "sortie": "docs/composants.json (ecarts + groupes), docs/GROUPES-ECARTS.md (classement)",
+      "couverture_derniere_execution": "18 familles representatives x 3 largeurs",
+      "resultat_derniere_execution": { "ecarts": 5163, "groupes": 1238, "groupes_hors_conteneurs": 1147 },
+      "duree_approximative_minutes": 25
+    },
+    "breakpoints": {
+      "commande": "node tools/breakpoints.mjs",
+      "usage": "seuils de bascule reels par famille, releves sur le rendu"
+    }
+  },
+  "groupes_traites": [
+    {
+      "id": "G01",
+      "role": "texte",
+      "selecteur": ".tfp-list-plain li, .tfp-list-marked li",
+      "propriete": "font-size",
+      "maquette": "15px",
+      "theme_avant": "16px",
+      "correction": "font-size 15px, line-height 1.705",
+      "statut": "CORRIGE",
+      "effet_mesure": "page prestation 375px 110% -> 106%"
+    },
+    {
+      "id": "G02",
+      "role": "texte",
+      "selecteur": ".tfp-detail-item h3 / .tfp-detail-item p",
+      "propriete": "font-size, line-height",
+      "maquette": "17px/1.04 et 15px/1.705",
+      "theme_avant": "19px et 16px/1.7",
+      "correction": "alignes sur la mesure",
+      "statut": "CORRIGE",
+      "effet_mesure": "page prestation 768px 113% -> 109%, 1440px 104% -> 101%"
+    },
+    {
+      "id": "G03",
+      "role": "grille",
+      "selecteur": ".tfp-detail-grid",
+      "propriete": "gap",
+      "maquette": "22px",
+      "theme_avant": "34px",
+      "correction": "gap 22px",
+      "statut": "CORRIGE",
+      "effet_mesure": "~160px sur une bande de 14 elements empiles a 375px"
+    },
+    {
+      "id": "G04",
+      "role": "composant",
+      "selecteur": "template-parts/footer/site-footer.php",
+      "propriete": "occurrence en trop",
+      "maquette": "0 badge Google au pied",
+      "theme_avant": "1 badge sur les 53 routes",
+      "correction": "badge retire du pied de page",
+      "statut": "CORRIGE",
+      "regle": "CLAUDE.md §9 - hero + section avis suffisent"
+    }
+  ],
+  "prochain_groupe_a_traiter": {
+    "id": "G05",
+    "priorite": 1,
+    "role": "texte",
+    "selecteur": ".tfp-card-tile__desc",
+    "propriete": "margin-top",
+    "maquette": "0px",
+    "theme": "4px",
+    "occurrences": 133,
+    "familles_touchees": 8,
+    "precaution": "verifier d'abord la hauteur nette du composant : plusieurs occurrences montrent une carte WordPress PLUS COURTE que la maquette (23px -> 84px en sens inverse sur #/nettoyage-professionnel). Ne pas corriger la propriete sans verifier le signe du delta de hauteur du composant complet.",
+    "commande_de_verification": "node tools/composants.mjs --routes='#/nettoyage-professionnel' --widths=375"
+  },
+  "groupes_suivants": [
+    { "id": "G06", "selecteur": ".tfp-card-tile__body", "propriete": "font-size/line-height", "maquette": "19px/30.78", "theme": "17px/27.54", "occurrences": 33, "remarque": "le theme est PLUS PETIT que la maquette : corriger augmentera la hauteur" },
+    { "id": "G07", "selecteur": ".tfp-link-row", "propriete": "font-size, padding, min-height", "maquette": "17px/27.54, pad 0, min-height 0", "theme": "15px/24.3, pad 3px, min-height 24px", "occurrences": 27, "remarque": "min-height 24px pose pour WCAG 2.5.8 - ne pas retirer sans verifier le critere" },
+    { "id": "G08", "selecteur": ".tfp-google-badge__text", "propriete": "font-size", "maquette": "17px", "theme": "13px", "occurrences": 12 },
+    { "id": "G09", "selecteur": ".tfp-static-block", "propriete": "max-width (largeur de lecture)", "maquette": "1040px puis 1260px", "theme": "none", "occurrences": 21, "remarque": "impact le plus eleve hors conteneurs - une largeur de lecture absente elargit le texte et raccourcit la page" },
+    { "id": "G10", "selecteur": ".tfp-card-tile", "propriete": "gap", "maquette": "normal (pas de grille)", "theme": "12px", "occurrences": 242 }
+  ],
+  "avertissement_methode": "Le classement par impact attribue le delta de hauteur du composant a CHACUNE de ses proprietes divergentes. Une propriete peut donc figurer haut sans etre la cause. Toujours confirmer par la decomposition verticale (champ composition dans docs/composants.json) avant de corriger, et verifier le signe du delta.",
+  "etat_318_controles": {
+    "avant_cette_passe": { "dans_95_105": 192, "sur": 318 },
+    "apres_cette_passe": { "dans_95_105": 200, "sur": 318 }
+  },
+  "chantiers_non_ouverts": [
+    "classement des 129 occurrences surplus/colonnes restantes",
+    "CLS bureau 0,028 -> cible 0,010",
+    "reconstruction des exports",
+    "reconstruction des captures",
+    "Lighthouse final 14 mesures"
+  ]
+}

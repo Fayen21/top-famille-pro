@@ -7,68 +7,68 @@
 > mêmes valeurs — et classés par `occurrences × delta vertical moyen`, pondéré par le nombre
 > de familles de pages et de largeurs touchées.
 
-**177 écarts** répartis en **152 groupes de cause**.
+**5163 écarts** répartis en **1238 groupes de cause**.
 
 | # | Impact | Occ. | Rôle | Classe | Propriété | Maquette → thème | Δ moyen | Familles | Largeurs |
 |---:|---:|---:|---|---|---|---|---:|---:|---|
-| 1 | 494 | 19 | texte | `—` | taille de police | 15px → 16px | 26 | 1 | 375 |
-| 2 | 402 | 11 | texte | `—` | taille de police | 15px → 17px | 36.5 | 1 | 375 |
-| 3 | 390 | 1 | texte | `tfp-direct-answer__label` | rembourrage gauche | 18px → 0px | 390 | 1 | 375 |
-| 4 | 390 | 1 | texte | `tfp-direct-answer__label` | rembourrage droit | 18px → 0px | 390 | 1 | 375 |
-| 5 | 390 | 1 | texte | `tfp-direct-answer__label` | taille de police | 17px → 12px | 390 | 1 | 375 |
-| 6 | 390 | 1 | texte | `tfp-direct-answer__label` | interligne | 27.54px → 19.44px | 390 | 1 | 375 |
-| 7 | 390 | 1 | texte | `tfp-direct-answer__label` | largeur de lecture | 820px → none | 390 | 1 | 375 |
-| 8 | 309 | 6 | texte | `—` | marge haute | 8px → 0px | 51.5 | 1 | 375 |
-| 9 | 277 | 8 | texte | `—` | interligne | 24.3px → 27.54px | 34.6 | 1 | 375 |
-| 10 | 264 | 5 | texte | `—` | interligne | 24px → 27.2px | 52.8 | 1 | 375 |
-| 11 | 241 | 10 | texte | `—` | interligne | 25.575px → 27.2px | 24.1 | 1 | 375 |
-| 12 | 215 | 13 | texte | `—` | rembourrage gauche | 0px → 22px | 16.5 | 1 | 375 |
-| 13 | 207 | 9 | texte | `—` | rembourrage haut | 0px → 10px | 23 | 1 | 375 |
-| 14 | 207 | 9 | texte | `—` | rembourrage bas | 0px → 10px | 23 | 1 | 375 |
-| 15 | 178 | 8 | texte | `—` | marge haute | 9px → 0px | 22.3 | 1 | 375 |
-| 16 | 144 | 2 | grille | `tfp-container tfp-two-col` | écart vertical de grille | 30px → 40px | 72 | 1 | 375 |
-| 17 | 144 | 2 | grille | `tfp-container tfp-two-col` | écart horizontal de grille | 30px → 40px | 72 | 1 | 375 |
-| 18 | 125 | 3 | texte | `—` | marge haute | 10px → 0px | 41.7 | 1 | 375 |
-| 19 | 125 | 3 | texte | `—` | interligne | 24.75px → 27.54px | 41.7 | 1 | 375 |
-| 20 | 122 | 1 | texte | `tfp-testimonial` | marge haute | 12px → 0px | 122 | 1 | 375 |
-| 21 | 122 | 1 | texte | `tfp-testimonial` | taille de police | 18px → 17px | 122 | 1 | 375 |
-| 22 | 97 | 1 | grille | `—` | écart vertical de grille | 8px → normal | 97 | 1 | 375 |
-| 23 | 97 | 1 | grille | `—` | écart horizontal de grille | 8px → normal | 97 | 1 | 375 |
-| 24 | 97 | 1 | grille | `—` | marge haute | 14px → 0px | 97 | 1 | 375 |
-| 25 | 97 | 1 | grille | `—` | nombre de colonnes | 3 → 1 | 97 | 1 | 375 |
-| 26 | 93 | 1 | texte | `—` | rembourrage gauche | 18px → 0px | 93 | 1 | 375 |
-| 27 | 93 | 1 | texte | `—` | rembourrage droit | 18px → 0px | 93 | 1 | 375 |
-| 28 | 93 | 1 | texte | `—` | largeur de lecture | 820px → none | 93 | 1 | 375 |
-| 29 | 92 | 1 | texte | `—` | taille de police | 14.5px → 16px | 92 | 1 | 375 |
-| 30 | 92 | 1 | texte | `—` | interligne | 23.49px → 27.2px | 92 | 1 | 375 |
-| 31 | 90 | 1 | texte | `tfp-section__lede` | taille de police | 16px → 20px | 90 | 1 | 375 |
-| 32 | 90 | 1 | texte | `tfp-section__lede` | interligne | 25.6px → 32px | 90 | 1 | 375 |
-| 33 | 90 | 1 | texte | `tfp-section__lede` | largeur de lecture | 680px → 760px | 90 | 1 | 375 |
-| 34 | 85 | 1 | carte | `tfp-detail-item tfp-detail-item--carte` | marge haute | 0px → 20px | 85 | 1 | 375 |
-| 35 | 68 | 2 | grille | `tfp-container tfp-two-col` | écart vertical de grille | 28px → 40px | 34 | 1 | 375 |
-| 36 | 68 | 2 | grille | `tfp-container tfp-two-col` | écart horizontal de grille | 28px → 40px | 34 | 1 | 375 |
-| 37 | 65 | 1 | grille | `tfp-list-marked` | écart vertical de grille | 10px → 0px | 65 | 1 | 375 |
-| 38 | 59 | 1 | texte | `tfp-prose` | marge haute | 0px → 14px | 59 | 1 | 375 |
-| 39 | 59 | 1 | texte | `tfp-prose` | interligne | 25.575px → 28px | 59 | 1 | 375 |
-| 40 | 51 | 1 | texte | `tfp-container tfp-container--narrow` | largeur de lecture | 820px → 900px | 51 | 1 | 375 |
-| 41 | 48 | 8 | micro-carte | `tfp-card` | rembourrage haut | 18px → 14px | 6 | 1 | 375 |
-| 42 | 48 | 8 | micro-carte | `tfp-card` | rembourrage bas | 18px → 14px | 6 | 1 | 375 |
-| 43 | 48 | 8 | micro-carte | `tfp-card` | rayon | 12px → 16px | 6 | 1 | 375 |
-| 44 | 43 | 1 | texte | `—` | taille de police | 29px → 17px | 43 | 1 | 375 |
-| 45 | 43 | 1 | carte | `tfp-price-example` | rembourrage haut | 28px → 22px | 43 | 1 | 375 |
-| 46 | 43 | 1 | carte | `tfp-price-example` | rembourrage bas | 28px → 22px | 43 | 1 | 375 |
-| 47 | 43 | 1 | carte | `tfp-price-example` | rembourrage gauche | 28px → 22px | 43 | 1 | 375 |
-| 48 | 43 | 1 | carte | `tfp-price-example` | rembourrage droit | 28px → 22px | 43 | 1 | 375 |
-| 49 | 43 | 1 | carte | `tfp-price-example` | marge haute | 0px → 20px | 43 | 1 | 375 |
-| 50 | 35 | 1 | texte | `tfp-cta-block__inner` | rembourrage haut | 44px → 52px | 35 | 1 | 375 |
-| 51 | 35 | 1 | texte | `tfp-cta-block__inner` | rembourrage bas | 44px → 52px | 35 | 1 | 375 |
-| 52 | 29 | 5 | texte | `—` | taille de police | 15.5px → 17px | 5.8 | 1 | 375 |
-| 53 | 29 | 5 | texte | `—` | interligne | 26.35px → 28.9px | 5.8 | 1 | 375 |
-| 54 | 28 | 1 | texte | `tfp-testimonial__quote` | taille de police | 18px → 17px | 28 | 1 | 375 |
-| 55 | 26 | 1 | texte | `tfp-price-example__note` | taille de police | 14px → 13px | 26 | 1 | 375 |
-| 56 | 26 | 1 | texte | `tfp-price-example__note` | interligne | 22.68px → 21.06px | 26 | 1 | 375 |
-| 57 | 25 | 1 | grille | `tfp-list-plain` | écart vertical de grille | 10px → 0px | 25 | 1 | 375 |
-| 58 | 25 | 1 | grille | `tfp-list-plain` | marge haute | 14px → 18px | 25 | 1 | 375 |
-| 59 | 25 | 1 | grille | `tfp-list-plain` | taille de police | 15px → 17px | 25 | 1 | 375 |
-| 60 | 25 | 1 | grille | `tfp-list-plain` | interligne | 24.3px → 27.54px | 25 | 1 | 375 |
+| 1 | 53627 | 24 | texte | `tfp-container` | largeur de lecture | none → 1260px | 971.5 | 4 | 375, 768, 1440 |
+| 2 | 32714 | 10 | texte | `tfp-container` | taille de police | 21px → 17px | 1635.7 | 3 | 375, 768, 1440 |
+| 3 | 24098 | 8 | texte | `tfp-container` | interligne | 24.15px → 27.54px | 2008.1 | 2 | 375, 768 |
+| 4 | 20398 | 7 | texte | `tfp-container` | rembourrage gauche | 0px → 18px | 1533.7 | 4 | 375 |
+| 5 | 20398 | 7 | texte | `tfp-container` | rembourrage droit | 0px → 18px | 1533.7 | 4 | 375 |
+| 6 | 12835 | 8 | texte | `tfp-container` | rembourrage gauche | 0px → 30.72px | 844.4 | 4 | 768 |
+| 7 | 12835 | 8 | texte | `tfp-container` | rembourrage droit | 0px → 30.72px | 844.4 | 4 | 768 |
+| 8 | 12304 | 21 | texte | `tfp-static-block` | largeur de lecture | 1040px → none | 183.1 | 7 | 375, 768, 1440 |
+| 9 | 11068 | 9 | texte | `tfp-container` | rembourrage gauche | 0px → 40px | 647.2 | 4 | 1440 |
+| 10 | 11068 | 9 | texte | `tfp-container` | rembourrage droit | 0px → 40px | 647.2 | 4 | 1440 |
+| 11 | 9983 | 153 | texte | `—` | taille de police | 15.5px → 17px | 17.2 | 9 | 375, 768, 1440 |
+| 12 | 9846 | 133 | texte | `tfp-card-tile__desc` | marge haute | 0px → 4px | 21.2 | 8 | 375, 768, 1440 |
+| 13 | 8761 | 24 | texte | `tfp-static-block` | rembourrage gauche | 18px → 0px | 130.4 | 7 | 375 |
+| 14 | 8761 | 24 | texte | `tfp-static-block` | rembourrage droit | 18px → 0px | 130.4 | 7 | 375 |
+| 15 | 6852 | 4 | texte | `tfp-container` | taille de police | 29px → 17px | 1317.8 | 2 | 1440 |
+| 16 | 6852 | 4 | texte | `tfp-container` | interligne | 33.35px → 27.54px | 1317.8 | 2 | 1440 |
+| 17 | 6794 | 12 | texte | `tfp-google-badge__text` | taille de police | 17px → 13px | 283.1 | 3 | 375, 768, 1440 |
+| 18 | 6794 | 12 | texte | `tfp-google-badge__text` | interligne | 27.54px → 21.06px | 283.1 | 3 | 375, 768, 1440 |
+| 19 | 6387 | 33 | texte | `tfp-card-tile__body` | taille de police | 19px → 17px | 113.8 | 2 | 375, 768, 1440 |
+| 20 | 6387 | 33 | texte | `tfp-card-tile__body` | interligne | 30.78px → 27.54px | 113.8 | 2 | 375, 768, 1440 |
+| 21 | 6037 | 24 | texte | `tfp-static-block` | rembourrage gauche | 30.72px → 0px | 89.8 | 7 | 768 |
+| 22 | 6037 | 24 | texte | `tfp-static-block` | rembourrage droit | 30.72px → 0px | 89.8 | 7 | 768 |
+| 23 | 5774 | 24 | texte | `tfp-static-block` | rembourrage gauche | 40px → 0px | 85.9 | 7 | 1440 |
+| 24 | 5774 | 24 | texte | `tfp-static-block` | rembourrage droit | 40px → 0px | 85.9 | 7 | 1440 |
+| 25 | 5772 | 165 | micro-carte | `tfp-card-tile tfp-card-tile--lien` | écart vertical de grille | normal → 12px | 13.5 | 5 | 375, 768, 1440 |
+| 26 | 5772 | 165 | micro-carte | `tfp-card-tile tfp-card-tile--lien` | écart horizontal de grille | normal → 12px | 13.5 | 5 | 375, 768, 1440 |
+| 27 | 5554 | 27 | texte | `tfp-static-block` | largeur de lecture | 1260px → none | 70.9 | 6 | 375, 768, 1440 |
+| 28 | 5461 | 39 | texte | `tfp-section__lede` | largeur de lecture | none → 760px | 36.8 | 9 | 375, 768, 1440 |
+| 29 | 5398 | 77 | carte | `tfp-card-tile tfp-card-tile--texte` | écart vertical de grille | normal → 12px | 30.5 | 4 | 375, 768, 1440 |
+| 30 | 5398 | 77 | carte | `tfp-card-tile tfp-card-tile--texte` | écart horizontal de grille | normal → 12px | 30.5 | 4 | 375, 768, 1440 |
+| 31 | 5187 | 27 | grille | `tfp-link-row` | rembourrage haut | 0px → 3px | 73.9 | 5 | 375, 768, 1440 |
+| 32 | 5187 | 27 | grille | `tfp-link-row` | rembourrage bas | 0px → 3px | 73.9 | 5 | 375, 768, 1440 |
+| 33 | 5187 | 27 | grille | `tfp-link-row` | taille de police | 17px → 15px | 73.9 | 5 | 375, 768, 1440 |
+| 34 | 5187 | 27 | grille | `tfp-link-row` | interligne | 27.54px → 24.3px | 73.9 | 5 | 375, 768, 1440 |
+| 35 | 5187 | 27 | grille | `tfp-link-row` | hauteur minimale | 0px → 24px | 73.9 | 5 | 375, 768, 1440 |
+| 36 | 4911 | 99 | texte | `—` | interligne | 24.8px → 27.54px | 19.1 | 5 | 375, 768, 1440 |
+| 37 | 4837 | 22 | grille | `—` | nombre de colonnes | 2 → 1 | 95.6 | 4 | 375, 768, 1440 |
+| 38 | 4792 | 252 | titre | `—` | marge basse | 0px → 8px | 4.3 | 11 | 375, 768, 1440 |
+| 39 | 4704 | 18 | grille | `tfp-field` | marge basse | 0px → 14px | 186.7 | 1 | 375, 768, 1440 |
+| 40 | 4353 | 3 | grille | `tfp-field` | largeur de lecture | 1260px → none | 1036.3 | 1 | 375, 768, 1440 |
+| 41 | 3930 | 18 | grille | `—` | rembourrage haut | 22px → 0px | 155.9 | 1 | 375, 768, 1440 |
+| 42 | 3930 | 18 | grille | `—` | rembourrage bas | 24px → 0px | 155.9 | 1 | 375, 768, 1440 |
+| 43 | 3930 | 18 | grille | `—` | rembourrage gauche | 24px → 0px | 155.9 | 1 | 375, 768, 1440 |
+| 44 | 3930 | 18 | grille | `—` | rembourrage droit | 24px → 0px | 155.9 | 1 | 375, 768, 1440 |
+| 45 | 3648 | 27 | texte | `tfp-section__lede` | taille de police | 16px → 20px | 46.6 | 6 | 375, 768, 1440 |
+| 46 | 3601 | 3 | grille | `tfp-container tfp-contact-cols` | écart vertical de grille | 16px → 40px | 857.3 | 1 | 375, 768, 1440 |
+| 47 | 3601 | 3 | grille | `tfp-container tfp-contact-cols` | écart horizontal de grille | 16px → 40px | 857.3 | 1 | 375, 768, 1440 |
+| 48 | 3601 | 3 | grille | `tfp-container tfp-contact-cols` | largeur de lecture | none → 1260px | 857.3 | 1 | 375, 768, 1440 |
+| 49 | 3436 | 9 | grille | `tfp-card-grid tfp-card-grid--3` | largeur de lecture | 1260px → none | 190.9 | 3 | 375, 768, 1440 |
+| 50 | 3152 | 30 | texte | `tfp-prose` | interligne | 25.6px → 28px | 32.8 | 7 | 375, 768, 1440 |
+| 51 | 3056 | 72 | texte | `—` | taille de police | 15px → 17px | 21.2 | 3 | 375, 768, 1440 |
+| 52 | 2910 | 6 | texte | `tfp-static-block` | rembourrage haut | 44px → 0px | 194 | 6 | 375 |
+| 53 | 2910 | 6 | texte | `tfp-static-block` | rembourrage bas | 44px → 0px | 194 | 6 | 375 |
+| 54 | 2800 | 20 | texte | `tfp-section__lede` | taille de police | 17px → 20px | 35.9 | 10 | 375, 768 |
+| 55 | 2800 | 20 | texte | `tfp-section__lede` | interligne | 27.54px → 32px | 35.9 | 10 | 375, 768 |
+| 56 | 2798 | 33 | texte | `tfp-card-tile__title` | taille de police | 19px → 17px | 49.9 | 2 | 375, 768, 1440 |
+| 57 | 2798 | 33 | texte | `tfp-card-tile__title` | interligne | 30.78px → 27.54px | 49.9 | 2 | 375, 768, 1440 |
+| 58 | 2676 | 66 | carte | `tfp-zone-chapter` | marge basse | 14px → 0px | 20.3 | 3 | 375, 768, 1440 |
+| 59 | 2648 | 98 | micro-carte | `tfp-card-tile tfp-card-tile--texte` | écart vertical de grille | normal → 12px | 9.3 | 6 | 375, 768, 1440 |
+| 60 | 2648 | 98 | micro-carte | `tfp-card-tile tfp-card-tile--texte` | écart horizontal de grille | normal → 12px | 9.3 | 6 | 375, 768, 1440 |
 

@@ -787,13 +787,13 @@
     "horsEcran": 0
    },
    "wp": {
-    "hauteur": 23920,
+    "hauteur": 23894,
     "sections": 18,
     "bandes": [
      956,
      311,
      816,
-     1455,
+     1429,
      1723,
      1280,
      1992,
@@ -1594,7 +1594,7 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0384,
+   "cls": 0.0398,
    "erreursConsole": [],
    "erreursReseau": []
   }
@@ -2053,7 +2053,7 @@
  },
  "#/service/bureaux": {
   "320": {
-   "ratio": 108,
+   "ratio": 105,
    "ref": {
     "hauteur": 15977,
     "sections": 13,
@@ -2108,7 +2108,7 @@
     "horsEcran": 0
    },
    "wp": {
-    "hauteur": 17265,
+    "hauteur": 16746,
     "sections": 13,
     "bandes": [
      1039,
@@ -2116,8 +2116,8 @@
      1386,
      699,
      1610,
-     3270,
-     2256,
+     2920,
+     2086,
      993,
      711,
      724,
@@ -2170,7 +2170,7 @@
    "erreursReseau": []
   },
   "375": {
-   "ratio": 109,
+   "ratio": 106,
    "ref": {
     "hauteur": 14541,
     "sections": 13,
@@ -2225,16 +2225,16 @@
     "horsEcran": 0
    },
    "wp": {
-    "hauteur": 15839,
+    "hauteur": 15366,
     "sections": 13,
     "bandes": [
      970,
      519,
-     1283,
+     1282,
      645,
      1390,
-     2844,
-     2038,
+     2630,
+     1780,
      885,
      664,
      724,
@@ -2287,7 +2287,7 @@
    "erreursReseau": []
   },
   "768": {
-   "ratio": 112,
+   "ratio": 109,
    "ref": {
     "hauteur": 9731,
     "sections": 13,
@@ -2342,16 +2342,16 @@
     "horsEcran": 0
    },
    "wp": {
-    "hauteur": 10877,
+    "hauteur": 10590,
     "sections": 13,
     "bandes": [
      1069,
      351,
-     896,
+     871,
      414,
      935,
-     1495,
-     1242,
+     1371,
+     1105,
      554,
      573,
      538,
@@ -2404,7 +2404,7 @@
    "erreursReseau": []
   },
   "1024": {
-   "ratio": 101,
+   "ratio": 99,
    "ref": {
     "hauteur": 8138,
     "sections": 13,
@@ -2459,7 +2459,7 @@
     "horsEcran": 0
    },
    "wp": {
-    "hauteur": 8201,
+    "hauteur": 8046,
     "sections": 13,
     "bandes": [
      477,
@@ -2467,8 +2467,8 @@
      781,
      389,
      658,
-     1199,
-     1027,
+     1144,
+     929,
      398,
      368,
      336,
@@ -2521,7 +2521,7 @@
    "erreursReseau": []
   },
   "1440": {
-   "ratio": 103,
+   "ratio": 101,
    "ref": {
     "hauteur": 7745,
     "sections": 13,
@@ -2576,7 +2576,7 @@
     "horsEcran": 0
    },
    "wp": {
-    "hauteur": 7984,
+    "hauteur": 7810,
     "sections": 13,
     "bandes": [
      549,
@@ -2584,8 +2584,8 @@
      769,
      397,
      583,
-     1085,
-     1016,
+     983,
+     944,
      349,
      347,
      330,
@@ -2633,12 +2633,12 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.1046,
+   "cls": 0.1066,
    "erreursConsole": [],
    "erreursReseau": []
   },
   "1920": {
-   "ratio": 103,
+   "ratio": 101,
    "ref": {
     "hauteur": 7756,
     "sections": 13,
@@ -2693,7 +2693,7 @@
     "horsEcran": 0
    },
    "wp": {
-    "hauteur": 7990,
+    "hauteur": 7816,
     "sections": 13,
     "bandes": [
      551,
@@ -2701,8 +2701,8 @@
      769,
      397,
      583,
-     1085,
-     1016,
+     983,
+     944,
      349,
      347,
      330,
@@ -2750,14 +2750,14 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0767,
+   "cls": 0.0778,
    "erreursConsole": [],
    "erreursReseau": []
   }
  },
  "#/service/commerces": {
   "320": {
-   "ratio": 108,
+   "ratio": 105,
    "ref": {
     "hauteur": 15053,
     "sections": 13,
@@ -2812,16 +2812,16 @@
     "horsEcran": 0
    },
    "wp": {
-    "hauteur": 16231,
+    "hauteur": 15853,
     "sections": 13,
     "bandes": [
      943,
      577,
-     1196,
+     1195,
      699,
      1555,
-     2951,
-     1957,
+     2724,
+     1805,
      964,
      736,
      724,
@@ -2874,7 +2874,7 @@
    "erreursReseau": []
   },
   "375": {
-   "ratio": 110,
+   "ratio": 107,
    "ref": {
     "hauteur": 13666,
     "sections": 13,
@@ -2929,16 +2929,16 @@
     "horsEcran": 0
    },
    "wp": {
-    "hauteur": 14971,
+    "hauteur": 14572,
     "sections": 13,
     "bandes": [
      938,
      492,
-     1143,
+     1142,
      618,
      1417,
-     2600,
-     1766,
+     2367,
+     1601,
      802,
      690,
      724,
@@ -2991,7 +2991,7 @@
    "erreursReseau": []
   },
   "768": {
-   "ratio": 112,
+   "ratio": 110,
    "ref": {
     "hauteur": 9333,
     "sections": 13,
@@ -3046,16 +3046,16 @@
     "horsEcran": 0
    },
    "wp": {
-    "hauteur": 10489,
+    "hauteur": 10221,
     "sections": 13,
     "bandes": [
      1069,
      323,
-     803,
+     777,
      414,
      935,
-     1434,
-     1106,
+     1269,
+     1028,
      526,
      598,
      538,
@@ -3108,7 +3108,7 @@
    "erreursReseau": []
   },
   "1024": {
-   "ratio": 102,
+   "ratio": 99,
    "ref": {
     "hauteur": 7706,
     "sections": 13,
@@ -3163,7 +3163,7 @@
     "horsEcran": 0
    },
    "wp": {
-    "hauteur": 7835,
+    "hauteur": 7638,
     "sections": 13,
     "bandes": [
      445,
@@ -3171,8 +3171,8 @@
      641,
      389,
      658,
-     1145,
-     946,
+     1041,
+     852,
      391,
      368,
      336,
@@ -3225,7 +3225,7 @@
    "erreursReseau": []
   },
   "1440": {
-   "ratio": 101,
+   "ratio": 99,
    "ref": {
     "hauteur": 7484,
     "sections": 13,
@@ -3280,7 +3280,7 @@
     "horsEcran": 0
    },
    "wp": {
-    "hauteur": 7591,
+    "hauteur": 7435,
     "sections": 13,
     "bandes": [
      546,
@@ -3288,8 +3288,8 @@
      629,
      370,
      583,
-     1050,
-     880,
+     932,
+     842,
      344,
      353,
      330,
@@ -3342,7 +3342,7 @@
    "erreursReseau": []
   },
   "1920": {
-   "ratio": 101,
+   "ratio": 99,
    "ref": {
     "hauteur": 7494,
     "sections": 13,
@@ -3397,7 +3397,7 @@
     "horsEcran": 0
    },
    "wp": {
-    "hauteur": 7597,
+    "hauteur": 7440,
     "sections": 13,
     "bandes": [
      548,
@@ -3405,8 +3405,8 @@
      629,
      370,
      583,
-     1050,
-     880,
+     932,
+     842,
      344,
      353,
      330,
@@ -3454,14 +3454,14 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0959,
+   "cls": 0.0973,
    "erreursConsole": [],
    "erreursReseau": []
   }
  },
  "#/service/cabinets": {
   "320": {
-   "ratio": 107,
+   "ratio": 104,
    "ref": {
     "hauteur": 16798,
     "sections": 14,
@@ -3519,17 +3519,17 @@
     "horsEcran": 0
    },
    "wp": {
-    "hauteur": 17975,
+    "hauteur": 17474,
     "sections": 14,
     "bandes": [
      1071,
      821,
-     1393,
+     1341,
      912,
      835,
      1583,
-     2815,
-     2120,
+     2578,
+     1907,
      992,
      736,
      724,
@@ -3584,7 +3584,7 @@
    "erreursReseau": []
   },
   "375": {
-   "ratio": 108,
+   "ratio": 105,
    "ref": {
     "hauteur": 15216,
     "sections": 14,
@@ -3642,17 +3642,17 @@
     "horsEcran": 0
    },
    "wp": {
-    "hauteur": 16458,
+    "hauteur": 16035,
     "sections": 14,
     "bandes": [
      1002,
      709,
-     1289,
+     1288,
      868,
      754,
      1397,
-     2471,
-     1875,
+     2221,
+     1703,
      857,
      690,
      724,
@@ -3707,7 +3707,7 @@
    "erreursReseau": []
   },
   "768": {
-   "ratio": 112,
+   "ratio": 110,
    "ref": {
     "hauteur": 10240,
     "sections": 14,
@@ -3765,17 +3765,17 @@
     "horsEcran": 0
    },
    "wp": {
-    "hauteur": 11431,
+    "hauteur": 11233,
     "sections": 14,
     "bandes": [
      1101,
      432,
-     903,
+     902,
      565,
      495,
      941,
-     1305,
-     1215,
+     1192,
+     1131,
      526,
      598,
      538,
@@ -3830,7 +3830,7 @@
    "erreursReseau": []
   },
   "1024": {
-   "ratio": 102,
+   "ratio": 99,
    "ref": {
     "hauteur": 8584,
     "sections": 14,
@@ -3888,17 +3888,17 @@
     "horsEcran": 0
    },
    "wp": {
-    "hauteur": 8730,
+    "hauteur": 8480,
     "sections": 14,
     "bandes": [
      509,
      376,
-     787,
+     761,
      497,
      416,
      685,
-     1090,
-     1027,
+     990,
+     903,
      391,
      368,
      336,
@@ -3953,7 +3953,7 @@
    "erreursReseau": []
   },
   "1440": {
-   "ratio": 101,
+   "ratio": 99,
    "ref": {
     "hauteur": 8321,
     "sections": 14,
@@ -4011,7 +4011,7 @@
     "horsEcran": 0
    },
    "wp": {
-    "hauteur": 8416,
+    "hauteur": 8245,
     "sections": 14,
     "bandes": [
      546,
@@ -4020,8 +4020,8 @@
      486,
      397,
      590,
-     976,
-     1071,
+     907,
+     969,
      349,
      353,
      330,
@@ -4071,12 +4071,12 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.157,
+   "cls": 0.1599,
    "erreursConsole": [],
    "erreursReseau": []
   },
   "1920": {
-   "ratio": 101,
+   "ratio": 99,
    "ref": {
     "hauteur": 8337,
     "sections": 14,
@@ -4134,7 +4134,7 @@
     "horsEcran": 0
    },
    "wp": {
-    "hauteur": 8421,
+    "hauteur": 8251,
     "sections": 14,
     "bandes": [
      548,
@@ -4143,8 +4143,8 @@
      486,
      397,
      590,
-     976,
-     1071,
+     907,
+     969,
      349,
      353,
      330,
@@ -4194,14 +4194,14 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.1151,
+   "cls": 0.1167,
    "erreursConsole": [],
    "erreursReseau": []
   }
  },
  "#/service/coproprietes": {
   "320": {
-   "ratio": 108,
+   "ratio": 104,
    "ref": {
     "hauteur": 15803,
     "sections": 13,
@@ -4256,16 +4256,16 @@
     "horsEcran": 0
    },
    "wp": {
-    "hauteur": 17025,
+    "hauteur": 16508,
     "sections": 13,
     "bandes": [
      943,
      549,
-     1349,
+     1323,
      726,
      1679,
-     3182,
-     1929,
+     2866,
+     1754,
      1102,
      761,
      724,
@@ -4318,7 +4318,7 @@
    "erreursReseau": []
   },
   "375": {
-   "ratio": 110,
+   "ratio": 107,
    "ref": {
     "hauteur": 14360,
     "sections": 13,
@@ -4373,7 +4373,7 @@
     "horsEcran": 0
    },
    "wp": {
-    "hauteur": 15743,
+    "hauteur": 15337,
     "sections": 13,
     "bandes": [
      970,
@@ -4381,8 +4381,8 @@
      1269,
      699,
      1514,
-     2803,
-     1712,
+     2560,
+     1550,
      967,
      715,
      724,
@@ -4435,7 +4435,7 @@
    "erreursReseau": []
   },
   "768": {
-   "ratio": 113,
+   "ratio": 110,
    "ref": {
     "hauteur": 9755,
     "sections": 13,
@@ -4490,16 +4490,16 @@
     "horsEcran": 0
    },
    "wp": {
-    "hauteur": 11018,
+    "hauteur": 10758,
     "sections": 13,
     "bandes": [
      1069,
      323,
-     903,
+     902,
      468,
      1010,
-     1610,
-     1106,
+     1505,
+     952,
      581,
      598,
      538,
@@ -4552,7 +4552,7 @@
    "erreursReseau": []
   },
   "1024": {
-   "ratio": 102,
+   "ratio": 99,
    "ref": {
     "hauteur": 8065,
     "sections": 13,
@@ -4607,16 +4607,16 @@
     "horsEcran": 0
    },
    "wp": {
-    "hauteur": 8186,
+    "hauteur": 7982,
     "sections": 13,
     "bandes": [
      445,
      294,
-     741,
+     740,
      389,
      658,
-     1321,
-     918,
+     1209,
+     827,
      426,
      368,
      336,
@@ -4669,7 +4669,7 @@
    "erreursReseau": []
   },
   "1440": {
-   "ratio": 101,
+   "ratio": 99,
    "ref": {
     "hauteur": 7684,
     "sections": 13,
@@ -4724,7 +4724,7 @@
     "horsEcran": 0
    },
    "wp": {
-    "hauteur": 7793,
+    "hauteur": 7610,
     "sections": 13,
     "bandes": [
      546,
@@ -4732,8 +4732,8 @@
      703,
      397,
      583,
-     1023,
-     908,
+     907,
+     842,
      377,
      353,
      330,
@@ -4781,12 +4781,12 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.1831,
+   "cls": 0.1865,
    "erreursConsole": [],
    "erreursReseau": []
   },
   "1920": {
-   "ratio": 101,
+   "ratio": 99,
    "ref": {
     "hauteur": 7694,
     "sections": 13,
@@ -4841,7 +4841,7 @@
     "horsEcran": 0
    },
    "wp": {
-    "hauteur": 7798,
+    "hauteur": 7616,
     "sections": 13,
     "bandes": [
      548,
@@ -4849,8 +4849,8 @@
      703,
      397,
      583,
-     1023,
-     908,
+     907,
+     842,
      377,
      353,
      330,
@@ -4905,7 +4905,7 @@
  },
  "#/service/meubles": {
   "320": {
-   "ratio": 108,
+   "ratio": 105,
    "ref": {
     "hauteur": 16090,
     "sections": 13,
@@ -4960,16 +4960,16 @@
     "horsEcran": 0
    },
    "wp": {
-    "hauteur": 17437,
+    "hauteur": 16895,
     "sections": 13,
     "bandes": [
      1039,
      767,
-     1322,
+     1296,
      781,
      1603,
-     3188,
-     2120,
+     2885,
+     1907,
      1075,
      762,
      724,
@@ -5022,7 +5022,7 @@
    "erreursReseau": []
   },
   "375": {
-   "ratio": 110,
+   "ratio": 107,
    "ref": {
     "hauteur": 14559,
     "sections": 13,
@@ -5077,16 +5077,16 @@
     "horsEcran": 0
    },
    "wp": {
-    "hauteur": 16044,
+    "hauteur": 15551,
     "sections": 13,
     "bandes": [
      1002,
      655,
-     1269,
+     1218,
      726,
      1438,
-     2825,
-     1848,
+     2579,
+     1652,
      912,
      715,
      724,
@@ -5139,7 +5139,7 @@
    "erreursReseau": []
   },
   "768": {
-   "ratio": 113,
+   "ratio": 110,
    "ref": {
     "hauteur": 9859,
     "sections": 13,
@@ -5194,7 +5194,7 @@
     "horsEcran": 0
    },
    "wp": {
-    "hauteur": 11101,
+    "hauteur": 10891,
     "sections": 13,
     "bandes": [
      1101,
@@ -5202,8 +5202,8 @@
      851,
      495,
      983,
-     1495,
-     1242,
+     1397,
+     1131,
      581,
      598,
      538,
@@ -5256,7 +5256,7 @@
    "erreursReseau": []
   },
   "1024": {
-   "ratio": 100,
+   "ratio": 98,
    "ref": {
     "hauteur": 8322,
     "sections": 13,
@@ -5311,7 +5311,7 @@
     "horsEcran": 0
    },
    "wp": {
-    "hauteur": 8335,
+    "hauteur": 8127,
     "sections": 13,
     "bandes": [
      477,
@@ -5319,8 +5319,8 @@
      715,
      416,
      685,
-     1254,
-     1027,
+     1118,
+     954,
      418,
      368,
      336,
@@ -5373,7 +5373,7 @@
    "erreursReseau": []
   },
   "1440": {
-   "ratio": 103,
+   "ratio": 100,
    "ref": {
     "hauteur": 7955,
     "sections": 13,
@@ -5428,7 +5428,7 @@
     "horsEcran": 0
    },
    "wp": {
-    "hauteur": 8165,
+    "hauteur": 7988,
     "sections": 13,
     "bandes": [
      581,
@@ -5436,8 +5436,8 @@
      703,
      424,
      583,
-     1085,
-     1071,
+     1009,
+     969,
      372,
      353,
      330,
@@ -5490,7 +5490,7 @@
    "erreursReseau": []
   },
   "1920": {
-   "ratio": 103,
+   "ratio": 100,
    "ref": {
     "hauteur": 7966,
     "sections": 13,
@@ -5545,7 +5545,7 @@
     "horsEcran": 0
    },
    "wp": {
-    "hauteur": 8171,
+    "hauteur": 7994,
     "sections": 13,
     "bandes": [
      583,
@@ -5553,8 +5553,8 @@
      703,
      424,
      583,
-     1085,
-     1071,
+     1009,
+     969,
      372,
      353,
      330,
@@ -5609,7 +5609,7 @@
  },
  "#/service/ponctuel": {
   "320": {
-   "ratio": 109,
+   "ratio": 106,
    "ref": {
     "hauteur": 15363,
     "sections": 13,
@@ -5664,16 +5664,16 @@
     "horsEcran": 0
    },
    "wp": {
-    "hauteur": 16681,
+    "hauteur": 16220,
     "sections": 13,
     "bandes": [
      975,
      604,
-     1227,
+     1202,
      645,
      1610,
-     3290,
-     1739,
+     3020,
+     1575,
      1102,
      736,
      724,
@@ -5726,7 +5726,7 @@
    "erreursReseau": []
   },
   "375": {
-   "ratio": 110,
+   "ratio": 107,
    "ref": {
     "hauteur": 14029,
     "sections": 13,
@@ -5781,16 +5781,16 @@
     "horsEcran": 0
    },
    "wp": {
-    "hauteur": 15472,
+    "hauteur": 15014,
     "sections": 13,
     "bandes": [
      937,
      519,
-     1175,
+     1174,
      618,
      1417,
-     2974,
-     1576,
+     2645,
+     1447,
      967,
      715,
      724,
@@ -5843,7 +5843,7 @@
    "erreursReseau": []
   },
   "768": {
-   "ratio": 112,
+   "ratio": 109,
    "ref": {
     "hauteur": 9592,
     "sections": 13,
@@ -5898,7 +5898,7 @@
     "horsEcran": 0
    },
    "wp": {
-    "hauteur": 10748,
+    "hauteur": 10465,
     "sections": 13,
     "bandes": [
      1036,
@@ -5906,8 +5906,8 @@
      781,
      414,
      941,
-     1699,
-     997,
+     1513,
+     900,
      581,
      598,
      538,
@@ -5960,7 +5960,7 @@
    "erreursReseau": []
   },
   "1024": {
-   "ratio": 102,
+   "ratio": 99,
    "ref": {
     "hauteur": 7952,
     "sections": 13,
@@ -6015,7 +6015,7 @@
     "horsEcran": 0
    },
    "wp": {
-    "hauteur": 8103,
+    "hauteur": 7874,
     "sections": 13,
     "bandes": [
      477,
@@ -6023,8 +6023,8 @@
      670,
      362,
      665,
-     1403,
-     837,
+     1260,
+     750,
      446,
      368,
      336,
@@ -6077,7 +6077,7 @@
    "erreursReseau": []
   },
   "1440": {
-   "ratio": 101,
+   "ratio": 99,
    "ref": {
     "hauteur": 7588,
     "sections": 13,
@@ -6132,7 +6132,7 @@
     "horsEcran": 0
    },
    "wp": {
-    "hauteur": 7662,
+    "hauteur": 7526,
     "sections": 13,
     "bandes": [
      546,
@@ -6140,8 +6140,8 @@
      658,
      370,
      590,
-     1057,
-     826,
+     958,
+     791,
      372,
      353,
      330,
@@ -6189,12 +6189,12 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.2398,
+   "cls": 0.2354,
    "erreursConsole": [],
    "erreursReseau": []
   },
   "1920": {
-   "ratio": 101,
+   "ratio": 99,
    "ref": {
     "hauteur": 7598,
     "sections": 13,
@@ -6249,7 +6249,7 @@
     "horsEcran": 0
    },
    "wp": {
-    "hauteur": 7667,
+    "hauteur": 7532,
     "sections": 13,
     "bandes": [
      548,
@@ -6257,8 +6257,8 @@
      658,
      370,
      590,
-     1057,
-     826,
+     958,
+     791,
      372,
      353,
      330,
@@ -6306,7 +6306,7 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.1751,
+   "cls": 0.1726,
    "erreursConsole": [],
    "erreursReseau": []
   }
@@ -6365,7 +6365,7 @@
     "horsEcran": 0
    },
    "wp": {
-    "hauteur": 10882,
+    "hauteur": 10856,
     "sections": 12,
     "bandes": [
      597,
@@ -6373,7 +6373,7 @@
      372,
      295,
      677,
-     945,
+     919,
      687,
      1467,
      703,
@@ -6479,7 +6479,7 @@
     "horsEcran": 0
    },
    "wp": {
-    "hauteur": 10282,
+    "hauteur": 10281,
     "sections": 12,
     "bandes": [
      533,
@@ -6715,7 +6715,7 @@
      204,
      180,
      609,
-     426,
+     425,
      288,
      625,
      515,
@@ -6829,7 +6829,7 @@
      204,
      180,
      616,
-     426,
+     425,
      296,
      632,
      523,
@@ -6943,7 +6943,7 @@
      204,
      180,
      616,
-     426,
+     425,
      296,
      632,
      523,
@@ -6992,7 +6992,7 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.187,
+   "cls": 0.1945,
    "erreursConsole": [],
    "erreursReseau": []
   }
@@ -7654,7 +7654,7 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.2109,
+   "cls": 0.2161,
    "erreursConsole": [],
    "erreursReseau": []
   }
@@ -8186,7 +8186,7 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.3275,
+   "cls": 0.3139,
    "erreursConsole": [],
    "erreursReseau": []
   },
@@ -8292,7 +8292,7 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.2301,
+   "cls": 0.2358,
    "erreursConsole": [],
    "erreursReseau": []
   }
@@ -8764,7 +8764,7 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.3317,
+   "cls": 0.3464,
    "erreursConsole": [],
    "erreursReseau": []
   },
@@ -8858,7 +8858,7 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.2529,
+   "cls": 0.2432,
    "erreursConsole": [],
    "erreursReseau": []
   }
@@ -9330,7 +9330,7 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.3731,
+   "cls": 0.3572,
    "erreursConsole": [],
    "erreursReseau": []
   },
@@ -9990,7 +9990,7 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.2876,
+   "cls": 0.2806,
    "erreursConsole": [],
    "erreursReseau": []
   }
@@ -11028,7 +11028,7 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.4447,
+   "cls": 0.4338,
    "erreursConsole": [],
    "erreursReseau": []
   },
@@ -11688,7 +11688,7 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.3501,
+   "cls": 0.3367,
    "erreursConsole": [],
    "erreursReseau": []
   }
@@ -12160,7 +12160,7 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.4848,
+   "cls": 0.5063,
    "erreursConsole": [],
    "erreursReseau": []
   },
@@ -12254,7 +12254,7 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.3554,
+   "cls": 0.3696,
    "erreursConsole": [],
    "erreursReseau": []
   }
@@ -13357,7 +13357,7 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.5494,
+   "cls": 0.5596,
    "erreursConsole": [],
    "erreursReseau": []
   },
@@ -13464,7 +13464,7 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.3928,
+   "cls": 0.4085,
    "erreursConsole": [],
    "erreursReseau": []
   }
@@ -14001,7 +14001,7 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.5862,
+   "cls": 0.5794,
    "erreursConsole": [],
    "erreursReseau": []
   },
@@ -14108,7 +14108,7 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.4219,
+   "cls": 0.4115,
    "erreursConsole": [],
    "erreursReseau": []
   }
@@ -14752,7 +14752,7 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.441,
+   "cls": 0.4302,
    "erreursConsole": [],
    "erreursReseau": []
   }
@@ -15396,7 +15396,7 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.4668,
+   "cls": 0.4489,
    "erreursConsole": [],
    "erreursReseau": []
   }
@@ -16040,7 +16040,7 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.4676,
+   "cls": 0.4792,
    "erreursConsole": [],
    "erreursReseau": []
   }
@@ -16363,7 +16363,7 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0032,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": []
   },
@@ -16684,7 +16684,7 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.4863,
+   "cls": 0.5057,
    "erreursConsole": [],
    "erreursReseau": []
   }
@@ -17328,7 +17328,7 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.5175,
+   "cls": 0.505,
    "erreursConsole": [],
    "erreursReseau": []
   }
@@ -17972,7 +17972,7 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.5446,
+   "cls": 0.5237,
    "erreursConsole": [],
    "erreursReseau": []
   }
@@ -19153,7 +19153,7 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.7655,
+   "cls": 0.7994,
    "erreursConsole": [],
    "erreursReseau": []
   },
@@ -19260,7 +19260,7 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.5835,
+   "cls": 0.5611,
    "erreursConsole": [],
    "erreursReseau": []
   }
@@ -19797,7 +19797,7 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.791,
+   "cls": 0.8261,
    "erreursConsole": [],
    "erreursReseau": []
   },
@@ -20441,7 +20441,7 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.8527,
+   "cls": 0.8165,
    "erreursConsole": [],
    "erreursReseau": []
   },
@@ -21824,7 +21824,7 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.6359,
+   "cls": 0.6517,
    "erreursConsole": [],
    "erreursReseau": []
   }
@@ -22361,7 +22361,7 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.9327,
+   "cls": 0.8931,
    "erreursConsole": [],
    "erreursReseau": []
   },
@@ -23005,7 +23005,7 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.9418,
+   "cls": 0.9186,
    "erreursConsole": [],
    "erreursReseau": []
   },
@@ -23112,7 +23112,7 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.7002,
+   "cls": 0.6903,
    "erreursConsole": [],
    "erreursReseau": []
   }
@@ -23639,7 +23639,7 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.9441,
+   "cls": 0.986,
    "erreursConsole": [],
    "erreursReseau": []
   },
@@ -24271,7 +24271,7 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 1.0126,
+   "cls": 0.9696,
    "erreursConsole": [],
    "erreursReseau": []
   },
@@ -24376,7 +24376,7 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.7212,
+   "cls": 0.7108,
    "erreursConsole": [],
    "erreursReseau": []
   }
@@ -24770,7 +24770,7 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.9951,
+   "cls": 1.0141,
    "erreursConsole": [],
    "erreursReseau": []
   },
@@ -25246,7 +25246,7 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 1.0659,
+   "cls": 1.0464,
    "erreursConsole": [],
    "erreursReseau": []
   },
@@ -25961,7 +25961,7 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0013,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": []
   },
@@ -27602,7 +27602,7 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 1.1772,
+   "cls": 1.1482,
    "erreursConsole": [],
    "erreursReseau": []
   },
@@ -27681,7 +27681,7 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.8753,
+   "cls": 0.8417,
    "erreursConsole": [],
    "erreursReseau": []
   }
@@ -28143,12 +28143,12 @@
     "horsEcran": 0
    },
    "wp": {
-    "hauteur": 5048,
+    "hauteur": 5022,
     "sections": 4,
     "bandes": [
      782,
      738,
-     870,
+     844,
      267
     ],
     "cartes": 10,
@@ -28317,7 +28317,7 @@
    "erreursReseau": []
   },
   "1024": {
-   "ratio": 102,
+   "ratio": 101,
    "ref": {
     "hauteur": 2680,
     "sections": 4,
@@ -28350,12 +28350,12 @@
     "horsEcran": 0
    },
    "wp": {
-    "hauteur": 2722,
+    "hauteur": 2696,
     "sections": 4,
     "bandes": [
      431,
      431,
-     581,
+     555,
      242
     ],
     "cartes": 10,
@@ -28386,7 +28386,7 @@
    "erreursReseau": []
   },
   "1440": {
-   "ratio": 106,
+   "ratio": 105,
    "ref": {
     "hauteur": 2394,
     "sections": 4,
@@ -28419,12 +28419,12 @@
     "horsEcran": 0
    },
    "wp": {
-    "hauteur": 2542,
+    "hauteur": 2516,
     "sections": 4,
     "bandes": [
      446,
      310,
-     622,
+     596,
      249
     ],
     "cartes": 10,
@@ -28450,12 +28450,12 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 1.2295,
+   "cls": 2.0595,
    "erreursConsole": [],
    "erreursReseau": []
   },
   "1920": {
-   "ratio": 106,
+   "ratio": 105,
    "ref": {
     "hauteur": 2406,
     "sections": 4,
@@ -28488,12 +28488,12 @@
     "horsEcran": 0
    },
    "wp": {
-    "hauteur": 2542,
+    "hauteur": 2516,
     "sections": 4,
     "bandes": [
      446,
      310,
-     622,
+     596,
      249
     ],
     "cartes": 10,
@@ -28519,7 +28519,7 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 1.5009,
+   "cls": 0.9013,
    "erreursConsole": [],
    "erreursReseau": []
   }
@@ -29911,7 +29911,7 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 1.3998,
+   "cls": 1.367,
    "erreursConsole": [],
    "erreursReseau": []
   },
@@ -29967,7 +29967,7 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 1.0261,
+   "cls": 1.0401,
    "erreursConsole": [],
    "erreursReseau": []
   }
@@ -30249,7 +30249,7 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 1.4527,
+   "cls": 1.3938,
    "erreursConsole": [],
    "erreursReseau": []
   },
@@ -30305,7 +30305,7 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 1.0605,
+   "cls": 1.0217,
    "erreursConsole": [],
    "erreursReseau": []
   }
@@ -30531,7 +30531,7 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.147,
+   "cls": 0.036,
    "erreursConsole": [],
    "erreursReseau": []
   },
