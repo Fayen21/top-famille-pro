@@ -20,6 +20,7 @@
 import { chromium } from '@playwright/test';
 import { writeFileSync, readFileSync, existsSync } from 'node:fs';
 import { ROUTE_MAP } from './route-map.mjs';
+import { SRC_BANDES } from './lib/bandes.mjs';
 
 const REF = 'file://' + process.cwd() + '/reference/Top-Famille-Pro-HANDOFF-READY.html';
 const WP = process.env.TFP_BASE_URL || 'http://localhost:8901';
@@ -59,6 +60,9 @@ const RELEVE = () => {
 	const txt = (el) => (el ? (el.textContent || '').replace(/\s+/g, ' ').trim() : '');
 
 	// Conteneur du flux de page : en-tête, pré-pied et pied sont identiques sur les 53 routes.
+	// La détection du flux, elle, reste sur `section` seul : c'est le repère qui distingue le
+	// conteneur de page de ses ancêtres, et il est vérifié symétrique sur les 53 routes. Le
+	// découpage EN bandes, lui, est plus large — voir tools/lib/bandes.mjs.
 	let flux = document.body;
 	for (let el = document.querySelector('h1'); el; el = el.parentElement) {
 		if (el.querySelectorAll(':scope > section').length >= 2) {
@@ -66,7 +70,7 @@ const RELEVE = () => {
 			break;
 		}
 	}
-	const bandes = [...flux.querySelectorAll(':scope > section')].filter((s) => s.getBoundingClientRect().height > 20);
+	const bandes = window.__tfpBandes(flux);
 
 	/** Une carte : un bloc qui se distingue visuellement de son fond (fond, filet, rayon, ombre). */
 	const estCarte = (el) => {
@@ -173,6 +177,7 @@ for (const largeur of LARGEURS) {
 	/** Ouvre le couple de pages : maquette chargée une fois, page WordPress prête à naviguer. */
 	const ouvrir = async () => {
 		const r = await navigateur.newPage({ viewport: { width: largeur, height: 900 } });
+		await r.addInitScript(SRC_BANDES);
 		await r.goto(REF, { waitUntil: 'load', timeout: 90000 });
 		await r.waitForTimeout(5500);
 		return r;
@@ -195,6 +200,7 @@ for (const largeur of LARGEURS) {
 	 */
 	const creerWp = async () => {
 		const w = await navigateur.newPage({ viewport: { width: largeur, height: 900 } });
+		await w.addInitScript(SRC_BANDES);
 		await w.addInitScript(() => {
 			window.__cls = 0;
 			new PerformanceObserver((l) => {

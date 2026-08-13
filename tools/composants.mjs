@@ -38,6 +38,7 @@
 import { chromium } from '@playwright/test';
 import { writeFileSync, readFileSync } from 'node:fs';
 import { ROUTE_MAP } from './route-map.mjs';
+import { SRC_BANDES } from './lib/bandes.mjs';
 
 const REF = 'file://' + process.cwd() + '/reference/Top-Famille-Pro-HANDOFF-READY.html';
 const WP = process.env.TFP_BASE_URL || 'http://localhost:8901';
@@ -99,7 +100,12 @@ const RELEVE = () => {
 			.toLowerCase()
 			.replace(/[^a-z0-9]/g, '');
 
-	/** Flux de page : en-tête, pré-pied et pied sont identiques sur les 53 routes. */
+	/**
+	 * Flux de page : en-tête, pré-pied et pied sont identiques sur les 53 routes.
+	 *
+	 * La détection du flux reste sur `section` seul — repère vérifié symétrique sur les 53 routes.
+	 * Le découpage EN bandes est plus large : voir tools/lib/bandes.mjs.
+	 */
 	let flux = document.body;
 	for (let el = document.querySelector('h1'); el; el = el.parentElement) {
 		if (el.querySelectorAll(':scope > section').length >= 2) {
@@ -107,7 +113,7 @@ const RELEVE = () => {
 			break;
 		}
 	}
-	const bandes = [...flux.querySelectorAll(':scope > section')].filter((s) => s.getBoundingClientRect().height > 20);
+	const bandes = window.__tfpBandes(flux);
 
 	/** Rôle visuel : ce qu'un œil voit, indépendamment des balises et des classes. */
 	const role = (el) => {
@@ -555,9 +561,11 @@ const detail = {};
 
 for (const largeur of LARGEURS) {
 	const ref = await navigateur.newPage({ viewport: { width: largeur, height: 900 } });
+	await ref.addInitScript(SRC_BANDES);
 	await ref.goto(REF, { waitUntil: 'load', timeout: 90000 });
 	await ref.waitForTimeout(5500);
 	const wp = await navigateur.newPage({ viewport: { width: largeur, height: 900 } });
+	await wp.addInitScript(SRC_BANDES);
 
 	for (const [famille, hash] of routes) {
 		if (!ROUTE_MAP[hash]) continue;
