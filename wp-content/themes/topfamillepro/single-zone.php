@@ -242,7 +242,7 @@ get_header();
  * (routes `#/`) : elles sont reconstruites depuis le contenu WordPress réel. Un nom sans page
  * dédiée reste du texte — jamais un lien mort (CLAUDE.md §8).
  */
-$render_group = function ( array $bloc ) use ( $toutes_prestations, $cities_in_dept, $communes_proches, $dept_post ) {
+$render_group = function ( array $bloc ) use ( $toutes_prestations, $cities_in_dept, $communes_proches, $dept_post, $is_dept ) {
 	?>
 	<div class="tfp-zone-links<?php echo 3 === (int) ( $bloc['niveau'] ?? 2 ) ? ' tfp-zone-links--sous' : ''; ?>">
 		<?php
@@ -299,7 +299,8 @@ $render_group = function ( array $bloc ) use ( $toutes_prestations, $cities_in_d
 				<?php endforeach; ?>
 			</div>
 		<?php elseif ( 'villes' === $bloc['type'] ) : ?>
-			<div class="tfp-flex" style="margin-top:16px">
+			<?php // Écart déclaré par le prototype : 8 px pour les villes d'un département, 9 px pour les communes proches d'une ville. ?>
+			<div class="tfp-chip-row<?php echo $is_dept ? '' : ' tfp-chip-row--communes'; ?>" style="margin-top:16px">
 				<?php
 				$cibles = ! empty( $cities_in_dept ) ? $cities_in_dept : (array) $communes_proches;
 				foreach ( $cibles as $cible ) :
@@ -308,7 +309,7 @@ $render_group = function ( array $bloc ) use ( $toutes_prestations, $cities_in_d
 				<?php endforeach; ?>
 			</div>
 		<?php elseif ( 'departements' === $bloc['type'] ) : ?>
-			<div class="tfp-flex" style="margin-top:16px">
+			<div class="tfp-chip-row tfp-chip-row--departements" style="margin-top:16px">
 				<?php foreach ( tfp_footer_zones_tree() as $entry ) : ?>
 					<?php if ( ! $dept_post || $entry['post']->ID !== $dept_post->ID ) : ?>
 						<a class="tfp-chip" href="<?php echo esc_url( get_permalink( $entry['post'] ) ); ?>"><?php echo esc_html( get_the_title( $entry['post'] ) ); ?></a>
@@ -325,7 +326,7 @@ $render_group = function ( array $bloc ) use ( $toutes_prestations, $cities_in_d
 			</div>
 		<?php endif; ?>
 		<?php if ( ! empty( $bloc['noms'] ) ) : ?>
-			<div class="tfp-flex" style="margin-top:16px">
+			<div class="tfp-chip-row" style="margin-top:16px">
 				<?php foreach ( $bloc['noms'] as $nom ) : ?>
 					<span class="tfp-chip tfp-chip--static"><?php echo esc_html( $nom ); ?></span>
 				<?php endforeach; ?>
@@ -344,7 +345,7 @@ $groupes_apres = array_slice( $groupes_liens, $avant_tarif );
  * Rend une suite de groupes en respectant le découpage en sections de la maquette : deux groupes
  * qui y partagent une même bande de fond restent dans la même `<section>`.
  */
-$render_sections = function ( array $groupes, $classe ) use ( $render_group ) {
+$render_sections = function ( array $groupes, $classe ) use ( $render_group, $is_dept ) {
 	$courante = null;
 	$ouverte  = false;
 	$colonne  = false;
@@ -378,10 +379,22 @@ $render_sections = function ( array $groupes, $classe ) use ( $render_group ) {
 			if ( 'prestations' === $bloc['type'] && 'cartes' === $bloc['variante'] ) {
 				$fond = trim( str_replace( array( 'tfp-section--alt', 'tfp-section--turquoise' ), '', $classe ) . ' tfp-section--navy' );
 			}
+			/*
+			 * Variante de base de colonne : le prototype en déclare une par bande, pas une pour
+			 * toutes (voir `.tfp-zone-links-grid` dans 04-components.css). Les trois variantes se
+			 * distinguent par le niveau de la zone et le nombre de colonnes, correspondance vérifiée
+			 * régulière sur les 26 pages de zone.
+			 */
+			$grille = 'tfp-zone-links-grid';
+			if ( $is_dept ) {
+				$grille .= ' tfp-zone-links-grid--dept';
+			} elseif ( 3 === $nb ) {
+				$grille .= ' tfp-zone-links-grid--trois';
+			}
 			printf(
 				'<section class="%s"><div class="tfp-container"><div class="%s">',
 				esc_attr( $fond ),
-				esc_attr( $nb > 1 ? 'tfp-zone-links-grid' : '' )
+				esc_attr( $nb > 1 ? $grille : '' )
 			);
 			$courante = $bloc['section'];
 			$ouverte  = true;

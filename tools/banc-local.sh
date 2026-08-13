@@ -13,6 +13,7 @@
 #   bash tools/banc-local.sh                 → monte tout, sert en environnement « production »
 #   bash tools/banc-local.sh --development   → environnement « development » (suite fonctionnelle)
 #   bash tools/banc-local.sh --seed-only     → rejoue seulement les contenus
+#   bash tools/banc-local.sh --theme-only    → reconstruit le CSS/JS et recopie le thème seul
 #
 # Réseau requis au premier passage (miroir GitHub de WordPress ; wordpress.org est hors de portée
 # depuis ce bac à sable).
@@ -24,12 +25,28 @@ PORT="${TFP_PORT:-8901}"
 URL="http://localhost:${PORT}"
 ENVIRONNEMENT="production"
 SEED_ONLY=0
+THEME_ONLY=0
 for arg in "$@"; do
 	case "$arg" in
 		--development) ENVIRONNEMENT="development" ;;
 		--seed-only) SEED_ONLY=1 ;;
+		--theme-only) THEME_ONLY=1 ;;
 	esac
 done
+
+# Reconstruire le thème et le recopier est le geste le plus répété d'une passe de fidélité : une
+# correction CSS ne se mesure qu'après. Le faire à la main, c'est mesurer tôt ou tard l'ancienne
+# feuille de style et conclure que la correction n'a servi à rien.
+if [ "$THEME_ONLY" -eq 1 ]; then
+	cd "$DEPOT"
+	npm run build:css >/dev/null
+	rm -rf "$RIG/wp-core/wp-content/themes/topfamillepro"
+	cp -a "$DEPOT/wp-content/themes/topfamillepro" "$RIG/wp-core/wp-content/themes/topfamillepro"
+	code_css=$(curl -s -o /dev/null -w '%{http_code}' "$URL/wp-content/themes/topfamillepro/assets/dist/css/main.css")
+	printf 'thème recopié · feuille de style %s\n' "$code_css"
+	[ "$code_css" = "200" ] || { echo "✗ la feuille de style n'est pas servie"; exit 1; }
+	exit 0
+fi
 
 WP() { php "$RIG/wp-cli.phar" --path="$RIG/wp-core" --allow-root "$@"; }
 

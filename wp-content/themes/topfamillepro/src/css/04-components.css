@@ -2161,16 +2161,48 @@ body.tfp-body .tfp-article-body p a {
   border-bottom-color: rgba(255, 255, 255, 0.18);
 }
 
-/* Bande tarifaire d'une page de zone : trois colonnes, relevées à 1440 px sur la maquette —
-   texte 394, exemple 344, témoignage 374, écart 34. Les proportions sont conservées en `fr`
-   pour que la bande se comporte de la même façon à toutes les largeurs. */
+/* Bande tarifaire d'une page de zone : trois colonnes, à repli INTRINSÈQUE.
+
+   Le relevé d'origine était fait à 1440 px puis figé en proportions — texte 394, exemple 344,
+   témoignage 374, écart 34 — avec un repli sur une colonne à 979 px de fenêtre. La maquette ne
+   procède pas ainsi : elle déclare une base de colonne par carte et laisse le repli se faire selon
+   la place DISPONIBLE.
+
+     conteneur     display: flex; flex-wrap: wrap; gap: clamp(22px, 3vw, 34px); align-items: stretch
+     texte         flex: 1 1 300px; min-width: min(100%, 280px)
+     exemple       flex: 1 1 250px; min-width: min(100%, 260px)
+     témoignage    flex: 1 1 280px; min-width: min(100%, 270px)
+
+   Ces bases redonnent d'elles-mêmes les largeurs relevées à 1440 px : 830 px de bases, 68 px
+   d'écarts, 282 px de place libre partagée en trois — soit 394 / 344 / 374. La valeur figée était
+   donc juste à 1440 px et fausse partout ailleurs. À 768 px, le seuil de 979 px empilait les trois
+   cartes sur une colonne de 707 px là où la maquette en tient deux de 317 : 223 px de hauteur en
+   trop, sur les 26 pages de zone.
+
+   Vérifié identique à la maquette — colonnes, largeur de carte et écart — à 320, 375, 700, 720,
+   768, 800, 820, 979, 980, 1024, 1440 et 1920 px. */
 .tfp-zone-tarif {
-  display: grid;
-  grid-template-columns: 1.14fr 1fr 1.09fr;
-  gap: 34px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(22px, 3vw, 34px);
   /* La maquette étire ses trois colonnes à la même hauteur : les deux cartes blanches y font
      bloc avec la colonne de texte au lieu de flotter en haut de la bande. */
   align-items: stretch;
+}
+
+.tfp-zone-tarif > * {
+  flex: 1 1 300px;
+  min-width: min(100%, 280px);
+}
+
+.tfp-zone-tarif > .tfp-price-example {
+  flex: 1 1 250px;
+  min-width: min(100%, 260px);
+}
+
+.tfp-zone-tarif > .tfp-testimonial {
+  flex: 1 1 280px;
+  min-width: min(100%, 270px);
 }
 
 /* Les marges verticales que ces deux cartes portent quand elles sont empilées n'ont plus lieu
@@ -2184,26 +2216,58 @@ body.tfp-body .tfp-article-body p a {
   margin-bottom: 0;
 }
 
-@media (max-width: 979px) {
-  .tfp-zone-tarif {
-    grid-template-columns: 1fr;
-    gap: 24px;
-  }
-}
-
 /* Plusieurs groupes de premier rang dans une même bande : une colonne chacun, comme dans la
    maquette (deux colonnes de 566 px avec un écart de 48 sur une page de département, mesurées à
    1440 px). Les sous-groupes s'empilent dans leur colonne — c'est `.tfp-zone-col` qui porte la
    cellule de grille, pas chaque groupe, sans quoi un sous-titre ouvrait sa propre colonne. */
-/* Base de colonne et écart **relevés sur le prototype** : `flex: 1 1 340px` et
-   `gap: clamp(28px, 4vw, 48px)`. Le thème posait 320 px et 48 px fixes ; à 768 px, cela laissait
-   deux colonnes de 329 px là où la maquette est déjà repliée sur une seule de 707 — 303 px de
-   hauteur en trop sur la bande, et ce sur les 26 pages de zone. */
+/* Base de colonne et écart **relevés sur le prototype**. L'écart est le même partout —
+   `gap: clamp(28px, 4vw, 48px)` — mais la BASE DE COLONNE ne l'est pas : le prototype en déclare
+   une par bande, et une même valeur pour les trois serait fausse sur deux d'entre elles.
+
+     ville et commune, deux groupes  « Quartiers et zones d'activité »
+                                     flex: 1 1 340px · min-width: min(100%, 300px)
+     département, deux groupes       « Nos villes d'intervention dans le département »
+                                     flex: 1 1 320px · min-width: min(100%, 280px)
+     ville et commune, trois groupes « Dans le même département »
+                                     260 / 300 / 240 px, min 260 / 280 / 260
+
+   Relevé sur les 26 pages de zone : la correspondance est régulière, sans exception. La différence
+   entre 340 et 320 n'est pas cosmétique — à 768 px la largeur utile est de 707 px, et deux colonnes
+   tiennent à 320 (670,72 px avec l'écart) mais pas à 340 (710,72 px). Le thème posait 340 partout :
+   la bande des villes d'un département s'empilait sur une colonne là où la maquette en tient deux,
+   331 px de hauteur en trop sur les 8 pages de département.
+
+   Le repli est intrinsèque — `flex-wrap`, pas de seuil de fenêtre — comme dans le prototype. */
 .tfp-zone-links-grid {
-  display: grid;
+  display: flex;
+  flex-wrap: wrap;
   gap: clamp(28px, 4vw, 48px);
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
   align-items: start;
+}
+
+.tfp-zone-links-grid > .tfp-zone-col {
+  flex: 1 1 340px;
+  min-width: min(100%, 300px);
+}
+
+.tfp-zone-links-grid--dept > .tfp-zone-col {
+  flex: 1 1 320px;
+  min-width: min(100%, 280px);
+}
+
+.tfp-zone-links-grid--trois > .tfp-zone-col:nth-child(1) {
+  flex: 1 1 260px;
+  min-width: min(100%, 260px);
+}
+
+.tfp-zone-links-grid--trois > .tfp-zone-col:nth-child(2) {
+  flex: 1 1 300px;
+  min-width: min(100%, 280px);
+}
+
+.tfp-zone-links-grid--trois > .tfp-zone-col:nth-child(3) {
+  flex: 1 1 240px;
+  min-width: min(100%, 260px);
 }
 
 .tfp-zone-col > .tfp-zone-links + .tfp-zone-links {
@@ -2899,6 +2963,32 @@ body.tfp-body a.tfp-link-card:focus-visible {
 .tfp-link-card__arrow {
   flex: 0 0 auto;
   color: var(--color-primary);
+}
+
+/* ---------- Rangées de pastilles des pages de zone ----------
+   Même vocabulaire visuel que `.tfp-chip-list` ci-dessous, mais rendues en `<div>` par le gabarit
+   de zone, qui les composait avec l'utilitaire générique `.tfp-flex`. Or cet utilitaire pose
+   `var(--space-4)`, soit 16 px, quand le prototype déclare 8, 9 ou 10 px selon la liste :
+
+     8 px   pastilles de quartiers, de zones d'activité, et villes d'un département
+     9 px   communes proches, sur une page de ville
+     10 px  départements limitrophes
+
+   L'écart de 16 px n'est déclaré nulle part dans la maquette. Sur les 26 pages de zone, il
+   ajoutait une à deux lignes de repli par liste. Relevé : 61 occurrences à 8 px sur 33 routes,
+   20 à 9 px, 11 à 10 px. */
+.tfp-chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tfp-chip-row--communes {
+  gap: 9px;
+}
+
+.tfp-chip-row--departements {
+  gap: 10px;
 }
 
 /* ---------- Chips de couverture ----------
