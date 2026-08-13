@@ -41,7 +41,8 @@
   },
   "sonde_bande": {
    "commande": "node tools/sonde-bande.mjs '#/ville/dijon' [--widths=…] [--bande=N] [--surcharge=diag.css]",
-   "role": "la boucle de validation d'un archétype en une commande : hauteur de bande des deux côtés, colonnes, largeur de carte, écart, et le détail de TOUTES les grilles de la bande en mode --bande"
+   "role": "la boucle de validation d'un archétype en une commande : hauteur de bande des deux côtés, colonnes, largeur de carte, écart, et le détail de TOUTES les grilles de la bande en mode --bande",
+   "residu": "Depuis G11, la sonde affiche le RÉSIDU de chaque bande — sa hauteur moins la somme de ses enfants directs — des deux côtés. C'est la mesure qui a trouvé G11 : les enfants concordaient au pixel et la bande restait trop haute. Un résidu divergent signale une cause qui n'est dans AUCUN composant (rembourrage de bande, marges entre enfants) ; un résidu concordant avec un gros écart de hauteur dit au contraire que la cause est à l'intérieur des composants."
   }
  },
  "groupes_traites": [
@@ -347,7 +348,12 @@
    "94 % recrutement": "À INSTRUIRE — seule route trop COURTE"
   },
   "methode": "la même que G11 : décomposer la bande moins la somme de ses enfants directs, des deux côtés, avant de regarder les composants. Les trois pages légales relèvent de l'exception documentée et doivent recevoir un diagnostic bande par bande pour être classées, pas corrigées.",
-  "commande_de_reprise": "bash tools/banc-local.sh && bash tools/banc-local.sh --theme-only && node tools/sonde-bande.mjs '#/contact' --widths=768"
+  "commande_de_reprise": "bash tools/banc-local.sh && bash tools/banc-local.sh --theme-only && node tools/sonde-bande.mjs '#/contact' --widths=768",
+  "premier_diagnostic_de_#/contact": {
+   "768": "114,4 % · bande 0 Δ+4 (résidu +3) · bande 1 Δ+60 (résidu +37, à instruire) · bande 2 Δ+360 avec un résidu de +9 SEULEMENT",
+   "lecture": "les 360 px de la bande du formulaire sont DANS les composants, pas entre eux — le contraire de G11. Ne pas chercher un rembourrage de bande ici.",
+   "piste_relevee_non_confirmee": "`.tfp-contact-form__row` : le prototype déclare `repeat(auto-fit, minmax(min(100%, 220px), 1fr))` avec `gap: 15px`, le thème pose `repeat(2, minmax(0, 1fr))`, `gap: 0 16px` et un seuil `@media (max-width: 599px)`. L'écart de règle est établi, sa CAUSALITÉ sur les 360 px ne l'est pas : l'appariement des grilles de cette bande par rang n'est pas fiable (le thème en a cinq, la maquette quatre, et le tri par nombre d'enfants les désaligne). Apparier par classe avant de conclure."
+  }
  },
  "groupes_suivants": [
   {

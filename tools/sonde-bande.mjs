@@ -73,6 +73,25 @@ const RELEVE = () => {
 		};
 	};
 
+	/**
+	 * Résidu d'une bande : sa hauteur MOINS la somme de ses enfants directs.
+	 *
+	 * C'est ce que ne dit aucun classement de composant, et c'est là que se cachait le premier écart
+	 * du chantier à 768 px — le rembourrage vertical de la bande. Les enfants peuvent concorder au
+	 * pixel avec la maquette pendant que la bande reste trop haute : l'écart n'est alors pas DANS un
+	 * composant, il est entre eux, et aucun outil qui compare des composants ne peut le voir.
+	 *
+	 * On descend jusqu'au premier conteneur qui porte plusieurs enfants : une bande n'enveloppe
+	 * souvent son contenu que d'un `.tfp-container`, et compter les enfants de la section elle-même
+	 * donnerait toujours un seul enfant et un résidu égal à toute la bande.
+	 */
+	const residuDe = (b) => {
+		let c = b;
+		while (c.children.length === 1 && c.firstElementChild) c = c.firstElementChild;
+		const somme = [...c.children].reduce((n, x) => n + x.getBoundingClientRect().height, 0);
+		return Math.round(b.getBoundingClientRect().height - somme);
+	};
+
 	return window.__tfpBandes(flux).map((b, i) => {
 		const grilles = [...b.querySelectorAll('*')]
 			.filter((el) => {
@@ -93,6 +112,8 @@ const RELEVE = () => {
 			col: g ? colonnes(g) : 0,
 			carte: g ? decrire(g).carte : '—',
 			gap: g ? getComputedStyle(g).gap : '—',
+			residu: residuDe(b),
+			pad: getComputedStyle(b).paddingTop + ' / ' + getComputedStyle(b).paddingBottom,
 			toutes: grilles.map(decrire),
 		};
 	});
@@ -140,7 +161,7 @@ for (const largeur of LARGEURS) {
 	console.log(
 		`━━━ ${largeur} px — page ${hRef} → ${hWp} px · ${ratio} %${ratio >= 95 && ratio <= 105 ? ' ✅' : ''}`
 	);
-	console.log('    bande  hauteur réf→wp      Δ   colonnes   cartes réf → wp                gap réf → wp');
+	console.log('    bande  hauteur réf→wp      Δ   résidu réf→wp    Δr   colonnes   cartes réf → wp');
 	const n = Math.max(a.length, b.length);
 	for (let i = 0; i < n; i++) {
 		if (BANDE !== null && i !== BANDE) continue;
@@ -152,9 +173,13 @@ for (const largeur of LARGEURS) {
 		}
 		const d = y.h - x.h;
 		const alerte = x.col !== y.col ? ' ⚠️' : '';
+		const dr = y.residu - x.residu;
 		console.log(
-			`    ${String(i).padStart(5)}  ${String(x.h).padStart(5)} → ${String(y.h).padStart(5)}  ${String(d).padStart(5)}   ${String(x.col)} → ${String(y.col)}${alerte.padEnd(4)}  ${x.carte.padEnd(12)} → ${y.carte.padEnd(12)}  ${x.gap} → ${y.gap}   ${x.titre}`
+			`    ${String(i).padStart(5)}  ${String(x.h).padStart(5)} → ${String(y.h).padStart(5)}  ${String(d).padStart(5)}   ${String(x.residu).padStart(5)} → ${String(y.residu).padStart(5)}  ${String(dr).padStart(4)}${Math.abs(dr) > 12 ? ' ⚑' : '  '}  ${String(x.col)} → ${String(y.col)}${alerte.padEnd(4)}  ${x.carte.padEnd(11)} → ${y.carte.padEnd(11)}  ${x.titre}`
 		);
+		// Un résidu divergent signale une cause qui n'est dans aucun composant : rembourrage de
+		// bande, ou marges entre enfants.
+		if (BANDE !== null) console.log(`             rembourrage de bande  réf ${x.pad}  ·  wp ${y.pad}`);
 		// Une bande ne se corrige pas sur sa grille dominante : le détail dit laquelle diverge.
 		if (BANDE !== null) {
 			const n = Math.max(x.toutes.length, y.toutes.length);
