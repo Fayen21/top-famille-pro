@@ -3453,12 +3453,31 @@ body.tfp-body a.tfp-card-tile:focus-visible {
   color: var(--color-text-secondary);
 }
 
-/* Rembourrage vertical d'une bande de page statique : la valeur relevée sur la maquette l'emporte,
-   celle du thème ne sert que de repli. La maquette respire nettement plus (84 px en haut comme en
-   bas sur la plupart de ses bandes) que les 52 px que le thème posait partout. */
+/* Rembourrage vertical d'une bande : la valeur relevée sur la maquette l'emporte, celle du thème
+   ne sert que de repli.
+
+   Le repli était `52px` — la BORNE HAUTE de `clamp(30px, 4vw, 52px)` que `.tfp-section--tight`
+   déclare dans 03-layout.css. Cette règle-ci étant plus bas dans la feuille, elle l'emportait et
+   figeait la fonction. Or `--tfp-bande-haut` n'est posée que par les blocs des pages STATIQUES
+   (template-parts/components/static-blocks.php) : sur les pages de zone, de prestation, d'article
+   et de contact, la variable n'existe pas et TOUTES les bandes recevaient 52 px, à toutes les
+   largeurs.
+
+   Le coût était le premier de la page à 768 px, et il ne se voyait dans aucun classement de
+   composant : il n'est pas DANS un composant, il est entre eux. Sur #/ville/dijon, les neuf
+   chapitres concordaient déjà au pixel avec la maquette pendant que leurs bandes portaient 52 px
+   de rembourrage contre 34.
+
+   Rendre le repli à la fonction déclarée corrige 320, 375, 768 et 1024 px, et ne change rien à
+   1440 et 1920 où la fonction atteint de toute façon sa borne haute.
+
+   Ce n'est pas la fidélité complète : la maquette pose un rembourrage PAR BANDE — 34, 38, 40, 44,
+   46,08 puis 80 px selon la bande et la largeur — et seul un relevé par bande, côté générateur,
+   les rendrait tous justes. C'est ce que `--tfp-bande-haut` permet déjà pour les pages statiques.
+   Le repli, lui, doit être la fonction, jamais l'une de ses bornes. */
 .tfp-section--tight {
-  padding-top: var(--tfp-bande-haut, 52px);
-  padding-bottom: var(--tfp-bande-bas, 52px);
+  padding-top: var(--tfp-bande-haut, clamp(30px, 4vw, 52px));
+  padding-bottom: var(--tfp-bande-bas, clamp(30px, 4vw, 52px));
 }
 
 /* Bande blanche : la maquette alterne blanc et fond de page. L'alternance était relevée mais

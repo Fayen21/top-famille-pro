@@ -270,6 +270,25 @@
    "tests": "881 tests d'assertion verts · lint PHP 81 fichiers · 0 débordement, 0 image cassée, 0 CTA hors écran, 0 erreur console ou réseau sur 106 contrôles",
    "fichiers": "wp-content/themes/topfamillepro/src/css/04-components.css",
    "statut": "CORRIGE"
+  },
+  {
+   "id": "G11",
+   "titre": "Le rembourrage de bande — l'écart n'était dans aucun composant, il était ENTRE eux",
+   "selecteur": ".tfp-section--tight",
+   "routes": "toutes les routes hors pages statiques : zone, prestation, article, contact, tarifs, devis",
+   "largeurs": "320, 375, 768, 1024 — sans effet à 1440 et 1920, où la fonction atteint sa borne haute",
+   "comment_il_a_ete_trouve": "En décomposant la bande MOINS la somme de ses enfants directs, des deux côtés. Sur #/ville/dijon à 768 px après G10, les neuf chapitres concordaient au pixel avec la maquette (312=312, 365=365, 392=392) et la bande restait à +34 px. Le résidu — 175 px côté thème contre 139 côté maquette — n'apparaît dans AUCUN classement de composant, parce qu'il n'est pas dans un composant.",
+   "prototype": "un rembourrage PAR BANDE : 34, 38, 40, 44, 46,08 px à 768 px selon la bande, jusqu'à 80 px à 1440",
+   "theme_avant": "padding-top/bottom: var(--tfp-bande-haut, 52px) — 52 px, à toutes les largeurs, sur toutes les bandes sans relevé",
+   "cause": "52px est la BORNE HAUTE de `clamp(30px, 4vw, 52px)`, que `.tfp-section--tight` déclare dans 03-layout.css. La règle de 04-components.css, plus bas dans la feuille, l'emportait et figeait la fonction. `--tfp-bande-haut` n'est posée que par les blocs des pages STATIQUES : partout ailleurs la variable n'existe pas et le repli s'appliquait.",
+   "correction": "var(--tfp-bande-haut, clamp(30px, 4vw, 52px)) — le repli redevient la fonction, jamais l'une de ses bornes",
+   "limite_assumee": "ce n'est pas la fidélité complète : la maquette pose une valeur par bande, et seul un relevé par bande côté générateur les rendrait toutes justes. C'est ce que `--tfp-bande-haut` permet déjà pour les pages statiques. Le repli, lui, ne doit jamais être une borne.",
+   "effet_768": "#/ville/dijon 107,7 → 103,3 % · #/departement/cote-dor 109,9 → 105,0 % · #/service/bureaux 107,7 → 103,3 % · #/article/cout-nettoyage-bureaux 115,6 → 110,3 % · #/contact 118,5 → 114,4 %",
+   "effet_baseline": "318 contrôles · 196 → 245 dans 95-105 % · 184 rapprochées, 24 éloignées, 110 inchangées · 320 px 42→44 · 375 px 31→42 · 768 px 5→39 (24 dans 98-102) · 1024 px 40→42 · 1440 et 1920 px 39→39",
+   "tests": "881 tests d'assertion verts · lint PHP 81 fichiers · bin/verifier-installation.php PASS code 0 · 0 débordement, 0 image cassée, 0 CTA hors écran, 0 erreur console ou réseau, 0 écart de bandes sur les 318 contrôles",
+   "fichiers": "wp-content/themes/topfamillepro/src/css/04-components.css",
+   "baseline": "docs/baseline-2026-08-13-apres-G11.json — la précédente, docs/baseline-2026-08-13.json, est conservée",
+   "statut": "CORRIGE"
   }
  ],
  "faux_positifs_corriges_dans_outil": [
@@ -310,22 +329,25 @@
   }
  ],
  "prochain_groupe_a_traiter": {
-  "id": "G11",
+  "id": "G12",
   "priorite": 1,
-  "titre": "768 px — l'excès de bande qui subsiste une fois les composants rendus fidèles",
-  "constat": "Sur #/ville/dijon à 768 px, les neuf chapitres sont à 4 px de la maquette et la bande 3 reste à +34 px, la bande 6 à +34. L'excès n'est donc PAS dans les composants mesurés : il est dans ce qui les sépare — marges entre chapitres, rembourrage de bande, ou un composant non encore apparié.",
-  "ecarts_de_bande_restants_768": {
-   "b0 hero": "+94",
-   "b1 bande tarifaire": "+78, colonnes 2→1",
-   "b2 réponse directe": "+53",
-   "b3": "+34",
-   "b5 tarif": "+102 (grille exacte, écart INTERNE aux cartes)",
-   "b6": "+34",
-   "b7 quartiers": "+141",
-   "b8 même département": "+156"
+  "titre": "768 px — les 14 routes encore hors tolérance",
+  "liste": {
+   "134 % politique-de-confidentialite": "page légale — exception prévue (contenu légal absent de la maquette)",
+   "125 % mentions-legales": "page légale — exception prévue",
+   "115 % gestion-des-cookies": "page légale — exception prévue",
+   "114 % contact": "À INSTRUIRE — la plus éloignée hors pages légales",
+   "112 % pourquoi-top-famille-pro": "À INSTRUIRE",
+   "110 % nos-tarifs": "À INSTRUIRE",
+   "110 % les trois articles": "À INSTRUIRE — même cause pour les trois",
+   "110 % demande-de-devis": "À INSTRUIRE — n'a pas bougé, la route n'a pas de bandes détectées (0→0)",
+   "109 % plan-du-site": "À INSTRUIRE",
+   "108 % avis-clients": "À INSTRUIRE",
+   "106 % zones-intervention": "À INSTRUIRE",
+   "94 % recrutement": "À INSTRUIRE — seule route trop COURTE"
   },
-  "methode": "mesurer la bande MOINS la somme de ses enfants directs, des deux côtés : c'est ce résidu qui porte l'excès, et il n'apparaît dans aucun classement de composant.",
-  "commande_de_reprise": "bash tools/banc-local.sh && bash tools/banc-local.sh --theme-only && node tools/sonde-bande.mjs '#/ville/dijon' --widths=768 --bande=3"
+  "methode": "la même que G11 : décomposer la bande moins la somme de ses enfants directs, des deux côtés, avant de regarder les composants. Les trois pages légales relèvent de l'exception documentée et doivent recevoir un diagnostic bande par bande pour être classées, pas corrigées.",
+  "commande_de_reprise": "bash tools/banc-local.sh && bash tools/banc-local.sh --theme-only && node tools/sonde-bande.mjs '#/contact' --widths=768"
  },
  "groupes_suivants": [
   {
