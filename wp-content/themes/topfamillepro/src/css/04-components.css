@@ -1886,8 +1886,31 @@ body.tfp-body .tfp-article-body p a {
 }
 
 /* Chapitres narratifs : colonne de lecture, respiration entre chapitres. */
-.tfp-zone-chapter h2 {
-  margin-bottom: 8px;
+/* Intitulé de chapitre d'une page de zone.
+
+   Le prototype déclare une FONCTION, et le thème en appliquait une autre : `--fs-h2-dense` vaut
+   clamp(22px, 2.2vw, 29px) avec un interligne de 1,04, là où la maquette rend
+
+     21 px jusqu'à ~840 px de fenêtre · 22,5 à 900 · 25,6 à 1024 · 29 à partir de 1200
+
+   soit `clamp(21px, 2.5vw, 29px)`, interligne 1,15 — constant, lui, aux neuf largeurs relevées.
+   S'y ajoutaient 8 px de marge basse que la maquette ne pose pas.
+
+   La correction est portée sur le chapitre seul, et non sur `--fs-h2-dense` : les autres `h2` d'une
+   page de zone n'ont PAS de valeur commune dans le prototype (20, 21, 22, 23,04 et 27,648 px selon
+   la bande), et élargir la portée serait un correctif aveugle.
+
+   La spécificité doit dépasser `body.tfp-type-zone h2` et `body.tfp-body h1..h6`, toutes deux en
+   (0,2,1) : une règle `.tfp-zone-chapter h2` ne posait que la marge, et la taille restait celle du
+   jeton — l'effet mesuré était alors nul, ce qui se lisait à tort comme « la propriété n'est pas la
+   cause ».
+
+   Contrôlé sur les neuf chapitres de #/ville/dijon : la somme des écarts de hauteur tombe à 4 px à
+   375, 768, 900, 1024, 1440 et 1920 px. */
+body.tfp-body .tfp-zone-chapter h2 {
+  font-size: clamp(21px, 2.5vw, 29px);
+  line-height: 1.15;
+  margin-bottom: 0;
 }
 
 .tfp-zone-links + .tfp-zone-links {
@@ -2690,14 +2713,38 @@ body.tfp-type-legale .tfp-section__lede {
   margin-top: 14px;
 }
 
+/* Dimensions INTERNES du chapitre : le prototype les rend identiques à toutes les largeurs — rien
+   n'est responsive ici, une valeur unique est fidèle. Relevé sur sept routes de zone (quatre
+   villes, trois départements) : 92 paragraphes, TOUS en 16,5px / 26,73 / marge haute 13, et 54
+   micro-cartes, TOUTES en 14,5px / 23,49.
+
+   Le thème appliquait `.tfp-prose` en 16px / 28 / marge 14 — une police plus petite ET un
+   interligne plus grand, deux erreurs de sens opposé — et ses micro-cartes en 14px / 21.
+
+   La correction est portée ICI, et non sur `.tfp-prose`, parce que le prototype n'y a pas de
+   valeur unique : la même classe y va de 15px/1,62 à 19px/1,55 selon le bloc. Une correction
+   globale serait un correctif aveugle ; la rendre juste partout demande un relevé bloc par bloc,
+   côté générateur.
+
+   Contrôlé à 320, 375, 768, 1024 et 1440 px sur les neuf chapitres de #/ville/dijon : la somme des
+   écarts de hauteur passe de 297 à 170, 194 à 46, 175 à 35, 178 à 88 et 152 à 35. */
+.tfp-zone-chapter .tfp-prose {
+  margin-top: 13px;
+  font-size: 16.5px;
+  line-height: 1.62;
+}
+
 .tfp-zone-chapter .tfp-list-plain li {
   padding: 10px 13px;
   border: 1px solid var(--color-border);
   border-bottom: 1px solid var(--color-border);
   border-radius: 10px;
   background: var(--color-bg);
-  font-size: 14px;
-  line-height: 1.5;
+  /* 14,5px et 1,62 — soit 23,49 px d'interligne — relevés sur 54 micro-cartes. La hauteur d'une
+     carte de deux lignes se décompose alors exactement : 2 × 23,49 + 10 + 10 de rembourrage +
+     1 + 1 de filet = 69 px, celle de la maquette. Le thème en donnait 64. */
+  font-size: 14.5px;
+  line-height: 1.62;
 }
 
 /* Le marqueur décoratif de la liste courante n'a pas de sens dans une tuile : la tuile est

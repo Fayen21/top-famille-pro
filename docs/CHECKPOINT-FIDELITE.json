@@ -230,6 +230,46 @@
     "lecture": "768 px reste la largeur la moins fidèle : 39 routes sur 53 s'y sont rapprochées, 2 seulement éloignées, mais aucune n'a franchi la barre des 105 %. L'objectif du §12 — 53/53 dans la tolérance à 768 px — n'est PAS atteint.",
     "tests": "881 tests d'assertion verts · lint PHP 81 fichiers · bin/verifier-installation.php PASS code 0"
    }
+  },
+  {
+   "id": "G10",
+   "titre": "Dimensions INTERNES du chapitre de zone — le premier chantier où le ratio de page et la fidélité du composant divergent",
+   "routes": "les 26 pages de zone, 9 chapitres par page",
+   "largeurs": "toutes",
+   "note_sur_le_groupe_de_tete_du_checkpoint_precedent": "Le groupe « 102 · 7 occ · texte sans classe — 15,5 → 17 px » a DISPARU du classement : c'étaient les réponses de FAQ, corrigées par le commit df48d0d. Le nombre d'écarts de #/ville/dijon à 768 px passe de 133 à 126, soit exactement les 7 occurrences. Les trois autres groupes prioritaires remontent d'un rang, inchangés.",
+   "sous_groupes": [
+    {
+     "selecteur": ".tfp-zone-chapter .tfp-list-plain li",
+     "occurrences": "54 relevées sur 7 routes",
+     "prototype": "14,5px / interligne 1,62 = 23,49px — identique aux six largeurs, rien n'est responsive",
+     "theme_avant": "14px / 1,5 = 21px",
+     "signe": "NÉGATIF — le thème était plus COURT de 5 px par carte, l'inverse de ce que le classement par impact laissait supposer",
+     "decomposition": "2 lignes × 23,49 + 10 + 10 de rembourrage + 1 + 1 de filet = 69 px, la hauteur de la maquette. Le thème en donnait 64. L'écart s'explique à 0 px près."
+    },
+    {
+     "selecteur": ".tfp-zone-chapter .tfp-prose",
+     "occurrences": "92 paragraphes relevés sur 7 routes, TOUS identiques",
+     "prototype": "16,5px / 26,73 (ratio 1,62) / marge haute 13px",
+     "theme_avant": "16px / 28 (ratio 1,75) / marge haute 14px — police plus petite ET interligne plus grand, deux erreurs de sens opposé",
+     "portee": "la correction est portée sur le chapitre, PAS sur `.tfp-prose` : le prototype n'y a pas de valeur unique — de 15px/1,62 à 19px/1,55 selon le bloc, vérifié sur 6 familles de gabarits. Une correction globale serait aveugle ; la rendre juste partout demande un relevé bloc par bloc côté générateur.",
+     "erreur_de_methode_evitee": "un premier relevé donnait 15px et surcorrigeait de 128 px : il comparait des paragraphes DIFFÉRENTS des deux côtés, le contenu des chapitres n'étant pas le même. Le réappariement positionnel a donné la vraie valeur."
+    },
+    {
+     "selecteur": "body.tfp-body .tfp-zone-chapter h2",
+     "occurrences": "28 relevées sur 4 routes",
+     "prototype": "clamp(21px, 2.5vw, 29px), interligne 1,15, sans marge basse — 21px jusqu'à ~840, 22,5 à 900, 25,6 à 1024, 29 à partir de 1200",
+     "theme_avant": "--fs-h2-dense = clamp(22px, 2.2vw, 29px), interligne 1,04, marge basse 8px",
+     "portee": "le chapitre seul : les autres h2 d'une page de zone n'ont pas de valeur commune dans le prototype (20, 21, 22, 23,04, 27,648 px selon la bande)",
+     "piege_de_specificite": "une règle `.tfp-zone-chapter h2` (0,1,1) ne posait que la marge — `body.tfp-type-zone h2` et `body.tfp-body h1..h6` sont en (0,2,1) et gardaient la taille. L'effet mesuré était alors NUL, ce qui se lisait à tort comme « la propriété n'est pas la cause ». Une simulation sans effet doit faire vérifier la spécificité avant de conclure.",
+     "piege_de_valeur_figee": "une première simulation posait 21px fixe : elle améliorait 320 à 1024 px et DÉGRADAIT 1440 et 1920 (Σ|Δ| 35 → 120). C'est ce qui a fait chercher la fonction."
+    }
+   ],
+   "effet_sur_le_composant": "Σ des écarts de hauteur des neuf chapitres de #/ville/dijon : 375 px 194 → 4 · 768 px 175 → 4 · 900 px 31 → 4 · 1024 px 178 → 4 · 1440 px 152 → 4 · 1920 px 152 → 4. À 320 px il reste 165, d'une autre cause : la largeur utile du conteneur y diffère de 8 px.",
+   "effet_sur_la_baseline": "375 px 31 → 30 dans la tolérance (5 rapprochées, 5 éloignées) · 768 px 5 → 5 (7 rapprochées, 3 éloignées). #/ville/dijon passe à 4 largeurs sur 6 dans la tolérance : 320 103,7 % · 375 106 % · 768 107,7 % · 1024 102,9 % · 1440 et 1920 100,6 %.",
+   "lecture_honnete": "C'est le premier groupe où le ratio de page et la fidélité du composant divergent nettement. Les chapitres étaient trop COURTS et leur bande trop HAUTE : les corriger rend le composant exact et éloigne la page. La cause de l'excès de bande est ailleurs et reste à trouver — elle n'est pas dans le chapitre.",
+   "tests": "881 tests d'assertion verts · lint PHP 81 fichiers · 0 débordement, 0 image cassée, 0 CTA hors écran, 0 erreur console ou réseau sur 106 contrôles",
+   "fichiers": "wp-content/themes/topfamillepro/src/css/04-components.css",
+   "statut": "CORRIGE"
   }
  ],
  "faux_positifs_corriges_dans_outil": [
@@ -270,26 +310,22 @@
   }
  ],
  "prochain_groupe_a_traiter": {
-  "id": "G09 (suite)",
+  "id": "G11",
   "priorite": 1,
-  "titre": "768 px — les dix archétypes restants de la liste du §8",
-  "constat": "5/53 dans la tolérance à 768 px après six archétypes. Les ratios ont nettement baissé — 38 routes rapprochées sur 53 — mais aucune n'a encore franchi la barre des 105 %. Les causes restantes ne sont PLUS des grilles : les colonnes et les largeurs de carte concordent désormais sur les composants traités. Chercher du côté des rembourrages internes de carte et de la typographie, avec tools/composants.mjs.",
-  "ecarts_de_bande_restants_sur_#/ville/dijon_a_768": {
-   "b0 hero": "+139 px — cause NON établie. Les deux rangées de boutons ont désormais le bon écart et le hero ne diverge PAS en colonnes : chercher du côté de la typographie et des rembourrages, pas de la grille.",
-   "b8 « Dans le même département »": "+156 px — la grille de colonnes est juste (2 colonnes de 318, comme la maquette) ; l'écart vient des listes de pastilles, dont le CONTENU diffère (8 pastilles côté thème contre 3 côté maquette). À trancher : différence de contenu voulue ou non — ce n'est pas un défaut de mise en page.",
-   "b7 « Quartiers et zones d'activité »": "+141 px",
-   "b5 « Tarif et exemple local »": "+102 px — la grille est exacte ; l'écart est INTERNE aux cartes.",
-   "b1 bande tarifaire": "+78 px, colonnes 2 → 1 — `.tfp-zone-band__row` : la maquette déclare `gap: 14px clamp(16px, 2.4vw, 26px)`, le thème pose `16px 26px` figés, et la structure des enfants diffère (la maquette met les items en frères du prix, le thème les enveloppe dans `.tfp-zone-band__items`).",
-   "b2 réponse directe": "+53 px"
+  "titre": "768 px — l'excès de bande qui subsiste une fois les composants rendus fidèles",
+  "constat": "Sur #/ville/dijon à 768 px, les neuf chapitres sont à 4 px de la maquette et la bande 3 reste à +34 px, la bande 6 à +34. L'excès n'est donc PAS dans les composants mesurés : il est dans ce qui les sépare — marges entre chapitres, rembourrage de bande, ou un composant non encore apparié.",
+  "ecarts_de_bande_restants_768": {
+   "b0 hero": "+94",
+   "b1 bande tarifaire": "+78, colonnes 2→1",
+   "b2 réponse directe": "+53",
+   "b3": "+34",
+   "b5 tarif": "+102 (grille exacte, écart INTERNE aux cartes)",
+   "b6": "+34",
+   "b7 quartiers": "+141",
+   "b8 même département": "+156"
   },
-  "routes_les_plus_eloignees_a_768": "136 % politique-de-confidentialite, 127 % mentions-legales, 116 % gestion-des-cookies (les trois pages légales — exception prévue) ; puis 120 % contact, 119 % nos-tarifs, 116 % les trois articles, 115 % pourquoi-nous, 114 % conseils, 111 % les départements",
-  "commande_de_reprise": "bash tools/banc-local.sh && node tools/composants.mjs --routes='#/ville/dijon' --widths=768",
-  "groupes_de_tete_composants_mjs_sur_#/ville/dijon_768": [
-   "102 · 7 occ · texte sans classe — taille 15,5 → 17 px et interligne 24,8 → 27,54",
-   "60 · 12 occ · micro-carte — interligne 23,49 → 21",
-   "49 · 1 occ · .tfp-chip-row--9 — marge haute 0 → 16 px (marge en ligne du gabarit)",
-   "41 · 1 occ · .tfp-testimonial — rembourrage 24 → 20 px"
-  ]
+  "methode": "mesurer la bande MOINS la somme de ses enfants directs, des deux côtés : c'est ce résidu qui porte l'excès, et il n'apparaît dans aucun classement de composant.",
+  "commande_de_reprise": "bash tools/banc-local.sh && bash tools/banc-local.sh --theme-only && node tools/sonde-bande.mjs '#/ville/dijon' --widths=768 --bande=3"
  },
  "groupes_suivants": [
   {
