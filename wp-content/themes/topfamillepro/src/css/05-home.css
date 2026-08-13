@@ -26,10 +26,17 @@
 
 .tfp-hero__lede {
   margin-top: var(--space-5);
-  /* Même accroche que `.tfp-section__lede` : 20 px, interligne 32 px, #34485A — relevé identique
-     sur les 53 routes de la maquette. Elle était ici légèrement plus claire et plus petite. */
-  font-size: 20px;
-  line-height: 32px;
+  /* Accroche de hero. Le relevé d'origine — 20 px, interligne 32 px, #34485A — avait été fait à
+     1440 px et figé ; c'est la BORNE HAUTE d'une fonction. Le prototype déclare
+     `font-size: clamp(17px, 1.5vw, 20px)` avec un interligne de 1,62, sur les 46 accroches de hero
+     des 53 routes, sans exception de famille.
+
+     Conséquence de la valeur figée : juste à 1440 et 1920 px, et fausse en dessous — 20 px au lieu
+     de 17 à 375 comme à 768 px. C'est l'une des raisons pour lesquelles ces deux largeurs sont les
+     moins fidèles alors que les grandes le sont. Voir `.tfp-section__lede`, qui portait le même
+     défaut avec une fonction différente. */
+  font-size: clamp(17px, 1.5vw, 20px);
+  line-height: 1.62;
   color: var(--color-text-lede);
   max-width: 560px;
 }

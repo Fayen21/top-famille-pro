@@ -2622,10 +2622,25 @@ body.tfp-body .tfp-quote-aside__tel:focus-visible {
 /* Accroche du hero : 20 px, interligne 32 px, #34485A — relevé sur la maquette, identique sur les
    53 routes (19 px sur les pages légales seules). Le thème la rendait en 17 px sur la couleur du
    texte secondaire : plus petite et plus claire que le prototype, sur toutes les pages. */
+/* Accroche de section — même défaut que `.tfp-hero__lede` : 20 px / 32 px est la borne haute d'une
+   fonction, relevée à 1440 px et figée. Le prototype en déclare DEUX, et elles ne se confondent
+   pas :
+
+     accroche de hero      clamp(17px, 1.5vw, 20px), interligne 1,62   (46 occurrences)
+     accroche de section   clamp(16px, 1.6vw, 20px), interligne 1,6    (35 occurrences)
+
+   Les pages statiques emploient `.tfp-section__lede` pour les deux rôles : celle qui suit le `h1`
+   est une accroche de hero, les autres non. `:has()` le distingue sans toucher aux gabarits, et un
+   navigateur qui ne le connaît pas garde l'accroche de section — le plus proche des deux. */
 .tfp-section__lede {
-  font-size: 20px;
-  line-height: 32px;
+  font-size: clamp(16px, 1.6vw, 20px);
+  line-height: 1.6;
   color: var(--color-text-lede);
+}
+
+.tfp-container:has(> h1) .tfp-section__lede {
+  font-size: clamp(17px, 1.5vw, 20px);
+  line-height: 1.62;
 }
 
 body.tfp-type-legale .tfp-section__lede {
