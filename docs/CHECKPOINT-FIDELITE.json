@@ -184,12 +184,28 @@
      "ancienne_regle": "padding 32px + @media 599 → 20px · margin-top 16px ENTRE blocs · liste repeat(3, 1fr) repliée à 899 et 599 px",
      "preuve": "le rembourrage coûtait 18 px de largeur utile à 768 px (32 contre 23,04), soit une ligne de repli par liste, neuf fois par page. Après correction, largeur utile identique à la maquette : 295 contre 295 à 375 px, 660 contre 660 à 768 px.",
      "effet": "#/ville/dijon 768 px, bande « Une entreprise implantée » 182 → 15 px d'écart, « Espaces, tâches et fréquences » 122 → 30 ; cartes 316 → 325 px, exactement la maquette"
+    },
+    {
+     "selecteur": ".tfp-hero__lede et .tfp-section__lede",
+     "routes": 53,
+     "regle_maquette": "deux fonctions distinctes — accroche de hero clamp(17px, 1.5vw, 20px) interligne 1,62 (46 occurrences) ; accroche de section clamp(16px, 1.6vw, 20px) interligne 1,6 (35 occurrences)",
+     "ancienne_regle": "20px / 32px fixes pour les deux, relevé fait à 1440 px et figé — c'est la BORNE HAUTE de la fonction, pas une valeur",
+     "preuve": "la maquette rend 17px/27,54 à 375 comme à 768 px et 20px/32,4 à 1440. Le défaut est nul à 1440 par construction et maximal à 768 : c'est une des raisons pour lesquelles les petites largeurs sont les moins fidèles.",
+     "mise_en_oeuvre": "les pages statiques emploient .tfp-section__lede pour les deux rôles ; `:has(> h1)` distingue l'accroche de hero sans toucher aux gabarits",
+     "effet": "375 px 27 → 30 routes dans la tolérance ; 768 px 38 rapprochées / 2 éloignées ; 1440 px inchangé à 39, 8 routes s'éloignant de moins d'un point parce que l'interligne rejoint les 32,4 px de la maquette"
     }
    ],
    "effet_global_768": "53 routes relevées : 26 rapprochées, 0 éloignée, 27 inchangées. Départements 115-117 % → 110-111 %, Dijon 112 → 108 %. Toujours 5/53 dans 95-105 % : les pages de zone sont passées de 110-117 % à 108-113 %, sans franchir la barre.",
    "regression_assumee_a_320_et_375": "13 routes à 320 px et 15 à 375 px reculent d'un à deux points. Cause établie, pas subie : le thème posait 20 px de rembourrage sous 599 px là où la maquette en déclare 22, et ce défaut de 2 px MASQUAIT un excès de hauteur ailleurs. Le composant est désormais identique à la maquette aux trois largeurs vérifiées. C'est la « leçon de la passe » déjà consignée : corriger une erreur sans corriger celle qui la compensait dégrade la mesure globale, et ce n'est pas une raison de revenir en arrière.",
    "tests": "881 tests d'assertion verts en 4,6 min (axe-core, WCAG 2.5.8, tarifs, FAQ/JSON-LD, formulaires, unicité, crawl) · lint PHP 81 fichiers OK · bin/verifier-installation.php PASS, code 0 · 0 débordement, 0 image cassée, 0 CTA hors écran, 0 erreur console ou réseau sur les 53 routes",
-   "statut": "CORRIGE — cinq archétypes sur les quinze de la liste du §8"
+   "statut": "CORRIGE — cinq archétypes sur les quinze de la liste du §8",
+   "effet_global_apres_six_archetypes": {
+    "375": "27 → 30 dans 95-105 % · 19 rapprochées, 9 éloignées, 25 inchangées",
+    "768": "5 → 5 dans 95-105 % · 38 rapprochées, 2 éloignées, 13 inchangées — les ratios descendent (Côte-d'Or 117 → 110, contact 120 → 118, conseils 114 → 112) sans franchir la barre des 105",
+    "1440": "39 → 39 dans 95-105 % · 1 rapprochée, 8 éloignées de moins d'un point",
+    "320": "41 → 41 · 13 éloignées d'un à deux points, compensation disparue (voir regression_assumee)",
+    "controles": "0 débordement, 0 image cassée, 0 CTA hors écran, 0 erreur console ou réseau · 881 tests d'assertion verts · bin/verifier-installation.php PASS code 0"
+   }
   }
  ],
  "faux_positifs_corriges_dans_outil": [
@@ -233,7 +249,7 @@
   "id": "G09 (suite)",
   "priorite": 1,
   "titre": "768 px — les dix archétypes restants de la liste du §8",
-  "constat": "5/53 dans la tolérance à 768 px. Les pages de zone sont descendues de 110-117 % à 108-113 % ; il leur reste 8 à 13 points. Les autres familles n'ont pas encore été instruites.",
+  "constat": "5/53 dans la tolérance à 768 px après six archétypes. Les ratios ont nettement baissé — 38 routes rapprochées sur 53 — mais aucune n'a encore franchi la barre des 105 %. Les causes restantes ne sont PLUS des grilles : les colonnes et les largeurs de carte concordent désormais sur les composants traités. Chercher du côté des rembourrages internes de carte et de la typographie, avec tools/composants.mjs.",
   "ecarts_de_bande_restants_sur_#/ville/dijon_a_768": {
    "b0 hero": "+139 px — cause NON établie. Les deux rangées de boutons ont désormais le bon écart et le hero ne diverge PAS en colonnes : chercher du côté de la typographie et des rembourrages, pas de la grille.",
    "b8 « Dans le même département »": "+156 px — la grille de colonnes est juste (2 colonnes de 318, comme la maquette) ; l'écart vient des listes de pastilles, dont le CONTENU diffère (8 pastilles côté thème contre 3 côté maquette). À trancher : différence de contenu voulue ou non — ce n'est pas un défaut de mise en page.",
@@ -243,7 +259,13 @@
    "b2 réponse directe": "+53 px"
   },
   "routes_les_plus_eloignees_a_768": "136 % politique-de-confidentialite, 127 % mentions-legales, 116 % gestion-des-cookies (les trois pages légales — exception prévue) ; puis 120 % contact, 119 % nos-tarifs, 116 % les trois articles, 115 % pourquoi-nous, 114 % conseils, 111 % les départements",
-  "commande_de_reprise": "bash tools/banc-local.sh && node tools/sonde-bande.mjs '#/contact' --widths=768 --bande=0"
+  "commande_de_reprise": "bash tools/banc-local.sh && node tools/composants.mjs --routes='#/ville/dijon' --widths=768",
+  "groupes_de_tete_composants_mjs_sur_#/ville/dijon_768": [
+   "102 · 7 occ · texte sans classe — taille 15,5 → 17 px et interligne 24,8 → 27,54",
+   "60 · 12 occ · micro-carte — interligne 23,49 → 21",
+   "49 · 1 occ · .tfp-chip-row--9 — marge haute 0 → 16 px (marge en ligne du gabarit)",
+   "41 · 1 occ · .tfp-testimonial — rembourrage 24 → 20 px"
+  ]
  },
  "groupes_suivants": [
   {
