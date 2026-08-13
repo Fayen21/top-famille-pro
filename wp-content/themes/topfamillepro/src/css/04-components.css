@@ -1886,10 +1886,6 @@ body.tfp-body .tfp-article-body p a {
 }
 
 /* Chapitres narratifs : colonne de lecture, respiration entre chapitres. */
-.tfp-zone-chapter + .tfp-zone-chapter {
-  margin-top: 40px;
-}
-
 .tfp-zone-chapter h2 {
   margin-bottom: 8px;
 }
@@ -2650,20 +2646,31 @@ body.tfp-type-legale .tfp-section__lede {
    au lieu d'une liste à puces.
    ------------------------------------------------------------------ */
 
+/* Chapitre narratif d'une page de zone — les trois valeurs sont DÉCLARÉES par le prototype :
+
+     padding: clamp(22px, 3vw, 32px)
+     margin-bottom: 14px          (sur chaque bloc, pas entre deux blocs consécutifs)
+     liste  repeat(auto-fit, minmax(min(100%, 230px), 1fr))
+
+   Le thème posait 32 px de rembourrage avec un repli à 20 px sous 599 px de fenêtre, une marge
+   haute de 16 px entre blocs, et une liste à trois colonnes repliée sur des seuils de 899 et
+   599 px. Les trois motifs sont ceux déjà corrigés ailleurs en G07 et G08 — une fonction figée en
+   pixels, une marge posée du mauvais côté, un seuil de fenêtre à la place d'un repli intrinsèque —
+   sur un composant qui les avait échappés.
+
+   Le rembourrage seul coûtait 18 px de largeur utile (32 contre 23,04 à 768 px, des deux côtés),
+   soit une ligne de repli supplémentaire par liste : 9 occurrences par page de zone. */
 .tfp-zone-chapter {
-  padding: 32px;
+  padding: clamp(22px, 3vw, 32px);
+  margin-bottom: 14px;
   border: 1px solid var(--color-border);
   border-radius: 18px;
   background: var(--color-bg-card);
 }
 
-.tfp-zone-chapter + .tfp-zone-chapter {
-  margin-top: 16px;
-}
-
 .tfp-zone-chapter .tfp-list-plain {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr));
   gap: 8px;
   margin-top: 14px;
 }
@@ -2682,22 +2689,6 @@ body.tfp-type-legale .tfp-section__lede {
    elle-même le repère visuel. */
 .tfp-zone-chapter .tfp-list-plain li::before {
   content: none;
-}
-
-@media (max-width: 899px) {
-  .tfp-zone-chapter .tfp-list-plain {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-@media (max-width: 599px) {
-  .tfp-zone-chapter {
-    padding: 20px;
-  }
-
-  .tfp-zone-chapter .tfp-list-plain {
-    grid-template-columns: minmax(0, 1fr);
-  }
 }
 
 /* Bande de page statique dont la maquette pose les blocs en cartes. Le relevé est fait bande par
