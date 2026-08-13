@@ -60,7 +60,7 @@ $page = tfp_static_page_data( 'notre-fonctionnement' );
 	<?php foreach ( $page['lede'] as $lede ) : ?>
 		<p class="tfp-section__lede"><?php echo esc_html( $lede ); ?></p>
 	<?php endforeach; ?>
-	<div class="tfp-flex" style="margin-top:24px">
+	<div class="tfp-action-row" style="margin-top:24px">
 		<?php
 		tfp_button( array( 'label' => 'Demander mon devis', 'href' => home_url( '/demande-de-devis/' ), 'variant' => 'primary' ) );
 		tfp_button( array( 'label' => '☎ Appeler ' . explode( ' ', $site['manager'] )[0], 'href' => 'tel:' . $site['phone_href'], 'variant' => 'secondary' ) );

@@ -2983,12 +2983,24 @@ body.tfp-body a.tfp-link-card:focus-visible {
   gap: 8px;
 }
 
-.tfp-chip-row--communes {
+.tfp-chip-row--9 {
   gap: 9px;
 }
 
-.tfp-chip-row--departements {
+.tfp-chip-row--10 {
   gap: 10px;
+}
+
+/* ---------- Rangée de boutons ----------
+   Hero et CTA final : le prototype déclare `gap: 12px` sur les 38 routes qui en portent une. Le
+   thème les composait avec l'utilitaire générique `.tfp-flex`, qui pose `var(--space-4)`, soit
+   16 px — une valeur qui n'apparaît nulle part dans la maquette. Le même utilitaire servant aussi
+   aux rangées de pastilles, qui déclarent 8 à 10 px, il ne pouvait pas être corrigé globalement :
+   d'où une classe dédiée plutôt qu'une retouche de `.tfp-flex`. */
+.tfp-action-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
 }
 
 /* ---------- Chips de couverture ----------

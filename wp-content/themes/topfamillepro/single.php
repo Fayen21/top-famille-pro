@@ -213,7 +213,7 @@ get_header();
 			</p>
 		<?php endif; ?>
 		<?php if ( ! empty( $related_prestations ) ) : ?>
-			<div class="tfp-flex" style="margin-top:14px">
+			<div class="tfp-chip-row tfp-chip-row--10" style="margin-top:14px">
 				<?php foreach ( $related_prestations as $prestation ) : ?>
 					<a href="<?php echo esc_url( get_permalink( $prestation ) ); ?>" class="tfp-chip"><?php echo esc_html( tfp_get_field( 'nav_label', $prestation->ID ) ?: get_the_title( $prestation ) ); ?></a>
 				<?php endforeach; ?>

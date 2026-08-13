@@ -190,7 +190,7 @@ get_header();
 		<?php if ( $tease ) : ?>
 			<p class="tfp-hero__lede"><?php echo esc_html( $tease ); ?></p>
 		<?php endif; ?>
-		<div class="tfp-flex" style="margin-top:24px">
+		<div class="tfp-action-row" style="margin-top:24px">
 			<?php
 			tfp_button( array( 'label' => 'Demander mon devis', 'href' => $devis_url, 'variant' => 'primary' ) );
 			tfp_button( array( 'label' => '☎ Appeler ' . $prenom, 'href' => 'tel:' . $site['phone_href'], 'variant' => 'secondary' ) );

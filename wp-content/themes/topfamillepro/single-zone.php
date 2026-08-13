@@ -162,7 +162,7 @@ get_header();
 		<?php if ( $hero_lede ) : ?>
 			<p class="tfp-hero__lede"><?php echo esc_html( $hero_lede ); ?></p>
 		<?php endif; ?>
-		<div class="tfp-flex" style="margin-top:24px">
+		<div class="tfp-action-row" style="margin-top:24px">
 			<?php
 			tfp_button( array( 'label' => $cta_label, 'href' => $devis_url, 'variant' => 'primary' ) );
 			tfp_button( array( 'label' => $cta_phone_label, 'href' => 'tel:' . $site['phone_href'], 'variant' => 'secondary' ) );
@@ -300,7 +300,7 @@ $render_group = function ( array $bloc ) use ( $toutes_prestations, $cities_in_d
 			</div>
 		<?php elseif ( 'villes' === $bloc['type'] ) : ?>
 			<?php // Écart déclaré par le prototype : 8 px pour les villes d'un département, 9 px pour les communes proches d'une ville. ?>
-			<div class="tfp-chip-row<?php echo $is_dept ? '' : ' tfp-chip-row--communes'; ?>" style="margin-top:16px">
+			<div class="tfp-chip-row<?php echo $is_dept ? '' : ' tfp-chip-row--9'; ?>" style="margin-top:16px">
 				<?php
 				$cibles = ! empty( $cities_in_dept ) ? $cities_in_dept : (array) $communes_proches;
 				foreach ( $cibles as $cible ) :
@@ -309,7 +309,7 @@ $render_group = function ( array $bloc ) use ( $toutes_prestations, $cities_in_d
 				<?php endforeach; ?>
 			</div>
 		<?php elseif ( 'departements' === $bloc['type'] ) : ?>
-			<div class="tfp-chip-row tfp-chip-row--departements" style="margin-top:16px">
+			<div class="tfp-chip-row tfp-chip-row--10" style="margin-top:16px">
 				<?php foreach ( tfp_footer_zones_tree() as $entry ) : ?>
 					<?php if ( ! $dept_post || $entry['post']->ID !== $dept_post->ID ) : ?>
 						<a class="tfp-chip" href="<?php echo esc_url( get_permalink( $entry['post'] ) ); ?>"><?php echo esc_html( get_the_title( $entry['post'] ) ); ?></a>

@@ -74,7 +74,7 @@ $is_real      = tfp_audrey_photo_is_real();
 			<p class="tfp-provisional-notice" data-tfp-provisional-notice="1">Citation en attente de validation par l’intéressée.</p>
 			<p style="margin-top:14px;font-weight:600"><?php echo esc_html( $site['manager'] ); ?><span style="font-weight:400;color:var(--color-text-tertiary)"> · <?php echo esc_html( $site['brand_name'] . ', ' . $site['address_city'] ); ?></span></p>
 
-			<div class="tfp-flex" style="margin-top:24px">
+			<div class="tfp-action-row" style="margin-top:24px">
 				<?php
 				tfp_button(
 					array(
