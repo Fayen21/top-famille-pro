@@ -285,9 +285,9 @@ get_header();
 		<h2 style="margin-top:32px">Questions sur les tarifs</h2>
 		<div style="margin-top:20px">
 			<?php foreach ( $faqs as $item ) : ?>
-				<details class="tfp-card" style="margin-bottom:10px">
-					<summary style="font-weight:600;cursor:pointer"><?php echo esc_html( $item['q'] ); ?></summary>
-					<p style="margin-top:10px;color:var(--color-text-secondary)"><?php echo esc_html( $item['a'] ); ?></p>
+				<details class="tfp-card tfp-faq-item">
+					<summary><?php echo esc_html( $item['q'] ); ?></summary>
+					<p><?php echo esc_html( $item['a'] ); ?></p>
 				</details>
 			<?php endforeach; ?>
 		</div>

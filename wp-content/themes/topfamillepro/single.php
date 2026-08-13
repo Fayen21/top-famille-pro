@@ -184,9 +184,9 @@ get_header();
 		<h2>Questions fréquentes</h2>
 		<div style="margin-top:20px">
 			<?php foreach ( $faq as $item ) : ?>
-				<details class="tfp-card" style="margin-bottom:10px">
-					<summary style="font-weight:600;font-size:17px;cursor:pointer"><?php echo esc_html( $item['question'] ); ?></summary>
-					<p style="margin-top:12px;color:var(--color-text-secondary)"><?php echo esc_html( $item['reponse'] ); ?></p>
+				<details class="tfp-card tfp-faq-item">
+					<summary><?php echo esc_html( $item['question'] ); ?></summary>
+					<p><?php echo esc_html( $item['reponse'] ); ?></p>
 				</details>
 			<?php endforeach; ?>
 		</div>

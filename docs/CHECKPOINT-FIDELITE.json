@@ -193,6 +193,14 @@
      "preuve": "la maquette rend 17px/27,54 à 375 comme à 768 px et 20px/32,4 à 1440. Le défaut est nul à 1440 par construction et maximal à 768 : c'est une des raisons pour lesquelles les petites largeurs sont les moins fidèles.",
      "mise_en_oeuvre": "les pages statiques emploient .tfp-section__lede pour les deux rôles ; `:has(> h1)` distingue l'accroche de hero sans toucher aux gabarits",
      "effet": "375 px 27 → 30 routes dans la tolérance ; 768 px 38 rapprochées / 2 éloignées ; 1440 px inchangé à 39, 8 routes s'éloignant de moins d'un point parce que l'interligne rejoint les 32,4 px de la maquette"
+    },
+    {
+     "selecteur": "FAQ des gabarits prestation, zone, article et tarifs",
+     "routes": 36,
+     "regle_maquette": "question 17px / 27,54 · réponse 15,5px / 25,11 · rembourrage 18 en vertical, 20 en horizontal — c'est le relevé de G06",
+     "ancienne_regle": "quatre gabarits composaient leur FAQ à la main, en `<details class=\"tfp-card\">` avec styles en ligne. La classe `.tfp-faq-item` corrigée en G06 ne les atteignait pas : la réponse héritait du texte courant, 17px / 27,54 au lieu de 15,5 / 25,11.",
+     "preuve": "G06 avait bien corrigé la règle, mais un seul rendu l'employait — celui des blocs statiques. Les 6 prestations, 26 zones, 3 articles et la page tarifs ne l'ont jamais reçue.",
+     "effet": "#/ville/dijon 768 px, bande « Questions fréquentes — Dijon » : +7 → −7 px d'écart"
     }
    ],
    "effet_global_768": "53 routes relevées : 26 rapprochées, 0 éloignée, 27 inchangées. Départements 115-117 % → 110-111 %, Dijon 112 → 108 %. Toujours 5/53 dans 95-105 % : les pages de zone sont passées de 110-117 % à 108-113 %, sans franchir la barre.",
@@ -205,6 +213,22 @@
     "1440": "39 → 39 dans 95-105 % · 1 rapprochée, 8 éloignées de moins d'un point",
     "320": "41 → 41 · 13 éloignées d'un à deux points, compensation disparue (voir regression_assumee)",
     "controles": "0 débordement, 0 image cassée, 0 CTA hors écran, 0 erreur console ou réseau · 881 tests d'assertion verts · bin/verifier-installation.php PASS code 0"
+   },
+   "effet_global_318_controles": {
+    "fichier": "docs/baseline-2026-08-13.json (versionné avec git add -f) · référence de comparaison conservée : docs/baseline-2026-08-12.json",
+    "resultat": "318/318 obtenus · 189 → 196 dans 95-105 % · rapprochées 119, éloignées 29, inchangées 170",
+    "par_largeur": {
+     "320": "41 → 42",
+     "375": "27 → 31",
+     "768": "5 → 5",
+     "1024": "38 → 40",
+     "1440": "39 → 39",
+     "1920": "39 → 39"
+    },
+    "anomalies_graves": "0 débordement · 0 image cassée · 0 CTA hors écran · 0 erreur console ou réseau",
+    "ecarts_de_bandes": "18 contrôles → 0. Le compteur ne se trompe plus sur les articles, et aucune bande ne manque réellement.",
+    "lecture": "768 px reste la largeur la moins fidèle : 39 routes sur 53 s'y sont rapprochées, 2 seulement éloignées, mais aucune n'a franchi la barre des 105 %. L'objectif du §12 — 53/53 dans la tolérance à 768 px — n'est PAS atteint.",
+    "tests": "881 tests d'assertion verts · lint PHP 81 fichiers · bin/verifier-installation.php PASS code 0"
    }
   }
  ],
@@ -324,7 +348,23 @@
   "ecarts_de_bandes": "18 contrôles seulement, soit 3 routes à chacune des six largeurs — contre 35 routes à 320 px avant le correctif de la FAQ. Les trois restantes sont les articles, dont le corps n'est pas sectionné : faux positif du compteur, déjà instruit.",
   "CLS": "107 contrôles au-dessus de 0,010, concentrés sur 1440 et 1920 px (0,018 à 0,026). Rappel : cette mesure fait défiler toute la page et majore structurellement le CLS ; le chiffre qui fait foi est celui de Lighthouse. À instruire après la géométrie, en commençant par 1440 px où le déplacement est le plus marqué.",
   "commande": "node tools/baseline.mjs --sortie=docs/baseline-<date>.json --resume --lot=10 — relancer jusqu'à 318/318 ; le fichier s'écrit après chaque contrôle et la reprise ne recommence rien.",
-  "releve_du_13_aout_768": "53/53 relevés · 5 dans 95-105 % · 0 débordement · 0 image cassée · 0 CTA hors écran · 0 erreur console ou réseau. Fichier de travail : /tmp, non versionné — la baseline de référence reste docs/baseline-2026-08-12.json, conservée pour la comparaison avant/après."
+  "releve_du_13_aout_768": "53/53 relevés · 5 dans 95-105 % · 0 débordement · 0 image cassée · 0 CTA hors écran · 0 erreur console ou réseau. Fichier de travail : /tmp, non versionné — la baseline de référence reste docs/baseline-2026-08-12.json, conservée pour la comparaison avant/après.",
+  "releve_du_13_aout": {
+   "fichier": "docs/baseline-2026-08-13.json (versionné avec git add -f) · référence de comparaison conservée : docs/baseline-2026-08-12.json",
+   "resultat": "318/318 obtenus · 189 → 196 dans 95-105 % · rapprochées 119, éloignées 29, inchangées 170",
+   "par_largeur": {
+    "320": "41 → 42",
+    "375": "27 → 31",
+    "768": "5 → 5",
+    "1024": "38 → 40",
+    "1440": "39 → 39",
+    "1920": "39 → 39"
+   },
+   "anomalies_graves": "0 débordement · 0 image cassée · 0 CTA hors écran · 0 erreur console ou réseau",
+   "ecarts_de_bandes": "18 contrôles → 0. Le compteur ne se trompe plus sur les articles, et aucune bande ne manque réellement.",
+   "lecture": "768 px reste la largeur la moins fidèle : 39 routes sur 53 s'y sont rapprochées, 2 seulement éloignées, mais aucune n'a franchi la barre des 105 %. L'objectif du §12 — 53/53 dans la tolérance à 768 px — n'est PAS atteint.",
+   "tests": "881 tests d'assertion verts · lint PHP 81 fichiers · bin/verifier-installation.php PASS code 0"
+  }
  },
  "chantiers_non_ouverts": [
   "rejouer les 318 contrôles de baseline",
