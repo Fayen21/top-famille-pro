@@ -5,6 +5,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Contacter Top-Famille Pro | Nettoyage professionnel</title>
 <link rel="preload" href="../wp-content/themes/topfamillepro/assets/dist/fonts/bricolage-grotesque-800-latin.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="../wp-content/themes/topfamillepro/assets/dist/fonts/hanken-grotesk-400-latin.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="../wp-content/themes/topfamillepro/assets/dist/fonts/hanken-grotesk-600-latin.woff2" as="font" type="font/woff2" crossorigin="anonymous">
 <link rel="alternate" type="application/rss+xml" title="Top-Famille Pro &raquo; Feed" href="../feed/index.html" />
 <meta name="description" content="Téléphone, e-mail ou formulaire : Audrey répond sous 24 heures aux questions sur les prestations, les tarifs et les zones couvertes.">
 <meta name="robots" content="index,follow">
@@ -37,9 +39,9 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 </style>
 
 <link rel='stylesheet' id='generatepress-parent-css' href='../wp-content/themes/generatepress/style.css?ver=0.1.0' media='all' />
-<link rel='stylesheet' id='topfamillepro-css' href='../wp-content/themes/topfamillepro/assets/dist/css/main.css?ver=1786485837' media='all' />
+<link rel='stylesheet' id='topfamillepro-css' href='../wp-content/themes/topfamillepro/assets/dist/css/main.css?ver=1786710812' media='all' />
 </head>
-<body class="wp-singular page-template-default page page-id-54 wp-theme-generatepress wp-child-theme-topfamillepro tfp-body tfp-type-institutionnelle tfp-hero-w-900">
+<body class="wp-singular page-template-default page page-id-49 wp-theme-generatepress wp-child-theme-topfamillepro tfp-body tfp-type-institutionnelle tfp-hero-w-900">
 <a class="skip-link" href="#tfp-main">Aller au contenu principal</a>
 
 <div style="min-height:100vh;display:flex;flex-direction:column">
@@ -174,7 +176,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 																			<strong class="tfp-card-tile__title">
 								J’ai une question															</strong>
 																			<p class="tfp-card-tile__desc">Formulaire court, réponse par e-mail ou téléphone.</p>
-																							</div>
+																													</div>
 				</div>
 							</li>
 					<li>
@@ -183,7 +185,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 																			<strong class="tfp-card-tile__title">
 								J’ai un besoin de nettoyage															</strong>
 																			<p class="tfp-card-tile__desc">Direction le formulaire de devis détaillé</p>
-																									<span class="tfp-card-tile__more">Demander mon devis<span aria-hidden="true"> →</span></span>
+																															<span class="tfp-card-tile__more">Demander mon devis<span aria-hidden="true"> →</span></span>
 											</div>
 				</a>
 							</li>
@@ -208,7 +210,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 																			<strong class="tfp-card-tile__title">
 								Téléphone															</strong>
 																			<p class="tfp-card-tile__desc">06 36 17 63 39</p>
-																							</div>
+																													</div>
 				</a>
 							</li>
 					<li>
@@ -218,7 +220,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 																			<strong class="tfp-card-tile__title">
 								E-mail															</strong>
 																			<p class="tfp-card-tile__desc">audrey.b@top-famille.fr</p>
-																							</div>
+																													</div>
 				</a>
 							</li>
 					<li>
@@ -228,7 +230,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 																			<strong class="tfp-card-tile__title">
 								Implantation															</strong>
 																			<p class="tfp-card-tile__desc">Saint-Apollinaire (21) · Bourgogne-Franche-Comté</p>
-																							</div>
+																													</div>
 				</div>
 							</li>
 					<li data-tfp-provisional="1">
@@ -238,7 +240,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 																			<strong class="tfp-card-tile__title">
 								Horaires de contact															</strong>
 																			<p class="tfp-card-tile__desc">Du lundi au vendredi · réponse sous 24 h</p>
-																							</div>
+																													</div>
 				</div>
 				<p class="tfp-provisional-notice" data-tfp-provisional-notice="1">Horaires indicatifs, en cours de confirmation.</p>			</li>
 			</ul>
@@ -250,7 +252,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 																			<strong class="tfp-card-tile__title">
 								5,0/5 sur Google															</strong>
 																			<p class="tfp-card-tile__desc">27 € HT/h — tarif unique en région</p>
-																							</div>
+																													</div>
 				</div>
 							</li>
 			</ul>
@@ -273,7 +275,8 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 			
 						<form class="tfp-contact-form" method="post" action="../wp-admin/admin-post/index.html.php" novalidate>
 				<input type="hidden" name="action" value="tfp_submit_contact">
-				<input type="hidden" id="tfp_contact_nonce" name="tfp_contact_nonce" value="c5e79d62dc" /><input type="hidden" name="_wp_http_referer" value="/contact/" />
+								<input type="hidden" name="tfp_contact_ticket" value="EiBSXQBjDrVK">
+				<input type="hidden" id="tfp_contact_nonce" name="tfp_contact_nonce" value="61d437d853" /><input type="hidden" name="_wp_http_referer" value="/contact/" />
 								<div class="tfp-honeypot" aria-hidden="true">
 					<label for="tfp_contact_site">Ne pas remplir</label>
 					<input type="text" id="tfp_contact_site" name="tfp_contact_site" tabindex="-1" autocomplete="off">
@@ -367,7 +370,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 				<li><a href="mailto:audrey.b@top-famille.fr">audrey.b@top-famille.fr</a></li>
 				<li>Saint-Apollinaire (21850)</li>
 			</ul>
-			<div class="tfp-google-badge tfp-google-badge--footer"><span class="tfp-google-badge__stars" role="img" aria-label="5,0/5 sur Google">★★★★★</span><span class="tfp-google-badge__text"><strong>5,0/5</strong> sur Google</span></div>		</div>
+					</div>
 
 		<div class="tfp-footer__col">
 			<h3>Prestations</h3>
@@ -484,6 +487,6 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <script type="speculationrules">
 {"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/wp-content/uploads/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/topfamillepro/*","/wp-content/themes/generatepress/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
 </script>
-<script data-wp-strategy="defer" defer id="topfamillepro-js" src="../wp-content/themes/topfamillepro/assets/dist/js/main.js?ver=1786485837"></script>
+<script data-wp-strategy="defer" defer id="topfamillepro-js" src="../wp-content/themes/topfamillepro/assets/dist/js/main.js?ver=1786710812"></script>
 </body>
 </html>
