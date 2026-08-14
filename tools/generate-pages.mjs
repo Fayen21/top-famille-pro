@@ -258,9 +258,18 @@ for (const p of PAGES) {
 					const m = declareGrille.match(/minmax\(\s*(?:min\([^,]+,\s*)?([\d.]+px)/);
 					const base = m ? m[1] : /^[\d.]+px$/.test(cs.flexBasis) ? cs.flexBasis : '';
 					const mini = /^[\d.]+px$/.test(cs.minWidth) ? cs.minWidth : '';
+					/*
+					 * L'écart DÉCLARÉ, pas l'écart calculé. Le prototype écrit
+					 * `gap: clamp(30px, 4vw, 52px)` ; `ps.gap` n'en rend que la valeur à la largeur du
+					 * relevé, soit 52 px à 1440. Posée telle quelle, cette borne haute empêchait deux
+					 * colonnes de tenir à 768 px — 2 × 340 + 52 = 732 pour 707 disponibles — là où la
+					 * maquette les y met bien côte à côte avec 30,72 px d'écart. C'est le motif déjà
+					 * corrigé sur le rembourrage de bande, sur une autre propriété.
+					 */
+					const gapDeclare = (parent.style && parent.style.gap) || '';
 					parTitre[(t.textContent || '').replace(/\s+/g, ' ').trim()] = {
 						colonne_min: base || mini || '',
-						gap: ps.gap && ps.gap !== 'normal' ? ps.gap : '',
+						gap: gapDeclare || (ps.gap && ps.gap !== 'normal' ? ps.gap : ''),
 					};
 					break;
 				}
@@ -672,9 +681,31 @@ for (const p of PAGES) {
 					}
 					if (dansGrille.has(n)) continue;
 					if (/^h[1-6]$/.test(tag)) {
-						// L'ordonnée du titre sert à savoir, plus bas, s'il est seul sur son rang (bloc
-						// pleine largeur) ou côte à côte avec d'autres (bloc de grille).
-						const r = n.getBoundingClientRect();
+						/*
+						 * L'ordonnée sert à savoir, plus bas, si le titre est seul sur son rang (bloc
+						 * pleine largeur) ou côte à côte avec d'autres (rangée de colonnes).
+						 *
+						 * C'est celle de sa COLONNE, pas la sienne. Deux colonnes d'une même rangée
+						 * peuvent porter des intitulés de tailles très différentes — 34 px pour une
+						 * colonne de texte, 19 px pour la carte voisine — et leurs boîtes commencent
+						 * alors à 30 px d'écart alors qu'elles sont bien côte à côte. La tolérance de
+						 * 8 px les séparait, la rangée n'était pas détectée, et les deux blocs
+						 * finissaient empilés en `.tfp-static-run` là où la maquette les met côte à
+						 * côte : 275 px de hauteur en trop sur la bande.
+						 *
+						 * La colonne, c'est l'ancêtre qui est enfant direct du premier conteneur
+						 * flex ou grille à plusieurs enfants — exactement ce que `rangeesOf()`
+						 * remonte pour lire la base de colonne déclarée.
+						 */
+						let colonne = n;
+						for (let el = n; el && el.parentElement && el !== sec; el = el.parentElement) {
+							const ps = getComputedStyle(el.parentElement);
+							if (/grid|flex/.test(ps.display) && el.parentElement.children.length >= 2) {
+								colonne = el;
+								break;
+							}
+						}
+						const r = colonne.getBoundingClientRect();
 						out.push({ t: tag, v: txt(n), top: Math.round(r.top + window.scrollY) });
 					}
 					else if (tag === 'p') out.push({ t: 'p', v: txt(n) });

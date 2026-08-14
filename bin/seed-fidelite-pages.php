@@ -271,7 +271,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 						'niveau' => 'h2',
 						'carte' => '',
 						'colonne_min' => '340px',
-						'rangee_gap' => '56px',
+						'rangee_gap' => 'clamp(32px, 5vw, 56px)',
 						'grille' => true,
 						'colonnes' => 2,
 						'sequence' => array(
@@ -312,7 +312,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 						'niveau' => 'h2',
 						'carte' => '',
 						'colonne_min' => '340px',
-						'rangee_gap' => '56px',
+						'rangee_gap' => 'clamp(32px, 5vw, 56px)',
 						'grille' => true,
 						'colonnes' => 2,
 						'sequence' => array(
@@ -1995,7 +1995,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 						'niveau' => 'h3',
 						'carte' => '',
 						'colonne_min' => '300px',
-						'rangee_gap' => '34px',
+						'rangee_gap' => 'clamp(22px, 2.6vw, 34px)',
 						'grille' => true,
 						'colonnes' => 3,
 						'sequence' => array(
@@ -2020,7 +2020,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 						'niveau' => 'h3',
 						'carte' => '',
 						'colonne_min' => '300px',
-						'rangee_gap' => '34px',
+						'rangee_gap' => 'clamp(22px, 2.6vw, 34px)',
 						'grille' => true,
 						'colonnes' => 3,
 						'sequence' => array(
@@ -2045,7 +2045,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 						'niveau' => 'h3',
 						'carte' => '',
 						'colonne_min' => '300px',
-						'rangee_gap' => '34px',
+						'rangee_gap' => 'clamp(22px, 2.6vw, 34px)',
 						'grille' => true,
 						'colonnes' => 3,
 						'sequence' => array(
@@ -2070,7 +2070,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 						'niveau' => 'h3',
 						'carte' => '',
 						'colonne_min' => '300px',
-						'rangee_gap' => '34px',
+						'rangee_gap' => 'clamp(22px, 2.6vw, 34px)',
 						'grille' => true,
 						'colonnes' => 3,
 						'sequence' => array(
@@ -2095,7 +2095,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 						'niveau' => 'h3',
 						'carte' => '',
 						'colonne_min' => '300px',
-						'rangee_gap' => '34px',
+						'rangee_gap' => 'clamp(22px, 2.6vw, 34px)',
 						'grille' => true,
 						'colonnes' => 3,
 						'sequence' => array(
@@ -2120,7 +2120,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 						'niveau' => 'h3',
 						'carte' => '',
 						'colonne_min' => '300px',
-						'rangee_gap' => '34px',
+						'rangee_gap' => 'clamp(22px, 2.6vw, 34px)',
 						'grille' => true,
 						'colonnes' => 3,
 						'sequence' => array(
@@ -2160,7 +2160,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 						'niveau' => 'h2',
 						'carte' => '',
 						'colonne_min' => '380px',
-						'rangee_gap' => '52px',
+						'rangee_gap' => 'clamp(30px, 4vw, 52px)',
 						'grille' => true,
 						'colonnes' => 2,
 						'sequence' => array(
@@ -2185,7 +2185,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 						'niveau' => 'h2',
 						'carte' => '',
 						'colonne_min' => '320px',
-						'rangee_gap' => '52px',
+						'rangee_gap' => 'clamp(30px, 4vw, 52px)',
 						'grille' => true,
 						'colonnes' => 2,
 						'sequence' => array(
@@ -2517,7 +2517,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 						'niveau' => 'h2',
 						'carte' => '',
 						'colonne_min' => '420px',
-						'rangee_gap' => '52px',
+						'rangee_gap' => 'clamp(30px, 4vw, 52px)',
 						'grille' => false,
 						'colonnes' => 1,
 						'sequence' => array(
@@ -2871,7 +2871,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 						'niveau' => 'h2',
 						'carte' => '',
 						'colonne_min' => '300px',
-						'rangee_gap' => '56px',
+						'rangee_gap' => 'clamp(32px, 5vw, 56px)',
 						'grille' => true,
 						'colonnes' => 3,
 						'sequence' => array(
@@ -2906,7 +2906,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 						'niveau' => 'h2',
 						'carte' => '',
 						'colonne_min' => '300px',
-						'rangee_gap' => '56px',
+						'rangee_gap' => 'clamp(32px, 5vw, 56px)',
 						'grille' => true,
 						'colonnes' => 3,
 						'sequence' => array(
@@ -2998,7 +2998,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 						'niveau' => 'h2',
 						'carte' => '',
 						'colonne_min' => '300px',
-						'rangee_gap' => '56px',
+						'rangee_gap' => 'clamp(32px, 5vw, 56px)',
 						'grille' => true,
 						'colonnes' => 3,
 						'sequence' => array(
@@ -3881,7 +3881,7 @@ update_option( 'tfp_page_prestations', array(
 						'niveau' => 'h2',
 						'carte' => '',
 						'colonne_min' => '420px',
-						'rangee_gap' => '48px',
+						'rangee_gap' => 'clamp(28px, 4vw, 48px)',
 						'grille' => true,
 						'colonnes' => 2,
 						'sequence' => array(
@@ -3906,7 +3906,7 @@ update_option( 'tfp_page_prestations', array(
 						'niveau' => 'h2',
 						'carte' => '',
 						'colonne_min' => '320px',
-						'rangee_gap' => '48px',
+						'rangee_gap' => 'clamp(28px, 4vw, 48px)',
 						'grille' => true,
 						'colonnes' => 2,
 						'sequence' => array(
@@ -9687,7 +9687,7 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 						'niveau' => 'h2',
 						'carte' => '',
 						'colonne_min' => '300px',
-						'rangee_gap' => '34px',
+						'rangee_gap' => 'clamp(22px, 3vw, 34px)',
 						'grille' => false,
 						'colonnes' => 1,
 						'sequence' => array(
@@ -10602,7 +10602,7 @@ update_option( 'tfp_page_pourquoi-nous', array(
 						'niveau' => 'h3',
 						'carte' => '',
 						'colonne_min' => '300px',
-						'rangee_gap' => '34px',
+						'rangee_gap' => 'clamp(22px, 2.6vw, 34px)',
 						'grille' => true,
 						'colonnes' => 3,
 						'sequence' => array(
@@ -10627,7 +10627,7 @@ update_option( 'tfp_page_pourquoi-nous', array(
 						'niveau' => 'h3',
 						'carte' => '',
 						'colonne_min' => '300px',
-						'rangee_gap' => '34px',
+						'rangee_gap' => 'clamp(22px, 2.6vw, 34px)',
 						'grille' => true,
 						'colonnes' => 3,
 						'sequence' => array(
@@ -10652,7 +10652,7 @@ update_option( 'tfp_page_pourquoi-nous', array(
 						'niveau' => 'h3',
 						'carte' => '',
 						'colonne_min' => '300px',
-						'rangee_gap' => '34px',
+						'rangee_gap' => 'clamp(22px, 2.6vw, 34px)',
 						'grille' => true,
 						'colonnes' => 3,
 						'sequence' => array(
@@ -10677,7 +10677,7 @@ update_option( 'tfp_page_pourquoi-nous', array(
 						'niveau' => 'h3',
 						'carte' => '',
 						'colonne_min' => '300px',
-						'rangee_gap' => '34px',
+						'rangee_gap' => 'clamp(22px, 2.6vw, 34px)',
 						'grille' => true,
 						'colonnes' => 3,
 						'sequence' => array(
@@ -10702,7 +10702,7 @@ update_option( 'tfp_page_pourquoi-nous', array(
 						'niveau' => 'h3',
 						'carte' => '',
 						'colonne_min' => '300px',
-						'rangee_gap' => '34px',
+						'rangee_gap' => 'clamp(22px, 2.6vw, 34px)',
 						'grille' => true,
 						'colonnes' => 3,
 						'sequence' => array(
@@ -10727,7 +10727,7 @@ update_option( 'tfp_page_pourquoi-nous', array(
 						'niveau' => 'h3',
 						'carte' => '',
 						'colonne_min' => '300px',
-						'rangee_gap' => '34px',
+						'rangee_gap' => 'clamp(22px, 2.6vw, 34px)',
 						'grille' => true,
 						'colonnes' => 3,
 						'sequence' => array(
@@ -13570,9 +13570,9 @@ update_option( 'tfp_page_recrutement', array(
 						'niveau' => 'h2',
 						'carte' => '',
 						'colonne_min' => '340px',
-						'rangee_gap' => '52px',
-						'grille' => false,
-						'colonnes' => 1,
+						'rangee_gap' => 'clamp(30px, 4vw, 52px)',
+						'grille' => true,
+						'colonnes' => 2,
 						'sequence' => array(
 							array(
 								'type' => 'list',
@@ -13608,9 +13608,9 @@ update_option( 'tfp_page_recrutement', array(
 							'marge_bas' => '0px',
 						),
 						'colonne_min' => '320px',
-						'rangee_gap' => '52px',
-						'grille' => false,
-						'colonnes' => 1,
+						'rangee_gap' => 'clamp(30px, 4vw, 52px)',
+						'grille' => true,
+						'colonnes' => 2,
 						'sequence' => array(
 							array(
 								'type' => 'note',

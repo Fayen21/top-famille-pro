@@ -144,8 +144,34 @@ foreach ( $data['sections'] as $section ) {
 			 * reproduit toutes. À 768 px, la maquette donnait 707 px de large à ses bandes de
 			 * texte quand le thème en donnait 333.
 			 */
+			/*
+			 * Base de colonne : la MOYENNE des bases déclarées par les colonnes de la rangée, et non
+			 * celle de la première.
+			 *
+			 * Le prototype compose ses rangées en flex : chaque colonne porte sa propre base, et la
+			 * rangée se replie quand la SOMME des bases plus les écarts dépasse la place disponible.
+			 * Le thème la rend en grille `auto-fit`, qui se replie quand N × base plus les écarts la
+			 * dépasse. Les deux points de bascule coïncident exactement quand la base de la grille
+			 * vaut la moyenne des bases du flex — et seulement alors.
+			 *
+			 * Sur la bande « Ce que nous attendons » de /recrutement/, les deux colonnes déclarent
+			 * 340 et 320 px. Prendre 340 faisait replier la rangée à 768 px (2 × 340 + 30,72 = 710,7
+			 * pour 707 disponibles) là où la maquette la tient côte à côte ; la moyenne, 330, la tient
+			 * (2 × 330 + 30,72 = 690,7). La largeur des colonnes reste égalisée par la grille — 338
+			 * contre 348 et 328 dans la maquette — ce que seule une rangée flex à bases distinctes
+			 * reproduirait au pixel.
+			 */
+			$bases = array();
+			foreach ( $sequence as $bloc_rangee ) {
+				$base = tfp_longueur_css( $bloc_rangee['colonne_min'] ?? '' );
+				if ( '' !== $base && preg_match( '/^([\d.]+)px$/', $base, $m ) ) {
+					$bases[] = (float) $m[1];
+				}
+			}
 			$rangee_vars = array();
-			if ( '' !== tfp_longueur_css( $sequence[0]['colonne_min'] ?? '' ) ) {
+			if ( $bases ) {
+				$rangee_vars[] = '--tfp-rangee-colonne:' . round( array_sum( $bases ) / count( $bases ), 2 ) . 'px';
+			} elseif ( '' !== tfp_longueur_css( $sequence[0]['colonne_min'] ?? '' ) ) {
 				$rangee_vars[] = '--tfp-rangee-colonne:' . tfp_longueur_css( $sequence[0]['colonne_min'] );
 			}
 			if ( '' !== tfp_longueur_css( $sequence[0]['rangee_gap'] ?? '' ) ) {

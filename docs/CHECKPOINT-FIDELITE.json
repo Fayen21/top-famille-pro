@@ -416,6 +416,44 @@
    "tests": "885 tests d'assertion verts · lint PHP 81 fichiers · bin/verifier-installation.php PASS code 0 · 0 débordement, 0 image cassée, 0 CTA hors écran, 0 erreur console ou réseau, 0 écart de bandes",
    "fichiers": "page-nettoyage-professionnel.php · page-bourgogne-franche-comte.php · page-recrutement.php · page-a-propos.php · template-parts/home/hero.php · src/css/05-home.css · src/css/04-components.css",
    "statut": "CORRIGE"
+  },
+  {
+   "id": "G15",
+   "titre": "`.tfp-static-run` — la rangée n'était pas détectée, et sa géométrie était figée",
+   "selecteur": ".tfp-static-run / .tfp-static-grid--N, via tools/generate-pages.mjs et static-blocks.php",
+   "routes": "les 9 routes portant `.tfp-static-run` — 58 occurrences",
+   "largeurs": "toutes",
+   "diagnostic": {
+    "maquette": "display: flex; flex-wrap: wrap; gap: clamp(30px, 4vw, 52px) — colonne de texte `flex: 1 1 340px; min-width: min(100%, 300px)`, carte marine `flex: 1 1 320px; min-width: min(100%, 300px)`. DEUX colonnes dès 768 px : 348 + 328.",
+    "theme_avant": "`.tfp-static-run` en `display: block` — les deux blocs empilés, 707 px de large chacun, à TOUTES les largeurs",
+    "ce_que_ce_n_etait_pas": "ni un seuil de fenêtre ni un breakpoint : le conteneur n'était pas une rangée du tout. La correction n'est donc pas dans le CSS mais dans le relevé."
+   },
+   "trois_defauts_enchaines": [
+    {
+     "quoi": "la rangée n'était pas DÉTECTÉE",
+     "cause": "`cur.colonnes` comptait les titres partageant une ordonnée à 8 px près. Les deux colonnes de cette rangée portent des intitulés de 34 px et de 19 px : leurs boîtes commencent à 30 px d'écart alors qu'elles sont côte à côte. Le titre se retrouvait seul sur son rang, `grille` valait false, et le composant rendait `.tfp-static-run`.",
+     "correction": "l'ordonnée relevée est celle de la COLONNE — l'ancêtre enfant direct du premier conteneur flex ou grille à plusieurs enfants — et non celle du titre. C'est exactement ce que `rangeesOf()` remonte déjà pour lire la base déclarée.",
+     "effet_seed": "8 lignes changées, uniquement `grille` et `colonnes` : deux rangées détectées"
+    },
+    {
+     "quoi": "l'écart de rangée était FIGÉ",
+     "cause": "`rangeesOf()` lisait `ps.gap`, la valeur calculée à la largeur du relevé — 52 px, la borne haute de `clamp(30px, 4vw, 52px)`. Posée telle quelle, elle empêchait deux colonnes de tenir à 768 px : 2 × 340 + 52 = 732 pour 707 disponibles.",
+     "correction": "lecture de `parent.style.gap`, la valeur déclarée. Même motif que le rembourrage de bande en G13, sur une autre propriété.",
+     "effet_seed": "50 lignes `rangee_gap`"
+    },
+    {
+     "quoi": "la base de colonne était celle de la PREMIÈRE colonne",
+     "cause": "le prototype compose en flex : la rangée se replie quand la SOMME des bases dépasse la place. Le thème rend en grille `auto-fit`, qui se replie quand N × base la dépasse. Prendre 340 — la base de la première colonne — faisait replier à 768 px là où la maquette tient côte à côte.",
+     "correction": "la base de la grille vaut la MOYENNE des bases déclarées de la rangée : c'est la seule valeur pour laquelle les deux points de bascule coïncident exactement. Ici 330 au lieu de 340.",
+     "limite_assumee": "la grille égalise les colonnes — 338 contre 348 et 328 dans la maquette. Seule une rangée flex à bases distinctes le reproduirait au pixel ; le point de repli, lui, est exact."
+    }
+   ],
+   "verification_structure": "#/recrutement bande « Ce que nous attendons » à 768 px : 1 rang des deux côtés, écart 30,72 px des deux côtés, résidu de bande −216 contre −215. À 1440 px : 1 rang, cartes 564 contre 554–574.",
+   "effet_recrutement": "320 104→105 · 375 104→104 · 768 105→103 · 1024 104→100 · 1440 110→104 · 1920 111→104. Les SIX largeurs dans la tolérance.",
+   "effet_baseline": "318 contrôles, docs/baseline-2026-08-15-apres-G15.json : 255 → 258 dans 95-105 % · 11 rapprochées, 2 éloignées (toutes deux à 320 px) · 768 px 42→43 · 1440 et 1920 px 39→40. #/pourquoi-top-famille-pro sort de la liste des hors-tolérance à 768 px (106 → 105).",
+   "tests": "885 tests d'assertion verts · lint PHP 81 fichiers · bin/verifier-installation.php PASS code 0 · 0 débordement, 0 image cassée, 0 CTA hors écran, 0 erreur console ou réseau, 0 écart de bandes",
+   "fichiers": "tools/generate-pages.mjs · template-parts/components/static-blocks.php · bin/seed-fidelite-pages.php (régénéré)",
+   "statut": "CORRIGE"
   }
  ],
  "faux_positifs_corriges_dans_outil": [
@@ -456,14 +494,21 @@
   }
  ],
  "prochain_groupe_a_traiter": {
-  "id": "G15",
+  "id": "G16",
   "priorite": 1,
-  "titre": "`.tfp-static-run` — deux blocs empilés là où la maquette les met côte à côte",
-  "constat": "sur #/recrutement à 1440 px, la bande « Ce que nous attendons » fait 384 px dans la maquette et 658 dans le thème. La décomposition boucle à 0 px et désigne `.tfp-static-run` : 239,6 → 513,9 px, largeur 1260 → 1180, écart 52px → null. La maquette y range DEUX blocs côte à côte avec 52 px d'écart ; le thème les empile.",
-  "contributions": "+275,6 `.tfp-static-run` · −174,2 `.tfp-list-plain` (colonnes 1→3, police 16→17, interligne 25,92→27,54) · +50,7 `.tfp-static-block--carte` (marge haute 0→36, filet 0→1)",
-  "portee_a_verifier": "`.tfp-static-run` est un composant des pages statiques : vérifier sur combien de routes il apparaît AVANT de corriger, et relever la règle déclarée par le prototype plutôt que de reconstruire un seuil.",
-  "routes_encore_hors_tolerance_768": "3 pages légales (134, 125, 115 %) · contact 114 · nos-tarifs 110 · les trois articles 110 · demande-de-devis 110 · plan-du-site 109 · pourquoi-nous 106",
-  "commande_de_reprise": "bash tools/banc-local.sh && bash tools/banc-local.sh --theme-only && node tools/arbre-bande.mjs '#/recrutement' --bande=2 --width=1440 --profondeur=3"
+  "titre": "Les dix routes encore hors tolérance à 768 px",
+  "liste": {
+   "134 % politique-de-confidentialite": "page légale — à VALIDER composant par composant, pas à corriger",
+   "125 % mentions-legales": "page légale — idem",
+   "115 % gestion-des-cookies": "page légale — idem",
+   "114 % contact": "+343 px de contenu imposé sur +360 (CTA de devis exigé §8, mention légale, deux intitulés). Reste −49 px de défaut géométrique réel : colonne d'information trop courte, rembourrage de carte 16→0 et de portrait 22→0.",
+   "110 % nos-tarifs": "`.tfp-two-col` tient deux colonnes dans la maquette à 768 px et une seule dans le thème (+296,3). Relever la base DÉCLARÉE avant de toucher.",
+   "110 % les trois articles": "APPARIEMENT SUSPECT — la décomposition boucle sur un « titre » de 1 153 px. Réparer l'appariement AVANT toute conclusion. Ne pas rouvrir le faux positif des bandes.",
+   "110 % demande-de-devis": "aucune bande détectée des deux côtés (0→0) : décomposer depuis le conteneur de page, la décomposition par bande ne s'y applique pas.",
+   "109 % plan-du-site": "+938 px de contenu imposé (les listes réelles des 53 routes). Reste une liste passant de 4 colonnes à 1 (+142,5)."
+  },
+  "methode": "la décomposition additive de tools/arbre-bande.mjs, en lisant les nœuds NON APPARIÉS avant de conclure — le bouclage prouve l'additivité, pas la justesse de l'appariement.",
+  "commande_de_reprise": "bash tools/banc-local.sh && bash tools/banc-local.sh --theme-only && node tools/arbre-bande.mjs '#/nos-tarifs' --width=768"
  },
  "groupes_suivants": [
   {
@@ -576,5 +621,16 @@
   "hors_tolerance": "141 % politique-de-confidentialite, 130 % mentions-legales, 126 % gestion-des-cookies (les trois pages légales — exception prévue, contenu légal absent de la maquette), puis 121 % contact, 117 % et 113 % ×3 les articles et l'index conseils, 112 % nos-tarifs, 111 % pourquoi-nous, 107 % nettoyage-professionnel, 106 % recrutement.",
   "CLS": "une seule route au-dessus de 0,01 : #/demande-de-devis à 0,0139. La valeur de 0,668 annoncée par la passe précédente était un ARTEFACT des observateurs de décalage accumulés — le correctif `addInitScript` a donc bien servi, non à la vitesse mais à la justesse de la mesure. 0,0139 reste au-dessus de la cible de 0,010, mais l'anomalie n'a plus rien de prioritaire.",
   "ecarts_de_bandes": "35 routes. Trois causes distinctes : la FAQ absente des prestations (corrigée), le corps d'article non sectionné (faux positif du compteur), et les départements 10→9 (à instruire)."
+ },
+ "statut_lcp_quatre_heros": {
+  "etat": "NON MESURÉ — préparé seulement, conformément au §1 du brief : la passe Lighthouse vient après stabilisation géométrique.",
+  "a_verifier": "pour /nettoyage-professionnel/, /zones-intervention/bourgogne-franche-comte/, /recrutement/ et /a-propos/ : élément LCP réel par PerformanceObserver, unicité du candidat prioritaire, cohérence entre `fetchpriority=high`, l'absence de `loading=lazy` et le fichier réellement rendu par srcset/sizes.",
+  "ce_qui_est_pose": "les quatre appels passent `'lcp' => true`, ce qui produit `fetchpriority=\"high\"` et `loading=\"eager\"`. Aucun preload n'est émis par le thème. Le manifeste porte `lcp:true` sur hero-main seulement ; les autres slugs reçoivent la surcharge par argument.",
+  "risque_identifie": "`service-generic` est déclaré LCP sur trois routes et `audrey-placeholder` sur une. Vérifier qu'aucune de ces images n'est hors écran au premier rendu à 768 px, où le hero se replie et met le visuel SOUS le texte."
+ },
+ "images_exactes_de_la_maquette": {
+  "etat": "NON RECHERCHÉ dans cette passe — le brief autorise à ne pas bloquer G15 pour cette recherche.",
+  "a_faire": "inspecter reference/Top-Famille-Pro-HANDOFF-READY.html pour des images embarquées (data:, blob:, srcset local), comparer dimensions et empreintes aux 9 slugs du manifeste, et consigner le nombre d'assets analysés.",
+  "provisoire_en_place": "service-generic sur trois routes, audrey-placeholder sur a-propos. Procédure de remplacement : ajouter l'asset au pipeline d'images, régénérer le manifeste par `npm run images`, remplacer le slug dans le gabarit concerné. Aucun autre changement n'est nécessaire."
  }
 }
