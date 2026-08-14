@@ -368,6 +368,27 @@
    },
    "tests": "tests/appariement.spec.js et tests/bandes.spec.js verts (8 tests). Aucun fichier du thème modifié dans cette passe : la baseline docs/baseline-2026-08-13-apres-G11.json reste valide et n'a pas été rejouée.",
    "statut": "DIAGNOSTIC — aucune correction écrite"
+  },
+  {
+   "id": "G13",
+   "titre": "Le rembourrage de bande des pages statiques : la fonction relevée jusqu'au bout de la chaîne",
+   "selecteur": "--tfp-bande-haut / --tfp-bande-bas, posées par template-parts/components/static-blocks.php",
+   "routes": "les 18 pages statiques",
+   "largeurs": "320, 375, 768, 1024 — sans effet à 1440 et 1920",
+   "deux_defauts_qui_s_annulaient": [
+    "tools/generate-pages.mjs relevait `cs.paddingTop` — la valeur CALCULÉE à la largeur du relevé. Le prototype écrit ses rembourrages de bande en fonction : clamp(44px, 6vw, 80px), clamp(40px, 5vw, 72px), clamp(20px, 3vw, 32px)… Ne garder que la valeur calculée fige l'une des bornes. À 768 px, une bande relevée à 80 px en rend 46,08 dans la maquette : 34 px d'écart par bande.",
+    "static-blocks.php filtrait la valeur par `preg_replace('/[^0-9a-z%. ]/i','')`, qui EFFACE les parenthèses et les virgules : `clamp(44px, 6vw, 80px)` serait devenu « clamp44px 6vw 80px », valeur invalide que le navigateur jette. Le relevé pouvait donc être juste sans jamais atteindre la page. Remplacé par `tfp_longueur_css()`, le filtre strict posé en G07, déjà employé ailleurs DANS CE MÊME FICHIER pour d'autres variables."
+   ],
+   "prototype": "clamp() par bande, relevé au style en ligne — 9 bandes en clamp(40px, 5vw, 72px), 4 en clamp(34px, 4vw, 54px), 3 en clamp(44px, 6vw, 80px), etc.",
+   "theme_avant": "la borne haute figée : 80, 72, 64, 56 px selon la bande, à toutes les largeurs",
+   "verification_du_seed": "bin/seed-fidelite-pages.php régénéré : 196 lignes modifiées, AUCUNE en dehors de `padding_haut` et `padding_bas`. Le diff a été contrôlé avant réinjection.",
+   "verification_du_rendu": "rembourrages de bande identiques à la maquette au pixel sur /pourquoi-nous/ et /a-propos/ à 768 px — 36/36, 40/40, 46/46, 0/0 des deux côtés.",
+   "effet_768": "pourquoi-nous 112 → 106 % · zones-intervention 106 → 102 % (entre dans la tolérance) · avis-clients 108 → 105 % (entre) · notre-fonctionnement 105 → 103 % · nos-prestations 101 → 99 %",
+   "effet_baseline": "318 contrôles, docs/baseline-2026-08-14-apres-G13.json : 245 → 252 dans 95-105 % · 320 px 44→46 · 375 px 42→43 · 768 px 39→40 · 1024 px 42→45 · 1440 et 1920 px 39→39 · 20 rapprochées, 13 éloignées",
+   "regression_expliquee": "quatre routes reculent — recrutement 94→89, a-propos 95→92, bourgogne-franche-comte 100→96, nettoyage-professionnel 105→97. Ce sont EXACTEMENT les quatre routes privées de visuel de hero (voir G14). Le rembourrage en trop compensait l'image manquante ; le corriger démasque la vraie cause. C'est la leçon déjà consignée, et ce n'est pas une raison de revenir en arrière.",
+   "tests": "885 tests d'assertion verts · lint PHP 81 fichiers · bin/verifier-installation.php PASS code 0 · 0 débordement, 0 image cassée, 0 CTA hors écran, 0 erreur console ou réseau, 0 écart de bandes sur les 318 contrôles",
+   "fichiers": "tools/generate-pages.mjs · template-parts/components/static-blocks.php · bin/seed-fidelite-pages.php (régénéré)",
+   "statut": "CORRIGE"
   }
  ],
  "faux_positifs_corriges_dans_outil": [
@@ -408,19 +429,22 @@
   }
  ],
  "prochain_groupe_a_traiter": {
-  "id": "G13",
+  "id": "G14",
   "priorite": 1,
-  "titre": "Corriger les défauts géométriques réels identifiés par G12, dans cet ordre",
-  "ordre": [
-   "1. #/recrutement — le visuel de hero manquant. Composant absent, −519 px, et le seul écart de signe négatif. Reprendre un alt honnête, pas celui de la maquette (CLAUDE.md §5.6).",
-   "2. Le rembourrage de bande relevé à 80 px dans les seeds des pages statiques, alors que la maquette rend 46,08 px à 768 (= 6vw) et 80 à 1440 : c'est la BORNE HAUTE d'une fonction, figée par le générateur. Motif de G07 et G11, cette fois dans les données. Touche les 18 pages statiques, dont pourquoi-nous (+65,8) et zones-intervention (−98,2).",
-   "3. #/nos-tarifs — `.tfp-two-col` : 2 colonnes dans la maquette, 1 dans le thème à 768 px (+296,3). Relever la base DÉCLARÉE avant de toucher.",
-   "4. #/avis-clients — `.tfp-quote` trop court de 258 px (rembourrage 30,72→18).",
-   "5. #/contact — colonne d'information trop courte de 49 px (rembourrage de carte 16→0, de portrait 22→0).",
-   "6. #/plan-du-site — liste passant de 4 colonnes à 1 (+142,5).",
-   "7. #/article/* et #/demande-de-devis — réparer l'appariement AVANT toute conclusion : la décomposition boucle sur des nœuds manifestement mal appariés."
-  ],
-  "avertissement": "Trois routes sont classées ÉCART ÉDITORIAL IMPOSÉ et ne peuvent pas entrer dans 95-105 % à 768 px sans supprimer du contenu exigé : contact (+343 px de CTA, mention légale et intitulés), plan-du-site (+938 px de listes réelles), avis-clients (+445 px de témoignages provisoires signalés). Elles gardent néanmoins des défauts géométriques réels à corriger, listés ci-dessus.",
+  "titre": "Quatre routes n'affichent aucun visuel de hero — composant manquant, cause dominante et chiffrée",
+  "constat": "Un balayage des 53 routes compare le nombre d'images du hero des deux côtés. Quatre routes, et seulement quatre, en ont une dans la maquette et aucune dans le thème :",
+  "routes": {
+   "#/nettoyage-professionnel": "maquette 707×530 à 768 px, 512×384 à 1440 · thème 0 image · ratio 768 px 97 %",
+   "#/bourgogne-franche-comte": "maquette 707×530 · thème 0 image · ratio 768 px 96 %",
+   "#/recrutement": "maquette 707×530 · thème 0 image · ratio 768 px 89 % — la route la plus éloignée du lot",
+   "#/a-propos": "maquette 400×500 (portrait) · thème 0 image · ratio 768 px 92 %"
+  },
+  "preuve": "ce sont exactement les quatre routes qui reculent après G13 : le rembourrage de bande en trop compensait l'image absente. Aucune autre route ne présente cet écart d'images.",
+  "assets_disponibles": "le manifeste du thème porte 9 slugs, dont `service-generic` (960 px, « Intervention de nettoyage professionnel avec équipement de protection (photo d'illustration) ») et `audrey-placeholder` (640×958, « Photo d'illustration temporaire — portrait définitif à venir »). Les alts du manifeste sont DÉJÀ conformes à CLAUDE.md §5.6 : aucun ne prétend représenter une personne réelle.",
+  "attention_alt": "ne PAS reprendre les alts de la maquette : « Intervenant Top-Famille Pro entretenant des bureaux », « Audrey, Top-Famille Pro » et « Intervenant Top-Famille Pro préparant son matériel » présentent des photos de stock comme des personnes réelles de l'entreprise, ce que CLAUDE.md §5.6 interdit. Laisser le manifeste fournir son alt. Le portrait provisoire d'Audrey est en revanche explicitement autorisé par §5.5, décision du 10 août.",
+  "convention_a_suivre": "single-zone.php lignes 155-178 : `<section class=\"tfp-hero\"><div class=\"tfp-hero__content\">…</div><div class=\"tfp-hero__media\"><div class=\"tfp-hero__media-main\">tfp_picture(…)</div></div></section>`. Les 26 pages de zone l'emploient déjà avec le slug générique `article-3`.",
+  "structure_maquette": "hero à DEUX colonnes : colonne de texte `flex: 1 1 460px` (440 sur région et recrutement, 300 sur à-propos avec max-width 400), repliée sur une colonne à 768 px. Les quatre gabarits concernés ont aujourd'hui un hero à une seule colonne : la restructuration touche page-nettoyage-professionnel.php, page-bourgogne-franche-comte.php, page-recrutement.php et page-a-propos.php.",
+  "reserve_a_lever": "le choix de l'illustration est GÉNÉRIQUE et relève d'Emmanuel : `service-generic` est une photo d'illustration neutre, pas le visuel de la maquette. À valider avant mise en ligne. Vérifier aussi l'effet LCP sur la page pilier, où l'image deviendrait le plus grand élément visible.",
   "commande_de_reprise": "bash tools/banc-local.sh && bash tools/banc-local.sh --theme-only && node tools/arbre-bande.mjs '#/recrutement' --bande=0 --profondeur=2"
  },
  "groupes_suivants": [

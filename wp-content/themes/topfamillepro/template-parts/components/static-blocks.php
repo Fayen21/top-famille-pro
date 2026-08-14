@@ -52,9 +52,16 @@ foreach ( $data['sections'] as $section ) {
 	 * rembourrage de compensation destiné à atteindre un ratio : c'est la valeur mesurée, passée en
 	 * variable pour rester administrable et ne pas produire de style en ligne page par page.
 	 */
+	/*
+	 * Le filtre employé ici effaçait les parenthèses et les virgules : `clamp(44px, 6vw, 80px)`
+	 * devenait « clamp44px 6vw 80px », valeur invalide que le navigateur jette. Le relevé pouvait
+	 * donc être juste sans jamais atteindre la page. `tfp_longueur_css()` — le filtre strict posé en
+	 * G07 — admet les fonctions de longueur et refuse la valeur entière au moindre caractère hors
+	 * jeu, ce qui est la bonne garantie sans être destructif.
+	 */
 	$pad = array();
 	foreach ( array( 'padding_haut' => '--tfp-bande-haut', 'padding_bas' => '--tfp-bande-bas' ) as $cle => $var ) {
-		$valeur = trim( preg_replace( '/[^0-9a-z%. ]/i', '', (string) ( $section[ $cle ] ?? '' ) ) );
+		$valeur = tfp_longueur_css( $section[ $cle ] ?? '' );
 		if ( '' !== $valeur ) {
 			$pad[] = $var . ':' . $valeur;
 		}

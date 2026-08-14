@@ -935,6 +935,48 @@ for (const p of PAGES) {
 				// contre 52 partout côté thème). Sur la page pilier, cet écart seul représentait
 				// 64 px × 17 bandes, soit l'essentiel des 1 486 px manquants.
 				const cs = getComputedStyle(sec);
+
+				/**
+				 * Rembourrage vertical **DÉCLARÉ** par la bande, et non mesuré.
+				 *
+				 * Le relevé prenait `cs.paddingTop` — la valeur calculée à la largeur du relevé. Or
+				 * le prototype écrit ses rembourrages de bande en fonction : `clamp(44px, 6vw, 80px)`,
+				 * `clamp(40px, 5vw, 72px)`, `clamp(20px, 3vw, 32px)`… Ne garder que la valeur calculée
+				 * revient à figer l'une des bornes, et c'est le motif corrigé en G07 puis en G11 :
+				 * juste à la largeur du relevé, faux partout ailleurs. À 768 px, une bande relevée à
+				 * 80 px en rend 46,08 dans la maquette — 34 px d'écart par bande.
+				 *
+				 * On lit donc le raccourci `padding` du style en ligne et on en extrait les
+				 * composantes haute et basse selon les règles du raccourci CSS. La valeur calculée ne
+				 * sert plus que de repli, pour les bandes qui ne déclarent rien.
+				 */
+				const composantesPadding = (declare) => {
+					if (!declare) return null;
+					// Découpage au premier niveau : une virgule ou une espace DANS clamp() ne sépare rien.
+					const morceaux = [];
+					let profondeur = 0;
+					let courant = '';
+					for (const c of declare.trim()) {
+						if (c === '(') profondeur++;
+						if (c === ')') profondeur--;
+						if (/\s/.test(c) && profondeur === 0) {
+							if (courant) morceaux.push(courant);
+							courant = '';
+						} else {
+							courant += c;
+						}
+					}
+					if (courant) morceaux.push(courant);
+					if (!morceaux.length) return null;
+					// Raccourci CSS : 1 valeur → tout ; 2 → vertical/horizontal ; 3 → haut/horizontal/bas ;
+					// 4 → haut/droite/bas/gauche.
+					if (morceaux.length === 1) return { haut: morceaux[0], bas: morceaux[0] };
+					if (morceaux.length === 2) return { haut: morceaux[0], bas: morceaux[0] };
+					return { haut: morceaux[0], bas: morceaux[2] };
+				};
+				const declarePadding = composantesPadding(
+					(sec.getAttribute('style') || '').match(/(?:^|;)\s*padding:\s*([^;]+)/)?.[1] || ''
+				);
 				/*
 				 * Largeur de la colonne de lecture de la bande.
 				 *
@@ -955,8 +997,8 @@ for (const p of PAGES) {
 				out.push({
 					index: i,
 					fond: fondOf(sec),
-					padding_haut: cs.paddingTop,
-					padding_bas: cs.paddingBottom,
+					padding_haut: (declarePadding && declarePadding.haut) || cs.paddingTop,
+					padding_bas: (declarePadding && declarePadding.bas) || cs.paddingBottom,
 					largeur_texte: largeurTexte,
 					colonnes: colonnesOf(sec),
 					cartes: cadres && cadres.majoritaire ? cadres : null,
