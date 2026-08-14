@@ -184,10 +184,28 @@ get_header();
 </section>
 
 <section class="tfp-section--tight">
-	<div class="tfp-container tfp-two-col">
+	<?php
+	/*
+	 * Règle DÉCLARÉE par le prototype pour cette bande, et non le composant `.tfp-two-col` :
+	 *
+	 *   max-width: 900px; padding: 0 clamp(18px, 4vw, 40px); display: grid;
+	 *   grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 16px;
+	 *
+	 * `.tfp-two-col` posait une base de 380 px et un écart de clamp(30px, 4vw, 56px) : à 768 px,
+	 * 2 × 380 + 30,72 = 790,72 pour 707 disponibles, la bande se repliait sur une colonne de 707 px
+	 * là où la maquette en tient deux de 345. Ce composant n'est pas corrigeable globalement — le
+	 * prototype déclare une base différente à chacune de ses huit occurrences (440/340, 340/340,
+	 * 320/320, 420/320, 260/440, 300/360, 480/380) : c'est l'instance qu'on corrige.
+	 *
+	 * Les quatre propriétés se reproduisent avec les composants existants : `--narrow` borne à
+	 * 900 px, `.tfp-grid` pose l'écart de 16 px, `--autofit` le repli intrinsèque, et la variable
+	 * porte la base relevée.
+	 */
+	?>
+	<div class="tfp-container tfp-container--narrow tfp-grid tfp-grid--autofit" style="--tfp-colonne:260px">
 		<div class="tfp-card">
 			<h3>Ce qui est inclus</h3>
-			<ul class="tfp-list-plain">
+			<ul class="tfp-list-plain tfp-list-plain--nue">
 				<?php foreach ( $inclus as $item ) : ?>
 					<li><?php echo esc_html( $item ); ?></li>
 				<?php endforeach; ?>
@@ -195,7 +213,7 @@ get_header();
 		</div>
 		<div class="tfp-card">
 			<h3>Fourni par le client</h3>
-			<ul class="tfp-list-plain">
+			<ul class="tfp-list-plain tfp-list-plain--nue">
 				<?php foreach ( $fourni_client as $item ) : ?>
 					<li><?php echo esc_html( $item ); ?></li>
 				<?php endforeach; ?>

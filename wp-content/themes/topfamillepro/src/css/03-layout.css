@@ -68,6 +68,16 @@
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
 }
 
+/* Grille à repli intrinsèque dont la base de colonne est DÉCLARÉE, instance par instance.
+
+   Les trois tailles nommées ci-dessus couvrent les cas courants, mais le prototype ne s'y tient
+   pas : il déclare une base par bande — 220, 250, 260, 280, 340 px selon le contenu. Quand la
+   valeur relevée n'est aucune des trois, c'est celle-ci qu'on pose, en variable, plutôt que
+   d'arrondir à la taille nommée la plus proche ou d'inventer une quatrième taille générique. */
+.tfp-grid--autofit {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--tfp-colonne, 260px)), 1fr));
+}
+
 .tfp-grid--divided {
   gap: 1px;
   background: var(--color-border);

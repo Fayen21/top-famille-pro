@@ -454,6 +454,40 @@
    "tests": "885 tests d'assertion verts · lint PHP 81 fichiers · bin/verifier-installation.php PASS code 0 · 0 débordement, 0 image cassée, 0 CTA hors écran, 0 erreur console ou réseau, 0 écart de bandes",
    "fichiers": "tools/generate-pages.mjs · template-parts/components/static-blocks.php · bin/seed-fidelite-pages.php (régénéré)",
    "statut": "CORRIGE"
+  },
+  {
+   "id": "G16",
+   "titre": "nos-tarifs et le corps d'article — deux règles déclarées, deux variantes d'instance",
+   "nos_tarifs": {
+    "bande": "« Ce qui est inclus » / « Fourni par le client »",
+    "cause_1": {
+     "prototype": "max-width: 900px; padding: 0 clamp(18px, 4vw, 40px); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 16px",
+     "theme_avant": "`.tfp-two-col` — flex, base 380 px, écart clamp(30px, 4vw, 56px). À 768 px : 2 × 380 + 30,72 = 790,72 pour 707 disponibles, repli sur une colonne de 707 là où la maquette en tient deux de 345.",
+     "correction": "les quatre propriétés se reproduisent avec les composants existants : `.tfp-container--narrow` borne à 900, `.tfp-grid` pose l'écart de 16, `.tfp-grid--autofit` (ajouté) pose le repli intrinsèque, et `--tfp-colonne:260px` porte la base relevée.",
+     "portee": "l'INSTANCE, pas le composant. `.tfp-two-col` sert à huit endroits et le prototype y déclare une base différente à chacun — 440/340, 340/340, 320/320, 420/320, 260/440, 300/360, 480/380.",
+     "verification": "grille cible mesurée 2 enfants, 345–345, écart 16 px à 768 px : identique à la maquette. À 1440 px, 402–402 contre 402–402."
+    },
+    "cause_2": {
+     "prototype": "liste NUE : 15 px / 24,3 (ratio 1,62), aucun rembourrage, aucun filet, écart 9 px, marge haute 14",
+     "theme_avant": "`.tfp-list-plain` — 15 px / 25,575, rembourrage 10 / 22, filet 1 px. Chaque item pesait 46,6 px au lieu de 24,3.",
+     "correction": "variante `.tfp-list-plain--nue`. Le relevé des listes de la maquette sur les 53 routes en dénombre une dizaine de formes ; celle-ci n'apparaît QUE sur /tarifs/. Corriger `.tfp-list-plain` globalement aurait cassé les 28 routes qui emploient la forme à filets.",
+     "effet": "écart de la bande 128 → 22 px à 768 px"
+    },
+    "resultat": "320 105→102 · 375 107→104 · 768 110→107 · 1024 102→100 · 1440 103→102 · 1920 103→102. CINQ largeurs sur six dans la tolérance ; 768 px reste hors.",
+    "reste_a_768": "b1 « Tarif horaire de base » +83 (colonnes 2→1, cartes 250–440 contre 645) · b7 « Trois exemples de budgets » +87 · b10 « Avant de demander votre devis » +83 (colonnes 2→3)"
+   },
+   "articles": {
+    "prototype": "conteneur en colonne flex, `gap: clamp(28px, 3vw, 40px)` · h2 `clamp(21px, 2.1vw, 27px)` interligne 1,04, marges NULLES · paragraphe 16,5 px / 1,7, et 12 px seulement après un intitulé",
+    "theme_avant": "flux simple sans écart · h2 22 px à 768 avec 36 px de marge haute et 10 de marge basse · paragraphe 17 px / 1,75 avec 16 px de marge des deux côtés",
+    "arithmetique": "chaque section pesait 187,9 px au lieu de 146 — sur six sections, 252 px, soit exactement l'écart mesuré de la bande",
+    "correction": "portée par le CSS et NON par la structure : `the_content()` rend une suite plate de h2 et de p, que le prototype groupe deux à deux. Des sélecteurs de fratrie reproduisent l'écart sans qu'aucune `<section>` ne soit ajoutée — le faux positif des bandes d'article reste clos.",
+    "effet": "écart de la bande du corps 252 → 165 px. Les trois articles gagnent 1 à 2 points à chaque largeur : 110→109 à 768, 112→110 à 1440.",
+    "reste": "les articles restent hors tolérance, entre 106 et 112 %. Causes non traitées, mesurées : le rembourrage de la bande du corps (la maquette pose 0 en haut et 23,04 en bas, le thème 30,72 des deux côtés, +38,4) et la bande « Erreurs à éviter » (+118 à 768)."
+   },
+   "effet_baseline": "318 contrôles, docs/baseline-2026-08-15-apres-G16.json : 258 → 259 dans 95-105 % · 24 rapprochées, ZÉRO éloignée · 375 px 44→45 · les autres largeurs inchangées en compte",
+   "tests": "885 tests d'assertion verts · lint PHP 81 fichiers · 0 débordement, 0 image cassée, 0 CTA hors écran, 0 erreur console ou réseau, 0 écart de bandes",
+   "fichiers": "page-tarifs.php · src/css/03-layout.css · src/css/04-components.css",
+   "statut": "CORRIGE — partiellement pour les articles"
   }
  ],
  "faux_positifs_corriges_dans_outil": [
@@ -494,28 +528,15 @@
   }
  ],
  "prochain_groupe_a_traiter": {
-  "id": "G16",
+  "id": "G17",
   "priorite": 1,
-  "titre": "Les dix routes encore hors tolérance à 768 px",
-  "liste": {
-   "134 % politique-de-confidentialite": "page légale — à VALIDER composant par composant, pas à corriger",
-   "125 % mentions-legales": "page légale — idem",
-   "115 % gestion-des-cookies": "page légale — idem",
-   "114 % contact": "+343 px de contenu imposé sur +360 (CTA de devis exigé §8, mention légale, deux intitulés). Reste −49 px de défaut géométrique réel : colonne d'information trop courte, rembourrage de carte 16→0 et de portrait 22→0.",
-   "110 % nos-tarifs": "`.tfp-two-col` tient deux colonnes dans la maquette à 768 px et une seule dans le thème (+296,3). Relever la base DÉCLARÉE avant de toucher.",
-   "110 % les trois articles": "APPARIEMENT SUSPECT — la décomposition boucle sur un « titre » de 1 153 px. Réparer l'appariement AVANT toute conclusion. Ne pas rouvrir le faux positif des bandes.",
-   "110 % demande-de-devis": "aucune bande détectée des deux côtés (0→0) : décomposer depuis le conteneur de page, la décomposition par bande ne s'y applique pas.",
-   "109 % plan-du-site": "+938 px de contenu imposé (les listes réelles des 53 routes). Reste une liste passant de 4 colonnes à 1 (+142,5)."
+  "titre": "Fermer les articles, puis les routes restantes à 768 px",
+  "articles": {
+   "reste_mesure": "rembourrage de la bande du corps — maquette 0 en haut / 23,04 en bas, thème 30,72 des deux côtés (+38,4) ; bande « Erreurs à éviter » +118 à 768 px ; bande 1 « Le nettoyage est facturé… » +18 avec un résidu qui passe de −39 à +184.",
+   "attention": "le corps d'article est un `<article class=\"tfp-container tfp-container--narrow tfp-section--tight tfp-article-body\">`. Le rembourrage vient de `.tfp-section--tight`, partagé : corriger l'INSTANCE, pas le composant."
   },
-  "methode": "la décomposition additive de tools/arbre-bande.mjs, en lisant les nœuds NON APPARIÉS avant de conclure — le bouclage prouve l'additivité, pas la justesse de l'appariement.",
-  "commande_de_reprise": "bash tools/banc-local.sh && bash tools/banc-local.sh --theme-only && node tools/arbre-bande.mjs '#/nos-tarifs' --width=768",
-  "nos_tarifs_regle_relevee": {
-   "constat": "le thème rend cette bande avec `.tfp-two-col` — flex, base 380 px, gap clamp(30px, 4vw, 56px). Le prototype n'y emploie PAS une rangée flex : il déclare une grille.",
-   "regle_declaree_du_prototype": "max-width: 900px; margin: 0 auto; padding: 0 clamp(18px, 4vw, 40px); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 16px;",
-   "verification": "à 768 px, 2 × 260 + 16 = 536 pour 707 disponibles → deux colonnes de 345 px, exactement ce que la maquette rend. À 1440 px, la max-width de 900 laisse 820 utiles → deux colonnes de 402 px, exactement la maquette. La règle est donc vérifiée aux deux largeurs avant toute écriture.",
-   "theme_actuel": "2 × 380 + 30,72 = 790,72 pour 707 → une seule colonne de 707 px. Contribution mesurée : +296,3 px sur la bande.",
-   "avertissement_de_portee": "NE PAS corriger `.tfp-two-col` globalement. Le relevé des rangées à deux enfants de la maquette, sur les 53 routes, donne des bases toutes différentes — 440/340 (19 routes), 340/340 (18), 320/320 (8), 420/320 (7), 260/440 (6), 300/360 (6), 480/380 (1) — et des écarts allant de 9 px à clamp(30px, 5vw, 56px). Aucune valeur unique n'est fidèle. La correction doit passer par le relevé du générateur, comme G15, et non par une retouche du composant partagé."
-  }
+  "routes_restantes_768": "politique-de-confidentialite 134 · mentions-legales 125 · gestion-des-cookies 115 (les trois légales, à VALIDER composant par composant) · contact 114 · les trois articles 109 · nos-tarifs 107 · demande-de-devis 110 · plan-du-site 109",
+  "commande_de_reprise": "bash tools/banc-local.sh && bash tools/banc-local.sh --theme-only && node tools/sonde-bande.mjs '#/article/cout-nettoyage-bureaux' --widths=768 --bande=4"
  },
  "groupes_suivants": [
   {

@@ -1178,6 +1178,32 @@ body.tfp-body .tfp-article-body p a {
 
 /* Le marqueur est décoratif : il est posé en ::before plutôt que dans le texte, sinon un lecteur
    d'écran annonce « carré noir » avant chaque tâche. */
+/* ---------- Liste NUE ----------
+   Le prototype pose ici une liste sans ornement : 15 px sur 24,3 — ratio 1,62 —, aucun rembourrage,
+   aucun filet, et 9 px entre les items. C'est une forme d'INSTANCE, pas une forme partagée : le
+   relevé des listes de la maquette sur les 53 routes en dénombre une dizaine, et celle-ci
+   n'apparaît que sur /tarifs/. Corriger `.tfp-list-plain` globalement casserait les 28 routes qui
+   emploient la forme à filets.
+
+   Contre la forme générale — 10 px de rembourrage haut et bas, 22 px à gauche pour la puce, un
+   filet de 1 px et un interligne de 1,705 — chaque item pesait 46,6 px au lieu de 24,3. */
+.tfp-list-plain--nue {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  margin-top: 14px;
+}
+
+.tfp-list-plain--nue li {
+  padding: 0;
+  border-bottom: 0;
+  line-height: 1.62;
+}
+
+.tfp-list-plain--nue li::before {
+  content: none;
+}
+
 .tfp-list-plain li::before,
 .tfp-list-marked li::before {
   content: "";
@@ -1938,6 +1964,45 @@ body.tfp-body .tfp-zone-chapter h2 {
 /* ------------------------------------------------------------------
    Article « Conseils » : en-tête, sommaire, corps de texte.
    ------------------------------------------------------------------ */
+
+/* ---------- Corps d'article ----------
+   Le prototype compose le corps en colonne flex avec un écart entre blocs, et laisse ses intitulés
+   sans marge :
+
+     conteneur   display: flex; flex-direction: column; gap: clamp(28px, 3vw, 40px)
+     h2          21 px à 768, 27 px à 1440 — clamp(21px, 2.1vw, 27px) — marges nulles
+     paragraphe  16,5 px / 1,7, et 12 px seulement lorsqu'il suit un intitulé
+
+   Le thème rendait le corps en flux simple, sans écart, avec des intitulés à 36 px de marge haute
+   et 10 de marge basse, et des paragraphes en 17 px / 1,75 avec 16 px de marge des deux côtés.
+   Chaque section pesait alors 187,9 px au lieu de 146 : sur les six sections d'un article, 252 px.
+
+   La correction est portée par le CSS et NON par la structure : `the_content()` rend une suite
+   plate de `h2` et de `p`, et le prototype les groupe deux à deux. Les sélecteurs de fratrie
+   reproduisent l'écart sans qu'aucune section n'ait à être ajoutée au contenu — le faux positif
+   des bandes d'article est clos, et rien ici ne le rouvre. */
+.tfp-article-body > * {
+  margin-top: clamp(28px, 3vw, 40px);
+  margin-bottom: 0;
+}
+
+.tfp-article-body > *:first-child {
+  margin-top: 0;
+}
+
+.tfp-article-body > h2 + p {
+  margin-top: 12px;
+}
+
+.tfp-article-body h2 {
+  font-size: clamp(21px, 2.1vw, 27px);
+  line-height: var(--lh-heading);
+}
+
+.tfp-article-body p {
+  font-size: 16.5px;
+  line-height: 1.7;
+}
 
 .tfp-article__category {
   display: inline-block;
