@@ -137,35 +137,49 @@ get_header();
 					<legend style="font-weight:700;font-size:20px;margin-bottom:8px">Étape 1 sur 2 — Vos locaux et vos coordonnées</legend>
 					<p style="margin-bottom:16px;color:var(--color-text-secondary)">L'essentiel d'abord : de quoi vous rappeler et chiffrer. Les détails viennent à l'étape suivante.</p>
 
-					<div class="tfp-field">
-						<label for="tfp-type-locaux">Type de locaux *</label>
-						<select id="tfp-type-locaux" name="type_locaux" required>
-							<?php foreach ( $types_locaux as $value => $label ) : ?>
-								<option value="<?php echo esc_attr( $value ); ?>"><?php echo esc_html( $label ); ?></option>
-							<?php endforeach; ?>
-						</select>
-					</div>
-
-					<fieldset class="tfp-field" style="border:none;padding:0;margin:0">
-						<legend style="font-weight:600;font-size:var(--fs-sm);margin-bottom:6px">Besoin régulier ou ponctuel ? *</legend>
-						<div style="display:flex;gap:20px;flex-wrap:wrap">
-							<label style="display:flex;align-items:center;gap:6px;font-weight:400">
-								<input type="radio" name="regime" value="regulier" required> Régulier
-							</label>
-							<label style="display:flex;align-items:center;gap:6px;font-weight:400">
-								<input type="radio" name="regime" value="ponctuel" required> Ponctuel
-							</label>
+					<?php
+					/*
+					 * La maquette range les champs de l'étape 1 par LIGNES, pas un par ligne : type de
+					 * locaux + régime, ville + code postal, nom + téléphone. Les règles sont déclarées
+					 * en clair dans le prototype — `repeat(auto-fit, minmax(min(100%, 220px), 1fr))`
+					 * pour les paires équilibrées, `2fr 1fr` pour ville/code postal — et se replient
+					 * seules sous 470 px environ. Le thème empilait les huit champs, ce qui allongeait
+					 * la page de 246 px à 768 px et repoussait le bouton sous la ligne de flottaison.
+					 */
+					?>
+					<div class="tfp-form-row">
+						<div class="tfp-field">
+							<label for="tfp-type-locaux">Type de locaux *</label>
+							<select id="tfp-type-locaux" name="type_locaux" required>
+								<?php foreach ( $types_locaux as $value => $label ) : ?>
+									<option value="<?php echo esc_attr( $value ); ?>"><?php echo esc_html( $label ); ?></option>
+								<?php endforeach; ?>
+							</select>
 						</div>
-					</fieldset>
 
-					<div class="tfp-field">
-						<label for="tfp-ville-visible">Ville</label>
-						<input type="text" id="tfp-ville-visible" name="ville" autocomplete="address-level2">
+						<fieldset class="tfp-field" style="border:none;padding:0;margin:0">
+							<legend style="font-weight:600;font-size:var(--fs-sm);margin-bottom:6px">Besoin régulier ou ponctuel ? *</legend>
+							<div style="display:flex;gap:20px;flex-wrap:wrap">
+								<label style="display:flex;align-items:center;gap:6px;font-weight:400">
+									<input type="radio" name="regime" value="regulier" required> Régulier
+								</label>
+								<label style="display:flex;align-items:center;gap:6px;font-weight:400">
+									<input type="radio" name="regime" value="ponctuel" required> Ponctuel
+								</label>
+							</div>
+						</fieldset>
 					</div>
 
-					<div class="tfp-field">
-						<label for="tfp-code-postal">Code postal</label>
-						<input type="text" id="tfp-code-postal" name="code_postal" inputmode="numeric" pattern="[0-9]{5}" maxlength="5" autocomplete="postal-code">
+					<div class="tfp-form-row tfp-form-row--2-1">
+						<div class="tfp-field">
+							<label for="tfp-ville-visible">Ville</label>
+							<input type="text" id="tfp-ville-visible" name="ville" autocomplete="address-level2">
+						</div>
+
+						<div class="tfp-field">
+							<label for="tfp-code-postal">Code postal</label>
+							<input type="text" id="tfp-code-postal" name="code_postal" inputmode="numeric" pattern="[0-9]{5}" maxlength="5" autocomplete="postal-code">
+						</div>
 					</div>
 
 					<div class="tfp-field">
@@ -173,14 +187,16 @@ get_header();
 						<input type="text" id="tfp-surface" name="surface" inputmode="numeric" placeholder="Ex. 150">
 					</div>
 
-					<div class="tfp-field">
-						<label for="tfp-nom">Nom et prénom *</label>
-						<input type="text" id="tfp-nom" name="nom" autocomplete="name" required>
-					</div>
+					<div class="tfp-form-row">
+						<div class="tfp-field">
+							<label for="tfp-nom">Nom et prénom *</label>
+							<input type="text" id="tfp-nom" name="nom" autocomplete="name" required>
+						</div>
 
-					<div class="tfp-field">
-						<label for="tfp-telephone">Téléphone</label>
-						<input type="tel" id="tfp-telephone" name="telephone" autocomplete="tel">
+						<div class="tfp-field">
+							<label for="tfp-telephone">Téléphone</label>
+							<input type="tel" id="tfp-telephone" name="telephone" autocomplete="tel">
+						</div>
 					</div>
 
 					<div class="tfp-field">

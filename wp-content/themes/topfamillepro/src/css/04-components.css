@@ -1280,6 +1280,13 @@ body.tfp-body .tfp-article-body p a {
   max-width: 760px;
 }
 
+/* Dans un conteneur déjà étroit (900 px), le plafond de 760 px n'ajoute aucune lisibilité : il ne
+   fait que couper le lède une ligne plus tôt que le titre au-dessus. La maquette lui laisse la
+   largeur du conteneur. */
+.tfp-container--narrow > .tfp-section__lede {
+  max-width: none;
+}
+
 /* ---------- Trois grilles, trois traitements ----------
    Relevés sur les six routes `#/service/*`, identiques sur les six :
 
@@ -3128,6 +3135,63 @@ body.tfp-body a.tfp-link-card:focus-visible {
   gap: 12px;
 }
 
+/* ---------- Plan du site ----------
+   Le prototype range les colonnes du plan sur une grille dont la base est déclarée à 210 px, avec
+   32 px d'écart, et coiffe chaque colonne d'un SURTITRE : 14 px, capitales, interlettrage 0,05em,
+   gris de second plan. Le thème en faisait des `h2` de titrage courant, qui passaient à la ligne
+   dès que l'intitulé dépassait quinze caractères — « Zones — départements », « Communes
+   secondaires », « Pages légales et utilitaires » occupaient deux lignes chacun.
+
+   La hiérarchie sémantique ne change pas : ce sont toujours des `h2`, seul leur rendu descend au
+   rang de surtitre, comme dans la maquette. */
+.tfp-sitemap-grid {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 210px), 1fr));
+  gap: 32px;
+  margin-top: clamp(28px, 4vw, 44px);
+  align-items: start;
+}
+
+body.tfp-body .tfp-sitemap-grid h2 {
+  font-size: 14px;
+  line-height: 1.04;
+  font-weight: var(--fw-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-tertiary);
+  margin: 0 0 12px;
+}
+
+.tfp-sitemap-grid ul {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0;
+  font-size: 15.5px;
+  line-height: 1.62;
+}
+
+/* La bande légale du plan n'est pas une septième colonne : le prototype la sort de la grille et la
+   pose en rangée de pastilles pleine largeur. En colonne, elle ajoutait une TROISIÈME rangée à la
+   grille — 208 px — là où la maquette n'en dépense que 134 pour toute la bande. */
+.tfp-sitemap-legal h2 {
+  font-size: clamp(20px, 2.4vw, 26px);
+  line-height: 1.04;
+  margin: 0 0 14px;
+}
+
+.tfp-chip-list--plan {
+  margin-top: 0;
+  gap: 9px;
+}
+
+body.tfp-body .tfp-chip-list--plan a {
+  min-height: 45px;
+  padding: 10px 18px;
+  background: var(--color-white);
+  font-size: 14.5px;
+  font-weight: var(--fw-semibold);
+}
+
 /* ---------- Chips de couverture ----------
    Relevé : 41 px de haut, rayon 100, fond #F4F7F8, filet 1px #DCE7EB,
    rembourrage 8/15, écart 8, enroulées sur la largeur disponible. */
@@ -3596,27 +3660,55 @@ body.tfp-body a.tfp-card-tile:focus-visible {
 }
 
 /* ---------- Page Contact ----------
-   Deux colonnes : coordonnées à gauche, orientation vers le devis à droite, comme la maquette. */
+   Deux colonnes : le formulaire d'abord, la réassurance ensuite — l'ordre de la maquette.
+
+   Les deux colonnes ne sont pas des fractions de grille mais des BASES SOUPLES déclarées sur les
+   éléments : `flex: 1 1 400px; min-width: min(100%, 300px)` pour le formulaire,
+   `flex: 1 1 300px; min-width: min(100%, 280px)` pour la colonne latérale. La différence n'est pas
+   cosmétique : à 1440 px, les bases donnent 652 et 552 px quand la grille 1,15fr/1fr du thème
+   donnait 610 et 530, et c'est le formulaire — la colonne la plus haute — qui héritait de la plus
+   étroite. Le repli se fait tout seul, sans requête média, dès que 400 + 300 + l'écart ne tiennent
+   plus dans la largeur utile. */
 .tfp-contact-cols {
-  display: grid;
-  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
-  gap: 40px;
-  align-items: start;
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(32px, 5vw, 56px);
+  align-items: flex-start;
 }
 
-@media (max-width: 899px) {
-  .tfp-contact-cols {
-    grid-template-columns: minmax(0, 1fr);
-  }
+.tfp-contact-cols__form {
+  flex: 1 1 400px;
+  min-width: min(100%, 300px);
+}
+
+/* La colonne latérale est elle-même une colonne d'écart 16 : la maquette ne pose aucune marge sur
+   ses cartes, c'est l'écart du conteneur qui les sépare. Le thème cumulait `margin-top` de
+   composant (18, 18, 16) et se retrouvait à des écarts irréguliers. */
+.tfp-contact-cols__aside {
+  flex: 1 1 300px;
+  min-width: min(100%, 280px);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.tfp-contact-cols__aside > * {
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 /* Portrait de la gérante : 64 px, rond. Le visuel est provisoire et ne prétend représenter
-   personne — son `alt` est vide et le nom est écrit à côté en texte (CLAUDE.md §5.6). */
+   personne — son `alt` est vide et le nom est écrit à côté en texte (CLAUDE.md §5.6).
+   La maquette pose ce bloc en CARTE, comme les coordonnées qui le suivent — fond blanc, filet,
+   rayon 16, rembourrage 22 — quand le thème le laissait nu. */
 .tfp-contact-person {
   display: flex;
   align-items: center;
   gap: 14px;
-  margin-bottom: 18px;
+  padding: 22px;
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
 }
 
 .tfp-contact-person__photo {
@@ -3729,28 +3821,76 @@ body.tfp-body .tfp-section--primary .tfp-link-row:focus-visible {
    Géométrie relevée sur la maquette : champs courts sur deux colonnes (299 px), objet, message et
    consentement sur toute la largeur (612 px), champs de 49-51 px de haut, rayon 10. */
 .tfp-contact-form {
-  margin-top: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
+.tfp-contact-form > *,
+.tfp-contact-form > .tfp-field {
+  margin: 0;
+}
+
+/* Les champs courts vont deux par ligne. La maquette déclare la même fonction que sur le
+   formulaire de devis — `repeat(auto-fit, minmax(min(100%, 220px), 1fr))`, écart 15 — qui replie
+   la ligne d'elle-même : la requête média à 599 px que portait le thème figeait ce point de repli
+   à une largeur qui n'a de sens ni dans une colonne de 530 px ni dans une de 652. */
 .tfp-contact-form__row {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0 16px;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+  gap: 15px;
 }
 
-@media (max-width: 599px) {
-  .tfp-contact-form__row {
-    grid-template-columns: minmax(0, 1fr);
-  }
+.tfp-contact-form__row > *,
+.tfp-contact-form__row > .tfp-field {
+  min-width: 0;
+  margin: 0;
+}
+
+/* La bande d'orientation de la page Contact tient dans le conteneur étroit (900 px), avec des
+   cartes de base 260 px : à 1440 px la maquette n'étale pas ces deux cartes sur 1260. */
+.tfp-contact-orientation .tfp-card-grid {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+  margin-top: 0;
 }
 
 .tfp-field {
   margin: 0 0 14px;
 }
 
+/* ---------- Lignes de champs (formulaire de devis) ----------
+   Le prototype ne pose pas un champ par ligne : il en pose deux, dans une grille dont la règle est
+   écrite en clair sur l'élément — `repeat(auto-fit, minmax(min(100%, 220px), 1fr))` pour les paires
+   équilibrées, `2fr 1fr` pour ville/code postal. On reprend la FONCTION, pas la valeur qu'elle
+   prend à une largeur : elle se replie d'elle-même sur une colonne dès que deux champs de 220 px et
+   leur écart ne tiennent plus, soit vers 470 px de largeur utile.
+
+   `minmax(0, …)` sur la variante 2fr/1fr : sans lui, la taille intrinsèque d'un `<input>` fixe un
+   plancher que la piste ne peut pas descendre, et la ligne déborde sur les petits écrans. */
+.tfp-form-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+  gap: 15px;
+  margin: 0 0 15px;
+}
+
+.tfp-form-row--2-1 {
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+}
+
+.tfp-form-row > *,
+.tfp-form-row > .tfp-field {
+  min-width: 0;
+  margin: 0;
+}
+
+/* `.tfp-field` est une colonne flex d'écart 6 (voir plus haut) : la marge basse de l'intitulé
+   S'AJOUTE à cet écart au lieu de le remplacer. Chaque champ mesurait donc 12 px de blanc là où la
+   maquette en pose 6, soit 6 px par champ — 36 px sur le formulaire de devis, 24 sur celui de
+   contact, sans qu'aucune valeur relevée ne soit fausse. */
 .tfp-field > label {
   display: block;
-  margin-bottom: 6px;
+  margin-bottom: 0;
   font-size: 14px;
   font-weight: var(--fw-semibold);
   color: var(--color-navy);
@@ -3771,7 +3911,11 @@ body.tfp-body .tfp-section--primary .tfp-link-row:focus-visible {
   color: var(--color-text);
 }
 
+/* 112 px relevés sur la maquette. `min-height` seule ne suffisait pas : l'attribut `rows` du
+   gabarit — nécessaire pour que la zone reste utilisable sans CSS — donnait 138 px, et c'est lui
+   qui l'emportait. La hauteur est posée, la poignée de redimensionnement reste. */
 .tfp-field textarea {
+  height: 112px;
   min-height: 112px;
   resize: vertical;
 }

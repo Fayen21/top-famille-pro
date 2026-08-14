@@ -32,7 +32,15 @@ get_header();
 	<?php tfp_breadcrumb( tfp_seo()['breadcrumb'] ); ?>
 </div>
 
-<section class="tfp-container tfp-section--tight">
+<?php
+/*
+ * Rembourrages déclarés bande par bande sur la maquette — clamp(26px, 4vw, 48px) en haut,
+ * clamp(20px, 3vw, 32px) en bas pour l'en-tête. Le thème posait clamp(30px, 4vw, 52px) des deux
+ * côtés sur les trois bandes de la page, soit 104 px à 1440 contre 80 relevés sur la première et
+ * 48 sur la deuxième, qui n'a aucun rembourrage haut.
+ */
+?>
+<section class="tfp-container tfp-container--narrow tfp-section--tight" style="--tfp-bande-haut:clamp(26px, 4vw, 48px);--tfp-bande-bas:clamp(20px, 3vw, 32px)">
 	<h1>Contacter Top-Famille Pro</h1>
 	<p class="tfp-section__lede">Une question, un projet d'entretien ? <?php echo esc_html( explode( ' ', $site['manager'] )[0] ); ?> vous répond directement, sous 24 heures.</p>
 </section>
@@ -72,11 +80,15 @@ $orientation = array(
 			'description' => 'Formulaire court, réponse par e-mail ou téléphone.',
 			'route'       => '',
 		),
+		/*
+		 * Pas de libellé de lien surajouté : la carte entière EST le lien, comme dans la maquette,
+		 * et son nom accessible — titre + description — dit déjà où elle mène. La ligne
+		 * « Demander mon devis → » ajoutait 18 px à la bande sans rien apprendre au visiteur.
+		 */
 		array(
-			'titre'        => 'J’ai un besoin de nettoyage',
-			'description'  => 'Direction le formulaire de devis détaillé',
-			'route'        => '#/demande-de-devis',
-			'libelle_lien' => 'Demander mon devis',
+			'titre'       => 'J’ai un besoin de nettoyage',
+			'description' => 'Direction le formulaire de devis détaillé',
+			'route'       => '#/demande-de-devis',
 		),
 	),
 );
@@ -105,10 +117,19 @@ $coordonnees = array(
 			'route'       => 'mailto:' . $site['email'],
 			'aria'        => 'Écrire à ' . $site['email'],
 		),
+		/*
+		 * L'adresse postale et la mention « pas d'accueil du public » vivent DANS la carte
+		 * Implantation, en lignes complémentaires, et non dans un paragraphe isolé en bas de page.
+		 * Le paragraphe coûtait 74 px à la colonne la plus haute de la bande à 1440 px pour une
+		 * information qui a déjà sa carte, et il séparait l'adresse du reste des coordonnées.
+		 */
 		array(
 			'icone'       => '📍',
 			'titre'       => 'Implantation',
 			'description' => $site['address_city'] . ' (' . substr( $site['address_cp'], 0, 2 ) . ') · ' . $site['address_region'],
+			'lignes'      => array(
+				$site['address_street'] . ', ' . $site['address_cp'] . ' ' . $site['address_city'] . ' — adresse administrative, sans accueil du public.',
+			),
 		),
 	),
 );
@@ -138,65 +159,28 @@ if ( '' !== $horaires ) {
 }
 ?>
 
-<section class="tfp-section--tight">
-	<div class="tfp-container">
+<section class="tfp-section--tight" style="--tfp-bande-haut:0px;--tfp-bande-bas:clamp(30px, 4vw, 48px)">
+	<div class="tfp-container tfp-container--narrow tfp-contact-orientation">
 		<?php tfp_card_grid( $orientation ); ?>
 	</div>
 </section>
 
-<section class="tfp-section--tight">
+<?php
+/*
+ * Ordre des deux colonnes : la maquette met le FORMULAIRE d'abord et la colonne de réassurance
+ * ensuite — c'est aussi l'ordre de lecture quand elles s'empilent sous 900 px, et il place l'action
+ * avant la preuve. Le thème avait l'ordre inverse, ce qui repoussait le formulaire de 590 px vers
+ * le bas sur mobile.
+ *
+ * Les deux colonnes sont déclarées en bases souples sur la maquette — `flex: 1 1 400px` pour le
+ * formulaire, `flex: 1 1 300px` pour la colonne latérale — et non en fractions de grille : à
+ * 1440 px cela donne 652 et 552, quand la grille 1,15fr/1fr du thème donnait 610 et 530. Le
+ * formulaire, colonne la plus haute, se retrouvait dans la plus étroite des deux.
+ */
+?>
+<section class="tfp-section--tight" style="--tfp-bande-haut:0px;--tfp-bande-bas:clamp(52px, 7vw, 92px)">
 	<div class="tfp-container tfp-contact-cols">
-		<div>
-			<div class="tfp-contact-person">
-				<?php tfp_picture( 'audrey-placeholder', array( 'sizes' => '64px', 'alt' => '', 'class' => 'tfp-contact-person__photo' ) ); ?>
-				<div>
-					<strong><?php echo esc_html( $prenom ); ?></strong>
-					<span>Votre interlocutrice, du devis au suivi</span>
-				</div>
-			</div>
-			<?php
-			tfp_card_grid( $coordonnees );
-			/*
-			 * Septième carte de la maquette : rappel marine de la note Google et du tarif
-			 * (512×68, fond #174A81, rayon 14). La note est réelle et confirmée ; le compteur
-			 * d'avis de la maquette, lui, ne l'est pas et n'est donc pas repris (CLAUDE.md §5.5).
-			 */
-			$note = tfp_reassurance_data()['note'];
-			tfp_card_grid(
-				array(
-					'colonnes' => 1,
-					'theme'    => 'sombre',
-					'variante' => 'texte',
-					'gap'      => '12px',
-					'fond'     => 'rgb(23, 74, 129)',
-					'rayon'    => '14px',
-					'filet'    => '0px',
-					'padding'  => '14px 18px',
-					'items'    => array(
-						array(
-							'icone'       => $note ? '★★★★★' : '',
-							// Sans note saisie, la carte garde le tarif et perd la mention Google —
-							// plutôt que d'afficher « /5 sur Google » sans chiffre devant.
-							'titre'       => $note
-								? number_format( (float) $note, 1, ',', '' ) . '/5 sur Google'
-								: tfp_format_price( $site['price_unique'] ) . ' HT/h',
-							'description' => $note
-								? tfp_format_price( $site['price_unique'] ) . ' HT/h — tarif unique en région'
-								: 'Tarif unique en région, en régulier comme en ponctuel.',
-						),
-					),
-				)
-			);
-			tfp_chip_list(
-				array(
-					array( 'texte' => 'Voir les tarifs', 'url' => home_url( '/tarifs/' ) ),
-					array( 'texte' => 'Zones d’intervention', 'url' => home_url( '/zones-intervention/' ) ),
-					array( 'texte' => 'Fonctionnement', 'url' => home_url( '/notre-fonctionnement/' ) ),
-				)
-			);
-			?>
-		</div>
-		<div>
+		<div class="tfp-contact-cols__form">
 			<?php
 			/*
 			 * Formulaire de contact court — le composant que la maquette place ici, et qui manquait.
@@ -214,7 +198,6 @@ if ( '' !== $horaires ) {
 			};
 			?>
 			<h2 id="formulaire-contact">J’ai une question</h2>
-			<p class="tfp-prose">Formulaire court : décrivez votre question, Audrey vous répond par e-mail ou par téléphone sous 24 heures.</p>
 
 			<?php
 			/*
@@ -274,6 +257,18 @@ if ( '' !== $horaires ) {
 						<label for="contact-entreprise">Entreprise (facultatif)</label>
 						<input type="text" id="contact-entreprise" name="tfp_contact_entreprise" autocomplete="organization" value="<?php echo $val( 'entreprise' ); ?>">
 					</p>
+				</div>
+
+				<?php
+				/*
+				 * Deux lignes de deux champs, comme la maquette — et non une seule ligne de quatre.
+				 * La différence n'est pas cosmétique : `auto-fit` répartit ce qu'on lui donne, et
+				 * quatre champs dans une colonne de 707 px se rangeaient sur TROIS colonnes puis une
+				 * quatrième orpheline, alors que deux lignes de deux tiennent chacune sur deux
+				 * colonnes de 346 px à toutes les largeurs où la ligne ne se replie pas.
+				 */
+				?>
+				<div class="tfp-contact-form__row">
 					<p class="tfp-field">
 						<label for="contact-email">E-mail <span aria-hidden="true">*</span></label>
 						<input type="email" id="contact-email" name="tfp_contact_email" required autocomplete="email"
@@ -326,16 +321,57 @@ if ( '' !== $horaires ) {
 				</p>
 			</form>
 
-			<h2>Une demande précise ?</h2>
-			<p class="tfp-prose">Pour un devis, décrivez directement vos locaux et votre besoin via le formulaire dédié : la réponse est plus rapide et plus précise qu'un échange initial par téléphone.</p>
-			<p style="margin-top:16px">
-				<?php tfp_button( array( 'label' => 'Demander mon devis', 'href' => home_url( '/demande-de-devis/' ), 'variant' => 'primary' ) ); ?>
-			</p>
-			<p class="tfp-static-note">
-				<?php echo esc_html( $site['brand_name'] ); ?> — <?php echo esc_html( $site['address_street'] ); ?>,
-				<?php echo esc_html( $site['address_cp'] . ' ' . $site['address_city'] ); ?>.
-				Adresse administrative : l'intervention a lieu dans vos locaux, il n'y a pas d'accueil du public à cette adresse.
-			</p>
+		</div>
+		<div class="tfp-contact-cols__aside">
+			<div class="tfp-contact-person">
+				<?php tfp_picture( 'audrey-placeholder', array( 'sizes' => '64px', 'alt' => '', 'class' => 'tfp-contact-person__photo' ) ); ?>
+				<div>
+					<strong><?php echo esc_html( $prenom ); ?></strong>
+					<span>Votre interlocutrice, du devis au suivi</span>
+				</div>
+			</div>
+			<?php
+			tfp_card_grid( $coordonnees );
+			/*
+			 * Septième carte de la maquette : rappel marine de la note Google et du tarif
+			 * (512×68, fond #174A81, rayon 14). La note est réelle et confirmée ; le compteur
+			 * d'avis de la maquette, lui, ne l'est pas et n'est donc pas repris (CLAUDE.md §5.5).
+			 */
+			$note = tfp_reassurance_data()['note'];
+			tfp_card_grid(
+				array(
+					'colonnes' => 1,
+					'theme'    => 'sombre',
+					'variante' => 'texte',
+					'gap'      => '12px',
+					'fond'     => 'rgb(23, 74, 129)',
+					'rayon'    => '14px',
+					'filet'    => '0px',
+					'padding'  => '14px 18px',
+					'items'    => array(
+						array(
+							'icone'       => $note ? '★★★★★' : '',
+							// Sans note saisie, la carte garde le tarif et perd la mention Google —
+							// plutôt que d'afficher « /5 sur Google » sans chiffre devant.
+							'titre'       => $note
+								? number_format( (float) $note, 1, ',', '' ) . '/5 sur Google'
+								: tfp_format_price( $site['price_unique'] ) . ' HT/h',
+							'description' => $note
+								? tfp_format_price( $site['price_unique'] ) . ' HT/h — tarif unique en région'
+								: 'Tarif unique en région, en régulier comme en ponctuel.',
+						),
+					),
+				)
+			);
+			tfp_chip_list(
+				array(
+					array( 'texte' => 'Voir les tarifs', 'url' => home_url( '/tarifs/' ) ),
+					array( 'texte' => 'Zones d’intervention', 'url' => home_url( '/zones-intervention/' ) ),
+					array( 'texte' => 'Fonctionnement', 'url' => home_url( '/notre-fonctionnement/' ) ),
+				)
+			);
+
+			?>
 		</div>
 	</div>
 </section>
