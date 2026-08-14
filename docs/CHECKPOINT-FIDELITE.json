@@ -488,6 +488,36 @@
    "tests": "885 tests d'assertion verts · lint PHP 81 fichiers · 0 débordement, 0 image cassée, 0 CTA hors écran, 0 erreur console ou réseau, 0 écart de bandes",
    "fichiers": "page-tarifs.php · src/css/03-layout.css · src/css/04-components.css",
    "statut": "CORRIGE — partiellement pour les articles"
+  },
+  {
+   "id": "G17",
+   "titre": "Les trois articles — rembourrages de bande déclarés et liste des erreurs à éviter",
+   "routes": "les 3 articles",
+   "cause_1": {
+    "quoi": "rembourrage vertical des sept bandes de l'article",
+    "prototype": "en-tête clamp(26px, 4vw, 48px) / clamp(20px, 3vw, 32px) · réponse directe, sommaire, erreurs, FAQ et maillage clamp(28px, 4vw, 44px) des deux côtés · corps 0 en haut et clamp(20px, 3vw, 32px) en bas",
+    "theme_avant": "`.tfp-section--tight` partout, soit clamp(30px, 4vw, 52px) — identique à 768 px mais 52 au lieu de 44 à 1440 — et la FAQ en `.tfp-section`, soit 48 px à 768 et 86 à 1440 au lieu de 31 et 44. Le corps recevait 31/31 au lieu de 0/23,04.",
+    "correction": "les variables `--tfp-bande-haut` et `--tfp-bande-bas`, déjà lues par `.tfp-section--tight` depuis G11, posées en style sur chaque bande du gabarit. Aucune règle CSS nouvelle, aucun sélecteur par URL.",
+    "effet": "en-tête 9 → 1 px d'écart à 768 px et 0 à 1440 ; FAQ 29 → −6 ; corps 165 → 154. La route passe de 109,1 à 107,4 % à 768 px et de 110,4 à 105,0 % à 1440."
+   },
+   "cause_2": {
+    "quoi": "`.tfp-list-excluded` — la liste « Erreurs à éviter »",
+    "prototype": "items NUS : 15,5 px / 25,11 (ratio 1,62), aucun rembourrage, aucun filet, aucun fond, le ✕ en premier enfant à 12 px du texte, et 14 px de marge au-dessus de la liste. Une seule colonne à toutes les largeurs.",
+    "theme_avant": "cartes encadrées : rembourrage 12/16/12/40, filet, fond, 16 px de police, marge 24, et un repli à deux colonnes au-dessus de 820 px",
+    "arithmetique": "78 px par item au lieu de 25 — les 40 px de rembourrage gauche font replier chaque ligne — soit 228 px de liste contre 120, plus 10 px de marge en trop. Les 118 px d'écart de la bande s'expliquent en entier.",
+    "portee": "`.tfp-list-excluded` n'est employé QUE par single.php, et la maquette lui donne la même forme sur les trois articles. La correction ne touche donc aucune autre route.",
+    "effet": "écart de la bande 118 → 1 px sur cahier-des-charges, 118 → 1 sur cout-nettoyage"
+   },
+   "resultat": {
+    "#/article/frequence-bureaux": "320 108→105 · 375 108→104 · 768 109→105 · 1024 104→99 · 1440 109→101 · 1920 109→101 — SIX largeurs sur six dans la tolérance",
+    "#/article/cout-nettoyage-bureaux": "320 109→105 · 375 109→106 · 768 109→105 · 1024 106→101 · 1440 110→103 · 1920 111→103 — cinq sur six, 375 px à 106",
+    "#/article/cahier-des-charges-nettoyage": "320 112→108 · 375 112→108 · 768 109→106 · 1024 106→102 · 1440 111→104 · 1920 112→104 — trois sur six"
+   },
+   "reste_sur_cahier_des_charges": "bande 6 « Pour situer ces repères dans une prestation » : +115 px à 768 et +212 à 375. Les pastilles y mesurent 93–264 px côté thème contre 95–173 côté maquette — un libellé de prestation plus long qui se replie autrement. C'est propre à cette route, les deux autres articles ayant la même bande à +18. À instruire comme une différence de CONTENU avant toute correction de mise en page.",
+   "effet_baseline": "318 contrôles, docs/baseline-2026-08-15-apres-G17.json : 259 → 272 dans 95-105 % · 18 rapprochées, ZÉRO éloignée · 320 px 46→48 · 375 px 45→46 · 768 px 43→45 · 1024 px 45→47 · 1440 et 1920 px 40→43",
+   "tests": "885 tests d'assertion verts · lint PHP 81 fichiers · bin/verifier-installation.php PASS code 0 · 0 débordement, 0 image cassée, 0 CTA hors écran, 0 erreur console ou réseau, 0 écart de bandes",
+   "fichiers": "single.php · src/css/04-components.css",
+   "statut": "CORRIGE"
   }
  ],
  "faux_positifs_corriges_dans_outil": [
@@ -528,15 +558,20 @@
   }
  ],
  "prochain_groupe_a_traiter": {
-  "id": "G17",
+  "id": "G18",
   "priorite": 1,
-  "titre": "Fermer les articles, puis les routes restantes à 768 px",
-  "articles": {
-   "reste_mesure": "rembourrage de la bande du corps — maquette 0 en haut / 23,04 en bas, thème 30,72 des deux côtés (+38,4) ; bande « Erreurs à éviter » +118 à 768 px ; bande 1 « Le nettoyage est facturé… » +18 avec un résidu qui passe de −39 à +184.",
-   "attention": "le corps d'article est un `<article class=\"tfp-container tfp-container--narrow tfp-section--tight tfp-article-body\">`. Le rembourrage vient de `.tfp-section--tight`, partagé : corriger l'INSTANCE, pas le composant."
+  "titre": "Les huit routes encore hors tolérance à 768 px",
+  "liste": {
+   "134 % politique-de-confidentialite": "page légale — à VALIDER composant par composant, pas à corriger",
+   "125 % mentions-legales": "page légale — idem",
+   "115 % gestion-des-cookies": "page légale — idem",
+   "114 % contact": "+343 px de contenu imposé sur +360 (CTA de devis exigé §8, mention légale, deux intitulés). Reste −49 px de défaut géométrique réel : colonne d'information trop courte, rembourrage de carte 16→0 et de portrait 22→0.",
+   "110 % demande-de-devis": "aucune bande détectée des deux côtés (0→0) : décomposer depuis le conteneur de page, la décomposition par bande ne s'y applique pas.",
+   "109 % plan-du-site": "+938 px de contenu imposé (les listes réelles des 53 routes). Reste une liste passant de 4 colonnes à 1 (+142,5).",
+   "107 % nos-tarifs": "reste b1 « Tarif horaire de base » +83 (colonnes 2→1, cartes 250–440 contre 645), b7 « Trois exemples de budgets » +87, b10 « Avant de demander votre devis » +83 (colonnes 2→3)",
+   "106 % article/cahier-des-charges": "bande 6, pastilles 93–264 contre 95–173 — différence de CONTENU à instruire"
   },
-  "routes_restantes_768": "politique-de-confidentialite 134 · mentions-legales 125 · gestion-des-cookies 115 (les trois légales, à VALIDER composant par composant) · contact 114 · les trois articles 109 · nos-tarifs 107 · demande-de-devis 110 · plan-du-site 109",
-  "commande_de_reprise": "bash tools/banc-local.sh && bash tools/banc-local.sh --theme-only && node tools/sonde-bande.mjs '#/article/cout-nettoyage-bureaux' --widths=768 --bande=4"
+  "commande_de_reprise": "bash tools/banc-local.sh && bash tools/banc-local.sh --theme-only && node tools/sonde-bande.mjs '#/nos-tarifs' --widths=768 --bande=1"
  },
  "groupes_suivants": [
   {

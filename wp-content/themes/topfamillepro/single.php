@@ -121,7 +121,7 @@ get_header();
  * la sémantique, l'en-tête, le sommaire et l'encadré d'erreurs étant du mobilier de page.
  */
 ?>
-<header class="tfp-container tfp-container--narrow tfp-section--tight">
+<header class="tfp-container tfp-container--narrow tfp-section--tight" style="--tfp-bande-haut:clamp(26px, 4vw, 48px);--tfp-bande-bas:clamp(20px, 3vw, 32px)">
 		<span class="tfp-article__category"><?php echo esc_html( $cat_name ); ?></span>
 		<h1 style="margin-top:8px"><?php the_title(); ?></h1>
 		<p class="tfp-article__meta">
@@ -139,7 +139,7 @@ get_header();
 </header>
 
 <?php if ( $direct ) : ?>
-<section class="tfp-section--alt tfp-section--tight">
+<section class="tfp-section--alt tfp-section--tight" style="--tfp-bande-haut:clamp(28px, 4vw, 44px);--tfp-bande-bas:clamp(28px, 4vw, 44px)">
 	<div class="tfp-container tfp-container--narrow">
 		<div class="tfp-direct-answer">
 			<p class="tfp-direct-answer__text"><?php echo esc_html( $direct ); ?></p>
@@ -149,7 +149,7 @@ get_header();
 <?php endif; ?>
 
 <?php if ( ! empty( $sommaire ) ) : ?>
-<section class="tfp-container tfp-container--narrow tfp-section--tight">
+<section class="tfp-container tfp-container--narrow tfp-section--tight" style="--tfp-bande-haut:clamp(28px, 4vw, 44px);--tfp-bande-bas:clamp(28px, 4vw, 44px)">
 	<nav class="tfp-toc" aria-label="Sommaire de l'article">
 		<strong>Sommaire</strong>
 		<ul>
@@ -161,12 +161,12 @@ get_header();
 </section>
 <?php endif; ?>
 
-<article class="tfp-container tfp-container--narrow tfp-section--tight tfp-article-body">
+<article class="tfp-container tfp-container--narrow tfp-section--tight tfp-article-body" style="--tfp-bande-haut:0;--tfp-bande-bas:clamp(20px, 3vw, 32px)">
 	<?php the_content(); ?>
 </article>
 
 <?php if ( ! empty( $erreurs ) ) : ?>
-<section class="tfp-section--alt tfp-section--tight">
+<section class="tfp-section--alt tfp-section--tight" style="--tfp-bande-haut:clamp(28px, 4vw, 44px);--tfp-bande-bas:clamp(28px, 4vw, 44px)">
 	<div class="tfp-container tfp-container--narrow">
 		<h2><?php echo esc_html( $erreurs_titre ); ?></h2>
 		<ul class="tfp-list-excluded">
@@ -179,7 +179,7 @@ get_header();
 <?php endif; ?>
 
 <?php if ( ! empty( $faq ) ) : ?>
-<section class="tfp-section--alt tfp-section">
+<section class="tfp-section--alt tfp-section--tight" style="--tfp-bande-haut:clamp(28px, 4vw, 44px);--tfp-bande-bas:clamp(28px, 4vw, 44px)">
 	<div class="tfp-container tfp-container--narrow">
 		<h2>Questions fréquentes</h2>
 		<div style="margin-top:20px">
@@ -195,7 +195,7 @@ get_header();
 <?php endif; ?>
 
 <?php if ( $maillage || ! empty( $related_prestations ) ) : ?>
-<section class="tfp-section--alt tfp-section--tight">
+<section class="tfp-section--alt tfp-section--tight" style="--tfp-bande-haut:clamp(28px, 4vw, 44px);--tfp-bande-bas:clamp(28px, 4vw, 44px)">
 	<div class="tfp-container tfp-container--narrow">
 		<?php if ( $maillage ) : ?>
 			<p class="tfp-maillage">

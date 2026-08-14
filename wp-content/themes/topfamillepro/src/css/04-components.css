@@ -1458,36 +1458,42 @@ body.tfp-body .tfp-article-body p a {
 
 /* Liste d'exclusions explicites : le marqueur « ✕ » est décoratif et posé en ::before, jamais
    dans le texte — un lecteur d'écran annoncerait « multiplication » avant chaque ligne. */
+/* Liste des erreurs à éviter, sur les trois articles — le seul rendu qui l'emploie.
+
+   Le prototype la pose NUE : items de 15,5 px sur 25,11 — ratio 1,62 —, sans rembourrage, sans
+   filet, sans fond, le ✕ posé comme premier enfant à 12 px du texte, et 14 px de marge au-dessus
+   de la liste. Le thème en faisait des cartes encadrées : 12 px de rembourrage haut et bas, 40 à
+   gauche pour loger le ✕ en absolu, un filet, un fond, et 16 px de police.
+
+   Le coût se mesure exactement : 78 px par item au lieu de 25 — les 40 px de rembourrage gauche
+   font replier chaque ligne — soit 228 px de liste contre 120, plus 10 px de marge en trop.
+   Les 118 px d'écart de la bande « Erreurs à éviter » s'expliquent ainsi en entier.
+
+   Le repli à deux colonnes au-dessus de 820 px disparaît : la maquette garde une colonne à toutes
+   les largeurs, vérifié à 320, 375, 768, 1024, 1440 et 1920 px. */
 .tfp-list-excluded {
   list-style: none;
-  margin: 24px 0 0;
+  margin: 14px 0 0;
   padding: 0;
   display: grid;
   gap: 10px;
   grid-template-columns: 1fr;
 }
 
-@media (min-width: 820px) {
-  .tfp-list-excluded {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
 .tfp-list-excluded li {
-  position: relative;
-  padding: 12px 16px 12px 40px;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  background: var(--color-white);
-  font-size: 16px;
+  display: flex;
+  gap: 12px;
+  padding: 0;
+  border: 0;
+  background: none;
+  font-size: 15.5px;
+  line-height: 1.62;
   color: var(--color-text-secondary);
 }
 
 .tfp-list-excluded li::before {
   content: "✕";
-  position: absolute;
-  left: 16px;
-  top: 12px;
+  flex: none;
   font-weight: 700;
   color: var(--color-copper-dark);
 }
