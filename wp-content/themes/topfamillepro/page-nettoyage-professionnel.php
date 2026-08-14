@@ -91,20 +91,37 @@ $page = tfp_static_page_data( 'nettoyage-professionnel' );
 	<?php tfp_breadcrumb( tfp_seo()['breadcrumb'] ); ?>
 </div>
 
-<section class="tfp-container tfp-section--tight">
-	<div class="tfp-hero__eyebrow">
-		<a class="tfp-region-badge" href="<?php echo esc_url( home_url( '/zones-intervention/bourgogne-franche-comte/' ) ); ?>"><?php echo esc_html( $site['address_region'] ); ?></a>
-		<?php tfp_google_rating_badge( 'inline' ); ?>
+<section class="tfp-hero">
+	<div class="tfp-hero__content">
+		<div class="tfp-hero__eyebrow">
+			<a class="tfp-region-badge" href="<?php echo esc_url( home_url( '/zones-intervention/bourgogne-franche-comte/' ) ); ?>"><?php echo esc_html( $site['address_region'] ); ?></a>
+			<?php tfp_google_rating_badge( 'inline' ); ?>
+		</div>
+		<h1><?php echo esc_html( $page['h1'] ); ?></h1>
+		<?php foreach ( $page['lede'] as $lede ) : ?>
+			<p class="tfp-section__lede"><?php echo esc_html( $lede ); ?></p>
+		<?php endforeach; ?>
+		<div class="tfp-action-row" style="margin-top:24px">
+			<?php
+			tfp_button( array( 'label' => 'Demander mon devis', 'href' => home_url( '/demande-de-devis/' ), 'variant' => 'primary' ) );
+			tfp_button( array( 'label' => '☎ Appeler ' . explode( ' ', $site['manager'] )[0], 'href' => 'tel:' . $site['phone_href'], 'variant' => 'secondary' ) );
+			?>
+		</div>
 	</div>
-	<h1><?php echo esc_html( $page['h1'] ); ?></h1>
-	<?php foreach ( $page['lede'] as $lede ) : ?>
-		<p class="tfp-section__lede"><?php echo esc_html( $lede ); ?></p>
-	<?php endforeach; ?>
-	<div class="tfp-action-row" style="margin-top:24px">
-		<?php
-		tfp_button( array( 'label' => 'Demander mon devis', 'href' => home_url( '/demande-de-devis/' ), 'variant' => 'primary' ) );
-		tfp_button( array( 'label' => '☎ Appeler ' . explode( ' ', $site['manager'] )[0], 'href' => 'tel:' . $site['phone_href'], 'variant' => 'secondary' ) );
-		?>
+	<div class="tfp-hero__media">
+		<div class="tfp-hero__media-main">
+			<?php
+			/*
+			 * Visuel de hero. La maquette en pose un sur cette route ; le thème n'en rendait
+			 * aucun, et le rembourrage de bande en trop masquait le manque jusqu'à G13.
+			 *
+			 * L'`alt` vient du manifeste et n'est PAS celui de la maquette : celui-ci présente
+			 * une photo de stock comme une personne réelle de l'entreprise, ce que
+			 * CLAUDE.md §5.6 interdit. Le manifeste dit « photo d'illustration », ce qui est vrai.
+			 */
+			tfp_picture( 'service-generic', array( 'sizes' => '(max-width: 819px) 92vw, 560px', 'lcp' => true ) );
+			?>
+		</div>
 	</div>
 </section>
 

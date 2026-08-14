@@ -44,7 +44,7 @@ $reassurance = tfp_reassurance_data();
 		<div class="tfp-hero__microcopy">Réponse sous 24 h · Gratuit · Sans engagement · Devis étudié personnellement par <?php echo esc_html( explode( ' ', $site['manager'] )[0] ); ?></div>
 	</div>
 
-	<div class="tfp-hero__media">
+	<div class="tfp-hero__media tfp-hero__media--accueil">
 		<div class="tfp-hero__media-main">
 			<?php tfp_picture( 'hero-main', array( 'sizes' => '(max-width: 819px) 92vw, 600px' ) ); ?>
 		</div>

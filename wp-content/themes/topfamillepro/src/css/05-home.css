@@ -65,11 +65,37 @@
   overflow: hidden;
 }
 
+/* Cadrage du visuel de hero.
+
+   Le thème posait 4/3,5 — soit 8/7 — partout. C'est le cadrage de l'accueil, et de l'accueil SEUL :
+   relevé sur la maquette, tous les autres hero sont en 4/3. À 768 px cela donne 707 × 618 au lieu
+   de 707 × 530, soit 88 px de trop par hero ; à 1440 px, 512 × 448 au lieu de 512 × 384.
+
+   Le défaut portait sur les 26 pages de zone et les 6 pages de prestation, où il était masqué par
+   d'autres écarts, et il est apparu en ajoutant les quatre visuels manquants (G14). Le 4/3 devient
+   donc le défaut, et l'accueil garde le sien par un modificateur explicite. */
 .tfp-hero__media-main img {
   width: 100%;
-  aspect-ratio: 4 / 3.5;
+  aspect-ratio: 4 / 3;
   object-fit: cover;
   background: var(--color-border);
+}
+
+.tfp-hero__media--accueil .tfp-hero__media-main img {
+  aspect-ratio: 4 / 3.5;
+}
+
+/* Visuel de hero en PORTRAIT — la page à-propos. `.tfp-hero__media-main img` impose un cadrage
+   4/3,5 qui recadrerait sévèrement un portrait ; la maquette y pose un visuel de 400 × 500, soit
+   4/5. La colonne est bornée à 400 px comme le prototype le déclare. */
+.tfp-hero__media--portrait {
+  flex: 1 1 300px;
+  min-width: min(100%, 280px);
+  max-width: 400px;
+}
+
+.tfp-hero__media--portrait .tfp-hero__media-main img {
+  aspect-ratio: 4 / 5;
 }
 
 .tfp-hero__media-secondary {

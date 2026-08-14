@@ -389,6 +389,33 @@
    "tests": "885 tests d'assertion verts · lint PHP 81 fichiers · bin/verifier-installation.php PASS code 0 · 0 débordement, 0 image cassée, 0 CTA hors écran, 0 erreur console ou réseau, 0 écart de bandes sur les 318 contrôles",
    "fichiers": "tools/generate-pages.mjs · template-parts/components/static-blocks.php · bin/seed-fidelite-pages.php (régénéré)",
    "statut": "CORRIGE"
+  },
+  {
+   "id": "G14",
+   "titre": "Les quatre visuels de hero manquants, et le cadrage 4/3 qu'ils ont révélé sur 32 routes",
+   "routes_directes": "#/nettoyage-professionnel, #/bourgogne-franche-comte, #/recrutement, #/a-propos",
+   "routes_indirectes": "les 26 pages de zone et les 6 pages de prestation, par le cadrage",
+   "constat": "la maquette pose un visuel de hero sur ces quatre routes, le thème n'en rendait aucun. Le rembourrage de bande en trop le masquait jusqu'à G13.",
+   "correction_1": {
+    "quoi": "hero restructuré sur la convention déjà employée par les 26 pages de zone — `<section class=\"tfp-hero\"><div class=\"tfp-hero__content\">…</div><div class=\"tfp-hero__media\">…</div></section>`",
+    "slugs": "service-generic pour les trois routes paysage, audrey-placeholder pour le portrait d'à-propos",
+    "alt": "celui du MANIFESTE, jamais celui de la maquette : « Intervention de nettoyage professionnel (photo d'illustration) ». Les alts de la maquette — « Intervenant Top-Famille Pro… », « Audrey, Top-Famille Pro » — présentent des photos de stock comme des personnes réelles, ce qu'interdit CLAUDE.md §5.6.",
+    "provisoire": "le portrait d'à-propos porte `data-tfp-provisional` ET une mention visible « Photo d'illustration provisoire — portrait d'Audrey à venir. ». L'attribut seul ne dit rien au visiteur ; tests/provisoire.spec.js l'a refusé, à juste titre.",
+    "portrait": "`.tfp-hero__media--portrait` — cadrage 4/5 et colonne bornée à 400 px, comme le prototype le déclare ; le cadrage général aurait recadré sévèrement un portrait."
+   },
+   "correction_2": {
+    "quoi": "`.tfp-hero__media-main img` posait `aspect-ratio: 4 / 3.5` (= 8/7) PARTOUT",
+    "prototype": "8/7 sur l'accueil, et 4/3 sur TOUS les autres hero — relevé des deux côtés à 768 et 1440 px",
+    "cout": "707 × 618 au lieu de 707 × 530 à 768 px, 512 × 448 au lieu de 512 × 384 à 1440 : 88 px de trop par hero, sur les 26 pages de zone et les 6 prestations, où d'autres écarts le masquaient",
+    "correction": "4/3 devient le défaut ; l'accueil garde le sien par `.tfp-hero__media--accueil`, posé explicitement dans template-parts/home/hero.php",
+    "piege_evite": "appliquer 4/3 à l'accueil AUSSI améliorait son ratio (103,9 → 103 %) tout en l'éloignant de sa maquette. Le ratio n'est pas la preuve."
+   },
+   "effet": "318 contrôles, docs/baseline-2026-08-14-apres-G14.json : 252 → 255 dans 95-105 %. 768 px 40 → 42 avec 25 rapprochées et 0 éloignée. Les quatre routes de G14 à 768 px : nettoyage-professionnel 97 → 101, bourgogne-franche-comte 96 → 101, recrutement 89 → 105, a-propos 92 → 102. Aux six largeurs, trois d'entre elles sont désormais dans la tolérance partout.",
+   "reste": "#/recrutement reste à 110 et 111 % à 1440 et 1920 px. Son hero y est exact (496 → 495,3 px, média 384 = 384) : l'écart est dans la bande « Ce que nous attendons » — voir G15.",
+   "reserve_a_lever": "le choix de l'illustration est GÉNÉRIQUE (`service-generic`) et non le visuel de la maquette. À valider par Emmanuel. L'image est déclarée LCP sur ces quatre routes : à revérifier lors de la passe Lighthouse.",
+   "tests": "885 tests d'assertion verts · lint PHP 81 fichiers · bin/verifier-installation.php PASS code 0 · 0 débordement, 0 image cassée, 0 CTA hors écran, 0 erreur console ou réseau, 0 écart de bandes",
+   "fichiers": "page-nettoyage-professionnel.php · page-bourgogne-franche-comte.php · page-recrutement.php · page-a-propos.php · template-parts/home/hero.php · src/css/05-home.css · src/css/04-components.css",
+   "statut": "CORRIGE"
   }
  ],
  "faux_positifs_corriges_dans_outil": [
@@ -429,23 +456,14 @@
   }
  ],
  "prochain_groupe_a_traiter": {
-  "id": "G14",
+  "id": "G15",
   "priorite": 1,
-  "titre": "Quatre routes n'affichent aucun visuel de hero — composant manquant, cause dominante et chiffrée",
-  "constat": "Un balayage des 53 routes compare le nombre d'images du hero des deux côtés. Quatre routes, et seulement quatre, en ont une dans la maquette et aucune dans le thème :",
-  "routes": {
-   "#/nettoyage-professionnel": "maquette 707×530 à 768 px, 512×384 à 1440 · thème 0 image · ratio 768 px 97 %",
-   "#/bourgogne-franche-comte": "maquette 707×530 · thème 0 image · ratio 768 px 96 %",
-   "#/recrutement": "maquette 707×530 · thème 0 image · ratio 768 px 89 % — la route la plus éloignée du lot",
-   "#/a-propos": "maquette 400×500 (portrait) · thème 0 image · ratio 768 px 92 %"
-  },
-  "preuve": "ce sont exactement les quatre routes qui reculent après G13 : le rembourrage de bande en trop compensait l'image absente. Aucune autre route ne présente cet écart d'images.",
-  "assets_disponibles": "le manifeste du thème porte 9 slugs, dont `service-generic` (960 px, « Intervention de nettoyage professionnel avec équipement de protection (photo d'illustration) ») et `audrey-placeholder` (640×958, « Photo d'illustration temporaire — portrait définitif à venir »). Les alts du manifeste sont DÉJÀ conformes à CLAUDE.md §5.6 : aucun ne prétend représenter une personne réelle.",
-  "attention_alt": "ne PAS reprendre les alts de la maquette : « Intervenant Top-Famille Pro entretenant des bureaux », « Audrey, Top-Famille Pro » et « Intervenant Top-Famille Pro préparant son matériel » présentent des photos de stock comme des personnes réelles de l'entreprise, ce que CLAUDE.md §5.6 interdit. Laisser le manifeste fournir son alt. Le portrait provisoire d'Audrey est en revanche explicitement autorisé par §5.5, décision du 10 août.",
-  "convention_a_suivre": "single-zone.php lignes 155-178 : `<section class=\"tfp-hero\"><div class=\"tfp-hero__content\">…</div><div class=\"tfp-hero__media\"><div class=\"tfp-hero__media-main\">tfp_picture(…)</div></div></section>`. Les 26 pages de zone l'emploient déjà avec le slug générique `article-3`.",
-  "structure_maquette": "hero à DEUX colonnes : colonne de texte `flex: 1 1 460px` (440 sur région et recrutement, 300 sur à-propos avec max-width 400), repliée sur une colonne à 768 px. Les quatre gabarits concernés ont aujourd'hui un hero à une seule colonne : la restructuration touche page-nettoyage-professionnel.php, page-bourgogne-franche-comte.php, page-recrutement.php et page-a-propos.php.",
-  "reserve_a_lever": "le choix de l'illustration est GÉNÉRIQUE et relève d'Emmanuel : `service-generic` est une photo d'illustration neutre, pas le visuel de la maquette. À valider avant mise en ligne. Vérifier aussi l'effet LCP sur la page pilier, où l'image deviendrait le plus grand élément visible.",
-  "commande_de_reprise": "bash tools/banc-local.sh && bash tools/banc-local.sh --theme-only && node tools/arbre-bande.mjs '#/recrutement' --bande=0 --profondeur=2"
+  "titre": "`.tfp-static-run` — deux blocs empilés là où la maquette les met côte à côte",
+  "constat": "sur #/recrutement à 1440 px, la bande « Ce que nous attendons » fait 384 px dans la maquette et 658 dans le thème. La décomposition boucle à 0 px et désigne `.tfp-static-run` : 239,6 → 513,9 px, largeur 1260 → 1180, écart 52px → null. La maquette y range DEUX blocs côte à côte avec 52 px d'écart ; le thème les empile.",
+  "contributions": "+275,6 `.tfp-static-run` · −174,2 `.tfp-list-plain` (colonnes 1→3, police 16→17, interligne 25,92→27,54) · +50,7 `.tfp-static-block--carte` (marge haute 0→36, filet 0→1)",
+  "portee_a_verifier": "`.tfp-static-run` est un composant des pages statiques : vérifier sur combien de routes il apparaît AVANT de corriger, et relever la règle déclarée par le prototype plutôt que de reconstruire un seuil.",
+  "routes_encore_hors_tolerance_768": "3 pages légales (134, 125, 115 %) · contact 114 · nos-tarifs 110 · les trois articles 110 · demande-de-devis 110 · plan-du-site 109 · pourquoi-nous 106",
+  "commande_de_reprise": "bash tools/banc-local.sh && bash tools/banc-local.sh --theme-only && node tools/arbre-bande.mjs '#/recrutement' --bande=2 --width=1440 --profondeur=3"
  },
  "groupes_suivants": [
   {

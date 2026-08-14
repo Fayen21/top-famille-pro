@@ -2661,7 +2661,8 @@ body.tfp-body .tfp-quote-aside__tel:focus-visible {
   color: var(--color-text-lede);
 }
 
-.tfp-container:has(> h1) .tfp-section__lede {
+.tfp-container:has(> h1) .tfp-section__lede,
+.tfp-hero__content .tfp-section__lede {
   font-size: clamp(17px, 1.5vw, 20px);
   line-height: 1.62;
 }
