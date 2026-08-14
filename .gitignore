@@ -18,3 +18,6 @@ docs/GROUPES-ECARTS.partiel.md
 # peut donc pas rester propre tant que le relevé tourne. Le versionner une fois terminé, en le
 # forçant (`git add -f`).
 docs/baseline-2026-*.json
+
+# Archives d’export : elles se refabriquent depuis export/html-brut et export/site-navigable.
+export/*.zip
