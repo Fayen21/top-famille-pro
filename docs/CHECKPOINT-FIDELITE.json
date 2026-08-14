@@ -508,7 +508,14 @@
    "109 % plan-du-site": "+938 px de contenu imposé (les listes réelles des 53 routes). Reste une liste passant de 4 colonnes à 1 (+142,5)."
   },
   "methode": "la décomposition additive de tools/arbre-bande.mjs, en lisant les nœuds NON APPARIÉS avant de conclure — le bouclage prouve l'additivité, pas la justesse de l'appariement.",
-  "commande_de_reprise": "bash tools/banc-local.sh && bash tools/banc-local.sh --theme-only && node tools/arbre-bande.mjs '#/nos-tarifs' --width=768"
+  "commande_de_reprise": "bash tools/banc-local.sh && bash tools/banc-local.sh --theme-only && node tools/arbre-bande.mjs '#/nos-tarifs' --width=768",
+  "nos_tarifs_regle_relevee": {
+   "constat": "le thème rend cette bande avec `.tfp-two-col` — flex, base 380 px, gap clamp(30px, 4vw, 56px). Le prototype n'y emploie PAS une rangée flex : il déclare une grille.",
+   "regle_declaree_du_prototype": "max-width: 900px; margin: 0 auto; padding: 0 clamp(18px, 4vw, 40px); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 16px;",
+   "verification": "à 768 px, 2 × 260 + 16 = 536 pour 707 disponibles → deux colonnes de 345 px, exactement ce que la maquette rend. À 1440 px, la max-width de 900 laisse 820 utiles → deux colonnes de 402 px, exactement la maquette. La règle est donc vérifiée aux deux largeurs avant toute écriture.",
+   "theme_actuel": "2 × 380 + 30,72 = 790,72 pour 707 → une seule colonne de 707 px. Contribution mesurée : +296,3 px sur la bande.",
+   "avertissement_de_portee": "NE PAS corriger `.tfp-two-col` globalement. Le relevé des rangées à deux enfants de la maquette, sur les 53 routes, donne des bases toutes différentes — 440/340 (19 routes), 340/340 (18), 320/320 (8), 420/320 (7), 260/440 (6), 300/360 (6), 480/380 (1) — et des écarts allant de 9 px à clamp(30px, 5vw, 56px). Aucune valeur unique n'est fidèle. La correction doit passer par le relevé du générateur, comme G15, et non par une retouche du composant partagé."
+  }
  },
  "groupes_suivants": [
   {
@@ -632,5 +639,10 @@
   "etat": "NON RECHERCHÉ dans cette passe — le brief autorise à ne pas bloquer G15 pour cette recherche.",
   "a_faire": "inspecter reference/Top-Famille-Pro-HANDOFF-READY.html pour des images embarquées (data:, blob:, srcset local), comparer dimensions et empreintes aux 9 slugs du manifeste, et consigner le nombre d'assets analysés.",
   "provisoire_en_place": "service-generic sur trois routes, audrey-placeholder sur a-propos. Procédure de remplacement : ajouter l'asset au pipeline d'images, régénérer le manifeste par `npm run images`, remplacer le slug dans le gabarit concerné. Aucun autre changement n'est nécessaire."
+ },
+ "zip_suivis": {
+  "export": "aucun ZIP suivi sous export/ ; `.gitignore` couvre `export/*.zip`",
+  "release": "HUIT ZIP restent suivis sous release/ — Top-Famille-Pro-Correctif-Production.zip, Top-Famille-Pro-Livraison-Hostinger.zip, html-brut.zip, site-navigable.zip, topfamillepro-content-installer{,-correctif}.zip, topfamillepro-theme{,-correctif}.zip. Ils datent du paquet de livraison Hostinger de la phase 7, commité sur main par la PR #8, et ne viennent pas de cette branche.",
+  "decision_a_prendre": "les retirer de l'index relève d'une décision d'Emmanuel : ce sont les artefacts de livraison, et non des exports de travail. Aucune réécriture d'historique n'a été faite ni n'est proposée."
  }
 }
