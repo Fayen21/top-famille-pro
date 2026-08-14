@@ -76,6 +76,8 @@ const BANDE = arg('bande', '') !== '' ? Number(arg('bande', '')) : null;
 const PROFONDEUR = Number(arg('profondeur', '5'));
 const SURCHARGE = arg('surcharge', '') ? readFileSync(arg('surcharge', ''), 'utf8') : '';
 const SEUIL = Number(arg('seuil', '6'));
+/** Sortie machine-readable, cumulée route par route : le tableau exigé pour classer les écarts. */
+const JSON_SORTIE = arg('json', '');
 
 /**
  * Relevé de l'arbre d'une bande, exécuté dans la page.
@@ -547,5 +549,35 @@ console.log(
 );
 if (Math.abs(sommePropre - attendu) > 1) {
 	console.log('⚠️  Le bouclage ne se fait pas : la décomposition est incomplète, ne pas conclure.');
+}
+
+/*
+ * Cumul machine-readable. Le fichier est relu puis réécrit à chaque route : un seul producteur à la
+ * fois, jamais deux passes concurrentes vers la même sortie.
+ */
+if (JSON_SORTIE) {
+	const { readFileSync: lire, writeFileSync: ecrire, existsSync: existe } = await import('node:fs');
+	const tout = existe(JSON_SORTIE) ? JSON.parse(lire(JSON_SORTIE, 'utf8')) : {};
+	const top = [...lignes].sort((x, y) => Math.abs(y.propre) - Math.abs(x.propre)).slice(0, 3);
+	tout[hash] = {
+		largeur: LARGEUR,
+		bande: index,
+		hauteurBandeRef: A.arbre.h,
+		hauteurBandeWp: B.arbre.h,
+		deltaBande: Math.round(attendu * 10) / 10,
+		bouclage: Math.round((sommePropre - attendu) * 10) / 10,
+		troisPlusFortesContributions: top.map((l) => ({
+			contribution: l.propre,
+			role: l.role,
+			selecteur: l.classes || l.chemin.split(' › ').pop(),
+			hRef: l.hRef,
+			hWp: l.hWp,
+			causes: l.causes,
+			contenuEnPlusDuTheme: (l.enveloppes || []).flatMap((e) => e.contenu),
+			supplementEnveloppe: (l.enveloppes || []).reduce((n, e) => n + e.supplement, 0) || null,
+		})),
+	};
+	ecrire(JSON_SORTIE, JSON.stringify(tout, null, 1) + '\n');
+	console.log(`\n${JSON_SORTIE} — ${Object.keys(tout).length} routes cumulées`);
 }
 }

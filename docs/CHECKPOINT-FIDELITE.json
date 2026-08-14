@@ -43,6 +43,13 @@
    "commande": "node tools/sonde-bande.mjs '#/ville/dijon' [--widths=…] [--bande=N] [--surcharge=diag.css]",
    "role": "la boucle de validation d'un archétype en une commande : hauteur de bande des deux côtés, colonnes, largeur de carte, écart, et le détail de TOUTES les grilles de la bande en mode --bande",
    "residu": "Depuis G11, la sonde affiche le RÉSIDU de chaque bande — sa hauteur moins la somme de ses enfants directs — des deux côtés. C'est la mesure qui a trouvé G11 : les enfants concordaient au pixel et la bande restait trop haute. Un résidu divergent signale une cause qui n'est dans AUCUN composant (rembourrage de bande, marges entre enfants) ; un résidu concordant avec un gros écart de hauteur dit au contraire que la cause est à l'intérieur des composants."
+  },
+  "arbre_bande": {
+   "commande": "node tools/arbre-bande.mjs '#/contact' --bande=2 [--width=768] [--profondeur=6] [--seuil=10] [--json=docs/decomposition-768.json] [--surcharge=diag.css]",
+   "role": "décomposition ADDITIVE de l'écart de hauteur d'une bande : contribution(nœud) = ΔH(nœud) − Σ ΔH(enfants appariés). La somme vaut l'écart de la bande par construction ; l'outil annonce le reste et refuse de conclure quand elle ne boucle pas.",
+   "appariement": "empreinte textuelle, puis empreinte par préfixe à volume comparable, puis rôle visuel + rang parmi les nœuds ENCORE LIBRES de ce rôle, puis traversée des enveloppes ajoutées d'un seul côté. Le rang seul n'apparie jamais.",
+   "avertissement_capital": "le bouclage prouve l'ADDITIVITÉ, pas la justesse de l'appariement. Une décomposition peut boucler à 0,1 px sur des nœuds mal appariés — c'est le cas sur #/recrutement et #/article/*, où un nœud de 218 px et un de 1 153 px sont annoncés comme des titres. TOUJOURS lire les nœuds NON APPARIÉS avant de conclure : c'est là qu'était la vraie cause de recrutement.",
+   "garde_fou": "tests/appariement.spec.js — le rang seul n'apparie jamais deux rôles différents, une enveloppe est traversée et non confondue, et Σ contributions = écart de la racine."
   }
  },
  "groupes_traites": [
@@ -290,6 +297,77 @@
    "fichiers": "wp-content/themes/topfamillepro/src/css/04-components.css",
    "baseline": "docs/baseline-2026-08-13-apres-G11.json — la précédente, docs/baseline-2026-08-13.json, est conservée",
    "statut": "CORRIGE"
+  },
+  {
+   "id": "G12",
+   "titre": "Diagnostic chiffré des 11 routes non légales hors tolérance à 768 px — aucune correction écrite",
+   "sortie_machine": "docs/decomposition-768.json — une entrée par route : bande la plus divergente, hauteurs, delta, bouclage, trois plus fortes contributions signées avec leurs causes et le contenu supplémentaire du thème",
+   "bouclage": "les 8 routes décomposées bouclent entre -0,3 et +0,3 px",
+   "routes": {
+    "#/contact 114 %": {
+     "bande": 2,
+     "delta": "+359,9",
+     "classement": "ÉCART ÉDITORIAL IMPOSÉ, MAJORITAIRE",
+     "decomposition": "+343,4 contenu absent de la maquette (intitulé « J'ai une question » 25 · paragraphe 56 · intitulé « Une demande précise ? » 25 · paragraphe 56 · bouton « Demander mon devis » 60 · mention légale 50, plus 71 de marges) · +55,8 géométrie du formulaire dont +26 de hauteur minimale du textarea · −49 colonne d'information trop COURTE (rembourrage de carte 16→0, de portrait 22→0) · +7,7 rembourrage de bande · +1,6 écart entre colonnes",
+     "verdict": "le CTA de devis est exigé par CLAUDE.md §8 et la mention porte l'adresse réelle : les supprimer est interdit. La route ne peut pas entrer dans 95-105 % sans contredire une exigence imposée. RESTE À CORRIGER : les −49 px de la colonne d'information, défaut géométrique réel et identifié."
+    },
+    "#/pourquoi-top-famille-pro 112 %": {
+     "bande": 3,
+     "delta": "+251,5",
+     "classement": "DÉFAUT GÉOMÉTRIQUE RÉEL, NON CORRIGÉ",
+     "decomposition": "+129,3 `.tfp-static-grid--3` écart 22→34 px et marge haute 26→16 · +65,8 rembourrage de bande 46,08→80 · −57,8 `.tfp-static-block` rembourrage 16→0, filet 2/0→0/0",
+     "cause": "46,08 px = 6vw à 768. Le relevé de bande stocké dans le seed vaut 80 px — la BORNE HAUTE de `clamp(?, 6vw, 80px)`, relevée à 1440 px et figée. C'est le motif de G07 et G11, cette fois dans les données générées et non dans le CSS.",
+     "correction_durable": "faire relever au générateur la fonction déclarée plutôt que sa valeur à une largeur. Touche les 18 pages statiques."
+    },
+    "#/nos-tarifs 110 %": {
+     "bande": 5,
+     "delta": "+222,4",
+     "classement": "DÉFAUT GÉOMÉTRIQUE RÉEL, NON CORRIGÉ",
+     "decomposition": "+296,3 `.tfp-two-col` colonnes 2→1 et écart 16→30,72 px · deux `.tfp-list-plain` à −129 et −120 (colonnes 1→2, police 15→17, interligne 24,3→27,54)",
+     "cause": "la maquette tient deux colonnes à 768 px, le thème une seule : la base de colonne de `.tfp-two-col` (flex 1 1 380px) est trop grande pour cette bande. Relever la valeur DÉCLARÉE par le prototype avant de corriger."
+    },
+    "#/article/* 110 % (trois routes)": {
+     "bande": 3,
+     "delta": "+252,4",
+     "classement": "APPARIEMENT SUSPECT — NE PAS CORRIGER EN L'ÉTAT",
+     "constat": "la décomposition boucle à 0 px mais annonce un `titre h2` de 1 152,7 px côté maquette, ce qui est invraisemblable. L'appariement est faux à ce niveau. Reprendre en lisant les nœuds non appariés."
+    },
+    "#/demande-de-devis 110 %": {
+     "classement": "NON DÉCOMPOSABLE PAR CET OUTIL",
+     "constat": "aucune bande détectée des deux côtés (0→0) : la page n'a pas d'ancêtre de h1 portant deux `<section>`. La décomposition par bande ne s'y applique pas. Décomposer depuis le conteneur de page."
+    },
+    "#/plan-du-site 109 %": {
+     "bande": 1,
+     "delta": "+1092,4",
+     "classement": "ÉCART ÉDITORIAL IMPOSÉ",
+     "decomposition": "+980,8 dont +938,5 de contenu que la maquette n'a pas : les listes réelles du plan du site (Pages principales 524 px, Prestations 268, Zones départements 334, Zones villes 382) · +142,5 une liste passant de 4 colonnes à 1 · +25 intitulé 20→22 px",
+     "verdict": "un plan du site doit lister les 53 routes réelles ; la maquette n'en montre qu'un extrait. Le contenu prime. RESTE À CORRIGER : la liste qui passe de 4 colonnes à 1 (+142,5), défaut géométrique réel."
+    },
+    "#/avis-clients 108 %": {
+     "bande": 2,
+     "delta": "+212,8",
+     "classement": "ÉCART ÉDITORIAL IMPOSÉ, PARTIELLEMENT",
+     "decomposition": "+471,3 dont +444,6 de contenu supplémentaire — la mention « Exemples de présentation — témoignages » et les témoignages provisoires, dont CLAUDE.md §5.5 exige qu'ils soient visiblement signalés · −258,4 `.tfp-quote` rembourrage 30,72→18",
+     "verdict": "la mention de provisoire est imposée. RESTE À CORRIGER : `.tfp-quote`, trop court de 258 px, défaut géométrique réel."
+    },
+    "#/zones-intervention 106 %": {
+     "bande": 11,
+     "delta": "-147",
+     "classement": "DÉFAUT GÉOMÉTRIQUE RÉEL, NON CORRIGÉ",
+     "decomposition": "−98,2 `.tfp-static-block` rembourrage 46,08→0 · −97,1 `.tfp-card-grid--2` colonnes 1→2 · +33,1 `.tfp-card-tile__title`",
+     "cause": "encore 46,08 = 6vw figé, dans l'autre sens cette fois : la bande n'a AUCUN rembourrage côté thème."
+    },
+    "#/recrutement 94 %": {
+     "bande": 0,
+     "delta": "-519,4",
+     "classement": "COMPOSANT MANQUANT — DÉFAUT RÉEL, BLOQUANT",
+     "constat": "le hero de la maquette porte une image de 707 × 530 px ; le thème n'en rend AUCUNE. Le média non apparié de 529,92 px explique la quasi-totalité des −519 px. Aucune décision documentée ne justifie cette absence : ni docs/IMAGES-MAQUETTE-WORDPRESS.md ni le gabarit n'en parlent, et page-recrutement.php n'appelle jamais tfp_picture().",
+     "reserve": "l'alt de la maquette — « Intervenant Top-Famille Pro préparant son matériel de nettoyage » — présente une photo de stock comme un intervenant réel, ce que CLAUDE.md §5.6 interdit. Le visuel peut être repris, PAS cet alt.",
+     "verdict": "c'est un composant manquant au sens de CLAUDE.md §10, pas un écart de hauteur. À traiter en priorité."
+    }
+   },
+   "tests": "tests/appariement.spec.js et tests/bandes.spec.js verts (8 tests). Aucun fichier du thème modifié dans cette passe : la baseline docs/baseline-2026-08-13-apres-G11.json reste valide et n'a pas été rejouée.",
+   "statut": "DIAGNOSTIC — aucune correction écrite"
   }
  ],
  "faux_positifs_corriges_dans_outil": [
@@ -330,30 +408,20 @@
   }
  ],
  "prochain_groupe_a_traiter": {
-  "id": "G12",
+  "id": "G13",
   "priorite": 1,
-  "titre": "768 px — les 14 routes encore hors tolérance",
-  "liste": {
-   "134 % politique-de-confidentialite": "page légale — exception prévue (contenu légal absent de la maquette)",
-   "125 % mentions-legales": "page légale — exception prévue",
-   "115 % gestion-des-cookies": "page légale — exception prévue",
-   "114 % contact": "À INSTRUIRE — la plus éloignée hors pages légales",
-   "112 % pourquoi-top-famille-pro": "À INSTRUIRE",
-   "110 % nos-tarifs": "À INSTRUIRE",
-   "110 % les trois articles": "À INSTRUIRE — même cause pour les trois",
-   "110 % demande-de-devis": "À INSTRUIRE — n'a pas bougé, la route n'a pas de bandes détectées (0→0)",
-   "109 % plan-du-site": "À INSTRUIRE",
-   "108 % avis-clients": "À INSTRUIRE",
-   "106 % zones-intervention": "À INSTRUIRE",
-   "94 % recrutement": "À INSTRUIRE — seule route trop COURTE"
-  },
-  "methode": "la même que G11 : décomposer la bande moins la somme de ses enfants directs, des deux côtés, avant de regarder les composants. Les trois pages légales relèvent de l'exception documentée et doivent recevoir un diagnostic bande par bande pour être classées, pas corrigées.",
-  "commande_de_reprise": "bash tools/banc-local.sh && bash tools/banc-local.sh --theme-only && node tools/sonde-bande.mjs '#/contact' --widths=768",
-  "premier_diagnostic_de_#/contact": {
-   "768": "114,4 % · bande 0 Δ+4 (résidu +3) · bande 1 Δ+60 (résidu +37, à instruire) · bande 2 Δ+360 avec un résidu de +9 SEULEMENT",
-   "lecture": "les 360 px de la bande du formulaire sont DANS les composants, pas entre eux — le contraire de G11. Ne pas chercher un rembourrage de bande ici.",
-   "piste_relevee_non_confirmee": "`.tfp-contact-form__row` : le prototype déclare `repeat(auto-fit, minmax(min(100%, 220px), 1fr))` avec `gap: 15px`, le thème pose `repeat(2, minmax(0, 1fr))`, `gap: 0 16px` et un seuil `@media (max-width: 599px)`. L'écart de règle est établi, sa CAUSALITÉ sur les 360 px ne l'est pas : l'appariement des grilles de cette bande par rang n'est pas fiable (le thème en a cinq, la maquette quatre, et le tri par nombre d'enfants les désaligne). Apparier par classe avant de conclure."
-  }
+  "titre": "Corriger les défauts géométriques réels identifiés par G12, dans cet ordre",
+  "ordre": [
+   "1. #/recrutement — le visuel de hero manquant. Composant absent, −519 px, et le seul écart de signe négatif. Reprendre un alt honnête, pas celui de la maquette (CLAUDE.md §5.6).",
+   "2. Le rembourrage de bande relevé à 80 px dans les seeds des pages statiques, alors que la maquette rend 46,08 px à 768 (= 6vw) et 80 à 1440 : c'est la BORNE HAUTE d'une fonction, figée par le générateur. Motif de G07 et G11, cette fois dans les données. Touche les 18 pages statiques, dont pourquoi-nous (+65,8) et zones-intervention (−98,2).",
+   "3. #/nos-tarifs — `.tfp-two-col` : 2 colonnes dans la maquette, 1 dans le thème à 768 px (+296,3). Relever la base DÉCLARÉE avant de toucher.",
+   "4. #/avis-clients — `.tfp-quote` trop court de 258 px (rembourrage 30,72→18).",
+   "5. #/contact — colonne d'information trop courte de 49 px (rembourrage de carte 16→0, de portrait 22→0).",
+   "6. #/plan-du-site — liste passant de 4 colonnes à 1 (+142,5).",
+   "7. #/article/* et #/demande-de-devis — réparer l'appariement AVANT toute conclusion : la décomposition boucle sur des nœuds manifestement mal appariés."
+  ],
+  "avertissement": "Trois routes sont classées ÉCART ÉDITORIAL IMPOSÉ et ne peuvent pas entrer dans 95-105 % à 768 px sans supprimer du contenu exigé : contact (+343 px de CTA, mention légale et intitulés), plan-du-site (+938 px de listes réelles), avis-clients (+445 px de témoignages provisoires signalés). Elles gardent néanmoins des défauts géométriques réels à corriger, listés ci-dessus.",
+  "commande_de_reprise": "bash tools/banc-local.sh && bash tools/banc-local.sh --theme-only && node tools/arbre-bande.mjs '#/recrutement' --bande=0 --profondeur=2"
  },
  "groupes_suivants": [
   {
