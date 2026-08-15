@@ -44,6 +44,25 @@ test.describe('G23 · badge-reassurance — la note des eyebrows intérieurs est
 		expect( s.rayon ).toBeGreaterThanOrEqual( 40 );
 	} );
 
+	test( 'tarifs : le témoignage est nu, centré, et garde son marquage provisoire', async ( { page } ) => {
+		// La maquette pose la citation « Un devis clair… » NUE : aucun ancêtre encadré jusqu'au
+		// corps de page. La carte commune (fond blanc, rayon 18) comptait une carte de plus.
+		await page.goto( '/tarifs/' );
+		const figure = page.locator( '.tfp-testimonial--plain.tfp-testimonial--centre .tfp-testimonial' ).first();
+		await expect( figure ).toBeVisible();
+		const s = await figure.evaluate( ( el ) => {
+			const c = getComputedStyle( el );
+			return { fond: c.backgroundColor, filet: parseFloat( c.borderTopWidth ) || 0, rayon: parseFloat( c.borderTopLeftRadius ) || 0, centre: c.textAlign };
+		} );
+		expect( s.fond ).toBe( 'rgba(0, 0, 0, 0)' );
+		expect( s.filet ).toBe( 0 );
+		expect( s.rayon ).toBe( 0 );
+		expect( s.centre ).toBe( 'center' );
+		// Le marquage provisoire survit au changement de forme (CLAUDE.md §5.5).
+		await expect( figure ).toHaveAttribute( 'data-tfp-provisional', '1' );
+		await expect( figure.locator( '[data-tfp-provisional-notice]' ) ).toBeVisible();
+	} );
+
 	test( 'pilier : la pastille est seule dans l’eyebrow, sans badge région', async ( { page } ) => {
 		// La maquette du pilier pose la pastille SEULE au-dessus du H1. Le badge région du thème
 		// partageait sa rangée (35 px) et faisait compter 2 colonnes contre 1 (relevé G23).

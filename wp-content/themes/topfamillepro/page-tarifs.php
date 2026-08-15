@@ -318,15 +318,25 @@ get_header();
 <section class="tfp-section--turquoise tfp-section--tight">
 	<div class="tfp-container tfp-container--narrow">
 		<?php
-		tfp_testimonial_card(
-			array(
-				'texte'  => "Un devis clair, sans surprise, et le même tarif horaire annoncé dès le départ. C'est ce qui nous a décidés.",
-				'auteur' => 'Olivier D.',
-				'role'   => 'Gérant',
-				'ville'  => 'Besançon',
-			)
-		);
+		/*
+		 * La maquette pose cette citation NUE et centrée : blockquote sans fond, sans filet, sans
+		 * rayon — aucun ancêtre encadré jusqu'au corps de page (sonde G22, 1440 px). La carte
+		 * témoignage commune (820×258, fond blanc, rayon 18) comptait une carte absente du
+		 * prototype. Le marquage provisoire est porté par le composant, quelle que soit la forme.
+		 */
 		?>
+		<div class="tfp-testimonial--plain tfp-testimonial--centre">
+			<?php
+			tfp_testimonial_card(
+				array(
+					'texte'  => "Un devis clair, sans surprise, et le même tarif horaire annoncé dès le départ. C'est ce qui nous a décidés.",
+					'auteur' => 'Olivier D.',
+					'role'   => 'Gérant',
+					'ville'  => 'Besançon',
+				)
+			);
+			?>
+		</div>
 		<h2 style="margin-top:32px">Questions sur les tarifs</h2>
 		<div style="margin-top:20px">
 			<?php foreach ( $faqs as $item ) : ?>
