@@ -564,13 +564,23 @@ for (const p of PAGES) {
 				 * code postal passe de 400 (hub des zones) à 600 (page région) selon la bande, et cette
 				 * différence déplace le point de repli aux largeurs où la carte fait 188 px.
 				 */
+			/*
+			 * La rangée d'une ligne ne vaut que pour une carte réduite à SON TITRE ET SA
+			 * DESCRIPTION — le lien de ville, la pastille tarifaire, l'en-tête d'étoiles. Une carte
+			 * qui porte d'autres lignes (citation, auteur d'un témoignage) compose un EN-TÊTE en
+			 * rangée au-dessus de blocs empilés : la rendre entière en rangée alignait citation et
+			 * signature à côté des étoiles — 38 px de débordement à 320 px sur /avis-clients/,
+			 * détecté par la baseline avant écriture définitive.
+			 */
 			const descEnLigne = !!(
 				premier &&
 				mDesc &&
 				premier.bas != null &&
 				mDesc.bas != null &&
 				premier.haut < mDesc.bas - 2 &&
-				mDesc.haut < premier.bas - 2
+				mDesc.haut < premier.bas - 2 &&
+				!mListe &&
+				!morceaux.some((m) => !m.items)
 			);
 
 			/*
