@@ -154,3 +154,33 @@ test.describe( 'G23 · couverture régionale de l’accueil — rangée étirée
 		await expect( liens.first() ).toHaveCSS( 'font-size', '14.5px' );
 	} );
 } );
+
+test.describe( 'G23 · tarif-prestation-alignement — bande Exemple des prestations', () => {
+	test.use( { viewport: { width: 1440, height: 900 } } );
+
+	test( 'la carte Exemple porte la géométrie déclarée par la maquette', async ( { page } ) => {
+		await page.goto( '/prestations/commerces/' );
+		const carte = page.locator( '.tfp-presta-tarif > .tfp-price-example' );
+		await expect( carte ).toBeVisible();
+		await expect( carte ).toHaveCSS( 'padding', '28px' );
+		await expect( carte ).toHaveCSS( 'border-top-left-radius', '18px' );
+		const valeur = carte.locator( '.tfp-price-example__value' );
+		await expect( valeur ).toHaveCSS( 'font-size', '38px' );
+		// #174A81 : le montant est en bleu principal dans la maquette, pas en couleur de texte.
+		await expect( valeur ).toHaveCSS( 'color', 'rgb(23, 74, 129)' );
+	} );
+
+	test( 'les deux boîtes centrées ont des ordonnées décalées, comme la maquette', async ( { page } ) => {
+		// Maquette : align-items:center et des hauteurs franchement différentes (265 contre ~212) —
+		// chaque boîte compte pour une colonne de 1. Les conteneurs intermédiaires du thème, de
+		// hauteurs voisines, faisaient partager l'ordonnée : 2 colonnes comptées (5 occurrences).
+		await page.goto( '/prestations/commerces/' );
+		const rangee = page.locator( '.tfp-presta-tarif' );
+		await expect( rangee ).toHaveCSS( 'align-items', 'center' );
+		const delta = await rangee.evaluate( ( el ) => {
+			const tops = [ ...el.children ].map( ( c ) => c.getBoundingClientRect().top );
+			return Math.abs( tops[ 0 ] - tops[ 1 ] );
+		} );
+		expect( delta ).toBeGreaterThan( 8 );
+	} );
+} );

@@ -3366,6 +3366,55 @@ body.tfp-body .tfp-chip-list a:focus-visible {
   box-shadow: none;
 }
 
+/* ------------------------------------------------------------------
+   Bande « Exemple tarifaire + avis » des pages prestation, relevée sur la maquette (G23).
+   Rangée flex align-items: center, écart clamp(28px, 4vw, 48px) ; la carte Exemple y est plus
+   riche que sa cousine des pages de zone — rembourrage 28 contre 22, rayon 18 contre 16,
+   montant 38 px en bleu principal contre 32 — les deux boîtes ont donc des hauteurs franchement
+   différentes et des ordonnées décalées par le centrage, comme dans le prototype. Les valeurs de
+   la variante zone restent intactes : elles sont exactes sur les 26 pages de zone (G09).
+   ------------------------------------------------------------------ */
+.tfp-presta-tarif {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(28px, 4vw, 48px);
+  align-items: center;
+}
+
+.tfp-presta-tarif > .tfp-price-example {
+  flex: 1 1 300px;
+  min-width: min(100%, 280px);
+  margin-top: 0;
+  padding: 28px;
+  border-radius: 18px;
+}
+
+.tfp-presta-tarif .tfp-price-example__label {
+  font-size: 13.5px;
+}
+
+.tfp-presta-tarif .tfp-price-example__value {
+  font-size: 38px;
+  color: var(--color-primary);
+  margin: 4px 0;
+}
+
+.tfp-presta-tarif .tfp-price-example__note {
+  font-size: 14px;
+  color: var(--color-text-secondary);
+}
+
+.tfp-presta-tarif .tfp-price-example__disclaimer {
+  font-size: 12.5px;
+  color: var(--color-text-tertiary);
+  font-style: italic;
+}
+
+.tfp-presta-tarif > .tfp-testimonial--plain {
+  flex: 1 1 360px;
+  min-width: min(100%, 300px);
+}
+
 /* Sur la bande avis + FAQ de /tarifs/, la maquette centre en plus la figure nue : étoiles,
    citation et attribution sur l'axe (relevé G23 — figure text-align:center, figcaption sur une
    ligne). L'attribution du composant est une colonne flex : elle se centre par align-items. */

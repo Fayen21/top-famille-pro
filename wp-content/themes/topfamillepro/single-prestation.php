@@ -403,19 +403,27 @@ get_header();
 </section>
 <?php endif; ?>
 
+<?php
+/*
+ * Bande « Exemple tarifaire + avis », relevée sur la maquette (G23) : rangée flex align-items:
+ * center à l'écart clamp(28px, 4vw, 48px), carte Exemple en ENFANT DIRECT (flex 1 1 300,
+ * rembourrage 28, rayon 18, montant 38 px en bleu principal), témoignage nu en enfant direct
+ * (flex 1 1 360). Le composant générique .tfp-two-col, avec ses conteneurs intermédiaires de
+ * hauteurs voisines, faisait partager leur ordonnée aux deux boîtes : deux colonnes comptées là
+ * où la maquette, centrant deux boîtes de hauteurs franchement différentes, n'en compte qu'une.
+ */
+?>
 <section class="tfp-section--tight">
-	<div class="tfp-container tfp-two-col">
-		<div>
-			<div class="tfp-price-example">
-				<div class="tfp-price-example__label">Exemple · <?php echo (int) $budget['hours']; ?> h/mois</div>
-				<div class="tfp-price-example__value"><?php echo esc_html( tfp_format_price( $budget['monthly'] ) ); ?> <span>HT/mois</span></div>
-				<div class="tfp-price-example__note">
-					<?php echo (int) $budget['hours']; ?> h × <?php echo esc_html( tfp_format_price( $site['price_unique'] ) ); ?> + <?php echo esc_html( tfp_format_price( $site['price_gestion'] ) ); ?> de gestion.
-					Le cas échéant, avec les frais de mise en place : <?php echo esc_html( tfp_format_price( $budget['first_month'] ) ); ?> HT
-				</div>
-				<div class="tfp-price-example__disclaimer">Exemple non contractuel.</div>
-				<a class="tfp-eyebrow-link" href="<?php echo esc_url( home_url( '/tarifs/' ) ); ?>">Tous les tarifs →</a>
+	<div class="tfp-container tfp-presta-tarif">
+		<div class="tfp-price-example">
+			<div class="tfp-price-example__label">Exemple · <?php echo (int) $budget['hours']; ?> h/mois</div>
+			<div class="tfp-price-example__value"><?php echo esc_html( tfp_format_price( $budget['monthly'] ) ); ?> <span>HT/mois</span></div>
+			<div class="tfp-price-example__note">
+				<?php echo (int) $budget['hours']; ?> h × <?php echo esc_html( tfp_format_price( $site['price_unique'] ) ); ?> + <?php echo esc_html( tfp_format_price( $site['price_gestion'] ) ); ?> de gestion.
+				Le cas échéant, avec les frais de mise en place : <?php echo esc_html( tfp_format_price( $budget['first_month'] ) ); ?> HT
 			</div>
+			<div class="tfp-price-example__disclaimer">Exemple non contractuel.</div>
+			<a class="tfp-eyebrow-link" href="<?php echo esc_url( home_url( '/tarifs/' ) ); ?>">Tous les tarifs →</a>
 		</div>
 		<?php if ( $temoignage['texte'] ) : ?>
 			<div class="tfp-testimonial--plain">
