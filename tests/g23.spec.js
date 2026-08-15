@@ -184,3 +184,34 @@ test.describe( 'G23 · tarif-prestation-alignement — bande Exemple des prestat
 		expect( delta ).toBeGreaterThan( 8 );
 	} );
 } );
+
+test.describe( 'G23 · tarif-region-triple — la bande tarifaire de la région en composant de zone', () => {
+	test.use( { viewport: { width: 1440, height: 900 } } );
+
+	test( 'trois colonnes d’ordonnée partagée : texte, exemple, témoignage', async ( { page } ) => {
+		// Maquette : l'architecture .tfp-zone-tarif des pages de zone — trois colonnes de
+		// 394/344/374 à 1440 px. Le composant générique rendait deux cartes de 573 px sur une
+		// grille statique, texte au-dessus : 2 colonnes comptées contre 3.
+		await page.goto( '/zones-intervention/bourgogne-franche-comte/' );
+		const bande = page.locator( '.tfp-zone-tarif' );
+		await expect( bande ).toBeVisible();
+		await expect( bande.locator( '> div' ).first() ).toContainText( 'Un tarif régional unique' );
+		const mesure = await bande.evaluate( ( el ) => {
+			const enfants = [ ...el.children ].map( ( c ) => {
+				const r = c.getBoundingClientRect();
+				return { top: Math.round( r.top ), largeur: Math.round( r.width ) };
+			} );
+			return enfants;
+		} );
+		expect( mesure.length ).toBe( 3 );
+		// Ordonnée partagée (align-items: stretch du composant de zone).
+		expect( Math.abs( mesure[ 0 ].top - mesure[ 1 ].top ) ).toBeLessThanOrEqual( 2 );
+		expect( Math.abs( mesure[ 1 ].top - mesure[ 2 ].top ) ).toBeLessThanOrEqual( 2 );
+		// Largeurs relevées sur la maquette à 1440 px : 394 / 344 / 374 (± arrondis de flex).
+		expect( Math.abs( mesure[ 0 ].largeur - 394 ) ).toBeLessThanOrEqual( 2 );
+		expect( Math.abs( mesure[ 1 ].largeur - 344 ) ).toBeLessThanOrEqual( 2 );
+		expect( Math.abs( mesure[ 2 ].largeur - 374 ) ).toBeLessThanOrEqual( 2 );
+		// Le témoignage régional reste marqué provisoire (CLAUDE.md §5.5).
+		await expect( bande.locator( '.tfp-testimonial[data-tfp-provisional="1"]' ) ).toHaveCount( 1 );
+	} );
+} );

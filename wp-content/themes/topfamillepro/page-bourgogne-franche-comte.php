@@ -104,6 +104,74 @@ $page = tfp_static_page_data( 'bourgogne-franche-comte' );
 	</div>
 </section>
 
-<?php get_template_part( 'template-parts/components/static-blocks', null, array( 'key' => 'bourgogne-franche-comte' ) ); ?>
+<?php
+/*
+ * La bande tarifaire (section 8 du relevé) reprend dans la maquette l'architecture
+ * `.tfp-zone-tarif` des pages de zone : trois colonnes — texte, carte d'exemple
+ * (flex 1 1 250px, min 260 relevés G22), témoignage — d'ordonnée partagée à 1440 px.
+ * Le composant générique la rendait en grille statique de deux cartes de 573 px, texte
+ * au-dessus : la carte d'exemple comptait 2 colonnes là où le prototype en a 3. On rend
+ * donc cette bande avec le composant de zone, exact sur les 26 pages de zone depuis G09,
+ * en gardant la section 8 du seed comme unique source du contenu (rien en dur ici).
+ */
+get_template_part( 'template-parts/components/static-blocks', null, array( 'key' => 'bourgogne-franche-comte', 'skip' => array( 8, 9, 10, 11 ) ) );
+
+$tfp_bande_tarif = null;
+foreach ( ( $page['sections'] ?? array() ) as $tfp_section ) {
+	if ( 8 === (int) ( $tfp_section['index'] ?? -1 ) ) {
+		$tfp_bande_tarif = $tfp_section;
+		break;
+	}
+}
+if ( $tfp_bande_tarif ) :
+	$tfp_bloc      = $tfp_bande_tarif['blocs'][0] ?? array();
+	$tfp_paras     = array();
+	$tfp_grille    = null;
+	foreach ( ( $tfp_bloc['sequence'] ?? array() ) as $tfp_enfant ) {
+		if ( 'paragraph' === ( $tfp_enfant['type'] ?? '' ) ) {
+			$tfp_paras[] = $tfp_enfant['texte'];
+		} elseif ( 'grid' === ( $tfp_enfant['type'] ?? '' ) ) {
+			$tfp_grille = $tfp_enfant;
+		}
+	}
+	$tfp_exemple = $tfp_grille['items'][0] ?? array();
+	$tfp_avis    = $tfp_grille['items'][1] ?? array();
+	// « Sophie M. · Cabinet comptable · Côte-d'Or » → auteur, rôle, ville — sans rien inventer.
+	$tfp_avis_parts = array_map( 'trim', explode( '·', (string) ( $tfp_avis['description'] ?? '' ) ) );
+	?>
+<section class="tfp-section--turquoise tfp-section--tight" style="--tfp-bande-haut:clamp(38px, 5vw, 68px);--tfp-bande-bas:clamp(38px, 5vw, 68px)">
+	<div class="tfp-container tfp-zone-tarif">
+		<div>
+			<h2><?php echo esc_html( $tfp_bloc['titre'] ?? 'Un tarif régional unique' ); ?></h2>
+			<?php foreach ( $tfp_paras as $tfp_texte ) : ?>
+				<p class="tfp-prose"><?php echo esc_html( $tfp_texte ); ?></p>
+			<?php endforeach; ?>
+			<a class="tfp-eyebrow-link" href="<?php echo esc_url( home_url( '/tarifs/' ) ); ?>">Voir les tarifs →</a>
+		</div>
+		<div class="tfp-price-example">
+			<div class="tfp-price-example__label"><?php echo esc_html( $tfp_exemple['surtitre'] ?? '' ); ?></div>
+			<div class="tfp-price-example__value"><?php echo esc_html( tfp_format_price( $budget['monthly'] ) ); ?> <span>HT/mois</span></div>
+			<?php if ( ! empty( $tfp_exemple['description'] ) ) : ?>
+				<p class="tfp-price-example__why"><?php echo esc_html( $tfp_exemple['description'] ); ?></p>
+			<?php endif; ?>
+			<div class="tfp-price-example__disclaimer"><?php echo esc_html( $tfp_exemple['lignes'][0] ?? 'Exemple non contractuel.' ); ?></div>
+		</div>
+		<?php
+		if ( ! empty( $tfp_avis['titre'] ) ) {
+			tfp_testimonial_card(
+				array(
+					'texte'  => trim( (string) $tfp_avis['titre'], "« »\u{a0} " ),
+					'auteur' => $tfp_avis_parts[0] ?? '',
+					'role'   => $tfp_avis_parts[1] ?? '',
+					'ville'  => $tfp_avis_parts[2] ?? '',
+				)
+			);
+		}
+		?>
+	</div>
+</section>
+<?php endif; ?>
+
+<?php get_template_part( 'template-parts/components/static-blocks', null, array( 'key' => 'bourgogne-franche-comte', 'skip' => array( 2, 3, 4, 5, 6, 7, 8 ) ) ); ?>
 
 <?php get_footer(); ?>
