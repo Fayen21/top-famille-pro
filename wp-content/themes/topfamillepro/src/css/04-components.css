@@ -2043,22 +2043,6 @@ body.tfp-body .tfp-zone-chapter h2 {
   margin-top: 40px;
 }
 
-/* Un nom de commune sans page dédiée : même forme qu'une puce cliquable, mais inerte — et
-   visiblement inerte, sinon l'utilisateur clique dans le vide.
-
-   Graisse relevée sur la maquette : TOUTES les pastilles sans lien y sont en 400 — quartiers
-   (« Centre-ville »), communes non documentées (« Chevigny-Saint-Sauveur ») et secteurs
-   secondaires des pages de département — quand les pastilles-liens sont en 600. Le thème posait
-   600 partout : chaque pastille inerte était plus large de quelques pixels, et le retour à la
-   ligne tombait un rang plus tôt que le prototype. Le fond atténué et le filet en tirets restent,
-   eux, une divergence assumée : signaler l'inertie est un gain d'affordance (CLAUDE.md §4). */
-.tfp-chip--static {
-  cursor: default;
-  background: var(--color-bg-alt);
-  color: var(--color-text-secondary);
-  border-style: dashed;
-  font-weight: 400;
-}
 
 /* Hero sans visuel (pages département de la maquette) : le texte occupe toute la largeur. */
 .tfp-hero--text {

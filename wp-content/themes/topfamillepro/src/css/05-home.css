@@ -219,6 +219,33 @@
   border-color: var(--color-turquoise);
 }
 
+/* Un nom de commune sans page dédiée : même forme qu'une puce cliquable, mais inerte — et
+   visiblement inerte, sinon l'utilisateur clique dans le vide.
+
+   Défini ICI, après `.tfp-chip`, et non dans 04-components.css : à égalité de spécificité, la
+   base — chargée après dans le paquet — écrasait la variante, et le filet en tirets n'a JAMAIS
+   été rendu (le raccourci `border` remettait `solid`). C'est la leçon de G19 (`.tfp-chip-row`
+   défini en double), sur une autre classe.
+
+   Graisse relevée sur la maquette : TOUTES les pastilles sans lien y sont en 400 — quartiers
+   (« Centre-ville »), communes non documentées, secteurs secondaires des pages de département —
+   quand les pastilles-liens sont en 600. En 600, chaque pastille inerte était plus large de
+   quelques pixels et le retour à la ligne tombait un rang plus tôt que le prototype. Le fond
+   atténué et les tirets restent une divergence assumée : signaler l'inertie est un gain
+   d'affordance (CLAUDE.md §4). */
+.tfp-chip--static {
+  cursor: default;
+  background: var(--color-bg-alt);
+  border-style: dashed;
+  color: var(--color-text-secondary);
+  font-weight: 400;
+}
+
+.tfp-chip--static:hover {
+  background: var(--color-bg-alt);
+  border-color: var(--color-border);
+}
+
 .tfp-lede-rule {
   margin-top: var(--space-4);
   font-size: var(--fs-sm);
