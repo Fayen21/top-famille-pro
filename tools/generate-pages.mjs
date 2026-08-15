@@ -400,6 +400,25 @@ for (const p of PAGES) {
 						}
 					}
 					if (!enLigne) {
+						/*
+						 * Un bloc qui contient d'AUTRES blocs n'est pas une ligne : c'est une
+						 * enveloppe, et prendre tout son texte colle ses lignes bout à bout. Sur les
+						 * cartes d'étape de /notre-fonctionnement/, l'enveloppe qui porte l'intitulé
+						 * et son paragraphe donnait « Prise de contactVous nous décrivez vos
+						 * locaux… » — un seul fragment, sans frontière, rendu tel quel sur la page.
+						 * Ce n'était pas qu'une différence de hauteur : le texte publié était faux.
+						 *
+						 * On ne descend que dans les vraies enveloppes — au moins deux enfants de
+						 * niveau bloc. Un bloc qui n'enveloppe qu'un bloc reste relevé d'un tenant,
+						 * comme avant.
+						 */
+						const enfantsBloc = [...c.children].filter(
+							(k) => !/^inline/.test(getComputedStyle(k).display) && txt(k)
+						);
+						if (enfantsBloc.length >= 2) {
+							collecter(c);
+							continue;
+						}
 						morceaux.push({
 							texte: contenu,
 							tag: t,
@@ -439,9 +458,25 @@ for (const p of PAGES) {
 				if (propre) morceaux.push({ texte: propre, tag: 'span', taille: 16, graisse: 400, majuscules: false });
 			}
 
-			// Icône : un premier morceau très court, fait de symboles ou d'un pictogramme.
+			/*
+			 * Icône : un premier morceau très court, fait de symboles ou d'un pictogramme — ou un
+			 * NUMÉRO d'étape.
+			 *
+			 * Le prototype ouvre ses cartes de séquence par « 01 », « 02 »… posés en 26 px dans une
+			 * gouttière de 44, à côté d'un intitulé de 19. La règle ne retenait que les fragments
+			 * sans caractère alphanumérique : le numéro devenait l'intitulé de la carte, et le vrai
+			 * intitulé glissait dans la description. On accepte donc aussi un fragment purement
+			 * numérique, à la condition qu'il soit nettement plus gros que le fragment suivant —
+			 * c'est ce qui le distingue d'une pastille de département, laquelle suit l'intitulé au
+			 * lieu de le précéder et n'est pas agrandie.
+			 */
 			let icone = '';
-			if (morceaux.length && morceaux[0].texte.length <= 3 && !/[a-zA-Z0-9]/.test(morceaux[0].texte)) {
+			const numeroDEtape =
+				morceaux.length > 2 &&
+				/^\d{1,3}$/.test(morceaux[0].texte) &&
+				morceaux[1] &&
+				morceaux[0].taille >= morceaux[1].taille * 1.2;
+			if (morceaux.length && morceaux[0].texte.length <= 3 && (!/[a-zA-Z0-9]/.test(morceaux[0].texte) || numeroDEtape)) {
 				icone = morceaux.shift().texte;
 			}
 
@@ -541,20 +576,67 @@ for (const p of PAGES) {
 			const grilles = [];
 			const pris = new Set();
 
-			for (const g of sec.querySelectorAll('div,ul,ol')) {
+			/*
+			 * `figure` fait partie des conteneurs à examiner : le prototype pose ses témoignages
+			 * mis en avant dans une `<figure>` marine qui range elle-même deux colonnes souples.
+			 * Absente de la liste, cette grille n'était jamais relevée et ses deux colonnes se
+			 * retrouvaient empilées — 182 px de trop sur la bande à 1440 px.
+			 */
+			for (const g of sec.querySelectorAll('div,ul,ol,figure')) {
 				if (pris.has(g)) continue;
 				const gs = getComputedStyle(g);
 				if (!/grid|flex/.test(gs.display) || g.children.length < 2) continue;
 
+				/*
+				 * Une colonne n'est pas toujours une carte.
+				 *
+				 * Le repère employé ici — rayon d'angle ET fond, filet ou ombre — décrit une tuile.
+				 * Or le prototype range aussi des colonnes NUES : sur /pourquoi-nous/, six blocs
+				 * « intitulé + paragraphe » sur une grille de trois colonnes, sans fond ni rayon,
+				 * simplement coiffés d'un filet supérieur de 2 px. Aucun n'était reconnu, la grille
+				 * n'était pas relevée, et les six blocs ressortaient empilés sur toute la largeur —
+				 * 179 px de trop sur la bande à 1440 px, et une lecture qui n'a plus rien de la
+				 * maquette.
+				 *
+				 * On accepte donc aussi un enfant sans chrome, à trois conditions qui le distinguent
+				 * d'un paragraphe ordinaire : il partage sa ligne avec au moins un autre enfant, il
+				 * est nettement plus étroit que le conteneur, et il porte lui-même du contenu
+				 * structuré (au moins deux blocs). Un empilement sur une seule colonne ne remplit
+				 * jamais la première condition.
+				 */
+				const largeurG = g.getBoundingClientRect().width;
+				const surLaMemeLigne = (c) => {
+					const y = Math.round(c.getBoundingClientRect().top);
+					return [...g.children].some(
+						(x) => x !== c && Math.abs(Math.round(x.getBoundingClientRect().top) - y) <= 8
+					);
+				};
 				const enfants = [...g.children].filter((c) => {
 					const r = c.getBoundingClientRect();
 					const s = getComputedStyle(c);
-					return (
-						r.width >= 60 &&
-						r.height >= 24 &&
+					if (r.width < 60 || r.height < 24) return false;
+					const tuile =
 						parseFloat(s.borderTopLeftRadius) >= 6 &&
-						(s.backgroundColor !== 'rgba(0, 0, 0, 0)' || parseFloat(s.borderTopWidth) > 0 || (s.boxShadow && s.boxShadow !== 'none'))
-					);
+						(s.backgroundColor !== 'rgba(0, 0, 0, 0)' || parseFloat(s.borderTopWidth) > 0 || (s.boxShadow && s.boxShadow !== 'none'));
+					if (tuile) return true;
+					/*
+					 * Le seuil de largeur distingue une colonne d'un bloc pleine largeur. Une
+					 * répartition 2/1 — la plus courante du prototype après 1/1 — donne 0,67 de la
+					 * largeur utile à la colonne large : un seuil à 0,6 l'excluait.
+					 */
+					/*
+					 * Une colonne qui porte un vrai intertitre de section n'est pas une tuile : c'est
+					 * une moitié de bande, avec sa propre hiérarchie. La traiter en carte rabaisse
+					 * son `h2` au rang d'intitulé de tuile et lui fait perdre sa hauteur — 80 px sur
+					 * la bande « Ce que nous attendons » de /recrutement/. Les colonnes que vise
+					 * cette détection s'ouvrent sur un libellé en gras, jamais sur un `h2`.
+					 */
+					const colonneNue =
+						r.width <= largeurG * 0.75 &&
+						surLaMemeLigne(c) &&
+						!c.querySelector('h2') &&
+						[...c.children].filter((k) => txt(k)).length >= 2;
+					return colonneNue;
 				});
 				/*
 				 * Deux cartes suffisent. La contrainte « presque tous les enfants sont des cartes »
@@ -1005,9 +1087,39 @@ for (const p of PAGES) {
 					if (morceaux.length === 2) return { haut: morceaux[0], bas: morceaux[0] };
 					return { haut: morceaux[0], bas: morceaux[2] };
 				};
-				const declarePadding = composantesPadding(
-					(sec.getAttribute('style') || '').match(/(?:^|;)\s*padding:\s*([^;]+)/)?.[1] || ''
-				);
+				const paddingDeclareDe = (el) =>
+					((el && el.getAttribute('style')) || '').match(/(?:^|;)\s*padding:\s*([^;]+)/)?.[1] || '';
+				/*
+				 * Le rembourrage vertical n'est pas toujours porté par la bande : sur les bandes de
+				 * rappel — fond marine, texte centré — le prototype ne met sur la `<section>` que le
+				 * fond, et pose `padding: clamp(44px, 6vw, 76px) clamp(18px, 4vw, 40px)` sur
+				 * l'enveloppe intérieure. En ne lisant que la section, on relevait 0, et la bande
+				 * s'écrasait : 108 px rendus contre 317 relevés sur /notre-fonctionnement/.
+				 *
+				 * On lit donc la section d'abord, puis l'enveloppe si la section ne déclare rien ou
+				 * déclare zéro des deux côtés. Une bande qui déclare `0 0 clamp(...)` garde bien sa
+				 * valeur : elle n'est pas nulle des deux côtés.
+				 */
+				const enveloppe = sec.firstElementChild;
+				let declarePadding = composantesPadding(paddingDeclareDe(sec));
+				const nul = (p) => !p || (parseFloat(p.haut) === 0 && parseFloat(p.bas) === 0);
+				if (nul(declarePadding) && enveloppe) {
+					const env = composantesPadding(paddingDeclareDe(enveloppe));
+					if (!nul(env)) declarePadding = env;
+				}
+				/*
+				 * Largeur du CONTENEUR de la bande — distincte de la colonne de lecture ci-dessous.
+				 *
+				 * Le prototype resserre certaines bandes à 900 ou 1040 px là où le thème applique son
+				 * conteneur de 1260. Ce n'est pas un détail de marge : à 1440 px, une grille de trois
+				 * colonnes de 264 px dans 900 px devient une grille de quatre colonnes de 285 px dans
+				 * 1260, et la bande perd 345 px de haut. La colonne de lecture ne suffit pas à le
+				 * corriger — elle ne borne que le texte, pas les grilles.
+				 */
+				const declareLargeur = ((enveloppe && enveloppe.getAttribute('style')) || '').match(
+					/(?:^|;)\s*max-width:\s*([0-9.]+)px/
+				)?.[1];
+				const largeurConteneur = declareLargeur ? Math.round(parseFloat(declareLargeur)) : 0;
 				/*
 				 * Largeur de la colonne de lecture de la bande.
 				 *
@@ -1031,6 +1143,7 @@ for (const p of PAGES) {
 					padding_haut: (declarePadding && declarePadding.haut) || cs.paddingTop,
 					padding_bas: (declarePadding && declarePadding.bas) || cs.paddingBottom,
 					largeur_texte: largeurTexte,
+					largeur_conteneur: largeurConteneur,
 					colonnes: colonnesOf(sec),
 					cartes: cadres && cadres.majoritaire ? cadres : null,
 					liste_grille: listeColonnesOf(sec),

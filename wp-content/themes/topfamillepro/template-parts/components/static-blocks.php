@@ -76,6 +76,21 @@ foreach ( $data['sections'] as $section ) {
 	if ( $largeur >= 400 && $largeur <= 1400 ) {
 		$pad[] = '--tfp-bande-texte:' . $largeur . 'px';
 	}
+	/*
+	 * Largeur du CONTENEUR de la bande, distincte de la colonne de lecture ci-dessus.
+	 *
+	 * Le prototype resserre certaines bandes à 900 ou 1040 px quand le thème applique partout son
+	 * conteneur de 1260. La colonne de lecture ne peut pas y suppléer : elle borne le texte, pas les
+	 * grilles. À 1440 px, une rangée de trois cartes de 264 px dans 900 px devient une rangée de
+	 * quatre cartes de 285 px dans 1260, et la bande perd 345 px de haut.
+	 *
+	 * `--container-max` est la variable que `.tfp-container` lit déjà : la poser sur la bande suffit,
+	 * sans règle nouvelle et sans sélecteur par URL.
+	 */
+	$largeur_conteneur = (int) ( $section['largeur_conteneur'] ?? 0 );
+	if ( $largeur_conteneur >= 600 && $largeur_conteneur <= 1400 ) {
+		$pad[] = '--container-max:' . $largeur_conteneur . 'px';
+	}
 	$pad_style = $pad ? ' style="' . esc_attr( implode( ';', $pad ) ) . '"' : '';
 	/*
 	 * Nombre de colonnes : relevé sur le rendu de la maquette par tools/generate-pages.mjs, et non

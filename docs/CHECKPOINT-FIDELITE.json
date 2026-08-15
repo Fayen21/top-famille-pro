@@ -619,6 +619,45 @@
       "tests": "973 tests d'assertion verts · lint PHP 81 fichiers · bin/verifier-installation.php PASS code 0 · 0 débordement · 0 image cassée · 0 CTA hors écran · 0 erreur console ou réseau · 0 écart de bandes",
       "fichiers": "tools/audit-legales.mjs (nouveau) · docs/AUDIT-PAGES-LEGALES.md (nouveau) · page-mentions-legales.php · page-politique-de-confidentialite.php · page-gestion-des-cookies.php · src/css/04-components.css",
       "statut": "VALIDE"
+    },
+    {
+      "id": "G21",
+      "titre": "Les trois routes desktop — deux relevés que le générateur ne savait pas faire, et une bande de rappel écrasée",
+      "routes": "#/notre-fonctionnement · #/pourquoi-top-famille-pro · #/avis-clients",
+      "signe_des_ecarts": "notre-fonctionnement était trop COURT (92 %), les deux autres trop HAUTES (107 %) : aucune correction commune n'a été appliquée au seul motif qu'elles étaient les trois dernières.",
+      "cause_1_largeur_de_conteneur": {
+        "quoi": "le prototype resserre certaines bandes à 900, 1040, 860 ou 820 px là où le thème appliquait partout son conteneur de 1260",
+        "pourquoi_la_colonne_de_lecture_ne_suffisait_pas": "`--tfp-bande-texte` borne le TEXTE, pas les grilles. À 1440 px, une rangée de trois cartes de 264 px dans 900 px devient une rangée de quatre cartes de 285 px dans 1260, et la bande perd 345 px de haut.",
+        "correction": "nouveau champ relevé `largeur_conteneur` dans tools/generate-pages.mjs, rendu en `--container-max` par static-blocks.php — la variable que `.tfp-container` lit déjà. Relevé : 5 valeurs distinctes sur 63 bandes (1260 × 34, 900 × 9, 1040 × 8, 820 × 5, 860 × 4).",
+        "effet": "bande « Les informations dont nous avons besoin » de /notre-fonctionnement/ : −345 → −3 px, colonnes 4 → 3, cartes 285 → 264 comme la maquette"
+      },
+      "cause_2_rembourrage_porte_par_l_enveloppe": {
+        "quoi": "sur les bandes de rappel — fond marine, texte centré — le prototype ne met sur la `<section>` que le fond et pose `padding: clamp(44px, 6vw, 76px) …` sur l'enveloppe intérieure",
+        "consequence": "le générateur ne lisait que la section, relevait 0, et la bande s'écrasait : 108 px rendus contre 317 relevés",
+        "correction": "le relevé lit la section d'abord, puis l'enveloppe si la section ne déclare rien ou déclare zéro des deux côtés. Une bande qui déclare `0 0 clamp(...)` garde bien sa valeur.",
+        "effet": "+152 px sur la bande de rappel de /notre-fonctionnement/, /pourquoi-nous/ et /avis-clients/"
+      },
+      "cause_3_colonnes_sans_chrome": {
+        "quoi": "`grillesDeCartes()` ne reconnaissait une colonne que si elle avait l'aspect d'une TUILE — rayon d'angle et fond, filet ou ombre",
+        "consequence": "les colonnes nues du prototype n'étaient jamais relevées : six blocs « intitulé + paragraphe » coiffés d'un filet supérieur sur /pourquoi-nous/ ressortaient empilés sur toute la largeur (+179 px), et la `<figure>` marine à deux colonnes de /avis-clients/ n'était même pas examinée, `figure` étant absent du sélecteur (+182 px)",
+        "correction": "trois conditions distinguent une colonne d'un paragraphe : elle partage sa ligne avec un autre enfant, elle occupe au plus 75 % de la largeur du conteneur, et elle porte au moins deux blocs. `figure` rejoint la liste des conteneurs examinés.",
+        "garde_fou": "une colonne qui porte un vrai `h2` n'est PAS une tuile : c'est une moitié de bande avec sa propre hiérarchie. Sans cette exclusion, la bande « Ce que nous attendons » de /recrutement/ perdait 80 px et la route sortait de la tolérance à 1024 px — seule régression de la passe, détectée par la baseline et corrigée avant écriture définitive."
+      },
+      "cause_4_en_tetes": {
+        "quoi": "les en-têtes de page portaient clamp(30px, 4vw, 52px) des deux côtés (104 px à 1440) contre 88 relevés, et répétaient la classe du lède sur le second paragraphe d'introduction",
+        "prototype": "un seul lède par en-tête — 20 px, marge 18 — puis 16 px / 1,6 avec marge 14 pour les paragraphes suivants",
+        "correction": "`.tfp-section__sublede` posée sur les paragraphes de rang ≥ 1, dans les cinq gabarits qui bouclent sur `$page['lede']` ; rembourrages relevés posés sur les trois en-têtes concernés"
+      },
+      "resultat": {
+        "#/notre-fonctionnement": "92 % → 320 97,6 · 375 100,6 · 768 102,9 · 1024 101,5 · 1440 104 · 1920 104 — 6/6",
+        "#/pourquoi-top-famille-pro": "107 % → 320 103,5 · 375 105,3 · 768 103,7 · 1024 101,7 · 1440 104,6 · 1920 104,6 — 6/6",
+        "#/avis-clients": "107 % → 320 96,2 · 375 98,8 · 768 100,3 · 1024 96,9 · 1440 99,6 · 1920 99,6 — 6/6"
+      },
+      "effet_baseline": "docs/baseline-2026-08-15-apres-G21b.json : 294 → 300 dans 95-105 % · 19 rapprochées, 19 éloignées d'un à cinq points MAIS toutes restées dans la plage · AUCUNE route sortie de la tolérance",
+      "objectif_atteint": "50/53 routes dans 95-105 % à CHACUNE des six largeurs, et les trois restantes sont exactement les trois pages légales auditées en G20. Les 50 routes non légales sont donc conformes aux six largeurs.",
+      "tests": "973 tests d'assertion verts · lint PHP 81 fichiers · bin/verifier-installation.php PASS code 0 · 0 débordement · 0 image cassée · 0 CTA hors écran · 0 erreur console ou réseau · 0 écart de bandes",
+      "fichiers": "tools/generate-pages.mjs · template-parts/components/static-blocks.php · bin/seed-fidelite-pages.php (régénéré) · page-notre-fonctionnement.php · page-pourquoi-nous.php · page-avis-clients.php · page-prestations.php · page-zones-intervention.php · src/css/04-components.css",
+      "statut": "CORRIGE"
     }
   ],
   "faux_positifs_corriges_dans_outil": [
@@ -659,17 +698,20 @@
     }
   ],
   "prochain_groupe_a_traiter": {
-    "id": "G21",
+    "id": "G22",
     "priorite": 1,
-    "titre": "Les trois routes hors tolérance à 1440 et 1920 px uniquement",
-    "liste": {
-      "#/pourquoi-top-famille-pro": "107 % — dans la tolérance aux quatre autres largeurs",
-      "#/avis-clients": "107 % — idem",
-      "#/notre-fonctionnement": "92 % — écart de signe NÉGATIF : le thème est plus COURT que la maquette, ce qui écarte d'emblée les causes de type rembourrage en trop"
-    },
-    "lecture": "Ces trois routes ne s'écartent qu'aux deux plus grandes largeurs : la cause est donc dans une valeur qui n'atteint sa borne haute qu'au-delà de 1024 px — une fonction `clamp()` figée, ou une base de colonne qui cesse de se replier.",
-    "puis": "chantiers non ouverts : les 129 occurrences surplus/colonnes, le CLS global, les 14 Lighthouse, les images exactes des quatre héros et la mesure LCP, les captures finales, les exports finaux",
-    "commande_de_reprise": "bash tools/banc-local.sh && bash tools/banc-local.sh --theme-only && node tools/sonde-bande.mjs '#/notre-fonctionnement' --widths=1024,1440"
+    "titre": "Fin de chantier : anomalies restantes, images exactes et LCP, CLS, Lighthouse, captures, exports",
+    "prealable": "La géométrie est stabilisée aux six largeurs : 50/50 routes non légales dans 95-105 %, trois pages légales auditées et chiffrées. Les phases finales peuvent commencer.",
+    "ordre": [
+      "1. régénérer l'inventaire surplus/colonnes et CLASSER chaque occurrence restante (défaut réel, faux positif d'outil, différence éditoriale, différence légale, différence sémantique sans effet visuel, donnée provisoire, anomalie non résolue) — le nombre de 129 est périmé, il date d'avant G16",
+      "2. images exactes des quatre héros dans le standalone et le manifeste, puis mesure LCP réelle sur les quatre routes (un seul fetchpriority, pas de lazy sur le LCP, cohérence preload/srcset/sizes)",
+      "3. CLS global, avec la mesure qui réinitialise les observateurs entre pages",
+      "4. quatorze audits Lighthouse (7 routes × mobile/desktop)",
+      "5. captures comparatives à 375 et 1440 px depuis l'état final testé",
+      "6. exports html-brut.zip et site-navigable.zip — reconstruits, JAMAIS commités"
+    ],
+    "rappel_chip_row": "Le défaut de double définition de `.tfp-chip-row` a été fermé en G19 (commit 241430a) : la seconde définition, dans 05-home.css, est retirée et les variantes d'écart --9 et --10 sont de nouveau appliquées. Ne pas le rouvrir.",
+    "commande_de_reprise": "bash tools/banc-local.sh && bash tools/banc-local.sh --theme-only && node tools/classer-anomalies.mjs"
   },
   "groupes_suivants": [
     {
