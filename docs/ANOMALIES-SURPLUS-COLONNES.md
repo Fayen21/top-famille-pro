@@ -8,26 +8,25 @@
 > écrite « à instruire » — affirmer une cause plausible sans l’avoir vérifiée vaudrait moins
 > que ne rien affirmer.
 
-**209 occurrences** — 117 cartes supplémentaires, 92 écarts de colonnes.
+**128 occurrences** — 85 cartes supplémentaires, 43 écarts de colonnes.
 
 ## Synthèse par cause
 
 | Cause | Occurrences | Verdict |
 |---|---:|---|
-| Rangée de pastilles coupée à un rang près | 61 | Faux positif résiduel de l’outil |
-| Rangée de pastilles coupée à deux rangs ou plus | 15 | À instruire — cause non tranchée |
-| Carte d’exemple tarifaire d’une page prestation | 8 | À instruire — cause non tranchée |
-| Autres écarts de colonnes | 8 | À instruire — cause non tranchée |
+| Rangée de pastilles coupée à un rang près | 19 | Faux positif résiduel de l’outil |
+| Rangée de pastilles coupée à deux rangs ou plus | 13 | À instruire — cause non tranchée |
+| Carte d’exemple tarifaire d’une page prestation | 6 | À instruire — cause non tranchée |
+| Autres écarts de colonnes | 5 | À instruire — cause non tranchée |
 | Badge de note Google rendu en plusieurs éléments | 18 | Écart réel, mineur |
 | Bouton d’appel à l’action contextuel | 1 | Écart voulu (CLAUDE.md §8) |
 | Lien de ville rendu en carte | 34 | À instruire — cause non tranchée |
-| Élément de liste rendu en micro-carte | 18 | À instruire — cause non tranchée |
-| Bloc de contenu d’une page statique ou d’un article | 28 | À instruire — cause non tranchée |
+| Bloc de contenu d’une page statique ou d’un article | 14 | À instruire — cause non tranchée |
 | Autres cartes supplémentaires | 18 | À instruire — cause non tranchée |
 
 ## Rangée de pastilles coupée à un rang près
 
-**Verdict :** Faux positif résiduel de l’outil · **61 occurrence(s)**
+**Verdict :** Faux positif résiduel de l’outil · **19 occurrence(s)**
 
 - **Maquette** — Les pastilles de communes sont posées dans une rangée qui revient à la ligne. Leur géométrie est désormais identique des deux côtés : 79 × 41 px, texte 14 px semi-gras, rembourrage 8/15, rayon plein.
 - **WordPress** — Même rangée, même nombre de pastilles, même géométrie — mais le retour à la ligne tombe une pastille plus tôt ou plus tard selon la longueur du nom de commune, qui n’est pas la même d’une page à l’autre.
@@ -40,50 +39,8 @@
 | `#/departement/cote-dor` | 375 | 6 | `chip` | 3 → 2 | Beaune |
 | `#/departement/cote-dor` | 375 | 6 | `chip` | 3 → 2 | Chevigny-Saint-Sauveur |
 | `#/departement/cote-dor` | 375 | 6 | `chip` | 2 → 3 | Plombières-lès-Dijon |
-| `#/departement/nievre` | 375 | 6 | `chip` | 3 → 2 | Marzy |
-| `#/departement/nievre` | 375 | 6 | `chip` | 3 → 2 | Coulanges-lès-Nevers |
-| `#/departement/nievre` | 375 | 6 | `chip` | 3 → 2 | Challuy |
-| `#/departement/nievre` | 375 | 6 | `chip` | 1 → 2 | Garchizy |
-| `#/departement/nievre` | 1440 | 6 | `chip` | 4 → 3 | Varennes-Vauzelles |
-| `#/departement/nievre` | 1440 | 6 | `chip` | 4 → 3 | Fourchambault |
-| `#/departement/nievre` | 1440 | 6 | `chip` | 4 → 3 | Marzy |
-| `#/departement/nievre` | 1440 | 6 | `chip` | 4 → 3 | Coulanges-lès-Nevers |
-| `#/departement/nievre` | 1440 | 6 | `chip` | 2 → 3 | Challuy |
-| `#/departement/nievre` | 1440 | 6 | `chip` | 2 → 3 | Garchizy |
-| `#/departement/haute-saone` | 375 | 6 | `chip` | 3 → 2 | Navenne |
-| `#/departement/haute-saone` | 375 | 6 | `chip` | 3 → 2 | Vaivre-et-Montoille |
-| `#/departement/haute-saone` | 375 | 6 | `chip` | 3 → 2 | Pusey |
-| `#/departement/haute-saone` | 375 | 6 | `chip` | 1 → 2 | Frotey-lès-Vesoul |
-| `#/departement/territoire-de-belfort` | 1440 | 6 | `chip` | 6 → 5 | Valdoie |
-| `#/departement/territoire-de-belfort` | 1440 | 6 | `chip` | 6 → 5 | Offemont |
-| `#/departement/territoire-de-belfort` | 1440 | 6 | `chip` | 6 → 5 | Bavilliers |
-| `#/departement/territoire-de-belfort` | 1440 | 6 | `chip` | 6 → 5 | Danjoutin |
-| `#/departement/territoire-de-belfort` | 1440 | 6 | `chip` | 6 → 5 | Cravanche |
-| `#/ville/dijon` | 375 | 9 | `chip` | 3 → 2 | Chevigny-Saint-Sauveur |
-| `#/ville/dijon` | 375 | 9 | `chip` | 3 → 2 | Ahuy |
-| `#/ville/dijon` | 375 | 9 | `chip` | 1 → 2 | Ruffey-lès-Echirey |
 | `#/ville/dijon` | 1440 | 9 | `chip` | 3 → 4 | Chevigny-Saint-Sauveur |
 | `#/ville/dijon` | 1440 | 9 | `chip` | 1 → 2 | Ruffey-lès-Echirey |
-| `#/ville/nevers` | 375 | 9 | `chip` | 3 → 2 | Marzy |
-| `#/ville/nevers` | 375 | 9 | `chip` | 3 → 2 | Coulanges-lès-Nevers |
-| `#/ville/nevers` | 375 | 9 | `chip` | 3 → 2 | Challuy |
-| `#/ville/nevers` | 375 | 9 | `chip` | 2 → 1 | Sermoise-sur-Loire |
-| `#/ville/nevers` | 1440 | 9 | `chip` | 4 → 3 | Varennes-Vauzelles |
-| `#/ville/nevers` | 1440 | 9 | `chip` | 4 → 3 | Fourchambault |
-| `#/ville/nevers` | 1440 | 9 | `chip` | 4 → 3 | Marzy |
-| `#/ville/nevers` | 1440 | 9 | `chip` | 3 → 4 | Challuy |
-| `#/ville/nevers` | 1440 | 9 | `chip` | 3 → 4 | Garchizy |
-| `#/ville/nevers` | 1440 | 9 | `chip` | 3 → 4 | Sermoise-sur-Loire |
-| `#/ville/vesoul` | 375 | 9 | `chip` | 3 → 2 | Navenne |
-| `#/ville/vesoul` | 375 | 9 | `chip` | 3 → 2 | Vaivre-et-Montoille |
-| `#/ville/vesoul` | 375 | 9 | `chip` | 3 → 2 | Pusey |
-| `#/ville/vesoul` | 375 | 9 | `chip` | 1 → 2 | Frotey-lès-Vesoul |
-| `#/ville/belfort` | 1440 | 9 | `chip` | 6 → 5 | Valdoie |
-| `#/ville/belfort` | 1440 | 9 | `chip` | 6 → 5 | Offemont |
-| `#/ville/belfort` | 1440 | 9 | `chip` | 6 → 5 | Bavilliers |
-| `#/ville/belfort` | 1440 | 9 | `chip` | 6 → 5 | Danjoutin |
-| `#/ville/belfort` | 1440 | 9 | `chip` | 6 → 5 | Cravanche |
-| `#/ville/belfort` | 1440 | 9 | `chip` | 1 → 2 | Pérouse |
 | `#/ville/saint-apollinaire` | 375 | 9 | `chip` | 3 → 2 | Ruffey-lès-Echirey |
 | `#/ville/saint-apollinaire` | 375 | 9 | `chip` | 1 → 2 | Norges-la-Ville |
 | `#/ville/saint-apollinaire` | 1440 | 9 | `chip` | 4 → 3 | Ruffey-lès-Echirey |
@@ -100,7 +57,7 @@
 
 ## Rangée de pastilles coupée à deux rangs ou plus
 
-**Verdict :** À instruire — cause non tranchée · **15 occurrence(s)**
+**Verdict :** À instruire — cause non tranchée · **13 occurrence(s)**
 
 - **Maquette** — Rangée de pastilles sur n colonnes.
 - **WordPress** — Rangée rendue sur au moins deux colonnes d’écart.
@@ -109,9 +66,7 @@
 
 | Route | Largeur | Bande | Archétype | Attendu → rendu | Contenu |
 |---|---:|---:|---|---|---|
-| `#/departement/territoire-de-belfort` | 1440 | 6 | `chip` | 6 → 1 | Essert |
 | `#/ville/dijon` | 1440 | 9 | `chip` | 4 → 2 | Sennecey-lès-Dijon |
-| `#/ville/belfort` | 1440 | 9 | `chip` | 6 → 2 | Essert |
 | `#/ville/chenove` | 1440 | 9 | `chip` | 4 → 1 | Perrigny-lès-Dijon |
 | `#/ville/quetigny` | 1440 | 9 | `chip` | 1 → 3 | Bretenière |
 | `#/ville/talant` | 1440 | 9 | `chip` | 4 → 2 | Plombières-lès-Dijon |
@@ -127,7 +82,7 @@
 
 ## Carte d’exemple tarifaire d’une page prestation
 
-**Verdict :** À instruire — cause non tranchée · **8 occurrence(s)**
+**Verdict :** À instruire — cause non tranchée · **6 occurrence(s)**
 
 - **Maquette** — La carte partage sa rangée avec n voisines.
 - **WordPress** — Elle en partage un autre nombre.
@@ -141,13 +96,11 @@
 | `#/service/coproprietes` | 1440 | 10 | `tarif` | 1 → 2 | Exemple · 12 h/mois333 € HT/mois12 h × 27 € + 9 € de gestion |
 | `#/service/meubles` | 1440 | 10 | `tarif` | 1 → 2 | Exemple · 12 h/mois333 € HT/mois12 h × 27 € + 9 € de gestion |
 | `#/service/ponctuel` | 1440 | 10 | `tarif` | 1 → 2 | Exemple · 12 h/mois333 € HT/mois12 h × 27 € + 9 € de gestion |
-| `#/nos-tarifs` | 1440 | 3 | `tarif` | 2 → 1 | Tarif horaire de base27 € HT/hIdentique en régulier et en po |
 | `#/bourgogne-franche-comte` | 1440 | 9 | `tarif` | 3 → 2 | Exemple · bureaux réguliers, 12 h/mois333 € HT/mois12 h × 27 |
-| `#/pourquoi-top-famille-pro` | 375 | 4 | `tarif` | 2 → 1 | 27 €HT/h, transparent |
 
 ## Autres écarts de colonnes
 
-**Verdict :** À instruire — cause non tranchée · **8 occurrence(s)**
+**Verdict :** À instruire — cause non tranchée · **5 occurrence(s)**
 
 - **Maquette** — —
 - **WordPress** — —
@@ -157,13 +110,10 @@
 | Route | Largeur | Bande | Archétype | Attendu → rendu | Contenu |
 |---|---:|---:|---|---|---|
 | `#/` | 1440 | 10 | `carte-image` | 2 → 1 | 21 25 39 58 70 71 89 90 |
-| `#/nos-tarifs` | 1440 | 7 | `carte-titre-texte` | 2 → 1 | Ce qui est inclusMain-d'œuvre de l'intervenant sélectionnéOr |
-| `#/nos-tarifs` | 1440 | 7 | `carte-titre-texte` | 2 → 1 | Fourni par le clientProduits d'entretien (généralement)Matér |
 | `#/nos-tarifs` | 1440 | 8 | `carte-titre` | 3 → 4 | SurfaceSuperficie et nombre de pièces |
 | `#/nos-tarifs` | 1440 | 8 | `carte-titre` | 3 → 4 | FréquenceNombre de passages par semaine |
 | `#/nos-tarifs` | 1440 | 8 | `carte-titre` | 3 → 4 | Type de locauxBureaux, commerce, cabinet, meublé |
 | `#/nos-tarifs` | 1440 | 8 | `carte-titre` | 1 → 4 | Niveau d'exigenceStandard ou renforcé (hygiène) |
-| `#/pourquoi-top-famille-pro` | 375 | 4 | `carte-titre` | 2 → 1 | 24 hdevis transmis |
 
 ## Badge de note Google rendu en plusieurs éléments
 
@@ -254,39 +204,9 @@
 | `#/bourgogne-franche-comte` | 1440 | 8 | `carte-titre` | — | Nevers 58000 |
 | `#/bourgogne-franche-comte` | 1440 | 8 | `carte-titre` | — | Vesoul 70000 |
 
-## Élément de liste rendu en micro-carte
-
-**Verdict :** À instruire — cause non tranchée · **18 occurrence(s)**
-
-- **Maquette** — Les listes d’erreurs fréquentes et de points de vigilance des articles.
-- **WordPress** — Le thème les rend en micro-cartes, comptées une à une.
-- **Correction** — Aucune à ce stade. Occurrences listées nommément.
-- **Non-régression** — —
-
-| Route | Largeur | Bande | Archétype | Attendu → rendu | Contenu |
-|---|---:|---:|---|---|---|
-| `#/article/frequence-bureaux` | 375 | 6 | `micro-carte` | — | Sous-estimer la fréquence nécessaire pour des sanitaires trè |
-| `#/article/frequence-bureaux` | 375 | 6 | `micro-carte` | — | Demander un passage quotidien par habitude, sans effectif ré |
-| `#/article/frequence-bureaux` | 375 | 6 | `micro-carte` | — | Ne jamais réévaluer la fréquence après un changement d'effec |
-| `#/article/frequence-bureaux` | 1440 | 6 | `micro-carte` | — | Sous-estimer la fréquence nécessaire pour des sanitaires trè |
-| `#/article/frequence-bureaux` | 1440 | 6 | `micro-carte` | — | Demander un passage quotidien par habitude, sans effectif ré |
-| `#/article/frequence-bureaux` | 1440 | 6 | `micro-carte` | — | Ne jamais réévaluer la fréquence après un changement d'effec |
-| `#/article/cout-nettoyage-bureaux` | 375 | 6 | `micro-carte` | — | Comparer des prix au m² entre prestataires sans vérifier le  |
-| `#/article/cout-nettoyage-bureaux` | 375 | 6 | `micro-carte` | — | Choisir uniquement sur le prix affiché, sans vérifier ce qui |
-| `#/article/cout-nettoyage-bureaux` | 375 | 6 | `micro-carte` | — | Ignorer les frais de mise en place et découvrir un premier m |
-| `#/article/cout-nettoyage-bureaux` | 1440 | 6 | `micro-carte` | — | Comparer des prix au m² entre prestataires sans vérifier le  |
-| `#/article/cout-nettoyage-bureaux` | 1440 | 6 | `micro-carte` | — | Choisir uniquement sur le prix affiché, sans vérifier ce qui |
-| `#/article/cout-nettoyage-bureaux` | 1440 | 6 | `micro-carte` | — | Ignorer les frais de mise en place et découvrir un premier m |
-| `#/article/cahier-des-charges-nettoyage` | 375 | 6 | `micro-carte` | — | Rester trop vague (« nettoyer les bureaux ») sans détailler  |
-| `#/article/cahier-des-charges-nettoyage` | 375 | 6 | `micro-carte` | — | Oublier de mentionner les zones sensibles à exclure (salle s |
-| `#/article/cahier-des-charges-nettoyage` | 375 | 6 | `micro-carte` | — | Ne jamais mettre à jour le document après un changement d'or |
-| `#/article/cahier-des-charges-nettoyage` | 1440 | 6 | `micro-carte` | — | Rester trop vague (« nettoyer les bureaux ») sans détailler  |
-| `#/article/cahier-des-charges-nettoyage` | 1440 | 6 | `micro-carte` | — | Oublier de mentionner les zones sensibles à exclure (salle s |
-| `#/article/cahier-des-charges-nettoyage` | 1440 | 6 | `micro-carte` | — | Ne jamais mettre à jour le document après un changement d'or |
-
 ## Bloc de contenu d’une page statique ou d’un article
 
-**Verdict :** À instruire — cause non tranchée · **28 occurrence(s)**
+**Verdict :** À instruire — cause non tranchée · **14 occurrence(s)**
 
 - **Maquette** — —
 - **WordPress** — —
@@ -307,20 +227,6 @@
 | `#/` | 1440 | 5 | `carte-sombre` | — | Copropriétés & parties communes Halls, cages d'escalier, loc |
 | `#/` | 1440 | 5 | `carte-sombre` | — | Locations meublées & hébergements Remise en état entre deux  |
 | `#/` | 1440 | 5 | `carte-sombre` | — | Ponctuel & remise en état Après travaux, grand nettoyage, fi |
-| `#/nettoyage-professionnel` | 375 | 6 | `carte-titre-texte` | — | Prestataire de nettoyage ou recrutement direct ? C'est la pr |
-| `#/nettoyage-professionnel` | 375 | 9 | `carte-titre-texte` | — | Comment choisir la bonne fréquence La fréquence dépend moins |
-| `#/nettoyage-professionnel` | 375 | 15 | `carte-titre-texte` | — | Trois situations concrètes Exemples représentatifs des deman |
-| `#/nettoyage-professionnel` | 1440 | 6 | `carte-titre-texte` | — | Prestataire de nettoyage ou recrutement direct ? C'est la pr |
-| `#/nettoyage-professionnel` | 1440 | 8 | `tarif` | — | Régulier ou ponctuel, tâches, fréquences et horaires Entreti |
-| `#/nettoyage-professionnel` | 1440 | 9 | `carte-titre-texte` | — | Comment choisir la bonne fréquence La fréquence dépend moins |
-| `#/nettoyage-professionnel` | 1440 | 12 | `carte-titre-texte` | — | Comment se construit un cahier des charges 01 Inventaire des |
-| `#/nettoyage-professionnel` | 1440 | 15 | `carte-titre-texte` | — | Trois situations concrètes Exemples représentatifs des deman |
-| `#/notre-fonctionnement` | 375 | 4 | `carte-titre-texte` | — | Les informations dont nous avons besoin Si vous découvrez le |
-| `#/notre-fonctionnement` | 375 | 4 | `carte-titre-texte` | — | Transmission des consignes et premier passage Une fois le de |
-| `#/notre-fonctionnement` | 375 | 4 | `carte-titre-texte` | — | Modifier, suspendre ou arrêter Modifier la prestation Un aju |
-| `#/notre-fonctionnement` | 1440 | 4 | `carte-titre-texte` | — | Les informations dont nous avons besoin Si vous découvrez le |
-| `#/notre-fonctionnement` | 1440 | 4 | `carte-titre-texte` | — | Transmission des consignes et premier passage Une fois le de |
-| `#/notre-fonctionnement` | 1440 | 4 | `carte-titre-texte` | — | Modifier, suspendre ou arrêter Modifier la prestation Un aju |
 | `#/gestion-des-cookies` | 375 | 3 | `carte-titre-texte` | — | Aucun cookie de mesure d'audience ni de traçage publicitaire |
 | `#/gestion-des-cookies` | 1440 | 3 | `carte-titre-texte` | — | Aucun cookie de mesure d'audience ni de traçage publicitaire |
 

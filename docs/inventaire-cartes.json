@@ -234,7 +234,7 @@
  "#/nettoyage-professionnel": {
   "375": {
    "cartesRef": 51,
-   "cartesWp": 51,
+   "cartesWp": 48,
    "anomalies": [
     {
      "genre": "absente",
@@ -295,30 +295,12 @@
      "type": "carte-titre",
      "bande": 17,
      "texte": "Combien coûte le nettoyage de bureaux ?→"
-    },
-    {
-     "genre": "surplus",
-     "type": "carte-titre-texte",
-     "bande": 6,
-     "texte": "Prestataire de nettoyage ou recrutement direct ? C'est la première que"
-    },
-    {
-     "genre": "surplus",
-     "type": "carte-titre-texte",
-     "bande": 9,
-     "texte": "Comment choisir la bonne fréquence La fréquence dépend moins de la sur"
-    },
-    {
-     "genre": "surplus",
-     "type": "carte-titre-texte",
-     "bande": 15,
-     "texte": "Trois situations concrètes Exemples représentatifs des demandes que no"
     }
    ]
   },
   "1440": {
    "cartesRef": 51,
-   "cartesWp": 54,
+   "cartesWp": 49,
    "anomalies": [
     {
      "genre": "colonnes",
@@ -381,36 +363,6 @@
      "type": "temoignage",
      "bande": 14,
      "texte": "★★★★★« Nous avons comparé une embauche et un prestataire. Ce qui a tra"
-    },
-    {
-     "genre": "surplus",
-     "type": "carte-titre-texte",
-     "bande": 6,
-     "texte": "Prestataire de nettoyage ou recrutement direct ? C'est la première que"
-    },
-    {
-     "genre": "surplus",
-     "type": "tarif",
-     "bande": 8,
-     "texte": "Régulier ou ponctuel, tâches, fréquences et horaires Entretien régulie"
-    },
-    {
-     "genre": "surplus",
-     "type": "carte-titre-texte",
-     "bande": 9,
-     "texte": "Comment choisir la bonne fréquence La fréquence dépend moins de la sur"
-    },
-    {
-     "genre": "surplus",
-     "type": "carte-titre-texte",
-     "bande": 12,
-     "texte": "Comment se construit un cahier des charges 01 Inventaire des espaces C"
-    },
-    {
-     "genre": "surplus",
-     "type": "carte-titre-texte",
-     "bande": 15,
-     "texte": "Trois situations concrètes Exemples représentatifs des demandes que no"
     }
    ]
   }
@@ -591,14 +543,8 @@
  "#/nos-tarifs": {
   "375": {
    "cartesRef": 22,
-   "cartesWp": 21,
+   "cartesWp": 22,
    "anomalies": [
-    {
-     "genre": "absente",
-     "type": "carte-titre-texte",
-     "bande": 3,
-     "texte": "Devis sous 24 hGratuit, personnalisé et sans engagement. Aucun simulat"
-    },
     {
      "genre": "absente",
      "type": "tarif",
@@ -615,43 +561,13 @@
   },
   "1440": {
    "cartesRef": 22,
-   "cartesWp": 21,
+   "cartesWp": 22,
    "anomalies": [
-    {
-     "genre": "colonnes",
-     "type": "tarif",
-     "bande": 3,
-     "texte": "Tarif horaire de base27 € HT/hIdentique en régulier et en po",
-     "attendu": 2,
-     "recu": 1
-    },
-    {
-     "genre": "absente",
-     "type": "carte-titre-texte",
-     "bande": 3,
-     "texte": "Devis sous 24 hGratuit, personnalisé et sans engagement. Aucun simulat"
-    },
     {
      "genre": "absente",
      "type": "tarif",
      "bande": 6,
      "texte": "Tarif horaireRégulier ou ponctuel27 € HT/h Frais de gestionPlanning, a"
-    },
-    {
-     "genre": "colonnes",
-     "type": "carte-titre-texte",
-     "bande": 7,
-     "texte": "Ce qui est inclusMain-d'œuvre de l'intervenant sélectionnéOr",
-     "attendu": 2,
-     "recu": 1
-    },
-    {
-     "genre": "colonnes",
-     "type": "carte-titre-texte",
-     "bande": 7,
-     "texte": "Fourni par le clientProduits d'entretien (généralement)Matér",
-     "attendu": 2,
-     "recu": 1
     },
     {
      "genre": "colonnes",
@@ -1302,13 +1218,6 @@
    "cartesWp": 32,
    "anomalies": [
     {
-     "genre": "type",
-     "type": "micro-carte",
-     "recu": "chip",
-     "bande": 5,
-     "texte": "Plateaux de bureaux et open-spaces"
-    },
-    {
      "genre": "colonnes",
      "type": "chip",
      "bande": 6,
@@ -1354,20 +1263,6 @@
    "anomalies": [
     {
      "genre": "type",
-     "type": "micro-carte",
-     "recu": "chip",
-     "bande": 5,
-     "texte": "Bureaux tertiaires et sièges régionaux"
-    },
-    {
-     "genre": "type",
-     "type": "micro-carte",
-     "recu": "chip",
-     "bande": 5,
-     "texte": "Commerces du centre historique"
-    },
-    {
-     "genre": "type",
      "type": "carte-titre",
      "recu": "micro-carte",
      "bande": 11,
@@ -1386,27 +1281,6 @@
    "cartesRef": 34,
    "cartesWp": 34,
    "anomalies": [
-    {
-     "genre": "type",
-     "type": "micro-carte",
-     "recu": "chip",
-     "bande": 5,
-     "texte": "Bureaux de PME et locaux administratifs"
-    },
-    {
-     "genre": "type",
-     "type": "micro-carte",
-     "recu": "chip",
-     "bande": 5,
-     "texte": "Locations meublées et gîtes urbains"
-    },
-    {
-     "genre": "type",
-     "type": "micro-carte",
-     "recu": "chip",
-     "bande": 5,
-     "texte": "Locaux associatifs et espaces de réunion"
-    },
     {
      "genre": "type",
      "type": "carte-titre",
@@ -1429,66 +1303,6 @@
    "anomalies": [
     {
      "genre": "type",
-     "type": "micro-carte",
-     "recu": "chip",
-     "bande": 5,
-     "texte": "Commerces de centre-ville"
-    },
-    {
-     "genre": "type",
-     "type": "micro-carte",
-     "recu": "chip",
-     "bande": 5,
-     "texte": "Cabinets et professions libérales"
-    },
-    {
-     "genre": "type",
-     "type": "micro-carte",
-     "recu": "chip",
-     "bande": 5,
-     "texte": "Locaux associatifs et de formation"
-    },
-    {
-     "genre": "type",
-     "type": "micro-carte",
-     "recu": "chip",
-     "bande": 5,
-     "texte": "Bureaux rattachés aux zones d'activité"
-    },
-    {
-     "genre": "colonnes",
-     "type": "chip",
-     "bande": 6,
-     "texte": "Marzy",
-     "attendu": 3,
-     "recu": 2
-    },
-    {
-     "genre": "colonnes",
-     "type": "chip",
-     "bande": 6,
-     "texte": "Coulanges-lès-Nevers",
-     "attendu": 3,
-     "recu": 2
-    },
-    {
-     "genre": "colonnes",
-     "type": "chip",
-     "bande": 6,
-     "texte": "Challuy",
-     "attendu": 3,
-     "recu": 2
-    },
-    {
-     "genre": "colonnes",
-     "type": "chip",
-     "bande": 6,
-     "texte": "Garchizy",
-     "attendu": 1,
-     "recu": 2
-    },
-    {
-     "genre": "type",
      "type": "carte-titre",
      "recu": "micro-carte",
      "bande": 11,
@@ -1499,56 +1313,7 @@
   "1440": {
    "cartesRef": 31,
    "cartesWp": 31,
-   "anomalies": [
-    {
-     "genre": "colonnes",
-     "type": "chip",
-     "bande": 6,
-     "texte": "Varennes-Vauzelles",
-     "attendu": 4,
-     "recu": 3
-    },
-    {
-     "genre": "colonnes",
-     "type": "chip",
-     "bande": 6,
-     "texte": "Fourchambault",
-     "attendu": 4,
-     "recu": 3
-    },
-    {
-     "genre": "colonnes",
-     "type": "chip",
-     "bande": 6,
-     "texte": "Marzy",
-     "attendu": 4,
-     "recu": 3
-    },
-    {
-     "genre": "colonnes",
-     "type": "chip",
-     "bande": 6,
-     "texte": "Coulanges-lès-Nevers",
-     "attendu": 4,
-     "recu": 3
-    },
-    {
-     "genre": "colonnes",
-     "type": "chip",
-     "bande": 6,
-     "texte": "Challuy",
-     "attendu": 2,
-     "recu": 3
-    },
-    {
-     "genre": "colonnes",
-     "type": "chip",
-     "bande": 6,
-     "texte": "Garchizy",
-     "attendu": 2,
-     "recu": 3
-    }
-   ]
+   "anomalies": []
   }
  },
  "#/departement/haute-saone": {
@@ -1558,66 +1323,6 @@
    "anomalies": [
     {
      "genre": "type",
-     "type": "micro-carte",
-     "recu": "chip",
-     "bande": 5,
-     "texte": "Commerces de centre-ville"
-    },
-    {
-     "genre": "type",
-     "type": "micro-carte",
-     "recu": "chip",
-     "bande": 5,
-     "texte": "Cabinets et professions libérales"
-    },
-    {
-     "genre": "type",
-     "type": "micro-carte",
-     "recu": "chip",
-     "bande": 5,
-     "texte": "Parties communes de résidences"
-    },
-    {
-     "genre": "type",
-     "type": "micro-carte",
-     "recu": "chip",
-     "bande": 5,
-     "texte": "Locaux associatifs et de formation"
-    },
-    {
-     "genre": "colonnes",
-     "type": "chip",
-     "bande": 6,
-     "texte": "Navenne",
-     "attendu": 3,
-     "recu": 2
-    },
-    {
-     "genre": "colonnes",
-     "type": "chip",
-     "bande": 6,
-     "texte": "Vaivre-et-Montoille",
-     "attendu": 3,
-     "recu": 2
-    },
-    {
-     "genre": "colonnes",
-     "type": "chip",
-     "bande": 6,
-     "texte": "Pusey",
-     "attendu": 3,
-     "recu": 2
-    },
-    {
-     "genre": "colonnes",
-     "type": "chip",
-     "bande": 6,
-     "texte": "Frotey-lès-Vesoul",
-     "attendu": 1,
-     "recu": 2
-    },
-    {
-     "genre": "type",
      "type": "carte-titre",
      "recu": "micro-carte",
      "bande": 11,
@@ -1628,29 +1333,7 @@
   "1440": {
    "cartesRef": 31,
    "cartesWp": 31,
-   "anomalies": [
-    {
-     "genre": "type",
-     "type": "micro-carte",
-     "recu": "chip",
-     "bande": 5,
-     "texte": "Cabinets et professions libérales"
-    },
-    {
-     "genre": "type",
-     "type": "micro-carte",
-     "recu": "chip",
-     "bande": 5,
-     "texte": "Parties communes de résidences"
-    },
-    {
-     "genre": "type",
-     "type": "micro-carte",
-     "recu": "chip",
-     "bande": 5,
-     "texte": "Locaux associatifs et de formation"
-    }
-   ]
+   "anomalies": []
   }
  },
  "#/departement/saone-et-loire": {
@@ -1658,13 +1341,6 @@
    "cartesRef": 33,
    "cartesWp": 34,
    "anomalies": [
-    {
-     "genre": "type",
-     "type": "micro-carte",
-     "recu": "chip",
-     "bande": 5,
-     "texte": "Bureaux de PME et bureaux d'études"
-    },
     {
      "genre": "type",
      "type": "carte-titre",
@@ -1700,41 +1376,6 @@
    "anomalies": [
     {
      "genre": "type",
-     "type": "micro-carte",
-     "recu": "chip",
-     "bande": 5,
-     "texte": "Bureaux de PME et sièges locaux"
-    },
-    {
-     "genre": "type",
-     "type": "micro-carte",
-     "recu": "chip",
-     "bande": 5,
-     "texte": "Commerces de centre-ville"
-    },
-    {
-     "genre": "type",
-     "type": "micro-carte",
-     "recu": "chip",
-     "bande": 5,
-     "texte": "Cabinets et professions libérales"
-    },
-    {
-     "genre": "type",
-     "type": "micro-carte",
-     "recu": "chip",
-     "bande": 5,
-     "texte": "Espaces d'accueil et de dégustation"
-    },
-    {
-     "genre": "type",
-     "type": "micro-carte",
-     "recu": "chip",
-     "bande": 5,
-     "texte": "Parties communes de résidences"
-    },
-    {
-     "genre": "type",
      "type": "carte-titre",
      "recu": "micro-carte",
      "bande": 11,
@@ -1755,34 +1396,6 @@
    "anomalies": [
     {
      "genre": "type",
-     "type": "micro-carte",
-     "recu": "chip",
-     "bande": 5,
-     "texte": "Bureaux d'études et d'ingénierie"
-    },
-    {
-     "genre": "type",
-     "type": "micro-carte",
-     "recu": "chip",
-     "bande": 5,
-     "texte": "Commerces de centre-ville"
-    },
-    {
-     "genre": "type",
-     "type": "micro-carte",
-     "recu": "chip",
-     "bande": 5,
-     "texte": "Cabinets et professions libérales"
-    },
-    {
-     "genre": "type",
-     "type": "micro-carte",
-     "recu": "chip",
-     "bande": 5,
-     "texte": "Parties communes de résidences"
-    },
-    {
-     "genre": "type",
      "type": "carte-titre",
      "recu": "micro-carte",
      "bande": 11,
@@ -1793,77 +1406,7 @@
   "1440": {
    "cartesRef": 31,
    "cartesWp": 31,
-   "anomalies": [
-    {
-     "genre": "type",
-     "type": "micro-carte",
-     "recu": "chip",
-     "bande": 5,
-     "texte": "Commerces de centre-ville"
-    },
-    {
-     "genre": "type",
-     "type": "micro-carte",
-     "recu": "chip",
-     "bande": 5,
-     "texte": "Cabinets et professions libérales"
-    },
-    {
-     "genre": "type",
-     "type": "micro-carte",
-     "recu": "chip",
-     "bande": 5,
-     "texte": "Parties communes de résidences"
-    },
-    {
-     "genre": "colonnes",
-     "type": "chip",
-     "bande": 6,
-     "texte": "Valdoie",
-     "attendu": 6,
-     "recu": 5
-    },
-    {
-     "genre": "colonnes",
-     "type": "chip",
-     "bande": 6,
-     "texte": "Offemont",
-     "attendu": 6,
-     "recu": 5
-    },
-    {
-     "genre": "colonnes",
-     "type": "chip",
-     "bande": 6,
-     "texte": "Bavilliers",
-     "attendu": 6,
-     "recu": 5
-    },
-    {
-     "genre": "colonnes",
-     "type": "chip",
-     "bande": 6,
-     "texte": "Danjoutin",
-     "attendu": 6,
-     "recu": 5
-    },
-    {
-     "genre": "colonnes",
-     "type": "chip",
-     "bande": 6,
-     "texte": "Cravanche",
-     "attendu": 6,
-     "recu": 5
-    },
-    {
-     "genre": "colonnes",
-     "type": "chip",
-     "bande": 6,
-     "texte": "Essert",
-     "attendu": 6,
-     "recu": 1
-    }
-   ]
+   "anomalies": []
   }
  },
  "#/ville/dijon": {
@@ -1871,30 +1414,6 @@
    "cartesRef": 50,
    "cartesWp": 49,
    "anomalies": [
-    {
-     "genre": "colonnes",
-     "type": "chip",
-     "bande": 9,
-     "texte": "Chevigny-Saint-Sauveur",
-     "attendu": 3,
-     "recu": 2
-    },
-    {
-     "genre": "colonnes",
-     "type": "chip",
-     "bande": 9,
-     "texte": "Ahuy",
-     "attendu": 3,
-     "recu": 2
-    },
-    {
-     "genre": "colonnes",
-     "type": "chip",
-     "bande": 9,
-     "texte": "Ruffey-lès-Echirey",
-     "attendu": 1,
-     "recu": 2
-    },
     {
      "genre": "absente",
      "type": "carte-titre-texte",
@@ -1953,27 +1472,6 @@
    "cartesWp": 51,
    "anomalies": [
     {
-     "genre": "type",
-     "type": "micro-carte",
-     "recu": "chip",
-     "bande": 5,
-     "texte": "Bureaux tertiaires et sièges régionaux"
-    },
-    {
-     "genre": "type",
-     "type": "micro-carte",
-     "recu": "chip",
-     "bande": 5,
-     "texte": "Commerces du centre historique"
-    },
-    {
-     "genre": "type",
-     "type": "micro-carte",
-     "recu": "chip",
-     "bande": 5,
-     "texte": "Syndics et copropriétés de l'agglomération"
-    },
-    {
      "genre": "absente",
      "type": "carte-titre-texte",
      "bande": 12,
@@ -2006,34 +1504,6 @@
    "cartesRef": 51,
    "cartesWp": 50,
    "anomalies": [
-    {
-     "genre": "type",
-     "type": "micro-carte",
-     "recu": "chip",
-     "bande": 5,
-     "texte": "Bureaux de PME et locaux administratifs"
-    },
-    {
-     "genre": "type",
-     "type": "micro-carte",
-     "recu": "chip",
-     "bande": 5,
-     "texte": "Syndics et petites copropriétés"
-    },
-    {
-     "genre": "type",
-     "type": "micro-carte",
-     "recu": "chip",
-     "bande": 5,
-     "texte": "Locations meublées et gîtes urbains"
-    },
-    {
-     "genre": "type",
-     "type": "micro-carte",
-     "recu": "chip",
-     "bande": 8,
-     "texte": "Bureaux : 1 à 3 passages par semaine"
-    },
     {
      "genre": "absente",
      "type": "carte-titre-texte",
@@ -2068,34 +1538,6 @@
    "cartesWp": 49,
    "anomalies": [
     {
-     "genre": "type",
-     "type": "micro-carte",
-     "recu": "chip",
-     "bande": 5,
-     "texte": "Bureaux de PME et locaux administratifs"
-    },
-    {
-     "genre": "type",
-     "type": "micro-carte",
-     "recu": "chip",
-     "bande": 5,
-     "texte": "Commerces indépendants du centre-ville"
-    },
-    {
-     "genre": "type",
-     "type": "micro-carte",
-     "recu": "chip",
-     "bande": 5,
-     "texte": "Cabinets paramédicaux courants"
-    },
-    {
-     "genre": "type",
-     "type": "micro-carte",
-     "recu": "chip",
-     "bande": 5,
-     "texte": "Syndics et petites copropriétés"
-    },
-    {
      "genre": "absente",
      "type": "carte-titre-texte",
      "bande": 12,
@@ -2129,59 +1571,6 @@
    "cartesWp": 50,
    "anomalies": [
     {
-     "genre": "type",
-     "type": "micro-carte",
-     "recu": "chip",
-     "bande": 5,
-     "texte": "Commerces indépendants du centre-ville"
-    },
-    {
-     "genre": "type",
-     "type": "micro-carte",
-     "recu": "chip",
-     "bande": 5,
-     "texte": "Cabinets et professions libérales"
-    },
-    {
-     "genre": "type",
-     "type": "micro-carte",
-     "recu": "chip",
-     "bande": 5,
-     "texte": "Cabinet : 1 à 2 passages par semaine"
-    },
-    {
-     "genre": "colonnes",
-     "type": "chip",
-     "bande": 9,
-     "texte": "Marzy",
-     "attendu": 3,
-     "recu": 2
-    },
-    {
-     "genre": "colonnes",
-     "type": "chip",
-     "bande": 9,
-     "texte": "Coulanges-lès-Nevers",
-     "attendu": 3,
-     "recu": 2
-    },
-    {
-     "genre": "colonnes",
-     "type": "chip",
-     "bande": 9,
-     "texte": "Challuy",
-     "attendu": 3,
-     "recu": 2
-    },
-    {
-     "genre": "colonnes",
-     "type": "chip",
-     "bande": 9,
-     "texte": "Sermoise-sur-Loire",
-     "attendu": 2,
-     "recu": 1
-    },
-    {
      "genre": "absente",
      "type": "carte-titre-texte",
      "bande": 12,
@@ -2201,54 +1590,6 @@
    "cartesWp": 49,
    "anomalies": [
     {
-     "genre": "colonnes",
-     "type": "chip",
-     "bande": 9,
-     "texte": "Varennes-Vauzelles",
-     "attendu": 4,
-     "recu": 3
-    },
-    {
-     "genre": "colonnes",
-     "type": "chip",
-     "bande": 9,
-     "texte": "Fourchambault",
-     "attendu": 4,
-     "recu": 3
-    },
-    {
-     "genre": "colonnes",
-     "type": "chip",
-     "bande": 9,
-     "texte": "Marzy",
-     "attendu": 4,
-     "recu": 3
-    },
-    {
-     "genre": "colonnes",
-     "type": "chip",
-     "bande": 9,
-     "texte": "Challuy",
-     "attendu": 3,
-     "recu": 4
-    },
-    {
-     "genre": "colonnes",
-     "type": "chip",
-     "bande": 9,
-     "texte": "Garchizy",
-     "attendu": 3,
-     "recu": 4
-    },
-    {
-     "genre": "colonnes",
-     "type": "chip",
-     "bande": 9,
-     "texte": "Sermoise-sur-Loire",
-     "attendu": 3,
-     "recu": 4
-    },
-    {
      "genre": "absente",
      "type": "carte-titre-texte",
      "bande": 12,
@@ -2262,66 +1603,6 @@
    "cartesRef": 50,
    "cartesWp": 49,
    "anomalies": [
-    {
-     "genre": "type",
-     "type": "micro-carte",
-     "recu": "chip",
-     "bande": 5,
-     "texte": "Commerces indépendants du centre-ville"
-    },
-    {
-     "genre": "type",
-     "type": "micro-carte",
-     "recu": "chip",
-     "bande": 5,
-     "texte": "Cabinets et professions libérales"
-    },
-    {
-     "genre": "type",
-     "type": "micro-carte",
-     "recu": "chip",
-     "bande": 5,
-     "texte": "Parties communes de résidences"
-    },
-    {
-     "genre": "type",
-     "type": "micro-carte",
-     "recu": "chip",
-     "bande": 5,
-     "texte": "Locaux associatifs et de formation"
-    },
-    {
-     "genre": "colonnes",
-     "type": "chip",
-     "bande": 9,
-     "texte": "Navenne",
-     "attendu": 3,
-     "recu": 2
-    },
-    {
-     "genre": "colonnes",
-     "type": "chip",
-     "bande": 9,
-     "texte": "Vaivre-et-Montoille",
-     "attendu": 3,
-     "recu": 2
-    },
-    {
-     "genre": "colonnes",
-     "type": "chip",
-     "bande": 9,
-     "texte": "Pusey",
-     "attendu": 3,
-     "recu": 2
-    },
-    {
-     "genre": "colonnes",
-     "type": "chip",
-     "bande": 9,
-     "texte": "Frotey-lès-Vesoul",
-     "attendu": 1,
-     "recu": 2
-    },
     {
      "genre": "absente",
      "type": "carte-titre-texte",
@@ -2342,27 +1623,6 @@
    "cartesWp": 48,
    "anomalies": [
     {
-     "genre": "type",
-     "type": "micro-carte",
-     "recu": "chip",
-     "bande": 5,
-     "texte": "Cabinets et professions libérales"
-    },
-    {
-     "genre": "type",
-     "type": "micro-carte",
-     "recu": "chip",
-     "bande": 5,
-     "texte": "Parties communes de résidences"
-    },
-    {
-     "genre": "type",
-     "type": "micro-carte",
-     "recu": "chip",
-     "bande": 5,
-     "texte": "Locaux associatifs et de formation"
-    },
-    {
      "genre": "absente",
      "type": "carte-titre-texte",
      "bande": 12,
@@ -2376,27 +1636,6 @@
    "cartesRef": 51,
    "cartesWp": 50,
    "anomalies": [
-    {
-     "genre": "type",
-     "type": "micro-carte",
-     "recu": "chip",
-     "bande": 5,
-     "texte": "Sièges d'entreprise et bureaux de services"
-    },
-    {
-     "genre": "type",
-     "type": "micro-carte",
-     "recu": "chip",
-     "bande": 5,
-     "texte": "Commerces indépendants du centre-ville"
-    },
-    {
-     "genre": "type",
-     "type": "micro-carte",
-     "recu": "chip",
-     "bande": 5,
-     "texte": "Syndics et copropriétés urbaines"
-    },
     {
      "genre": "absente",
      "type": "carte-titre-texte",
@@ -2438,27 +1677,6 @@
    "cartesWp": 49,
    "anomalies": [
     {
-     "genre": "type",
-     "type": "micro-carte",
-     "recu": "chip",
-     "bande": 5,
-     "texte": "Bureaux de PME et sièges locaux"
-    },
-    {
-     "genre": "type",
-     "type": "micro-carte",
-     "recu": "chip",
-     "bande": 5,
-     "texte": "Commerces indépendants du centre-ville"
-    },
-    {
-     "genre": "type",
-     "type": "micro-carte",
-     "recu": "chip",
-     "bande": 5,
-     "texte": "Bureaux rattachés aux zones logistiques"
-    },
-    {
      "genre": "absente",
      "type": "carte-titre-texte",
      "bande": 12,
@@ -2491,27 +1709,6 @@
    "cartesRef": 51,
    "cartesWp": 50,
    "anomalies": [
-    {
-     "genre": "type",
-     "type": "micro-carte",
-     "recu": "chip",
-     "bande": 5,
-     "texte": "Bureaux de PME et sièges locaux"
-    },
-    {
-     "genre": "type",
-     "type": "micro-carte",
-     "recu": "chip",
-     "bande": 5,
-     "texte": "Cabinets et professions libérales"
-    },
-    {
-     "genre": "type",
-     "type": "micro-carte",
-     "recu": "chip",
-     "bande": 8,
-     "texte": "Cabinet : 1 à 2 passages par semaine"
-    },
     {
      "genre": "absente",
      "type": "carte-titre-texte",
@@ -2546,48 +1743,6 @@
    "cartesWp": 50,
    "anomalies": [
     {
-     "genre": "type",
-     "type": "micro-carte",
-     "recu": "chip",
-     "bande": 5,
-     "texte": "Bureaux d'études et d'ingénierie"
-    },
-    {
-     "genre": "type",
-     "type": "micro-carte",
-     "recu": "chip",
-     "bande": 5,
-     "texte": "PME de services et sièges locaux"
-    },
-    {
-     "genre": "type",
-     "type": "micro-carte",
-     "recu": "chip",
-     "bande": 5,
-     "texte": "Commerces indépendants du centre-ville"
-    },
-    {
-     "genre": "type",
-     "type": "micro-carte",
-     "recu": "chip",
-     "bande": 5,
-     "texte": "Cabinets et professions libérales"
-    },
-    {
-     "genre": "type",
-     "type": "micro-carte",
-     "recu": "chip",
-     "bande": 5,
-     "texte": "Parties communes de résidences"
-    },
-    {
-     "genre": "type",
-     "type": "micro-carte",
-     "recu": "chip",
-     "bande": 8,
-     "texte": "Cabinet : 1 à 2 passages par semaine"
-    },
-    {
      "genre": "absente",
      "type": "carte-titre-texte",
      "bande": 12,
@@ -2607,62 +1762,6 @@
    "cartesWp": 49,
    "anomalies": [
     {
-     "genre": "colonnes",
-     "type": "chip",
-     "bande": 9,
-     "texte": "Valdoie",
-     "attendu": 6,
-     "recu": 5
-    },
-    {
-     "genre": "colonnes",
-     "type": "chip",
-     "bande": 9,
-     "texte": "Offemont",
-     "attendu": 6,
-     "recu": 5
-    },
-    {
-     "genre": "colonnes",
-     "type": "chip",
-     "bande": 9,
-     "texte": "Bavilliers",
-     "attendu": 6,
-     "recu": 5
-    },
-    {
-     "genre": "colonnes",
-     "type": "chip",
-     "bande": 9,
-     "texte": "Danjoutin",
-     "attendu": 6,
-     "recu": 5
-    },
-    {
-     "genre": "colonnes",
-     "type": "chip",
-     "bande": 9,
-     "texte": "Cravanche",
-     "attendu": 6,
-     "recu": 5
-    },
-    {
-     "genre": "colonnes",
-     "type": "chip",
-     "bande": 9,
-     "texte": "Essert",
-     "attendu": 6,
-     "recu": 2
-    },
-    {
-     "genre": "colonnes",
-     "type": "chip",
-     "bande": 9,
-     "texte": "Pérouse",
-     "attendu": 1,
-     "recu": 2
-    },
-    {
      "genre": "absente",
      "type": "carte-titre-texte",
      "bande": 12,
@@ -2676,41 +1775,6 @@
    "cartesRef": 47,
    "cartesWp": 46,
    "anomalies": [
-    {
-     "genre": "type",
-     "type": "micro-carte",
-     "recu": "chip",
-     "bande": 5,
-     "texte": "Commerces et services de proximité"
-    },
-    {
-     "genre": "type",
-     "type": "micro-carte",
-     "recu": "chip",
-     "bande": 5,
-     "texte": "Cabinets et professions libérales"
-    },
-    {
-     "genre": "type",
-     "type": "micro-carte",
-     "recu": "chip",
-     "bande": 5,
-     "texte": "Copropriétés et résidences"
-    },
-    {
-     "genre": "type",
-     "type": "micro-carte",
-     "recu": "chip",
-     "bande": 5,
-     "texte": "Associations et locaux de formation"
-    },
-    {
-     "genre": "type",
-     "type": "micro-carte",
-     "recu": "chip",
-     "bande": 8,
-     "texte": "Prestations courtes possibles (1 h ou 2 h)"
-    },
     {
      "genre": "colonnes",
      "type": "chip",
@@ -2800,41 +1864,6 @@
    "cartesWp": 41,
    "anomalies": [
     {
-     "genre": "type",
-     "type": "micro-carte",
-     "recu": "chip",
-     "bande": 5,
-     "texte": "Commerces et services de proximité"
-    },
-    {
-     "genre": "type",
-     "type": "micro-carte",
-     "recu": "chip",
-     "bande": 5,
-     "texte": "Bureaux de PME et locaux administratifs"
-    },
-    {
-     "genre": "type",
-     "type": "micro-carte",
-     "recu": "chip",
-     "bande": 5,
-     "texte": "Cabinets et professions libérales"
-    },
-    {
-     "genre": "type",
-     "type": "micro-carte",
-     "recu": "chip",
-     "bande": 5,
-     "texte": "Locaux associatifs et de formation"
-    },
-    {
-     "genre": "type",
-     "type": "micro-carte",
-     "recu": "chip",
-     "bande": 8,
-     "texte": "Bureaux : 1 à 3 passages par semaine"
-    },
-    {
      "genre": "absente",
      "type": "carte-titre-texte",
      "bande": 12,
@@ -2875,27 +1904,6 @@
    "cartesRef": 38,
    "cartesWp": 37,
    "anomalies": [
-    {
-     "genre": "type",
-     "type": "micro-carte",
-     "recu": "chip",
-     "bande": 5,
-     "texte": "Bureaux de PME et locaux administratifs"
-    },
-    {
-     "genre": "type",
-     "type": "micro-carte",
-     "recu": "chip",
-     "bande": 5,
-     "texte": "Copropriétés et résidences"
-    },
-    {
-     "genre": "type",
-     "type": "micro-carte",
-     "recu": "chip",
-     "bande": 5,
-     "texte": "Locaux associatifs et de formation"
-    },
     {
      "genre": "absente",
      "type": "carte-titre-texte",
@@ -2954,41 +1962,6 @@
    "cartesWp": 41,
    "anomalies": [
     {
-     "genre": "type",
-     "type": "micro-carte",
-     "recu": "chip",
-     "bande": 5,
-     "texte": "Résidences et petits immeubles collectifs"
-    },
-    {
-     "genre": "type",
-     "type": "micro-carte",
-     "recu": "chip",
-     "bande": 5,
-     "texte": "Cabinets et professions libérales"
-    },
-    {
-     "genre": "type",
-     "type": "micro-carte",
-     "recu": "chip",
-     "bande": 5,
-     "texte": "Commerces de proximité"
-    },
-    {
-     "genre": "type",
-     "type": "micro-carte",
-     "recu": "chip",
-     "bande": 5,
-     "texte": "Bureaux de petites structures"
-    },
-    {
-     "genre": "type",
-     "type": "micro-carte",
-     "recu": "chip",
-     "bande": 8,
-     "texte": "Petit bureau : 1 passage par semaine"
-    },
-    {
      "genre": "absente",
      "type": "carte-titre-texte",
      "bande": 12,
@@ -3029,55 +2002,6 @@
    "cartesRef": 44,
    "cartesWp": 43,
    "anomalies": [
-    {
-     "genre": "type",
-     "type": "micro-carte",
-     "recu": "chip",
-     "bande": 5,
-     "texte": "Bureaux administratifs de sites d'activité"
-    },
-    {
-     "genre": "type",
-     "type": "micro-carte",
-     "recu": "chip",
-     "bande": 5,
-     "texte": "Bureaux de PME et sièges locaux"
-    },
-    {
-     "genre": "type",
-     "type": "micro-carte",
-     "recu": "chip",
-     "bande": 5,
-     "texte": "Commerces et services de proximité"
-    },
-    {
-     "genre": "type",
-     "type": "micro-carte",
-     "recu": "chip",
-     "bande": 5,
-     "texte": "Cabinets et professions libérales"
-    },
-    {
-     "genre": "type",
-     "type": "micro-carte",
-     "recu": "chip",
-     "bande": 5,
-     "texte": "Copropriétés et résidences"
-    },
-    {
-     "genre": "type",
-     "type": "micro-carte",
-     "recu": "chip",
-     "bande": 5,
-     "texte": "Locaux associatifs et de formation"
-    },
-    {
-     "genre": "type",
-     "type": "micro-carte",
-     "recu": "chip",
-     "bande": 8,
-     "texte": "Cabinet : 1 à 2 passages par semaine"
-    },
     {
      "genre": "colonnes",
      "type": "chip",
@@ -3122,27 +2046,6 @@
    "cartesWp": 42,
    "anomalies": [
     {
-     "genre": "type",
-     "type": "micro-carte",
-     "recu": "chip",
-     "bande": 5,
-     "texte": "Cabinets et professions libérales"
-    },
-    {
-     "genre": "type",
-     "type": "micro-carte",
-     "recu": "chip",
-     "bande": 5,
-     "texte": "Copropriétés et résidences"
-    },
-    {
-     "genre": "type",
-     "type": "micro-carte",
-     "recu": "chip",
-     "bande": 5,
-     "texte": "Locaux associatifs et de formation"
-    },
-    {
      "genre": "colonnes",
      "type": "chip",
      "bande": 9,
@@ -3180,27 +2083,6 @@
    "cartesRef": 46,
    "cartesWp": 45,
    "anomalies": [
-    {
-     "genre": "type",
-     "type": "micro-carte",
-     "recu": "chip",
-     "bande": 5,
-     "texte": "Commerces et services de proximité"
-    },
-    {
-     "genre": "type",
-     "type": "micro-carte",
-     "recu": "chip",
-     "bande": 5,
-     "texte": "Locaux associatifs"
-    },
-    {
-     "genre": "type",
-     "type": "micro-carte",
-     "recu": "chip",
-     "bande": 8,
-     "texte": "Petit bureau : 1 à 2 passages par semaine"
-    },
     {
      "genre": "colonnes",
      "type": "chip",
@@ -3274,34 +2156,6 @@
    "cartesWp": 38,
    "anomalies": [
     {
-     "genre": "type",
-     "type": "micro-carte",
-     "recu": "chip",
-     "bande": 5,
-     "texte": "Bureaux de petites structures"
-    },
-    {
-     "genre": "type",
-     "type": "micro-carte",
-     "recu": "chip",
-     "bande": 5,
-     "texte": "Commerces et services de proximité"
-    },
-    {
-     "genre": "type",
-     "type": "micro-carte",
-     "recu": "chip",
-     "bande": 5,
-     "texte": "Cabinets et professions libérales"
-    },
-    {
-     "genre": "type",
-     "type": "micro-carte",
-     "recu": "chip",
-     "bande": 5,
-     "texte": "Copropriétés et résidences"
-    },
-    {
      "genre": "colonnes",
      "type": "chip",
      "bande": 9,
@@ -3374,27 +2228,6 @@
    "cartesWp": 41,
    "anomalies": [
     {
-     "genre": "type",
-     "type": "micro-carte",
-     "recu": "chip",
-     "bande": 5,
-     "texte": "Cabinets et professions libérales"
-    },
-    {
-     "genre": "type",
-     "type": "micro-carte",
-     "recu": "chip",
-     "bande": 5,
-     "texte": "Bureaux de PME et sièges locaux"
-    },
-    {
-     "genre": "type",
-     "type": "micro-carte",
-     "recu": "chip",
-     "bande": 5,
-     "texte": "Copropriétés et résidences"
-    },
-    {
      "genre": "absente",
      "type": "carte-titre-texte",
      "bande": 12,
@@ -3413,27 +2246,6 @@
    "cartesRef": 41,
    "cartesWp": 40,
    "anomalies": [
-    {
-     "genre": "type",
-     "type": "micro-carte",
-     "recu": "chip",
-     "bande": 5,
-     "texte": "Cabinets et professions libérales"
-    },
-    {
-     "genre": "type",
-     "type": "micro-carte",
-     "recu": "chip",
-     "bande": 5,
-     "texte": "Bureaux de PME et sièges locaux"
-    },
-    {
-     "genre": "type",
-     "type": "micro-carte",
-     "recu": "chip",
-     "bande": 5,
-     "texte": "Copropriétés et résidences"
-    },
     {
      "genre": "absente",
      "type": "carte-titre-texte",
@@ -3512,7 +2324,7 @@
  "#/article/frequence-bureaux": {
   "375": {
    "cartesRef": 8,
-   "cartesWp": 8,
+   "cartesWp": 5,
    "anomalies": [
     {
      "genre": "absente",
@@ -3543,30 +2355,12 @@
      "type": "chip",
      "bande": 2,
      "texte": "Bureaux"
-    },
-    {
-     "genre": "surplus",
-     "type": "micro-carte",
-     "bande": 6,
-     "texte": "Sous-estimer la fréquence nécessaire pour des sanitaires très fréquent"
-    },
-    {
-     "genre": "surplus",
-     "type": "micro-carte",
-     "bande": 6,
-     "texte": "Demander un passage quotidien par habitude, sans effectif réel qui le "
-    },
-    {
-     "genre": "surplus",
-     "type": "micro-carte",
-     "bande": 6,
-     "texte": "Ne jamais réévaluer la fréquence après un changement d'effectif ou d'o"
     }
    ]
   },
   "1440": {
    "cartesRef": 8,
-   "cartesWp": 8,
+   "cartesWp": 5,
    "anomalies": [
     {
      "genre": "absente",
@@ -3597,24 +2391,6 @@
      "type": "chip",
      "bande": 2,
      "texte": "Bureaux"
-    },
-    {
-     "genre": "surplus",
-     "type": "micro-carte",
-     "bande": 6,
-     "texte": "Sous-estimer la fréquence nécessaire pour des sanitaires très fréquent"
-    },
-    {
-     "genre": "surplus",
-     "type": "micro-carte",
-     "bande": 6,
-     "texte": "Demander un passage quotidien par habitude, sans effectif réel qui le "
-    },
-    {
-     "genre": "surplus",
-     "type": "micro-carte",
-     "bande": 6,
-     "texte": "Ne jamais réévaluer la fréquence après un changement d'effectif ou d'o"
     }
    ]
   }
@@ -3622,57 +2398,19 @@
  "#/article/cout-nettoyage-bureaux": {
   "375": {
    "cartesRef": 4,
-   "cartesWp": 7,
-   "anomalies": [
-    {
-     "genre": "surplus",
-     "type": "micro-carte",
-     "bande": 6,
-     "texte": "Comparer des prix au m² entre prestataires sans vérifier le volume hor"
-    },
-    {
-     "genre": "surplus",
-     "type": "micro-carte",
-     "bande": 6,
-     "texte": "Choisir uniquement sur le prix affiché, sans vérifier ce qui est inclu"
-    },
-    {
-     "genre": "surplus",
-     "type": "micro-carte",
-     "bande": 6,
-     "texte": "Ignorer les frais de mise en place et découvrir un premier mois plus é"
-    }
-   ]
+   "cartesWp": 4,
+   "anomalies": []
   },
   "1440": {
    "cartesRef": 4,
-   "cartesWp": 7,
-   "anomalies": [
-    {
-     "genre": "surplus",
-     "type": "micro-carte",
-     "bande": 6,
-     "texte": "Comparer des prix au m² entre prestataires sans vérifier le volume hor"
-    },
-    {
-     "genre": "surplus",
-     "type": "micro-carte",
-     "bande": 6,
-     "texte": "Choisir uniquement sur le prix affiché, sans vérifier ce qui est inclu"
-    },
-    {
-     "genre": "surplus",
-     "type": "micro-carte",
-     "bande": 6,
-     "texte": "Ignorer les frais de mise en place et découvrir un premier mois plus é"
-    }
-   ]
+   "cartesWp": 4,
+   "anomalies": []
   }
  },
  "#/article/cahier-des-charges-nettoyage": {
   "375": {
    "cartesRef": 10,
-   "cartesWp": 8,
+   "cartesWp": 5,
    "anomalies": [
     {
      "genre": "absente",
@@ -3705,41 +2443,22 @@
      "texte": "▪Cuisine ou salle de pause"
     },
     {
-     "genre": "fusionnee",
+     "genre": "absente",
      "type": "micro-carte",
      "bande": 5,
-     "texte": "▪Zones sensibles à exclure (salle serveur, archives, coffre)",
-     "dans": "Oublier de mentionner les zones sensibles à exclur"
+     "texte": "▪Zones sensibles à exclure (salle serveur, archives, coffre)"
     },
     {
      "genre": "surplus",
      "type": "chip",
      "bande": 2,
      "texte": "Organisation"
-    },
-    {
-     "genre": "surplus",
-     "type": "micro-carte",
-     "bande": 6,
-     "texte": "Rester trop vague (« nettoyer les bureaux ») sans détailler les tâches"
-    },
-    {
-     "genre": "surplus",
-     "type": "micro-carte",
-     "bande": 6,
-     "texte": "Oublier de mentionner les zones sensibles à exclure (salle serveur, ar"
-    },
-    {
-     "genre": "surplus",
-     "type": "micro-carte",
-     "bande": 6,
-     "texte": "Ne jamais mettre à jour le document après un changement d'organisation"
     }
    ]
   },
   "1440": {
    "cartesRef": 10,
-   "cartesWp": 8,
+   "cartesWp": 5,
    "anomalies": [
     {
      "genre": "absente",
@@ -3772,35 +2491,16 @@
      "texte": "▪Cuisine ou salle de pause"
     },
     {
-     "genre": "fusionnee",
+     "genre": "absente",
      "type": "micro-carte",
      "bande": 5,
-     "texte": "▪Zones sensibles à exclure (salle serveur, archives, coffre)",
-     "dans": "Oublier de mentionner les zones sensibles à exclur"
+     "texte": "▪Zones sensibles à exclure (salle serveur, archives, coffre)"
     },
     {
      "genre": "surplus",
      "type": "chip",
      "bande": 2,
      "texte": "Organisation"
-    },
-    {
-     "genre": "surplus",
-     "type": "micro-carte",
-     "bande": 6,
-     "texte": "Rester trop vague (« nettoyer les bureaux ») sans détailler les tâches"
-    },
-    {
-     "genre": "surplus",
-     "type": "micro-carte",
-     "bande": 6,
-     "texte": "Oublier de mentionner les zones sensibles à exclure (salle serveur, ar"
-    },
-    {
-     "genre": "surplus",
-     "type": "micro-carte",
-     "bande": 6,
-     "texte": "Ne jamais mettre à jour le document après un changement d'organisation"
     }
    ]
   }
@@ -3818,27 +2518,11 @@
      "texte": "5,0/5sur Google"
     },
     {
-     "genre": "colonnes",
-     "type": "carte-titre",
-     "bande": 4,
-     "texte": "24 hdevis transmis",
-     "attendu": 2,
-     "recu": 1
-    },
-    {
      "genre": "type",
      "type": "etape",
      "recu": "carte-titre",
      "bande": 4,
      "texte": "8départements"
-    },
-    {
-     "genre": "colonnes",
-     "type": "tarif",
-     "bande": 4,
-     "texte": "27 €HT/h, transparent",
-     "attendu": 2,
-     "recu": 1
     },
     {
      "genre": "surplus",
@@ -3878,131 +2562,25 @@
  "#/notre-fonctionnement": {
   "375": {
    "cartesRef": 9,
-   "cartesWp": 13,
+   "cartesWp": 10,
    "anomalies": [
-    {
-     "genre": "type",
-     "type": "etape",
-     "recu": "carte-titre-texte",
-     "bande": 3,
-     "texte": "01Prise de contactVous nous décrivez vos locaux (surface, ty"
-    },
-    {
-     "genre": "type",
-     "type": "etape",
-     "recu": "carte-titre-texte",
-     "bande": 3,
-     "texte": "02Analyse du besoinNous étudions le volume d'heures nécessai"
-    },
-    {
-     "genre": "type",
-     "type": "etape",
-     "recu": "tarif",
-     "bande": 3,
-     "texte": "03Devis sous 24 hVous recevez une proposition claire et chif"
-    },
-    {
-     "genre": "type",
-     "type": "etape",
-     "recu": "carte-titre-texte",
-     "bande": 3,
-     "texte": "04Sélection & mise en placeNous sélectionnons l'intervenant "
-    },
-    {
-     "genre": "type",
-     "type": "etape",
-     "recu": "carte-titre-texte",
-     "bande": 3,
-     "texte": "05Suivi & liaisonUn cahier de liaison reste sur place à chaq"
-    },
     {
      "genre": "surplus",
      "type": "chip",
      "bande": 2,
      "texte": "★★★★★5,0/5 sur Google"
-    },
-    {
-     "genre": "surplus",
-     "type": "carte-titre-texte",
-     "bande": 4,
-     "texte": "Les informations dont nous avons besoin Si vous découvrez le sujet, co"
-    },
-    {
-     "genre": "surplus",
-     "type": "carte-titre-texte",
-     "bande": 4,
-     "texte": "Transmission des consignes et premier passage Une fois le devis accept"
-    },
-    {
-     "genre": "surplus",
-     "type": "carte-titre-texte",
-     "bande": 4,
-     "texte": "Modifier, suspendre ou arrêter Modifier la prestation Un ajustement de"
     }
    ]
   },
   "1440": {
    "cartesRef": 9,
-   "cartesWp": 13,
+   "cartesWp": 10,
    "anomalies": [
-    {
-     "genre": "type",
-     "type": "etape",
-     "recu": "carte-titre-texte",
-     "bande": 3,
-     "texte": "01Prise de contactVous nous décrivez vos locaux (surface, ty"
-    },
-    {
-     "genre": "type",
-     "type": "etape",
-     "recu": "carte-titre-texte",
-     "bande": 3,
-     "texte": "02Analyse du besoinNous étudions le volume d'heures nécessai"
-    },
-    {
-     "genre": "type",
-     "type": "etape",
-     "recu": "tarif",
-     "bande": 3,
-     "texte": "03Devis sous 24 hVous recevez une proposition claire et chif"
-    },
-    {
-     "genre": "type",
-     "type": "etape",
-     "recu": "carte-titre-texte",
-     "bande": 3,
-     "texte": "04Sélection & mise en placeNous sélectionnons l'intervenant "
-    },
-    {
-     "genre": "type",
-     "type": "etape",
-     "recu": "carte-titre-texte",
-     "bande": 3,
-     "texte": "05Suivi & liaisonUn cahier de liaison reste sur place à chaq"
-    },
     {
      "genre": "surplus",
      "type": "chip",
      "bande": 2,
      "texte": "★★★★★5,0/5 sur Google"
-    },
-    {
-     "genre": "surplus",
-     "type": "carte-titre-texte",
-     "bande": 4,
-     "texte": "Les informations dont nous avons besoin Si vous découvrez le sujet, co"
-    },
-    {
-     "genre": "surplus",
-     "type": "carte-titre-texte",
-     "bande": 4,
-     "texte": "Transmission des consignes et premier passage Une fois le devis accept"
-    },
-    {
-     "genre": "surplus",
-     "type": "carte-titre-texte",
-     "bande": 4,
-     "texte": "Modifier, suspendre ou arrêter Modifier la prestation Un ajustement de"
     }
    ]
   }
@@ -4010,7 +2588,7 @@
  "#/avis-clients": {
   "375": {
    "cartesRef": 14,
-   "cartesWp": 13,
+   "cartesWp": 11,
    "anomalies": [
     {
      "genre": "type",
@@ -4024,6 +2602,20 @@
      "type": "temoignage",
      "bande": 4,
      "texte": "★★★★★« Nous avons comparé une embauche et un prestataire. Ce qui a tra"
+    },
+    {
+     "genre": "fusionnee",
+     "type": "carte-sombre",
+     "bande": 4,
+     "texte": "★★★★★« Devis clair reçu le lendemain, sans surprise. Le respect des co",
+     "dans": "★★★★★ Google « Devis clair reçu le lendemain, sans"
+    },
+    {
+     "genre": "fusionnee",
+     "type": "carte-sombre",
+     "bande": 4,
+     "texte": "★★★★★« Nettoyage de la boutique avant l'ouverture, vitrines nickel. Le",
+     "dans": "★★★★★ Google « Nettoyage de la boutique avant l'ou"
     },
     {
      "genre": "type",
@@ -4071,7 +2663,7 @@
   },
   "1440": {
    "cartesRef": 14,
-   "cartesWp": 13,
+   "cartesWp": 11,
    "anomalies": [
     {
      "genre": "type",
@@ -4085,6 +2677,20 @@
      "type": "temoignage",
      "bande": 4,
      "texte": "★★★★★« Nous avons comparé une embauche et un prestataire. Ce qui a tra"
+    },
+    {
+     "genre": "fusionnee",
+     "type": "carte-sombre",
+     "bande": 4,
+     "texte": "★★★★★« Devis clair reçu le lendemain, sans surprise. Le respect des co",
+     "dans": "★★★★★ Google « Devis clair reçu le lendemain, sans"
+    },
+    {
+     "genre": "fusionnee",
+     "type": "carte-sombre",
+     "bande": 4,
+     "texte": "★★★★★« Nettoyage de la boutique avant l'ouverture, vitrines nickel. Le",
+     "dans": "★★★★★ Google « Nettoyage de la boutique avant l'ou"
     },
     {
      "genre": "type",
@@ -4160,13 +2766,14 @@
  "#/recrutement": {
   "375": {
    "cartesRef": 5,
-   "cartesWp": 5,
+   "cartesWp": 6,
    "anomalies": [
     {
-     "genre": "absente",
+     "genre": "type",
      "type": "carte-sombre",
+     "recu": "carte-titre-texte",
      "bande": 4,
-     "texte": "Les étapes de candidature 01Vous envoyez votre candidature et vos disp"
+     "texte": "Les étapes de candidature 01Vous envoyez votre candidature e"
     },
     {
      "genre": "surplus",
@@ -4178,13 +2785,14 @@
   },
   "1440": {
    "cartesRef": 5,
-   "cartesWp": 5,
+   "cartesWp": 6,
    "anomalies": [
     {
-     "genre": "absente",
+     "genre": "type",
      "type": "carte-sombre",
+     "recu": "carte-titre-texte",
      "bande": 4,
-     "texte": "Les étapes de candidature 01Vous envoyez votre candidature et vos disp"
+     "texte": "Les étapes de candidature 01Vous envoyez votre candidature e"
     },
     {
      "genre": "surplus",
@@ -4198,8 +2806,14 @@
  "#/demande-de-devis": {
   "375": {
    "cartesRef": 5,
-   "cartesWp": 4,
+   "cartesWp": 3,
    "anomalies": [
+    {
+     "genre": "absente",
+     "type": "carte-sombre",
+     "bande": 1,
+     "texte": "★★★★★5,0/5sur Google"
+    },
     {
      "genre": "absente",
      "type": "carte-sombre",
@@ -4210,8 +2824,14 @@
   },
   "1440": {
    "cartesRef": 5,
-   "cartesWp": 4,
+   "cartesWp": 3,
    "anomalies": [
+    {
+     "genre": "absente",
+     "type": "carte-sombre",
+     "bande": 1,
+     "texte": "★★★★★5,0/5sur Google"
+    },
     {
      "genre": "absente",
      "type": "carte-sombre",
@@ -4224,13 +2844,14 @@
  "#/contact": {
   "375": {
    "cartesRef": 7,
-   "cartesWp": 7,
+   "cartesWp": 8,
    "anomalies": [
     {
-     "genre": "absente",
-     "type": "carte-icone",
+     "genre": "type",
+     "type": "carte-titre",
+     "recu": "carte-titre-texte",
      "bande": 4,
-     "texte": "AudreyVotre interlocutrice, du devis au suivi"
+     "texte": "📍ImplantationSaint-Apollinaire (21) · Bourgogne-Franche-Com"
     },
     {
      "genre": "fusionnee",
@@ -4267,13 +2888,14 @@
   },
   "1440": {
    "cartesRef": 7,
-   "cartesWp": 7,
+   "cartesWp": 8,
    "anomalies": [
     {
-     "genre": "absente",
-     "type": "carte-icone",
+     "genre": "type",
+     "type": "carte-titre",
+     "recu": "carte-titre-texte",
      "bande": 4,
-     "texte": "AudreyVotre interlocutrice, du devis au suivi"
+     "texte": "📍ImplantationSaint-Apollinaire (21) · Bourgogne-Franche-Com"
     },
     {
      "genre": "fusionnee",
