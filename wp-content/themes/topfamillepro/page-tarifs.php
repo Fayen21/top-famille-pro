@@ -240,11 +240,21 @@ get_header();
 </section>
 
 <section class="tfp-section--alt tfp-section--tight">
-	<div class="tfp-container">
+	<?php
+	/*
+	 * « Ce qui influence le volume d'heures » — géométrie RELEVÉE sur la maquette (G22) :
+	 * conteneur borné à 820 px, grille `repeat(auto-fit, minmax(min(100%, 200px), 1fr))` avec un
+	 * écart de 12 px — quatre cartes rangées 3 + 1, jamais quatre de front — et des cartes de
+	 * 16/18 px de rembourrage, rayon 12, fond atténué, texte 15 px. Le thème posait l'utilitaire
+	 * générique (base 220, écart 16, cartes 22 px de rembourrage) dans le conteneur de 1180 px :
+	 * les quatre cartes tenaient sur UNE rangée de 283 px là où la maquette en met trois de 265.
+	 */
+	?>
+	<div class="tfp-container" style="--container-max:820px">
 		<h2>Ce qui influence le volume d'heures</h2>
-		<div class="tfp-grid tfp-grid--autofit-md" style="margin-top:24px">
+		<div class="tfp-grid tfp-grid--autofit tfp-facteurs" style="margin-top:18px; --tfp-colonne:200px; gap:12px">
 			<?php foreach ( $facteurs as $facteur ) : ?>
-				<div class="tfp-card--flat">
+				<div class="tfp-card--flat tfp-facteurs__carte">
 					<strong><?php echo esc_html( $facteur[0] ); ?></strong>
 					<p><?php echo esc_html( $facteur[1] ); ?></p>
 				</div>

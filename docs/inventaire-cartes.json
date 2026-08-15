@@ -12,11 +12,10 @@
      "texte": "★★★★★ 5,0/5 sur Google Voir les avis"
     },
     {
-     "genre": "fusionnee",
+     "genre": "absente",
      "type": "tarif",
      "bande": 1,
-     "texte": "✦27 € HT/hrégulier ou ponctuel",
-     "dans": "Tarif unique 27 € HT/h Régulier ou ponctuel · devi"
+     "texte": "✦27 € HT/hrégulier ou ponctuel"
     },
     {
      "genre": "texte",
@@ -69,12 +68,6 @@
     },
     {
      "genre": "surplus",
-     "type": "carte-icone",
-     "bande": 1,
-     "texte": ""
-    },
-    {
-     "genre": "surplus",
      "type": "tarif",
      "bande": 2,
      "texte": "27 € HT/h tarif unique, indiqué avant le devis"
@@ -117,11 +110,10 @@
      "texte": "★★★★★ 5,0/5 sur Google Voir les avis"
     },
     {
-     "genre": "fusionnee",
+     "genre": "absente",
      "type": "tarif",
      "bande": 1,
-     "texte": "✦27 € HT/hrégulier ou ponctuel",
-     "dans": "Tarif unique 27 € HT/h Régulier ou ponctuel · devi"
+     "texte": "✦27 € HT/hrégulier ou ponctuel"
     },
     {
      "genre": "texte",
@@ -179,12 +171,6 @@
      "type": "tarif",
      "bande": 1,
      "texte": "27 € HT/h tarif unique, régulier ou ponctuel"
-    },
-    {
-     "genre": "surplus",
-     "type": "carte-image",
-     "bande": 1,
-     "texte": ""
     },
     {
      "genre": "surplus",
@@ -568,38 +554,6 @@
      "type": "tarif",
      "bande": 6,
      "texte": "Tarif horaireRégulier ou ponctuel27 € HT/h Frais de gestionPlanning, a"
-    },
-    {
-     "genre": "colonnes",
-     "type": "carte-titre",
-     "bande": 8,
-     "texte": "SurfaceSuperficie et nombre de pièces",
-     "attendu": 3,
-     "recu": 4
-    },
-    {
-     "genre": "colonnes",
-     "type": "carte-titre",
-     "bande": 8,
-     "texte": "FréquenceNombre de passages par semaine",
-     "attendu": 3,
-     "recu": 4
-    },
-    {
-     "genre": "colonnes",
-     "type": "carte-titre",
-     "bande": 8,
-     "texte": "Type de locauxBureaux, commerce, cabinet, meublé",
-     "attendu": 3,
-     "recu": 4
-    },
-    {
-     "genre": "colonnes",
-     "type": "carte-titre",
-     "bande": 8,
-     "texte": "Niveau d'exigenceStandard ou renforcé (hygiène)",
-     "attendu": 1,
-     "recu": 4
     },
     {
      "genre": "surplus",
@@ -1014,30 +968,6 @@
    "cartesWp": 32,
    "anomalies": [
     {
-     "genre": "colonnes",
-     "type": "chip",
-     "bande": 6,
-     "texte": "Beaune",
-     "attendu": 3,
-     "recu": 2
-    },
-    {
-     "genre": "colonnes",
-     "type": "chip",
-     "bande": 6,
-     "texte": "Chevigny-Saint-Sauveur",
-     "attendu": 3,
-     "recu": 2
-    },
-    {
-     "genre": "colonnes",
-     "type": "chip",
-     "bande": 6,
-     "texte": "Plombières-lès-Dijon",
-     "attendu": 2,
-     "recu": 3
-    },
-    {
      "genre": "type",
      "type": "carte-titre",
      "recu": "micro-carte",
@@ -1229,30 +1159,6 @@
    "cartesRef": 49,
    "cartesWp": 48,
    "anomalies": [
-    {
-     "genre": "colonnes",
-     "type": "chip",
-     "bande": 9,
-     "texte": "Chevigny-Saint-Sauveur",
-     "attendu": 3,
-     "recu": 4
-    },
-    {
-     "genre": "colonnes",
-     "type": "chip",
-     "bande": 9,
-     "texte": "Sennecey-lès-Dijon",
-     "attendu": 4,
-     "recu": 2
-    },
-    {
-     "genre": "colonnes",
-     "type": "chip",
-     "bande": 9,
-     "texte": "Ruffey-lès-Echirey",
-     "attendu": 1,
-     "recu": 2
-    },
     {
      "genre": "absente",
      "type": "carte-titre-texte",
@@ -1572,22 +1478,6 @@
    "cartesWp": 46,
    "anomalies": [
     {
-     "genre": "colonnes",
-     "type": "chip",
-     "bande": 9,
-     "texte": "Ruffey-lès-Echirey",
-     "attendu": 3,
-     "recu": 2
-    },
-    {
-     "genre": "colonnes",
-     "type": "chip",
-     "bande": 9,
-     "texte": "Norges-la-Ville",
-     "attendu": 1,
-     "recu": 2
-    },
-    {
      "genre": "absente",
      "type": "carte-titre-texte",
      "bande": 12,
@@ -1613,38 +1503,6 @@
    "cartesRef": 44,
    "cartesWp": 43,
    "anomalies": [
-    {
-     "genre": "colonnes",
-     "type": "chip",
-     "bande": 9,
-     "texte": "Ruffey-lès-Echirey",
-     "attendu": 4,
-     "recu": 3
-    },
-    {
-     "genre": "colonnes",
-     "type": "chip",
-     "bande": 9,
-     "texte": "Bressey-sur-Tille",
-     "attendu": 4,
-     "recu": 3
-    },
-    {
-     "genre": "colonnes",
-     "type": "chip",
-     "bande": 9,
-     "texte": "Varois-et-Chaignot",
-     "attendu": 2,
-     "recu": 3
-    },
-    {
-     "genre": "colonnes",
-     "type": "chip",
-     "bande": 9,
-     "texte": "Norges-la-Ville",
-     "attendu": 2,
-     "recu": 1
-    },
     {
      "genre": "absente",
      "type": "carte-titre-texte",
@@ -1679,14 +1537,6 @@
    "cartesWp": 40,
    "anomalies": [
     {
-     "genre": "colonnes",
-     "type": "chip",
-     "bande": 9,
-     "texte": "Perrigny-lès-Dijon",
-     "attendu": 4,
-     "recu": 1
-    },
-    {
      "genre": "absente",
      "type": "carte-titre-texte",
      "bande": 12,
@@ -1719,30 +1569,6 @@
    "cartesRef": 37,
    "cartesWp": 36,
    "anomalies": [
-    {
-     "genre": "colonnes",
-     "type": "chip",
-     "bande": 9,
-     "texte": "Chevigny-Saint-Sauveur",
-     "attendu": 4,
-     "recu": 3
-    },
-    {
-     "genre": "colonnes",
-     "type": "chip",
-     "bande": 9,
-     "texte": "Sennecey-lès-Dijon",
-     "attendu": 4,
-     "recu": 3
-    },
-    {
-     "genre": "colonnes",
-     "type": "chip",
-     "bande": 9,
-     "texte": "Bretenière",
-     "attendu": 1,
-     "recu": 3
-    },
     {
      "genre": "absente",
      "type": "carte-titre-texte",
@@ -1777,14 +1603,6 @@
    "cartesWp": 40,
    "anomalies": [
     {
-     "genre": "colonnes",
-     "type": "chip",
-     "bande": 9,
-     "texte": "Plombières-lès-Dijon",
-     "attendu": 4,
-     "recu": 2
-    },
-    {
      "genre": "absente",
      "type": "carte-titre-texte",
      "bande": 12,
@@ -1798,30 +1616,6 @@
    "cartesRef": 44,
    "cartesWp": 43,
    "anomalies": [
-    {
-     "genre": "colonnes",
-     "type": "chip",
-     "bande": 9,
-     "texte": "Ouges",
-     "attendu": 4,
-     "recu": 3
-    },
-    {
-     "genre": "colonnes",
-     "type": "chip",
-     "bande": 9,
-     "texte": "Fénay",
-     "attendu": 4,
-     "recu": 3
-    },
-    {
-     "genre": "colonnes",
-     "type": "chip",
-     "bande": 9,
-     "texte": "Perrigny-lès-Dijon",
-     "attendu": 1,
-     "recu": 3
-    },
     {
      "genre": "absente",
      "type": "carte-titre-texte",
@@ -1842,30 +1636,6 @@
    "cartesWp": 42,
    "anomalies": [
     {
-     "genre": "colonnes",
-     "type": "chip",
-     "bande": 9,
-     "texte": "Ouges",
-     "attendu": 5,
-     "recu": 3
-    },
-    {
-     "genre": "colonnes",
-     "type": "chip",
-     "bande": 9,
-     "texte": "Fénay",
-     "attendu": 5,
-     "recu": 3
-    },
-    {
-     "genre": "colonnes",
-     "type": "chip",
-     "bande": 9,
-     "texte": "Perrigny-lès-Dijon",
-     "attendu": 5,
-     "recu": 3
-    },
-    {
      "genre": "absente",
      "type": "carte-titre-texte",
      "bande": 12,
@@ -1879,22 +1649,6 @@
    "cartesRef": 46,
    "cartesWp": 45,
    "anomalies": [
-    {
-     "genre": "colonnes",
-     "type": "chip",
-     "bande": 9,
-     "texte": "Ahuy",
-     "attendu": 4,
-     "recu": 3
-    },
-    {
-     "genre": "colonnes",
-     "type": "chip",
-     "bande": 9,
-     "texte": "Hauteville-lès-Dijon",
-     "attendu": 1,
-     "recu": 3
-    },
     {
      "genre": "absente",
      "type": "carte-titre-texte",
@@ -1922,22 +1676,6 @@
    "cartesWp": 42,
    "anomalies": [
     {
-     "genre": "colonnes",
-     "type": "chip",
-     "bande": 9,
-     "texte": "Ahuy",
-     "attendu": 5,
-     "recu": 3
-    },
-    {
-     "genre": "colonnes",
-     "type": "chip",
-     "bande": 9,
-     "texte": "Hauteville-lès-Dijon",
-     "attendu": 5,
-     "recu": 3
-    },
-    {
      "genre": "absente",
      "type": "carte-titre-texte",
      "bande": 12,
@@ -1951,22 +1689,6 @@
    "cartesRef": 39,
    "cartesWp": 38,
    "anomalies": [
-    {
-     "genre": "colonnes",
-     "type": "chip",
-     "bande": 9,
-     "texte": "Couchey",
-     "attendu": 3,
-     "recu": 2
-    },
-    {
-     "genre": "colonnes",
-     "type": "chip",
-     "bande": 9,
-     "texte": "Perrigny-lès-Dijon",
-     "attendu": 1,
-     "recu": 2
-    },
     {
      "genre": "absente",
      "type": "carte-titre-texte",
@@ -1993,22 +1715,6 @@
    "cartesRef": 36,
    "cartesWp": 35,
    "anomalies": [
-    {
-     "genre": "colonnes",
-     "type": "chip",
-     "bande": 9,
-     "texte": "Couchey",
-     "attendu": 4,
-     "recu": 2
-    },
-    {
-     "genre": "colonnes",
-     "type": "chip",
-     "bande": 9,
-     "texte": "Perrigny-lès-Dijon",
-     "attendu": 4,
-     "recu": 2
-    },
     {
      "genre": "absente",
      "type": "carte-titre-texte",
@@ -2054,7 +1760,7 @@
  "#/conseils": {
   "375": {
    "cartesRef": 11,
-   "cartesWp": 14,
+   "cartesWp": 11,
    "anomalies": [
     {
      "genre": "texte",
@@ -2063,30 +1769,12 @@
      "texte": "À la une · Bureaux À quelle fréquence faire nettoyer ses bureaux ? Quo",
      "recu": "Bureaux À quelle fréquence faire nettoyer ses bureaux ? Quotidien, plu",
      "proximite": 80
-    },
-    {
-     "genre": "surplus",
-     "type": "chip",
-     "bande": 4,
-     "texte": "Bureaux"
-    },
-    {
-     "genre": "surplus",
-     "type": "chip",
-     "bande": 5,
-     "texte": "Tarifs"
-    },
-    {
-     "genre": "surplus",
-     "type": "chip",
-     "bande": 5,
-     "texte": "Organisation"
     }
    ]
   },
   "1440": {
    "cartesRef": 11,
-   "cartesWp": 14,
+   "cartesWp": 11,
    "anomalies": [
     {
      "genre": "texte",
@@ -2095,24 +1783,6 @@
      "texte": "À la une · Bureaux À quelle fréquence faire nettoyer ses bureaux ? Quo",
      "recu": "Bureaux À quelle fréquence faire nettoyer ses bureaux ? Quotidien, plu",
      "proximite": 80
-    },
-    {
-     "genre": "surplus",
-     "type": "chip",
-     "bande": 4,
-     "texte": "Bureaux"
-    },
-    {
-     "genre": "surplus",
-     "type": "chip",
-     "bande": 5,
-     "texte": "Tarifs"
-    },
-    {
-     "genre": "surplus",
-     "type": "chip",
-     "bande": 5,
-     "texte": "Organisation"
     }
    ]
   }
@@ -2120,7 +1790,7 @@
  "#/article/frequence-bureaux": {
   "375": {
    "cartesRef": 8,
-   "cartesWp": 5,
+   "cartesWp": 4,
    "anomalies": [
     {
      "genre": "absente",
@@ -2145,18 +1815,12 @@
      "type": "micro-carte",
      "bande": 5,
      "texte": "▪Salle de réunion utilisée en continu : remise en état après chaque us"
-    },
-    {
-     "genre": "surplus",
-     "type": "chip",
-     "bande": 2,
-     "texte": "Bureaux"
     }
    ]
   },
   "1440": {
    "cartesRef": 8,
-   "cartesWp": 5,
+   "cartesWp": 4,
    "anomalies": [
     {
      "genre": "absente",
@@ -2181,12 +1845,6 @@
      "type": "micro-carte",
      "bande": 5,
      "texte": "▪Salle de réunion utilisée en continu : remise en état après chaque us"
-    },
-    {
-     "genre": "surplus",
-     "type": "chip",
-     "bande": 2,
-     "texte": "Bureaux"
     }
    ]
   }
@@ -2206,7 +1864,7 @@
  "#/article/cahier-des-charges-nettoyage": {
   "375": {
    "cartesRef": 10,
-   "cartesWp": 5,
+   "cartesWp": 4,
    "anomalies": [
     {
      "genre": "absente",
@@ -2243,18 +1901,12 @@
      "type": "micro-carte",
      "bande": 5,
      "texte": "▪Zones sensibles à exclure (salle serveur, archives, coffre)"
-    },
-    {
-     "genre": "surplus",
-     "type": "chip",
-     "bande": 2,
-     "texte": "Organisation"
     }
    ]
   },
   "1440": {
    "cartesRef": 10,
-   "cartesWp": 5,
+   "cartesWp": 4,
    "anomalies": [
     {
      "genre": "absente",
@@ -2291,12 +1943,6 @@
      "type": "micro-carte",
      "bande": 5,
      "texte": "▪Zones sensibles à exclure (salle serveur, archives, coffre)"
-    },
-    {
-     "genre": "surplus",
-     "type": "chip",
-     "bande": 2,
-     "texte": "Organisation"
     }
    ]
   }
@@ -2639,7 +2285,7 @@
  },
  "#/contact": {
   "375": {
-   "cartesRef": 7,
+   "cartesRef": 8,
    "cartesWp": 8,
    "anomalies": [
     {
@@ -2661,18 +2307,6 @@
      "type": "tarif",
      "bande": 4,
      "texte": "★★★★★5,0/527 € HT/h"
-    },
-    {
-     "genre": "surplus",
-     "type": "carte-titre",
-     "bande": 3,
-     "texte": "J’ai une question Formulaire court, réponse par e-mail ou téléphone."
-    },
-    {
-     "genre": "surplus",
-     "type": "carte-titre",
-     "bande": 4,
-     "texte": "🕑 Horaires de contact Du lundi au vendredi · réponse sous 24 h"
     },
     {
      "genre": "surplus",
@@ -2683,7 +2317,7 @@
    ]
   },
   "1440": {
-   "cartesRef": 7,
+   "cartesRef": 8,
    "cartesWp": 8,
    "anomalies": [
     {
@@ -2705,18 +2339,6 @@
      "type": "tarif",
      "bande": 4,
      "texte": "★★★★★5,0/527 € HT/h"
-    },
-    {
-     "genre": "surplus",
-     "type": "carte-titre",
-     "bande": 3,
-     "texte": "J’ai une question Formulaire court, réponse par e-mail ou téléphone."
-    },
-    {
-     "genre": "surplus",
-     "type": "carte-titre",
-     "bande": 4,
-     "texte": "🕑 Horaires de contact Du lundi au vendredi · réponse sous 24 h"
     },
     {
      "genre": "surplus",

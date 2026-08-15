@@ -88,3 +88,84 @@ test.describe('Rangée de pastilles — rang fluide', () => {
 		expect(colonnes(diagnostiquer(a, b)).length).toBeGreaterThan(0);
 	});
 });
+
+/* ------------------------------------------------------------------ */
+/* Diagnostic pur — les trois pièges d'appariement relevés en G22      */
+/* ------------------------------------------------------------------ */
+
+/** Enregistrement de carte minimal, tel que le relevé le produit. */
+const carte = (o) => ({
+	type: 'carte-titre',
+	bande: 1,
+	titre: '',
+	texte: '',
+	image: false,
+	icone: false,
+	fond: 'rgb(255, 255, 255)',
+	filet: '1px solid',
+	rayon: '12px',
+	ombre: 'none',
+	padding: '16px',
+	w: 400,
+	h: 100,
+	colonnes: 1,
+	grille: 0,
+	span: '',
+	align: 'left',
+	gap: 'normal',
+	parentW: 1180,
+	parentWrap: false,
+	y: 0,
+	...o,
+});
+const page = (cartes) => ({ sections: 3, cartes });
+
+test.describe('Diagnostic des cartes — pièges d’appariement', () => {
+	test('une fusion ne traverse pas la page : neuf bandes d’écart ne fusionnent plus', ({}) => {
+		// La pastille tarifaire du hero (bande 1) contre la carte tarifaire de la bande 9, dont le
+		// texte la contient par coïncidence.
+		const ref = page([carte({ bande: 1, type: 'tarif', texte: '27 € HT/h régulier ou ponctuel' })]);
+		const wp = page([carte({ bande: 9, type: 'tarif', h: 270, texte: 'Tarif unique 27 € HT/h régulier ou ponctuel devis gratuit sous 24 h' })]);
+		const d = diagnostiquer(ref, wp);
+		expect(d.anomalies.filter((x) => x.genre === 'fusionnee')).toEqual([]);
+		// Et une vraie fusion, dans la même bande, reste détectée.
+		const wpMemeBande = page([carte({ bande: 1, type: 'tarif', h: 270, texte: 'Tarif unique 27 € HT/h régulier ou ponctuel devis gratuit sous 24 h' })]);
+		expect(diagnostiquer(ref, wpMemeBande).anomalies.filter((x) => x.genre === 'fusionnee')).toHaveLength(1);
+	});
+
+	test('la carte qui absorbe une fusion n’est plus comptée en carte supplémentaire', ({}) => {
+		// Deux cartes de la maquette rendues dans un seul conteneur WordPress : deux fusions,
+		// et AUCUN surplus — le conteneur explique déjà tout son contenu.
+		const ref = page([
+			carte({ texte: 'Horaires de contact du lundi au vendredi réponse sous 24 heures garanties' }),
+			carte({ texte: 'Téléphone appelez Audrey du lundi au vendredi aux heures ouvrées habituelles' }),
+		]);
+		// Le conteneur s'ouvre sur son propre intitulé : aucune des deux cartes n'en est le préfixe
+		// exact, c'est bien la branche fusion qui est éprouvée.
+		const wp = page([
+			carte({ h: 220, texte: 'Nous contacter Horaires de contact du lundi au vendredi réponse sous 24 heures garanties Téléphone appelez Audrey du lundi au vendredi aux heures ouvrées habituelles' }),
+		]);
+		const d = diagnostiquer(ref, wp);
+		expect(d.anomalies.filter((x) => x.genre === 'fusionnee')).toHaveLength(2);
+		expect(d.anomalies.filter((x) => x.genre === 'surplus')).toEqual([]);
+	});
+
+	test('une carte-média muette s’apparie à sa jumelle muette au lieu de compter en surplus', ({}) => {
+		const ref = page([carte({ texte: '', image: true, w: 225, h: 225, rayon: '16px' })]);
+		const wp = page([carte({ texte: '', image: true, w: 225, h: 225, rayon: '16px' })]);
+		expect(diagnostiquer(ref, wp).anomalies).toEqual([]);
+		// Une muette de géométrie franchement différente reste un surplus : rien ne prouve que
+		// c'est la même image.
+		const wpAutre = page([carte({ texte: '', image: true, w: 700, h: 320 })]);
+		expect(diagnostiquer(ref, wpAutre).anomalies.filter((x) => x.genre === 'surplus')).toHaveLength(1);
+	});
+});
+
+test.describe('Relevé des cartes — bouton porteur de contenu', () => {
+	test('une carte composée en <button> est relevée ; une vraie commande reste exclue', async ({ page }) => {
+		const r = await relever(page, 'carte-bouton.html');
+		const textes = r.cartes.map((c) => c.texte.slice(0, 20));
+		expect(textes).toContain("J'ai une question Fo");
+		expect(textes).not.toContain('Envoyer');
+	});
+});

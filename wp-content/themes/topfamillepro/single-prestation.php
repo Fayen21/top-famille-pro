@@ -226,19 +226,30 @@ get_header();
 
 <?php if ( ! empty( $pour_qui ) || ! empty( $taches ) ) : ?>
 <section class="tfp-section--tight">
+	<?php
+	/*
+	 * Bases de colonnes et bases de listes RELEVÉES sur la maquette (piste .tfp-list-plain, G22) :
+	 * la colonne « Pour qui » déclare `flex: 1 1 260px; min-width: min(100%, 260px)`, la colonne
+	 * des tâches `flex: 1 1 440px; min-width: min(100%, 320px)` — 474 et 654 px à 1440, jamais
+	 * deux moitiés égales. La liste « Pour qui » est une COLONNE (une seule file à toutes les
+	 * largeurs) ; la liste des tâches déclare une base de 230 px — pas les 320 de la règle
+	 * commune — et tient ainsi deux colonnes dès 1024 px, comme la maquette. Vérifié aux six
+	 * largeurs des deux côtés.
+	 */
+	?>
 	<div class="tfp-container tfp-two-col">
-		<div>
+		<div style="flex:1 1 260px;min-width:min(100%, 260px)">
 			<h2><?php echo esc_html( $pour_qui_titre ); ?></h2>
-			<ul class="tfp-list-plain">
+			<ul class="tfp-list-plain tfp-list-plain--colonne">
 				<?php foreach ( $pour_qui as $item ) : ?>
 					<li><?php echo esc_html( $item ); ?></li>
 				<?php endforeach; ?>
 			</ul>
 			<?php tfp_price_card(); ?>
 		</div>
-		<div>
+		<div style="flex:1 1 440px;min-width:min(100%, 320px)">
 			<h2><?php echo esc_html( $taches_titre ); ?></h2>
-			<ul class="tfp-list-marked">
+			<ul class="tfp-list-marked" style="--tfp-liste-colonne:230px">
 				<?php foreach ( $taches as $tache ) : ?>
 					<li><?php echo esc_html( $tache ); ?></li>
 				<?php endforeach; ?>

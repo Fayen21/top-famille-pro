@@ -153,6 +153,15 @@
   transition: transform var(--transition-base), box-shadow var(--transition-base);
 }
 
+/* Carte de facteur de prix (/tarifs/, bande « Ce qui influence le volume d'heures ») —
+   géométrie relevée sur la maquette : rembourrage 16/18, rayon 12, fond atténué, filet, 15 px. */
+.tfp-facteurs__carte {
+  padding: 16px 18px;
+  border-radius: 12px;
+  background: var(--color-bg-alt);
+  font-size: 15px;
+}
+
 .tfp-card--flat:hover {
   transform: translateY(-3px);
   box-shadow: var(--shadow-sm);
@@ -1160,8 +1169,18 @@ body.tfp-body .tfp-article-body p a {
   margin: 18px 0 0;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+  /* Base contextuelle : la maquette déclare 230 px sur la liste des tâches d'une page prestation
+     et sur les chapitres de zone, 320 ailleurs. La variable est posée par l'instance, comme
+     `--tfp-rangee-colonne` sur les grilles statiques — jamais une nouvelle valeur globale. */
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--tfp-liste-colonne, 320px)), 1fr));
   gap: 0 10px;
+}
+
+/* Liste en colonne : la maquette pose la liste « Pour qui » d'une page prestation en une seule
+   file à toutes les largeurs (`display:flex; flex-direction:column` déclaré). Seule la mise en
+   colonnes change — la géométrie des items reste celle relevée en G01. */
+.tfp-list-plain--colonne {
+  grid-template-columns: minmax(0, 1fr);
 }
 
 /* 15 px, relevé sur la maquette — le thème en posait 16. Sur une page prestation, ce sont une

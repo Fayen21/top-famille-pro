@@ -11,13 +11,13 @@
 > Un conteneur qui contient visuellement plusieurs micro-cartes n’est jamais compté pour une
 > carte : il compte pour ses enfants.
 
-**53 routes × 2 largeurs · 314 anomalie(s), dont 101 grave(s)** (carte absente ou fusionnée).
+**53 routes × 2 largeurs · 263 anomalie(s), dont 101 grave(s)** (carte absente ou fusionnée).
 
 ## Synthèse
 
 | Route | Cartes 1440 px | Cartes 375 px | Anomalies 1440 px | Anomalies 375 px |
 |---|---|---|---|---|
-| `#/` | 27 → 32 (+5) | 29 → 32 (+3) | ❌ 18 (3) | ❌ 15 (3) |
+| `#/` | 27 → 32 (+5) | 29 → 32 (+3) | ❌ 17 (3) | ❌ 14 (3) |
 | `#/nettoyage-professionnel` | 51 → 49 (-2) | 51 → 48 (-3) | ❌ 9 (2) | ❌ 9 (3) |
 | `#/nos-prestations` | 12 → 13 (+1) | 12 → 13 (+1) | ⚠️ 1 | ⚠️ 1 |
 | `#/service/bureaux` | 21 → 21 | 22 → 22 | ✅ | ✅ |
@@ -26,10 +26,10 @@
 | `#/service/coproprietes` | 21 → 21 | 22 → 22 | ⚠️ 1 | ✅ |
 | `#/service/meubles` | 21 → 21 | 22 → 22 | ⚠️ 2 | ⚠️ 1 |
 | `#/service/ponctuel` | 21 → 21 | 22 → 22 | ⚠️ 1 | ✅ |
-| `#/nos-tarifs` | 22 → 22 | 22 → 22 | ❌ 6 (1) | ❌ 2 (1) |
+| `#/nos-tarifs` | 22 → 22 | 22 → 22 | ❌ 2 (1) | ❌ 2 (1) |
 | `#/zones-intervention` | 52 → 49 (-3) | 35 → 31 (-4) | ❌ 11 (4) | ❌ 12 (5) |
 | `#/bourgogne-franche-comte` | 50 → 50 | 47 → 46 (-1) | ❌ 16 (1) | ❌ 16 (2) |
-| `#/departement/cote-dor` | 31 → 31 | 32 → 32 | ✅ | ⚠️ 4 |
+| `#/departement/cote-dor` | 31 → 31 | 32 → 32 | ✅ | ⚠️ 1 |
 | `#/departement/doubs` | 31 → 31 | 32 → 32 | ✅ | ⚠️ 1 |
 | `#/departement/jura` | 33 → 33 | 34 → 34 | ✅ | ⚠️ 1 |
 | `#/departement/nievre` | 31 → 31 | 32 → 32 | ✅ | ⚠️ 1 |
@@ -37,7 +37,7 @@
 | `#/departement/saone-et-loire` | 31 → 31 | 33 → 34 (+1) | ✅ | ⚠️ 3 |
 | `#/departement/yonne` | 31 → 31 | 32 → 32 | ✅ | ⚠️ 1 |
 | `#/departement/territoire-de-belfort` | 31 → 31 | 32 → 32 | ✅ | ⚠️ 1 |
-| `#/ville/dijon` | 49 → 48 (-1) | 50 → 49 (-1) | ❌ 4 (1) | ❌ 2 (1) |
+| `#/ville/dijon` | 49 → 48 (-1) | 50 → 49 (-1) | ❌ 1 (1) | ❌ 2 (1) |
 | `#/ville/besancon` | 51 → 50 (-1) | 52 → 51 (-1) | ❌ 1 (1) | ❌ 2 (1) |
 | `#/ville/dole` | 50 → 49 (-1) | 51 → 50 (-1) | ❌ 1 (1) | ❌ 2 (1) |
 | `#/ville/lons-le-saunier` | 49 → 48 (-1) | 50 → 49 (-1) | ❌ 1 (1) | ❌ 2 (1) |
@@ -47,25 +47,25 @@
 | `#/ville/macon` | 49 → 48 (-1) | 50 → 49 (-1) | ❌ 1 (1) | ❌ 2 (1) |
 | `#/ville/auxerre` | 50 → 49 (-1) | 51 → 50 (-1) | ❌ 1 (1) | ❌ 2 (1) |
 | `#/ville/belfort` | 50 → 49 (-1) | 51 → 50 (-1) | ❌ 1 (1) | ❌ 2 (1) |
-| `#/ville/saint-apollinaire` | 44 → 43 (-1) | 47 → 46 (-1) | ❌ 5 (1) | ❌ 5 (1) |
-| `#/ville/chenove` | 41 → 40 (-1) | 42 → 41 (-1) | ❌ 2 (1) | ❌ 2 (1) |
-| `#/ville/quetigny` | 37 → 36 (-1) | 38 → 37 (-1) | ❌ 4 (1) | ❌ 2 (1) |
-| `#/ville/talant` | 41 → 40 (-1) | 42 → 41 (-1) | ❌ 2 (1) | ❌ 2 (1) |
-| `#/ville/longvic` | 43 → 42 (-1) | 44 → 43 (-1) | ❌ 4 (1) | ❌ 5 (1) |
-| `#/ville/fontaine-les-dijon` | 43 → 42 (-1) | 46 → 45 (-1) | ❌ 3 (1) | ❌ 5 (1) |
-| `#/ville/marsannay-la-cote` | 36 → 35 (-1) | 39 → 38 (-1) | ❌ 3 (1) | ❌ 5 (1) |
+| `#/ville/saint-apollinaire` | 44 → 43 (-1) | 47 → 46 (-1) | ❌ 1 (1) | ❌ 3 (1) |
+| `#/ville/chenove` | 41 → 40 (-1) | 42 → 41 (-1) | ❌ 1 (1) | ❌ 2 (1) |
+| `#/ville/quetigny` | 37 → 36 (-1) | 38 → 37 (-1) | ❌ 1 (1) | ❌ 2 (1) |
+| `#/ville/talant` | 41 → 40 (-1) | 42 → 41 (-1) | ❌ 1 (1) | ❌ 2 (1) |
+| `#/ville/longvic` | 43 → 42 (-1) | 44 → 43 (-1) | ❌ 1 (1) | ❌ 2 (1) |
+| `#/ville/fontaine-les-dijon` | 43 → 42 (-1) | 46 → 45 (-1) | ❌ 1 (1) | ❌ 3 (1) |
+| `#/ville/marsannay-la-cote` | 36 → 35 (-1) | 39 → 38 (-1) | ❌ 1 (1) | ❌ 3 (1) |
 | `#/ville/beaune` | 41 → 40 (-1) | 42 → 41 (-1) | ❌ 1 (1) | ❌ 2 (1) |
-| `#/conseils` | 11 → 14 (+3) | 11 → 14 (+3) | ⚠️ 4 | ⚠️ 4 |
-| `#/article/frequence-bureaux` | 8 → 5 (-3) | 8 → 5 (-3) | ❌ 5 (4) | ❌ 5 (4) |
+| `#/conseils` | 11 → 11 | 11 → 11 | ⚠️ 1 | ⚠️ 1 |
+| `#/article/frequence-bureaux` | 8 → 4 (-4) | 8 → 4 (-4) | ❌ 4 (4) | ❌ 4 (4) |
 | `#/article/cout-nettoyage-bureaux` | 4 → 4 | 4 → 4 | ✅ | ✅ |
-| `#/article/cahier-des-charges-nettoyage` | 10 → 5 (-5) | 10 → 5 (-5) | ❌ 7 (6) | ❌ 7 (6) |
+| `#/article/cahier-des-charges-nettoyage` | 10 → 4 (-6) | 10 → 4 (-6) | ❌ 6 (6) | ❌ 6 (6) |
 | `#/pourquoi-top-famille-pro` | 12 → 13 (+1) | 12 → 13 (+1) | ⚠️ 3 | ⚠️ 3 |
 | `#/notre-fonctionnement` | 9 → 10 (+1) | 9 → 10 (+1) | ⚠️ 1 | ⚠️ 1 |
 | `#/avis-clients` | 14 → 11 (-3) | 14 → 11 (-3) | ❌ 10 (3) | ❌ 10 (3) |
 | `#/a-propos` | 0 → 1 (+1) | 0 → 1 (+1) | ⚠️ 1 | ⚠️ 1 |
 | `#/recrutement` | 5 → 6 (+1) | 5 → 6 (+1) | ⚠️ 2 | ⚠️ 2 |
 | `#/demande-de-devis` | 5 → 3 (-2) | 5 → 3 (-2) | ❌ 2 (2) | ❌ 2 (2) |
-| `#/contact` | 7 → 8 (+1) | 7 → 8 (+1) | ❌ 6 (2) | ❌ 6 (2) |
+| `#/contact` | 8 → 8 | 8 → 8 | ❌ 4 (2) | ❌ 4 (2) |
 | `#/plan-du-site` | 0 → 0 | 0 → 0 | ✅ | ✅ |
 | `#/mentions-legales` | 1 → 0 (-1) | 1 → 0 (-1) | ❌ 1 (1) | ❌ 1 (1) |
 | `#/politique-de-confidentialite` | 1 → 0 (-1) | 1 → 0 (-1) | ❌ 1 (1) | ❌ 1 (1) |
@@ -75,17 +75,17 @@
 
 | Route | Cartes absentes ou fusionnées | Anomalies totales |
 |---|---|---|
-| `#/article/cahier-des-charges-nettoyage` | 6 | 7 |
+| `#/article/cahier-des-charges-nettoyage` | 6 | 6 |
 | `#/zones-intervention` | 4 | 11 |
-| `#/article/frequence-bureaux` | 4 | 5 |
-| `#/` | 3 | 18 |
+| `#/article/frequence-bureaux` | 4 | 4 |
+| `#/` | 3 | 17 |
 | `#/avis-clients` | 3 | 10 |
 | `#/nettoyage-professionnel` | 2 | 9 |
 | `#/demande-de-devis` | 2 | 2 |
-| `#/contact` | 2 | 6 |
-| `#/nos-tarifs` | 1 | 6 |
+| `#/contact` | 2 | 4 |
+| `#/nos-tarifs` | 1 | 2 |
 | `#/bourgogne-franche-comte` | 1 | 16 |
-| `#/ville/dijon` | 1 | 4 |
+| `#/ville/dijon` | 1 | 1 |
 | `#/ville/besancon` | 1 | 1 |
 | `#/ville/dole` | 1 | 1 |
 | `#/ville/lons-le-saunier` | 1 | 1 |
@@ -95,13 +95,13 @@
 | `#/ville/macon` | 1 | 1 |
 | `#/ville/auxerre` | 1 | 1 |
 | `#/ville/belfort` | 1 | 1 |
-| `#/ville/saint-apollinaire` | 1 | 5 |
-| `#/ville/chenove` | 1 | 2 |
-| `#/ville/quetigny` | 1 | 4 |
-| `#/ville/talant` | 1 | 2 |
-| `#/ville/longvic` | 1 | 4 |
-| `#/ville/fontaine-les-dijon` | 1 | 3 |
-| `#/ville/marsannay-la-cote` | 1 | 3 |
+| `#/ville/saint-apollinaire` | 1 | 1 |
+| `#/ville/chenove` | 1 | 1 |
+| `#/ville/quetigny` | 1 | 1 |
+| `#/ville/talant` | 1 | 1 |
+| `#/ville/longvic` | 1 | 1 |
+| `#/ville/fontaine-les-dijon` | 1 | 1 |
+| `#/ville/marsannay-la-cote` | 1 | 1 |
 | `#/ville/beaune` | 1 | 1 |
 | `#/mentions-legales` | 1 | 1 |
 | `#/politique-de-confidentialite` | 1 | 1 |
@@ -117,7 +117,7 @@
 | `faq` | 247 |
 | `carte-sombre` | 135 |
 | `tarif` | 129 |
-| `carte-titre` | 88 |
+| `carte-titre` | 89 |
 | `temoignage` | 37 |
 | `carte-image` | 16 |
 | `etape` | 6 |
@@ -127,12 +127,12 @@
 
 ### `#/` → `/`
 
-**1440 px** — bandes 13 → 13 · cartes 27 → 32 · 18 anomalie(s)
+**1440 px** — bandes 13 → 13 · cartes 27 → 32 · 17 anomalie(s)
 
 | Anomalie | Archétype | Bande | Détail |
 |---|---|---|---|
 | type | `carte-titre` | 1 | « ★★★★★ 5,0/5 sur Google Voir les avis » — rendue en `chip` |
-| fusionnee | `tarif` | 1 | « ✦27 € HT/hrégulier ou ponctuel » rendue dans « Tarif unique 27 € HT/h Régulier ou ponctuel · devi » |
+| absente | `tarif` | 1 | « ✦27 € HT/hrégulier ou ponctuel » |
 | texte | `tarif` | 2 | « 27 € HT/htarif unique en région✓Devis gratuit sous 24 h✓Intervention r » → « 27 € HT/h tarif unique, indiqué avant le devis ✓Devis gratuit sous 24  » (56 % de mots communs) |
 | absente | `tarif` | 2 | « 27 € HT/htarif unique en région » |
 | absente | `carte-titre-texte` | 3 | « ★★★★★5,0/5 sur Google Saint-ApollinaireEntreprise régionale basée en B » |
@@ -141,7 +141,6 @@
 | colonnes | `carte-image` | 10 | « 21 25 39 58 70 71 89 90 » — 2 colonnes attendues, 1 rendues |
 | texte | `carte-titre` | 11 | « ★★★★★5,0/5 Google » → « ★★★★★5,0/5 sur Google » (67 % de mots communs) |
 | surplus | `tarif` | 1 | « 27 € HT/h tarif unique, régulier ou ponctuel » |
-| surplus | `carte-image` | 1 | «  » |
 | surplus | `tarif` | 2 | « 27 € HT/h tarif unique, indiqué avant le devis » |
 | surplus | `carte-titre-texte` | 3 | « Saint-Apollinaire Entreprise régionale basée en BFC Interlocutrice ide » |
 | surplus | `carte-sombre` | 5 | « Copropriétés & parties communes Halls, cages d'escalier, locaux commun » |
@@ -150,12 +149,12 @@
 | surplus | `carte-titre` | 10 | « Yonne 89 » |
 | surplus | `carte-titre` | 10 | « Territoire de Belfort 90 » |
 
-**375 px** — bandes 13 → 13 · cartes 29 → 32 · 15 anomalie(s)
+**375 px** — bandes 13 → 13 · cartes 29 → 32 · 14 anomalie(s)
 
 | Anomalie | Archétype | Bande | Détail |
 |---|---|---|---|
 | type | `carte-titre` | 1 | « ★★★★★ 5,0/5 sur Google Voir les avis » — rendue en `chip` |
-| fusionnee | `tarif` | 1 | « ✦27 € HT/hrégulier ou ponctuel » rendue dans « Tarif unique 27 € HT/h Régulier ou ponctuel · devi » |
+| absente | `tarif` | 1 | « ✦27 € HT/hrégulier ou ponctuel » |
 | texte | `tarif` | 2 | « 27 € HT/htarif unique en région✓Devis gratuit sous 24 h✓Intervention r » → « 27 € HT/h tarif unique, indiqué avant le devis ✓Devis gratuit sous 24  » (56 % de mots communs) |
 | absente | `tarif` | 2 | « 27 € HT/htarif unique en région » |
 | absente | `carte-titre-texte` | 3 | « ★★★★★5,0/5 sur Google Saint-ApollinaireEntreprise régionale basée en B » |
@@ -163,7 +162,6 @@
 | texte | `tarif` | 9 | « Tarif horaire de base 27 € HT/h Régulier ou ponctuel · devis gratuit s » → « Tarif unique 27 € HT/h Régulier ou ponctuel · devis gratuit sous 24 h. » (78 % de mots communs) |
 | texte | `carte-titre` | 11 | « ★★★★★5,0/5 Google » → « ★★★★★5,0/5 sur Google » (67 % de mots communs) |
 | surplus | `tarif` | 1 | « 27 € HT/h tarif unique, régulier ou ponctuel » |
-| surplus | `carte-icone` | 1 | «  » |
 | surplus | `tarif` | 2 | « 27 € HT/h tarif unique, indiqué avant le devis » |
 | surplus | `carte-titre-texte` | 3 | « Saint-Apollinaire Entreprise régionale basée en BFC Interlocutrice ide » |
 | surplus | `carte-sombre` | 5 | « Copropriétés & parties communes Halls, cages d'escalier, locaux commun » |
@@ -291,15 +289,11 @@
 
 ### `#/nos-tarifs` → `/tarifs/`
 
-**1440 px** — bandes 13 → 13 · cartes 22 → 22 · 6 anomalie(s)
+**1440 px** — bandes 13 → 13 · cartes 22 → 22 · 2 anomalie(s)
 
 | Anomalie | Archétype | Bande | Détail |
 |---|---|---|---|
 | absente | `tarif` | 6 | « Tarif horaireRégulier ou ponctuel27 € HT/h Frais de gestionPlanning, a » |
-| colonnes | `carte-titre` | 8 | « SurfaceSuperficie et nombre de pièces » — 3 colonnes attendues, 4 rendues |
-| colonnes | `carte-titre` | 8 | « FréquenceNombre de passages par semaine » — 3 colonnes attendues, 4 rendues |
-| colonnes | `carte-titre` | 8 | « Type de locauxBureaux, commerce, cabinet, meublé » — 3 colonnes attendues, 4 rendues |
-| colonnes | `carte-titre` | 8 | « Niveau d'exigenceStandard ou renforcé (hygiène) » — 1 colonnes attendues, 4 rendues |
 | surplus | `temoignage` | 11 | « ★★★★★« Un devis clair, sans surprise, et le même tarif horaire annoncé » |
 
 **375 px** — bandes 13 → 13 · cartes 22 → 22 · 2 anomalie(s)
@@ -395,13 +389,10 @@
 
 **1440 px** — bandes 11 → 11 · cartes 31 → 31 · 0 anomalie(s)
 
-**375 px** — bandes 11 → 11 · cartes 32 → 32 · 4 anomalie(s)
+**375 px** — bandes 11 → 11 · cartes 32 → 32 · 1 anomalie(s)
 
 | Anomalie | Archétype | Bande | Détail |
 |---|---|---|---|
-| colonnes | `chip` | 6 | « Beaune » — 3 colonnes attendues, 2 rendues |
-| colonnes | `chip` | 6 | « Chevigny-Saint-Sauveur » — 3 colonnes attendues, 2 rendues |
-| colonnes | `chip` | 6 | « Plombières-lès-Dijon » — 2 colonnes attendues, 3 rendues |
 | type | `carte-titre` | 11 | « ☎ Échanger avec Audrey · 06 36 17 63 39 » — rendue en `micro-carte` |
 
 
@@ -486,13 +477,10 @@
 
 ### `#/ville/dijon` → `/zones-intervention/cote-dor/dijon/`
 
-**1440 px** — bandes 13 → 13 · cartes 49 → 48 · 4 anomalie(s)
+**1440 px** — bandes 13 → 13 · cartes 49 → 48 · 1 anomalie(s)
 
 | Anomalie | Archétype | Bande | Détail |
 |---|---|---|---|
-| colonnes | `chip` | 9 | « Chevigny-Saint-Sauveur » — 3 colonnes attendues, 4 rendues |
-| colonnes | `chip` | 9 | « Sennecey-lès-Dijon » — 4 colonnes attendues, 2 rendues |
-| colonnes | `chip` | 9 | « Ruffey-lès-Echirey » — 1 colonnes attendues, 2 rendues |
 | absente | `carte-titre-texte` | 12 | « Nous contacterAudrey est votre interlocutrice unique, de la première v » |
 
 **375 px** — bandes 13 → 13 · cartes 50 → 49 · 2 anomalie(s)
@@ -650,22 +638,16 @@
 
 ### `#/ville/saint-apollinaire` → `/zones-intervention/cote-dor/saint-apollinaire/`
 
-**1440 px** — bandes 13 → 13 · cartes 44 → 43 · 5 anomalie(s)
+**1440 px** — bandes 13 → 13 · cartes 44 → 43 · 1 anomalie(s)
 
 | Anomalie | Archétype | Bande | Détail |
 |---|---|---|---|
-| colonnes | `chip` | 9 | « Ruffey-lès-Echirey » — 4 colonnes attendues, 3 rendues |
-| colonnes | `chip` | 9 | « Bressey-sur-Tille » — 4 colonnes attendues, 3 rendues |
-| colonnes | `chip` | 9 | « Varois-et-Chaignot » — 2 colonnes attendues, 3 rendues |
-| colonnes | `chip` | 9 | « Norges-la-Ville » — 2 colonnes attendues, 1 rendues |
 | absente | `carte-titre-texte` | 12 | « Nous contacterAudrey est votre interlocutrice unique, de la première v » |
 
-**375 px** — bandes 13 → 13 · cartes 47 → 46 · 5 anomalie(s)
+**375 px** — bandes 13 → 13 · cartes 47 → 46 · 3 anomalie(s)
 
 | Anomalie | Archétype | Bande | Détail |
 |---|---|---|---|
-| colonnes | `chip` | 9 | « Ruffey-lès-Echirey » — 3 colonnes attendues, 2 rendues |
-| colonnes | `chip` | 9 | « Norges-la-Ville » — 1 colonnes attendues, 2 rendues |
 | absente | `carte-titre-texte` | 12 | « Nous contacterAudrey est votre interlocutrice unique, de la première v » |
 | type | `carte-titre` | 13 | « Demander un devis à Saint-Apollinaire » — rendue en `micro-carte` |
 | type | `carte-titre` | 13 | « ☎ Échanger avec Audrey · 06 36 17 63 39 » — rendue en `micro-carte` |
@@ -673,11 +655,10 @@
 
 ### `#/ville/chenove` → `/zones-intervention/cote-dor/chenove/`
 
-**1440 px** — bandes 13 → 13 · cartes 41 → 40 · 2 anomalie(s)
+**1440 px** — bandes 13 → 13 · cartes 41 → 40 · 1 anomalie(s)
 
 | Anomalie | Archétype | Bande | Détail |
 |---|---|---|---|
-| colonnes | `chip` | 9 | « Perrigny-lès-Dijon » — 4 colonnes attendues, 1 rendues |
 | absente | `carte-titre-texte` | 12 | « Nous contacterAudrey est votre interlocutrice unique, de la première v » |
 
 **375 px** — bandes 13 → 13 · cartes 42 → 41 · 2 anomalie(s)
@@ -690,13 +671,10 @@
 
 ### `#/ville/quetigny` → `/zones-intervention/cote-dor/quetigny/`
 
-**1440 px** — bandes 13 → 13 · cartes 37 → 36 · 4 anomalie(s)
+**1440 px** — bandes 13 → 13 · cartes 37 → 36 · 1 anomalie(s)
 
 | Anomalie | Archétype | Bande | Détail |
 |---|---|---|---|
-| colonnes | `chip` | 9 | « Chevigny-Saint-Sauveur » — 4 colonnes attendues, 3 rendues |
-| colonnes | `chip` | 9 | « Sennecey-lès-Dijon » — 4 colonnes attendues, 3 rendues |
-| colonnes | `chip` | 9 | « Bretenière » — 1 colonnes attendues, 3 rendues |
 | absente | `carte-titre-texte` | 12 | « Nous contacterAudrey est votre interlocutrice unique, de la première v » |
 
 **375 px** — bandes 13 → 13 · cartes 38 → 37 · 2 anomalie(s)
@@ -709,11 +687,10 @@
 
 ### `#/ville/talant` → `/zones-intervention/cote-dor/talant/`
 
-**1440 px** — bandes 13 → 13 · cartes 41 → 40 · 2 anomalie(s)
+**1440 px** — bandes 13 → 13 · cartes 41 → 40 · 1 anomalie(s)
 
 | Anomalie | Archétype | Bande | Détail |
 |---|---|---|---|
-| colonnes | `chip` | 9 | « Plombières-lès-Dijon » — 4 colonnes attendues, 2 rendues |
 | absente | `carte-titre-texte` | 12 | « Nous contacterAudrey est votre interlocutrice unique, de la première v » |
 
 **375 px** — bandes 13 → 13 · cartes 42 → 41 · 2 anomalie(s)
@@ -726,42 +703,32 @@
 
 ### `#/ville/longvic` → `/zones-intervention/cote-dor/longvic/`
 
-**1440 px** — bandes 13 → 13 · cartes 43 → 42 · 4 anomalie(s)
+**1440 px** — bandes 13 → 13 · cartes 43 → 42 · 1 anomalie(s)
 
 | Anomalie | Archétype | Bande | Détail |
 |---|---|---|---|
-| colonnes | `chip` | 9 | « Ouges » — 5 colonnes attendues, 3 rendues |
-| colonnes | `chip` | 9 | « Fénay » — 5 colonnes attendues, 3 rendues |
-| colonnes | `chip` | 9 | « Perrigny-lès-Dijon » — 5 colonnes attendues, 3 rendues |
 | absente | `carte-titre-texte` | 12 | « Nous contacterAudrey est votre interlocutrice unique, de la première v » |
 
-**375 px** — bandes 13 → 13 · cartes 44 → 43 · 5 anomalie(s)
+**375 px** — bandes 13 → 13 · cartes 44 → 43 · 2 anomalie(s)
 
 | Anomalie | Archétype | Bande | Détail |
 |---|---|---|---|
-| colonnes | `chip` | 9 | « Ouges » — 4 colonnes attendues, 3 rendues |
-| colonnes | `chip` | 9 | « Fénay » — 4 colonnes attendues, 3 rendues |
-| colonnes | `chip` | 9 | « Perrigny-lès-Dijon » — 1 colonnes attendues, 3 rendues |
 | absente | `carte-titre-texte` | 12 | « Nous contacterAudrey est votre interlocutrice unique, de la première v » |
 | type | `carte-titre` | 13 | « ☎ Échanger avec Audrey · 06 36 17 63 39 » — rendue en `micro-carte` |
 
 
 ### `#/ville/fontaine-les-dijon` → `/zones-intervention/cote-dor/fontaine-les-dijon/`
 
-**1440 px** — bandes 13 → 13 · cartes 43 → 42 · 3 anomalie(s)
+**1440 px** — bandes 13 → 13 · cartes 43 → 42 · 1 anomalie(s)
 
 | Anomalie | Archétype | Bande | Détail |
 |---|---|---|---|
-| colonnes | `chip` | 9 | « Ahuy » — 5 colonnes attendues, 3 rendues |
-| colonnes | `chip` | 9 | « Hauteville-lès-Dijon » — 5 colonnes attendues, 3 rendues |
 | absente | `carte-titre-texte` | 12 | « Nous contacterAudrey est votre interlocutrice unique, de la première v » |
 
-**375 px** — bandes 13 → 13 · cartes 46 → 45 · 5 anomalie(s)
+**375 px** — bandes 13 → 13 · cartes 46 → 45 · 3 anomalie(s)
 
 | Anomalie | Archétype | Bande | Détail |
 |---|---|---|---|
-| colonnes | `chip` | 9 | « Ahuy » — 4 colonnes attendues, 3 rendues |
-| colonnes | `chip` | 9 | « Hauteville-lès-Dijon » — 1 colonnes attendues, 3 rendues |
 | absente | `carte-titre-texte` | 12 | « Nous contacterAudrey est votre interlocutrice unique, de la première v » |
 | type | `carte-titre` | 13 | « Demander un devis à Fontaine-lès-Dijon » — rendue en `micro-carte` |
 | type | `carte-titre` | 13 | « ☎ Échanger avec Audrey · 06 36 17 63 39 » — rendue en `micro-carte` |
@@ -769,20 +736,16 @@
 
 ### `#/ville/marsannay-la-cote` → `/zones-intervention/cote-dor/marsannay-la-cote/`
 
-**1440 px** — bandes 13 → 13 · cartes 36 → 35 · 3 anomalie(s)
+**1440 px** — bandes 13 → 13 · cartes 36 → 35 · 1 anomalie(s)
 
 | Anomalie | Archétype | Bande | Détail |
 |---|---|---|---|
-| colonnes | `chip` | 9 | « Couchey » — 4 colonnes attendues, 2 rendues |
-| colonnes | `chip` | 9 | « Perrigny-lès-Dijon » — 4 colonnes attendues, 2 rendues |
 | absente | `carte-titre-texte` | 12 | « Nous contacterAudrey est votre interlocutrice unique, de la première v » |
 
-**375 px** — bandes 13 → 13 · cartes 39 → 38 · 5 anomalie(s)
+**375 px** — bandes 13 → 13 · cartes 39 → 38 · 3 anomalie(s)
 
 | Anomalie | Archétype | Bande | Détail |
 |---|---|---|---|
-| colonnes | `chip` | 9 | « Couchey » — 3 colonnes attendues, 2 rendues |
-| colonnes | `chip` | 9 | « Perrigny-lès-Dijon » — 1 colonnes attendues, 2 rendues |
 | absente | `carte-titre-texte` | 12 | « Nous contacterAudrey est votre interlocutrice unique, de la première v » |
 | type | `carte-titre` | 13 | « Demander un devis à Marsannay-la-Côte » — rendue en `micro-carte` |
 | type | `carte-titre` | 13 | « ☎ Échanger avec Audrey · 06 36 17 63 39 » — rendue en `micro-carte` |
@@ -806,28 +769,22 @@
 
 ### `#/conseils` → `/conseils/`
 
-**1440 px** — bandes 7 → 7 · cartes 11 → 14 · 4 anomalie(s)
+**1440 px** — bandes 7 → 7 · cartes 11 → 11 · 1 anomalie(s)
 
 | Anomalie | Archétype | Bande | Détail |
 |---|---|---|---|
 | texte | `carte-image` | 4 | « À la une · Bureaux À quelle fréquence faire nettoyer ses bureaux ? Quo » → « Bureaux À quelle fréquence faire nettoyer ses bureaux ? Quotidien, plu » (80 % de mots communs) |
-| surplus | `chip` | 4 | « Bureaux » |
-| surplus | `chip` | 5 | « Tarifs » |
-| surplus | `chip` | 5 | « Organisation » |
 
-**375 px** — bandes 7 → 7 · cartes 11 → 14 · 4 anomalie(s)
+**375 px** — bandes 7 → 7 · cartes 11 → 11 · 1 anomalie(s)
 
 | Anomalie | Archétype | Bande | Détail |
 |---|---|---|---|
 | texte | `carte-image` | 4 | « À la une · Bureaux À quelle fréquence faire nettoyer ses bureaux ? Quo » → « Bureaux À quelle fréquence faire nettoyer ses bureaux ? Quotidien, plu » (80 % de mots communs) |
-| surplus | `chip` | 4 | « Bureaux » |
-| surplus | `chip` | 5 | « Tarifs » |
-| surplus | `chip` | 5 | « Organisation » |
 
 
 ### `#/article/frequence-bureaux` → `/conseils/frequence-bureaux/`
 
-**1440 px** — bandes 9 → 9 · cartes 8 → 5 · 5 anomalie(s)
+**1440 px** — bandes 9 → 9 · cartes 8 → 4 · 4 anomalie(s)
 
 | Anomalie | Archétype | Bande | Détail |
 |---|---|---|---|
@@ -835,9 +792,8 @@
 | absente | `micro-carte` | 5 | « ▪5 à 15 postes, activité courante : 2 à 3 passages par semaine » |
 | absente | `micro-carte` | 5 | « ▪Moins de 5 postes, cabinet ou bureau individuel : passage hebdomadair » |
 | absente | `micro-carte` | 5 | « ▪Salle de réunion utilisée en continu : remise en état après chaque us » |
-| surplus | `chip` | 2 | « Bureaux » |
 
-**375 px** — bandes 9 → 9 · cartes 8 → 5 · 5 anomalie(s)
+**375 px** — bandes 9 → 9 · cartes 8 → 4 · 4 anomalie(s)
 
 | Anomalie | Archétype | Bande | Détail |
 |---|---|---|---|
@@ -845,7 +801,6 @@
 | absente | `micro-carte` | 5 | « ▪5 à 15 postes, activité courante : 2 à 3 passages par semaine » |
 | absente | `micro-carte` | 5 | « ▪Moins de 5 postes, cabinet ou bureau individuel : passage hebdomadair » |
 | absente | `micro-carte` | 5 | « ▪Salle de réunion utilisée en continu : remise en état après chaque us » |
-| surplus | `chip` | 2 | « Bureaux » |
 
 
 ### `#/article/cout-nettoyage-bureaux` → `/conseils/cout-nettoyage-bureaux/`
@@ -857,7 +812,7 @@
 
 ### `#/article/cahier-des-charges-nettoyage` → `/conseils/cahier-des-charges-nettoyage/`
 
-**1440 px** — bandes 9 → 9 · cartes 10 → 5 · 7 anomalie(s)
+**1440 px** — bandes 9 → 9 · cartes 10 → 4 · 6 anomalie(s)
 
 | Anomalie | Archétype | Bande | Détail |
 |---|---|---|---|
@@ -867,9 +822,8 @@
 | absente | `micro-carte` | 5 | « ▪Sanitaires (nombre et emplacement) » |
 | absente | `micro-carte` | 5 | « ▪Cuisine ou salle de pause » |
 | absente | `micro-carte` | 5 | « ▪Zones sensibles à exclure (salle serveur, archives, coffre) » |
-| surplus | `chip` | 2 | « Organisation » |
 
-**375 px** — bandes 9 → 9 · cartes 10 → 5 · 7 anomalie(s)
+**375 px** — bandes 9 → 9 · cartes 10 → 4 · 6 anomalie(s)
 
 | Anomalie | Archétype | Bande | Détail |
 |---|---|---|---|
@@ -879,7 +833,6 @@
 | absente | `micro-carte` | 5 | « ▪Sanitaires (nombre et emplacement) » |
 | absente | `micro-carte` | 5 | « ▪Cuisine ou salle de pause » |
 | absente | `micro-carte` | 5 | « ▪Zones sensibles à exclure (salle serveur, archives, coffre) » |
-| surplus | `chip` | 2 | « Organisation » |
 
 
 ### `#/pourquoi-top-famille-pro` → `/pourquoi-nous/`
@@ -1000,26 +953,22 @@
 
 ### `#/contact` → `/contact/`
 
-**1440 px** — bandes 4 → 4 · cartes 7 → 8 · 6 anomalie(s)
+**1440 px** — bandes 4 → 4 · cartes 8 → 8 · 4 anomalie(s)
 
 | Anomalie | Archétype | Bande | Détail |
 |---|---|---|---|
 | type | `carte-titre` | 4 | « 📍ImplantationSaint-Apollinaire (21) · Bourgogne-Franche-Com » — rendue en `carte-titre-texte` |
 | fusionnee | `carte-titre` | 4 | « 🕑Horaires de contactDu lundi au vendredi · à confirmer · réponse sous » rendue dans « 🕑 Horaires de contact Du lundi au vendredi · répo » |
 | absente | `tarif` | 4 | « ★★★★★5,0/527 € HT/h » |
-| surplus | `carte-titre` | 3 | « J’ai une question Formulaire court, réponse par e-mail ou téléphone. » |
-| surplus | `carte-titre` | 4 | « 🕑 Horaires de contact Du lundi au vendredi · réponse sous 24 h » |
 | surplus | `tarif` | 4 | « ★★★★★ 5,0/5 sur Google 27 € HT/h — tarif unique en région » |
 
-**375 px** — bandes 4 → 4 · cartes 7 → 8 · 6 anomalie(s)
+**375 px** — bandes 4 → 4 · cartes 8 → 8 · 4 anomalie(s)
 
 | Anomalie | Archétype | Bande | Détail |
 |---|---|---|---|
 | type | `carte-titre` | 4 | « 📍ImplantationSaint-Apollinaire (21) · Bourgogne-Franche-Com » — rendue en `carte-titre-texte` |
 | fusionnee | `carte-titre` | 4 | « 🕑Horaires de contactDu lundi au vendredi · à confirmer · réponse sous » rendue dans « 🕑 Horaires de contact Du lundi au vendredi · répo » |
 | absente | `tarif` | 4 | « ★★★★★5,0/527 € HT/h » |
-| surplus | `carte-titre` | 3 | « J’ai une question Formulaire court, réponse par e-mail ou téléphone. » |
-| surplus | `carte-titre` | 4 | « 🕑 Horaires de contact Du lundi au vendredi · réponse sous 24 h » |
 | surplus | `tarif` | 4 | « ★★★★★ 5,0/5 sur Google 27 € HT/h — tarif unique en région » |
 
 

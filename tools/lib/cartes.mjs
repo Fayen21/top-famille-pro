@@ -55,8 +55,16 @@ const RELEVE = () => {
 	// ils appartiennent au vocabulaire des commandes, pas à celui des blocs de contenu.
 	const estCommande = (el) => {
 		const t = el.tagName.toLowerCase();
-		if (t === 'button' || t === 'input' || t === 'select' || t === 'textarea') return true;
-		if (t === 'a') {
+		if (t === 'input' || t === 'select' || t === 'textarea') return true;
+		/*
+		 * **Angle mort corrigé.** `button` était exclu inconditionnellement. Or la maquette compose
+		 * la carte d'orientation du contact — « J'ai une question », 403×104, titre et
+		 * description — en `<button>` : elle était invisible au relevé, et sa contrepartie
+		 * WordPress (une carte `div` identique à l'écran) ressortait en « carte supplémentaire ».
+		 * Un bouton reçoit désormais le même critère de taille qu'un lien : petit et court, c'est
+		 * une commande ; grand et porteur de contenu, c'est une carte cliquable.
+		 */
+		if (t === 'button' || t === 'a') {
 			const r = el.getBoundingClientRect();
 			// Un lien peut être une vraie carte cliquable (tuile de prestation) : on ne l'écarte que
 			// s'il est petit et sur une seule ligne, c'est-à-dire s'il se comporte comme un bouton.
@@ -291,7 +299,23 @@ export function diagnostiquer(ref, wp) {
 		let fusion = null;
 		let corrige = null;
 		if (!b) {
-			fusion = restants.find((x) => !x.pris && norm(x.texte).includes(cle.slice(0, 32)) && cle.length > 12);
+			/*
+			 * Deux garde-fous relevés en G22 :
+			 *  - **proximité de bande** : la pastille tarifaire du hero de l'accueil (bande 1) était
+			 *    déclarée « fusionnée » dans la carte tarifaire de la bande 9, dont le texte la
+			 *    contient par coïncidence — neuf bandes plus bas. Une fusion réelle ne traverse pas
+			 *    la page : elle reste dans la bande de la carte absorbée ;
+			 *  - la carte absorbante est marquée `fusion` : sans cela elle restait « libre » et
+			 *    ressortait AUSSI en carte supplémentaire — deux anomalies pour un seul fait (la
+			 *    carte Horaires du contact, comptée fusionnée puis surnuméraire).
+			 */
+			fusion = restants.find(
+				(x) =>
+					!x.pris &&
+					Math.abs((x.bande ?? 0) - (a.bande ?? 0)) <= 1 &&
+					norm(x.texte).includes(cle.slice(0, 32)) &&
+					cle.length > 12
+			);
 			if (!fusion) {
 				/*
 				 * 3. Correspondance **approchée**, avant de conclure à une absence.
@@ -349,6 +373,7 @@ export function diagnostiquer(ref, wp) {
 		}
 
 		if (fusion) {
+			fusion.fusion = true;
 			anomalies.push({
 				genre: 'fusionnee',
 				type: a.type,
@@ -403,8 +428,32 @@ export function diagnostiquer(ref, wp) {
 		}
 	}
 
+	/*
+	 * Cartes-médias muettes : l'appariement se fait sur le texte, et une carte sans texte côté
+	 * maquette est SAUTÉE (`if (!cle) continue`). Sa jumelle WordPress — même bande, même absence
+	 * de texte, même image, boîte comparable — restait alors en « carte supplémentaire » : le
+	 * visuel secondaire du hero de l'accueil, présent à l'identique des deux côtés, comptait une
+	 * anomalie par largeur. On apparie ces muettes par bande, média et géométrie avant le balayage.
+	 */
+	const muettesRef = ref.cartes.filter((c) => !norm(c.texte) && c.image);
 	for (const x of restants) {
-		if (!x.pris) anomalies.push({ genre: 'surplus', type: x.type, bande: x.bande, texte: x.texte.slice(0, 70) });
+		if (x.pris || x.fusion || norm(x.texte) || !x.image) continue;
+		const jumelle = muettesRef.find(
+			(c) =>
+				!c.prise &&
+				Math.abs((c.bande ?? 0) - (x.bande ?? 0)) <= 1 &&
+				Math.abs(c.w - x.w) <= Math.max(12, c.w * 0.1) &&
+				Math.abs(c.h - x.h) <= Math.max(12, c.h * 0.1)
+		);
+		if (jumelle) {
+			jumelle.prise = true;
+			x.pris = true;
+			apparies.push([jumelle, x]);
+		}
+	}
+
+	for (const x of restants) {
+		if (!x.pris && !x.fusion) anomalies.push({ genre: 'surplus', type: x.type, bande: x.bande, texte: x.texte.slice(0, 70) });
 	}
 
 	return { anomalies, apparies };
