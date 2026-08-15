@@ -366,7 +366,8 @@
 
 .tfp-service-tile__desc {
   display: block;
-  font-size: var(--fs-2xs);
+  /* 13,5 px : taille déclarée par la cellule de la carte segmentée de la maquette (relevé G22). */
+  font-size: 13.5px;
   color: var(--color-text-tertiary);
   margin-top: 4px;
 }
@@ -3404,7 +3405,12 @@ body.tfp-body .tfp-chip-list a:focus-visible {
   margin-top: 18px;
 }
 
-body.tfp-body a.tfp-service-tile {
+/* Variante MARINE des tuiles, propre aux pages de zone (.tfp-service-tiles). Elle était posée sur
+   `body.tfp-body a.tfp-service-tile` : cette spécificité écrasait AUSSI les quatre tuiles de
+   l'accueil, que la maquette rend en carte segmentée claire — grille gap 1 px sur fond #DCE7EB,
+   cellules blanches 20/22, rayon 16 (relevé G22, corrigé G23). La variable contextuelle est le
+   conteneur de zone, pas le body. */
+.tfp-service-tiles a.tfp-service-tile {
   display: block;
   padding: 20px;
   border: 1px solid #1E5C9E;
@@ -3414,14 +3420,14 @@ body.tfp-body a.tfp-service-tile {
   transition: border-color var(--transition-base), transform var(--transition-base);
 }
 
-body.tfp-body a.tfp-service-tile:hover,
-body.tfp-body a.tfp-service-tile:focus-visible {
+.tfp-service-tiles a.tfp-service-tile:hover,
+.tfp-service-tiles a.tfp-service-tile:focus-visible {
   border-color: var(--color-turquoise);
   transform: translateY(-2px);
   color: var(--color-white);
 }
 
-.tfp-service-tile strong {
+.tfp-service-tiles .tfp-service-tile strong {
   display: block;
   font-family: var(--font-heading);
   font-size: 17px;
@@ -3429,7 +3435,7 @@ body.tfp-body a.tfp-service-tile:focus-visible {
   color: var(--color-white);
 }
 
-.tfp-service-tile span {
+.tfp-service-tiles .tfp-service-tile span {
   display: block;
   margin-top: 6px;
   font-size: 13.5px;
