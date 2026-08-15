@@ -3364,9 +3364,13 @@ body.tfp-body .tfp-chip-list a:focus-visible {
 
    Le thème rendait cette bande en fond clair avec des cartes blanches : la section de maillage se
    confondait alors avec le corps de page, alors que le prototype la détache franchement. */
+/* Repli **intrinsèque**, relevé sur le prototype : `repeat(auto-fit, minmax(min(100%, 250px), 1fr))`
+   avec un écart de 13 px. Le thème posait quatre colonnes fixes, repliées sur deux à 1099 px puis
+   sur une à 599 px — trois seuils de fenêtre qui ne correspondent à aucun de ceux de la maquette,
+   laquelle se replie selon la place dont la grille dispose. */
 .tfp-service-tiles {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
   gap: 13px;
   margin-top: 18px;
 }
@@ -3402,18 +3406,6 @@ body.tfp-body a.tfp-service-tile:focus-visible {
   font-size: 13.5px;
   line-height: 1.5;
   color: var(--color-text-on-dark-muted);
-}
-
-@media (max-width: 1099px) {
-  .tfp-service-tiles {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-@media (max-width: 599px) {
-  .tfp-service-tiles {
-    grid-template-columns: minmax(0, 1fr);
-  }
 }
 
 .tfp-note-card p {
