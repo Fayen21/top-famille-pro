@@ -57,11 +57,11 @@ get_header();
 </section>
 
 <section class="tfp-section">
-	<div class="tfp-container" style="max-width:760px;display:flex;flex-direction:column;gap:32px">
+	<div class="tfp-container tfp-legal-body" style="display:flex;flex-direction:column;gap:32px">
 
 		<div>
 			<h2>Éditeur du site</h2>
-			<p style="margin-top:10px;color:var(--color-text-secondary);line-height:1.7">
+			<p class="tfp-legal-p">
 				<?php echo esc_html( $site['legal_name'] ); ?>, exploitant la marque commerciale <?php echo esc_html( $site['brand_name'] ); ?>, <?php echo esc_html( $site['legal_form'] ); ?> au capital social de <?php echo esc_html( $site['legal_capital_display'] ); ?>.<br>
 				Siège social : <?php echo esc_html( $site['address_street'] . ', ' . $site['address_cp'] . ' ' . $site['address_city'] ); ?>.<br>
 				Immatriculée au RCS (registre du commerce et des sociétés) de <?php echo esc_html( $site['legal_rcs_city'] ); ?> sous le numéro <?php echo esc_html( $site['legal_siren'] ); ?>, le <?php echo esc_html( $site['legal_immatriculation_date'] ); ?>.<br>
@@ -77,7 +77,7 @@ get_header();
 
 		<div>
 			<h2>Hébergement</h2>
-			<p style="margin-top:10px;color:var(--color-text-secondary);line-height:1.7">
+			<p class="tfp-legal-p">
 				Le site est hébergé par :<br>
 				<?php echo esc_html( $site['host_name'] ); ?><br>
 				<?php echo esc_html( $site['host_address'] ); ?><br>
@@ -96,25 +96,25 @@ get_header();
 			 * « à compléter » sur des mentions légales serait une non-conformité, pas une fidélité.
 			 */
 			?>
-			<p style="margin-top:10px;color:var(--color-text-secondary);line-height:1.7"><?php echo esc_html( $site['brand_name'] ); ?> — activité dédiée aux professionnels de Top-Famille. Implantation : <?php echo esc_html( $site['address_city'] ); ?> (<?php echo esc_html( $site['address_cp'] ); ?>), Côte-d'Or, <?php echo esc_html( $site['address_region'] ); ?>. Responsable de la publication : <?php echo esc_html( $site['legal_publication_director'] ); ?>. Téléphone : <?php echo esc_html( $site['phone'] ); ?>. E-mail : <?php echo esc_html( $site['email'] ); ?>.</p>
-			<p style="margin-top:10px;color:var(--color-text-secondary);line-height:1.7"><?php echo esc_html( $site['brand_name'] ); ?> dispose d'un seul établissement, à l'adresse indiquée ci-dessus. Les pages de zones d'intervention de ce site présentent des secteurs géographiques desservis, pas des agences ou des implantations locales.</p>
+			<p class="tfp-legal-p"><?php echo esc_html( $site['brand_name'] ); ?> — activité dédiée aux professionnels de Top-Famille. Implantation : <?php echo esc_html( $site['address_city'] ); ?> (<?php echo esc_html( $site['address_cp'] ); ?>), Côte-d'Or, <?php echo esc_html( $site['address_region'] ); ?>. Responsable de la publication : <?php echo esc_html( $site['legal_publication_director'] ); ?>. Téléphone : <?php echo esc_html( $site['phone'] ); ?>. E-mail : <?php echo esc_html( $site['email'] ); ?>.</p>
+			<p class="tfp-legal-p"><?php echo esc_html( $site['brand_name'] ); ?> dispose d'un seul établissement, à l'adresse indiquée ci-dessus. Les pages de zones d'intervention de ce site présentent des secteurs géographiques desservis, pas des agences ou des implantations locales.</p>
 		</div>
 
 		<div>
 			<h2>Propriété intellectuelle</h2>
-			<p style="margin-top:10px;color:var(--color-text-secondary);line-height:1.7">Les textes, la charte graphique et les logos <?php echo esc_html( $site['brand_name'] ); ?> sont la propriété de leur éditeur. Les photographies actuellement affichées sont des visuels sous licence, utilisés à titre provisoire ; leur auteur et leur licence seront précisés lors de la mise en ligne. Elles ne représentent ni les locaux de nos clients, ni nos intervenants, ni la gérante.</p>
-			<p style="margin-top:10px;color:var(--color-text-secondary);line-height:1.7">L'ensemble des contenus de ce site (textes, structure, mise en page) est la propriété de <?php echo esc_html( $site['legal_name'] ); ?>, sauf mention contraire. Toute reproduction non autorisée est interdite.</p>
+			<p class="tfp-legal-p">Les textes, la charte graphique et les logos <?php echo esc_html( $site['brand_name'] ); ?> sont la propriété de leur éditeur. Les photographies actuellement affichées sont des visuels sous licence, utilisés à titre provisoire ; leur auteur et leur licence seront précisés lors de la mise en ligne. Elles ne représentent ni les locaux de nos clients, ni nos intervenants, ni la gérante.</p>
+			<p class="tfp-legal-p">L'ensemble des contenus de ce site (textes, structure, mise en page) est la propriété de <?php echo esc_html( $site['legal_name'] ); ?>, sauf mention contraire. Toute reproduction non autorisée est interdite.</p>
 		</div>
 
 		<div>
 			<h2>Données personnelles</h2>
-			<p style="margin-top:10px;color:var(--color-text-secondary);line-height:1.7">Le traitement des données personnelles collectées via ce site (notamment le formulaire de demande de devis) est détaillé dans notre <a class="tfp-underline" href="<?php echo esc_url( home_url( '/politique-de-confidentialite/' ) ); ?>">politique de confidentialité</a>.</p>
+			<p class="tfp-legal-p">Le traitement des données personnelles collectées via ce site (notamment le formulaire de demande de devis) est détaillé dans notre <a class="tfp-underline" href="<?php echo esc_url( home_url( '/politique-de-confidentialite/' ) ); ?>">politique de confidentialité</a>.</p>
 		</div>
 
 		<div>
 			<h2>Droit applicable</h2>
 			<h2 style="font-size:20px;margin-top:28px">Droit applicable</h2>
-			<p style="margin-top:10px;color:var(--color-text-secondary);line-height:1.7">Le présent site est soumis au droit français. En cas de litige, et à défaut de résolution amiable, les tribunaux français seront seuls compétents.</p>
+			<p class="tfp-legal-p">Le présent site est soumis au droit français. En cas de litige, et à défaut de résolution amiable, les tribunaux français seront seuls compétents.</p>
 		</div>
 
 	</div>

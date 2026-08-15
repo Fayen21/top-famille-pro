@@ -1287,6 +1287,30 @@ body.tfp-body .tfp-article-body p a {
   max-width: none;
 }
 
+/* ---------- Pages légales ----------
+   Ces trois pages sont les seules du site dont le ratio de hauteur ne peut pas rentrer dans
+   95-105 % : leur contenu réglementaire est plus long que celui du prototype, et il ne se
+   raccourcit pas. Ce qui PEUT être fidèle, en revanche, c'est la mise en page — et elle ne l'était
+   pas sur deux points, relevés par tools/audit-legales.mjs :
+
+     largeur de lecture   820 px de conteneur sur la maquette, soit 740 px de texte à 1440 ;
+                          760 px posés en style en ligne, soit 680 — 8 % de lignes en plus
+     paragraphe           16,5 px / 1,65 relevés ; 17 px / 1,7 appliqués — 6 % de hauteur de ligne
+                          en trop sur CHAQUE ligne d'un texte qui n'est fait que de lignes
+
+   Les deux valeurs étaient écrites en style en ligne dans les trois gabarits, donc à trois endroits
+   à corriger et à laisser diverger. Elles vivent maintenant ici. */
+.tfp-legal-body {
+  max-width: 820px;
+}
+
+.tfp-legal-p {
+  margin-top: 10px;
+  font-size: 16.5px;
+  line-height: 1.65;
+  color: var(--color-text-secondary);
+}
+
 /* Étiquette de rangée : un `h2` qui n'ouvre pas une bande mais coiffe une grille. Relevé : 19 px,
    gras, 16 px de marge basse. */
 body.tfp-body .tfp-row-heading {

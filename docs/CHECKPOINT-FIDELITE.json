@@ -594,6 +594,31 @@
       "tests": "973 tests d'assertion verts · lint PHP 81 fichiers · bin/verifier-installation.php PASS code 0 · 0 débordement · 0 image cassée · 0 CTA hors écran · 0 erreur console ou réseau · 0 écart de bandes",
       "fichiers": "page-tarifs.php · page-conseils.php · single.php · bin/seed-phase4-maillage.php · src/css/04-components.css · src/css/05-home.css",
       "statut": "CORRIGE"
+    },
+    {
+      "id": "G20",
+      "titre": "Les trois pages légales — validées, pas corrigées : le surplus est chiffré et imputé au texte réglementaire",
+      "routes": "#/mentions-legales · #/politique-de-confidentialite · #/gestion-des-cookies",
+      "methode": "tools/audit-legales.mjs (nouveau) : on mesure le VOLUME de texte des deux côtés, on calcule la DENSITÉ de la bande de contenu du prototype en pixels par caractère, on applique cette densité au volume du thème, et le RÉSIDU — hauteur mesurée moins hauteur prédite — est le seul défaut géométrique réel. La densité est un estimateur valable ICI SEULEMENT : ces pages n'ont qu'une seule forme, des titres et des paragraphes de pleine largeur, sans grille, sans carte et sans visuel.",
+      "volume_de_texte": {
+        "mentions-legales": "1266 → 2335 caractères (+84 %) · 5 → 7 intitulés · 5 → 8 paragraphes",
+        "politique-de-confidentialite": "1137 → 2670 caractères (+135 %) · 4 → 8 intitulés · 4 → 10 paragraphes · +1 liste de 5 items",
+        "gestion-des-cookies": "707 → 1643 caractères (+132 %) · 3 → 6 intitulés · 3 → 6 paragraphes",
+        "rubriques_absentes_du_prototype": "responsable du traitement, destinataire, sous-traitants, candidatures, hébergeur, identifiants de l'entité éditrice"
+      },
+      "deux_defauts_geometriques_trouves_et_corriges": {
+        "largeur_de_lecture": "conteneur de 760 px posé en style en ligne dans les trois gabarits, contre 820 px relevés — 680 px de texte à 1440 au lieu de 740, soit 8 % de lignes en plus",
+        "typographie": "paragraphes en 17 px / 1,7 contre 16,5 px / 1,65 relevés — 6 % de hauteur de ligne en trop sur CHAQUE ligne d'un texte qui n'est fait que de lignes",
+        "correction": "les deux valeurs vivaient en style en ligne à trois endroits ; elles sont désormais portées par `.tfp-legal-body` et `.tfp-legal-p`, deux classes employées par ces trois gabarits seulement"
+      },
+      "residus_apres_correction": "18 contrôles, 16 résidus NÉGATIFS ou nuls — à ces largeurs le thème est plus dense que le prototype. Les deux résidus positifs valent +37 et +48 px, tous deux à 375 px, soit moins de 2 % de la bande de contenu ; c'est la largeur où l'estimateur de densité est le moins fiable (part des dernières lignes incomplètes).",
+      "effet_ratios": "mentions-legales 125 → 122 % à 768 px · politique-de-confidentialite 134 → 132 % · gestion-des-cookies 115 → 113 %. 18 contrôles rapprochés, ZÉRO éloigné.",
+      "verdict": "Le surplus de hauteur des trois pages légales est ENTIÈREMENT imputable au contenu réglementaire absent du prototype. Aucun défaut géométrique résiduel n'est mesurable. L'exception de ratio prévue au §10 de CLAUDE.md est justifiée et chiffrée — voir docs/AUDIT-PAGES-LEGALES.md, régénérable par `node tools/audit-legales.mjs`.",
+      "rappel": "Ces pages restent bloquées à la publication tant que les données d'immatriculation ne sont pas confirmées par Kbis (CLAUDE.md §5.7). C'est un bloqueur de mise en ligne, indépendant de la géométrie.",
+      "effet_baseline": "docs/baseline-2026-08-15-apres-G20.json : 318/318 contrôles · 294 dans 95-105 % · 18 rapprochées, ZÉRO éloignée · 768 px 50/53",
+      "tests": "973 tests d'assertion verts · lint PHP 81 fichiers · bin/verifier-installation.php PASS code 0 · 0 débordement · 0 image cassée · 0 CTA hors écran · 0 erreur console ou réseau · 0 écart de bandes",
+      "fichiers": "tools/audit-legales.mjs (nouveau) · docs/AUDIT-PAGES-LEGALES.md (nouveau) · page-mentions-legales.php · page-politique-de-confidentialite.php · page-gestion-des-cookies.php · src/css/04-components.css",
+      "statut": "VALIDE"
     }
   ],
   "faux_positifs_corriges_dans_outil": [
@@ -634,19 +659,17 @@
     }
   ],
   "prochain_groupe_a_traiter": {
-    "id": "G20",
+    "id": "G21",
     "priorite": 1,
-    "titre": "Validation géométrique chiffrée des trois pages légales, puis les trois routes hors tolérance à 1440/1920 px seulement",
-    "pages_legales": {
-      "consigne": "À VALIDER composant par composant avec chiffres, PAS à corriger : le contenu réglementaire ne se raccourcit pas. Une exception de ratio n'est acceptable que si le surplus résiduel est entièrement expliqué par le texte obligatoire supplémentaire.",
-      "ratios_768": "politique-de-confidentialite 134 % · mentions-legales 125 % · gestion-des-cookies 115 %"
+    "titre": "Les trois routes hors tolérance à 1440 et 1920 px uniquement",
+    "liste": {
+      "#/pourquoi-top-famille-pro": "107 % — dans la tolérance aux quatre autres largeurs",
+      "#/avis-clients": "107 % — idem",
+      "#/notre-fonctionnement": "92 % — écart de signe NÉGATIF : le thème est plus COURT que la maquette, ce qui écarte d'emblée les causes de type rembourrage en trop"
     },
-    "routes_1440_seulement": {
-      "#/pourquoi-top-famille-pro": "107 % à 1440 et 1920 px seulement — dans la tolérance aux quatre autres largeurs",
-      "#/avis-clients": "107 % à 1440 et 1920 px seulement",
-      "#/notre-fonctionnement": "92 % à 1440 et 1920 px seulement — écart de signe NÉGATIF, le thème est plus COURT que la maquette"
-    },
-    "commande_de_reprise": "bash tools/banc-local.sh && bash tools/banc-local.sh --theme-only && node tools/sonde-bande.mjs '#/politique-de-confidentialite' --widths=768"
+    "lecture": "Ces trois routes ne s'écartent qu'aux deux plus grandes largeurs : la cause est donc dans une valeur qui n'atteint sa borne haute qu'au-delà de 1024 px — une fonction `clamp()` figée, ou une base de colonne qui cesse de se replier.",
+    "puis": "chantiers non ouverts : les 129 occurrences surplus/colonnes, le CLS global, les 14 Lighthouse, les images exactes des quatre héros et la mesure LCP, les captures finales, les exports finaux",
+    "commande_de_reprise": "bash tools/banc-local.sh && bash tools/banc-local.sh --theme-only && node tools/sonde-bande.mjs '#/notre-fonctionnement' --widths=1024,1440"
   },
   "groupes_suivants": [
     {
