@@ -93,8 +93,15 @@ $page = tfp_static_page_data( 'nettoyage-professionnel' );
 
 <section class="tfp-hero">
 	<div class="tfp-hero__content">
+		<?php
+		/*
+		 * La maquette du pilier pose la pastille de note SEULE au-dessus du H1 — sans badge région,
+		 * contrairement aux pages tarifs, prestation et zone. Le badge région ajouté ici partageait
+		 * la rangée avec la pastille (35 px de haut) et faisait compter deux colonnes là où le
+		 * prototype n'en a qu'une (relevé G23).
+		 */
+		?>
 		<div class="tfp-hero__eyebrow">
-			<a class="tfp-region-badge" href="<?php echo esc_url( home_url( '/zones-intervention/bourgogne-franche-comte/' ) ); ?>"><?php echo esc_html( $site['address_region'] ); ?></a>
 			<?php tfp_google_rating_badge( 'inline' ); ?>
 		</div>
 		<h1><?php echo esc_html( $page['h1'] ); ?></h1>

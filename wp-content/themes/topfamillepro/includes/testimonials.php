@@ -37,7 +37,14 @@ if ( ! defined( 'ABSPATH' ) ) {
  * consommation. Le composant est prêt : dès que la vraie note est saisie, les deux badges
  * apparaissent, sans retoucher une ligne de gabarit.
  *
- * @param string $variant 'inline' (hero) ou 'floating' (superposé au portrait).
+ * Variantes : 'inline' (pastille blanche encadrée — hero de l'accueil, pilier, tarifs, pages
+ * prestation et zone, là où la maquette la compose ainsi), 'floating' (superposée au portrait
+ * d'Audrey), 'nu' (étoiles + note à plat, sans fond ni filet ni rayon — les eyebrows des pages
+ * intérieures dont la maquette ne rend PAS la pastille : la seule occurrence de la note y est le
+ * lien nu de la barre haute, et une pastille de plus y comptait une carte absente du prototype —
+ * relevé G23).
+ *
+ * @param string $variant 'inline', 'floating' ou 'nu'.
  */
 function tfp_google_rating_badge( $variant = 'inline' ) {
 	$data = tfp_reassurance_data();

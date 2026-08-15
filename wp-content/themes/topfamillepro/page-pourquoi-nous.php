@@ -60,7 +60,7 @@ $page = tfp_static_page_data( 'pourquoi-nous' );
 <section class="tfp-container tfp-section--tight" style="--tfp-bande-haut:clamp(26px, 4vw, 48px);--tfp-bande-bas:clamp(28px, 3vw, 40px)">
 	<div class="tfp-hero__eyebrow">
 		<a class="tfp-region-badge" href="<?php echo esc_url( home_url( '/zones-intervention/bourgogne-franche-comte/' ) ); ?>"><?php echo esc_html( $site['address_region'] ); ?></a>
-		<?php tfp_google_rating_badge( 'inline' ); ?>
+		<?php tfp_google_rating_badge( 'nu' ); ?>
 	</div>
 	<h1><?php echo esc_html( $page['h1'] ); ?></h1>
 	<?php
