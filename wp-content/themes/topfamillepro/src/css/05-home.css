@@ -384,6 +384,27 @@
 }
 
 /* ---------- Couverture régionale ---------- */
+/* ---------- Bande de couverture régionale ----------
+   Rangée relevée sur la maquette (G23) : flex sans align-items (les colonnes s'étirent et
+   partagent leur ordonnée), colonne de liens en base 360, carte des départements en base 320 /
+   min-height 280. À 1440 px, ces bases redonnent d'elles-mêmes 582 + 542 px — et 582 px de
+   colonne donnent des liens de 187 px, où « Territoire de Belfort » tient sur sa ligne. */
+.tfp-couverture {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(30px, 4vw, 56px);
+}
+
+.tfp-couverture__col {
+  flex: 1 1 360px;
+  min-width: min(100%, 320px);
+}
+
+.tfp-couverture__carte {
+  flex: 1 1 320px;
+  min-width: min(100%, 300px);
+}
+
 .tfp-dept-link {
   background: var(--color-white);
   border: 1px solid var(--color-turquoise-light);
@@ -394,7 +415,9 @@
   align-items: center;
   color: var(--color-text);
   font-weight: var(--fw-semibold);
-  font-size: var(--fs-sm);
+  /* 14,5 px : taille déclarée par le lien de département de la maquette — 15 px suffisait à
+     replier « Territoire de Belfort » sur deux lignes dans une colonne de 187 px. */
+  font-size: 14.5px;
   transition: transform var(--transition-base), border-color var(--transition-base);
   min-height: var(--tap-target-min);
 }

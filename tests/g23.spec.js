@@ -123,3 +123,34 @@ test.describe( 'G23 · prestations-accueil-segmentees — carte segmentée clair
 		expect( t.fond ).not.toBe( 'rgb(255, 255, 255)' );
 	} );
 } );
+
+test.describe( 'G23 · couverture régionale de l’accueil — rangée étirée, liens sur une ligne', () => {
+	test.use( { viewport: { width: 1440, height: 900 } } );
+
+	test( 'les deux colonnes partagent leur ordonnée (pas de centrage vertical)', async ( { page } ) => {
+		// Maquette : rangée flex SANS align-items — les colonnes s'étirent. Le centrage du thème
+		// posait la carte des départements 90 px sous le haut de la colonne de liens : l'inventaire
+		// la comptait seule sur sa rangée (colonnes 2 → 1).
+		await page.goto( '/' );
+		const rangee = page.locator( '.tfp-couverture' );
+		await expect( rangee ).toBeVisible();
+		const y = await rangee.evaluate( ( el ) => {
+			const enfants = [ ...el.children ].map( ( c ) => c.getBoundingClientRect().top );
+			return Math.abs( enfants[ 0 ] - enfants[ 1 ] );
+		} );
+		expect( y ).toBeLessThanOrEqual( 2 );
+	} );
+
+	test( 'chaque lien de département tient sur une ligne', async ( { page } ) => {
+		// Maquette : 187×49 — nom à gauche, numéro à droite, une seule ligne. Le repli à 75 px
+		// faisait compter deux cartes en surplus (« Yonne 89 », « Territoire de Belfort 90 »).
+		await page.goto( '/' );
+		const liens = page.locator( '.tfp-dept-link' );
+		await expect( liens ).toHaveCount( 8 );
+		for ( let i = 0; i < 8; i++ ) {
+			const h = await liens.nth( i ).evaluate( ( el ) => el.getBoundingClientRect().height );
+			expect( h, `lien de département ${ i + 1 } replié sur deux lignes` ).toBeLessThanOrEqual( 56 );
+		}
+		await expect( liens.first() ).toHaveCSS( 'font-size', '14.5px' );
+	} );
+} );
