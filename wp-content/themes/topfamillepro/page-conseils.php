@@ -64,7 +64,19 @@ $carte = function ( $article, $mise_en_avant = false ) use ( $prenom ) {
 			<span class="tfp-article-card__meta">
 				<?php echo esc_html( $prenom ); ?> · <?php echo esc_html( tfp_format_date_fr( $article->ID ) ); ?>
 			</span>
-			<span class="tfp-link-arrow">Lire l'article →</span>
+			<?php
+			/*
+			 * Pas de « Lire l'article → » sur les cartes secondaires : la maquette ne l'y met pas,
+			 * la carte entière est déjà le lien, et son nom accessible reprend le titre de
+			 * l'article. La ligne coûtait 36 px par carte — 57 px sur la bande à 1440 px. La carte
+			 * mise en avant, elle, garde la sienne : le prototype l'y pose.
+			 */
+			if ( $mise_en_avant ) :
+				?>
+				<span class="tfp-link-arrow">Lire l'article →</span>
+				<?php
+			endif;
+			?>
 		</div>
 	</a>
 	<?php
@@ -96,14 +108,22 @@ get_header();
 	<?php tfp_breadcrumb( tfp_seo()['breadcrumb'] ); ?>
 </div>
 
-<section class="tfp-container tfp-section--tight">
+<?php
+/*
+ * Rembourrages relevés bande par bande sur la maquette. Les six bandes de cette page portaient
+ * toutes clamp(30px, 4vw, 52px) des deux côtés — soit 104 px à 1440 px — alors que le prototype
+ * en déclare six paires différentes, dont quatre à rembourrage haut nul. À elles seules, ces
+ * valeurs expliquaient 276 px des 490 px d'écart de la page à 1440 px.
+ */
+?>
+<section class="tfp-container tfp-container--narrow tfp-section--tight" style="--tfp-bande-haut:clamp(26px, 4vw, 48px);--tfp-bande-bas:clamp(20px, 3vw, 32px)">
 	<h1>Conseils &amp; repères</h1>
 	<p class="tfp-section__lede">Des repères concrets et vérifiables sur le nettoyage professionnel de bureaux et de locaux, écrits par <?php echo esc_html( $prenom ); ?> à partir de nos échanges quotidiens avec des dirigeants, commerçants et gestionnaires de <?php echo esc_html( $site['address_region'] ); ?>.</p>
-	<p class="tfp-section__lede">Vous y trouverez de quoi cadrer une fréquence de passage, estimer un budget réaliste ou rédiger un cahier des charges — sans jargon commercial, avec des exemples chiffrés et des repères que nous appliquons nous-mêmes au quotidien.</p>
+	<p class="tfp-section__sublede">Vous y trouverez de quoi cadrer une fréquence de passage, estimer un budget réaliste ou rédiger un cahier des charges — sans jargon commercial, avec des exemples chiffrés et des repères que nous appliquons nous-mêmes au quotidien.</p>
 </section>
 
 <?php if ( ! empty( $themes ) ) : ?>
-<section class="tfp-container tfp-section--tight">
+<section class="tfp-container tfp-section--tight" style="--tfp-bande-haut:0px;--tfp-bande-bas:clamp(20px, 3vw, 32px)">
 	<ul class="tfp-theme-list">
 		<li class="tfp-theme-list__item is-current">Toutes les catégories</li>
 		<?php foreach ( $themes as $theme ) : ?>
@@ -114,16 +134,23 @@ get_header();
 <?php endif; ?>
 
 <?php if ( $une ) : ?>
-<section class="tfp-container tfp-section--tight">
+<section class="tfp-container tfp-section--tight" style="--tfp-bande-haut:0px;--tfp-bande-bas:clamp(20px, 3vw, 32px)">
 	<?php $carte( $une, true ); ?>
 </section>
 <?php endif; ?>
 
 <?php if ( ! empty( $articles ) ) : ?>
-<section class="tfp-section--tight">
+<section class="tfp-section--tight" style="--tfp-bande-haut:clamp(20px, 3vw, 32px);--tfp-bande-bas:clamp(36px, 4vw, 56px)">
 	<div class="tfp-container">
-		<h2>Les autres articles</h2>
-		<div class="tfp-grid tfp-grid--autofit-md" style="margin-top:24px">
+		<?php
+		/*
+		 * Intertitre de rangée : 19 px et 16 px de marge basse sur la maquette, contre 34 px et une
+		 * grille repoussée de 24 px dans le thème. Ce n'est pas un titre de bande, c'est une étiquette
+		 * de rangée — sa hiérarchie sémantique ne change pas, seul son rendu descend au relevé.
+		 */
+		?>
+		<h2 class="tfp-row-heading">Les autres articles</h2>
+		<div class="tfp-grid tfp-grid--autofit" style="--tfp-colonne:300px;margin-top:0">
 			<?php foreach ( $articles as $article ) : ?>
 				<?php $carte( $article ); ?>
 			<?php endforeach; ?>
@@ -132,7 +159,7 @@ get_header();
 </section>
 <?php endif; ?>
 
-<section class="tfp-section--alt tfp-section--tight">
+<section class="tfp-section--alt tfp-section--tight" style="--tfp-bande-haut:0px;--tfp-bande-bas:clamp(44px, 6vw, 80px)">
 	<div class="tfp-container">
 		<h2>Passer du conseil à votre situation</h2>
 		<p class="tfp-section__lede">Ces repères valent pour la plupart des locaux. Pour les appliquer aux vôtres, partez de la prestation ou du secteur qui vous concerne.</p>
@@ -147,8 +174,15 @@ get_header();
 	</div>
 </section>
 
-<section class="tfp-section--turquoise tfp-section--tight">
-	<div class="tfp-container tfp-prefooter__inner">
+<?php
+/*
+ * Rappel de fin de page : la maquette ne met aucun rembourrage sur la bande et le porte
+ * entièrement sur le bloc intérieur — 1040 px de large, clamp(36px, 5vw, 56px) en haut et en bas,
+ * écart 20. Le thème cumulait les deux (52 px de bande + 24 px de bloc), d'où 44 px de trop.
+ */
+?>
+<section class="tfp-section--turquoise tfp-section--tight" style="--tfp-bande-haut:0px;--tfp-bande-bas:0px">
+	<div class="tfp-container tfp-prefooter__inner tfp-prefooter__inner--page">
 		<p class="tfp-prefooter__text">
 			<strong>Un besoin précis pour vos locaux ?</strong>
 			Nos conseils donnent des repères ; votre devis reste toujours personnalisé.

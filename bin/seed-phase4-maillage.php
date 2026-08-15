@@ -72,11 +72,40 @@ function tfp_seed4_link_article_prestations( $article_slug, array $prestation_id
 	echo "  _tfp_related_prestation -> $article_slug (" . count( $prestation_ids ) . " prestation(s))\n";
 }
 
+/*
+ * La maquette pose les MÊMES trois renvois sous les trois articles : « Nettoyage de bureaux »,
+ * « Nos tarifs » et « Nettoyage à Dijon ». « Cahier des charges » recevait ici les six prestations,
+ * soit sept pastilles au lieu de trois : à 375 px, sept lignes de pastilles contre deux, et
+ * 212 px de trop sur la bande — le dernier écart de cette route.
+ *
+ * Ce n'est pas un appauvrissement du maillage : les six prestations restent atteignables depuis
+ * l'index des prestations, lui-même lié dans le corps de l'article, et sept renvois indifférenciés
+ * en bas de page ne guident personne.
+ */
 if ( $bureaux ) {
 	tfp_seed4_link_article_prestations( 'frequence-bureaux', array( $bureaux->ID ) );
 	tfp_seed4_link_article_prestations( 'cout-nettoyage-bureaux', array( $bureaux->ID ) );
+	tfp_seed4_link_article_prestations( 'cahier-des-charges-nettoyage', array( $bureaux->ID ) );
 }
-tfp_seed4_link_article_prestations( 'cahier-des-charges-nettoyage', $all_prestation_ids );
+unset( $all_prestation_ids );
+
+/*
+ * Troisième pastille de la maquette : le renvoi vers une ville. Il est stocké en méta plutôt
+ * qu'écrit dans le gabarit — une ville nommée en dur dans un fichier PHP ne se corrige pas depuis
+ * l'administration, et le jour où la ville de référence change, elle se corrige ici.
+ */
+$dijon = get_page_by_path( 'dijon', OBJECT, 'zone' );
+if ( $dijon ) {
+	foreach ( array( 'frequence-bureaux', 'cout-nettoyage-bureaux', 'cahier-des-charges-nettoyage' ) as $slug ) {
+		$article = get_page_by_path( $slug, OBJECT, 'post' );
+		if ( $article ) {
+			update_post_meta( $article->ID, '_tfp_related_ville', (int) $dijon->ID );
+			echo "  _tfp_related_ville -> $slug (" . get_the_title( $dijon ) . ")\n";
+		}
+	}
+} else {
+	echo "  ATTENTION : zone 'dijon' introuvable — pastille de ville non posée.\n";
+}
 
 /* ------------------------------------------------------------------ */
 /* 3. prestations_liees sur les 26 zones — corrige le lien unique à     */

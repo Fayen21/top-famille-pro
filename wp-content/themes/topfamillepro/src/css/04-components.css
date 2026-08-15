@@ -1287,6 +1287,34 @@ body.tfp-body .tfp-article-body p a {
   max-width: none;
 }
 
+/* Étiquette de rangée : un `h2` qui n'ouvre pas une bande mais coiffe une grille. Relevé : 19 px,
+   gras, 16 px de marge basse. */
+body.tfp-body .tfp-row-heading {
+  font-size: 19px;
+  line-height: 1.2;
+  font-weight: var(--fw-bold);
+  margin: 0 0 16px;
+}
+
+/* Rappel de fin de page (index Conseils) : la maquette pose le rembourrage sur le bloc, pas sur la
+   bande, et resserre le bloc à 1040 px. La bande de pied de page, elle, garde sa propre géométrie —
+   d'où un modificateur plutôt qu'une retouche de `.tfp-prefooter__inner`, partagé avec le pied. */
+.tfp-prefooter__inner--page {
+  max-width: 1040px;
+  padding-block: clamp(36px, 5vw, 56px);
+  gap: 20px;
+}
+
+/* Second paragraphe d'introduction : la maquette le distingue du lède — 16 px au lieu de 17-20 px,
+   marge haute de 14 px au lieu de 18. Le thème répétait la classe du lède, ce qui donnait deux
+   paragraphes de même poids et faisait disparaître la hiérarchie voulue. */
+.tfp-section__sublede {
+  margin-top: 14px;
+  font-size: 16px;
+  line-height: 1.62;
+  color: var(--color-text-secondary);
+}
+
 /* ---------- Trois grilles, trois traitements ----------
    Relevés sur les six routes `#/service/*`, identiques sur les six :
 
@@ -1654,35 +1682,61 @@ body.tfp-body .tfp-article-body p a {
    includes/site-options.php via le gabarit.
    ------------------------------------------------------------------ */
 
+/* ---------- Bandeau tarifaire (page Tarifs) ----------
+   Deux cartes sur une rangée souple, telles que le prototype les déclare :
+
+     carte de l'offre   flex: 2 1 380px · min-width: min(100%, 320px) · fond #174A81 · rayon 20
+                        rembourrage clamp(28px, 4vw, 44px) · elle-même flex, écart 24, espacée
+     carte de promesse  flex: 1 1 220px · min-width: min(100%, 220px) · fond blanc · filet · 26
+
+   Le thème n'en faisait qu'un encadré turquoise pâle, en grille d'une colonne jusqu'à une requête
+   média posée à 820 px — un seuil qui ne figure nulle part dans la maquette et qui laissait le prix
+   et son bouton empilés sur toute la largeur en deçà. Les bases souples se replient toutes seules
+   au bon endroit, et le fond marine est celui du prototype. */
 .tfp-price-headline {
-  display: grid;
-  gap: 24px;
-  grid-template-columns: 1fr;
-  padding: 28px 30px;
-  border: 1px solid var(--color-turquoise-light);
-  border-radius: var(--radius-lg);
-  background: var(--color-turquoise-pale);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
 }
 
-@media (min-width: 820px) {
-  .tfp-price-headline {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    align-items: center;
-  }
+.tfp-price-headline__offer {
+  flex: 2 1 380px;
+  min-width: min(100%, 320px);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  align-items: center;
+  justify-content: space-between;
+  padding: clamp(28px, 4vw, 44px);
+  border-radius: 20px;
+  background: var(--color-primary);
+  color: var(--color-white);
+}
+
+.tfp-price-headline__promise {
+  flex: 1 1 220px;
+  min-width: min(100%, 220px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 26px;
+  border: 1px solid var(--color-border);
+  border-radius: 20px;
+  background: var(--color-white);
 }
 
 .tfp-price-headline__label {
   font-size: 15px;
-  color: var(--color-text-secondary);
+  color: var(--color-turquoise);
 }
 
 .tfp-price-headline__value {
   margin-top: 4px;
   font-family: var(--font-heading);
-  font-size: 46px;
+  font-size: clamp(46px, 7vw, 70px);
   font-weight: 800;
-  line-height: 1.05;
-  color: var(--color-navy);
+  line-height: 1;
+  color: var(--color-white);
 }
 
 .tfp-price-headline__value span {
@@ -1691,19 +1745,28 @@ body.tfp-body .tfp-article-body p a {
 }
 
 .tfp-price-headline__note {
-  margin-top: 8px;
+  margin-top: 6px;
   font-size: 15px;
-  color: var(--color-text-secondary);
+  color: var(--color-turquoise-light);
+}
+
+/* Le bouton ne se rétrécit pas sous son texte : la maquette lui pose `white-space: nowrap`, et la
+   rangée se replie plutôt que de casser « Demander mon devis » en deux lignes. */
+body.tfp-body .tfp-price-headline__offer .tfp-btn {
+  padding: 15px 26px;
+  border-radius: 12px;
+  font-weight: var(--fw-bold);
+  white-space: nowrap;
 }
 
 .tfp-price-headline__delay {
-  margin-top: 10px;
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--color-primary);
+  font-family: var(--font-heading);
+  font-size: 20px;
+  font-weight: var(--fw-bold);
+  color: var(--color-navy);
 }
 
-.tfp-price-headline__cta p {
+.tfp-price-headline__promise p {
   margin-top: 8px;
   font-size: 15px;
   line-height: 1.6;
@@ -1995,16 +2058,20 @@ body.tfp-body .tfp-zone-chapter h2 {
    reproduisent l'écart sans qu'aucune section n'ait à être ajoutée au contenu — le faux positif
    des bandes d'article est clos, et rien ici ne le rouvre. */
 .tfp-article-body > * {
-  margin-top: clamp(28px, 3vw, 40px);
+  margin-top: 12px;
   margin-bottom: 0;
+}
+
+/* Seul un intitulé ouvre un chapitre : c'est lui, et lui seul, qui porte l'écart de la maquette.
+   Le reste du chapitre — paragraphe, liste — se tient à 12 px. La règle précédente posait l'écart
+   de chapitre sur TOUS les enfants et le ramenait à 12 px pour le seul paragraphe suivant un
+   intitulé : une liste placée après un paragraphe recevait alors 28 px au lieu de 12. */
+.tfp-article-body > h2 {
+  margin-top: clamp(28px, 3vw, 40px);
 }
 
 .tfp-article-body > *:first-child {
   margin-top: 0;
-}
-
-.tfp-article-body > h2 + p {
-  margin-top: 12px;
 }
 
 .tfp-article-body h2 {
@@ -2079,20 +2146,16 @@ body.tfp-body .tfp-zone-chapter h2 {
   color: var(--color-turquoise);
 }
 
-.tfp-article-body h2 {
-  margin-top: 36px;
-  margin-bottom: 10px;
-}
-
+/* Ce bloc redéclarait `h2`, `p` et `ul` du corps d'article — plus bas dans la feuille, il
+   l'emportait sur les valeurs relevées quelques centaines de lignes plus haut et remettait en
+   place exactement ce qu'elles corrigeaient : intitulés à 36 px de marge, paragraphes en
+   17 px / 1,75 avec 16 px de marge basse, listes à 20 px. Seule la couleur du texte lui était
+   propre ; c'est tout ce qu'il en reste. */
 .tfp-article-body p {
-  margin-bottom: 16px;
-  font-size: 17px;
-  line-height: 1.75;
   color: var(--color-text-secondary);
 }
 
 .tfp-article-body ul {
-  margin: 0 0 20px;
   padding-left: 0;
   list-style: none;
 }
@@ -2191,24 +2254,36 @@ body.tfp-body .tfp-zone-chapter h2 {
   color: var(--color-text-secondary);
 }
 
+/* ---------- Carte mise en avant de l'index Conseils ----------
+   Visuel et texte se partagent la carte à ÉGALITÉ : le prototype leur donne la même base souple —
+   `flex: 1 1 380px; min-width: min(100%, 300px)` — ce qui produit deux moitiés de 589 px à 1440.
+   Le thème posait une grille 3fr/2fr sous requête média à 900 px, soit 707 et 471 : le texte, dans
+   la colonne étroite, gagnait deux lignes et la carte 79 px de haut.
+
+   Les bases souples se replient d'elles-mêmes quand 380 + 380 ne tiennent plus, ce qui rend la
+   requête média inutile — et son seuil de 900 px ne correspondait à aucun relevé. */
+.tfp-article-card--feature {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.tfp-article-card--feature > * {
+  flex: 1 1 380px;
+  min-width: min(100%, 300px);
+}
+
+.tfp-article-card--feature .tfp-article-card__media img {
+  height: 100%;
+  aspect-ratio: auto;
+}
+
+.tfp-article-card--feature .tfp-article-card__body {
+  justify-content: center;
+  padding: clamp(24px, 3vw, 38px);
+}
+
 @media (min-width: 900px) {
-  /* Carte mise en avant : visuel à gauche, texte à droite, comme dans la maquette. */
-  .tfp-article-card--feature {
-    display: grid;
-    grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
-    align-items: stretch;
-  }
-
-  .tfp-article-card--feature .tfp-article-card__media img {
-    height: 100%;
-    aspect-ratio: auto;
-  }
-
-  .tfp-article-card--feature .tfp-article-card__body {
-    justify-content: center;
-    padding: 32px;
-  }
-
   .tfp-article-card--feature .tfp-article-card__body h3 {
     font-size: 26px;
   }

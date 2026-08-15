@@ -23,6 +23,11 @@ $faq          = tfp_get_article_faq( $post_id );
 $robots       = tfp_article_is_complete( $post_id ) ? 'index,follow' : 'noindex,follow';
 $seo_title    = get_post_meta( $post_id, '_tfp_seo_title', true );
 $related_prestations = tfp_get_article_related_prestations( $post_id );
+$related_ville_id    = (int) get_post_meta( $post_id, '_tfp_related_ville', true );
+$related_ville       = $related_ville_id ? get_post( $related_ville_id ) : null;
+if ( $related_ville && ( 'zone' !== $related_ville->post_type || 'publish' !== $related_ville->post_status ) ) {
+	$related_ville = null;
+}
 
 $categories = get_the_category( $post_id );
 // La maquette étiquette chaque article par son thème (« Bureaux », « Tarifs », « Organisation »),
@@ -218,6 +223,17 @@ get_header();
 					<a href="<?php echo esc_url( get_permalink( $prestation ) ); ?>" class="tfp-chip"><?php echo esc_html( tfp_get_field( 'nav_label', $prestation->ID ) ?: get_the_title( $prestation ) ); ?></a>
 				<?php endforeach; ?>
 				<a href="<?php echo esc_url( home_url( '/tarifs/' ) ); ?>" class="tfp-chip">Nos tarifs</a>
+				<?php
+				/*
+				 * Troisième renvoi de la maquette : la ville de référence de l'article. Il manquait
+				 * sur les trois articles, alors que le prototype le pose sur les trois.
+				 */
+				if ( $related_ville ) :
+					?>
+					<a href="<?php echo esc_url( get_permalink( $related_ville ) ); ?>" class="tfp-chip">Nettoyage à <?php echo esc_html( get_the_title( $related_ville ) ); ?></a>
+					<?php
+				endif;
+				?>
 			</div>
 		<?php endif; ?>
 	</div>

@@ -143,15 +143,32 @@ get_header();
 	<p class="tfp-section__lede">Nous affichons nos tarifs clairement, avant même le devis. Un tarif horaire unique de <?php echo esc_html( $prix ); ?> HT/h, des frais annoncés à l'avance, et des exemples chiffrés. La transparence est la base d'une relation de confiance.</p>
 </section>
 
-<section class="tfp-container tfp-section--tight">
-	<div class="tfp-price-headline">
-		<div class="tfp-price-headline__main">
-			<div class="tfp-price-headline__label">Tarif horaire de base</div>
-			<div class="tfp-price-headline__value"><?php echo esc_html( $prix ); ?> <span>HT/h</span></div>
-			<div class="tfp-price-headline__note">Identique en régulier et en ponctuel.</div>
+<?php
+/*
+ * Bandeau tarifaire — DEUX cartes, pas une.
+ *
+ * La maquette pose une rangée souple de deux cartes : à gauche l'offre elle-même sur fond marine
+ * (`flex: 2 1 380px`), avec le prix et le bouton côte à côte ; à droite une carte blanche
+ * (`flex: 1 1 220px`) qui porte le délai de réponse. Le thème avait fondu les deux en un seul
+ * encadré turquoise pâle d'une colonne, dont le contenu s'empilait sur 645 px de large jusqu'à
+ * 820 px de fenêtre. Résultat : la promesse de prix et l'appel à l'action se lisaient l'un sous
+ * l'autre au lieu de se répondre, et la bande mesurait 83 px de trop à 768 px.
+ *
+ * Les deux bases se replient d'elles-mêmes — 380 + 220 + 16 ne tiennent plus sous 616 px de
+ * largeur utile — sans la requête média à 820 px, dont le seuil ne correspondait à aucun relevé.
+ */
+?>
+<section class="tfp-section--tight" style="--tfp-bande-haut:0px;--tfp-bande-bas:clamp(36px, 5vw, 60px)">
+	<div class="tfp-container tfp-price-headline" style="--container-max:1100px">
+		<div class="tfp-price-headline__offer">
+			<div class="tfp-price-headline__main">
+				<div class="tfp-price-headline__label">Tarif horaire de base</div>
+				<div class="tfp-price-headline__value"><?php echo esc_html( $prix ); ?> <span>HT/h</span></div>
+				<div class="tfp-price-headline__note">Identique en régulier et en ponctuel.</div>
+			</div>
+			<?php tfp_button( array( 'label' => 'Demander mon devis', 'href' => home_url( '/demande-de-devis/' ), 'variant' => 'on-primary' ) ); ?>
 		</div>
-		<div class="tfp-price-headline__cta">
-			<?php tfp_button( array( 'label' => 'Demander mon devis', 'href' => home_url( '/demande-de-devis/' ), 'variant' => 'primary' ) ); ?>
+		<div class="tfp-price-headline__promise">
 			<div class="tfp-price-headline__delay">Devis sous 24 h</div>
 			<p>Gratuit, personnalisé et sans engagement. Aucun simulateur : une étude adaptée à vos locaux.</p>
 		</div>
@@ -312,11 +329,19 @@ get_header();
 	</div>
 </section>
 
-<section class="tfp-section--tight">
+<?php
+/*
+ * Base de colonne DÉCLARÉE à 230 px et écart de 12 px : avec les 220/16 de l'utilitaire générique,
+ * les quatre renvois se rangeaient sur trois colonnes puis une orpheline (3 × 220 + 32 = 692 tient
+ * dans 707 px de largeur utile) là où la maquette en pose deux de 347. Rembourrage de bande relevé :
+ * clamp(40px, 5vw, 72px), haut et bas.
+ */
+?>
+<section class="tfp-section--tight" style="--tfp-bande-haut:clamp(40px, 5vw, 72px);--tfp-bande-bas:clamp(40px, 5vw, 72px)">
 	<div class="tfp-container">
 		<h2>Avant de demander votre devis</h2>
 		<p class="tfp-section__lede">Le tarif est le même partout en région. Ce qui change, c'est le volume d'heures : ces pages vous aident à le cadrer avant l'échange avec <?php echo esc_html( $prenom ); ?>.</p>
-		<div class="tfp-grid tfp-grid--autofit-md" style="margin-top:24px">
+		<div class="tfp-grid tfp-grid--autofit" style="--tfp-colonne:230px;gap:12px;margin-top:20px">
 			<?php foreach ( $avant_devis as $lien ) : ?>
 				<a class="tfp-card tfp-card--link" href="<?php echo esc_url( $lien[0] ); ?>">
 					<h3><?php echo esc_html( $lien[1] ); ?></h3>

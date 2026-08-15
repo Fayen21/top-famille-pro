@@ -189,12 +189,12 @@
   margin-left: auto;
 }
 
-/* ---------- Chips "professionnels accompagnés" (fusionnés avec Prestations) ---------- */
-.tfp-chip-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-2);
-}
+/* ---------- Chips "professionnels accompagnés" (fusionnés avec Prestations) ----------
+   `.tfp-chip-row` est défini une seule fois, dans 04-components.css, avec ses variantes d'écart
+   `--9` et `--10`. Une seconde définition vivait ici : posée plus bas dans la feuille, elle
+   l'emportait à égalité de spécificité et ramenait TOUTES les rangées à 8 px, y compris celles qui
+   déclarent 9 ou 10. Les deux variantes n'avaient donc jamais eu d'effet depuis leur écriture —
+   31 rangées relevées sur 33 routes. */
 
 /* Pastille de zone. Géométrie relevée sur le rendu de la maquette : 41 px de haut, padding
    8px 15px, rayon plein, texte à **14 px** en semi-gras. Elle dépasse donc largement le minimum
