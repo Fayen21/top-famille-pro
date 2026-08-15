@@ -206,7 +206,15 @@ get_header();
 </section>
 
 <?php if ( $reponse ) : ?>
-<section class="tfp-container tfp-section--tight">
+<?php
+/*
+ * La bande « Réponse directe » du gabarit prestation vit dans un conteneur de LECTURE de 820 px
+ * (relevé G23 sur la règle déclarée de la maquette), pas dans le conteneur générique de 1260 :
+ * 80 px de large en plus font tenir le même texte sur une ligne de moins, et la page perdait
+ * cette hauteur à 1024 px et au-delà — l'une des causes mesurées de la chute de /meubles/ à 94 %.
+ */
+?>
+<section class="tfp-container tfp-section--tight tfp-presta-reponse" style="--container-max:820px">
 	<?php
 	/*
 	 * La réponse directe n'est **pas** une carte dans la maquette : c'est du texte courant, précédé
@@ -338,7 +346,8 @@ get_header();
 <?php if ( $detail_titre && ! empty( $details ) ) : ?>
 <section class="tfp-section--alt tfp-section--tight">
 	<div class="tfp-container">
-		<h2><?php echo esc_html( $detail_titre ); ?></h2>
+		<?php // max-width 620 : déclaré par la maquette sur le H2 de cette bande — il replie le titre sur deux lignes dès 1024 px (relevé G23). ?>
+		<h2 style="max-width:620px"><?php echo esc_html( $detail_titre ); ?></h2>
 		<div class="tfp-detail-grid">
 			<?php foreach ( $details as $bloc ) : ?>
 				<div class="tfp-detail-item">
@@ -354,7 +363,8 @@ get_header();
 <?php if ( $orga_titre && ! empty( $orga ) ) : ?>
 <section class="tfp-section--turquoise tfp-section--tight">
 	<div class="tfp-container">
-		<h2><?php echo esc_html( $orga_titre ); ?></h2>
+		<?php // max-width 560 : déclaré par la maquette sur le H2 de cette bande (relevé G23). ?>
+		<h2 style="max-width:560px"><?php echo esc_html( $orga_titre ); ?></h2>
 		<?php
 		/*
 		 * La bande mêle deux traitements, relevés sur la maquette : cinq blocs rangés sur une grille

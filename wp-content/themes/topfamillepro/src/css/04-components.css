@@ -1066,6 +1066,24 @@
   color: var(--color-text-secondary);
 }
 
+/* ---------- Bande « Réponse directe » du gabarit prestation (relevé G23) ----------
+   La maquette y déclare un corps clamp(16px, 1.6vw, 20px) — plafond 20, pas 19 — et un
+   paragraphe de maillage resserré : 680 px de large, 15,5 px, filet turquoise à gauche.
+   Scopé au type prestation : les pages de zone et les articles gardent leurs valeurs,
+   exactes chez eux depuis G09. */
+body.tfp-type-prestation .tfp-direct-answer__text {
+  font-size: clamp(16px, 1.6vw, 20px);
+}
+
+.tfp-presta-reponse .tfp-maillage {
+  max-width: 680px;
+  font-size: 15.5px;
+  margin-top: 16px;
+  margin-left: 20px;
+  border-left: 2px solid var(--color-turquoise);
+  padding-left: 15px;
+}
+
 /* ---------- Rappel de contact avant le CTA final ---------- */
 .tfp-contact-nudge {
   display: flex;
@@ -1376,7 +1394,10 @@ body.tfp-body .tfp-row-heading {
    prestation 10 à 14 % plus hautes que le prototype aux largeurs étroites. */
 .tfp-detail-grid {
   display: grid;
-  gap: 22px;
+  /* Écart déclaré par la grille d'approfondissement de la maquette : clamp(22px, 2.6vw, 34px).
+     La valeur figée à 22 px était juste sous 850 px de fenêtre et courte au-delà — 4,6 px par
+     inter-rangée à 1024 px, 12 à 1440 (relevé G23). Sous 850 px, rien ne change. */
+  gap: clamp(22px, 2.6vw, 34px);
   grid-template-columns: repeat(3, minmax(0, 1fr));
   margin-top: 28px;
 }
@@ -2071,6 +2092,17 @@ body.tfp-body .tfp-zone-chapter h2 {
 
 .tfp-hero--text .tfp-hero__content {
   max-width: 820px;
+}
+
+/* Hero du gabarit prestation (relevé G23) : la maquette déclare un H1 clamp(29px, 4vw, 48px) —
+   même plafond que le thème, pente plus forte : 41 px contre 35 à 1024 px, d'où une ligne de
+   titre en moins — et un lède plafonné à 600 px, pas 760. Scopé au type prestation. */
+body.tfp-type-prestation .tfp-hero__content h1 {
+  font-size: clamp(29px, 4vw, 48px);
+}
+
+body.tfp-type-prestation .tfp-hero__content .tfp-section__lede {
+  max-width: 600px;
 }
 
 /* ------------------------------------------------------------------
