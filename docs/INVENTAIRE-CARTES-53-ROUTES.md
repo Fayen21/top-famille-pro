@@ -11,7 +11,7 @@
 > Un conteneur qui contient visuellement plusieurs micro-cartes n’est jamais compté pour une
 > carte : il compte pour ses enfants.
 
-**53 routes × 2 largeurs · 348 anomalie(s), dont 101 grave(s)** (carte absente ou fusionnée).
+**53 routes × 2 largeurs · 314 anomalie(s), dont 101 grave(s)** (carte absente ou fusionnée).
 
 ## Synthèse
 
@@ -27,8 +27,8 @@
 | `#/service/meubles` | 21 → 21 | 22 → 22 | ⚠️ 2 | ⚠️ 1 |
 | `#/service/ponctuel` | 21 → 21 | 22 → 22 | ⚠️ 1 | ✅ |
 | `#/nos-tarifs` | 22 → 22 | 22 → 22 | ❌ 6 (1) | ❌ 2 (1) |
-| `#/zones-intervention` | 52 → 49 (-3) | 35 → 49 (+14) | ❌ 11 (4) | ❌ 30 (5) |
-| `#/bourgogne-franche-comte` | 50 → 56 (+6) | 47 → 56 (+9) | ❌ 22 (1) | ❌ 26 (2) |
+| `#/zones-intervention` | 52 → 49 (-3) | 35 → 31 (-4) | ❌ 11 (4) | ❌ 12 (5) |
+| `#/bourgogne-franche-comte` | 50 → 50 | 47 → 46 (-1) | ❌ 16 (1) | ❌ 16 (2) |
 | `#/departement/cote-dor` | 31 → 31 | 32 → 32 | ✅ | ⚠️ 4 |
 | `#/departement/doubs` | 31 → 31 | 32 → 32 | ✅ | ⚠️ 1 |
 | `#/departement/jura` | 33 → 33 | 34 → 34 | ✅ | ⚠️ 1 |
@@ -84,7 +84,7 @@
 | `#/demande-de-devis` | 2 | 2 |
 | `#/contact` | 2 | 6 |
 | `#/nos-tarifs` | 1 | 6 |
-| `#/bourgogne-franche-comte` | 1 | 22 |
+| `#/bourgogne-franche-comte` | 1 | 16 |
 | `#/ville/dijon` | 1 | 4 |
 | `#/ville/besancon` | 1 | 1 |
 | `#/ville/dole` | 1 | 1 |
@@ -328,7 +328,7 @@
 | absente | `carte-titre` | 13 | « Vérifier notre intervention dans ma commune » |
 | surplus | `chip` | 2 | « ★★★★★5,0/5 sur Google » |
 
-**375 px** — bandes 13 → 13 · cartes 35 → 49 · 30 anomalie(s)
+**375 px** — bandes 13 → 13 · cartes 35 → 31 · 12 anomalie(s)
 
 | Anomalie | Archétype | Bande | Détail |
 |---|---|---|---|
@@ -344,29 +344,11 @@
 | absente | `carte-titre` | 13 | « Vérifier notre intervention dans ma commune » |
 | absente | `carte-titre` | 13 | « ☎ Échanger avec Audrey · 06 36 17 63 39 » |
 | surplus | `chip` | 2 | « ★★★★★5,0/5 sur Google » |
-| surplus | `carte-titre` | 8 | « Dijon 21000 » |
-| surplus | `carte-titre` | 8 | « Besançon 25000 » |
-| surplus | `carte-titre` | 8 | « Dole 39100 » |
-| surplus | `carte-titre` | 8 | « Lons-le-Saunier 39000 » |
-| surplus | `carte-titre` | 8 | « Nevers 58000 » |
-| surplus | `carte-titre` | 8 | « Vesoul 70000 » |
-| surplus | `carte-titre` | 8 | « Chalon-sur-Saône 71100 » |
-| surplus | `carte-titre` | 8 | « Mâcon 71000 » |
-| surplus | `carte-titre` | 8 | « Auxerre 89000 » |
-| surplus | `carte-titre` | 8 | « Belfort 90000 » |
-| surplus | `carte-titre` | 9 | « Saint-Apollinaire 21850 » |
-| surplus | `carte-titre` | 9 | « Chenôve 21300 » |
-| surplus | `carte-titre` | 9 | « Quetigny 21800 » |
-| surplus | `carte-titre` | 9 | « Talant 21240 » |
-| surplus | `carte-titre` | 9 | « Longvic 21600 » |
-| surplus | `carte-titre` | 9 | « Fontaine-lès-Dijon 21121 » |
-| surplus | `carte-titre` | 9 | « Marsannay-la-Côte 21160 » |
-| surplus | `carte-titre` | 9 | « Beaune 21200 » |
 
 
 ### `#/bourgogne-franche-comte` → `/zones-intervention/bourgogne-franche-comte/`
 
-**1440 px** — bandes 12 → 12 · cartes 50 → 56 · 22 anomalie(s)
+**1440 px** — bandes 12 → 12 · cartes 50 → 50 · 16 anomalie(s)
 
 | Anomalie | Archétype | Bande | Détail |
 |---|---|---|---|
@@ -386,14 +368,8 @@
 | colonnes | `tarif` | 9 | « Exemple · bureaux réguliers, 12 h/mois333 € HT/mois12 h × 27 » — 3 colonnes attendues, 2 rendues |
 | type | `temoignage` | 9 | « ★★★★★« Nous avions besoin d'un prestataire capable de suivre » — rendue en `carte-titre-texte` |
 | surplus | `chip` | 2 | « ★★★★★5,0/5 sur Google » |
-| surplus | `carte-titre` | 8 | « Dijon 21000 » |
-| surplus | `carte-titre` | 8 | « Besançon 25000 » |
-| surplus | `carte-titre` | 8 | « Dole 39100 » |
-| surplus | `carte-titre` | 8 | « Lons-le-Saunier 39000 » |
-| surplus | `carte-titre` | 8 | « Nevers 58000 » |
-| surplus | `carte-titre` | 8 | « Vesoul 70000 » |
 
-**375 px** — bandes 12 → 12 · cartes 47 → 56 · 26 anomalie(s)
+**375 px** — bandes 12 → 12 · cartes 47 → 46 · 16 anomalie(s)
 
 | Anomalie | Archétype | Bande | Détail |
 |---|---|---|---|
@@ -413,16 +389,6 @@
 | type | `temoignage` | 9 | « ★★★★★« Nous avions besoin d'un prestataire capable de suivre » — rendue en `carte-titre-texte` |
 | absente | `carte-titre` | 12 | « ☎ Échanger avec Audrey · 06 36 17 63 39 » |
 | surplus | `chip` | 2 | « ★★★★★5,0/5 sur Google » |
-| surplus | `carte-titre` | 8 | « Dijon 21000 » |
-| surplus | `carte-titre` | 8 | « Besançon 25000 » |
-| surplus | `carte-titre` | 8 | « Dole 39100 » |
-| surplus | `carte-titre` | 8 | « Lons-le-Saunier 39000 » |
-| surplus | `carte-titre` | 8 | « Nevers 58000 » |
-| surplus | `carte-titre` | 8 | « Vesoul 70000 » |
-| surplus | `carte-titre` | 8 | « Chalon-sur-Saône 71100 » |
-| surplus | `carte-titre` | 8 | « Mâcon 71000 » |
-| surplus | `carte-titre` | 8 | « Auxerre 89000 » |
-| surplus | `carte-titre` | 8 | « Belfort 90000 » |
 
 
 ### `#/departement/cote-dor` → `/zones-intervention/cote-dor/`

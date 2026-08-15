@@ -613,7 +613,7 @@
  "#/zones-intervention": {
   "375": {
    "cartesRef": 35,
-   "cartesWp": 49,
+   "cartesWp": 31,
    "anomalies": [
     {
      "genre": "type",
@@ -692,114 +692,6 @@
      "type": "chip",
      "bande": 2,
      "texte": "★★★★★5,0/5 sur Google"
-    },
-    {
-     "genre": "surplus",
-     "type": "carte-titre",
-     "bande": 8,
-     "texte": "Dijon 21000"
-    },
-    {
-     "genre": "surplus",
-     "type": "carte-titre",
-     "bande": 8,
-     "texte": "Besançon 25000"
-    },
-    {
-     "genre": "surplus",
-     "type": "carte-titre",
-     "bande": 8,
-     "texte": "Dole 39100"
-    },
-    {
-     "genre": "surplus",
-     "type": "carte-titre",
-     "bande": 8,
-     "texte": "Lons-le-Saunier 39000"
-    },
-    {
-     "genre": "surplus",
-     "type": "carte-titre",
-     "bande": 8,
-     "texte": "Nevers 58000"
-    },
-    {
-     "genre": "surplus",
-     "type": "carte-titre",
-     "bande": 8,
-     "texte": "Vesoul 70000"
-    },
-    {
-     "genre": "surplus",
-     "type": "carte-titre",
-     "bande": 8,
-     "texte": "Chalon-sur-Saône 71100"
-    },
-    {
-     "genre": "surplus",
-     "type": "carte-titre",
-     "bande": 8,
-     "texte": "Mâcon 71000"
-    },
-    {
-     "genre": "surplus",
-     "type": "carte-titre",
-     "bande": 8,
-     "texte": "Auxerre 89000"
-    },
-    {
-     "genre": "surplus",
-     "type": "carte-titre",
-     "bande": 8,
-     "texte": "Belfort 90000"
-    },
-    {
-     "genre": "surplus",
-     "type": "carte-titre",
-     "bande": 9,
-     "texte": "Saint-Apollinaire 21850"
-    },
-    {
-     "genre": "surplus",
-     "type": "carte-titre",
-     "bande": 9,
-     "texte": "Chenôve 21300"
-    },
-    {
-     "genre": "surplus",
-     "type": "carte-titre",
-     "bande": 9,
-     "texte": "Quetigny 21800"
-    },
-    {
-     "genre": "surplus",
-     "type": "carte-titre",
-     "bande": 9,
-     "texte": "Talant 21240"
-    },
-    {
-     "genre": "surplus",
-     "type": "carte-titre",
-     "bande": 9,
-     "texte": "Longvic 21600"
-    },
-    {
-     "genre": "surplus",
-     "type": "carte-titre",
-     "bande": 9,
-     "texte": "Fontaine-lès-Dijon 21121"
-    },
-    {
-     "genre": "surplus",
-     "type": "carte-titre",
-     "bande": 9,
-     "texte": "Marsannay-la-Côte 21160"
-    },
-    {
-     "genre": "surplus",
-     "type": "carte-titre",
-     "bande": 9,
-     "texte": "Beaune 21200"
     }
    ]
   },
@@ -885,7 +777,7 @@
  "#/bourgogne-franche-comte": {
   "375": {
    "cartesRef": 47,
-   "cartesWp": 56,
+   "cartesWp": 46,
    "anomalies": [
     {
      "genre": "absente",
@@ -995,72 +887,12 @@
      "type": "chip",
      "bande": 2,
      "texte": "★★★★★5,0/5 sur Google"
-    },
-    {
-     "genre": "surplus",
-     "type": "carte-titre",
-     "bande": 8,
-     "texte": "Dijon 21000"
-    },
-    {
-     "genre": "surplus",
-     "type": "carte-titre",
-     "bande": 8,
-     "texte": "Besançon 25000"
-    },
-    {
-     "genre": "surplus",
-     "type": "carte-titre",
-     "bande": 8,
-     "texte": "Dole 39100"
-    },
-    {
-     "genre": "surplus",
-     "type": "carte-titre",
-     "bande": 8,
-     "texte": "Lons-le-Saunier 39000"
-    },
-    {
-     "genre": "surplus",
-     "type": "carte-titre",
-     "bande": 8,
-     "texte": "Nevers 58000"
-    },
-    {
-     "genre": "surplus",
-     "type": "carte-titre",
-     "bande": 8,
-     "texte": "Vesoul 70000"
-    },
-    {
-     "genre": "surplus",
-     "type": "carte-titre",
-     "bande": 8,
-     "texte": "Chalon-sur-Saône 71100"
-    },
-    {
-     "genre": "surplus",
-     "type": "carte-titre",
-     "bande": 8,
-     "texte": "Mâcon 71000"
-    },
-    {
-     "genre": "surplus",
-     "type": "carte-titre",
-     "bande": 8,
-     "texte": "Auxerre 89000"
-    },
-    {
-     "genre": "surplus",
-     "type": "carte-titre",
-     "bande": 8,
-     "texte": "Belfort 90000"
     }
    ]
   },
   "1440": {
    "cartesRef": 50,
-   "cartesWp": 56,
+   "cartesWp": 50,
    "anomalies": [
     {
      "genre": "absente",
@@ -1172,42 +1004,6 @@
      "type": "chip",
      "bande": 2,
      "texte": "★★★★★5,0/5 sur Google"
-    },
-    {
-     "genre": "surplus",
-     "type": "carte-titre",
-     "bande": 8,
-     "texte": "Dijon 21000"
-    },
-    {
-     "genre": "surplus",
-     "type": "carte-titre",
-     "bande": 8,
-     "texte": "Besançon 25000"
-    },
-    {
-     "genre": "surplus",
-     "type": "carte-titre",
-     "bande": 8,
-     "texte": "Dole 39100"
-    },
-    {
-     "genre": "surplus",
-     "type": "carte-titre",
-     "bande": 8,
-     "texte": "Lons-le-Saunier 39000"
-    },
-    {
-     "genre": "surplus",
-     "type": "carte-titre",
-     "bande": 8,
-     "texte": "Nevers 58000"
-    },
-    {
-     "genre": "surplus",
-     "type": "carte-titre",
-     "bande": 8,
-     "texte": "Vesoul 70000"
     }
    ]
   }

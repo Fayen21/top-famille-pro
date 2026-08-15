@@ -8,7 +8,7 @@
 > écrite « à instruire » — affirmer une cause plausible sans l’avoir vérifiée vaudrait moins
 > que ne rien affirmer.
 
-**128 occurrences** — 85 cartes supplémentaires, 43 écarts de colonnes.
+**94 occurrences** — 51 cartes supplémentaires, 43 écarts de colonnes.
 
 ## Synthèse par cause
 
@@ -20,7 +20,6 @@
 | Autres écarts de colonnes | 5 | À instruire — cause non tranchée |
 | Badge de note Google rendu en plusieurs éléments | 18 | Écart réel, mineur |
 | Bouton d’appel à l’action contextuel | 1 | Écart voulu (CLAUDE.md §8) |
-| Lien de ville rendu en carte | 34 | À instruire — cause non tranchée |
 | Bloc de contenu d’une page statique ou d’un article | 14 | À instruire — cause non tranchée |
 | Autres cartes supplémentaires | 18 | À instruire — cause non tranchée |
 
@@ -157,52 +156,6 @@
 | Route | Largeur | Bande | Archétype | Attendu → rendu | Contenu |
 |---|---:|---:|---|---|---|
 | `#/departement/saone-et-loire` | 375 | 11 | `micro-carte` | — | Demander un devis en Saône-et-Loire |
-
-## Lien de ville rendu en carte
-
-**Verdict :** À instruire — cause non tranchée · **34 occurrence(s)**
-
-- **Maquette** — La maquette porte bien ces liens (« Dijon 21000 », « Besançon 25000 »… sur la page région), mais le relevé ne les compte pas pour des cartes de ce côté.
-- **WordPress** — Le thème les rend comme des cartes à part entière, comptées une à une.
-- **Correction** — Aucune tant que la géométrie des deux côtés n’a pas été mesurée : soit le thème encadre des liens que la maquette laisse nus — et il faut l’aligner — soit les deux rendus se ressemblent et c’est le seuil de détection de l’outil qui tranche différemment. Les deux hypothèses se départagent par la mesure, pas par le raisonnement.
-- **Non-régression** — —
-
-| Route | Largeur | Bande | Archétype | Attendu → rendu | Contenu |
-|---|---:|---:|---|---|---|
-| `#/zones-intervention` | 375 | 8 | `carte-titre` | — | Dijon 21000 |
-| `#/zones-intervention` | 375 | 8 | `carte-titre` | — | Besançon 25000 |
-| `#/zones-intervention` | 375 | 8 | `carte-titre` | — | Dole 39100 |
-| `#/zones-intervention` | 375 | 8 | `carte-titre` | — | Lons-le-Saunier 39000 |
-| `#/zones-intervention` | 375 | 8 | `carte-titre` | — | Nevers 58000 |
-| `#/zones-intervention` | 375 | 8 | `carte-titre` | — | Vesoul 70000 |
-| `#/zones-intervention` | 375 | 8 | `carte-titre` | — | Chalon-sur-Saône 71100 |
-| `#/zones-intervention` | 375 | 8 | `carte-titre` | — | Mâcon 71000 |
-| `#/zones-intervention` | 375 | 8 | `carte-titre` | — | Auxerre 89000 |
-| `#/zones-intervention` | 375 | 8 | `carte-titre` | — | Belfort 90000 |
-| `#/zones-intervention` | 375 | 9 | `carte-titre` | — | Saint-Apollinaire 21850 |
-| `#/zones-intervention` | 375 | 9 | `carte-titre` | — | Chenôve 21300 |
-| `#/zones-intervention` | 375 | 9 | `carte-titre` | — | Quetigny 21800 |
-| `#/zones-intervention` | 375 | 9 | `carte-titre` | — | Talant 21240 |
-| `#/zones-intervention` | 375 | 9 | `carte-titre` | — | Longvic 21600 |
-| `#/zones-intervention` | 375 | 9 | `carte-titre` | — | Fontaine-lès-Dijon 21121 |
-| `#/zones-intervention` | 375 | 9 | `carte-titre` | — | Marsannay-la-Côte 21160 |
-| `#/zones-intervention` | 375 | 9 | `carte-titre` | — | Beaune 21200 |
-| `#/bourgogne-franche-comte` | 375 | 8 | `carte-titre` | — | Dijon 21000 |
-| `#/bourgogne-franche-comte` | 375 | 8 | `carte-titre` | — | Besançon 25000 |
-| `#/bourgogne-franche-comte` | 375 | 8 | `carte-titre` | — | Dole 39100 |
-| `#/bourgogne-franche-comte` | 375 | 8 | `carte-titre` | — | Lons-le-Saunier 39000 |
-| `#/bourgogne-franche-comte` | 375 | 8 | `carte-titre` | — | Nevers 58000 |
-| `#/bourgogne-franche-comte` | 375 | 8 | `carte-titre` | — | Vesoul 70000 |
-| `#/bourgogne-franche-comte` | 375 | 8 | `carte-titre` | — | Chalon-sur-Saône 71100 |
-| `#/bourgogne-franche-comte` | 375 | 8 | `carte-titre` | — | Mâcon 71000 |
-| `#/bourgogne-franche-comte` | 375 | 8 | `carte-titre` | — | Auxerre 89000 |
-| `#/bourgogne-franche-comte` | 375 | 8 | `carte-titre` | — | Belfort 90000 |
-| `#/bourgogne-franche-comte` | 1440 | 8 | `carte-titre` | — | Dijon 21000 |
-| `#/bourgogne-franche-comte` | 1440 | 8 | `carte-titre` | — | Besançon 25000 |
-| `#/bourgogne-franche-comte` | 1440 | 8 | `carte-titre` | — | Dole 39100 |
-| `#/bourgogne-franche-comte` | 1440 | 8 | `carte-titre` | — | Lons-le-Saunier 39000 |
-| `#/bourgogne-franche-comte` | 1440 | 8 | `carte-titre` | — | Nevers 58000 |
-| `#/bourgogne-franche-comte` | 1440 | 8 | `carte-titre` | — | Vesoul 70000 |
 
 ## Bloc de contenu d’une page statique ou d’un article
 

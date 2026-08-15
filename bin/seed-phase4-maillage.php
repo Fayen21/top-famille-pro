@@ -122,4 +122,45 @@ if ( empty( $all_prestation_ids ) ) {
 	echo '  prestations_liees -> ' . count( $zones ) . ' zone(s) (' . count( $all_prestation_ids ) . " prestations chacune)\n";
 }
 
+/* ------------------------------------------------------------------ */
+/* 4. communes_proches sur les 8 pages de la couronne dijonnaise —      */
+/*    la rangée de communes RELEVÉE sur la maquette (G22)               */
+/* ------------------------------------------------------------------ */
+
+/*
+ * La maquette compose la rangée « Communes proches » de chaque page de zone en mêlant, dans une
+ * seule rangée, des LIENS vers les zones documentées voisines et des noms sans page (rendus en
+ * pastilles inertes). Le lot 3-4 ne renseignait `communes_proches` que sur Dijon — avec les huit
+ * communes, Beaune comprise — si bien que les sept pages de la couronne perdaient leurs liens
+ * vers Dijon et leurs voisines, et que Dijon liait Beaune, que la maquette ne met pas dans sa
+ * couronne (40 km). Relevé fait page par page sur le prototype à 1440 px (G22) :
+ * chaque entrée liste les slugs des zones réellement liées par la maquette, dans son ordre.
+ */
+$couronne = array(
+	'dijon'              => array( 'saint-apollinaire', 'chenove', 'quetigny', 'talant', 'longvic', 'fontaine-les-dijon', 'marsannay-la-cote' ),
+	'saint-apollinaire'  => array( 'dijon', 'quetigny' ),
+	'chenove'            => array( 'dijon', 'longvic', 'marsannay-la-cote' ),
+	'quetigny'           => array( 'saint-apollinaire', 'dijon' ),
+	'talant'             => array( 'dijon', 'fontaine-les-dijon' ),
+	'longvic'            => array( 'dijon', 'chenove' ),
+	'fontaine-les-dijon' => array( 'dijon', 'talant' ),
+	'marsannay-la-cote'  => array( 'chenove', 'dijon' ),
+);
+foreach ( $couronne as $slug => $voisins ) {
+	$zone = get_page_by_path( $slug, OBJECT, 'zone' );
+	if ( ! $zone ) {
+		echo "  ATTENTION : zone '$slug' introuvable — communes_proches non posé.\n";
+		continue;
+	}
+	$ids = array();
+	foreach ( $voisins as $v ) {
+		$cible = get_page_by_path( $v, OBJECT, 'zone' );
+		if ( $cible ) {
+			$ids[] = $cible->ID;
+		}
+	}
+	tfp_seed4_set_field( 'communes_proches', $ids, $zone->ID );
+}
+echo '  communes_proches -> ' . count( $couronne ) . " pages de la couronne dijonnaise (rangées relevées sur la maquette)\n";
+
 echo "=== Terminé ===\n";

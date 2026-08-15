@@ -566,6 +566,11 @@ function tfp_card_grid( array $grille ) {
 					'desc_taille'      => '',
 					'desc_interligne'  => '',
 					'desc_marge'       => '',
+					'en_ligne'         => false,
+					'titre_graisse'    => 0,
+					'desc_graisse'     => 0,
+					'en_ligne_justify' => '',
+					'en_ligne_gap'     => '',
 				)
 			);
 			if ( '' === $item['titre'] && '' === $item['description'] && ! $item['liste'] ) {
@@ -593,6 +598,27 @@ function tfp_card_grid( array $grille ) {
 					$vars_item[] = $var . ':' . $valeur;
 				}
 			}
+			// Graisses relevées avec la disposition en ligne : le nom est en 600 partout, mais le
+			// code postal varie de 400 à 600 selon la bande — et ce détail déplace le point de
+			// repli d'un nom long quand la carte fait 188 px.
+			foreach ( array(
+				'titre_graisse' => '--tfp-tuile-titre-graisse',
+				'desc_graisse'  => '--tfp-tuile-desc-graisse',
+			) as $cle => $var ) {
+				$graisse = (int) ( $item[ $cle ] ?? 0 );
+				if ( $graisse >= 100 && $graisse <= 900 ) {
+					$vars_item[] = $var . ':' . $graisse;
+				}
+			}
+			// Rangée relevée : justification (mot-clé strict) et écart (longueur filtrée). Les liens
+			// de ville écartent leurs fragments, le bandeau tarifaire les juxtapose avec 12 px.
+			if ( preg_match( '/^[a-z-]{3,20}$/', (string) $item['en_ligne_justify'] ) ) {
+				$vars_item[] = '--tfp-tuile-ligne-justify:' . $item['en_ligne_justify'];
+			}
+			$ligne_gap = $px( $item['en_ligne_gap'] );
+			if ( '' !== $ligne_gap ) {
+				$vars_item[] = '--tfp-tuile-ligne-gap:' . $ligne_gap;
+			}
 			$style_item = $vars_item ? ' style="' . esc_attr( implode( ';', $vars_item ) ) . '"' : '';
 
 			$url      = $item['route'] ? tfp_route_to_url( $item['route'] ) : '';
@@ -603,7 +629,7 @@ function tfp_card_grid( array $grille ) {
 			}
 			?>
 			<li<?php echo ! empty( $item['provisoire'] ) ? ' data-tfp-provisional="1"' : ''; ?>>
-				<<?php echo $balise; ?> class="tfp-card-tile tfp-card-tile--<?php echo esc_attr( $variante ); ?>"<?php echo $style_item; // phpcs:ignore WordPress.Security.EscapeOutput ?><?php echo $attributs; // phpcs:ignore WordPress.Security.EscapeOutput ?>>
+				<<?php echo $balise; ?> class="tfp-card-tile tfp-card-tile--<?php echo esc_attr( $variante ); ?><?php echo $item['en_ligne'] ? ' tfp-card-tile--en-ligne' : ''; ?>"<?php echo $style_item; // phpcs:ignore WordPress.Security.EscapeOutput ?><?php echo $attributs; // phpcs:ignore WordPress.Security.EscapeOutput ?>>
 					<?php
 					/*
 					 * Visuel de la carte. Le slug vient du manifeste d'images du thème, jamais d'un

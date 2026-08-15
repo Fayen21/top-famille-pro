@@ -2044,12 +2044,20 @@ body.tfp-body .tfp-zone-chapter h2 {
 }
 
 /* Un nom de commune sans page dédiée : même forme qu'une puce cliquable, mais inerte — et
-   visiblement inerte, sinon l'utilisateur clique dans le vide. */
+   visiblement inerte, sinon l'utilisateur clique dans le vide.
+
+   Graisse relevée sur la maquette : TOUTES les pastilles sans lien y sont en 400 — quartiers
+   (« Centre-ville »), communes non documentées (« Chevigny-Saint-Sauveur ») et secteurs
+   secondaires des pages de département — quand les pastilles-liens sont en 600. Le thème posait
+   600 partout : chaque pastille inerte était plus large de quelques pixels, et le retour à la
+   ligne tombait un rang plus tôt que le prototype. Le fond atténué et le filet en tirets restent,
+   eux, une divergence assumée : signaler l'inertie est un gain d'affordance (CLAUDE.md §4). */
 .tfp-chip--static {
   cursor: default;
   background: var(--color-bg-alt);
   color: var(--color-text-secondary);
   border-style: dashed;
+  font-weight: 400;
 }
 
 /* Hero sans visuel (pages département de la maquette) : le texte occupe toute la largeur. */
@@ -2108,14 +2116,21 @@ body.tfp-body .tfp-zone-chapter h2 {
   line-height: 1.7;
 }
 
+/* Étiquette de catégorie d'un article : un LIBELLÉ NU dans le prototype, jamais une pastille.
+   Relevé sur la source de la maquette — en-tête d'article `font-size:13px;font-weight:600;
+   color:#174A81`, carte d'article `12.5px/600/#174A81` — sans fond, sans rayon, sans rembourrage.
+   Le thème l'avait inventée en pastille turquoise (rayon 999, fond, 5px 12px) : dix cartes
+   comptées en surplus par l'inventaire sur /conseils/ et les trois articles, et ~10 px de hauteur
+   ajoutés à chaque carte. La variante de l'accueil (.tfp-article-card__cat) était déjà nue. */
 .tfp-article__category {
   display: inline-block;
-  padding: 5px 12px;
-  border-radius: 999px;
-  background: var(--color-turquoise-pale);
   font-size: 13px;
-  font-weight: 700;
+  font-weight: var(--fw-semibold);
   color: var(--color-primary);
+}
+
+.tfp-article-card .tfp-article__category {
+  font-size: 12.5px;
 }
 
 .tfp-article__meta {
@@ -3542,6 +3557,41 @@ body.tfp-body a.tfp-card-tile:focus-visible {
   font-size: var(--tfp-tuile-desc, 14px);
   line-height: var(--tfp-tuile-desc-lh, 1.5);
   color: var(--color-text-secondary);
+}
+
+/* ---------- Tuile d'UNE ligne ----------
+   Les liens de ville des pages de zones — « Dijon 21000 » — sont des rangées flex dans la
+   maquette : nom à gauche, code postal à droite (`justify-content: space-between`, AUCUN écart
+   déclaré), 54 px de haut. Le composant les empilait en deux blocs — 74 px — et l'inventaire
+   comptait 34 cartes en surplus, le lien franchissant le seuil qui sépare une commande d'une carte.
+
+   La disposition vient du relevé (`en_ligne`, mesuré par le recouvrement vertical des deux
+   fragments), jamais du contenu. Le nom est composé dans la police de CORPS en 600 — Hanken 15 à
+   17 px selon la bande, relevé sur les trois variantes — et non dans la police de titrage : les
+   3 px de large que Bricolage ajoute suffisent à replier « Lons-le-Saunier » à 188 px, là où la
+   maquette le tient sur une ligne. Les graisses viennent des variables relevées carte par carte :
+   le code postal passe de 400 (hub des zones) à 600 (page région).
+
+   Vérifié au pixel à 320, 375, 768, 1024, 1440 et 1920 px sur les deux routes : hauteurs 54/79
+   identiques lien par lien, y compris le repli interne de « Chalon-sur-Saône » (nom 121×49) et
+   l'étirement de rangée qui aligne les voisins de la carte repliée. */
+.tfp-card-tile--en-ligne .tfp-card-tile__body {
+  display: flex;
+  align-items: center;
+  /* La justification et l'écart viennent du relevé carte par carte : `space-between` sur les liens
+     de ville et les en-têtes d'avis, juxtaposition avec `gap: 12px` sur le bandeau tarifaire. */
+  justify-content: var(--tfp-tuile-ligne-justify, flex-start);
+  gap: var(--tfp-tuile-ligne-gap, 0);
+}
+
+.tfp-card-tile--en-ligne .tfp-card-tile__title {
+  font-family: var(--font-body);
+  font-weight: var(--tfp-tuile-titre-graisse, var(--fw-semibold));
+}
+
+.tfp-card-tile--en-ligne .tfp-card-tile__desc {
+  margin-top: 0;
+  font-weight: var(--tfp-tuile-desc-graisse, 400);
 }
 
 /* Liste portée par une carte : géométrie relevée sur la maquette, qui met un item par ligne et les

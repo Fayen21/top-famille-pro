@@ -386,6 +386,7 @@ for (const p of PAGES) {
 					if ((t === 'ul' || t === 'ol') && c.querySelectorAll(':scope > li').length >= 2) {
 						const items = [...c.querySelectorAll(':scope > li')].map((li) => txt(li)).filter(Boolean);
 						if (items.length >= 2) {
+							const rListe = c.getBoundingClientRect();
 							morceaux.push({
 								texte: items.join(' · '),
 								items,
@@ -395,6 +396,9 @@ for (const p of PAGES) {
 								marge: s.marginTop,
 								graisse: parseInt(s.fontWeight, 10) || 400,
 								majuscules: false,
+								haut: Math.round(rListe.top),
+								bas: Math.round(rListe.bottom),
+								noeud: c,
 							});
 							continue;
 						}
@@ -419,6 +423,7 @@ for (const p of PAGES) {
 							collecter(c);
 							continue;
 						}
+						const rBloc = c.getBoundingClientRect();
 						morceaux.push({
 							texte: contenu,
 							tag: t,
@@ -427,6 +432,9 @@ for (const p of PAGES) {
 							marge: s.marginTop,
 							graisse: parseInt(s.fontWeight, 10) || 400,
 							majuscules: s.textTransform === 'uppercase',
+							haut: Math.round(rBloc.top),
+							bas: Math.round(rBloc.bottom),
+							noeud: c,
 						});
 						continue;
 					}
@@ -438,6 +446,7 @@ for (const p of PAGES) {
 						.filter(Boolean)
 						.join(' ');
 					if (propre && !c.children.length) {
+						const rLigne = c.getBoundingClientRect();
 						morceaux.push({
 							texte: propre,
 							tag: t,
@@ -446,6 +455,9 @@ for (const p of PAGES) {
 							marge: s.marginTop,
 							graisse: parseInt(s.fontWeight, 10) || 400,
 							majuscules: s.textTransform === 'uppercase',
+							haut: Math.round(rLigne.top),
+							bas: Math.round(rLigne.bottom),
+							noeud: c,
 						});
 					} else {
 						collecter(c);
@@ -535,6 +547,57 @@ for (const p of PAGES) {
 			 */
 			const provisoire = /★{3,}/.test(txt(el)) || !!el.querySelector('blockquote') || /[«"]/.test(description);
 
+			/*
+				 * Disposition **en ligne** : l'intitulé et la description partagent la même ligne.
+				 *
+				 * Les liens de ville des pages de zones (« Dijon 21000 ») sont des rangées flex dans la
+				 * maquette : le nom à gauche, le code postal à droite, 54 px de haut. Le composant les
+				 * rendait en deux blocs empilés — 74 px, et 34 cartes comptées en surplus par
+				 * l'inventaire, le lien passant au-dessus du seuil qui sépare une commande d'une carte.
+				 *
+				 * Le repère est MESURÉ, jamais déduit du contenu : les boîtes des deux fragments se
+				 * recouvrent verticalement. Le recouvrement — et non l'égalité des ordonnées — tient
+				 * compte d'un nom long qui se replie dans sa propre boîte (« Chalon-sur-Saône ») tout en
+				 * restant côte à côte avec son code postal, centré par la rangée.
+				 *
+				 * Les graisses sont relevées avec la disposition : le nom est en 600 partout, mais le
+				 * code postal passe de 400 (hub des zones) à 600 (page région) selon la bande, et cette
+				 * différence déplace le point de repli aux largeurs où la carte fait 188 px.
+				 */
+			const descEnLigne = !!(
+				premier &&
+				mDesc &&
+				premier.bas != null &&
+				mDesc.bas != null &&
+				premier.haut < mDesc.bas - 2 &&
+				mDesc.haut < premier.bas - 2
+			);
+
+			/*
+			 * La rangée ne se rend pas d'une seule façon : les liens de ville et les en-têtes
+			 * d'avis écartent leurs fragments (`justify-content: space-between`), le bandeau
+			 * tarifaire les juxtapose avec un écart déclaré (`gap: 12px`). On relève donc la
+			 * justification et l'écart sur le premier ancêtre rendu en rangée flex — souvent la
+			 * carte elle-même — plutôt que d'imposer une valeur unique.
+			 */
+			let ligneJustify = '';
+			let ligneGap = '';
+			if (descEnLigne && premier.noeud) {
+				for (let n = premier.noeud.parentElement; n; n = n === el ? null : n.parentElement) {
+					const ns = getComputedStyle(n);
+					if (/flex/.test(ns.display) && !/^column/.test(ns.flexDirection)) {
+						if (/^(space-between|space-around|space-evenly|center|flex-end|end|right)$/.test(ns.justifyContent)) {
+							ligneJustify = ns.justifyContent;
+						}
+						const gapDeclare = (n.style && n.style.gap) || '';
+						const gapCalcule = parseFloat(ns.columnGap);
+						ligneGap = gapDeclare || (gapCalcule > 0 ? Math.round(gapCalcule * 100) / 100 + 'px' : '');
+						break;
+					}
+					if (n === el) break;
+				}
+			}
+
 			return {
 				titre,
 				titre_tag: titreTag,
@@ -555,6 +618,17 @@ for (const p of PAGES) {
 				desc_taille: mDesc || mListe ? (mDesc || mListe).taille + 'px' : '',
 				desc_interligne: mDesc || mListe ? (mDesc || mListe).interligne || '' : '',
 				desc_marge: mDesc || mListe ? (mDesc || mListe).marge || '' : '',
+				// Clés présentes seulement quand la disposition est relevée : le seed ne porte pas de
+				// `en_ligne => false` sur des centaines de cartes empilées.
+				...(descEnLigne
+					? {
+							en_ligne: true,
+							titre_graisse: premier.graisse || 0,
+							desc_graisse: mDesc.graisse || 0,
+							...(ligneJustify ? { en_ligne_justify: ligneJustify } : {}),
+							...(ligneGap ? { en_ligne_gap: ligneGap } : {}),
+						}
+					: {}),
 				badge,
 				provisoire,
 				surtitre,

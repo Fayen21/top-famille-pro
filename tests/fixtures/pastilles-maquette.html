@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="fr-FR">
+	<head>
+		<meta charset="utf-8" />
+		<title>Fixture — rangée de pastilles de la maquette</title>
+		<style>
+			body { margin: 0; font-family: Arial, sans-serif; }
+			section { min-height: 60px; padding: 20px; }
+			.rangee { display: flex; flex-wrap: wrap; gap: 8px; width: 560px; }
+			.pastille {
+				background: #f4f7f8; border: 1px solid #dce7eb; border-radius: 100px;
+				padding: 8px 15px; font-size: 14px; font-weight: 400; line-height: 23px;
+			}
+			a.pastille { font-weight: 600; text-decoration: none; color: #174a81; }
+		</style>
+	</head>
+	<body>
+		<main>
+			<section>
+				<h1>Entreprise de nettoyage à Exemple-ville</h1>
+				<p>Bureaux, commerces et cabinets dans toute la couronne.</p>
+			</section>
+			<section>
+				<h2>Communes proches</h2>
+				<!-- Deux liens (commandes, hors relevé de cartes) puis cinq noms sans page. -->
+				<div class="rangee">
+					<a class="pastille" href="#/ville/dijon">Dijon</a>
+					<a class="pastille" href="#/ville/quetigny">Quetigny</a>
+					<span class="pastille">Chevigny-Saint-Sauveur</span>
+					<span class="pastille">Ruffey-lès-Echirey</span>
+					<span class="pastille">Bressey-sur-Tille</span>
+					<span class="pastille">Varois-et-Chaignot</span>
+					<span class="pastille">Norges-la-Ville</span>
+				</div>
+			</section>
+		</main>
+	</body>
+</html>

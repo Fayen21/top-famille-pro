@@ -299,14 +299,36 @@ $render_group = function ( array $bloc ) use ( $toutes_prestations, $cities_in_d
 				<?php endforeach; ?>
 			</div>
 		<?php elseif ( 'villes' === $bloc['type'] ) : ?>
-			<?php // Écart déclaré par le prototype : 8 px pour les villes d'un département, 9 px pour les communes proches d'une ville. ?>
-			<div class="tfp-chip-row<?php echo $is_dept ? '' : ' tfp-chip-row--9'; ?>" style="margin-top:16px">
+			<?php
+			/*
+			 * Écart déclaré par le prototype : 8 px, vérifié sur la rangée de communes des 18 pages
+			 * ville et commune à 1440 px (gap déclaré « 8px » partout, jamais 9). Le « 9 px communes
+			 * proches » du relevé G09 appartient à une autre rangée — les villes voisines d'un autre
+			 * département — et la classe `--9` posée ici coupait la rangée un cran plus tôt que la
+			 * maquette sur les noms longs.
+			 *
+			 * Sur une page de ville, la maquette pose les communes SANS page dédiée dans la MÊME
+			 * rangée que les liens (13 membres d'un tenant sur Dijon), en 400 là où les liens sont
+			 * en 600. Le thème les rendait dans une seconde rangée : chaque pastille changeait de
+			 * rang, et l'inventaire comptait 32 écarts de colonnes. Les noms rejoignent donc la
+			 * rangée des liens — l'ordre de la maquette — et restent des pastilles inertes
+			 * (`--static`), jamais des liens morts (CLAUDE.md §8). Les pages de département gardent
+			 * leur rangée séparée : c'est la structure que la maquette y déclare (sous-groupe h3).
+			 */
+			?>
+			<div class="tfp-chip-row" style="margin-top:16px">
 				<?php
 				$cibles = ! empty( $cities_in_dept ) ? $cities_in_dept : (array) $communes_proches;
 				foreach ( $cibles as $cible ) :
 					?>
 					<a class="tfp-chip" href="<?php echo esc_url( get_permalink( $cible ) ); ?>"><?php echo esc_html( get_the_title( $cible ) ); ?></a>
 				<?php endforeach; ?>
+				<?php if ( ! $is_dept && ! empty( $bloc['noms'] ) ) : ?>
+					<?php foreach ( (array) $bloc['noms'] as $nom ) : ?>
+						<span class="tfp-chip tfp-chip--static"><?php echo esc_html( $nom ); ?></span>
+					<?php endforeach; ?>
+					<?php $bloc['noms'] = array(); ?>
+				<?php endif; ?>
 			</div>
 		<?php elseif ( 'departements' === $bloc['type'] ) : ?>
 			<div class="tfp-chip-row tfp-chip-row--10" style="margin-top:16px">
