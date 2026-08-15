@@ -36,54 +36,45 @@ tfp_seo(
 );
 
 get_header();
+
+/*
+ * Corps de page rendu par le composant commun : le contenu vient de la maquette Claude Design,
+ * relevé par tools/generate-pages.mjs et stocké en option (CLAUDE.md §3 — page WordPress
+ * classique, sans champs ACF). L'ordre des sections et leur fond sont ceux du prototype.
+ */
+$page = tfp_static_page_data( 'prestations' );
 ?>
 <div class="tfp-container">
 	<?php tfp_breadcrumb( tfp_seo()['breadcrumb'] ); ?>
 </div>
 
 <section class="tfp-container tfp-section--tight">
-	<h1>Nos prestations de nettoyage professionnel</h1>
-	<p style="max-width:640px;font-size:18px;color:var(--color-text-secondary);margin-top:12px">Six prestations d'entretien, une même organisation et une même grille tarifaire régionale. Chaque prestation a sa page détaillée : pour qui, tâches couvertes, exclusions réelles et FAQ.</p>
-</section>
-
-<section class="tfp-section">
-	<div class="tfp-container tfp-grid tfp-grid--autofit-lg">
-		<?php foreach ( $prestations as $prestation ) :
-			$tease = tfp_get_field( 'tease', $prestation->ID );
-			$h1    = tfp_get_field( 'h1', $prestation->ID ) ?: get_the_title( $prestation->ID );
-			?>
-			<a href="<?php echo esc_url( get_permalink( $prestation ) ); ?>" class="tfp-card" style="display:block;text-decoration:none;color:inherit">
-				<h2 style="margin-bottom:8px"><?php echo esc_html( get_the_title( $prestation ) ); ?></h2>
-				<?php if ( $tease ) : ?><p style="color:var(--color-text-secondary)"><?php echo esc_html( $tease ); ?></p><?php endif; ?>
-				<span class="tfp-link-arrow" style="margin-top:12px;display:inline-block">Voir la prestation →</span>
-			</a>
-		<?php endforeach; ?>
+	<div class="tfp-hero__eyebrow">
+		<a class="tfp-region-badge" href="<?php echo esc_url( home_url( '/zones-intervention/bourgogne-franche-comte/' ) ); ?>"><?php echo esc_html( $site['address_region'] ); ?></a>
+		<?php tfp_google_rating_badge( 'inline' ); ?>
+	</div>
+	<h1><?php echo esc_html( $page['h1'] ); ?></h1>
+	<?php
+	/*
+	 * Le prototype ne pose qu'UN lède par en-tête : les paragraphes d'introduction suivants y sont
+	 * écrits en 16 px / 1,6, un cran sous le premier. Répéter la classe du lède donnait deux
+	 * paragraphes de même poids — la hiérarchie voulue disparaissait, et l'en-tête gagnait
+	 * une cinquantaine de pixels à 1440 px.
+	 */
+	foreach ( $page['lede'] as $rang => $lede ) :
+		?>
+		<p class="<?php echo 0 === $rang ? 'tfp-section__lede' : 'tfp-section__sublede'; ?>"><?php echo esc_html( $lede ); ?></p>
+		<?php
+	endforeach;
+	?>
+	<div class="tfp-action-row" style="margin-top:24px">
+		<?php
+		tfp_button( array( 'label' => 'Demander mon devis', 'href' => home_url( '/demande-de-devis/' ), 'variant' => 'primary' ) );
+		tfp_button( array( 'label' => '☎ Appeler ' . explode( ' ', $site['manager'] )[0], 'href' => 'tel:' . $site['phone_href'], 'variant' => 'secondary' ) );
+		?>
 	</div>
 </section>
 
-<section class="tfp-container tfp-section--tight">
-	<div class="tfp-price-band">
-		<span class="tfp-price-band__value">
-			<strong>à partir de <?php echo esc_html( $site['price_entry_display'] ); ?> HT/h</strong>
-			<span>tarif indiqué avant le devis</span>
-		</span>
-		<?php tfp_check_item( 'Devis gratuit sous 24 h' ); ?>
-		<?php tfp_check_item( 'Matériel et produits fournis par le client' ); ?>
-		<a href="<?php echo esc_url( home_url( '/tarifs/' ) ); ?>" class="tfp-btn tfp-btn--secondary tfp-btn--sm" style="margin-left:auto">Voir les tarifs →</a>
-	</div>
-</section>
-
-<section class="tfp-cta-block">
-	<div class="tfp-cta-block__inner">
-		<h2>Un besoin qui ne correspond pas exactement à une prestation ?</h2>
-		<p>Décrivez-nous vos locaux : nous vous dirons si votre demande peut être étudiée et à quelles conditions.</p>
-		<div class="tfp-cta-block__actions">
-			<?php
-			tfp_button( array( 'label' => 'Demander mon devis', 'href' => home_url( '/demande-de-devis/' ), 'variant' => 'on-primary' ) );
-			tfp_button( array( 'label' => '☎ Appeler ' . $site['manager'], 'href' => 'tel:' . $site['phone_href'], 'variant' => 'on-dark' ) );
-			?>
-		</div>
-	</div>
-</section>
+<?php get_template_part( 'template-parts/components/static-blocks', null, array( 'key' => 'prestations' ) ); ?>
 
 <?php get_footer(); ?>

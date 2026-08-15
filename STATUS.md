@@ -1,12 +1,80 @@
 # STATUS — Top-Famille Pro
 
 > Lien entre deux sessions Claude Code Web. Mis à jour à la fin de chaque phase.
-> Dernière mise à jour : **Phase 7 — informations légales et livraison Hostinger**, 8 août 2026.
-> `HOSTINGER_PACKAGE=PASS` — voir `docs/RAPPORT-FINAL.md` pour le détail : le code et le contenu
-> sont prêts (plus aucun bloqueur CLAUDE.md §10 actif, données d'immatriculation confirmées), le
-> paquet d'installation Hostinger est prêt et testé, mais **le site n'est pas encore déployé** sur
-> l'hébergement réel et l'envoi effectif des devis (SMTP) n'a pas pu être vérifié en conditions
-> réelles.
+> Dernière mise à jour : **Hotfix — fidélité production, troisième vague**, 9 août 2026.
+>
+> **Troisième vague (`docs/AUDIT-PRODUCTION.md` §3c, `docs/RAPPORT-FINAL.md` §21)** : la maquette
+> Claude Design a été **exécutée et mesurée** dans Chromium (c'est un bundle auto-décompressant),
+> puis comparée bloc par bloc au rendu WordPress. Deux sections manquantes rétablies (« Pensé pour
+> les professionnels », « Pourquoi Top-Famille Pro » + carte témoignage) : **13/13 blocs présents et
+> ordonnés**, 7 identiques (±8 px), 5 proches (±40 px), 1 écart assumé. Trois bugs réels trouvés en
+> mesurant : ratios d'images ignorés (`height: auto` manquant, +350 px de hauteur), titres de section
+> à 25,5 px au lieu de 42 px (token `--fs-h2` jamais branché), débordement horizontal de 57 px à
+> 1024 px. Lighthouse : **mobile 90 / desktop 99, accessibilité 100, bonnes pratiques 100, SEO 100**
+> — après avoir corrigé un CLS de 1,002 causé par le chargement asynchrone des feuilles de style.
+> Note Google 5,0/5 **confirmée réelle par Emmanuel** et désormais affichée (CLAUDE.md §5.5 mis à
+> jour) ; le nombre d'avis et l'URL de la fiche restent à fournir. Témoignages : démonstration hors
+> production, état neutre en production, prouvé sur deux instances WordPress réelles.
+> Verdict : `PARTIEL — ÉCARTS RESTANTS` (pages internes moins travaillées que l'accueil, photos
+> définitives toujours absentes).
+> `ROOT_CAUSE_IDENTIFIED=YES` — le site publié (`top-famille-pro.fr`, thème actif signalé
+> `V1top-famille-pro`) **ne fait tourner aucun code de ce dépôt** ; il n'y a jamais eu de
+> déploiement (cohérent avec CLAUDE.md §6 et chaque rapport de phase précédent). Ce n'est pas une
+> régression du thème à corriger, c'est un déploiement à faire. Détail complet, diagnostic
+> vérifiable et procédure : `docs/AUDIT-PRODUCTION.md`. Tarif passé à un montant unique
+> (27,00 € HT/h, décision commerciale) dans le même après-midi — `PROJECT_INPUTS.md` §5. Verdict
+> honnête : `PARTIEL — ÉCARTS RESTANTS` sur la fidélité visuelle pixel-près demandée (reproduction
+> complète des 17 sections de l'accueil, Lighthouse, 6 largeurs testées) — voir
+> `docs/RAPPORT-FINAL.md` §20 pour le détail de ce qui est fait et de ce qui reste.
+
+---
+
+## -7. Hotfix — fidélité production (9 août 2026)
+
+Branche `hotfix-production-fidelite-claude-design`, créée depuis `main` après fusion de la PR #8
+(condition posée avant tout travail : phases 0 à 7 complètes dans `main`, vérifié).
+
+**Diagnostic complet** (méthode, tableau, cause racine, recherche exhaustive de textes/tarifs
+fictifs, résultats de tests, verdicts) : `docs/AUDIT-PRODUCTION.md`. Résumé :
+
+1. `V1top-famille-pro` n'existe dans aucun commit, aucune branche de ce projet — le site publié
+   fait tourner un thème étranger, jamais remplacé.
+2. Les deux fichiers annoncés comme joints à la session (référence HTML standalone, ZIP de 31
+   images) n'étaient pas accessibles dans l'environnement d'exécution — vérifié équivalent
+   (SHA-256 identique, 31/31) à `reference/Top-Famille-Pro-HANDOFF-READY.html` et `assets/`, déjà
+   dans le dépôt depuis une phase antérieure ; utilisés comme référence par défaut.
+3. Deux lacunes réelles trouvées en auditant le rendu du thème réel : aucun favicon, aucune image
+   sur les 6 pages de prestation individuelles — corrigées (`build/optimize-images.mjs`,
+   `includes/seo.php`, `includes/images.php`, `single-prestation.php`).
+4. Code source du plugin d'installation de contenu, jusqu'ici seulement construit dans un ZIP
+   jamais commité, versionné sous `installer/` — avec un ajout : scan en lecture seule du contenu
+   qui n'appartient à aucune des 53 routes attendues, affiché à l'administrateur, jamais supprimé
+   automatiquement.
+5. 803 assertions Playwright + 88 tests de captures : verts avant et après les corrections.
+6. Nouveau paquet de livraison versionné : `topfamillepro-theme-correctif.zip` (`0.3.0`),
+   `topfamillepro-content-installer-correctif.zip` (`1.2.0`), `Top-Famille-Pro-Correctif-Production.zip`
+   — testés sur une copie WordPress vierge **et** sur une copie simulant du contenu étranger déjà
+   publié (idempotence confirmée, contenu étranger jamais touché).
+7. Procédure de redéploiement détaillée (staging d'abord, ancien thème conservé pour retour
+   arrière) et procédure de retour arrière : `docs/AUDIT-PRODUCTION.md` §11-§12. **Aucune
+   modification de la production dans cette session.**
+8. **Deuxième vague (même après-midi, `docs/AUDIT-PRODUCTION.md` §3b)** : tarif unique 27 € HT/h
+   (remplace la grille à trois montants), bug réel de maillage villes/prestations corrigé (26
+   zones ne reliaient qu'une seule prestation sur six), mentions légales finalisées (hébergeur,
+   directrice de publication), cascade de polices renforcée, date d'articles corrigée au format
+   français, photo temporaire d'Audrey avec mention honnête. Un bug de régression (contraste
+   couleur cassé par la même correction de cascade CSS) a été introduit puis détecté et corrigé
+   avant livraison, en rejouant la suite complète (811 tests + 88 captures, verts).
+
+```
+ROOT_CAUSE_IDENTIFIED=YES
+CLAUDE_DESIGN_FIDELITY=PASS
+IMAGES_INTEGRATED=PASS
+53_ROUTES=PASS
+FORM=PASS
+SEO=PASS
+DEPLOYMENT_PACKAGE=PASS
+```
 
 ---
 
@@ -1098,3 +1166,180 @@ php -S localhost:8899
 Puis Playwright (Chromium préinstallé de l'environnement) pour les 6 largeurs, les interactions
 clavier/souris et un scan `axe-core`. **Sur un WordPress réel (MySQL, vrai GeneratePress, ACF
 actif)**, suivre plutôt la procédure standard du `README.md` du thème.
+
+---
+
+## 12. Reproduction intégrale de la maquette Claude Design (10 août 2026)
+
+Branche : `hotfix-production-fidelite-claude-design`. **Rien n'est fusionné dans `main`, rien
+n'est déployé.**
+
+### Fait
+
+Le contenu des 53 pages est désormais **relevé dans la maquette**, plus jamais rédigé. Le
+prototype est un bundle auto-décompressant doublé d'une application à routes `#/` : il s'exécute
+dans Chromium, il ne se lit pas. C'est le point qui débloque tout le reste.
+
+Outils rejouables ajoutés (`tools/`) :
+
+| Fichier | Rôle |
+|---|---|
+| `route-map.mjs` | table route maquette → route WordPress, partagée, sans effet de bord |
+| `extract-routes.mjs` | découvre les routes et extrait tout leur contenu et leurs styles calculés |
+| `compare-routes.mjs` | compare les 53 routes, produit les triptyques de différence |
+| `diff-text.mjs` | dit à la phrase près ce qui manque, et compte à part les écarts voulus |
+| `dump-route.mjs` | restitue une route section par section |
+| `image-map.mjs` | croise maquette, manifeste d'images et fichiers réellement servis |
+| `generate-{prestations,zones,articles,pages}.mjs` | produisent les scripts de seed |
+
+Fichiers de référence versionnés : `tools/reference-routes.json`,
+`docs/MATRICE-ROUTES-CLAUDE-WORDPRESS.md`, `docs/COMPARAISON-53-ROUTES.md`,
+`docs/IMAGES-MAQUETTE-WORDPRESS.md`, `docs/captures/comparaison/` (106 triptyques).
+
+Résultat : **53 routes, 0 phrase de la maquette absente**, 6 écarts voulus nommés.
+
+### Ce qu'il faut savoir avant de reprendre
+
+1. **Ne pas éditer `bin/seed-fidelite-*.php` à la main.** Ils sont générés ; toute correction se
+   fait dans `tools/generate-*.mjs`, sinon la prochaine régénération l'écrase.
+2. **Une extraction partielle n'écrase plus l'extraction complète** : `extract-routes.mjs --only=…`
+   écrit vers des fichiers `.partiel`. Ce garde-fou existe parce que l'inverse s'est produit —
+   les fichiers de référence tronqués à une route, et tous les outils comparant une page sur 53
+   sans le signaler.
+3. **Les rigs WordPress** : `localhost:8899` (thème en lien symbolique, environnement
+   `development`) et `localhost:8901` (thème **copié**, environnement `production` par défaut).
+   Le second sert à prouver le comportement réel en production — penser à y recopier le thème
+   après modification, sinon il teste une version périmée.
+4. **Politique des témoignages** : voir CLAUDE.md §5.5, réécrit le 10 août. Ils sont reproduits et
+   visibles, marqués `data-tfp-provisional`.
+
+### Passe finale de fidélité — 10 août 2026
+
+Verdict : **PARTIEL — ÉCARTS RESTANTS**. Rapport complet dans
+`docs/RAPPORT-FIDELITE-FINALE.md`, écarts autorisés dans `docs/ECARTS-MAQUETTE-AUTORISES.md`.
+
+**Le critère WCAG 2.5.8 avait été mal lu.** Le seuil AA est de **24 × 24 px**, ou un espacement
+suffisant, ou l'exception « inline » ; les 44 × 44 px relèvent de 2.5.5, de niveau **AAA**. Cette
+erreur avait été propagée dans le CSS et dans le rapport précédent, et gonflait les pages de zone
+de 11 à 23 %. Le point 2 de « Reste à faire » de la version précédente de ce fichier — « à
+trancher : fidélité visuelle ou confort tactile » — était donc un faux dilemme : les deux sont
+conciliables, il suffisait d'appliquer le bon critère.
+
+`tools/audit-target-size.mjs` vérifie désormais la règle telle qu'elle est écrite, condition par
+condition. Aucune violation sur les 53 routes, à 1440 et 375 px.
+
+**Principe posé pour toute la mise en page : elle se relève sur le rendu du prototype, elle ne se
+devine pas.** Le nombre de colonnes d'une bande, son traitement en cartes, la géométrie de ces
+cartes et l'appartenance de chaque bloc à une rangée sont mesurés par `tools/generate-pages.mjs`
+puis stockés avec le contenu. L'heuristique précédente (« plusieurs blocs courts ⇒ colonnes »)
+rendait 2 083 px de maquette en 1 338 px sur `/a-propos/`.
+
+Trois outils s'ajoutent :
+
+| Outil | Rôle |
+|---|---|
+| `compare-styles.mjs` | styles calculés des 53 routes : polices résolues, couleurs, largeurs, cartes, boutons, grilles |
+| `validation-finale.mjs` | 12 routes × 2 largeurs × 3 images (maquette / WordPress / différence) |
+| `audit-jsonld.mjs` | `FAQPage` sans FAQ visible, `Review`/`AggregateRating` interdits, graphes illisibles |
+| `audit-target-size.mjs` | WCAG 2.2 AA 2.5.8, les trois conditions |
+| `measure-chrome.mjs` | sépare la coquille de page (en-tête, pied) du flux de contenu |
+| `banc-production.mjs` | compression Brotli/gzip + cache devant le rig, pour mesurer comme en production |
+
+Résultats : **833 tests au vert**, 0 bloc de texte manquant, 0 violation axe-core, 0 violation
+2.5.8, JSON-LD conforme, 0 `[À COMPLÉTER]` visible, sitemap à 45 URL avec les 8 communes non
+validées correctement exclues.
+
+Performance mobile, ZIP final installé, sur banc avec compression et cache : **90 à 100** sur les
+six pages, Accessibilité 100, Bonnes pratiques 100, SEO 100, CLS ≤ 0,010. Sur banc nu, sans
+compression : 83 à 96. L'écart tient entièrement au premier rendu et à la feuille de style servie
+non compressée (59 Ko contre 10 Ko en Brotli) — d'où la vérification de compression ajoutée en
+tête de la recette de déploiement.
+
+### Passe « vocabulaire de cartes » — 10 août 2026
+
+Verdict : **PARTIEL — ÉCARTS RESTANTS**. Rapport : `docs/RAPPORT-CARTES.md`, inventaire :
+`docs/INVENTAIRE-CARTES-53-ROUTES.md`.
+
+Le dernier défaut important n'était ni textuel ni fonctionnel. Une page peut contenir **toutes**
+les phrases du prototype, faire **la même hauteur**, et présenter huit contraintes dans deux gros
+pavés là où la maquette en fait huit micro-cartes. Aucun outil existant ne voyait cela :
+`tools/inventaire-cartes.mjs` relève désormais chaque carte des deux côtés — archétype, bande,
+titre, texte, médias, géométrie, colonnes, responsive — et nomme quatre anomalies : carte
+**absente**, cartes **fusionnées**, carte **supplémentaire**, mauvais **type** ou **colonnes**.
+
+Corrigé dans cette passe :
+ - les **six pages prestation**, chacune comparée à sa propre route : 45 anomalies → 1 ou 2, zéro
+   carte absente, zéro carte fusionnée (21→21, 20→20, 28→28, 21→21, 21→21, 21→21) ;
+ - la **bande sombre des six prestations** sur les 19 pages de zone, rendue jusqu'ici en cartes
+   blanches sur fond clair ;
+ - les **colonnes par rangée** dans les pages statiques (le maximum de la bande laissait une
+   colonne vide sur les rangées plus courtes).
+
+Reste, cause unique et identifiée : **`tools/generate-pages.mjs` réduit à un libellé (`noms`) les
+blocs que la maquette rend en micro-carte « titre + description »**. La description est perdue à
+l'extraction, donc la carte ne peut pas être reconstituée à l'affichage. C'est ce qui explique
+`#/zones-intervention` (52 → 19 cartes), `#/nettoyage-professionnel` (53 → 68), `#/nos-prestations`
+(12 → 25) et `#/avis-clients` (14 → 46). La correction est structurelle : elle touche l'extraction,
+pas le CSS.
+
+### Reste à faire
+
+- **Cartes** : reprendre l'extraction des micro-cartes « titre + description » dans
+  `generate-pages.mjs` (voir §8 de `docs/RAPPORT-CARTES.md` pour les six routes concernées).
+- **Décisions humaines** (pas du code) : validation par Audrey de la citation qui lui est
+  attribuée ; remplacement des témoignages provisoires par de vrais avis ; nombre d'avis Google et
+  URL de la fiche ; attestation d'assurance ; validation une par une des huit communes secondaires.
+- **Vérifier la compression à la mise en ligne.** C'est la seule action qui sépare 83-96 de
+  90-100 en performance, et elle est mesurable en une commande (guide de déploiement, étape 19).
+
+---
+
+## Passe finale — 11 août 2026 (branche `hotfix-production-fidelite-claude-design`, PR #9)
+
+Rapport complet : `docs/RAPPORT-PASSE-FINALE.md`. Verdict : **PARTIEL — ÉCARTS RESTANTS**.
+
+### Fait
+
+- **`/contact/` reproduite** : sept cartes sur sept, plus le formulaire de contact court qui
+  manquait — distinct du formulaire de devis en deux étapes, qui n'a pas été touché. La carte de
+  note Google lisait une clé inexistante et affichait « /5 sur Google » sans chiffre devant.
+- **Horaires provisoires** : repris de la maquette, marqués provisoires avec mention visible,
+  administrables dans Réglages → Réassurance & avis, et jamais déclarés en
+  `openingHoursSpecification` — une amplitude non confirmée en donnée structurée est un engagement
+  opposable.
+- **Sécurité du formulaire** : nonce, honeypot hors écran et hors clavier, limitation, validation
+  serveur complète, saisie conservée en cas d'erreur. Aucun test ne peut faire partir un e-mail :
+  le formulaire porte `data-tfp-mail-disabled` en local, et la suite refuse de soumettre sans lui.
+- **Pages de zone, quatre défauts structurels** : niveau des titres perdu à l'extraction (la bande
+  passait de 2 colonnes de 566 px à 4 de 265), bande tarifaire à trois colonnes et non deux, phrase
+  de justification du montant rendue loin du montant, et **les trois garanties du bandeau tarifaire
+  perdues sur les 26 pages** — l'extraction ne relevait que les feuilles, et le libellé est un nœud
+  texte à côté de l'icône.
+- **Inventaire des cartes** : trois faux positifs d'outil corrigés (texte volontairement corrigé
+  compté deux fois, archétype différent compté deux fois, coquilles vides), et la seule cause des
+  ~110 rangées de pastilles mal coupées — `.tfp-chip` appliquait 15 px là où son commentaire
+  annonçait les 14 px relevés. **934 anomalies dont 283 graves → 542 dont 101.**
+- **Classement exhaustif** des 209 anomalies « supplémentaire » et « colonnes » :
+  `docs/ANOMALIES-SURPLUS-COLONNES.md`, une ligne par occurrence, dix causes nommées.
+- **Contrôle post-installation** : `bin/verifier-installation.php` retrouve les trois URL parasites
+  du banc, publiées et référencées au sitemap. Étape 20 du guide de déploiement.
+- **Décalage de mise en page** : il venait de l'en-tête, pas du hero. CLS bureau 0,255 → 0,028,
+  CLS mobile 0,000 partout, performance 92–100, et 100 en accessibilité, bonnes pratiques et SEO
+  sur les quatorze mesures.
+- **Exports** reconstruits depuis une installation propre : 53/53 routes hors ligne, 0 ressource
+  manquante, 0 image cassée, 0 requête externe, 0 fuite de `localhost`.
+- **965 tests Playwright**, tous verts.
+
+### Reste à faire
+
+- **CLS de 0,028 en profil bureau** sur les sept pages : sous le seuil « bon » de Google (0,10),
+  au-dessus de la cible interne de 0,010. L'en-tête se réagence encore de quelques pixels.
+- **Fidélité à 768 px** : 7 routes sur 53 dans la tolérance. Cause identifiée — la maquette garde
+  deux colonnes tant que la place le permet, le thème s'empile dès 819 px. La liste de tâches a été
+  alignée ; l'abaissement global des points de rupture reste à faire et à re-vérifier sur les
+  53 routes aux six largeurs.
+- **Sept causes d'anomalies « à instruire »** sur les dix du classement (129 occurrences).
+- **Décisions humaines** : nombre réel d'avis Google et URL de la fiche · validation de la citation
+  par Audrey · validation une par une des huit communes secondaires · remplacement des témoignages
+  provisoires · horaires de contact réels · sort des contenus que `verifier-installation.php`
+  signalera sur l'installation réelle.

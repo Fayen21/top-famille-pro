@@ -26,8 +26,18 @@
 
 .tfp-hero__lede {
   margin-top: var(--space-5);
+  /* Accroche de hero. Le relevé d'origine — 20 px, interligne 32 px, #34485A — avait été fait à
+     1440 px et figé ; c'est la BORNE HAUTE d'une fonction. Le prototype déclare
+     `font-size: clamp(17px, 1.5vw, 20px)` avec un interligne de 1,62, sur les 46 accroches de hero
+     des 53 routes, sans exception de famille.
+
+     Conséquence de la valeur figée : juste à 1440 et 1920 px, et fausse en dessous — 20 px au lieu
+     de 17 à 375 comme à 768 px. C'est l'une des raisons pour lesquelles ces deux largeurs sont les
+     moins fidèles alors que les grandes le sont. Voir `.tfp-section__lede`, qui portait le même
+     défaut avec une fonction différente. */
   font-size: clamp(17px, 1.5vw, 20px);
-  color: var(--color-text-secondary);
+  line-height: 1.62;
+  color: var(--color-text-lede);
   max-width: 560px;
 }
 
@@ -55,11 +65,37 @@
   overflow: hidden;
 }
 
+/* Cadrage du visuel de hero.
+
+   Le thème posait 4/3,5 — soit 8/7 — partout. C'est le cadrage de l'accueil, et de l'accueil SEUL :
+   relevé sur la maquette, tous les autres hero sont en 4/3. À 768 px cela donne 707 × 618 au lieu
+   de 707 × 530, soit 88 px de trop par hero ; à 1440 px, 512 × 448 au lieu de 512 × 384.
+
+   Le défaut portait sur les 26 pages de zone et les 6 pages de prestation, où il était masqué par
+   d'autres écarts, et il est apparu en ajoutant les quatre visuels manquants (G14). Le 4/3 devient
+   donc le défaut, et l'accueil garde le sien par un modificateur explicite. */
 .tfp-hero__media-main img {
   width: 100%;
-  aspect-ratio: 4 / 3.5;
+  aspect-ratio: 4 / 3;
   object-fit: cover;
   background: var(--color-border);
+}
+
+.tfp-hero__media--accueil .tfp-hero__media-main img {
+  aspect-ratio: 4 / 3.5;
+}
+
+/* Visuel de hero en PORTRAIT — la page à-propos. `.tfp-hero__media-main img` impose un cadrage
+   4/3,5 qui recadrerait sévèrement un portrait ; la maquette y pose un visuel de 400 × 500, soit
+   4/5. La colonne est bornée à 400 px comme le prototype le déclare. */
+.tfp-hero__media--portrait {
+  flex: 1 1 300px;
+  min-width: min(100%, 280px);
+  max-width: 400px;
+}
+
+.tfp-hero__media--portrait .tfp-hero__media-main img {
+  aspect-ratio: 4 / 5;
 }
 
 .tfp-hero__media-secondary {
@@ -74,9 +110,11 @@
   box-shadow: var(--shadow-md);
 }
 
+/* Carré 1/1, comme la vignette superposée de la maquette (215×215 à 1440px). */
 .tfp-hero__media-secondary img {
   width: 100%;
   height: 100%;
+  aspect-ratio: 1 / 1;
   object-fit: cover;
   background: var(--color-border);
 }
@@ -151,26 +189,61 @@
   margin-left: auto;
 }
 
-/* ---------- Chips "professionnels accompagnés" (fusionnés avec Prestations) ---------- */
-.tfp-chip-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-2);
-}
+/* ---------- Chips "professionnels accompagnés" (fusionnés avec Prestations) ----------
+   `.tfp-chip-row` est défini une seule fois, dans 04-components.css, avec ses variantes d'écart
+   `--9` et `--10`. Une seconde définition vivait ici : posée plus bas dans la feuille, elle
+   l'emportait à égalité de spécificité et ramenait TOUTES les rangées à 8 px, y compris celles qui
+   déclarent 9 ou 10. Les deux variantes n'avaient donc jamais eu d'effet depuis leur écriture —
+   31 rangées relevées sur 33 routes. */
 
+/* Pastille de zone. Géométrie relevée sur le rendu de la maquette : 41 px de haut, padding
+   8px 15px, rayon plein, texte à **14 px** en semi-gras. Elle dépasse donc largement le minimum
+   de 24 px du critère WCAG 2.2 AA 2.5.8 — inutile d'imposer davantage.
+
+   Le commentaire annonçait déjà 14 px, mais la règle appliquait `--fs-sm`, qui en vaut 15 :
+   chaque pastille était 3 à 5 % plus large que dans la maquette. Sur une rangée de sept communes,
+   l'écart cumulé suffit à faire passer une pastille à la ligne — c'est l'unique cause des
+   ~110 rangées de pastilles qui ne se coupaient pas au même endroit que le prototype. */
 .tfp-chip {
   background: var(--color-bg);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-pill);
-  padding: 11px var(--space-5);
+  padding: 8px 15px;
   font-weight: var(--fw-semibold);
-  font-size: var(--fs-sm);
+  font-size: 14px;
   transition: background var(--transition-base), border-color var(--transition-base);
 }
 
 .tfp-chip:hover {
   background: var(--color-turquoise-pale);
   border-color: var(--color-turquoise);
+}
+
+/* Un nom de commune sans page dédiée : même forme qu'une puce cliquable, mais inerte — et
+   visiblement inerte, sinon l'utilisateur clique dans le vide.
+
+   Défini ICI, après `.tfp-chip`, et non dans 04-components.css : à égalité de spécificité, la
+   base — chargée après dans le paquet — écrasait la variante, et le filet en tirets n'a JAMAIS
+   été rendu (le raccourci `border` remettait `solid`). C'est la leçon de G19 (`.tfp-chip-row`
+   défini en double), sur une autre classe.
+
+   Graisse relevée sur la maquette : TOUTES les pastilles sans lien y sont en 400 — quartiers
+   (« Centre-ville »), communes non documentées, secteurs secondaires des pages de département —
+   quand les pastilles-liens sont en 600. En 600, chaque pastille inerte était plus large de
+   quelques pixels et le retour à la ligne tombait un rang plus tôt que le prototype. Le fond
+   atténué et les tirets restent une divergence assumée : signaler l'inertie est un gain
+   d'affordance (CLAUDE.md §4). */
+.tfp-chip--static {
+  cursor: default;
+  background: var(--color-bg-alt);
+  border-style: dashed;
+  color: var(--color-text-secondary);
+  font-weight: 400;
+}
+
+.tfp-chip--static:hover {
+  background: var(--color-bg-alt);
+  border-color: var(--color-border);
 }
 
 .tfp-lede-rule {
@@ -412,4 +485,226 @@
   display: inline-flex;
   font-weight: var(--fw-semibold);
   color: var(--color-primary);
+}
+
+/* ---------- Audiences — « Pensé pour les professionnels de la région » ----------
+   Bloc 4 du prototype. Dimensions relevées sur le rendu réel de la maquette à 1440px :
+   intro sur 660px, titre 42px, lede 18px, puces de 49px de haut à rayon plein sur fond
+   --color-bg-alt. */
+.tfp-audiences__intro {
+  max-width: 660px;
+}
+
+.tfp-audiences__lede {
+  margin-top: var(--space-4);
+  font-size: clamp(16px, 1.4vw, 18px);
+  color: var(--color-text-secondary);
+}
+
+.tfp-audiences__list {
+  margin-top: var(--space-6);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  list-style: none;
+}
+
+.tfp-audiences__chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 49px;
+  padding: 0 22px;
+  border-radius: 100px;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  font-size: 15.5px;
+  font-weight: var(--fw-semibold);
+  color: var(--color-text);
+}
+
+.tfp-section--alt .tfp-audiences__chip {
+  background: var(--color-white);
+}
+
+/* ---------- « Pourquoi Top-Famille Pro » ----------
+   Bloc 7 du prototype : deux colonnes 612px / 512px, carte témoignage alignée en haut. */
+.tfp-why {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(28px, 4vw, 56px);
+  align-items: flex-start;
+}
+
+.tfp-why__main {
+  flex: 1 1 560px;
+  min-width: min(100%, 320px);
+}
+
+.tfp-why__aside {
+  flex: 0 1 512px;
+  min-width: min(100%, 300px);
+}
+
+/* ---------- Carte témoignage ---------- */
+.tfp-testimonial {
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: 18px;
+  padding: clamp(20px, 2.4vw, 32px);
+  box-shadow: var(--shadow-md);
+}
+
+.tfp-testimonial__quote {
+  font-size: clamp(17px, 1.6vw, 19px);
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--color-text);
+}
+
+.tfp-testimonial__author {
+  margin-top: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.tfp-testimonial__name {
+  font-weight: var(--fw-semibold);
+}
+
+.tfp-testimonial__context {
+  font-size: var(--fs-sm);
+  color: var(--color-text-tertiary);
+}
+
+/* Mention de démonstration — volontairement lisible, jamais rendue en production
+   (includes/testimonials.php). */
+.tfp-demo-notice {
+  margin-bottom: var(--space-3);
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  background: var(--color-turquoise-pale);
+  border: 1px dashed var(--color-turquoise-light);
+  font-size: 12.5px;
+  font-weight: var(--fw-semibold);
+  color: var(--color-navy);
+}
+
+.tfp-testimonial--empty {
+  border-style: dashed;
+  box-shadow: none;
+}
+
+.tfp-testimonial__empty {
+  font-weight: var(--fw-semibold);
+}
+
+.tfp-testimonial__empty-note {
+  margin-top: 6px;
+  font-size: var(--fs-sm);
+  color: var(--color-text-tertiary);
+}
+
+/* ---------- Portrait Audrey ---------- */
+.tfp-audrey-portrait__img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  background: var(--color-border);
+  border-radius: var(--radius-xl);
+}
+
+.tfp-audrey-portrait__note {
+  margin-top: 10px;
+  font-size: 12.5px;
+  color: var(--color-text-tertiary);
+  text-align: center;
+}
+
+.tfp-audrey-portrait__fallback {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  border-radius: var(--radius-xl);
+  background: linear-gradient(160deg, var(--color-primary), var(--color-navy));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tfp-audrey-portrait__fallback span {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 96px;
+  color: var(--color-turquoise-pale);
+}
+
+/* Bandeau tarifaire — collé au hero, sans respiration verticale propre, comme dans la maquette
+   (padding vertical 0 : la section précédente et le bandeau forment un seul ensemble). */
+.tfp-price-band-section {
+  padding-block: 0;
+}
+
+/* ---------- Badge de note Google ----------
+   Deux variantes reprises de la maquette : `inline` au-dessus du H1 du hero (310×44 à 1440px),
+   `floating` superposée au portrait d'Audrey (136×75). Rendues uniquement quand une note réelle
+   est configurée — includes/testimonials.php. */
+.tfp-google-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.tfp-google-badge__stars {
+  color: var(--color-star);
+  letter-spacing: 1px;
+  font-size: 13px;
+}
+
+.tfp-google-badge__text {
+  font-size: 13px;
+  color: var(--color-text-secondary);
+}
+
+.tfp-google-badge__text strong {
+  font-family: var(--font-heading);
+  font-size: 15px;
+  color: var(--color-text);
+}
+
+.tfp-google-badge__count {
+  color: var(--color-text-tertiary);
+}
+
+.tfp-google-badge__link {
+  font-size: 12.5px;
+  font-weight: var(--fw-semibold);
+  color: var(--color-primary);
+  background: var(--color-turquoise-pale);
+  padding: 5px 10px;
+  border-radius: 100px;
+}
+
+/* La maquette rend ce badge en pastille blanche encadrée (192×35, rayon 100, filet 1 px), pas à
+   plat : c'est une preuve, et elle est posée comme telle à côté du H1. */
+.tfp-google-badge--inline {
+  margin-bottom: var(--space-4);
+  padding: 6px 14px;
+  border: 1px solid var(--color-border);
+  border-radius: 100px;
+  background: var(--color-white);
+}
+
+.tfp-google-badge--floating {
+  position: absolute;
+  left: -14px;
+  bottom: 26px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: 14px;
+  padding: 10px 14px;
+  box-shadow: var(--shadow-md);
 }

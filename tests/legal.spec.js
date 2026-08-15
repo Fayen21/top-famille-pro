@@ -35,8 +35,6 @@ test.describe('Informations juridiques — mentions légales', () => {
 	test('SIRET, code APE et TVA ne sont plus marqués manquants', async ({ page }) => {
 		await page.goto('/mentions-legales/');
 		const text = await page.locator('body').innerText();
-		// [À COMPLÉTER] peut encore apparaître pour l'assurance RC pro, l'hébergeur ou la
-		// directrice de publication (non confirmés) — mais plus juste après ces trois libellés.
 		expect(text).not.toMatch(/SIRET[^\n]*\[À COMPLÉTER\]/i);
 		expect(text).not.toMatch(/APE[^\n]*\[À COMPLÉTER\]/i);
 		expect(text).not.toMatch(/TVA[^\n]*\[À COMPLÉTER\]/i);
@@ -51,10 +49,27 @@ test.describe('Informations juridiques — mentions légales', () => {
 		expect(text).not.toContain('MICHELIN');
 	});
 
-	test('ce qui reste réellement manquant reste marqué [À COMPLÉTER]', async ({ page }) => {
+	test('hébergeur, directrice de la publication : plus aucun placeholder (9 août 2026)', async ({ page }) => {
 		await page.goto('/mentions-legales/');
 		const text = await page.locator('body').innerText();
-		expect(text, 'assurance RC pro non confirmée').toContain('[À COMPLÉTER]');
+		// Confirmé le 9 août 2026 : coordonnées complètes de l'hébergeur et directrice de la
+		// publication. Décision du 10 août : plus aucun placeholder visible sur le site.
+		expect(text).not.toContain('[À COMPLÉTER]');
+		// La médiation de la consommation ne concerne que les litiges avec des consommateurs
+		// (code de la consommation, art. L612-1). Top-Famille Pro vend à des professionnels : la
+		// rubrique est retirée plutôt qu'affichée vide ou remplie d'un médiateur inventé.
+		expect(text, 'la médiation de la consommation ne s’applique pas en B2B').not.toMatch(/médiation de la consommation/i);
+		expect(text).toMatch(/HOSTINGER INTERNATIONAL LIMITED/);
+		expect(text).toMatch(/Larnaca/);
+		expect(text).toMatch(/compliance@hostinger\.com/);
+		expect(text).toMatch(/Directrice de la publication\s*:\s*Audrey Brançon/);
+	});
+
+	test('la section « Assurance professionnelle » est retirée (sur instruction explicite)', async ({ page }) => {
+		await page.goto('/mentions-legales/');
+		const text = await page.locator('body').innerText();
+		expect(text).not.toMatch(/Assurance professionnelle/i);
+		expect(text).not.toMatch(/numéro de police/i);
 	});
 });
 
@@ -95,4 +110,20 @@ test.describe('Informations juridiques — données structurées', () => {
 		// graphe (CLAUDE.md — n'ajouter des données structurées que lorsque le champ est approprié).
 		expect(JSON.stringify(org)).not.toMatch(/81\.21Z/);
 	});
+});
+
+/**
+ * Contrôle transverse : aucun placeholder ne doit rester visible, sur aucune page du site.
+ * Un `[À COMPLÉTER]` publié est au mieux un aveu d'inachèvement, au pire une information légale
+ * manquante affichée au visiteur.
+ */
+test.describe('Aucun placeholder visible sur le site', () => {
+	for (const url of ['/', '/tarifs/', '/mentions-legales/', '/politique-de-confidentialite/', '/gestion-des-cookies/', '/prestations/bureaux/', '/zones-intervention/cote-dor/dijon/', '/conseils/frequence-bureaux/']) {
+		test(`aucun [À COMPLÉTER] sur ${url}`, async ({ page }) => {
+			await page.goto(url);
+			const text = await page.locator('body').innerText();
+			expect(text).not.toContain('[À COMPLÉTER]');
+			expect(text).not.toContain('À COMPLETER');
+		});
+	}
 });

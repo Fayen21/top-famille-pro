@@ -70,6 +70,21 @@ const SLOTS = [
     widths: [320, 480, 640],
     alt: 'Bureau avec documents et ordinateur (photo d’illustration)',
   },
+  {
+    slug: 'service-generic',
+    src: 'intervenante-stock-materiel.jpg',
+    widths: [480, 760, 960],
+    alt: 'Intervention de nettoyage professionnel avec équipement de protection (photo d’illustration)',
+  },
+  {
+    // Visuel temporaire (accueil + À propos) tant que le portrait authentique d'Audrey n'est pas
+    // fourni — jamais présenté comme Audrey (alt honnête défini dans les gabarits, pas ici),
+    // CLAUDE.md §5.6. Centralisé sur ce seul slug : remplacer le fichier source suffit.
+    slug: 'audrey-placeholder',
+    src: 'portrait-stock-a-propos.jpg',
+    widths: [320, 480, 640],
+    alt: 'Photo d’illustration temporaire — portrait définitif à venir',
+  },
 ];
 
 async function ensureDir(dir) {
@@ -132,16 +147,42 @@ async function processLogo() {
     console.warn('  (logo ignoré : assets/logo/logo-horizontal.png introuvable)');
     return;
   }
-  // Affiché à hauteur fixe 36px (.tfp-logo img, src/css/04-components.css), quel que soit le
-  // breakpoint : avec le ratio réel du fichier source (759×402, pas 5:1 comme le laissaient croire
-  // d'anciens attributs width/height erronés), ça correspond à ~68px de large. 140px = 2x pour les
-  // écrans à forte densité, avec une marge — pas 360px, mesurément inutile (Lighthouse,
-  // image-delivery-insight, ~10 Ko gaspillés).
+  // Affiché en clamp(120px, 32vw, 155px) de large (.tfp-logo img, src/css/04-components.css),
+  // conformément à la maquette. 320px = 2x la taille d'affichage maximale, pour les écrans à forte
+  // densité. Il était auparavant généré à 140px, ce qui correspondait à l'ancien affichage à ~68px
+  // de large : après l'agrandissement du logo, Lighthouse signalait à juste titre une image servie
+  // en trop basse résolution (« Serves images with low resolution »).
   await sharp(srcPath)
-    .resize({ width: 140 })
+    .resize({ width: 320 })
     .png({ quality: 90, compressionLevel: 9 })
     .toFile(path.join(OUT_DIR, 'logo-horizontal.png'));
-  console.log('  logo-horizontal.png (recompressé, 140px)');
+  console.log('  logo-horizontal.png (recompressé, 320px)');
+}
+
+/**
+ * Favicon et icône Open Graph dédiée, à partir du logo carré (assets/logo/logo-square.jpg).
+ * Absent jusqu'ici (aucune balise <link rel="icon"> n'était émise) — gap réel identifié lors du
+ * hotfix de fidélité production, indépendant du problème de déploiement.
+ */
+async function processFavicon() {
+  const srcPath = path.join(ROOT, 'assets', 'logo', 'logo-square.jpg');
+  try {
+    await stat(srcPath);
+  } catch {
+    console.warn('  (favicon ignoré : assets/logo/logo-square.jpg introuvable)');
+    return;
+  }
+  const sizes = [32, 180, 512];
+  for (const size of sizes) {
+    await sharp(srcPath).resize({ width: size, height: size }).png({ quality: 90 }).toFile(path.join(OUT_DIR, `favicon-${size}.png`));
+  }
+  // og-image : format 1200×630 recommandé pour un aperçu de partage correct (le logo seul, à
+  // 140px, était utilisé jusqu'ici comme image Open Graph — proportions non adaptées).
+  await sharp(srcPath)
+    .resize({ width: 1200, height: 630, fit: 'cover', position: 'centre' })
+    .jpeg({ quality: 82, mozjpeg: true })
+    .toFile(path.join(OUT_DIR, 'og-image.jpg'));
+  console.log('  favicon-32.png, favicon-180.png, favicon-512.png, og-image.jpg (depuis logo-square.jpg)');
 }
 
 async function main() {
@@ -151,6 +192,7 @@ async function main() {
     manifest[slot.slug] = await processSlot(slot);
   }
   await processLogo();
+  await processFavicon();
   const manifestPath = path.join(OUT_DIR, 'manifest.json');
   await writeFile(manifestPath, JSON.stringify(manifest, null, 2));
   console.log(`\nManifeste écrit : ${manifestPath}`);

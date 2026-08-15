@@ -48,10 +48,34 @@ function tfp_customize_register( $wp_customize ) {
 add_action( 'customize_register', 'tfp_customize_register' );
 
 /**
- * URL de la photo d'Audrey si elle a été renseignée dans le Customizer, sinon chaîne vide.
+ * URL de la photo d'Audrey : celle renseignée dans le Customizer si elle existe, sinon un visuel
+ * d'illustration temporaire (assets/dist/images, slug 'audrey-placeholder') — jamais présenté
+ * comme Audrey dans les gabarits, qui doivent utiliser tfp_audrey_photo_is_real() pour afficher
+ * l'alt et la mention honnêtes appropriés (CLAUDE.md §5.6). Un seul point de bascule : une fois
+ * la vraie photo renseignée dans le Customizer, elle remplace automatiquement le placeholder
+ * partout où cette fonction est appelée.
  *
  * @return string
  */
 function tfp_get_audrey_photo_url() {
-	return (string) get_theme_mod( 'tfp_audrey_photo', '' );
+	$real = (string) get_theme_mod( 'tfp_audrey_photo', '' );
+	if ( $real ) {
+		return $real;
+	}
+	$manifest = tfp_image_manifest();
+	if ( empty( $manifest['audrey-placeholder'] ) ) {
+		return '';
+	}
+	$entry    = $manifest['audrey-placeholder'];
+	$fallback = end( $entry['variants']['jpg'] );
+	return TFP_THEME_URI . '/assets/dist/images/' . $fallback['file'];
+}
+
+/**
+ * True si une vraie photo d'Audrey a été renseignée dans le Customizer (pas le placeholder).
+ *
+ * @return bool
+ */
+function tfp_audrey_photo_is_real() {
+	return (bool) get_theme_mod( 'tfp_audrey_photo', '' );
 }

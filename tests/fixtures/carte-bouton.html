@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="fr-FR">
+	<head>
+		<meta charset="utf-8" />
+		<title>Fixture — carte d'orientation en bouton, et vraie commande</title>
+		<style>
+			body { margin: 0; font-family: Arial, sans-serif; }
+			section { min-height: 60px; padding: 20px; }
+			.carte-bouton {
+				display: block; width: 403px; text-align: left;
+				background: #efefef; border: 1px solid #dce7eb; border-radius: 16px; padding: 22px;
+				font: inherit;
+			}
+			.carte-bouton strong { display: block; font-size: 17px; }
+			.carte-bouton span { display: block; margin-top: 6px; color: #4a6273; }
+			.commande { border-radius: 10px; padding: 10px 18px; background: #174a81; color: #fff; border: 0; }
+		</style>
+	</head>
+	<body>
+		<main>
+			<section>
+				<h1>Contactez-nous</h1>
+				<p>Deux façons de nous écrire selon votre besoin.</p>
+			</section>
+			<section>
+				<h2>Orientation</h2>
+				<!-- La maquette compose cette carte en <button> : grande, porteuse d'un titre et d'une
+				     description, elle doit être relevée comme une carte. -->
+				<button class="carte-bouton" type="button">
+					<strong>J'ai une question</strong>
+					<span>Formulaire court, réponse par e-mail ou téléphone.</span>
+				</button>
+				<!-- Une vraie commande reste exclue : petite et courte. -->
+				<button class="commande" type="button">Envoyer</button>
+			</section>
+		</main>
+	</body>
+</html>

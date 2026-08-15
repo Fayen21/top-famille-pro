@@ -25,7 +25,14 @@ const TFP_REASSURANCE_OPTION = 'tfp_reassurance';
 const TFP_REASSURANCE_AVIS_MAX = 6; // Les six témoignages authentiques listés dans CLAUDE.md §5.5.
 
 /**
- * Valeurs par défaut — toutes vides. Ne jamais mettre une note ou un avis de démonstration ici.
+ * Valeurs par défaut. Ne jamais mettre ici un avis ou une note de démonstration : seules des
+ * valeurs explicitement confirmées par le client y ont leur place, pour qu'elles soient
+ * versionnées et présentes sur toute installation sans ressaisie.
+ *
+ * `note` = 5.0 : note Google réelle, confirmée par Emmanuel le 9 août 2026 (CLAUDE.md §5.5).
+ * `nombre_avis` et `google_url` restent vides — non communiqués à ce jour, jamais inventés. Le
+ * badge s'affiche correctement sans eux (includes/testimonials.php) et les intègre dès qu'ils
+ * sont saisis en administration.
  *
  * @return array
  */
@@ -42,10 +49,22 @@ function tfp_reassurance_defaults() {
 	}
 
 	return array(
-		'google_url'  => '',
-		'note'        => '',
-		'nombre_avis' => '',
-		'avis'        => $avis,
+		'google_url'      => '',
+		'note'            => '5.0',
+		'nombre_avis'     => '',
+		// Citation attribuée à Audrey sur l'accueil, reprise de la maquette Claude Design. Elle est
+		// administrable ici plutôt qu'écrite dans un gabarit : c'est le seul contenu du site qui
+		// fasse parler une personne réelle, et il doit pouvoir être corrigé ou retiré par
+		// l'intéressée sans toucher au code. Vide = la citation n'est pas affichée.
+		'citation_audrey' => "Mon rôle, c'est de rester joignable et de tenir mes engagements. Chaque client sait à qui parler, et sait ce qui a été fait dans ses locaux.",
+		// Horaires de contact affichés sur /contact/. La maquette écrit « Du lundi au vendredi ·
+		// à confirmer · réponse sous 24 h » : l'amplitude n'a jamais été arrêtée. Elle est donc
+		// reprise, mais présentée pour ce qu'elle est — une indication provisoire, signalée
+		// visiblement et corrigible ici — et elle n'est **jamais** déclarée en
+		// `openingHoursSpecification` : une amplitude non confirmée publiée en donnée structurée
+		// est un engagement d'ouverture opposable, pas une illustration.
+		'horaires_contact' => 'Du lundi au vendredi · réponse sous 24 h',
+		'avis'            => $avis,
 	);
 }
 
@@ -77,6 +96,11 @@ function tfp_sanitize_reassurance_settings( $input ) {
 	}
 
 	$clean['google_url'] = isset( $input['google_url'] ) ? esc_url_raw( trim( $input['google_url'] ) ) : '';
+	$clean['citation_audrey'] = isset( $input['citation_audrey'] ) ? sanitize_textarea_field( trim( $input['citation_audrey'] ) ) : '';
+
+	if ( isset( $input['horaires_contact'] ) ) {
+		$clean['horaires_contact'] = sanitize_text_field( trim( $input['horaires_contact'] ) );
+	}
 
 	if ( isset( $input['note'] ) && '' !== trim( (string) $input['note'] ) ) {
 		$note = (float) str_replace( ',', '.', $input['note'] );
@@ -154,6 +178,45 @@ function tfp_render_reassurance_page() {
 				</tr>
 			</table>
 
+			<h2>Citation de la gérante</h2>
+			<p>
+				Phrase attribuée à <?php echo esc_html( tfp_site_data()['manager'] ); ?> sur la page
+				d'accueil, reprise de la maquette Claude Design. C'est le <strong>seul contenu du site
+				qui fasse parler une personne réelle</strong> : elle doit être validée par l'intéressée
+				avant mise en ligne, et se corrige ou se retire ici, sans toucher au code. Vider le
+				champ retire la citation de l'accueil.
+			</p>
+			<table class="form-table" role="presentation">
+				<tr>
+					<th scope="row"><label for="tfp-citation-audrey">Citation</label></th>
+					<td>
+						<textarea id="tfp-citation-audrey" name="<?php echo esc_attr( TFP_REASSURANCE_OPTION ); ?>[citation_audrey]" rows="3" class="large-text"><?php echo esc_textarea( $values['citation_audrey'] ); ?></textarea>
+						<p class="description">Sans guillemets : ils sont ajoutés à l'affichage.</p>
+					</td>
+				</tr>
+			</table>
+
+			<h2>Horaires de contact</h2>
+			<p>
+				Affichés sur la page Contact. L'amplitude reprise de la maquette
+				n'a <strong>jamais été confirmée</strong> : elle est présentée sur le site comme une
+				indication provisoire, avec une mention visible, et n'est déclarée dans
+				<strong>aucune donnée structurée</strong> — une amplitude d'ouverture publiée en
+				<code>openingHoursSpecification</code> est un engagement opposable, pas une
+				illustration. Dès que les horaires réels sont arrêtés, les saisir ici ; la mention
+				provisoire se retire alors dans le gabarit, en connaissance de cause.
+				Vider le champ retire la carte.
+			</p>
+			<table class="form-table" role="presentation">
+				<tr>
+					<th scope="row"><label for="tfp-horaires-contact">Horaires affichés</label></th>
+					<td>
+						<input type="text" id="tfp-horaires-contact" name="<?php echo esc_attr( TFP_REASSURANCE_OPTION ); ?>[horaires_contact]" value="<?php echo esc_attr( $values['horaires_contact'] ); ?>" class="regular-text">
+						<p class="description">Ex. « Du lundi au vendredi, 8 h – 18 h · réponse sous 24 h ».</p>
+					</td>
+				</tr>
+			</table>
+
 			<h2>Avis clients authentiques</h2>
 			<p>
 				Uniquement les six témoignages authentiques déjà publiés sur le site actuel
@@ -213,9 +276,10 @@ function tfp_reassurance_data() {
 	);
 
 	return array(
-		'google_url'  => $values['google_url'],
-		'note'        => '' !== $values['note'] ? (float) $values['note'] : null,
-		'nombre_avis' => '' !== $values['nombre_avis'] ? (int) $values['nombre_avis'] : null,
-		'avis'        => $avis,
+		'google_url'       => $values['google_url'],
+		'note'             => '' !== $values['note'] ? (float) $values['note'] : null,
+		'nombre_avis'      => '' !== $values['nombre_avis'] ? (int) $values['nombre_avis'] : null,
+		'horaires_contact' => (string) $values['horaires_contact'],
+		'avis'             => $avis,
 	);
 }

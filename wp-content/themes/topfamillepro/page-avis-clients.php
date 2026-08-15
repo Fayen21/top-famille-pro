@@ -32,52 +32,51 @@ tfp_seo(
 );
 
 get_header();
+
+/*
+ * Corps de page rendu par le composant commun : le contenu vient de la maquette Claude Design,
+ * relevé par tools/generate-pages.mjs et stocké en option (CLAUDE.md §3 — page WordPress
+ * classique, sans champs ACF). L'ordre des sections et leur fond sont ceux du prototype.
+ */
+$page = tfp_static_page_data( 'avis-clients' );
 ?>
 <div class="tfp-container">
 	<?php tfp_breadcrumb( tfp_seo()['breadcrumb'] ); ?>
 </div>
 
-<section class="tfp-container tfp-section--tight">
-	<h1>Avis clients</h1>
-	<?php if ( $reassurance['note'] && $reassurance['nombre_avis'] ) : ?>
-		<p style="margin-top:8px;font-size:18px;color:var(--color-text-secondary)"><strong><?php echo esc_html( number_format_i18n( $reassurance['note'], 1 ) ); ?>/5</strong> sur <?php echo (int) $reassurance['nombre_avis']; ?> avis<?php echo $reassurance['google_url'] ? ' Google' : ''; ?>.</p>
-	<?php endif; ?>
-</section>
-
-<section class="tfp-section">
-	<div class="tfp-container">
-		<?php if ( ! empty( $reassurance['avis'] ) ) : ?>
-			<div class="tfp-grid tfp-grid--autofit-md">
-				<?php foreach ( $reassurance['avis'] as $avis ) : ?>
-					<div class="tfp-card">
-						<p>« <?php echo esc_html( $avis['texte'] ); ?> »</p>
-						<p style="margin-top:12px;font-weight:600"><?php echo esc_html( $avis['nom'] ?? '' ); ?></p>
-						<?php if ( ! empty( $avis['source'] ) ) : ?><p style="color:var(--color-text-tertiary);font-size:13px"><?php echo esc_html( $avis['source'] ); ?></p><?php endif; ?>
-					</div>
-				<?php endforeach; ?>
-			</div>
-		<?php else : ?>
-			<div class="tfp-card" style="max-width:640px">
-				<p>Les avis clients réels de Top-Famille Pro sont en cours d'intégration sur ce site. Six témoignages authentiques existent déjà sur nos supports (signés Jean-Louis D., Anna P., Michel G., Laurent, Laura et Anne-Sophie) et seront publiés ici dès que leur contenu exact nous sera transmis.</p>
-				<?php if ( $reassurance['google_url'] ) : ?>
-					<p style="margin-top:12px"><a href="<?php echo esc_url( $reassurance['google_url'] ); ?>" class="tfp-link-arrow" rel="noopener" target="_blank">Voir nos avis sur Google →</a></p>
-				<?php endif; ?>
-			</div>
-		<?php endif; ?>
+<?php
+/*
+ * Rembourrage de l'en-tête relevé sur la maquette. `.tfp-section--tight` posait
+ * clamp(30px, 4vw, 52px) des deux côtés — 104 px à 1440 px contre 88 relevés.
+ */
+?>
+<section class="tfp-container tfp-section--tight" style="--tfp-bande-haut:clamp(26px, 4vw, 48px);--tfp-bande-bas:clamp(20px, 3vw, 32px)">
+	<div class="tfp-hero__eyebrow">
+		<a class="tfp-region-badge" href="<?php echo esc_url( home_url( '/zones-intervention/bourgogne-franche-comte/' ) ); ?>"><?php echo esc_html( $site['address_region'] ); ?></a>
+		<?php tfp_google_rating_badge( 'inline' ); ?>
+	</div>
+	<h1><?php echo esc_html( $page['h1'] ); ?></h1>
+	<?php
+	/*
+	 * Le prototype ne pose qu'UN lède par en-tête : les paragraphes d'introduction suivants y sont
+	 * écrits en 16 px / 1,6, un cran sous le premier. Répéter la classe du lède donnait deux
+	 * paragraphes de même poids — la hiérarchie voulue disparaissait, et l'en-tête gagnait
+	 * une cinquantaine de pixels à 1440 px.
+	 */
+	foreach ( $page['lede'] as $rang => $lede ) :
+		?>
+		<p class="<?php echo 0 === $rang ? 'tfp-section__lede' : 'tfp-section__sublede'; ?>"><?php echo esc_html( $lede ); ?></p>
+		<?php
+	endforeach;
+	?>
+	<div class="tfp-action-row" style="margin-top:24px">
+		<?php
+		tfp_button( array( 'label' => 'Demander mon devis', 'href' => home_url( '/demande-de-devis/' ), 'variant' => 'primary' ) );
+		tfp_button( array( 'label' => '☎ Appeler ' . explode( ' ', $site['manager'] )[0], 'href' => 'tel:' . $site['phone_href'], 'variant' => 'secondary' ) );
+		?>
 	</div>
 </section>
 
-<section class="tfp-cta-block">
-	<div class="tfp-cta-block__inner">
-		<h2>Un devis étudié personnellement par <?php echo esc_html( $site['manager'] ); ?></h2>
-		<p>Gratuit · Sans engagement · Réponse sous 24 h</p>
-		<div class="tfp-cta-block__actions">
-			<?php
-			tfp_button( array( 'label' => 'Demander mon devis', 'href' => home_url( '/demande-de-devis/' ), 'variant' => 'on-primary' ) );
-			tfp_button( array( 'label' => '☎ Appeler ' . $site['manager'], 'href' => 'tel:' . $site['phone_href'], 'variant' => 'on-dark' ) );
-			?>
-		</div>
-	</div>
-</section>
+<?php get_template_part( 'template-parts/components/static-blocks', null, array( 'key' => 'avis-clients' ) ); ?>
 
 <?php get_footer(); ?>

@@ -39,51 +39,51 @@ tfp_seo(
 );
 
 get_header();
+
+/*
+ * Corps de page rendu par le composant commun : le contenu vient de la maquette Claude Design,
+ * relevé par tools/generate-pages.mjs et stocké en option (CLAUDE.md §3 — page WordPress
+ * classique, sans champs ACF). L'ordre des sections et leur fond sont ceux du prototype.
+ */
+$page = tfp_static_page_data( 'pourquoi-nous' );
 ?>
 <div class="tfp-container">
 	<?php tfp_breadcrumb( tfp_seo()['breadcrumb'] ); ?>
 </div>
 
-<section class="tfp-container tfp-section--tight">
-	<h1>Pourquoi choisir Top-Famille Pro</h1>
-	<p style="max-width:680px;font-size:18px;color:var(--color-text-secondary);margin-top:12px">Une entreprise régionale basée à Saint-Apollinaire, organisée pour que l'entretien de vos locaux ne repose pas sur votre vigilance.</p>
-</section>
-
-<section class="tfp-section">
-	<div class="tfp-container tfp-grid tfp-grid--autofit-md">
-		<?php foreach ( $arguments as $arg ) : ?>
-			<div class="tfp-card">
-				<h2 style="font-size:19px;margin-bottom:8px"><?php echo esc_html( $arg['titre'] ); ?></h2>
-				<p style="color:var(--color-text-secondary)"><?php echo esc_html( $arg['texte'] ); ?></p>
-			</div>
-		<?php endforeach; ?>
+<?php
+/*
+ * Rembourrage de l'en-tête relevé sur la maquette. `.tfp-section--tight` posait
+ * clamp(30px, 4vw, 52px) des deux côtés — 104 px à 1440 px contre 88 relevés.
+ */
+?>
+<section class="tfp-container tfp-section--tight" style="--tfp-bande-haut:clamp(26px, 4vw, 48px);--tfp-bande-bas:clamp(28px, 3vw, 40px)">
+	<div class="tfp-hero__eyebrow">
+		<a class="tfp-region-badge" href="<?php echo esc_url( home_url( '/zones-intervention/bourgogne-franche-comte/' ) ); ?>"><?php echo esc_html( $site['address_region'] ); ?></a>
+		<?php tfp_google_rating_badge( 'inline' ); ?>
+	</div>
+	<h1><?php echo esc_html( $page['h1'] ); ?></h1>
+	<?php
+	/*
+	 * Le prototype ne pose qu'UN lède par en-tête : les paragraphes d'introduction suivants y sont
+	 * écrits en 16 px / 1,6, un cran sous le premier. Répéter la classe du lède donnait deux
+	 * paragraphes de même poids — la hiérarchie voulue disparaissait, et l'en-tête gagnait
+	 * une cinquantaine de pixels à 1440 px.
+	 */
+	foreach ( $page['lede'] as $rang => $lede ) :
+		?>
+		<p class="<?php echo 0 === $rang ? 'tfp-section__lede' : 'tfp-section__sublede'; ?>"><?php echo esc_html( $lede ); ?></p>
+		<?php
+	endforeach;
+	?>
+	<div class="tfp-action-row" style="margin-top:24px">
+		<?php
+		tfp_button( array( 'label' => 'Demander mon devis', 'href' => home_url( '/demande-de-devis/' ), 'variant' => 'primary' ) );
+		tfp_button( array( 'label' => '☎ Appeler ' . explode( ' ', $site['manager'] )[0], 'href' => 'tel:' . $site['phone_href'], 'variant' => 'secondary' ) );
+		?>
 	</div>
 </section>
 
-<section class="tfp-section--alt tfp-section">
-	<div class="tfp-container" style="max-width:820px">
-		<h2>Fonctionnement en 4 temps</h2>
-		<ol style="margin-top:16px;display:flex;flex-direction:column;gap:12px;padding-left:20px">
-			<li>Échange sur vos attentes</li>
-			<li>Devis personnalisé selon le besoin et le budget</li>
-			<li>Sélection de l'intervenant, validée par vous</li>
-			<li>Démarrage et suivi continu</li>
-		</ol>
-		<p style="margin-top:16px"><a href="<?php echo esc_url( home_url( '/notre-fonctionnement/' ) ); ?>" class="tfp-eyebrow-link">Le détail de notre fonctionnement →</a></p>
-	</div>
-</section>
-
-<section class="tfp-cta-block">
-	<div class="tfp-cta-block__inner">
-		<h2>Échanger sur vos locaux</h2>
-		<p>Gratuit · Sans engagement · Réponse sous 24 h</p>
-		<div class="tfp-cta-block__actions">
-			<?php
-			tfp_button( array( 'label' => 'Demander mon devis', 'href' => home_url( '/demande-de-devis/' ), 'variant' => 'on-primary' ) );
-			tfp_button( array( 'label' => '☎ Appeler ' . $site['manager'], 'href' => 'tel:' . $site['phone_href'], 'variant' => 'on-dark' ) );
-			?>
-		</div>
-	</div>
-</section>
+<?php get_template_part( 'template-parts/components/static-blocks', null, array( 'key' => 'pourquoi-nous' ) ); ?>
 
 <?php get_footer(); ?>

@@ -33,8 +33,36 @@ function ensureDir(dir) {
 	fs.mkdirSync(dir, { recursive: true });
 }
 
+/**
+ * Fait défiler toute la page pour déclencher le chargement des images en `loading="lazy"`, puis
+ * remonte en haut. Sans cela, une capture `fullPage` photographie les images hors écran avant
+ * qu'elles ne soient chargées : elles apparaissent comme des rectangles gris (la couleur de fond
+ * de l'emplacement) alors que le site est parfaitement sain. Défaut réel de la méthode de capture
+ * — trouvé le 9 août 2026, il rendait les captures de `docs/captures/` trompeuses.
+ */
+async function loadLazyImages(page) {
+	await page.evaluate(async () => {
+		const step = window.innerHeight;
+		for (let y = 0; y < document.body.scrollHeight; y += step) {
+			window.scrollTo(0, y);
+			await new Promise((r) => setTimeout(r, 100));
+		}
+		window.scrollTo(0, 0);
+	});
+	// Laisse le temps aux dernières images déclenchées de terminer leur décodage.
+	await page.waitForFunction(
+		() => Array.from(document.images).every((img) => !img.loading || img.complete),
+		null,
+		{ timeout: 10000 }
+	).catch(() => {});
+	await page.waitForTimeout(300);
+}
+
 async function shoot(page, dir, filename, options = {}) {
 	ensureDir(dir);
+	if (options.fullPage !== false) {
+		await loadLazyImages(page);
+	}
 	await page.screenshot({ path: path.join(dir, filename), fullPage: true, ...options });
 }
 
@@ -135,6 +163,67 @@ test.describe('Contrôles particuliers (sélection commitée dans docs/captures/
 			await page.setViewportSize({ width: viewport.width, height: viewport.height });
 			await page.goto('/', { waitUntil: 'networkidle' });
 			await shoot(page, CAPTURES_DIR, `accueil-${viewport.name}.png`);
+		}
+	});
+
+	// Complément hotfix fidélité production (comparaison obligatoire, §11) : captures qui
+	// manquaient encore à la sélection commitée.
+	test('hero (mobile et desktop)', async ({ page }) => {
+		for (const viewport of [VIEWPORTS[2], VIEWPORTS[10]]) {
+			await page.setViewportSize({ width: viewport.width, height: viewport.height });
+			await page.goto('/', { waitUntil: 'networkidle' });
+			const hero = page.locator('.tfp-hero').first();
+			const box = await hero.boundingBox();
+			ensureDir(CAPTURES_DIR);
+			await page.screenshot({ path: path.join(CAPTURES_DIR, `hero-${viewport.name}.png`), clip: box ?? undefined });
+		}
+	});
+
+	test('menu mobile ouvert', async ({ page }) => {
+		await page.setViewportSize({ width: VIEWPORTS[2].width, height: VIEWPORTS[2].height });
+		await page.goto('/', { waitUntil: 'networkidle' });
+		await page.click('[data-tfp-mobile-open]');
+		await page.waitForTimeout(350); // transition d'ouverture (CSS)
+		await shoot(page, CAPTURES_DIR, `menu-mobile-ouvert-${VIEWPORTS[2].name}.png`);
+	});
+
+	test('index prestations (mobile et desktop)', async ({ page }) => {
+		for (const viewport of [VIEWPORTS[2], VIEWPORTS[10]]) {
+			await page.setViewportSize({ width: viewport.width, height: viewport.height });
+			await page.goto('/prestations/', { waitUntil: 'networkidle' });
+			await shoot(page, CAPTURES_DIR, `prestations-${viewport.name}.png`);
+		}
+	});
+
+	test('page prestation bureaux (mobile et desktop)', async ({ page }) => {
+		for (const viewport of [VIEWPORTS[2], VIEWPORTS[10]]) {
+			await page.setViewportSize({ width: viewport.width, height: viewport.height });
+			await page.goto('/prestations/bureaux/', { waitUntil: 'networkidle' });
+			await shoot(page, CAPTURES_DIR, `prestation-bureaux-${viewport.name}.png`);
+		}
+	});
+
+	test('page zone Dijon (mobile et desktop)', async ({ page }) => {
+		for (const viewport of [VIEWPORTS[2], VIEWPORTS[10]]) {
+			await page.setViewportSize({ width: viewport.width, height: viewport.height });
+			await page.goto('/zones-intervention/cote-dor/dijon/', { waitUntil: 'networkidle' });
+			await shoot(page, CAPTURES_DIR, `zone-dijon-${viewport.name}.png`);
+		}
+	});
+
+	test('mentions légales (mobile et desktop)', async ({ page }) => {
+		for (const viewport of [VIEWPORTS[2], VIEWPORTS[10]]) {
+			await page.setViewportSize({ width: viewport.width, height: viewport.height });
+			await page.goto('/mentions-legales/', { waitUntil: 'networkidle' });
+			await shoot(page, CAPTURES_DIR, `mentions-legales-${viewport.name}.png`);
+		}
+	});
+
+	test('404 (mobile et desktop)', async ({ page }) => {
+		for (const viewport of [VIEWPORTS[2], VIEWPORTS[10]]) {
+			await page.setViewportSize({ width: viewport.width, height: viewport.height });
+			await page.goto('/cette-page-n-existe-pas/', { waitUntil: 'networkidle' });
+			await shoot(page, CAPTURES_DIR, `404-${viewport.name}.png`);
 		}
 	});
 });

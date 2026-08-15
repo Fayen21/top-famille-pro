@@ -45,31 +45,53 @@ function tfp_enqueue_assets() {
 add_action( 'wp_enqueue_scripts', 'tfp_enqueue_assets' );
 
 /**
- * Charge les deux feuilles de style du thème en `preload` + bascule `stylesheet` au chargement,
- * plutôt qu'en `<link rel="stylesheet">` classique et bloquant le rendu — technique standard
- * (web.dev) pour approcher l'effet d'un CSS critique sans extraction par gabarit (54 gabarits
- * différents rendraient une extraction automatisée fragile). `<noscript>` conserve le
- * comportement bloquant normal si JavaScript est désactivé.
+ * Les feuilles de style du thème sont chargées normalement, en `<link rel="stylesheet">` bloquant
+ * le rendu.
+ *
+ * Elles étaient jusqu'au 9 août 2026 chargées en `preload` + bascule `stylesheet` au chargement,
+ * pour approcher l'effet d'un CSS critique sans extraction par gabarit. Mesure Lighthouse à
+ * l'appui, c'était un mauvais compromis : la page peignait sans aucun style puis se remettait
+ * entièrement en page, avec un **CLS de 1,002** — dix fois la limite acceptable de 0,1, et de très
+ * loin le premier facteur de dégradation du score de performance. Lighthouse confirmait d'ailleurs
+ * « aucune ressource bloquante », symptôme exact du problème.
+ *
+ * Le CSS complet du site pèse ~37 Ko (une seule feuille, tous gabarits confondus) : le charger
+ * normalement coûte quelques dizaines de millisecondes de premier rendu et supprime la totalité du
+ * décalage de mise en page. Sur l'hébergement réel, LiteSpeed le sert compressé et mis en cache.
  */
-function tfp_defer_stylesheets( $html, $handle ) {
-	if ( ! in_array( $handle, array( 'generatepress-parent', 'topfamillepro' ), true ) ) {
-		return $html;
-	}
-	$preload = str_replace( "rel='stylesheet'", "rel='preload' as='style' onload=\"this.onload=null;this.rel='stylesheet'\"", $html );
-	return $preload . "\n" . '<noscript>' . $html . '</noscript>' . "\n";
-}
-add_filter( 'style_loader_tag', 'tfp_defer_stylesheets', 10, 2 );
 
 /**
- * Précharge la police de titre (poids 700, le plus utilisé au-dessus de la ligne de
- * flottaison : H1 du hero) pour réduire le décalage visuel au chargement.
+ * Précharge les deux polices réellement présentes au-dessus de la ligne de flottaison.
+ *
+ * Poids 800 pour le titre, et non 700 : la maquette rend tous ses H1 en 800 (relevé sur les
+ * 53 routes). Précharger le 700 laissait le H1 attendre un fichier non préchargé, ou pire,
+ * s'afficher en gras synthétique — plus large que la vraie graisse 800, donc avec un décalage
+ * au remplacement.
+ *
+ * **Le corps de texte compte autant que le titre.** Le H1 seul était préchargé, et le hero
+ * mesurait 76 px de moins avec Hanken Grotesk qu'avec la police système de repli : accroche,
+ * boutons et pastilles se replaçaient tous au remplacement. Comme le hero est centré
+ * verticalement, ces 76 px déplaçaient aussi le visuel — d'où un CLS de 0,255 sur une page de
+ * ville en profil bureau, très au-dessus de la cible de 0,010. Un préchargement inutile retarde
+ * ce qui en a besoin ; celui-ci sert le premier écran de chacune des 53 routes.
  */
 function tfp_preload_fonts() {
-	$font = TFP_THEME_URI . '/assets/dist/fonts/bricolage-grotesque-700-latin.woff2';
-	printf(
-		'<link rel="preload" href="%s" as="font" type="font/woff2" crossorigin="anonymous">' . "\n",
-		esc_url( $font )
+	$polices = array(
+		'bricolage-grotesque-800-latin.woff2',
+		'hanken-grotesk-400-latin.woff2',
+		// Semi-gras : les deux boutons de l'en-tête, présents au premier écran des 53 routes.
+		// Sans lui, ils s'affichaient d'abord dans la police système, plus large : ils passaient
+		// sur deux lignes, l'en-tête faisait 73 px au lieu de 48, et **toute la page** remontait
+		// de 25 px au remplacement. C'était l'origine du CLS de 0,25 mesuré en profil bureau —
+		// le décalage était relevé sur le hero, mais il venait de l'en-tête au-dessus.
+		'hanken-grotesk-600-latin.woff2',
 	);
+	foreach ( $polices as $fichier ) {
+		printf(
+			'<link rel="preload" href="%s" as="font" type="font/woff2" crossorigin="anonymous">' . "\n",
+			esc_url( TFP_THEME_URI . '/assets/dist/fonts/' . $fichier )
+		);
+	}
 }
 add_action( 'wp_head', 'tfp_preload_fonts', 1 );
 

@@ -8,11 +8,15 @@
   align-items: center;
   justify-content: center;
   gap: var(--space-2);
-  min-height: var(--tap-target-min);
-  padding: 14px 24px;
-  border-radius: var(--radius-md);
+  /* Géométrie relevée sur la maquette : 60 px de haut, padding 15/26, texte de 17 px, rayon 12.
+     Le thème rendait ce bouton en 52 px — moins présent que dans le prototype, sur les 53 pages,
+     alors que c'est le point de conversion du site. Le bouton compact de la barre de navigation
+     garde sa propre géométrie, elle aussi relevée (47 px, padding 12/20, 14,5 px, rayon 11). */
+  min-height: 60px;
+  padding: 15px 26px;
+  border-radius: 12px;
   font-weight: var(--fw-semibold);
-  font-size: var(--fs-md);
+  font-size: 17px;
   line-height: 1.2;
   border: 1px solid transparent;
   transition: transform var(--transition-base), box-shadow var(--transition-base), background var(--transition-base), color var(--transition-base), border-color var(--transition-base);
@@ -70,9 +74,11 @@
 }
 
 .tfp-btn--sm {
-  padding: 11px 17px;
-  font-size: var(--fs-xs);
-  min-height: 40px;
+  padding: 12px 20px;
+  border-radius: 11px;
+  font-size: 14.5px;
+  font-weight: var(--fw-bold);
+  min-height: 47px;
 }
 
 .tfp-link-arrow {
@@ -147,6 +153,15 @@
   transition: transform var(--transition-base), box-shadow var(--transition-base);
 }
 
+/* Carte de facteur de prix (/tarifs/, bande « Ce qui influence le volume d'heures ») —
+   géométrie relevée sur la maquette : rembourrage 16/18, rayon 12, fond atténué, filet, 15 px. */
+.tfp-facteurs__carte {
+  padding: 16px 18px;
+  border-radius: 12px;
+  background: var(--color-bg-alt);
+  font-size: 15px;
+}
+
 .tfp-card--flat:hover {
   transform: translateY(-3px);
   box-shadow: var(--shadow-sm);
@@ -165,10 +180,12 @@
 .tfp-breadcrumb__current {
   display: inline-flex;
   align-items: center;
-  /* Cible tactile : le fil d'Ariane reste en petit texte (lecture rapide), mais chaque lien
-     garde une hauteur de zone cliquable suffisante (WCAG 2.5.8) même sur mobile en cas de
-     retour à la ligne — voir includes/breadcrumbs.php pour le row-gap associé. */
-  padding: 8px 2px;
+  /* Cible tactile : le fil d'Ariane reste en petit texte (lecture rapide), mais chaque lien garde
+     la hauteur minimale de 24 px du critère WCAG 2.2 AA 2.5.8, y compris sur mobile en cas de
+     retour à la ligne — voir includes/breadcrumbs.php pour le row-gap associé.
+     Le rembourrage de 8 px portait le lien à 37 px, soit 15 px de plus que la maquette (18 px) sur
+     chacune des 53 pages, sans qu'aucune règle ne l'exige : 24 px est le seuil, pas 37. */
+  padding: 3px 2px;
   min-height: 24px;
 }
 
@@ -373,6 +390,15 @@
   color: var(--color-text);
 }
 
+/* Vignette 16/9, comme dans la maquette (381×214 à 1440px). Sans cette règle, l'image gardait
+   son ratio naturel (381×427) et allongeait la section « Conseils » de 220 px. */
+.tfp-article-card img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  background: var(--color-border);
+}
+
 .tfp-article-card__body {
   padding: var(--space-5);
 }
@@ -470,8 +496,11 @@
 }
 
 .tfp-logo img {
-  height: 36px;
-  width: auto;
+  /* Taille de la maquette Claude Design (reference/Top-Famille-Pro-HANDOFF-READY.html, header) :
+     clamp(120px, 32vw, 155px) sur ordinateur — pas 36px de hauteur (~68px de large), corrigé lors
+     du hotfix de fidélité du 9 août 2026. */
+  width: clamp(120px, 32vw, 155px);
+  height: auto;
 }
 
 .tfp-nav {
@@ -697,11 +726,22 @@
   height: 84px;
 }
 
-@media (max-width: 819px) {
+/* La navigation complète (logo 155px + 7 entrées 621px + actions 225px) ne tient pas sous
+   ~1100px : mesuré à 1024px, elle débordait de 57px horizontalement. La maquette bascule elle
+   aussi sur le menu compact à cette largeur. Le point de bascule du header est donc porté à
+   1099px, indépendamment des autres composants qui restent à 819px. */
+@media (max-width: 1099px) {
   .tfp-nav,
   .tfp-header__phone-label {
     display: none;
   }
+
+  .tfp-menu-toggle {
+    display: flex;
+  }
+}
+
+@media (max-width: 819px) {
 
   /* Le CTA devis du header devient redondant avec la barre CTA mobile fixe,
      et sa largeur de contenu (nowrap) provoquait un débordement horizontal < 375px. */
@@ -737,13 +777,16 @@
   color: var(--color-white);
 }
 
+/* Rembourrage relevé sur le prototype, qui l'écrit en fonction : `clamp(40px, 5.5vw, 56px)` en
+   haut et `clamp(16px, 4vw, 40px)` sur les côtés, 36 px en bas. Le thème posait 48 / 40 / 32 px,
+   justes à aucune largeur. */
 .tfp-footer__inner {
   max-width: var(--container-max);
   margin-inline: auto;
-  padding: var(--space-9) var(--container-padding) var(--space-7);
+  padding: clamp(40px, 5.5vw, 56px) clamp(16px, 4vw, 40px) 36px;
   display: grid;
   grid-template-columns: 2fr 1fr 1.3fr 1fr;
-  gap: var(--space-7);
+  gap: 32px 30px;
 }
 
 .tfp-footer__col h3 {
@@ -770,16 +813,25 @@
   color: #8FAEB9;
 }
 
-@media (max-width: 819px) {
+/*
+ * Seuils de repli du pied de page, **relevés sur le prototype** au pixel près : quatre colonnes
+ * jusqu'à 1 180 px, deux jusqu'à 561, une en dessous. Le thème repliait à 819 et 479 px, si bien
+ * que le pied — présent sur les 53 routes — n'avait le même nombre de colonnes que la maquette
+ * sur aucune des largeurs de contrôle entre 480 et 1 180 px.
+ */
+@media (max-width: 1179px) {
   .tfp-footer__inner {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media (max-width: 479px) {
+@media (max-width: 560px) {
   .tfp-footer__inner {
     grid-template-columns: 1fr;
   }
+}
+
+@media (max-width: 479px) {
 
   /*
    * white-space: nowrap sur .tfp-btn (ligne 19) tient sur tous les libellés courts fixes, mais
@@ -883,4 +935,3203 @@
   gap: var(--space-3);
   flex-wrap: wrap;
   margin-top: var(--space-4);
+}
+
+/* ---------- Bandeau supérieur ----------
+   Mesuré sur le rendu réel de la maquette : 30px de haut, fond turquoise pâle #DDF4F3, texte
+   bleu nuit à 13px, contenu centré sur la même largeur que le reste du site. */
+.tfp-topbar {
+  background: var(--color-turquoise-pale);
+  color: var(--color-navy);
+  font-size: 13px;
+}
+
+.tfp-topbar__inner {
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding: 0 var(--container-padding);
+  min-height: 30px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-4);
+}
+
+.tfp-topbar__rating,
+.tfp-topbar__offer {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.tfp-topbar__stars {
+  color: var(--color-star);
+  letter-spacing: 1px;
+}
+
+.tfp-topbar__phone {
+  margin-left: auto;
+  font-weight: var(--fw-semibold);
+  color: var(--color-navy);
+}
+
+/* Sous 560px, le téléphone du bandeau ferait passer la ligne à deux niveaux : il reste accessible
+   par le bouton d'appel du header et la barre CTA mobile. */
+@media (max-width: 559px) {
+  .tfp-topbar__phone {
+    display: none;
+  }
+}
+
+/* ---------- Bouton cuivre ----------
+   Variante du CTA principal du header dans la maquette : fond #D9A062, texte bleu nuit. */
+.tfp-btn--copper {
+  background: var(--color-copper);
+  color: var(--color-navy);
+  border-color: var(--color-copper);
+}
+
+.tfp-btn--copper:hover,
+.tfp-btn--copper:focus-visible {
+  background: var(--color-copper-dark);
+  border-color: var(--color-copper-dark);
+  color: var(--color-white);
+}
+
+/* ---------- Bande de rappel avant le pied de page ----------
+   Section turquoise de 158px placée entre le grand CTA bleu et le footer dans la maquette. */
+.tfp-prefooter {
+  background: var(--color-turquoise-pale);
+  border-top: 1px solid var(--color-turquoise-light);
+}
+
+.tfp-prefooter__inner {
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding: var(--space-6) var(--container-padding);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-4) var(--space-6);
+}
+
+.tfp-prefooter__text {
+  flex: 1 1 420px;
+  color: var(--color-navy);
+}
+
+.tfp-prefooter__text strong {
+  font-family: var(--font-heading);
+  font-size: var(--fs-lg);
+  display: block;
+  margin-bottom: 4px;
+}
+
+/* ---------- Badge régional (hero des pages prestation et zone) ---------- */
+.tfp-region-badge {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  margin-bottom: var(--space-3);
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  background: var(--color-turquoise-pale);
+  border: 1px solid var(--color-turquoise-light);
+  color: var(--color-navy);
+  font-size: var(--fs-2xs);
+  font-weight: var(--fw-semibold);
+}
+
+/* ---------- Réponse directe ----------
+   Encadré à barre verticale de la maquette, placé juste sous le hero. */
+.tfp-direct-answer {
+  border-left: 3px solid var(--color-turquoise);
+  padding-left: clamp(16px, 2vw, 24px);
+  max-width: 900px;
+}
+
+.tfp-direct-answer__label {
+  font-size: var(--fs-3xs);
+  font-weight: var(--fw-bold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+}
+
+.tfp-direct-answer__text {
+  margin-top: var(--space-3);
+  font-size: clamp(17px, 1.6vw, 19px);
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+}
+
+/* ---------- Rappel de contact avant le CTA final ---------- */
+.tfp-contact-nudge {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding: var(--space-5) var(--space-6);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-bg);
+}
+
+.tfp-contact-nudge p {
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+/* La bande de rappel est un enfant de <footer> (pour que tout le contenu appartienne à un repère
+   ARIA, règle axe « region ») : elle hérite donc des couleurs de lien claires du pied de page,
+   pensées pour un fond bleu nuit. Sur son fond turquoise clair, les boutons doivent retrouver
+   leurs couleurs propres — sans cela, le bouton secondaire s'affichait en #C6DCE4 sur blanc,
+   soit un contraste de 1,42 (échec axe-core color-contrast). */
+.tfp-footer .tfp-prefooter .tfp-btn--secondary {
+  color: var(--color-text);
+}
+
+.tfp-footer .tfp-prefooter .tfp-btn--secondary:hover,
+.tfp-footer .tfp-prefooter .tfp-btn--secondary:focus-visible {
+  color: var(--color-primary);
+}
+
+.tfp-footer .tfp-prefooter .tfp-btn--primary {
+  color: var(--color-white);
+}
+
+/* ------------------------------------------------------------------
+   Composants des pages prestation, repris de la maquette Claude Design.
+   Mesurés sur le rendu réel du prototype (tools/extract-routes.mjs) :
+   deux colonnes à partir de 820 px, cartes de détail en grille de deux,
+   bande turquoise #DDF4F3 pour le bloc « organisation ».
+   ------------------------------------------------------------------ */
+
+/* Ligne « région + note Google » au-dessus du H1.
+   Sa hauteur est réservée : les polices sont chargées en `font-display: swap`, et la bascule vers
+   Hanken Grotesk change la largeur du texte du badge. Sans réserve, la ligne passe de un à deux
+   rangs au moment du swap et pousse tout le H1 vers le bas — mesuré à 0,155 de CLS sur mobile,
+   au-dessus du seuil de 0,1. En dessous de 600 px la ligne est empilée d'emblée, pour que sa
+   hauteur ne dépende plus du point de retour à la ligne. */
+.tfp-hero__eyebrow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  min-height: 36px;
+  margin-bottom: 16px;
+}
+
+@media (max-width: 600px) {
+  .tfp-hero__eyebrow {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    min-height: 72px;
+  }
+}
+
+/* Phrase de maillage sous la réponse directe : texte courant, liens visibles autrement que par
+   la seule couleur (soulignement conservé) — WCAG 2.2, critère 1.4.1. */
+.tfp-maillage {
+  margin-top: 18px;
+  max-width: 860px;
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+}
+
+/* Le sélecteur est préfixé par `body.tfp-body` pour battre la règle générale qui retire les
+   soulignements : sans cela, un lien dans un paragraphe ne se distingue plus que par sa couleur,
+   ce qu'axe-core signale à juste titre (règle link-in-text-block, WCAG 1.4.1). */
+body.tfp-body .tfp-maillage a,
+body.tfp-body .tfp-prose a,
+body.tfp-body .tfp-article-body p a {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* La double colonne est définie une seule fois, dans 03-layout.css, à repli intrinsèque — c'est
+   l'écriture du prototype : `flex: 1 1 380px; min-width: min(100%, 320px)` et un écart en
+   `clamp(30px, 4vw, 56px)`. Une seconde définition la redéclarait ici en grille, avec un écart de
+   40 px fixe et une bascule à 820 px ; étant plus bas dans la feuille, c'est elle qui l'emportait.
+   L'écart mesuré à 768 px était de 30,72 px côté maquette — exactement 4vw — contre 40 posés ici. */
+
+.tfp-list-plain,
+/* Liste de tâches : deux colonnes dès que la place le permet, une seule sinon.
+   Relevé sur la maquette — `repeat(auto-fit, minmax(min(100%, 320px), 1fr))`, écart 10 :
+   deux colonnes dans une colonne de 654 px à 1440 px comme dans les 707 px pleine largeur d'une
+   tablette, une seule à 339 px. Le thème l'empilait toujours ; c'est ce qui rendait les pages
+   prestation 15 à 22 % plus hautes que la maquette à 768 px, la largeur la moins fidèle des six. */
+.tfp-list-marked {
+  list-style: none;
+  margin: 18px 0 0;
+  padding: 0;
+  display: grid;
+  /* Base contextuelle : la maquette déclare 230 px sur la liste des tâches d'une page prestation
+     et sur les chapitres de zone, 320 ailleurs. La variable est posée par l'instance, comme
+     `--tfp-rangee-colonne` sur les grilles statiques — jamais une nouvelle valeur globale. */
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--tfp-liste-colonne, 320px)), 1fr));
+  gap: 0 10px;
+}
+
+/* Liste en colonne : la maquette pose la liste « Pour qui » d'une page prestation en une seule
+   file à toutes les largeurs (`display:flex; flex-direction:column` déclaré). Seule la mise en
+   colonnes change — la géométrie des items reste celle relevée en G01. */
+.tfp-list-plain--colonne {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+/* 15 px, relevé sur la maquette — le thème en posait 16. Sur une page prestation, ce sont une
+   trentaine d'éléments de liste, dont beaucoup tiennent sur deux ou trois lignes. */
+.tfp-list-plain li,
+.tfp-list-marked li {
+  position: relative;
+  padding: 10px 0 10px 22px;
+  border-bottom: 1px solid var(--color-border);
+  font-size: 15px;
+  line-height: 1.705;
+  color: var(--color-text-secondary);
+}
+
+/* Le marqueur est décoratif : il est posé en ::before plutôt que dans le texte, sinon un lecteur
+   d'écran annonce « carré noir » avant chaque tâche. */
+/* ---------- Liste NUE ----------
+   Le prototype pose ici une liste sans ornement : 15 px sur 24,3 — ratio 1,62 —, aucun rembourrage,
+   aucun filet, et 9 px entre les items. C'est une forme d'INSTANCE, pas une forme partagée : le
+   relevé des listes de la maquette sur les 53 routes en dénombre une dizaine, et celle-ci
+   n'apparaît que sur /tarifs/. Corriger `.tfp-list-plain` globalement casserait les 28 routes qui
+   emploient la forme à filets.
+
+   Contre la forme générale — 10 px de rembourrage haut et bas, 22 px à gauche pour la puce, un
+   filet de 1 px et un interligne de 1,705 — chaque item pesait 46,6 px au lieu de 24,3. */
+.tfp-list-plain--nue {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  margin-top: 14px;
+}
+
+.tfp-list-plain--nue li {
+  padding: 0;
+  border-bottom: 0;
+  line-height: 1.62;
+}
+
+.tfp-list-plain--nue li::before {
+  content: none;
+}
+
+.tfp-list-plain li::before,
+.tfp-list-marked li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 19px;
+  width: 7px;
+  height: 7px;
+  border-radius: 2px;
+  background: var(--color-turquoise);
+}
+
+.tfp-list-marked li::before {
+  background: var(--color-primary);
+}
+
+.tfp-price-aside {
+  margin-top: 24px;
+  padding: 18px 20px;
+  border: 1px solid var(--color-turquoise-light);
+  border-radius: var(--radius-md);
+  background: var(--color-turquoise-pale);
+}
+
+.tfp-price-aside__label {
+  display: block;
+  font-size: 14px;
+  color: var(--color-text-secondary);
+}
+
+.tfp-price-aside__value {
+  display: block;
+  margin-top: 2px;
+  font-family: var(--font-heading);
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--color-navy);
+}
+
+.tfp-note-inline {
+  margin-top: 16px;
+  padding: 14px 16px;
+  border-left: 3px solid var(--color-copper);
+  background: var(--color-bg-alt);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+}
+
+.tfp-callout {
+  margin-top: 24px;
+  padding: 20px 22px;
+  border: 1px solid var(--color-turquoise-light);
+  border-radius: var(--radius-md);
+  background: var(--color-white);
+}
+
+.tfp-callout strong {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--color-navy);
+}
+
+.tfp-callout p {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+}
+
+.tfp-section__lede {
+  margin-top: 12px;
+  max-width: 760px;
+}
+
+/* Dans un conteneur déjà étroit (900 px), le plafond de 760 px n'ajoute aucune lisibilité : il ne
+   fait que couper le lède une ligne plus tôt que le titre au-dessus. La maquette lui laisse la
+   largeur du conteneur. */
+.tfp-container--narrow > .tfp-section__lede {
+  max-width: none;
+}
+
+/* ---------- Pages légales ----------
+   Ces trois pages sont les seules du site dont le ratio de hauteur ne peut pas rentrer dans
+   95-105 % : leur contenu réglementaire est plus long que celui du prototype, et il ne se
+   raccourcit pas. Ce qui PEUT être fidèle, en revanche, c'est la mise en page — et elle ne l'était
+   pas sur deux points, relevés par tools/audit-legales.mjs :
+
+     largeur de lecture   820 px de conteneur sur la maquette, soit 740 px de texte à 1440 ;
+                          760 px posés en style en ligne, soit 680 — 8 % de lignes en plus
+     paragraphe           16,5 px / 1,65 relevés ; 17 px / 1,7 appliqués — 6 % de hauteur de ligne
+                          en trop sur CHAQUE ligne d'un texte qui n'est fait que de lignes
+
+   Les deux valeurs étaient écrites en style en ligne dans les trois gabarits, donc à trois endroits
+   à corriger et à laisser diverger. Elles vivent maintenant ici. */
+.tfp-legal-body {
+  max-width: 820px;
+}
+
+.tfp-legal-p {
+  margin-top: 10px;
+  font-size: 16.5px;
+  line-height: 1.65;
+  color: var(--color-text-secondary);
+}
+
+/* Étiquette de rangée : un `h2` qui n'ouvre pas une bande mais coiffe une grille. Relevé : 19 px,
+   gras, 16 px de marge basse. */
+body.tfp-body .tfp-row-heading {
+  font-size: 19px;
+  line-height: 1.2;
+  font-weight: var(--fw-bold);
+  margin: 0 0 16px;
+}
+
+/* Rappel de fin de page (index Conseils) : la maquette pose le rembourrage sur le bloc, pas sur la
+   bande, et resserre le bloc à 1040 px. La bande de pied de page, elle, garde sa propre géométrie —
+   d'où un modificateur plutôt qu'une retouche de `.tfp-prefooter__inner`, partagé avec le pied. */
+.tfp-prefooter__inner--page {
+  max-width: 1040px;
+  padding-block: clamp(36px, 5vw, 56px);
+  gap: 20px;
+}
+
+/* Second paragraphe d'introduction : la maquette le distingue du lède — 16 px au lieu de 17-20 px,
+   marge haute de 14 px au lieu de 18. Le thème répétait la classe du lède, ce qui donnait deux
+   paragraphes de même poids et faisait disparaître la hiérarchie voulue. */
+.tfp-section__sublede {
+  margin-top: 14px;
+  font-size: 16px;
+  line-height: 1.62;
+  color: var(--color-text-secondary);
+}
+
+/* ---------- Trois grilles, trois traitements ----------
+   Relevés sur les six routes `#/service/*`, identiques sur les six :
+
+     « Le détail, espace par espace »  → 3 colonnes, écart 34, filet **supérieur** de 2 px,
+                                          rembourrage 16 en haut, aucun fond ;
+     « Une organisation carrée »       → 4 colonnes, écart 18, aucun ornement ;
+     « Les situations concrètes »      → 2 colonnes, écart 16, filet **gauche** de 2 px,
+                                          rembourrage 16 à gauche.
+
+   Le thème les rendait toutes de la même façon — une grille à deux colonnes de texte nu pour les
+   deux premières, des cartes plates pour la troisième. Ni le rythme ni la hiérarchie n'y étaient. */
+/* Écart relevé sur la maquette : 22 px, et non 34. Sur une bande qui empile quatorze éléments en
+   une colonne à 375 px, douze pixels d'écart en trop par intervalle ajoutent près de 160 px à la
+   hauteur — à contenu strictement identique. C'est l'un des postes qui rendaient les pages
+   prestation 10 à 14 % plus hautes que le prototype aux largeurs étroites. */
+.tfp-detail-grid {
+  display: grid;
+  gap: 22px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 28px;
+}
+
+.tfp-detail-grid .tfp-detail-item {
+  padding-top: 16px;
+  border-top: 2px solid var(--color-border-strong);
+}
+
+.tfp-detail-grid--orga {
+  gap: 18px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.tfp-detail-grid--orga .tfp-detail-item {
+  padding-top: 0;
+  border-top: 0;
+}
+
+.tfp-situation-grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: 20px;
+}
+
+.tfp-situation-grid > * {
+  padding-left: 16px;
+  border-left: 2px solid var(--color-turquoise);
+}
+
+.tfp-situation-grid p {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+}
+
+@media (max-width: 1099px) {
+  .tfp-detail-grid,
+  .tfp-detail-grid--orga {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 699px) {
+  .tfp-detail-grid,
+  .tfp-detail-grid--orga,
+  .tfp-situation-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* Typographie relevée sur la maquette : titre 17 px / 17,68 et texte 15 px / 25,575.
+   Le thème employait 19 px et 16 px. Deux pixels sur un titre et un sur un corps de texte ne se
+   voient pas isolément ; répétés sur les quatorze éléments d'une bande, dont plusieurs occupent
+   trois à cinq lignes, ils ajoutent quelques dizaines de pixels par bande — et c'est l'une des
+   causes partagées du surplus de hauteur aux largeurs étroites. */
+.tfp-detail-item h3 {
+  font-size: 17px;
+  line-height: 1.04;
+  margin-bottom: 8px;
+}
+
+.tfp-detail-item p {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.705;
+  color: var(--color-text-secondary);
+}
+
+.tfp-prose {
+  margin-top: 14px;
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--color-text-secondary);
+}
+
+.tfp-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* Rangée de renvoi. La maquette la rend en lien texte de 24 px de haut, sans cadre : c'est
+   exactement le minimum du critère WCAG 2.2 AA 2.5.8 (24 × 24 px), et il est satisfait par la
+   taille seule, sans avoir besoin de l'exception d'espacement ni de l'exception inline.
+
+   Le 44 × 44 px imposé auparavant relevait du critère 2.5.5, de niveau AAA, qui n'est pas
+   l'objectif de ce projet : il gonflait la hauteur des pages de zone sans rien apporter à la
+   conformité visée. Vérifié par tools/audit-target-size.mjs, pas seulement par axe-core. */
+.tfp-link-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 24px;
+  padding: 3px 0;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--color-navy);
+  text-decoration: none;
+}
+
+.tfp-link-row:hover {
+  color: var(--color-primary);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* Panneau de liens de maillage — géométrie relevée sur la maquette : fond #DCE7EB, rayon 14,
+   rangées blanches séparées par le filet d'un pixel que laisse l'écart de la colonne. Le filet
+   est donc du fond qui transparaît, pas une bordure : c'est ce qui donne des angles nets aux
+   deux rangées extrêmes sans règle supplémentaire. */
+.tfp-link-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  margin-top: 12px;
+  overflow: hidden;
+  background: rgb(220, 231, 235);
+  border-radius: 14px;
+}
+
+.tfp-link-row--panel {
+  padding: 15px 18px;
+  background: var(--color-surface, #fff);
+}
+
+.tfp-link-row--panel:hover {
+  background: rgb(244, 247, 248);
+  text-decoration: none;
+}
+
+/* Justification du montant, dans la carte, sous le chiffre — relevée à 15 px / 1,6 sur la
+   maquette, comme le corps de texte de la carte. Classe distincte de `__note`, qui désigne
+   déjà la mention en petits caractères sous le prix : ce sont deux contenus différents. */
+.tfp-price-example__why {
+  margin-top: 12px;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+}
+
+.tfp-price-example__disclaimer {
+  margin-top: 10px;
+  font-size: 13px;
+  color: var(--color-text-secondary);
+}
+
+.tfp-testimonial__stars {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 16px;
+  letter-spacing: 2px;
+  color: var(--color-copper);
+}
+
+/* Liste d'exclusions explicites : le marqueur « ✕ » est décoratif et posé en ::before, jamais
+   dans le texte — un lecteur d'écran annoncerait « multiplication » avant chaque ligne. */
+/* Liste des erreurs à éviter, sur les trois articles — le seul rendu qui l'emploie.
+
+   Le prototype la pose NUE : items de 15,5 px sur 25,11 — ratio 1,62 —, sans rembourrage, sans
+   filet, sans fond, le ✕ posé comme premier enfant à 12 px du texte, et 14 px de marge au-dessus
+   de la liste. Le thème en faisait des cartes encadrées : 12 px de rembourrage haut et bas, 40 à
+   gauche pour loger le ✕ en absolu, un filet, un fond, et 16 px de police.
+
+   Le coût se mesure exactement : 78 px par item au lieu de 25 — les 40 px de rembourrage gauche
+   font replier chaque ligne — soit 228 px de liste contre 120, plus 10 px de marge en trop.
+   Les 118 px d'écart de la bande « Erreurs à éviter » s'expliquent ainsi en entier.
+
+   Le repli à deux colonnes au-dessus de 820 px disparaît : la maquette garde une colonne à toutes
+   les largeurs, vérifié à 320, 375, 768, 1024, 1440 et 1920 px. */
+.tfp-list-excluded {
+  list-style: none;
+  margin: 14px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+  grid-template-columns: 1fr;
+}
+
+.tfp-list-excluded li {
+  display: flex;
+  gap: 12px;
+  padding: 0;
+  border: 0;
+  background: none;
+  font-size: 15.5px;
+  line-height: 1.62;
+  color: var(--color-text-secondary);
+}
+
+.tfp-list-excluded li::before {
+  content: "✕";
+  flex: none;
+  font-weight: 700;
+  color: var(--color-copper-dark);
+}
+
+/* ------------------------------------------------------------------
+   Pied de page à quatre colonnes de la maquette Claude Design : marque,
+   prestations, zones détaillées par département, informations.
+   ------------------------------------------------------------------ */
+
+.tfp-footer__col--brand,
+.tfp-footer__col--zones {
+  grid-column: span 1;
+}
+
+.tfp-footer__brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Le logo du pied de page est décoratif : le nom de la marque est déjà écrit à côté en texte.
+   Son `alt` est donc vide, sinon un lecteur d'écran annonce deux fois « Top-Famille Pro ». */
+.tfp-footer__logo {
+  width: 110px;
+  height: auto;
+}
+
+.tfp-footer__brand-name {
+  font-family: var(--font-heading);
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--color-white);
+}
+
+.tfp-footer__tagline {
+  margin-top: 14px;
+  max-width: 320px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.tfp-footer__contact {
+  margin-top: 16px;
+  list-style: none;
+  padding: 0;
+  font-size: 14px;
+  line-height: 2;
+}
+
+.tfp-footer__more {
+  display: inline-block;
+  margin-top: 10px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.tfp-footer__zones-label {
+  margin-top: 16px;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  opacity: 0.75;
+}
+
+/*
+ * Colonne « Zones d'intervention » — deux colonnes, comme la maquette.
+ *
+ * C'est le poste le plus coûteux du site : la maquette range les huit départements sur deux
+ * colonnes de quatre (238 px de haut), le thème les empilait sur une seule (533 px). Les colonnes
+ * du pied de page s'étirant à la hauteur de la plus haute, ces 295 px se répercutaient sur la
+ * hauteur totale des 53 pages — soit +21 % sur une page courte comme /contact/ et +4 % sur une
+ * page de ville. Beaucoup d'écarts de hauteur imputés au contenu venaient en réalité d'ici.
+ *
+ * Sous 820 px, la maquette repasse elle-même à une seule colonne.
+ */
+/* Sélecteur porté à la même spécificité que `.tfp-footer__col ul` (0,0,2,1), qui met les listes du
+   pied de page en colonne flex : une classe seule perdait l'arbitrage et la grille restait à plat. */
+.tfp-footer__col ul.tfp-footer__zones {
+  margin-top: 10px;
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px 12px;
+}
+
+@media (max-width: 819px) {
+  .tfp-footer__col ul.tfp-footer__zones {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.tfp-footer__zones li {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.tfp-footer__dept {
+  font-weight: 600;
+}
+
+.tfp-footer__villes {
+  display: block;
+  opacity: 0.85;
+}
+
+/* Les deux renvois de bas de colonne sont empilés dans la maquette (51 px à deux lignes), pas
+   côte à côte : en ligne, ils repassaient à la ligne d'eux-mêmes et occupaient 83 px. */
+.tfp-footer__zones-links {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 14px;
+}
+
+.tfp-footer__zones-links .tfp-footer__more {
+  margin-top: 0;
+}
+
+/* Badge de note au pied de page : même composant que le hero, mais sur fond marine — la couleur
+   de texte doit être reprise explicitement, sinon elle hérite du texte sombre et tombe à un
+   contraste de 1,03 sur le marine. */
+/* La maquette rend ce badge en pastille : fond #1B3550, rayon 10 px, padding 8/12, 39 px de haut.
+   Le thème l'affichait à plat, ce qui le faisait disparaître dans le marine du pied de page. */
+.tfp-google-badge--footer {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 18px;
+  padding: 8px 12px;
+  border-radius: 10px;
+  background: #1B3550;
+  font-size: 14px;
+  color: var(--color-white);
+}
+
+.tfp-google-badge--footer .tfp-google-badge__text,
+.tfp-google-badge--footer .tfp-google-badge__text strong,
+.tfp-google-badge--footer .tfp-google-badge__count {
+  color: var(--color-white);
+}
+
+.tfp-google-badge--footer .tfp-google-badge__stars {
+  color: var(--color-copper);
+  letter-spacing: 1px;
+}
+
+/* ------------------------------------------------------------------
+   Composants de la page Tarifs, repris de la maquette Claude Design.
+   Les montants ne sont jamais écrits dans le CSS : ils viennent de
+   includes/site-options.php via le gabarit.
+   ------------------------------------------------------------------ */
+
+/* ---------- Bandeau tarifaire (page Tarifs) ----------
+   Deux cartes sur une rangée souple, telles que le prototype les déclare :
+
+     carte de l'offre   flex: 2 1 380px · min-width: min(100%, 320px) · fond #174A81 · rayon 20
+                        rembourrage clamp(28px, 4vw, 44px) · elle-même flex, écart 24, espacée
+     carte de promesse  flex: 1 1 220px · min-width: min(100%, 220px) · fond blanc · filet · 26
+
+   Le thème n'en faisait qu'un encadré turquoise pâle, en grille d'une colonne jusqu'à une requête
+   média posée à 820 px — un seuil qui ne figure nulle part dans la maquette et qui laissait le prix
+   et son bouton empilés sur toute la largeur en deçà. Les bases souples se replient toutes seules
+   au bon endroit, et le fond marine est celui du prototype. */
+.tfp-price-headline {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.tfp-price-headline__offer {
+  flex: 2 1 380px;
+  min-width: min(100%, 320px);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  align-items: center;
+  justify-content: space-between;
+  padding: clamp(28px, 4vw, 44px);
+  border-radius: 20px;
+  background: var(--color-primary);
+  color: var(--color-white);
+}
+
+.tfp-price-headline__promise {
+  flex: 1 1 220px;
+  min-width: min(100%, 220px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 26px;
+  border: 1px solid var(--color-border);
+  border-radius: 20px;
+  background: var(--color-white);
+}
+
+.tfp-price-headline__label {
+  font-size: 15px;
+  color: var(--color-turquoise);
+}
+
+.tfp-price-headline__value {
+  margin-top: 4px;
+  font-family: var(--font-heading);
+  font-size: clamp(46px, 7vw, 70px);
+  font-weight: 800;
+  line-height: 1;
+  color: var(--color-white);
+}
+
+.tfp-price-headline__value span {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.tfp-price-headline__note {
+  margin-top: 6px;
+  font-size: 15px;
+  color: var(--color-turquoise-light);
+}
+
+/* Le bouton ne se rétrécit pas sous son texte : la maquette lui pose `white-space: nowrap`, et la
+   rangée se replie plutôt que de casser « Demander mon devis » en deux lignes. */
+body.tfp-body .tfp-price-headline__offer .tfp-btn {
+  padding: 15px 26px;
+  border-radius: 12px;
+  font-weight: var(--fw-bold);
+  white-space: nowrap;
+}
+
+.tfp-price-headline__delay {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  font-weight: var(--fw-bold);
+  color: var(--color-navy);
+}
+
+.tfp-price-headline__promise p {
+  margin-top: 8px;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+}
+
+.tfp-fee-list {
+  list-style: none;
+  margin: 24px 0 0;
+  padding: 0;
+}
+
+.tfp-fee-list li {
+  display: grid;
+  gap: 2px 16px;
+  grid-template-columns: 1fr auto;
+  align-items: baseline;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.tfp-fee-list__label {
+  font-weight: 600;
+  color: var(--color-navy);
+}
+
+.tfp-fee-list__hint {
+  grid-column: 1;
+  font-size: 14px;
+  color: var(--color-text-secondary);
+}
+
+.tfp-fee-list__amount {
+  grid-row: 1 / span 2;
+  grid-column: 2;
+  font-family: var(--font-heading);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--color-primary);
+  white-space: nowrap;
+}
+
+.tfp-budget-card {
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-white);
+}
+
+.tfp-budget-card__title {
+  font-weight: 700;
+  color: var(--color-navy);
+}
+
+.tfp-budget-card__meta {
+  margin-top: 2px;
+  font-size: 14px;
+  color: var(--color-text-secondary);
+}
+
+.tfp-budget-card__value {
+  margin-top: 14px;
+  font-family: var(--font-heading);
+  font-size: 34px;
+  font-weight: 800;
+  color: var(--color-navy);
+}
+
+.tfp-budget-card__value span {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.tfp-budget-card__detail {
+  list-style: none;
+  margin: 16px 0 0;
+  padding: 0;
+  font-size: 14px;
+  color: var(--color-text-secondary);
+}
+
+.tfp-budget-card__detail li {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 7px 0;
+  border-top: 1px solid var(--color-border);
+}
+
+/* Un tableau large ne doit jamais faire déborder la page : il défile dans son propre conteneur.
+   `tabindex="0"` n'est pas posé ici mais le conteneur reste atteignable au clavier via le
+   défilement natif du navigateur sur un élément scrollable. */
+.tfp-table-scroll {
+  margin-top: 24px;
+  overflow-x: auto;
+}
+
+.tfp-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 15px;
+}
+
+.tfp-table th,
+.tfp-table td {
+  padding: 14px 16px;
+  text-align: left;
+  border-bottom: 1px solid var(--color-border);
+  white-space: nowrap;
+}
+
+.tfp-table th {
+  font-family: var(--font-heading);
+  font-size: 14px;
+  color: var(--color-navy);
+  background: var(--color-bg-alt);
+}
+
+.tfp-table td {
+  color: var(--color-text-secondary);
+}
+
+.tfp-table td:first-child {
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+/* Carte entièrement cliquable : le lien porte la carte, pas un « lire la suite » isolé. */
+.tfp-card--link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.tfp-card--link h3 {
+  font-size: 18px;
+}
+
+.tfp-card--link p {
+  margin-top: 8px;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+}
+
+.tfp-card--link:hover {
+  border-color: var(--color-turquoise);
+}
+
+/* ------------------------------------------------------------------
+   Composants des pages de zone (département, ville, commune).
+   ------------------------------------------------------------------ */
+
+/* Bandeau tarifaire sous le hero : montant, mentions cochées, lien vers la page Tarifs. */
+/* Bandeau tarifaire d'une page de zone — géométrie relevée à 1440 px sur la maquette :
+   barre 1180×146 sur fond #DDF4F3, rayon 16, rembourrage 15/17, et surtout une **pastille
+   marine** de 238×56 (rayon 12) qui porte le prix. Le thème la rendait en texte nu sur fond
+   blanc : le montant, qui est le seul chiffre que le visiteur retient de la page, n'avait plus
+   aucun poids visuel. */
+.tfp-zone-band {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 15px 17px;
+  border: 0;
+  border-radius: 16px;
+  background: rgb(221, 244, 243);
+}
+
+.tfp-zone-band__row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px 26px;
+}
+
+.tfp-zone-band__price {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 14px;
+  border-radius: 12px;
+  background: var(--color-navy);
+}
+
+.tfp-zone-band__price strong {
+  font-family: var(--font-heading);
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--color-white);
+}
+
+.tfp-zone-band__price span {
+  max-width: 100px;
+  font-size: 13px;
+  line-height: 1.15;
+  color: rgba(255, 255, 255, 0.86);
+}
+
+/* Renvoi vers les tarifs : bouton blanc dans la maquette (136×47, rayon 10), pas un lien nu —
+   c'est la seule action de la bande. */
+.tfp-zone-band > .tfp-eyebrow-link {
+  align-self: flex-end;
+  /* La marge que ce lien porte ailleurs ajoutait 20 px à la hauteur de la bande : ici, c'est
+     l'écart de la colonne qui règle l'espacement. */
+  margin: 0;
+  padding: 10px 16px;
+  border-radius: 10px;
+  background: var(--color-white);
+}
+
+.tfp-zone-band__items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 20px;
+  flex: 1 1 320px;
+}
+
+/* Chapitres narratifs : colonne de lecture, respiration entre chapitres. */
+/* Intitulé de chapitre d'une page de zone.
+
+   Le prototype déclare une FONCTION, et le thème en appliquait une autre : `--fs-h2-dense` vaut
+   clamp(22px, 2.2vw, 29px) avec un interligne de 1,04, là où la maquette rend
+
+     21 px jusqu'à ~840 px de fenêtre · 22,5 à 900 · 25,6 à 1024 · 29 à partir de 1200
+
+   soit `clamp(21px, 2.5vw, 29px)`, interligne 1,15 — constant, lui, aux neuf largeurs relevées.
+   S'y ajoutaient 8 px de marge basse que la maquette ne pose pas.
+
+   La correction est portée sur le chapitre seul, et non sur `--fs-h2-dense` : les autres `h2` d'une
+   page de zone n'ont PAS de valeur commune dans le prototype (20, 21, 22, 23,04 et 27,648 px selon
+   la bande), et élargir la portée serait un correctif aveugle.
+
+   La spécificité doit dépasser `body.tfp-type-zone h2` et `body.tfp-body h1..h6`, toutes deux en
+   (0,2,1) : une règle `.tfp-zone-chapter h2` ne posait que la marge, et la taille restait celle du
+   jeton — l'effet mesuré était alors nul, ce qui se lisait à tort comme « la propriété n'est pas la
+   cause ».
+
+   Contrôlé sur les neuf chapitres de #/ville/dijon : la somme des écarts de hauteur tombe à 4 px à
+   375, 768, 900, 1024, 1440 et 1920 px. */
+body.tfp-body .tfp-zone-chapter h2 {
+  font-size: clamp(21px, 2.5vw, 29px);
+  line-height: 1.15;
+  margin-bottom: 0;
+}
+
+.tfp-zone-links + .tfp-zone-links {
+  margin-top: 40px;
+}
+
+
+/* Hero sans visuel (pages département de la maquette) : le texte occupe toute la largeur. */
+.tfp-hero--text {
+  grid-template-columns: 1fr;
+}
+
+.tfp-hero--text .tfp-hero__content {
+  max-width: 820px;
+}
+
+/* ------------------------------------------------------------------
+   Article « Conseils » : en-tête, sommaire, corps de texte.
+   ------------------------------------------------------------------ */
+
+/* ---------- Corps d'article ----------
+   Le prototype compose le corps en colonne flex avec un écart entre blocs, et laisse ses intitulés
+   sans marge :
+
+     conteneur   display: flex; flex-direction: column; gap: clamp(28px, 3vw, 40px)
+     h2          21 px à 768, 27 px à 1440 — clamp(21px, 2.1vw, 27px) — marges nulles
+     paragraphe  16,5 px / 1,7, et 12 px seulement lorsqu'il suit un intitulé
+
+   Le thème rendait le corps en flux simple, sans écart, avec des intitulés à 36 px de marge haute
+   et 10 de marge basse, et des paragraphes en 17 px / 1,75 avec 16 px de marge des deux côtés.
+   Chaque section pesait alors 187,9 px au lieu de 146 : sur les six sections d'un article, 252 px.
+
+   La correction est portée par le CSS et NON par la structure : `the_content()` rend une suite
+   plate de `h2` et de `p`, et le prototype les groupe deux à deux. Les sélecteurs de fratrie
+   reproduisent l'écart sans qu'aucune section n'ait à être ajoutée au contenu — le faux positif
+   des bandes d'article est clos, et rien ici ne le rouvre. */
+.tfp-article-body > * {
+  margin-top: 12px;
+  margin-bottom: 0;
+}
+
+/* Seul un intitulé ouvre un chapitre : c'est lui, et lui seul, qui porte l'écart de la maquette.
+   Le reste du chapitre — paragraphe, liste — se tient à 12 px. La règle précédente posait l'écart
+   de chapitre sur TOUS les enfants et le ramenait à 12 px pour le seul paragraphe suivant un
+   intitulé : une liste placée après un paragraphe recevait alors 28 px au lieu de 12. */
+.tfp-article-body > h2 {
+  margin-top: clamp(28px, 3vw, 40px);
+}
+
+.tfp-article-body > *:first-child {
+  margin-top: 0;
+}
+
+.tfp-article-body h2 {
+  font-size: clamp(21px, 2.1vw, 27px);
+  line-height: var(--lh-heading);
+}
+
+.tfp-article-body p {
+  font-size: 16.5px;
+  line-height: 1.7;
+}
+
+/* Étiquette de catégorie d'un article : un LIBELLÉ NU dans le prototype, jamais une pastille.
+   Relevé sur la source de la maquette — en-tête d'article `font-size:13px;font-weight:600;
+   color:#174A81`, carte d'article `12.5px/600/#174A81` — sans fond, sans rayon, sans rembourrage.
+   Le thème l'avait inventée en pastille turquoise (rayon 999, fond, 5px 12px) : dix cartes
+   comptées en surplus par l'inventaire sur /conseils/ et les trois articles, et ~10 px de hauteur
+   ajoutés à chaque carte. La variante de l'accueil (.tfp-article-card__cat) était déjà nue. */
+.tfp-article__category {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: var(--fw-semibold);
+  color: var(--color-primary);
+}
+
+.tfp-article-card .tfp-article__category {
+  font-size: 12.5px;
+}
+
+.tfp-article__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+  font-size: 14px;
+  color: var(--color-text-secondary);
+}
+
+.tfp-article__cover {
+  margin-top: 24px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.tfp-article__cover img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+/* Sommaire : repère de lecture, pas une navigation par ancres — les titres du corps ne portent
+   pas d'`id` stable, et une ancre morte serait pire que pas d'ancre du tout. */
+.tfp-toc {
+  padding: 20px 24px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-bg-alt);
+}
+
+.tfp-toc strong {
+  display: block;
+  margin-bottom: 10px;
+  color: var(--color-navy);
+}
+
+.tfp-toc ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 6px;
+  font-size: 15px;
+  color: var(--color-text-secondary);
+}
+
+.tfp-toc li::before {
+  content: "— ";
+  color: var(--color-turquoise);
+}
+
+/* Ce bloc redéclarait `h2`, `p` et `ul` du corps d'article — plus bas dans la feuille, il
+   l'emportait sur les valeurs relevées quelques centaines de lignes plus haut et remettait en
+   place exactement ce qu'elles corrigeaient : intitulés à 36 px de marge, paragraphes en
+   17 px / 1,75 avec 16 px de marge basse, listes à 20 px. Seule la couleur du texte lui était
+   propre ; c'est tout ce qu'il en reste. */
+.tfp-article-body p {
+  color: var(--color-text-secondary);
+}
+
+.tfp-article-body ul {
+  padding-left: 0;
+  list-style: none;
+}
+
+.tfp-article-body li {
+  position: relative;
+  padding: 8px 0 8px 22px;
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+}
+
+.tfp-article-body li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 17px;
+  width: 7px;
+  height: 7px;
+  border-radius: 2px;
+  background: var(--color-primary);
+}
+
+/* Index Conseils : thèmes, carte d'article, carte mise en avant. */
+
+.tfp-theme-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Repères de thème, pas des filtres : ils ne sont pas cliquables, et leur apparence le dit
+   (pas de curseur main, pas de survol) — une pastille qui ressemble à un bouton sans en être un
+   est un piège d'interface. */
+.tfp-theme-list__item {
+  padding: 8px 16px;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  font-size: 14px;
+  color: var(--color-text-secondary);
+  background: var(--color-white);
+}
+
+.tfp-theme-list__item.is-current {
+  background: var(--color-navy);
+  border-color: var(--color-navy);
+  color: var(--color-white);
+}
+
+.tfp-article-card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--color-white);
+  text-decoration: none;
+  color: inherit;
+}
+
+.tfp-article-card:hover {
+  border-color: var(--color-turquoise);
+}
+
+.tfp-article-card__media img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  display: block;
+}
+
+.tfp-article-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 20px 22px 24px;
+}
+
+.tfp-article-card__body h3 {
+  font-size: 19px;
+}
+
+.tfp-article-card__body p {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+}
+
+.tfp-article-card__meta {
+  font-size: 13px;
+  color: var(--color-text-secondary);
+}
+
+/* ---------- Carte mise en avant de l'index Conseils ----------
+   Visuel et texte se partagent la carte à ÉGALITÉ : le prototype leur donne la même base souple —
+   `flex: 1 1 380px; min-width: min(100%, 300px)` — ce qui produit deux moitiés de 589 px à 1440.
+   Le thème posait une grille 3fr/2fr sous requête média à 900 px, soit 707 et 471 : le texte, dans
+   la colonne étroite, gagnait deux lignes et la carte 79 px de haut.
+
+   Les bases souples se replient d'elles-mêmes quand 380 + 380 ne tiennent plus, ce qui rend la
+   requête média inutile — et son seuil de 900 px ne correspondait à aucun relevé. */
+.tfp-article-card--feature {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.tfp-article-card--feature > * {
+  flex: 1 1 380px;
+  min-width: min(100%, 300px);
+}
+
+.tfp-article-card--feature .tfp-article-card__media img {
+  height: 100%;
+  aspect-ratio: auto;
+}
+
+.tfp-article-card--feature .tfp-article-card__body {
+  justify-content: center;
+  padding: clamp(24px, 3vw, 38px);
+}
+
+@media (min-width: 900px) {
+  .tfp-article-card--feature .tfp-article-card__body h3 {
+    font-size: 26px;
+  }
+}
+
+/* Blocs des pages statiques narratives (template-parts/components/static-blocks.php). */
+
+.tfp-static-block + .tfp-static-block {
+  margin-top: 36px;
+}
+
+.tfp-static-block h2 {
+  margin-bottom: 8px;
+}
+
+.tfp-static-block h3 {
+  margin-bottom: 6px;
+  font-size: 20px;
+}
+
+.tfp-quote {
+  margin: 16px 0 0;
+  padding: 18px 22px;
+  border-left: 3px solid var(--color-turquoise);
+  background: var(--color-turquoise-pale);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--color-navy);
+}
+
+/* Renvoi sans destination réelle : rendu comme une ligne inerte plutôt qu'en lien mort. */
+.tfp-link-row--static {
+  cursor: default;
+  color: var(--color-text-secondary);
+}
+
+.tfp-section--navy .tfp-prose,
+.tfp-section--navy .tfp-list-plain li,
+.tfp-section--primary .tfp-prose,
+.tfp-section--primary .tfp-list-plain li {
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.tfp-section--navy .tfp-list-plain li,
+.tfp-section--primary .tfp-list-plain li {
+  border-bottom-color: rgba(255, 255, 255, 0.18);
+}
+
+/* Bande tarifaire d'une page de zone : trois colonnes, à repli INTRINSÈQUE.
+
+   Le relevé d'origine était fait à 1440 px puis figé en proportions — texte 394, exemple 344,
+   témoignage 374, écart 34 — avec un repli sur une colonne à 979 px de fenêtre. La maquette ne
+   procède pas ainsi : elle déclare une base de colonne par carte et laisse le repli se faire selon
+   la place DISPONIBLE.
+
+     conteneur     display: flex; flex-wrap: wrap; gap: clamp(22px, 3vw, 34px); align-items: stretch
+     texte         flex: 1 1 300px; min-width: min(100%, 280px)
+     exemple       flex: 1 1 250px; min-width: min(100%, 260px)
+     témoignage    flex: 1 1 280px; min-width: min(100%, 270px)
+
+   Ces bases redonnent d'elles-mêmes les largeurs relevées à 1440 px : 830 px de bases, 68 px
+   d'écarts, 282 px de place libre partagée en trois — soit 394 / 344 / 374. La valeur figée était
+   donc juste à 1440 px et fausse partout ailleurs. À 768 px, le seuil de 979 px empilait les trois
+   cartes sur une colonne de 707 px là où la maquette en tient deux de 317 : 223 px de hauteur en
+   trop, sur les 26 pages de zone.
+
+   Vérifié identique à la maquette — colonnes, largeur de carte et écart — à 320, 375, 700, 720,
+   768, 800, 820, 979, 980, 1024, 1440 et 1920 px. */
+.tfp-zone-tarif {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(22px, 3vw, 34px);
+  /* La maquette étire ses trois colonnes à la même hauteur : les deux cartes blanches y font
+     bloc avec la colonne de texte au lieu de flotter en haut de la bande. */
+  align-items: stretch;
+}
+
+.tfp-zone-tarif > * {
+  flex: 1 1 300px;
+  min-width: min(100%, 280px);
+}
+
+.tfp-zone-tarif > .tfp-price-example {
+  flex: 1 1 250px;
+  min-width: min(100%, 260px);
+}
+
+.tfp-zone-tarif > .tfp-testimonial {
+  flex: 1 1 280px;
+  min-width: min(100%, 270px);
+}
+
+/* Les marges verticales que ces deux cartes portent quand elles sont empilées n'ont plus lieu
+   d'être en colonnes : elles décalaient la carte d'exemple de 20 px sous ses deux voisines, et
+   les trois colonnes ne partageaient plus la même ligne. La classe du parent est répétée pour
+   passer devant `.tfp-price-example`, déclarée dans une feuille chargée plus tard. */
+.tfp-zone-tarif > .tfp-price-example,
+.tfp-zone-tarif > .tfp-testimonial,
+.tfp-zone-tarif > * {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/* Plusieurs groupes de premier rang dans une même bande : une colonne chacun, comme dans la
+   maquette (deux colonnes de 566 px avec un écart de 48 sur une page de département, mesurées à
+   1440 px). Les sous-groupes s'empilent dans leur colonne — c'est `.tfp-zone-col` qui porte la
+   cellule de grille, pas chaque groupe, sans quoi un sous-titre ouvrait sa propre colonne. */
+/* Base de colonne et écart **relevés sur le prototype**. L'écart est le même partout —
+   `gap: clamp(28px, 4vw, 48px)` — mais la BASE DE COLONNE ne l'est pas : le prototype en déclare
+   une par bande, et une même valeur pour les trois serait fausse sur deux d'entre elles.
+
+     ville et commune, deux groupes  « Quartiers et zones d'activité »
+                                     flex: 1 1 340px · min-width: min(100%, 300px)
+     département, deux groupes       « Nos villes d'intervention dans le département »
+                                     flex: 1 1 320px · min-width: min(100%, 280px)
+     ville et commune, trois groupes « Dans le même département »
+                                     260 / 300 / 240 px, min 260 / 280 / 260
+
+   Relevé sur les 26 pages de zone : la correspondance est régulière, sans exception. La différence
+   entre 340 et 320 n'est pas cosmétique — à 768 px la largeur utile est de 707 px, et deux colonnes
+   tiennent à 320 (670,72 px avec l'écart) mais pas à 340 (710,72 px). Le thème posait 340 partout :
+   la bande des villes d'un département s'empilait sur une colonne là où la maquette en tient deux,
+   331 px de hauteur en trop sur les 8 pages de département.
+
+   Le repli est intrinsèque — `flex-wrap`, pas de seuil de fenêtre — comme dans le prototype. */
+.tfp-zone-links-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(28px, 4vw, 48px);
+  align-items: start;
+}
+
+.tfp-zone-links-grid > .tfp-zone-col {
+  flex: 1 1 340px;
+  min-width: min(100%, 300px);
+}
+
+.tfp-zone-links-grid--dept > .tfp-zone-col {
+  flex: 1 1 320px;
+  min-width: min(100%, 280px);
+}
+
+.tfp-zone-links-grid--trois > .tfp-zone-col:nth-child(1) {
+  flex: 1 1 260px;
+  min-width: min(100%, 260px);
+}
+
+.tfp-zone-links-grid--trois > .tfp-zone-col:nth-child(2) {
+  flex: 1 1 300px;
+  min-width: min(100%, 280px);
+}
+
+.tfp-zone-links-grid--trois > .tfp-zone-col:nth-child(3) {
+  flex: 1 1 240px;
+  min-width: min(100%, 260px);
+}
+
+.tfp-zone-col > .tfp-zone-links + .tfp-zone-links {
+  margin-top: 28px;
+}
+
+.tfp-zone-links-grid .tfp-zone-links + .tfp-zone-links {
+  margin-top: 0;
+}
+
+/* Sous-groupe : son titre est un `h3`, plus discret que le `h2` qui ouvre la colonne. */
+.tfp-zone-links--sous > h3 {
+  font-size: var(--fs-sm, 0.9375rem);
+  font-weight: var(--fw-semibold, 600);
+  margin-bottom: 0;
+}
+
+/* Tuile de prestation dans une page de zone : compacte, titre + une ligne. */
+.tfp-zone-links .tfp-card--link {
+  padding: 20px;
+  border-radius: 14px;
+}
+
+.tfp-zone-links .tfp-card--link h3 {
+  font-size: 17px;
+}
+
+.tfp-zone-links .tfp-card--link p {
+  margin-top: 4px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* Cibles du pied de page — critère WCAG 2.2 AA 2.5.8.
+   Les liens des colonnes et de la barre légale sont des cibles à part entière : ils reçoivent la
+   hauteur minimale de 24 px. Les villes listées en ligne dans une phrase, séparées par des points
+   médians, relèvent en revanche de l'exception « inline » du critère : leur taille est contrainte
+   par l'interligne du texte qui les entoure, et leur imposer une hauteur déformerait la colonne
+   sans rien apporter. Vérifié par tools/audit-target-size.mjs. */
+.tfp-footer__contact a,
+.tfp-footer__col ul a,
+.tfp-footer__bottom nav a {
+  display: inline-block;
+  min-height: 24px;
+}
+
+/*
+ * Villes du pied de page : rendues en ligne, séparées par des points médians, comme dans la
+ * maquette. Leur imposer 24 px de haut faisait passer chaque département de 49 à 89 px et gonflait
+ * la colonne d'un tiers.
+ *
+ * C'est la condition d'**espacement** du critère 2.5.8 qui les couvre, pas l'exception « inline » :
+ * cette exception vise une cible posée dans une phrase, or il s'agit ici d'une liste de liens sans
+ * texte porteur. L'interligne est donc fixé à 26 px, pour que deux cibles successives soient
+ * toujours distantes d'au moins 24 px — à 1,7 (23,8 px) l'audit relevait 23 px et le critère
+ * n'était pas tenu. Vérifié par tools/audit-target-size.mjs, condition par condition.
+ */
+.tfp-footer__col ul .tfp-footer__villes a {
+  display: inline;
+  min-height: 0;
+  margin-right: 4px;
+}
+
+.tfp-footer__zones li {
+  line-height: 26px;
+}
+
+/* ------------------------------------------------------------------
+   Rythme vertical des pages de zone, aligné sur la maquette.
+   Valeurs relevées sur le rendu du prototype (tools/dump-route.mjs) :
+   carte de prestation 285×147 (padding 20, rayon 14), pastille 41 px de
+   haut, rangée de renvoi 24 px, item de FAQ replié 61 px.
+   ------------------------------------------------------------------ */
+
+/* FAQ : l'item replié fait 61 px dans la maquette. La carte générique, avec ses 24 px de padding,
+   en faisait près de 80 — sur sept questions, l'écart se voyait. */
+.tfp-section--turquoise details.tfp-card,
+.tfp-section--alt details.tfp-card,
+details.tfp-card {
+  padding: 14px 18px;
+  margin-bottom: 8px;
+}
+
+/* Groupes de liens : la maquette les serre nettement plus que la grille générique. */
+.tfp-zone-links h2 {
+  margin-bottom: 6px;
+}
+
+.tfp-zone-links .tfp-prose {
+  margin-top: 8px;
+}
+
+.tfp-zone-links .tfp-flex,
+.tfp-zone-links .tfp-stack {
+  margin-top: 12px !important;
+}
+
+.tfp-zone-links + .tfp-zone-links {
+  margin-top: 28px;
+}
+
+/* Grille des six prestations d'une page de zone : quatre colonnes comme dans la maquette, où
+   les tuiles tiennent sur deux rangs et non trois. */
+@media (min-width: 900px) {
+  .tfp-zone-links .tfp-grid--autofit-md {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
+    gap: 16px;
+  }
+}
+
+/* Hero : la ligne « région + note » garde sa hauteur réservée (elle évite un CLS de 0,155), mais
+   se recolle au titre. */
+.tfp-hero__eyebrow {
+  margin-bottom: 10px;
+}
+
+/* ------------------------------------------------------------------
+   Étapes numérotées (« 01 Prise de contact »), reprises de la maquette.
+   Valeurs relevées sur le rendu du prototype : carte 820×162, padding 24,
+   rayon 16, fond #F4F7F8, filet #DCE7EB, écart 20 px entre la pastille et
+   le texte, 14 px entre deux cartes ; pastille de 26 px, graisse 800.
+   ------------------------------------------------------------------ */
+
+.tfp-steps {
+  list-style: none;
+  margin: 20px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.tfp-step {
+  display: flex;
+  gap: 20px;
+  padding: 24px;
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  background: var(--color-bg);
+}
+
+.tfp-step__num {
+  flex: 0 0 auto;
+  min-width: 44px;
+  font-family: var(--font-heading);
+  font-size: 26px;
+  font-weight: 800;
+  line-height: 1.2;
+  color: var(--color-primary);
+}
+
+.tfp-step__titre {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--color-navy);
+  margin-bottom: 6px;
+}
+
+.tfp-step__body .tfp-prose {
+  margin: 0;
+}
+
+@media (max-width: 599px) {
+  .tfp-step {
+    gap: 14px;
+    padding: 18px;
+  }
+
+  .tfp-step__num {
+    min-width: 34px;
+    font-size: 22px;
+  }
+}
+
+/* ------------------------------------------------------------------
+   Bandes de pages statiques réparties en colonnes.
+   Le nombre de colonnes n'est plus deviné : il est relevé sur le rendu de
+   la maquette par tools/generate-pages.mjs et posé en classe par le
+   composant. Une bande que la maquette empile reste empilée.
+   ------------------------------------------------------------------ */
+
+.tfp-static-grid {
+  display: grid;
+  gap: 24px 40px;
+  align-items: start;
+}
+
+.tfp-static-grid--2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.tfp-static-grid--3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.tfp-static-grid--4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+/* Rangée dont la base de colonne a été relevée : elle se replie d'elle-même, comme la maquette,
+   et l'écart entre colonnes est celui du prototype. Les seuils fixes ci-dessous ne concernent que
+   les rangées sans relevé. */
+.tfp-static-grid[style*="--tfp-rangee-colonne"] {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--tfp-rangee-colonne)), 1fr));
+}
+
+.tfp-static-grid[style*="--tfp-rangee-gap"] {
+  gap: var(--tfp-rangee-gap);
+}
+
+@media (max-width: 899px) {
+  .tfp-static-grid--3:not([style*="--tfp-rangee-colonne"]),
+  .tfp-static-grid--4:not([style*="--tfp-rangee-colonne"]) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 599px) {
+  .tfp-static-grid:not([style*="--tfp-rangee-colonne"]) {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* ------------------------------------------------------------------
+   Page « Demande de devis » — deux colonnes, comme la maquette.
+   Relevé sur le prototype : conteneur 1260 px, padding 48/40/92, écart
+   56 px ; formulaire 642 px, colonne de réassurance 482 px composée de
+   trois cartes de rayon 16 espacées de 16 px (blanche, marine, gris clair).
+   Sous 900 px, la maquette empile les deux colonnes.
+   ------------------------------------------------------------------ */
+
+.tfp-quote-page {
+  padding-block: 48px 92px;
+}
+
+.tfp-quote-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 642fr) minmax(0, 482fr);
+  gap: 56px;
+  align-items: start;
+}
+
+.tfp-quote-aside {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.tfp-quote-aside__card {
+  border-radius: 16px;
+}
+
+.tfp-quote-aside__manager {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 24px;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+}
+
+.tfp-quote-aside__avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex: 0 0 auto;
+}
+
+.tfp-quote-aside__manager strong {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 17px;
+  color: var(--color-navy);
+}
+
+.tfp-quote-aside__manager span {
+  display: block;
+  font-size: 14px;
+  color: var(--color-text-secondary);
+}
+
+.tfp-quote-aside__phone {
+  padding: 24px;
+  background: var(--color-primary);
+  color: var(--color-white);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.tfp-quote-aside__phone strong {
+  font-family: var(--font-heading);
+  font-size: 17px;
+  color: var(--color-white);
+}
+
+body.tfp-body .tfp-quote-aside__tel {
+  font-family: var(--font-heading);
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--color-white);
+  text-decoration: none;
+}
+
+body.tfp-body .tfp-quote-aside__tel:hover,
+body.tfp-body .tfp-quote-aside__tel:focus-visible {
+  text-decoration: underline;
+}
+
+.tfp-quote-aside__price {
+  font-family: var(--font-heading);
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.tfp-quote-aside__note {
+  font-size: 13px;
+  color: var(--color-text-on-dark-muted);
+}
+
+/* Le badge de note sur la carte marine : même règle que dans le pied de page, la couleur du
+   texte doit être reprise explicitement sous peine d'hériter du texte sombre. */
+.tfp-google-badge--quote {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--color-white);
+}
+
+.tfp-google-badge--quote .tfp-google-badge__text,
+.tfp-google-badge--quote .tfp-google-badge__text strong,
+.tfp-google-badge--quote .tfp-google-badge__count {
+  color: var(--color-white);
+}
+
+.tfp-google-badge--quote .tfp-google-badge__stars {
+  color: var(--color-copper);
+  letter-spacing: 1px;
+}
+
+@media (max-width: 899px) {
+  .tfp-quote-layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 32px;
+  }
+
+  .tfp-quote-page {
+    padding-block: 26px 52px;
+  }
+}
+
+/* Accroche du hero : 20 px, interligne 32 px, #34485A — relevé sur la maquette, identique sur les
+   53 routes (19 px sur les pages légales seules). Le thème la rendait en 17 px sur la couleur du
+   texte secondaire : plus petite et plus claire que le prototype, sur toutes les pages. */
+/* Accroche de section — même défaut que `.tfp-hero__lede` : 20 px / 32 px est la borne haute d'une
+   fonction, relevée à 1440 px et figée. Le prototype en déclare DEUX, et elles ne se confondent
+   pas :
+
+     accroche de hero      clamp(17px, 1.5vw, 20px), interligne 1,62   (46 occurrences)
+     accroche de section   clamp(16px, 1.6vw, 20px), interligne 1,6    (35 occurrences)
+
+   Les pages statiques emploient `.tfp-section__lede` pour les deux rôles : celle qui suit le `h1`
+   est une accroche de hero, les autres non. `:has()` le distingue sans toucher aux gabarits, et un
+   navigateur qui ne le connaît pas garde l'accroche de section — le plus proche des deux. */
+.tfp-section__lede {
+  font-size: clamp(16px, 1.6vw, 20px);
+  line-height: 1.6;
+  color: var(--color-text-lede);
+}
+
+.tfp-container:has(> h1) .tfp-section__lede,
+.tfp-hero__content .tfp-section__lede {
+  font-size: clamp(17px, 1.5vw, 20px);
+  line-height: 1.62;
+}
+
+body.tfp-type-legale .tfp-section__lede {
+  font-size: 19px;
+  line-height: 31px;
+}
+
+/* ------------------------------------------------------------------
+   Chapitres de contenu des pages de zone — en cartes, comme la maquette.
+
+   Relevé sur le prototype (#/ville/dijon, #/departement/cote-dor) : le
+   corps de la page est une colonne de 900 px centrée, dans laquelle
+   chaque chapitre est une carte blanche de 820 px — padding 32, rayon
+   18, filet 1 px #DCE7EB, sans ombre — posée sur le fond gris clair de
+   la page. Le thème rendait ces chapitres en texte nu sur fond blanc :
+   à hauteur presque identique, l'écran n'avait pas le même aspect. Les
+   listes qu'ils contiennent deviennent des tuiles, sur trois colonnes,
+   au lieu d'une liste à puces.
+   ------------------------------------------------------------------ */
+
+/* Chapitre narratif d'une page de zone — les trois valeurs sont DÉCLARÉES par le prototype :
+
+     padding: clamp(22px, 3vw, 32px)
+     margin-bottom: 14px          (sur chaque bloc, pas entre deux blocs consécutifs)
+     liste  repeat(auto-fit, minmax(min(100%, 230px), 1fr))
+
+   Le thème posait 32 px de rembourrage avec un repli à 20 px sous 599 px de fenêtre, une marge
+   haute de 16 px entre blocs, et une liste à trois colonnes repliée sur des seuils de 899 et
+   599 px. Les trois motifs sont ceux déjà corrigés ailleurs en G07 et G08 — une fonction figée en
+   pixels, une marge posée du mauvais côté, un seuil de fenêtre à la place d'un repli intrinsèque —
+   sur un composant qui les avait échappés.
+
+   Le rembourrage seul coûtait 18 px de largeur utile (32 contre 23,04 à 768 px, des deux côtés),
+   soit une ligne de repli supplémentaire par liste : 9 occurrences par page de zone. */
+.tfp-zone-chapter {
+  padding: clamp(22px, 3vw, 32px);
+  margin-bottom: 14px;
+  border: 1px solid var(--color-border);
+  border-radius: 18px;
+  background: var(--color-bg-card);
+}
+
+.tfp-zone-chapter .tfp-list-plain {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr));
+  gap: 8px;
+  margin-top: 14px;
+}
+
+/* Dimensions INTERNES du chapitre : le prototype les rend identiques à toutes les largeurs — rien
+   n'est responsive ici, une valeur unique est fidèle. Relevé sur sept routes de zone (quatre
+   villes, trois départements) : 92 paragraphes, TOUS en 16,5px / 26,73 / marge haute 13, et 54
+   micro-cartes, TOUTES en 14,5px / 23,49.
+
+   Le thème appliquait `.tfp-prose` en 16px / 28 / marge 14 — une police plus petite ET un
+   interligne plus grand, deux erreurs de sens opposé — et ses micro-cartes en 14px / 21.
+
+   La correction est portée ICI, et non sur `.tfp-prose`, parce que le prototype n'y a pas de
+   valeur unique : la même classe y va de 15px/1,62 à 19px/1,55 selon le bloc. Une correction
+   globale serait un correctif aveugle ; la rendre juste partout demande un relevé bloc par bloc,
+   côté générateur.
+
+   Contrôlé à 320, 375, 768, 1024 et 1440 px sur les neuf chapitres de #/ville/dijon : la somme des
+   écarts de hauteur passe de 297 à 170, 194 à 46, 175 à 35, 178 à 88 et 152 à 35. */
+.tfp-zone-chapter .tfp-prose {
+  margin-top: 13px;
+  font-size: 16.5px;
+  line-height: 1.62;
+}
+
+.tfp-zone-chapter .tfp-list-plain li {
+  padding: 10px 13px;
+  border: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+  border-radius: 10px;
+  background: var(--color-bg);
+  /* 14,5px et 1,62 — soit 23,49 px d'interligne — relevés sur 54 micro-cartes. La hauteur d'une
+     carte de deux lignes se décompose alors exactement : 2 × 23,49 + 10 + 10 de rembourrage +
+     1 + 1 de filet = 69 px, celle de la maquette. Le thème en donnait 64. */
+  font-size: 14.5px;
+  line-height: 1.62;
+}
+
+/* Le marqueur décoratif de la liste courante n'a pas de sens dans une tuile : la tuile est
+   elle-même le repère visuel. */
+.tfp-zone-chapter .tfp-list-plain li::before {
+  content: none;
+}
+
+/* Bande de page statique dont la maquette pose les blocs en cartes. Le relevé est fait bande par
+   bande par tools/generate-pages.mjs — présence des cartes, mais aussi leur rembourrage et leur
+   rayon, qui varient de 20 à 32 px et de 12 à 18 px selon la bande. Les valeurs arrivent en
+   propriétés personnalisées posées par le composant ; celles écrites ici ne servent que de
+   repli. */
+/* Le rembourrage est celui **relevé sur le prototype**, y compris quand il y écrit une fonction :
+   `clamp(22px, 3vw, 32px)`. Un seuil fixe posait auparavant 18 px sous 600 px, ce qui écrasait la
+   valeur relevée au lieu de la suivre et se trompait des deux côtés du point de bascule — 18 px là
+   où la maquette en pose 22, puis 32 là où elle en pose 23. La valeur écrite ici n'est qu'un repli,
+   pour un contenu produit avant ce relevé. */
+.tfp-static-block--carte {
+  padding: var(--tfp-carte-padding, 24px);
+  border: 1px solid var(--color-border);
+  border-radius: var(--tfp-carte-rayon, 16px);
+  background: var(--color-bg-card);
+}
+
+/*
+ * La marge est posée **sous** chaque bloc encadré, comme le prototype l'écrit — et non entre deux
+ * blocs consécutifs. L'espacement entre deux cartes est le même dans les deux écritures ; celui
+ * qui suit la **dernière** carte d'une suite ne l'est pas, et manquait. Le relevé signalait la
+ * chose en deux moitiés : quinze fois « marge basse 14 → 0 » et onze fois « marge haute 0 → 14 ».
+ */
+.tfp-static-block--carte {
+  margin-bottom: var(--tfp-carte-marge-bas, 16px);
+}
+
+/* La règle générique d'espacement entre blocs ne doit pas s'ajouter à celle-ci : deux marges
+   verticales adjacentes ne fusionnent pas ici, le bloc encadré ayant un filet. */
+.tfp-static-block--carte + .tfp-static-block--carte {
+  margin-top: 0;
+}
+
+
+
+/* Séquence de blocs pleine largeur dans une bande : simple conteneur de flux, il ne sert qu'à
+   séparer les rangées en grille du reste (voir tfp_static_runs()). */
+.tfp-static-run + .tfp-static-grid,
+.tfp-static-grid + .tfp-static-run,
+.tfp-static-grid + .tfp-static-grid,
+.tfp-static-run + .tfp-static-run {
+  margin-top: 16px;
+}
+
+/* ==================================================================
+   Vocabulaire de cartes de Claude Design
+   ------------------------------------------------------------------
+   Les archétypes ci-dessous ne sont pas une nomenclature inventée : ce
+   sont les compositions réellement employées par le prototype, relevées
+   sur son rendu à 1440 px (tools/inventaire-cartes.mjs les recense, et
+   `node tools/inventaire-cartes.mjs --detail=…` les liste carte par
+   carte). Chaque valeur — fond, rayon, filet, rembourrage, écart,
+   colonnes — vient de cette mesure.
+
+   Ils sont volontairement distincts. Les fondre en une carte générique
+   unique ferait perdre ce qui les sépare à l'écran : un panneau sombre
+   d'exclusions ne se lit pas comme une carte de scénario, et une chip de
+   commune ne se lit pas comme une carte d'article.
+   ================================================================== */
+
+/* ---------- Panneau sombre d'exclusions ----------
+   Relevé : 1180×398, fond #18232D, rayon 18, rembourrage 40, texte blanc.
+   Il porte un titre, une introduction, puis une grille de micro-cartes
+   sombres. Le thème rendait ce panneau en bande claire avec des puces
+   blanches : à contenu identique, la section la plus importante de la
+   page — celle qui dit ce que l'entreprise ne fait pas — passait
+   inaperçue. */
+.tfp-panel--dark {
+  padding: 40px;
+  border-radius: 18px;
+  background: var(--color-text);
+  color: var(--color-white);
+}
+
+.tfp-panel--dark h2,
+.tfp-panel--dark h3 {
+  color: var(--color-white);
+  margin: 0;
+}
+
+.tfp-panel__intro {
+  margin-top: 12px;
+  max-width: 720px;
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--color-text-on-dark-muted);
+}
+
+/* Micro-cartes sombres : 268×80, fond #10263B, rayon 12, filet 1px #234066,
+   rembourrage 14/16, écart 10, quatre colonnes à 1440 px. */
+.tfp-tile-grid--dark {
+  list-style: none;
+  margin: 22px 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.tfp-tile-grid--dark li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px 16px;
+  border: 1px solid #234066;
+  border-radius: 12px;
+  background: var(--color-navy);
+  font-size: 15px;
+  line-height: 1.45;
+  color: var(--color-text-on-dark-muted);
+}
+
+/* Le « ✕ » est décoratif : le titre du panneau dit déjà qu'il s'agit d'exclusions.
+   Le poser en ::before évite qu'un lecteur d'écran annonce « croix » sur chaque ligne. */
+.tfp-tile-grid--dark li::before {
+  content: "✕";
+  flex: 0 0 auto;
+  font-weight: var(--fw-bold);
+  color: var(--color-turquoise);
+}
+
+@media (max-width: 1099px) {
+  .tfp-tile-grid--dark {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 599px) {
+  .tfp-panel--dark {
+    padding: 24px;
+  }
+
+  .tfp-tile-grid--dark {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* ---------- Carte tarifaire ----------
+   Relevé : 474×137, fond #174A81, rayon 14, rembourrage 20, texte blanc.
+   Le thème la rendait en encadré turquoise pâle : même information, tout
+   autre poids visuel. */
+.tfp-price-card {
+  margin-top: 24px;
+  padding: 20px;
+  border-radius: 14px;
+  background: var(--color-primary);
+  color: var(--color-white);
+  max-width: 474px;
+}
+
+.tfp-price-card__label {
+  display: block;
+  font-size: 14px;
+  color: var(--color-text-on-dark-muted);
+}
+
+.tfp-price-card__value {
+  display: block;
+  margin-top: 2px;
+  font-family: var(--font-heading);
+  font-size: 30px;
+  font-weight: var(--fw-extrabold);
+  line-height: 1.2;
+  color: var(--color-white);
+}
+
+body.tfp-body .tfp-price-card__link {
+  display: inline-block;
+  margin-top: 10px;
+  min-height: 24px;
+  font-size: 14px;
+  font-weight: var(--fw-semibold);
+  color: var(--color-turquoise);
+}
+
+body.tfp-body .tfp-price-card__link:hover,
+body.tfp-body .tfp-price-card__link:focus-visible {
+  color: var(--color-white);
+}
+
+/* ---------- Carte de réponse directe ----------
+   Relevé : fond #F4F7F8, rayon 12, filet 1px #B7CFD7, rembourrage 16/18.
+   C'est une carte, pas un encadré à barre verticale : la barre existe
+   ailleurs dans la maquette (.tfp-callout), pas ici. */
+.tfp-answer-card {
+  max-width: 900px;
+  padding: 16px 18px;
+  border: 1px solid var(--color-border-strong);
+  border-radius: 12px;
+  background: var(--color-bg);
+}
+
+.tfp-answer-card__label {
+  display: block;
+  font-size: var(--fs-3xs);
+  font-weight: var(--fw-bold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+}
+
+.tfp-answer-card__text {
+  margin-top: 8px;
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+}
+
+/* ---------- Carte de note ----------
+   Relevé : fond #F4F7F8, rayon 14, filet 1px #B7CFD7, rembourrage 20/22.
+   Employée pour les limites de périmètre en fin de page. */
+.tfp-note-card {
+  padding: 20px 22px;
+  border: 1px solid var(--color-border-strong);
+  border-radius: 14px;
+  background: var(--color-bg);
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--color-text);
+}
+
+.tfp-note-card h3 {
+  margin-bottom: 8px;
+  font-size: 18px;
+}
+
+/* ---------- Carte de renvoi (article, page) ----------
+   Relevé : 564×58, fond #F4F7F8, rayon 12, filet 1px #DCE7EB,
+   rembourrage 14/16, flèche à droite, empilées avec 10 px d'écart.
+   Le thème rendait ces renvois en simples lignes de texte. */
+.tfp-link-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+body.tfp-body .tfp-link-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 16px;
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  background: var(--color-bg);
+  font-size: 15px;
+  font-weight: var(--fw-semibold);
+  line-height: 1.4;
+  color: var(--color-text);
+  transition: border-color var(--transition-base), background var(--transition-base);
+}
+
+body.tfp-body a.tfp-link-card:hover,
+body.tfp-body a.tfp-link-card:focus-visible {
+  border-color: var(--color-primary);
+  background: var(--color-white);
+  color: var(--color-primary);
+}
+
+.tfp-link-card__arrow {
+  flex: 0 0 auto;
+  color: var(--color-primary);
+}
+
+/* ---------- Rangées de pastilles des pages de zone ----------
+   Même vocabulaire visuel que `.tfp-chip-list` ci-dessous, mais rendues en `<div>` par le gabarit
+   de zone, qui les composait avec l'utilitaire générique `.tfp-flex`. Or cet utilitaire pose
+   `var(--space-4)`, soit 16 px, quand le prototype déclare 8, 9 ou 10 px selon la liste :
+
+     8 px   pastilles de quartiers, de zones d'activité, et villes d'un département
+     9 px   communes proches, sur une page de ville
+     10 px  départements limitrophes
+
+   L'écart de 16 px n'est déclaré nulle part dans la maquette. Sur les 26 pages de zone, il
+   ajoutait une à deux lignes de repli par liste. Relevé : 61 occurrences à 8 px sur 33 routes,
+   20 à 9 px, 11 à 10 px. */
+.tfp-chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tfp-chip-row--9 {
+  gap: 9px;
+}
+
+.tfp-chip-row--10 {
+  gap: 10px;
+}
+
+/* ---------- Rangée de boutons ----------
+   Hero et CTA final : le prototype déclare `gap: 12px` sur les 38 routes qui en portent une. Le
+   thème les composait avec l'utilitaire générique `.tfp-flex`, qui pose `var(--space-4)`, soit
+   16 px — une valeur qui n'apparaît nulle part dans la maquette. Le même utilitaire servant aussi
+   aux rangées de pastilles, qui déclarent 8 à 10 px, il ne pouvait pas être corrigé globalement :
+   d'où une classe dédiée plutôt qu'une retouche de `.tfp-flex`. */
+.tfp-action-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* ---------- Plan du site ----------
+   Le prototype range les colonnes du plan sur une grille dont la base est déclarée à 210 px, avec
+   32 px d'écart, et coiffe chaque colonne d'un SURTITRE : 14 px, capitales, interlettrage 0,05em,
+   gris de second plan. Le thème en faisait des `h2` de titrage courant, qui passaient à la ligne
+   dès que l'intitulé dépassait quinze caractères — « Zones — départements », « Communes
+   secondaires », « Pages légales et utilitaires » occupaient deux lignes chacun.
+
+   La hiérarchie sémantique ne change pas : ce sont toujours des `h2`, seul leur rendu descend au
+   rang de surtitre, comme dans la maquette. */
+.tfp-sitemap-grid {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 210px), 1fr));
+  gap: 32px;
+  margin-top: clamp(28px, 4vw, 44px);
+  align-items: start;
+}
+
+body.tfp-body .tfp-sitemap-grid h2 {
+  font-size: 14px;
+  line-height: 1.04;
+  font-weight: var(--fw-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-tertiary);
+  margin: 0 0 12px;
+}
+
+.tfp-sitemap-grid ul {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0;
+  font-size: 15.5px;
+  line-height: 1.62;
+}
+
+/* La bande légale du plan n'est pas une septième colonne : le prototype la sort de la grille et la
+   pose en rangée de pastilles pleine largeur. En colonne, elle ajoutait une TROISIÈME rangée à la
+   grille — 208 px — là où la maquette n'en dépense que 134 pour toute la bande. */
+.tfp-sitemap-legal h2 {
+  font-size: clamp(20px, 2.4vw, 26px);
+  line-height: 1.04;
+  margin: 0 0 14px;
+}
+
+.tfp-chip-list--plan {
+  margin-top: 0;
+  gap: 9px;
+}
+
+body.tfp-body .tfp-chip-list--plan a {
+  min-height: 45px;
+  padding: 10px 18px;
+  background: var(--color-white);
+  font-size: 14.5px;
+  font-weight: var(--fw-semibold);
+}
+
+/* ---------- Chips de couverture ----------
+   Relevé : 41 px de haut, rayon 100, fond #F4F7F8, filet 1px #DCE7EB,
+   rembourrage 8/15, écart 8, enroulées sur la largeur disponible. */
+.tfp-chip-list {
+  list-style: none;
+  margin: 16px 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tfp-chip-list li {
+  display: flex;
+}
+
+body.tfp-body .tfp-chip-list a,
+.tfp-chip-list span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 41px;
+  padding: 8px 15px;
+  border: 1px solid var(--color-border);
+  border-radius: 100px;
+  background: var(--color-bg);
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--color-text);
+}
+
+body.tfp-body .tfp-chip-list a:hover,
+body.tfp-body .tfp-chip-list a:focus-visible {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+/* Bloc d'organisation rendu en carte pleine largeur — relevé item par item sur la maquette : dans
+   cette bande, cinq blocs sont sur la grille de quatre colonnes et un seul est une carte. */
+.tfp-detail-item--carte {
+  margin-top: 20px;
+  padding: 22px;
+  border: 1px solid var(--color-border);
+  border-radius: 14px;
+  background: var(--color-bg-card);
+}
+
+/* Témoignage rendu à plat : sur une page prestation, la maquette ne l'encadre pas. Ailleurs
+   (accueil, page de devis) elle l'encadre, et le composant garde alors sa carte. */
+.tfp-testimonial--plain .tfp-testimonial {
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+/* Rappel de contact de fin de page : carte de 740 px dans la maquette, fond #F4F7F8, rayon 14.
+   Elle est plus étroite que le conteneur — c'est une relance, pas une bande. */
+.tfp-contact-nudge {
+  max-width: 740px;
+  padding: 18px 22px;
+  border: 1px solid var(--color-border);
+  border-radius: 14px;
+  background: var(--color-bg);
+}
+
+/* ---------- Tuiles de prestation des pages de zone ----------
+   Relevé sur la maquette : bande marine #10263B, grille de quatre colonnes, écart 13, tuiles de
+   285×147 sur fond #174A81, rayon 14, filet 1 px #1E5C9E, rembourrage 20 ; titre 17 px/700 blanc,
+   résumé 13,5 px en #B8E4E4.
+
+   Le thème rendait cette bande en fond clair avec des cartes blanches : la section de maillage se
+   confondait alors avec le corps de page, alors que le prototype la détache franchement. */
+/* Repli **intrinsèque**, relevé sur le prototype : `repeat(auto-fit, minmax(min(100%, 250px), 1fr))`
+   avec un écart de 13 px. Le thème posait quatre colonnes fixes, repliées sur deux à 1099 px puis
+   sur une à 599 px — trois seuils de fenêtre qui ne correspondent à aucun de ceux de la maquette,
+   laquelle se replie selon la place dont la grille dispose. */
+.tfp-service-tiles {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
+  gap: 13px;
+  margin-top: 18px;
+}
+
+body.tfp-body a.tfp-service-tile {
+  display: block;
+  padding: 20px;
+  border: 1px solid #1E5C9E;
+  border-radius: 14px;
+  background: var(--color-primary);
+  color: var(--color-white);
+  transition: border-color var(--transition-base), transform var(--transition-base);
+}
+
+body.tfp-body a.tfp-service-tile:hover,
+body.tfp-body a.tfp-service-tile:focus-visible {
+  border-color: var(--color-turquoise);
+  transform: translateY(-2px);
+  color: var(--color-white);
+}
+
+.tfp-service-tile strong {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 17px;
+  font-weight: var(--fw-bold);
+  color: var(--color-white);
+}
+
+.tfp-service-tile span {
+  display: block;
+  margin-top: 6px;
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: var(--color-text-on-dark-muted);
+}
+
+.tfp-note-card p {
+  margin: 0;
+}
+
+/* ==================================================================
+   Grille de micro-cartes
+   ------------------------------------------------------------------
+   Le composant qui manquait, et dont l'absence était structurelle : le
+   générateur réduisait ces cartes à un simple libellé, la description
+   était perdue **à l'extraction**, et la carte devenait irreconstituable
+   à l'affichage quel que soit le CSS.
+
+   Géométrie relevée sur le prototype : tuiles de 188 à 385 px de large,
+   rayon 10 à 14, fond blanc ou #F4F7F8 selon la bande, filet 1 px,
+   rembourrage 14 à 20, écart 8 à 16, sur 2 à 6 colonnes selon la grille.
+   Le nombre de colonnes vient du relevé, pas d'un `auto-fit`.
+   ================================================================== */
+
+.tfp-card-grid {
+  list-style: none;
+  margin: 18px 0 0;
+  padding: 0;
+  display: grid;
+  /* Écart et géométrie viennent du relevé de la bande, passés en variables par le composant.
+     Les valeurs ci-dessous ne servent que de repli lorsqu'une grille n'a pas été mesurée. */
+  gap: var(--tfp-tuile-gap, 12px);
+}
+
+.tfp-card-grid--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.tfp-card-grid--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.tfp-card-grid--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.tfp-card-grid--5 { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+.tfp-card-grid--6 { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+
+/*
+ * Repli **intrinsèque**, relevé sur le prototype.
+ *
+ * Quand la base de colonne a été relevée, la grille se replie d'elle-même selon la place dont
+ * elle dispose, exactement comme la maquette. Le nombre de colonnes ci-dessus reste la borne
+ * haute : `auto-fit` ne crée jamais plus de pistes qu'il n'y a de cartes.
+ *
+ * Ce que cela corrige : à 768 px, le thème tenait deux colonnes là où la maquette était déjà
+ * repliée sur une seule, et cinq bandes de la page pilier s'en trouvaient allongées de 200 px
+ * chacune. Le seuil ne peut pas être global — la maquette emploie de 150 à 340 px selon la
+ * grille — ni exprimé en largeur de fenêtre, puisqu'une grille placée dans une colonne étroite
+ * doit se replier plus tôt qu'une grille pleine largeur.
+ */
+.tfp-card-grid[style*="--tfp-grille-colonne"] {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--tfp-grille-colonne)), 1fr));
+}
+
+.tfp-card-grid > li {
+  display: flex;
+}
+
+body.tfp-body .tfp-card-tile {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  width: 100%;
+  padding: var(--tfp-tuile-padding, 16px 18px);
+  border: var(--tfp-tuile-filet, 1px) solid var(--color-border);
+  border-radius: var(--tfp-tuile-rayon, 12px);
+  background: var(--tfp-tuile-fond, var(--color-bg-card));
+  color: var(--color-text);
+  transition: border-color var(--transition-base), transform var(--transition-base);
+}
+
+body.tfp-body a.tfp-card-tile:hover,
+body.tfp-body a.tfp-card-tile:focus-visible {
+  border-color: var(--color-primary);
+  transform: translateY(-2px);
+  color: var(--color-text);
+}
+
+.tfp-card-tile__body {
+  display: block;
+  min-width: 0;
+}
+
+.tfp-card-tile__icon {
+  flex: 0 0 auto;
+  font-size: 18px;
+  line-height: 1.2;
+  color: var(--color-primary);
+}
+
+.tfp-card-tile__eyebrow {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 11px;
+  font-weight: var(--fw-bold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+}
+
+/* Taille et interligne relevés sur la carte du prototype : l'intitulé va de 16 à 20 px selon la
+   grille, la description de 13,5 à 15 px, et l'espace qui les sépare de 4 à 10 px. Une valeur
+   unique raccourcissait les pages sans qu'aucun contenu ne manque. */
+.tfp-card-tile__title {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: var(--tfp-tuile-titre, 16px);
+  font-weight: var(--fw-bold);
+  line-height: var(--tfp-tuile-titre-lh, 1.35);
+  color: var(--color-navy);
+}
+
+/* Pastille du numéro de département : posée à côté du nom, comme dans la maquette. */
+.tfp-card-tile__badge {
+  display: inline-block;
+  margin-left: 6px;
+  padding: 1px 7px;
+  border-radius: 100px;
+  background: var(--color-bg-alt);
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: var(--fw-semibold);
+  color: var(--color-text-secondary);
+}
+
+/* La description suit la géométrie **relevée** sur la carte du prototype, comme l'intitulé au-dessus
+   d'elle. Le composant pose déjà ces mesures en propriétés personnalisées ; la feuille de style ne
+   les lisait pas, et imposait 14 px sur 21 partout — là où la maquette va de 12,5 à 20 px, avec un
+   interligne de 14,75 à 30,78 et un écart au titre de 0 à 12 px. Les valeurs écrites ici ne servent
+   que de repli, pour une carte dont la géométrie n'a pas été relevée. */
+.tfp-card-tile__desc {
+  margin: 0;
+  display: block;
+  margin-top: var(--tfp-tuile-desc-mt, 4px);
+  font-size: var(--tfp-tuile-desc, 14px);
+  line-height: var(--tfp-tuile-desc-lh, 1.5);
+  color: var(--color-text-secondary);
+}
+
+/* ---------- Tuile d'UNE ligne ----------
+   Les liens de ville des pages de zones — « Dijon 21000 » — sont des rangées flex dans la
+   maquette : nom à gauche, code postal à droite (`justify-content: space-between`, AUCUN écart
+   déclaré), 54 px de haut. Le composant les empilait en deux blocs — 74 px — et l'inventaire
+   comptait 34 cartes en surplus, le lien franchissant le seuil qui sépare une commande d'une carte.
+
+   La disposition vient du relevé (`en_ligne`, mesuré par le recouvrement vertical des deux
+   fragments), jamais du contenu. Le nom est composé dans la police de CORPS en 600 — Hanken 15 à
+   17 px selon la bande, relevé sur les trois variantes — et non dans la police de titrage : les
+   3 px de large que Bricolage ajoute suffisent à replier « Lons-le-Saunier » à 188 px, là où la
+   maquette le tient sur une ligne. Les graisses viennent des variables relevées carte par carte :
+   le code postal passe de 400 (hub des zones) à 600 (page région).
+
+   Vérifié au pixel à 320, 375, 768, 1024, 1440 et 1920 px sur les deux routes : hauteurs 54/79
+   identiques lien par lien, y compris le repli interne de « Chalon-sur-Saône » (nom 121×49) et
+   l'étirement de rangée qui aligne les voisins de la carte repliée. */
+.tfp-card-tile--en-ligne .tfp-card-tile__body {
+  display: flex;
+  align-items: center;
+  /* La justification et l'écart viennent du relevé carte par carte : `space-between` sur les liens
+     de ville et les en-têtes d'avis, juxtaposition avec `gap: 12px` sur le bandeau tarifaire. */
+  justify-content: var(--tfp-tuile-ligne-justify, flex-start);
+  gap: var(--tfp-tuile-ligne-gap, 0);
+}
+
+.tfp-card-tile--en-ligne .tfp-card-tile__title {
+  font-family: var(--font-body);
+  font-weight: var(--tfp-tuile-titre-graisse, var(--fw-semibold));
+}
+
+.tfp-card-tile--en-ligne .tfp-card-tile__desc {
+  margin-top: 0;
+  font-weight: var(--tfp-tuile-desc-graisse, 400);
+}
+
+/* Liste portée par une carte : géométrie relevée sur la maquette, qui met un item par ligne et les
+   sépare d'un écart franc. Le repli reprend la description, dont la liste tient la place. */
+.tfp-card-tile__list {
+  margin: var(--tfp-tuile-desc-mt, 4px) 0 0;
+  padding-left: 1.1em;
+  font-size: var(--tfp-tuile-desc, 14px);
+  line-height: var(--tfp-tuile-desc-lh, 1.5);
+  color: var(--color-text-secondary);
+}
+
+.tfp-card-grid:not(.tfp-card-grid--dark) .tfp-card-tile__list {
+  color: var(--color-text);
+}
+
+.tfp-card-grid--dark .tfp-card-tile__list {
+  color: var(--color-white);
+}
+
+.tfp-card-tile__more {
+  display: block;
+  margin-top: 8px;
+  font-size: 13px;
+  font-weight: var(--fw-semibold);
+  color: var(--color-primary);
+}
+
+/* Bande sombre : la carte suit le thème relevé, elle ne l'invente pas. */
+.tfp-card-grid--dark .tfp-card-tile {
+  border-color: #234066;
+  background: var(--color-navy);
+}
+
+.tfp-card-grid--dark .tfp-card-tile__title {
+  color: var(--color-white);
+}
+
+/* Sur fond sombre relevé, la description prend le blanc plutôt que le turquoise atténué : le fond
+   vient de la maquette et peut être plus clair que le marine du thème, auquel cas le turquoise
+   passait sous 4,5:1. C'est la couleur du texte qui s'ajuste, jamais le fond relevé. */
+.tfp-card-grid--dark .tfp-card-tile__desc,
+.tfp-card-grid--dark .tfp-card-tile__line {
+  color: var(--color-white);
+}
+
+/*
+ * Contraste de la description sur une tuile dont le fond est **relevé** sur la maquette.
+ *
+ * Le fond mesuré peut être un gris clair (#F4F7F8) là où le thème attendait du blanc : le gris
+ * secondaire tombait alors sous 4,5:1 et le critère 1.4.3 n'était plus tenu. Le texte secondaire
+ * d'une tuile passe donc à la couleur de texte principale, qui garde son contraste sur les deux
+ * fonds. C'est la couleur qui s'ajuste, jamais le fond relevé — celui-ci vient de la référence.
+ */
+.tfp-card-grid:not(.tfp-card-grid--dark) .tfp-card-tile__desc,
+.tfp-card-grid:not(.tfp-card-grid--dark) .tfp-card-tile__line {
+  color: var(--color-text);
+}
+
+.tfp-card-grid--dark .tfp-card-tile__badge {
+  background: rgba(255, 255, 255, 0.14);
+  color: var(--color-white);
+}
+
+/* Seuils de repli des grilles dont la base de colonne n'a pas été relevée — contenu produit avant
+   ce relevé, ou grille construite par un gabarit plutôt que par le générateur. Ils ne s'appliquent
+   pas aux grilles qui portent leur base : celles-ci se replient d'elles-mêmes, au bon moment. */
+@media (max-width: 1099px) {
+  .tfp-card-grid--4:not([style*="--tfp-grille-colonne"]),
+  .tfp-card-grid--5:not([style*="--tfp-grille-colonne"]),
+  .tfp-card-grid--6:not([style*="--tfp-grille-colonne"]) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 819px) {
+  .tfp-card-grid--3:not([style*="--tfp-grille-colonne"]),
+  .tfp-card-grid--4:not([style*="--tfp-grille-colonne"]),
+  .tfp-card-grid--5:not([style*="--tfp-grille-colonne"]),
+  .tfp-card-grid--6:not([style*="--tfp-grille-colonne"]) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 599px) {
+  .tfp-card-grid:not([style*="--tfp-grille-colonne"]) {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* Lignes complémentaires d'une carte : auteur, rôle, ville d'un témoignage, ou toute précision que
+   la maquette pose sur sa propre ligne. Elles restent des paragraphes distincts — les fondre dans
+   la description effacerait des frontières que le prototype a posées. */
+.tfp-card-tile__line {
+  margin: 4px 0 0;
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--color-text-tertiary);
+}
+
+.tfp-card-grid--dark .tfp-card-tile__line {
+  color: var(--color-text-on-dark-muted);
+}
+
+/* Note d'une bande statique : phrase de transition, précision ou conclusion que la maquette pose en
+   texte courant. Elle finissait auparavant enfermée dans une pastille par un repli du générateur,
+   ce qui inventait des cartes que le prototype n'a pas. */
+.tfp-static-note {
+  margin-top: 10px;
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--color-text-secondary);
+}
+
+/* Accordéon de FAQ d'une bande statique — géométrie relevée sur la maquette, et vérifiée
+   identique à 320, 375, 768, 1440 et 1920 px : rien ici n'est responsive, la valeur unique est
+   donc fidèle. La question est en 17 px sur 27,54 ; la réponse en 15,5 sur 25,11, et non dans la
+   taille courante du texte — l'écart faisait 8 à 33 px par réponse, sur les dix questions de la
+   page pilier. Le rembourrage horizontal est de 20 px, contre 18 en vertical. */
+.tfp-faq-item {
+  margin-bottom: 10px;
+  padding: 18px 20px;
+}
+
+.tfp-faq-item > summary {
+  font-weight: var(--fw-semibold);
+  font-size: 17px;
+  line-height: 27.54px;
+  cursor: pointer;
+}
+
+.tfp-faq-item > p {
+  margin-top: 12px;
+  font-size: 15.5px;
+  line-height: 25.11px;
+  color: var(--color-text-secondary);
+}
+
+/* Rembourrage vertical d'une bande : la valeur relevée sur la maquette l'emporte, celle du thème
+   ne sert que de repli.
+
+   Le repli était `52px` — la BORNE HAUTE de `clamp(30px, 4vw, 52px)` que `.tfp-section--tight`
+   déclare dans 03-layout.css. Cette règle-ci étant plus bas dans la feuille, elle l'emportait et
+   figeait la fonction. Or `--tfp-bande-haut` n'est posée que par les blocs des pages STATIQUES
+   (template-parts/components/static-blocks.php) : sur les pages de zone, de prestation, d'article
+   et de contact, la variable n'existe pas et TOUTES les bandes recevaient 52 px, à toutes les
+   largeurs.
+
+   Le coût était le premier de la page à 768 px, et il ne se voyait dans aucun classement de
+   composant : il n'est pas DANS un composant, il est entre eux. Sur #/ville/dijon, les neuf
+   chapitres concordaient déjà au pixel avec la maquette pendant que leurs bandes portaient 52 px
+   de rembourrage contre 34.
+
+   Rendre le repli à la fonction déclarée corrige 320, 375, 768 et 1024 px, et ne change rien à
+   1440 et 1920 où la fonction atteint de toute façon sa borne haute.
+
+   Ce n'est pas la fidélité complète : la maquette pose un rembourrage PAR BANDE — 34, 38, 40, 44,
+   46,08 puis 80 px selon la bande et la largeur — et seul un relevé par bande, côté générateur,
+   les rendrait tous justes. C'est ce que `--tfp-bande-haut` permet déjà pour les pages statiques.
+   Le repli, lui, doit être la fonction, jamais l'une de ses bornes. */
+.tfp-section--tight {
+  padding-top: var(--tfp-bande-haut, clamp(30px, 4vw, 52px));
+  padding-bottom: var(--tfp-bande-bas, clamp(30px, 4vw, 52px));
+}
+
+/* Bande blanche : la maquette alterne blanc et fond de page. L'alternance était relevée mais
+   jamais rendue, et la lecture par bandes disparaissait. */
+.tfp-section--blanc {
+  background: var(--color-white);
+}
+
+/* Visuel d'une carte : la maquette pose l'image en tête de tuile, pleine largeur, et le texte
+   dessous. La tuile passe donc en colonne quand elle porte un visuel. */
+.tfp-card-tile--image {
+  flex-direction: column;
+  padding: 0;
+  overflow: hidden;
+}
+
+.tfp-card-tile__media {
+  display: block;
+  width: 100%;
+}
+
+.tfp-card-tile__media img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.tfp-card-tile--image .tfp-card-tile__body {
+  padding: var(--tfp-tuile-padding, 16px 18px);
+}
+
+/* Colonne de lecture d'une bande statique, relevée sur les paragraphes du prototype (740 à 780 px
+   sur les bandes narratives, contre 1 114 px laissés par le thème). Une ligne plus large tient plus
+   de mots, donc moins de lignes : chaque paragraphe perdait un tiers de sa hauteur. Les grilles de
+   cartes gardent toute la largeur — la contrainte ne porte que sur le texte suivi. */
+.tfp-static-block > .tfp-prose,
+.tfp-static-block > .tfp-static-note,
+.tfp-static-block > h2,
+.tfp-static-block > h3,
+.tfp-static-block > .tfp-list-plain,
+.tfp-static-block > .tfp-quote,
+.tfp-static-block > .tfp-faq-item {
+  max-width: var(--tfp-bande-texte, none);
+}
+
+/* ---------- Page Contact ----------
+   Deux colonnes : le formulaire d'abord, la réassurance ensuite — l'ordre de la maquette.
+
+   Les deux colonnes ne sont pas des fractions de grille mais des BASES SOUPLES déclarées sur les
+   éléments : `flex: 1 1 400px; min-width: min(100%, 300px)` pour le formulaire,
+   `flex: 1 1 300px; min-width: min(100%, 280px)` pour la colonne latérale. La différence n'est pas
+   cosmétique : à 1440 px, les bases donnent 652 et 552 px quand la grille 1,15fr/1fr du thème
+   donnait 610 et 530, et c'est le formulaire — la colonne la plus haute — qui héritait de la plus
+   étroite. Le repli se fait tout seul, sans requête média, dès que 400 + 300 + l'écart ne tiennent
+   plus dans la largeur utile. */
+.tfp-contact-cols {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(32px, 5vw, 56px);
+  align-items: flex-start;
+}
+
+.tfp-contact-cols__form {
+  flex: 1 1 400px;
+  min-width: min(100%, 300px);
+}
+
+/* La colonne latérale est elle-même une colonne d'écart 16 : la maquette ne pose aucune marge sur
+   ses cartes, c'est l'écart du conteneur qui les sépare. Le thème cumulait `margin-top` de
+   composant (18, 18, 16) et se retrouvait à des écarts irréguliers. */
+.tfp-contact-cols__aside {
+  flex: 1 1 300px;
+  min-width: min(100%, 280px);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.tfp-contact-cols__aside > * {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/* Portrait de la gérante : 64 px, rond. Le visuel est provisoire et ne prétend représenter
+   personne — son `alt` est vide et le nom est écrit à côté en texte (CLAUDE.md §5.6).
+   La maquette pose ce bloc en CARTE, comme les coordonnées qui le suivent — fond blanc, filet,
+   rayon 16, rembourrage 22 — quand le thème le laissait nu. */
+.tfp-contact-person {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 22px;
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+}
+
+.tfp-contact-person__photo {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.tfp-contact-person strong {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 18px;
+  color: var(--color-navy);
+}
+
+.tfp-contact-person span {
+  display: block;
+  margin-top: 2px;
+  font-size: 14px;
+  color: var(--color-text-secondary);
+}
+
+/* Lien de séquence posé dans une bande sombre. Le contraste tombait à 1,71 sur la page pilier :
+   la couleur du lien restait le marine du thème alors que la bande, elle, a le fond relevé sur la
+   maquette. C'est la couleur du texte qui suit le fond, jamais l'inverse. */
+body.tfp-body .tfp-section--navy .tfp-link-row,
+body.tfp-body .tfp-section--primary .tfp-link-row {
+  color: var(--color-white);
+}
+
+body.tfp-body .tfp-section--navy .tfp-link-row:hover,
+body.tfp-body .tfp-section--navy .tfp-link-row:focus-visible,
+body.tfp-body .tfp-section--primary .tfp-link-row:hover,
+body.tfp-body .tfp-section--primary .tfp-link-row:focus-visible {
+  color: var(--color-turquoise);
+}
+
+/* Mention de transparence des contenus provisoires. Discrète mais lisible, dans le flux normal :
+   ni masquée, ni réservée aux lecteurs d'écran. Le contraste tient le critère 1.4.3. */
+.tfp-provisional-notice {
+  margin: 10px 0 0;
+  font-size: 13px;
+  line-height: 1.5;
+  font-style: italic;
+  color: var(--color-text-secondary);
+}
+
+.tfp-card-grid + .tfp-provisional-notice,
+.tfp-provisional-notice + .tfp-card-grid {
+  margin-top: 8px;
+}
+
+.tfp-section--navy .tfp-provisional-notice,
+.tfp-section--primary .tfp-provisional-notice,
+.tfp-card-grid--dark .tfp-provisional-notice {
+  color: var(--color-text-on-dark-muted);
+}
+
+/* ---------- Tableau de budgets ----------
+   Mêmes lignes que la maquette, en balisage sémantique. Le conteneur défile horizontalement sur
+   mobile plutôt que de déborder : un tableau de quatre colonnes ne se replie pas honnêtement. */
+.tfp-table-wrap {
+  margin-top: 18px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.tfp-budget-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 15px;
+  min-width: 520px;
+}
+
+.tfp-budget-table__caption {
+  caption-side: top;
+  padding-bottom: 10px;
+  text-align: left;
+  font-size: 14px;
+  color: var(--color-text-secondary);
+}
+
+.tfp-budget-table th,
+.tfp-budget-table td {
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--color-border);
+  text-align: left;
+  vertical-align: top;
+}
+
+.tfp-budget-table thead th {
+  border-bottom: 2px solid var(--color-border-strong);
+  font-size: 13px;
+  font-weight: var(--fw-bold);
+  color: var(--color-navy);
+}
+
+.tfp-budget-table tbody th {
+  font-weight: var(--fw-semibold);
+  color: var(--color-text);
+}
+
+.tfp-budget-table tbody tr:last-child th,
+.tfp-budget-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+/* ---------- Formulaire de contact ----------
+   Géométrie relevée sur la maquette : champs courts sur deux colonnes (299 px), objet, message et
+   consentement sur toute la largeur (612 px), champs de 49-51 px de haut, rayon 10. */
+.tfp-contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.tfp-contact-form > *,
+.tfp-contact-form > .tfp-field {
+  margin: 0;
+}
+
+/* Les champs courts vont deux par ligne. La maquette déclare la même fonction que sur le
+   formulaire de devis — `repeat(auto-fit, minmax(min(100%, 220px), 1fr))`, écart 15 — qui replie
+   la ligne d'elle-même : la requête média à 599 px que portait le thème figeait ce point de repli
+   à une largeur qui n'a de sens ni dans une colonne de 530 px ni dans une de 652. */
+.tfp-contact-form__row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+  gap: 15px;
+}
+
+.tfp-contact-form__row > *,
+.tfp-contact-form__row > .tfp-field {
+  min-width: 0;
+  margin: 0;
+}
+
+/* La bande d'orientation de la page Contact tient dans le conteneur étroit (900 px), avec des
+   cartes de base 260 px : à 1440 px la maquette n'étale pas ces deux cartes sur 1260. */
+.tfp-contact-orientation .tfp-card-grid {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+  margin-top: 0;
+}
+
+.tfp-field {
+  margin: 0 0 14px;
+}
+
+/* ---------- Lignes de champs (formulaire de devis) ----------
+   Le prototype ne pose pas un champ par ligne : il en pose deux, dans une grille dont la règle est
+   écrite en clair sur l'élément — `repeat(auto-fit, minmax(min(100%, 220px), 1fr))` pour les paires
+   équilibrées, `2fr 1fr` pour ville/code postal. On reprend la FONCTION, pas la valeur qu'elle
+   prend à une largeur : elle se replie d'elle-même sur une colonne dès que deux champs de 220 px et
+   leur écart ne tiennent plus, soit vers 470 px de largeur utile.
+
+   `minmax(0, …)` sur la variante 2fr/1fr : sans lui, la taille intrinsèque d'un `<input>` fixe un
+   plancher que la piste ne peut pas descendre, et la ligne déborde sur les petits écrans. */
+.tfp-form-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+  gap: 15px;
+  margin: 0 0 15px;
+}
+
+.tfp-form-row--2-1 {
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+}
+
+.tfp-form-row > *,
+.tfp-form-row > .tfp-field {
+  min-width: 0;
+  margin: 0;
+}
+
+/* `.tfp-field` est une colonne flex d'écart 6 (voir plus haut) : la marge basse de l'intitulé
+   S'AJOUTE à cet écart au lieu de le remplacer. Chaque champ mesurait donc 12 px de blanc là où la
+   maquette en pose 6, soit 6 px par champ — 36 px sur le formulaire de devis, 24 sur celui de
+   contact, sans qu'aucune valeur relevée ne soit fausse. */
+.tfp-field > label {
+  display: block;
+  margin-bottom: 0;
+  font-size: 14px;
+  font-weight: var(--fw-semibold);
+  color: var(--color-navy);
+}
+
+.tfp-field input[type="text"],
+.tfp-field input[type="email"],
+.tfp-field input[type="tel"],
+.tfp-field select,
+.tfp-field textarea {
+  width: 100%;
+  padding: 13px 14px;
+  border: 1px solid var(--color-border-strong);
+  border-radius: 10px;
+  background: var(--color-white);
+  font-family: inherit;
+  font-size: 15px;
+  color: var(--color-text);
+}
+
+/* 112 px relevés sur la maquette. `min-height` seule ne suffisait pas : l'attribut `rows` du
+   gabarit — nécessaire pour que la zone reste utilisable sans CSS — donnait 138 px, et c'est lui
+   qui l'emportait. La hauteur est posée, la poignée de redimensionnement reste. */
+.tfp-field textarea {
+  height: 112px;
+  min-height: 112px;
+  resize: vertical;
+}
+
+.tfp-field input:focus-visible,
+.tfp-field select:focus-visible,
+.tfp-field textarea:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Un champ en erreur se signale par son filet **et** par son message : jamais par la couleur
+   seule, que ne perçoit pas tout le monde. */
+.tfp-field [aria-invalid="true"] {
+  border-color: var(--color-copper-dark);
+}
+
+.tfp-field__error {
+  display: block;
+  margin-top: 6px;
+  font-size: 13px;
+  color: var(--color-copper-dark);
+}
+
+.tfp-field--check {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 10px;
+  align-items: start;
+}
+
+.tfp-field--check input {
+  margin-top: 3px;
+  width: 18px;
+  height: 18px;
+}
+
+.tfp-field--check > label {
+  margin: 0;
+  font-weight: var(--fw-regular);
+  color: var(--color-text-secondary);
+}
+
+.tfp-field--check .tfp-field__error {
+  grid-column: 1 / -1;
+}
+
+/* Honeypot : hors de l'écran et hors du parcours clavier, sans `display:none` — certains
+   automates ignorent les champs ainsi masqués et remplissent les autres. */
+.tfp-honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.tfp-form-message {
+  margin: 14px 0;
+  padding: 12px 14px;
+  border-radius: 10px;
+  font-size: 15px;
+}
+
+.tfp-form-message--ok {
+  border: 1px solid var(--color-turquoise);
+  background: var(--color-turquoise-pale);
+  color: var(--color-navy);
+}
+
+.tfp-form-message--err {
+  border: 1px solid var(--color-copper-dark);
+  background: #FDF3EC;
+  color: var(--color-text);
 }

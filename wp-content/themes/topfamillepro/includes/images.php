@@ -78,6 +78,7 @@ function tfp_picture( $slug, $args = array() ) {
 		'sizes'     => '100vw',
 		'alt'       => null,
 		'lazy'      => null,
+		'lcp'       => null, // Surcharge entry['lcp'] : un même slug peut être la vignette d'une page et le visuel LCP d'une autre (ex. service-bureaux : carte accueil vs hero de la page prestation).
 		'class'     => '',
 		'img_style' => '',
 	);
@@ -86,7 +87,8 @@ function tfp_picture( $slug, $args = array() ) {
 	$entry    = $manifest[ $slug ];
 	$base_url = TFP_THEME_URI . '/assets/dist/images/';
 	$alt      = null !== $args['alt'] ? $args['alt'] : $entry['alt'];
-	$is_lcp   = ! empty( $entry['lcp'] ) && null === $args['lazy'];
+	$is_lcp   = null !== $args['lcp'] ? $args['lcp'] : ! empty( $entry['lcp'] );
+	$is_lcp   = $is_lcp && null === $args['lazy'];
 	$lazy     = null !== $args['lazy'] ? $args['lazy'] : ! $is_lcp;
 
 	$fallback = end( $entry['variants']['jpg'] );

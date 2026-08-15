@@ -1,0 +1,26 @@
+{
+ "#/departement/cote-dor": {
+  "1440": {
+   "cartesRef": 31,
+   "cartesWp": 31,
+   "anomalies": [
+    {
+     "genre": "colonnes",
+     "type": "tarif",
+     "bande": 7,
+     "texte": "Exemple · bureaux à Dijon, 12 h/mois333 € HT/moisTrois passa",
+     "attendu": 3,
+     "recu": 1
+    },
+    {
+     "genre": "colonnes",
+     "type": "temoignage",
+     "bande": 7,
+     "texte": "★★★★★« Nous cherchions un prestataire capable de passer avan",
+     "attendu": 3,
+     "recu": 2
+    }
+   ]
+  }
+ }
+}

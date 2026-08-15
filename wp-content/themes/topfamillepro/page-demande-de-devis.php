@@ -85,13 +85,19 @@ get_header();
 	<?php tfp_breadcrumb( tfp_seo()['breadcrumb'] ); ?>
 </div>
 
-<section class="tfp-container tfp-section--tight">
-	<h1>Demande de devis gratuit</h1>
-	<p style="max-width:640px;font-size:18px;color:var(--color-text-secondary);margin-top:12px">Décrivez vos locaux en deux étapes. Votre devis est étudié personnellement par <?php echo esc_html( $site['manager'] ); ?> et transmis sous 24 heures, gratuitement et sans engagement.</p>
-</section>
-
-<section class="tfp-section">
-	<div class="tfp-container" style="max-width:640px">
+<?php
+/*
+ * Disposition en deux colonnes de la maquette : le formulaire à gauche (642 px), une colonne de
+ * réassurance à droite (482 px, écart 56 px). Le thème empilait les deux, ce qui allongeait la
+ * page de 700 px et éloignait la preuve du champ à remplir — c'est précisément là qu'elle sert.
+ * Sous 900 px, la maquette empile elle aussi.
+ */
+?>
+<section class="tfp-quote-page">
+	<div class="tfp-container tfp-quote-layout">
+		<div class="tfp-quote-main">
+			<h1>Demandez votre devis gratuit</h1>
+			<p class="tfp-section__lede">Décrivez-nous vos locaux et vos besoins. <?php echo esc_html( explode( ' ', $site['manager'] )[0] ); ?> vous répond sous 24 heures avec une proposition claire et chiffrée, sans engagement.</p>
 
 		<?php if ( $success ) : ?>
 			<div class="tfp-form-notice" role="status">
@@ -128,37 +134,52 @@ get_header();
 				<input type="hidden" name="utm_campaign" value="<?php echo isset( $_GET['utm_campaign'] ) ? esc_attr( sanitize_text_field( wp_unslash( $_GET['utm_campaign'] ) ) ) : ''; ?>">
 
 				<fieldset data-step="0" style="border:none;padding:0;margin:0">
-					<legend style="font-weight:700;font-size:20px;margin-bottom:16px">Étape 1 sur 2 — Vos locaux et vos coordonnées</legend>
+					<legend style="font-weight:700;font-size:20px;margin-bottom:8px">Étape 1 sur 2 — Vos locaux et vos coordonnées</legend>
+					<p style="margin-bottom:16px;color:var(--color-text-secondary)">L'essentiel d'abord : de quoi vous rappeler et chiffrer. Les détails viennent à l'étape suivante.</p>
 
-					<div class="tfp-field">
-						<label for="tfp-type-locaux">Type de locaux *</label>
-						<select id="tfp-type-locaux" name="type_locaux" required>
-							<?php foreach ( $types_locaux as $value => $label ) : ?>
-								<option value="<?php echo esc_attr( $value ); ?>"><?php echo esc_html( $label ); ?></option>
-							<?php endforeach; ?>
-						</select>
-					</div>
-
-					<fieldset class="tfp-field" style="border:none;padding:0;margin:0">
-						<legend style="font-weight:600;font-size:var(--fs-sm);margin-bottom:6px">Besoin régulier ou ponctuel ? *</legend>
-						<div style="display:flex;gap:20px;flex-wrap:wrap">
-							<label style="display:flex;align-items:center;gap:6px;font-weight:400">
-								<input type="radio" name="regime" value="regulier" required> Régulier
-							</label>
-							<label style="display:flex;align-items:center;gap:6px;font-weight:400">
-								<input type="radio" name="regime" value="ponctuel" required> Ponctuel
-							</label>
+					<?php
+					/*
+					 * La maquette range les champs de l'étape 1 par LIGNES, pas un par ligne : type de
+					 * locaux + régime, ville + code postal, nom + téléphone. Les règles sont déclarées
+					 * en clair dans le prototype — `repeat(auto-fit, minmax(min(100%, 220px), 1fr))`
+					 * pour les paires équilibrées, `2fr 1fr` pour ville/code postal — et se replient
+					 * seules sous 470 px environ. Le thème empilait les huit champs, ce qui allongeait
+					 * la page de 246 px à 768 px et repoussait le bouton sous la ligne de flottaison.
+					 */
+					?>
+					<div class="tfp-form-row">
+						<div class="tfp-field">
+							<label for="tfp-type-locaux">Type de locaux *</label>
+							<select id="tfp-type-locaux" name="type_locaux" required>
+								<?php foreach ( $types_locaux as $value => $label ) : ?>
+									<option value="<?php echo esc_attr( $value ); ?>"><?php echo esc_html( $label ); ?></option>
+								<?php endforeach; ?>
+							</select>
 						</div>
-					</fieldset>
 
-					<div class="tfp-field">
-						<label for="tfp-ville-visible">Ville</label>
-						<input type="text" id="tfp-ville-visible" name="ville" autocomplete="address-level2">
+						<fieldset class="tfp-field" style="border:none;padding:0;margin:0">
+							<legend style="font-weight:600;font-size:var(--fs-sm);margin-bottom:6px">Besoin régulier ou ponctuel ? *</legend>
+							<div style="display:flex;gap:20px;flex-wrap:wrap">
+								<label style="display:flex;align-items:center;gap:6px;font-weight:400">
+									<input type="radio" name="regime" value="regulier" required> Régulier
+								</label>
+								<label style="display:flex;align-items:center;gap:6px;font-weight:400">
+									<input type="radio" name="regime" value="ponctuel" required> Ponctuel
+								</label>
+							</div>
+						</fieldset>
 					</div>
 
-					<div class="tfp-field">
-						<label for="tfp-code-postal">Code postal</label>
-						<input type="text" id="tfp-code-postal" name="code_postal" inputmode="numeric" pattern="[0-9]{5}" maxlength="5" autocomplete="postal-code">
+					<div class="tfp-form-row tfp-form-row--2-1">
+						<div class="tfp-field">
+							<label for="tfp-ville-visible">Ville</label>
+							<input type="text" id="tfp-ville-visible" name="ville" autocomplete="address-level2">
+						</div>
+
+						<div class="tfp-field">
+							<label for="tfp-code-postal">Code postal</label>
+							<input type="text" id="tfp-code-postal" name="code_postal" inputmode="numeric" pattern="[0-9]{5}" maxlength="5" autocomplete="postal-code">
+						</div>
 					</div>
 
 					<div class="tfp-field">
@@ -166,14 +187,16 @@ get_header();
 						<input type="text" id="tfp-surface" name="surface" inputmode="numeric" placeholder="Ex. 150">
 					</div>
 
-					<div class="tfp-field">
-						<label for="tfp-nom">Nom et prénom *</label>
-						<input type="text" id="tfp-nom" name="nom" autocomplete="name" required>
-					</div>
+					<div class="tfp-form-row">
+						<div class="tfp-field">
+							<label for="tfp-nom">Nom et prénom *</label>
+							<input type="text" id="tfp-nom" name="nom" autocomplete="name" required>
+						</div>
 
-					<div class="tfp-field">
-						<label for="tfp-telephone">Téléphone</label>
-						<input type="tel" id="tfp-telephone" name="telephone" autocomplete="tel">
+						<div class="tfp-field">
+							<label for="tfp-telephone">Téléphone</label>
+							<input type="tel" id="tfp-telephone" name="telephone" autocomplete="tel">
+						</div>
 					</div>
 
 					<div class="tfp-field">
@@ -240,7 +263,53 @@ get_header();
 			</form>
 
 		<?php endif; ?>
+		</div>
 
+		<aside class="tfp-quote-aside" aria-label="Contact direct et réassurance">
+			<div class="tfp-quote-aside__card tfp-quote-aside__manager">
+				<?php
+				/*
+				 * Photo d'illustration provisoire : elle ne prétend pas représenter Audrey tant que la
+				 * photo authentique n'est pas fournie, et son `alt` le dit (CLAUDE.md §5.6).
+				 */
+				$portrait = tfp_get_audrey_photo_url();
+				if ( $portrait ) :
+					?>
+					<img
+						class="tfp-quote-aside__avatar"
+						src="<?php echo esc_url( $portrait ); ?>"
+						alt="<?php echo esc_attr( tfp_audrey_photo_is_real() ? $site['manager'] . ', gérante de ' . $site['brand_name'] : 'Photo d’illustration temporaire — portrait définitif à venir' ); ?>"
+						width="60" height="60" loading="lazy" decoding="async">
+					<?php
+				endif;
+				?>
+				<div>
+					<strong><?php echo esc_html( explode( ' ', $site['manager'] )[0] ); ?></strong>
+					<span>Votre interlocutrice dédiée</span>
+				</div>
+			</div>
+
+			<div class="tfp-quote-aside__card tfp-quote-aside__phone">
+				<strong>Préférez le téléphone ?</strong>
+				<a class="tfp-quote-aside__tel" href="tel:<?php echo esc_attr( $site['phone_href'] ); ?>"><?php echo esc_html( $site['phone'] ); ?></a>
+				<?php tfp_google_rating_badge( 'quote' ); ?>
+				<span class="tfp-quote-aside__price"><?php echo esc_html( $site['price_unique_display'] ); ?> HT/h</span>
+				<span class="tfp-quote-aside__note">régulier ou ponctuel · devis gratuit et sans engagement</span>
+			</div>
+
+			<?php
+			// Témoignage repris tel quel de la maquette, marqué provisoire et exclu de toute donnée
+			// structurée d'avis (CLAUDE.md §5.5).
+			tfp_testimonial_card(
+				array(
+					'texte'  => 'Devis clair reçu le lendemain, sans surprise. Réactivité au rendez-vous.',
+					'auteur' => 'Sarah B.',
+					'role'   => 'Commerçante',
+					'ville'  => 'Dole',
+				)
+			);
+			?>
+		</aside>
 	</div>
 </section>
 

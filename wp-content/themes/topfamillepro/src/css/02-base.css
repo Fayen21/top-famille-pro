@@ -15,7 +15,17 @@ html {
   -webkit-text-size-adjust: 100%;
 }
 
-body {
+/**
+ * Sélecteurs préfixés par `body.tfp-body` (et non le simple élément) : le thème parent
+ * GeneratePress peut injecter son propre CSS dynamique (réglages du Customizer, ajouté via
+ * `wp_add_inline_style()`) après la feuille du thème enfant dans le <head>, avec une spécificité
+ * égale à ces règles de base — sur des sélecteurs de même poids, c'est alors l'ordre d'impression
+ * qui gagne, pas la dépendance déclarée. Cette double classe (spécificité 0,0,2 au lieu de 0,0,1)
+ * fait gagner nos règles typographiques et de navigation quel que soit cet ordre, sans recourir à
+ * `!important`. `body.tfp-body` est toujours vrai ici : la classe est posée par
+ * `body_class( 'tfp-body' )` dans header.php sur chaque gabarit du thème.
+ */
+body.tfp-body {
   font-family: var(--font-body);
   color: var(--color-text);
   background: var(--color-bg);
@@ -24,13 +34,106 @@ body {
   font-size: var(--fs-base);
 }
 
-h1, h2, h3, h4, h5, h6 {
+body.tfp-body h1,
+body.tfp-body h2,
+body.tfp-body h3,
+body.tfp-body h4,
+body.tfp-body h5,
+body.tfp-body h6 {
   font-family: var(--font-heading);
   line-height: var(--lh-heading);
   letter-spacing: var(--ls-heading);
   text-wrap: balance;
   font-weight: var(--fw-bold);
+}
+
+/* `color` volontairement hors du bloc ci-dessus, à la spécificité d'origine (0,0,1) : plusieurs
+   sections (.tfp-section--navy h2, .tfp-section--primary h2…) surchargent la couleur des titres
+   selon le fond, avec une spécificité de (0,1,1) — les faire concourir avec une règle de base à
+   (0,1,2) cassait ces surcharges (texte sombre sur fond sombre, échec axe-core color-contrast
+   trouvé lors du hotfix du 9 août 2026). Le risque GeneratePress visé par body.tfp-body porte sur
+   la police, pas sur la couleur des titres. */
+h1, h2, h3, h4, h5, h6 {
   color: var(--color-text);
+}
+
+/* Le token --fs-h2 (27→42px) existait dans 00-tokens.css depuis la phase 1 mais n'avait jamais
+   été branché : les titres de section retombaient sur la taille par défaut du navigateur
+   (1.5em = 25,5px), soit 40 % plus petits que la maquette, ce qui écrasait toute la hiérarchie
+   visuelle de l'accueil. Mesuré à 42px sur le rendu réel du prototype à 1440px. */
+h1 {
+  font-size: var(--fs-h1);
+}
+
+/* La maquette rend tous ses H1 en 800, sans exception — relevé sur les 53 routes. Le sélecteur est
+   préfixé par `body.tfp-body` pour la même raison que le bloc ci-dessus : il doit l'emporter sur
+   `body.tfp-body h1 { font-weight: var(--fw-bold) }`, qui pose 700 sur tous les niveaux de titre. */
+body.tfp-body h1 {
+  font-weight: var(--fw-extrabold);
+}
+
+h2 {
+  font-size: var(--fs-h2);
+}
+
+/* Échelle des titres par type de page.
+   La maquette ne fige pas une taille de H2 unique : elle en emploie 42 px sur l'accueil, 34 à 36
+   sur les pages denses (prestations, pilier, tarifs), 29 sur les zones et les pages légales, 27
+   dans les articles. Un H2 de 42 px partout écrasait cette hiérarchie et allongeait les pages de
+   zone de plus de 150 px à contenu identique. Les classes viennent de tfp_body_class(). */
+body.tfp-type-accueil h1 {
+  font-size: var(--fs-h1-accueil);
+}
+
+body.tfp-type-pilier h1,
+body.tfp-type-tarifs h1 {
+  font-size: var(--fs-h1-pilier);
+}
+
+body.tfp-type-zone h1 {
+  font-size: var(--fs-h1-zone);
+}
+
+/* Une page de département porte un H1 de 50 px dans la maquette, une page de ville 49 :
+   la classe de largeur de hero distingue déjà les deux, on s'en sert plutôt que d'ajouter
+   une classe de plus. */
+body.tfp-type-zone.tfp-hero-w-900 h1 {
+  font-size: var(--fs-h1);
+}
+
+body.tfp-type-prestation h1 {
+  font-size: var(--fs-h1-prestation);
+}
+
+body.tfp-type-legale h1 {
+  font-size: var(--fs-h1-legale);
+}
+
+body.tfp-type-legale.tfp-hero-w-1260 h1 {
+  font-size: var(--fs-h1-prestation);
+}
+
+body.tfp-type-article h1 {
+  font-size: var(--fs-h1-article);
+}
+
+body.tfp-type-zone h2,
+body.tfp-type-legale h2 {
+  font-size: var(--fs-h2-dense);
+}
+
+body.tfp-type-prestation h2,
+body.tfp-type-pilier h2,
+body.tfp-type-institutionnelle h2 {
+  font-size: var(--fs-h2-medium);
+}
+
+body.tfp-type-tarifs h2 {
+  font-size: var(--fs-h2-tarifs);
+}
+
+body.tfp-type-article h2 {
+  font-size: var(--fs-h2-article);
 }
 
 p {
@@ -42,26 +145,56 @@ img, picture, svg {
   max-width: 100%;
 }
 
+/* Toutes les images du pipeline responsive (includes/images.php) portent des attributs
+   `width`/`height` — indispensables pour réserver la place et éviter le décalage de mise en page.
+   Mais ces attributs sont des indications de présentation : sans `height: auto`, la hauteur en
+   pixels qu'ils fixent l'emporte sur tout `aspect-ratio` déclaré en CSS, et le recadrage voulu
+   par le design est silencieusement ignoré.
+
+   Bug réel trouvé le 9 août 2026 en comparant les rendus mesurés à la maquette : l'image
+   principale du hero s'affichait en 512×800 au lieu de 512×448, et les vignettes d'articles en
+   381×427 au lieu de 381×214 — ce qui allongeait l'accueil de plus de 350 px et cassait le rythme
+   vertical. `height: auto` rend la main au CSS sans perdre le bénéfice des attributs. */
+picture img {
+  height: auto;
+}
+
+/* `color` volontairement hors de la règle `a` ci-dessous, même raison que pour les titres
+   ci-dessus : de nombreux composants (.tfp-btn--primary, .tfp-btn--on-dark…) sont des <a> dont la
+   couleur de texte dépend du fond du bouton, avec une spécificité d'une seule classe (0,1,0) —
+   une règle de base `a{color}` boostée à (0,1,2) les emportait à tort (texte de la même couleur
+   que le fond du bouton, boutons illisibles, échec axe-core color-contrast trouvé lors du hotfix
+   du 9 août 2026). */
 a {
   color: var(--color-primary);
-  text-decoration: none;
-  transition: color var(--transition-fast);
 }
 
 a:hover {
   color: var(--color-primary-hover);
 }
 
-a.tfp-underline {
+body.tfp-body a {
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+body.tfp-body a.tfp-underline {
   text-decoration: underline;
   text-underline-offset: 3px;
 }
 
+/* `background`/`border` volontairement hors de la règle boostée : mêmes raisons que `color`
+   ci-dessus — .tfp-btn--primary { background: var(--color-primary) } (0,1,0) perdait contre une
+   règle `button{background}` boostée à (0,1,2), boutons rendus quasi invisibles (fond presque
+   blanc, texte blanc) — échec axe-core color-contrast trouvé lors du hotfix du 9 août 2026. */
 button {
-  font-family: inherit;
-  cursor: pointer;
   background: none;
   border: none;
+}
+
+body.tfp-body button {
+  font-family: inherit;
+  cursor: pointer;
 }
 
 ul, ol {
@@ -84,7 +217,9 @@ fieldset {
   min-width: 0;
 }
 
-input, select, textarea {
+body.tfp-body input,
+body.tfp-body select,
+body.tfp-body textarea {
   font-family: inherit;
   font-size: inherit;
 }

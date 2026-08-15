@@ -10,6 +10,16 @@
 
 ---
 
+> **Site déjà en ligne avec un autre thème actif (ex. `V1top-famille-pro`) ?** Ce guide décrit une
+> installation sur un WordPress neuf. Si le site est déjà publié avec un thème différent, utilisez
+> à la place `topfamillepro-theme-correctif.zip` et `topfamillepro-content-installer-correctif.zip`
+> (mêmes étapes ci-dessous, fichiers renommés), et suivez la procédure pas à pas de
+> `docs/AUDIT-PRODUCTION.md` §11 (staging d'abord, ancien thème conservé le temps de la validation,
+> jamais de modification directe de la production) et §12 (retour arrière). Le plugin correctif
+> ajoute une section « Contenu existant à examiner » qui signale, sans jamais rien supprimer, tout
+> contenu publié qui n'appartient pas aux 53 pages attendues — typiquement les pages d'un thème
+> précédent.
+
 ## Partie A — Installation depuis l'administration WordPress (méthode recommandée)
 
 ### 1. Créer une sauvegarde
@@ -154,9 +164,24 @@ en quelques minutes. **C'est le seul test qui ne peut pas être fait avant la mi
 
 **Extensions → Ajouter une extension**, installez et activez **LiteSpeed Cache** (généralement déjà
 disponible ou pré-suggéré sur l'hébergement Hostinger). Activez au minimum : la mise en cache des
-pages, la compression, et l'optimisation CSS/JS différée. C'est une étape obligatoire, pas
-optionnelle : sans elle, les cibles de performance mesurées en développement (Lighthouse mobile
-91-97/100) ne seront pas atteintes sur un hébergement mutualisé.
+pages **et la compression (Brotli ou gzip)**. C'est une étape obligatoire, pas optionnelle.
+
+**Vérifiez la compression avant de considérer l'étape faite.** C'est le point qui décide de la note
+de performance, et il est mesurable en une commande :
+
+```bash
+curl -s -o /dev/null -D - -H 'Accept-Encoding: br, gzip' \
+  https://top-famille-pro.fr/wp-content/themes/topfamillepro/assets/dist/css/main.css | grep -i 'content-encoding'
+```
+
+La réponse doit contenir `content-encoding: br` (ou `gzip`). Si cette ligne est absente, la feuille
+de style est servie en 59 Ko au lieu de 10 : sur un lien mobile, cela coûte à soi seul près d'une
+seconde de premier rendu, et fait passer la note de performance de 92-100 à 83-96. Les deux séries
+de mesures sont dans `docs/RAPPORT-FIDELITE-FINALE.md` §6.
+
+N'activez **pas** le chargement asynchrone ou différé du CSS principal proposé par LiteSpeed : la
+feuille de style du thème est volontairement synchrone, sinon la page s'affiche un instant sans
+style.
 
 ### 20. Vérifier le sitemap et robots.txt
 
@@ -164,6 +189,27 @@ Visitez `https://top-famille-pro.fr/wp-sitemap.xml` : il doit lister les pages, 
 et articles réels, **sans** les 8 communes secondaires non validées (elles restent
 `noindex,follow`, exclues du sitemap par le thème). Visitez `https://top-famille-pro.fr/robots.txt`
 : il doit contenir une ligne `Sitemap:` pointant vers l'URL ci-dessus.
+
+**Puis, impérativement, contrôler ce que le site publie en plus des 53 routes livrées.**
+L'installation n'est pas vierge : elle succède à une migration Wix et à des essais. Sur le banc de
+recette, trois pages restées d'un essai antérieur — « Devis rapide (V1) », « Nettoyage écologique -
+ancienne offre » et « Page perso de l'administrateur » — étaient **publiées et référencées au
+sitemap** alors qu'aucun script d'installation ne les crée. Une ancienne offre indexée promet une
+prestation qui n'existe plus, sous une URL que personne ne surveille.
+
+Depuis la racine WordPress :
+
+```
+wp eval-file bin/verifier-installation.php
+```
+
+Le script ne supprime rien : il liste les contenus publiés qui ne font pas partie des 53 routes, en
+signalant ceux qui figurent au sitemap, et vérifie en retour qu'aucune route attendue ne manque.
+Pour chaque contenu inattendu, trancher entre **conserver**, **dépublier**, ou **supprimer avec une
+redirection 301** vers la page qui le remplace. Ne rien laisser en `publish` sans décision.
+
+Sans accès à WP-CLI, le même contrôle se fait à la main : Pages → Toutes les pages, puis Articles,
+et comparer à `PAGES-A-CREER.md`.
 
 ### 21. Tester la version mobile
 
@@ -239,3 +285,29 @@ vérifiés. Ne considérez le site prêt pour l'indexation publique qu'une fois 
 
 Le plugin `topfamillepro-content-installer.zip` suit exactement la même procédure, dans
 `public_html/wp-content/plugins/` au lieu de `themes/`.
+
+---
+
+## Décision juridique à réexaminer si la clientèle change
+
+**La rubrique « Médiation de la consommation » n'est pas publiée sur les mentions légales.**
+
+Le dispositif de médiation de la consommation (code de la consommation, articles L612-1 et
+suivants) impose à un professionnel de garantir au **consommateur** l'accès gratuit à un médiateur,
+et d'en publier les coordonnées. Il ne couvre pas les litiges entre professionnels.
+
+Top-Famille Pro vend des prestations de nettoyage à des clients professionnels — entreprises,
+commerces, cabinets, syndics, gestionnaires de meublés. Dans ce périmètre, la rubrique n'aurait
+rien à annoncer ; y afficher un médiateur non désigné serait une information fausse, et un
+placeholder visible n'a pas sa place sur des mentions légales publiées.
+
+**À réexaminer sans délai si l'un de ces cas se présente :**
+
+- vente d'une prestation à un particulier, même ponctuelle (déménagement, remise en état d'un
+  logement, entretien d'une résidence secondaire) ;
+- contrat avec un client dont l'activité relève du non-professionnel au sens du code de la
+  consommation (certaines associations, copropriétaires agissant à titre privé) ;
+- ouverture d'une offre destinée aux particuliers, distincte de l'offre Top-Famille B2C existante.
+
+Dans ces cas : adhérer à un médiateur de la consommation agréé, puis publier son nom, son adresse
+postale et son site sur les mentions légales et dans les conditions de vente.

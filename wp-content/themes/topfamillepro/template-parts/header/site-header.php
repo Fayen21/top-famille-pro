@@ -37,9 +37,31 @@ $main_nav = array(
 );
 ?>
 <header class="tfp-header" data-tfp-header>
+	<?php
+	// Bandeau supérieur turquoise de la maquette (30px, #DDF4F3, texte 13px) : tarif, promesse de
+	// délai, note Google et téléphone. La note n'est rendue que si elle est réellement configurée
+	// (includes/testimonials.php) ; le compteur d'avis du prototype (« 47 avis ») reste interdit.
+	$tfp_reassurance_bar = tfp_reassurance_data();
+	?>
+	<div class="tfp-topbar">
+		<div class="tfp-topbar__inner">
+			<span class="tfp-topbar__offer">
+				<strong><?php echo esc_html( $site['price_unique_display'] ); ?> HT/h</strong> · Devis gratuit sous 24 h
+			</span>
+			<?php if ( ! empty( $tfp_reassurance_bar['note'] ) ) : ?>
+				<span class="tfp-topbar__rating">
+					<span class="tfp-topbar__stars" aria-hidden="true">★★★★★</span>
+					<strong><?php echo esc_html( number_format( (float) $tfp_reassurance_bar['note'], 1, ',', '' ) ); ?>/5</strong>
+					<span>sur Google</span>
+				</span>
+			<?php endif; ?>
+			<a class="tfp-topbar__phone" href="tel:<?php echo esc_attr( $site['phone_href'] ); ?>"><?php echo esc_html( $site['phone'] ); ?></a>
+		</div>
+	</div>
+
 	<div class="tfp-header__inner">
 		<a class="tfp-logo" href="<?php echo esc_url( home_url( '/' ) ); ?>" aria-label="<?php echo esc_attr( $site['brand_name'] ); ?> — Accueil">
-			<img src="<?php echo esc_url( TFP_THEME_URI . '/assets/dist/images/logo-horizontal.png' ); ?>" alt="<?php echo esc_attr( $site['brand_name'] ); ?>" width="68" height="36">
+			<img src="<?php echo esc_url( TFP_THEME_URI . '/assets/dist/images/logo-horizontal.png' ); ?>" alt="<?php echo esc_attr( $site['brand_name'] ); ?>" width="155" height="82">
 		</a>
 
 		<nav class="tfp-nav" aria-label="Navigation principale">
@@ -82,7 +104,9 @@ $main_nav = array(
 				array(
 					'label'   => 'Demander mon devis',
 					'href'    => home_url( '/demande-de-devis/' ),
-					'variant' => 'primary',
+					// Cuivre, comme dans la maquette (fond #D9A062, texte bleu nuit) — mesuré sur le
+					// rendu réel du prototype, pas déduit du code.
+					'variant' => 'copper',
 					'size'    => 'sm',
 				)
 			);

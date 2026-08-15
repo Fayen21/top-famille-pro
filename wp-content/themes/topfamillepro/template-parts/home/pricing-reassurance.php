@@ -11,11 +11,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 $site = tfp_site_data();
 ?>
-<section class="tfp-container tfp-section--tight">
+<section class="tfp-container tfp-price-band-section">
 	<div class="tfp-price-band">
 		<span class="tfp-price-band__value">
-			<strong>à partir de <?php echo esc_html( $site['price_entry_display'] ); ?> HT/h</strong>
-			<span>tarif indiqué avant le devis</span>
+			<strong><?php echo esc_html( $site['price_unique_display'] ); ?> HT/h</strong>
+			<span>tarif unique, indiqué avant le devis</span>
 		</span>
 		<?php tfp_check_item( 'Devis gratuit sous 24 h' ); ?>
 		<?php tfp_check_item( 'Intervention régulière ou ponctuelle' ); ?>
