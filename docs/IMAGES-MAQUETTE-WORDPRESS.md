@@ -83,8 +83,8 @@
 | `article-3-640.avif` | 559x373 | 512×384 | eager | high | 20 | non |
 | `service-generic-760.avif` | 600x400 | 512×384 | eager | high | 5 | non |
 | `service-generic-480.avif` | 383x255 | 381×254 | lazy | — | 4 | non |
-| `service-bureaux-640.avif` | 648x432 | 580×278 | lazy | — | 3 | non |
-| `service-commerces-640.avif` | 648x432 | 580×278 | lazy | — | 3 | non |
+| `service-bureaux-640.avif` | 648x432 | 580×278 | lazy | — | 2 | non |
+| `service-commerces-640.avif` | 648x432 | 580×278 | lazy | — | 2 | non |
 | `audrey-placeholder-640.jpg` | 640x958 | 420×525 | lazy | — | 2 | non |
 | `article-2-480.avif` | 400x266 | 381×214 | lazy | — | 2 | non |
 | `article-1-640.avif` | 590x393 | 589×393 | eager | high | 2 | non |
@@ -94,13 +94,15 @@
 | `article-1-480.avif` | 400x267 | 381×214 | lazy | — | 1 | non |
 | `article-3-480.avif` | 400x266 | 381×214 | lazy | — | 1 | non |
 | `hero-pilier-760.avif` | 560x373 | 512×384 | eager | high | 1 | non |
+| `service-bureaux-480.avif` | 383x255 | 381×254 | lazy | — | 1 | non |
+| `service-commerces-480.avif` | 383x256 | 381×255 | lazy | — | 1 | non |
 | `hero-region-760.avif` | 560x373 | 512×384 | eager | high | 1 | non |
 | `article-2-640.avif` | 820x547 | 820×461 | eager | high | 1 | non |
 
 ## 4. Contrôles
 
 - Images cassées côté WordPress : **0**
-- Images sans `alt` : **1** (`service-generic-480.avif`) — un `alt` vide est correct pour un visuel purement décoratif dont le sens est déjà porté par le texte voisin ; il est fautif partout ailleurs.
+- Images sans `alt` : **3** (`service-bureaux-480.avif`, `service-commerces-480.avif`, `service-generic-480.avif`) — un `alt` vide est correct pour un visuel purement décoratif dont le sens est déjà porté par le texte voisin ; il est fautif partout ailleurs.
 - Images en `fetchpriority="high"` : **8** — une seule par page, celle du LCP (CLAUDE.md §8).
 
 ## 5. Ce que ces visuels ne prétendent pas être

@@ -419,6 +419,108 @@
       ]
     }
   },
+  "hero-pilier": {
+    "slug": "hero-pilier",
+    "alt": "Nettoyage de bureaux professionnels (photo d’illustration)",
+    "lcp": false,
+    "width": 960,
+    "height": 640,
+    "variants": {
+      "avif": [
+        {
+          "width": 480,
+          "file": "hero-pilier-480.avif"
+        },
+        {
+          "width": 760,
+          "file": "hero-pilier-760.avif"
+        },
+        {
+          "width": 960,
+          "file": "hero-pilier-960.avif"
+        }
+      ],
+      "webp": [
+        {
+          "width": 480,
+          "file": "hero-pilier-480.webp"
+        },
+        {
+          "width": 760,
+          "file": "hero-pilier-760.webp"
+        },
+        {
+          "width": 960,
+          "file": "hero-pilier-960.webp"
+        }
+      ],
+      "jpg": [
+        {
+          "width": 480,
+          "file": "hero-pilier-480.jpg"
+        },
+        {
+          "width": 760,
+          "file": "hero-pilier-760.jpg"
+        },
+        {
+          "width": 960,
+          "file": "hero-pilier-960.jpg"
+        }
+      ]
+    }
+  },
+  "hero-region": {
+    "slug": "hero-region",
+    "alt": "Locaux professionnels en Bourgogne-Franche-Comté (photo d’illustration)",
+    "lcp": false,
+    "width": 960,
+    "height": 640,
+    "variants": {
+      "avif": [
+        {
+          "width": 480,
+          "file": "hero-region-480.avif"
+        },
+        {
+          "width": 760,
+          "file": "hero-region-760.avif"
+        },
+        {
+          "width": 960,
+          "file": "hero-region-960.avif"
+        }
+      ],
+      "webp": [
+        {
+          "width": 480,
+          "file": "hero-region-480.webp"
+        },
+        {
+          "width": 760,
+          "file": "hero-region-760.webp"
+        },
+        {
+          "width": 960,
+          "file": "hero-region-960.webp"
+        }
+      ],
+      "jpg": [
+        {
+          "width": 480,
+          "file": "hero-region-480.jpg"
+        },
+        {
+          "width": 760,
+          "file": "hero-region-760.jpg"
+        },
+        {
+          "width": 960,
+          "file": "hero-region-960.jpg"
+        }
+      ]
+    }
+  },
   "audrey-placeholder": {
     "slug": "audrey-placeholder",
     "alt": "Photo d’illustration temporaire — portrait définitif à venir",

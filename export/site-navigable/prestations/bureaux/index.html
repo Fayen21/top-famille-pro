@@ -7,6 +7,7 @@
 <link rel="preload" href="../../wp-content/themes/topfamillepro/assets/dist/fonts/bricolage-grotesque-800-latin.woff2" as="font" type="font/woff2" crossorigin="anonymous">
 <link rel="preload" href="../../wp-content/themes/topfamillepro/assets/dist/fonts/hanken-grotesk-400-latin.woff2" as="font" type="font/woff2" crossorigin="anonymous">
 <link rel="preload" href="../../wp-content/themes/topfamillepro/assets/dist/fonts/hanken-grotesk-600-latin.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="../../wp-content/themes/topfamillepro/assets/dist/fonts/hanken-grotesk-700-latin.woff2" as="font" type="font/woff2" crossorigin="anonymous">
 <link rel="alternate" type="application/rss+xml" title="Top-Famille Pro &raquo; Feed" href="../../feed/index.html" />
 <meta name="description" content="Nettoyage de bureaux régulier ou ponctuel : sols, sanitaires, cuisine, salles de réunion. Intervenant habituel recherché, devis gratuit sous 24 h.">
 <meta name="robots" content="index,follow">
@@ -39,7 +40,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 </style>
 
 <link rel='stylesheet' id='generatepress-parent-css' href='../../wp-content/themes/generatepress/style.css?ver=0.1.0' media='all' />
-<link rel='stylesheet' id='topfamillepro-css' href='../../wp-content/themes/topfamillepro/assets/dist/css/main.css?ver=1786710812' media='all' />
+<link rel='stylesheet' id='topfamillepro-css' href='../../wp-content/themes/topfamillepro/assets/dist/css/main.css?ver=1786920248' media='all' />
 </head>
 <body class="wp-singular prestation-template-default single single-prestation postid-4 wp-theme-generatepress wp-child-theme-topfamillepro tfp-body tfp-type-prestation">
 <a class="skip-link" href="#tfp-main">Aller au contenu principal</a>
@@ -178,7 +179,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 	</div>
 </section>
 
-<section class="tfp-container tfp-section--tight">
+<section class="tfp-container tfp-section--tight tfp-presta-reponse" style="--container-max:820px">
 		<div class="tfp-direct-answer">
 		<p class="tfp-direct-answer__label">Réponse directe</p>
 		<p class="tfp-direct-answer__text">Le nettoyage de bureaux demande de la régularité et de la discrétion. Nous intervenons tôt le matin, en fin de journée ou pendant les heures creuses, selon l&#039;organisation de votre entreprise, afin de ne jamais perturber votre activité.</p>
@@ -187,10 +188,10 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 	</section>
 
 <section class="tfp-section--tight">
-	<div class="tfp-container tfp-two-col">
-		<div>
+		<div class="tfp-container tfp-two-col">
+		<div style="flex:1 1 260px;min-width:min(100%, 260px)">
 			<h2>Pour qui ?</h2>
-			<ul class="tfp-list-plain">
+			<ul class="tfp-list-plain tfp-list-plain--colonne">
 									<li>PME et sièges sociaux</li>
 									<li>Espaces de coworking</li>
 									<li>Agences</li>
@@ -202,9 +203,9 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 		<a class="tfp-price-card__link" href="../../tarifs/index.html">Détail des tarifs →</a>
 	</div>
 			</div>
-		<div>
+		<div style="flex:1 1 440px;min-width:min(100%, 320px)">
 			<h2>Les espaces et tâches pris en charge</h2>
-			<ul class="tfp-list-marked">
+			<ul class="tfp-list-marked" style="--tfp-liste-colonne:230px">
 									<li>Dépoussiérage du mobilier de bureau</li>
 									<li>Écrans et claviers : dépoussiérage prudent selon les consignes et le matériel autorisé</li>
 									<li>Vidage des corbeilles et tri des points de collecte</li>
@@ -261,7 +262,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 
 <section class="tfp-section--alt tfp-section--tight">
 	<div class="tfp-container">
-		<h2>Le détail, espace par espace et contrainte par contrainte</h2>
+				<h2 style="max-width:620px">Le détail, espace par espace et contrainte par contrainte</h2>
 		<div class="tfp-detail-grid">
 							<div class="tfp-detail-item">
 					<h3>Fréquence selon les effectifs</h3>
@@ -301,7 +302,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 
 <section class="tfp-section--turquoise tfp-section--tight">
 	<div class="tfp-container">
-		<h2>Une organisation carrée, du planning au suivi</h2>
+				<h2 style="max-width:560px">Une organisation carrée, du planning au suivi</h2>
 							<div class="tfp-detail-grid tfp-detail-grid--orga">
 									<div class="tfp-detail-item">
 						<h3>Exemple de cahier des charges</h3>
@@ -347,18 +348,16 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 </section>
 
 <section class="tfp-section--tight">
-	<div class="tfp-container tfp-two-col">
-		<div>
-			<div class="tfp-price-example">
-				<div class="tfp-price-example__label">Exemple · 12 h/mois</div>
-				<div class="tfp-price-example__value">333 € <span>HT/mois</span></div>
-				<div class="tfp-price-example__note">
-					12 h × 27 € + 9 € de gestion.
-					Le cas échéant, avec les frais de mise en place : 383 € HT
-				</div>
-				<div class="tfp-price-example__disclaimer">Exemple non contractuel.</div>
-				<a class="tfp-eyebrow-link" href="../../tarifs/index.html">Tous les tarifs →</a>
+	<div class="tfp-container tfp-presta-tarif">
+		<div class="tfp-price-example">
+			<div class="tfp-price-example__label">Exemple · 12 h/mois</div>
+			<div class="tfp-price-example__value">333 € <span>HT/mois</span></div>
+			<div class="tfp-price-example__note">
+				12 h × 27 € + 9 € de gestion.
+				Le cas échéant, avec les frais de mise en place : 383 € HT
 			</div>
+			<div class="tfp-price-example__disclaimer">Exemple non contractuel.</div>
+			<a class="tfp-eyebrow-link" href="../../tarifs/index.html">Tous les tarifs →</a>
 		</div>
 					<div class="tfp-testimonial--plain">
 				<figure class="tfp-testimonial" data-tfp-provisional="1"><span class="tfp-testimonial__stars" aria-hidden="true">★★★★★</span><blockquote class="tfp-testimonial__quote">« Nos bureaux sont faits avant 8 h et plus personne dans l&#039;équipe n&#039;a à s&#039;en occuper. Ce qui nous a décidés, c&#039;est la discrétion sur les dossiers laissés sur les postes. »</blockquote><figcaption class="tfp-testimonial__author"><span class="tfp-testimonial__name">Camille R.</span><span class="tfp-testimonial__context">Dirigeante de PME · Dijon</span></figcaption><figcaption class="tfp-provisional-notice" data-tfp-provisional-notice="1">Exemple de présentation — témoignages authentiques en cours d’intégration.</figcaption></figure>			</div>
@@ -614,6 +613,6 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <script type="speculationrules">
 {"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/wp-content/uploads/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/topfamillepro/*","/wp-content/themes/generatepress/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
 </script>
-<script data-wp-strategy="defer" defer id="topfamillepro-js" src="../../wp-content/themes/topfamillepro/assets/dist/js/main.js?ver=1786710812"></script>
+<script data-wp-strategy="defer" defer id="topfamillepro-js" src="../../wp-content/themes/topfamillepro/assets/dist/js/main.js?ver=1786920248"></script>
 </body>
 </html>

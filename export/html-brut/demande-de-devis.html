@@ -7,6 +7,7 @@
 <link rel="preload" href="https://top-famille-pro.fr/wp-content/themes/topfamillepro/assets/dist/fonts/bricolage-grotesque-800-latin.woff2" as="font" type="font/woff2" crossorigin="anonymous">
 <link rel="preload" href="https://top-famille-pro.fr/wp-content/themes/topfamillepro/assets/dist/fonts/hanken-grotesk-400-latin.woff2" as="font" type="font/woff2" crossorigin="anonymous">
 <link rel="preload" href="https://top-famille-pro.fr/wp-content/themes/topfamillepro/assets/dist/fonts/hanken-grotesk-600-latin.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://top-famille-pro.fr/wp-content/themes/topfamillepro/assets/dist/fonts/hanken-grotesk-700-latin.woff2" as="font" type="font/woff2" crossorigin="anonymous">
 <link rel="alternate" type="application/rss+xml" title="Top-Famille Pro &raquo; Feed" href="https://top-famille-pro.fr/feed/" />
 <meta name="description" content="Décrivez vos locaux en deux étapes : Audrey vous répond sous 24 heures avec une proposition claire et sans engagement.">
 <meta name="robots" content="index,follow">
@@ -39,7 +40,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 </style>
 
 <link rel='stylesheet' id='generatepress-parent-css' href='https://top-famille-pro.fr/wp-content/themes/generatepress/style.css?ver=0.1.0' media='all' />
-<link rel='stylesheet' id='topfamillepro-css' href='https://top-famille-pro.fr/wp-content/themes/topfamillepro/assets/dist/css/main.css?ver=1786710812' media='all' />
+<link rel='stylesheet' id='topfamillepro-css' href='https://top-famille-pro.fr/wp-content/themes/topfamillepro/assets/dist/css/main.css?ver=1786920248' media='all' />
 </head>
 <body class="wp-singular page-template-default page page-id-48 wp-theme-generatepress wp-child-theme-topfamillepro tfp-body tfp-type-institutionnelle">
 <a class="skip-link" href="#tfp-main">Aller au contenu principal</a>
@@ -175,7 +176,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 				<div class="tfp-form-errors" role="alert" aria-live="polite" data-form-errors></div>
 
 				<input type="hidden" name="action" value="tfp_submit_devis">
-				<input type="hidden" id="tfp_quote_nonce" name="tfp_quote_nonce" value="fe59b7dd3b" /><input type="hidden" name="_wp_http_referer" value="/demande-de-devis/" />
+				<input type="hidden" id="tfp_quote_nonce" name="tfp_quote_nonce" value="b4e77aa49d" /><input type="hidden" name="_wp_http_referer" value="/demande-de-devis/" />
 				<div class="tfp-field-honeypot" aria-hidden="true">
 					<label for="tfp-site-web">Laisser vide</label>
 					<input type="text" id="tfp-site-web" name="tfp_site_web" tabindex="-1" autocomplete="off">
@@ -192,40 +193,44 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 					<legend style="font-weight:700;font-size:20px;margin-bottom:8px">Étape 1 sur 2 — Vos locaux et vos coordonnées</legend>
 					<p style="margin-bottom:16px;color:var(--color-text-secondary)">L'essentiel d'abord : de quoi vous rappeler et chiffrer. Les détails viennent à l'étape suivante.</p>
 
-					<div class="tfp-field">
-						<label for="tfp-type-locaux">Type de locaux *</label>
-						<select id="tfp-type-locaux" name="type_locaux" required>
-															<option value="">Sélectionnez le type de locaux</option>
-															<option value="bureaux">Bureaux</option>
-															<option value="commerces">Commerces</option>
-															<option value="cabinets">Cabinets &amp; professions libérales</option>
-															<option value="coproprietes">Copropriété / parties communes</option>
-															<option value="meubles">Location meublée / hébergement</option>
-															<option value="ponctuel">Remise en état ponctuelle</option>
-															<option value="autre">Autre</option>
-													</select>
-					</div>
-
-					<fieldset class="tfp-field" style="border:none;padding:0;margin:0">
-						<legend style="font-weight:600;font-size:var(--fs-sm);margin-bottom:6px">Besoin régulier ou ponctuel ? *</legend>
-						<div style="display:flex;gap:20px;flex-wrap:wrap">
-							<label style="display:flex;align-items:center;gap:6px;font-weight:400">
-								<input type="radio" name="regime" value="regulier" required> Régulier
-							</label>
-							<label style="display:flex;align-items:center;gap:6px;font-weight:400">
-								<input type="radio" name="regime" value="ponctuel" required> Ponctuel
-							</label>
+										<div class="tfp-form-row">
+						<div class="tfp-field">
+							<label for="tfp-type-locaux">Type de locaux *</label>
+							<select id="tfp-type-locaux" name="type_locaux" required>
+																	<option value="">Sélectionnez le type de locaux</option>
+																	<option value="bureaux">Bureaux</option>
+																	<option value="commerces">Commerces</option>
+																	<option value="cabinets">Cabinets &amp; professions libérales</option>
+																	<option value="coproprietes">Copropriété / parties communes</option>
+																	<option value="meubles">Location meublée / hébergement</option>
+																	<option value="ponctuel">Remise en état ponctuelle</option>
+																	<option value="autre">Autre</option>
+															</select>
 						</div>
-					</fieldset>
 
-					<div class="tfp-field">
-						<label for="tfp-ville-visible">Ville</label>
-						<input type="text" id="tfp-ville-visible" name="ville" autocomplete="address-level2">
+						<fieldset class="tfp-field" style="border:none;padding:0;margin:0">
+							<legend style="font-weight:600;font-size:var(--fs-sm);margin-bottom:6px">Besoin régulier ou ponctuel ? *</legend>
+							<div style="display:flex;gap:20px;flex-wrap:wrap">
+								<label style="display:flex;align-items:center;gap:6px;font-weight:400">
+									<input type="radio" name="regime" value="regulier" required> Régulier
+								</label>
+								<label style="display:flex;align-items:center;gap:6px;font-weight:400">
+									<input type="radio" name="regime" value="ponctuel" required> Ponctuel
+								</label>
+							</div>
+						</fieldset>
 					</div>
 
-					<div class="tfp-field">
-						<label for="tfp-code-postal">Code postal</label>
-						<input type="text" id="tfp-code-postal" name="code_postal" inputmode="numeric" pattern="[0-9]{5}" maxlength="5" autocomplete="postal-code">
+					<div class="tfp-form-row tfp-form-row--2-1">
+						<div class="tfp-field">
+							<label for="tfp-ville-visible">Ville</label>
+							<input type="text" id="tfp-ville-visible" name="ville" autocomplete="address-level2">
+						</div>
+
+						<div class="tfp-field">
+							<label for="tfp-code-postal">Code postal</label>
+							<input type="text" id="tfp-code-postal" name="code_postal" inputmode="numeric" pattern="[0-9]{5}" maxlength="5" autocomplete="postal-code">
+						</div>
 					</div>
 
 					<div class="tfp-field">
@@ -233,14 +238,16 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 						<input type="text" id="tfp-surface" name="surface" inputmode="numeric" placeholder="Ex. 150">
 					</div>
 
-					<div class="tfp-field">
-						<label for="tfp-nom">Nom et prénom *</label>
-						<input type="text" id="tfp-nom" name="nom" autocomplete="name" required>
-					</div>
+					<div class="tfp-form-row">
+						<div class="tfp-field">
+							<label for="tfp-nom">Nom et prénom *</label>
+							<input type="text" id="tfp-nom" name="nom" autocomplete="name" required>
+						</div>
 
-					<div class="tfp-field">
-						<label for="tfp-telephone">Téléphone</label>
-						<input type="tel" id="tfp-telephone" name="telephone" autocomplete="tel">
+						<div class="tfp-field">
+							<label for="tfp-telephone">Téléphone</label>
+							<input type="tel" id="tfp-telephone" name="telephone" autocomplete="tel">
+						</div>
 					</div>
 
 					<div class="tfp-field">
@@ -478,6 +485,6 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <script type="speculationrules">
 {"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/wp-content/uploads/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/topfamillepro/*","/wp-content/themes/generatepress/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
 </script>
-<script data-wp-strategy="defer" defer id="topfamillepro-js" src="https://top-famille-pro.fr/wp-content/themes/topfamillepro/assets/dist/js/main.js?ver=1786710812"></script>
+<script data-wp-strategy="defer" defer id="topfamillepro-js" src="https://top-famille-pro.fr/wp-content/themes/topfamillepro/assets/dist/js/main.js?ver=1786920248"></script>
 </body>
 </html>
