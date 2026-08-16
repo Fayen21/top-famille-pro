@@ -21,3 +21,5 @@ docs/baseline-2026-*.json
 
 # Archives d’export : elles se refabriquent depuis export/html-brut et export/site-navigable.
 export/*.zip
+# Rapports Lighthouse complets (JSON + HTML), reproduits par tools/lighthouse.mjs.
+export/lighthouse/
