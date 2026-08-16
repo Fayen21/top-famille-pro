@@ -76,6 +76,20 @@ const SLOTS = [
     widths: [480, 760, 960],
     alt: 'Intervention de nettoyage professionnel avec équipement de protection (photo d’illustration)',
   },
+  /*
+   * Vignettes 56×56 de la bande de maillage du pilier (« Nos six prestations »), relevé G25 :
+   * la maquette y pose la photo de CHAQUE prestation en miniature (THUMB_56 — 56 px, rayon 10,
+   * cover, alt vide : décoratives, le sens est porté par l'intitulé voisin). Les sources sont
+   * les fichiers EXACTS du standalone (SERVICES[].photo, empreintes SHA-256 identiques aux
+   * assets du manifeste __bundler). Largeurs 112/168 : un rendu de 56 px jusqu'à 3× de densité —
+   * générer plus large serait du poids mort.
+   */
+  { slug: 'thumb-bureaux', src: 'unsplash-1531973576160-7125cd663d86-800.jpg', widths: [112, 168], alt: '' },
+  { slug: 'thumb-commerces', src: 'unsplash-1441986300917-64674bd600d8-800.jpg', widths: [112, 168], alt: '' },
+  { slug: 'thumb-cabinets', src: 'unsplash-1497366811353-6870744d04b2-800.jpg', widths: [112, 168], alt: '' },
+  { slug: 'thumb-coproprietes', src: 'unsplash-1524758631624-e2822e304c36-800.jpg', widths: [112, 168], alt: '' },
+  { slug: 'thumb-meubles', src: 'unsplash-1600585152220-90363fe7e115-800.jpg', widths: [112, 168], alt: '' },
+  { slug: 'thumb-ponctuel', src: 'unsplash-1581578731548-c64695cc6952-800.jpg', widths: [112, 168], alt: '' },
   {
     // Hero du pilier /nettoyage-professionnel/ — l'image EXACTE de la maquette (G24) :
     // assets/photos/intervenante-stock-bureaux.jpg est octet pour octet l'asset embarqué du

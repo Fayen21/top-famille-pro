@@ -643,7 +643,17 @@ for (const p of PAGES) {
 				provisoire,
 				surtitre,
 				icone,
-				image: img ? img.getAttribute('alt') || '' : '',
+				/*
+				 * Une image DÉCORATIVE (alt vide) est une image quand même : l'ancien relevé
+				 * `alt || ''` la confondait avec « pas d'image », et les six vignettes 56 px de la
+				 * bande de maillage du pilier disparaissaient du seed (relevé G25). Le marqueur
+				 * `(décorative)` garde l'information sans inventer d'alt ; `image_rendu` porte la
+				 * taille RENDUE, qui distingue une miniature d'un visuel de tête de carte.
+				 */
+				image: img ? img.getAttribute('alt') || '(décorative)' : '',
+				image_rendu: img
+					? Math.round(img.getBoundingClientRect().width) + '×' + Math.round(img.getBoundingClientRect().height)
+					: '',
 				route: lien ? lien.getAttribute('href') || '' : '',
 				libelle_lien: libelleLien,
 				aria: el.getAttribute('aria-label') || (lien ? lien.getAttribute('aria-label') || '' : ''),

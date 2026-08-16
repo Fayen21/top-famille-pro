@@ -384,15 +384,20 @@ function tfp_chip_list( array $items ) {
  *
  * @param string $titre Intitulé de la carte.
  * @param string $route Route interne visée par la carte (`#/service/bureaux`…).
+ * @param bool   $thumb Vrai pour une MINIATURE (56 px) : les slots `thumb-*`, construits sur les
+ *                      fichiers exacts de la maquette (SERVICES[].photo), pas les visuels de carte.
  * @return string Slug du manifeste, ou chaîne vide.
  */
-function tfp_card_image_slug( $titre, $route ) {
+function tfp_card_image_slug( $titre, $route, $thumb = false ) {
 	$manifeste = function_exists( 'tfp_image_manifest' ) ? tfp_image_manifest() : array();
 	if ( ! $manifeste ) {
 		return '';
 	}
 	$route = (string) $route;
 	if ( preg_match( '~#/service/([a-z-]+)~', $route, $m ) ) {
+		if ( $thumb ) {
+			return isset( $manifeste[ 'thumb-' . $m[1] ] ) ? 'thumb-' . $m[1] : '';
+		}
 		foreach ( array( 'service-' . $m[1], 'service-generic' ) as $slug ) {
 			if ( isset( $manifeste[ $slug ] ) ) {
 				return $slug;
@@ -555,6 +560,7 @@ function tfp_card_grid( array $grille ) {
 					'surtitre'     => '',
 					'icone'        => '',
 					'image'        => '',
+					'image_rendu'  => '',
 					'route'        => '',
 					'libelle_lien' => '',
 					'aria'         => '',
@@ -627,9 +633,20 @@ function tfp_card_grid( array $grille ) {
 			if ( $item['aria'] ) {
 				$attributs .= ' aria-label="' . esc_attr( $item['aria'] ) . '"';
 			}
+
+			/*
+			 * MINIATURE ou visuel de tête ? La maquette emploie les deux sur le même composant :
+			 * un visuel pleine largeur en tête de tuile (cartes d'articles, 16/10) et une
+			 * miniature de 56 px posée À GAUCHE de l'intitulé (bande de maillage du pilier,
+			 * THUMB_56 — relevé G25). La taille RENDUE relevée par le générateur tranche :
+			 * jusqu'à 80 px de large, c'est une miniature.
+			 */
+			$image_l    = (int) ( $item['image_rendu'] ? explode( '×', $item['image_rendu'] )[0] : 0 );
+			$est_thumb  = $item['image'] && $image_l > 0 && $image_l <= 80;
+			$classe_var = $est_thumb ? 'thumb' : $variante;
 			?>
 			<li<?php echo ! empty( $item['provisoire'] ) ? ' data-tfp-provisional="1"' : ''; ?>>
-				<<?php echo $balise; ?> class="tfp-card-tile tfp-card-tile--<?php echo esc_attr( $variante ); ?><?php echo $item['en_ligne'] ? ' tfp-card-tile--en-ligne' : ''; ?>"<?php echo $style_item; // phpcs:ignore WordPress.Security.EscapeOutput ?><?php echo $attributs; // phpcs:ignore WordPress.Security.EscapeOutput ?>>
+				<<?php echo $balise; ?> class="tfp-card-tile tfp-card-tile--<?php echo esc_attr( $classe_var ); ?><?php echo $item['en_ligne'] ? ' tfp-card-tile--en-ligne' : ''; ?>"<?php echo $style_item; // phpcs:ignore WordPress.Security.EscapeOutput ?><?php echo $attributs; // phpcs:ignore WordPress.Security.EscapeOutput ?>>
 					<?php
 					/*
 					 * Visuel de la carte. Le slug vient du manifeste d'images du thème, jamais d'un
@@ -637,8 +654,14 @@ function tfp_card_grid( array $grille ) {
 					 * noms. Une carte dont le visuel n'a pas d'équivalent au manifeste se rend sans
 					 * image plutôt qu'avec une image cassée.
 					 */
-					$slug_image = $item['image'] ? tfp_card_image_slug( $item['titre'], $item['route'] ) : '';
-					if ( $slug_image ) {
+					$slug_image = $item['image'] ? tfp_card_image_slug( $item['titre'], $item['route'], $est_thumb ) : '';
+					if ( $slug_image && $est_thumb ) {
+						// Alt vide : la maquette déclare elle-même ces miniatures décoratives
+						// (imgEl(s.photo, '')) — le sens est porté par l'intitulé voisin.
+						echo '<span class="tfp-card-tile__thumb">';
+						tfp_picture( $slug_image, array( 'sizes' => '56px', 'alt' => '' ) );
+						echo '</span>';
+					} elseif ( $slug_image ) {
 						echo '<span class="tfp-card-tile__media">';
 						tfp_picture( $slug_image, array( 'sizes' => '(max-width: 819px) 100vw, 383px', 'alt' => '' ) );
 						echo '</span>';

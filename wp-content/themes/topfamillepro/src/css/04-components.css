@@ -3893,6 +3893,32 @@ body.tfp-body a.tfp-card-tile:focus-visible {
   padding: var(--tfp-tuile-padding, 16px 18px);
 }
 
+/* Miniature posée À GAUCHE de l'intitulé — bande de maillage du pilier (relevé G25). La maquette
+   déclare THUMB_56 : 56×56, rayon 10, object-fit cover, flex-shrink 0, fond #DCE7EB, alt vide ;
+   la tuile est une rangée flex à l'écart 14, centrée verticalement. */
+/* Préfixé body.tfp-body pour passer devant la règle de base de la tuile (gap 12, flex-start),
+   posée avec cette même spécificité. */
+body.tfp-body .tfp-card-tile--thumb {
+  gap: 14px;
+  align-items: center;
+}
+
+.tfp-card-tile__thumb {
+  flex-shrink: 0;
+  display: block;
+  width: 56px;
+  height: 56px;
+}
+
+.tfp-card-tile__thumb img {
+  display: block;
+  width: 56px;
+  height: 56px;
+  border-radius: 10px;
+  object-fit: cover;
+  background: var(--color-border);
+}
+
 /* Colonne de lecture d'une bande statique, relevée sur les paragraphes du prototype (740 à 780 px
    sur les bandes narratives, contre 1 114 px laissés par le thème). Une ligne plus large tient plus
    de mots, donc moins de lignes : chaque paragraphe perdait un tiers de sa hauteur. Les grilles de
