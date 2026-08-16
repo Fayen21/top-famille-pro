@@ -53,7 +53,16 @@ $reassurance = tfp_reassurance_data();
 		</div>
 		<div class="tfp-hero__price-tag">
 			<div class="tfp-hero__price-tag-value"><?php echo esc_html( $site['price_unique_display'] ); ?><span class="tfp-hero__price-tag-unit"> HT/h</span></div>
-			<div class="tfp-hero__price-tag-note">tarif unique, régulier ou ponctuel</div>
+			<?php
+			/*
+			 * « régulier ou ponctuel » : le libellé de la maquette, réaligné en G25. L'ajout de
+			 * « tarif unique, » (choix d'une phase précédente) faisait replier la pastille sur
+			 * trois lignes au lieu de deux (66 px contre 56, relevé G22) sans nécessité : l'unicité
+			 * du tarif est déjà affirmée sur l'accueil par le bandeau (« tarif unique en région »),
+			 * la bande tarifaire et la barre haute.
+			 */
+			?>
+			<div class="tfp-hero__price-tag-note">régulier ou ponctuel</div>
 		</div>
 	</div>
 </section>

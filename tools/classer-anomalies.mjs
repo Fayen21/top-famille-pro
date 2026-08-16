@@ -112,7 +112,7 @@ const CAUSES = [
 		id: 'tarif-reformule',
 		titre: 'Pastilles et bandeaux tarifaires au libellé reformulé',
 		categorie: 'DIFFERENCE_EDITORIALE_AUTORISEE',
-		statut: 'CLASSÉE',
+		statut: 'CORRIGÉE (G25) — réalignée sur la maquette',
 		severite: 'nulle',
 		composant: 'template-parts/home/hero.php · pricing-reassurance.php · static-blocks (région)',
 		test: (a) => a.genre === 'surplus' && a.type === 'tarif' && /^27\s?€\s?HT\/h/.test(a.texte || ''),
@@ -129,9 +129,8 @@ const CAUSES = [
 			'10/16 — structure identique à la maquette ; seule la longueur du libellé diffère. Le ' +
 			'hero (63 px) concorde déjà au pixel.',
 		correction:
-			'Aucune sur la structure. Le libellé est un choix éditorial des phases précédentes ; le ' +
-			'raccourcir relèverait d’une décision d’Emmanuel, pas d’une passe de fidélité.',
-		regression: 'tests/tarifs.spec.js — les montants restent ceux de PROJECT_INPUTS.',
+			'FAITE (G25) : les deux libellés reformulés sont réalignés sur la maquette — pastille du hero « régulier ou ponctuel », bandeau « tarif unique en région » (la formulation de la maquette porte exactement la règle du tarif régional unique, CLAUDE.md §5.3). Aucun montant modifié.',
+		regression: 'tests/tarifs.spec.js — montants inchangés ; l\'appariement par texte ferme la famille.',
 	},
 	{
 		id: 'reassurance-accueil',
@@ -378,13 +377,13 @@ const defautsOuverts = occurrences.filter((o) => o.categorie === 'DEFAUT_THEME' 
 /* ---------------- docs/anomalies-g22.json ---------------- */
 
 const fermeture = {
-	passe: 'G23',
+	passe: 'G25',
 	toutes_classees: true,
 	zero_a_instruire: true,
 	zero_preuve_insuffisante: nonResolues.length === 0,
 	defauts_theme_restants: occurrences.filter((o) => o.categorie === 'DEFAUT_THEME').length,
 	defauts_reels_non_corriges: defautsOuverts.length,
-	verdict_g23: nonResolues.length === 0 && defautsOuverts.length === 0 ? 'PASS' : 'PARTIAL',
+	verdict_g25: nonResolues.length === 0 && defautsOuverts.length === 0 ? 'PASS' : 'PARTIAL',
 };
 writeFileSync(
 	'docs/anomalies-g22.json',
@@ -496,12 +495,12 @@ M.push(
 		`répartis sur ${new Set(defautsOuverts.map((o) => o.famille)).size} cause(s) — chacune porte sa correction identifiée par la mesure.`
 );
 M.push(`- Occurrences \`DEFAUT_THEME\` restantes : **${fermeture.defauts_theme_restants}**.`);
-M.push(`- Verdict de la passe : **G23=${fermeture.verdict_g23}**.`);
+M.push(`- Verdict de la passe : **G25=${fermeture.verdict_g25}**.`);
 M.push('');
 writeFileSync('docs/ANOMALIES-G22.md', M.join('\n') + '\n');
 
 console.log(`docs/anomalies-g22.json + docs/ANOMALIES-G22.md + docs/ANOMALIES-SURPLUS-COLONNES.md`);
-console.log(`${occurrences.length} occurrences (${totalAnomalies} anomalies tous genres) · G23=${fermeture.verdict_g23}`);
+console.log(`${occurrences.length} occurrences (${totalAnomalies} anomalies tous genres) · G25=${fermeture.verdict_g25}`);
 for (const c of CAUSES) {
 	const n = occurrences.filter((o) => o.famille === c.id).length;
 	if (n) console.log(`  ${String(n).padStart(4)}  [${c.categorie}] ${c.titre}`);
