@@ -3455,6 +3455,15 @@ body.tfp-body .tfp-chip-list a:focus-visible {
   align-items: center;
 }
 
+/* L'attribution de la figure nue est posée directement sur la bande turquoise (#DDF4F3) : le
+   gris tertiaire y tombe à 4,48:1 — sous WCAG AA. La maquette déclare #4A6273 / 14 px pour cette
+   figcaption : la valeur fidèle est aussi la valeur accessible (5,4:1). Relevé G24, Lighthouse
+   /tarifs/ a11y 96 → 100. */
+.tfp-testimonial--centre .tfp-testimonial__context {
+  color: var(--color-text-secondary);
+  font-size: 14px;
+}
+
 /* Rappel de contact de fin de page : carte de 740 px dans la maquette, fond #F4F7F8, rayon 14.
    Elle est plus étroite que le conteneur — c'est une relance, pas une bande. */
 .tfp-contact-nudge {
