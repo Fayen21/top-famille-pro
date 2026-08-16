@@ -1,5 +1,5 @@
 {
- "note": "Point de reprise du chantier de fidélité visuelle. Machine-readable, à relire au début de la passe suivante. Généré à la clôture de G23, le 16 août 2026.",
+ "note": "Point de reprise du chantier de fidélité visuelle. Machine-readable, à relire au début de la passe suivante. Généré à la clôture technique de G24, le 16 août 2026.",
  "branche": "hotfix-production-fidelite-claude-design",
  "pr": 9,
  "banc_de_mesure": {
@@ -743,20 +743,17 @@
   }
  ],
  "prochain_groupe_a_traiter": {
-  "id": "G24",
+  "id": "VALIDATION-CAPTURES",
   "priorite": 1,
-  "titre": "Images exactes des quatre héros, puis LCP réel, CLS global, quatorze audits Lighthouse, captures comparatives, exports",
-  "prealable": "G23 fermé : zéro DEFAUT_THEME, 50 routes non légales dans 95–105 % aux six largeurs (voir la section g23 de ce fichier).",
+  "titre": "Validation humaine des captures comparatives, puis PR et livraison",
+  "prealable": "G24 techniquement fermé (voir la section g24). Aucun chantier technique ouvert.",
   "ordre": [
-   "1. images exactes des quatre héros (docs/IMAGES-MAQUETTE-WORDPRESS.md, tools/image-map.mjs)",
-   "2. qualification LCP sur les quatre routes concernées",
-   "3. CLS global (commencer à 1440 px, le plus marqué)",
-   "4. quatorze audits Lighthouse",
-   "5. les 88 captures comparatives d'un seul tenant",
-   "6. exports (jamais commités)"
+   "1. relecture humaine des triptyques docs/captures/comparaison/ et du rapport docs/COMPARAISON-53-ROUTES.md",
+   "2. décisions éditoriales en suspens : six vignettes 56 px du pilier ; libellés tarifaires reformulés (tarif-reformule)",
+   "3. PR de la branche de session, revue, fusion",
+   "4. re-génération des paquets depuis la tête fusionnée et livraison Hostinger (hors périmètre Claude : déploiement humain)"
   ],
-  "commande_de_reprise": "bash tools/banc-local.sh && bash tools/banc-local.sh --theme-only && TFP_BASE_URL=http://localhost:8901 node tools/image-map.mjs",
-  "pieges": "TFP_BASE_URL=http://localhost:8901 obligatoire pour tout outil et npx playwright test · la suite fonctionnelle exige le banc en --development · vérifier pgrep -x chromium avant toute suite"
+  "commande_de_reprise": "bash tools/banc-local.sh && bash tools/banc-local.sh --theme-only — puis rejouer au besoin les outils de G24 (sonde-lcp, sonde-cls, lighthouse, compare-routes, compare-formulaire, export-statique)."
  },
  "groupes_suivants": [
   {
@@ -961,5 +958,46 @@
   "etat": "FERMÉ — G23=PASS",
   "compte": "263 anomalies/43 occurrences (clôture G22) → 225 anomalies/11 occurrences · zéro DEFAUT_THEME · zéro NON_RESOLUE",
   "commande_de_verification": "bash tools/banc-local.sh && bash tools/banc-local.sh --theme-only && TFP_BASE_URL=http://localhost:8901 node tools/inventaire-cartes.mjs && node tools/classer-anomalies.mjs"
+ },
+ "g24": {
+  "date": "16 août 2026",
+  "verdict": "G24=PASS_TECHNIQUE_EN_ATTENTE_VALIDATION_CAPTURES — toutes les étapes techniques sont fermées ; les captures comparatives restent à valider par Emmanuel/Audrey avant toute fusion ou déploiement.",
+  "depart": "branche claude/g23-fidelite-claude-design-7doxg4 à 041a952 (= origin, descendance de 041a952 vérifiée par merge-base --is-ancestor), arbre propre, aucune session concurrente. hotfix-production-fidelite-claude-design reste sur 8a6bb30 : le travail G23+G24 vit sur la branche de session.",
+  "phase_a_images": {
+   "methode": "31 images extraites du manifeste base64 du standalone (script __bundler/manifest, gzip+base64), empreintes SHA-256 comparées aux sources du dépôt.",
+   "quatre_heros": {
+    "pilier": "maquette 3727bc9c… (1000×667, sha256 dbc3d616…) = assets/photos/intervenante-stock-bureaux.jpg OCTET POUR OCTET → nouveau slot hero-pilier (480/760/960, AVIF+WebP+JPG : 14–66 Ko) — AVANT : service-generic (image du recrutement).",
+    "region": "maquette 2b5b290d… (1000×667, sha256 64547308…) = assets/photos/locaux-professionnels-region.jpg → nouveau slot hero-region (8–43 Ko) — AVANT : service-generic.",
+    "a-propos": "maquette 63dd6687… (800×1198, sha256 c6c51783…) = assets/photos/portrait-stock-a-propos.jpg — le slot audrey-placeholder était DÉJÀ construit dessus : image exacte déjà servie. Statut provisoire conservé : data-tfp-provisional, mention visible, alt « Photo d’illustration temporaire — portrait définitif à venir » (CLAUDE.md §5.6), verrouillé par tests/g24.spec.js.",
+    "recrutement": "maquette d02c99e5… (1000×667, sha256 600a388c…) = assets/photos/intervenante-stock-materiel.jpg — source du slot service-generic : octets exacts déjà servis, slot partagé conservé (dédupliqué, pas de variantes doublonnées)."
+   },
+   "cadrage": "512×384 en 4/3 object-fit cover à 1440 (valeurs de la maquette), 339×254 à 375 ; portrait 400×500 en 4/5. Alt du manifeste, jamais ceux de la maquette (ils présentent des photos de stock comme des personnes réelles)."
+  },
+  "phase_b_lcp_cls": {
+   "lcp": "tools/sonde-lcp.mjs — 3 navigations cache froid/contexte neuf, médiane, CDP pour découverte et priorité réseau. À 375 px le LCP est du TEXTE sur toutes les routes sondées (l'image de héros est sous le premier écran) — rien n'est forcé ; à 1440 px le LCP est l'image de héros : eager, fetchpriority=high unique par page, priorité High, découverte ≤ 68 ms dans le HTML initial, 0 preload, 0 double téléchargement. Aucune correction nécessaire.",
+   "cls_outil": "tools/sonde-cls.mjs — addInitScript avant navigation, contexte neuf par contrôle, hadRecentInput ignoré, fenêtres de session Web Vitals (1 s d'écart / 5 s de durée, MAX retenu), sources des déplacements conservées. /demande-de-devis/ : 0,0161 à 320 px — l'ordre de grandeur historique (0,0139), pas l'artefact 0,668.",
+   "cls_avant": "docs/cls-2026-08-16.json — 108/318 contrôles au-dessus de 0,010, max 0,0825 ; source dominante partout : permutation tardive de Hanken Grotesk 700 (strong de la barre haute) → reflux de la barre et de toute la page.",
+   "cls_correction": "hanken-grotesk-700-latin.woff2 préchargée + font-display:optional — l'extension de la décision déjà documentée pour les graisses 400 et 600. Aucune hauteur figée, aucun overflow:hidden, aucune exclusion, aucun délai artificiel.",
+   "cls_apres": "docs/cls-2026-08-16-apres.json — 0/318 au-dessus de 0,010, max 0,0016. Géométrie G23 intacte."
+  },
+  "phase_c_lighthouse": {
+   "matrice": "les 7 routes de recette de tools/lighthouse.mjs × mobile/bureau, banc proche production (8902 : Brotli/gzip + cache), cache froid, rapports JSON+HTML conservés (export/lighthouse/, hors Git), médiane de 3 si échec — jamais le meilleur.",
+   "resultats": "14/14 aux cibles : Performance mobile 93–98, bureau 100 partout ; Accessibilité 100 ; Bonnes pratiques 100 ; SEO 100 ; CLS ≤ 0,001 ; LCP mobile 2,27–2,87 s (lien bridé), bureau 0,52–0,60 s. docs/LIGHTHOUSE.md.",
+   "echec_corrige": "a11y 96 sur /tarifs/ (médiane de 3, mobile et bureau) : la figure nue posée en G23 sur la bande turquoise mettait l'attribution à 4,48:1. La maquette déclare #4A6273/14 px pour cette figcaption — valeur fidèle = valeur accessible (5,4:1). Corrigé à la cause, audits rejoués : 100."
+  },
+  "phase_d_captures": {
+   "88_captures": "rejouées en entier (2,5 min) : 72 balayages 6 familles × 12 largeurs (.screenshots/, hors Git) + 16 contrôles particuliers commités (docs/captures/). 88/88, toutes documentaires (aucune assertion — inchangé).",
+   "comparaisons": "106 triptyques « référence | WordPress | différence » des 53 routes × {375, 1440} régénérés d'UN SEUL TENANT (après un redémarrage de conteneur qui avait interrompu un premier passage) + 4 triptyques du formulaire étapes 1 et 2 pilotés à l'identique des deux côtés (tools/compare-formulaire.mjs, nouveau — aucune soumission serveur). docs/COMPARAISON-53-ROUTES.md consigne bloc par bloc hauteurs (98–104 %), mots, titres, puces, images.",
+   "ecart_honnete": "le pilier montre 10 images côté maquette contre 4 côté thème : six vignettes décoratives de 56 px (photos de stock) ne sont pas reproduites — écart antérieur à G24, visible dans le rapport, à trancher avec Emmanuel s'il doit l'être."
+  },
+  "phase_e_non_regression": {
+   "baseline": "docs/baseline-2026-08-16-apres-G24.json — 318/318, 300 dans 95–105 %, hors tolérance = les 3 pages légales × 6 largeurs uniquement, et les 318 ratios STRICTEMENT identiques à la baseline G23 (zéro rapproché, zéro éloigné). Sécurité : 0 débordement, 0 image cassée, 0 CTA hors écran, 0 erreur console/réseau, 0 écart de bandes.",
+   "classement": "inventaire + classificateur rejoués : 225 anomalies · 11 occurrences · 0 DEFAUT_THEME · 0 NON_RESOLUE — identique à la clôture G23, fichiers byte-stables.",
+   "tests": "1002 recensés = 914 assertions exécutées et VERTES (dont 16 G23 + 5 G24, axe-core, SEO/canonicals, crawl, légal, tarifs, JSON-LD, formulaire) + 88 captures exécutées, toutes documentaires, 0 avec assertion. Lint PHP 81 fichiers. npm run build byte-stable. verifier-installation PASS. audit-jsonld conforme. Recherches anciens tarifs et placeholders : rien.",
+   "exports": "export-statique reconstruit et vérifié (0 localhost, 0 image cassée, 0 requête externe, 53/53 hors ligne) ; 4 paquets ZIP construits sous export/ HORS Git, testés et inventoriés (61/256/224/22 fichiers), empreintes dans export/SHA256SUMS-G24.txt. Les 8 ZIP historiques de release/ intacts."
+  },
+  "dependance_ajoutee": "lighthouse (devDependency) — exigé par les quatorze audits de la passe, aucun équivalent présent. Justifié au rapport (CLAUDE.md §6).",
+  "confirmations": "aucune session concurrente · aucun ZIP ajouté à Git · aucun ZIP historique modifié · rien fusionné dans main · rien déployé · aucun DNS modifié · aucun historique réécrit, aucun force-push",
+  "prochaine_action": "VALIDATION HUMAINE : faire relire à Emmanuel/Audrey docs/captures/comparaison/ (106 + 4 triptyques) et docs/COMPARAISON-53-ROUTES.md. Après validation seulement : PR de la branche claude/g23-fidelite-claude-design-7doxg4, puis déploiement Hostinger avec les paquets reconstruits (à re-générer depuis la tête fusionnée)."
  }
 }
