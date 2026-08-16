@@ -85,6 +85,12 @@ function tfp_preload_fonts() {
 		// de 25 px au remplacement. C'était l'origine du CLS de 0,25 mesuré en profil bureau —
 		// le décalage était relevé sur le hero, mais il venait de l'en-tête au-dessus.
 		'hanken-grotesk-600-latin.woff2',
+		// Gras : les `strong` de la barre haute (« 27 € », « 5,0/5 »), présents au premier écran
+		// des 53 routes. Dernière graisse du premier écran encore en swap tardif : sa permutation
+		// refluait la barre haute et décalait toute la page sous elle (sonde CLS G24, fenêtres de
+		// session — sources .tfp-topbar__rating / .tfp-topbar__offer). Préchargée + optional,
+		// comme les deux autres.
+		'hanken-grotesk-700-latin.woff2',
 	);
 	foreach ( $polices as $fichier ) {
 		printf(
