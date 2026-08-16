@@ -215,3 +215,38 @@ test.describe( 'G23 · tarif-region-triple — la bande tarifaire de la région 
 		await expect( bande.locator( '.tfp-testimonial[data-tfp-provisional="1"]' ) ).toHaveCount( 1 );
 	} );
 } );
+
+test.describe( 'G23 · /prestations/meubles/ à 1024 px — les règles déclarées du gabarit prestation', () => {
+	// La chute à 94 % venait de règles responsives déclarées par la maquette et absentes du
+	// thème, toutes inactives sous ~850 px : conteneur de lecture 820 px de la bande « Réponse
+	// directe », corps clamp(16px, 1.6vw, 20px), maillage 680 px, écart de grille
+	// clamp(22px, 2.6vw, 34px), max-width 620/560 des H2, H1 en pente 4vw, lède 600 px.
+	test.use( { viewport: { width: 1024, height: 900 } } );
+
+	test( 'la bande Réponse directe vit dans le conteneur de lecture de 820 px', async ( { page } ) => {
+		await page.goto( '/prestations/meubles/' );
+		const bande = page.locator( '.tfp-presta-reponse' );
+		await expect( bande ).toBeVisible();
+		const largeur = await bande.evaluate( ( el ) => el.getBoundingClientRect().width );
+		expect( largeur ).toBeLessThanOrEqual( 820 );
+		await expect( bande.locator( '.tfp-maillage' ) ).toHaveCSS( 'max-width', '680px' );
+		await expect( bande.locator( '.tfp-maillage' ) ).toHaveCSS( 'font-size', '15.5px' );
+	} );
+
+	test( 'typographies et écarts déclarés : corps 1.6vw plafond 20, grille 2.6vw, H1 4vw', async ( { page } ) => {
+		await page.goto( '/prestations/meubles/' );
+		// À 1024 px : 1.6vw = 16.384px, 2.6vw = 26.624px, 4vw = 40.96px.
+		await expect( page.locator( '.tfp-direct-answer__text' ) ).toHaveCSS( 'font-size', '16.384px' );
+		await expect( page.locator( '.tfp-detail-grid' ).first() ).toHaveCSS( 'gap', '26.624px' );
+		await expect( page.locator( '.tfp-hero__content h1' ) ).toHaveCSS( 'font-size', '40.96px' );
+		// La variante orga garde son écart déclaré de 18 px.
+		await expect( page.locator( '.tfp-detail-grid--orga' ) ).toHaveCSS( 'gap', '18px' );
+	} );
+
+	test( 'zone et article gardent leurs valeurs (non-régression du scope)', async ( { page } ) => {
+		// Le corps de la réponse directe des pages de zone reste clamp(17px, 1.6vw, 19px) :
+		// à 1024 px, 1.6vw = 16.384 < 17 → 17px.
+		await page.goto( '/zones-intervention/cote-dor/dijon/' );
+		await expect( page.locator( '.tfp-direct-answer__text' ).first() ).toHaveCSS( 'font-size', '17px' );
+	} );
+} );

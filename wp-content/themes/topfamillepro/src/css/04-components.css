@@ -2096,13 +2096,10 @@ body.tfp-body .tfp-zone-chapter h2 {
 
 /* Hero du gabarit prestation (relevé G23) : la maquette déclare un H1 clamp(29px, 4vw, 48px) —
    même plafond que le thème, pente plus forte : 41 px contre 35 à 1024 px, d'où une ligne de
-   titre en moins — et un lède plafonné à 600 px, pas 760. Scopé au type prestation. */
+   titre en moins aux largeurs moyennes. Scopé au type prestation ; l'accroche garde le plafond
+   commun de .tfp-hero__lede. */
 body.tfp-type-prestation .tfp-hero__content h1 {
   font-size: clamp(29px, 4vw, 48px);
-}
-
-body.tfp-type-prestation .tfp-hero__content .tfp-section__lede {
-  max-width: 600px;
 }
 
 /* ------------------------------------------------------------------
