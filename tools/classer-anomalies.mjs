@@ -38,7 +38,7 @@ const CAUSES = [
 		id: 'badge-reassurance',
 		titre: 'Badge Google rendu en pastille dans les bandes de réassurance',
 		categorie: 'DEFAUT_THEME',
-		statut: 'CONFIRMÉ — correction identifiée, non écrite',
+		statut: 'CORRIGÉE (G23)',
 		severite: 'mineure',
 		composant: '.tfp-google-badge--inline (includes/testimonials.php)',
 		test: (a) => (a.genre === 'surplus' || a.genre === 'colonnes') && /★{3,}|5,0\/5/.test(a.texte || '') && !/27\s?€/.test(a.texte || '') && !/«/.test(a.texte || ''),
@@ -54,10 +54,8 @@ const CAUSES = [
 			'Sonde G22 sur /nos-prestations à 1440 px : maquette A 165×21 rayon 0 fond transparent ; ' +
 			'WordPress chip 204×38 rayon 100 fond blanc. Même texte, chrome différent.',
 		correction:
-			'À écrire : variante nue du badge pour les bandes de réassurance des pages intérieures — ' +
-			'le hero de l’accueil garde sa pastille, conforme à sa maquette. Aucun changement de ' +
-			'données : la note reste celle des réglages (CLAUDE.md §5.5).',
-		regression: 'tests/provisoire.spec.js et tests/fidelite.spec.js verrouillent la présence et le balisage du badge.',
+			'FAITE (G23) : variante nue du badge (tfp_google_rating_badge(\'nu\')) sur les sept eyebrows que la maquette rend sans pastille ; le pilier garde sa pastille, posée seule — son badge région, absent de la maquette, partageait la rangée et faisait compter deux colonnes. Le hero de l\'accueil, les tarifs, les prestations et les zones gardent leur pastille, conforme. Aucun changement de données : la note reste celle des réglages (CLAUDE.md §5.5).',
+		regression: 'tests/g23.spec.js — chrome nu mesuré sur trois routes, pastille du hero et pilier verrouillés.',
 	},
 	{
 		id: 'badge-contact-tarif',
@@ -83,7 +81,7 @@ const CAUSES = [
 		id: 'temoignage-tarifs-nu',
 		titre: 'Témoignage de la page tarifs : citation nue dans la maquette, carte dans le thème',
 		categorie: 'DEFAUT_THEME',
-		statut: 'CONFIRMÉ — correction identifiée, non écrite',
+		statut: 'CORRIGÉE (G23)',
 		severite: 'mineure',
 		composant: 'page-tarifs.php → tfp_testimonial_card()',
 		test: (a) => a.genre === 'surplus' && a.type === 'temoignage' && /«/.test(a.texte || ''),
@@ -93,9 +91,8 @@ const CAUSES = [
 		wordpress: 'Le thème la rend dans la carte témoignage commune : 820×258, fond blanc, rayon 18.',
 		preuve: 'Sonde G22 : la remontée d’ancêtres depuis le blockquote de la maquette ne trouve aucune carte.',
 		correction:
-			'À écrire : variante nue du témoignage pour cette instance, en CONSERVANT le marquage ' +
-			'provisoire (`data-tfp-provisional` + mention visible, CLAUDE.md §5.5).',
-		regression: 'tests/provisoire.spec.js — marquage exigé quelle que soit la forme.',
+			'FAITE (G23) : la citation est rendue par le motif .tfp-testimonial--plain éprouvé sur les pages prestation, avec la variante centrée relevée sur cette bande ; le marquage provisoire (attribut + mention visible) est conservé.',
+		regression: 'tests/g23.spec.js — figure nue, centrée, marquage provisoire exigé.',
 	},
 	{
 		id: 'cta-contextuel',
@@ -157,7 +154,7 @@ const CAUSES = [
 		id: 'prestations-accueil-segmentees',
 		titre: 'Les quatre autres prestations de l’accueil : carte segmentée claire contre cartes marine',
 		categorie: 'DEFAUT_THEME',
-		statut: 'CONFIRMÉ — correction identifiée, non écrite',
+		statut: 'CORRIGÉE (G23)',
 		severite: 'majeure',
 		composant: 'template-parts/home/services.php',
 		test: (a) =>
@@ -172,9 +169,8 @@ const CAUSES = [
 		wordpress: 'Quatre cartes MARINE détachées (294×115, fond #174A81), écart franc entre elles.',
 		preuve: 'Sonde G22 accueil 1440 px : styles déclarés relevés sur la maquette, rendu mesuré des deux côtés.',
 		correction:
-			'À écrire : rendre la bande en carte segmentée claire (grille gap 1px, cellules blanches), ' +
-			'la géométrie ci-dessus étant déjà relevée.',
-		regression: 'tests/fidelite.spec.js — l’ordre des 13 blocs de l’accueil est verrouillé.',
+			'FAITE (G23) : la variante marine des tuiles, posée sur body.tfp-body a.tfp-service-tile, écrasait par spécificité la carte segmentée claire que le thème possédait déjà (.tfp-grid--divided). Elle est scopée à son vrai contexte (.tfp-service-tiles, pages de ville) ; la description de cellule reprend les 13,5 px déclarés.',
+		regression: 'tests/g23.spec.js — carte segmentée claire sur l’accueil, tuiles marine des villes en non-régression.',
 	},
 	{
 		id: 'cookies-encart',
@@ -198,7 +194,7 @@ const CAUSES = [
 		id: 'depts-accueil-en-ligne',
 		titre: 'Liens de département de l’accueil rendus sur deux lignes',
 		categorie: 'DEFAUT_THEME',
-		statut: 'CONFIRMÉ — correction identifiée, non écrite',
+		statut: 'CORRIGÉE (G23)',
 		severite: 'mineure',
 		composant: 'template-parts/home/coverage.php',
 		test: (a) => a.genre === 'surplus' && a.type === 'carte-titre' && /^[A-ZÀ-Ý].{2,28}\s\d{2}$/.test((a.texte || '').trim()),
@@ -210,28 +206,30 @@ const CAUSES = [
 			's’étire à 75 px — au-dessus du seuil qui sépare une commande d’une carte, d’où deux ' +
 			'cartes comptées en surplus.',
 		preuve: 'Sonde G22 accueil 1440 px : maquette 187×49 une ligne ; WordPress 177×75 deux lignes.',
-		correction: 'À écrire : même motif que le lien de ville (rangée flex, déjà corrigé sur les pages de zones).',
-		regression: 'tests/cartes.spec.js — le motif une-ligne est éprouvé sur les liens de ville.',
+		correction:
+			'FAITE (G23) : rangée de couverture aux bases déclarées (360/320, sans centrage vertical) — la colonne de liens retrouve ses 582 px — et corps de lien à 14,5 px déclarés : chaque lien tient sur sa ligne de 49 px.',
+		regression: 'tests/g23.spec.js — huit liens d’une ligne, corps 14,5 px.',
 	},
 	{
 		id: 'couverture-accueil-colonnes',
 		titre: 'Carte de couverture régionale seule sur sa rangée',
 		categorie: 'DEFAUT_THEME',
-		statut: 'CONFIRMÉ — correction identifiée, non écrite',
+		statut: 'CORRIGÉE (G23)',
 		severite: 'majeure',
 		composant: 'template-parts/home/coverage.php',
 		test: (a) => a.genre === 'colonnes' && a.type === 'carte-image' && /21 25 39 58/.test(a.texte || ''),
 		maquette: 'La carte-carte des huit départements (542×394) partage sa rangée avec la colonne de liens.',
 		wordpress: 'Elle occupe sa rangée seule (562×317), les liens empilés dessous.',
 		preuve: 'Vidage accueil 1440 px : colonnes 2 → 1, géométrie relevée des deux côtés.',
-		correction: 'À écrire : rangée à deux colonnes sur la bande de couverture, avec les liens en ligne (cause voisine).',
-		regression: '—',
+		correction:
+			'FAITE (G23) : rangée .tfp-couverture sans align-items (étirement), bases déclarées 360/320, carte min-height 280 : la carte mesure 542×394 sur 2 colonnes, au pixel de la maquette.',
+		regression: 'tests/g23.spec.js — les deux colonnes partagent leur ordonnée.',
 	},
 	{
 		id: 'tarif-prestation-alignement',
 		titre: 'Bande tarifaire des pages prestation : l’alignement centré décale les ordonnées',
 		categorie: 'DEFAUT_THEME',
-		statut: 'CONFIRMÉ — correction identifiée, non écrite',
+		statut: 'CORRIGÉE (G23)',
 		severite: 'mineure',
 		composant: 'single-prestation.php — bande « Exemple · 12 h/mois »',
 		test: (a, route) => a.genre === 'colonnes' && a.type === 'tarif' && /^#\/service\//.test(route),
@@ -243,14 +241,15 @@ const CAUSES = [
 			'Même rangée alignée en haut : les deux boîtes partagent leur ordonnée et comptent 2 ' +
 			'colonnes ; la carte mesure 562×223 (rembourrage et typographie non relevés).',
 		preuve: 'Sonde G22 /service/commerces 1440 px : styles déclarés maquette + boîtes mesurées des deux côtés.',
-		correction: 'À écrire : `align-items: center` + géométrie de carte relevée (28 px, rayon 18, base 300).',
-		regression: '—',
+		correction:
+			'FAITE (G23) : rangée dédiée .tfp-presta-tarif — enfants directs, align-items center, écart clamp(28px, 4vw, 48px), carte au rembourrage 28 / rayon 18 / montant 38 px en bleu principal, témoignage nu en base 360. La variante zone de la carte reste intacte (G09).',
+		regression: 'tests/g23.spec.js — géométrie de carte déclarée et ordonnées décalées.',
 	},
 	{
 		id: 'tarif-region-triple',
 		titre: 'Bande tarifaire de la page région : trois colonnes de zone, pas une grille de deux cartes',
 		categorie: 'DEFAUT_THEME',
-		statut: 'CONFIRMÉ — correction identifiée, non écrite',
+		statut: 'CORRIGÉE (G23)',
 		severite: 'majeure',
 		composant: 'page-bourgogne-franche-comte.php — bande tarifaire',
 		test: (a, route) => a.genre === 'colonnes' && a.type === 'tarif' && route === '#/bourgogne-franche-comte',
@@ -259,8 +258,9 @@ const CAUSES = [
 			'(flex 1 1 250px, min 260 — relevé G22), témoignage — trois colonnes de 394/344/374.',
 		wordpress: 'Deux cartes de 573 px sur une grille statique : l’exemple et le témoignage, le texte au-dessus.',
 		preuve: 'Vidage région 1440 px + style déclaré `flex: 1 1 250px; min-width: min(100%, 260px)` relevé sur la carte maquette.',
-		correction: 'À écrire : rendre cette bande avec le composant `.tfp-zone-tarif` (G09), déjà exact sur 26 routes.',
-		regression: 'La bande de zone est verrouillée par la baseline (G09).',
+		correction:
+			'FAITE (G23) : la bande est rendue par le composant .tfp-zone-tarif (exact sur les 26 pages de zone depuis G09), inséré entre les sections 7 et 9 du seed — qui reste l\'unique source du contenu. Trois colonnes de 394/344/374 à 1440 px, témoignage provisoire marqué.',
+		regression: 'tests/g23.spec.js — trois colonnes d’ordonnée partagée aux largeurs relevées.',
 	},
 	{
 		id: 'facteurs-tarifs',
@@ -378,11 +378,13 @@ const defautsOuverts = occurrences.filter((o) => o.categorie === 'DEFAUT_THEME' 
 /* ---------------- docs/anomalies-g22.json ---------------- */
 
 const fermeture = {
+	passe: 'G23',
 	toutes_classees: true,
 	zero_a_instruire: true,
 	zero_preuve_insuffisante: nonResolues.length === 0,
+	defauts_theme_restants: occurrences.filter((o) => o.categorie === 'DEFAUT_THEME').length,
 	defauts_reels_non_corriges: defautsOuverts.length,
-	verdict_g22: nonResolues.length === 0 && defautsOuverts.length === 0 ? 'PASS' : 'PARTIAL',
+	verdict_g23: nonResolues.length === 0 && defautsOuverts.length === 0 ? 'PASS' : 'PARTIAL',
 };
 writeFileSync(
 	'docs/anomalies-g22.json',
@@ -467,7 +469,7 @@ writeFileSync('docs/ANOMALIES-SURPLUS-COLONNES.md', L.join('\n') + '\n');
 /* ---------------- docs/ANOMALIES-G22.md ---------------- */
 
 const M = [];
-M.push('# G22 — classement des anomalies surplus/colonnes : état de fermeture');
+M.push('# G22→G23 — classement des anomalies surplus/colonnes : état de fermeture');
 M.push('');
 M.push('> Fichier **généré** par `node tools/classer-anomalies.mjs`. Le détail exhaustif — chaque');
 M.push('> occurrence avec sa preuve, sa correction et son statut — est dans `docs/anomalies-g22.json`');
@@ -478,7 +480,8 @@ M.push('');
 M.push(`| | anomalies (tous genres) | occurrences surplus/colonnes | causes |`);
 M.push('|---|---:|---:|---:|');
 M.push(`| inventaire de départ (1326f5f) | ${AVANT.anomalies} | ${AVANT.occurrences} | ${AVANT.causes} |`);
-M.push(`| après les corrections G22 | ${totalAnomalies} | ${occurrences.length} | ${new Set(occurrences.map((o) => o.famille)).size} |`);
+M.push('| clôture G22 (8a6bb30 — archivée dans docs/anomalies-g22-cloture.json) | 263 | 43 | 12 |');
+M.push(`| après les corrections G23 | ${totalAnomalies} | ${occurrences.length} | ${new Set(occurrences.map((o) => o.famille)).size} |`);
 M.push('');
 M.push('## Répartition par catégorie');
 M.push('');
@@ -492,12 +495,13 @@ M.push(
 	`- Défauts réels confirmés NON corrigés : **${defautsOuverts.length}** occurrence(s), ` +
 		`répartis sur ${new Set(defautsOuverts.map((o) => o.famille)).size} cause(s) — chacune porte sa correction identifiée par la mesure.`
 );
-M.push(`- Verdict de la passe : **G22=${fermeture.verdict_g22}**.`);
+M.push(`- Occurrences \`DEFAUT_THEME\` restantes : **${fermeture.defauts_theme_restants}**.`);
+M.push(`- Verdict de la passe : **G23=${fermeture.verdict_g23}**.`);
 M.push('');
 writeFileSync('docs/ANOMALIES-G22.md', M.join('\n') + '\n');
 
 console.log(`docs/anomalies-g22.json + docs/ANOMALIES-G22.md + docs/ANOMALIES-SURPLUS-COLONNES.md`);
-console.log(`${occurrences.length} occurrences (${totalAnomalies} anomalies tous genres) · G22=${fermeture.verdict_g22}`);
+console.log(`${occurrences.length} occurrences (${totalAnomalies} anomalies tous genres) · G23=${fermeture.verdict_g23}`);
 for (const c of CAUSES) {
 	const n = occurrences.filter((o) => o.famille === c.id).length;
 	if (n) console.log(`  ${String(n).padStart(4)}  [${c.categorie}] ${c.titre}`);

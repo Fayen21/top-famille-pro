@@ -2,7 +2,7 @@
  "#/": {
   "375": {
    "cartesRef": 29,
-   "cartesWp": 32,
+   "cartesWp": 29,
    "anomalies": [
     {
      "genre": "type",
@@ -38,13 +38,6 @@
      "texte": "★★★★★5,0/5 sur Google Saint-ApollinaireEntreprise régionale basée en B"
     },
     {
-     "genre": "type",
-     "type": "carte-titre-texte",
-     "recu": "carte-sombre",
-     "bande": 5,
-     "texte": "Cabinets & professions libéralesSanté, droit, conseil, salle"
-    },
-    {
      "genre": "texte",
      "type": "tarif",
      "bande": 9,
@@ -77,30 +70,12 @@
      "type": "carte-titre-texte",
      "bande": 3,
      "texte": "Saint-Apollinaire Entreprise régionale basée en BFC Interlocutrice ide"
-    },
-    {
-     "genre": "surplus",
-     "type": "carte-sombre",
-     "bande": 5,
-     "texte": "Copropriétés & parties communes Halls, cages d'escalier, locaux commun"
-    },
-    {
-     "genre": "surplus",
-     "type": "carte-sombre",
-     "bande": 5,
-     "texte": "Locations meublées & hébergements Remise en état entre deux occupants"
-    },
-    {
-     "genre": "surplus",
-     "type": "carte-sombre",
-     "bande": 5,
-     "texte": "Ponctuel & remise en état Après travaux, grand nettoyage, fin de bail"
     }
    ]
   },
   "1440": {
    "cartesRef": 27,
-   "cartesWp": 32,
+   "cartesWp": 27,
    "anomalies": [
     {
      "genre": "type",
@@ -136,27 +111,12 @@
      "texte": "★★★★★5,0/5 sur Google Saint-ApollinaireEntreprise régionale basée en B"
     },
     {
-     "genre": "type",
-     "type": "carte-titre-texte",
-     "recu": "carte-sombre",
-     "bande": 5,
-     "texte": "Cabinets & professions libéralesSanté, droit, conseil, salle"
-    },
-    {
      "genre": "texte",
      "type": "tarif",
      "bande": 9,
      "texte": "Tarif horaire de base 27 € HT/h Régulier ou ponctuel · devis gratuit s",
      "recu": "Tarif unique 27 € HT/h Régulier ou ponctuel · devis gratuit sous 24 h.",
      "proximite": 78
-    },
-    {
-     "genre": "colonnes",
-     "type": "carte-image",
-     "bande": 10,
-     "texte": "21 25 39 58 70 71 89 90",
-     "attendu": 2,
-     "recu": 1
     },
     {
      "genre": "texte",
@@ -183,36 +143,6 @@
      "type": "carte-titre-texte",
      "bande": 3,
      "texte": "Saint-Apollinaire Entreprise régionale basée en BFC Interlocutrice ide"
-    },
-    {
-     "genre": "surplus",
-     "type": "carte-sombre",
-     "bande": 5,
-     "texte": "Copropriétés & parties communes Halls, cages d'escalier, locaux commun"
-    },
-    {
-     "genre": "surplus",
-     "type": "carte-sombre",
-     "bande": 5,
-     "texte": "Locations meublées & hébergements Remise en état entre deux occupants"
-    },
-    {
-     "genre": "surplus",
-     "type": "carte-sombre",
-     "bande": 5,
-     "texte": "Ponctuel & remise en état Après travaux, grand nettoyage, fin de bail"
-    },
-    {
-     "genre": "surplus",
-     "type": "carte-titre",
-     "bande": 10,
-     "texte": "Yonne 89"
-    },
-    {
-     "genre": "surplus",
-     "type": "carte-titre",
-     "bande": 10,
-     "texte": "Territoire de Belfort 90"
     }
    ]
   }
@@ -289,14 +219,6 @@
    "cartesWp": 49,
    "anomalies": [
     {
-     "genre": "colonnes",
-     "type": "chip",
-     "bande": 2,
-     "texte": "★★★★★5,0/5sur Google",
-     "attendu": 1,
-     "recu": 2
-    },
-    {
      "genre": "absente",
      "type": "tarif",
      "bande": 3,
@@ -356,27 +278,13 @@
  "#/nos-prestations": {
   "375": {
    "cartesRef": 12,
-   "cartesWp": 13,
-   "anomalies": [
-    {
-     "genre": "surplus",
-     "type": "chip",
-     "bande": 2,
-     "texte": "★★★★★5,0/5 sur Google"
-    }
-   ]
+   "cartesWp": 12,
+   "anomalies": []
   },
   "1440": {
    "cartesRef": 12,
-   "cartesWp": 13,
-   "anomalies": [
-    {
-     "genre": "surplus",
-     "type": "chip",
-     "bande": 2,
-     "texte": "★★★★★5,0/5 sur Google"
-    }
-   ]
+   "cartesWp": 12,
+   "anomalies": []
   }
  },
  "#/service/bureaux": {
@@ -400,16 +308,7 @@
   "1440": {
    "cartesRef": 20,
    "cartesWp": 20,
-   "anomalies": [
-    {
-     "genre": "colonnes",
-     "type": "tarif",
-     "bande": 10,
-     "texte": "Exemple · 12 h/mois333 € HT/mois12 h × 27 € + 9 € de gestion",
-     "attendu": 1,
-     "recu": 2
-    }
-   ]
+   "anomalies": []
   }
  },
  "#/service/cabinets": {
@@ -436,14 +335,6 @@
      "recu": "micro-carte",
      "bande": 4,
      "texte": "Cette prestation est un entretien courant de locaux professi"
-    },
-    {
-     "genre": "colonnes",
-     "type": "tarif",
-     "bande": 11,
-     "texte": "Exemple · 12 h/mois333 € HT/mois12 h × 27 € + 9 € de gestion",
-     "attendu": 1,
-     "recu": 2
     }
    ]
   }
@@ -457,16 +348,7 @@
   "1440": {
    "cartesRef": 21,
    "cartesWp": 21,
-   "anomalies": [
-    {
-     "genre": "colonnes",
-     "type": "tarif",
-     "bande": 10,
-     "texte": "Exemple · 12 h/mois333 € HT/mois12 h × 27 € + 9 € de gestion",
-     "attendu": 1,
-     "recu": 2
-    }
-   ]
+   "anomalies": []
   }
  },
  "#/service/meubles": {
@@ -488,14 +370,6 @@
    "cartesWp": 21,
    "anomalies": [
     {
-     "genre": "colonnes",
-     "type": "tarif",
-     "bande": 10,
-     "texte": "Exemple · 12 h/mois333 € HT/mois12 h × 27 € + 9 € de gestion",
-     "attendu": 1,
-     "recu": 2
-    },
-    {
      "genre": "type",
      "type": "carte-titre",
      "recu": "carte-titre-texte",
@@ -514,52 +388,31 @@
   "1440": {
    "cartesRef": 21,
    "cartesWp": 21,
-   "anomalies": [
-    {
-     "genre": "colonnes",
-     "type": "tarif",
-     "bande": 10,
-     "texte": "Exemple · 12 h/mois333 € HT/mois12 h × 27 € + 9 € de gestion",
-     "attendu": 1,
-     "recu": 2
-    }
-   ]
+   "anomalies": []
   }
  },
  "#/nos-tarifs": {
   "375": {
    "cartesRef": 22,
-   "cartesWp": 22,
+   "cartesWp": 21,
    "anomalies": [
     {
      "genre": "absente",
      "type": "tarif",
      "bande": 6,
      "texte": "Tarif horaireRégulier ou ponctuel27 € HT/h Frais de gestionPlanning, a"
-    },
-    {
-     "genre": "surplus",
-     "type": "temoignage",
-     "bande": 11,
-     "texte": "★★★★★« Un devis clair, sans surprise, et le même tarif horaire annoncé"
     }
    ]
   },
   "1440": {
    "cartesRef": 22,
-   "cartesWp": 22,
+   "cartesWp": 21,
    "anomalies": [
     {
      "genre": "absente",
      "type": "tarif",
      "bande": 6,
      "texte": "Tarif horaireRégulier ou ponctuel27 € HT/h Frais de gestionPlanning, a"
-    },
-    {
-     "genre": "surplus",
-     "type": "temoignage",
-     "bande": 11,
-     "texte": "★★★★★« Un devis clair, sans surprise, et le même tarif horaire annoncé"
     }
    ]
   }
@@ -567,7 +420,7 @@
  "#/zones-intervention": {
   "375": {
    "cartesRef": 35,
-   "cartesWp": 31,
+   "cartesWp": 30,
    "anomalies": [
     {
      "genre": "type",
@@ -640,18 +493,12 @@
      "type": "carte-titre",
      "bande": 13,
      "texte": "☎ Échanger avec Audrey · 06 36 17 63 39"
-    },
-    {
-     "genre": "surplus",
-     "type": "chip",
-     "bande": 2,
-     "texte": "★★★★★5,0/5 sur Google"
     }
    ]
   },
   "1440": {
    "cartesRef": 52,
-   "cartesWp": 49,
+   "cartesWp": 48,
    "anomalies": [
     {
      "genre": "type",
@@ -718,12 +565,6 @@
      "type": "carte-titre",
      "bande": 13,
      "texte": "Vérifier notre intervention dans ma commune"
-    },
-    {
-     "genre": "surplus",
-     "type": "chip",
-     "bande": 2,
-     "texte": "★★★★★5,0/5 sur Google"
     }
    ]
   }
@@ -731,7 +572,7 @@
  "#/bourgogne-franche-comte": {
   "375": {
    "cartesRef": 47,
-   "cartesWp": 46,
+   "cartesWp": 45,
    "anomalies": [
     {
      "genre": "absente",
@@ -822,31 +663,18 @@
      "recu": "carte-titre",
      "bande": 5,
      "texte": "Locations meublées et logements de courte durée"
-    },
-    {
-     "genre": "type",
-     "type": "temoignage",
-     "recu": "carte-titre-texte",
-     "bande": 9,
-     "texte": "★★★★★« Nous avions besoin d'un prestataire capable de suivre"
     },
     {
      "genre": "absente",
      "type": "carte-titre",
      "bande": 12,
      "texte": "☎ Échanger avec Audrey · 06 36 17 63 39"
-    },
-    {
-     "genre": "surplus",
-     "type": "chip",
-     "bande": 2,
-     "texte": "★★★★★5,0/5 sur Google"
     }
    ]
   },
   "1440": {
    "cartesRef": 50,
-   "cartesWp": 50,
+   "cartesWp": 49,
    "anomalies": [
     {
      "genre": "absente",
@@ -937,27 +765,6 @@
      "recu": "carte-titre",
      "bande": 5,
      "texte": "Locations meublées et logements de courte durée"
-    },
-    {
-     "genre": "colonnes",
-     "type": "tarif",
-     "bande": 9,
-     "texte": "Exemple · bureaux réguliers, 12 h/mois333 € HT/mois12 h × 27",
-     "attendu": 3,
-     "recu": 2
-    },
-    {
-     "genre": "type",
-     "type": "temoignage",
-     "recu": "carte-titre-texte",
-     "bande": 9,
-     "texte": "★★★★★« Nous avions besoin d'un prestataire capable de suivre"
-    },
-    {
-     "genre": "surplus",
-     "type": "chip",
-     "bande": 2,
-     "texte": "★★★★★5,0/5 sur Google"
     }
    ]
   }
@@ -1950,53 +1757,27 @@
  "#/pourquoi-top-famille-pro": {
   "375": {
    "cartesRef": 12,
-   "cartesWp": 13,
+   "cartesWp": 12,
    "anomalies": [
-    {
-     "genre": "type",
-     "type": "carte-titre",
-     "recu": "chip",
-     "bande": 4,
-     "texte": "5,0/5sur Google"
-    },
     {
      "genre": "type",
      "type": "etape",
      "recu": "carte-titre",
      "bande": 4,
      "texte": "8départements"
-    },
-    {
-     "genre": "surplus",
-     "type": "carte-titre",
-     "bande": 4,
-     "texte": "5,0/5 sur Google"
     }
    ]
   },
   "1440": {
    "cartesRef": 12,
-   "cartesWp": 13,
+   "cartesWp": 12,
    "anomalies": [
-    {
-     "genre": "type",
-     "type": "carte-titre",
-     "recu": "chip",
-     "bande": 4,
-     "texte": "5,0/5sur Google"
-    },
     {
      "genre": "type",
      "type": "etape",
      "recu": "carte-titre",
      "bande": 4,
      "texte": "8départements"
-    },
-    {
-     "genre": "surplus",
-     "type": "carte-titre",
-     "bande": 4,
-     "texte": "5,0/5 sur Google"
     }
    ]
   }
@@ -2004,27 +1785,13 @@
  "#/notre-fonctionnement": {
   "375": {
    "cartesRef": 9,
-   "cartesWp": 10,
-   "anomalies": [
-    {
-     "genre": "surplus",
-     "type": "chip",
-     "bande": 2,
-     "texte": "★★★★★5,0/5 sur Google"
-    }
-   ]
+   "cartesWp": 9,
+   "anomalies": []
   },
   "1440": {
    "cartesRef": 9,
-   "cartesWp": 10,
-   "anomalies": [
-    {
-     "genre": "surplus",
-     "type": "chip",
-     "bande": 2,
-     "texte": "★★★★★5,0/5 sur Google"
-    }
-   ]
+   "cartesWp": 9,
+   "anomalies": []
   }
  },
  "#/avis-clients": {
@@ -2182,33 +1949,19 @@
  "#/a-propos": {
   "375": {
    "cartesRef": 0,
-   "cartesWp": 1,
-   "anomalies": [
-    {
-     "genre": "surplus",
-     "type": "chip",
-     "bande": 2,
-     "texte": "★★★★★5,0/5 sur Google"
-    }
-   ]
+   "cartesWp": 0,
+   "anomalies": []
   },
   "1440": {
    "cartesRef": 0,
-   "cartesWp": 1,
-   "anomalies": [
-    {
-     "genre": "surplus",
-     "type": "chip",
-     "bande": 2,
-     "texte": "★★★★★5,0/5 sur Google"
-    }
-   ]
+   "cartesWp": 0,
+   "anomalies": []
   }
  },
  "#/recrutement": {
   "375": {
    "cartesRef": 5,
-   "cartesWp": 6,
+   "cartesWp": 5,
    "anomalies": [
     {
      "genre": "type",
@@ -2216,18 +1969,12 @@
      "recu": "carte-titre-texte",
      "bande": 4,
      "texte": "Les étapes de candidature 01Vous envoyez votre candidature e"
-    },
-    {
-     "genre": "surplus",
-     "type": "chip",
-     "bande": 2,
-     "texte": "★★★★★5,0/5 sur Google"
     }
    ]
   },
   "1440": {
    "cartesRef": 5,
-   "cartesWp": 6,
+   "cartesWp": 5,
    "anomalies": [
     {
      "genre": "type",
@@ -2235,12 +1982,6 @@
      "recu": "carte-titre-texte",
      "bande": 4,
      "texte": "Les étapes de candidature 01Vous envoyez votre candidature e"
-    },
-    {
-     "genre": "surplus",
-     "type": "chip",
-     "bande": 2,
-     "texte": "★★★★★5,0/5 sur Google"
     }
    ]
   }

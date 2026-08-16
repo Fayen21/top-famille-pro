@@ -11,24 +11,24 @@
 > Un conteneur qui contient visuellement plusieurs micro-cartes n’est jamais compté pour une
 > carte : il compte pour ses enfants.
 
-**53 routes × 2 largeurs · 263 anomalie(s), dont 101 grave(s)** (carte absente ou fusionnée).
+**53 routes × 2 largeurs · 225 anomalie(s), dont 101 grave(s)** (carte absente ou fusionnée).
 
 ## Synthèse
 
 | Route | Cartes 1440 px | Cartes 375 px | Anomalies 1440 px | Anomalies 375 px |
 |---|---|---|---|---|
-| `#/` | 27 → 32 (+5) | 29 → 32 (+3) | ❌ 17 (3) | ❌ 14 (3) |
-| `#/nettoyage-professionnel` | 51 → 49 (-2) | 51 → 48 (-3) | ❌ 9 (2) | ❌ 9 (3) |
-| `#/nos-prestations` | 12 → 13 (+1) | 12 → 13 (+1) | ⚠️ 1 | ⚠️ 1 |
+| `#/` | 27 → 27 | 29 → 29 | ❌ 10 (3) | ❌ 10 (3) |
+| `#/nettoyage-professionnel` | 51 → 49 (-2) | 51 → 48 (-3) | ❌ 8 (2) | ❌ 9 (3) |
+| `#/nos-prestations` | 12 → 12 | 12 → 12 | ✅ | ✅ |
 | `#/service/bureaux` | 21 → 21 | 22 → 22 | ✅ | ✅ |
-| `#/service/commerces` | 20 → 20 | 21 → 21 | ⚠️ 1 | ✅ |
-| `#/service/cabinets` | 28 → 28 | 29 → 29 | ⚠️ 2 | ⚠️ 1 |
-| `#/service/coproprietes` | 21 → 21 | 22 → 22 | ⚠️ 1 | ✅ |
-| `#/service/meubles` | 21 → 21 | 22 → 22 | ⚠️ 2 | ⚠️ 1 |
-| `#/service/ponctuel` | 21 → 21 | 22 → 22 | ⚠️ 1 | ✅ |
-| `#/nos-tarifs` | 22 → 22 | 22 → 22 | ❌ 2 (1) | ❌ 2 (1) |
-| `#/zones-intervention` | 52 → 49 (-3) | 35 → 31 (-4) | ❌ 11 (4) | ❌ 12 (5) |
-| `#/bourgogne-franche-comte` | 50 → 50 | 47 → 46 (-1) | ❌ 16 (1) | ❌ 16 (2) |
+| `#/service/commerces` | 20 → 20 | 21 → 21 | ✅ | ✅ |
+| `#/service/cabinets` | 28 → 28 | 29 → 29 | ⚠️ 1 | ⚠️ 1 |
+| `#/service/coproprietes` | 21 → 21 | 22 → 22 | ✅ | ✅ |
+| `#/service/meubles` | 21 → 21 | 22 → 22 | ⚠️ 1 | ⚠️ 1 |
+| `#/service/ponctuel` | 21 → 21 | 22 → 22 | ✅ | ✅ |
+| `#/nos-tarifs` | 22 → 21 (-1) | 22 → 21 (-1) | ❌ 1 (1) | ❌ 1 (1) |
+| `#/zones-intervention` | 52 → 48 (-4) | 35 → 30 (-5) | ❌ 10 (4) | ❌ 11 (5) |
+| `#/bourgogne-franche-comte` | 50 → 49 (-1) | 47 → 45 (-2) | ❌ 13 (1) | ❌ 14 (2) |
 | `#/departement/cote-dor` | 31 → 31 | 32 → 32 | ✅ | ⚠️ 1 |
 | `#/departement/doubs` | 31 → 31 | 32 → 32 | ✅ | ⚠️ 1 |
 | `#/departement/jura` | 33 → 33 | 34 → 34 | ✅ | ⚠️ 1 |
@@ -59,11 +59,11 @@
 | `#/article/frequence-bureaux` | 8 → 4 (-4) | 8 → 4 (-4) | ❌ 4 (4) | ❌ 4 (4) |
 | `#/article/cout-nettoyage-bureaux` | 4 → 4 | 4 → 4 | ✅ | ✅ |
 | `#/article/cahier-des-charges-nettoyage` | 10 → 4 (-6) | 10 → 4 (-6) | ❌ 6 (6) | ❌ 6 (6) |
-| `#/pourquoi-top-famille-pro` | 12 → 13 (+1) | 12 → 13 (+1) | ⚠️ 3 | ⚠️ 3 |
-| `#/notre-fonctionnement` | 9 → 10 (+1) | 9 → 10 (+1) | ⚠️ 1 | ⚠️ 1 |
+| `#/pourquoi-top-famille-pro` | 12 → 12 | 12 → 12 | ⚠️ 1 | ⚠️ 1 |
+| `#/notre-fonctionnement` | 9 → 9 | 9 → 9 | ✅ | ✅ |
 | `#/avis-clients` | 14 → 11 (-3) | 14 → 11 (-3) | ❌ 10 (3) | ❌ 10 (3) |
-| `#/a-propos` | 0 → 1 (+1) | 0 → 1 (+1) | ⚠️ 1 | ⚠️ 1 |
-| `#/recrutement` | 5 → 6 (+1) | 5 → 6 (+1) | ⚠️ 2 | ⚠️ 2 |
+| `#/a-propos` | 0 → 0 | 0 → 0 | ✅ | ✅ |
+| `#/recrutement` | 5 → 5 | 5 → 5 | ⚠️ 1 | ⚠️ 1 |
 | `#/demande-de-devis` | 5 → 3 (-2) | 5 → 3 (-2) | ❌ 2 (2) | ❌ 2 (2) |
 | `#/contact` | 8 → 8 | 8 → 8 | ❌ 4 (2) | ❌ 4 (2) |
 | `#/plan-du-site` | 0 → 0 | 0 → 0 | ✅ | ✅ |
@@ -76,15 +76,15 @@
 | Route | Cartes absentes ou fusionnées | Anomalies totales |
 |---|---|---|
 | `#/article/cahier-des-charges-nettoyage` | 6 | 6 |
-| `#/zones-intervention` | 4 | 11 |
+| `#/zones-intervention` | 4 | 10 |
 | `#/article/frequence-bureaux` | 4 | 4 |
-| `#/` | 3 | 17 |
+| `#/` | 3 | 10 |
 | `#/avis-clients` | 3 | 10 |
-| `#/nettoyage-professionnel` | 2 | 9 |
+| `#/nettoyage-professionnel` | 2 | 8 |
 | `#/demande-de-devis` | 2 | 2 |
 | `#/contact` | 2 | 4 |
-| `#/nos-tarifs` | 1 | 2 |
-| `#/bourgogne-franche-comte` | 1 | 16 |
+| `#/nos-tarifs` | 1 | 1 |
+| `#/bourgogne-franche-comte` | 1 | 13 |
 | `#/ville/dijon` | 1 | 1 |
 | `#/ville/besancon` | 1 | 1 |
 | `#/ville/dole` | 1 | 1 |
@@ -127,7 +127,7 @@
 
 ### `#/` → `/`
 
-**1440 px** — bandes 13 → 13 · cartes 27 → 32 · 17 anomalie(s)
+**1440 px** — bandes 13 → 13 · cartes 27 → 27 · 10 anomalie(s)
 
 | Anomalie | Archétype | Bande | Détail |
 |---|---|---|---|
@@ -136,20 +136,13 @@
 | texte | `tarif` | 2 | « 27 € HT/htarif unique en région✓Devis gratuit sous 24 h✓Intervention r » → « 27 € HT/h tarif unique, indiqué avant le devis ✓Devis gratuit sous 24  » (56 % de mots communs) |
 | absente | `tarif` | 2 | « 27 € HT/htarif unique en région » |
 | absente | `carte-titre-texte` | 3 | « ★★★★★5,0/5 sur Google Saint-ApollinaireEntreprise régionale basée en B » |
-| type | `carte-titre-texte` | 5 | « Cabinets & professions libéralesSanté, droit, conseil, salle » — rendue en `carte-sombre` |
 | texte | `tarif` | 9 | « Tarif horaire de base 27 € HT/h Régulier ou ponctuel · devis gratuit s » → « Tarif unique 27 € HT/h Régulier ou ponctuel · devis gratuit sous 24 h. » (78 % de mots communs) |
-| colonnes | `carte-image` | 10 | « 21 25 39 58 70 71 89 90 » — 2 colonnes attendues, 1 rendues |
 | texte | `carte-titre` | 11 | « ★★★★★5,0/5 Google » → « ★★★★★5,0/5 sur Google » (67 % de mots communs) |
 | surplus | `tarif` | 1 | « 27 € HT/h tarif unique, régulier ou ponctuel » |
 | surplus | `tarif` | 2 | « 27 € HT/h tarif unique, indiqué avant le devis » |
 | surplus | `carte-titre-texte` | 3 | « Saint-Apollinaire Entreprise régionale basée en BFC Interlocutrice ide » |
-| surplus | `carte-sombre` | 5 | « Copropriétés & parties communes Halls, cages d'escalier, locaux commun » |
-| surplus | `carte-sombre` | 5 | « Locations meublées & hébergements Remise en état entre deux occupants » |
-| surplus | `carte-sombre` | 5 | « Ponctuel & remise en état Après travaux, grand nettoyage, fin de bail » |
-| surplus | `carte-titre` | 10 | « Yonne 89 » |
-| surplus | `carte-titre` | 10 | « Territoire de Belfort 90 » |
 
-**375 px** — bandes 13 → 13 · cartes 29 → 32 · 14 anomalie(s)
+**375 px** — bandes 13 → 13 · cartes 29 → 29 · 10 anomalie(s)
 
 | Anomalie | Archétype | Bande | Détail |
 |---|---|---|---|
@@ -158,24 +151,19 @@
 | texte | `tarif` | 2 | « 27 € HT/htarif unique en région✓Devis gratuit sous 24 h✓Intervention r » → « 27 € HT/h tarif unique, indiqué avant le devis ✓Devis gratuit sous 24  » (56 % de mots communs) |
 | absente | `tarif` | 2 | « 27 € HT/htarif unique en région » |
 | absente | `carte-titre-texte` | 3 | « ★★★★★5,0/5 sur Google Saint-ApollinaireEntreprise régionale basée en B » |
-| type | `carte-titre-texte` | 5 | « Cabinets & professions libéralesSanté, droit, conseil, salle » — rendue en `carte-sombre` |
 | texte | `tarif` | 9 | « Tarif horaire de base 27 € HT/h Régulier ou ponctuel · devis gratuit s » → « Tarif unique 27 € HT/h Régulier ou ponctuel · devis gratuit sous 24 h. » (78 % de mots communs) |
 | texte | `carte-titre` | 11 | « ★★★★★5,0/5 Google » → « ★★★★★5,0/5 sur Google » (67 % de mots communs) |
 | surplus | `tarif` | 1 | « 27 € HT/h tarif unique, régulier ou ponctuel » |
 | surplus | `tarif` | 2 | « 27 € HT/h tarif unique, indiqué avant le devis » |
 | surplus | `carte-titre-texte` | 3 | « Saint-Apollinaire Entreprise régionale basée en BFC Interlocutrice ide » |
-| surplus | `carte-sombre` | 5 | « Copropriétés & parties communes Halls, cages d'escalier, locaux commun » |
-| surplus | `carte-sombre` | 5 | « Locations meublées & hébergements Remise en état entre deux occupants » |
-| surplus | `carte-sombre` | 5 | « Ponctuel & remise en état Après travaux, grand nettoyage, fin de bail » |
 
 
 ### `#/nettoyage-professionnel` → `/nettoyage-professionnel/`
 
-**1440 px** — bandes 19 → 19 · cartes 51 → 49 · 9 anomalie(s)
+**1440 px** — bandes 19 → 19 · cartes 51 → 49 · 8 anomalie(s)
 
 | Anomalie | Archétype | Bande | Détail |
 |---|---|---|---|
-| colonnes | `chip` | 2 | « ★★★★★5,0/5sur Google » — 1 colonnes attendues, 2 rendues |
 | absente | `tarif` | 3 | « 27 € HT/htarif unique en région✓Devis gratuit sous 24 h✓Intervention r » |
 | type | `micro-carte` | 5 | « Bureaux & open-spaces » — rendue en `carte-titre` |
 | type | `micro-carte` | 5 | « Surfaces de vente » — rendue en `carte-titre` |
@@ -202,17 +190,9 @@
 
 ### `#/nos-prestations` → `/prestations/`
 
-**1440 px** — bandes 6 → 6 · cartes 12 → 13 · 1 anomalie(s)
+**1440 px** — bandes 6 → 6 · cartes 12 → 12 · 0 anomalie(s)
 
-| Anomalie | Archétype | Bande | Détail |
-|---|---|---|---|
-| surplus | `chip` | 2 | « ★★★★★5,0/5 sur Google » |
-
-**375 px** — bandes 6 → 6 · cartes 12 → 13 · 1 anomalie(s)
-
-| Anomalie | Archétype | Bande | Détail |
-|---|---|---|---|
-| surplus | `chip` | 2 | « ★★★★★5,0/5 sur Google » |
+**375 px** — bandes 6 → 6 · cartes 12 → 12 · 0 anomalie(s)
 
 
 ### `#/service/bureaux` → `/prestations/bureaux/`
@@ -224,23 +204,18 @@
 
 ### `#/service/commerces` → `/prestations/commerces/`
 
-**1440 px** — bandes 14 → 14 · cartes 20 → 20 · 1 anomalie(s)
-
-| Anomalie | Archétype | Bande | Détail |
-|---|---|---|---|
-| colonnes | `tarif` | 10 | « Exemple · 12 h/mois333 € HT/mois12 h × 27 € + 9 € de gestion » — 1 colonnes attendues, 2 rendues |
+**1440 px** — bandes 14 → 14 · cartes 20 → 20 · 0 anomalie(s)
 
 **375 px** — bandes 14 → 14 · cartes 21 → 21 · 0 anomalie(s)
 
 
 ### `#/service/cabinets` → `/prestations/cabinets/`
 
-**1440 px** — bandes 15 → 15 · cartes 28 → 28 · 2 anomalie(s)
+**1440 px** — bandes 15 → 15 · cartes 28 → 28 · 1 anomalie(s)
 
 | Anomalie | Archétype | Bande | Détail |
 |---|---|---|---|
 | type | `carte-titre-texte` | 4 | « Cette prestation est un entretien courant de locaux professi » — rendue en `micro-carte` |
-| colonnes | `tarif` | 11 | « Exemple · 12 h/mois333 € HT/mois12 h × 27 € + 9 € de gestion » — 1 colonnes attendues, 2 rendues |
 
 **375 px** — bandes 15 → 15 · cartes 29 → 29 · 1 anomalie(s)
 
@@ -251,22 +226,17 @@
 
 ### `#/service/coproprietes` → `/prestations/coproprietes/`
 
-**1440 px** — bandes 14 → 14 · cartes 21 → 21 · 1 anomalie(s)
-
-| Anomalie | Archétype | Bande | Détail |
-|---|---|---|---|
-| colonnes | `tarif` | 10 | « Exemple · 12 h/mois333 € HT/mois12 h × 27 € + 9 € de gestion » — 1 colonnes attendues, 2 rendues |
+**1440 px** — bandes 14 → 14 · cartes 21 → 21 · 0 anomalie(s)
 
 **375 px** — bandes 14 → 14 · cartes 22 → 22 · 0 anomalie(s)
 
 
 ### `#/service/meubles` → `/prestations/meubles/`
 
-**1440 px** — bandes 14 → 14 · cartes 21 → 21 · 2 anomalie(s)
+**1440 px** — bandes 14 → 14 · cartes 21 → 21 · 1 anomalie(s)
 
 | Anomalie | Archétype | Bande | Détail |
 |---|---|---|---|
-| colonnes | `tarif` | 10 | « Exemple · 12 h/mois333 € HT/mois12 h × 27 € + 9 € de gestion » — 1 colonnes attendues, 2 rendues |
 | type | `carte-titre` | 13 | « Encore une question sur Locations meublées ? Audrey vous rép » — rendue en `carte-titre-texte` |
 
 **375 px** — bandes 14 → 14 · cartes 22 → 22 · 1 anomalie(s)
@@ -278,35 +248,29 @@
 
 ### `#/service/ponctuel` → `/prestations/ponctuel/`
 
-**1440 px** — bandes 14 → 14 · cartes 21 → 21 · 1 anomalie(s)
-
-| Anomalie | Archétype | Bande | Détail |
-|---|---|---|---|
-| colonnes | `tarif` | 10 | « Exemple · 12 h/mois333 € HT/mois12 h × 27 € + 9 € de gestion » — 1 colonnes attendues, 2 rendues |
+**1440 px** — bandes 14 → 14 · cartes 21 → 21 · 0 anomalie(s)
 
 **375 px** — bandes 14 → 14 · cartes 22 → 22 · 0 anomalie(s)
 
 
 ### `#/nos-tarifs` → `/tarifs/`
 
-**1440 px** — bandes 13 → 13 · cartes 22 → 22 · 2 anomalie(s)
+**1440 px** — bandes 13 → 13 · cartes 22 → 21 · 1 anomalie(s)
 
 | Anomalie | Archétype | Bande | Détail |
 |---|---|---|---|
 | absente | `tarif` | 6 | « Tarif horaireRégulier ou ponctuel27 € HT/h Frais de gestionPlanning, a » |
-| surplus | `temoignage` | 11 | « ★★★★★« Un devis clair, sans surprise, et le même tarif horaire annoncé » |
 
-**375 px** — bandes 13 → 13 · cartes 22 → 22 · 2 anomalie(s)
+**375 px** — bandes 13 → 13 · cartes 22 → 21 · 1 anomalie(s)
 
 | Anomalie | Archétype | Bande | Détail |
 |---|---|---|---|
 | absente | `tarif` | 6 | « Tarif horaireRégulier ou ponctuel27 € HT/h Frais de gestionPlanning, a » |
-| surplus | `temoignage` | 11 | « ★★★★★« Un devis clair, sans surprise, et le même tarif horaire annoncé » |
 
 
 ### `#/zones-intervention` → `/zones-intervention/`
 
-**1440 px** — bandes 13 → 13 · cartes 52 → 49 · 11 anomalie(s)
+**1440 px** — bandes 13 → 13 · cartes 52 → 48 · 10 anomalie(s)
 
 | Anomalie | Archétype | Bande | Détail |
 |---|---|---|---|
@@ -320,9 +284,8 @@
 | absente | `carte-sombre` | 6 | « Bourgogne-Franche-ComtéLa page régionale · huit départements couverts  » |
 | absente | `micro-carte` | 6 | « Voir la page régionale → » |
 | absente | `carte-titre` | 13 | « Vérifier notre intervention dans ma commune » |
-| surplus | `chip` | 2 | « ★★★★★5,0/5 sur Google » |
 
-**375 px** — bandes 13 → 13 · cartes 35 → 31 · 12 anomalie(s)
+**375 px** — bandes 13 → 13 · cartes 35 → 30 · 11 anomalie(s)
 
 | Anomalie | Archétype | Bande | Détail |
 |---|---|---|---|
@@ -337,12 +300,11 @@
 | absente | `micro-carte` | 6 | « Voir la page régionale → » |
 | absente | `carte-titre` | 13 | « Vérifier notre intervention dans ma commune » |
 | absente | `carte-titre` | 13 | « ☎ Échanger avec Audrey · 06 36 17 63 39 » |
-| surplus | `chip` | 2 | « ★★★★★5,0/5 sur Google » |
 
 
 ### `#/bourgogne-franche-comte` → `/zones-intervention/bourgogne-franche-comte/`
 
-**1440 px** — bandes 12 → 12 · cartes 50 → 50 · 16 anomalie(s)
+**1440 px** — bandes 12 → 12 · cartes 50 → 49 · 13 anomalie(s)
 
 | Anomalie | Archétype | Bande | Détail |
 |---|---|---|---|
@@ -359,11 +321,8 @@
 | type | `micro-carte` | 5 | « Cabinets paramédicaux et dentaires courants » — rendue en `carte-titre` |
 | type | `micro-carte` | 5 | « Parties communes d'immeubles » — rendue en `carte-titre` |
 | type | `micro-carte` | 5 | « Locations meublées et logements de courte durée » — rendue en `carte-titre` |
-| colonnes | `tarif` | 9 | « Exemple · bureaux réguliers, 12 h/mois333 € HT/mois12 h × 27 » — 3 colonnes attendues, 2 rendues |
-| type | `temoignage` | 9 | « ★★★★★« Nous avions besoin d'un prestataire capable de suivre » — rendue en `carte-titre-texte` |
-| surplus | `chip` | 2 | « ★★★★★5,0/5 sur Google » |
 
-**375 px** — bandes 12 → 12 · cartes 47 → 46 · 16 anomalie(s)
+**375 px** — bandes 12 → 12 · cartes 47 → 45 · 14 anomalie(s)
 
 | Anomalie | Archétype | Bande | Détail |
 |---|---|---|---|
@@ -380,9 +339,7 @@
 | type | `micro-carte` | 5 | « Cabinets paramédicaux et dentaires courants » — rendue en `carte-titre` |
 | type | `micro-carte` | 5 | « Parties communes d'immeubles » — rendue en `carte-titre` |
 | type | `micro-carte` | 5 | « Locations meublées et logements de courte durée » — rendue en `carte-titre` |
-| type | `temoignage` | 9 | « ★★★★★« Nous avions besoin d'un prestataire capable de suivre » — rendue en `carte-titre-texte` |
 | absente | `carte-titre` | 12 | « ☎ Échanger avec Audrey · 06 36 17 63 39 » |
-| surplus | `chip` | 2 | « ★★★★★5,0/5 sur Google » |
 
 
 ### `#/departement/cote-dor` → `/zones-intervention/cote-dor/`
@@ -837,36 +794,24 @@
 
 ### `#/pourquoi-top-famille-pro` → `/pourquoi-nous/`
 
-**1440 px** — bandes 8 → 8 · cartes 12 → 13 · 3 anomalie(s)
+**1440 px** — bandes 8 → 8 · cartes 12 → 12 · 1 anomalie(s)
 
 | Anomalie | Archétype | Bande | Détail |
 |---|---|---|---|
-| type | `carte-titre` | 4 | « 5,0/5sur Google » — rendue en `chip` |
 | type | `etape` | 4 | « 8départements » — rendue en `carte-titre` |
-| surplus | `carte-titre` | 4 | « 5,0/5 sur Google » |
 
-**375 px** — bandes 8 → 8 · cartes 12 → 13 · 3 anomalie(s)
+**375 px** — bandes 8 → 8 · cartes 12 → 12 · 1 anomalie(s)
 
 | Anomalie | Archétype | Bande | Détail |
 |---|---|---|---|
-| type | `carte-titre` | 4 | « 5,0/5sur Google » — rendue en `chip` |
 | type | `etape` | 4 | « 8départements » — rendue en `carte-titre` |
-| surplus | `carte-titre` | 4 | « 5,0/5 sur Google » |
 
 
 ### `#/notre-fonctionnement` → `/notre-fonctionnement/`
 
-**1440 px** — bandes 5 → 5 · cartes 9 → 10 · 1 anomalie(s)
+**1440 px** — bandes 5 → 5 · cartes 9 → 9 · 0 anomalie(s)
 
-| Anomalie | Archétype | Bande | Détail |
-|---|---|---|---|
-| surplus | `chip` | 2 | « ★★★★★5,0/5 sur Google » |
-
-**375 px** — bandes 5 → 5 · cartes 9 → 10 · 1 anomalie(s)
-
-| Anomalie | Archétype | Bande | Détail |
-|---|---|---|---|
-| surplus | `chip` | 2 | « ★★★★★5,0/5 sur Google » |
+**375 px** — bandes 5 → 5 · cartes 9 → 9 · 0 anomalie(s)
 
 
 ### `#/avis-clients` → `/avis-clients/`
@@ -904,34 +849,24 @@
 
 ### `#/a-propos` → `/a-propos/`
 
-**1440 px** — bandes 6 → 6 · cartes 0 → 1 · 1 anomalie(s)
+**1440 px** — bandes 6 → 6 · cartes 0 → 0 · 0 anomalie(s)
 
-| Anomalie | Archétype | Bande | Détail |
-|---|---|---|---|
-| surplus | `chip` | 2 | « ★★★★★5,0/5 sur Google » |
-
-**375 px** — bandes 6 → 6 · cartes 0 → 1 · 1 anomalie(s)
-
-| Anomalie | Archétype | Bande | Détail |
-|---|---|---|---|
-| surplus | `chip` | 2 | « ★★★★★5,0/5 sur Google » |
+**375 px** — bandes 6 → 6 · cartes 0 → 0 · 0 anomalie(s)
 
 
 ### `#/recrutement` → `/recrutement/`
 
-**1440 px** — bandes 5 → 5 · cartes 5 → 6 · 2 anomalie(s)
+**1440 px** — bandes 5 → 5 · cartes 5 → 5 · 1 anomalie(s)
 
 | Anomalie | Archétype | Bande | Détail |
 |---|---|---|---|
 | type | `carte-sombre` | 4 | « Les étapes de candidature 01Vous envoyez votre candidature e » — rendue en `carte-titre-texte` |
-| surplus | `chip` | 2 | « ★★★★★5,0/5 sur Google » |
 
-**375 px** — bandes 5 → 5 · cartes 5 → 6 · 2 anomalie(s)
+**375 px** — bandes 5 → 5 · cartes 5 → 5 · 1 anomalie(s)
 
 | Anomalie | Archétype | Bande | Détail |
 |---|---|---|---|
 | type | `carte-sombre` | 4 | « Les étapes de candidature 01Vous envoyez votre candidature e » — rendue en `carte-titre-texte` |
-| surplus | `chip` | 2 | « ★★★★★5,0/5 sur Google » |
 
 
 ### `#/demande-de-devis` → `/demande-de-devis/`
