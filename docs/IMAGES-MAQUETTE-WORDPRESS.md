@@ -37,27 +37,27 @@
 | hero | Entretien de copropriétés et de parties communes | 800x533 | 522×392 | 1 | — |
 | hero | Nettoyage de locations meublées et d'hébergements | 800x533 | 522×392 | 1 | — |
 | hero | Nettoyage ponctuel et remise en état | 800x533 | 522×392 | 1 | — |
-| hero | Locaux professionnels en Bourgogne-Franche-Comté | 1000x667 | 512×384 | 1 | — |
-| hero | Locaux professionnels à Dijon | 900x601 | 512×384 | 1 | — |
-| hero | Locaux professionnels à Beaune | 900x601 | 512×384 | 1 | — |
-| hero | Locaux professionnels à Besançon | 900x600 | 512×384 | 1 | — |
-| hero | Locaux professionnels à Dole | 900x601 | 512×384 | 1 | — |
-| hero | Locaux professionnels à Lons-le-Saunier | 900x600 | 512×384 | 1 | — |
-| hero | Locaux professionnels à Nevers | 900x600 | 512×384 | 1 | — |
-| hero | Locaux professionnels à Vesoul | 900x675 | 512×384 | 1 | — |
-| hero | Locaux professionnels à Chalon-sur-Saône | 900x600 | 512×384 | 1 | — |
-| hero | Locaux professionnels à Mâcon | 900x601 | 512×384 | 1 | — |
-| hero | Locaux professionnels à Auxerre | 900x600 | 512×384 | 1 | — |
-| hero | Locaux professionnels à Belfort | 900x601 | 512×384 | 1 | — |
+| hero | Locaux professionnels en Bourgogne-Franche-Comté | 1000x667 | 512×384 | 1 | `hero-region` |
+| hero | Locaux professionnels à Dijon | 900x601 | 512×384 | 1 | `hero-region` |
+| hero | Locaux professionnels à Beaune | 900x601 | 512×384 | 1 | `hero-region` |
+| hero | Locaux professionnels à Besançon | 900x600 | 512×384 | 1 | `hero-region` |
+| hero | Locaux professionnels à Dole | 900x601 | 512×384 | 1 | `hero-region` |
+| hero | Locaux professionnels à Lons-le-Saunier | 900x600 | 512×384 | 1 | `hero-region` |
+| hero | Locaux professionnels à Nevers | 900x600 | 512×384 | 1 | `hero-region` |
+| hero | Locaux professionnels à Vesoul | 900x675 | 512×384 | 1 | `hero-region` |
+| hero | Locaux professionnels à Chalon-sur-Saône | 900x600 | 512×384 | 1 | `hero-region` |
+| hero | Locaux professionnels à Mâcon | 900x601 | 512×384 | 1 | `hero-region` |
+| hero | Locaux professionnels à Auxerre | 900x600 | 512×384 | 1 | `hero-region` |
+| hero | Locaux professionnels à Belfort | 900x601 | 512×384 | 1 | `hero-region` |
 | hero | Audrey, Top-Famille Pro | 800x1198 | 400×500 | 1 | — |
 | hero | Intervenant Top-Famille Pro préparant son matériel de nettoyage | 1000x667 | 512×384 | 1 | — |
-| hero | Locaux professionnels à Saint-Apollinaire | 900x601 | 512×384 | 1 | — |
-| hero | Locaux professionnels à Chenôve | 900x600 | 512×384 | 1 | — |
-| hero | Locaux professionnels à Quetigny | 900x601 | 512×384 | 1 | — |
-| hero | Locaux professionnels à Talant | 900x600 | 512×384 | 1 | — |
-| hero | Locaux professionnels à Longvic | 900x600 | 512×384 | 1 | — |
-| hero | Locaux professionnels à Fontaine-lès-Dijon | 900x600 | 512×384 | 1 | — |
-| hero | Locaux professionnels à Marsannay-la-Côte | 900x600 | 512×384 | 1 | — |
+| hero | Locaux professionnels à Saint-Apollinaire | 900x601 | 512×384 | 1 | `hero-region` |
+| hero | Locaux professionnels à Chenôve | 900x600 | 512×384 | 1 | `hero-region` |
+| hero | Locaux professionnels à Quetigny | 900x601 | 512×384 | 1 | `hero-region` |
+| hero | Locaux professionnels à Talant | 900x600 | 512×384 | 1 | `hero-region` |
+| hero | Locaux professionnels à Longvic | 900x600 | 512×384 | 1 | `hero-region` |
+| hero | Locaux professionnels à Fontaine-lès-Dijon | 900x600 | 512×384 | 1 | `hero-region` |
+| hero | Locaux professionnels à Marsannay-la-Côte | 900x600 | 512×384 | 1 | `hero-region` |
 
 ## 2. Slots du pipeline d’images du thème
 
@@ -71,6 +71,8 @@
 | `article-2` | 640×427 | 320 / 480 / 640 | AVIF, WebP, JPEG | 12 Ko | 16 Ko | 24 Ko | Poste de travail avec ordinateur (photo d’illustration) |
 | `article-3` | 640×427 | 320 / 480 / 640 | AVIF, WebP, JPEG | 12 Ko | 16 Ko | 24 Ko | Bureau avec documents et ordinateur (photo d’illustration) |
 | `service-generic` | 960×640 | 480 / 760 / 960 | AVIF, WebP, JPEG | 16 Ko | 19 Ko | 37 Ko | Intervention de nettoyage professionnel avec équipement de protection (photo d’illustration) |
+| `hero-pilier` | 960×640 | 480 / 760 / 960 | AVIF, WebP, JPEG | 32 Ko | 39 Ko | 64 Ko | Nettoyage de bureaux professionnels (photo d’illustration) |
+| `hero-region` | 960×640 | 480 / 760 / 960 | AVIF, WebP, JPEG | 20 Ko | 26 Ko | 42 Ko | Locaux professionnels en Bourgogne-Franche-Comté (photo d’illustration) |
 | `audrey-placeholder` | 640×958 | 320 / 480 / 640 | AVIF, WebP, JPEG | 22 Ko | 26 Ko | 47 Ko | Photo d’illustration temporaire — portrait définitif à venir |
 
 ## 3. Fichiers réellement servis par WordPress
@@ -78,24 +80,28 @@
 | Fichier servi | Natif | Affiché | Chargement | Priorité | Routes | Cassée |
 |---|---|---|---|---|---|---|
 | `logo-horizontal.png` | 320x169 | 155×82 | eager | — | 159 | non |
-| `article-3-640.avif` | 559x373 | 512×448 | eager | high | 20 | non |
-| `service-generic-760.avif` | 600x400 | 512×448 | eager | high | 4 | non |
-| `service-bureaux-640.avif` | 648x432 | 580×278 | lazy | — | 2 | non |
-| `service-commerces-640.avif` | 648x432 | 580×278 | lazy | — | 2 | non |
+| `article-3-640.avif` | 559x373 | 512×384 | eager | high | 20 | non |
+| `service-generic-760.avif` | 600x400 | 512×384 | eager | high | 5 | non |
+| `service-generic-480.avif` | 383x255 | 381×254 | lazy | — | 4 | non |
+| `service-bureaux-640.avif` | 648x432 | 580×278 | lazy | — | 3 | non |
+| `service-commerces-640.avif` | 648x432 | 580×278 | lazy | — | 3 | non |
 | `audrey-placeholder-640.jpg` | 640x958 | 420×525 | lazy | — | 2 | non |
 | `article-2-480.avif` | 400x266 | 381×214 | lazy | — | 2 | non |
-| `article-1-640.avif` | 590x393 | 707×472 | eager | high | 2 | non |
+| `article-1-640.avif` | 590x393 | 589×393 | eager | high | 2 | non |
+| `audrey-placeholder-480.avif` | 400x599 | 400×500 | eager | high | 2 | non |
 | `hero-main-760.avif` | 600x399 | 512×448 | eager | high | 1 | non |
 | `hero-secondary-220.avif` | 220x147 | 215×215 | lazy | — | 1 | non |
 | `article-1-480.avif` | 400x267 | 381×214 | lazy | — | 1 | non |
 | `article-3-480.avif` | 400x266 | 381×214 | lazy | — | 1 | non |
+| `hero-pilier-760.avif` | 560x373 | 512×384 | eager | high | 1 | non |
+| `hero-region-760.avif` | 560x373 | 512×384 | eager | high | 1 | non |
 | `article-2-640.avif` | 820x547 | 820×461 | eager | high | 1 | non |
 
 ## 4. Contrôles
 
 - Images cassées côté WordPress : **0**
-- Images sans `alt` : **0** (aucune) — un `alt` vide est correct pour un visuel purement décoratif dont le sens est déjà porté par le texte voisin ; il est fautif partout ailleurs.
-- Images en `fetchpriority="high"` : **5** — une seule par page, celle du LCP (CLAUDE.md §8).
+- Images sans `alt` : **1** (`service-generic-480.avif`) — un `alt` vide est correct pour un visuel purement décoratif dont le sens est déjà porté par le texte voisin ; il est fautif partout ailleurs.
+- Images en `fetchpriority="high"` : **8** — une seule par page, celle du LCP (CLAUDE.md §8).
 
 ## 5. Ce que ces visuels ne prétendent pas être
 

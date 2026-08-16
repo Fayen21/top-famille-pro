@@ -126,7 +126,7 @@ $page = tfp_static_page_data( 'nettoyage-professionnel' );
 			 * une photo de stock comme une personne réelle de l'entreprise, ce que
 			 * CLAUDE.md §5.6 interdit. Le manifeste dit « photo d'illustration », ce qui est vrai.
 			 */
-			tfp_picture( 'service-generic', array( 'sizes' => '(max-width: 819px) 92vw, 560px', 'lcp' => true ) );
+			tfp_picture( 'hero-pilier', array( 'sizes' => '(max-width: 819px) 92vw, 560px', 'lcp' => true ) );
 			?>
 		</div>
 	</div>

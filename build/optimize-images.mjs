@@ -77,6 +77,26 @@ const SLOTS = [
     alt: 'Intervention de nettoyage professionnel avec équipement de protection (photo d’illustration)',
   },
   {
+    // Hero du pilier /nettoyage-professionnel/ — l'image EXACTE de la maquette (G24) :
+    // assets/photos/intervenante-stock-bureaux.jpg est octet pour octet l'asset embarqué du
+    // standalone Claude Design (sha256 dbc3d616…, 1000×667). L'alt de la maquette présentait la
+    // photo comme un intervenant réel de l'entreprise : interdit (CLAUDE.md §5.6), l'alt honnête
+    // dit « photo d'illustration ».
+    slug: 'hero-pilier',
+    src: 'intervenante-stock-bureaux.jpg',
+    widths: [480, 760, 960],
+    alt: 'Nettoyage de bureaux professionnels (photo d’illustration)',
+  },
+  {
+    // Hero de la page région — l'image EXACTE de la maquette (G24) :
+    // assets/photos/locaux-professionnels-region.jpg, octet pour octet l'asset du standalone
+    // (sha256 64547308…, 1000×667). Ce fichier alimente aussi article-3, aux largeurs d'article.
+    slug: 'hero-region',
+    src: 'locaux-professionnels-region.jpg',
+    widths: [480, 760, 960],
+    alt: 'Locaux professionnels en Bourgogne-Franche-Comté (photo d’illustration)',
+  },
+  {
     // Visuel temporaire (accueil + À propos) tant que le portrait authentique d'Audrey n'est pas
     // fourni — jamais présenté comme Audrey (alt honnête défini dans les gabarits, pas ici),
     // CLAUDE.md §5.6. Centralisé sur ce seul slug : remplacer le fichier source suffit.
