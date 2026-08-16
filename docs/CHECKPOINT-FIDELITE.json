@@ -1,5 +1,5 @@
 {
- "note": "Point de reprise du chantier de fidélité visuelle. Machine-readable, à relire au début de la passe suivante. Généré à la main, pas par un outil : c'est un état de travail, pas une mesure.",
+ "note": "Point de reprise du chantier de fidélité visuelle. Machine-readable, à relire au début de la passe suivante. Généré à la clôture de G23, le 16 août 2026.",
  "branche": "hotfix-production-fidelite-claude-design",
  "pr": 9,
  "banc_de_mesure": {
@@ -743,17 +743,20 @@
   }
  ],
  "prochain_groupe_a_traiter": {
-  "id": "G23",
+  "id": "G24",
   "priorite": 1,
-  "titre": "Fin de chantier : 7 causes DEFAUT_THEME restantes, puis images exactes, LCP, CLS, Lighthouse, captures, exports",
-  "prealable": "G22 classement fermé. Reprendre par les 7 causes de docs/anomalies-g22.json (groupes_causaux, statut « non écrite ») : chaque relevé nécessaire y est déjà consigné.",
+  "titre": "Images exactes des quatre héros, puis LCP réel, CLS global, quatorze audits Lighthouse, captures comparatives, exports",
+  "prealable": "G23 fermé : zéro DEFAUT_THEME, 50 routes non légales dans 95–105 % aux six largeurs (voir la section g23 de ce fichier).",
   "ordre": [
-   "1. corriger les 7 causes DEFAUT_THEME restantes (32 occurrences) — relevés déjà faits, voir groupes_causaux — puis rejouer inventaire + classement jusqu'à G22=PASS dans docs/ANOMALIES-G22.md",
-   "2. images exactes des quatre héros, puis LCP réel sur les quatre routes",
-   "3. CLS global, 4. quatorze audits Lighthouse, 5. captures comparatives, 6. exports (jamais commités)"
+   "1. images exactes des quatre héros (docs/IMAGES-MAQUETTE-WORDPRESS.md, tools/image-map.mjs)",
+   "2. qualification LCP sur les quatre routes concernées",
+   "3. CLS global (commencer à 1440 px, le plus marqué)",
+   "4. quatorze audits Lighthouse",
+   "5. les 88 captures comparatives d'un seul tenant",
+   "6. exports (jamais commités)"
   ],
-  "commande_de_reprise": "bash tools/banc-local.sh && bash tools/banc-local.sh --theme-only && TFP_BASE_URL=http://localhost:8901 node tools/inventaire-cartes.mjs && node tools/classer-anomalies.mjs",
-  "pieges": "TFP_BASE_URL=http://localhost:8901 obligatoire AUSSI pour npx playwright test (la config vise 8899 par défaut : sans la variable, toute la suite échoue en CONNECTION_REFUSED) · la suite fonctionnelle exige le banc en --development"
+  "commande_de_reprise": "bash tools/banc-local.sh && bash tools/banc-local.sh --theme-only && TFP_BASE_URL=http://localhost:8901 node tools/image-map.mjs",
+  "pieges": "TFP_BASE_URL=http://localhost:8901 obligatoire pour tout outil et npx playwright test · la suite fonctionnelle exige le banc en --development · vérifier pgrep -x chromium avant toute suite"
  },
  "groupes_suivants": [
   {
@@ -890,6 +893,73 @@
  "classement_g22": {
   "etat": "FERMÉ (classement) — voir l'entrée G22 de groupes_traites et docs/anomalies-g22.json",
   "compte": "348 anomalies/128 occurrences (1326f5f) → 263 anomalies/43 occurrences après corrections · zéro à instruire · zéro NON_RESOLUE_PREUVE_INSUFFISANTE",
+  "commande_de_verification": "bash tools/banc-local.sh && bash tools/banc-local.sh --theme-only && TFP_BASE_URL=http://localhost:8901 node tools/inventaire-cartes.mjs && node tools/classer-anomalies.mjs"
+ },
+ "g23": {
+  "date": "16 août 2026",
+  "commit_de_depart_reel": "8a6bb30 (tête de origin/hotfix-production-fidelite-claude-design, atteinte par fast-forward pur — aucune divergence, aucune session concurrente)",
+  "branche_de_travail": "claude/g23-fidelite-claude-design-7doxg4 — branche de session imposée par l'environnement d'exécution ; basée sur 8a6bb30, poussée sans force-push. Rien fusionné dans main.",
+  "controle_de_depart": "Inventaire + classement régénérés sur banc neuf AVANT toute écriture : 263 anomalies · 43 occurrences · 32 DEFAUT_THEME sur 7 causes · 9 éditoriales · 2 légales — reproduction à l'unité de la clôture G22, fichiers byte-identiques.",
+  "sept_causes_traitees": {
+   "badge-reassurance (15 occ)": "CORRIGÉE — variante nue tfp_google_rating_badge('nu') sur les 7 eyebrows sans pastille dans la maquette (prestations, zones, région, pourquoi, fonctionnement, à-propos, recrutement) ; pilier : pastille posée seule, badge région retiré (absent de la maquette, il faisait compter 2 colonnes). Commit e8f2ab6.",
+   "temoignage-tarifs-nu (2 occ)": "CORRIGÉE — motif .tfp-testimonial--plain + variante centrée relevée ; marquage provisoire conservé et testé. Commit 3491cb4.",
+   "prestations-accueil-segmentees (6 occ)": "CORRIGÉE — la variante marine des tuiles (body.tfp-body a.tfp-service-tile) écrasait par spécificité la carte segmentée claire déjà présente ; scopée à .tfp-service-tiles (pages de ville), description 13,5 px déclarés. Commit c7d44ce.",
+   "depts-accueil-en-ligne (2 occ)": "CORRIGÉE — rangée de couverture aux bases déclarées 360/320 sans centrage, corps de lien 14,5 px : liens sur une ligne de 49 px. Commit 0dc1b16.",
+   "couverture-accueil-colonnes (1 occ)": "CORRIGÉE — même commit : rangée étirée, carte min-height 280 ; la carte mesure 542×394 sur 2 colonnes, au pixel de la maquette. Commit 0dc1b16.",
+   "tarif-prestation-alignement (5 occ)": "CORRIGÉE — rangée dédiée .tfp-presta-tarif (enfants directs, center, écart clamp(28px,4vw,48px), carte 28/18/38 px bleu principal, témoignage base 360) ; variante zone intacte (G09). Commit 30a23f4.",
+   "tarif-region-triple (1 occ)": "CORRIGÉE — bande rendue par .tfp-zone-tarif (G09), insérée entre les sections 7 et 9 du seed qui reste l'unique source du contenu ; 394/344/374 à 1440 px. Commit 2d311d9."
+  },
+  "methode": "Chaque cause : appariement vérifié sur la maquette (règle DÉCLARÉE extraite du prototype), simulation par surcharge CSS avant écriture (tools/sonde-g23.mjs), correction à la source (gabarit PHP ou CSS scopé — jamais d'exclusion par URL, de seuil, ni de compensation), recopie du thème, re-relevé, test ciblé qui échoue sur l'état d'avant.",
+  "evolution_du_classement": {
+   "avant_g23": "263 anomalies · 43 occurrences · 32 DEFAUT_THEME (7 causes) · 0 NON_RESOLUE",
+   "apres_g23": "225 anomalies · 11 occurrences · 0 DEFAUT_THEME · 9 DIFFERENCE_EDITORIALE_AUTORISEE · 2 DIFFERENCE_LEGALE_IMPOSEE · 0 NON_RESOLUE_PREUVE_INSUFFISANTE",
+   "verdict": "G23=PASS (docs/anomalies-g22.json, fermeture) · clôture G22 archivée dans docs/anomalies-g22-cloture.json"
+  },
+  "meubles_1024": {
+   "diagnostic": "La liste rendue fidèle en G22 n'était pas la cause : elle masquait des règles responsives déclarées par la maquette et absentes du thème, toutes inactives sous ~850 px — d'où le creux isolé à 1024 px. Mesuré par sonde de bande + décomposition additive par enfant direct, comparé à /bureaux/ conforme : conteneur de lecture 820 px de la bande Réponse directe (contre 1260), corps clamp(16px,1.6vw,20px), maillage 680/15,5, écart de grille clamp(22px,2.6vw,34px), max-width 620/560 des H2 détail/organisation, H1 en pente 4vw déclarée. .tfp-list-plain et la base contextuelle de 230 px n'ont pas été touchés.",
+   "ratios_avant": {
+    "320": 101,
+    "375": 102,
+    "768": 105,
+    "1024": 94,
+    "1440": 98,
+    "1920": 98
+   },
+   "ratios_apres": {
+    "320": 100,
+    "375": 102,
+    "768": 103,
+    "1024": 96,
+    "1440": 101,
+    "1920": 101
+   },
+   "autres_prestations_1024_apres": "bureaux 97 · commerces 97 · cabinets 96 · coproprietes 97 · ponctuel 96 — aucune dégradation, aucune route sortie de la tolérance",
+   "commits": "85bc007 (correction) · bb33808 (tests)"
+  },
+  "baseline": {
+   "fichier": "docs/baseline-2026-08-16-apres-G23.json — la baseline G22 (2026-08-15) est conservée pour comparaison",
+   "resultat": "318/318 relevés · 300 dans 95–105 % · les 18 hors tolérance sont exactement les 3 pages légales × 6 largeurs (exception prévue, contenu réglementaire)",
+   "par_largeur_hors_legales": "50/50 routes non légales dans 95–105 % à CHACUNE des six largeurs",
+   "securite": "0 débordement · 0 image cassée · 0 CTA hors écran · 0 erreur console ou réseau · 0 écart de bandes",
+   "vs_g22": "43 contrôles rapprochés de 100 % · 2 éloignés d’un point (cabinets 320 : 100→99 ; fonctionnement 320 : 98→97, dans la tolérance) · 273 inchangés"
+  },
+  "tests": {
+   "recenses": 997,
+   "assertions_executees": 909,
+   "assertions_vertes": 909,
+   "captures_non_rejouees": 88,
+   "detail": "suite complète --grep-invert Captures sur banc development : 909/909 verts en 3,4 min (dont 16 tests ciblés G23 de tests/g23.spec.js) · tests/screenshots.spec.js (88, sans assertion) appartient à la phase captures, non rejoué — comme en G22",
+   "lint_php": "81 fichiers vérifiés, 0 erreur",
+   "verifier_installation": "PASS — 52 contenus publiés, 53 routes présentes, aucune URL héritée",
+   "recherches": "anciens tarifs (24,30/26,00/30,00 €) : aucune occurrence commerciale (test + grep) · placeholders [À COMPLÉTER] : aucun visible (test + grep, seuls des commentaires documentant leur absence) · JSON produits validés"
+  },
+  "ecarts_restants": "11 occurrences surplus/colonnes, toutes documentées et autorisées : 9 éditoriales (badge-contact-tarif ×2, cta-contextuel ×1, tarif-reformule ×4, reassurance-accueil ×2) + 2 légales (cookies-encart). 225 anomalies tous genres subsistent dans l'inventaire (texte/type/absente sur les trois pages légales et différences de libellés autorisées) — hors périmètre du classement surplus/colonnes.",
+  "confirmations": "aucune session concurrente pendant les écritures · aucun ZIP ajouté ou modifié dans release/ · rien fusionné dans main · rien déployé · aucun DNS modifié · aucun historique réécrit · aucun force-push",
+  "prochaine_commande": "bash tools/banc-local.sh && bash tools/banc-local.sh --theme-only && TFP_BASE_URL=http://localhost:8901 node tools/image-map.mjs — ouvrir la passe suivante : images exactes des quatre héros, puis LCP réel, puis CLS global et Lighthouse, puis rejouer les 88 captures d'un seul tenant."
+ },
+ "classement_g23": {
+  "etat": "FERMÉ — G23=PASS",
+  "compte": "263 anomalies/43 occurrences (clôture G22) → 225 anomalies/11 occurrences · zéro DEFAUT_THEME · zéro NON_RESOLUE",
   "commande_de_verification": "bash tools/banc-local.sh && bash tools/banc-local.sh --theme-only && TFP_BASE_URL=http://localhost:8901 node tools/inventaire-cartes.mjs && node tools/classer-anomalies.mjs"
  }
 }
