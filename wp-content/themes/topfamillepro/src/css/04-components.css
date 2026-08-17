@@ -1082,7 +1082,11 @@
   gap: 16px;
 }
 
-.tfp-prefooter__phone {
+/* Sélecteur porté à (0,2,0) : le pré-pied vit DANS `<footer class="tfp-footer">`, dont la règle
+   `.tfp-footer a { color: #C6DCE4 }` l'emportait à (0,1,1) — un bleu pâle sur le turquoise pâle de
+   la bande, sous le seuil de contraste. Lighthouse l'a vu (accessibilité 100 → 96), l'audit
+   axe-core de la suite ne l'a pas vu : la leçon est notée au rapport. */
+.tfp-footer .tfp-prefooter__phone {
   display: inline-flex;
   align-items: center;
   gap: 8px;
