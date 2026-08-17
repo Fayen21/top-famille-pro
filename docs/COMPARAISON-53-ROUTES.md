@@ -15,14 +15,14 @@
 
 | Route Claude | Route WordPress | Blocs | Hauteur | Mots | Titres | Puces | Images | Débord. | Triptyque |
 |---|---|---|---|---|---|---|---|---|---|
-| `#/` | `/` | 13 → 13 | 7825 → 7897 (101 %) | 1058 → 1141 (108 %) | 11 → 13 | 15 → 31 | 11 → 11 | non | [voir](captures/comparaison/accueil-1440.jpg) |
+| `#/` | `/` | 13 → 13 | 7825 → 7886 (101 %) | 1058 → 1137 (107 %) | 11 → 13 | 15 → 31 | 11 → 11 | non | [voir](captures/comparaison/accueil-1440.jpg) |
 | `#/nos-tarifs` | `/tarifs/` | 13 → 13 | 5852 → 5975 (102 %) | 951 → 967 (102 %) | 10 → 16 | 24 → 51 | 2 → 3 | non | [voir](captures/comparaison/nos-tarifs-1440.jpg) |
 | `#/pourquoi-top-famille-pro` | `/pourquoi-nous/` | 8 → 8 | 4047 → 4227 (104 %) | 1038 → 1064 (103 %) | 12 → 14 | 15 → 48 | 2 → 3 | non | [voir](captures/comparaison/pourquoi-top-famille-pro-1440.jpg) |
 | `#/avis-clients` | `/avis-clients/` | 7 → 7 | 2938 → 2926 (100 %) | 613 → 665 (108 %) | 3 → 5 | 15 → 42 | 2 → 3 | non | [voir](captures/comparaison/avis-clients-1440.jpg) |
 | `#/conseils` | `/conseils/` | 7 → 7 | 2834 → 2913 (103 %) | 465 → 462 (99 %) | 3 → 12 | 15 → 32 | 5 → 6 | non | [voir](captures/comparaison/conseils-1440.jpg) |
 | `#/demande-de-devis` | `/demande-de-devis/` | 1 → 2 | 1947 → 1952 (100 %) | 366 → 390 (107 %) | 1 → 4 | 15 → 28 | 3 → 4 | non | [voir](captures/comparaison/demande-de-devis-1440.jpg) |
 | `#/nos-prestations` | `/prestations/` | 6 → 6 | 3510 → 3659 (104 %) | 808 → 830 (103 %) | 5 → 7 | 15 → 40 | 8 → 9 | non | [voir](captures/comparaison/nos-prestations-1440.jpg) |
-| `#/nettoyage-professionnel` | `/nettoyage-professionnel/` | 19 → 19 | 11192 → 11226 (100 %) | 2560 → 2580 (101 %) | 44 → 46 | 29 → 85 | 10 → 4 | non | [voir](captures/comparaison/nettoyage-professionnel-1440.jpg) |
+| `#/nettoyage-professionnel` | `/nettoyage-professionnel/` | 19 → 19 | 11192 → 11162 (100 %) | 2560 → 2580 (101 %) | 44 → 46 | 29 → 85 | 10 → 10 | non | [voir](captures/comparaison/nettoyage-professionnel-1440.jpg) |
 | `#/service/bureaux` | `/prestations/bureaux/` | 14 → 14 | 7745 → 7809 (101 %) | 2074 → 2084 (100 %) | 30 → 32 | 28 → 52 | 3 → 4 | non | [voir](captures/comparaison/service-bureaux-1440.jpg) |
 | `#/service/commerces` | `/prestations/commerces/` | 14 → 14 | 7484 → 7431 (99 %) | 1868 → 1882 (101 %) | 30 → 32 | 25 → 49 | 3 → 4 | non | [voir](captures/comparaison/service-commerces-1440.jpg) |
 | `#/service/cabinets` | `/prestations/cabinets/` | 15 → 15 | 8321 → 8315 (100 %) | 2055 → 2060 (100 %) | 31 → 33 | 33 → 57 | 3 → 4 | non | [voir](captures/comparaison/service-cabinets-1440.jpg) |
@@ -73,14 +73,14 @@
 
 | Route Claude | Route WordPress | Blocs | Hauteur | Mots | Titres | Puces | Images | Débord. | Triptyque |
 |---|---|---|---|---|---|---|---|---|---|
-| `#/` | `/` | 13 → 13 | 13402 → 13663 (102 %) | 1039 → 1121 (108 %) | 11 → 13 | 15 → 31 | 11 → 11 | non | [voir](captures/comparaison/accueil-375.jpg) |
+| `#/` | `/` | 13 → 13 | 13402 → 13653 (102 %) | 1039 → 1117 (108 %) | 11 → 13 | 15 → 31 | 11 → 11 | non | [voir](captures/comparaison/accueil-375.jpg) |
 | `#/nos-tarifs` | `/tarifs/` | 13 → 13 | 9002 → 9281 (103 %) | 932 → 947 (102 %) | 10 → 16 | 24 → 51 | 2 → 3 | non | [voir](captures/comparaison/nos-tarifs-375.jpg) |
 | `#/pourquoi-top-famille-pro` | `/pourquoi-nous/` | 8 → 8 | 7837 → 8226 (105 %) | 1019 → 1044 (102 %) | 12 → 14 | 15 → 48 | 2 → 3 | non | [voir](captures/comparaison/pourquoi-top-famille-pro-375.jpg) |
 | `#/avis-clients` | `/avis-clients/` | 7 → 7 | 6173 → 6100 (99 %) | 594 → 645 (109 %) | 3 → 5 | 15 → 42 | 2 → 3 | non | [voir](captures/comparaison/avis-clients-375.jpg) |
 | `#/conseils` | `/conseils/` | 7 → 7 | 5147 → 5253 (102 %) | 446 → 442 (99 %) | 3 → 12 | 15 → 32 | 5 → 6 | non | [voir](captures/comparaison/conseils-375.jpg) |
 | `#/demande-de-devis` | `/demande-de-devis/` | 1 → 4 | 4175 → 4201 (101 %) | 347 → 370 (107 %) | 1 → 4 | 15 → 28 | 3 → 4 | non | [voir](captures/comparaison/demande-de-devis-375.jpg) |
 | `#/nos-prestations` | `/prestations/` | 6 → 6 | 7784 → 7872 (101 %) | 789 → 810 (103 %) | 5 → 7 | 15 → 40 | 8 → 9 | non | [voir](captures/comparaison/nos-prestations-375.jpg) |
-| `#/nettoyage-professionnel` | `/nettoyage-professionnel/` | 19 → 19 | 20090 → 20369 (101 %) | 2541 → 2560 (101 %) | 44 → 46 | 29 → 85 | 10 → 4 | non | [voir](captures/comparaison/nettoyage-professionnel-375.jpg) |
+| `#/nettoyage-professionnel` | `/nettoyage-professionnel/` | 19 → 19 | 20090 → 20251 (101 %) | 2541 → 2560 (101 %) | 44 → 46 | 29 → 85 | 10 → 10 | non | [voir](captures/comparaison/nettoyage-professionnel-375.jpg) |
 | `#/service/bureaux` | `/prestations/bureaux/` | 14 → 14 | 14541 → 14706 (101 %) | 2055 → 2064 (100 %) | 30 → 32 | 28 → 52 | 3 → 4 | non | [voir](captures/comparaison/service-bureaux-375.jpg) |
 | `#/service/commerces` | `/prestations/commerces/` | 14 → 14 | 13666 → 13894 (102 %) | 1849 → 1862 (101 %) | 30 → 32 | 25 → 49 | 3 → 4 | non | [voir](captures/comparaison/service-commerces-375.jpg) |
 | `#/service/cabinets` | `/prestations/cabinets/` | 15 → 15 | 15216 → 15290 (100 %) | 2036 → 2040 (100 %) | 31 → 33 | 33 → 57 | 3 → 4 | non | [voir](captures/comparaison/service-cabinets-375.jpg) |
@@ -134,7 +134,7 @@
 | # | Bloc maquette | Bloc WordPress | Hauteur | État |
 |---|---|---|---|---|
 | 1 | Nettoyage professionnel de bureaux et locaux e | Nettoyage professionnel de bureaux et locaux e | 762 → 764 | ✅ identique |
-| 2 | (27 € HT/htarif unique en région✓Devis ) | (27 € HT/h tarif unique, indiqué avant ) | 146 → 157 | ≈ proche |
+| 2 | (27 € HT/htarif unique en région✓Devis ) | (27 € HT/h tarif unique en région ✓Devi) | 146 → 147 | ✅ identique |
 | 3 | (★★★★★5,0/5 sur Google Saint-Apollinair) | (Saint-Apollinaire Entreprise régionale) | 218 → 218 | ✅ identique |
 | 4 | Pensé pour les professionnels de la région | Pensé pour les professionnels de la région | 432 → 409 | ≈ proche |
 | 5 | Nos prestations de nettoyage | Nos prestations de nettoyage | 800 → 805 | ✅ identique |
@@ -230,7 +230,7 @@
 | 4 | (Le nettoyage professionnel désigne l'e) | (Le nettoyage professionnel désigne l'e) | 492 → 424 | ⚠️ écart -68 px |
 | 5 | Les professionnels que nous accompagnons | Les professionnels que nous accompagnons | 516 → 588 | ⚠️ écart +72 px |
 | 6 | Prestataire de nettoyage ou recrutement direct | Prestataire de nettoyage ou recrutement direct | 731 → 741 | ≈ proche |
-| 7 | Nos six prestations de nettoyage professionnel | Nos six prestations de nettoyage professionnel | 560 → 565 | ✅ identique |
+| 7 | Nos six prestations de nettoyage professionnel | Nos six prestations de nettoyage professionnel | 560 → 501 | ≈ proche |
 | 8 | Régulier ou ponctuel, tâches, fréquences et ho | Régulier ou ponctuel, tâches, fréquences et ho | 862 → 828 | ≈ proche |
 | 9 | Comment choisir la bonne fréquence | Comment choisir la bonne fréquence | 700 → 713 | ≈ proche |
 | 10 | Les tâches, espace par espace | Les tâches, espace par espace | 763 → 760 | ✅ identique |
