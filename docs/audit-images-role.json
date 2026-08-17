@@ -1,6 +1,6 @@
 {
- "total": 38,
- "ecarts": 2,
+ "total": 167,
+ "ecarts": 25,
  "lignes": [
   {
    "route": "#/",
@@ -437,6 +437,1035 @@
    "verdict": "IDENTIQUE"
   },
   {
+   "route": "#/nos-prestations",
+   "role": "logo-entete",
+   "rang": 1,
+   "maquette": {
+    "rendu": "155×82",
+    "natif": "759×402",
+    "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
+    "voisin": "Prestations ▼ Tarifs Zones ▼ Pourquoi nous Avis Conseils ☎06",
+    "alt": "Top-Famille Pro"
+   },
+   "wordpress": {
+    "rendu": "155×82",
+    "natif": "320×169",
+    "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
+    "slot": "logo-horizontal",
+    "fichier": "logo-horizontal.png",
+    "alt": "Top-Famille Pro"
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/nos-prestations",
+   "role": "editoriale",
+   "rang": 1,
+   "maquette": {
+    "rendu": "381×238",
+    "natif": "800×534",
+    "sha": "0d32ae6733eee622e481ca5cf0f6e44885c26fa84f72d7fb52d3aee58da2471d",
+    "voisin": "Nettoyage de bureauxUn entretien régulier et discret de vos ",
+    "alt": "Nettoyage de bureaux"
+   },
+   "wordpress": {
+    "rendu": "381×254",
+    "natif": "383×255",
+    "sha": "91b93f915a21fbd98a3b722494d2937479319192d745e4051fa1b3ecafe9787b",
+    "slot": "service-bureaux",
+    "fichier": "service-bureaux-480.avif",
+    "alt": ""
+   },
+   "verdict": "IMAGE DIFFÉRENTE"
+  },
+  {
+   "route": "#/nos-prestations",
+   "role": "editoriale",
+   "rang": 2,
+   "maquette": {
+    "rendu": "381×238",
+    "natif": "800×534",
+    "sha": "0d8cf57d64f5124dd86e190d107e31cd3c09c54f1ac3845332494ae41b9e5e55",
+    "voisin": "Nettoyage de bureauxUn entretien régulier et discret de vos ",
+    "alt": "Nettoyage de commerces"
+   },
+   "wordpress": {
+    "rendu": "381×255",
+    "natif": "383×256",
+    "sha": "46a86c7e9eac3d5ff532943225e72d17e7d72fc7d5e64dd8473a2e380f35ab07",
+    "slot": "service-commerces",
+    "fichier": "service-commerces-480.avif",
+    "alt": ""
+   },
+   "verdict": "IMAGE DIFFÉRENTE"
+  },
+  {
+   "route": "#/nos-prestations",
+   "role": "editoriale",
+   "rang": 3,
+   "maquette": {
+    "rendu": "381×238",
+    "natif": "800×534",
+    "sha": "c55d8a5619d299c53ba21c583536e094f20be5154cf6e29a484b8f78afca9363",
+    "voisin": "Nettoyage de bureauxUn entretien régulier et discret de vos ",
+    "alt": "Cabinets & professions libérales"
+   },
+   "wordpress": {
+    "rendu": "381×254",
+    "natif": "383×255",
+    "sha": "600a388c7750c4054c6842f0f57bd34e82bed5e37effae022f32333f6f7021b9",
+    "slot": "service-generic",
+    "fichier": "service-generic-480.avif",
+    "alt": ""
+   },
+   "verdict": "IMAGE DIFFÉRENTE"
+  },
+  {
+   "route": "#/nos-prestations",
+   "role": "editoriale",
+   "rang": 4,
+   "maquette": {
+    "rendu": "381×238",
+    "natif": "800×533",
+    "sha": "ecee90efb0f2ef69c30d06bb97dbc82d8fdd639d84d6fa7e567027f03e730526",
+    "voisin": "Nettoyage de bureauxUn entretien régulier et discret de vos ",
+    "alt": "Copropriétés & parties communes"
+   },
+   "wordpress": {
+    "rendu": "381×254",
+    "natif": "383×255",
+    "sha": "600a388c7750c4054c6842f0f57bd34e82bed5e37effae022f32333f6f7021b9",
+    "slot": "service-generic",
+    "fichier": "service-generic-480.avif",
+    "alt": ""
+   },
+   "verdict": "IMAGE DIFFÉRENTE"
+  },
+  {
+   "route": "#/nos-prestations",
+   "role": "editoriale",
+   "rang": 5,
+   "maquette": {
+    "rendu": "381×238",
+    "natif": "800×533",
+    "sha": "e2440e590fa6dd38866ca5e8b894353b9cb9f5a74afc02e0873efce79f3e5802",
+    "voisin": "Nettoyage de bureauxUn entretien régulier et discret de vos ",
+    "alt": "Locations meublées & hébergements"
+   },
+   "wordpress": {
+    "rendu": "381×254",
+    "natif": "383×255",
+    "sha": "600a388c7750c4054c6842f0f57bd34e82bed5e37effae022f32333f6f7021b9",
+    "slot": "service-generic",
+    "fichier": "service-generic-480.avif",
+    "alt": ""
+   },
+   "verdict": "IMAGE DIFFÉRENTE"
+  },
+  {
+   "route": "#/nos-prestations",
+   "role": "editoriale",
+   "rang": 6,
+   "maquette": {
+    "rendu": "381×238",
+    "natif": "800×533",
+    "sha": "03752d889ac8f8d3c2ef966dea784f3c995df5881914db78e48984b873f43636",
+    "voisin": "Nettoyage de bureauxUn entretien régulier et discret de vos ",
+    "alt": "Nettoyage ponctuel & remise en état"
+   },
+   "wordpress": {
+    "rendu": "381×254",
+    "natif": "383×255",
+    "sha": "600a388c7750c4054c6842f0f57bd34e82bed5e37effae022f32333f6f7021b9",
+    "slot": "service-generic",
+    "fichier": "service-generic-480.avif",
+    "alt": ""
+   },
+   "verdict": "IMAGE DIFFÉRENTE"
+  },
+  {
+   "route": "#/nos-prestations",
+   "role": "logo-pied",
+   "rang": 1,
+   "maquette": {
+    "rendu": "60×60",
+    "natif": "1024×1009",
+    "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
+    "voisin": "Top-Famille Pro",
+    "alt": "Top-Famille Pro"
+   },
+   "wordpress": {
+    "rendu": "60×60",
+    "natif": "120×120",
+    "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
+    "slot": "logo-carre",
+    "fichier": "logo-carre.png",
+    "alt": ""
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/service/bureaux",
+   "role": "logo-entete",
+   "rang": 1,
+   "maquette": {
+    "rendu": "155×82",
+    "natif": "759×402",
+    "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
+    "voisin": "Prestations ▼ Tarifs Zones ▼ Pourquoi nous Avis Conseils ☎06",
+    "alt": "Top-Famille Pro"
+   },
+   "wordpress": {
+    "rendu": "155×82",
+    "natif": "320×169",
+    "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
+    "slot": "logo-horizontal",
+    "fichier": "logo-horizontal.png",
+    "alt": "Top-Famille Pro"
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/service/bureaux",
+   "role": "hero",
+   "rang": 1,
+   "maquette": {
+    "rendu": "522×392",
+    "natif": "800×534",
+    "sha": "0d32ae6733eee622e481ca5cf0f6e44885c26fa84f72d7fb52d3aee58da2471d",
+    "voisin": "",
+    "alt": "Nettoyage de bureaux en Bourgogne-Franche-Comté"
+   },
+   "wordpress": {
+    "rendu": "512×384",
+    "natif": "599×400",
+    "sha": "91b93f915a21fbd98a3b722494d2937479319192d745e4051fa1b3ecafe9787b",
+    "slot": "service-bureaux",
+    "fichier": "service-bureaux-640.avif",
+    "alt": "Nettoyage de bureaux en Bourgogne-Franche-Comté"
+   },
+   "verdict": "IMAGE DIFFÉRENTE"
+  },
+  {
+   "route": "#/service/bureaux",
+   "role": "logo-pied",
+   "rang": 1,
+   "maquette": {
+    "rendu": "60×60",
+    "natif": "1024×1009",
+    "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
+    "voisin": "Top-Famille Pro",
+    "alt": "Top-Famille Pro"
+   },
+   "wordpress": {
+    "rendu": "60×60",
+    "natif": "120×120",
+    "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
+    "slot": "logo-carre",
+    "fichier": "logo-carre.png",
+    "alt": ""
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/service/commerces",
+   "role": "logo-entete",
+   "rang": 1,
+   "maquette": {
+    "rendu": "155×82",
+    "natif": "759×402",
+    "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
+    "voisin": "Prestations ▼ Tarifs Zones ▼ Pourquoi nous Avis Conseils ☎06",
+    "alt": "Top-Famille Pro"
+   },
+   "wordpress": {
+    "rendu": "155×82",
+    "natif": "320×169",
+    "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
+    "slot": "logo-horizontal",
+    "fichier": "logo-horizontal.png",
+    "alt": "Top-Famille Pro"
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/service/commerces",
+   "role": "hero",
+   "rang": 1,
+   "maquette": {
+    "rendu": "522×392",
+    "natif": "800×534",
+    "sha": "0d8cf57d64f5124dd86e190d107e31cd3c09c54f1ac3845332494ae41b9e5e55",
+    "voisin": "",
+    "alt": "Nettoyage de commerces et de surfaces de vente"
+   },
+   "wordpress": {
+    "rendu": "512×384",
+    "natif": "599×400",
+    "sha": "46a86c7e9eac3d5ff532943225e72d17e7d72fc7d5e64dd8473a2e380f35ab07",
+    "slot": "service-commerces",
+    "fichier": "service-commerces-640.avif",
+    "alt": "Nettoyage de commerces et de surfaces de vente"
+   },
+   "verdict": "IMAGE DIFFÉRENTE"
+  },
+  {
+   "route": "#/service/commerces",
+   "role": "logo-pied",
+   "rang": 1,
+   "maquette": {
+    "rendu": "60×60",
+    "natif": "1024×1009",
+    "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
+    "voisin": "Top-Famille Pro",
+    "alt": "Top-Famille Pro"
+   },
+   "wordpress": {
+    "rendu": "60×60",
+    "natif": "120×120",
+    "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
+    "slot": "logo-carre",
+    "fichier": "logo-carre.png",
+    "alt": ""
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/service/cabinets",
+   "role": "logo-entete",
+   "rang": 1,
+   "maquette": {
+    "rendu": "155×82",
+    "natif": "759×402",
+    "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
+    "voisin": "Prestations ▼ Tarifs Zones ▼ Pourquoi nous Avis Conseils ☎06",
+    "alt": "Top-Famille Pro"
+   },
+   "wordpress": {
+    "rendu": "155×82",
+    "natif": "320×169",
+    "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
+    "slot": "logo-horizontal",
+    "fichier": "logo-horizontal.png",
+    "alt": "Top-Famille Pro"
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/service/cabinets",
+   "role": "hero",
+   "rang": 1,
+   "maquette": {
+    "rendu": "522×392",
+    "natif": "800×534",
+    "sha": "c55d8a5619d299c53ba21c583536e094f20be5154cf6e29a484b8f78afca9363",
+    "voisin": "",
+    "alt": "Nettoyage de cabinets et de professions libérales"
+   },
+   "wordpress": {
+    "rendu": "512×384",
+    "natif": "600×400",
+    "sha": "600a388c7750c4054c6842f0f57bd34e82bed5e37effae022f32333f6f7021b9",
+    "slot": "service-generic",
+    "fichier": "service-generic-760.avif",
+    "alt": "Nettoyage de cabinets et de professions libérales"
+   },
+   "verdict": "IMAGE DIFFÉRENTE"
+  },
+  {
+   "route": "#/service/cabinets",
+   "role": "logo-pied",
+   "rang": 1,
+   "maquette": {
+    "rendu": "60×60",
+    "natif": "1024×1009",
+    "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
+    "voisin": "Top-Famille Pro",
+    "alt": "Top-Famille Pro"
+   },
+   "wordpress": {
+    "rendu": "60×60",
+    "natif": "120×120",
+    "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
+    "slot": "logo-carre",
+    "fichier": "logo-carre.png",
+    "alt": ""
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/service/coproprietes",
+   "role": "logo-entete",
+   "rang": 1,
+   "maquette": {
+    "rendu": "155×82",
+    "natif": "759×402",
+    "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
+    "voisin": "Prestations ▼ Tarifs Zones ▼ Pourquoi nous Avis Conseils ☎06",
+    "alt": "Top-Famille Pro"
+   },
+   "wordpress": {
+    "rendu": "155×82",
+    "natif": "320×169",
+    "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
+    "slot": "logo-horizontal",
+    "fichier": "logo-horizontal.png",
+    "alt": "Top-Famille Pro"
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/service/coproprietes",
+   "role": "hero",
+   "rang": 1,
+   "maquette": {
+    "rendu": "522×392",
+    "natif": "800×533",
+    "sha": "ecee90efb0f2ef69c30d06bb97dbc82d8fdd639d84d6fa7e567027f03e730526",
+    "voisin": "",
+    "alt": "Entretien de copropriétés et de parties communes"
+   },
+   "wordpress": {
+    "rendu": "512×384",
+    "natif": "600×400",
+    "sha": "600a388c7750c4054c6842f0f57bd34e82bed5e37effae022f32333f6f7021b9",
+    "slot": "service-generic",
+    "fichier": "service-generic-760.avif",
+    "alt": "Entretien de copropriétés et de parties communes"
+   },
+   "verdict": "IMAGE DIFFÉRENTE"
+  },
+  {
+   "route": "#/service/coproprietes",
+   "role": "logo-pied",
+   "rang": 1,
+   "maquette": {
+    "rendu": "60×60",
+    "natif": "1024×1009",
+    "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
+    "voisin": "Top-Famille Pro",
+    "alt": "Top-Famille Pro"
+   },
+   "wordpress": {
+    "rendu": "60×60",
+    "natif": "120×120",
+    "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
+    "slot": "logo-carre",
+    "fichier": "logo-carre.png",
+    "alt": ""
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/service/meubles",
+   "role": "logo-entete",
+   "rang": 1,
+   "maquette": {
+    "rendu": "155×82",
+    "natif": "759×402",
+    "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
+    "voisin": "Prestations ▼ Tarifs Zones ▼ Pourquoi nous Avis Conseils ☎06",
+    "alt": "Top-Famille Pro"
+   },
+   "wordpress": {
+    "rendu": "155×82",
+    "natif": "320×169",
+    "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
+    "slot": "logo-horizontal",
+    "fichier": "logo-horizontal.png",
+    "alt": "Top-Famille Pro"
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/service/meubles",
+   "role": "hero",
+   "rang": 1,
+   "maquette": {
+    "rendu": "522×392",
+    "natif": "800×533",
+    "sha": "e2440e590fa6dd38866ca5e8b894353b9cb9f5a74afc02e0873efce79f3e5802",
+    "voisin": "",
+    "alt": "Nettoyage de locations meublées et d'hébergements"
+   },
+   "wordpress": {
+    "rendu": "512×384",
+    "natif": "600×400",
+    "sha": "600a388c7750c4054c6842f0f57bd34e82bed5e37effae022f32333f6f7021b9",
+    "slot": "service-generic",
+    "fichier": "service-generic-760.avif",
+    "alt": "Nettoyage de locations meublées et d'hébergements"
+   },
+   "verdict": "IMAGE DIFFÉRENTE"
+  },
+  {
+   "route": "#/service/meubles",
+   "role": "logo-pied",
+   "rang": 1,
+   "maquette": {
+    "rendu": "60×60",
+    "natif": "1024×1009",
+    "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
+    "voisin": "Top-Famille Pro",
+    "alt": "Top-Famille Pro"
+   },
+   "wordpress": {
+    "rendu": "60×60",
+    "natif": "120×120",
+    "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
+    "slot": "logo-carre",
+    "fichier": "logo-carre.png",
+    "alt": ""
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/service/ponctuel",
+   "role": "logo-entete",
+   "rang": 1,
+   "maquette": {
+    "rendu": "155×82",
+    "natif": "759×402",
+    "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
+    "voisin": "Prestations ▼ Tarifs Zones ▼ Pourquoi nous Avis Conseils ☎06",
+    "alt": "Top-Famille Pro"
+   },
+   "wordpress": {
+    "rendu": "155×82",
+    "natif": "320×169",
+    "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
+    "slot": "logo-horizontal",
+    "fichier": "logo-horizontal.png",
+    "alt": "Top-Famille Pro"
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/service/ponctuel",
+   "role": "hero",
+   "rang": 1,
+   "maquette": {
+    "rendu": "522×392",
+    "natif": "800×533",
+    "sha": "03752d889ac8f8d3c2ef966dea784f3c995df5881914db78e48984b873f43636",
+    "voisin": "",
+    "alt": "Nettoyage ponctuel et remise en état"
+   },
+   "wordpress": {
+    "rendu": "512×384",
+    "natif": "600×400",
+    "sha": "600a388c7750c4054c6842f0f57bd34e82bed5e37effae022f32333f6f7021b9",
+    "slot": "service-generic",
+    "fichier": "service-generic-760.avif",
+    "alt": "Nettoyage ponctuel et remise en état"
+   },
+   "verdict": "IMAGE DIFFÉRENTE"
+  },
+  {
+   "route": "#/service/ponctuel",
+   "role": "logo-pied",
+   "rang": 1,
+   "maquette": {
+    "rendu": "60×60",
+    "natif": "1024×1009",
+    "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
+    "voisin": "Top-Famille Pro",
+    "alt": "Top-Famille Pro"
+   },
+   "wordpress": {
+    "rendu": "60×60",
+    "natif": "120×120",
+    "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
+    "slot": "logo-carre",
+    "fichier": "logo-carre.png",
+    "alt": ""
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/nos-tarifs",
+   "role": "logo-entete",
+   "rang": 1,
+   "maquette": {
+    "rendu": "155×82",
+    "natif": "759×402",
+    "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
+    "voisin": "Prestations ▼ Tarifs Zones ▼ Pourquoi nous Avis Conseils ☎06",
+    "alt": "Top-Famille Pro"
+   },
+   "wordpress": {
+    "rendu": "155×82",
+    "natif": "320×169",
+    "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
+    "slot": "logo-horizontal",
+    "fichier": "logo-horizontal.png",
+    "alt": "Top-Famille Pro"
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/nos-tarifs",
+   "role": "logo-pied",
+   "rang": 1,
+   "maquette": {
+    "rendu": "60×60",
+    "natif": "1024×1009",
+    "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
+    "voisin": "Top-Famille Pro",
+    "alt": "Top-Famille Pro"
+   },
+   "wordpress": {
+    "rendu": "60×60",
+    "natif": "120×120",
+    "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
+    "slot": "logo-carre",
+    "fichier": "logo-carre.png",
+    "alt": ""
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/zones-intervention",
+   "role": "logo-entete",
+   "rang": 1,
+   "maquette": {
+    "rendu": "155×82",
+    "natif": "759×402",
+    "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
+    "voisin": "Prestations ▼ Tarifs Zones ▼ Pourquoi nous Avis Conseils ☎06",
+    "alt": "Top-Famille Pro"
+   },
+   "wordpress": {
+    "rendu": "155×82",
+    "natif": "320×169",
+    "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
+    "slot": "logo-horizontal",
+    "fichier": "logo-horizontal.png",
+    "alt": "Top-Famille Pro"
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/zones-intervention",
+   "role": "logo-pied",
+   "rang": 1,
+   "maquette": {
+    "rendu": "60×60",
+    "natif": "1024×1009",
+    "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
+    "voisin": "Top-Famille Pro",
+    "alt": "Top-Famille Pro"
+   },
+   "wordpress": {
+    "rendu": "60×60",
+    "natif": "120×120",
+    "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
+    "slot": "logo-carre",
+    "fichier": "logo-carre.png",
+    "alt": ""
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/bourgogne-franche-comte",
+   "role": "logo-entete",
+   "rang": 1,
+   "maquette": {
+    "rendu": "155×82",
+    "natif": "759×402",
+    "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
+    "voisin": "Prestations ▼ Tarifs Zones ▼ Pourquoi nous Avis Conseils ☎06",
+    "alt": "Top-Famille Pro"
+   },
+   "wordpress": {
+    "rendu": "155×82",
+    "natif": "320×169",
+    "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
+    "slot": "logo-horizontal",
+    "fichier": "logo-horizontal.png",
+    "alt": "Top-Famille Pro"
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/bourgogne-franche-comte",
+   "role": "hero",
+   "rang": 1,
+   "maquette": {
+    "rendu": "512×384",
+    "natif": "1000×667",
+    "sha": "6454730804f7e4b520e941c8f79523198d4aff26ae8296d039108f08813d4d66",
+    "voisin": "",
+    "alt": "Locaux professionnels en Bourgogne-Franche-Comté"
+   },
+   "wordpress": {
+    "rendu": "512×384",
+    "natif": "560×373",
+    "sha": "6454730804f7e4b520e941c8f79523198d4aff26ae8296d039108f08813d4d66",
+    "slot": "hero-region",
+    "fichier": "hero-region-760.avif",
+    "alt": "Locaux professionnels en Bourgogne-Franche-Comté (photo d’illustration)"
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/bourgogne-franche-comte",
+   "role": "logo-pied",
+   "rang": 1,
+   "maquette": {
+    "rendu": "60×60",
+    "natif": "1024×1009",
+    "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
+    "voisin": "Top-Famille Pro",
+    "alt": "Top-Famille Pro"
+   },
+   "wordpress": {
+    "rendu": "60×60",
+    "natif": "120×120",
+    "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
+    "slot": "logo-carre",
+    "fichier": "logo-carre.png",
+    "alt": ""
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/departement/cote-dor",
+   "role": "logo-entete",
+   "rang": 1,
+   "maquette": {
+    "rendu": "155×82",
+    "natif": "759×402",
+    "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
+    "voisin": "Prestations ▼ Tarifs Zones ▼ Pourquoi nous Avis Conseils ☎06",
+    "alt": "Top-Famille Pro"
+   },
+   "wordpress": {
+    "rendu": "155×82",
+    "natif": "320×169",
+    "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
+    "slot": "logo-horizontal",
+    "fichier": "logo-horizontal.png",
+    "alt": "Top-Famille Pro"
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/departement/cote-dor",
+   "role": "logo-pied",
+   "rang": 1,
+   "maquette": {
+    "rendu": "60×60",
+    "natif": "1024×1009",
+    "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
+    "voisin": "Top-Famille Pro",
+    "alt": "Top-Famille Pro"
+   },
+   "wordpress": {
+    "rendu": "60×60",
+    "natif": "120×120",
+    "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
+    "slot": "logo-carre",
+    "fichier": "logo-carre.png",
+    "alt": ""
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/departement/doubs",
+   "role": "logo-entete",
+   "rang": 1,
+   "maquette": {
+    "rendu": "155×82",
+    "natif": "759×402",
+    "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
+    "voisin": "Prestations ▼ Tarifs Zones ▼ Pourquoi nous Avis Conseils ☎06",
+    "alt": "Top-Famille Pro"
+   },
+   "wordpress": {
+    "rendu": "155×82",
+    "natif": "320×169",
+    "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
+    "slot": "logo-horizontal",
+    "fichier": "logo-horizontal.png",
+    "alt": "Top-Famille Pro"
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/departement/doubs",
+   "role": "logo-pied",
+   "rang": 1,
+   "maquette": {
+    "rendu": "60×60",
+    "natif": "1024×1009",
+    "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
+    "voisin": "Top-Famille Pro",
+    "alt": "Top-Famille Pro"
+   },
+   "wordpress": {
+    "rendu": "60×60",
+    "natif": "120×120",
+    "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
+    "slot": "logo-carre",
+    "fichier": "logo-carre.png",
+    "alt": ""
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/departement/jura",
+   "role": "logo-entete",
+   "rang": 1,
+   "maquette": {
+    "rendu": "155×82",
+    "natif": "759×402",
+    "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
+    "voisin": "Prestations ▼ Tarifs Zones ▼ Pourquoi nous Avis Conseils ☎06",
+    "alt": "Top-Famille Pro"
+   },
+   "wordpress": {
+    "rendu": "155×82",
+    "natif": "320×169",
+    "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
+    "slot": "logo-horizontal",
+    "fichier": "logo-horizontal.png",
+    "alt": "Top-Famille Pro"
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/departement/jura",
+   "role": "logo-pied",
+   "rang": 1,
+   "maquette": {
+    "rendu": "60×60",
+    "natif": "1024×1009",
+    "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
+    "voisin": "Top-Famille Pro",
+    "alt": "Top-Famille Pro"
+   },
+   "wordpress": {
+    "rendu": "60×60",
+    "natif": "120×120",
+    "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
+    "slot": "logo-carre",
+    "fichier": "logo-carre.png",
+    "alt": ""
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/departement/nievre",
+   "role": "logo-entete",
+   "rang": 1,
+   "maquette": {
+    "rendu": "155×82",
+    "natif": "759×402",
+    "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
+    "voisin": "Prestations ▼ Tarifs Zones ▼ Pourquoi nous Avis Conseils ☎06",
+    "alt": "Top-Famille Pro"
+   },
+   "wordpress": {
+    "rendu": "155×82",
+    "natif": "320×169",
+    "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
+    "slot": "logo-horizontal",
+    "fichier": "logo-horizontal.png",
+    "alt": "Top-Famille Pro"
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/departement/nievre",
+   "role": "logo-pied",
+   "rang": 1,
+   "maquette": {
+    "rendu": "60×60",
+    "natif": "1024×1009",
+    "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
+    "voisin": "Top-Famille Pro",
+    "alt": "Top-Famille Pro"
+   },
+   "wordpress": {
+    "rendu": "60×60",
+    "natif": "120×120",
+    "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
+    "slot": "logo-carre",
+    "fichier": "logo-carre.png",
+    "alt": ""
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/departement/haute-saone",
+   "role": "logo-entete",
+   "rang": 1,
+   "maquette": {
+    "rendu": "155×82",
+    "natif": "759×402",
+    "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
+    "voisin": "Prestations ▼ Tarifs Zones ▼ Pourquoi nous Avis Conseils ☎06",
+    "alt": "Top-Famille Pro"
+   },
+   "wordpress": {
+    "rendu": "155×82",
+    "natif": "320×169",
+    "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
+    "slot": "logo-horizontal",
+    "fichier": "logo-horizontal.png",
+    "alt": "Top-Famille Pro"
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/departement/haute-saone",
+   "role": "logo-pied",
+   "rang": 1,
+   "maquette": {
+    "rendu": "60×60",
+    "natif": "1024×1009",
+    "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
+    "voisin": "Top-Famille Pro",
+    "alt": "Top-Famille Pro"
+   },
+   "wordpress": {
+    "rendu": "60×60",
+    "natif": "120×120",
+    "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
+    "slot": "logo-carre",
+    "fichier": "logo-carre.png",
+    "alt": ""
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/departement/saone-et-loire",
+   "role": "logo-entete",
+   "rang": 1,
+   "maquette": {
+    "rendu": "155×82",
+    "natif": "759×402",
+    "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
+    "voisin": "Prestations ▼ Tarifs Zones ▼ Pourquoi nous Avis Conseils ☎06",
+    "alt": "Top-Famille Pro"
+   },
+   "wordpress": {
+    "rendu": "155×82",
+    "natif": "320×169",
+    "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
+    "slot": "logo-horizontal",
+    "fichier": "logo-horizontal.png",
+    "alt": "Top-Famille Pro"
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/departement/saone-et-loire",
+   "role": "logo-pied",
+   "rang": 1,
+   "maquette": {
+    "rendu": "60×60",
+    "natif": "1024×1009",
+    "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
+    "voisin": "Top-Famille Pro",
+    "alt": "Top-Famille Pro"
+   },
+   "wordpress": {
+    "rendu": "60×60",
+    "natif": "120×120",
+    "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
+    "slot": "logo-carre",
+    "fichier": "logo-carre.png",
+    "alt": ""
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/departement/yonne",
+   "role": "logo-entete",
+   "rang": 1,
+   "maquette": {
+    "rendu": "155×82",
+    "natif": "759×402",
+    "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
+    "voisin": "Prestations ▼ Tarifs Zones ▼ Pourquoi nous Avis Conseils ☎06",
+    "alt": "Top-Famille Pro"
+   },
+   "wordpress": {
+    "rendu": "155×82",
+    "natif": "320×169",
+    "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
+    "slot": "logo-horizontal",
+    "fichier": "logo-horizontal.png",
+    "alt": "Top-Famille Pro"
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/departement/yonne",
+   "role": "logo-pied",
+   "rang": 1,
+   "maquette": {
+    "rendu": "60×60",
+    "natif": "1024×1009",
+    "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
+    "voisin": "Top-Famille Pro",
+    "alt": "Top-Famille Pro"
+   },
+   "wordpress": {
+    "rendu": "60×60",
+    "natif": "120×120",
+    "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
+    "slot": "logo-carre",
+    "fichier": "logo-carre.png",
+    "alt": ""
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/departement/territoire-de-belfort",
+   "role": "logo-entete",
+   "rang": 1,
+   "maquette": {
+    "rendu": "155×82",
+    "natif": "759×402",
+    "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
+    "voisin": "Prestations ▼ Tarifs Zones ▼ Pourquoi nous Avis Conseils ☎06",
+    "alt": "Top-Famille Pro"
+   },
+   "wordpress": {
+    "rendu": "155×82",
+    "natif": "320×169",
+    "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
+    "slot": "logo-horizontal",
+    "fichier": "logo-horizontal.png",
+    "alt": "Top-Famille Pro"
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/departement/territoire-de-belfort",
+   "role": "logo-pied",
+   "rang": 1,
+   "maquette": {
+    "rendu": "60×60",
+    "natif": "1024×1009",
+    "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
+    "voisin": "Top-Famille Pro",
+    "alt": "Top-Famille Pro"
+   },
+   "wordpress": {
+    "rendu": "60×60",
+    "natif": "120×120",
+    "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
+    "slot": "logo-carre",
+    "fichier": "logo-carre.png",
+    "alt": ""
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
    "route": "#/ville/dijon",
    "role": "logo-entete",
    "rang": 1,
@@ -480,6 +1509,1077 @@
   },
   {
    "route": "#/ville/dijon",
+   "role": "logo-pied",
+   "rang": 1,
+   "maquette": {
+    "rendu": "60×60",
+    "natif": "1024×1009",
+    "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
+    "voisin": "Top-Famille Pro",
+    "alt": "Top-Famille Pro"
+   },
+   "wordpress": {
+    "rendu": "60×60",
+    "natif": "120×120",
+    "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
+    "slot": "logo-carre",
+    "fichier": "logo-carre.png",
+    "alt": ""
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/ville/besancon",
+   "role": "logo-entete",
+   "rang": 1,
+   "maquette": {
+    "rendu": "155×82",
+    "natif": "759×402",
+    "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
+    "voisin": "Prestations ▼ Tarifs Zones ▼ Pourquoi nous Avis Conseils ☎06",
+    "alt": "Top-Famille Pro"
+   },
+   "wordpress": {
+    "rendu": "155×82",
+    "natif": "320×169",
+    "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
+    "slot": "logo-horizontal",
+    "fichier": "logo-horizontal.png",
+    "alt": "Top-Famille Pro"
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/ville/besancon",
+   "role": "hero",
+   "rang": 1,
+   "maquette": {
+    "rendu": "512×384",
+    "natif": "900×600",
+    "sha": "99ada67d6120d55ca6c7a418ec718ad91a9da303acbd9f68afb6379c4893892e",
+    "voisin": "",
+    "alt": "Locaux professionnels à Besançon"
+   },
+   "wordpress": {
+    "rendu": "512×384",
+    "natif": "560×373",
+    "sha": "99ada67d6120d55ca6c7a418ec718ad91a9da303acbd9f68afb6379c4893892e",
+    "slot": "ville-besancon",
+    "fichier": "ville-besancon-760.avif",
+    "alt": "Locaux professionnels à Besançon"
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/ville/besancon",
+   "role": "logo-pied",
+   "rang": 1,
+   "maquette": {
+    "rendu": "60×60",
+    "natif": "1024×1009",
+    "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
+    "voisin": "Top-Famille Pro",
+    "alt": "Top-Famille Pro"
+   },
+   "wordpress": {
+    "rendu": "60×60",
+    "natif": "120×120",
+    "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
+    "slot": "logo-carre",
+    "fichier": "logo-carre.png",
+    "alt": ""
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/ville/dole",
+   "role": "logo-entete",
+   "rang": 1,
+   "maquette": {
+    "rendu": "155×82",
+    "natif": "759×402",
+    "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
+    "voisin": "Prestations ▼ Tarifs Zones ▼ Pourquoi nous Avis Conseils ☎06",
+    "alt": "Top-Famille Pro"
+   },
+   "wordpress": {
+    "rendu": "155×82",
+    "natif": "320×169",
+    "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
+    "slot": "logo-horizontal",
+    "fichier": "logo-horizontal.png",
+    "alt": "Top-Famille Pro"
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/ville/dole",
+   "role": "hero",
+   "rang": 1,
+   "maquette": {
+    "rendu": "512×384",
+    "natif": "900×601",
+    "sha": "4ba2bd2ba288216e81ea26a8ed506b377064337456c319cd6273d42b90fe97d2",
+    "voisin": "",
+    "alt": "Locaux professionnels à Dole"
+   },
+   "wordpress": {
+    "rendu": "512×384",
+    "natif": "560×374",
+    "sha": "4ba2bd2ba288216e81ea26a8ed506b377064337456c319cd6273d42b90fe97d2",
+    "slot": "ville-dole",
+    "fichier": "ville-dole-760.avif",
+    "alt": "Locaux professionnels à Dole"
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/ville/dole",
+   "role": "logo-pied",
+   "rang": 1,
+   "maquette": {
+    "rendu": "60×60",
+    "natif": "1024×1009",
+    "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
+    "voisin": "Top-Famille Pro",
+    "alt": "Top-Famille Pro"
+   },
+   "wordpress": {
+    "rendu": "60×60",
+    "natif": "120×120",
+    "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
+    "slot": "logo-carre",
+    "fichier": "logo-carre.png",
+    "alt": ""
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/ville/lons-le-saunier",
+   "role": "logo-entete",
+   "rang": 1,
+   "maquette": {
+    "rendu": "155×82",
+    "natif": "759×402",
+    "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
+    "voisin": "Prestations ▼ Tarifs Zones ▼ Pourquoi nous Avis Conseils ☎06",
+    "alt": "Top-Famille Pro"
+   },
+   "wordpress": {
+    "rendu": "155×82",
+    "natif": "320×169",
+    "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
+    "slot": "logo-horizontal",
+    "fichier": "logo-horizontal.png",
+    "alt": "Top-Famille Pro"
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/ville/lons-le-saunier",
+   "role": "hero",
+   "rang": 1,
+   "maquette": {
+    "rendu": "512×384",
+    "natif": "900×600",
+    "sha": "fef95157c7aa6c842749029b4267d6b443142b3373976b5cf6612319fe1fd065",
+    "voisin": "",
+    "alt": "Locaux professionnels à Lons-le-Saunier"
+   },
+   "wordpress": {
+    "rendu": "512×384",
+    "natif": "560×373",
+    "sha": "fef95157c7aa6c842749029b4267d6b443142b3373976b5cf6612319fe1fd065",
+    "slot": "ville-lons-le-saunier",
+    "fichier": "ville-lons-le-saunier-760.avif",
+    "alt": "Locaux professionnels à Lons-le-Saunier"
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/ville/lons-le-saunier",
+   "role": "logo-pied",
+   "rang": 1,
+   "maquette": {
+    "rendu": "60×60",
+    "natif": "1024×1009",
+    "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
+    "voisin": "Top-Famille Pro",
+    "alt": "Top-Famille Pro"
+   },
+   "wordpress": {
+    "rendu": "60×60",
+    "natif": "120×120",
+    "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
+    "slot": "logo-carre",
+    "fichier": "logo-carre.png",
+    "alt": ""
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/ville/nevers",
+   "role": "logo-entete",
+   "rang": 1,
+   "maquette": {
+    "rendu": "155×82",
+    "natif": "759×402",
+    "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
+    "voisin": "Prestations ▼ Tarifs Zones ▼ Pourquoi nous Avis Conseils ☎06",
+    "alt": "Top-Famille Pro"
+   },
+   "wordpress": {
+    "rendu": "155×82",
+    "natif": "320×169",
+    "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
+    "slot": "logo-horizontal",
+    "fichier": "logo-horizontal.png",
+    "alt": "Top-Famille Pro"
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/ville/nevers",
+   "role": "hero",
+   "rang": 1,
+   "maquette": {
+    "rendu": "512×384",
+    "natif": "900×600",
+    "sha": "fc4bfb44d25693266f4b66a298073fdc77ce6a0a902f9bba70708539a948da99",
+    "voisin": "",
+    "alt": "Locaux professionnels à Nevers"
+   },
+   "wordpress": {
+    "rendu": "512×384",
+    "natif": "560×373",
+    "sha": "fc4bfb44d25693266f4b66a298073fdc77ce6a0a902f9bba70708539a948da99",
+    "slot": "ville-nevers",
+    "fichier": "ville-nevers-760.avif",
+    "alt": "Locaux professionnels à Nevers"
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/ville/nevers",
+   "role": "logo-pied",
+   "rang": 1,
+   "maquette": {
+    "rendu": "60×60",
+    "natif": "1024×1009",
+    "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
+    "voisin": "Top-Famille Pro",
+    "alt": "Top-Famille Pro"
+   },
+   "wordpress": {
+    "rendu": "60×60",
+    "natif": "120×120",
+    "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
+    "slot": "logo-carre",
+    "fichier": "logo-carre.png",
+    "alt": ""
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/ville/vesoul",
+   "role": "logo-entete",
+   "rang": 1,
+   "maquette": {
+    "rendu": "155×82",
+    "natif": "759×402",
+    "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
+    "voisin": "Prestations ▼ Tarifs Zones ▼ Pourquoi nous Avis Conseils ☎06",
+    "alt": "Top-Famille Pro"
+   },
+   "wordpress": {
+    "rendu": "155×82",
+    "natif": "320×169",
+    "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
+    "slot": "logo-horizontal",
+    "fichier": "logo-horizontal.png",
+    "alt": "Top-Famille Pro"
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/ville/vesoul",
+   "role": "hero",
+   "rang": 1,
+   "maquette": {
+    "rendu": "512×384",
+    "natif": "900×675",
+    "sha": "f404f819aba656a556b24ba2a85eeb7b629495b2bbcc857c26a4211f75295906",
+    "voisin": "",
+    "alt": "Locaux professionnels à Vesoul"
+   },
+   "wordpress": {
+    "rendu": "512×384",
+    "natif": "560×420",
+    "sha": "f404f819aba656a556b24ba2a85eeb7b629495b2bbcc857c26a4211f75295906",
+    "slot": "ville-vesoul",
+    "fichier": "ville-vesoul-760.avif",
+    "alt": "Locaux professionnels à Vesoul"
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/ville/vesoul",
+   "role": "logo-pied",
+   "rang": 1,
+   "maquette": {
+    "rendu": "60×60",
+    "natif": "1024×1009",
+    "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
+    "voisin": "Top-Famille Pro",
+    "alt": "Top-Famille Pro"
+   },
+   "wordpress": {
+    "rendu": "60×60",
+    "natif": "120×120",
+    "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
+    "slot": "logo-carre",
+    "fichier": "logo-carre.png",
+    "alt": ""
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/ville/chalon-sur-saone",
+   "role": "logo-entete",
+   "rang": 1,
+   "maquette": {
+    "rendu": "155×82",
+    "natif": "759×402",
+    "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
+    "voisin": "Prestations ▼ Tarifs Zones ▼ Pourquoi nous Avis Conseils ☎06",
+    "alt": "Top-Famille Pro"
+   },
+   "wordpress": {
+    "rendu": "155×82",
+    "natif": "320×169",
+    "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
+    "slot": "logo-horizontal",
+    "fichier": "logo-horizontal.png",
+    "alt": "Top-Famille Pro"
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/ville/chalon-sur-saone",
+   "role": "hero",
+   "rang": 1,
+   "maquette": {
+    "rendu": "512×384",
+    "natif": "900×600",
+    "sha": "d527896a48ac3f8c7d090d430b1813839436bb9b4c937192c3c6db5e71c8c045",
+    "voisin": "",
+    "alt": "Locaux professionnels à Chalon-sur-Saône"
+   },
+   "wordpress": {
+    "rendu": "512×384",
+    "natif": "560×373",
+    "sha": "d527896a48ac3f8c7d090d430b1813839436bb9b4c937192c3c6db5e71c8c045",
+    "slot": "ville-chalon-sur-saone",
+    "fichier": "ville-chalon-sur-saone-760.avif",
+    "alt": "Locaux professionnels à Chalon-sur-Saône"
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/ville/chalon-sur-saone",
+   "role": "logo-pied",
+   "rang": 1,
+   "maquette": {
+    "rendu": "60×60",
+    "natif": "1024×1009",
+    "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
+    "voisin": "Top-Famille Pro",
+    "alt": "Top-Famille Pro"
+   },
+   "wordpress": {
+    "rendu": "60×60",
+    "natif": "120×120",
+    "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
+    "slot": "logo-carre",
+    "fichier": "logo-carre.png",
+    "alt": ""
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/ville/macon",
+   "role": "logo-entete",
+   "rang": 1,
+   "maquette": {
+    "rendu": "155×82",
+    "natif": "759×402",
+    "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
+    "voisin": "Prestations ▼ Tarifs Zones ▼ Pourquoi nous Avis Conseils ☎06",
+    "alt": "Top-Famille Pro"
+   },
+   "wordpress": {
+    "rendu": "155×82",
+    "natif": "320×169",
+    "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
+    "slot": "logo-horizontal",
+    "fichier": "logo-horizontal.png",
+    "alt": "Top-Famille Pro"
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/ville/macon",
+   "role": "hero",
+   "rang": 1,
+   "maquette": {
+    "rendu": "512×384",
+    "natif": "900×601",
+    "sha": "bd077ba50393c4f361f0d242c877af033d6e7acc435915c1e26bb5d26ea23976",
+    "voisin": "",
+    "alt": "Locaux professionnels à Mâcon"
+   },
+   "wordpress": {
+    "rendu": "512×384",
+    "natif": "560×374",
+    "sha": "bd077ba50393c4f361f0d242c877af033d6e7acc435915c1e26bb5d26ea23976",
+    "slot": "ville-macon",
+    "fichier": "ville-macon-760.avif",
+    "alt": "Locaux professionnels à Mâcon"
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/ville/macon",
+   "role": "logo-pied",
+   "rang": 1,
+   "maquette": {
+    "rendu": "60×60",
+    "natif": "1024×1009",
+    "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
+    "voisin": "Top-Famille Pro",
+    "alt": "Top-Famille Pro"
+   },
+   "wordpress": {
+    "rendu": "60×60",
+    "natif": "120×120",
+    "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
+    "slot": "logo-carre",
+    "fichier": "logo-carre.png",
+    "alt": ""
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/ville/auxerre",
+   "role": "logo-entete",
+   "rang": 1,
+   "maquette": {
+    "rendu": "155×82",
+    "natif": "759×402",
+    "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
+    "voisin": "Prestations ▼ Tarifs Zones ▼ Pourquoi nous Avis Conseils ☎06",
+    "alt": "Top-Famille Pro"
+   },
+   "wordpress": {
+    "rendu": "155×82",
+    "natif": "320×169",
+    "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
+    "slot": "logo-horizontal",
+    "fichier": "logo-horizontal.png",
+    "alt": "Top-Famille Pro"
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/ville/auxerre",
+   "role": "hero",
+   "rang": 1,
+   "maquette": {
+    "rendu": "512×384",
+    "natif": "900×600",
+    "sha": "91b93f915a21fbd98a3b722494d2937479319192d745e4051fa1b3ecafe9787b",
+    "voisin": "",
+    "alt": "Locaux professionnels à Auxerre"
+   },
+   "wordpress": {
+    "rendu": "512×384",
+    "natif": "560×373",
+    "sha": "0d32ae6733eee622e481ca5cf0f6e44885c26fa84f72d7fb52d3aee58da2471d",
+    "slot": "ville-auxerre",
+    "fichier": "ville-auxerre-760.avif",
+    "alt": "Locaux professionnels à Auxerre"
+   },
+   "verdict": "IMAGE DIFFÉRENTE"
+  },
+  {
+   "route": "#/ville/auxerre",
+   "role": "logo-pied",
+   "rang": 1,
+   "maquette": {
+    "rendu": "60×60",
+    "natif": "1024×1009",
+    "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
+    "voisin": "Top-Famille Pro",
+    "alt": "Top-Famille Pro"
+   },
+   "wordpress": {
+    "rendu": "60×60",
+    "natif": "120×120",
+    "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
+    "slot": "logo-carre",
+    "fichier": "logo-carre.png",
+    "alt": ""
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/ville/belfort",
+   "role": "logo-entete",
+   "rang": 1,
+   "maquette": {
+    "rendu": "155×82",
+    "natif": "759×402",
+    "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
+    "voisin": "Prestations ▼ Tarifs Zones ▼ Pourquoi nous Avis Conseils ☎06",
+    "alt": "Top-Famille Pro"
+   },
+   "wordpress": {
+    "rendu": "155×82",
+    "natif": "320×169",
+    "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
+    "slot": "logo-horizontal",
+    "fichier": "logo-horizontal.png",
+    "alt": "Top-Famille Pro"
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/ville/belfort",
+   "role": "hero",
+   "rang": 1,
+   "maquette": {
+    "rendu": "512×384",
+    "natif": "900×601",
+    "sha": "46a86c7e9eac3d5ff532943225e72d17e7d72fc7d5e64dd8473a2e380f35ab07",
+    "voisin": "",
+    "alt": "Locaux professionnels à Belfort"
+   },
+   "wordpress": {
+    "rendu": "512×384",
+    "natif": "560×373",
+    "sha": "0d8cf57d64f5124dd86e190d107e31cd3c09c54f1ac3845332494ae41b9e5e55",
+    "slot": "ville-belfort",
+    "fichier": "ville-belfort-760.avif",
+    "alt": "Locaux professionnels à Belfort"
+   },
+   "verdict": "IMAGE DIFFÉRENTE"
+  },
+  {
+   "route": "#/ville/belfort",
+   "role": "logo-pied",
+   "rang": 1,
+   "maquette": {
+    "rendu": "60×60",
+    "natif": "1024×1009",
+    "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
+    "voisin": "Top-Famille Pro",
+    "alt": "Top-Famille Pro"
+   },
+   "wordpress": {
+    "rendu": "60×60",
+    "natif": "120×120",
+    "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
+    "slot": "logo-carre",
+    "fichier": "logo-carre.png",
+    "alt": ""
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/ville/saint-apollinaire",
+   "role": "logo-entete",
+   "rang": 1,
+   "maquette": {
+    "rendu": "155×82",
+    "natif": "759×402",
+    "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
+    "voisin": "Prestations ▼ Tarifs Zones ▼ Pourquoi nous Avis Conseils ☎06",
+    "alt": "Top-Famille Pro"
+   },
+   "wordpress": {
+    "rendu": "155×82",
+    "natif": "320×169",
+    "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
+    "slot": "logo-horizontal",
+    "fichier": "logo-horizontal.png",
+    "alt": "Top-Famille Pro"
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/ville/saint-apollinaire",
+   "role": "hero",
+   "rang": 1,
+   "maquette": {
+    "rendu": "512×384",
+    "natif": "900×601",
+    "sha": "bd077ba50393c4f361f0d242c877af033d6e7acc435915c1e26bb5d26ea23976",
+    "voisin": "",
+    "alt": "Locaux professionnels à Saint-Apollinaire"
+   },
+   "wordpress": {
+    "rendu": "512×384",
+    "natif": "560×374",
+    "sha": "bd077ba50393c4f361f0d242c877af033d6e7acc435915c1e26bb5d26ea23976",
+    "slot": "ville-saint-apollinaire",
+    "fichier": "ville-saint-apollinaire-760.avif",
+    "alt": "Locaux professionnels à Saint-Apollinaire"
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/ville/saint-apollinaire",
+   "role": "logo-pied",
+   "rang": 1,
+   "maquette": {
+    "rendu": "60×60",
+    "natif": "1024×1009",
+    "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
+    "voisin": "Top-Famille Pro",
+    "alt": "Top-Famille Pro"
+   },
+   "wordpress": {
+    "rendu": "60×60",
+    "natif": "120×120",
+    "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
+    "slot": "logo-carre",
+    "fichier": "logo-carre.png",
+    "alt": ""
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/ville/chenove",
+   "role": "logo-entete",
+   "rang": 1,
+   "maquette": {
+    "rendu": "155×82",
+    "natif": "759×402",
+    "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
+    "voisin": "Prestations ▼ Tarifs Zones ▼ Pourquoi nous Avis Conseils ☎06",
+    "alt": "Top-Famille Pro"
+   },
+   "wordpress": {
+    "rendu": "155×82",
+    "natif": "320×169",
+    "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
+    "slot": "logo-horizontal",
+    "fichier": "logo-horizontal.png",
+    "alt": "Top-Famille Pro"
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/ville/chenove",
+   "role": "hero",
+   "rang": 1,
+   "maquette": {
+    "rendu": "512×384",
+    "natif": "900×600",
+    "sha": "99ada67d6120d55ca6c7a418ec718ad91a9da303acbd9f68afb6379c4893892e",
+    "voisin": "",
+    "alt": "Locaux professionnels à Chenôve"
+   },
+   "wordpress": {
+    "rendu": "512×384",
+    "natif": "560×373",
+    "sha": "99ada67d6120d55ca6c7a418ec718ad91a9da303acbd9f68afb6379c4893892e",
+    "slot": "ville-chenove",
+    "fichier": "ville-chenove-760.avif",
+    "alt": "Locaux professionnels à Chenôve"
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/ville/chenove",
+   "role": "logo-pied",
+   "rang": 1,
+   "maquette": {
+    "rendu": "60×60",
+    "natif": "1024×1009",
+    "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
+    "voisin": "Top-Famille Pro",
+    "alt": "Top-Famille Pro"
+   },
+   "wordpress": {
+    "rendu": "60×60",
+    "natif": "120×120",
+    "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
+    "slot": "logo-carre",
+    "fichier": "logo-carre.png",
+    "alt": ""
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/ville/quetigny",
+   "role": "logo-entete",
+   "rang": 1,
+   "maquette": {
+    "rendu": "155×82",
+    "natif": "759×402",
+    "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
+    "voisin": "Prestations ▼ Tarifs Zones ▼ Pourquoi nous Avis Conseils ☎06",
+    "alt": "Top-Famille Pro"
+   },
+   "wordpress": {
+    "rendu": "155×82",
+    "natif": "320×169",
+    "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
+    "slot": "logo-horizontal",
+    "fichier": "logo-horizontal.png",
+    "alt": "Top-Famille Pro"
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/ville/quetigny",
+   "role": "hero",
+   "rang": 1,
+   "maquette": {
+    "rendu": "512×384",
+    "natif": "900×601",
+    "sha": "46a86c7e9eac3d5ff532943225e72d17e7d72fc7d5e64dd8473a2e380f35ab07",
+    "voisin": "",
+    "alt": "Locaux professionnels à Quetigny"
+   },
+   "wordpress": {
+    "rendu": "512×384",
+    "natif": "560×373",
+    "sha": "0d8cf57d64f5124dd86e190d107e31cd3c09c54f1ac3845332494ae41b9e5e55",
+    "slot": "ville-quetigny",
+    "fichier": "ville-quetigny-760.avif",
+    "alt": "Locaux professionnels à Quetigny"
+   },
+   "verdict": "IMAGE DIFFÉRENTE"
+  },
+  {
+   "route": "#/ville/quetigny",
+   "role": "logo-pied",
+   "rang": 1,
+   "maquette": {
+    "rendu": "60×60",
+    "natif": "1024×1009",
+    "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
+    "voisin": "Top-Famille Pro",
+    "alt": "Top-Famille Pro"
+   },
+   "wordpress": {
+    "rendu": "60×60",
+    "natif": "120×120",
+    "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
+    "slot": "logo-carre",
+    "fichier": "logo-carre.png",
+    "alt": ""
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/ville/talant",
+   "role": "logo-entete",
+   "rang": 1,
+   "maquette": {
+    "rendu": "155×82",
+    "natif": "759×402",
+    "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
+    "voisin": "Prestations ▼ Tarifs Zones ▼ Pourquoi nous Avis Conseils ☎06",
+    "alt": "Top-Famille Pro"
+   },
+   "wordpress": {
+    "rendu": "155×82",
+    "natif": "320×169",
+    "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
+    "slot": "logo-horizontal",
+    "fichier": "logo-horizontal.png",
+    "alt": "Top-Famille Pro"
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/ville/talant",
+   "role": "hero",
+   "rang": 1,
+   "maquette": {
+    "rendu": "512×384",
+    "natif": "900×600",
+    "sha": "fef95157c7aa6c842749029b4267d6b443142b3373976b5cf6612319fe1fd065",
+    "voisin": "",
+    "alt": "Locaux professionnels à Talant"
+   },
+   "wordpress": {
+    "rendu": "512×384",
+    "natif": "560×373",
+    "sha": "fef95157c7aa6c842749029b4267d6b443142b3373976b5cf6612319fe1fd065",
+    "slot": "ville-talant",
+    "fichier": "ville-talant-760.avif",
+    "alt": "Locaux professionnels à Talant"
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/ville/talant",
+   "role": "logo-pied",
+   "rang": 1,
+   "maquette": {
+    "rendu": "60×60",
+    "natif": "1024×1009",
+    "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
+    "voisin": "Top-Famille Pro",
+    "alt": "Top-Famille Pro"
+   },
+   "wordpress": {
+    "rendu": "60×60",
+    "natif": "120×120",
+    "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
+    "slot": "logo-carre",
+    "fichier": "logo-carre.png",
+    "alt": ""
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/ville/longvic",
+   "role": "logo-entete",
+   "rang": 1,
+   "maquette": {
+    "rendu": "155×82",
+    "natif": "759×402",
+    "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
+    "voisin": "Prestations ▼ Tarifs Zones ▼ Pourquoi nous Avis Conseils ☎06",
+    "alt": "Top-Famille Pro"
+   },
+   "wordpress": {
+    "rendu": "155×82",
+    "natif": "320×169",
+    "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
+    "slot": "logo-horizontal",
+    "fichier": "logo-horizontal.png",
+    "alt": "Top-Famille Pro"
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/ville/longvic",
+   "role": "hero",
+   "rang": 1,
+   "maquette": {
+    "rendu": "512×384",
+    "natif": "900×600",
+    "sha": "91b93f915a21fbd98a3b722494d2937479319192d745e4051fa1b3ecafe9787b",
+    "voisin": "",
+    "alt": "Locaux professionnels à Longvic"
+   },
+   "wordpress": {
+    "rendu": "512×384",
+    "natif": "560×373",
+    "sha": "0d32ae6733eee622e481ca5cf0f6e44885c26fa84f72d7fb52d3aee58da2471d",
+    "slot": "ville-longvic",
+    "fichier": "ville-longvic-760.avif",
+    "alt": "Locaux professionnels à Longvic"
+   },
+   "verdict": "IMAGE DIFFÉRENTE"
+  },
+  {
+   "route": "#/ville/longvic",
+   "role": "logo-pied",
+   "rang": 1,
+   "maquette": {
+    "rendu": "60×60",
+    "natif": "1024×1009",
+    "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
+    "voisin": "Top-Famille Pro",
+    "alt": "Top-Famille Pro"
+   },
+   "wordpress": {
+    "rendu": "60×60",
+    "natif": "120×120",
+    "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
+    "slot": "logo-carre",
+    "fichier": "logo-carre.png",
+    "alt": ""
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/ville/fontaine-les-dijon",
+   "role": "logo-entete",
+   "rang": 1,
+   "maquette": {
+    "rendu": "155×82",
+    "natif": "759×402",
+    "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
+    "voisin": "Prestations ▼ Tarifs Zones ▼ Pourquoi nous Avis Conseils ☎06",
+    "alt": "Top-Famille Pro"
+   },
+   "wordpress": {
+    "rendu": "155×82",
+    "natif": "320×169",
+    "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
+    "slot": "logo-horizontal",
+    "fichier": "logo-horizontal.png",
+    "alt": "Top-Famille Pro"
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/ville/fontaine-les-dijon",
+   "role": "hero",
+   "rang": 1,
+   "maquette": {
+    "rendu": "512×384",
+    "natif": "900×600",
+    "sha": "6e45e7676ac788cb8ab03af43cec0aa3325c6ac4ebbe42641bb8bb7c7f9818e0",
+    "voisin": "",
+    "alt": "Locaux professionnels à Fontaine-lès-Dijon"
+   },
+   "wordpress": {
+    "rendu": "512×384",
+    "natif": "560×373",
+    "sha": "6e45e7676ac788cb8ab03af43cec0aa3325c6ac4ebbe42641bb8bb7c7f9818e0",
+    "slot": "ville-fontaine-les-dijon",
+    "fichier": "ville-fontaine-les-dijon-760.avif",
+    "alt": "Locaux professionnels à Fontaine-lès-Dijon"
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/ville/fontaine-les-dijon",
+   "role": "logo-pied",
+   "rang": 1,
+   "maquette": {
+    "rendu": "60×60",
+    "natif": "1024×1009",
+    "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
+    "voisin": "Top-Famille Pro",
+    "alt": "Top-Famille Pro"
+   },
+   "wordpress": {
+    "rendu": "60×60",
+    "natif": "120×120",
+    "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
+    "slot": "logo-carre",
+    "fichier": "logo-carre.png",
+    "alt": ""
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/ville/marsannay-la-cote",
+   "role": "logo-entete",
+   "rang": 1,
+   "maquette": {
+    "rendu": "155×82",
+    "natif": "759×402",
+    "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
+    "voisin": "Prestations ▼ Tarifs Zones ▼ Pourquoi nous Avis Conseils ☎06",
+    "alt": "Top-Famille Pro"
+   },
+   "wordpress": {
+    "rendu": "155×82",
+    "natif": "320×169",
+    "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
+    "slot": "logo-horizontal",
+    "fichier": "logo-horizontal.png",
+    "alt": "Top-Famille Pro"
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/ville/marsannay-la-cote",
+   "role": "hero",
+   "rang": 1,
+   "maquette": {
+    "rendu": "512×384",
+    "natif": "900×600",
+    "sha": "d527896a48ac3f8c7d090d430b1813839436bb9b4c937192c3c6db5e71c8c045",
+    "voisin": "",
+    "alt": "Locaux professionnels à Marsannay-la-Côte"
+   },
+   "wordpress": {
+    "rendu": "512×384",
+    "natif": "560×373",
+    "sha": "d527896a48ac3f8c7d090d430b1813839436bb9b4c937192c3c6db5e71c8c045",
+    "slot": "ville-marsannay-la-cote",
+    "fichier": "ville-marsannay-la-cote-760.avif",
+    "alt": "Locaux professionnels à Marsannay-la-Côte"
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/ville/marsannay-la-cote",
+   "role": "logo-pied",
+   "rang": 1,
+   "maquette": {
+    "rendu": "60×60",
+    "natif": "1024×1009",
+    "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
+    "voisin": "Top-Famille Pro",
+    "alt": "Top-Famille Pro"
+   },
+   "wordpress": {
+    "rendu": "60×60",
+    "natif": "120×120",
+    "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
+    "slot": "logo-carre",
+    "fichier": "logo-carre.png",
+    "alt": ""
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/ville/beaune",
+   "role": "logo-entete",
+   "rang": 1,
+   "maquette": {
+    "rendu": "155×82",
+    "natif": "759×402",
+    "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
+    "voisin": "Prestations ▼ Tarifs Zones ▼ Pourquoi nous Avis Conseils ☎06",
+    "alt": "Top-Famille Pro"
+   },
+   "wordpress": {
+    "rendu": "155×82",
+    "natif": "320×169",
+    "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
+    "slot": "logo-horizontal",
+    "fichier": "logo-horizontal.png",
+    "alt": "Top-Famille Pro"
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/ville/beaune",
+   "role": "hero",
+   "rang": 1,
+   "maquette": {
+    "rendu": "512×384",
+    "natif": "900×601",
+    "sha": "31c59a38757a03203c9e32366de57b8b3c0cb2b98c32e19a99ca8a34d42207b9",
+    "voisin": "",
+    "alt": "Locaux professionnels à Beaune"
+   },
+   "wordpress": {
+    "rendu": "512×384",
+    "natif": "560×374",
+    "sha": "31c59a38757a03203c9e32366de57b8b3c0cb2b98c32e19a99ca8a34d42207b9",
+    "slot": "ville-beaune",
+    "fichier": "ville-beaune-760.avif",
+    "alt": "Locaux professionnels à Beaune"
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/ville/beaune",
    "role": "logo-pied",
    "rang": 1,
    "maquette": {
@@ -585,6 +2685,345 @@
   },
   {
    "route": "#/conseils",
+   "role": "logo-pied",
+   "rang": 1,
+   "maquette": {
+    "rendu": "60×60",
+    "natif": "1024×1009",
+    "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
+    "voisin": "Top-Famille Pro",
+    "alt": "Top-Famille Pro"
+   },
+   "wordpress": {
+    "rendu": "60×60",
+    "natif": "120×120",
+    "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
+    "slot": "logo-carre",
+    "fichier": "logo-carre.png",
+    "alt": ""
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/article/frequence-bureaux",
+   "role": "logo-entete",
+   "rang": 1,
+   "maquette": {
+    "rendu": "155×82",
+    "natif": "759×402",
+    "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
+    "voisin": "Prestations ▼ Tarifs Zones ▼ Pourquoi nous Avis Conseils ☎06",
+    "alt": "Top-Famille Pro"
+   },
+   "wordpress": {
+    "rendu": "155×82",
+    "natif": "320×169",
+    "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
+    "slot": "logo-horizontal",
+    "fichier": "logo-horizontal.png",
+    "alt": "Top-Famille Pro"
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/article/frequence-bureaux",
+   "role": "logo-entete",
+   "rang": 2,
+   "maquette": null,
+   "wordpress": {
+    "rendu": "820×461",
+    "natif": "820×547",
+    "sha": "4ba2bd2ba288216e81ea26a8ed506b377064337456c319cd6273d42b90fe97d2",
+    "slot": "article-1",
+    "fichier": "article-1-640.avif",
+    "alt": "À quelle fréquence faire nettoyer ses bureaux ?"
+   },
+   "verdict": "EN TROP côté thème"
+  },
+  {
+   "route": "#/article/frequence-bureaux",
+   "role": "hero",
+   "rang": 1,
+   "maquette": {
+    "rendu": "820×461",
+    "natif": "900×601",
+    "sha": "4ba2bd2ba288216e81ea26a8ed506b377064337456c319cd6273d42b90fe97d2",
+    "voisin": "Bureaux À quelle fréquence faire nettoyer ses bureaux ? Par ",
+    "alt": "À quelle fréquence faire nettoyer ses bureaux ?"
+   },
+   "wordpress": null,
+   "verdict": "MANQUANTE côté thème"
+  },
+  {
+   "route": "#/article/frequence-bureaux",
+   "role": "logo-pied",
+   "rang": 1,
+   "maquette": {
+    "rendu": "60×60",
+    "natif": "1024×1009",
+    "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
+    "voisin": "Top-Famille Pro",
+    "alt": "Top-Famille Pro"
+   },
+   "wordpress": {
+    "rendu": "60×60",
+    "natif": "120×120",
+    "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
+    "slot": "logo-carre",
+    "fichier": "logo-carre.png",
+    "alt": ""
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/article/cout-nettoyage-bureaux",
+   "role": "logo-entete",
+   "rang": 1,
+   "maquette": {
+    "rendu": "155×82",
+    "natif": "759×402",
+    "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
+    "voisin": "Prestations ▼ Tarifs Zones ▼ Pourquoi nous Avis Conseils ☎06",
+    "alt": "Top-Famille Pro"
+   },
+   "wordpress": {
+    "rendu": "155×82",
+    "natif": "320×169",
+    "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
+    "slot": "logo-horizontal",
+    "fichier": "logo-horizontal.png",
+    "alt": "Top-Famille Pro"
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/article/cout-nettoyage-bureaux",
+   "role": "logo-entete",
+   "rang": 2,
+   "maquette": null,
+   "wordpress": {
+    "rendu": "820×461",
+    "natif": "820×547",
+    "sha": "31c59a38757a03203c9e32366de57b8b3c0cb2b98c32e19a99ca8a34d42207b9",
+    "slot": "article-2",
+    "fichier": "article-2-640.avif",
+    "alt": "Combien coûte le nettoyage de bureaux ?"
+   },
+   "verdict": "EN TROP côté thème"
+  },
+  {
+   "route": "#/article/cout-nettoyage-bureaux",
+   "role": "hero",
+   "rang": 1,
+   "maquette": {
+    "rendu": "820×461",
+    "natif": "900×601",
+    "sha": "31c59a38757a03203c9e32366de57b8b3c0cb2b98c32e19a99ca8a34d42207b9",
+    "voisin": "Tarifs Combien coûte le nettoyage de bureaux ? Par Audrey·Pu",
+    "alt": "Combien coûte le nettoyage de bureaux ?"
+   },
+   "wordpress": null,
+   "verdict": "MANQUANTE côté thème"
+  },
+  {
+   "route": "#/article/cout-nettoyage-bureaux",
+   "role": "logo-pied",
+   "rang": 1,
+   "maquette": {
+    "rendu": "60×60",
+    "natif": "1024×1009",
+    "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
+    "voisin": "Top-Famille Pro",
+    "alt": "Top-Famille Pro"
+   },
+   "wordpress": {
+    "rendu": "60×60",
+    "natif": "120×120",
+    "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
+    "slot": "logo-carre",
+    "fichier": "logo-carre.png",
+    "alt": ""
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/article/cahier-des-charges-nettoyage",
+   "role": "logo-entete",
+   "rang": 1,
+   "maquette": {
+    "rendu": "155×82",
+    "natif": "759×402",
+    "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
+    "voisin": "Prestations ▼ Tarifs Zones ▼ Pourquoi nous Avis Conseils ☎06",
+    "alt": "Top-Famille Pro"
+   },
+   "wordpress": {
+    "rendu": "155×82",
+    "natif": "320×169",
+    "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
+    "slot": "logo-horizontal",
+    "fichier": "logo-horizontal.png",
+    "alt": "Top-Famille Pro"
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/article/cahier-des-charges-nettoyage",
+   "role": "logo-entete",
+   "rang": 2,
+   "maquette": null,
+   "wordpress": {
+    "rendu": "820×461",
+    "natif": "820×547",
+    "sha": "f1c64c6392df9f4398e7f05e2e1fa1c92be99ebdfc0d0685782ff2e830e871c1",
+    "slot": "article-3",
+    "fichier": "article-3-640.avif",
+    "alt": "Comment rédiger un cahier des charges de nettoyage ?"
+   },
+   "verdict": "EN TROP côté thème"
+  },
+  {
+   "route": "#/article/cahier-des-charges-nettoyage",
+   "role": "hero",
+   "rang": 1,
+   "maquette": {
+    "rendu": "820×461",
+    "natif": "900×600",
+    "sha": "f1c64c6392df9f4398e7f05e2e1fa1c92be99ebdfc0d0685782ff2e830e871c1",
+    "voisin": "Organisation Comment rédiger un cahier des charges de nettoy",
+    "alt": "Comment rédiger un cahier des charges de nettoyage ?"
+   },
+   "wordpress": null,
+   "verdict": "MANQUANTE côté thème"
+  },
+  {
+   "route": "#/article/cahier-des-charges-nettoyage",
+   "role": "logo-pied",
+   "rang": 1,
+   "maquette": {
+    "rendu": "60×60",
+    "natif": "1024×1009",
+    "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
+    "voisin": "Top-Famille Pro",
+    "alt": "Top-Famille Pro"
+   },
+   "wordpress": {
+    "rendu": "60×60",
+    "natif": "120×120",
+    "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
+    "slot": "logo-carre",
+    "fichier": "logo-carre.png",
+    "alt": ""
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/pourquoi-top-famille-pro",
+   "role": "logo-entete",
+   "rang": 1,
+   "maquette": {
+    "rendu": "155×82",
+    "natif": "759×402",
+    "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
+    "voisin": "Prestations ▼ Tarifs Zones ▼ Pourquoi nous Avis Conseils ☎06",
+    "alt": "Top-Famille Pro"
+   },
+   "wordpress": {
+    "rendu": "155×82",
+    "natif": "320×169",
+    "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
+    "slot": "logo-horizontal",
+    "fichier": "logo-horizontal.png",
+    "alt": "Top-Famille Pro"
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/pourquoi-top-famille-pro",
+   "role": "logo-pied",
+   "rang": 1,
+   "maquette": {
+    "rendu": "60×60",
+    "natif": "1024×1009",
+    "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
+    "voisin": "Top-Famille Pro",
+    "alt": "Top-Famille Pro"
+   },
+   "wordpress": {
+    "rendu": "60×60",
+    "natif": "120×120",
+    "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
+    "slot": "logo-carre",
+    "fichier": "logo-carre.png",
+    "alt": ""
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/notre-fonctionnement",
+   "role": "logo-entete",
+   "rang": 1,
+   "maquette": {
+    "rendu": "155×82",
+    "natif": "759×402",
+    "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
+    "voisin": "Prestations ▼ Tarifs Zones ▼ Pourquoi nous Avis Conseils ☎06",
+    "alt": "Top-Famille Pro"
+   },
+   "wordpress": {
+    "rendu": "155×82",
+    "natif": "320×169",
+    "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
+    "slot": "logo-horizontal",
+    "fichier": "logo-horizontal.png",
+    "alt": "Top-Famille Pro"
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/notre-fonctionnement",
+   "role": "logo-pied",
+   "rang": 1,
+   "maquette": {
+    "rendu": "60×60",
+    "natif": "1024×1009",
+    "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
+    "voisin": "Top-Famille Pro",
+    "alt": "Top-Famille Pro"
+   },
+   "wordpress": {
+    "rendu": "60×60",
+    "natif": "120×120",
+    "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
+    "slot": "logo-carre",
+    "fichier": "logo-carre.png",
+    "alt": ""
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/avis-clients",
+   "role": "logo-entete",
+   "rang": 1,
+   "maquette": {
+    "rendu": "155×82",
+    "natif": "759×402",
+    "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
+    "voisin": "Prestations ▼ Tarifs Zones ▼ Pourquoi nous Avis Conseils ☎06",
+    "alt": "Top-Famille Pro"
+   },
+   "wordpress": {
+    "rendu": "155×82",
+    "natif": "320×169",
+    "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
+    "slot": "logo-horizontal",
+    "fichier": "logo-horizontal.png",
+    "alt": "Top-Famille Pro"
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/avis-clients",
    "role": "logo-pied",
    "rang": 1,
    "maquette": {
@@ -731,6 +3170,69 @@
    "verdict": "IDENTIQUE"
   },
   {
+   "route": "#/demande-de-devis",
+   "role": "logo-entete",
+   "rang": 1,
+   "maquette": {
+    "rendu": "155×82",
+    "natif": "759×402",
+    "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
+    "voisin": "Prestations ▼ Tarifs Zones ▼ Pourquoi nous Avis Conseils ☎06",
+    "alt": "Top-Famille Pro"
+   },
+   "wordpress": {
+    "rendu": "155×82",
+    "natif": "320×169",
+    "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
+    "slot": "logo-horizontal",
+    "fichier": "logo-horizontal.png",
+    "alt": "Top-Famille Pro"
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/demande-de-devis",
+   "role": "vignette",
+   "rang": 1,
+   "maquette": {
+    "rendu": "60×60",
+    "natif": "200×252",
+    "sha": "f9c6cb81f75acb8267b975f23af561aed7b5d0b961fca6f944ab9d3ed2dbedd7",
+    "voisin": "AudreyVotre interlocutrice dédiée",
+    "alt": "Audrey, Top-Famille Pro"
+   },
+   "wordpress": {
+    "rendu": "60×60",
+    "natif": "640×958",
+    "sha": "c6c51783628e317008b03004640a273251c41c6373a6fc63738dc2d56df83965",
+    "slot": "audrey-placeholder",
+    "fichier": "audrey-placeholder-640.jpg",
+    "alt": "Photo d’illustration temporaire — portrait définitif à venir"
+   },
+   "verdict": "IMAGE DIFFÉRENTE"
+  },
+  {
+   "route": "#/demande-de-devis",
+   "role": "logo-pied",
+   "rang": 1,
+   "maquette": {
+    "rendu": "60×60",
+    "natif": "1024×1009",
+    "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
+    "voisin": "Top-Famille Pro",
+    "alt": "Top-Famille Pro"
+   },
+   "wordpress": {
+    "rendu": "60×60",
+    "natif": "120×120",
+    "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
+    "slot": "logo-carre",
+    "fichier": "logo-carre.png",
+    "alt": ""
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
    "route": "#/contact",
    "role": "logo-entete",
    "rang": 1,
@@ -774,6 +3276,174 @@
   },
   {
    "route": "#/contact",
+   "role": "logo-pied",
+   "rang": 1,
+   "maquette": {
+    "rendu": "60×60",
+    "natif": "1024×1009",
+    "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
+    "voisin": "Top-Famille Pro",
+    "alt": "Top-Famille Pro"
+   },
+   "wordpress": {
+    "rendu": "60×60",
+    "natif": "120×120",
+    "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
+    "slot": "logo-carre",
+    "fichier": "logo-carre.png",
+    "alt": ""
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/plan-du-site",
+   "role": "logo-entete",
+   "rang": 1,
+   "maquette": {
+    "rendu": "155×82",
+    "natif": "759×402",
+    "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
+    "voisin": "Prestations ▼ Tarifs Zones ▼ Pourquoi nous Avis Conseils ☎06",
+    "alt": "Top-Famille Pro"
+   },
+   "wordpress": {
+    "rendu": "155×82",
+    "natif": "320×169",
+    "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
+    "slot": "logo-horizontal",
+    "fichier": "logo-horizontal.png",
+    "alt": "Top-Famille Pro"
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/plan-du-site",
+   "role": "logo-pied",
+   "rang": 1,
+   "maquette": {
+    "rendu": "60×60",
+    "natif": "1024×1009",
+    "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
+    "voisin": "Top-Famille Pro",
+    "alt": "Top-Famille Pro"
+   },
+   "wordpress": {
+    "rendu": "60×60",
+    "natif": "120×120",
+    "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
+    "slot": "logo-carre",
+    "fichier": "logo-carre.png",
+    "alt": ""
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/mentions-legales",
+   "role": "logo-entete",
+   "rang": 1,
+   "maquette": {
+    "rendu": "155×82",
+    "natif": "759×402",
+    "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
+    "voisin": "Prestations ▼ Tarifs Zones ▼ Pourquoi nous Avis Conseils ☎06",
+    "alt": "Top-Famille Pro"
+   },
+   "wordpress": {
+    "rendu": "155×82",
+    "natif": "320×169",
+    "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
+    "slot": "logo-horizontal",
+    "fichier": "logo-horizontal.png",
+    "alt": "Top-Famille Pro"
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/mentions-legales",
+   "role": "logo-pied",
+   "rang": 1,
+   "maquette": {
+    "rendu": "60×60",
+    "natif": "1024×1009",
+    "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
+    "voisin": "Top-Famille Pro",
+    "alt": "Top-Famille Pro"
+   },
+   "wordpress": {
+    "rendu": "60×60",
+    "natif": "120×120",
+    "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
+    "slot": "logo-carre",
+    "fichier": "logo-carre.png",
+    "alt": ""
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/politique-de-confidentialite",
+   "role": "logo-entete",
+   "rang": 1,
+   "maquette": {
+    "rendu": "155×82",
+    "natif": "759×402",
+    "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
+    "voisin": "Prestations ▼ Tarifs Zones ▼ Pourquoi nous Avis Conseils ☎06",
+    "alt": "Top-Famille Pro"
+   },
+   "wordpress": {
+    "rendu": "155×82",
+    "natif": "320×169",
+    "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
+    "slot": "logo-horizontal",
+    "fichier": "logo-horizontal.png",
+    "alt": "Top-Famille Pro"
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/politique-de-confidentialite",
+   "role": "logo-pied",
+   "rang": 1,
+   "maquette": {
+    "rendu": "60×60",
+    "natif": "1024×1009",
+    "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
+    "voisin": "Top-Famille Pro",
+    "alt": "Top-Famille Pro"
+   },
+   "wordpress": {
+    "rendu": "60×60",
+    "natif": "120×120",
+    "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
+    "slot": "logo-carre",
+    "fichier": "logo-carre.png",
+    "alt": ""
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/gestion-des-cookies",
+   "role": "logo-entete",
+   "rang": 1,
+   "maquette": {
+    "rendu": "155×82",
+    "natif": "759×402",
+    "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
+    "voisin": "Prestations ▼ Tarifs Zones ▼ Pourquoi nous Avis Conseils ☎06",
+    "alt": "Top-Famille Pro"
+   },
+   "wordpress": {
+    "rendu": "155×82",
+    "natif": "320×169",
+    "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
+    "slot": "logo-horizontal",
+    "fichier": "logo-horizontal.png",
+    "alt": "Top-Famille Pro"
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/gestion-des-cookies",
    "role": "logo-pied",
    "rang": 1,
    "maquette": {
