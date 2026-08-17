@@ -5780,7 +5780,7 @@ update_option( 'tfp_page_zones-intervention', array(
 								'type' => 'link',
 								'texte' => 'Bourgogne-Franche-ComtéLa page régionale · huit départements couverts depuis Saint-ApollinaireVoir la page régionale →',
 								'route' => '#/bourgogne-franche-comte',
-								'archetype' => 'primaire',
+								'archetype' => 'ligne',
 								'rangee' => '',
 								'pad_v' => '34px',
 								'pad_h' => '34px',
@@ -5796,7 +5796,7 @@ update_option( 'tfp_page_zones-intervention', array(
 							array(
 								'texte' => 'Bourgogne-Franche-ComtéLa page régionale · huit départements couverts depuis Saint-ApollinaireVoir la page régionale →',
 								'route' => '#/bourgogne-franche-comte',
-								'archetype' => 'primaire',
+								'archetype' => 'ligne',
 								'rangee' => '',
 								'pad_v' => '34px',
 								'pad_h' => '34px',
@@ -8240,7 +8240,7 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 							array(
 								'type' => 'note',
 								'texte' => 'Devis gratuit sous 24 h Intervention régulière ou ponctuelle Conditions d\'arrêt précisées au devis',
-								'ligne' => 718,
+								'ligne' => 688,
 							),
 						),
 						'cartes' => array(
@@ -8357,7 +8357,7 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 							array(
 								'type' => 'note',
 								'texte' => 'Réponse directe',
-								'ligne' => 925,
+								'ligne' => 895,
 							),
 							array(
 								'type' => 'paragraph',
@@ -15129,7 +15129,7 @@ update_option( 'tfp_page_a-propos', array(
 							array(
 								'type' => 'note',
 								'texte' => 'Audrey · Top-Famille Pro',
-								'ligne' => 964,
+								'ligne' => 934,
 							),
 						),
 						'cartes' => array(),

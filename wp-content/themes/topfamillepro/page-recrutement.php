@@ -43,7 +43,19 @@ $page = tfp_static_page_data( 'recrutement' );
 <section class="tfp-hero">
 	<div class="tfp-hero__content">
 		<div class="tfp-hero__eyebrow">
-			<a class="tfp-region-badge" href="<?php echo esc_url( home_url( '/zones-intervention/bourgogne-franche-comte/' ) ); ?>"><?php echo esc_html( $site['address_region'] ); ?></a>
+			<?php
+			/*
+			 * PAS de badge région dans ce hero — relevé sur la maquette (G26 §8/§9).
+			 *
+			 * Le prototype ne pose ce badge que sur les pages qui parlent d'un territoire : la page
+			 * région, les huit départements, les dix-huit villes, les six prestations et la page
+			 * tarifs. Les pages institutionnelles — à propos, pourquoi nous, notre fonctionnement,
+			 * avis, index des prestations, index des zones, recrutement — n'en portent pas. Le thème
+			 * l'ajoutait sur les sept, soit un composant de 35 px et une rangée de plus au-dessus de
+			 * chaque H1, ce qui décalait tout le hero. Trois de ces routes en sortaient de la plage de
+			 * fidélité au relevé de base.
+			 */
+			?>
 			<?php tfp_google_rating_badge( 'nu' ); ?>
 		</div>
 		<h1><?php echo esc_html( $page['h1'] ); ?></h1>

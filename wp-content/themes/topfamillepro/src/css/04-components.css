@@ -25,6 +25,11 @@
   border: 1px solid transparent;
   transition: transform var(--transition-base), box-shadow var(--transition-base), background var(--transition-base), color var(--transition-base), border-color var(--transition-base);
   white-space: nowrap;
+  /* Un bouton ne peut jamais élargir la page. `nowrap` reproduit la maquette — ses commandes
+     tiennent toutes sur une ligne — mais un libellé long, venu d'un relevé ou d'une saisie, y
+     produisait 263 px de débordement horizontal sur l'index des zones. La borne le rend
+     impossible, quelle que soit la cause. */
+  max-width: 100%;
 }
 
 .tfp-btn:hover {
@@ -1066,6 +1071,30 @@
   font-size: var(--fs-lg);
   display: block;
   margin-bottom: 4px;
+}
+
+/* Rangée de rappel du pré-pied : la commande principale, puis le téléphone en lien nu et le
+   rappel tarifaire, comme la maquette (G26 §9). 16 px d'écart relevés. */
+.tfp-prefooter__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+}
+
+.tfp-prefooter__phone {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 24px;
+  font-size: 15px;
+  font-weight: var(--fw-semibold);
+  color: var(--color-navy);
+}
+
+.tfp-prefooter__price {
+  font-size: 13.5px;
+  color: var(--color-text-secondary);
 }
 
 /* ---------- Badge régional (hero des pages prestation et zone) ---------- */

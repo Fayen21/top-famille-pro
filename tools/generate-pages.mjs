@@ -961,6 +961,23 @@ for (const p of PAGES) {
 						const s = getComputedStyle(n);
 						const filet = parseFloat(s.borderTopWidth) || 0;
 						const plein = s.backgroundColor !== 'rgba(0, 0, 0, 0)' && s.backgroundColor !== 'transparent';
+						/*
+						 * UN BOUTON EST UNE COMMANDE COURTE — garde ajoutée après le relevé de base.
+						 *
+						 * Le repère « fond plein ou filet » suffisait pour les rangées de commandes,
+						 * mais il frappait aussi les CARTES-LIENS : sur l'index des zones, la carte
+						 * « Bourgogne-Franche-Comté / La page régionale · huit départements… » est un
+						 * `<a>` à fond plein, sans titre ni paragraphe à l'intérieur. Promue bouton,
+						 * elle héritait de `white-space: nowrap` et étalait 1 000 px de texte sur une
+						 * seule ligne : 263 px de débordement horizontal à 768 px — exactement ce que
+						 * CLAUDE.md §10 interdit de laisser passer.
+						 *
+						 * Une commande tient sur une ligne et porte un libellé court. Au-delà, c'est
+						 * une carte, et elle garde son rendu de carte.
+						 */
+						const boiteA = n.getBoundingClientRect();
+						const lignes = n.getClientRects().length;
+						const estCommande = boiteA.height <= 72 && lignes <= 1 && txt(n).length <= 60;
 						const rangee = n.parentElement && /flex/.test(getComputedStyle(n.parentElement).display) ? n.parentElement : null;
 						if (rangee && !rangee.dataset.tfpRangee) {
 							rangee.dataset.tfpRangee = 'r' + ++window.__tfpRangeeSeq;
@@ -969,7 +986,7 @@ for (const p of PAGES) {
 							t: 'a',
 							v: txt(n),
 							href: n.getAttribute('href') || '',
-							archetype: filet >= 1 ? 'secondaire' : plein ? 'primaire' : 'ligne',
+							archetype: ! estCommande ? 'ligne' : filet >= 1 ? 'secondaire' : plein ? 'primaire' : 'ligne',
 							rangee: rangee ? rangee.dataset.tfpRangee : '',
 							/*
 							 * Géométrie du bouton, relevée comme celle des tuiles l'est déjà.

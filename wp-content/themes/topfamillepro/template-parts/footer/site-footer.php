@@ -43,21 +43,30 @@ $zones = tfp_footer_zones_tree();
 				<?php echo esc_html( $prenom ); ?> étudie votre demande et vous transmet un devis clair sous 24 heures.
 			</p>
 			<?php
-			tfp_button(
-				array(
-					'label'   => 'Demander mon devis',
-					'href'    => home_url( '/demande-de-devis/' ),
-					'variant' => 'primary',
-				)
-			);
-			tfp_button(
-				array(
-					'label'   => '☎ ' . $site['phone'],
-					'href'    => 'tel:' . $site['phone_href'],
-					'variant' => 'secondary',
-				)
-			);
+			/*
+			 * Rangée de rappel — composition relevée sur la maquette (G26 §9).
+			 *
+			 * Le prototype pose UN bouton (192×53, 15,5 px) suivi d'un lien nu « ☎ Appeler Audrey »
+			 * de 24 px et du rappel tarifaire « 27 € HT/h ». Le thème posait deux boutons pleins de
+			 * 60 px et omettait le rappel : à 375 px, où la rangée s'empile, la bande faisait 325 px
+			 * pour 263 relevés — et cette bande est sur les 53 routes. Le second appel n'est pas un
+			 * bouton dans la maquette : c'est un rappel discret à côté de la commande principale.
+			 */
 			?>
+			<div class="tfp-prefooter__actions">
+				<?php
+				tfp_button(
+					array(
+						'label'   => 'Demander mon devis',
+						'href'    => home_url( '/demande-de-devis/' ),
+						'variant' => 'primary',
+						'mesures' => array( 'pad_v' => '14px', 'pad_h' => '22px', 'taille' => '15.5px', 'graisse' => 700, 'hauteur' => '53px' ),
+					)
+				);
+				?>
+				<a class="tfp-prefooter__phone" href="tel:<?php echo esc_attr( $site['phone_href'] ); ?>"><span aria-hidden="true">☎</span> Appeler <?php echo esc_html( $prenom ); ?></a>
+				<span class="tfp-prefooter__price"><?php echo esc_html( $site['price_unique_display'] ); ?> HT/h</span>
+			</div>
 		</div>
 	</section>
 	<div class="tfp-footer__inner">
