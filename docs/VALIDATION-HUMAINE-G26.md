@@ -143,16 +143,36 @@ décoratif, et la décision ne portait que sur les commandes.
 
 ---
 
-## Ce qui reste bloquant pour une mise en ligne
+## Ce qui reste bloquant — mis à jour le 17 août 2026
 
-Inchangé depuis les passes précédentes, et indépendant de cette relecture :
+**Le Kbis est acté.** Les identifiants publiés ont été contre-vérifiés par arithmétique au moment de
+lever le bloqueur : clé de Luhn du SIREN ✅, du SIRET ✅, et clé de TVA concordante avec le SIREN ✅.
+Ces contrôles sont désormais rejoués à chaque passage de la suite (`tests/legal.spec.js`) — un SIRET
+faux se publie exactement comme un vrai, et aucune relecture ne rattrape une transposition.
 
-1. **Données d'immatriculation non confirmées par Kbis** — bloqueur, rien ne se publie avant.
-2. **Nombre réel d'avis Google et URL de la fiche** — sans eux, la note reste retirée.
-3. **Photo authentique d'Audrey** — les portraits sont des visuels d'illustration déclarés.
-4. **Citation attribuée à Audrey** — à valider par l'intéressée avant mise en ligne.
-5. **Huit communes secondaires** en `noindex,follow` tant qu'Audrey ne les a pas validées une par
-   une.
+**Ne bloquent plus**, sur votre décision : l'URL de la fiche Google et le nombre d'avis, la photo
+authentique d'Audrey, la citation qui lui est attribuée. Les portraits et la citation restent
+marqués provisoires, avec leur mention visible — c'est ce qui les rend publiables. La note Google,
+elle, **reste retirée** tant que l'URL manque : ne plus bloquer la mise en ligne n'est pas afficher
+une note que le visiteur ne peut pas vérifier.
+
+**Un seul point reste ouvert et vous appartient** : les huit communes secondaires, en
+`noindex,follow` en attendant la validation d'Audrey.
+
+| Commune | CP | Situation |
+|---|---|---|
+| **Saint-Apollinaire** | 21850 | **le siège de l'entreprise** — rien à valider |
+| Chenôve | 21300 | banlieue sud de Dijon |
+| Quetigny | 21800 | banlieue est de Dijon |
+| Talant | 21240 | banlieue ouest de Dijon |
+| Longvic | 21600 | banlieue sud de Dijon |
+| Fontaine-lès-Dijon | 21121 | banlieue nord de Dijon |
+| Marsannay-la-Côte | 21160 | banlieue sud de Dijon |
+| Beaune | 21200 | ~40 km au sud |
+
+Les pages existent et sont complètes ; elles sont seulement retirées de l'index et du sitemap. Le
+critère n'est pas la distance mais la réalité commerciale : **Audrey y intervient-elle ?** Une page
+qui promet une intervention impossible coûte plus qu'elle ne rapporte.
 
 ## Un point de documentation à arbitrer
 

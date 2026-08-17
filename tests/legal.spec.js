@@ -21,6 +21,62 @@ const CONFIRMED_PATTERNS = {
 const RCS_TERMS = [/RCS/, /Dijon/];
 
 test.describe('Informations juridiques — mentions légales', () => {
+	/*
+	 * CLÉS DE CONTRÔLE des identifiants publiés — ajouté le 17 août 2026, quand Emmanuel a acté le
+	 * Kbis et levé le bloqueur.
+	 *
+	 * Les tests voisins vérifient que les numéros sont AFFICHÉS. Aucun ne vérifiait qu'ils sont
+	 * VALIDES. Or un SIRET faux se publie exactement comme un vrai : rien à l'écran ne le signale,
+	 * et c'est une mention légale erronée au sens de la LCEN. Une transposition de deux chiffres
+	 * lors d'une saisie suffirait, et aucune relecture humaine ne l'attraperait de façon fiable.
+	 *
+	 * Ces trois contrôles sont de l'arithmétique pure, sans réseau ni service tiers :
+	 *
+	 *  1. clé de Luhn du SIREN (9 chiffres) ;
+	 *  2. clé de Luhn du SIRET (14 chiffres) ;
+	 *  3. concordance de la clé de TVA intracommunautaire avec le SIREN — (12 + 3 × (SIREN mod 97))
+	 *     mod 97 — qui lie les deux identifiants l'un à l'autre.
+	 *
+	 * La règle de Luhn se dit « un chiffre sur deux EN PARTANT DE LA DROITE, à commencer par
+	 * l'avant-dernier ». Sur un SIREN, de longueur impaire, cela tombe sur les rangs pairs depuis la
+	 * gauche ; sur un SIRET, de longueur paire, sur les rangs impairs. Appliquer la règle du SIREN à
+	 * un SIRET recale des numéros parfaitement valides — vérifié en écrivant ce test.
+	 *
+	 * Ils ne prouvent pas que les numéros sont ceux de l'entreprise : c'est le Kbis qui l'établit,
+	 * et Emmanuel l'a acté. Ils prouvent qu'ils sont bien formés et mutuellement cohérents.
+	 */
+	const luhn = ( numero ) => {
+		let somme = 0;
+		for ( let i = numero.length - 1, rang = 0; i >= 0; i--, rang++ ) {
+			let chiffre = Number( numero[ i ] );
+			if ( rang % 2 === 1 ) {
+				chiffre *= 2;
+				if ( chiffre > 9 ) chiffre -= 9;
+			}
+			somme += chiffre;
+		}
+		return somme % 10 === 0;
+	};
+
+	test( 'les identifiants publiés ont des clés de contrôle valides', async ( { page } ) => {
+		await page.goto( '/mentions-legales/' );
+		const texte = ( await page.locator( 'main' ).innerText() ).replace( /\s+/g, ' ' );
+
+		const siret = ( texte.match( /\b(\d{3}\s?\d{3}\s?\d{3}\s?\d{5})\b/ ) || [] )[ 1 ];
+		expect( siret, 'aucun SIRET trouvé sur la page' ).toBeTruthy();
+		const siretNu = siret.replace( /\s/g, '' );
+		expect( luhn( siretNu ), `SIRET ${ siret } : clé de Luhn invalide` ).toBe( true );
+
+		const sirenNu = siretNu.slice( 0, 9 );
+		expect( luhn( sirenNu ), `SIREN ${ sirenNu } : clé de Luhn invalide` ).toBe( true );
+
+		const tva = ( texte.match( /FR\s?(\d{2})\s?(\d{3}\s?\d{3}\s?\d{3})/i ) || [] );
+		expect( tva[ 1 ], 'aucun numéro de TVA trouvé sur la page' ).toBeTruthy();
+		expect( tva[ 2 ].replace( /\s/g, '' ), 'la TVA ne porte pas le SIREN publié' ).toBe( sirenNu );
+		const cleAttendue = String( ( 12 + 3 * ( Number( sirenNu ) % 97 ) ) % 97 ).padStart( 2, '0' );
+		expect( tva[ 1 ], `clé TVA ${ tva[ 1 ] } incohérente avec le SIREN ${ sirenNu }` ).toBe( cleAttendue );
+	} );
+
 	test('les données d\'immatriculation confirmées sont publiées', async ({ page }) => {
 		await page.goto('/mentions-legales/');
 		const text = await page.locator('body').innerText();

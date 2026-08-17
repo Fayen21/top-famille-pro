@@ -334,13 +334,49 @@ L'écart est inscrit au registre `docs/ECARTS-MAQUETTE-AUTORISES.md` §8 et verr
 `tests/ecarts-structure.spec.js`, qui éprouve aussi que le badge région, lui, reste retiré : la
 décision porte sur les commandes, pas sur le badge.
 
-### 9.4 Bloqueurs de mise en ligne, inchangés
+### 9.4 Bloqueurs — levés le 17 août 2026, sauf un
 
-- Données d'immatriculation non confirmées par Kbis — bloqueur, `CLAUDE.md` §5.7.
-- Nombre réel d'avis Google et URL de la fiche — sans eux, la note reste retirée.
-- Photo authentique d'Audrey — les portraits restent des visuels d'illustration déclarés.
-- Citation attribuée à Audrey — **à valider par l'intéressée avant mise en ligne**.
-- Huit communes secondaires en `noindex,follow` tant qu'Audrey ne les a pas validées.
+**Le bloqueur Kbis est LEVÉ.** Emmanuel a acté les données d'immatriculation. Elles étaient déjà
+enregistrées comme résolues dans `PROJECT_INPUTS.md` §2 (« Résolu phase 7 », incohérence sur le
+SIREN levée) ; seuls `STATUS.md` et `CLAUDE.md` §5.7 les portaient encore comme ouvertes.
+
+Contre-vérifiées indépendamment au moment de lever le bloqueur, par pure arithmétique :
+
+| Identifiant | Valeur publiée | Contrôle |
+|---|---|---|
+| SIREN | 938 472 420 | clé de Luhn ✅ |
+| SIRET (siège) | 938 472 420 00018 | clé de Luhn ✅ |
+| TVA | FR 32 938 472 420 | clé 32 = (12 + 3 × (SIREN mod 97)) mod 97 ✅ **concordante avec le SIREN** |
+
+Ces contrôles n'établissent pas que ces numéros sont ceux de l'entreprise — c'est le Kbis qui le
+fait, et Emmanuel l'a acté. Ils établissent qu'ils sont bien formés et **mutuellement cohérents**,
+ce qui exclut une coquille de saisie. Ils sont désormais **permanents** : `tests/legal.spec.js`
+recalcule les trois clés à chaque passage de la suite. Un SIRET faux se publie exactement comme un
+vrai — rien à l'écran ne le signale — et aucune relecture humaine n'attrape de façon fiable une
+transposition de deux chiffres.
+
+**Trois points cessent d'être des bloqueurs**, sur décision d'Emmanuel du 17 août 2026 :
+
+| Point | Décision | Ce qui reste vrai |
+|---|---|---|
+| URL de la fiche Google et nombre d'avis | ne bloque plus | La note **reste retirée** : la garde de `includes/reassurance-settings.php` ne l'expose que si l'URL l'accompagne. Ne plus bloquer la mise en ligne n'est pas afficher une note invérifiable — voir §9.6. |
+| Photo authentique d'Audrey | ne bloque plus | Les portraits restent des **visuels d'illustration**, avec leur `alt` honnête, leur `data-tfp-provisional` et leur mention visible (`CLAUDE.md` §5.6). |
+| Citation attribuée à Audrey | ne bloque plus | Elle reste marquée provisoire et remplaçable en une requête. |
+
+**Un seul point reste ouvert** : les **huit communes secondaires**, en `noindex,follow` tant
+qu'Audrey ne les a pas validées une par une — Saint-Apollinaire, Chenôve, Quetigny, Talant,
+Longvic, Fontaine-lès-Dijon, Marsannay-la-Côte et Beaune. À signaler : **Saint-Apollinaire est le
+siège de l'entreprise** ; elle figure dans cette liste parce que le classement vient du prototype,
+pas d'une hésitation sur la desserte.
+
+### 9.6 Ce que « ne plus bloquer » ne change pas
+
+Ne plus traiter l'URL de la fiche Google comme un bloqueur de mise en ligne **n'autorise pas** à
+réafficher la note : c'est une note de plateforme tierce, et l'affirmer sans lien vers sa source
+reste une allégation invérifiable par le visiteur — le motif même du refus du 17 août 2026. La garde
+est réversible et rendra la note d'elle-même le jour où l'URL sera saisie. Il en va de même des
+portraits et de la citation : ils sont publiables **parce qu'ils sont déclarés provisoires**, pas
+malgré cela.
 
 ### 9.5 Point de documentation à arbitrer
 

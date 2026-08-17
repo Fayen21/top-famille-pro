@@ -84,9 +84,23 @@ verrouillées par `tests/ecarts-structure.spec.js` — une passe ultérieure qui
 nom de la fidélité fera échouer la suite. Le badge région, lui, reste retiré des sept heros
 concernés : la décision portait sur les commandes, pas sur le badge.
 
-**Contradiction signalée, non corrigée** : `CLAUDE.md` §5.5 dit la note 5,0/5 confirmée et
-affichable ; la consigne de cette passe demande son retrait. Le fichier ne se modifie pas sans
-validation d'Emmanuel.
+**Contradictions signalées, non corrigées** — `CLAUDE.md` ne se modifie pas sans validation
+d'Emmanuel, et deux de ses paragraphes sont désormais dépassés :
+- §5.5 dit la note 5,0/5 confirmée et affichable ; la consigne de G26 §7 demande son retrait tant
+  qu'aucune vérification officielle n'est fournie.
+- §5.7 porte les données d'immatriculation comme un bloqueur de mise en ligne non levé ;
+  `PROJECT_INPUTS.md` §2 les enregistre comme résolues depuis la phase 7, et **Emmanuel les a
+  actées le 17 août 2026**.
+
+**Bloqueurs de mise en ligne — état au 17 août 2026.** Le **Kbis est acté** : identifiants
+contre-vérifiés par arithmétique (Luhn du SIREN ✅, Luhn du SIRET ✅, clé de TVA concordante avec le
+SIREN ✅) et ces trois contrôles sont désormais rejoués à chaque passage de `tests/legal.spec.js`.
+**Ne bloquent plus**, sur décision d'Emmanuel : URL de la fiche Google et nombre d'avis, photo
+authentique d'Audrey, citation qui lui est attribuée — les portraits et la citation restent marqués
+provisoires avec leur mention visible, et **la note Google reste retirée** tant que l'URL manque.
+**Reste ouvert** : les huit communes secondaires en `noindex,follow` — Saint-Apollinaire (qui est le
+siège), Chenôve, Quetigny, Talant, Longvic, Fontaine-lès-Dijon, Marsannay-la-Côte, Beaune — en
+attente de validation par Audrey, commune par commune.
 
 **Verdict : `PARTIEL — ÉCARTS RESTANTS`**, jusqu'à une nouvelle validation humaine explicite.
 
