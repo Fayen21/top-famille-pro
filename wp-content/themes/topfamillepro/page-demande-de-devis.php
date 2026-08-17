@@ -157,56 +157,68 @@ get_header();
 							</select>
 						</div>
 
-						<fieldset class="tfp-field" style="border:none;padding:0;margin:0">
-							<legend style="font-weight:600;font-size:var(--fs-sm);margin-bottom:6px">Besoin régulier ou ponctuel ? *</legend>
-							<div style="display:flex;gap:20px;flex-wrap:wrap">
-								<label style="display:flex;align-items:center;gap:6px;font-weight:400">
-									<input type="radio" name="regime" value="regulier" required> Régulier
-								</label>
-								<label style="display:flex;align-items:center;gap:6px;font-weight:400">
-									<input type="radio" name="regime" value="ponctuel" required> Ponctuel
-								</label>
-							</div>
-						</fieldset>
+						<?php
+						/*
+						 * Régime : une LISTE DÉROULANTE, comme la maquette (G26 §6).
+						 *
+						 * Le thème posait deux boutons radio. Le champ, son nom, ses deux valeurs et
+						 * son caractère obligatoire sont inchangés — seule la commande change, pour
+						 * que la rangée présente les deux mêmes listes côte à côte que le prototype.
+						 * La validation client est générique (`[required]`, src/js/quote-form.js) :
+						 * une liste dont la première option est vide échoue exactement comme un
+						 * groupe de radios non coché, et le contrôle serveur est inchangé.
+						 */
+						?>
+						<div class="tfp-field">
+							<label for="tfp-regime">Régulier ou ponctuel *</label>
+							<select id="tfp-regime" name="regime" required>
+								<option value="">Choisir…</option>
+								<option value="regulier">Entretien régulier</option>
+								<option value="ponctuel">Intervention ponctuelle</option>
+							</select>
+						</div>
 					</div>
 
 					<div class="tfp-form-row tfp-form-row--2-1">
 						<div class="tfp-field">
 							<label for="tfp-ville-visible">Ville</label>
-							<input type="text" id="tfp-ville-visible" name="ville" autocomplete="address-level2">
+							<input type="text" id="tfp-ville-visible" name="ville" autocomplete="address-level2" placeholder="Ex. Dijon">
+							<span class="tfp-field__hint">Commune où se trouvent les locaux.</span>
 						</div>
 
 						<div class="tfp-field">
 							<label for="tfp-code-postal">Code postal</label>
-							<input type="text" id="tfp-code-postal" name="code_postal" inputmode="numeric" pattern="[0-9]{5}" maxlength="5" autocomplete="postal-code">
+							<input type="text" id="tfp-code-postal" name="code_postal" inputmode="numeric" pattern="[0-9]{5}" maxlength="5" autocomplete="postal-code" placeholder="21000">
 						</div>
 					</div>
 
 					<div class="tfp-field">
-						<label for="tfp-surface">Surface approximative (m²)</label>
-						<input type="text" id="tfp-surface" name="surface" inputmode="numeric" placeholder="Ex. 150">
+						<label for="tfp-surface">Surface approximative</label>
+						<input type="text" id="tfp-surface" name="surface" inputmode="numeric" placeholder="Ex. 120 m² — un ordre de grandeur suffit">
+						<span class="tfp-field__hint">Une estimation suffit : elle est ajustée à la visite.</span>
 					</div>
 
 					<div class="tfp-form-row">
 						<div class="tfp-field">
 							<label for="tfp-nom">Nom et prénom *</label>
-							<input type="text" id="tfp-nom" name="nom" autocomplete="name" required>
+							<input type="text" id="tfp-nom" name="nom" autocomplete="name" required placeholder="Votre nom">
+							<span class="tfp-field__hint">Pour savoir qui rappeler.</span>
 						</div>
 
 						<div class="tfp-field">
 							<label for="tfp-telephone">Téléphone</label>
-							<input type="tel" id="tfp-telephone" name="telephone" autocomplete="tel">
+							<input type="tel" id="tfp-telephone" name="telephone" autocomplete="tel" placeholder="Ex. 06 12 34 56 78">
 						</div>
 					</div>
 
 					<div class="tfp-field">
 						<label for="tfp-email">E-mail</label>
-						<input type="email" id="tfp-email" name="email" autocomplete="email">
+						<input type="email" id="tfp-email" name="email" autocomplete="email" placeholder="vous@entreprise.fr">
 						<span class="tfp-field__hint">Téléphone ou e-mail : au moins l'un des deux est nécessaire pour que <?php echo esc_html( $site['manager'] ); ?> puisse vous répondre.</span>
 					</div>
 
 					<div class="tfp-form-actions">
-						<button type="button" class="tfp-btn tfp-btn--primary" data-step-next>Continuer →</button>
+						<button type="button" class="tfp-btn tfp-btn--primary" data-step-next>Continuer ma demande</button>
 					</div>
 				</fieldset>
 
@@ -220,11 +232,11 @@ get_header();
 
 					<div class="tfp-field">
 						<label for="tfp-entreprise">Entreprise</label>
-						<input type="text" id="tfp-entreprise" name="entreprise" autocomplete="organization">
+						<input type="text" id="tfp-entreprise" name="entreprise" autocomplete="organization" placeholder="Nom de votre structure">
 					</div>
 
 					<div class="tfp-field">
-						<label for="tfp-frequence">Fréquence souhaitée</label>
+						<label for="tfp-frequence">Fréquence envisagée</label>
 						<select id="tfp-frequence" name="frequence">
 							<?php foreach ( $frequences as $value => $label ) : ?>
 								<option value="<?php echo esc_attr( $value ); ?>"><?php echo esc_html( $label ); ?></option>
@@ -233,7 +245,7 @@ get_header();
 					</div>
 
 					<div class="tfp-field">
-						<label for="tfp-creneau">Créneau préféré</label>
+						<label for="tfp-creneau">Horaires souhaités</label>
 						<select id="tfp-creneau" name="creneau">
 							<?php foreach ( $creneaux as $value => $label ) : ?>
 								<option value="<?php echo esc_attr( $value ); ?>"><?php echo esc_html( $label ); ?></option>
@@ -242,8 +254,8 @@ get_header();
 					</div>
 
 					<div class="tfp-field">
-						<label for="tfp-message">Décrivez votre besoin *</label>
-						<textarea id="tfp-message" name="message" required placeholder="Contraintes d'accès, horaires, particularités des locaux…"></textarea>
+						<label for="tfp-message">Votre message *</label>
+						<textarea id="tfp-message" name="message" required placeholder="Contraintes d'accès, attentes particulières, questions…"></textarea>
 					</div>
 
 					<div class="tfp-field">
@@ -254,8 +266,13 @@ get_header();
 					</div>
 
 					<div class="tfp-form-actions">
-						<button type="button" class="tfp-btn tfp-btn--secondary" data-step-prev>← Retour</button>
-						<button type="submit" class="tfp-btn tfp-btn--primary" data-step-submit>Envoyer ma demande</button>
+						<button type="button" class="tfp-btn tfp-btn--secondary" data-step-prev>← Étape précédente</button>
+						<?php
+						// `data-tfp-once` : le bouton se désactive au premier envoi réel (src/js/main.js).
+						// Le formulaire de contact le portait déjà ; celui-ci ne l'avait pas, et un double
+						// clic produisait deux demandes identiques dans la boîte d'Audrey.
+						?>
+						<button type="submit" class="tfp-btn tfp-btn--primary" data-step-submit data-tfp-once>Envoyer ma demande</button>
 					</div>
 				</fieldset>
 

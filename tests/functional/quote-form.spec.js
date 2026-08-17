@@ -5,7 +5,7 @@ const FORM_URL = '/demande-de-devis/';
 
 async function fillStepOne(page, { telephone = '', email = '' } = {}) {
 	await page.selectOption('#tfp-type-locaux', 'bureaux');
-	await page.check('input[name="regime"][value="regulier"]');
+	await page.selectOption('#tfp-regime', 'regulier');
 	await page.fill('#tfp-nom', 'Test Automatisé');
 	if (telephone) await page.fill('#tfp-telephone', telephone);
 	if (email) await page.fill('#tfp-email', email);
@@ -123,5 +123,50 @@ test.describe('Formulaire de demande de devis', () => {
 		const errorsText = await page.locator('[data-form-errors]').innerText();
 		expect(errorsText.length).toBeGreaterThan(0);
 		await expect(page.locator('[data-step="0"]')).toBeVisible();
+	});
+	test('double envoi : le bouton se neutralise dès la première soumission valide', async ({ page }) => {
+		/*
+		 * Le formulaire de devis ne portait PAS `data-tfp-once` avant G26 §6 : seul celui de contact
+		 * l'avait, et un double clic produisait deux demandes identiques dans la boîte d'Audrey.
+		 *
+		 * La réponse au POST est un 204 : la soumission part réellement — donc le gestionnaire
+		 * s'exécute — mais le navigateur ne quitte pas le document, ce qui laisse observer l'état du
+		 * bouton. Annuler l'événement à la place mesurerait le contrôle « soumission annulée », pas
+		 * le comportement d'un envoi valide.
+		 */
+		await page.goto(FORM_URL);
+		await page.route('**/*', (route) =>
+			'POST' === route.request().method() ? route.fulfill({ status: 204, body: '' }) : route.continue()
+		);
+		await fillStepOne(page, { telephone: '0600000000' });
+		await page.click('[data-step-next]');
+		await page.fill('#tfp-message', 'Message de test automatisé, longueur suffisante.');
+		await page.check('input[name="consentement"]');
+		await page.click('[data-step-submit]');
+		await page.waitForTimeout(200);
+
+		const etat = await page.evaluate(() => {
+			const b = document.querySelector('[data-step-submit]');
+			return { desactive: b.disabled, occupe: b.getAttribute('aria-busy'), libelle: b.textContent.trim() };
+		});
+		expect(etat.desactive, 'le bouton doit être neutralisé après la première soumission').toBe(true);
+		expect(etat.occupe).toBe('true');
+		expect(etat.libelle).toMatch(/envoi/i);
+	});
+
+	test('une étape 1 incomplète ne neutralise pas le bouton d’envoi', async ({ page }) => {
+		// Le pendant du test précédent : le gestionnaire anti-double-envoi ignore une soumission
+		// annulée par la validation. Sans ce contrôle, un formulaire incomplet laissait le visiteur
+		// devant un bouton grisé, sans moyen de corriger et de renvoyer.
+		await page.goto(FORM_URL);
+		await page.evaluate(() => {
+			document.querySelectorAll('[data-step]').forEach((f) => {
+				f.hidden = false;
+			});
+		});
+		await page.click('[data-step-submit]');
+		await page.waitForTimeout(200);
+		const desactive = await page.evaluate(() => document.querySelector('[data-step-submit]').disabled);
+		expect(desactive, 'le bouton reste utilisable tant que la demande n’est pas partie').toBe(false);
 	});
 });

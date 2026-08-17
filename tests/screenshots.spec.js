@@ -108,7 +108,7 @@ test.describe('Contrôles particuliers (sélection commitée dans docs/captures/
 			await page.setViewportSize({ width: viewport.width, height: viewport.height });
 			await page.goto('/demande-de-devis/', { waitUntil: 'networkidle' });
 			await page.selectOption('#tfp-type-locaux', 'bureaux');
-			await page.check('input[name="regime"][value="regulier"]');
+			await page.selectOption('#tfp-regime', 'regulier');
 			await page.fill('#tfp-nom', 'Capture Test');
 			await page.fill('#tfp-telephone', '0600000000');
 			await page.click('[data-step-next]');
