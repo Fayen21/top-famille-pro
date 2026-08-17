@@ -129,7 +129,7 @@ $zones = tfp_footer_zones_tree();
 			</div>
 		</div>
 
-		<div class="tfp-footer__col">
+		<div class="tfp-footer__col tfp-footer__col--infos">
 			<h3>Informations</h3>
 			<ul>
 				<li><a href="<?php echo esc_url( home_url( '/tarifs/' ) ); ?>">Tarifs</a></li>
@@ -144,7 +144,15 @@ $zones = tfp_footer_zones_tree();
 		</div>
 	</div>
 
+	<?php
+	/*
+	 * Barre légale : bande pleine largeur au fond plus sombre, contenu aligné sur le conteneur du
+	 * site — comme la maquette (G26 §8). Sans conteneur intérieur, le texte partait à 40 px du bord
+	 * pendant que les colonnes au-dessus commençaient à 130.
+	 */
+	?>
 	<div class="tfp-footer__bottom">
+	  <div class="tfp-footer__bottom-inner">
 		<span>© <?php echo esc_html( $year ); ?> <?php echo esc_html( $site['legal_name'] ); ?> au capital de <?php echo esc_html( $site['legal_capital_display'] ); ?>, SIRET <?php echo esc_html( $site['legal_siret'] ); ?> — <?php echo esc_html( $site['brand_name'] ); ?></span>
 		<nav aria-label="Liens légaux" style="display:flex;flex-wrap:wrap;gap:16px">
 			<a href="<?php echo esc_url( home_url( '/mentions-legales/' ) ); ?>">Mentions légales</a>
@@ -152,5 +160,6 @@ $zones = tfp_footer_zones_tree();
 			<a href="<?php echo esc_url( home_url( '/gestion-des-cookies/' ) ); ?>">Cookies</a>
 			<a href="<?php echo esc_url( home_url( '/plan-du-site/' ) ); ?>">Plan du site</a>
 		</nav>
+	  </div>
 	</div>
 </footer>

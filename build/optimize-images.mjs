@@ -237,23 +237,29 @@ async function processLogo() {
   // densité. Il était auparavant généré à 140px, ce qui correspondait à l'ancien affichage à ~68px
   // de large : après l'agrandissement du logo, Lighthouse signalait à juste titre une image servie
   // en trop basse résolution (« Serves images with low resolution »).
+  /*
+   * 465 px = TROIS fois la taille d'affichage maximale (G26 §8). 320 px couvrait les écrans à
+   * densité 2 mais pas ceux à densité 3, courants sur mobile : le logo — présent sur les 53 pages,
+   * et la seule marque visible en haut de chaque écran — y était rendu à partir d'une source deux
+   * fois trop petite. La source en fournit 759 ; le fichier reste sous 25 ko.
+   */
   await sharp(srcPath)
-    .resize({ width: 320 })
+    .resize({ width: 465 })
     .png({ quality: 90, compressionLevel: 9 })
     .toFile(path.join(OUT_DIR, 'logo-horizontal.png'));
-  console.log('  logo-horizontal.png (recompressé, 320px)');
+  console.log('  logo-horizontal.png (recompressé, 465px)');
 
   /*
    * Logo CARRÉ du pied de page (G26). La maquette pose deux logos distincts : l'horizontal dans
    * l'en-tête (155×82) et le carré dans le pied (60×60, rayon 12, object-fit cover). Le thème
    * servait l'horizontal aux deux endroits — relevé par l'audit d'images par rôle, sur les
-   * octets. 120 px = deux fois la taille d'affichage, pour les écrans à forte densité.
+   * octets. 180 px = trois fois la taille d'affichage, comme le logo de l'en-tête.
    */
   const carre = path.join(ROOT, 'assets', 'logo', 'logo-square.jpg');
   try {
     await stat(carre);
-    await sharp(carre).resize({ width: 120, height: 120 }).png({ quality: 90, compressionLevel: 9 }).toFile(path.join(OUT_DIR, 'logo-carre.png'));
-    console.log('  logo-carre.png (pied de page, 120px)');
+    await sharp(carre).resize({ width: 180, height: 180 }).png({ quality: 90, compressionLevel: 9 }).toFile(path.join(OUT_DIR, 'logo-carre.png'));
+    console.log('  logo-carre.png (pied de page, 180px)');
   } catch {
     console.warn('  (logo carré ignoré : assets/logo/logo-square.jpg introuvable)');
   }

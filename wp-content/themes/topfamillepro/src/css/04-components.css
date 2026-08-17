@@ -794,28 +794,64 @@
   gap: 32px 30px;
 }
 
+/* Intitulé de colonne du pied — relevé G26 §8 : 12,5 px, graisse 700, CAPITALES, interlettrage
+   1 px, turquoise #93DADB. Le thème l'écrivait en 15 px blanc sans capitales : plus gros que dans
+   la maquette et sans la couleur qui le distingue des liens qu'il coiffe. */
 .tfp-footer__col h3 {
-  color: var(--color-white);
-  font-size: var(--fs-sm);
-  margin-bottom: var(--space-3);
+  color: var(--color-turquoise);
+  font-family: var(--font-body);
+  font-size: 12.5px;
+  font-weight: 700;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 15px;
+}
+
+/* La colonne « Informations » porte son intitulé en cuivre dans la maquette, pas en turquoise :
+   c'est la colonne de service, distinguée des deux colonnes d'offre. */
+.tfp-footer__col--infos h3 {
+  color: var(--color-copper);
 }
 
 .tfp-footer__col ul {
   display: flex;
   flex-direction: column;
   gap: var(--space-2);
-  font-size: var(--fs-2xs);
+  /* 15 px relevés, contre 13 posés par le thème : les liens du pied de page étaient les plus
+     petits du site alors que la maquette les compose comme du texte courant. */
+  font-size: 15px;
 }
 
+/* Barre légale : bande PROPRE, plus sombre que le pied (#0B1B2B), et alignée sur le conteneur du
+   site — le thème l'étalait sur toute la largeur, à 40 px des bords, quand la maquette la range
+   dans les mêmes 1 260 px que les colonnes au-dessus. */
 .tfp-footer__bottom {
-  border-top: 1px solid #234066;
-  padding: var(--space-4) var(--container-padding);
+  background: #0B1B2B;
+  padding: var(--space-4) 0;
+  font-size: 13.5px;
+  color: #8FAEB9;
+}
+
+/* Les liens légaux sont dans le gris de second plan de la barre, comme la maquette — pas dans la
+   couleur des liens de colonne. Contraste mesuré sur #0B1B2B : 7,2:1, au-dessus du seuil AA. */
+.tfp-footer .tfp-footer__bottom nav a {
+  color: #8FAEB9;
+}
+
+.tfp-footer .tfp-footer__bottom nav a:hover {
+  color: var(--color-white);
+}
+
+.tfp-footer__bottom-inner {
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--container-padding);
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-3);
   justify-content: space-between;
-  font-size: var(--fs-3xs);
-  color: #8FAEB9;
+  align-items: center;
 }
 
 /*
@@ -1636,34 +1672,70 @@ body.tfp-body .tfp-row-heading {
   color: var(--color-white);
 }
 
+/* Colonne de marque : 320 px dans la maquette. Sans borne, la grille lui donnait 411 px et la
+   ligne de contact s'étirait d'autant. */
+.tfp-footer__col--brand {
+  max-width: 320px;
+}
+
 .tfp-footer__tagline {
   margin-top: 14px;
   max-width: 320px;
-  font-size: 14px;
-  line-height: 1.6;
+  font-size: 15px;
+  line-height: 1.62;
+  color: #8FAEB9;
 }
 
 .tfp-footer__contact {
   margin-top: 16px;
   list-style: none;
   padding: 0;
-  font-size: 14px;
-  line-height: 2;
+  font-size: 15px;
+  line-height: 1.6;
 }
 
-.tfp-footer__more {
+/* Le téléphone du pied est un point de conversion, pas une ligne de coordonnées parmi d'autres :
+   la maquette l'écrit en 18 px gras blanc. Le thème le rendait en 13 px comme l'adresse, et il
+   disparaissait dans le bloc. */
+.tfp-footer .tfp-footer__contact li:first-child a {
+  font-family: var(--font-heading);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--color-white);
+}
+
+/* La ville est une information, pas un lien : elle reste en gris de second plan. */
+.tfp-footer__contact li:last-child {
+  color: #8FAEB9;
+}
+
+/* Renvoi de colonne — cuivre et gras dans la maquette, comme les autres renvois du site.
+   Sélecteur porté à (0,2,0) : `.tfp-footer a` colore tous les liens du pied à (0,1,1) et
+   l'emportait sur une classe seule. */
+.tfp-footer .tfp-footer__more {
   display: inline-block;
   margin-top: 10px;
-  font-size: 14px;
-  font-weight: 600;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--color-copper);
+}
+
+/* Le renvoi de tête de la colonne « Zones » fait exception : la maquette l'écrit en blanc, en
+   15,5 px — c'est le lien vers la page région, pas un renvoi de bas de colonne. */
+.tfp-footer .tfp-footer__col--zones > .tfp-footer__more {
+  font-size: 15.5px;
+  color: var(--color-white);
 }
 
 .tfp-footer__zones-label {
   margin-top: 16px;
-  font-size: 13px;
+  font-size: 10.5px;
+  font-weight: 700;
+  line-height: 1.62;
+  color: #8FAEB9;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
-  opacity: 0.75;
+  letter-spacing: 0.63px;
+  opacity: 1;
 }
 
 /*
@@ -1699,13 +1771,19 @@ body.tfp-body .tfp-row-heading {
   line-height: 1.5;
 }
 
-.tfp-footer__dept {
+/* Nom de département : surtitre de son groupe de villes — 11,5 px, graisse 600, gris de second
+   plan. Le thème l'écrivait en 14 px dans la couleur des liens, au même niveau que les villes
+   qu'il coiffe, et la hiérarchie des deux colonnes disparaissait. */
+.tfp-footer .tfp-footer__dept {
+  display: block;
+  font-size: 11.5px;
   font-weight: 600;
+  color: #8FAEB9;
 }
 
 .tfp-footer__villes {
   display: block;
-  opacity: 0.85;
+  opacity: 1;
 }
 
 /* Les deux renvois de bas de colonne sont empilés dans la maquette (51 px à deux lignes), pas
@@ -1717,8 +1795,10 @@ body.tfp-body .tfp-row-heading {
   margin-top: 14px;
 }
 
-.tfp-footer__zones-links .tfp-footer__more {
+.tfp-footer .tfp-footer__zones-links .tfp-footer__more {
   margin-top: 0;
+  /* 14 px relevés pour ces deux renvois-là, contre 15 pour celui de la colonne « Prestations ». */
+  font-size: 14px;
 }
 
 /* Badge de note au pied de page : même composant que le hero, mais sur fond marine — la couleur
@@ -3405,6 +3485,17 @@ body.tfp-body .tfp-sitemap-grid h2 {
   margin: 0;
   font-size: 15.5px;
   line-height: 1.62;
+}
+
+/* Cible de 24 px de haut — WCAG 2.2 AA 2.5.8 (G26 §8).
+   Ces liens font 21 px et l'audit relevait deux d'entre eux à 19 px de la barre d'appel collante
+   du mobile : ni la condition de taille ni celle d'espacement n'étaient tenues, et l'exception
+   « inline » ne s'applique pas — ce sont des liens de liste, sans texte porteur autour. Leur
+   donner la hauteur minimale règle le cas sans toucher à la barre ni au rythme de la colonne, la
+   boîte de ligne faisant déjà 25 px. */
+.tfp-sitemap-grid ul a {
+  display: inline-block;
+  min-height: 24px;
 }
 
 /* La bande légale du plan n'est pas une septième colonne : le prototype la sort de la grille et la
