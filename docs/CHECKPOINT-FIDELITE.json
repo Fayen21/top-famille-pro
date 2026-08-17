@@ -1,5 +1,5 @@
 {
- "note": "Point de reprise du chantier de fidélité visuelle. Machine-readable, à relire au début de la passe suivante. Généré à la clôture technique de G24, le 16 août 2026.",
+ "note": "Point de reprise du chantier de fidélité visuelle. Machine-readable, à relire au début de la passe suivante. Généré à la clôture de G25, le 17 août 2026.",
  "branche": "hotfix-production-fidelite-claude-design",
  "pr": 9,
  "banc_de_mesure": {
@@ -745,15 +745,15 @@
  "prochain_groupe_a_traiter": {
   "id": "VALIDATION-CAPTURES",
   "priorite": 1,
-  "titre": "Validation humaine des captures comparatives, puis PR et livraison",
-  "prealable": "G24 techniquement fermé (voir la section g24). Aucun chantier technique ouvert.",
+  "titre": "Relecture humaine des captures G25, puis PR et livraison",
+  "prealable": "G25 techniquement fermé (voir la section g25). Aucun chantier technique ouvert.",
   "ordre": [
-   "1. relecture humaine des triptyques docs/captures/comparaison/ et du rapport docs/COMPARAISON-53-ROUTES.md",
-   "2. décisions éditoriales en suspens : six vignettes 56 px du pilier ; libellés tarifaires reformulés (tarif-reformule)",
-   "3. PR de la branche de session, revue, fusion",
-   "4. re-génération des paquets depuis la tête fusionnée et livraison Hostinger (hors périmètre Claude : déploiement humain)"
+   "1. relecture du dossier docs/captures/VALIDATION-G25.html (24 prioritaires) avec la fiche docs/VALIDATION-HUMAINE-G25.md",
+   "2. décision en suspens : validation par Audrey de la citation qui lui est attribuée (§5.5) — indépendante des captures",
+   "3. PR de la branche de session après validation, revue, fusion",
+   "4. re-génération des paquets depuis la tête fusionnée et livraison Hostinger (geste humain)"
   ],
-  "commande_de_reprise": "bash tools/banc-local.sh && bash tools/banc-local.sh --theme-only — puis rejouer au besoin les outils de G24 (sonde-lcp, sonde-cls, lighthouse, compare-routes, compare-formulaire, export-statique)."
+  "commande_de_reprise": "bash tools/banc-local.sh && bash tools/banc-local.sh --theme-only — puis rejouer au besoin les outils G24/G25 (sonde-lcp, sonde-cls, lighthouse, compare-routes, compare-formulaire, compare-bande-vignettes, dossier-validation, export-statique)."
  },
  "groupes_suivants": [
   {
@@ -999,5 +999,43 @@
   "dependance_ajoutee": "lighthouse (devDependency) — exigé par les quatorze audits de la passe, aucun équivalent présent. Justifié au rapport (CLAUDE.md §6).",
   "confirmations": "aucune session concurrente · aucun ZIP ajouté à Git · aucun ZIP historique modifié · rien fusionné dans main · rien déployé · aucun DNS modifié · aucun historique réécrit, aucun force-push",
   "prochaine_action": "VALIDATION HUMAINE : faire relire à Emmanuel/Audrey docs/captures/comparaison/ (106 + 4 triptyques) et docs/COMPARAISON-53-ROUTES.md. Après validation seulement : PR de la branche claude/g23-fidelite-claude-design-7doxg4, puis déploiement Hostinger avec les paquets reconstruits (à re-générer depuis la tête fusionnée)."
+ },
+ "g25": {
+  "date": "17 août 2026",
+  "verdict": "G25=PASS_PRET_POUR_VALIDATION_HUMAINE — six vignettes exactes reproduites, différences restantes toutes justifiées, preuves régénérées, dossier de validation livré. La fidélité N'EST PAS déclarée validée : la relecture appartient à Emmanuel/Audrey.",
+  "depart": "branche claude/g23-fidelite-claude-design-7doxg4 à bd9efc5 (= origin), descendance de 041a952 ET bd9efc5 prouvée par merge-base --is-ancestor, arbre propre, aucune session concurrente.",
+  "phase_a_vignettes": {
+   "localisation": "pilier /nettoyage-professionnel/, bande « Nos six prestations de nettoyage professionnel » (fond #10263B) : six tuiles marine de navigation, chacune avec la photo de SA prestation en miniature THUMB_56 (56×56, rayon 10, cover, flex-shrink 0, alt vide — décoratives, déclarées ainsi par la maquette elle-même : imgEl(s.photo, '')).",
+   "six_actifs": {
+    "bureaux": "unsplash-1531973576160-7125cd663d86-800.jpg · 800×534 · sha256 0d32ae67…",
+    "commerces": "unsplash-1441986300917-64674bd600d8-800.jpg · 800×534 · sha256 0d8cf57d…",
+    "cabinets": "unsplash-1497366811353-6870744d04b2-800.jpg · 800×534 · sha256 c55d8a56…",
+    "coproprietes": "unsplash-1524758631624-e2822e304c36-800.jpg · 800×533 · sha256 ecee90ef…",
+    "meubles": "unsplash-1600585152220-90363fe7e115-800.jpg · 800×533 · sha256 e2440e59…",
+    "ponctuel": "unsplash-1581578731548-c64695cc6952-800.jpg · 800×533 · sha256 03752d88…"
+   },
+   "preuve_autorite": "tous présents dans le dépôt OCTET POUR OCTET (empreintes identiques aux assets du manifeste __bundler du standalone) — aucune image générée, aucun remplacement approchant.",
+   "cause_racine": "le relevé du générateur enregistrait l'image d'une carte par son alt (alt || '') : une image décorative valait « pas d'image ». Corrigé dans tools/generate-pages.mjs (marqueur « (décorative) » + champ image_rendu = taille rendue) ; seed régénéré, diff strictement limité aux champs image (368 items enrichis), copie installeur synchronisée.",
+   "rendu": "six slots thumb-* au pipeline (112/168, AVIF+WebP+JPG) ; tfp_card_grid rend la saveur miniature (.tfp-card-tile--thumb : rangée centrée, écart 14) quand image_rendu ≤ 80 px — le visuel de tête de carte existant est intact, aucun effet de bord (testé sur tarifs et pourquoi-nous).",
+   "resultat": "le pilier rend 10 images sur 10 (rapport de comparaison : « 10 → 10 ») et tient 100–101 % aux six largeurs. Tests : tests/g25.spec.js (5 — nombre, ordre, sources, 56×56/rayon/cover/écart à 375-768-1440, non-régression)."
+  },
+  "phase_b_11_differences": {
+   "confirmees_7": "badge-contact-tarif ×2 (« sur Google » §5.5 + tarif régional §5.3) · cta-contextuel ×1 (§8) · reassurance-accueil ×2 (§9 : la note ne se répète pas sur l'accueil) · cookies-encart ×2 (état réel des traceurs, §6) — chacune adossée à une règle supérieure du brief.",
+   "realignees_4": "tarif-reformule ×4 : pastille du hero « régulier ou ponctuel » et bandeau « tarif unique en région » — les libellés de la maquette, qui portent exactement la règle du tarif unique régional (§5.3). Reformulations sans nécessité commerciale, légale ou factuelle : réalignées. Aucun montant, exemple budgétaire, mention légale ou provisoire modifié."
+  },
+  "phase_c_revalidation": {
+   "classement": "225 → 215 anomalies tous genres · 11 → 7 occurrences (5 éditoriales + 2 légales) · 0 DEFAUT_THEME · 0 NON_RESOLUE — verdict de classement G25=PASS (docs/anomalies-g22.json).",
+   "baseline": "docs/baseline-2026-08-17-apres-G25.json : 318/318 · 300 dans 95–105 % · seules les 3 pages légales hors tolérance · sécurité 0/0/0/0/0 · 317 ratios inchangés vs G24, 1 rapproché.",
+   "lcp_cls_pilier": "LCP : texte à 375 (image sous le premier écran), hero-pilier AVIF à 1440 (eager, high, découverte 74 ms, 0 preload, 0 double) · CLS pilier ≤ 0,0005 aux six largeurs.",
+   "lighthouse": "les 14 rejoués (helper partagé + pipeline modifiés) : 14/14 aux cibles au premier passage — Perf mobile 94–98, bureau 100, A11y/BP/SEO 100, CLS ≤ 0,001. docs/LIGHTHOUSE.md.",
+   "tests": "1007 recensés = 919 assertions exécutées et vertes (16 G23 + 5 G24 + 5 G25) + 88 captures documentaires (0 avec assertion) · lint 81 fichiers · build byte-stable · verifier-installation PASS · image-map : 0 cassée, un seul fetchpriority=high par page."
+  },
+  "phase_d_validation": {
+   "captures": "88 captures + 106 triptyques + 4 formulaire + zoom pilier-bande-vignettes-375/1440 (en-tête collant neutralisé — artefact de capture) régénérés sur l'état G25.",
+   "dossier": "docs/captures/VALIDATION-G25.html (index hors ligne, 24 prioritaires + 88 dépliables) · docs/captures/validation-prioritaire/ · docs/VALIDATION-HUMAINE-G25.md (fiche de décision, statut « À VALIDER » partout — aucune auto-validation)."
+  },
+  "phase_e_exports": "reconstruits et vérifiés : 0 localhost, 0 image cassée, 0 requête externe, 53/53 hors ligne ; 4 paquets ZIP hors Git testés (61/292/260/22 fichiers), sans secrets ni fichiers de dev ; empreintes export/SHA256SUMS-G25.txt.",
+  "confirmations": "aucun ZIP ajouté à Git · les 8 ZIP historiques de release/ intacts · rien fusionné dans main · rien déployé · aucun DNS modifié · aucun historique publié réécrit, aucun force-push",
+  "prochaine_action": "RELECTURE HUMAINE : ouvrir docs/captures/VALIDATION-G25.html, relire les 24 comparaisons prioritaires avec docs/VALIDATION-HUMAINE-G25.md, répondre « Validé » ou « Refusé : <page> — <motif> ». Après validation seulement : PR de la branche de session, puis re-génération des paquets depuis la tête fusionnée et livraison Hostinger."
  }
 }

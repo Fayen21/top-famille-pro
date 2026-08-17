@@ -419,6 +419,240 @@
       ]
     }
   },
+  "thumb-bureaux": {
+    "slug": "thumb-bureaux",
+    "alt": "",
+    "lcp": false,
+    "width": 168,
+    "height": 112,
+    "variants": {
+      "avif": [
+        {
+          "width": 112,
+          "file": "thumb-bureaux-112.avif"
+        },
+        {
+          "width": 168,
+          "file": "thumb-bureaux-168.avif"
+        }
+      ],
+      "webp": [
+        {
+          "width": 112,
+          "file": "thumb-bureaux-112.webp"
+        },
+        {
+          "width": 168,
+          "file": "thumb-bureaux-168.webp"
+        }
+      ],
+      "jpg": [
+        {
+          "width": 112,
+          "file": "thumb-bureaux-112.jpg"
+        },
+        {
+          "width": 168,
+          "file": "thumb-bureaux-168.jpg"
+        }
+      ]
+    }
+  },
+  "thumb-commerces": {
+    "slug": "thumb-commerces",
+    "alt": "",
+    "lcp": false,
+    "width": 168,
+    "height": 112,
+    "variants": {
+      "avif": [
+        {
+          "width": 112,
+          "file": "thumb-commerces-112.avif"
+        },
+        {
+          "width": 168,
+          "file": "thumb-commerces-168.avif"
+        }
+      ],
+      "webp": [
+        {
+          "width": 112,
+          "file": "thumb-commerces-112.webp"
+        },
+        {
+          "width": 168,
+          "file": "thumb-commerces-168.webp"
+        }
+      ],
+      "jpg": [
+        {
+          "width": 112,
+          "file": "thumb-commerces-112.jpg"
+        },
+        {
+          "width": 168,
+          "file": "thumb-commerces-168.jpg"
+        }
+      ]
+    }
+  },
+  "thumb-cabinets": {
+    "slug": "thumb-cabinets",
+    "alt": "",
+    "lcp": false,
+    "width": 168,
+    "height": 112,
+    "variants": {
+      "avif": [
+        {
+          "width": 112,
+          "file": "thumb-cabinets-112.avif"
+        },
+        {
+          "width": 168,
+          "file": "thumb-cabinets-168.avif"
+        }
+      ],
+      "webp": [
+        {
+          "width": 112,
+          "file": "thumb-cabinets-112.webp"
+        },
+        {
+          "width": 168,
+          "file": "thumb-cabinets-168.webp"
+        }
+      ],
+      "jpg": [
+        {
+          "width": 112,
+          "file": "thumb-cabinets-112.jpg"
+        },
+        {
+          "width": 168,
+          "file": "thumb-cabinets-168.jpg"
+        }
+      ]
+    }
+  },
+  "thumb-coproprietes": {
+    "slug": "thumb-coproprietes",
+    "alt": "",
+    "lcp": false,
+    "width": 168,
+    "height": 112,
+    "variants": {
+      "avif": [
+        {
+          "width": 112,
+          "file": "thumb-coproprietes-112.avif"
+        },
+        {
+          "width": 168,
+          "file": "thumb-coproprietes-168.avif"
+        }
+      ],
+      "webp": [
+        {
+          "width": 112,
+          "file": "thumb-coproprietes-112.webp"
+        },
+        {
+          "width": 168,
+          "file": "thumb-coproprietes-168.webp"
+        }
+      ],
+      "jpg": [
+        {
+          "width": 112,
+          "file": "thumb-coproprietes-112.jpg"
+        },
+        {
+          "width": 168,
+          "file": "thumb-coproprietes-168.jpg"
+        }
+      ]
+    }
+  },
+  "thumb-meubles": {
+    "slug": "thumb-meubles",
+    "alt": "",
+    "lcp": false,
+    "width": 168,
+    "height": 112,
+    "variants": {
+      "avif": [
+        {
+          "width": 112,
+          "file": "thumb-meubles-112.avif"
+        },
+        {
+          "width": 168,
+          "file": "thumb-meubles-168.avif"
+        }
+      ],
+      "webp": [
+        {
+          "width": 112,
+          "file": "thumb-meubles-112.webp"
+        },
+        {
+          "width": 168,
+          "file": "thumb-meubles-168.webp"
+        }
+      ],
+      "jpg": [
+        {
+          "width": 112,
+          "file": "thumb-meubles-112.jpg"
+        },
+        {
+          "width": 168,
+          "file": "thumb-meubles-168.jpg"
+        }
+      ]
+    }
+  },
+  "thumb-ponctuel": {
+    "slug": "thumb-ponctuel",
+    "alt": "",
+    "lcp": false,
+    "width": 168,
+    "height": 112,
+    "variants": {
+      "avif": [
+        {
+          "width": 112,
+          "file": "thumb-ponctuel-112.avif"
+        },
+        {
+          "width": 168,
+          "file": "thumb-ponctuel-168.avif"
+        }
+      ],
+      "webp": [
+        {
+          "width": 112,
+          "file": "thumb-ponctuel-112.webp"
+        },
+        {
+          "width": 168,
+          "file": "thumb-ponctuel-168.webp"
+        }
+      ],
+      "jpg": [
+        {
+          "width": 112,
+          "file": "thumb-ponctuel-112.jpg"
+        },
+        {
+          "width": 168,
+          "file": "thumb-ponctuel-168.jpg"
+        }
+      ]
+    }
+  },
   "hero-pilier": {
     "slug": "hero-pilier",
     "alt": "Nettoyage de bureaux professionnels (photo d’illustration)",
