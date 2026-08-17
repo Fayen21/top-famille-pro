@@ -38,6 +38,21 @@ function tfp_image_manifest() {
 }
 
 /**
+ * Le manifeste déclare-t-il ce slug ?
+ *
+ * Sert aux gabarits qui composent un slug depuis un identifiant de contenu (`service-<prestation>`,
+ * `ville-<slug>`) : ils doivent pouvoir retomber sur un visuel générique plutôt que de produire
+ * une image cassée pour un contenu ajouté sans photo.
+ *
+ * @param string $slug
+ * @return bool
+ */
+function tfp_image_exists( $slug ) {
+	$manifest = tfp_image_manifest();
+	return ! empty( $manifest[ $slug ] );
+}
+
+/**
  * Construit une chaîne srcset à partir d'une liste de variantes {width, file}.
  *
  * @param array  $variants

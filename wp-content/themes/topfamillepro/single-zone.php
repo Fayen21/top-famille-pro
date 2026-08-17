@@ -181,7 +181,7 @@ get_header();
 				 * sans photo déclarée), on garde le visuel générique plutôt qu'une image cassée.
 				 */
 				$tfp_slug_zone  = get_post_field( 'post_name', $post_id );
-				$tfp_slot_ville = tfp_image_manifest()[ 'ville-' . $tfp_slug_zone ] ?? null ? 'ville-' . $tfp_slug_zone : 'article-3';
+				$tfp_slot_ville = tfp_image_exists( 'ville-' . $tfp_slug_zone ) ? 'ville-' . $tfp_slug_zone : 'article-3';
 				tfp_picture( $tfp_slot_ville, array( 'sizes' => '(max-width: 819px) 92vw, 560px', 'lcp' => true, 'alt' => $hero_alt ) );
 				?>
 			</div>

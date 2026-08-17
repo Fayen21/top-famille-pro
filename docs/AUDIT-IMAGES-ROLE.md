@@ -5,20 +5,20 @@
 > Les images sont appariées sur leur **rôle** dans la page (logo, hero, éditoriale, vignette),
 > pas comptées en bloc, puis comparées sur les **octets de leur source** (SHA-256).
 
-**167 images auditées sur 53 routes · 25 écart(s).**
+**164 images auditées sur 53 routes · 0 écart(s).**
 
 | Route | Rôle | # | SHA-256 maquette | SHA-256 WordPress | Slot | Résultat |
 |---|---|---:|---|---|---|---|
 | `#/` | logo-entete | 1 | 667325a99b8b8f2e | 667325a99b8b8f2e | logo-horizontal | ✅ identique |
 | `#/` | hero | 1 | 0f8fb0ce37ddc15c | 0f8fb0ce37ddc15c | hero-main | ✅ identique |
 | `#/` | editoriale | 1 | d90ac841df35ad7a | d90ac841df35ad7a | hero-secondary | ✅ identique |
-| `#/` | editoriale | 2 | 91b93f915a21fbd9 | 91b93f915a21fbd9 | service-bureaux | ✅ identique |
-| `#/` | editoriale | 3 | 46a86c7e9eac3d5f | 46a86c7e9eac3d5f | service-commerces | ✅ identique |
+| `#/` | editoriale | 2 | 91b93f915a21fbd9 | 91b93f915a21fbd9 | accueil-bureaux | ✅ identique |
+| `#/` | editoriale | 3 | 46a86c7e9eac3d5f | 46a86c7e9eac3d5f | accueil-commerces | ✅ identique |
 | `#/` | editoriale | 4 | 18af9088fd99e88a | 18af9088fd99e88a | audrey-portrait | ✅ identique |
 | `#/` | editoriale | 5 | 4ba2bd2ba288216e | 4ba2bd2ba288216e | article-1 | ✅ identique |
 | `#/` | editoriale | 6 | 31c59a38757a0320 | 31c59a38757a0320 | article-2 | ✅ identique |
 | `#/` | editoriale | 7 | f1c64c6392df9f43 | f1c64c6392df9f43 | article-3 | ✅ identique |
-| `#/` | vignette | 1 | e73f0f091f2cad51 | — | — | ⚠️ MANQUANTE côté thème |
+| `#/` | vignette | 1 | e73f0f091f2cad51 | e73f0f091f2cad51 | avatar-temoignage | ✅ identique |
 | `#/` | logo-pied | 1 | 4190421a67a40922 | 4190421a67a40922 | logo-carre | ✅ identique |
 | `#/nettoyage-professionnel` | logo-entete | 1 | 667325a99b8b8f2e | 667325a99b8b8f2e | logo-horizontal | ✅ identique |
 | `#/nettoyage-professionnel` | hero | 1 | dbc3d6162557a762 | dbc3d6162557a762 | hero-pilier | ✅ identique |
@@ -31,30 +31,30 @@
 | `#/nettoyage-professionnel` | vignette | 6 | 03752d889ac8f8d3 | 03752d889ac8f8d3 | thumb-ponctuel | ✅ identique |
 | `#/nettoyage-professionnel` | logo-pied | 1 | 4190421a67a40922 | 4190421a67a40922 | logo-carre | ✅ identique |
 | `#/nos-prestations` | logo-entete | 1 | 667325a99b8b8f2e | 667325a99b8b8f2e | logo-horizontal | ✅ identique |
-| `#/nos-prestations` | editoriale | 1 | 0d32ae6733eee622 | 91b93f915a21fbd9 | service-bureaux | ⚠️ IMAGE DIFFÉRENTE |
-| `#/nos-prestations` | editoriale | 2 | 0d8cf57d64f5124d | 46a86c7e9eac3d5f | service-commerces | ⚠️ IMAGE DIFFÉRENTE |
-| `#/nos-prestations` | editoriale | 3 | c55d8a5619d299c5 | 600a388c7750c405 | service-generic | ⚠️ IMAGE DIFFÉRENTE |
-| `#/nos-prestations` | editoriale | 4 | ecee90efb0f2ef69 | 600a388c7750c405 | service-generic | ⚠️ IMAGE DIFFÉRENTE |
-| `#/nos-prestations` | editoriale | 5 | e2440e590fa6dd38 | 600a388c7750c405 | service-generic | ⚠️ IMAGE DIFFÉRENTE |
-| `#/nos-prestations` | editoriale | 6 | 03752d889ac8f8d3 | 600a388c7750c405 | service-generic | ⚠️ IMAGE DIFFÉRENTE |
+| `#/nos-prestations` | editoriale | 1 | 0d32ae6733eee622 | 0d32ae6733eee622 | service-bureaux | ✅ identique |
+| `#/nos-prestations` | editoriale | 2 | 0d8cf57d64f5124d | 0d8cf57d64f5124d | service-commerces | ✅ identique |
+| `#/nos-prestations` | editoriale | 3 | c55d8a5619d299c5 | c55d8a5619d299c5 | service-cabinets | ✅ identique |
+| `#/nos-prestations` | editoriale | 4 | ecee90efb0f2ef69 | ecee90efb0f2ef69 | service-coproprietes | ✅ identique |
+| `#/nos-prestations` | editoriale | 5 | e2440e590fa6dd38 | e2440e590fa6dd38 | service-meubles | ✅ identique |
+| `#/nos-prestations` | editoriale | 6 | 03752d889ac8f8d3 | 03752d889ac8f8d3 | service-ponctuel | ✅ identique |
 | `#/nos-prestations` | logo-pied | 1 | 4190421a67a40922 | 4190421a67a40922 | logo-carre | ✅ identique |
 | `#/service/bureaux` | logo-entete | 1 | 667325a99b8b8f2e | 667325a99b8b8f2e | logo-horizontal | ✅ identique |
-| `#/service/bureaux` | hero | 1 | 0d32ae6733eee622 | 91b93f915a21fbd9 | service-bureaux | ⚠️ IMAGE DIFFÉRENTE |
+| `#/service/bureaux` | hero | 1 | 0d32ae6733eee622 | 0d32ae6733eee622 | service-bureaux | ✅ identique |
 | `#/service/bureaux` | logo-pied | 1 | 4190421a67a40922 | 4190421a67a40922 | logo-carre | ✅ identique |
 | `#/service/commerces` | logo-entete | 1 | 667325a99b8b8f2e | 667325a99b8b8f2e | logo-horizontal | ✅ identique |
-| `#/service/commerces` | hero | 1 | 0d8cf57d64f5124d | 46a86c7e9eac3d5f | service-commerces | ⚠️ IMAGE DIFFÉRENTE |
+| `#/service/commerces` | hero | 1 | 0d8cf57d64f5124d | 0d8cf57d64f5124d | service-commerces | ✅ identique |
 | `#/service/commerces` | logo-pied | 1 | 4190421a67a40922 | 4190421a67a40922 | logo-carre | ✅ identique |
 | `#/service/cabinets` | logo-entete | 1 | 667325a99b8b8f2e | 667325a99b8b8f2e | logo-horizontal | ✅ identique |
-| `#/service/cabinets` | hero | 1 | c55d8a5619d299c5 | 600a388c7750c405 | service-generic | ⚠️ IMAGE DIFFÉRENTE |
+| `#/service/cabinets` | hero | 1 | c55d8a5619d299c5 | c55d8a5619d299c5 | service-cabinets | ✅ identique |
 | `#/service/cabinets` | logo-pied | 1 | 4190421a67a40922 | 4190421a67a40922 | logo-carre | ✅ identique |
 | `#/service/coproprietes` | logo-entete | 1 | 667325a99b8b8f2e | 667325a99b8b8f2e | logo-horizontal | ✅ identique |
-| `#/service/coproprietes` | hero | 1 | ecee90efb0f2ef69 | 600a388c7750c405 | service-generic | ⚠️ IMAGE DIFFÉRENTE |
+| `#/service/coproprietes` | hero | 1 | ecee90efb0f2ef69 | ecee90efb0f2ef69 | service-coproprietes | ✅ identique |
 | `#/service/coproprietes` | logo-pied | 1 | 4190421a67a40922 | 4190421a67a40922 | logo-carre | ✅ identique |
 | `#/service/meubles` | logo-entete | 1 | 667325a99b8b8f2e | 667325a99b8b8f2e | logo-horizontal | ✅ identique |
-| `#/service/meubles` | hero | 1 | e2440e590fa6dd38 | 600a388c7750c405 | service-generic | ⚠️ IMAGE DIFFÉRENTE |
+| `#/service/meubles` | hero | 1 | e2440e590fa6dd38 | e2440e590fa6dd38 | service-meubles | ✅ identique |
 | `#/service/meubles` | logo-pied | 1 | 4190421a67a40922 | 4190421a67a40922 | logo-carre | ✅ identique |
 | `#/service/ponctuel` | logo-entete | 1 | 667325a99b8b8f2e | 667325a99b8b8f2e | logo-horizontal | ✅ identique |
-| `#/service/ponctuel` | hero | 1 | 03752d889ac8f8d3 | 600a388c7750c405 | service-generic | ⚠️ IMAGE DIFFÉRENTE |
+| `#/service/ponctuel` | hero | 1 | 03752d889ac8f8d3 | 03752d889ac8f8d3 | service-ponctuel | ✅ identique |
 | `#/service/ponctuel` | logo-pied | 1 | 4190421a67a40922 | 4190421a67a40922 | logo-carre | ✅ identique |
 | `#/nos-tarifs` | logo-entete | 1 | 667325a99b8b8f2e | 667325a99b8b8f2e | logo-horizontal | ✅ identique |
 | `#/nos-tarifs` | logo-pied | 1 | 4190421a67a40922 | 4190421a67a40922 | logo-carre | ✅ identique |
@@ -104,10 +104,10 @@
 | `#/ville/macon` | hero | 1 | bd077ba50393c4f3 | bd077ba50393c4f3 | ville-macon | ✅ identique |
 | `#/ville/macon` | logo-pied | 1 | 4190421a67a40922 | 4190421a67a40922 | logo-carre | ✅ identique |
 | `#/ville/auxerre` | logo-entete | 1 | 667325a99b8b8f2e | 667325a99b8b8f2e | logo-horizontal | ✅ identique |
-| `#/ville/auxerre` | hero | 1 | 91b93f915a21fbd9 | 0d32ae6733eee622 | ville-auxerre | ⚠️ IMAGE DIFFÉRENTE |
+| `#/ville/auxerre` | hero | 1 | 91b93f915a21fbd9 | 91b93f915a21fbd9 | ville-auxerre | ✅ identique |
 | `#/ville/auxerre` | logo-pied | 1 | 4190421a67a40922 | 4190421a67a40922 | logo-carre | ✅ identique |
 | `#/ville/belfort` | logo-entete | 1 | 667325a99b8b8f2e | 667325a99b8b8f2e | logo-horizontal | ✅ identique |
-| `#/ville/belfort` | hero | 1 | 46a86c7e9eac3d5f | 0d8cf57d64f5124d | ville-belfort | ⚠️ IMAGE DIFFÉRENTE |
+| `#/ville/belfort` | hero | 1 | 46a86c7e9eac3d5f | 46a86c7e9eac3d5f | ville-belfort | ✅ identique |
 | `#/ville/belfort` | logo-pied | 1 | 4190421a67a40922 | 4190421a67a40922 | logo-carre | ✅ identique |
 | `#/ville/saint-apollinaire` | logo-entete | 1 | 667325a99b8b8f2e | 667325a99b8b8f2e | logo-horizontal | ✅ identique |
 | `#/ville/saint-apollinaire` | hero | 1 | bd077ba50393c4f3 | bd077ba50393c4f3 | ville-saint-apollinaire | ✅ identique |
@@ -116,13 +116,13 @@
 | `#/ville/chenove` | hero | 1 | 99ada67d6120d55c | 99ada67d6120d55c | ville-chenove | ✅ identique |
 | `#/ville/chenove` | logo-pied | 1 | 4190421a67a40922 | 4190421a67a40922 | logo-carre | ✅ identique |
 | `#/ville/quetigny` | logo-entete | 1 | 667325a99b8b8f2e | 667325a99b8b8f2e | logo-horizontal | ✅ identique |
-| `#/ville/quetigny` | hero | 1 | 46a86c7e9eac3d5f | 0d8cf57d64f5124d | ville-quetigny | ⚠️ IMAGE DIFFÉRENTE |
+| `#/ville/quetigny` | hero | 1 | 46a86c7e9eac3d5f | 46a86c7e9eac3d5f | ville-quetigny | ✅ identique |
 | `#/ville/quetigny` | logo-pied | 1 | 4190421a67a40922 | 4190421a67a40922 | logo-carre | ✅ identique |
 | `#/ville/talant` | logo-entete | 1 | 667325a99b8b8f2e | 667325a99b8b8f2e | logo-horizontal | ✅ identique |
 | `#/ville/talant` | hero | 1 | fef95157c7aa6c84 | fef95157c7aa6c84 | ville-talant | ✅ identique |
 | `#/ville/talant` | logo-pied | 1 | 4190421a67a40922 | 4190421a67a40922 | logo-carre | ✅ identique |
 | `#/ville/longvic` | logo-entete | 1 | 667325a99b8b8f2e | 667325a99b8b8f2e | logo-horizontal | ✅ identique |
-| `#/ville/longvic` | hero | 1 | 91b93f915a21fbd9 | 0d32ae6733eee622 | ville-longvic | ⚠️ IMAGE DIFFÉRENTE |
+| `#/ville/longvic` | hero | 1 | 91b93f915a21fbd9 | 91b93f915a21fbd9 | ville-longvic | ✅ identique |
 | `#/ville/longvic` | logo-pied | 1 | 4190421a67a40922 | 4190421a67a40922 | logo-carre | ✅ identique |
 | `#/ville/fontaine-les-dijon` | logo-entete | 1 | 667325a99b8b8f2e | 667325a99b8b8f2e | logo-horizontal | ✅ identique |
 | `#/ville/fontaine-les-dijon` | hero | 1 | 6e45e7676ac788cb | 6e45e7676ac788cb | ville-fontaine-les-dijon | ✅ identique |
@@ -139,16 +139,13 @@
 | `#/conseils` | editoriale | 3 | f1c64c6392df9f43 | f1c64c6392df9f43 | article-3 | ✅ identique |
 | `#/conseils` | logo-pied | 1 | 4190421a67a40922 | 4190421a67a40922 | logo-carre | ✅ identique |
 | `#/article/frequence-bureaux` | logo-entete | 1 | 667325a99b8b8f2e | 667325a99b8b8f2e | logo-horizontal | ✅ identique |
-| `#/article/frequence-bureaux` | logo-entete | 2 | — | 4ba2bd2ba288216e | article-1 | ⚠️ EN TROP côté thème |
-| `#/article/frequence-bureaux` | hero | 1 | 4ba2bd2ba288216e | — | — | ⚠️ MANQUANTE côté thème |
+| `#/article/frequence-bureaux` | hero | 1 | 4ba2bd2ba288216e | 4ba2bd2ba288216e | article-1 | ✅ identique |
 | `#/article/frequence-bureaux` | logo-pied | 1 | 4190421a67a40922 | 4190421a67a40922 | logo-carre | ✅ identique |
 | `#/article/cout-nettoyage-bureaux` | logo-entete | 1 | 667325a99b8b8f2e | 667325a99b8b8f2e | logo-horizontal | ✅ identique |
-| `#/article/cout-nettoyage-bureaux` | logo-entete | 2 | — | 31c59a38757a0320 | article-2 | ⚠️ EN TROP côté thème |
-| `#/article/cout-nettoyage-bureaux` | hero | 1 | 31c59a38757a0320 | — | — | ⚠️ MANQUANTE côté thème |
+| `#/article/cout-nettoyage-bureaux` | hero | 1 | 31c59a38757a0320 | 31c59a38757a0320 | article-2 | ✅ identique |
 | `#/article/cout-nettoyage-bureaux` | logo-pied | 1 | 4190421a67a40922 | 4190421a67a40922 | logo-carre | ✅ identique |
 | `#/article/cahier-des-charges-nettoyage` | logo-entete | 1 | 667325a99b8b8f2e | 667325a99b8b8f2e | logo-horizontal | ✅ identique |
-| `#/article/cahier-des-charges-nettoyage` | logo-entete | 2 | — | f1c64c6392df9f43 | article-3 | ⚠️ EN TROP côté thème |
-| `#/article/cahier-des-charges-nettoyage` | hero | 1 | f1c64c6392df9f43 | — | — | ⚠️ MANQUANTE côté thème |
+| `#/article/cahier-des-charges-nettoyage` | hero | 1 | f1c64c6392df9f43 | f1c64c6392df9f43 | article-3 | ✅ identique |
 | `#/article/cahier-des-charges-nettoyage` | logo-pied | 1 | 4190421a67a40922 | 4190421a67a40922 | logo-carre | ✅ identique |
 | `#/pourquoi-top-famille-pro` | logo-entete | 1 | 667325a99b8b8f2e | 667325a99b8b8f2e | logo-horizontal | ✅ identique |
 | `#/pourquoi-top-famille-pro` | logo-pied | 1 | 4190421a67a40922 | 4190421a67a40922 | logo-carre | ✅ identique |
@@ -163,10 +160,10 @@
 | `#/recrutement` | hero | 1 | 600a388c7750c405 | 600a388c7750c405 | service-generic | ✅ identique |
 | `#/recrutement` | logo-pied | 1 | 4190421a67a40922 | 4190421a67a40922 | logo-carre | ✅ identique |
 | `#/demande-de-devis` | logo-entete | 1 | 667325a99b8b8f2e | 667325a99b8b8f2e | logo-horizontal | ✅ identique |
-| `#/demande-de-devis` | vignette | 1 | f9c6cb81f75acb82 | c6c51783628e3170 | audrey-placeholder | ⚠️ IMAGE DIFFÉRENTE |
+| `#/demande-de-devis` | vignette | 1 | f9c6cb81f75acb82 | f9c6cb81f75acb82 | portrait-contact | ✅ identique |
 | `#/demande-de-devis` | logo-pied | 1 | 4190421a67a40922 | 4190421a67a40922 | logo-carre | ✅ identique |
 | `#/contact` | logo-entete | 1 | 667325a99b8b8f2e | 667325a99b8b8f2e | logo-horizontal | ✅ identique |
-| `#/contact` | vignette | 1 | f9c6cb81f75acb82 | c6c51783628e3170 | audrey-placeholder | ⚠️ IMAGE DIFFÉRENTE |
+| `#/contact` | vignette | 1 | f9c6cb81f75acb82 | f9c6cb81f75acb82 | portrait-contact | ✅ identique |
 | `#/contact` | logo-pied | 1 | 4190421a67a40922 | 4190421a67a40922 | logo-carre | ✅ identique |
 | `#/plan-du-site` | logo-entete | 1 | 667325a99b8b8f2e | 667325a99b8b8f2e | logo-horizontal | ✅ identique |
 | `#/plan-du-site` | logo-pied | 1 | 4190421a67a40922 | 4190421a67a40922 | logo-carre | ✅ identique |

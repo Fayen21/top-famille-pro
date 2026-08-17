@@ -215,6 +215,363 @@
       ]
     }
   },
+  "accueil-bureaux": {
+    "slug": "accueil-bureaux",
+    "alt": "Nettoyage de bureaux et open-spaces (photo d’illustration)",
+    "lcp": false,
+    "width": 640,
+    "height": 427,
+    "variants": {
+      "avif": [
+        {
+          "width": 320,
+          "file": "accueil-bureaux-320.avif"
+        },
+        {
+          "width": 480,
+          "file": "accueil-bureaux-480.avif"
+        },
+        {
+          "width": 640,
+          "file": "accueil-bureaux-640.avif"
+        }
+      ],
+      "webp": [
+        {
+          "width": 320,
+          "file": "accueil-bureaux-320.webp"
+        },
+        {
+          "width": 480,
+          "file": "accueil-bureaux-480.webp"
+        },
+        {
+          "width": 640,
+          "file": "accueil-bureaux-640.webp"
+        }
+      ],
+      "jpg": [
+        {
+          "width": 320,
+          "file": "accueil-bureaux-320.jpg"
+        },
+        {
+          "width": 480,
+          "file": "accueil-bureaux-480.jpg"
+        },
+        {
+          "width": 640,
+          "file": "accueil-bureaux-640.jpg"
+        }
+      ]
+    }
+  },
+  "accueil-commerces": {
+    "slug": "accueil-commerces",
+    "alt": "Nettoyage de commerces et de surfaces de vente (photo d’illustration)",
+    "lcp": false,
+    "width": 640,
+    "height": 427,
+    "variants": {
+      "avif": [
+        {
+          "width": 320,
+          "file": "accueil-commerces-320.avif"
+        },
+        {
+          "width": 480,
+          "file": "accueil-commerces-480.avif"
+        },
+        {
+          "width": 640,
+          "file": "accueil-commerces-640.avif"
+        }
+      ],
+      "webp": [
+        {
+          "width": 320,
+          "file": "accueil-commerces-320.webp"
+        },
+        {
+          "width": 480,
+          "file": "accueil-commerces-480.webp"
+        },
+        {
+          "width": 640,
+          "file": "accueil-commerces-640.webp"
+        }
+      ],
+      "jpg": [
+        {
+          "width": 320,
+          "file": "accueil-commerces-320.jpg"
+        },
+        {
+          "width": 480,
+          "file": "accueil-commerces-480.jpg"
+        },
+        {
+          "width": 640,
+          "file": "accueil-commerces-640.jpg"
+        }
+      ]
+    }
+  },
+  "portrait-contact": {
+    "slug": "portrait-contact",
+    "alt": "Photo d’illustration temporaire — portrait définitif à venir",
+    "lcp": false,
+    "width": 192,
+    "height": 242,
+    "variants": {
+      "avif": [
+        {
+          "width": 96,
+          "file": "portrait-contact-96.avif"
+        },
+        {
+          "width": 144,
+          "file": "portrait-contact-144.avif"
+        },
+        {
+          "width": 192,
+          "file": "portrait-contact-192.avif"
+        }
+      ],
+      "webp": [
+        {
+          "width": 96,
+          "file": "portrait-contact-96.webp"
+        },
+        {
+          "width": 144,
+          "file": "portrait-contact-144.webp"
+        },
+        {
+          "width": 192,
+          "file": "portrait-contact-192.webp"
+        }
+      ],
+      "jpg": [
+        {
+          "width": 96,
+          "file": "portrait-contact-96.jpg"
+        },
+        {
+          "width": 144,
+          "file": "portrait-contact-144.jpg"
+        },
+        {
+          "width": 192,
+          "file": "portrait-contact-192.jpg"
+        }
+      ]
+    }
+  },
+  "service-cabinets": {
+    "slug": "service-cabinets",
+    "alt": "Cabinet et salle d’attente (photo d’illustration)",
+    "lcp": false,
+    "width": 640,
+    "height": 427,
+    "variants": {
+      "avif": [
+        {
+          "width": 320,
+          "file": "service-cabinets-320.avif"
+        },
+        {
+          "width": 480,
+          "file": "service-cabinets-480.avif"
+        },
+        {
+          "width": 640,
+          "file": "service-cabinets-640.avif"
+        }
+      ],
+      "webp": [
+        {
+          "width": 320,
+          "file": "service-cabinets-320.webp"
+        },
+        {
+          "width": 480,
+          "file": "service-cabinets-480.webp"
+        },
+        {
+          "width": 640,
+          "file": "service-cabinets-640.webp"
+        }
+      ],
+      "jpg": [
+        {
+          "width": 320,
+          "file": "service-cabinets-320.jpg"
+        },
+        {
+          "width": 480,
+          "file": "service-cabinets-480.jpg"
+        },
+        {
+          "width": 640,
+          "file": "service-cabinets-640.jpg"
+        }
+      ]
+    }
+  },
+  "service-coproprietes": {
+    "slug": "service-coproprietes",
+    "alt": "Hall d’immeuble et parties communes (photo d’illustration)",
+    "lcp": false,
+    "width": 640,
+    "height": 426,
+    "variants": {
+      "avif": [
+        {
+          "width": 320,
+          "file": "service-coproprietes-320.avif"
+        },
+        {
+          "width": 480,
+          "file": "service-coproprietes-480.avif"
+        },
+        {
+          "width": 640,
+          "file": "service-coproprietes-640.avif"
+        }
+      ],
+      "webp": [
+        {
+          "width": 320,
+          "file": "service-coproprietes-320.webp"
+        },
+        {
+          "width": 480,
+          "file": "service-coproprietes-480.webp"
+        },
+        {
+          "width": 640,
+          "file": "service-coproprietes-640.webp"
+        }
+      ],
+      "jpg": [
+        {
+          "width": 320,
+          "file": "service-coproprietes-320.jpg"
+        },
+        {
+          "width": 480,
+          "file": "service-coproprietes-480.jpg"
+        },
+        {
+          "width": 640,
+          "file": "service-coproprietes-640.jpg"
+        }
+      ]
+    }
+  },
+  "service-meubles": {
+    "slug": "service-meubles",
+    "alt": "Séjour d’un logement meublé (photo d’illustration)",
+    "lcp": false,
+    "width": 640,
+    "height": 426,
+    "variants": {
+      "avif": [
+        {
+          "width": 320,
+          "file": "service-meubles-320.avif"
+        },
+        {
+          "width": 480,
+          "file": "service-meubles-480.avif"
+        },
+        {
+          "width": 640,
+          "file": "service-meubles-640.avif"
+        }
+      ],
+      "webp": [
+        {
+          "width": 320,
+          "file": "service-meubles-320.webp"
+        },
+        {
+          "width": 480,
+          "file": "service-meubles-480.webp"
+        },
+        {
+          "width": 640,
+          "file": "service-meubles-640.webp"
+        }
+      ],
+      "jpg": [
+        {
+          "width": 320,
+          "file": "service-meubles-320.jpg"
+        },
+        {
+          "width": 480,
+          "file": "service-meubles-480.jpg"
+        },
+        {
+          "width": 640,
+          "file": "service-meubles-640.jpg"
+        }
+      ]
+    }
+  },
+  "service-ponctuel": {
+    "slug": "service-ponctuel",
+    "alt": "Bureau en cours de remise en état (photo d’illustration)",
+    "lcp": false,
+    "width": 640,
+    "height": 426,
+    "variants": {
+      "avif": [
+        {
+          "width": 320,
+          "file": "service-ponctuel-320.avif"
+        },
+        {
+          "width": 480,
+          "file": "service-ponctuel-480.avif"
+        },
+        {
+          "width": 640,
+          "file": "service-ponctuel-640.avif"
+        }
+      ],
+      "webp": [
+        {
+          "width": 320,
+          "file": "service-ponctuel-320.webp"
+        },
+        {
+          "width": 480,
+          "file": "service-ponctuel-480.webp"
+        },
+        {
+          "width": 640,
+          "file": "service-ponctuel-640.webp"
+        }
+      ],
+      "jpg": [
+        {
+          "width": 320,
+          "file": "service-ponctuel-320.jpg"
+        },
+        {
+          "width": 480,
+          "file": "service-ponctuel-480.jpg"
+        },
+        {
+          "width": 640,
+          "file": "service-ponctuel-640.jpg"
+        }
+      ]
+    }
+  },
   "article-1": {
     "slug": "article-1",
     "alt": "Couloir de bureaux et kitchenette (photo d’illustration)",
@@ -1156,7 +1513,7 @@
     "alt": "Locaux professionnels (photo d’illustration)",
     "lcp": false,
     "width": 960,
-    "height": 641,
+    "height": 640,
     "variants": {
       "avif": [
         {
@@ -1462,7 +1819,7 @@
     "alt": "Locaux professionnels (photo d’illustration)",
     "lcp": false,
     "width": 960,
-    "height": 641,
+    "height": 640,
     "variants": {
       "avif": [
         {

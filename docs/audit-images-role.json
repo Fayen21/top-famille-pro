@@ -1,6 +1,6 @@
 {
- "total": 167,
- "ecarts": 25,
+ "total": 164,
+ "ecarts": 0,
  "lignes": [
   {
    "route": "#/",
@@ -15,7 +15,7 @@
    },
    "wordpress": {
     "rendu": "155×82",
-    "natif": "320×169",
+    "natif": "465×246",
     "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
     "slot": "logo-horizontal",
     "fichier": "logo-horizontal.png",
@@ -80,8 +80,8 @@
     "rendu": "580×278",
     "natif": "648×432",
     "sha": "91b93f915a21fbd98a3b722494d2937479319192d745e4051fa1b3ecafe9787b",
-    "slot": "service-bureaux",
-    "fichier": "service-bureaux-640.avif",
+    "slot": "accueil-bureaux",
+    "fichier": "accueil-bureaux-640.avif",
     "alt": "Nettoyage de bureaux et open-spaces (photo d’illustration)"
    },
    "verdict": "IDENTIQUE"
@@ -101,8 +101,8 @@
     "rendu": "580×278",
     "natif": "648×432",
     "sha": "46a86c7e9eac3d5ff532943225e72d17e7d72fc7d5e64dd8473a2e380f35ab07",
-    "slot": "service-commerces",
-    "fichier": "service-commerces-640.avif",
+    "slot": "accueil-commerces",
+    "fichier": "accueil-commerces-640.avif",
     "alt": "Nettoyage de commerces et de surfaces de vente (photo d’illustration)"
    },
    "verdict": "IDENTIQUE"
@@ -202,8 +202,15 @@
     "voisin": "★★★★★ « Même intervenante chaque semaine, un cahier de liais",
     "alt": ""
    },
-   "wordpress": null,
-   "verdict": "MANQUANTE côté thème"
+   "wordpress": {
+    "rendu": "44×44",
+    "natif": "44×66",
+    "sha": "e73f0f091f2cad5116f22ad60b0f890faea94544a5cf09a5f7ef0cffaf13e7e8",
+    "slot": "avatar-temoignage",
+    "fichier": "avatar-temoignage-88.avif",
+    "alt": ""
+   },
+   "verdict": "IDENTIQUE"
   },
   {
    "route": "#/",
@@ -218,7 +225,7 @@
    },
    "wordpress": {
     "rendu": "60×60",
-    "natif": "120×120",
+    "natif": "180×180",
     "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
     "slot": "logo-carre",
     "fichier": "logo-carre.png",
@@ -239,7 +246,7 @@
    },
    "wordpress": {
     "rendu": "155×82",
-    "natif": "320×169",
+    "natif": "465×246",
     "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
     "slot": "logo-horizontal",
     "fichier": "logo-horizontal.png",
@@ -428,7 +435,7 @@
    },
    "wordpress": {
     "rendu": "60×60",
-    "natif": "120×120",
+    "natif": "180×180",
     "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
     "slot": "logo-carre",
     "fichier": "logo-carre.png",
@@ -449,7 +456,7 @@
    },
    "wordpress": {
     "rendu": "155×82",
-    "natif": "320×169",
+    "natif": "465×246",
     "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
     "slot": "logo-horizontal",
     "fichier": "logo-horizontal.png",
@@ -471,12 +478,12 @@
    "wordpress": {
     "rendu": "381×254",
     "natif": "383×255",
-    "sha": "91b93f915a21fbd98a3b722494d2937479319192d745e4051fa1b3ecafe9787b",
+    "sha": "0d32ae6733eee622e481ca5cf0f6e44885c26fa84f72d7fb52d3aee58da2471d",
     "slot": "service-bureaux",
     "fichier": "service-bureaux-480.avif",
     "alt": ""
    },
-   "verdict": "IMAGE DIFFÉRENTE"
+   "verdict": "IDENTIQUE"
   },
   {
    "route": "#/nos-prestations",
@@ -490,14 +497,14 @@
     "alt": "Nettoyage de commerces"
    },
    "wordpress": {
-    "rendu": "381×255",
-    "natif": "383×256",
-    "sha": "46a86c7e9eac3d5ff532943225e72d17e7d72fc7d5e64dd8473a2e380f35ab07",
+    "rendu": "381×254",
+    "natif": "383×255",
+    "sha": "0d8cf57d64f5124dd86e190d107e31cd3c09c54f1ac3845332494ae41b9e5e55",
     "slot": "service-commerces",
     "fichier": "service-commerces-480.avif",
     "alt": ""
    },
-   "verdict": "IMAGE DIFFÉRENTE"
+   "verdict": "IDENTIQUE"
   },
   {
    "route": "#/nos-prestations",
@@ -513,12 +520,12 @@
    "wordpress": {
     "rendu": "381×254",
     "natif": "383×255",
-    "sha": "600a388c7750c4054c6842f0f57bd34e82bed5e37effae022f32333f6f7021b9",
-    "slot": "service-generic",
-    "fichier": "service-generic-480.avif",
+    "sha": "c55d8a5619d299c53ba21c583536e094f20be5154cf6e29a484b8f78afca9363",
+    "slot": "service-cabinets",
+    "fichier": "service-cabinets-480.avif",
     "alt": ""
    },
-   "verdict": "IMAGE DIFFÉRENTE"
+   "verdict": "IDENTIQUE"
   },
   {
    "route": "#/nos-prestations",
@@ -534,12 +541,12 @@
    "wordpress": {
     "rendu": "381×254",
     "natif": "383×255",
-    "sha": "600a388c7750c4054c6842f0f57bd34e82bed5e37effae022f32333f6f7021b9",
-    "slot": "service-generic",
-    "fichier": "service-generic-480.avif",
+    "sha": "ecee90efb0f2ef69c30d06bb97dbc82d8fdd639d84d6fa7e567027f03e730526",
+    "slot": "service-coproprietes",
+    "fichier": "service-coproprietes-480.avif",
     "alt": ""
    },
-   "verdict": "IMAGE DIFFÉRENTE"
+   "verdict": "IDENTIQUE"
   },
   {
    "route": "#/nos-prestations",
@@ -555,12 +562,12 @@
    "wordpress": {
     "rendu": "381×254",
     "natif": "383×255",
-    "sha": "600a388c7750c4054c6842f0f57bd34e82bed5e37effae022f32333f6f7021b9",
-    "slot": "service-generic",
-    "fichier": "service-generic-480.avif",
+    "sha": "e2440e590fa6dd38866ca5e8b894353b9cb9f5a74afc02e0873efce79f3e5802",
+    "slot": "service-meubles",
+    "fichier": "service-meubles-480.avif",
     "alt": ""
    },
-   "verdict": "IMAGE DIFFÉRENTE"
+   "verdict": "IDENTIQUE"
   },
   {
    "route": "#/nos-prestations",
@@ -576,12 +583,12 @@
    "wordpress": {
     "rendu": "381×254",
     "natif": "383×255",
-    "sha": "600a388c7750c4054c6842f0f57bd34e82bed5e37effae022f32333f6f7021b9",
-    "slot": "service-generic",
-    "fichier": "service-generic-480.avif",
+    "sha": "03752d889ac8f8d3c2ef966dea784f3c995df5881914db78e48984b873f43636",
+    "slot": "service-ponctuel",
+    "fichier": "service-ponctuel-480.avif",
     "alt": ""
    },
-   "verdict": "IMAGE DIFFÉRENTE"
+   "verdict": "IDENTIQUE"
   },
   {
    "route": "#/nos-prestations",
@@ -596,7 +603,7 @@
    },
    "wordpress": {
     "rendu": "60×60",
-    "natif": "120×120",
+    "natif": "180×180",
     "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
     "slot": "logo-carre",
     "fichier": "logo-carre.png",
@@ -617,7 +624,7 @@
    },
    "wordpress": {
     "rendu": "155×82",
-    "natif": "320×169",
+    "natif": "465×246",
     "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
     "slot": "logo-horizontal",
     "fichier": "logo-horizontal.png",
@@ -639,12 +646,12 @@
    "wordpress": {
     "rendu": "512×384",
     "natif": "599×400",
-    "sha": "91b93f915a21fbd98a3b722494d2937479319192d745e4051fa1b3ecafe9787b",
+    "sha": "0d32ae6733eee622e481ca5cf0f6e44885c26fa84f72d7fb52d3aee58da2471d",
     "slot": "service-bureaux",
     "fichier": "service-bureaux-640.avif",
     "alt": "Nettoyage de bureaux en Bourgogne-Franche-Comté"
    },
-   "verdict": "IMAGE DIFFÉRENTE"
+   "verdict": "IDENTIQUE"
   },
   {
    "route": "#/service/bureaux",
@@ -659,7 +666,7 @@
    },
    "wordpress": {
     "rendu": "60×60",
-    "natif": "120×120",
+    "natif": "180×180",
     "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
     "slot": "logo-carre",
     "fichier": "logo-carre.png",
@@ -680,7 +687,7 @@
    },
    "wordpress": {
     "rendu": "155×82",
-    "natif": "320×169",
+    "natif": "465×246",
     "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
     "slot": "logo-horizontal",
     "fichier": "logo-horizontal.png",
@@ -702,12 +709,12 @@
    "wordpress": {
     "rendu": "512×384",
     "natif": "599×400",
-    "sha": "46a86c7e9eac3d5ff532943225e72d17e7d72fc7d5e64dd8473a2e380f35ab07",
+    "sha": "0d8cf57d64f5124dd86e190d107e31cd3c09c54f1ac3845332494ae41b9e5e55",
     "slot": "service-commerces",
     "fichier": "service-commerces-640.avif",
     "alt": "Nettoyage de commerces et de surfaces de vente"
    },
-   "verdict": "IMAGE DIFFÉRENTE"
+   "verdict": "IDENTIQUE"
   },
   {
    "route": "#/service/commerces",
@@ -722,7 +729,7 @@
    },
    "wordpress": {
     "rendu": "60×60",
-    "natif": "120×120",
+    "natif": "180×180",
     "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
     "slot": "logo-carre",
     "fichier": "logo-carre.png",
@@ -743,7 +750,7 @@
    },
    "wordpress": {
     "rendu": "155×82",
-    "natif": "320×169",
+    "natif": "465×246",
     "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
     "slot": "logo-horizontal",
     "fichier": "logo-horizontal.png",
@@ -764,13 +771,13 @@
    },
    "wordpress": {
     "rendu": "512×384",
-    "natif": "600×400",
-    "sha": "600a388c7750c4054c6842f0f57bd34e82bed5e37effae022f32333f6f7021b9",
-    "slot": "service-generic",
-    "fichier": "service-generic-760.avif",
+    "natif": "599×400",
+    "sha": "c55d8a5619d299c53ba21c583536e094f20be5154cf6e29a484b8f78afca9363",
+    "slot": "service-cabinets",
+    "fichier": "service-cabinets-640.avif",
     "alt": "Nettoyage de cabinets et de professions libérales"
    },
-   "verdict": "IMAGE DIFFÉRENTE"
+   "verdict": "IDENTIQUE"
   },
   {
    "route": "#/service/cabinets",
@@ -785,7 +792,7 @@
    },
    "wordpress": {
     "rendu": "60×60",
-    "natif": "120×120",
+    "natif": "180×180",
     "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
     "slot": "logo-carre",
     "fichier": "logo-carre.png",
@@ -806,7 +813,7 @@
    },
    "wordpress": {
     "rendu": "155×82",
-    "natif": "320×169",
+    "natif": "465×246",
     "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
     "slot": "logo-horizontal",
     "fichier": "logo-horizontal.png",
@@ -827,13 +834,13 @@
    },
    "wordpress": {
     "rendu": "512×384",
-    "natif": "600×400",
-    "sha": "600a388c7750c4054c6842f0f57bd34e82bed5e37effae022f32333f6f7021b9",
-    "slot": "service-generic",
-    "fichier": "service-generic-760.avif",
+    "natif": "599×399",
+    "sha": "ecee90efb0f2ef69c30d06bb97dbc82d8fdd639d84d6fa7e567027f03e730526",
+    "slot": "service-coproprietes",
+    "fichier": "service-coproprietes-640.avif",
     "alt": "Entretien de copropriétés et de parties communes"
    },
-   "verdict": "IMAGE DIFFÉRENTE"
+   "verdict": "IDENTIQUE"
   },
   {
    "route": "#/service/coproprietes",
@@ -848,7 +855,7 @@
    },
    "wordpress": {
     "rendu": "60×60",
-    "natif": "120×120",
+    "natif": "180×180",
     "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
     "slot": "logo-carre",
     "fichier": "logo-carre.png",
@@ -869,7 +876,7 @@
    },
    "wordpress": {
     "rendu": "155×82",
-    "natif": "320×169",
+    "natif": "465×246",
     "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
     "slot": "logo-horizontal",
     "fichier": "logo-horizontal.png",
@@ -890,13 +897,13 @@
    },
    "wordpress": {
     "rendu": "512×384",
-    "natif": "600×400",
-    "sha": "600a388c7750c4054c6842f0f57bd34e82bed5e37effae022f32333f6f7021b9",
-    "slot": "service-generic",
-    "fichier": "service-generic-760.avif",
+    "natif": "599×399",
+    "sha": "e2440e590fa6dd38866ca5e8b894353b9cb9f5a74afc02e0873efce79f3e5802",
+    "slot": "service-meubles",
+    "fichier": "service-meubles-640.avif",
     "alt": "Nettoyage de locations meublées et d'hébergements"
    },
-   "verdict": "IMAGE DIFFÉRENTE"
+   "verdict": "IDENTIQUE"
   },
   {
    "route": "#/service/meubles",
@@ -911,7 +918,7 @@
    },
    "wordpress": {
     "rendu": "60×60",
-    "natif": "120×120",
+    "natif": "180×180",
     "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
     "slot": "logo-carre",
     "fichier": "logo-carre.png",
@@ -932,7 +939,7 @@
    },
    "wordpress": {
     "rendu": "155×82",
-    "natif": "320×169",
+    "natif": "465×246",
     "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
     "slot": "logo-horizontal",
     "fichier": "logo-horizontal.png",
@@ -953,13 +960,13 @@
    },
    "wordpress": {
     "rendu": "512×384",
-    "natif": "600×400",
-    "sha": "600a388c7750c4054c6842f0f57bd34e82bed5e37effae022f32333f6f7021b9",
-    "slot": "service-generic",
-    "fichier": "service-generic-760.avif",
+    "natif": "599×399",
+    "sha": "03752d889ac8f8d3c2ef966dea784f3c995df5881914db78e48984b873f43636",
+    "slot": "service-ponctuel",
+    "fichier": "service-ponctuel-640.avif",
     "alt": "Nettoyage ponctuel et remise en état"
    },
-   "verdict": "IMAGE DIFFÉRENTE"
+   "verdict": "IDENTIQUE"
   },
   {
    "route": "#/service/ponctuel",
@@ -974,7 +981,7 @@
    },
    "wordpress": {
     "rendu": "60×60",
-    "natif": "120×120",
+    "natif": "180×180",
     "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
     "slot": "logo-carre",
     "fichier": "logo-carre.png",
@@ -995,7 +1002,7 @@
    },
    "wordpress": {
     "rendu": "155×82",
-    "natif": "320×169",
+    "natif": "465×246",
     "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
     "slot": "logo-horizontal",
     "fichier": "logo-horizontal.png",
@@ -1016,7 +1023,7 @@
    },
    "wordpress": {
     "rendu": "60×60",
-    "natif": "120×120",
+    "natif": "180×180",
     "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
     "slot": "logo-carre",
     "fichier": "logo-carre.png",
@@ -1037,7 +1044,7 @@
    },
    "wordpress": {
     "rendu": "155×82",
-    "natif": "320×169",
+    "natif": "465×246",
     "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
     "slot": "logo-horizontal",
     "fichier": "logo-horizontal.png",
@@ -1058,7 +1065,7 @@
    },
    "wordpress": {
     "rendu": "60×60",
-    "natif": "120×120",
+    "natif": "180×180",
     "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
     "slot": "logo-carre",
     "fichier": "logo-carre.png",
@@ -1079,7 +1086,7 @@
    },
    "wordpress": {
     "rendu": "155×82",
-    "natif": "320×169",
+    "natif": "465×246",
     "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
     "slot": "logo-horizontal",
     "fichier": "logo-horizontal.png",
@@ -1121,7 +1128,7 @@
    },
    "wordpress": {
     "rendu": "60×60",
-    "natif": "120×120",
+    "natif": "180×180",
     "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
     "slot": "logo-carre",
     "fichier": "logo-carre.png",
@@ -1142,7 +1149,7 @@
    },
    "wordpress": {
     "rendu": "155×82",
-    "natif": "320×169",
+    "natif": "465×246",
     "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
     "slot": "logo-horizontal",
     "fichier": "logo-horizontal.png",
@@ -1163,7 +1170,7 @@
    },
    "wordpress": {
     "rendu": "60×60",
-    "natif": "120×120",
+    "natif": "180×180",
     "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
     "slot": "logo-carre",
     "fichier": "logo-carre.png",
@@ -1184,7 +1191,7 @@
    },
    "wordpress": {
     "rendu": "155×82",
-    "natif": "320×169",
+    "natif": "465×246",
     "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
     "slot": "logo-horizontal",
     "fichier": "logo-horizontal.png",
@@ -1205,7 +1212,7 @@
    },
    "wordpress": {
     "rendu": "60×60",
-    "natif": "120×120",
+    "natif": "180×180",
     "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
     "slot": "logo-carre",
     "fichier": "logo-carre.png",
@@ -1226,7 +1233,7 @@
    },
    "wordpress": {
     "rendu": "155×82",
-    "natif": "320×169",
+    "natif": "465×246",
     "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
     "slot": "logo-horizontal",
     "fichier": "logo-horizontal.png",
@@ -1247,7 +1254,7 @@
    },
    "wordpress": {
     "rendu": "60×60",
-    "natif": "120×120",
+    "natif": "180×180",
     "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
     "slot": "logo-carre",
     "fichier": "logo-carre.png",
@@ -1268,7 +1275,7 @@
    },
    "wordpress": {
     "rendu": "155×82",
-    "natif": "320×169",
+    "natif": "465×246",
     "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
     "slot": "logo-horizontal",
     "fichier": "logo-horizontal.png",
@@ -1289,7 +1296,7 @@
    },
    "wordpress": {
     "rendu": "60×60",
-    "natif": "120×120",
+    "natif": "180×180",
     "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
     "slot": "logo-carre",
     "fichier": "logo-carre.png",
@@ -1310,7 +1317,7 @@
    },
    "wordpress": {
     "rendu": "155×82",
-    "natif": "320×169",
+    "natif": "465×246",
     "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
     "slot": "logo-horizontal",
     "fichier": "logo-horizontal.png",
@@ -1331,7 +1338,7 @@
    },
    "wordpress": {
     "rendu": "60×60",
-    "natif": "120×120",
+    "natif": "180×180",
     "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
     "slot": "logo-carre",
     "fichier": "logo-carre.png",
@@ -1352,7 +1359,7 @@
    },
    "wordpress": {
     "rendu": "155×82",
-    "natif": "320×169",
+    "natif": "465×246",
     "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
     "slot": "logo-horizontal",
     "fichier": "logo-horizontal.png",
@@ -1373,7 +1380,7 @@
    },
    "wordpress": {
     "rendu": "60×60",
-    "natif": "120×120",
+    "natif": "180×180",
     "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
     "slot": "logo-carre",
     "fichier": "logo-carre.png",
@@ -1394,7 +1401,7 @@
    },
    "wordpress": {
     "rendu": "155×82",
-    "natif": "320×169",
+    "natif": "465×246",
     "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
     "slot": "logo-horizontal",
     "fichier": "logo-horizontal.png",
@@ -1415,7 +1422,7 @@
    },
    "wordpress": {
     "rendu": "60×60",
-    "natif": "120×120",
+    "natif": "180×180",
     "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
     "slot": "logo-carre",
     "fichier": "logo-carre.png",
@@ -1436,7 +1443,7 @@
    },
    "wordpress": {
     "rendu": "155×82",
-    "natif": "320×169",
+    "natif": "465×246",
     "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
     "slot": "logo-horizontal",
     "fichier": "logo-horizontal.png",
@@ -1457,7 +1464,7 @@
    },
    "wordpress": {
     "rendu": "60×60",
-    "natif": "120×120",
+    "natif": "180×180",
     "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
     "slot": "logo-carre",
     "fichier": "logo-carre.png",
@@ -1478,7 +1485,7 @@
    },
    "wordpress": {
     "rendu": "155×82",
-    "natif": "320×169",
+    "natif": "465×246",
     "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
     "slot": "logo-horizontal",
     "fichier": "logo-horizontal.png",
@@ -1520,7 +1527,7 @@
    },
    "wordpress": {
     "rendu": "60×60",
-    "natif": "120×120",
+    "natif": "180×180",
     "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
     "slot": "logo-carre",
     "fichier": "logo-carre.png",
@@ -1541,7 +1548,7 @@
    },
    "wordpress": {
     "rendu": "155×82",
-    "natif": "320×169",
+    "natif": "465×246",
     "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
     "slot": "logo-horizontal",
     "fichier": "logo-horizontal.png",
@@ -1583,7 +1590,7 @@
    },
    "wordpress": {
     "rendu": "60×60",
-    "natif": "120×120",
+    "natif": "180×180",
     "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
     "slot": "logo-carre",
     "fichier": "logo-carre.png",
@@ -1604,7 +1611,7 @@
    },
    "wordpress": {
     "rendu": "155×82",
-    "natif": "320×169",
+    "natif": "465×246",
     "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
     "slot": "logo-horizontal",
     "fichier": "logo-horizontal.png",
@@ -1646,7 +1653,7 @@
    },
    "wordpress": {
     "rendu": "60×60",
-    "natif": "120×120",
+    "natif": "180×180",
     "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
     "slot": "logo-carre",
     "fichier": "logo-carre.png",
@@ -1667,7 +1674,7 @@
    },
    "wordpress": {
     "rendu": "155×82",
-    "natif": "320×169",
+    "natif": "465×246",
     "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
     "slot": "logo-horizontal",
     "fichier": "logo-horizontal.png",
@@ -1709,7 +1716,7 @@
    },
    "wordpress": {
     "rendu": "60×60",
-    "natif": "120×120",
+    "natif": "180×180",
     "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
     "slot": "logo-carre",
     "fichier": "logo-carre.png",
@@ -1730,7 +1737,7 @@
    },
    "wordpress": {
     "rendu": "155×82",
-    "natif": "320×169",
+    "natif": "465×246",
     "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
     "slot": "logo-horizontal",
     "fichier": "logo-horizontal.png",
@@ -1772,7 +1779,7 @@
    },
    "wordpress": {
     "rendu": "60×60",
-    "natif": "120×120",
+    "natif": "180×180",
     "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
     "slot": "logo-carre",
     "fichier": "logo-carre.png",
@@ -1793,7 +1800,7 @@
    },
    "wordpress": {
     "rendu": "155×82",
-    "natif": "320×169",
+    "natif": "465×246",
     "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
     "slot": "logo-horizontal",
     "fichier": "logo-horizontal.png",
@@ -1835,7 +1842,7 @@
    },
    "wordpress": {
     "rendu": "60×60",
-    "natif": "120×120",
+    "natif": "180×180",
     "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
     "slot": "logo-carre",
     "fichier": "logo-carre.png",
@@ -1856,7 +1863,7 @@
    },
    "wordpress": {
     "rendu": "155×82",
-    "natif": "320×169",
+    "natif": "465×246",
     "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
     "slot": "logo-horizontal",
     "fichier": "logo-horizontal.png",
@@ -1898,7 +1905,7 @@
    },
    "wordpress": {
     "rendu": "60×60",
-    "natif": "120×120",
+    "natif": "180×180",
     "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
     "slot": "logo-carre",
     "fichier": "logo-carre.png",
@@ -1919,7 +1926,7 @@
    },
    "wordpress": {
     "rendu": "155×82",
-    "natif": "320×169",
+    "natif": "465×246",
     "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
     "slot": "logo-horizontal",
     "fichier": "logo-horizontal.png",
@@ -1961,7 +1968,7 @@
    },
    "wordpress": {
     "rendu": "60×60",
-    "natif": "120×120",
+    "natif": "180×180",
     "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
     "slot": "logo-carre",
     "fichier": "logo-carre.png",
@@ -1982,7 +1989,7 @@
    },
    "wordpress": {
     "rendu": "155×82",
-    "natif": "320×169",
+    "natif": "465×246",
     "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
     "slot": "logo-horizontal",
     "fichier": "logo-horizontal.png",
@@ -2004,12 +2011,12 @@
    "wordpress": {
     "rendu": "512×384",
     "natif": "560×373",
-    "sha": "0d32ae6733eee622e481ca5cf0f6e44885c26fa84f72d7fb52d3aee58da2471d",
+    "sha": "91b93f915a21fbd98a3b722494d2937479319192d745e4051fa1b3ecafe9787b",
     "slot": "ville-auxerre",
     "fichier": "ville-auxerre-760.avif",
     "alt": "Locaux professionnels à Auxerre"
    },
-   "verdict": "IMAGE DIFFÉRENTE"
+   "verdict": "IDENTIQUE"
   },
   {
    "route": "#/ville/auxerre",
@@ -2024,7 +2031,7 @@
    },
    "wordpress": {
     "rendu": "60×60",
-    "natif": "120×120",
+    "natif": "180×180",
     "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
     "slot": "logo-carre",
     "fichier": "logo-carre.png",
@@ -2045,7 +2052,7 @@
    },
    "wordpress": {
     "rendu": "155×82",
-    "natif": "320×169",
+    "natif": "465×246",
     "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
     "slot": "logo-horizontal",
     "fichier": "logo-horizontal.png",
@@ -2066,13 +2073,13 @@
    },
    "wordpress": {
     "rendu": "512×384",
-    "natif": "560×373",
-    "sha": "0d8cf57d64f5124dd86e190d107e31cd3c09c54f1ac3845332494ae41b9e5e55",
+    "natif": "560×374",
+    "sha": "46a86c7e9eac3d5ff532943225e72d17e7d72fc7d5e64dd8473a2e380f35ab07",
     "slot": "ville-belfort",
     "fichier": "ville-belfort-760.avif",
     "alt": "Locaux professionnels à Belfort"
    },
-   "verdict": "IMAGE DIFFÉRENTE"
+   "verdict": "IDENTIQUE"
   },
   {
    "route": "#/ville/belfort",
@@ -2087,7 +2094,7 @@
    },
    "wordpress": {
     "rendu": "60×60",
-    "natif": "120×120",
+    "natif": "180×180",
     "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
     "slot": "logo-carre",
     "fichier": "logo-carre.png",
@@ -2108,7 +2115,7 @@
    },
    "wordpress": {
     "rendu": "155×82",
-    "natif": "320×169",
+    "natif": "465×246",
     "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
     "slot": "logo-horizontal",
     "fichier": "logo-horizontal.png",
@@ -2150,7 +2157,7 @@
    },
    "wordpress": {
     "rendu": "60×60",
-    "natif": "120×120",
+    "natif": "180×180",
     "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
     "slot": "logo-carre",
     "fichier": "logo-carre.png",
@@ -2171,7 +2178,7 @@
    },
    "wordpress": {
     "rendu": "155×82",
-    "natif": "320×169",
+    "natif": "465×246",
     "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
     "slot": "logo-horizontal",
     "fichier": "logo-horizontal.png",
@@ -2213,7 +2220,7 @@
    },
    "wordpress": {
     "rendu": "60×60",
-    "natif": "120×120",
+    "natif": "180×180",
     "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
     "slot": "logo-carre",
     "fichier": "logo-carre.png",
@@ -2234,7 +2241,7 @@
    },
    "wordpress": {
     "rendu": "155×82",
-    "natif": "320×169",
+    "natif": "465×246",
     "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
     "slot": "logo-horizontal",
     "fichier": "logo-horizontal.png",
@@ -2255,13 +2262,13 @@
    },
    "wordpress": {
     "rendu": "512×384",
-    "natif": "560×373",
-    "sha": "0d8cf57d64f5124dd86e190d107e31cd3c09c54f1ac3845332494ae41b9e5e55",
+    "natif": "560×374",
+    "sha": "46a86c7e9eac3d5ff532943225e72d17e7d72fc7d5e64dd8473a2e380f35ab07",
     "slot": "ville-quetigny",
     "fichier": "ville-quetigny-760.avif",
     "alt": "Locaux professionnels à Quetigny"
    },
-   "verdict": "IMAGE DIFFÉRENTE"
+   "verdict": "IDENTIQUE"
   },
   {
    "route": "#/ville/quetigny",
@@ -2276,7 +2283,7 @@
    },
    "wordpress": {
     "rendu": "60×60",
-    "natif": "120×120",
+    "natif": "180×180",
     "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
     "slot": "logo-carre",
     "fichier": "logo-carre.png",
@@ -2297,7 +2304,7 @@
    },
    "wordpress": {
     "rendu": "155×82",
-    "natif": "320×169",
+    "natif": "465×246",
     "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
     "slot": "logo-horizontal",
     "fichier": "logo-horizontal.png",
@@ -2339,7 +2346,7 @@
    },
    "wordpress": {
     "rendu": "60×60",
-    "natif": "120×120",
+    "natif": "180×180",
     "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
     "slot": "logo-carre",
     "fichier": "logo-carre.png",
@@ -2360,7 +2367,7 @@
    },
    "wordpress": {
     "rendu": "155×82",
-    "natif": "320×169",
+    "natif": "465×246",
     "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
     "slot": "logo-horizontal",
     "fichier": "logo-horizontal.png",
@@ -2382,12 +2389,12 @@
    "wordpress": {
     "rendu": "512×384",
     "natif": "560×373",
-    "sha": "0d32ae6733eee622e481ca5cf0f6e44885c26fa84f72d7fb52d3aee58da2471d",
+    "sha": "91b93f915a21fbd98a3b722494d2937479319192d745e4051fa1b3ecafe9787b",
     "slot": "ville-longvic",
     "fichier": "ville-longvic-760.avif",
     "alt": "Locaux professionnels à Longvic"
    },
-   "verdict": "IMAGE DIFFÉRENTE"
+   "verdict": "IDENTIQUE"
   },
   {
    "route": "#/ville/longvic",
@@ -2402,7 +2409,7 @@
    },
    "wordpress": {
     "rendu": "60×60",
-    "natif": "120×120",
+    "natif": "180×180",
     "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
     "slot": "logo-carre",
     "fichier": "logo-carre.png",
@@ -2423,7 +2430,7 @@
    },
    "wordpress": {
     "rendu": "155×82",
-    "natif": "320×169",
+    "natif": "465×246",
     "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
     "slot": "logo-horizontal",
     "fichier": "logo-horizontal.png",
@@ -2465,7 +2472,7 @@
    },
    "wordpress": {
     "rendu": "60×60",
-    "natif": "120×120",
+    "natif": "180×180",
     "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
     "slot": "logo-carre",
     "fichier": "logo-carre.png",
@@ -2486,7 +2493,7 @@
    },
    "wordpress": {
     "rendu": "155×82",
-    "natif": "320×169",
+    "natif": "465×246",
     "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
     "slot": "logo-horizontal",
     "fichier": "logo-horizontal.png",
@@ -2528,7 +2535,7 @@
    },
    "wordpress": {
     "rendu": "60×60",
-    "natif": "120×120",
+    "natif": "180×180",
     "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
     "slot": "logo-carre",
     "fichier": "logo-carre.png",
@@ -2549,7 +2556,7 @@
    },
    "wordpress": {
     "rendu": "155×82",
-    "natif": "320×169",
+    "natif": "465×246",
     "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
     "slot": "logo-horizontal",
     "fichier": "logo-horizontal.png",
@@ -2591,7 +2598,7 @@
    },
    "wordpress": {
     "rendu": "60×60",
-    "natif": "120×120",
+    "natif": "180×180",
     "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
     "slot": "logo-carre",
     "fichier": "logo-carre.png",
@@ -2612,7 +2619,7 @@
    },
    "wordpress": {
     "rendu": "155×82",
-    "natif": "320×169",
+    "natif": "465×246",
     "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
     "slot": "logo-horizontal",
     "fichier": "logo-horizontal.png",
@@ -2696,7 +2703,7 @@
    },
    "wordpress": {
     "rendu": "60×60",
-    "natif": "120×120",
+    "natif": "180×180",
     "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
     "slot": "logo-carre",
     "fichier": "logo-carre.png",
@@ -2717,28 +2724,13 @@
    },
    "wordpress": {
     "rendu": "155×82",
-    "natif": "320×169",
+    "natif": "465×246",
     "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
     "slot": "logo-horizontal",
     "fichier": "logo-horizontal.png",
     "alt": "Top-Famille Pro"
    },
    "verdict": "IDENTIQUE"
-  },
-  {
-   "route": "#/article/frequence-bureaux",
-   "role": "logo-entete",
-   "rang": 2,
-   "maquette": null,
-   "wordpress": {
-    "rendu": "820×461",
-    "natif": "820×547",
-    "sha": "4ba2bd2ba288216e81ea26a8ed506b377064337456c319cd6273d42b90fe97d2",
-    "slot": "article-1",
-    "fichier": "article-1-640.avif",
-    "alt": "À quelle fréquence faire nettoyer ses bureaux ?"
-   },
-   "verdict": "EN TROP côté thème"
   },
   {
    "route": "#/article/frequence-bureaux",
@@ -2751,8 +2743,15 @@
     "voisin": "Bureaux À quelle fréquence faire nettoyer ses bureaux ? Par ",
     "alt": "À quelle fréquence faire nettoyer ses bureaux ?"
    },
-   "wordpress": null,
-   "verdict": "MANQUANTE côté thème"
+   "wordpress": {
+    "rendu": "820×461",
+    "natif": "820×547",
+    "sha": "4ba2bd2ba288216e81ea26a8ed506b377064337456c319cd6273d42b90fe97d2",
+    "slot": "article-1",
+    "fichier": "article-1-640.avif",
+    "alt": "À quelle fréquence faire nettoyer ses bureaux ?"
+   },
+   "verdict": "IDENTIQUE"
   },
   {
    "route": "#/article/frequence-bureaux",
@@ -2767,7 +2766,7 @@
    },
    "wordpress": {
     "rendu": "60×60",
-    "natif": "120×120",
+    "natif": "180×180",
     "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
     "slot": "logo-carre",
     "fichier": "logo-carre.png",
@@ -2788,28 +2787,13 @@
    },
    "wordpress": {
     "rendu": "155×82",
-    "natif": "320×169",
+    "natif": "465×246",
     "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
     "slot": "logo-horizontal",
     "fichier": "logo-horizontal.png",
     "alt": "Top-Famille Pro"
    },
    "verdict": "IDENTIQUE"
-  },
-  {
-   "route": "#/article/cout-nettoyage-bureaux",
-   "role": "logo-entete",
-   "rang": 2,
-   "maquette": null,
-   "wordpress": {
-    "rendu": "820×461",
-    "natif": "820×547",
-    "sha": "31c59a38757a03203c9e32366de57b8b3c0cb2b98c32e19a99ca8a34d42207b9",
-    "slot": "article-2",
-    "fichier": "article-2-640.avif",
-    "alt": "Combien coûte le nettoyage de bureaux ?"
-   },
-   "verdict": "EN TROP côté thème"
   },
   {
    "route": "#/article/cout-nettoyage-bureaux",
@@ -2822,8 +2806,15 @@
     "voisin": "Tarifs Combien coûte le nettoyage de bureaux ? Par Audrey·Pu",
     "alt": "Combien coûte le nettoyage de bureaux ?"
    },
-   "wordpress": null,
-   "verdict": "MANQUANTE côté thème"
+   "wordpress": {
+    "rendu": "820×461",
+    "natif": "820×547",
+    "sha": "31c59a38757a03203c9e32366de57b8b3c0cb2b98c32e19a99ca8a34d42207b9",
+    "slot": "article-2",
+    "fichier": "article-2-640.avif",
+    "alt": "Combien coûte le nettoyage de bureaux ?"
+   },
+   "verdict": "IDENTIQUE"
   },
   {
    "route": "#/article/cout-nettoyage-bureaux",
@@ -2838,7 +2829,7 @@
    },
    "wordpress": {
     "rendu": "60×60",
-    "natif": "120×120",
+    "natif": "180×180",
     "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
     "slot": "logo-carre",
     "fichier": "logo-carre.png",
@@ -2859,28 +2850,13 @@
    },
    "wordpress": {
     "rendu": "155×82",
-    "natif": "320×169",
+    "natif": "465×246",
     "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
     "slot": "logo-horizontal",
     "fichier": "logo-horizontal.png",
     "alt": "Top-Famille Pro"
    },
    "verdict": "IDENTIQUE"
-  },
-  {
-   "route": "#/article/cahier-des-charges-nettoyage",
-   "role": "logo-entete",
-   "rang": 2,
-   "maquette": null,
-   "wordpress": {
-    "rendu": "820×461",
-    "natif": "820×547",
-    "sha": "f1c64c6392df9f4398e7f05e2e1fa1c92be99ebdfc0d0685782ff2e830e871c1",
-    "slot": "article-3",
-    "fichier": "article-3-640.avif",
-    "alt": "Comment rédiger un cahier des charges de nettoyage ?"
-   },
-   "verdict": "EN TROP côté thème"
   },
   {
    "route": "#/article/cahier-des-charges-nettoyage",
@@ -2893,8 +2869,15 @@
     "voisin": "Organisation Comment rédiger un cahier des charges de nettoy",
     "alt": "Comment rédiger un cahier des charges de nettoyage ?"
    },
-   "wordpress": null,
-   "verdict": "MANQUANTE côté thème"
+   "wordpress": {
+    "rendu": "820×461",
+    "natif": "820×547",
+    "sha": "f1c64c6392df9f4398e7f05e2e1fa1c92be99ebdfc0d0685782ff2e830e871c1",
+    "slot": "article-3",
+    "fichier": "article-3-640.avif",
+    "alt": "Comment rédiger un cahier des charges de nettoyage ?"
+   },
+   "verdict": "IDENTIQUE"
   },
   {
    "route": "#/article/cahier-des-charges-nettoyage",
@@ -2909,7 +2892,7 @@
    },
    "wordpress": {
     "rendu": "60×60",
-    "natif": "120×120",
+    "natif": "180×180",
     "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
     "slot": "logo-carre",
     "fichier": "logo-carre.png",
@@ -2930,7 +2913,7 @@
    },
    "wordpress": {
     "rendu": "155×82",
-    "natif": "320×169",
+    "natif": "465×246",
     "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
     "slot": "logo-horizontal",
     "fichier": "logo-horizontal.png",
@@ -2951,7 +2934,7 @@
    },
    "wordpress": {
     "rendu": "60×60",
-    "natif": "120×120",
+    "natif": "180×180",
     "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
     "slot": "logo-carre",
     "fichier": "logo-carre.png",
@@ -2972,7 +2955,7 @@
    },
    "wordpress": {
     "rendu": "155×82",
-    "natif": "320×169",
+    "natif": "465×246",
     "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
     "slot": "logo-horizontal",
     "fichier": "logo-horizontal.png",
@@ -2993,7 +2976,7 @@
    },
    "wordpress": {
     "rendu": "60×60",
-    "natif": "120×120",
+    "natif": "180×180",
     "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
     "slot": "logo-carre",
     "fichier": "logo-carre.png",
@@ -3014,7 +2997,7 @@
    },
    "wordpress": {
     "rendu": "155×82",
-    "natif": "320×169",
+    "natif": "465×246",
     "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
     "slot": "logo-horizontal",
     "fichier": "logo-horizontal.png",
@@ -3035,7 +3018,7 @@
    },
    "wordpress": {
     "rendu": "60×60",
-    "natif": "120×120",
+    "natif": "180×180",
     "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
     "slot": "logo-carre",
     "fichier": "logo-carre.png",
@@ -3056,7 +3039,7 @@
    },
    "wordpress": {
     "rendu": "155×82",
-    "natif": "320×169",
+    "natif": "465×246",
     "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
     "slot": "logo-horizontal",
     "fichier": "logo-horizontal.png",
@@ -3098,7 +3081,7 @@
    },
    "wordpress": {
     "rendu": "60×60",
-    "natif": "120×120",
+    "natif": "180×180",
     "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
     "slot": "logo-carre",
     "fichier": "logo-carre.png",
@@ -3119,7 +3102,7 @@
    },
    "wordpress": {
     "rendu": "155×82",
-    "natif": "320×169",
+    "natif": "465×246",
     "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
     "slot": "logo-horizontal",
     "fichier": "logo-horizontal.png",
@@ -3161,7 +3144,7 @@
    },
    "wordpress": {
     "rendu": "60×60",
-    "natif": "120×120",
+    "natif": "180×180",
     "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
     "slot": "logo-carre",
     "fichier": "logo-carre.png",
@@ -3182,7 +3165,7 @@
    },
    "wordpress": {
     "rendu": "155×82",
-    "natif": "320×169",
+    "natif": "465×246",
     "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
     "slot": "logo-horizontal",
     "fichier": "logo-horizontal.png",
@@ -3203,13 +3186,13 @@
    },
    "wordpress": {
     "rendu": "60×60",
-    "natif": "640×958",
-    "sha": "c6c51783628e317008b03004640a273251c41c6373a6fc63738dc2d56df83965",
-    "slot": "audrey-placeholder",
-    "fichier": "audrey-placeholder-640.jpg",
+    "natif": "192×242",
+    "sha": "f9c6cb81f75acb8267b975f23af561aed7b5d0b961fca6f944ab9d3ed2dbedd7",
+    "slot": "portrait-contact",
+    "fichier": "portrait-contact-192.jpg",
     "alt": "Photo d’illustration temporaire — portrait définitif à venir"
    },
-   "verdict": "IMAGE DIFFÉRENTE"
+   "verdict": "IDENTIQUE"
   },
   {
    "route": "#/demande-de-devis",
@@ -3224,7 +3207,7 @@
    },
    "wordpress": {
     "rendu": "60×60",
-    "natif": "120×120",
+    "natif": "180×180",
     "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
     "slot": "logo-carre",
     "fichier": "logo-carre.png",
@@ -3245,7 +3228,7 @@
    },
    "wordpress": {
     "rendu": "155×82",
-    "natif": "320×169",
+    "natif": "465×246",
     "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
     "slot": "logo-horizontal",
     "fichier": "logo-horizontal.png",
@@ -3266,13 +3249,13 @@
    },
    "wordpress": {
     "rendu": "64×64",
-    "natif": "64×95",
-    "sha": "c6c51783628e317008b03004640a273251c41c6373a6fc63738dc2d56df83965",
-    "slot": "audrey-placeholder",
-    "fichier": "audrey-placeholder-480.avif",
+    "natif": "64×80",
+    "sha": "f9c6cb81f75acb8267b975f23af561aed7b5d0b961fca6f944ab9d3ed2dbedd7",
+    "slot": "portrait-contact",
+    "fichier": "portrait-contact-96.avif",
     "alt": ""
    },
-   "verdict": "IMAGE DIFFÉRENTE"
+   "verdict": "IDENTIQUE"
   },
   {
    "route": "#/contact",
@@ -3287,7 +3270,7 @@
    },
    "wordpress": {
     "rendu": "60×60",
-    "natif": "120×120",
+    "natif": "180×180",
     "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
     "slot": "logo-carre",
     "fichier": "logo-carre.png",
@@ -3308,7 +3291,7 @@
    },
    "wordpress": {
     "rendu": "155×82",
-    "natif": "320×169",
+    "natif": "465×246",
     "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
     "slot": "logo-horizontal",
     "fichier": "logo-horizontal.png",
@@ -3329,7 +3312,7 @@
    },
    "wordpress": {
     "rendu": "60×60",
-    "natif": "120×120",
+    "natif": "180×180",
     "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
     "slot": "logo-carre",
     "fichier": "logo-carre.png",
@@ -3350,7 +3333,7 @@
    },
    "wordpress": {
     "rendu": "155×82",
-    "natif": "320×169",
+    "natif": "465×246",
     "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
     "slot": "logo-horizontal",
     "fichier": "logo-horizontal.png",
@@ -3371,7 +3354,7 @@
    },
    "wordpress": {
     "rendu": "60×60",
-    "natif": "120×120",
+    "natif": "180×180",
     "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
     "slot": "logo-carre",
     "fichier": "logo-carre.png",
@@ -3392,7 +3375,7 @@
    },
    "wordpress": {
     "rendu": "155×82",
-    "natif": "320×169",
+    "natif": "465×246",
     "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
     "slot": "logo-horizontal",
     "fichier": "logo-horizontal.png",
@@ -3413,7 +3396,7 @@
    },
    "wordpress": {
     "rendu": "60×60",
-    "natif": "120×120",
+    "natif": "180×180",
     "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
     "slot": "logo-carre",
     "fichier": "logo-carre.png",
@@ -3434,7 +3417,7 @@
    },
    "wordpress": {
     "rendu": "155×82",
-    "natif": "320×169",
+    "natif": "465×246",
     "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
     "slot": "logo-horizontal",
     "fichier": "logo-horizontal.png",
@@ -3455,7 +3438,7 @@
    },
    "wordpress": {
     "rendu": "60×60",
-    "natif": "120×120",
+    "natif": "180×180",
     "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
     "slot": "logo-carre",
     "fichier": "logo-carre.png",

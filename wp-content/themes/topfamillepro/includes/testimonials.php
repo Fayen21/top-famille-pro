@@ -145,7 +145,14 @@ function tfp_featured_testimonial() {
  *                         champs ACF d'une prestation. À défaut, le témoignage mis en avant des
  *                         réglages, sinon celui de la maquette.
  */
-function tfp_testimonial_card( $item = null ) {
+function tfp_testimonial_card( $item = null, $args = array() ) {
+	/*
+	 * La vignette d'auteur n'est PAS un attribut du composant : c'est un choix de la maquette,
+	 * bande par bande. Elle n'apparaît que sur le témoignage mis en avant de l'accueil ; les
+	 * trente-deux autres cartes du site n'en portent pas. Un défaut à `true` la posait partout et
+	 * fabriquait trente-deux visuels que le prototype n'a pas.
+	 */
+	$avec_avatar = ! empty( $args['avatar'] );
 	if ( is_array( $item ) && ! empty( $item['texte'] ) ) {
 		$contexte = implode(
 			' · ',
@@ -182,6 +189,20 @@ function tfp_testimonial_card( $item = null ) {
 	printf( '<blockquote class="tfp-testimonial__quote">« %s »</blockquote>', esc_html( $item['texte'] ) );
 
 	echo '<figcaption class="tfp-testimonial__author">';
+	/*
+	 * Vignette d'auteur — 44 px, ronde, relevée sur la maquette (G26 §3).
+	 *
+	 * Elle manquait, et l'audit d'images par rôle la comptait absente sur l'accueil. Elle n'est
+	 * rendue QUE pour un témoignage provisoire, et son `alt` est vide : la carte porte déjà
+	 * `data-tfp-provisional` et sa mention visible, le nom est écrit juste à côté, et le visuel ne
+	 * prétend donc représenter personne (CLAUDE.md §5.6). Un vrai avis saisi en administration
+	 * n'en reçoit pas : rien n'irait alors illustrer un client réel par une photo de stock.
+	 */
+	if ( $avec_avatar && ! empty( $item['demo'] ) && function_exists( 'tfp_image_exists' ) && tfp_image_exists( 'avatar-temoignage' ) ) {
+		echo '<span class="tfp-testimonial__avatar">';
+		tfp_picture( 'avatar-temoignage', array( 'sizes' => '44px', 'alt' => '' ) );
+		echo '</span>';
+	}
 	printf( '<span class="tfp-testimonial__name">%s</span>', esc_html( $item['nom'] ) );
 	if ( ! empty( $item['contexte'] ) ) {
 		printf( '<span class="tfp-testimonial__context">%s</span>', esc_html( $item['contexte'] ) );

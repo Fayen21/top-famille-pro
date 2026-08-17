@@ -92,17 +92,22 @@ $devis_url = add_query_arg(
 
 $canonical_path = wp_parse_url( get_permalink( $post_id ), PHP_URL_PATH );
 
-// Visuel d'illustration : un slug dédié pour bureaux/commerces (photos correspondant au
-// prototype Claude Design), un visuel générique honnête pour les 4 autres prestations — pas de
-// photo prétendant montrer un type de local précis qu'elle ne montre pas réellement.
+/*
+ * Visuel d'illustration : UN slug par prestation (G26 §3).
+ *
+ * Seuls « bureaux » et « commerces » avaient le leur ; les quatre autres partageaient un visuel
+ * générique, quand la maquette pose six photos distinctes. L'audit par empreinte l'a montré, et
+ * les six fichiers sont ceux du standalone, appariés sur leurs octets
+ * (`node tools/mapper-photos-maquette.mjs`). Les `alt` restent honnêtes : ils décrivent la scène
+ * et disent « photo d'illustration », jamais un local réel de l'entreprise (CLAUDE.md §5.6).
+ */
 $image_slug = tfp_get_field( 'image_slug', $post_id );
 if ( ! $image_slug ) {
-	$slug_map   = array(
-		'bureaux'   => 'service-bureaux',
-		'commerces' => 'service-commerces',
-	);
 	$post_name  = get_post_field( 'post_name', $post_id );
-	$image_slug = $slug_map[ $post_name ] ?? 'service-generic';
+	$candidat   = 'service-' . $post_name;
+	// Le manifeste tranche : une prestation ajoutée sans photo garde le visuel générique plutôt
+	// qu'une image cassée.
+	$image_slug = tfp_image_exists( $candidat ) ? $candidat : 'service-generic';
 }
 
 // Table de maillage de la phrase d'introduction : les expressions exactes employées par la

@@ -3088,6 +3088,21 @@ body.tfp-type-legale .tfp-section__lede {
   background: var(--tfp-carte-fond, var(--color-bg-card));
 }
 
+/* Vignette d'auteur d'un témoignage — 44 px, ronde, relevée sur la maquette (G26 §3). Elle ouvre
+   la ligne d'attribution, à gauche du nom et de son contexte. */
+.tfp-testimonial__avatar {
+  float: left;
+  margin-right: 12px;
+}
+
+.tfp-testimonial__avatar img {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+}
+
 /* Intertitre d'un bloc de page statique : la géométrie relevée l'emporte, les jetons du thème ne
    servent que de repli. La maquette compose ces intertitres de 17 à 40 px selon la bande (G26 §5). */
 /* Sélecteur à deux classes, et non une : l'échelle du thème s'écrit `body.tfp-type-pilier h2`,

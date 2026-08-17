@@ -40,7 +40,7 @@ $secondary_services = array(
 
 	<div class="tfp-grid tfp-grid--autofit-lg" style="margin-bottom:16px">
 		<a class="tfp-service-card" href="<?php echo esc_url( home_url( '/prestations/bureaux/' ) ); ?>">
-			<?php tfp_picture( 'service-bureaux', array( 'sizes' => '(max-width: 819px) 92vw, 45vw', 'class' => 'tfp-service-card__img' ) ); ?>
+			<?php tfp_picture( 'accueil-bureaux', array( 'sizes' => '(max-width: 819px) 92vw, 45vw', 'class' => 'tfp-service-card__img' ) ); ?>
 			<span class="tfp-service-card__scrim" aria-hidden="true"></span>
 			<span class="tfp-service-card__body">
 				<span class="tfp-service-card__title">Nettoyage de bureaux</span>
@@ -49,7 +49,7 @@ $secondary_services = array(
 			</span>
 		</a>
 		<a class="tfp-service-card" href="<?php echo esc_url( home_url( '/prestations/commerces/' ) ); ?>">
-			<?php tfp_picture( 'service-commerces', array( 'sizes' => '(max-width: 819px) 92vw, 45vw', 'class' => 'tfp-service-card__img' ) ); ?>
+			<?php tfp_picture( 'accueil-commerces', array( 'sizes' => '(max-width: 819px) 92vw, 45vw', 'class' => 'tfp-service-card__img' ) ); ?>
 			<span class="tfp-service-card__scrim" aria-hidden="true"></span>
 			<span class="tfp-service-card__body">
 				<span class="tfp-service-card__title">Nettoyage de commerces</span>

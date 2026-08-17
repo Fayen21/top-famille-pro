@@ -289,7 +289,9 @@ get_header();
 				 * Photo d'illustration provisoire : elle ne prétend pas représenter Audrey tant que la
 				 * photo authentique n'est pas fournie, et son `alt` le dit (CLAUDE.md §5.6).
 				 */
-				$portrait = tfp_get_audrey_photo_url();
+				// Même visuel que /contact/ : la maquette y pose son troisième portrait de stock,
+				// distinct de celui de /a-propos/ (relevé par empreinte, G26 §3).
+				$portrait = tfp_get_audrey_photo_url( 'portrait-contact' );
 				if ( $portrait ) :
 					?>
 					<img

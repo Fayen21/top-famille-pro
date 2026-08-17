@@ -50,7 +50,17 @@ const RELEVE = () => {
 		.filter((im) => { const r = im.getBoundingClientRect(); return r.width > 0 && r.height > 0; })
 		.map((im, i) => {
 		const r = im.getBoundingClientRect();
-		const dansEntete = !!im.closest('header');
+		/*
+		 * En-tête DE PAGE, et non n'importe quel `<header>` (G26 §3).
+		 *
+		 * Un article a son propre `<header>` autour de son titre et de son visuel : `closest('header')`
+		 * y voyait un logo d'en-tête, si bien que le visuel des trois articles était compté « en trop
+		 * dans l'en-tête » et « manquant en hero » — alors que les deux côtés servent exactement les
+		 * mêmes octets. Le repère est l'appartenance au contenu principal : un en-tête situé dans
+		 * `<main>` ou dans un `<article>` n'est pas l'en-tête du site.
+		 */
+		const enTete = im.closest('header');
+		const dansEntete = !!enTete && !enTete.closest('main, article');
 		const dansPied = !!im.closest('footer');
 		const bande = bandeDe(im);
 		const bloc = im.closest('section, figure, article, li, div');

@@ -40,17 +40,82 @@ const SLOTS = [
     widths: [220, 340, 460],
     alt: 'Nettoyage de vitres avec équipement de protection (photo d’illustration)',
   },
+  /*
+   * SIX héros de prestation, un par prestation — table établie sur les OCTETS de la maquette par
+   * `node tools/mapper-photos-maquette.mjs` (G26 §3).
+   *
+   * Le thème n'en définissait que deux et servait `service-generic` aux quatre autres : quatre
+   * pages de prestation partageaient une même photo là où la maquette en pose quatre distinctes.
+   * Les deux qui existaient étaient de surcroît CROISÉES avec des héros de ville — le fichier
+   * `prestation-bureaux.jpg` est celui qu'Auxerre et Longvic portent dans le prototype, pas
+   * celui de la prestation « bureaux ». Une table écrite de mémoire ne pouvait pas voir cela ;
+   * une comparaison d'empreintes, si.
+   */
   {
     slug: 'service-bureaux',
-    src: 'prestation-bureaux.jpg',
+    src: 'unsplash-1531973576160-7125cd663d86-800.jpg',
     widths: [320, 480, 640],
     alt: 'Nettoyage de bureaux et open-spaces (photo d’illustration)',
   },
   {
     slug: 'service-commerces',
+    src: 'unsplash-1441986300917-64674bd600d8-800.jpg',
+    widths: [320, 480, 640],
+    alt: 'Nettoyage de commerces et de surfaces de vente (photo d’illustration)',
+  },
+  /*
+   * Cartes de prestation de l'ACCUEIL — G26 §3. La maquette n'y pose pas les mêmes photos que sur
+   * les pages de prestation : `prestation-bureaux.jpg` et `prestation-commerces.jpg` illustrent
+   * les deux cartes de l'accueil, tandis que les héros des pages emploient les fichiers Unsplash
+   * ci-dessus. Le thème servait les slots des pages aux deux endroits ; l'audit par empreinte l'a
+   * relevé.
+   */
+  {
+    slug: 'accueil-bureaux',
+    src: 'prestation-bureaux.jpg',
+    widths: [320, 480, 640],
+    alt: 'Nettoyage de bureaux et open-spaces (photo d’illustration)',
+  },
+  {
+    slug: 'accueil-commerces',
     src: 'prestation-commerces.jpg',
     widths: [320, 480, 640],
     alt: 'Nettoyage de commerces et de surfaces de vente (photo d’illustration)',
+  },
+  /*
+   * Portrait des pages /contact/ et /demande-de-devis/ — un troisième visuel de stock dans la
+   * maquette, distinct de celui de /a-propos/. Le thème servait `audrey-placeholder` aux trois.
+   * L'`alt` reste honnête : aucune photo ne prétend représenter Audrey (CLAUDE.md §5.6).
+   */
+  {
+    slug: 'portrait-contact',
+    src: 'portrait-stock-contact.jpg',
+    widths: [96, 144, 192],
+    alt: 'Photo d’illustration temporaire — portrait définitif à venir',
+  },
+  {
+    slug: 'service-cabinets',
+    src: 'unsplash-1497366811353-6870744d04b2-800.jpg',
+    widths: [320, 480, 640],
+    alt: 'Cabinet et salle d’attente (photo d’illustration)',
+  },
+  {
+    slug: 'service-coproprietes',
+    src: 'unsplash-1524758631624-e2822e304c36-800.jpg',
+    widths: [320, 480, 640],
+    alt: 'Hall d’immeuble et parties communes (photo d’illustration)',
+  },
+  {
+    slug: 'service-meubles',
+    src: 'unsplash-1600585152220-90363fe7e115-800.jpg',
+    widths: [320, 480, 640],
+    alt: 'Séjour d’un logement meublé (photo d’illustration)',
+  },
+  {
+    slug: 'service-ponctuel',
+    src: 'unsplash-1581578731548-c64695cc6952-800.jpg',
+    widths: [320, 480, 640],
+    alt: 'Bureau en cours de remise en état (photo d’illustration)',
   },
   {
     slug: 'article-1',
@@ -119,9 +184,13 @@ const SLOTS = [
   /*
    * Hero des 18 pages de zone : la maquette déclare UNE photo par ville (CITIES[].photo /
    * SECONDARY[].photo). Le thème servait « article-3 » — la même image partout, et pas celle de
-   * la maquette. Relevé G26 ville par ville ; les fichiers sont ceux du standalone. Deux d'entre
-   * eux n'existent au dépôt qu'en largeur 800 (et non 900) : c'est la MÊME photo, et le pipeline
-   * ne suragrandit jamais — la variante la plus large vaut alors 800 px.
+   * la maquette.
+   *
+   * La table est établie sur les OCTETS par `node tools/mapper-photos-maquette.mjs`, et non de
+   * mémoire : quatre villes — Auxerre, Belfort, Quetigny, Longvic — portent dans le prototype les
+   * fichiers `prestation-bureaux.jpg` et `prestation-commerces.jpg`, que la première rédaction de
+   * cette table avait attribués aux prestations du même nom. Les vingt-quatre routes concernées
+   * sont désormais appariées par empreinte, sans exception.
    */
   { slug: 'ville-dijon', src: 'unsplash-1497366754035-f200968a6e72-900.jpg', widths: [480, 760, 960], alt: 'Locaux professionnels (photo d’illustration)' },
   { slug: 'ville-besancon', src: 'unsplash-1524758631624-e2822e304c36-900.jpg', widths: [480, 760, 960], alt: 'Locaux professionnels (photo d’illustration)' },
@@ -131,13 +200,13 @@ const SLOTS = [
   { slug: 'ville-vesoul', src: 'unsplash-1556761175-b413da4baf72-900.jpg', widths: [480, 760, 960], alt: 'Locaux professionnels (photo d’illustration)' },
   { slug: 'ville-chalon-sur-saone', src: 'unsplash-1600880292203-757bb62b4baf-900.jpg', widths: [480, 760, 960], alt: 'Locaux professionnels (photo d’illustration)' },
   { slug: 'ville-macon', src: 'unsplash-1497366811353-6870744d04b2-900.jpg', widths: [480, 760, 960], alt: 'Locaux professionnels (photo d’illustration)' },
-  { slug: 'ville-auxerre', src: 'unsplash-1531973576160-7125cd663d86-800.jpg', widths: [480, 760, 960], alt: 'Locaux professionnels (photo d’illustration)' },
-  { slug: 'ville-belfort', src: 'unsplash-1441986300917-64674bd600d8-800.jpg', widths: [480, 760, 960], alt: 'Locaux professionnels (photo d’illustration)' },
+  { slug: 'ville-auxerre', src: 'prestation-bureaux.jpg', widths: [480, 760, 960], alt: 'Locaux professionnels (photo d’illustration)' },
+  { slug: 'ville-belfort', src: 'prestation-commerces.jpg', widths: [480, 760, 960], alt: 'Locaux professionnels (photo d’illustration)' },
   { slug: 'ville-saint-apollinaire', src: 'unsplash-1497366811353-6870744d04b2-900.jpg', widths: [480, 760, 960], alt: 'Locaux professionnels (photo d’illustration)' },
   { slug: 'ville-chenove', src: 'unsplash-1524758631624-e2822e304c36-900.jpg', widths: [480, 760, 960], alt: 'Locaux professionnels (photo d’illustration)' },
-  { slug: 'ville-quetigny', src: 'unsplash-1441986300917-64674bd600d8-800.jpg', widths: [480, 760, 960], alt: 'Locaux professionnels (photo d’illustration)' },
+  { slug: 'ville-quetigny', src: 'prestation-commerces.jpg', widths: [480, 760, 960], alt: 'Locaux professionnels (photo d’illustration)' },
   { slug: 'ville-talant', src: 'unsplash-1497215842964-222b430dc094-900.jpg', widths: [480, 760, 960], alt: 'Locaux professionnels (photo d’illustration)' },
-  { slug: 'ville-longvic', src: 'unsplash-1531973576160-7125cd663d86-800.jpg', widths: [480, 760, 960], alt: 'Locaux professionnels (photo d’illustration)' },
+  { slug: 'ville-longvic', src: 'prestation-bureaux.jpg', widths: [480, 760, 960], alt: 'Locaux professionnels (photo d’illustration)' },
   { slug: 'ville-fontaine-les-dijon', src: 'unsplash-1600585152220-90363fe7e115-900.jpg', widths: [480, 760, 960], alt: 'Locaux professionnels (photo d’illustration)' },
   { slug: 'ville-marsannay-la-cote', src: 'unsplash-1600880292203-757bb62b4baf-900.jpg', widths: [480, 760, 960], alt: 'Locaux professionnels (photo d’illustration)' },
   { slug: 'ville-beaune', src: 'unsplash-1454165804606-c3d57bc86b40-900.jpg', widths: [480, 760, 960], alt: 'Locaux professionnels (photo d’illustration)' },
