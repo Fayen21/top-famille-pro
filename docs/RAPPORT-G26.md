@@ -20,7 +20,7 @@
 
 ## 2. Fichiers modifiés et commits
 
-Dix commits, du plus ancien au plus récent :
+Douze commits, du plus ancien au plus récent :
 
 | Commit | Objet |
 |---|---|
@@ -34,6 +34,8 @@ Dix commits, du plus ancien au plus récent :
 | `0f5debb` | Images : zéro écart sur les 53 routes, appariées sur leurs octets (§3) |
 | `9994d8f` | Revalidation : badge de hero, pré-pied, débordement horizontal (§9) |
 | `e28d813` | Contraste du rappel téléphonique du pré-pied (§9) |
+| `b2f3951` | 112 comparaisons régénérées, dossier de validation, rapport de passe (§9 et §10) |
+| *(ce commit)* | Décision d'Emmanuel du 17 août 2026 inscrite au registre et verrouillée par un test |
 
 Principaux fichiers touchés : `tools/lib/diff-visuel.mjs` (nouveau), `tools/audit-images-role.mjs`,
 `tools/mapper-photos-maquette.mjs` (nouveau), `tools/sonde-composition.mjs` (nouveau),
@@ -43,7 +45,9 @@ Principaux fichiers touchés : `tools/lib/diff-visuel.mjs` (nouveau), `tools/aud
 `/demande-de-devis/`, composant `static-blocks`, `components.php`, `images.php`,
 `testimonials.php`, pied de page, feuilles `00-tokens`, `03-layout`, `04-components`, `05-home`),
 `tests/` (`diff-visuel`, `g23`, `g25`, `fidelite`, `contact`, `functional/quote-form`),
-`docs/FORMULAIRE-DIFFERENCES.md` et `docs/FORMULAIRE-CAPTURES.md` (nouveaux).
+`docs/FORMULAIRE-DIFFERENCES.md` et `docs/FORMULAIRE-CAPTURES.md` (nouveaux),
+`docs/ECARTS-MAQUETTE-AUTORISES.md` et `tests/ecarts-structure.spec.js` (registre et verrou des
+deux écarts de structure validés).
 
 ---
 
@@ -119,8 +123,9 @@ Traité en §7 ci-dessous.
 | Logo d'en-tête | 320 px (densité 2) | **465 px (densité 3)** |
 | Logo du pied | 120 px | **180 px** |
 
-**Aucun écart visible n'a été reclassé en éditorial.** Un seul point est laissé ouvert, et il est
-nommé en §9 : la navigation principale.
+**Aucun écart visible n'a été reclassé en éditorial.** Les deux points qui restaient ouverts —
+navigation principale et commandes de hero — ont été soumis à Emmanuel et **tranchés le 17 août
+2026** : voir §9.2 et §9.3.
 
 ---
 
@@ -294,7 +299,7 @@ deux mesures restent nécessaires.
 | Différences fonctionnelles du formulaire | `/demande-de-devis/` | Listées une par une dans `docs/FORMULAIRE-DIFFERENCES.md` §2. |
 | Deux intertitres sur 108 à la mauvaise taille | `/nettoyage-professionnel/` (36 → 34), `/zones-intervention/bourgogne-franche-comte/` (31 → 29) | Rendus par des gabarits dédiés, hors du composant qui porte le relevé. 106 sur 108 sont désormais exacts, contre 38 avant. |
 
-### 9.2 Point à trancher par Emmanuel — navigation principale
+### 9.2 Point TRANCHÉ par Emmanuel le 17 août 2026 — navigation principale
 
 La navigation compte **sept entrées contre six dans la maquette**, dans un autre ordre et avec
 d'autres libellés :
@@ -306,11 +311,14 @@ d'autres libellés :
 Conséquence mesurée : la barre de navigation occupe 702 px au lieu de 524 à 1440 px, passe à la
 ligne, et l'en-tête gagne **22 px** sur les 53 routes.
 
-**Aucune trace de décision à ce sujet dans le dépôt.** Retirer la page pilier du menu est un
-arbitrage de référencement, pas une correction de fidélité : la décision revient à Emmanuel. Ce
-point n'est **pas** reclassé en écart éditorial — il est ouvert.
+**Décision d'Emmanuel : l'entrée est CONSERVÉE.** La page pilier est la porte d'entrée du site sur
+sa requête principale ; la retirer du menu aurait été un arbitrage de référencement, pas une
+correction de fidélité. L'écart est donc inscrit au registre
+`docs/ECARTS-MAQUETTE-AUTORISES.md` §7 — le seul document qui distingue une différence voulue d'un
+défaut — et verrouillé par `tests/ecarts-structure.spec.js`, pour qu'une passe ultérieure ne le
+« corrige » pas de bonne foi.
 
-### 9.3 Point à trancher par Emmanuel — rangées de commandes de hero
+### 9.3 Point TRANCHÉ par Emmanuel le 17 août 2026 — rangées de commandes de hero
 
 Le prototype ne pose de commandes dans le hero que sur l'accueil, la page pilier, la page région,
 les prestations, les villes, l'index des zones et le recrutement. Le thème en ajoute sur **cinq
@@ -320,8 +328,11 @@ routes institutionnelles** : `/a-propos/`, `/pourquoi-nous/`, `/notre-fonctionne
 Le **badge région** relevait du même constat sur sept routes ; il a été retiré, car c'est un élément
 purement décoratif dont le lien existe déjà dans le menu et dans le pied. Les commandes, elles, sont
 des points de conversion : les retirer est une décision commerciale, pas une correction de fidélité.
-Elles sont donc **conservées et déclarées ici**, au titre de `CLAUDE.md` §4 (modification de
-structure autorisée si elle améliore objectivement la conversion, à condition d'être signalée).
+**Décision d'Emmanuel : les commandes sont CONSERVÉES**, au titre de `CLAUDE.md` §4 (modification
+de structure autorisée si elle améliore objectivement la conversion, à condition d'être signalée).
+L'écart est inscrit au registre `docs/ECARTS-MAQUETTE-AUTORISES.md` §8 et verrouillé par
+`tests/ecarts-structure.spec.js`, qui éprouve aussi que le badge région, lui, reste retiré : la
+décision porte sur les commandes, pas sur le badge.
 
 ### 9.4 Bloqueurs de mise en ligne, inchangés
 
@@ -351,7 +362,11 @@ formulaires est explicite et leurs différences fonctionnelles sont documentées
 note Google non vérifiée ne subsiste sur les 53 routes ; le pied de page et les logos sont repris au
 relevé.
 
-Le verdict reste néanmoins `PARTIEL — ÉCARTS RESTANTS`, et le restera jusqu'à une nouvelle
-validation humaine explicite : deux points de composition attendent un arbitrage d'Emmanuel (§9.2 et
-§9.3), les bloqueurs de mise en ligne du §9.4 sont inchangés, et une contradiction subsiste entre
+Les deux points de composition qui restaient ouverts ont été **tranchés par Emmanuel le 17 août
+2026** (§9.2 et §9.3) : navigation et commandes de hero sont conservées, inscrites au registre des
+écarts assumés et verrouillées par un test.
+
+Le verdict reste néanmoins `PARTIEL — ÉCARTS RESTANTS`, et le restera jusqu'à une **validation
+humaine des captures** : les bloqueurs de mise en ligne du §9.4 sont inchangés — données
+d'immatriculation non confirmées par Kbis au premier rang — et une contradiction subsiste entre
 `CLAUDE.md` §5.5 et le travail demandé en §7 de cette passe.

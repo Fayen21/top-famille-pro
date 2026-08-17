@@ -110,9 +110,13 @@ La fidélité **n'est pas** déclarée validée pour autant : c'est l'objet de c
 
 ---
 
-## Deux points qui attendent VOTRE décision
+## Deux points TRANCHÉS le 17 août 2026
 
-Ils ne sont pas des défauts, et ils ne sont pas non plus des choix que je peux trancher seul.
+Ces deux points vous avaient été soumis ; vous avez répondu **« garde les CTA et l'entrée du
+menu »**. Ils sont donc conservés, inscrits au registre des écarts assumés
+(`ECARTS-MAQUETTE-AUTORISES.md` §7 et §8) et **verrouillés par un test**
+(`tests/ecarts-structure.spec.js`) : une passe ultérieure qui les « corrigerait » au nom de la
+fidélité fera échouer la suite et devra revenir au registre plutôt que de trancher à nouveau.
 
 ### A. Navigation principale — sept entrées contre six
 
@@ -124,7 +128,7 @@ La barre passe à la ligne à 1440 px et l'en-tête gagne 22 px sur les 53 pages
 pilier du menu améliorerait la fidélité mais c'est un **arbitrage de référencement** : cette page
 est la porte d'entrée du site sur « nettoyage professionnel ».
 
-**Question : garde-t-on l'entrée « Nettoyage professionnel » dans le menu ?**
+**Décision : l'entrée est CONSERVÉE.** Coût accepté : en-tête +22 px sur les 53 pages.
 
 ### B. Commandes dans le hero de cinq pages institutionnelles
 
@@ -134,7 +138,8 @@ La maquette ne pose pas de commandes dans le hero de `/a-propos/`, `/pourquoi-no
 Le **badge région** relevait du même constat sur sept pages : il a été retiré, c'est décoratif. Les
 commandes, elles, sont des points de conversion — les retirer est une décision commerciale.
 
-**Question : garde-t-on « Demander mon devis » et « Appeler Audrey » en haut de ces cinq pages ?**
+**Décision : les commandes sont CONSERVÉES.** Le badge région, lui, reste retiré — c'était
+décoratif, et la décision ne portait que sur les commandes.
 
 ---
 
@@ -160,4 +165,7 @@ la contradiction est **signalée** plutôt que corrigée.
 
 ## Verdict proposé
 
-**`PARTIEL — ÉCARTS RESTANTS`**, et il le restera jusqu'à votre validation explicite.
+**`PARTIEL — ÉCARTS RESTANTS`**, et il le restera jusqu'à votre validation des captures.
+
+Les deux points de composition sont désormais tranchés ; ce qui reste bloquant est la liste
+ci-dessus — données d'immatriculation non confirmées par Kbis au premier rang.

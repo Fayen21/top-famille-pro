@@ -77,9 +77,12 @@ débordement horizontal de 263 px (carte-lien promue bouton) et l'accessibilité
 96 (contraste du rappel téléphonique du pré-pied). **L'audit axe-core de la suite n'a pas vu le
 second** : une suite verte ne vaut pas preuve de contraste.
 
-**Deux points attendent une décision d'Emmanuel** — entrée « Nettoyage professionnel » dans le menu
-(sept entrées contre six, en-tête +22 px), et commandes de hero sur cinq pages institutionnelles que
-la maquette n'a pas. Détail et question posée en `docs/VALIDATION-HUMAINE-G26.md`.
+**Deux points tranchés par Emmanuel le 17 août 2026** : l'entrée « Nettoyage professionnel » du menu
+(sept entrées contre six, en-tête +22 px) et les commandes de hero de cinq pages institutionnelles
+sont **conservées**. Inscrites au registre `docs/ECARTS-MAQUETTE-AUTORISES.md` §7 et §8, et
+verrouillées par `tests/ecarts-structure.spec.js` — une passe ultérieure qui les « corrigerait » au
+nom de la fidélité fera échouer la suite. Le badge région, lui, reste retiré des sept heros
+concernés : la décision portait sur les commandes, pas sur le badge.
 
 **Contradiction signalée, non corrigée** : `CLAUDE.md` §5.5 dit la note 5,0/5 confirmée et
 affichable ; la consigne de cette passe demande son retrait. Le fichier ne se modifie pas sans
