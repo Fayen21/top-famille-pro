@@ -13,7 +13,7 @@ une par une, avec leur motif.
 
 ## Étape 1 — 375 px
 
-Fichier : `docs/captures/comparaison/formulaire-etape-1-375.jpg` · écart mesuré : **44.00 %** des pixels.
+Fichier : `docs/captures/comparaison/formulaire-etape-1-375.jpg` · écart mesuré : **41.37 %** des pixels.
 
 | Champ | Valeur dans la maquette | Valeur dans WordPress | Verdict |
 |---|---|---|---|
@@ -28,7 +28,7 @@ Fichier : `docs/captures/comparaison/formulaire-etape-1-375.jpg` · écart mesur
 
 ## Étape 2 — 375 px
 
-Fichier : `docs/captures/comparaison/formulaire-etape-2-375.jpg` · écart mesuré : **42.33 %** des pixels.
+Fichier : `docs/captures/comparaison/formulaire-etape-2-375.jpg` · écart mesuré : **40.81 %** des pixels.
 
 | Champ | Valeur dans la maquette | Valeur dans WordPress | Verdict |
 |---|---|---|---|
@@ -43,7 +43,7 @@ Fichier : `docs/captures/comparaison/formulaire-etape-2-375.jpg` · écart mesur
 
 ## Étape 1 — 1440 px
 
-Fichier : `docs/captures/comparaison/formulaire-etape-1-1440.jpg` · écart mesuré : **34.04 %** des pixels.
+Fichier : `docs/captures/comparaison/formulaire-etape-1-1440.jpg` · écart mesuré : **33.76 %** des pixels.
 
 | Champ | Valeur dans la maquette | Valeur dans WordPress | Verdict |
 |---|---|---|---|
@@ -58,7 +58,7 @@ Fichier : `docs/captures/comparaison/formulaire-etape-1-1440.jpg` · écart mesu
 
 ## Étape 2 — 1440 px
 
-Fichier : `docs/captures/comparaison/formulaire-etape-2-1440.jpg` · écart mesuré : **50.49 %** des pixels.
+Fichier : `docs/captures/comparaison/formulaire-etape-2-1440.jpg` · écart mesuré : **50.47 %** des pixels.
 
 | Champ | Valeur dans la maquette | Valeur dans WordPress | Verdict |
 |---|---|---|---|

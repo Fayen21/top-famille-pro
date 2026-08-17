@@ -17,22 +17,22 @@ import { copyFileSync, existsSync, mkdirSync, readdirSync, writeFileSync } from 
 
 const SRC = 'docs/captures/comparaison';
 const PRIO_DIR = 'docs/captures/validation-prioritaire';
-const OUT = 'docs/captures/VALIDATION-G25.html';
+const OUT = 'docs/captures/VALIDATION-G26.html';
 
 /** Sélection prioritaire : une page par famille + les deux étapes du formulaire + le pilier. */
 const PRIORITAIRES = [
-	{ slug: 'accueil', libelle: 'Accueil', ecart: 'Bande de réassurance sans répétition de la note Google (CLAUDE.md §9) ; libellés tarifaires réalignés en G25.' },
-	{ slug: 'nettoyage-professionnel', libelle: 'Page pilier', ecart: 'Six vignettes de prestation ajoutées en G25 (bande « Nos six prestations ») — regarder cette bande en particulier.' },
-	{ slug: 'service-bureaux', libelle: 'Prestation (bureaux)', ecart: '' },
+	{ slug: 'accueil', libelle: 'Accueil', ecart: 'G26 : la note Google n’est plus affichée (non vérifiée) ; vignette d’auteur ajoutée au témoignage ; photos des deux cartes de prestation corrigées.' },
+	{ slug: 'nettoyage-professionnel', libelle: 'Page pilier', ecart: 'Six vignettes de G25 conservées ; G26 y ajoute le visuel manquant de la bande « Cahier des charges, intervenants et suivi » et corrige la taille des intertitres.' },
+	{ slug: 'service-bureaux', libelle: 'Prestation (bureaux)', ecart: 'G26 : le visuel de hero était CROISÉ avec celui d’une page de ville — corrigé sur les octets.' },
 	{ slug: 'ville-dijon', libelle: 'Ville (Dijon)', ecart: '' },
-	{ slug: 'nos-tarifs', libelle: 'Tarifs', ecart: 'Témoignage nu et centré comme la maquette ; mention « sur Google » exigée (§5.5).' },
-	{ slug: 'formulaire-etape-1', libelle: 'Formulaire — étape 1', ecart: '' },
-	{ slug: 'formulaire-etape-2', libelle: 'Formulaire — étape 2', ecart: '' },
+	{ slug: 'nos-tarifs', libelle: 'Tarifs', ecart: 'Témoignage nu et centré comme la maquette ; la note Google n’y figure plus tant qu’elle n’est pas vérifiable (G26 §7).' },
+	{ slug: 'formulaire-etape-1', libelle: 'Formulaire — étape 1', ecart: 'Capture faite avec les MÊMES données des deux côtés (protocole G26 §6). Les différences de champs restantes sont listées dans docs/FORMULAIRE-DIFFERENCES.md — ce dossier n’affirme pas « mêmes champs ».' },
+	{ slug: 'formulaire-etape-2', libelle: 'Formulaire — étape 2', ecart: 'Étape 2 vérifiée atteinte des deux côtés avant capture ; valeurs relevées champ par champ dans docs/FORMULAIRE-CAPTURES.md.' },
 	{ slug: 'article-frequence-bureaux', libelle: 'Article (fréquence bureaux)', ecart: '' },
 	{ slug: 'mentions-legales', libelle: 'Mentions légales', ecart: 'Contenu réglementaire plus complet que la maquette — hors tolérance de hauteur ASSUMÉ (exception prévue).' },
-	{ slug: 'a-propos', libelle: 'À propos', ecart: 'Portrait provisoire signalé (mention visible) — jamais présenté comme Audrey (§5.6).' },
-	{ slug: 'recrutement', libelle: 'Recrutement', ecart: '' },
-	{ slug: 'pilier-bande-vignettes', libelle: 'Zoom — bande des six vignettes du pilier', ecart: 'Comparaison rapprochée de la bande ajoutée en G25.' },
+	{ slug: 'a-propos', libelle: 'À propos', ecart: 'G26 §4 : image à gauche sur ordinateur et avant le texte sur mobile, citation dans sa bande, quatre valeurs sans mention de provisoire erronée, commandes en rangées de boutons. Portrait toujours signalé comme illustration (§5.6).' },
+	{ slug: 'recrutement', libelle: 'Recrutement', ecart: 'G26 §5 : le hero porte le parcours de candidature et non les appels commerciaux ; panneau des étapes en marine ; candidature vers le site carrière (CLAUDE.md §8).' },
+	{ slug: 'pilier-bande-vignettes', libelle: 'Zoom — bande des six vignettes du pilier', ecart: 'Comparaison rapprochée de la bande ajoutée en G25, régénérée avec le panneau de différence réparé en G26 §2.' },
 ];
 const LARGEURS = [ '375', '1440' ];
 
@@ -87,7 +87,7 @@ const html = `<!doctype html>
 <p class="note">Chaque image montre, de gauche à droite : la <strong>maquette Claude Design</strong>,
 le <strong>rendu WordPress</strong>, et leur <strong>différence</strong> (les zones sombres sont les
 écarts). Commencer par la sélection prioritaire ci-dessous — la revue tient en quelques minutes.
-La fiche de décision associée est <a href="../VALIDATION-HUMAINE-G25.md">docs/VALIDATION-HUMAINE-G25.md</a>.
+La fiche de décision associée est <a href="VALIDATION-HUMAINE-G26.md">VALIDATION-HUMAINE-G26.md</a>, livrée à côté de cette page.
 Rien n'est validé d'office : le statut de chaque page est « À VALIDER » tant que vous ne l'avez pas
 tranché.</p>
 

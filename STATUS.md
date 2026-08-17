@@ -1,7 +1,7 @@
 # STATUS — Top-Famille Pro
 
 > Lien entre deux sessions Claude Code Web. Mis à jour à la fin de chaque phase.
-> Dernière mise à jour : **Hotfix — fidélité production, troisième vague**, 9 août 2026.
+> Dernière mise à jour : **G26 — passe ouverte après le refus de validation**, 17 août 2026 (§-8).
 >
 > **Troisième vague (`docs/AUDIT-PRODUCTION.md` §3c, `docs/RAPPORT-FINAL.md` §21)** : la maquette
 > Claude Design a été **exécutée et mesurée** dans Chromium (c'est un bundle auto-décompressant),
@@ -26,6 +26,66 @@
 > honnête : `PARTIEL — ÉCARTS RESTANTS` sur la fidélité visuelle pixel-près demandée (reproduction
 > complète des 17 sections de l'accueil, Lighthouse, 6 largeurs testées) — voir
 > `docs/RAPPORT-FINAL.md` §20 pour le détail de ce qui est fait et de ce qui reste.
+
+---
+
+## -8. G26 — passe ouverte après le REFUS de validation du 17 août 2026
+
+Branche `claude/g23-fidelite-claude-design-7doxg4`, depuis `7e6dc04` (checkpoint de clôture G25).
+Rapport complet : **`docs/RAPPORT-G26.md`**. Fiche de décision : **`docs/VALIDATION-HUMAINE-G26.md`**.
+
+**Ce qui a été refusé, et ce qui a été fait.**
+
+1. **Le panneau de différence des triptyques était inutile.** Le générateur composait `difference`
+   puis `negate()` : sur deux rendus proches, tout ressortait blanc. `tools/lib/diff-visuel.mjs`
+   calcule l'écart de luminance, l'amplifie d'un facteur écrit dans l'image, le rend en magenta et
+   **mesure** la proportion de pixels qui s'écartent. `tests/diff-visuel.spec.js` l'éprouve sur une
+   fixture volontairement différente, et **passe l'ancien générateur aux mêmes assertions : il
+   échoue**.
+
+2. **Images.** L'audit compare désormais les images **par rôle et sur leurs octets**
+   (`tools/audit-images-role.mjs`), et la table des sources est établie sur les octets de la
+   maquette (`tools/mapper-photos-maquette.mjs`). Huit défauts trouvés au-delà des trois nommés,
+   dont des héros de prestation et de ville **croisés**. Résultat : **164 images, 0 écart**.
+
+3. **`/a-propos/`** : image à gauche sur ordinateur et avant le texte sur mobile, citation dans sa
+   bande, attribution sur une ligne, mention de provisoire erronée retirée des quatre valeurs,
+   commandes en rangées de boutons, bouton téléphone rétabli (le relevé jetait les liens `tel:`).
+
+4. **`/recrutement/`** : parcours de candidature au lieu des appels commerciaux, vers le site
+   carrière (CLAUDE.md §8), panneau des étapes en marine, étapes en liste numérotée.
+
+5. **Formulaires** : anti-double-soumission **ajouté** (il n'existait que sur le contact),
+   présentation rapprochée, protocole de capture explicite, et **différences fonctionnelles
+   documentées une par une** dans `docs/FORMULAIRE-DIFFERENCES.md` — le dossier n'affirme plus
+   « mêmes champs ».
+
+6. **Note Google** : garde de vérifiabilité **réversible** dans `includes/reassurance-settings.php`
+   — la note n'est exposée que si l'URL de la fiche l'accompagne. Compteur d'avis bloqué.
+   `tests/g26.spec.js` éprouve les 53 routes. **0 occurrence** de note, d'étoiles hors provisoire,
+   de `Review` ou d'`AggregateRating`.
+
+7. **Pied de page et logos** repris au relevé ; **badge région** retiré des sept heros où la maquette
+   n'en pose pas ; **pré-pied** recomposé ; logos portés de la densité 2 à la densité 3.
+
+**État technique.** 1063 tests verts · relevé de base 318 contrôles, 298 dans 95-105 %,
+**0 débordement**, 0 erreur console · Lighthouse **14 mesures, 0 sous la cible**, accessibilité 100
+partout · CLS maximum 0,0048 · WCAG 2.2 AA 2.5.8 sans violation · images 0 écart.
+
+**Deux régressions introduites puis corrigées dans la passe**, signalées plutôt que tues : un
+débordement horizontal de 263 px (carte-lien promue bouton) et l'accessibilité Lighthouse tombée à
+96 (contraste du rappel téléphonique du pré-pied). **L'audit axe-core de la suite n'a pas vu le
+second** : une suite verte ne vaut pas preuve de contraste.
+
+**Deux points attendent une décision d'Emmanuel** — entrée « Nettoyage professionnel » dans le menu
+(sept entrées contre six, en-tête +22 px), et commandes de hero sur cinq pages institutionnelles que
+la maquette n'a pas. Détail et question posée en `docs/VALIDATION-HUMAINE-G26.md`.
+
+**Contradiction signalée, non corrigée** : `CLAUDE.md` §5.5 dit la note 5,0/5 confirmée et
+affichable ; la consigne de cette passe demande son retrait. Le fichier ne se modifie pas sans
+validation d'Emmanuel.
+
+**Verdict : `PARTIEL — ÉCARTS RESTANTS`**, jusqu'à une nouvelle validation humaine explicite.
 
 ---
 
