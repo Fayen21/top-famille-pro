@@ -29,10 +29,15 @@ const TFP_REASSURANCE_AVIS_MAX = 6; // Les six témoignages authentiques listés
  * valeurs explicitement confirmées par le client y ont leur place, pour qu'elles soient
  * versionnées et présentes sur toute installation sans ressaisie.
  *
- * `note` = 5.0 : note Google réelle, confirmée par Emmanuel le 9 août 2026 (CLAUDE.md §5.5).
- * `nombre_avis` et `google_url` restent vides — non communiqués à ce jour, jamais inventés. Le
- * badge s'affiche correctement sans eux (includes/testimonials.php) et les intègre dès qu'ils
- * sont saisis en administration.
+ * `note` est VIDE depuis G26. Elle valait 5.0 par défaut, sur la confirmation orale du 9 août
+ * 2026 ; la validation humaine du 17 août a refusé cet affichage tant qu'aucune **vérification
+ * officielle** n'est fournie. Une note de plateforme tierce affichée comme un fait doit être
+ * vérifiable par le visiteur : elle n'est donc rendue que lorsque la note ET l'URL de la fiche
+ * Google réelle sont saisies ensemble (voir `tfp_reassurance_data()`). Saisir la note seule ne
+ * la fait plus apparaître nulle part — c'est volontaire, et c'est le sens de « jamais une valeur
+ * plausible » (CLAUDE.md §5.1).
+ *
+ * `nombre_avis` et `google_url` restent vides — non communiqués à ce jour, jamais inventés.
  *
  * @return array
  */
@@ -50,7 +55,7 @@ function tfp_reassurance_defaults() {
 
 	return array(
 		'google_url'      => '',
-		'note'            => '5.0',
+		'note'            => '',
 		'nombre_avis'     => '',
 		// Citation attribuée à Audrey sur l'accueil, reprise de la maquette Claude Design. Elle est
 		// administrable ici plutôt qu'écrite dans un gabarit : c'est le seul contenu du site qui
@@ -170,7 +175,13 @@ function tfp_render_reassurance_page() {
 				</tr>
 				<tr>
 					<th scope="row"><label for="tfp-note">Note réelle (sur 5)</label></th>
-					<td><input type="number" id="tfp-note" name="<?php echo esc_attr( TFP_REASSURANCE_OPTION ); ?>[note]" value="<?php echo esc_attr( $values['note'] ); ?>" min="0" max="5" step="0.1" class="small-text"></td>
+					<td>
+						<input type="number" id="tfp-note" name="<?php echo esc_attr( TFP_REASSURANCE_OPTION ); ?>[note]" value="<?php echo esc_attr( $values['note'] ); ?>" min="0" max="5" step="0.1" class="small-text" aria-describedby="tfp-note-aide">
+						<p class="description" id="tfp-note-aide">
+							La note n'est affichée sur le site <strong>que si l'URL de la fiche Google ci-dessus est également renseignée</strong> :
+							une note de plateforme tierce doit rester vérifiable par le visiteur. Saisie seule, elle n'apparaît nulle part.
+						</p>
+					</td>
 				</tr>
 				<tr>
 					<th scope="row"><label for="tfp-nombre-avis">Nombre d'avis réel</label></th>
@@ -275,9 +286,22 @@ function tfp_reassurance_data() {
 		)
 	);
 
+	/*
+	 * GARDE DE VÉRIFIABILITÉ (G26). La note n'est exposée aux gabarits que si la fiche Google
+	 * réelle est saisie avec elle : une note de plateforme tierce affirmée sans lien vers sa
+	 * source est une allégation que le visiteur ne peut pas contrôler, et c'est le motif du refus
+	 * de validation du 17 août 2026. Tant que `google_url` est vide, `note` vaut null et TOUS les
+	 * affichages dépendants disparaissent d'eux-mêmes — barre haute, badges, encarts contact et
+	 * tarifs, pastille du portrait — sans qu'aucun gabarit n'ait à le savoir.
+	 *
+	 * Ce n'est pas une suppression du composant : saisir ensemble la note et l'URL de la fiche en
+	 * administration les fait revenir partout, sans retoucher une ligne de code.
+	 */
+	$note_verifiable = '' !== $values['note'] && '' !== trim( (string) $values['google_url'] );
+
 	return array(
 		'google_url'       => $values['google_url'],
-		'note'             => '' !== $values['note'] ? (float) $values['note'] : null,
+		'note'             => $note_verifiable ? (float) $values['note'] : null,
 		'nombre_avis'      => '' !== $values['nombre_avis'] ? (int) $values['nombre_avis'] : null,
 		'horaires_contact' => (string) $values['horaires_contact'],
 		'avis'             => $avis,

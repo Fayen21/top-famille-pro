@@ -475,11 +475,64 @@ function tfp_longueur_css( $v ) {
  *     @type array  $items     Cartes, dans l'ordre de la maquette.
  * }
  */
+/**
+ * Ce fragment affirme-t-il une note de plateforme tierce, ou un compteur d'avis ?
+ *
+ * Le prototype pose ces chiffres en clair dans plusieurs bandes relevées (« 5,0/5 », « Sur
+ * Google · 47 avis clients »). Ils arrivent donc par le SEED, sans passer par le composant de
+ * badge — c'est ainsi qu'ils avaient survécu à la suppression du badge, et c'est l'un des motifs
+ * du refus de validation du 17 août 2026.
+ *
+ * Deux règles, distinctes :
+ *  - la NOTE n'est publiable que si elle est vérifiable (note + URL de fiche saisies ensemble,
+ *    voir `tfp_reassurance_data()`) : sans cela, tout fragment qui l'affirme est retiré ;
+ *  - le COMPTEUR d'avis du prototype (47) est faux et le reste : il est retiré sans condition
+ *    (CLAUDE.md §5.5 — « suppression totale, aucune exception »).
+ *
+ * @param string ...$textes Fragments de la carte ou du bloc.
+ * @return bool Vrai si le contenu doit être retiré du rendu public.
+ */
+function tfp_fragment_note_interdite( ...$textes ) {
+	$texte = trim( implode( ' ', array_filter( array_map( 'strval', $textes ) ) ) );
+	if ( '' === $texte ) {
+		return false;
+	}
+	// Compteur d'avis du prototype : jamais publiable, quelle que soit la configuration.
+	if ( preg_match( '/\b\d+\s*avis\b/iu', $texte ) ) {
+		return true;
+	}
+	$note_verifiable = function_exists( 'tfp_reassurance_data' ) && null !== tfp_reassurance_data()['note'];
+	if ( $note_verifiable ) {
+		return false;
+	}
+	// Note de plateforme sous ses formes relevées : « 5,0/5 », « x/5 sur Google », « sur Google ».
+	return (bool) preg_match( '~(sur\s+google|\bgoogle\b\s*·|\d[.,]\d\s*/\s*5|\b\d\s*/\s*5\b)~iu', $texte );
+}
+
 function tfp_card_grid( array $grille ) {
 	$items = $grille['items'] ?? array();
+	/*
+	 * Filtre des cartes qui affirment une note de plateforme non vérifiable ou un compteur d'avis.
+	 * Retirer la carte plutôt que son texte : une carte vidée de son chiffre n'a plus de sens et
+	 * laisserait un cadre décoratif que la maquette n'a pas.
+	 */
+	$items = array_values(
+		array_filter(
+			$items,
+			static function ( $i ) {
+				return ! tfp_fragment_note_interdite(
+					$i['titre'] ?? '',
+					$i['description'] ?? '',
+					$i['surtitre'] ?? '',
+					implode( ' ', (array) ( $i['lignes'] ?? array() ) )
+				);
+			}
+		)
+	);
 	if ( ! $items ) {
 		return;
 	}
+	$grille['items'] = $items;
 	$colonnes = max( 1, min( 6, (int) ( $grille['colonnes'] ?? 1 ) ) );
 	$theme    = 'sombre' === ( $grille['theme'] ?? 'clair' ) ? ' tfp-card-grid--dark' : '';
 	$variante = preg_replace( '/[^a-z]/', '', (string) ( $grille['variante'] ?? 'texte' ) );
