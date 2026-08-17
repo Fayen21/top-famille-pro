@@ -143,36 +143,32 @@ décoratif, et la décision ne portait que sur les commandes.
 
 ---
 
-## Ce qui reste bloquant — mis à jour le 17 août 2026
+## Bloqueurs — tous levés le 17 août 2026
 
-**Le Kbis est acté.** Les identifiants publiés ont été contre-vérifiés par arithmétique au moment de
-lever le bloqueur : clé de Luhn du SIREN ✅, du SIRET ✅, et clé de TVA concordante avec le SIREN ✅.
-Ces contrôles sont désormais rejoués à chaque passage de la suite (`tests/legal.spec.js`) — un SIRET
-faux se publie exactement comme un vrai, et aucune relecture ne rattrape une transposition.
+**Kbis acté.** Identifiants contre-vérifiés par arithmétique au moment de lever le bloqueur : clé de
+Luhn du SIREN ✅, du SIRET ✅, clé de TVA concordante avec le SIREN ✅. Ces contrôles sont désormais
+rejoués à chaque passage de la suite (`tests/legal.spec.js`) — un SIRET faux se publie exactement
+comme un vrai, et aucune relecture ne rattrape une transposition de deux chiffres.
 
-**Ne bloquent plus**, sur votre décision : l'URL de la fiche Google et le nombre d'avis, la photo
-authentique d'Audrey, la citation qui lui est attribuée. Les portraits et la citation restent
-marqués provisoires, avec leur mention visible — c'est ce qui les rend publiables. La note Google,
-elle, **reste retirée** tant que l'URL manque : ne plus bloquer la mise en ligne n'est pas afficher
-une note que le visiteur ne peut pas vérifier.
+**Note Google réaffichée**, sur votre décision, la conséquence vous ayant été exposée. Elle passe
+par une case explicite — « Afficher sans la fiche », dans Réglages → Réassurance & avis — plutôt que
+par le retrait de la garde : **à décocher le jour où l'URL sera connue**, où elle devient inutile.
+Restent vrais quoi qu'il arrive, et vérifiés sur les 53 routes : aucun compteur d'avis (le nombre
+réel n'est toujours pas connu), aucune donnée structurée `Review` ni `AggregateRating`, aucun
+`href="#"` à la place de la fiche.
 
-**Un seul point reste ouvert et vous appartient** : les huit communes secondaires, en
-`noindex,follow` en attendant la validation d'Audrey.
+**Photo d'Audrey et citation** : ne bloquent plus. Elles restent marquées provisoires avec leur
+mention visible — c'est ce qui les rend publiables.
 
-| Commune | CP | Situation |
-|---|---|---|
-| **Saint-Apollinaire** | 21850 | **le siège de l'entreprise** — rien à valider |
-| Chenôve | 21300 | banlieue sud de Dijon |
-| Quetigny | 21800 | banlieue est de Dijon |
-| Talant | 21240 | banlieue ouest de Dijon |
-| Longvic | 21600 | banlieue sud de Dijon |
-| Fontaine-lès-Dijon | 21121 | banlieue nord de Dijon |
-| Marsannay-la-Côte | 21160 | banlieue sud de Dijon |
-| Beaune | 21200 | ~40 km au sud |
+**Les huit communes sont validées.** Vous confirmez qu'Audrey y intervient : Saint-Apollinaire,
+Chenôve, Quetigny, Talant, Longvic, Fontaine-lès-Dijon, Marsannay-la-Côte et Beaune passent en
+`index,follow` et rejoignent le sitemap.
 
-Les pages existent et sont complètes ; elles sont seulement retirées de l'index et du sitemap. Le
-critère n'est pas la distance mais la réalité commerciale : **Audrey y intervient-elle ?** Une page
-qui promet une intervention impossible coûte plus qu'elle ne rapporte.
+> **Un point resté en suspens, à décider quand vous voudrez.** Le *texte* de ces huit pages est
+> celui écrit quand la desserte n'était pas confirmée : il dit « la demande peut être étudiée »
+> plutôt que « nous intervenons ». Ce n'est plus exact, mais le passer à l'affirmatif est une
+> réécriture éditoriale, pas une conséquence mécanique de la validation — je ne l'ai pas faite de
+> moi-même. Dites-le et je m'en occupe.
 
 ## Un point de documentation à arbitrer
 

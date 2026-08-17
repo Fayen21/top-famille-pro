@@ -92,15 +92,19 @@ d'Emmanuel, et deux de ses paragraphes sont désormais dépassés :
   `PROJECT_INPUTS.md` §2 les enregistre comme résolues depuis la phase 7, et **Emmanuel les a
   actées le 17 août 2026**.
 
-**Bloqueurs de mise en ligne — état au 17 août 2026.** Le **Kbis est acté** : identifiants
+**Bloqueurs de mise en ligne — TOUS LEVÉS le 17 août 2026.** Le **Kbis est acté** : identifiants
 contre-vérifiés par arithmétique (Luhn du SIREN ✅, Luhn du SIRET ✅, clé de TVA concordante avec le
-SIREN ✅) et ces trois contrôles sont désormais rejoués à chaque passage de `tests/legal.spec.js`.
-**Ne bloquent plus**, sur décision d'Emmanuel : URL de la fiche Google et nombre d'avis, photo
-authentique d'Audrey, citation qui lui est attribuée — les portraits et la citation restent marqués
-provisoires avec leur mention visible, et **la note Google reste retirée** tant que l'URL manque.
-**Reste ouvert** : les huit communes secondaires en `noindex,follow` — Saint-Apollinaire (qui est le
-siège), Chenôve, Quetigny, Talant, Longvic, Fontaine-lès-Dijon, Marsannay-la-Côte, Beaune — en
-attente de validation par Audrey, commune par commune.
+SIREN ✅), contrôles désormais rejoués à chaque passage de `tests/legal.spec.js`. La **note Google
+est réaffichée** sur décision d'Emmanuel, par une case explicite `note_sans_source` — à décocher dès
+que l'URL de la fiche sera connue ; le compteur d'avis reste masqué, aucun balisage `Review` ni
+`AggregateRating` n'est produit, aucun `href="#"` n'est publié. La **photo d'Audrey** et sa
+**citation** ne bloquent plus et restent marquées provisoires. Les **huit communes secondaires sont
+validées** — Audrey y intervient — et passent en `index,follow` avec entrée au sitemap.
+
+**Reste à décider, sans urgence** : le texte des huit pages de commune date de l'époque où la
+desserte n'était pas confirmée (« la demande peut être étudiée » plutôt que « nous intervenons »).
+Le passer à l'affirmatif est une réécriture éditoriale, pas une conséquence mécanique de la
+validation ; elle n'a pas été faite d'office.
 
 **Verdict : `PARTIEL — ÉCARTS RESTANTS`**, jusqu'à une nouvelle validation humaine explicite.
 

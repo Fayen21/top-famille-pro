@@ -56,6 +56,17 @@ function tfp_reassurance_defaults() {
 	return array(
 		'google_url'      => '',
 		'note'            => '',
+		/*
+		 * Dérogation EXPLICITE à la garde de vérifiabilité — décidée par Emmanuel le 17 août 2026,
+		 * après que la conséquence lui a été exposée. Elle n'existe que pour rendre cette décision
+		 * visible et réversible : sans elle, il aurait fallu retirer la garde, et plus rien
+		 * n'aurait distingué « affichage assumé sans source » de « garde jamais posée ».
+		 *
+		 * Par défaut à `false` : une installation neuve n'affiche pas une note qu'elle ne peut pas
+		 * sourcer. C'est le fichier de contenu (bin/seed-reassurance.php) qui porte la décision,
+		 * là où l'on va la chercher.
+		 */
+		'note_sans_source' => false,
 		'nombre_avis'     => '',
 		// Citation attribuée à Audrey sur l'accueil, reprise de la maquette Claude Design. Elle est
 		// administrable ici plutôt qu'écrite dans un gabarit : c'est le seul contenu du site qui
@@ -101,6 +112,7 @@ function tfp_sanitize_reassurance_settings( $input ) {
 	}
 
 	$clean['google_url'] = isset( $input['google_url'] ) ? esc_url_raw( trim( $input['google_url'] ) ) : '';
+	$clean['note_sans_source'] = ! empty( $input['note_sans_source'] );
 	$clean['citation_audrey'] = isset( $input['citation_audrey'] ) ? sanitize_textarea_field( trim( $input['citation_audrey'] ) ) : '';
 
 	if ( isset( $input['horaires_contact'] ) ) {
@@ -179,7 +191,24 @@ function tfp_render_reassurance_page() {
 						<input type="number" id="tfp-note" name="<?php echo esc_attr( TFP_REASSURANCE_OPTION ); ?>[note]" value="<?php echo esc_attr( $values['note'] ); ?>" min="0" max="5" step="0.1" class="small-text" aria-describedby="tfp-note-aide">
 						<p class="description" id="tfp-note-aide">
 							La note n'est affichée sur le site <strong>que si l'URL de la fiche Google ci-dessus est également renseignée</strong> :
-							une note de plateforme tierce doit rester vérifiable par le visiteur. Saisie seule, elle n'apparaît nulle part.
+							une note de plateforme tierce doit rester vérifiable par le visiteur. Saisie seule, elle n'apparaît nulle part —
+							sauf si la dérogation ci-dessous est cochée.
+						</p>
+					</td>
+				</tr>
+				<tr>
+					<th scope="row">Afficher sans la fiche</th>
+					<td>
+						<label for="tfp-note-sans-source">
+							<input type="checkbox" id="tfp-note-sans-source" name="<?php echo esc_attr( TFP_REASSURANCE_OPTION ); ?>[note_sans_source]" value="1" <?php checked( ! empty( $values['note_sans_source'] ) ); ?> aria-describedby="tfp-note-sans-source-aide">
+							Afficher la note même sans URL de fiche Google
+						</label>
+						<p class="description" id="tfp-note-sans-source-aide">
+							<strong>À décocher dès que l'URL de la fiche est connue.</strong> Cochée, la note s'affiche sans que le
+							visiteur puisse remonter à sa source : c'est une décision assumée, pas un état normal. Le compteur d'avis
+							reste masqué tant que le nombre réel n'est pas saisi, aucune donnée structurée <code>Review</code> ou
+							<code>AggregateRating</code> n'est produite dans aucun cas, et le badge s'affiche sans lien plutôt qu'avec
+							un lien mort.
 						</p>
 					</td>
 				</tr>
@@ -297,7 +326,21 @@ function tfp_reassurance_data() {
 	 * Ce n'est pas une suppression du composant : saisir ensemble la note et l'URL de la fiche en
 	 * administration les fait revenir partout, sans retoucher une ligne de code.
 	 */
-	$note_verifiable = '' !== $values['note'] && '' !== trim( (string) $values['google_url'] );
+	/*
+	 * La note est exposée si elle est SOURÇABLE — l'URL de la fiche est saisie — ou si la
+	 * dérogation ci-dessus est explicitement activée. Dans les deux cas, ce qui suit reste vrai
+	 * quoi qu'il arrive, et n'est pas négociable par un réglage :
+	 *
+	 *  - aucune donnée structurée `Review` ni `AggregateRating` n'est produite. Baliser comme note
+	 *    du site une note de plateforme tierce contrevient aux règles de Google sur les résultats
+	 *    enrichis, et il manque de toute façon un nombre d'avis (CLAUDE.md §5.5) ;
+	 *  - le compteur d'avis du prototype reste interdit tant que le nombre réel n'est pas saisi :
+	 *    c'est un chiffre vérifiable qui serait faux ;
+	 *  - aucun `href="#"` n'est publié à la place de l'URL de la fiche. Sans URL, le badge
+	 *    s'affiche sans lien plutôt qu'avec un lien mort.
+	 */
+	$note_verifiable = '' !== $values['note']
+		&& ( '' !== trim( (string) $values['google_url'] ) || ! empty( $values['note_sans_source'] ) );
 
 	return array(
 		'google_url'       => $values['google_url'],

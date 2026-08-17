@@ -3,14 +3,23 @@
  * Phase 3, lot 4 — les 8 communes secondaires du prototype (Saint-Apollinaire, Chenôve, Quetigny,
  * Talant, Longvic, Fontaine-lès-Dijon, Marsannay-la-Côte, Beaune).
  *
- * CLAUDE.md §5.4 est explicite : « Les 8 communes secondaires du prototype n'existent sur aucune
+ * CLAUDE.md §5.4 posait la règle : « Les 8 communes secondaires du prototype n'existent sur aucune
  * source. […] Elles restent en noindex,follow tant qu'Audrey ne les a pas validées une par une. »
- * PROJECT_INPUTS.md §12 question ouverte #8 confirme que cette validation n'a pas encore eu lieu.
  *
- * Ces 8 pages sont donc créées avec `statut_validation` non coché → `single-zone.php` calcule déjà
- * `noindex,follow` automatiquement pour tout niveau=commune non validé (mécanisme posé et testé en
- * phase 2). Elles sont conservées (pas supprimées) conformément à la consigne de la phase 3 : une
- * zone qui ne peut pas être confirmée comme desservie garde sa page, mais passe en noindex.
+ * **VALIDÉES LE 17 AOÛT 2026.** Emmanuel confirme qu'Audrey intervient sur ces huit communes. La
+ * condition posée par CLAUDE.md §5.4 est donc remplie : `statut_validation` passe à `true`, et
+ * `single-zone.php` calcule de lui-même `index,follow` — le mécanisme n'a pas à être touché, c'est
+ * exactement le cas pour lequel il a été écrit. Les huit pages rejoignent du même coup le sitemap
+ * (`includes/sitemap-robots.php`, même condition).
+ *
+ * Saint-Apollinaire n'aurait jamais dû figurer dans cette liste : c'est le SIÈGE de l'entreprise
+ * (PROJECT_INPUTS.md §1). Elle s'y trouvait parce que le classement venait du prototype, qui la
+ * rangeait avec les autres, et non d'un doute sur la desserte.
+ *
+ * Le TEXTE de ces pages reste celui écrit en phase 3, volontairement prudent (« la demande peut
+ * être étudiée » plutôt que « nous intervenons »). Le passer à l'affirmatif est une réécriture
+ * éditoriale, pas une conséquence mécanique de la validation : elle n'est pas faite ici, et reste
+ * à demander explicitement. Aucune des affirmations fictives du prototype n'est réintroduite.
  *
  * **Contenu très largement réécrit, pas simplement neutralisé.** Le prototype affirme
  * positivement, sur les 8 communes, une couverture confirmée (« Oui, nous intervenons… », FAQ
@@ -86,7 +95,8 @@ function tfp_seed_commune_secondaire( $id, $name, $cp, $economie, $bureaux_id, $
 
 	tfp_seed_set_field( 'niveau', 'commune', $post_id );
 	tfp_seed_set_field( 'code_postal', $cp, $post_id );
-	tfp_seed_set_field( 'statut_validation', false, $post_id );
+	// Validées par Emmanuel le 17 août 2026 — Audrey intervient sur ces huit communes.
+	tfp_seed_set_field( 'statut_validation', true, $post_id );
 	tfp_seed_set_field( 'h1', "Entreprise de nettoyage à $name", $post_id );
 	tfp_seed_set_field( 'cta_label', "Demander un devis à $name", $post_id );
 	tfp_seed_set_field(
@@ -111,7 +121,7 @@ function tfp_seed_commune_secondaire( $id, $name, $cp, $economie, $bureaux_id, $
 	tfp_seed_set_field( 'seo_title', "Nettoyage professionnel à $name | Top-Famille Pro", $post_id );
 	tfp_seed_set_field( 'seo_description', "$name : demande de nettoyage professionnel étudiée au cas par cas depuis notre siège de Saint-Apollinaire. Devis gratuit sous 24 h.", $post_id );
 
-	echo "  Zone $name (commune, non validée, noindex) : #$post_id\n";
+	echo "  Zone $name (commune, validée le 17/08/2026, index) : #$post_id\n";
 	return $post_id;
 }
 

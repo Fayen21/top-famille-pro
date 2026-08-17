@@ -177,7 +177,7 @@ test.describe('Production — aucun faux avis publié', () => {
 		expect(jsonld).not.toMatch(/"@type"\s*:\s*"(Review|AggregateRating)"/);
 	});
 
-	test('aucune note de plateforme n’est affirmée sans sa source vérifiable', async ({ page }) => {
+	test('la note de plateforme n’est jamais balisée ni accompagnée d’un compteur inventé', async ({ page }) => {
 		let reachable = true;
 		await page.goto(PROD_URL + '/', { waitUntil: 'domcontentloaded' }).catch(() => {
 			reachable = false;
@@ -185,24 +185,31 @@ test.describe('Production — aucun faux avis publié', () => {
 		test.skip(!reachable, `instance de production non joignable sur ${PROD_URL}`);
 
 		/*
-		 * G26 §7 — RENVERSEMENT DE L'ATTENTE.
+		 * Ce que ce test éprouve a changé deux fois en une journée, et c'est pourquoi il n'affirme
+		 * plus rien sur la PRÉSENCE de la note.
 		 *
-		 * Ce test exigeait jusqu'ici que « 5,0/5 sur Google » soit AFFICHÉ, sur la foi de la
-		 * confirmation orale du 9 août 2026. La validation humaine du 17 août 2026 a demandé le
-		 * retrait de cette note tant qu'aucune vérification officielle n'est fournie : une note de
-		 * plateforme tierce affirmée sans lien vers sa fiche est une allégation que le visiteur ne
-		 * peut pas contrôler. La garde de vérifiabilité posée dans includes/reassurance-settings.php
-		 * n'expose la note aux gabarits que si l'URL de la fiche Google l'accompagne — le jour où
-		 * elle sera saisie, ce test cessera de constater son absence et tests/g26.spec.js éprouvera
-		 * sa réapparition.
+		 * Il exigeait qu'elle soit affichée (confirmation orale du 9 août 2026) ; la validation du
+		 * 17 août l'a refusée faute de source vérifiable ; le même jour, la conséquence lui ayant
+		 * été exposée, Emmanuel a demandé de la réafficher en attendant l'URL de la fiche. Un test
+		 * qui fige l'un des deux états doit être réécrit à chaque décision — et se retrouve, entre
+		 * deux, à interdire ce qui vient d'être demandé.
+		 *
+		 * Ce qui ne dépend d'AUCUNE décision, et que ce test garde :
+		 *  - jamais de balisage `Review` ni `AggregateRating` — une note de plateforme tierce n'est
+		 *    pas une note du site (règles de Google sur les résultats enrichis, CLAUDE.md §5.5) ;
+		 *  - jamais de compteur d'avis tant que le nombre réel n'est pas saisi ;
+		 *  - jamais de `href="#"` à la place de l'URL de la fiche.
+		 *
+		 * La cohérence entre le réglage et l'affichage, elle, est éprouvée route par route par
+		 * tests/g26.spec.js, dans les deux sens.
 		 */
-		await expect(page.locator('.tfp-google-badge--inline')).toHaveCount(0);
 		const texte = await page.locator('body').innerText();
-		expect(texte, 'une note Google non vérifiable subsiste').not.toMatch(/\d[.,]\d\s*\/\s*5/);
+		expect(texte, 'compteur d’avis publié sans nombre réel').not.toMatch(/\b\d+\s*avis\b/i);
+		expect(await page.locator('a[href="#"]').count(), 'lien mort à la place de la fiche').toBe(0);
 
-		// Et jamais de balisage de note du site : c'est une note de plateforme tierce.
 		const jsonld = (await page.locator('script[type="application/ld+json"]').allTextContents()).join(' ');
 		expect(jsonld).not.toMatch(/aggregateRating|ratingValue/i);
+		expect(jsonld).not.toMatch(/"@type"\s*:\s*"Review"/);
 	});
 
 	test('le composant témoignage reste dans un état neutre, sans casser la mise en page', async ({ page }) => {

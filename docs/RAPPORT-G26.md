@@ -334,7 +334,7 @@ L'écart est inscrit au registre `docs/ECARTS-MAQUETTE-AUTORISES.md` §8 et verr
 `tests/ecarts-structure.spec.js`, qui éprouve aussi que le badge région, lui, reste retiré : la
 décision porte sur les commandes, pas sur le badge.
 
-### 9.4 Bloqueurs — levés le 17 août 2026, sauf un
+### 9.4 Bloqueurs — tous levés le 17 août 2026
 
 **Le bloqueur Kbis est LEVÉ.** Emmanuel a acté les données d'immatriculation. Elles étaient déjà
 enregistrées comme résolues dans `PROJECT_INPUTS.md` §2 (« Résolu phase 7 », incohérence sur le
@@ -359,24 +359,45 @@ transposition de deux chiffres.
 
 | Point | Décision | Ce qui reste vrai |
 |---|---|---|
-| URL de la fiche Google et nombre d'avis | ne bloque plus | La note **reste retirée** : la garde de `includes/reassurance-settings.php` ne l'expose que si l'URL l'accompagne. Ne plus bloquer la mise en ligne n'est pas afficher une note invérifiable — voir §9.6. |
+| URL de la fiche Google et nombre d'avis | ne bloque plus | **La note est réaffichée** sur décision d'Emmanuel du 17 août 2026, la conséquence lui ayant été exposée — case « Afficher sans la fiche », à décocher dès que l'URL sera connue. Le **compteur d'avis** reste masqué : le nombre réel n'est toujours pas connu. Voir §9.6. |
 | Photo authentique d'Audrey | ne bloque plus | Les portraits restent des **visuels d'illustration**, avec leur `alt` honnête, leur `data-tfp-provisional` et leur mention visible (`CLAUDE.md` §5.6). |
 | Citation attribuée à Audrey | ne bloque plus | Elle reste marquée provisoire et remplaçable en une requête. |
 
-**Un seul point reste ouvert** : les **huit communes secondaires**, en `noindex,follow` tant
-qu'Audrey ne les a pas validées une par une — Saint-Apollinaire, Chenôve, Quetigny, Talant,
-Longvic, Fontaine-lès-Dijon, Marsannay-la-Côte et Beaune. À signaler : **Saint-Apollinaire est le
-siège de l'entreprise** ; elle figure dans cette liste parce que le classement vient du prototype,
-pas d'une hésitation sur la desserte.
+**Les huit communes secondaires sont VALIDÉES.** Emmanuel confirme le 17 août 2026 qu'Audrey y
+intervient : Saint-Apollinaire, Chenôve, Quetigny, Talant, Longvic, Fontaine-lès-Dijon,
+Marsannay-la-Côte et Beaune passent en `index,follow` et rejoignent le sitemap. La condition posée
+par `CLAUDE.md` §5.4 est remplie ; le mécanisme n'a pas été touché — `single-zone.php` lit
+`statut_validation`, et c'est exactement le cas pour lequel il avait été écrit.
 
-### 9.6 Ce que « ne plus bloquer » ne change pas
+Une réserve, portée ici parce qu'elle n'a pas été traitée : le **texte** de ces huit pages reste
+celui de la phase 3, volontairement prudent (« la demande peut être étudiée » plutôt que « nous
+intervenons »). Le passer à l'affirmatif est une réécriture éditoriale, pas une conséquence
+mécanique de la validation — elle reste à demander.
 
-Ne plus traiter l'URL de la fiche Google comme un bloqueur de mise en ligne **n'autorise pas** à
-réafficher la note : c'est une note de plateforme tierce, et l'affirmer sans lien vers sa source
-reste une allégation invérifiable par le visiteur — le motif même du refus du 17 août 2026. La garde
-est réversible et rendra la note d'elle-même le jour où l'URL sera saisie. Il en va de même des
-portraits et de la citation : ils sont publiables **parce qu'ils sont déclarés provisoires**, pas
-malgré cela.
+**Plus aucun bloqueur de mise en ligne n'est ouvert.**
+
+### 9.6 La note Google, réaffichée — et ce que cela ne change pas
+
+La conséquence lui ayant été exposée, Emmanuel a demandé le 17 août 2026 de **réafficher la note en
+attendant l'URL**. C'est une décision assumée, et elle est traitée comme telle : plutôt que de
+retirer la garde de vérifiabilité — ce qui aurait effacé la distinction entre « affichage assumé
+sans source » et « garde jamais posée » —, une case explicite la lève,
+`note_sans_source`, à **décocher dès que l'URL sera connue**, où elle devient inutile.
+
+Trois points ne dépendent d'**aucun réglage** et restent vrais quoi qu'il arrive :
+
+1. **aucune donnée structurée `Review` ni `AggregateRating`** — baliser comme note du site une note
+   de plateforme tierce contrevient aux règles de Google sur les résultats enrichis, et il manque de
+   toute façon un nombre d'avis (`CLAUDE.md` §5.5) ;
+2. **aucun compteur d'avis** tant que le nombre réel n'est pas saisi — « 47 avis » est un chiffre du
+   prototype, vérifiable et faux ;
+3. **aucun `href="#"`** à la place de l'URL : sans fiche, le badge s'affiche sans lien plutôt
+   qu'avec un lien mort.
+
+Vérifié sur les 53 routes servies : 0 `Review`, 0 `AggregateRating`, 0 compteur d'avis, 0 `href="#"`.
+
+Les portraits et la citation, eux, restent publiables **parce qu'ils sont déclarés provisoires**,
+pas malgré cela.
 
 ### 9.5 Point de documentation à arbitrer
 
