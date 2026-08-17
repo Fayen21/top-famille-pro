@@ -32,6 +32,17 @@ function tfp_button( $args ) {
 			'size'    => '',
 			'block'   => false,
 			'icon'    => '',
+			/*
+			 * Géométrie relevée sur le prototype, bouton par bouton (G26 §4).
+			 *
+			 * Le jeton du thème est celui de l'appel principal — 15/26, 17 px, graisse 600. La
+			 * maquette compose ses commandes secondaires en 14/22 et 16 px, et ses pastilles de
+			 * maillage en 14/18 et 15 px. Appliquer partout le jeton du bouton principal élargit
+			 * chaque pastille de 38 px, ce qui change le nombre de rangées à 375 px. Les valeurs
+			 * relevées passent donc en variables, comme celles des tuiles ; sans relevé, le jeton
+			 * s'applique et rien ne change.
+			 */
+			'mesures' => array(),
 		)
 	);
 
@@ -43,12 +54,25 @@ function tfp_button( $args ) {
 		$classes[] = 'tfp-btn--block';
 	}
 
+	$vars = array();
+	foreach ( array( 'pad_v' => '--tfp-btn-pv', 'pad_h' => '--tfp-btn-ph', 'taille' => '--tfp-btn-fs', 'hauteur' => '--tfp-btn-h' ) as $cle => $var ) {
+		$valeur = function_exists( 'tfp_longueur_css' ) ? tfp_longueur_css( $args['mesures'][ $cle ] ?? '' ) : '';
+		if ( '' !== $valeur ) {
+			$vars[] = $var . ':' . $valeur;
+		}
+	}
+	$graisse = (int) ( $args['mesures']['graisse'] ?? 0 );
+	if ( $graisse >= 100 && $graisse <= 900 ) {
+		$vars[] = '--tfp-btn-fw:' . $graisse;
+	}
+
 	printf(
-		'<a class="%1$s" href="%2$s">%3$s%4$s</a>',
+		'<a class="%1$s" href="%2$s"%5$s>%3$s%4$s</a>',
 		esc_attr( implode( ' ', $classes ) ),
 		esc_url( $args['href'] ),
 		$args['icon'], // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- HTML de picto contrôlé en interne, jamais de donnée utilisateur.
-		esc_html( $args['label'] )
+		esc_html( $args['label'] ),
+		$vars ? ' style="' . esc_attr( implode( ';', $vars ) ) . '"' : ''
 	);
 }
 

@@ -45,23 +45,19 @@ $page = tfp_static_page_data( 'a-propos' );
 	<?php tfp_breadcrumb( tfp_seo()['breadcrumb'] ); ?>
 </div>
 
+<?php
+/*
+ * ORDRE DES COLONNES DU HERO — corrigé en G26 §4.
+ *
+ * La maquette pose le portrait À GAUCHE et le texte à droite sur ordinateur, et le portrait AVANT
+ * le texte sur mobile ; le thème faisait l'inverse dans les deux cas. La correction est un ordre
+ * de DOM, pas une propriété `order` : le hero est une rangée flex qui se replie, et l'ordre du
+ * document donne du même coup la colonne de gauche sur grand écran et le premier bloc en mobile.
+ * Une règle `order` aurait dissocié l'ordre visuel de l'ordre de lecture au clavier et aux
+ * technologies d'assistance, pour le même rendu.
+ */
+?>
 <section class="tfp-hero">
-	<div class="tfp-hero__content">
-		<div class="tfp-hero__eyebrow">
-			<a class="tfp-region-badge" href="<?php echo esc_url( home_url( '/zones-intervention/bourgogne-franche-comte/' ) ); ?>"><?php echo esc_html( $site['address_region'] ); ?></a>
-			<?php tfp_google_rating_badge( 'nu' ); ?>
-		</div>
-		<h1><?php echo esc_html( $page['h1'] ); ?></h1>
-		<?php foreach ( $page['lede'] as $lede ) : ?>
-			<p class="tfp-section__lede"><?php echo esc_html( $lede ); ?></p>
-		<?php endforeach; ?>
-		<div class="tfp-action-row" style="margin-top:24px">
-			<?php
-			tfp_button( array( 'label' => 'Demander mon devis', 'href' => home_url( '/demande-de-devis/' ), 'variant' => 'primary' ) );
-			tfp_button( array( 'label' => '☎ Appeler ' . explode( ' ', $site['manager'] )[0], 'href' => 'tel:' . $site['phone_href'], 'variant' => 'secondary' ) );
-			?>
-		</div>
-	</div>
 	<div class="tfp-hero__media tfp-hero__media--portrait" data-tfp-provisional="photo">
 		<div class="tfp-hero__media-main">
 			<?php
@@ -84,6 +80,22 @@ $page = tfp_static_page_data( 'a-propos' );
 		 */
 		?>
 		<p class="tfp-provisional-notice" data-tfp-provisional-notice="1">Photo d’illustration provisoire — portrait d’Audrey à venir.</p>
+	</div>
+	<div class="tfp-hero__content">
+		<div class="tfp-hero__eyebrow">
+			<a class="tfp-region-badge" href="<?php echo esc_url( home_url( '/zones-intervention/bourgogne-franche-comte/' ) ); ?>"><?php echo esc_html( $site['address_region'] ); ?></a>
+			<?php tfp_google_rating_badge( 'nu' ); ?>
+		</div>
+		<h1><?php echo esc_html( $page['h1'] ); ?></h1>
+		<?php foreach ( $page['lede'] as $lede ) : ?>
+			<p class="tfp-section__lede"><?php echo esc_html( $lede ); ?></p>
+		<?php endforeach; ?>
+		<div class="tfp-action-row" style="margin-top:24px">
+			<?php
+			tfp_button( array( 'label' => 'Demander mon devis', 'href' => home_url( '/demande-de-devis/' ), 'variant' => 'primary' ) );
+			tfp_button( array( 'label' => '☎ Appeler ' . explode( ' ', $site['manager'] )[0], 'href' => 'tel:' . $site['phone_href'], 'variant' => 'secondary' ) );
+			?>
+		</div>
 	</div>
 </section>
 

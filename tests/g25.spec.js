@@ -25,9 +25,15 @@ test.describe( 'G25 · vignettes de la bande de maillage du pilier', () => {
 			await expect( thumbs.nth( i ) ).toHaveAttribute( 'alt', '' );
 			await expect( thumbs.nth( i ) ).toHaveAttribute( 'loading', 'lazy' );
 		}
-		// La page porte les DIX images de la maquette : logo, hero, six vignettes, portrait, pied.
+		/*
+		 * ONZE images depuis G26 §3 : logo d'en-tête, hero, six vignettes, le visuel carré de la
+		 * bande « Cahier des charges, intervenants et suivi » — que la maquette pose et que le thème
+		 * omettait, l'un des trois manques nommés par le refus du 17 août 2026 — le portrait, et le
+		 * logo du pied. Le compte reste éprouvé plutôt qu'assoupli : il est le garde-fou qui a
+		 * révélé le manque.
+		 */
 		const total = await page.evaluate( () => document.images.length );
-		expect( total ).toBe( 10 );
+		expect( total ).toBe( 11 );
 	} );
 
 	test.describe( 'géométrie déclarée aux largeurs où la bande est visible', () => {
@@ -37,6 +43,12 @@ test.describe( 'G25 · vignettes de la bande de maillage du pilier', () => {
 				await page.goto( '/nettoyage-professionnel/' );
 				const tuile = page.locator( '.tfp-card-tile--thumb' ).first();
 				await tuile.scrollIntoViewIfNeeded();
+				// Les vignettes sont en `loading="lazy"` : mesurer aussitôt après le défilement
+				// surprenait l'image avant son décodage et faisait conclure à une source cassée.
+				// On attend le chargement effectif, ce que le test doit faire pour dire vrai.
+				await tuile
+					.locator( '.tfp-card-tile__thumb img' )
+					.evaluate( ( img ) => img.complete || new Promise( ( r ) => img.addEventListener( 'load', r, { once: true } ) ) );
 				const d = await tuile.evaluate( ( el ) => {
 					const img = el.querySelector( '.tfp-card-tile__thumb img' );
 					const r = img.getBoundingClientRect();

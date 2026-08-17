@@ -177,18 +177,30 @@ test.describe('Production — aucun faux avis publié', () => {
 		expect(jsonld).not.toMatch(/"@type"\s*:\s*"(Review|AggregateRating)"/);
 	});
 
-	test('la note Google confirmée est affichée, sans balisage AggregateRating', async ({ page }) => {
+	test('aucune note de plateforme n’est affirmée sans sa source vérifiable', async ({ page }) => {
 		let reachable = true;
 		await page.goto(PROD_URL + '/', { waitUntil: 'domcontentloaded' }).catch(() => {
 			reachable = false;
 		});
 		test.skip(!reachable, `instance de production non joignable sur ${PROD_URL}`);
 
-		// Note réelle confirmée le 9 août 2026 : elle doit apparaître, y compris en production.
-		await expect(page.locator('.tfp-google-badge--inline')).toHaveCount(1);
-		await expect(page.locator('.tfp-google-badge--inline')).toContainText('5,0/5');
+		/*
+		 * G26 §7 — RENVERSEMENT DE L'ATTENTE.
+		 *
+		 * Ce test exigeait jusqu'ici que « 5,0/5 sur Google » soit AFFICHÉ, sur la foi de la
+		 * confirmation orale du 9 août 2026. La validation humaine du 17 août 2026 a demandé le
+		 * retrait de cette note tant qu'aucune vérification officielle n'est fournie : une note de
+		 * plateforme tierce affirmée sans lien vers sa fiche est une allégation que le visiteur ne
+		 * peut pas contrôler. La garde de vérifiabilité posée dans includes/reassurance-settings.php
+		 * n'expose la note aux gabarits que si l'URL de la fiche Google l'accompagne — le jour où
+		 * elle sera saisie, ce test cessera de constater son absence et tests/g26.spec.js éprouvera
+		 * sa réapparition.
+		 */
+		await expect(page.locator('.tfp-google-badge--inline')).toHaveCount(0);
+		const texte = await page.locator('body').innerText();
+		expect(texte, 'une note Google non vérifiable subsiste').not.toMatch(/\d[.,]\d\s*\/\s*5/);
 
-		// Mais jamais balisée comme note du site : c'est une note de plateforme tierce.
+		// Et jamais de balisage de note du site : c'est une note de plateforme tierce.
 		const jsonld = (await page.locator('script[type="application/ld+json"]').allTextContents()).join(' ');
 		expect(jsonld).not.toMatch(/aggregateRating|ratingValue/i);
 	});

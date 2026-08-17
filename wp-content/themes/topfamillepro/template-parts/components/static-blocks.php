@@ -40,6 +40,8 @@ foreach ( $data['sections'] as $section ) {
 		$classes[] = 'tfp-section--primary';
 	} elseif ( 'alt' === $section['fond'] ) {
 		$classes[] = 'tfp-section--alt';
+	} elseif ( 'glacier' === $section['fond'] ) {
+		$classes[] = 'tfp-section--glacier';
 	} elseif ( 'blanc' === $section['fond'] ) {
 		// La maquette alterne bandes blanches et bandes sur le fond de page. Le fond blanc était
 		// relevé mais jamais rendu : l'alternance disparaissait, et avec elle la lecture par bandes.
@@ -268,6 +270,53 @@ foreach ( $data['sections'] as $section ) {
 						}
 
 						$chips_en_attente = array();
+						/*
+						 * RANGÉES DE COMMANDES — G26 §4 et §5.
+						 *
+						 * La maquette pose ses appels à l'action en rangées de boutons côte à côte ; le
+						 * composant les rendait en lignes de texte pleine largeur empilées. Sur
+						 * /a-propos/ cela transformait six commandes en une liste, sur /recrutement/
+						 * cela remplaçait le parcours de candidature par des liens génériques.
+						 *
+						 * Les liens consécutifs qui partagent la rangée relevée sont donc regroupés et
+						 * rendus avec l'archétype mesuré sur le prototype. Un lien sans rangée ni
+						 * archétype relevé garde sa ligne de texte : rien n'est promu bouton sans relevé.
+						 */
+						/*
+						 * Sur une bande sombre, la hiérarchie s'inverse — le principal passe en blanc
+						 * plein, le secondaire en filet blanc translucide. Le design system porte déjà
+						 * ces deux variantes (`--on-primary`, `--on-dark`) ; on les choisit ici plutôt
+						 * que d'écrire une règle contextuelle qui les dupliquerait. Sans cela, un
+						 * bouton bleu sur bande marine devient illisible : c'est un défaut de
+						 * contraste avant d'être un défaut de fidélité (CLAUDE.md §8).
+						 */
+						$bande_sombre     = in_array( $section['fond'] ?? '', array( 'primary', 'navy' ), true );
+						$liens_en_attente = array();
+						$vider_liens      = static function () use ( &$liens_en_attente, $bande_sombre ) {
+							if ( ! $liens_en_attente ) {
+								return;
+							}
+							$liens            = $liens_en_attente;
+							$liens_en_attente = array();
+							echo '<div class="tfp-action-row tfp-action-row--statique">';
+							foreach ( $liens as $l ) {
+								$principal = 'primaire' === $l['archetype'];
+								if ( $bande_sombre ) {
+									$variante = $principal ? 'on-primary' : 'on-dark';
+								} else {
+									$variante = $principal ? 'primary' : 'secondary';
+								}
+								tfp_button(
+									array(
+										'label'   => $l['label'],
+										'href'    => $l['href'],
+										'variant' => $variante,
+										'mesures' => $l['mesures'],
+									)
+								);
+							}
+							echo '</div>';
+						};
 						/** Vide la file de pastilles consécutives en une seule rangée, comme la maquette. */
 						$vider_chips = static function () use ( &$chips_en_attente ) {
 							if ( ! $chips_en_attente ) {
@@ -284,10 +333,17 @@ foreach ( $data['sections'] as $section ) {
 							$chips_en_attente = array();
 						};
 
+						$rangee_courante = null;
 						foreach ( $sequence_bloc as $enfant ) {
 							$type = $enfant['type'] ?? '';
 							if ( 'chip' !== $type ) {
 								$vider_chips();
+							}
+							// La rangée se referme dès qu'un contenu d'un autre type s'intercale, ou dès
+							// qu'un lien appartient à une autre rangée relevée.
+							if ( 'link' !== $type || ( $enfant['rangee'] ?? '' ) !== $rangee_courante ) {
+								$vider_liens();
+								$rangee_courante = 'link' === $type ? ( $enfant['rangee'] ?? '' ) : null;
 							}
 							switch ( $type ) {
 								case 'paragraph':
@@ -318,7 +374,44 @@ foreach ( $data['sections'] as $section ) {
 									break;
 
 								case 'link':
-									$url = tfp_route_to_url( $enfant['route'] ?? '' );
+									$route = (string) ( $enfant['route'] ?? '' );
+									/*
+									 * Un `tel:` ou un `mailto:` relevé sur la maquette est réécrit avec
+									 * les coordonnées RÉELLES du site (PROJECT_INPUTS.md §1), jamais
+									 * avec celles figées dans le prototype : le numéro y est certes le
+									 * bon aujourd'hui, mais le jour où il change, une valeur recopiée
+									 * dans une option de contenu ne suivrait pas.
+									 */
+									$contact = function_exists( 'tfp_site_data' ) ? tfp_site_data() : array();
+									if ( 0 === strpos( $route, 'tel:' ) ) {
+										$url = 'tel:' . ( $contact['phone_href'] ?? '' );
+									} elseif ( 0 === strpos( $route, 'mailto:' ) ) {
+										$url = 'mailto:' . ( $contact['email'] ?? '' );
+									} else {
+										$url = tfp_route_to_url( $route );
+									}
+
+									$archetype = (string) ( $enfant['archetype'] ?? 'ligne' );
+									if ( $url && 'ligne' !== $archetype ) {
+										// Bouton relevé : il rejoint sa rangée, vidée par le tour suivant.
+										$liens_en_attente[] = array(
+											// Libellé conservé tel quel, flèche comprise : la maquette écrit
+										// « Pourquoi nous choisir → » dans la pastille, et « Page
+										// contact » sans flèche. La distinction est la sienne.
+										'label'     => $enfant['texte'],
+											'href'      => $url,
+											'archetype' => $archetype,
+											'mesures'   => array(
+												'pad_v'   => $enfant['pad_v'] ?? '',
+												'pad_h'   => $enfant['pad_h'] ?? '',
+												'taille'  => $enfant['taille'] ?? '',
+												'graisse' => $enfant['graisse'] ?? 0,
+												'hauteur' => $enfant['hauteur'] ?? '',
+											),
+										);
+										break;
+									}
+
 									if ( $url ) {
 										printf(
 											'<a class="tfp-link-row" href="%s">%s<span aria-hidden="true">→</span></a>',
@@ -355,6 +448,7 @@ foreach ( $data['sections'] as $section ) {
 							}
 						}
 						$vider_chips();
+						$vider_liens();
 						?>
 					</div>
 			<?php endforeach; ?>

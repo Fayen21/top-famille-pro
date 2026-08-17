@@ -12,11 +12,15 @@
      Le thème rendait ce bouton en 52 px — moins présent que dans le prototype, sur les 53 pages,
      alors que c'est le point de conversion du site. Le bouton compact de la barre de navigation
      garde sa propre géométrie, elle aussi relevée (47 px, padding 12/20, 14,5 px, rayon 11). */
-  min-height: 60px;
-  padding: 15px 26px;
+  /* Les variables permettent à une bande relevée de préciser la géométrie de SON bouton (voir
+     tfp_button(), G26 §4) ; sans relevé, le jeton du bouton principal s'applique — c'est-à-dire
+     exactement ce que le thème rendait avant. La hauteur relevée est bornée à la cible tactile de
+     44 px imposée par WCAG 2.2 AA : la fidélité ne prime pas sur l'accessibilité. */
+  min-height: max(44px, var(--tfp-btn-h, 60px));
+  padding: var(--tfp-btn-pv, 15px) var(--tfp-btn-ph, 26px);
   border-radius: 12px;
-  font-weight: var(--fw-semibold);
-  font-size: 17px;
+  font-weight: var(--tfp-btn-fw, var(--fw-semibold));
+  font-size: var(--tfp-btn-fs, 17px);
   line-height: 1.2;
   border: 1px solid transparent;
   transition: transform var(--transition-base), box-shadow var(--transition-base), background var(--transition-base), color var(--transition-base), border-color var(--transition-base);
@@ -259,7 +263,7 @@
 }
 
 .tfp-reassurance__item:hover {
-  background: #EDF5F6;
+  background: var(--color-bg-glacier);
 }
 
 .tfp-reassurance__title {
@@ -352,7 +356,7 @@
 }
 
 .tfp-service-tile:hover {
-  background: #EDF5F6;
+  background: var(--color-bg-glacier);
   color: var(--color-text);
 }
 
@@ -3285,6 +3289,13 @@ body.tfp-body a.tfp-link-card:focus-visible {
   flex-wrap: wrap;
   gap: 12px;
 }
+
+/* Rangée de commandes issue d'une bande relevée (G26 §4/§5) — elle suit un paragraphe, d'où la
+   respiration ; la rangée du hero, elle, porte déjà sa marge dans le gabarit. */
+.tfp-action-row--statique {
+  margin-top: var(--space-5);
+}
+
 
 /* ---------- Plan du site ----------
    Le prototype range les colonnes du plan sur une grille dont la base est déclarée à 210 px, avec

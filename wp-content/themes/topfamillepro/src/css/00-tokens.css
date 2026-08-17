@@ -31,6 +31,10 @@
   --color-border-strong: #C9DCE2;
   --color-bg: #F4F7F8;
   --color-bg-alt: #E4EDF0;
+  /* Glacier — fond de la bande de citation de /a-propos/ et survol des tuiles de réassurance et de
+     prestation. La valeur était écrite en dur à deux endroits ; elle rejoint les jetons pour que la
+     bande et le survol ne puissent plus diverger. */
+  --color-bg-glacier: #EDF5F6;
   --color-bg-card: #FFFFFF;
   --color-white: #FFFFFF;
 

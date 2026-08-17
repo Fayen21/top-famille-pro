@@ -76,6 +76,10 @@ for (const p of PAGES) {
 	});
 
 	const data = await page.evaluate(() => {
+		// La page du prototype est unique pour les neuf routes : les avertissements accumulés d'une
+		// route ne doivent pas être imputés à la suivante.
+		window.__tfpFondsInconnus = [];
+		window.__tfpRangeeSeq = 0;
 		const txt = (el) => (el ? (el.textContent || '').replace(/\s+/g, ' ').trim() : '');
 		// Conteneur du flux de page : le plus proche ancêtre du H1 qui porte plusieurs `<section>`
 		// directes. Compter les enfants d'un conteneur quelconque ne suffit pas — sur une page
@@ -99,6 +103,19 @@ for (const p of PAGES) {
 			if (bg === 'rgb(16, 38, 59)') return 'navy';
 			if (bg === 'rgb(255, 255, 255)') return 'blanc';
 			if (bg === 'rgb(244, 247, 248)') return 'alt';
+			/*
+			 * Bande glacier — #EDF5F6 (G26 §4). La bande de citation de /a-propos/ est la seule du
+			 * prototype à l'employer ; faute d'entrée ici, elle repartait « sans fond » et la
+			 * citation d'Audrey se fondait dans la page. Un relevé de couleur qui retombe
+			 * silencieusement sur la chaîne vide efface une bande entière sans rien signaler : la
+			 * liste est donc close par un contrôle, et non par un défaut muet.
+			 */
+			if (bg === 'rgb(237, 245, 246)') return 'glacier';
+			if (bg !== 'rgba(0, 0, 0, 0)' && bg !== 'transparent') {
+				// Une couleur de bande non répertoriée est une perte de fidélité, pas un cas neutre :
+				// on la remonte pour qu'elle soit traitée, au lieu de la laisser disparaître.
+				(window.__tfpFondsInconnus ||= []).push(bg);
+			}
 			return '';
 		};
 
@@ -545,7 +562,21 @@ for (const p of PAGES) {
 			 * est le rendu — étoiles ou citation entre guillemets — et non un nom d'auteur, qu'on ne
 			 * saurait pas reconnaître de façon fiable.
 			 */
-			const provisoire = /★{3,}/.test(txt(el)) || !!el.querySelector('blockquote') || /[«"]/.test(description);
+			/*
+			 * Le guillemet est éprouvé EN TÊTE de la description, pas n'importe où (G26 §4).
+			 *
+			 * `/[«"]/` frappait toute carte qui cite un mot au fil d'une phrase. Sur /a-propos/, la
+			 * valeur « Transparence » se conclut par « nous nous interdisons les formulations vagues
+			 * du type "satisfaction garantie" » : la carte passait pour un témoignage, la grille des
+			 * quatre valeurs recevait la mention « Exemples de présentation — témoignages
+			 * authentiques en cours d'intégration », et le lecteur se voyait annoncer comme
+			 * provisoires les valeurs de l'entreprise. Une mention de provisoire posée à tort n'est
+			 * pas une prudence : elle décrédibilise un contenu qui, lui, est définitif.
+			 *
+			 * Un témoignage commence par sa citation. C'est ce que le repère décrit désormais.
+			 */
+			const provisoire =
+				/★{3,}/.test(txt(el)) || !!el.querySelector('blockquote') || /^\s*[«"]/.test(description);
 
 			/*
 				 * Disposition **en ligne** : l'intitulé et la description partagent la même ligne.
@@ -887,7 +918,52 @@ for (const p of PAGES) {
 					else if (tag === 'p') out.push({ t: 'p', v: txt(n) });
 					else if (tag === 'li') out.push({ t: 'li', v: txt(n) });
 					else if (tag === 'img') out.push({ t: 'img', v: n.getAttribute('alt') || '' });
-					else if (tag === 'a' && !n.querySelector('h1,h2,h3,h4,p,li,img')) out.push({ t: 'a', v: txt(n), href: n.getAttribute('href') || '' });
+					else if (tag === 'a' && !n.querySelector('h1,h2,h3,h4,p,li,img')) {
+						/*
+						 * ARCHÉTYPE ET RANGÉE d'un lien — relevés sur le rendu (G26 §4 et §5).
+						 *
+						 * Le relevé ne gardait que le libellé et la route. Le thème rendait donc tout
+						 * appel à l'action en ligne de texte pleine largeur empilée, là où la maquette
+						 * pose des boutons côte à côte : sur /a-propos/, six commandes en rangées de
+						 * deux puis de quatre ; sur /recrutement/, « Envoyer ma candidature » avec le
+						 * téléphone à côté. Ce n'est pas une nuance de style, c'est la disparition du
+						 * point de conversion de la page.
+						 *
+						 * Le repère est mesurable et ne dépend d'aucune classe : un bouton plein sans
+						 * filet est PRIMAIRE, un bouton bordé est SECONDAIRE, un lien sans fond ni
+						 * filet reste une ligne. La rangée est l'ancêtre flex commun : c'est lui qui
+						 * met les commandes côte à côte, et son index suffit à les regrouper.
+						 */
+						const s = getComputedStyle(n);
+						const filet = parseFloat(s.borderTopWidth) || 0;
+						const plein = s.backgroundColor !== 'rgba(0, 0, 0, 0)' && s.backgroundColor !== 'transparent';
+						const rangee = n.parentElement && /flex/.test(getComputedStyle(n.parentElement).display) ? n.parentElement : null;
+						if (rangee && !rangee.dataset.tfpRangee) {
+							rangee.dataset.tfpRangee = 'r' + ++window.__tfpRangeeSeq;
+						}
+						out.push({
+							t: 'a',
+							v: txt(n),
+							href: n.getAttribute('href') || '',
+							archetype: filet >= 1 ? 'secondaire' : plein ? 'primaire' : 'ligne',
+							rangee: rangee ? rangee.dataset.tfpRangee : '',
+							/*
+							 * Géométrie du bouton, relevée comme celle des tuiles l'est déjà.
+							 *
+							 * Le prototype ne compose pas tous ses boutons pareil : 15/26 et 17 px en
+							 * graisse 700 pour l'appel principal, 14/22 et 16 px pour une commande
+							 * secondaire, 14/18 et 15 px pour les pastilles de maillage. Le jeton
+							 * unique du thème — celui du bouton principal — élargissait les
+							 * pastilles de 38 px chacune : à 375 px, quatre pastilles que la maquette
+							 * range sur trois lignes en occupaient quatre.
+							 */
+							pad_v: s.paddingTop,
+							pad_h: s.paddingLeft,
+							taille: s.fontSize,
+							graisse: parseInt(s.fontWeight, 10) || 0,
+							hauteur: Math.round(n.getBoundingClientRect().height) + 'px',
+						});
+					}
 					else if (tag === 'blockquote') out.push({ t: 'quote', v: txt(n) });
 					else if (!n.children.length && txt(n)) {
 						/*
@@ -903,6 +979,9 @@ for (const p of PAGES) {
 							t: 'span',
 							v: txt(n),
 							pastille: parseFloat(sp.borderTopLeftRadius) >= 40 && (fond || parseFloat(sp.borderTopWidth) > 0),
+							// Ordonnée de la PREMIÈRE ligne du fragment : sert à recoller deux fragments
+							// que la maquette rend sur une même ligne (voir la fusion des notes).
+							ligne: Math.round((n.getClientRects()[0] || n.getBoundingClientRect()).top + window.scrollY),
 						});
 					}
 					else {
@@ -914,7 +993,13 @@ for (const p of PAGES) {
 							.map((c) => c.textContent.replace(/\s+/g, ' ').trim())
 							.filter(Boolean)
 							.join(' ');
-						if (direct) out.push({ t: 'span', v: direct });
+						if (direct) {
+							out.push({
+								t: 'span',
+								v: direct,
+								ligne: Math.round((n.getClientRects()[0] || n.getBoundingClientRect()).top + window.scrollY),
+							});
+						}
 						walk(n);
 					}
 				}
@@ -1115,9 +1200,33 @@ for (const p of PAGES) {
 					} else if (n.t === 'quote') {
 						cur.citations.push(n.v);
 						seq('quote', { texte: n.v });
-					} else if (n.t === 'a' && n.href.startsWith('#/')) {
-						cur.liens.push({ texte: n.v, route: n.href });
-						seq('link', { texte: n.v, route: n.href });
+					} else if (n.t === 'a' && /^(#\/|tel:|mailto:)/.test(n.href)) {
+						/*
+						 * `tel:` et `mailto:` sont relevés au même titre que les routes internes.
+						 *
+						 * Le filtre `startsWith('#/')` les jetait en silence, et avec eux les deux
+						 * commandes les plus directes du site : « ☎ Parler de mes locaux avec Audrey »
+						 * sur /a-propos/ et « Envoyer ma candidature » sur /recrutement/. Une page de
+						 * recrutement sans lien de candidature n'a plus d'objet ; c'est l'un des motifs
+						 * du refus de validation du 17 août 2026.
+						 *
+						 * Ces liens sortent tels quels : ce ne sont pas des routes du prototype, il n'y
+						 * a rien à traduire, et le numéro comme l'adresse viennent de PROJECT_INPUTS
+						 * — le gabarit les remplace par les coordonnées réelles du site.
+						 */
+						const lien = {
+							texte: n.v,
+							route: n.href,
+							archetype: n.archetype || 'ligne',
+							rangee: n.rangee || '',
+							pad_v: n.pad_v || '',
+							pad_h: n.pad_h || '',
+							taille: n.taille || '',
+							graisse: n.graisse || 0,
+							hauteur: n.hauteur || '',
+						};
+						cur.liens.push(lien);
+						seq('link', lien);
 					} else if (n.t === 'span' && n.v.length > 1 && !/^[✓✕·+]$/.test(n.v)) {
 						/*
 						 * **Plus de repli destructeur.** Un fragment n'est rendu en pastille que si la
@@ -1130,7 +1239,31 @@ for (const p of PAGES) {
 							cur.noms.push(n.v);
 							seq('chip', { texte: n.v });
 						} else {
-							seq('note', { texte: n.v });
+							/*
+							 * Deux fragments que la maquette rend SUR LA MÊME LIGNE restent une seule
+							 * note (G26 §4).
+							 *
+							 * L'attribution de la citation de /a-propos/ s'écrit « Audrey » suivi, dans
+							 * la même ligne, de « · Top-Famille Pro » : le nom est un nœud texte du
+							 * bloc, la suite un `span` inline. Rendus en deux paragraphes, ils
+							 * s'empilaient — le point médian ouvrait une ligne à lui seul, et la bande
+							 * gagnait 35 px de haut pour une attribution devenue bancale.
+							 *
+							 * Le repère est l'ordonnée relevée, pas la ponctuation : n'importe quelle
+							 * césure inline se recolle, et un vrai paragraphe suivant ne se colle jamais.
+							 */
+							const dernier = cur.sequence[cur.sequence.length - 1];
+							if (
+								dernier &&
+								dernier.type === 'note' &&
+								typeof n.ligne === 'number' &&
+								typeof dernier.ligne === 'number' &&
+								Math.abs(dernier.ligne - n.ligne) <= 4
+							) {
+								dernier.texte = `${dernier.texte} ${n.v}`.replace(/\s+/g, ' ').trim();
+								continue;
+							}
+							seq('note', { texte: n.v, ligne: n.ligne });
 						}
 					}
 				}
@@ -1256,8 +1389,14 @@ for (const p of PAGES) {
 			heroAlt: (heroSeulement.find((n) => n.t === 'img') || {}).v || '',
 			heroCtas: heroSeulement.filter((n) => n.t === 'a').map((n) => ({ texte: n.v, route: n.href })),
 			sections: out,
+			fondsInconnus: [...new Set(window.__tfpFondsInconnus || [])],
 		};
 	});
+
+	// Une couleur de bande que le relevé ne sait pas traduire doit être VUE, pas absorbée.
+	if (data.fondsInconnus.length) {
+		console.error(`  ⚠ ${p.key} : fonds de bande non répertoriés → ${data.fondsInconnus.join(', ')}`);
+	}
 
 	all.push({ ...p, ...data });
 	console.error(

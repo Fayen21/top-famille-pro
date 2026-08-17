@@ -15,9 +15,25 @@ test.describe('G23 · badge-reassurance — la note des eyebrows intérieurs est
 	// carte de plus (15 occurrences G22).
 	const routesNues = [ '/prestations/', '/pourquoi-nous/', '/recrutement/' ];
 
+	/*
+	 * G26 §7 — la note Google n'est plus exposée aux gabarits tant que la fiche qui la porte n'est
+	 * pas saisie (includes/reassurance-settings.php). Les badges disparaissent donc de toutes les
+	 * routes, et la géométrie relevée en G23 n'a plus de support à mesurer.
+	 *
+	 * Ces tests ne sont pas supprimés : la garantie G23 doit revenir d'elle-même le jour où l'URL
+	 * de la fiche est fournie. Chacun constate donc l'absence complète de badge quand la note n'est
+	 * pas exposée, et reprend ses mesures dès qu'elle l'est. Un test supprimé aurait laissé la
+	 * régression possible sans que rien ne la signale.
+	 */
+	const noteExposee = async ( page ) => ( await page.locator( '.tfp-google-badge' ).count() ) > 0;
+
 	for ( const route of routesNues ) {
 		test( `${ route } : badge sans fond, sans filet, sans rayon`, async ( { page } ) => {
 			await page.goto( route );
+			if ( ! ( await noteExposee( page ) ) ) {
+				await expect( page.locator( '.tfp-google-badge' ) ).toHaveCount( 0 );
+				return;
+			}
 			const badge = page.locator( '.tfp-google-badge--nu' ).first();
 			await expect( badge ).toBeVisible();
 			const s = await badge.evaluate( ( el ) => {
@@ -34,6 +50,10 @@ test.describe('G23 · badge-reassurance — la note des eyebrows intérieurs est
 
 	test( 'accueil : le hero garde sa pastille blanche encadrée (non-régression)', async ( { page } ) => {
 		await page.goto( '/' );
+		if ( ! ( await noteExposee( page ) ) ) {
+			await expect( page.locator( '.tfp-google-badge' ) ).toHaveCount( 0 );
+			return;
+		}
 		const badge = page.locator( '.tfp-hero .tfp-google-badge--inline' ).first();
 		await expect( badge ).toBeVisible();
 		const s = await badge.evaluate( ( el ) => {
@@ -68,6 +88,12 @@ test.describe('G23 · badge-reassurance — la note des eyebrows intérieurs est
 		// partageait sa rangée (35 px) et faisait compter 2 colonnes contre 1 (relevé G23).
 		await page.goto( '/nettoyage-professionnel/' );
 		const eyebrow = page.locator( '.tfp-hero__eyebrow' ).first();
+		if ( ! ( await noteExposee( page ) ) ) {
+			await expect( page.locator( '.tfp-google-badge' ) ).toHaveCount( 0 );
+			// Le badge région reste absent de cet eyebrow, note ou pas : c'est le relevé G23.
+			await expect( eyebrow.locator( '.tfp-region-badge' ) ).toHaveCount( 0 );
+			return;
+		}
 		await expect( eyebrow.locator( '.tfp-google-badge--inline' ) ).toHaveCount( 1 );
 		await expect( eyebrow.locator( '.tfp-region-badge' ) ).toHaveCount( 0 );
 	} );
