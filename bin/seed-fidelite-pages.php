@@ -43,6 +43,9 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 					array(
 						'titre' => '',
 						'niveau' => 'h2',
+						'titre_taille' => '',
+						'titre_interligne' => 0,
+						'titre_graisse' => 0,
 						'carte' => '',
 						'colonne_min' => '',
 						'rangee_gap' => '',
@@ -231,6 +234,9 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 					array(
 						'titre' => '',
 						'niveau' => 'h2',
+						'titre_taille' => '',
+						'titre_interligne' => 0,
+						'titre_graisse' => 0,
 						'carte' => '',
 						'colonne_min' => '',
 						'rangee_gap' => '',
@@ -277,6 +283,9 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 					array(
 						'titre' => 'Les professionnels que nous accompagnons',
 						'niveau' => 'h2',
+						'titre_taille' => 'clamp(24px, 3vw, 34px)',
+						'titre_interligne' => 1.04,
+						'titre_graisse' => 700,
 						'carte' => '',
 						'colonne_min' => '340px',
 						'rangee_gap' => 'clamp(32px, 5vw, 56px)',
@@ -318,6 +327,9 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 					array(
 						'titre' => 'Les types de locaux entretenus',
 						'niveau' => 'h2',
+						'titre_taille' => 'clamp(24px, 3vw, 34px)',
+						'titre_interligne' => 1.04,
+						'titre_graisse' => 700,
 						'carte' => '',
 						'colonne_min' => '340px',
 						'rangee_gap' => 'clamp(32px, 5vw, 56px)',
@@ -691,6 +703,9 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 					array(
 						'titre' => 'Prestataire de nettoyage ou recrutement direct ?',
 						'niveau' => 'h2',
+						'titre_taille' => 'clamp(26px, 3.4vw, 38px)',
+						'titre_interligne' => 1.04,
+						'titre_graisse' => 700,
 						'carte' => '',
 						'colonne_min' => '',
 						'rangee_gap' => '',
@@ -920,6 +935,9 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 					array(
 						'titre' => 'Nos six prestations de nettoyage professionnel',
 						'niveau' => 'h2',
+						'titre_taille' => 'clamp(26px, 3.4vw, 40px)',
+						'titre_interligne' => 1.04,
+						'titre_graisse' => 700,
 						'carte' => '',
 						'colonne_min' => '',
 						'rangee_gap' => '',
@@ -1287,6 +1305,9 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 					array(
 						'titre' => 'Régulier ou ponctuel, tâches, fréquences et horaires',
 						'niveau' => 'h2',
+						'titre_taille' => 'clamp(26px, 3.4vw, 38px)',
+						'titre_interligne' => 1.04,
+						'titre_graisse' => 700,
 						'carte' => '',
 						'colonne_min' => '',
 						'rangee_gap' => '',
@@ -1703,6 +1724,9 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 					array(
 						'titre' => 'Interventions en dehors des horaires d\'ouverture',
 						'niveau' => 'h3',
+						'titre_taille' => '17px',
+						'titre_interligne' => 1.04,
+						'titre_graisse' => 700,
 						'carte' => array(
 							'padding' => '22px',
 							'rayon' => '14px',
@@ -1749,6 +1773,9 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 					array(
 						'titre' => 'Comment choisir la bonne fréquence',
 						'niveau' => 'h2',
+						'titre_taille' => 'clamp(26px, 3.4vw, 38px)',
+						'titre_interligne' => 1.04,
+						'titre_graisse' => 700,
 						'carte' => '',
 						'colonne_min' => '',
 						'rangee_gap' => '',
@@ -2031,6 +2058,9 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 					array(
 						'titre' => 'Les tâches, espace par espace',
 						'niveau' => 'h2',
+						'titre_taille' => 'clamp(26px, 3.4vw, 38px)',
+						'titre_interligne' => 1.04,
+						'titre_graisse' => 700,
 						'carte' => '',
 						'colonne_min' => '',
 						'rangee_gap' => '',
@@ -2404,6 +2434,9 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 					array(
 						'titre' => 'Un cahier des charges défini avec vous',
 						'niveau' => 'h2',
+						'titre_taille' => 'clamp(24px, 3vw, 34px)',
+						'titre_interligne' => 1.04,
+						'titre_graisse' => 700,
 						'carte' => '',
 						'colonne_min' => '380px',
 						'rangee_gap' => 'clamp(30px, 4vw, 52px)',
@@ -2429,6 +2462,9 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 					array(
 						'titre' => 'Intervenant habituel et continuité',
 						'niveau' => 'h2',
+						'titre_taille' => 'clamp(24px, 3vw, 34px)',
+						'titre_interligne' => 1.04,
+						'titre_graisse' => 700,
 						'carte' => '',
 						'colonne_min' => '320px',
 						'rangee_gap' => 'clamp(30px, 4vw, 52px)',
@@ -2470,6 +2506,9 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 					array(
 						'titre' => 'Comment se construit un cahier des charges',
 						'niveau' => 'h2',
+						'titre_taille' => 'clamp(26px, 3.4vw, 38px)',
+						'titre_interligne' => 1.04,
+						'titre_graisse' => 700,
 						'carte' => '',
 						'colonne_min' => '',
 						'rangee_gap' => '',
@@ -2725,6 +2764,9 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 					array(
 						'titre' => 'Modifier la prestation en cours de route',
 						'niveau' => 'h3',
+						'titre_taille' => '17px',
+						'titre_interligne' => 1.04,
+						'titre_graisse' => 700,
 						'carte' => array(
 							'padding' => '22px 24px',
 							'rayon' => '14px',
@@ -2771,6 +2813,9 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 					array(
 						'titre' => 'Cahier des charges, intervenants et suivi',
 						'niveau' => 'h2',
+						'titre_taille' => 'clamp(24px, 3vw, 36px)',
+						'titre_interligne' => 1.04,
+						'titre_graisse' => 700,
 						'carte' => '',
 						'colonne_min' => '420px',
 						'rangee_gap' => 'clamp(30px, 4vw, 52px)',
@@ -2861,6 +2906,9 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 					array(
 						'titre' => '',
 						'niveau' => 'h2',
+						'titre_taille' => '',
+						'titre_interligne' => 0,
+						'titre_graisse' => 0,
 						'carte' => '',
 						'colonne_min' => '',
 						'rangee_gap' => '',
@@ -2912,6 +2960,9 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 					array(
 						'titre' => 'Trois situations concrètes',
 						'niveau' => 'h2',
+						'titre_taille' => 'clamp(26px, 3.4vw, 38px)',
+						'titre_interligne' => 1.04,
+						'titre_graisse' => 700,
 						'carte' => '',
 						'colonne_min' => '',
 						'rangee_gap' => '',
@@ -3141,6 +3192,9 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 					array(
 						'titre' => 'Le tarif, en toute transparence',
 						'niveau' => 'h2',
+						'titre_taille' => 'clamp(24px, 3vw, 34px)',
+						'titre_interligne' => 1.04,
+						'titre_graisse' => 700,
 						'carte' => '',
 						'colonne_min' => '300px',
 						'rangee_gap' => 'clamp(32px, 5vw, 56px)',
@@ -3190,6 +3244,9 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 					array(
 						'titre' => 'Nos départements',
 						'niveau' => 'h2',
+						'titre_taille' => 'clamp(24px, 3vw, 34px)',
+						'titre_interligne' => 1.04,
+						'titre_graisse' => 700,
 						'carte' => '',
 						'colonne_min' => '300px',
 						'rangee_gap' => 'clamp(32px, 5vw, 56px)',
@@ -3394,6 +3451,9 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 					array(
 						'titre' => 'Nos villes',
 						'niveau' => 'h2',
+						'titre_taille' => 'clamp(24px, 3vw, 34px)',
+						'titre_interligne' => 1.04,
+						'titre_graisse' => 700,
 						'carte' => '',
 						'colonne_min' => '300px',
 						'rangee_gap' => 'clamp(32px, 5vw, 56px)',
@@ -3637,6 +3697,9 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 					array(
 						'titre' => 'Pour aller plus loin',
 						'niveau' => 'h2',
+						'titre_taille' => 'clamp(24px, 3vw, 34px)',
+						'titre_interligne' => 1.04,
+						'titre_graisse' => 700,
 						'carte' => '',
 						'colonne_min' => '',
 						'rangee_gap' => '18px',
@@ -3884,6 +3947,9 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 					array(
 						'titre' => 'Questions fréquentes',
 						'niveau' => 'h2',
+						'titre_taille' => 'clamp(26px, 3.4vw, 38px)',
+						'titre_interligne' => 1.04,
+						'titre_graisse' => 700,
 						'carte' => '',
 						'colonne_min' => '',
 						'rangee_gap' => '',
@@ -4010,6 +4076,9 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 					array(
 						'titre' => 'Un projet d\'entretien pour vos locaux ?',
 						'niveau' => 'h2',
+						'titre_taille' => 'clamp(26px, 4vw, 44px)',
+						'titre_interligne' => 1.04,
+						'titre_graisse' => 800,
 						'carte' => '',
 						'colonne_min' => '',
 						'rangee_gap' => '',
@@ -4110,6 +4179,9 @@ update_option( 'tfp_page_prestations', array(
 					array(
 						'titre' => 'Comment choisir la bonne prestation ?',
 						'niveau' => 'h2',
+						'titre_taille' => '19px',
+						'titre_interligne' => 1.04,
+						'titre_graisse' => 700,
 						'carte' => '',
 						'colonne_min' => '',
 						'rangee_gap' => '',
@@ -4477,6 +4549,9 @@ update_option( 'tfp_page_prestations', array(
 					array(
 						'titre' => 'Ce qui est commun aux six prestations',
 						'niveau' => 'h2',
+						'titre_taille' => 'clamp(22px, 2.6vw, 30px)',
+						'titre_interligne' => 1.04,
+						'titre_graisse' => 700,
 						'carte' => '',
 						'colonne_min' => '420px',
 						'rangee_gap' => 'clamp(28px, 4vw, 48px)',
@@ -4502,6 +4577,9 @@ update_option( 'tfp_page_prestations', array(
 					array(
 						'titre' => 'Ce qui change d\'une prestation à l\'autre',
 						'niveau' => 'h2',
+						'titre_taille' => 'clamp(22px, 2.6vw, 30px)',
+						'titre_interligne' => 1.04,
+						'titre_graisse' => 700,
 						'carte' => '',
 						'colonne_min' => '320px',
 						'rangee_gap' => 'clamp(28px, 4vw, 48px)',
@@ -4543,6 +4621,9 @@ update_option( 'tfp_page_prestations', array(
 					array(
 						'titre' => '',
 						'niveau' => 'h2',
+						'titre_taille' => '',
+						'titre_interligne' => 0,
+						'titre_graisse' => 0,
 						'carte' => '',
 						'colonne_min' => '',
 						'rangee_gap' => '',
@@ -4910,6 +4991,9 @@ update_option( 'tfp_page_prestations', array(
 					array(
 						'titre' => 'Besoin d\'aide pour choisir ?',
 						'niveau' => 'h2',
+						'titre_taille' => 'clamp(24px, 3.4vw, 38px)',
+						'titre_interligne' => 1.04,
+						'titre_graisse' => 800,
 						'carte' => '',
 						'colonne_min' => '',
 						'rangee_gap' => '',
@@ -5009,6 +5093,9 @@ update_option( 'tfp_page_zones-intervention', array(
 					array(
 						'titre' => '',
 						'niveau' => 'h2',
+						'titre_taille' => '',
+						'titre_interligne' => 0,
+						'titre_graisse' => 0,
 						'carte' => '',
 						'colonne_min' => '',
 						'rangee_gap' => '',
@@ -5197,6 +5284,9 @@ update_option( 'tfp_page_zones-intervention', array(
 					array(
 						'titre' => '',
 						'niveau' => 'h2',
+						'titre_taille' => '',
+						'titre_interligne' => 0,
+						'titre_graisse' => 0,
 						'carte' => '',
 						'colonne_min' => '',
 						'rangee_gap' => '',
@@ -5268,6 +5358,9 @@ update_option( 'tfp_page_zones-intervention', array(
 					array(
 						'titre' => 'Une couverture régionale organisée depuis Saint-Apollinaire',
 						'niveau' => 'h2',
+						'titre_taille' => 'clamp(21px, 2.5vw, 29px)',
+						'titre_interligne' => 1.15,
+						'titre_graisse' => 700,
 						'carte' => array(
 							'padding' => 'clamp(22px, 3vw, 32px)',
 							'rayon' => '18px',
@@ -5303,6 +5396,9 @@ update_option( 'tfp_page_zones-intervention', array(
 					array(
 						'titre' => 'Comment nous organisons les déplacements',
 						'niveau' => 'h2',
+						'titre_taille' => 'clamp(21px, 2.5vw, 29px)',
+						'titre_interligne' => 1.15,
+						'titre_graisse' => 700,
 						'carte' => array(
 							'padding' => 'clamp(22px, 3vw, 32px)',
 							'rayon' => '18px',
@@ -5338,6 +5434,9 @@ update_option( 'tfp_page_zones-intervention', array(
 					array(
 						'titre' => 'Ce qui change selon votre adresse',
 						'niveau' => 'h2',
+						'titre_taille' => 'clamp(21px, 2.5vw, 29px)',
+						'titre_interligne' => 1.15,
+						'titre_graisse' => 700,
 						'carte' => array(
 							'padding' => 'clamp(22px, 3vw, 32px)',
 							'rayon' => '18px',
@@ -5668,6 +5767,9 @@ update_option( 'tfp_page_zones-intervention', array(
 					array(
 						'titre' => '',
 						'niveau' => 'h2',
+						'titre_taille' => '',
+						'titre_interligne' => 0,
+						'titre_graisse' => 0,
 						'carte' => '',
 						'colonne_min' => '',
 						'rangee_gap' => '',
@@ -5727,6 +5829,9 @@ update_option( 'tfp_page_zones-intervention', array(
 					array(
 						'titre' => 'Les huit départements',
 						'niveau' => 'h2',
+						'titre_taille' => 'clamp(22px, 2.6vw, 30px)',
+						'titre_interligne' => 1.04,
+						'titre_graisse' => 700,
 						'carte' => '',
 						'colonne_min' => '',
 						'rangee_gap' => '',
@@ -6196,6 +6301,9 @@ update_option( 'tfp_page_zones-intervention', array(
 					array(
 						'titre' => 'Nos dix villes principales',
 						'niveau' => 'h2',
+						'titre_taille' => 'clamp(22px, 2.6vw, 30px)',
+						'titre_interligne' => 1.04,
+						'titre_graisse' => 700,
 						'carte' => '',
 						'colonne_min' => '',
 						'rangee_gap' => '',
@@ -6841,6 +6949,9 @@ update_option( 'tfp_page_zones-intervention', array(
 					array(
 						'titre' => 'Premières communes secondaires',
 						'niveau' => 'h2',
+						'titre_taille' => 'clamp(22px, 2.6vw, 30px)',
+						'titre_interligne' => 1.04,
+						'titre_graisse' => 700,
 						'carte' => '',
 						'colonne_min' => '',
 						'rangee_gap' => '',
@@ -7399,6 +7510,9 @@ update_option( 'tfp_page_zones-intervention', array(
 					array(
 						'titre' => 'Départements, villes et communes : comment lire ces pages',
 						'niveau' => 'h2',
+						'titre_taille' => 'clamp(21px, 2.5vw, 29px)',
+						'titre_interligne' => 1.15,
+						'titre_graisse' => 700,
 						'carte' => array(
 							'padding' => 'clamp(22px, 3vw, 32px)',
 							'rayon' => '18px',
@@ -7434,6 +7548,9 @@ update_option( 'tfp_page_zones-intervention', array(
 					array(
 						'titre' => 'Les espaces que nous traitons — et ceux que nous ne traitons pas',
 						'niveau' => 'h2',
+						'titre_taille' => 'clamp(21px, 2.5vw, 29px)',
+						'titre_interligne' => 1.15,
+						'titre_graisse' => 700,
 						'carte' => array(
 							'padding' => 'clamp(22px, 3vw, 32px)',
 							'rayon' => '18px',
@@ -7469,6 +7586,9 @@ update_option( 'tfp_page_zones-intervention', array(
 					array(
 						'titre' => 'Votre commune n\'apparaît pas encore ?',
 						'niveau' => 'h2',
+						'titre_taille' => 'clamp(21px, 2.5vw, 29px)',
+						'titre_interligne' => 1.15,
+						'titre_graisse' => 700,
 						'carte' => array(
 							'padding' => 'clamp(22px, 3vw, 32px)',
 							'rayon' => '18px',
@@ -7520,6 +7640,9 @@ update_option( 'tfp_page_zones-intervention', array(
 					array(
 						'titre' => '',
 						'niveau' => 'h2',
+						'titre_taille' => '',
+						'titre_interligne' => 0,
+						'titre_graisse' => 0,
 						'carte' => '',
 						'colonne_min' => '',
 						'rangee_gap' => '',
@@ -7743,6 +7866,9 @@ update_option( 'tfp_page_zones-intervention', array(
 					array(
 						'titre' => 'Questions fréquentes sur nos zones d\'intervention',
 						'niveau' => 'h2',
+						'titre_taille' => 'clamp(22px, 2.8vw, 32px)',
+						'titre_interligne' => 1.04,
+						'titre_graisse' => 700,
 						'carte' => '',
 						'colonne_min' => '',
 						'rangee_gap' => '',
@@ -7833,6 +7959,9 @@ update_option( 'tfp_page_zones-intervention', array(
 					array(
 						'titre' => 'Votre commune est-elle couverte ?',
 						'niveau' => 'h2',
+						'titre_taille' => 'clamp(24px, 3.6vw, 40px)',
+						'titre_interligne' => 1.04,
+						'titre_graisse' => 800,
 						'carte' => '',
 						'colonne_min' => '',
 						'rangee_gap' => '',
@@ -8025,6 +8154,9 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 					array(
 						'titre' => '',
 						'niveau' => 'h2',
+						'titre_taille' => '',
+						'titre_interligne' => 0,
+						'titre_graisse' => 0,
 						'carte' => '',
 						'colonne_min' => '',
 						'rangee_gap' => '',
@@ -8108,7 +8240,7 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 							array(
 								'type' => 'note',
 								'texte' => 'Devis gratuit sous 24 h Intervention régulière ou ponctuelle Conditions d\'arrêt précisées au devis',
-								'ligne' => 688,
+								'ligne' => 718,
 							),
 						),
 						'cartes' => array(
@@ -8213,6 +8345,9 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 					array(
 						'titre' => '',
 						'niveau' => 'h2',
+						'titre_taille' => '',
+						'titre_interligne' => 0,
+						'titre_graisse' => 0,
 						'carte' => '',
 						'colonne_min' => '',
 						'rangee_gap' => '',
@@ -8222,7 +8357,7 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 							array(
 								'type' => 'note',
 								'texte' => 'Réponse directe',
-								'ligne' => 895,
+								'ligne' => 925,
 							),
 							array(
 								'type' => 'paragraph',
@@ -8296,6 +8431,9 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 					array(
 						'titre' => 'Notre implantation réelle : Saint-Apollinaire, près de Dijon',
 						'niveau' => 'h2',
+						'titre_taille' => 'clamp(21px, 2.5vw, 29px)',
+						'titre_interligne' => 1.15,
+						'titre_graisse' => 700,
 						'carte' => array(
 							'padding' => 'clamp(22px, 3vw, 32px)',
 							'rayon' => '18px',
@@ -8331,6 +8469,9 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 					array(
 						'titre' => 'Le territoire que nous couvrons — et celui que nous ne couvrons pas',
 						'niveau' => 'h2',
+						'titre_taille' => 'clamp(21px, 2.5vw, 29px)',
+						'titre_interligne' => 1.15,
+						'titre_graisse' => 700,
 						'carte' => array(
 							'padding' => 'clamp(22px, 3vw, 32px)',
 							'rayon' => '18px',
@@ -8366,6 +8507,9 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 					array(
 						'titre' => 'Les professionnels que nous accompagnons',
 						'niveau' => 'h2',
+						'titre_taille' => 'clamp(21px, 2.5vw, 29px)',
+						'titre_interligne' => 1.15,
+						'titre_graisse' => 700,
 						'carte' => array(
 							'padding' => 'clamp(22px, 3vw, 32px)',
 							'rayon' => '18px',
@@ -8728,6 +8872,9 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 					array(
 						'titre' => 'Les types de locaux les plus fréquents en région',
 						'niveau' => 'h2',
+						'titre_taille' => 'clamp(21px, 2.5vw, 29px)',
+						'titre_interligne' => 1.15,
+						'titre_graisse' => 700,
 						'carte' => array(
 							'padding' => 'clamp(22px, 3vw, 32px)',
 							'rayon' => '18px',
@@ -9090,6 +9237,9 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 					array(
 						'titre' => 'Notre organisation à l\'échelle régionale',
 						'niveau' => 'h2',
+						'titre_taille' => 'clamp(21px, 2.5vw, 29px)',
+						'titre_interligne' => 1.15,
+						'titre_graisse' => 700,
 						'carte' => array(
 							'padding' => 'clamp(22px, 3vw, 32px)',
 							'rayon' => '18px',
@@ -9141,6 +9291,9 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 					array(
 						'titre' => 'Nos prestations partout en Bourgogne-Franche-Comté',
 						'niveau' => 'h2',
+						'titre_taille' => 'clamp(23px, 3vw, 34px)',
+						'titre_interligne' => 1.04,
+						'titre_graisse' => 700,
 						'carte' => '',
 						'colonne_min' => '',
 						'rangee_gap' => '',
@@ -9514,6 +9667,9 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 					array(
 						'titre' => 'Les huit départements couverts',
 						'niveau' => 'h2',
+						'titre_taille' => 'clamp(23px, 3vw, 34px)',
+						'titre_interligne' => 1.04,
+						'titre_graisse' => 700,
 						'carte' => '',
 						'colonne_min' => '',
 						'rangee_gap' => '',
@@ -10015,6 +10171,9 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 					array(
 						'titre' => 'Nos dix villes principales',
 						'niveau' => 'h2',
+						'titre_taille' => 'clamp(23px, 3vw, 34px)',
+						'titre_interligne' => 1.04,
+						'titre_graisse' => 700,
 						'carte' => '',
 						'colonne_min' => '',
 						'rangee_gap' => '',
@@ -10638,6 +10797,9 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 					array(
 						'titre' => 'Secteurs secondaires déjà documentés',
 						'niveau' => 'h3',
+						'titre_taille' => '18px',
+						'titre_interligne' => 1.04,
+						'titre_graisse' => 700,
 						'carte' => '',
 						'colonne_min' => '',
 						'rangee_gap' => '',
@@ -10858,6 +11020,9 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 					array(
 						'titre' => 'Un tarif régional unique',
 						'niveau' => 'h2',
+						'titre_taille' => 'clamp(22px, 2.8vw, 31px)',
+						'titre_interligne' => 1.04,
+						'titre_graisse' => 700,
 						'carte' => '',
 						'colonne_min' => '300px',
 						'rangee_gap' => 'clamp(22px, 3vw, 34px)',
@@ -11102,6 +11267,9 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 					array(
 						'titre' => 'Sélection des intervenants et suivi',
 						'niveau' => 'h2',
+						'titre_taille' => 'clamp(21px, 2.5vw, 29px)',
+						'titre_interligne' => 1.15,
+						'titre_graisse' => 700,
 						'carte' => array(
 							'padding' => 'clamp(22px, 3vw, 32px)',
 							'rayon' => '18px',
@@ -11137,6 +11305,9 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 					array(
 						'titre' => 'Entretien régulier ou intervention ponctuelle',
 						'niveau' => 'h2',
+						'titre_taille' => 'clamp(21px, 2.5vw, 29px)',
+						'titre_interligne' => 1.15,
+						'titre_graisse' => 700,
 						'carte' => array(
 							'padding' => 'clamp(22px, 3vw, 32px)',
 							'rayon' => '18px',
@@ -11172,6 +11343,9 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 					array(
 						'titre' => 'Ce que nous ne faisons pas',
 						'niveau' => 'h2',
+						'titre_taille' => 'clamp(21px, 2.5vw, 29px)',
+						'titre_interligne' => 1.15,
+						'titre_graisse' => 700,
 						'carte' => array(
 							'padding' => 'clamp(22px, 3vw, 32px)',
 							'rayon' => '18px',
@@ -11207,6 +11381,9 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 					array(
 						'titre' => 'Comment démarre une collaboration',
 						'niveau' => 'h2',
+						'titre_taille' => 'clamp(21px, 2.5vw, 29px)',
+						'titre_interligne' => 1.15,
+						'titre_graisse' => 700,
 						'carte' => array(
 							'padding' => 'clamp(22px, 3vw, 32px)',
 							'rayon' => '18px',
@@ -11258,6 +11435,9 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 					array(
 						'titre' => 'Questions fréquentes — Bourgogne-Franche-Comté',
 						'niveau' => 'h2',
+						'titre_taille' => 'clamp(22px, 2.8vw, 32px)',
+						'titre_interligne' => 1.04,
+						'titre_graisse' => 700,
 						'carte' => '',
 						'colonne_min' => '',
 						'rangee_gap' => '',
@@ -11357,6 +11537,9 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 					array(
 						'titre' => 'Vos locaux, où que vous soyez en région',
 						'niveau' => 'h2',
+						'titre_taille' => 'clamp(24px, 3.6vw, 40px)',
+						'titre_interligne' => 1.04,
+						'titre_graisse' => 800,
 						'carte' => '',
 						'colonne_min' => '',
 						'rangee_gap' => '',
@@ -11457,6 +11640,9 @@ update_option( 'tfp_page_pourquoi-nous', array(
 					array(
 						'titre' => '',
 						'niveau' => 'h2',
+						'titre_taille' => '',
+						'titre_interligne' => 0,
+						'titre_graisse' => 0,
 						'carte' => '',
 						'colonne_min' => '',
 						'rangee_gap' => '',
@@ -11824,6 +12010,9 @@ update_option( 'tfp_page_pourquoi-nous', array(
 					array(
 						'titre' => 'Des preuves plutôt que des slogans',
 						'niveau' => 'h2',
+						'titre_taille' => '22px',
+						'titre_interligne' => 1.04,
+						'titre_graisse' => 700,
 						'carte' => '',
 						'colonne_min' => '',
 						'rangee_gap' => '',
@@ -12101,6 +12290,9 @@ update_option( 'tfp_page_pourquoi-nous', array(
 					array(
 						'titre' => 'Ce qui nous distingue, concrètement',
 						'niveau' => 'h2',
+						'titre_taille' => 'clamp(26px, 3.4vw, 38px)',
+						'titre_interligne' => 1.04,
+						'titre_graisse' => 700,
 						'carte' => '',
 						'colonne_min' => '',
 						'rangee_gap' => '',
@@ -12468,6 +12660,9 @@ update_option( 'tfp_page_pourquoi-nous', array(
 					array(
 						'titre' => 'Les objections que l\'on nous adresse',
 						'niveau' => 'h2',
+						'titre_taille' => 'clamp(24px, 3vw, 34px)',
+						'titre_interligne' => 1.04,
+						'titre_graisse' => 700,
 						'carte' => '',
 						'colonne_min' => '',
 						'rangee_gap' => '',
@@ -12540,6 +12735,9 @@ update_option( 'tfp_page_pourquoi-nous', array(
 					array(
 						'titre' => 'Vérifier par vous-même',
 						'niveau' => 'h2',
+						'titre_taille' => 'clamp(22px, 2.8vw, 31px)',
+						'titre_interligne' => 1.04,
+						'titre_graisse' => 700,
 						'carte' => '',
 						'colonne_min' => '',
 						'rangee_gap' => '',
@@ -12817,6 +13015,9 @@ update_option( 'tfp_page_pourquoi-nous', array(
 					array(
 						'titre' => 'Faisons connaissance',
 						'niveau' => 'h2',
+						'titre_taille' => 'clamp(24px, 3.6vw, 40px)',
+						'titre_interligne' => 1.04,
+						'titre_graisse' => 800,
 						'carte' => '',
 						'colonne_min' => '',
 						'rangee_gap' => '',
@@ -12917,6 +13118,9 @@ update_option( 'tfp_page_notre-fonctionnement', array(
 					array(
 						'titre' => '',
 						'niveau' => 'h2',
+						'titre_taille' => '',
+						'titre_interligne' => 0,
+						'titre_graisse' => 0,
 						'carte' => '',
 						'colonne_min' => '',
 						'rangee_gap' => '',
@@ -13236,6 +13440,9 @@ update_option( 'tfp_page_notre-fonctionnement', array(
 					array(
 						'titre' => 'Les informations dont nous avons besoin',
 						'niveau' => 'h2',
+						'titre_taille' => 'clamp(24px, 3vw, 34px)',
+						'titre_interligne' => 1.04,
+						'titre_graisse' => 700,
 						'carte' => '',
 						'colonne_min' => '',
 						'rangee_gap' => '',
@@ -13266,6 +13473,9 @@ update_option( 'tfp_page_notre-fonctionnement', array(
 					array(
 						'titre' => 'Transmission des consignes et premier passage',
 						'niveau' => 'h2',
+						'titre_taille' => 'clamp(24px, 3vw, 34px)',
+						'titre_interligne' => 1.04,
+						'titre_graisse' => 700,
 						'carte' => '',
 						'colonne_min' => '',
 						'rangee_gap' => '',
@@ -13291,6 +13501,9 @@ update_option( 'tfp_page_notre-fonctionnement', array(
 					array(
 						'titre' => 'Modifier, suspendre ou arrêter',
 						'niveau' => 'h2',
+						'titre_taille' => 'clamp(24px, 3vw, 34px)',
+						'titre_interligne' => 1.04,
+						'titre_graisse' => 700,
 						'carte' => '',
 						'colonne_min' => '',
 						'rangee_gap' => '',
@@ -13655,6 +13868,9 @@ update_option( 'tfp_page_notre-fonctionnement', array(
 					array(
 						'titre' => 'Prêt à démarrer ?',
 						'niveau' => 'h2',
+						'titre_taille' => 'clamp(24px, 3.6vw, 40px)',
+						'titre_interligne' => 1.04,
+						'titre_graisse' => 800,
 						'carte' => '',
 						'colonne_min' => '',
 						'rangee_gap' => '',
@@ -13731,6 +13947,9 @@ update_option( 'tfp_page_avis-clients', array(
 					array(
 						'titre' => '',
 						'niveau' => 'h2',
+						'titre_taille' => '',
+						'titre_interligne' => 0,
+						'titre_graisse' => 0,
 						'carte' => '',
 						'colonne_min' => '',
 						'rangee_gap' => '',
@@ -13910,6 +14129,9 @@ update_option( 'tfp_page_avis-clients', array(
 					array(
 						'titre' => '',
 						'niveau' => 'h2',
+						'titre_taille' => '',
+						'titre_interligne' => 0,
+						'titre_graisse' => 0,
 						'carte' => '',
 						'colonne_min' => '',
 						'rangee_gap' => '',
@@ -14089,6 +14311,9 @@ update_option( 'tfp_page_avis-clients', array(
 					array(
 						'titre' => '',
 						'niveau' => 'h2',
+						'titre_taille' => '',
+						'titre_interligne' => 0,
+						'titre_graisse' => 0,
 						'carte' => '',
 						'colonne_min' => '',
 						'rangee_gap' => '',
@@ -14504,6 +14729,9 @@ update_option( 'tfp_page_avis-clients', array(
 					array(
 						'titre' => 'Un avis ne remplace pas un devis',
 						'niveau' => 'h2',
+						'titre_taille' => 'clamp(22px, 2.8vw, 31px)',
+						'titre_interligne' => 1.04,
+						'titre_graisse' => 700,
 						'carte' => '',
 						'colonne_min' => '',
 						'rangee_gap' => '',
@@ -14781,6 +15009,9 @@ update_option( 'tfp_page_avis-clients', array(
 					array(
 						'titre' => 'À votre tour ?',
 						'niveau' => 'h2',
+						'titre_taille' => 'clamp(24px, 3.6vw, 40px)',
+						'titre_interligne' => 1.04,
+						'titre_graisse' => 800,
 						'carte' => '',
 						'colonne_min' => '',
 						'rangee_gap' => '',
@@ -14882,6 +15113,9 @@ update_option( 'tfp_page_a-propos', array(
 					array(
 						'titre' => '',
 						'niveau' => 'h2',
+						'titre_taille' => '',
+						'titre_interligne' => 0,
+						'titre_graisse' => 0,
 						'carte' => '',
 						'colonne_min' => '',
 						'rangee_gap' => '',
@@ -14895,7 +15129,7 @@ update_option( 'tfp_page_a-propos', array(
 							array(
 								'type' => 'note',
 								'texte' => 'Audrey · Top-Famille Pro',
-								'ligne' => 934,
+								'ligne' => 964,
 							),
 						),
 						'cartes' => array(),
@@ -14928,6 +15162,9 @@ update_option( 'tfp_page_a-propos', array(
 					array(
 						'titre' => '',
 						'niveau' => 'h2',
+						'titre_taille' => '',
+						'titre_interligne' => 0,
+						'titre_graisse' => 0,
 						'carte' => '',
 						'colonne_min' => '',
 						'rangee_gap' => '',
@@ -15199,6 +15436,9 @@ update_option( 'tfp_page_a-propos', array(
 					array(
 						'titre' => 'Qui nous sommes',
 						'niveau' => 'h2',
+						'titre_taille' => 'clamp(24px, 3vw, 34px)',
+						'titre_interligne' => 1.04,
+						'titre_graisse' => 700,
 						'carte' => '',
 						'colonne_min' => '',
 						'rangee_gap' => '',
@@ -15224,6 +15464,9 @@ update_option( 'tfp_page_a-propos', array(
 					array(
 						'titre' => 'Notre implantation',
 						'niveau' => 'h2',
+						'titre_taille' => 'clamp(24px, 3vw, 34px)',
+						'titre_interligne' => 1.04,
+						'titre_graisse' => 700,
 						'carte' => '',
 						'colonne_min' => '',
 						'rangee_gap' => '',
@@ -15249,6 +15492,9 @@ update_option( 'tfp_page_a-propos', array(
 					array(
 						'titre' => 'Le rôle d\'Audrey',
 						'niveau' => 'h2',
+						'titre_taille' => 'clamp(24px, 3vw, 34px)',
+						'titre_interligne' => 1.04,
+						'titre_graisse' => 700,
 						'carte' => '',
 						'colonne_min' => '',
 						'rangee_gap' => '',
@@ -15274,6 +15520,9 @@ update_option( 'tfp_page_a-propos', array(
 					array(
 						'titre' => 'Le lien avec Top-Famille',
 						'niveau' => 'h2',
+						'titre_taille' => 'clamp(24px, 3vw, 34px)',
+						'titre_interligne' => 1.04,
+						'titre_graisse' => 700,
 						'carte' => '',
 						'colonne_min' => '',
 						'rangee_gap' => '',
@@ -15299,6 +15548,9 @@ update_option( 'tfp_page_a-propos', array(
 					array(
 						'titre' => 'Un fonctionnement régional',
 						'niveau' => 'h2',
+						'titre_taille' => 'clamp(24px, 3vw, 34px)',
+						'titre_interligne' => 1.04,
+						'titre_graisse' => 700,
 						'carte' => '',
 						'colonne_min' => '',
 						'rangee_gap' => '',
@@ -15324,6 +15576,9 @@ update_option( 'tfp_page_a-propos', array(
 					array(
 						'titre' => 'Nos valeurs, traduites en actions',
 						'niveau' => 'h2',
+						'titre_taille' => 'clamp(24px, 3vw, 34px)',
+						'titre_interligne' => 1.04,
+						'titre_graisse' => 700,
 						'carte' => '',
 						'colonne_min' => '',
 						'rangee_gap' => '',
@@ -15349,6 +15604,9 @@ update_option( 'tfp_page_a-propos', array(
 					array(
 						'titre' => 'Les limites de notre offre',
 						'niveau' => 'h2',
+						'titre_taille' => 'clamp(24px, 3vw, 34px)',
+						'titre_interligne' => 1.04,
+						'titre_graisse' => 700,
 						'carte' => '',
 						'colonne_min' => '',
 						'rangee_gap' => '',
@@ -15374,6 +15632,9 @@ update_option( 'tfp_page_a-propos', array(
 					array(
 						'titre' => 'Nous contacter',
 						'niveau' => 'h2',
+						'titre_taille' => 'clamp(24px, 3vw, 34px)',
+						'titre_interligne' => 1.04,
+						'titre_graisse' => 700,
 						'carte' => '',
 						'colonne_min' => '',
 						'rangee_gap' => '',
@@ -15554,6 +15815,9 @@ update_option( 'tfp_page_a-propos', array(
 					array(
 						'titre' => 'Parlons de vos locaux',
 						'niveau' => 'h2',
+						'titre_taille' => 'clamp(24px, 3.6vw, 40px)',
+						'titre_interligne' => 1.04,
+						'titre_graisse' => 800,
 						'carte' => '',
 						'colonne_min' => '',
 						'rangee_gap' => '',
@@ -15647,6 +15911,9 @@ update_option( 'tfp_page_recrutement', array(
 					array(
 						'titre' => 'Les missions que nous confions',
 						'niveau' => 'h2',
+						'titre_taille' => 'clamp(24px, 3vw, 34px)',
+						'titre_interligne' => 1.04,
+						'titre_graisse' => 700,
 						'carte' => '',
 						'colonne_min' => '',
 						'rangee_gap' => '',
@@ -15918,6 +16185,9 @@ update_option( 'tfp_page_recrutement', array(
 					array(
 						'titre' => 'Ce que nous attendons',
 						'niveau' => 'h2',
+						'titre_taille' => 'clamp(24px, 3vw, 34px)',
+						'titre_interligne' => 1.04,
+						'titre_graisse' => 700,
 						'carte' => '',
 						'colonne_min' => '340px',
 						'rangee_gap' => 'clamp(30px, 4vw, 52px)',
@@ -15951,6 +16221,9 @@ update_option( 'tfp_page_recrutement', array(
 					array(
 						'titre' => 'Les étapes de candidature',
 						'niveau' => 'h2',
+						'titre_taille' => '19px',
+						'titre_interligne' => 1.04,
+						'titre_graisse' => 700,
 						'carte' => array(
 							'padding' => 'clamp(24px, 3vw, 30px)',
 							'rayon' => '18px',
@@ -15963,19 +16236,22 @@ update_option( 'tfp_page_recrutement', array(
 						'colonnes' => 2,
 						'sequence' => array(
 							array(
-								'type' => 'note',
-								'texte' => '01 Vous envoyez votre candidature et vos disponibilités.',
-								'ligne' => 1086,
+								'type' => 'step-ligne',
+								'texte' => 'Vous envoyez votre candidature et vos disponibilités.',
+								'ligne' => 1116,
+								'numero' => '01',
 							),
 							array(
-								'type' => 'note',
-								'texte' => '02 Audrey vous recontacte pour un échange sur votre profil et votre secteur.',
-								'ligne' => 1124,
+								'type' => 'step-ligne',
+								'texte' => 'Audrey vous recontacte pour un échange sur votre profil et votre secteur.',
+								'ligne' => 1154,
+								'numero' => '02',
 							),
 							array(
-								'type' => 'note',
-								'texte' => '03 Selon les missions disponibles près de chez vous, une proposition vous est faite.',
-								'ligne' => 1183,
+								'type' => 'step-ligne',
+								'texte' => 'Selon les missions disponibles près de chez vous, une proposition vous est faite.',
+								'ligne' => 1213,
+								'numero' => '03',
 							),
 						),
 						'cartes' => array(),
@@ -16006,6 +16282,9 @@ update_option( 'tfp_page_recrutement', array(
 					array(
 						'titre' => 'Envie de nous rejoindre ?',
 						'niveau' => 'h2',
+						'titre_taille' => 'clamp(23px, 2.8vw, 34px)',
+						'titre_interligne' => 1.04,
+						'titre_graisse' => 700,
 						'carte' => '',
 						'colonne_min' => '',
 						'rangee_gap' => '',

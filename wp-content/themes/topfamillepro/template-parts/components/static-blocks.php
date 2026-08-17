@@ -14,6 +14,8 @@
  * @var array $args {
  *     @type string $key   Clé de page (`pourquoi-nous`, `a-propos`…).
  *     @type array  $skip  Index de sections à ne pas rendre (déjà couvertes par le gabarit).
+ *     @type array  $liens Redirections `route relevée => URL réelle`, quand une règle du projet
+ *                         impose une destination autre que celle du prototype.
  * }
  */
 
@@ -26,6 +28,11 @@ if ( empty( $data['sections'] ) ) {
 	return;
 }
 $skip = $args['skip'] ?? array();
+/*
+ * Redirections de liens relevés → URL réelles, déclarées par le gabarit appelant (G26 §5).
+ * Clé : la route telle qu'elle a été relevée sur la maquette. Voir le `case 'link'` plus bas.
+ */
+$liens_rediriges = is_array( $args['liens'] ?? null ) ? $args['liens'] : array();
 
 foreach ( $data['sections'] as $section ) {
 	if ( in_array( $section['index'], $skip, true ) ) {
@@ -129,7 +136,33 @@ foreach ( $data['sections'] as $section ) {
 				$parts[] = $var . ':' . $valeur;
 			}
 		}
+		/*
+		 * Fond de la carte — relevé mais jamais rendu jusqu'à G26 §5.
+		 *
+		 * Le panneau « Les étapes de candidature » de /recrutement/ est MARINE dans la maquette ;
+		 * le thème le rendait blanc, et le parcours de candidature perdait le bloc qui le rend
+		 * visible dans la page. Le relevé portait pourtant la couleur depuis le début : elle
+		 * n'était simplement pas transmise. La valeur est filtrée sur une forme `rgb()`/`rgba()`
+		 * stricte — elle vient de la base, elle ne peut pas être écrite telle quelle dans un style.
+		 */
+		if ( preg_match( '/^rgba?\([0-9, .]+\)$/', (string) ( $c['fond'] ?? '' ) ) ) {
+			$parts[] = '--tfp-carte-fond:' . $c['fond'];
+		}
 		return implode( ';', $parts );
+	};
+
+	/**
+	 * Une couleur relevée est-elle sombre ? Sert à basculer le texte en clair sur une carte foncée.
+	 *
+	 * Le contraste n'est pas une question de goût : du texte #18232D sur un fond #174A81 tombe
+	 * sous le seuil de WCAG 2.2 AA. La bascule se décide donc sur la luminance mesurée, pas sur une
+	 * liste de couleurs connues qui vieillirait mal.
+	 */
+	$carte_sombre = static function ( $c ) {
+		if ( ! is_array( $c ) || ! preg_match( '/^rgba?\((\d+),\s*(\d+),\s*(\d+)/', (string) ( $c['fond'] ?? '' ), $m ) ) {
+			return false;
+		}
+		return ( 0.299 * (int) $m[1] + 0.587 * (int) $m[2] + 0.114 * (int) $m[3] ) < 140;
 	};
 
 	/*
@@ -228,7 +261,7 @@ foreach ( $data['sections'] as $section ) {
 					$carte_bloc  = array_key_exists( 'carte', $bloc ) ? ( is_array( $bloc['carte'] ) ? $bloc['carte'] : null ) : $carte;
 					$carte_style = $carte_style_de( $carte_bloc );
 					?>
-					<div class="tfp-static-block<?php echo $carte_bloc ? ' tfp-static-block--carte' : ''; ?>"<?php echo $carte_style ? ' style="' . esc_attr( $carte_style ) . '"' : ''; ?><?php echo $provisoire ? ' data-tfp-provisional="1"' : ''; ?>>
+					<div class="tfp-static-block<?php echo $carte_bloc ? ' tfp-static-block--carte' : ''; ?><?php echo $carte_sombre( $carte_bloc ) ? ' tfp-static-block--carte-sombre' : ''; ?>"<?php echo $carte_style ? ' style="' . esc_attr( $carte_style ) . '"' : ''; ?><?php echo $provisoire ? ' data-tfp-provisional="1"' : ''; ?>>
 						<?php
 						// Le visiteur ne lit pas le code source : un attribut ne l'informe de rien. La
 						// mention est donc visible, dans le flux, au plus près du contenu concerné.
@@ -236,9 +269,47 @@ foreach ( $data['sections'] as $section ) {
 							tfp_provisional_notice();
 						}
 						?>
-						<?php if ( $bloc['titre'] ) : ?>
-							<?php printf( '<%1$s>%2$s</%1$s>', esc_attr( $bloc['niveau'] ), esc_html( $bloc['titre'] ) ); ?>
-						<?php endif; ?>
+						<?php
+						/*
+						 * Typographie de l'intertitre, relevée bloc par bloc (G26 §5).
+						 *
+						 * La maquette compose ses intertitres de 17 à 40 px selon la bande ; le thème
+						 * appliquait ses deux jetons partout, et 70 des 108 intertitres appariés des
+						 * neuf pages statiques sortaient à la mauvaise taille. La taille relevée est
+						 * la FONCTION déclarée par le prototype, pas sa valeur à 1440 px, et
+						 * l'interligne est un ratio : l'un comme l'autre suivent la largeur de la
+						 * fenêtre au lieu d'y être figés. Sans relevé, les jetons du thème
+						 * s'appliquent — c'est-à-dire le comportement d'avant.
+						 */
+						$titre_vars   = array();
+						$titre_taille = tfp_longueur_css( $bloc['titre_taille'] ?? '' );
+						if ( '' !== $titre_taille ) {
+							$titre_vars[] = '--tfp-bloc-titre:' . $titre_taille;
+						}
+						$titre_lh = (float) ( $bloc['titre_interligne'] ?? 0 );
+						if ( $titre_lh >= 0.8 && $titre_lh <= 3 ) {
+							$titre_vars[] = '--tfp-bloc-titre-lh:' . $titre_lh;
+						}
+						$titre_fw = (int) ( $bloc['titre_graisse'] ?? 0 );
+						if ( $titre_fw >= 100 && $titre_fw <= 900 ) {
+							$titre_vars[] = '--tfp-bloc-titre-graisse:' . $titre_fw;
+						}
+						/*
+						 * La classe n'est posée QUE si une géométrie a été relevée : sans elle, le
+						 * titre reste soumis à l'échelle du thème par type de page, qui est déjà
+						 * relevée elle aussi. Poser la classe sans variables la remplacerait par un
+						 * repli plus pauvre — une correction qui en casserait une autre.
+						 */
+						if ( $bloc['titre'] ) {
+							printf(
+								'<%1$s%3$s%4$s>%2$s</%1$s>',
+								esc_attr( 'h3' === $bloc['niveau'] ? 'h3' : 'h2' ),
+								esc_html( $bloc['titre'] ),
+								$titre_vars ? ' class="tfp-static-block__titre"' : '',
+								$titre_vars ? ' style="' . esc_attr( implode( ';', $titre_vars ) ) . '"' : ''
+							);
+						}
+						?>
 
 						<?php
 						/*
@@ -291,6 +362,28 @@ foreach ( $data['sections'] as $section ) {
 						 * contraste avant d'être un défaut de fidélité (CLAUDE.md §8).
 						 */
 						$bande_sombre     = in_array( $section['fond'] ?? '', array( 'primary', 'navy' ), true );
+						/*
+						 * File des étapes numérotées consécutives : la maquette les empile dans un
+						 * même conteneur, et elles forment sémantiquement une liste ordonnée — ce
+						 * qu'une suite de paragraphes ne dit ni à l'œil ni à un lecteur d'écran.
+						 */
+						$etapes_en_attente = array();
+						$vider_etapes      = static function () use ( &$etapes_en_attente ) {
+							if ( ! $etapes_en_attente ) {
+								return;
+							}
+							$etapes            = $etapes_en_attente;
+							$etapes_en_attente = array();
+							echo '<ol class="tfp-step-lines">';
+							foreach ( $etapes as $e ) {
+								printf(
+									'<li class="tfp-step-line"><span class="tfp-step-line__num" aria-hidden="true">%s</span><span class="tfp-step-line__txt">%s</span></li>',
+									esc_html( $e['numero'] ),
+									esc_html( $e['texte'] )
+								);
+							}
+							echo '</ol>';
+						};
 						$liens_en_attente = array();
 						$vider_liens      = static function () use ( &$liens_en_attente, $bande_sombre ) {
 							if ( ! $liens_en_attente ) {
@@ -339,6 +432,9 @@ foreach ( $data['sections'] as $section ) {
 							if ( 'chip' !== $type ) {
 								$vider_chips();
 							}
+							if ( 'step-ligne' !== $type ) {
+								$vider_etapes();
+							}
 							// La rangée se referme dès qu'un contenu d'un autre type s'intercale, ou dès
 							// qu'un lien appartient à une autre rangée relevée.
 							if ( 'link' !== $type || ( $enfant['rangee'] ?? '' ) !== $rangee_courante ) {
@@ -348,6 +444,13 @@ foreach ( $data['sections'] as $section ) {
 							switch ( $type ) {
 								case 'paragraph':
 									printf( '<p class="tfp-prose">%s</p>', esc_html( $enfant['texte'] ) );
+									break;
+
+								case 'step-ligne':
+									$etapes_en_attente[] = array(
+										'numero' => (string) ( $enfant['numero'] ?? '' ),
+										'texte'  => (string) ( $enfant['texte'] ?? '' ),
+									);
 									break;
 
 								case 'note':
@@ -383,7 +486,19 @@ foreach ( $data['sections'] as $section ) {
 									 * dans une option de contenu ne suivrait pas.
 									 */
 									$contact = function_exists( 'tfp_site_data' ) ? tfp_site_data() : array();
-									if ( 0 === strpos( $route, 'tel:' ) ) {
+									/*
+									 * Redirection de lien DÉCLARÉE par le gabarit appelant (G26 §5).
+									 *
+									 * /recrutement/ s'en sert pour envoyer « Envoyer ma candidature »
+									 * vers le site carrière plutôt que vers le `mailto:` du prototype,
+									 * comme CLAUDE.md §8 l'impose. La substitution est écrite dans le
+									 * gabarit de la page, en clair, plutôt que devinée ici d'après un
+									 * libellé : une règle implicite se serait appliquée un jour à une
+									 * page qui ne l'attendait pas.
+									 */
+									if ( isset( $liens_rediriges[ $route ] ) ) {
+										$url = $liens_rediriges[ $route ];
+									} elseif ( 0 === strpos( $route, 'tel:' ) ) {
 										$url = 'tel:' . ( $contact['phone_href'] ?? '' );
 									} elseif ( 0 === strpos( $route, 'mailto:' ) ) {
 										$url = 'mailto:' . ( $contact['email'] ?? '' );
@@ -448,6 +563,7 @@ foreach ( $data['sections'] as $section ) {
 							}
 						}
 						$vider_chips();
+						$vider_etapes();
 						$vider_liens();
 						?>
 					</div>

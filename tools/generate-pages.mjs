@@ -913,7 +913,31 @@ for (const p of PAGES) {
 							}
 						}
 						const r = colonne.getBoundingClientRect();
-						out.push({ t: tag, v: txt(n), top: Math.round(r.top + window.scrollY) });
+						/*
+						 * Taille de l'intertitre — DÉCLARÉE, pas calculée (G26 §5).
+						 *
+						 * La maquette ne compose pas tous ses intertitres pareil : 40 px pour une
+						 * bande d'ouverture, 34 pour une bande courante, 19 pour l'intitulé d'un
+						 * panneau, 17 ou 18 pour un sous-groupe. Le thème appliquait partout ses deux
+						 * jetons, et 70 des 108 intertitres appariés des neuf pages statiques sont
+						 * rendus à la mauvaise taille.
+						 *
+						 * La valeur lue est celle du style en ligne — `clamp(24px, 3vw, 34px)` — et
+						 * non la valeur calculée à 1440 px : ne garder que la borne haute d'une
+						 * fonction, c'est être juste à la largeur du relevé et faux partout ailleurs.
+						 * C'est le défaut corrigé en G07 puis en G11 sur les rembourrages de bande.
+						 */
+						const st = getComputedStyle(n);
+						out.push({
+							t: tag,
+							v: txt(n),
+							top: Math.round(r.top + window.scrollY),
+							taille: (n.style && n.style.fontSize) || st.fontSize,
+							// Interligne relevé en RATIO : il suit la taille quelle que soit la largeur.
+							interligne:
+								Math.round((parseFloat(st.lineHeight) / parseFloat(st.fontSize)) * 100) / 100 || 0,
+							graisse: parseInt(st.fontWeight, 10) || 0,
+						});
 					}
 					else if (tag === 'p') out.push({ t: 'p', v: txt(n) });
 					else if (tag === 'li') out.push({ t: 'li', v: txt(n) });
@@ -1084,6 +1108,9 @@ for (const p of PAGES) {
 			const vide = () => ({
 				titre: '',
 				niveau: 'h2',
+				titre_taille: '',
+				titre_interligne: 0,
+				titre_graisse: 0,
 				carte: '',
 				colonne_min: '',
 				rangee_gap: '',
@@ -1121,6 +1148,9 @@ for (const p of PAGES) {
 					cur = vide();
 					cur.titre = n.v;
 					cur.niveau = n.t;
+					cur.titre_taille = n.taille || '';
+					cur.titre_interligne = n.interligne || 0;
+					cur.titre_graisse = n.graisse || 0;
 					// Encadrement propre à ce bloc, relevé sur la maquette. Vide = bloc plat.
 					cur.carte = ( cadres && cadres.parTitre && cadres.parTitre[n.v] ) || '';
 					// Repli intrinsèque de la rangée : relevé sur le prototype, pas déduit d'un seuil.
@@ -1253,13 +1283,29 @@ for (const p of PAGES) {
 							 * césure inline se recolle, et un vrai paragraphe suivant ne se colle jamais.
 							 */
 							const dernier = cur.sequence[cur.sequence.length - 1];
-							if (
+							const memeLigne =
 								dernier &&
-								dernier.type === 'note' &&
 								typeof n.ligne === 'number' &&
 								typeof dernier.ligne === 'number' &&
-								Math.abs(dernier.ligne - n.ligne) <= 4
-							) {
+								Math.abs(dernier.ligne - n.ligne) <= 4;
+							/*
+							 * Un numéro à deux chiffres suivi de son texte SUR LA MÊME LIGNE est une
+							 * étape numérotée, pas une note (G26 §5).
+							 *
+							 * Le panneau « Les étapes de candidature » de /recrutement/ écrit « 01 »
+							 * en turquoise gras à côté de son libellé. Recollés en un seul
+							 * paragraphe, les trois étapes perdaient leur numérotation, leur
+							 * hiérarchie visuelle et leur structure de liste pour un lecteur
+							 * d'écran. La règle `step` existante ne les voyait pas : elle attend un
+							 * paragraphe en troisième position, et ici le texte est un `span`.
+							 */
+							if ( memeLigne && dernier.type === 'note' && /^\d{2}$/.test( dernier.texte ) ) {
+								dernier.type = 'step-ligne';
+								dernier.numero = dernier.texte;
+								dernier.texte = n.v;
+								continue;
+							}
+							if ( memeLigne && dernier.type === 'note' ) {
 								dernier.texte = `${dernier.texte} ${n.v}`.replace(/\s+/g, ' ').trim();
 								continue;
 							}

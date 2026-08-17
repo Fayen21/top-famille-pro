@@ -2379,7 +2379,11 @@ body.tfp-type-prestation .tfp-hero__content h1 {
   margin-bottom: 8px;
 }
 
-.tfp-static-block h3 {
+/* L'intertitre PROPRE au bloc — enfant direct. Le sélecteur descendant frappait aussi les
+   intitulés des tuiles de ses grilles, à (0,1,1), c'est-à-dire au-dessus de `.tfp-card-tile__title`
+   et de sa taille relevée : les trente-cinq intitulés de tuiles en `h3` des pages statiques
+   sortaient à 20 px pour 17 ou 18 relevés (G26 §5). */
+.tfp-static-block > h3 {
   margin-bottom: 6px;
   font-size: 20px;
 }
@@ -3001,7 +3005,78 @@ body.tfp-type-legale .tfp-section__lede {
   padding: var(--tfp-carte-padding, 24px);
   border: 1px solid var(--color-border);
   border-radius: var(--tfp-carte-rayon, 16px);
-  background: var(--color-bg-card);
+  background: var(--tfp-carte-fond, var(--color-bg-card));
+}
+
+/* Intertitre d'un bloc de page statique : la géométrie relevée l'emporte, les jetons du thème ne
+   servent que de repli. La maquette compose ces intertitres de 17 à 40 px selon la bande (G26 §5). */
+/* Sélecteur à deux classes, et non une : l'échelle du thème s'écrit `body.tfp-type-pilier h2`,
+   plus spécifique qu'une classe seule, et l'aurait emporté sur la valeur relevée. */
+.tfp-static-block > .tfp-static-block__titre {
+  font-size: var(--tfp-bloc-titre);
+  line-height: var(--tfp-bloc-titre-lh);
+  font-weight: var(--tfp-bloc-titre-graisse);
+}
+
+/* Étapes numérotées EN LIGNE — le panneau « Les étapes de candidature » de /recrutement/ (G26 §5).
+   La maquette pose le numéro en turquoise gras à gauche du libellé, sur la même ligne, avec 12 px
+   d'écart et 12 px entre deux étapes. Valeurs relevées : numéro 16 px / 800 en titrage sur
+   #93DADB, libellé 14,5 px sur #DDF4F3. La liste ordonnée porte la structure — trois paragraphes
+   ne disaient ni à l'œil ni à un lecteur d'écran qu'il s'agit d'étapes successives. */
+.tfp-step-lines {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.tfp-step-line {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.tfp-step-line__num {
+  flex: 0 0 auto;
+  font-family: var(--font-heading);
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 1.62;
+  color: var(--color-turquoise);
+}
+
+.tfp-step-line__txt {
+  font-size: 14.5px;
+  line-height: 1.62;
+  color: var(--color-turquoise-pale);
+}
+
+/* Hors panneau foncé, les mêmes étapes reprennent les couleurs de texte de la page : le composant
+   ne suppose pas un fond marine, il s'y adapte. */
+.tfp-static-block:not(.tfp-static-block--carte-sombre) .tfp-step-line__num {
+  color: var(--color-primary);
+}
+
+.tfp-static-block:not(.tfp-static-block--carte-sombre) .tfp-step-line__txt {
+  color: var(--color-text-secondary);
+}
+
+/* Carte au fond FONCÉ — le panneau « Les étapes de candidature » de /recrutement/ (G26 §5). Le
+   filet clair y dessinerait un liseré que la maquette n'a pas, et le texte doit repasser en clair :
+   du texte #18232D sur #174A81 tombe sous le seuil de contraste de WCAG 2.2 AA. */
+.tfp-static-block--carte-sombre {
+  border-color: transparent;
+  color: var(--color-text-on-dark);
+}
+
+.tfp-static-block--carte-sombre h2,
+.tfp-static-block--carte-sombre h3,
+.tfp-static-block--carte-sombre .tfp-prose,
+.tfp-static-block--carte-sombre .tfp-static-note,
+.tfp-static-block--carte-sombre .tfp-list-plain li {
+  color: var(--color-text-on-dark);
 }
 
 /*
