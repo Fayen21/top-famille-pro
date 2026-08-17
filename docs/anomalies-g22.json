@@ -9,25 +9,24 @@
    "causes": 9
   },
   "apres": {
-   "anomalies": 225,
-   "occurrences": 11,
-   "causes": 5
+   "anomalies": 215,
+   "occurrences": 7,
+   "causes": 4
   }
  },
- "total": 11,
+ "total": 7,
  "par_famille": {
-  "tarif-reformule": 4,
   "reassurance-accueil": 2,
   "badge-contact-tarif": 2,
   "cookies-encart": 2,
   "cta-contextuel": 1
  },
  "par_categorie": {
-  "DIFFERENCE_EDITORIALE_AUTORISEE": 9,
+  "DIFFERENCE_EDITORIALE_AUTORISEE": 5,
   "DIFFERENCE_LEGALE_IMPOSEE": 2
  },
  "par_severite": {
-  "nulle": 11
+  "nulle": 7
  },
  "groupes_causaux": [
   {
@@ -57,20 +56,6 @@
    "preuve": "CLAUDE.md §8 — exigence de conversion, pas une dérive.",
    "correction": "Aucune.",
    "test": "Couvert par la suite de conversion."
-  },
-  {
-   "id": "tarif-reformule",
-   "titre": "Pastilles et bandeaux tarifaires au libellé reformulé",
-   "categorie": "DIFFERENCE_EDITORIALE_AUTORISEE",
-   "statut": "CLASSÉE",
-   "severite": "nulle",
-   "composant": "template-parts/home/hero.php · pricing-reassurance.php · static-blocks (région)",
-   "occurrences": 4,
-   "maquette": "« 27 € HT/h — régulier ou ponctuel » (hero), « tarif unique en région » (bandeaux). La pastille marine mesure 238×56 : rangée flex, écart 12, prix 22 px/800, libellé 12,5 px sur deux lignes.",
-   "wordpress": "Mêmes composants, libellés reformulés — « tarif unique, régulier ou ponctuel », « tarif unique, indiqué avant le devis » : le libellé plus long se replie sur trois lignes au lieu de deux (66 px contre 56), et l’appariement par texte échoue sur les mots ajoutés.",
-   "preuve": "Sonde G22 accueil : la pastille marine WordPress est DÉJÀ une rangée flex gap 12, pad 10/16 — structure identique à la maquette ; seule la longueur du libellé diffère. Le hero (63 px) concorde déjà au pixel.",
-   "correction": "Aucune sur la structure. Le libellé est un choix éditorial des phases précédentes ; le raccourcir relèverait d’une décision d’Emmanuel, pas d’une passe de fidélité.",
-   "test": "tests/tarifs.spec.js — les montants restent ceux de PROJECT_INPUTS."
   },
   {
    "id": "reassurance-accueil",
@@ -103,48 +88,6 @@
  ],
  "occurrences": [
   {
-   "id": "#/|375|b1|tarif|27-ht-h-tarif-unique-regulie",
-   "famille": "tarif-reformule",
-   "route": "#/",
-   "largeur": 375,
-   "bande": 1,
-   "composant": "template-parts/home/hero.php · pricing-reassurance.php · static-blocks (région)",
-   "role_visuel": "tarif",
-   "valeur_prototype": "carte absente du relevé maquette",
-   "valeur_theme": "carte « 27 € HT/h tarif unique, régulier ou ponctuel »",
-   "delta_signe": null,
-   "severite": "nulle",
-   "cause_commune": "tarif-reformule",
-   "categorie": "DIFFERENCE_EDITORIALE_AUTORISEE",
-   "preuve": "Sonde G22 accueil : la pastille marine WordPress est DÉJÀ une rangée flex gap 12, pad 10/16 — structure identique à la maquette ; seule la longueur du libellé diffère. Le hero (63 px) concorde déjà au pixel.",
-   "correction": "Aucune sur la structure. Le libellé est un choix éditorial des phases précédentes ; le raccourcir relèverait d’une décision d’Emmanuel, pas d’une passe de fidélité.",
-   "statut": "CLASSÉE",
-   "test_associe": "tests/tarifs.spec.js — les montants restent ceux de PROJECT_INPUTS.",
-   "genre": "surplus",
-   "texte": "27 € HT/h tarif unique, régulier ou ponctuel"
-  },
-  {
-   "id": "#/|375|b2|tarif|27-ht-h-tarif-unique-indique",
-   "famille": "tarif-reformule",
-   "route": "#/",
-   "largeur": 375,
-   "bande": 2,
-   "composant": "template-parts/home/hero.php · pricing-reassurance.php · static-blocks (région)",
-   "role_visuel": "tarif",
-   "valeur_prototype": "carte absente du relevé maquette",
-   "valeur_theme": "carte « 27 € HT/h tarif unique, indiqué avant le devis »",
-   "delta_signe": null,
-   "severite": "nulle",
-   "cause_commune": "tarif-reformule",
-   "categorie": "DIFFERENCE_EDITORIALE_AUTORISEE",
-   "preuve": "Sonde G22 accueil : la pastille marine WordPress est DÉJÀ une rangée flex gap 12, pad 10/16 — structure identique à la maquette ; seule la longueur du libellé diffère. Le hero (63 px) concorde déjà au pixel.",
-   "correction": "Aucune sur la structure. Le libellé est un choix éditorial des phases précédentes ; le raccourcir relèverait d’une décision d’Emmanuel, pas d’une passe de fidélité.",
-   "statut": "CLASSÉE",
-   "test_associe": "tests/tarifs.spec.js — les montants restent ceux de PROJECT_INPUTS.",
-   "genre": "surplus",
-   "texte": "27 € HT/h tarif unique, indiqué avant le devis"
-  },
-  {
    "id": "#/|375|b3|carte-titre-texte|saint-apollinaire-entreprise",
    "famille": "reassurance-accueil",
    "route": "#/",
@@ -164,48 +107,6 @@
    "test_associe": "tests/fidelite.spec.js — une seule note sur l’accueil.",
    "genre": "surplus",
    "texte": "Saint-Apollinaire Entreprise régionale basée en BFC Interlocutrice ide"
-  },
-  {
-   "id": "#/|1440|b1|tarif|27-ht-h-tarif-unique-regulie",
-   "famille": "tarif-reformule",
-   "route": "#/",
-   "largeur": 1440,
-   "bande": 1,
-   "composant": "template-parts/home/hero.php · pricing-reassurance.php · static-blocks (région)",
-   "role_visuel": "tarif",
-   "valeur_prototype": "carte absente du relevé maquette",
-   "valeur_theme": "carte « 27 € HT/h tarif unique, régulier ou ponctuel »",
-   "delta_signe": null,
-   "severite": "nulle",
-   "cause_commune": "tarif-reformule",
-   "categorie": "DIFFERENCE_EDITORIALE_AUTORISEE",
-   "preuve": "Sonde G22 accueil : la pastille marine WordPress est DÉJÀ une rangée flex gap 12, pad 10/16 — structure identique à la maquette ; seule la longueur du libellé diffère. Le hero (63 px) concorde déjà au pixel.",
-   "correction": "Aucune sur la structure. Le libellé est un choix éditorial des phases précédentes ; le raccourcir relèverait d’une décision d’Emmanuel, pas d’une passe de fidélité.",
-   "statut": "CLASSÉE",
-   "test_associe": "tests/tarifs.spec.js — les montants restent ceux de PROJECT_INPUTS.",
-   "genre": "surplus",
-   "texte": "27 € HT/h tarif unique, régulier ou ponctuel"
-  },
-  {
-   "id": "#/|1440|b2|tarif|27-ht-h-tarif-unique-indique",
-   "famille": "tarif-reformule",
-   "route": "#/",
-   "largeur": 1440,
-   "bande": 2,
-   "composant": "template-parts/home/hero.php · pricing-reassurance.php · static-blocks (région)",
-   "role_visuel": "tarif",
-   "valeur_prototype": "carte absente du relevé maquette",
-   "valeur_theme": "carte « 27 € HT/h tarif unique, indiqué avant le devis »",
-   "delta_signe": null,
-   "severite": "nulle",
-   "cause_commune": "tarif-reformule",
-   "categorie": "DIFFERENCE_EDITORIALE_AUTORISEE",
-   "preuve": "Sonde G22 accueil : la pastille marine WordPress est DÉJÀ une rangée flex gap 12, pad 10/16 — structure identique à la maquette ; seule la longueur du libellé diffère. Le hero (63 px) concorde déjà au pixel.",
-   "correction": "Aucune sur la structure. Le libellé est un choix éditorial des phases précédentes ; le raccourcir relèverait d’une décision d’Emmanuel, pas d’une passe de fidélité.",
-   "statut": "CLASSÉE",
-   "test_associe": "tests/tarifs.spec.js — les montants restent ceux de PROJECT_INPUTS.",
-   "genre": "surplus",
-   "texte": "27 € HT/h tarif unique, indiqué avant le devis"
   },
   {
    "id": "#/|1440|b3|carte-titre-texte|saint-apollinaire-entreprise",
@@ -335,12 +236,12 @@
   }
  ],
  "fermeture": {
-  "passe": "G23",
+  "passe": "G25",
   "toutes_classees": true,
   "zero_a_instruire": true,
   "zero_preuve_insuffisante": true,
   "defauts_theme_restants": 0,
   "defauts_reels_non_corriges": 0,
-  "verdict_g23": "PASS"
+  "verdict_g25": "PASS"
  }
 }

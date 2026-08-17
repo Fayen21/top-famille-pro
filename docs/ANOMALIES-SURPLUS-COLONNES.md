@@ -3,7 +3,7 @@
 > Fichier **généré** par `node tools/classer-anomalies.mjs` depuis `docs/inventaire-cartes.json`.
 > Ne pas éditer à la main. Le détail machine-lisible est dans `docs/anomalies-g22.json`.
 
-**11 occurrences** — 11 cartes supplémentaires, 0 écarts de colonnes.
+**7 occurrences** — 7 cartes supplémentaires, 0 écarts de colonnes.
 
 ## Synthèse par cause
 
@@ -11,7 +11,6 @@
 |---|---:|---|---|
 | Carte note + tarif de la colonne d’information du contact | 2 | `DIFFERENCE_EDITORIALE_AUTORISEE` | CLASSÉE |
 | Bouton d’appel à l’action contextuel | 1 | `DIFFERENCE_EDITORIALE_AUTORISEE` | CLASSÉE |
-| Pastilles et bandeaux tarifaires au libellé reformulé | 4 | `DIFFERENCE_EDITORIALE_AUTORISEE` | CLASSÉE |
 | Bande de réassurance de l’accueil sans la note Google | 2 | `DIFFERENCE_EDITORIALE_AUTORISEE` | CLASSÉE |
 | Encart cookies : l’état réel des traceurs, absent du prototype | 2 | `DIFFERENCE_LEGALE_IMPOSEE` | CLASSÉE |
 
@@ -45,24 +44,6 @@
 | Route | Largeur | Bande | Archétype | Prototype → thème | Contenu |
 |---|---:|---:|---|---|---|
 | `#/departement/saone-et-loire` | 375 | 11 | `micro-carte` | — | Demander un devis en Saône-et-Loire |
-
-## Pastilles et bandeaux tarifaires au libellé reformulé
-
-**Catégorie :** `DIFFERENCE_EDITORIALE_AUTORISEE` · **Statut :** CLASSÉE · **Sévérité :** nulle · **4 occurrence(s)**
-
-- **Composant** — template-parts/home/hero.php · pricing-reassurance.php · static-blocks (région)
-- **Maquette** — « 27 € HT/h — régulier ou ponctuel » (hero), « tarif unique en région » (bandeaux). La pastille marine mesure 238×56 : rangée flex, écart 12, prix 22 px/800, libellé 12,5 px sur deux lignes.
-- **WordPress** — Mêmes composants, libellés reformulés — « tarif unique, régulier ou ponctuel », « tarif unique, indiqué avant le devis » : le libellé plus long se replie sur trois lignes au lieu de deux (66 px contre 56), et l’appariement par texte échoue sur les mots ajoutés.
-- **Preuve** — Sonde G22 accueil : la pastille marine WordPress est DÉJÀ une rangée flex gap 12, pad 10/16 — structure identique à la maquette ; seule la longueur du libellé diffère. Le hero (63 px) concorde déjà au pixel.
-- **Correction** — Aucune sur la structure. Le libellé est un choix éditorial des phases précédentes ; le raccourcir relèverait d’une décision d’Emmanuel, pas d’une passe de fidélité.
-- **Non-régression** — tests/tarifs.spec.js — les montants restent ceux de PROJECT_INPUTS.
-
-| Route | Largeur | Bande | Archétype | Prototype → thème | Contenu |
-|---|---:|---:|---|---|---|
-| `#/` | 375 | 1 | `tarif` | — | 27 € HT/h tarif unique, régulier ou ponctuel |
-| `#/` | 375 | 2 | `tarif` | — | 27 € HT/h tarif unique, indiqué avant le devis |
-| `#/` | 1440 | 1 | `tarif` | — | 27 € HT/h tarif unique, régulier ou ponctuel |
-| `#/` | 1440 | 2 | `tarif` | — | 27 € HT/h tarif unique, indiqué avant le devis |
 
 ## Bande de réassurance de l’accueil sans la note Google
 

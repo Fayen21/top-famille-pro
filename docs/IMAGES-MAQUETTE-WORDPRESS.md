@@ -71,6 +71,12 @@
 | `article-2` | 640×427 | 320 / 480 / 640 | AVIF, WebP, JPEG | 12 Ko | 16 Ko | 24 Ko | Poste de travail avec ordinateur (photo d’illustration) |
 | `article-3` | 640×427 | 320 / 480 / 640 | AVIF, WebP, JPEG | 12 Ko | 16 Ko | 24 Ko | Bureau avec documents et ordinateur (photo d’illustration) |
 | `service-generic` | 960×640 | 480 / 760 / 960 | AVIF, WebP, JPEG | 16 Ko | 19 Ko | 37 Ko | Intervention de nettoyage professionnel avec équipement de protection (photo d’illustration) |
+| `thumb-bureaux` | 168×112 | 112 / 168 | AVIF, WebP, JPEG | 3 Ko | 4 Ko | 5 Ko | — |
+| `thumb-commerces` | 168×112 | 112 / 168 | AVIF, WebP, JPEG | 4 Ko | 4 Ko | 5 Ko | — |
+| `thumb-cabinets` | 168×112 | 112 / 168 | AVIF, WebP, JPEG | 3 Ko | 4 Ko | 4 Ko | — |
+| `thumb-coproprietes` | 168×112 | 112 / 168 | AVIF, WebP, JPEG | 3 Ko | 3 Ko | 4 Ko | — |
+| `thumb-meubles` | 168×112 | 112 / 168 | AVIF, WebP, JPEG | 3 Ko | 3 Ko | 4 Ko | — |
+| `thumb-ponctuel` | 168×112 | 112 / 168 | AVIF, WebP, JPEG | 2 Ko | 2 Ko | 3 Ko | — |
 | `hero-pilier` | 960×640 | 480 / 760 / 960 | AVIF, WebP, JPEG | 32 Ko | 39 Ko | 64 Ko | Nettoyage de bureaux professionnels (photo d’illustration) |
 | `hero-region` | 960×640 | 480 / 760 / 960 | AVIF, WebP, JPEG | 20 Ko | 26 Ko | 42 Ko | Locaux professionnels en Bourgogne-Franche-Comté (photo d’illustration) |
 | `audrey-placeholder` | 640×958 | 320 / 480 / 640 | AVIF, WebP, JPEG | 22 Ko | 26 Ko | 47 Ko | Photo d’illustration temporaire — portrait définitif à venir |
@@ -83,8 +89,8 @@
 | `article-3-640.avif` | 559x373 | 512×384 | eager | high | 20 | non |
 | `service-generic-760.avif` | 600x400 | 512×384 | eager | high | 5 | non |
 | `service-generic-480.avif` | 383x255 | 381×254 | lazy | — | 4 | non |
-| `service-bureaux-640.avif` | 648x432 | 580×278 | lazy | — | 2 | non |
-| `service-commerces-640.avif` | 648x432 | 580×278 | lazy | — | 2 | non |
+| `service-bureaux-640.avif` | 648x432 | 580×278 | lazy | — | 3 | non |
+| `service-commerces-640.avif` | 648x432 | 580×278 | lazy | — | 3 | non |
 | `audrey-placeholder-640.jpg` | 640x958 | 420×525 | lazy | — | 2 | non |
 | `article-2-480.avif` | 400x266 | 381×214 | lazy | — | 2 | non |
 | `article-1-640.avif` | 590x393 | 589×393 | eager | high | 2 | non |
@@ -94,15 +100,19 @@
 | `article-1-480.avif` | 400x267 | 381×214 | lazy | — | 1 | non |
 | `article-3-480.avif` | 400x266 | 381×214 | lazy | — | 1 | non |
 | `hero-pilier-760.avif` | 560x373 | 512×384 | eager | high | 1 | non |
-| `service-bureaux-480.avif` | 383x255 | 381×254 | lazy | — | 1 | non |
-| `service-commerces-480.avif` | 383x256 | 381×255 | lazy | — | 1 | non |
+| `thumb-bureaux-112.avif` | 56x37 | 56×56 | lazy | — | 1 | non |
+| `thumb-commerces-112.avif` | 56x37 | 56×56 | lazy | — | 1 | non |
+| `thumb-cabinets-112.avif` | 56x37 | 56×56 | lazy | — | 1 | non |
+| `thumb-coproprietes-112.avif` | 56x37 | 56×56 | lazy | — | 1 | non |
+| `thumb-meubles-112.avif` | 56x37 | 56×56 | lazy | — | 1 | non |
+| `thumb-ponctuel-112.avif` | 56x37 | 56×56 | lazy | — | 1 | non |
 | `hero-region-760.avif` | 560x373 | 512×384 | eager | high | 1 | non |
 | `article-2-640.avif` | 820x547 | 820×461 | eager | high | 1 | non |
 
 ## 4. Contrôles
 
 - Images cassées côté WordPress : **0**
-- Images sans `alt` : **3** (`service-bureaux-480.avif`, `service-commerces-480.avif`, `service-generic-480.avif`) — un `alt` vide est correct pour un visuel purement décoratif dont le sens est déjà porté par le texte voisin ; il est fautif partout ailleurs.
+- Images sans `alt` : **7** (`thumb-bureaux-112.avif`, `thumb-commerces-112.avif`, `thumb-cabinets-112.avif`, `thumb-coproprietes-112.avif`, `thumb-meubles-112.avif`, `thumb-ponctuel-112.avif`, `service-generic-480.avif`) — un `alt` vide est correct pour un visuel purement décoratif dont le sens est déjà porté par le texte voisin ; il est fautif partout ailleurs.
 - Images en `fetchpriority="high"` : **8** — une seule par page, celle du LCP (CLAUDE.md §8).
 
 ## 5. Ce que ces visuels ne prétendent pas être

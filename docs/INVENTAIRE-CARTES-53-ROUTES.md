@@ -11,13 +11,13 @@
 > Un conteneur qui contient visuellement plusieurs micro-cartes n’est jamais compté pour une
 > carte : il compte pour ses enfants.
 
-**53 routes × 2 largeurs · 225 anomalie(s), dont 101 grave(s)** (carte absente ou fusionnée).
+**53 routes × 2 largeurs · 215 anomalie(s), dont 97 grave(s)** (carte absente ou fusionnée).
 
 ## Synthèse
 
 | Route | Cartes 1440 px | Cartes 375 px | Anomalies 1440 px | Anomalies 375 px |
 |---|---|---|---|---|
-| `#/` | 27 → 27 | 29 → 29 | ❌ 10 (3) | ❌ 10 (3) |
+| `#/` | 27 → 27 | 29 → 29 | ❌ 5 (1) | ❌ 5 (1) |
 | `#/nettoyage-professionnel` | 51 → 49 (-2) | 51 → 48 (-3) | ❌ 8 (2) | ❌ 9 (3) |
 | `#/nos-prestations` | 12 → 12 | 12 → 12 | ✅ | ✅ |
 | `#/service/bureaux` | 21 → 21 | 22 → 22 | ✅ | ✅ |
@@ -78,11 +78,11 @@
 | `#/article/cahier-des-charges-nettoyage` | 6 | 6 |
 | `#/zones-intervention` | 4 | 10 |
 | `#/article/frequence-bureaux` | 4 | 4 |
-| `#/` | 3 | 10 |
 | `#/avis-clients` | 3 | 10 |
 | `#/nettoyage-professionnel` | 2 | 8 |
 | `#/demande-de-devis` | 2 | 2 |
 | `#/contact` | 2 | 4 |
+| `#/` | 1 | 5 |
 | `#/nos-tarifs` | 1 | 1 |
 | `#/bourgogne-franche-comte` | 1 | 13 |
 | `#/ville/dijon` | 1 | 1 |
@@ -127,34 +127,24 @@
 
 ### `#/` → `/`
 
-**1440 px** — bandes 13 → 13 · cartes 27 → 27 · 10 anomalie(s)
+**1440 px** — bandes 13 → 13 · cartes 27 → 27 · 5 anomalie(s)
 
 | Anomalie | Archétype | Bande | Détail |
 |---|---|---|---|
 | type | `carte-titre` | 1 | « ★★★★★ 5,0/5 sur Google Voir les avis » — rendue en `chip` |
-| absente | `tarif` | 1 | « ✦27 € HT/hrégulier ou ponctuel » |
-| texte | `tarif` | 2 | « 27 € HT/htarif unique en région✓Devis gratuit sous 24 h✓Intervention r » → « 27 € HT/h tarif unique, indiqué avant le devis ✓Devis gratuit sous 24  » (56 % de mots communs) |
-| absente | `tarif` | 2 | « 27 € HT/htarif unique en région » |
 | absente | `carte-titre-texte` | 3 | « ★★★★★5,0/5 sur Google Saint-ApollinaireEntreprise régionale basée en B » |
 | texte | `tarif` | 9 | « Tarif horaire de base 27 € HT/h Régulier ou ponctuel · devis gratuit s » → « Tarif unique 27 € HT/h Régulier ou ponctuel · devis gratuit sous 24 h. » (78 % de mots communs) |
 | texte | `carte-titre` | 11 | « ★★★★★5,0/5 Google » → « ★★★★★5,0/5 sur Google » (67 % de mots communs) |
-| surplus | `tarif` | 1 | « 27 € HT/h tarif unique, régulier ou ponctuel » |
-| surplus | `tarif` | 2 | « 27 € HT/h tarif unique, indiqué avant le devis » |
 | surplus | `carte-titre-texte` | 3 | « Saint-Apollinaire Entreprise régionale basée en BFC Interlocutrice ide » |
 
-**375 px** — bandes 13 → 13 · cartes 29 → 29 · 10 anomalie(s)
+**375 px** — bandes 13 → 13 · cartes 29 → 29 · 5 anomalie(s)
 
 | Anomalie | Archétype | Bande | Détail |
 |---|---|---|---|
 | type | `carte-titre` | 1 | « ★★★★★ 5,0/5 sur Google Voir les avis » — rendue en `chip` |
-| absente | `tarif` | 1 | « ✦27 € HT/hrégulier ou ponctuel » |
-| texte | `tarif` | 2 | « 27 € HT/htarif unique en région✓Devis gratuit sous 24 h✓Intervention r » → « 27 € HT/h tarif unique, indiqué avant le devis ✓Devis gratuit sous 24  » (56 % de mots communs) |
-| absente | `tarif` | 2 | « 27 € HT/htarif unique en région » |
 | absente | `carte-titre-texte` | 3 | « ★★★★★5,0/5 sur Google Saint-ApollinaireEntreprise régionale basée en B » |
 | texte | `tarif` | 9 | « Tarif horaire de base 27 € HT/h Régulier ou ponctuel · devis gratuit s » → « Tarif unique 27 € HT/h Régulier ou ponctuel · devis gratuit sous 24 h. » (78 % de mots communs) |
 | texte | `carte-titre` | 11 | « ★★★★★5,0/5 Google » → « ★★★★★5,0/5 sur Google » (67 % de mots communs) |
-| surplus | `tarif` | 1 | « 27 € HT/h tarif unique, régulier ou ponctuel » |
-| surplus | `tarif` | 2 | « 27 € HT/h tarif unique, indiqué avant le devis » |
 | surplus | `carte-titre-texte` | 3 | « Saint-Apollinaire Entreprise régionale basée en BFC Interlocutrice ide » |
 
 

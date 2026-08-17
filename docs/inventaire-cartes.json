@@ -13,26 +13,6 @@
     },
     {
      "genre": "absente",
-     "type": "tarif",
-     "bande": 1,
-     "texte": "✦27 € HT/hrégulier ou ponctuel"
-    },
-    {
-     "genre": "texte",
-     "type": "tarif",
-     "bande": 2,
-     "texte": "27 € HT/htarif unique en région✓Devis gratuit sous 24 h✓Intervention r",
-     "recu": "27 € HT/h tarif unique, indiqué avant le devis ✓Devis gratuit sous 24 ",
-     "proximite": 56
-    },
-    {
-     "genre": "absente",
-     "type": "tarif",
-     "bande": 2,
-     "texte": "27 € HT/htarif unique en région"
-    },
-    {
-     "genre": "absente",
      "type": "carte-titre-texte",
      "bande": 3,
      "texte": "★★★★★5,0/5 sur Google Saint-ApollinaireEntreprise régionale basée en B"
@@ -52,18 +32,6 @@
      "texte": "★★★★★5,0/5 Google",
      "recu": "★★★★★5,0/5 sur Google",
      "proximite": 67
-    },
-    {
-     "genre": "surplus",
-     "type": "tarif",
-     "bande": 1,
-     "texte": "27 € HT/h tarif unique, régulier ou ponctuel"
-    },
-    {
-     "genre": "surplus",
-     "type": "tarif",
-     "bande": 2,
-     "texte": "27 € HT/h tarif unique, indiqué avant le devis"
     },
     {
      "genre": "surplus",
@@ -86,26 +54,6 @@
     },
     {
      "genre": "absente",
-     "type": "tarif",
-     "bande": 1,
-     "texte": "✦27 € HT/hrégulier ou ponctuel"
-    },
-    {
-     "genre": "texte",
-     "type": "tarif",
-     "bande": 2,
-     "texte": "27 € HT/htarif unique en région✓Devis gratuit sous 24 h✓Intervention r",
-     "recu": "27 € HT/h tarif unique, indiqué avant le devis ✓Devis gratuit sous 24 ",
-     "proximite": 56
-    },
-    {
-     "genre": "absente",
-     "type": "tarif",
-     "bande": 2,
-     "texte": "27 € HT/htarif unique en région"
-    },
-    {
-     "genre": "absente",
      "type": "carte-titre-texte",
      "bande": 3,
      "texte": "★★★★★5,0/5 sur Google Saint-ApollinaireEntreprise régionale basée en B"
@@ -125,18 +73,6 @@
      "texte": "★★★★★5,0/5 Google",
      "recu": "★★★★★5,0/5 sur Google",
      "proximite": 67
-    },
-    {
-     "genre": "surplus",
-     "type": "tarif",
-     "bande": 1,
-     "texte": "27 € HT/h tarif unique, régulier ou ponctuel"
-    },
-    {
-     "genre": "surplus",
-     "type": "tarif",
-     "bande": 2,
-     "texte": "27 € HT/h tarif unique, indiqué avant le devis"
     },
     {
      "genre": "surplus",
