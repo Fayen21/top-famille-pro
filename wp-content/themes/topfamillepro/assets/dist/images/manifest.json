@@ -419,6 +419,96 @@
       ]
     }
   },
+  "audrey-portrait": {
+    "slug": "audrey-portrait",
+    "alt": "Photo d’illustration temporaire — portrait définitif à venir",
+    "lcp": false,
+    "width": 640,
+    "height": 806,
+    "variants": {
+      "avif": [
+        {
+          "width": 320,
+          "file": "audrey-portrait-320.avif"
+        },
+        {
+          "width": 480,
+          "file": "audrey-portrait-480.avif"
+        },
+        {
+          "width": 640,
+          "file": "audrey-portrait-640.avif"
+        }
+      ],
+      "webp": [
+        {
+          "width": 320,
+          "file": "audrey-portrait-320.webp"
+        },
+        {
+          "width": 480,
+          "file": "audrey-portrait-480.webp"
+        },
+        {
+          "width": 640,
+          "file": "audrey-portrait-640.webp"
+        }
+      ],
+      "jpg": [
+        {
+          "width": 320,
+          "file": "audrey-portrait-320.jpg"
+        },
+        {
+          "width": 480,
+          "file": "audrey-portrait-480.jpg"
+        },
+        {
+          "width": 640,
+          "file": "audrey-portrait-640.jpg"
+        }
+      ]
+    }
+  },
+  "avatar-temoignage": {
+    "slug": "avatar-temoignage",
+    "alt": "",
+    "lcp": false,
+    "width": 132,
+    "height": 198,
+    "variants": {
+      "avif": [
+        {
+          "width": 88,
+          "file": "avatar-temoignage-88.avif"
+        },
+        {
+          "width": 132,
+          "file": "avatar-temoignage-132.avif"
+        }
+      ],
+      "webp": [
+        {
+          "width": 88,
+          "file": "avatar-temoignage-88.webp"
+        },
+        {
+          "width": 132,
+          "file": "avatar-temoignage-132.webp"
+        }
+      ],
+      "jpg": [
+        {
+          "width": 88,
+          "file": "avatar-temoignage-88.jpg"
+        },
+        {
+          "width": 132,
+          "file": "avatar-temoignage-132.jpg"
+        }
+      ]
+    }
+  },
   "thumb-bureaux": {
     "slug": "thumb-bureaux",
     "alt": "",
@@ -649,6 +739,924 @@
         {
           "width": 168,
           "file": "thumb-ponctuel-168.jpg"
+        }
+      ]
+    }
+  },
+  "ville-dijon": {
+    "slug": "ville-dijon",
+    "alt": "Locaux professionnels (photo d’illustration)",
+    "lcp": false,
+    "width": 960,
+    "height": 641,
+    "variants": {
+      "avif": [
+        {
+          "width": 480,
+          "file": "ville-dijon-480.avif"
+        },
+        {
+          "width": 760,
+          "file": "ville-dijon-760.avif"
+        },
+        {
+          "width": 960,
+          "file": "ville-dijon-960.avif"
+        }
+      ],
+      "webp": [
+        {
+          "width": 480,
+          "file": "ville-dijon-480.webp"
+        },
+        {
+          "width": 760,
+          "file": "ville-dijon-760.webp"
+        },
+        {
+          "width": 960,
+          "file": "ville-dijon-960.webp"
+        }
+      ],
+      "jpg": [
+        {
+          "width": 480,
+          "file": "ville-dijon-480.jpg"
+        },
+        {
+          "width": 760,
+          "file": "ville-dijon-760.jpg"
+        },
+        {
+          "width": 960,
+          "file": "ville-dijon-960.jpg"
+        }
+      ]
+    }
+  },
+  "ville-besancon": {
+    "slug": "ville-besancon",
+    "alt": "Locaux professionnels (photo d’illustration)",
+    "lcp": false,
+    "width": 960,
+    "height": 640,
+    "variants": {
+      "avif": [
+        {
+          "width": 480,
+          "file": "ville-besancon-480.avif"
+        },
+        {
+          "width": 760,
+          "file": "ville-besancon-760.avif"
+        },
+        {
+          "width": 960,
+          "file": "ville-besancon-960.avif"
+        }
+      ],
+      "webp": [
+        {
+          "width": 480,
+          "file": "ville-besancon-480.webp"
+        },
+        {
+          "width": 760,
+          "file": "ville-besancon-760.webp"
+        },
+        {
+          "width": 960,
+          "file": "ville-besancon-960.webp"
+        }
+      ],
+      "jpg": [
+        {
+          "width": 480,
+          "file": "ville-besancon-480.jpg"
+        },
+        {
+          "width": 760,
+          "file": "ville-besancon-760.jpg"
+        },
+        {
+          "width": 960,
+          "file": "ville-besancon-960.jpg"
+        }
+      ]
+    }
+  },
+  "ville-dole": {
+    "slug": "ville-dole",
+    "alt": "Locaux professionnels (photo d’illustration)",
+    "lcp": false,
+    "width": 960,
+    "height": 641,
+    "variants": {
+      "avif": [
+        {
+          "width": 480,
+          "file": "ville-dole-480.avif"
+        },
+        {
+          "width": 760,
+          "file": "ville-dole-760.avif"
+        },
+        {
+          "width": 960,
+          "file": "ville-dole-960.avif"
+        }
+      ],
+      "webp": [
+        {
+          "width": 480,
+          "file": "ville-dole-480.webp"
+        },
+        {
+          "width": 760,
+          "file": "ville-dole-760.webp"
+        },
+        {
+          "width": 960,
+          "file": "ville-dole-960.webp"
+        }
+      ],
+      "jpg": [
+        {
+          "width": 480,
+          "file": "ville-dole-480.jpg"
+        },
+        {
+          "width": 760,
+          "file": "ville-dole-760.jpg"
+        },
+        {
+          "width": 960,
+          "file": "ville-dole-960.jpg"
+        }
+      ]
+    }
+  },
+  "ville-lons-le-saunier": {
+    "slug": "ville-lons-le-saunier",
+    "alt": "Locaux professionnels (photo d’illustration)",
+    "lcp": false,
+    "width": 960,
+    "height": 640,
+    "variants": {
+      "avif": [
+        {
+          "width": 480,
+          "file": "ville-lons-le-saunier-480.avif"
+        },
+        {
+          "width": 760,
+          "file": "ville-lons-le-saunier-760.avif"
+        },
+        {
+          "width": 960,
+          "file": "ville-lons-le-saunier-960.avif"
+        }
+      ],
+      "webp": [
+        {
+          "width": 480,
+          "file": "ville-lons-le-saunier-480.webp"
+        },
+        {
+          "width": 760,
+          "file": "ville-lons-le-saunier-760.webp"
+        },
+        {
+          "width": 960,
+          "file": "ville-lons-le-saunier-960.webp"
+        }
+      ],
+      "jpg": [
+        {
+          "width": 480,
+          "file": "ville-lons-le-saunier-480.jpg"
+        },
+        {
+          "width": 760,
+          "file": "ville-lons-le-saunier-760.jpg"
+        },
+        {
+          "width": 960,
+          "file": "ville-lons-le-saunier-960.jpg"
+        }
+      ]
+    }
+  },
+  "ville-nevers": {
+    "slug": "ville-nevers",
+    "alt": "Locaux professionnels (photo d’illustration)",
+    "lcp": false,
+    "width": 960,
+    "height": 640,
+    "variants": {
+      "avif": [
+        {
+          "width": 480,
+          "file": "ville-nevers-480.avif"
+        },
+        {
+          "width": 760,
+          "file": "ville-nevers-760.avif"
+        },
+        {
+          "width": 960,
+          "file": "ville-nevers-960.avif"
+        }
+      ],
+      "webp": [
+        {
+          "width": 480,
+          "file": "ville-nevers-480.webp"
+        },
+        {
+          "width": 760,
+          "file": "ville-nevers-760.webp"
+        },
+        {
+          "width": 960,
+          "file": "ville-nevers-960.webp"
+        }
+      ],
+      "jpg": [
+        {
+          "width": 480,
+          "file": "ville-nevers-480.jpg"
+        },
+        {
+          "width": 760,
+          "file": "ville-nevers-760.jpg"
+        },
+        {
+          "width": 960,
+          "file": "ville-nevers-960.jpg"
+        }
+      ]
+    }
+  },
+  "ville-vesoul": {
+    "slug": "ville-vesoul",
+    "alt": "Locaux professionnels (photo d’illustration)",
+    "lcp": false,
+    "width": 960,
+    "height": 720,
+    "variants": {
+      "avif": [
+        {
+          "width": 480,
+          "file": "ville-vesoul-480.avif"
+        },
+        {
+          "width": 760,
+          "file": "ville-vesoul-760.avif"
+        },
+        {
+          "width": 960,
+          "file": "ville-vesoul-960.avif"
+        }
+      ],
+      "webp": [
+        {
+          "width": 480,
+          "file": "ville-vesoul-480.webp"
+        },
+        {
+          "width": 760,
+          "file": "ville-vesoul-760.webp"
+        },
+        {
+          "width": 960,
+          "file": "ville-vesoul-960.webp"
+        }
+      ],
+      "jpg": [
+        {
+          "width": 480,
+          "file": "ville-vesoul-480.jpg"
+        },
+        {
+          "width": 760,
+          "file": "ville-vesoul-760.jpg"
+        },
+        {
+          "width": 960,
+          "file": "ville-vesoul-960.jpg"
+        }
+      ]
+    }
+  },
+  "ville-chalon-sur-saone": {
+    "slug": "ville-chalon-sur-saone",
+    "alt": "Locaux professionnels (photo d’illustration)",
+    "lcp": false,
+    "width": 960,
+    "height": 640,
+    "variants": {
+      "avif": [
+        {
+          "width": 480,
+          "file": "ville-chalon-sur-saone-480.avif"
+        },
+        {
+          "width": 760,
+          "file": "ville-chalon-sur-saone-760.avif"
+        },
+        {
+          "width": 960,
+          "file": "ville-chalon-sur-saone-960.avif"
+        }
+      ],
+      "webp": [
+        {
+          "width": 480,
+          "file": "ville-chalon-sur-saone-480.webp"
+        },
+        {
+          "width": 760,
+          "file": "ville-chalon-sur-saone-760.webp"
+        },
+        {
+          "width": 960,
+          "file": "ville-chalon-sur-saone-960.webp"
+        }
+      ],
+      "jpg": [
+        {
+          "width": 480,
+          "file": "ville-chalon-sur-saone-480.jpg"
+        },
+        {
+          "width": 760,
+          "file": "ville-chalon-sur-saone-760.jpg"
+        },
+        {
+          "width": 960,
+          "file": "ville-chalon-sur-saone-960.jpg"
+        }
+      ]
+    }
+  },
+  "ville-macon": {
+    "slug": "ville-macon",
+    "alt": "Locaux professionnels (photo d’illustration)",
+    "lcp": false,
+    "width": 960,
+    "height": 641,
+    "variants": {
+      "avif": [
+        {
+          "width": 480,
+          "file": "ville-macon-480.avif"
+        },
+        {
+          "width": 760,
+          "file": "ville-macon-760.avif"
+        },
+        {
+          "width": 960,
+          "file": "ville-macon-960.avif"
+        }
+      ],
+      "webp": [
+        {
+          "width": 480,
+          "file": "ville-macon-480.webp"
+        },
+        {
+          "width": 760,
+          "file": "ville-macon-760.webp"
+        },
+        {
+          "width": 960,
+          "file": "ville-macon-960.webp"
+        }
+      ],
+      "jpg": [
+        {
+          "width": 480,
+          "file": "ville-macon-480.jpg"
+        },
+        {
+          "width": 760,
+          "file": "ville-macon-760.jpg"
+        },
+        {
+          "width": 960,
+          "file": "ville-macon-960.jpg"
+        }
+      ]
+    }
+  },
+  "ville-auxerre": {
+    "slug": "ville-auxerre",
+    "alt": "Locaux professionnels (photo d’illustration)",
+    "lcp": false,
+    "width": 960,
+    "height": 641,
+    "variants": {
+      "avif": [
+        {
+          "width": 480,
+          "file": "ville-auxerre-480.avif"
+        },
+        {
+          "width": 760,
+          "file": "ville-auxerre-760.avif"
+        },
+        {
+          "width": 960,
+          "file": "ville-auxerre-960.avif"
+        }
+      ],
+      "webp": [
+        {
+          "width": 480,
+          "file": "ville-auxerre-480.webp"
+        },
+        {
+          "width": 760,
+          "file": "ville-auxerre-760.webp"
+        },
+        {
+          "width": 960,
+          "file": "ville-auxerre-960.webp"
+        }
+      ],
+      "jpg": [
+        {
+          "width": 480,
+          "file": "ville-auxerre-480.jpg"
+        },
+        {
+          "width": 760,
+          "file": "ville-auxerre-760.jpg"
+        },
+        {
+          "width": 960,
+          "file": "ville-auxerre-960.jpg"
+        }
+      ]
+    }
+  },
+  "ville-belfort": {
+    "slug": "ville-belfort",
+    "alt": "Locaux professionnels (photo d’illustration)",
+    "lcp": false,
+    "width": 960,
+    "height": 641,
+    "variants": {
+      "avif": [
+        {
+          "width": 480,
+          "file": "ville-belfort-480.avif"
+        },
+        {
+          "width": 760,
+          "file": "ville-belfort-760.avif"
+        },
+        {
+          "width": 960,
+          "file": "ville-belfort-960.avif"
+        }
+      ],
+      "webp": [
+        {
+          "width": 480,
+          "file": "ville-belfort-480.webp"
+        },
+        {
+          "width": 760,
+          "file": "ville-belfort-760.webp"
+        },
+        {
+          "width": 960,
+          "file": "ville-belfort-960.webp"
+        }
+      ],
+      "jpg": [
+        {
+          "width": 480,
+          "file": "ville-belfort-480.jpg"
+        },
+        {
+          "width": 760,
+          "file": "ville-belfort-760.jpg"
+        },
+        {
+          "width": 960,
+          "file": "ville-belfort-960.jpg"
+        }
+      ]
+    }
+  },
+  "ville-saint-apollinaire": {
+    "slug": "ville-saint-apollinaire",
+    "alt": "Locaux professionnels (photo d’illustration)",
+    "lcp": false,
+    "width": 960,
+    "height": 641,
+    "variants": {
+      "avif": [
+        {
+          "width": 480,
+          "file": "ville-saint-apollinaire-480.avif"
+        },
+        {
+          "width": 760,
+          "file": "ville-saint-apollinaire-760.avif"
+        },
+        {
+          "width": 960,
+          "file": "ville-saint-apollinaire-960.avif"
+        }
+      ],
+      "webp": [
+        {
+          "width": 480,
+          "file": "ville-saint-apollinaire-480.webp"
+        },
+        {
+          "width": 760,
+          "file": "ville-saint-apollinaire-760.webp"
+        },
+        {
+          "width": 960,
+          "file": "ville-saint-apollinaire-960.webp"
+        }
+      ],
+      "jpg": [
+        {
+          "width": 480,
+          "file": "ville-saint-apollinaire-480.jpg"
+        },
+        {
+          "width": 760,
+          "file": "ville-saint-apollinaire-760.jpg"
+        },
+        {
+          "width": 960,
+          "file": "ville-saint-apollinaire-960.jpg"
+        }
+      ]
+    }
+  },
+  "ville-chenove": {
+    "slug": "ville-chenove",
+    "alt": "Locaux professionnels (photo d’illustration)",
+    "lcp": false,
+    "width": 960,
+    "height": 640,
+    "variants": {
+      "avif": [
+        {
+          "width": 480,
+          "file": "ville-chenove-480.avif"
+        },
+        {
+          "width": 760,
+          "file": "ville-chenove-760.avif"
+        },
+        {
+          "width": 960,
+          "file": "ville-chenove-960.avif"
+        }
+      ],
+      "webp": [
+        {
+          "width": 480,
+          "file": "ville-chenove-480.webp"
+        },
+        {
+          "width": 760,
+          "file": "ville-chenove-760.webp"
+        },
+        {
+          "width": 960,
+          "file": "ville-chenove-960.webp"
+        }
+      ],
+      "jpg": [
+        {
+          "width": 480,
+          "file": "ville-chenove-480.jpg"
+        },
+        {
+          "width": 760,
+          "file": "ville-chenove-760.jpg"
+        },
+        {
+          "width": 960,
+          "file": "ville-chenove-960.jpg"
+        }
+      ]
+    }
+  },
+  "ville-quetigny": {
+    "slug": "ville-quetigny",
+    "alt": "Locaux professionnels (photo d’illustration)",
+    "lcp": false,
+    "width": 960,
+    "height": 641,
+    "variants": {
+      "avif": [
+        {
+          "width": 480,
+          "file": "ville-quetigny-480.avif"
+        },
+        {
+          "width": 760,
+          "file": "ville-quetigny-760.avif"
+        },
+        {
+          "width": 960,
+          "file": "ville-quetigny-960.avif"
+        }
+      ],
+      "webp": [
+        {
+          "width": 480,
+          "file": "ville-quetigny-480.webp"
+        },
+        {
+          "width": 760,
+          "file": "ville-quetigny-760.webp"
+        },
+        {
+          "width": 960,
+          "file": "ville-quetigny-960.webp"
+        }
+      ],
+      "jpg": [
+        {
+          "width": 480,
+          "file": "ville-quetigny-480.jpg"
+        },
+        {
+          "width": 760,
+          "file": "ville-quetigny-760.jpg"
+        },
+        {
+          "width": 960,
+          "file": "ville-quetigny-960.jpg"
+        }
+      ]
+    }
+  },
+  "ville-talant": {
+    "slug": "ville-talant",
+    "alt": "Locaux professionnels (photo d’illustration)",
+    "lcp": false,
+    "width": 960,
+    "height": 640,
+    "variants": {
+      "avif": [
+        {
+          "width": 480,
+          "file": "ville-talant-480.avif"
+        },
+        {
+          "width": 760,
+          "file": "ville-talant-760.avif"
+        },
+        {
+          "width": 960,
+          "file": "ville-talant-960.avif"
+        }
+      ],
+      "webp": [
+        {
+          "width": 480,
+          "file": "ville-talant-480.webp"
+        },
+        {
+          "width": 760,
+          "file": "ville-talant-760.webp"
+        },
+        {
+          "width": 960,
+          "file": "ville-talant-960.webp"
+        }
+      ],
+      "jpg": [
+        {
+          "width": 480,
+          "file": "ville-talant-480.jpg"
+        },
+        {
+          "width": 760,
+          "file": "ville-talant-760.jpg"
+        },
+        {
+          "width": 960,
+          "file": "ville-talant-960.jpg"
+        }
+      ]
+    }
+  },
+  "ville-longvic": {
+    "slug": "ville-longvic",
+    "alt": "Locaux professionnels (photo d’illustration)",
+    "lcp": false,
+    "width": 960,
+    "height": 641,
+    "variants": {
+      "avif": [
+        {
+          "width": 480,
+          "file": "ville-longvic-480.avif"
+        },
+        {
+          "width": 760,
+          "file": "ville-longvic-760.avif"
+        },
+        {
+          "width": 960,
+          "file": "ville-longvic-960.avif"
+        }
+      ],
+      "webp": [
+        {
+          "width": 480,
+          "file": "ville-longvic-480.webp"
+        },
+        {
+          "width": 760,
+          "file": "ville-longvic-760.webp"
+        },
+        {
+          "width": 960,
+          "file": "ville-longvic-960.webp"
+        }
+      ],
+      "jpg": [
+        {
+          "width": 480,
+          "file": "ville-longvic-480.jpg"
+        },
+        {
+          "width": 760,
+          "file": "ville-longvic-760.jpg"
+        },
+        {
+          "width": 960,
+          "file": "ville-longvic-960.jpg"
+        }
+      ]
+    }
+  },
+  "ville-fontaine-les-dijon": {
+    "slug": "ville-fontaine-les-dijon",
+    "alt": "Locaux professionnels (photo d’illustration)",
+    "lcp": false,
+    "width": 960,
+    "height": 640,
+    "variants": {
+      "avif": [
+        {
+          "width": 480,
+          "file": "ville-fontaine-les-dijon-480.avif"
+        },
+        {
+          "width": 760,
+          "file": "ville-fontaine-les-dijon-760.avif"
+        },
+        {
+          "width": 960,
+          "file": "ville-fontaine-les-dijon-960.avif"
+        }
+      ],
+      "webp": [
+        {
+          "width": 480,
+          "file": "ville-fontaine-les-dijon-480.webp"
+        },
+        {
+          "width": 760,
+          "file": "ville-fontaine-les-dijon-760.webp"
+        },
+        {
+          "width": 960,
+          "file": "ville-fontaine-les-dijon-960.webp"
+        }
+      ],
+      "jpg": [
+        {
+          "width": 480,
+          "file": "ville-fontaine-les-dijon-480.jpg"
+        },
+        {
+          "width": 760,
+          "file": "ville-fontaine-les-dijon-760.jpg"
+        },
+        {
+          "width": 960,
+          "file": "ville-fontaine-les-dijon-960.jpg"
+        }
+      ]
+    }
+  },
+  "ville-marsannay-la-cote": {
+    "slug": "ville-marsannay-la-cote",
+    "alt": "Locaux professionnels (photo d’illustration)",
+    "lcp": false,
+    "width": 960,
+    "height": 640,
+    "variants": {
+      "avif": [
+        {
+          "width": 480,
+          "file": "ville-marsannay-la-cote-480.avif"
+        },
+        {
+          "width": 760,
+          "file": "ville-marsannay-la-cote-760.avif"
+        },
+        {
+          "width": 960,
+          "file": "ville-marsannay-la-cote-960.avif"
+        }
+      ],
+      "webp": [
+        {
+          "width": 480,
+          "file": "ville-marsannay-la-cote-480.webp"
+        },
+        {
+          "width": 760,
+          "file": "ville-marsannay-la-cote-760.webp"
+        },
+        {
+          "width": 960,
+          "file": "ville-marsannay-la-cote-960.webp"
+        }
+      ],
+      "jpg": [
+        {
+          "width": 480,
+          "file": "ville-marsannay-la-cote-480.jpg"
+        },
+        {
+          "width": 760,
+          "file": "ville-marsannay-la-cote-760.jpg"
+        },
+        {
+          "width": 960,
+          "file": "ville-marsannay-la-cote-960.jpg"
+        }
+      ]
+    }
+  },
+  "ville-beaune": {
+    "slug": "ville-beaune",
+    "alt": "Locaux professionnels (photo d’illustration)",
+    "lcp": false,
+    "width": 960,
+    "height": 641,
+    "variants": {
+      "avif": [
+        {
+          "width": 480,
+          "file": "ville-beaune-480.avif"
+        },
+        {
+          "width": 760,
+          "file": "ville-beaune-760.avif"
+        },
+        {
+          "width": 960,
+          "file": "ville-beaune-960.avif"
+        }
+      ],
+      "webp": [
+        {
+          "width": 480,
+          "file": "ville-beaune-480.webp"
+        },
+        {
+          "width": 760,
+          "file": "ville-beaune-760.webp"
+        },
+        {
+          "width": 960,
+          "file": "ville-beaune-960.webp"
+        }
+      ],
+      "jpg": [
+        {
+          "width": 480,
+          "file": "ville-beaune-480.jpg"
+        },
+        {
+          "width": 760,
+          "file": "ville-beaune-760.jpg"
+        },
+        {
+          "width": 960,
+          "file": "ville-beaune-960.jpg"
         }
       ]
     }

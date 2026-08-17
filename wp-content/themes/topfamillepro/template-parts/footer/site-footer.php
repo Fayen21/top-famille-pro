@@ -63,7 +63,15 @@ $zones = tfp_footer_zones_tree();
 	<div class="tfp-footer__inner">
 		<div class="tfp-footer__col tfp-footer__col--brand">
 			<div class="tfp-footer__brand">
-				<img class="tfp-footer__logo" src="<?php echo esc_url( TFP_THEME_URI . '/assets/dist/images/logo-horizontal.png' ); ?>" alt="" width="110" height="58" loading="lazy" decoding="async">
+				<?php
+				/*
+				 * Logo CARRÉ, comme la maquette : 60×60, rayon 12, object-fit cover. Le pied
+				 * servait l'horizontal de l'en-tête — écart relevé sur les octets par l'audit
+				 * d'images par rôle (G26). L'`alt` reste vide : le nom de la marque est juste à
+				 * côté, en texte, et le répéter n'apporterait rien à un lecteur d'écran.
+				 */
+				?>
+				<img class="tfp-footer__logo" src="<?php echo esc_url( TFP_THEME_URI . '/assets/dist/images/logo-carre.png' ); ?>" alt="" width="60" height="60" loading="lazy" decoding="async">
 				<span class="tfp-footer__brand-name"><?php echo esc_html( $site['brand_name'] ); ?></span>
 			</div>
 			<p class="tfp-footer__tagline">Nettoyage professionnel régulier ou ponctuel en <?php echo esc_html( $site['address_region'] ); ?>.</p>

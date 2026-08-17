@@ -132,6 +132,67 @@ $page = tfp_static_page_data( 'nettoyage-professionnel' );
 	</div>
 </section>
 
-<?php get_template_part( 'template-parts/components/static-blocks', null, array( 'key' => 'nettoyage-professionnel' ) ); ?>
+<?php
+/*
+ * La bande « Cahier des charges, intervenants et suivi » (section 12) est une RANGÉE À DEUX
+ * COLONNES dans la maquette : un visuel carré à gauche (flex 1 1 300px, rayon 20, aspect 1/1,
+ * object-fit cover) et le contenu à droite (flex 1 1 420px). Le relevé du générateur n'ouvre un
+ * bloc que sur du texte : la colonne image, muette, n'était donc pas enregistrée — et la page
+ * rendait neuf images au lieu de dix. C'est l'un des motifs du refus de validation du 17 août
+ * 2026, et l'audit par rôle (tools/audit-images-role.mjs) l'a nommé « éditoriale #1 manquante ».
+ *
+ * La bande est rendue ici, comme la bande tarifaire de la page région (G23) : le SEED reste
+ * l'unique source du texte, seul le visuel manquant est ajouté à sa place.
+ */
+get_template_part( 'template-parts/components/static-blocks', null, array( 'key' => 'nettoyage-professionnel', 'skip' => array( 12 ) ) );
+
+$tfp_bande_methode = null;
+foreach ( ( $page['sections'] ?? array() ) as $tfp_section ) {
+	if ( 12 === (int) ( $tfp_section['index'] ?? -1 ) ) {
+		$tfp_bande_methode = $tfp_section;
+		break;
+	}
+}
+if ( $tfp_bande_methode ) :
+	$tfp_bloc = $tfp_bande_methode['blocs'][0] ?? array();
+	?>
+<section class="tfp-section--tight tfp-section--blanc" style="--tfp-bande-haut:clamp(44px, 6vw, 84px);--tfp-bande-bas:clamp(44px, 6vw, 84px)">
+	<div class="tfp-container tfp-methode-rangee">
+		<div class="tfp-methode-rangee__media">
+			<?php
+			// Visuel d'illustration — jamais présenté comme Audrey (CLAUDE.md §5.6) : l'alt de la
+			// maquette (« Audrey, interlocutrice dédiée ») présente une photo de stock comme une
+			// personne réelle, celui du manifeste dit ce qu'il en est.
+			tfp_picture( 'audrey-portrait', array( 'sizes' => '(max-width: 819px) 92vw, 500px', 'class' => 'tfp-methode-rangee__img' ) );
+			?>
+			<p class="tfp-provisional-notice" data-tfp-provisional-notice="1">Photo d’illustration provisoire — portrait d’Audrey à venir.</p>
+		</div>
+		<div class="tfp-methode-rangee__corps">
+			<h2><?php echo esc_html( $tfp_bloc['titre'] ?? 'Cahier des charges, intervenants et suivi' ); ?></h2>
+			<?php
+			foreach ( ( $tfp_bloc['sequence'] ?? array() ) as $tfp_enfant ) {
+				$type = $tfp_enfant['type'] ?? '';
+				if ( 'paragraph' === $type || 'note' === $type ) {
+					printf( '<p class="tfp-prose">%s</p>', esc_html( $tfp_enfant['texte'] ) );
+				} elseif ( 'grid' === $type ) {
+					tfp_card_grid( $tfp_enfant );
+				} elseif ( 'list' === $type ) {
+					echo '<ul class="tfp-list-plain">';
+					foreach ( (array) ( $tfp_enfant['items'] ?? array() ) as $item ) {
+						printf( '<li>%s</li>', esc_html( $item ) );
+					}
+					echo '</ul>';
+				} elseif ( 'link' === $type ) {
+					$url = tfp_route_to_url( $tfp_enfant['route'] ?? '' );
+					if ( $url ) {
+						printf( '<a class="tfp-eyebrow-link" href="%s">%s</a>', esc_url( $url ), esc_html( rtrim( $tfp_enfant['texte'], '→ ' ) ) . ' →' );
+					}
+				}
+			}
+			?>
+		</div>
+	</div>
+</section>
+<?php endif; ?>
 
 <?php get_footer(); ?>

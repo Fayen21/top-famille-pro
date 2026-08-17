@@ -57,16 +57,23 @@ add_action( 'customize_register', 'tfp_customize_register' );
  *
  * @return string
  */
-function tfp_get_audrey_photo_url() {
+/**
+ * @param string $slug Slot de repli. La maquette n'emploie PAS le même visuel d'illustration
+ *                     partout : `audrey-portrait` (800×1007) sur l'accueil et dans la bande
+ *                     « Cahier des charges » du pilier, `audrey-placeholder` (800×1198) sur
+ *                     /a-propos/. Le contrôle par nombre d'images ne voyait pas la différence ;
+ *                     l'audit par rôle de G26 l'a relevée sur les octets.
+ */
+function tfp_get_audrey_photo_url( $slug = 'audrey-placeholder' ) {
 	$real = (string) get_theme_mod( 'tfp_audrey_photo', '' );
 	if ( $real ) {
 		return $real;
 	}
 	$manifest = tfp_image_manifest();
-	if ( empty( $manifest['audrey-placeholder'] ) ) {
+	if ( empty( $manifest[ $slug ] ) ) {
 		return '';
 	}
-	$entry    = $manifest['audrey-placeholder'];
+	$entry    = $manifest[ $slug ];
 	$fallback = end( $entry['variants']['jpg'] );
 	return TFP_THEME_URI . '/assets/dist/images/' . $fallback['file'];
 }

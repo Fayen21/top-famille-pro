@@ -172,7 +172,18 @@ get_header();
 	<?php if ( $hero_alt ) : ?>
 		<div class="tfp-hero__media">
 			<div class="tfp-hero__media-main">
-				<?php tfp_picture( 'article-3', array( 'sizes' => '(max-width: 819px) 92vw, 560px', 'lcp' => true, 'alt' => $hero_alt ) ); ?>
+				<?php
+				/*
+				 * La maquette déclare UNE photo par ville (CITIES[].photo). Le thème servait
+				 * « article-3 » — la même image sur les 18 pages de zone, et pas celle de la
+				 * maquette : c'est l'un des motifs du refus de validation du 17 août 2026.
+				 * Le slot `ville-<slug>` porte la photo relevée ; à défaut (département, page
+				 * sans photo déclarée), on garde le visuel générique plutôt qu'une image cassée.
+				 */
+				$tfp_slug_zone  = get_post_field( 'post_name', $post_id );
+				$tfp_slot_ville = tfp_image_manifest()[ 'ville-' . $tfp_slug_zone ] ?? null ? 'ville-' . $tfp_slug_zone : 'article-3';
+				tfp_picture( $tfp_slot_ville, array( 'sizes' => '(max-width: 819px) 92vw, 560px', 'lcp' => true, 'alt' => $hero_alt ) );
+				?>
 			</div>
 		</div>
 	<?php endif; ?>

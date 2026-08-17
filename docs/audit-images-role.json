@@ -1,0 +1,797 @@
+{
+ "total": 38,
+ "ecarts": 2,
+ "lignes": [
+  {
+   "route": "#/",
+   "role": "logo-entete",
+   "rang": 1,
+   "maquette": {
+    "rendu": "155×82",
+    "natif": "759×402",
+    "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
+    "voisin": "Prestations ▼ Tarifs Zones ▼ Pourquoi nous Avis Conseils ☎06",
+    "alt": "Top-Famille Pro"
+   },
+   "wordpress": {
+    "rendu": "155×82",
+    "natif": "320×169",
+    "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
+    "slot": "logo-horizontal",
+    "fichier": "logo-horizontal.png",
+    "alt": "Top-Famille Pro"
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/",
+   "role": "hero",
+   "rang": 1,
+   "maquette": {
+    "rendu": "512×448",
+    "natif": "1100×733",
+    "sha": "0f8fb0ce37ddc15cdbca22dd9213382d22dfbb0a71fde3cba43d4a626b565bba",
+    "voisin": "",
+    "alt": "Bureaux professionnels lumineux entretenus par Top-Famille Pro en Bourgogne-Franche-Comté"
+   },
+   "wordpress": {
+    "rendu": "512×448",
+    "natif": "600×399",
+    "sha": "0f8fb0ce37ddc15cdbca22dd9213382d22dfbb0a71fde3cba43d4a626b565bba",
+    "slot": "hero-main",
+    "fichier": "hero-main-760.avif",
+    "alt": "Espace de bureaux professionnels, lumineux et rangé (photo d’illustration)"
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/",
+   "role": "editoriale",
+   "rang": 1,
+   "maquette": {
+    "rendu": "215×215",
+    "natif": "560×373",
+    "sha": "d90ac841df35ad7ad132edfdcb47e28867789b377fc9fef94966fb1cbb45a9f9",
+    "voisin": "",
+    "alt": "Intervenante Top-Famille Pro nettoyant une vitre"
+   },
+   "wordpress": {
+    "rendu": "215×215",
+    "natif": "220×147",
+    "sha": "d90ac841df35ad7ad132edfdcb47e28867789b377fc9fef94966fb1cbb45a9f9",
+    "slot": "hero-secondary",
+    "fichier": "hero-secondary-220.avif",
+    "alt": "Nettoyage de vitres avec équipement de protection (photo d’illustration)"
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/",
+   "role": "editoriale",
+   "rang": 2,
+   "maquette": {
+    "rendu": "580×278",
+    "natif": "900×600",
+    "sha": "91b93f915a21fbd98a3b722494d2937479319192d745e4051fa1b3ecafe9787b",
+    "voisin": "Nettoyage de bureauxOpen-spaces, salles de réunion et accuei",
+    "alt": "Nettoyage de bureaux et open-spaces"
+   },
+   "wordpress": {
+    "rendu": "580×278",
+    "natif": "648×432",
+    "sha": "91b93f915a21fbd98a3b722494d2937479319192d745e4051fa1b3ecafe9787b",
+    "slot": "service-bureaux",
+    "fichier": "service-bureaux-640.avif",
+    "alt": "Nettoyage de bureaux et open-spaces (photo d’illustration)"
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/",
+   "role": "editoriale",
+   "rang": 3,
+   "maquette": {
+    "rendu": "580×278",
+    "natif": "900×601",
+    "sha": "46a86c7e9eac3d5ff532943225e72d17e7d72fc7d5e64dd8473a2e380f35ab07",
+    "voisin": "Nettoyage de bureauxOpen-spaces, salles de réunion et accuei",
+    "alt": "Nettoyage de commerces et boutiques"
+   },
+   "wordpress": {
+    "rendu": "580×278",
+    "natif": "648×432",
+    "sha": "46a86c7e9eac3d5ff532943225e72d17e7d72fc7d5e64dd8473a2e380f35ab07",
+    "slot": "service-commerces",
+    "fichier": "service-commerces-640.avif",
+    "alt": "Nettoyage de commerces et de surfaces de vente (photo d’illustration)"
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/",
+   "role": "editoriale",
+   "rang": 4,
+   "maquette": {
+    "rendu": "420×525",
+    "natif": "800×1007",
+    "sha": "18af9088fd99e88a790f94da179174a0c05495384a65ce2c58cc7591a558e193",
+    "voisin": "",
+    "alt": "Audrey, votre interlocutrice Top-Famille Pro"
+   },
+   "wordpress": {
+    "rendu": "420×525",
+    "natif": "640×806",
+    "sha": "18af9088fd99e88a790f94da179174a0c05495384a65ce2c58cc7591a558e193",
+    "slot": "audrey-portrait",
+    "fichier": "audrey-portrait-640.jpg",
+    "alt": "Photo d’illustration temporaire — portrait définitif à venir"
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/",
+   "role": "editoriale",
+   "rang": 5,
+   "maquette": {
+    "rendu": "381×214",
+    "natif": "900×601",
+    "sha": "4ba2bd2ba288216e81ea26a8ed506b377064337456c319cd6273d42b90fe97d2",
+    "voisin": "BureauxÀ quelle fréquence faire nettoyer ses bureaux ?Quotid",
+    "alt": "À quelle fréquence faire nettoyer ses bureaux ?"
+   },
+   "wordpress": {
+    "rendu": "381×214",
+    "natif": "400×267",
+    "sha": "4ba2bd2ba288216e81ea26a8ed506b377064337456c319cd6273d42b90fe97d2",
+    "slot": "article-1",
+    "fichier": "article-1-480.avif",
+    "alt": "Couloir de bureaux et kitchenette (photo d’illustration)"
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/",
+   "role": "editoriale",
+   "rang": 6,
+   "maquette": {
+    "rendu": "381×214",
+    "natif": "900×601",
+    "sha": "31c59a38757a03203c9e32366de57b8b3c0cb2b98c32e19a99ca8a34d42207b9",
+    "voisin": "BureauxÀ quelle fréquence faire nettoyer ses bureaux ?Quotid",
+    "alt": "Combien coûte le nettoyage de bureaux ?"
+   },
+   "wordpress": {
+    "rendu": "381×214",
+    "natif": "400×267",
+    "sha": "31c59a38757a03203c9e32366de57b8b3c0cb2b98c32e19a99ca8a34d42207b9",
+    "slot": "article-2",
+    "fichier": "article-2-480.avif",
+    "alt": "Poste de travail avec ordinateur (photo d’illustration)"
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/",
+   "role": "editoriale",
+   "rang": 7,
+   "maquette": {
+    "rendu": "381×214",
+    "natif": "900×600",
+    "sha": "f1c64c6392df9f4398e7f05e2e1fa1c92be99ebdfc0d0685782ff2e830e871c1",
+    "voisin": "BureauxÀ quelle fréquence faire nettoyer ses bureaux ?Quotid",
+    "alt": "Comment rédiger un cahier des charges de nettoyage ?"
+   },
+   "wordpress": {
+    "rendu": "381×214",
+    "natif": "400×266",
+    "sha": "f1c64c6392df9f4398e7f05e2e1fa1c92be99ebdfc0d0685782ff2e830e871c1",
+    "slot": "article-3",
+    "fichier": "article-3-480.avif",
+    "alt": "Bureau avec documents et ordinateur (photo d’illustration)"
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/",
+   "role": "vignette",
+   "rang": 1,
+   "maquette": {
+    "rendu": "44×44",
+    "natif": "120×180",
+    "sha": "e73f0f091f2cad5116f22ad60b0f890faea94544a5cf09a5f7ef0cffaf13e7e8",
+    "voisin": "★★★★★ « Même intervenante chaque semaine, un cahier de liais",
+    "alt": ""
+   },
+   "wordpress": null,
+   "verdict": "MANQUANTE côté thème"
+  },
+  {
+   "route": "#/",
+   "role": "logo-pied",
+   "rang": 1,
+   "maquette": {
+    "rendu": "60×60",
+    "natif": "1024×1009",
+    "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
+    "voisin": "Top-Famille Pro",
+    "alt": "Top-Famille Pro"
+   },
+   "wordpress": {
+    "rendu": "60×60",
+    "natif": "120×120",
+    "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
+    "slot": "logo-carre",
+    "fichier": "logo-carre.png",
+    "alt": ""
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/nettoyage-professionnel",
+   "role": "logo-entete",
+   "rang": 1,
+   "maquette": {
+    "rendu": "155×82",
+    "natif": "759×402",
+    "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
+    "voisin": "Prestations ▼ Tarifs Zones ▼ Pourquoi nous Avis Conseils ☎06",
+    "alt": "Top-Famille Pro"
+   },
+   "wordpress": {
+    "rendu": "155×82",
+    "natif": "320×169",
+    "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
+    "slot": "logo-horizontal",
+    "fichier": "logo-horizontal.png",
+    "alt": "Top-Famille Pro"
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/nettoyage-professionnel",
+   "role": "hero",
+   "rang": 1,
+   "maquette": {
+    "rendu": "512×384",
+    "natif": "1000×667",
+    "sha": "dbc3d6162557a762875fb092051787862b977bbda3c20374d0a0b0ccbe1499e3",
+    "voisin": "",
+    "alt": "Intervenant Top-Famille Pro entretenant des bureaux professionnels"
+   },
+   "wordpress": {
+    "rendu": "512×384",
+    "natif": "560×373",
+    "sha": "dbc3d6162557a762875fb092051787862b977bbda3c20374d0a0b0ccbe1499e3",
+    "slot": "hero-pilier",
+    "fichier": "hero-pilier-760.avif",
+    "alt": "Nettoyage de bureaux professionnels (photo d’illustration)"
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/nettoyage-professionnel",
+   "role": "editoriale",
+   "rang": 1,
+   "maquette": {
+    "rendu": "504×504",
+    "natif": "800×1007",
+    "sha": "18af9088fd99e88a790f94da179174a0c05495384a65ce2c58cc7591a558e193",
+    "voisin": "",
+    "alt": "Audrey, interlocutrice dédiée Top-Famille Pro"
+   },
+   "wordpress": {
+    "rendu": "504×504",
+    "natif": "500×629",
+    "sha": "18af9088fd99e88a790f94da179174a0c05495384a65ce2c58cc7591a558e193",
+    "slot": "audrey-portrait",
+    "fichier": "audrey-portrait-640.avif",
+    "alt": "Photo d’illustration temporaire — portrait définitif à venir"
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/nettoyage-professionnel",
+   "role": "vignette",
+   "rang": 1,
+   "maquette": {
+    "rendu": "56×56",
+    "natif": "800×534",
+    "sha": "0d32ae6733eee622e481ca5cf0f6e44885c26fa84f72d7fb52d3aee58da2471d",
+    "voisin": "Nettoyage de bureauxOpen-spaces, salles de réunion, accueilN",
+    "alt": ""
+   },
+   "wordpress": {
+    "rendu": "56×56",
+    "natif": "56×37",
+    "sha": "0d32ae6733eee622e481ca5cf0f6e44885c26fa84f72d7fb52d3aee58da2471d",
+    "slot": "thumb-bureaux",
+    "fichier": "thumb-bureaux-112.avif",
+    "alt": ""
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/nettoyage-professionnel",
+   "role": "vignette",
+   "rang": 2,
+   "maquette": {
+    "rendu": "56×56",
+    "natif": "800×534",
+    "sha": "0d8cf57d64f5124dd86e190d107e31cd3c09c54f1ac3845332494ae41b9e5e55",
+    "voisin": "Nettoyage de bureauxOpen-spaces, salles de réunion, accueilN",
+    "alt": ""
+   },
+   "wordpress": {
+    "rendu": "56×56",
+    "natif": "56×37",
+    "sha": "0d8cf57d64f5124dd86e190d107e31cd3c09c54f1ac3845332494ae41b9e5e55",
+    "slot": "thumb-commerces",
+    "fichier": "thumb-commerces-112.avif",
+    "alt": ""
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/nettoyage-professionnel",
+   "role": "vignette",
+   "rang": 3,
+   "maquette": {
+    "rendu": "56×56",
+    "natif": "800×534",
+    "sha": "c55d8a5619d299c53ba21c583536e094f20be5154cf6e29a484b8f78afca9363",
+    "voisin": "Nettoyage de bureauxOpen-spaces, salles de réunion, accueilN",
+    "alt": ""
+   },
+   "wordpress": {
+    "rendu": "56×56",
+    "natif": "56×37",
+    "sha": "c55d8a5619d299c53ba21c583536e094f20be5154cf6e29a484b8f78afca9363",
+    "slot": "thumb-cabinets",
+    "fichier": "thumb-cabinets-112.avif",
+    "alt": ""
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/nettoyage-professionnel",
+   "role": "vignette",
+   "rang": 4,
+   "maquette": {
+    "rendu": "56×56",
+    "natif": "800×533",
+    "sha": "ecee90efb0f2ef69c30d06bb97dbc82d8fdd639d84d6fa7e567027f03e730526",
+    "voisin": "Nettoyage de bureauxOpen-spaces, salles de réunion, accueilN",
+    "alt": ""
+   },
+   "wordpress": {
+    "rendu": "56×56",
+    "natif": "56×37",
+    "sha": "ecee90efb0f2ef69c30d06bb97dbc82d8fdd639d84d6fa7e567027f03e730526",
+    "slot": "thumb-coproprietes",
+    "fichier": "thumb-coproprietes-112.avif",
+    "alt": ""
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/nettoyage-professionnel",
+   "role": "vignette",
+   "rang": 5,
+   "maquette": {
+    "rendu": "56×56",
+    "natif": "800×533",
+    "sha": "e2440e590fa6dd38866ca5e8b894353b9cb9f5a74afc02e0873efce79f3e5802",
+    "voisin": "Nettoyage de bureauxOpen-spaces, salles de réunion, accueilN",
+    "alt": ""
+   },
+   "wordpress": {
+    "rendu": "56×56",
+    "natif": "56×37",
+    "sha": "e2440e590fa6dd38866ca5e8b894353b9cb9f5a74afc02e0873efce79f3e5802",
+    "slot": "thumb-meubles",
+    "fichier": "thumb-meubles-112.avif",
+    "alt": ""
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/nettoyage-professionnel",
+   "role": "vignette",
+   "rang": 6,
+   "maquette": {
+    "rendu": "56×56",
+    "natif": "800×533",
+    "sha": "03752d889ac8f8d3c2ef966dea784f3c995df5881914db78e48984b873f43636",
+    "voisin": "Nettoyage de bureauxOpen-spaces, salles de réunion, accueilN",
+    "alt": ""
+   },
+   "wordpress": {
+    "rendu": "56×56",
+    "natif": "56×37",
+    "sha": "03752d889ac8f8d3c2ef966dea784f3c995df5881914db78e48984b873f43636",
+    "slot": "thumb-ponctuel",
+    "fichier": "thumb-ponctuel-112.avif",
+    "alt": ""
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/nettoyage-professionnel",
+   "role": "logo-pied",
+   "rang": 1,
+   "maquette": {
+    "rendu": "60×60",
+    "natif": "1024×1009",
+    "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
+    "voisin": "Top-Famille Pro",
+    "alt": "Top-Famille Pro"
+   },
+   "wordpress": {
+    "rendu": "60×60",
+    "natif": "120×120",
+    "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
+    "slot": "logo-carre",
+    "fichier": "logo-carre.png",
+    "alt": ""
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/ville/dijon",
+   "role": "logo-entete",
+   "rang": 1,
+   "maquette": {
+    "rendu": "155×82",
+    "natif": "759×402",
+    "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
+    "voisin": "Prestations ▼ Tarifs Zones ▼ Pourquoi nous Avis Conseils ☎06",
+    "alt": "Top-Famille Pro"
+   },
+   "wordpress": {
+    "rendu": "155×82",
+    "natif": "320×169",
+    "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
+    "slot": "logo-horizontal",
+    "fichier": "logo-horizontal.png",
+    "alt": "Top-Famille Pro"
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/ville/dijon",
+   "role": "hero",
+   "rang": 1,
+   "maquette": {
+    "rendu": "512×384",
+    "natif": "900×601",
+    "sha": "5f1f95810af0a046a9d561624a66bbf6eaa90c000dc3445fe62c41f6bd119290",
+    "voisin": "",
+    "alt": "Locaux professionnels à Dijon"
+   },
+   "wordpress": {
+    "rendu": "512×384",
+    "natif": "560×374",
+    "sha": "5f1f95810af0a046a9d561624a66bbf6eaa90c000dc3445fe62c41f6bd119290",
+    "slot": "ville-dijon",
+    "fichier": "ville-dijon-760.avif",
+    "alt": "Locaux professionnels à Dijon"
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/ville/dijon",
+   "role": "logo-pied",
+   "rang": 1,
+   "maquette": {
+    "rendu": "60×60",
+    "natif": "1024×1009",
+    "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
+    "voisin": "Top-Famille Pro",
+    "alt": "Top-Famille Pro"
+   },
+   "wordpress": {
+    "rendu": "60×60",
+    "natif": "120×120",
+    "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
+    "slot": "logo-carre",
+    "fichier": "logo-carre.png",
+    "alt": ""
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/conseils",
+   "role": "logo-entete",
+   "rang": 1,
+   "maquette": {
+    "rendu": "155×82",
+    "natif": "759×402",
+    "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
+    "voisin": "Prestations ▼ Tarifs Zones ▼ Pourquoi nous Avis Conseils ☎06",
+    "alt": "Top-Famille Pro"
+   },
+   "wordpress": {
+    "rendu": "155×82",
+    "natif": "320×169",
+    "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
+    "slot": "logo-horizontal",
+    "fichier": "logo-horizontal.png",
+    "alt": "Top-Famille Pro"
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/conseils",
+   "role": "editoriale",
+   "rang": 1,
+   "maquette": {
+    "rendu": "589×393",
+    "natif": "900×601",
+    "sha": "4ba2bd2ba288216e81ea26a8ed506b377064337456c319cd6273d42b90fe97d2",
+    "voisin": "À la une · Bureaux À quelle fréquence faire nettoyer ses bur",
+    "alt": "À quelle fréquence faire nettoyer ses bureaux ?"
+   },
+   "wordpress": {
+    "rendu": "589×393",
+    "natif": "590×393",
+    "sha": "4ba2bd2ba288216e81ea26a8ed506b377064337456c319cd6273d42b90fe97d2",
+    "slot": "article-1",
+    "fichier": "article-1-640.avif",
+    "alt": "À quelle fréquence faire nettoyer ses bureaux ?"
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/conseils",
+   "role": "editoriale",
+   "rang": 2,
+   "maquette": {
+    "rendu": "580×326",
+    "natif": "900×601",
+    "sha": "31c59a38757a03203c9e32366de57b8b3c0cb2b98c32e19a99ca8a34d42207b9",
+    "voisin": "TarifsCombien coûte le nettoyage de bureaux ?Tarif horaire, ",
+    "alt": "Combien coûte le nettoyage de bureaux ?"
+   },
+   "wordpress": {
+    "rendu": "580×326",
+    "natif": "380×254",
+    "sha": "31c59a38757a03203c9e32366de57b8b3c0cb2b98c32e19a99ca8a34d42207b9",
+    "slot": "article-2",
+    "fichier": "article-2-480.avif",
+    "alt": "Combien coûte le nettoyage de bureaux ?"
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/conseils",
+   "role": "editoriale",
+   "rang": 3,
+   "maquette": {
+    "rendu": "580×326",
+    "natif": "900×600",
+    "sha": "f1c64c6392df9f4398e7f05e2e1fa1c92be99ebdfc0d0685782ff2e830e871c1",
+    "voisin": "TarifsCombien coûte le nettoyage de bureaux ?Tarif horaire, ",
+    "alt": "Comment rédiger un cahier des charges de nettoyage ?"
+   },
+   "wordpress": {
+    "rendu": "580×326",
+    "natif": "380×253",
+    "sha": "f1c64c6392df9f4398e7f05e2e1fa1c92be99ebdfc0d0685782ff2e830e871c1",
+    "slot": "article-3",
+    "fichier": "article-3-480.avif",
+    "alt": "Comment rédiger un cahier des charges de nettoyage ?"
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/conseils",
+   "role": "logo-pied",
+   "rang": 1,
+   "maquette": {
+    "rendu": "60×60",
+    "natif": "1024×1009",
+    "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
+    "voisin": "Top-Famille Pro",
+    "alt": "Top-Famille Pro"
+   },
+   "wordpress": {
+    "rendu": "60×60",
+    "natif": "120×120",
+    "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
+    "slot": "logo-carre",
+    "fichier": "logo-carre.png",
+    "alt": ""
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/a-propos",
+   "role": "logo-entete",
+   "rang": 1,
+   "maquette": {
+    "rendu": "155×82",
+    "natif": "759×402",
+    "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
+    "voisin": "Prestations ▼ Tarifs Zones ▼ Pourquoi nous Avis Conseils ☎06",
+    "alt": "Top-Famille Pro"
+   },
+   "wordpress": {
+    "rendu": "155×82",
+    "natif": "320×169",
+    "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
+    "slot": "logo-horizontal",
+    "fichier": "logo-horizontal.png",
+    "alt": "Top-Famille Pro"
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/a-propos",
+   "role": "hero",
+   "rang": 1,
+   "maquette": {
+    "rendu": "400×500",
+    "natif": "800×1198",
+    "sha": "c6c51783628e317008b03004640a273251c41c6373a6fc63738dc2d56df83965",
+    "voisin": "",
+    "alt": "Audrey, Top-Famille Pro"
+   },
+   "wordpress": {
+    "rendu": "400×500",
+    "natif": "400×599",
+    "sha": "c6c51783628e317008b03004640a273251c41c6373a6fc63738dc2d56df83965",
+    "slot": "audrey-placeholder",
+    "fichier": "audrey-placeholder-480.avif",
+    "alt": "Photo d’illustration temporaire — portrait définitif à venir"
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/a-propos",
+   "role": "logo-pied",
+   "rang": 1,
+   "maquette": {
+    "rendu": "60×60",
+    "natif": "1024×1009",
+    "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
+    "voisin": "Top-Famille Pro",
+    "alt": "Top-Famille Pro"
+   },
+   "wordpress": {
+    "rendu": "60×60",
+    "natif": "120×120",
+    "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
+    "slot": "logo-carre",
+    "fichier": "logo-carre.png",
+    "alt": ""
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/recrutement",
+   "role": "logo-entete",
+   "rang": 1,
+   "maquette": {
+    "rendu": "155×82",
+    "natif": "759×402",
+    "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
+    "voisin": "Prestations ▼ Tarifs Zones ▼ Pourquoi nous Avis Conseils ☎06",
+    "alt": "Top-Famille Pro"
+   },
+   "wordpress": {
+    "rendu": "155×82",
+    "natif": "320×169",
+    "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
+    "slot": "logo-horizontal",
+    "fichier": "logo-horizontal.png",
+    "alt": "Top-Famille Pro"
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/recrutement",
+   "role": "hero",
+   "rang": 1,
+   "maquette": {
+    "rendu": "512×384",
+    "natif": "1000×667",
+    "sha": "600a388c7750c4054c6842f0f57bd34e82bed5e37effae022f32333f6f7021b9",
+    "voisin": "",
+    "alt": "Intervenant Top-Famille Pro préparant son matériel de nettoyage"
+   },
+   "wordpress": {
+    "rendu": "512×384",
+    "natif": "560×373",
+    "sha": "600a388c7750c4054c6842f0f57bd34e82bed5e37effae022f32333f6f7021b9",
+    "slot": "service-generic",
+    "fichier": "service-generic-760.avif",
+    "alt": "Intervention de nettoyage professionnel avec équipement de protection (photo d’illustration)"
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/recrutement",
+   "role": "logo-pied",
+   "rang": 1,
+   "maquette": {
+    "rendu": "60×60",
+    "natif": "1024×1009",
+    "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
+    "voisin": "Top-Famille Pro",
+    "alt": "Top-Famille Pro"
+   },
+   "wordpress": {
+    "rendu": "60×60",
+    "natif": "120×120",
+    "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
+    "slot": "logo-carre",
+    "fichier": "logo-carre.png",
+    "alt": ""
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/contact",
+   "role": "logo-entete",
+   "rang": 1,
+   "maquette": {
+    "rendu": "155×82",
+    "natif": "759×402",
+    "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
+    "voisin": "Prestations ▼ Tarifs Zones ▼ Pourquoi nous Avis Conseils ☎06",
+    "alt": "Top-Famille Pro"
+   },
+   "wordpress": {
+    "rendu": "155×82",
+    "natif": "320×169",
+    "sha": "667325a99b8b8f2e3b5cdfee0eb8c362de9becd84081c9ddedf8dd97067e6cae",
+    "slot": "logo-horizontal",
+    "fichier": "logo-horizontal.png",
+    "alt": "Top-Famille Pro"
+   },
+   "verdict": "IDENTIQUE"
+  },
+  {
+   "route": "#/contact",
+   "role": "vignette",
+   "rang": 1,
+   "maquette": {
+    "rendu": "64×64",
+    "natif": "200×252",
+    "sha": "f9c6cb81f75acb8267b975f23af561aed7b5d0b961fca6f944ab9d3ed2dbedd7",
+    "voisin": "AudreyVotre interlocutrice, du devis au suivi",
+    "alt": "Audrey, Top-Famille Pro"
+   },
+   "wordpress": {
+    "rendu": "64×64",
+    "natif": "64×95",
+    "sha": "c6c51783628e317008b03004640a273251c41c6373a6fc63738dc2d56df83965",
+    "slot": "audrey-placeholder",
+    "fichier": "audrey-placeholder-480.avif",
+    "alt": ""
+   },
+   "verdict": "IMAGE DIFFÉRENTE"
+  },
+  {
+   "route": "#/contact",
+   "role": "logo-pied",
+   "rang": 1,
+   "maquette": {
+    "rendu": "60×60",
+    "natif": "1024×1009",
+    "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
+    "voisin": "Top-Famille Pro",
+    "alt": "Top-Famille Pro"
+   },
+   "wordpress": {
+    "rendu": "60×60",
+    "natif": "120×120",
+    "sha": "4190421a67a40922a390ffa5730c7b8f95e333354524c481f9f28562248f6932",
+    "slot": "logo-carre",
+    "fichier": "logo-carre.png",
+    "alt": ""
+   },
+   "verdict": "IDENTIQUE"
+  }
+ ]
+}

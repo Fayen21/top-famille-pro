@@ -1616,9 +1616,13 @@ body.tfp-body .tfp-row-heading {
 
 /* Le logo du pied de page est décoratif : le nom de la marque est déjà écrit à côté en texte.
    Son `alt` est donc vide, sinon un lecteur d'écran annonce deux fois « Top-Famille Pro ». */
+/* Logo carré du pied, relevé sur la maquette (G26) : 60×60, rayon 12, object-fit cover. */
 .tfp-footer__logo {
-  width: 110px;
-  height: auto;
+  width: 60px;
+  height: 60px;
+  border-radius: 12px;
+  object-fit: cover;
+  flex-shrink: 0;
 }
 
 .tfp-footer__brand-name {
@@ -4264,4 +4268,37 @@ body.tfp-body .tfp-section--primary .tfp-link-row:focus-visible {
   border: 1px solid var(--color-copper-dark);
   background: #FDF3EC;
   color: var(--color-text);
+}
+
+/* ------------------------------------------------------------------
+   Bande « Cahier des charges, intervenants et suivi » du pilier — rangée à deux colonnes
+   relevée sur la maquette (G26) : visuel carré à gauche (flex 1 1 300px, rayon 20, aspect 1/1,
+   object-fit cover), contenu à droite (flex 1 1 420px), écart clamp(30px, 4vw, 52px), colonnes
+   centrées. La colonne image était absente du relevé — un bloc muet n'ouvre pas de bloc de texte.
+   ------------------------------------------------------------------ */
+.tfp-methode-rangee {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(30px, 4vw, 52px);
+  align-items: center;
+}
+
+.tfp-methode-rangee__media {
+  flex: 1 1 300px;
+  min-width: min(100%, 300px);
+}
+
+.tfp-methode-rangee__corps {
+  flex: 1 1 420px;
+  min-width: min(100%, 320px);
+}
+
+.tfp-methode-rangee__img,
+.tfp-methode-rangee__media img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 20px;
+  background: var(--color-border);
 }

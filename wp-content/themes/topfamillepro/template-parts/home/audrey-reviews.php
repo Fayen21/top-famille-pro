@@ -28,7 +28,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 $site         = tfp_site_data();
 $first_name   = explode( ' ', $site['manager'] )[0];
-$audrey_photo = tfp_get_audrey_photo_url();
+// `audrey-portrait` : le visuel que la maquette pose sur l'accueil (800×1007) — distinct de celui
+// de /a-propos/. Relevé G26 par l'audit d'images par rôle, sur les octets.
+$audrey_photo = tfp_get_audrey_photo_url( 'audrey-portrait' );
 $is_real      = tfp_audrey_photo_is_real();
 ?>
 <section class="tfp-section--alt tfp-section">
