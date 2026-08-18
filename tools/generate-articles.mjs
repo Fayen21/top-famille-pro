@@ -24,13 +24,35 @@ const ARTICLES = [
 	{ hash: '#/article/cahier-des-charges-nettoyage', slug: 'cahier-des-charges-nettoyage' },
 ];
 
+/**
+ * Corrections orthographiques imposées par `CLAUDE.md` §9, appliquées à tout texte relevé.
+ *
+ * Le générateur reproduit le prototype ; la faute est dans le prototype, donc la correction vient
+ * ici — la corriger dans le fichier généré serait écrasé à la régénération suivante.
+ */
+const ORTHOGRAPHE = [ [ 'lister precisément', 'lister précisément' ] ];
+
+/** Nombre de corrections appliquées, pour le compte rendu de fin de génération. */
+let fautesCorrigees = 0;
+
+function orthographe(texte) {
+	let sortie = String(texte ?? '');
+	for (const [ avant, apres ] of ORTHOGRAPHE) {
+		while (sortie.includes(avant)) {
+			sortie = sortie.replace(avant, apres);
+			fautesCorrigees++;
+		}
+	}
+	return sortie;
+}
+
 function php(str) {
-	return "'" + String(str ?? '').replace(/\\/g, '\\\\').replace(/'/g, "\\'") + "'";
+	return "'" + orthographe(str).replace(/\\/g, '\\\\').replace(/'/g, "\\'") + "'";
 }
 
 /** Échappement HTML pour le corps reconstruit — le contenu vient du DOM, pas d'une saisie. */
 function esc(s) {
-	return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+	return orthographe(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 }
 
 const browser = await chromium.launch({ executablePath: '/opt/pw-browsers/chromium' });
@@ -290,3 +312,10 @@ L.push('echo "Terminé.\\n";');
 
 writeFileSync(OUT, L.join('\n') + '\n');
 console.error(`\nÉcrit : ${OUT}`);
+if (fautesCorrigees !== ORTHOGRAPHE.length) {
+	throw new Error(
+		`corrections orthographiques : ${ fautesCorrigees } appliquée(s) pour ${ ORTHOGRAPHE.length } règle(s) — ` +
+			'une faute a disparu de la maquette ou a changé de forme. Revoir ORTHOGRAPHE (CLAUDE.md §9).'
+	);
+}
+console.error(`Fautes corrigées (CLAUDE.md §9) : ${ fautesCorrigees }`);

@@ -18,6 +18,129 @@ import { chromium } from '@playwright/test';
 import { writeFileSync } from 'node:fs';
 import { ROUTE_MAP } from './route-map.mjs';
 
+/*
+ * CORRECTIONS ÉDITORIALES appliquées au contenu relevé — table explicite, et seul endroit où le
+ * texte de la maquette est modifié.
+ *
+ * Le générateur reproduit le prototype ; il ne le corrige pas de sa propre initiative. Quand une
+ * correction est décidée par Emmanuel, elle vient ici plutôt que dans le fichier généré, sinon la
+ * régénération suivante l'écrase — c'est ce que dit l'en-tête de `bin/seed-fidelite-zones.php`.
+ *
+ * Chaque entrée est appliquée par REMPLACEMENT EXACT d'un fragment. Si le fragment n'est plus
+ * trouvé — parce que la maquette a changé — la génération échoue bruyamment au lieu de produire
+ * silencieusement un texte non corrigé.
+ */
+const CORRECTIONS_EDITORIALES = [
+	{
+		zone: 'quetigny',
+		champ: 'reponse',
+		// Décision d'Emmanuel du 17 août 2026 : les 8 communes secondaires sont desservies, et leur
+		// texte passe à l'affirmatif. Sept des huit affirment déjà l'intervention dans leur réponse
+		// directe ; celle de Quetigny décrit la commune et le tarif sans jamais dire que nous y
+		// intervenons. C'est précisément l'endroit où le visiteur cherche la réponse.
+		avant: "Quetigny est une commune de Côte-d'Or située à l'est de Dijon, limitrophe de Saint-Apollinaire où Top-Famille Pro est implantée.",
+		apres:
+			"Top-Famille Pro entretient vos locaux à Quetigny, commune de Côte-d'Or située à l'est de Dijon, " +
+			"limitrophe de Saint-Apollinaire où l'entreprise est implantée.",
+	},
+];
+
+/**
+ * Corrections grammaticales imposées par `CLAUDE.md` §9, appliquées à TOUT texte relevé.
+ *
+ * La maquette écrit « sont possible lorsque prévu … et chiffré dans le devis » : trois accords
+ * fautifs dans la même incise, répétés sur les 26 zones parce que le prototype la recopie d'une
+ * page à l'autre. `CLAUDE.md` §9 nomme explicitement « sont possible » et « lorsque prévu » avec
+ * sujet pluriel parmi les corrections à faire.
+ *
+ * L'accord dépend du sujet, qui change d'une occurrence à l'autre — « la sortie des bacs »
+ * (féminin singulier), « la sortie et la rentrée » (féminin pluriel), « le changement de linge, la
+ * vérification … et le signalement » (masculin pluriel). Une règle unique produirait donc une
+ * faute là où elle en corrige une autre : chaque sujet a la sienne, la plus longue d'abord.
+ *
+ * Le contrôle final est le garde-fou : si un « lorsque prévu » survit à toutes les règles, c'est
+ * qu'un sujet non prévu est apparu dans la maquette, et la génération échoue plutôt que de
+ * publier la faute.
+ */
+const QUEUE = 'lorsque prévu dans le cahier des charges et chiffré dans le devis';
+const GRAMMAIRE = [
+	// Féminin pluriel : « la sortie et la rentrée des bacs ».
+	[
+		`La sortie et la rentrée des bacs sont possible ${ QUEUE }`,
+		"La sortie et la rentrée des bacs sont possibles lorsqu'elles sont prévues au cahier des charges et chiffrées au devis",
+	],
+	[
+		`sortie et rentrée des bacs possible ${ QUEUE }`,
+		"sortie et rentrée des bacs possibles lorsqu'elles sont prévues au cahier des charges et chiffrées au devis",
+	],
+	// Féminin singulier : « la sortie des bacs », « la gestion des bacs ».
+	[
+		`sortie des bacs possible ${ QUEUE }`,
+		"sortie des bacs possible lorsqu'elle est prévue au cahier des charges et chiffrée au devis",
+	],
+	[
+		`la gestion des bacs étant possible ${ QUEUE }`,
+		"la gestion des bacs étant possible lorsqu'elle est prévue au cahier des charges et chiffrée au devis",
+	],
+	// Masculin pluriel : énumération « le changement de linge, la vérification …, le signalement ».
+	[
+		`des dégradations sont possible ${ QUEUE }`,
+		"des dégradations sont possibles lorsqu'ils sont prévus au cahier des charges et chiffrés au devis",
+	],
+	[
+		`des dégradations étant possible ${ QUEUE }`,
+		"des dégradations étant possibles lorsqu'ils sont prévus au cahier des charges et chiffrés au devis",
+	],
+	[
+		`chacun possible ${ QUEUE }`,
+		"chacun possible lorsqu'il est prévu au cahier des charges et chiffré au devis",
+	],
+	// Tournure impersonnelle : le sujet est le fait lui-même.
+	[
+		`C'est possible ${ QUEUE }`,
+		"C'est possible lorsque c'est prévu au cahier des charges et chiffré au devis",
+	],
+];
+
+/** Nombre de corrections grammaticales appliquées, pour le compte rendu de fin de génération. */
+let accordsCorriges = 0;
+
+/** Applique les règles d'accord ; échoue si une tournure fautive non couverte subsiste. */
+function grammaire(texte) {
+	let sortie = String(texte ?? '');
+	for (const [avant, apres] of GRAMMAIRE) {
+		while (sortie.includes(avant)) {
+			sortie = sortie.replace(avant, apres);
+			accordsCorriges++;
+		}
+	}
+	if (sortie.includes('lorsque prévu') || /\bsont possible\b(?!s)/.test(sortie)) {
+		throw new Error(
+			'accord fautif non couvert par GRAMMAIRE — la maquette a introduit un sujet nouveau : ' +
+				`« …${ sortie.slice(Math.max(0, sortie.indexOf('lorsque prévu') - 90), sortie.indexOf('lorsque prévu') + 20) }… ». ` +
+				'Ajouter sa règle plutôt que publier la faute (CLAUDE.md §9).'
+		);
+	}
+	return sortie;
+}
+
+/** Applique les corrections éditoriales d'une zone, en échouant si un fragment a disparu. */
+function corriger(slugZone, champ, texte) {
+	let sortie = texte;
+	for (const c of CORRECTIONS_EDITORIALES) {
+		if (c.zone !== slugZone || c.champ !== champ) continue;
+		if (!sortie.includes(c.avant)) {
+			throw new Error(
+				`correction éditoriale caduque — zone « ${slugZone} », champ « ${champ} » : le fragment ` +
+					`« ${c.avant.slice(0, 60)}… » n'existe plus dans la maquette. Revoir CORRECTIONS_EDITORIALES ` +
+					'plutôt que de laisser passer un texte non corrigé.'
+			);
+		}
+		sortie = sortie.replace(c.avant, c.apres);
+	}
+	return sortie;
+}
+
 const REF = 'file:///home/user/top-famille-pro/reference/Top-Famille-Pro-HANDOFF-READY.html';
 const OUT = 'bin/seed-fidelite-zones.php';
 
@@ -27,7 +150,7 @@ const ZONES = Object.entries(ROUTE_MAP)
 	.map(([hash, m]) => ({ hash, slug: hash.split('/').pop(), niveau: m.type }));
 
 function php(str) {
-	return "'" + String(str ?? '').replace(/\\/g, '\\\\').replace(/'/g, "\\'") + "'";
+	return "'" + grammaire(str).replace(/\\/g, '\\\\').replace(/'/g, "\\'") + "'";
 }
 
 function phpLines(items) {
@@ -315,7 +438,7 @@ for (const z of all) {
 	set('cta_label', php(z.ctaLabel));
 	set('cta_phone_label', php(z.ctaPhoneLabel));
 	set('band_items', phpLines(z.bandItems));
-	set('reponse_directe', php(z.reponse));
+	set('reponse_directe', php(corriger(z.slug, 'reponse', z.reponse)));
 
 	z.recit.slice(0, 6).forEach((g, i) => {
 		set(`recit_${i + 1}_titre`, php(g.titre));
@@ -373,3 +496,4 @@ L.push('echo "Terminé.\\n";');
 
 writeFileSync(OUT, L.join('\n') + '\n');
 console.error(`\nÉcrit : ${OUT}`);
+console.error(`Accords corrigés (CLAUDE.md §9) : ${accordsCorriges}`);

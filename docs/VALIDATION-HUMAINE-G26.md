@@ -164,11 +164,42 @@ mention visible — c'est ce qui les rend publiables.
 Chenôve, Quetigny, Talant, Longvic, Fontaine-lès-Dijon, Marsannay-la-Côte et Beaune passent en
 `index,follow` et rejoignent le sitemap.
 
-> **Un point resté en suspens, à décider quand vous voudrez.** Le *texte* de ces huit pages est
-> celui écrit quand la desserte n'était pas confirmée : il dit « la demande peut être étudiée »
-> plutôt que « nous intervenons ». Ce n'est plus exact, mais le passer à l'affirmatif est une
-> réécriture éditoriale, pas une conséquence mécanique de la validation — je ne l'ai pas faite de
-> moi-même. Dites-le et je m'en occupe.
+**Leur texte est passé à l'affirmatif** le 18 août 2026, à votre demande — avec une correction de
+ce que je vous avais écrit la veille. J'avais annoncé que les huit pages disaient « la demande peut
+être étudiée » : c'était vrai du champ `reponse_directe` posé par le seed des communes, mais **ce
+champ est réécrit ensuite** par le seed de fidélité, qui s'exécute après lui. Le texte réellement
+servi affirmait donc déjà l'intervention sur **sept des huit** (« Top-Famille Pro y entretient … »,
+et Saint-Apollinaire est le siège). Une seule page restait à reprendre :
+
+| Page | Avant | Après |
+|---|---|---|
+| Quetigny | « Quetigny est une commune de Côte-d'Or située à l'est de Dijon… » — la commune est décrite, l'intervention n'est jamais affirmée | « **Top-Famille Pro entretient vos locaux à Quetigny**, commune de Côte-d'Or… » |
+
+Beaune garde une formulation prudente, et c'est volontaire : elle porte sur **Savigny-lès-Beaune et
+Pommard**, qui ne font pas partie des huit communes validées. Promettre une desserte là-bas serait
+exactement l'erreur que la validation vient d'éviter ailleurs.
+
+Les huit pages sont désormais contrôlées à chaque passage de la suite
+(`tests/communes-affirmatif.spec.js`) : réponse directe affirmative, aucune tournure conditionnelle
+sur la commune de la page, `index,follow`, description qui la nomme. Le contrôle porte sur la page
+servie et non sur le seed, parce que ce seed est **généré** depuis la maquette — sans ce test, une
+régénération ramènerait le texte d'origine sans que rien ne le signale. Vérifié en rechargeant le
+contenu d'avant : **16 de ces tests échouent**, la démonstration est faite.
+
+### Deux fautes de langue corrigées au passage
+
+En relisant ces huit pages, deux fautes nommées par `CLAUDE.md` §9 étaient encore servies :
+
+- « … sont possible **lorsque prévu** dans le cahier des charges et **chiffré** dans le devis » —
+  trois accords fautifs dans la même incise, que la maquette répète **28 fois** sur les 26 pages de
+  zone ;
+- « lister **precisément** », sur un article.
+
+Elles ne relèvent pas de votre consigne du 10 août : celle-ci portait sur les *formulations*, et §9
+demande au contraire la correction orthographique et grammaticale des 53 pages, en nommant ces deux
+cas. Corrigées dans les **générateurs**, pas dans les fichiers produits — sinon la régénération
+suivante les aurait effacées. Ce qui reste différé, et n'a pas été touché, c'est « Aucun
+simulateur » et « une couverture régionale, pas des agences fictives ».
 
 ## Un point de documentation à arbitrer
 

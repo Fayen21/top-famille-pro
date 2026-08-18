@@ -133,7 +133,7 @@ if ( empty( $posts ) ) {
 		'post_content'  => '<h2>Pourquoi un cahier des charges change tout</h2>
 <p>Un cahier des charges précis évite les malentendus les plus fréquents : tâches oubliées, attentes mal comprises, zones sensibles négligées. Il sert de référence commune entre vous, l\'intervenant et votre interlocutrice, et permet un contrôle objectif du travail réalisé.</p>
 <h2>Les espaces à lister</h2>
-<p>La première étape consiste à lister precisément chaque espace concerné, plutôt que de parler globalement des « bureaux » :</p>
+<p>La première étape consiste à lister précisément chaque espace concerné, plutôt que de parler globalement des « bureaux » :</p>
 <ul>
 <li>Postes de travail et open-spaces</li>
 <li>Salles de réunion</li>

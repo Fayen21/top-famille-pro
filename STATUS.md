@@ -1424,3 +1424,81 @@ Rapport complet : `docs/RAPPORT-PASSE-FINALE.md`. Verdict : **PARTIEL — ÉCART
   par Audrey · validation une par une des huit communes secondaires · remplacement des témoignages
   provisoires · horaires de contact réels · sort des contenus que `verifier-installation.php`
   signalera sur l'installation réelle.
+
+## Passe G26, suite — 18 août 2026 (branche `claude/g23-fidelite-claude-design-7doxg4`)
+
+### Fait
+
+**Texte des huit communes passé à l'affirmatif**, à la demande d'Emmanuel après la validation de
+leur desserte le 17 août. En instruisant la demande, une **erreur de mon compte rendu de la veille**
+est apparue : j'avais annoncé que les huit pages disaient « la demande peut être étudiée ». C'était
+vrai du champ `reponse_directe` posé par `bin/seed-phase3-batch4-communes.php`, mais **ce champ est
+réécrit ensuite** par `bin/seed-fidelite-zones.php`, qui s'exécute après lui dans `tools/banc-local.sh`.
+Le texte réellement servi affirmait donc déjà l'intervention sur **sept des huit** (« Top-Famille Pro
+y entretient … » ; Saint-Apollinaire est le siège). Une seule page restait à reprendre — Quetigny,
+dont la réponse directe décrivait la commune sans jamais dire que nous y intervenons.
+
+Beaune garde une formulation prudente, **et c'est voulu** : elle porte sur Savigny-lès-Beaune et
+Pommard, qui ne font pas partie des huit communes validées.
+
+**Deux fautes de langue nommées par `CLAUDE.md` §9 étaient encore servies** et sont corrigées :
+
+| Faute | Occurrences | Correction |
+|---|---|---|
+| « … sont possible **lorsque prévu** dans le cahier des charges et **chiffré** dans le devis » | **28**, sur les 26 zones | accordé au sujet de chaque phrase (féminin singulier, féminin pluriel, masculin pluriel selon les cas) |
+| « lister **precisément** » | 1, `/conseils/cahier-des-charges-nettoyage/` | « lister précisément » |
+
+Elles ne relèvent pas de la consigne du 10 août 2026, qui porte sur les **formulations** ; §9 demande
+au contraire la correction orthographique et grammaticale des 53 pages en nommant ces deux cas.
+« Aucun simulateur » et « une couverture régionale, pas des agences fictives » **restent différées**
+et n'ont pas été touchées.
+
+**Où les corrections sont portées.** `bin/seed-fidelite-zones.php` et `bin/seed-fidelite-articles.php`
+sont **générés** : corriger le fichier produit aurait été effacé à la régénération suivante. Les
+règles vivent donc dans `tools/generate-zones.mjs` (`CORRECTIONS_EDITORIALES`, `GRAMMAIRE`) et
+`tools/generate-articles.mjs` (`ORTHOGRAPHE`). Les deux générateurs **échouent** si un fragment
+attendu a disparu de la maquette, plutôt que de produire silencieusement un texte non corrigé.
+
+**Paquet d'installation resynchronisé.** `installer/topfamillepro-content-installer/seed/` avait
+**dérivé de `bin/`** — dérive antérieure à cette passe, jamais signalée : `seed-fidelite-pages.php`
+1216 lignes d'écart, `seed-fidelite-zones.php` 401, `seed-phase3-batch4-communes.php` 133,
+`seed-phase4-maillage.php` 72. Et `bin/seed-reassurance.php`, qui porte la décision du 17 août sur la
+note Google, **n'était pas du tout dans le paquet**. Le plugin d'installation aurait donc déployé un
+site plus ancien que le dépôt. Les six fichiers sont resynchronisés, `seed-reassurance.php` est
+ajouté à la liste ordonnée de `includes/installer.php`, et l'étiquette « 8 communes secondaires
+(noindex,follow) » y devient « 8 communes desservies (validées le 17/08/2026, index) ».
+
+### Contrôles
+
+- Suite complète : **1156 verts**, 0 échec (1079 + 77 nouveaux).
+- `tests/communes-affirmatif.spec.js` (nouveau) : réponse directe affirmative, aucune tournure
+  conditionnelle sur la commune de la page, `index,follow` et description qui la nomme, pour les
+  huit ; puis les quatre fautes nommées par §9 absentes des **53 routes**. Contrôle sur le HTML
+  servi, pas sur le seed — le seed étant généré, c'est le seul endroit où la régression se verrait.
+- **Témoin** : contenu d'avant rechargé dans le banc, ces mêmes tests rejoués → **16 échecs**. Le
+  verrou n'est pas complaisant.
+- `tools/diff-text.mjs` : **0 bloc de texte manquant** sur les 53 routes, 36 écarts nommés.
+- 112 comparaisons régénérées, `docs/COMPARAISON-53-ROUTES.md` à jour, **0 débordement**.
+
+### Un écart de mesure élucidé, à ne pas relire comme une régression
+
+Trois ratios du rapport de comparaison sortent de la bande 95-105 % alors qu'ils y étaient : mots de
+`/avis-clients/` 105 → 106 %, de `/a-propos/` 102 → 103 %. **Ce n'est pas cette passe.** Le rapport
+au dépôt datait du commit `b2f3951`, mesuré quand la note Google était masquée ; `5a5a02a` l'a
+réaffichée sur décision d'Emmanuel sans régénérer le rapport. Vérifié par bascule du réglage
+« Afficher sans la fiche » : 649 → 641 mots sur `/avis-clients/`, 1142 → 1134 sur `/a-propos/`, soit
+exactement les valeurs d'avant et d'après. Le rapport était périmé sur ce point ; il ne l'est plus.
+
+### Reste à faire
+
+- **`fonctionnement` est un champ ACF mort** : `single-zone.php` le lit (ligne 35) et ne l'affiche
+  jamais. Il est pourtant enregistré, éditable en administration et alimenté sur les 26 zones par
+  les seeds de phase 3. La bande « Fonctionnement, accès et suivi » réellement servie vient de
+  `methode_2_titre`/`methode_2_texte`, posés par le seed de fidélité. En l'état, un éditeur peut
+  écrire dans ce champ en croyant publier. À trancher : le brancher au gabarit, ou le retirer.
+  **Non corrigé de moi-même** : le brancher changerait la composition des 26 pages de zone.
+- **Répétitions de « le cas échéant »** (§9) : 5 sur `/tarifs/`, 3 sur `/zones-intervention/bourgogne-franche-comte/`,
+  2 sur l'accueil et le pilier. La maquette en compte 40. Trois des cinq de `/tarifs/` sont des
+  intitulés de ligne de tableau, répétés par structure. C'est une reformulation, pas une faute :
+  elle tombe sous la consigne du 10 août et attend un arbitrage.
+- Le verdict reste **`PARTIEL — ÉCARTS RESTANTS`** jusqu'à validation humaine des captures.

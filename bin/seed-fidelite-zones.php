@@ -409,7 +409,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'faq_2', array( 'question' => 'Couvrez-vous le Haut-Jura, vers Saint-Claude ou Morez ?', 'reponse' => 'Ce ne sont pas nos secteurs prioritaires, en raison de la distance. Nous étudions les demandes au cas par cas, mais nous préférons annoncer clairement nos limites plutôt qu\'une couverture départementale complète.' ), $id );
 	tfp_seed_set_field( 'faq_3', array( 'question' => 'Le tarif est-il différent à Lons-le-Saunier ?', 'reponse' => 'Non, 27 € HT/h dans les deux villes. Les éventuelles indemnités kilométriques dépendent de l\'adresse des locaux, du planning et des conditions d\'intervention. Elles sont précisées dans le devis.' ), $id );
 	tfp_seed_set_field( 'faq_4', array( 'question' => 'Faites-vous du nettoyage agroalimentaire ?', 'reponse' => 'Non. Sur les sites agroalimentaires, nous intervenons uniquement dans les bureaux, accueils, salles de réunion et vestiaires de bureau. Les zones de production relèvent d\'entreprises spécialisées.' ), $id );
-	tfp_seed_set_field( 'faq_5', array( 'question' => 'Pouvez-vous entretenir une location meublée dans le Jura ?', 'reponse' => 'Oui, entre deux séjours ou en fin de bail : ménage complet, changement de linge, vérification des consommables et signalement photographique des dégradations, chacun possible lorsque prévu dans le cahier des charges et chiffré dans le devis.' ), $id );
+	tfp_seed_set_field( 'faq_5', array( 'question' => 'Pouvez-vous entretenir une location meublée dans le Jura ?', 'reponse' => 'Oui, entre deux séjours ou en fin de bail : ménage complet, changement de linge, vérification des consommables et signalement photographique des dégradations, chacun possible lorsqu\'il est prévu au cahier des charges et chiffré au devis.' ), $id );
 	tfp_seed_set_field( 'faq_6', array( 'question' => 'Quel délai pour une intervention ponctuelle ?', 'reponse' => 'Le délai de démarrage dépend des disponibilités, de l\'adresse, du volume horaire et de l\'organisation nécessaire. Il est confirmé lors de l\'établissement du devis.' ), $id );
 	tfp_seed_set_field( 'contact_titre', '', $id );
 	tfp_seed_set_field( 'contact_texte', '', $id );
@@ -462,7 +462,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'recit_4_titre', 'Copropriétés : le détail de la prestation', $id );
 	tfp_seed_set_field( 'recit_4_texte', implode( "\n", array(
 		'Pour un immeuble, le cahier des charges précise le circuit exact : hall d\'entrée, boîtes aux lettres, sol et vitrages de la porte, cage d\'escalier étage par étage, rampes, ascenseur, paliers, local à conteneurs et abords immédiats. Nous indiquons ce qui est fait à chaque passage et ce qui est fait périodiquement.',
-		'La sortie et la rentrée des bacs sont possible lorsque prévu dans le cahier des charges et chiffré dans le devis ; les jours retenus y sont inscrits. Le syndic ou le conseil syndical reçoit un point de suivi, et le cahier de liaison sert de trace : consommables à recommander, ampoule grillée, dégradation constatée, encombrant déposé dans le local.',
+		'La sortie et la rentrée des bacs sont possibles lorsqu\'elles sont prévues au cahier des charges et chiffrées au devis ; les jours retenus y sont inscrits. Le syndic ou le conseil syndical reçoit un point de suivi, et le cahier de liaison sert de trace : consommables à recommander, ampoule grillée, dégradation constatée, encombrant déposé dans le local.',
 	) ), $id );
 	tfp_seed_set_field( 'recit_4_liste', '', $id );
 	tfp_seed_set_field( 'tarif_titre', 'Tarif et déplacements', $id );
@@ -1097,7 +1097,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'recit_4_titre', 'Commerces, cabinets et copropriétés', $id );
 	tfp_seed_set_field( 'recit_4_texte', implode( "\n", array(
 		'Pour un commerce du centre-ville, le passage se fait avant l\'ouverture : surface de vente, cabines ou zone d\'essayage, sanitaires clients, vitrages intérieurs et abords de la vitrine. Les rues piétonnes imposent des contraintes d\'accès véhicule que nous intégrons au planning plutôt que de les découvrir le premier jour.',
-		'Pour les cabinets médicaux et dentaires, le cahier des charges prévoit l\'entretien courant de l\'accueil, de la salle d\'attente, des bureaux, des sanitaires, des sols et des surfaces courantes. Top-Famille Pro ne réalise pas de bio-nettoyage hospitalier, de stérilisation, de traitement des DASRI ni de protocole médical spécialisé. Pour les copropriétés, nous traitons hall, cages d\'escalier, ascenseur, paliers, local à conteneurs et sortie des bacs possible lorsque prévu dans le cahier des charges et chiffré dans le devis, selon le calendrier de collecte applicable à l\'adresse.',
+		'Pour les cabinets médicaux et dentaires, le cahier des charges prévoit l\'entretien courant de l\'accueil, de la salle d\'attente, des bureaux, des sanitaires, des sols et des surfaces courantes. Top-Famille Pro ne réalise pas de bio-nettoyage hospitalier, de stérilisation, de traitement des DASRI ni de protocole médical spécialisé. Pour les copropriétés, nous traitons hall, cages d\'escalier, ascenseur, paliers, local à conteneurs et sortie des bacs possible lorsqu\'elle est prévue au cahier des charges et chiffrée au devis, selon le calendrier de collecte applicable à l\'adresse.',
 	) ), $id );
 	tfp_seed_set_field( 'recit_4_liste', '', $id );
 	tfp_seed_set_field( 'recit_5_titre', 'Locations meublées et interventions ponctuelles', $id );
@@ -1217,7 +1217,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'faq_3', array( 'question' => 'Pouvez-vous passer avant 8 h ?', 'reponse' => 'Oui, c\'est un créneau pouvant être envisagé à Dijon, pour les bureaux comme pour les commerces. Le tôt matin et la fin de journée sont les deux plages généralement retenues.' ), $id );
 	tfp_seed_set_field( 'faq_4', array( 'question' => 'Y a-t-il des frais de déplacement sur Dijon ?', 'reponse' => 'Les éventuelles indemnités kilométriques dépendent de l\'adresse des locaux, du planning et des conditions d\'intervention. Elles sont précisées dans le devis.' ), $id );
 	tfp_seed_set_field( 'faq_5', array( 'question' => 'Aurai-je toujours le même intervenant ?', 'reponse' => 'C\'est ce que nous recherchons pour chaque site dijonnais. Ce n\'est pas une garantie : en cas d\'absence ou de départ, nous cherchons un remplacement, transmettons les consignes écrites et vous prévenons.' ), $id );
-	tfp_seed_set_field( 'faq_6', array( 'question' => 'Entretenez-vous les copropriétés de la métropole ?', 'reponse' => 'Oui : halls, cages d\'escalier, ascenseurs, paliers, locaux à conteneurs et sortie des bacs possible lorsque prévu dans le cahier des charges et chiffré dans le devis, selon le calendrier de collecte applicable à l\'adresse. Nous travaillons avec des syndics comme avec des conseils syndicaux.' ), $id );
+	tfp_seed_set_field( 'faq_6', array( 'question' => 'Entretenez-vous les copropriétés de la métropole ?', 'reponse' => 'Oui : halls, cages d\'escalier, ascenseurs, paliers, locaux à conteneurs et sortie des bacs possible lorsqu\'elle est prévue au cahier des charges et chiffrée au devis, selon le calendrier de collecte applicable à l\'adresse. Nous travaillons avec des syndics comme avec des conseils syndicaux.' ), $id );
 	tfp_seed_set_field( 'faq_7', array( 'question' => 'Quel est le délai pour démarrer ?', 'reponse' => 'Le délai de démarrage dépend des disponibilités, de l\'adresse, du volume horaire et de l\'organisation nécessaire. Il est confirmé lors de l\'établissement du devis. Pour une intervention ponctuelle, la date est indiquée lors de l\'échange puis confirmée au devis.' ), $id );
 	tfp_seed_set_field( 'contact_titre', 'Nous contacter', $id );
 	tfp_seed_set_field( 'contact_texte', 'Audrey est votre interlocutrice unique, de la première visite au suivi mensuel. Un seul numéro pour toute la région : 06 36 17 63 39 — ou par e-mail à audrey.b@top-famille.fr. Nous n\'utilisons pas de numéro local différent selon la commune.', $id );
@@ -1445,8 +1445,8 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'recit_4_liste', '', $id );
 	tfp_seed_set_field( 'recit_5_titre', 'Copropriétés, meublés et interventions ponctuelles', $id );
 	tfp_seed_set_field( 'recit_5_texte', implode( "\n", array(
-		'Pour un immeuble, le circuit est écrit dans le cahier des charges : hall, boîtes aux lettres, sol et vitrage de la porte d\'entrée, cage d\'escalier étage par étage, rampes, paliers, local à conteneurs, sortie et rentrée des bacs possible lorsque prévu dans le cahier des charges et chiffré dans le devis. Le conseil syndical reçoit un point de suivi.',
-		'Pour les meublés, nous intervenons entre deux séjours : ménage complet ; le changement de linge, la vérification des consommables et le signalement photographique des dégradations sont possible lorsque prévu dans le cahier des charges et chiffré dans le devis. En ponctuel, nous traitons les remises en état après travaux, les fins de bail et les préparations de local avant ouverture.',
+		'Pour un immeuble, le circuit est écrit dans le cahier des charges : hall, boîtes aux lettres, sol et vitrage de la porte d\'entrée, cage d\'escalier étage par étage, rampes, paliers, local à conteneurs, sortie et rentrée des bacs possibles lorsqu\'elles sont prévues au cahier des charges et chiffrées au devis. Le conseil syndical reçoit un point de suivi.',
+		'Pour les meublés, nous intervenons entre deux séjours : ménage complet ; le changement de linge, la vérification des consommables et le signalement photographique des dégradations sont possibles lorsqu\'ils sont prévus au cahier des charges et chiffrés au devis. En ponctuel, nous traitons les remises en état après travaux, les fins de bail et les préparations de local avant ouverture.',
 	) ), $id );
 	tfp_seed_set_field( 'recit_5_liste', '', $id );
 	tfp_seed_set_field( 'tarif_titre', 'Tarif et exemple local', $id );
@@ -1613,7 +1613,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'recit_4_titre', 'Commerces, copropriétés et meublés', $id );
 	tfp_seed_set_field( 'recit_4_texte', implode( "\n", array(
 		'Pour un commerce du centre-ville, le passage se fait avant l\'ouverture : surface de vente, sanitaires clients, comptoir, vitrages intérieurs et abords de la vitrine, sortie des déchets. La réserve est traitée périodiquement, généralement une fois par semaine, selon un rythme convenu au devis.',
-		'Pour un immeuble, le circuit est écrit : hall, boîtes aux lettres, cage d\'escalier étage par étage, rampes, paliers, local à conteneurs, sortie et rentrée des bacs possible lorsque prévu dans le cahier des charges et chiffré dans le devis. Pour les meublés, nous intervenons entre deux séjours, avec ménage complet, le signalement photographique des dégradations étant possible lorsque prévu dans le cahier des charges et chiffré dans le devis.',
+		'Pour un immeuble, le circuit est écrit : hall, boîtes aux lettres, cage d\'escalier étage par étage, rampes, paliers, local à conteneurs, sortie et rentrée des bacs possibles lorsqu\'elles sont prévues au cahier des charges et chiffrées au devis. Pour les meublés, nous intervenons entre deux séjours, avec ménage complet, le signalement photographique des dégradations étant possibles lorsqu\'ils sont prévus au cahier des charges et chiffrés au devis.',
 	) ), $id );
 	tfp_seed_set_field( 'recit_4_liste', '', $id );
 	tfp_seed_set_field( 'recit_5_titre', 'Fréquences et horaires adaptés à la distance', $id );
@@ -1779,7 +1779,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'recit_3_titre', 'Parties communes : le circuit détaillé', $id );
 	tfp_seed_set_field( 'recit_3_texte', implode( "\n", array(
 		'C\'est une prestation fréquemment étudiée pour les copropriétés. Le cahier des charges décrit le circuit exact : hall d\'entrée, sol et vitrage de la porte, boîtes aux lettres, cage d\'escalier étage par étage, rampes et plinthes, paliers, cabine et miroir d\'ascenseur, local à conteneurs et abords immédiats de l\'immeuble.',
-		'La sortie et la rentrée des bacs sont possible lorsque prévu dans le cahier des charges et chiffré dans le devis ; les jours retenus y sont inscrits. Nous distinguons les tâches faites à chaque passage de celles réalisées périodiquement — vitrages de cage d\'escalier, plinthes, local à vélos — pour éviter les malentendus entre le syndic, le conseil syndical et les résidents.',
+		'La sortie et la rentrée des bacs sont possibles lorsqu\'elles sont prévues au cahier des charges et chiffrées au devis ; les jours retenus y sont inscrits. Nous distinguons les tâches faites à chaque passage de celles réalisées périodiquement — vitrages de cage d\'escalier, plinthes, local à vélos — pour éviter les malentendus entre le syndic, le conseil syndical et les résidents.',
 	) ), $id );
 	tfp_seed_set_field( 'recit_3_liste', '', $id );
 	tfp_seed_set_field( 'recit_4_titre', 'Bureaux, commerces et cabinets', $id );
@@ -1964,7 +1964,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'recit_5_titre', 'Commerces, cabinets et parties communes', $id );
 	tfp_seed_set_field( 'recit_5_texte', implode( "\n", array(
 		'Pour un commerce du centre-ville, le passage se fait avant l\'ouverture : surface de vente, sanitaires clients, comptoir, vitrages intérieurs et abords de la vitrine. La réserve est traitée périodiquement selon un rythme fixé au devis, généralement une fois par semaine.',
-		'Pour les cabinets, le cahier des charges prévoit l\'entretien courant de la salle d\'attente, de l\'accueil, des bureaux et des sanitaires, avec consigne écrite de confidentialité. Pour les immeubles, nous traitons hall, cage d\'escalier, rampes, paliers, ascenseur, local à conteneurs et sortie des bacs possible lorsque prévu dans le cahier des charges et chiffré dans le devis, selon le calendrier de collecte applicable à l\'adresse.',
+		'Pour les cabinets, le cahier des charges prévoit l\'entretien courant de la salle d\'attente, de l\'accueil, des bureaux et des sanitaires, avec consigne écrite de confidentialité. Pour les immeubles, nous traitons hall, cage d\'escalier, rampes, paliers, ascenseur, local à conteneurs et sortie des bacs possible lorsqu\'elle est prévue au cahier des charges et chiffrée au devis, selon le calendrier de collecte applicable à l\'adresse.',
 	) ), $id );
 	tfp_seed_set_field( 'recit_5_liste', '', $id );
 	tfp_seed_set_field( 'tarif_titre', 'Tarif et exemple local', $id );
@@ -2136,7 +2136,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'recit_5_titre', 'Cabinets, copropriétés et meublés', $id );
 	tfp_seed_set_field( 'recit_5_texte', implode( "\n", array(
 		'Entretien courant de l\'accueil, de la salle d\'attente, des bureaux, des sanitaires, des sols, du mobilier et des surfaces courantes, selon le cahier des charges. Les consignes de confidentialité sur les dossiers laissés en place sont annexées au cahier des charges.',
-		'Pour les copropriétés, le circuit est décrit au cahier des charges : hall, cage d\'escalier étage par étage, rampes, paliers, ascenseur, local à conteneurs, sortie et rentrée des bacs possible lorsque prévu dans le cahier des charges et chiffré dans le devis. Pour les meublés, nous intervenons entre deux séjours, le signalement photographique des dégradations étant possible lorsque prévu dans le cahier des charges et chiffré dans le devis.',
+		'Pour les copropriétés, le circuit est décrit au cahier des charges : hall, cage d\'escalier étage par étage, rampes, paliers, ascenseur, local à conteneurs, sortie et rentrée des bacs possibles lorsqu\'elles sont prévues au cahier des charges et chiffrées au devis. Pour les meublés, nous intervenons entre deux séjours, le signalement photographique des dégradations étant possibles lorsqu\'ils sont prévus au cahier des charges et chiffrés au devis.',
 	) ), $id );
 	tfp_seed_set_field( 'recit_5_liste', '', $id );
 	tfp_seed_set_field( 'tarif_titre', 'Tarif et exemple local', $id );
@@ -2302,7 +2302,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'recit_4_titre', 'Commerces, meublés et tourisme', $id );
 	tfp_seed_set_field( 'recit_4_texte', implode( "\n", array(
 		'Pour un commerce mâconnais, le passage se fait avant l\'ouverture : surface de vente, sanitaires clients, comptoir, vitrages intérieurs et abords immédiats de la vitrine. La réserve est traitée périodiquement, selon un rythme fixé au devis.',
-		'L\'activité touristique du Mâconnais génère une demande soutenue sur les locations meublées, surtout en haute saison. Nous intervenons entre deux séjours : ménage complet ; le changement de linge, la vérification des consommables et le signalement photographique des dégradations sont possible lorsque prévu dans le cahier des charges et chiffré dans le devis. En période chargée, les créneaux se réservent à l\'avance.',
+		'L\'activité touristique du Mâconnais génère une demande soutenue sur les locations meublées, surtout en haute saison. Nous intervenons entre deux séjours : ménage complet ; le changement de linge, la vérification des consommables et le signalement photographique des dégradations sont possibles lorsqu\'ils sont prévus au cahier des charges et chiffrés au devis. En période chargée, les créneaux se réservent à l\'avance.',
 	) ), $id );
 	tfp_seed_set_field( 'recit_4_liste', '', $id );
 	tfp_seed_set_field( 'recit_5_titre', 'Viticulture et logistique : notre périmètre', $id );
@@ -2420,7 +2420,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'faq_1', array( 'question' => 'Avez-vous une agence à Mâcon ?', 'reponse' => 'Non. Notre unique implantation est à Saint-Apollinaire, près de Dijon. Il n\'y a ni agence mâconnaise, ni responsable local, ni numéro spécifique à la ville.' ), $id );
 	tfp_seed_set_field( 'faq_2', array( 'question' => 'Les frais de déplacement s\'appliquent-ils ?', 'reponse' => 'Les éventuelles indemnités kilométriques dépendent de l\'adresse des locaux, du planning et des conditions d\'intervention. Elles sont précisées dans le devis. Elles figurent au devis, en ligne distincte du tarif horaire.' ), $id );
 	tfp_seed_set_field( 'faq_3', array( 'question' => 'Entretenez-vous les caveaux et espaces de dégustation ?', 'reponse' => 'Oui, en tant qu\'espaces recevant du public : sols, comptoir, vitrages intérieurs, sanitaires. Les caves d\'élaboration et les zones de conditionnement, non.' ), $id );
-	tfp_seed_set_field( 'faq_4', array( 'question' => 'Pouvez-vous entretenir une location meublée entre deux séjours ?', 'reponse' => 'Oui : ménage complet ; le changement de linge, la vérification des consommables et le signalement photographique des dégradations sont possible lorsque prévu dans le cahier des charges et chiffré dans le devis. En haute saison, réservez les créneaux à l\'avance.' ), $id );
+	tfp_seed_set_field( 'faq_4', array( 'question' => 'Pouvez-vous entretenir une location meublée entre deux séjours ?', 'reponse' => 'Oui : ménage complet ; le changement de linge, la vérification des consommables et le signalement photographique des dégradations sont possibles lorsqu\'ils sont prévus au cahier des charges et chiffrés au devis. En haute saison, réservez les créneaux à l\'avance.' ), $id );
 	tfp_seed_set_field( 'faq_5', array( 'question' => 'Intervenez-vous à Charnay-lès-Mâcon ou Sancé ?', 'reponse' => 'Oui, ces communes de l\'agglomération sont proches de Mâcon. Les demandes situées dans ces communes peuvent être étudiées selon l\'adresse exacte, le volume horaire et les possibilités d\'organisation du planning.' ), $id );
 	tfp_seed_set_field( 'faq_6', array( 'question' => 'Quel volume minimum conseillez-vous ?', 'reponse' => 'Au moins deux heures par passage, ou un regroupement hebdomadaire. En dessous, la distance rend l\'organisation difficile à tenir durablement.' ), $id );
 	tfp_seed_set_field( 'contact_titre', 'Nous contacter', $id );
@@ -2653,7 +2653,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'recit_5_titre', 'Commerces, cabinets et parties communes', $id );
 	tfp_seed_set_field( 'recit_5_texte', implode( "\n", array(
 		'Pour un commerce du centre-ville, le passage se fait avant l\'ouverture : surface de vente, sanitaires clients, comptoir, vitrages intérieurs et abords de la vitrine. La réserve est traitée périodiquement, selon un rythme fixé au devis.',
-		'Entretien courant de l\'accueil, de la salle d\'attente, des bureaux, des sanitaires, des sols, du mobilier et des surfaces courantes, selon le cahier des charges. Les consignes de confidentialité sont annexées au cahier des charges. Pour les immeubles, nous traitons hall, cage d\'escalier, rampes, paliers, ascenseur, local à conteneurs et sortie des bacs possible lorsque prévu dans le cahier des charges et chiffré dans le devis, selon le calendrier de collecte applicable à l\'adresse.',
+		'Entretien courant de l\'accueil, de la salle d\'attente, des bureaux, des sanitaires, des sols, du mobilier et des surfaces courantes, selon le cahier des charges. Les consignes de confidentialité sont annexées au cahier des charges. Pour les immeubles, nous traitons hall, cage d\'escalier, rampes, paliers, ascenseur, local à conteneurs et sortie des bacs possible lorsqu\'elle est prévue au cahier des charges et chiffrée au devis, selon le calendrier de collecte applicable à l\'adresse.',
 	) ), $id );
 	tfp_seed_set_field( 'recit_5_liste', '', $id );
 	tfp_seed_set_field( 'tarif_titre', 'Tarif et exemple local', $id );
@@ -2966,7 +2966,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'recit_3_titre', 'Parties communes : une prestation fréquemment étudiée ici', $id );
 	tfp_seed_set_field( 'recit_3_texte', implode( "\n", array(
 		'Pour un immeuble chenevelier, le cahier des charges décrit le circuit exact : hall d\'entrée, sol et vitrage de la porte, boîtes aux lettres, cage d\'escalier étage par étage, rampes et plinthes, paliers, cabine et miroir d\'ascenseur, local à conteneurs et abords immédiats.',
-		'La sortie et la rentrée des bacs sont possible lorsque prévu dans le cahier des charges et chiffré dans le devis ; les jours retenus y sont inscrits. Nous distinguons ce qui est fait à chaque passage de ce qui est fait périodiquement — vitrages de cage d\'escalier, plinthes, local à vélos — afin que syndic, conseil syndical et résidents lisent la même chose.',
+		'La sortie et la rentrée des bacs sont possibles lorsqu\'elles sont prévues au cahier des charges et chiffrées au devis ; les jours retenus y sont inscrits. Nous distinguons ce qui est fait à chaque passage de ce qui est fait périodiquement — vitrages de cage d\'escalier, plinthes, local à vélos — afin que syndic, conseil syndical et résidents lisent la même chose.',
 	) ), $id );
 	tfp_seed_set_field( 'recit_3_liste', '', $id );
 	tfp_seed_set_field( 'tarif_titre', 'Tarif et exemple local', $id );
@@ -2974,7 +2974,7 @@ if ( empty( $posts ) ) {
 		'27 € HT/h, plus 9 € HT/mois de gestion en contrat régulier et 50 € HT de frais de mise en place, le cas échéant, selon les conditions précisées au devis. Les éventuelles indemnités kilométriques dépendent de l\'adresse des locaux, du planning et des conditions d\'intervention. Elles sont précisées dans le devis. Majoration de 10 % pour les interventions de nuit, le dimanche et les jours fériés.',
 	) ), $id );
 	tfp_seed_set_field( 'exemple_label', 'Exemple · copropriété, 8 h/mois', $id );
-	tfp_seed_set_field( 'exemple_texte', 'Deux heures par semaine : trois cages d\'escalier, hall, local à conteneurs et sortie des bacs possible lorsque prévu dans le cahier des charges et chiffré dans le devis, selon le calendrier de collecte applicable à l\'adresse. 225 € HT/mois.', $id );
+	tfp_seed_set_field( 'exemple_texte', 'Deux heures par semaine : trois cages d\'escalier, hall, local à conteneurs et sortie des bacs possible lorsqu\'elle est prévue au cahier des charges et chiffrée au devis, selon le calendrier de collecte applicable à l\'adresse. 225 € HT/mois.', $id );
 	tfp_seed_set_field( 'temoignage_texte', 'L\'entretien de nos parties communes est régulier et le local à conteneurs est enfin propre. Le cahier de liaison nous signale ce qu\'il faut réparer, ce que nous n\'avions pas avant.', $id );
 	tfp_seed_set_field( 'temoignage_auteur', 'Client Top-Famille Pro', $id );
 	tfp_seed_set_field( 'temoignage_role', 'Avis général · Côte-d\'Or', $id );
@@ -3067,7 +3067,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'faq_1', array( 'question' => 'Chenôve fait-elle partie de votre secteur prioritaire ?', 'reponse' => 'Oui, c\'est une commune limitrophe de Dijon et l\'un de nos secteurs prioritaires, notamment pour les parties communes de copropriétés.' ), $id );
 	tfp_seed_set_field( 'faq_2', array( 'question' => 'Des frais de déplacement s\'appliquent-ils ?', 'reponse' => 'Les éventuelles indemnités kilométriques dépendent de l\'adresse des locaux, du planning et des conditions d\'intervention. Elles sont précisées dans le devis.' ), $id );
 	tfp_seed_set_field( 'faq_3', array( 'question' => 'Travaillez-vous avec les syndics et les conseils syndicaux ?', 'reponse' => 'Oui, avec les deux. Le cahier des charges détaille le circuit, la fréquence et les tâches périodiques, et le cahier de liaison sert de compte rendu.' ), $id );
-	tfp_seed_set_field( 'faq_4', array( 'question' => 'Gérez-vous la sortie des bacs ?', 'reponse' => 'C\'est possible lorsque prévu dans le cahier des charges et chiffré dans le devis : les jours concernés sont alors inscrits au cahier des charges, selon le calendrier de collecte applicable à l\'adresse.' ), $id );
+	tfp_seed_set_field( 'faq_4', array( 'question' => 'Gérez-vous la sortie des bacs ?', 'reponse' => 'C\'est possible lorsque c\'est prévu au cahier des charges et chiffré au devis : les jours concernés sont alors inscrits au cahier des charges, selon le calendrier de collecte applicable à l\'adresse.' ), $id );
 	tfp_seed_set_field( 'faq_5', array( 'question' => 'Intervenez-vous aussi pour les commerces ?', 'reponse' => 'Oui, au même tarif de 27 € HT/h, avec un passage avant ouverture adapté à vos jours d\'activité.' ), $id );
 	tfp_seed_set_field( 'faq_6', array( 'question' => 'Avez-vous un bureau à Chenôve ?', 'reponse' => 'Non. Notre unique adresse est à Saint-Apollinaire, et le numéro est le même pour tous nos clients : 06 36 17 63 39.' ), $id );
 	tfp_seed_set_field( 'contact_titre', 'Nous contacter', $id );
@@ -3093,7 +3093,7 @@ if ( empty( $posts ) ) {
 		'Intervention régulière ou ponctuelle',
 		'Conditions d\'arrêt précisées au devis',
 	) ), $id );
-	tfp_seed_set_field( 'reponse_directe', 'Quetigny est une commune de Côte-d\'Or située à l\'est de Dijon, limitrophe de Saint-Apollinaire où Top-Famille Pro est implantée. Le taux horaire reste de 27 € HT/h dans toute la région. Les éventuelles indemnités kilométriques dépendent de l\'adresse des locaux, du planning et des conditions d\'intervention. Elles sont précisées dans le devis. Devis gratuit sous 24 heures auprès d\'Audrey, au 06 36 17 63 39.', $id );
+	tfp_seed_set_field( 'reponse_directe', 'Top-Famille Pro entretient vos locaux à Quetigny, commune de Côte-d\'Or située à l\'est de Dijon, limitrophe de Saint-Apollinaire où l\'entreprise est implantée. Le taux horaire reste de 27 € HT/h dans toute la région. Les éventuelles indemnités kilométriques dépendent de l\'adresse des locaux, du planning et des conditions d\'intervention. Elles sont précisées dans le devis. Devis gratuit sous 24 heures auprès d\'Audrey, au 06 36 17 63 39.', $id );
 	tfp_seed_set_field( 'recit_1_titre', 'Quetigny, commune voisine de notre implantation', $id );
 	tfp_seed_set_field( 'recit_1_texte', implode( "\n", array(
 		'Quetigny est limitrophe de Saint-Apollinaire, où Top-Famille Pro est domiciliée. C\'est donc, avec notre propre commune, le secteur le plus proche de notre implantation : visite de devis et passage supplémentaire sont proposés selon les disponibilités du planning.',
@@ -3130,7 +3130,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'methode_1_titre', 'Bureaux, cabinets et parties communes', $id );
 	tfp_seed_set_field( 'methode_1_texte', implode( "\n", array(
 		'Pour un bureau, la prestation comprend le vidage des corbeilles, le dépoussiérage des surfaces libres, l\'entretien des surfaces de contact courantes, les sanitaires, l\'espace café, puis l\'aspiration et le lavage des sols. La salle de réunion est remise en ordre à chaque passage.',
-		'Entretien courant de l\'accueil, de la salle d\'attente, des bureaux, des sanitaires, des sols, du mobilier et des surfaces courantes, selon le cahier des charges. Les consignes de confidentialité sont annexées au cahier des charges. Pour les immeubles, nous traitons hall, cage d\'escalier, rampes, paliers, ascenseur, local à conteneurs et sortie des bacs possible lorsque prévu dans le cahier des charges et chiffré dans le devis, selon le calendrier de collecte applicable à l\'adresse.',
+		'Entretien courant de l\'accueil, de la salle d\'attente, des bureaux, des sanitaires, des sols, du mobilier et des surfaces courantes, selon le cahier des charges. Les consignes de confidentialité sont annexées au cahier des charges. Pour les immeubles, nous traitons hall, cage d\'escalier, rampes, paliers, ascenseur, local à conteneurs et sortie des bacs possible lorsqu\'elle est prévue au cahier des charges et chiffrée au devis, selon le calendrier de collecte applicable à l\'adresse.',
 	) ), $id );
 	tfp_seed_set_field( 'methode_1_liste', '', $id );
 	tfp_seed_set_field( 'methode_2_titre', 'Fonctionnement, sélection et suivi', $id );
@@ -3260,7 +3260,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'recit_3_titre', 'Parties communes : le détail du circuit', $id );
 	tfp_seed_set_field( 'recit_3_texte', implode( "\n", array(
 		'Pour une résidence talantaise, le cahier des charges décrit le circuit précis : hall d\'entrée, sol et vitrage de la porte, boîtes aux lettres, cage d\'escalier étage par étage, rampes et plinthes, paliers, cabine et miroir d\'ascenseur, local à conteneurs et abords immédiats de l\'immeuble.',
-		'Les tâches faites à chaque passage sont distinguées des tâches périodiques — vitrages de cage d\'escalier, plinthes, local à vélos, grille de ventilation. La sortie et la rentrée des bacs sont possible lorsque prévu dans le cahier des charges et chiffré dans le devis ; les jours retenus y sont inscrits noir sur blanc.',
+		'Les tâches faites à chaque passage sont distinguées des tâches périodiques — vitrages de cage d\'escalier, plinthes, local à vélos, grille de ventilation. La sortie et la rentrée des bacs sont possibles lorsqu\'elles sont prévues au cahier des charges et chiffrées au devis ; les jours retenus y sont inscrits noir sur blanc.',
 	) ), $id );
 	tfp_seed_set_field( 'recit_3_liste', '', $id );
 	tfp_seed_set_field( 'tarif_titre', 'Tarif et exemple local', $id );
@@ -3360,7 +3360,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'locaux_avant_tarif', 1, $id );
 	tfp_seed_set_field( 'faq_titre', 'Questions fréquentes — Talant', $id );
 	tfp_seed_set_field( 'faq_1', array( 'question' => 'Talant fait-elle partie de votre secteur prioritaire ?', 'reponse' => 'Oui, la commune est limitrophe de Dijon et fait partie de notre zone prioritaire. Les éventuelles indemnités kilométriques dépendent de l\'adresse des locaux, du planning et des conditions d\'intervention. Elles sont précisées dans le devis.' ), $id );
-	tfp_seed_set_field( 'faq_2', array( 'question' => 'Intervenez-vous auprès des résidences et copropriétés ?', 'reponse' => 'Oui, c\'est une prestation fréquemment étudiée ici : hall, cage d\'escalier, ascenseur, paliers, local à conteneurs, la gestion des bacs étant possible lorsque prévu dans le cahier des charges et chiffré dans le devis.' ), $id );
+	tfp_seed_set_field( 'faq_2', array( 'question' => 'Intervenez-vous auprès des résidences et copropriétés ?', 'reponse' => 'Oui, c\'est une prestation fréquemment étudiée ici : hall, cage d\'escalier, ascenseur, paliers, local à conteneurs, la gestion des bacs étant possible lorsqu\'elle est prévue au cahier des charges et chiffrée au devis.' ), $id );
 	tfp_seed_set_field( 'faq_3', array( 'question' => 'Un passage bimensuel est-il possible ?', 'reponse' => 'Oui pour une petite copropriété peu fréquentée. Nous ajustons la fréquence à la taille de l\'immeuble et au nombre d\'occupants plutôt qu\'à un forfait standard.' ), $id );
 	tfp_seed_set_field( 'faq_4', array( 'question' => 'Comment sont gérées les clés de l\'immeuble ?', 'reponse' => 'Elles sont remises contre décharge écrite par le syndic ou le conseil syndical, et restituées selon la même formalité en fin de contrat.' ), $id );
 	tfp_seed_set_field( 'faq_5', array( 'question' => 'Proposez-vous vos services aux cabinets de la commune ?', 'reponse' => 'Oui, pour l\'entretien courant de leurs locaux : accueil, salle d\'attente, bureaux, sanitaires et sols, avec consigne écrite de confidentialité. Il s\'agit d\'un entretien de cabinet courant.' ), $id );
@@ -3425,7 +3425,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'methode_1_titre', 'Bureaux, commerces, cabinets et parties communes', $id );
 	tfp_seed_set_field( 'methode_1_texte', implode( "\n", array(
 		'Pour un plateau de bureaux, la prestation comprend le vidage des corbeilles, le dépoussiérage des surfaces libres, l\'entretien des surfaces de contact courantes, l\'entretien des sanitaires et du coin cuisine, puis l\'aspiration et le lavage des sols. Les salles de réunion sont remises en ordre après usage.',
-		'Pour un commerce, le passage se fait avant l\'ouverture. Pour un cabinet, le cahier des charges prévoit l\'entretien courant de la salle d\'attente, de l\'accueil, des bureaux, des sanitaires et des sols, avec consigne de confidentialité. Pour un immeuble, nous traitons hall, cage d\'escalier, paliers, ascenseur, local à conteneurs et sortie des bacs possible lorsque prévu dans le cahier des charges et chiffré dans le devis, selon le calendrier de collecte applicable à l\'adresse.',
+		'Pour un commerce, le passage se fait avant l\'ouverture. Pour un cabinet, le cahier des charges prévoit l\'entretien courant de la salle d\'attente, de l\'accueil, des bureaux, des sanitaires et des sols, avec consigne de confidentialité. Pour un immeuble, nous traitons hall, cage d\'escalier, paliers, ascenseur, local à conteneurs et sortie des bacs possible lorsqu\'elle est prévue au cahier des charges et chiffrée au devis, selon le calendrier de collecte applicable à l\'adresse.',
 	) ), $id );
 	tfp_seed_set_field( 'methode_1_liste', '', $id );
 	tfp_seed_set_field( 'methode_2_titre', 'Fonctionnement, accès et suivi', $id );
@@ -3567,7 +3567,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'recit_4_titre', 'Bureaux, commerces et parties communes', $id );
 	tfp_seed_set_field( 'recit_4_texte', implode( "\n", array(
 		'Pour un bureau, la prestation comprend le vidage des corbeilles, le dépoussiérage des surfaces libres, l\'entretien des surfaces de contact courantes, l\'entretien des sanitaires et du coin cuisine, puis l\'aspiration et le lavage des sols selon leur nature.',
-		'Pour une résidence, le circuit est décrit au cahier des charges : hall, boîtes aux lettres, cage d\'escalier étage par étage, rampes, paliers, ascenseur, local à conteneurs, sortie et rentrée des bacs possible lorsque prévu dans le cahier des charges et chiffré dans le devis. Pour un commerce de proximité, le passage se fait avant l\'ouverture.',
+		'Pour une résidence, le circuit est décrit au cahier des charges : hall, boîtes aux lettres, cage d\'escalier étage par étage, rampes, paliers, ascenseur, local à conteneurs, sortie et rentrée des bacs possibles lorsqu\'elles sont prévues au cahier des charges et chiffrées au devis. Pour un commerce de proximité, le passage se fait avant l\'ouverture.',
 	) ), $id );
 	tfp_seed_set_field( 'recit_4_liste', '', $id );
 	tfp_seed_set_field( 'tarif_titre', 'Tarif et exemple local', $id );
@@ -3671,7 +3671,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'faq_2', array( 'question' => 'Faites-vous du bio-nettoyage hospitalier ?', 'reponse' => 'Non. Nous entretenons les cabinets médicaux et paramédicaux courants. Les blocs, salles de soins critiques et laboratoires relèvent d\'entreprises spécialisées.' ), $id );
 	tfp_seed_set_field( 'faq_3', array( 'question' => 'Des frais de déplacement s\'appliquent-ils ?', 'reponse' => 'Les éventuelles indemnités kilométriques dépendent de l\'adresse des locaux, du planning et des conditions d\'intervention. Elles sont précisées dans le devis.' ), $id );
 	tfp_seed_set_field( 'faq_4', array( 'question' => 'Pouvez-vous passer après la fermeture du cabinet ?', 'reponse' => 'Oui, c\'est un créneau pouvant être envisagé. La clé ou le code est remis contre décharge écrite, avec la procédure de fermeture consignée.' ), $id );
-	tfp_seed_set_field( 'faq_5', array( 'question' => 'Entretenez-vous les parties communes des résidences ?', 'reponse' => 'Oui : hall, cage d\'escalier, paliers, ascenseur, local à conteneurs et sortie des bacs possible lorsque prévu dans le cahier des charges et chiffré dans le devis, selon le calendrier de collecte applicable à l\'adresse.' ), $id );
+	tfp_seed_set_field( 'faq_5', array( 'question' => 'Entretenez-vous les parties communes des résidences ?', 'reponse' => 'Oui : hall, cage d\'escalier, paliers, ascenseur, local à conteneurs et sortie des bacs possible lorsqu\'elle est prévue au cahier des charges et chiffrée au devis, selon le calendrier de collecte applicable à l\'adresse.' ), $id );
 	tfp_seed_set_field( 'faq_6', array( 'question' => 'Avez-vous un bureau à Fontaine-lès-Dijon ?', 'reponse' => 'Non. Notre unique implantation est à Saint-Apollinaire, et le numéro est le même pour tous nos clients : 06 36 17 63 39.' ), $id );
 	tfp_seed_set_field( 'contact_titre', 'Nous contacter', $id );
 	tfp_seed_set_field( 'contact_texte', 'Audrey est votre interlocutrice unique, de la première visite au suivi mensuel. Un seul numéro pour toute la région : 06 36 17 63 39 — ou par e-mail à audrey.b@top-famille.fr. Nous n\'utilisons pas de numéro local différent selon la commune.', $id );
@@ -3739,7 +3739,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'methode_2_titre', 'Bureaux, commerces, cabinets et parties communes', $id );
 	tfp_seed_set_field( 'methode_2_texte', implode( "\n", array(
 		'Pour un bureau, la prestation comprend corbeilles, dépoussiérage des surfaces libres, entretien des surfaces de contact courantes, sanitaires, coin cuisine, aspiration et lavage des sols. Pour un commerce, le passage se fait avant l\'ouverture, avec sanitaires clients et vitrages intérieurs.',
-		'Entretien courant de l\'accueil, de la salle d\'attente, des bureaux, des sanitaires, des sols, du mobilier et des surfaces courantes, selon le cahier des charges. Les consignes de confidentialité sont annexées au cahier des charges. Pour une résidence, nous traitons hall, cage d\'escalier, paliers, ascenseur, local à conteneurs et sortie des bacs possible lorsque prévu dans le cahier des charges et chiffré dans le devis, selon le calendrier de collecte applicable à l\'adresse.',
+		'Entretien courant de l\'accueil, de la salle d\'attente, des bureaux, des sanitaires, des sols, du mobilier et des surfaces courantes, selon le cahier des charges. Les consignes de confidentialité sont annexées au cahier des charges. Pour une résidence, nous traitons hall, cage d\'escalier, paliers, ascenseur, local à conteneurs et sortie des bacs possible lorsqu\'elle est prévue au cahier des charges et chiffrée au devis, selon le calendrier de collecte applicable à l\'adresse.',
 	) ), $id );
 	tfp_seed_set_field( 'methode_2_liste', '', $id );
 	tfp_seed_set_field( 'methode_3_titre', 'Fonctionnement, sélection et suivi', $id );
@@ -3876,14 +3876,14 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'temoignage_role', 'Avis général · Côte-d\'Or', $id );
 	tfp_seed_set_field( 'methode_1_titre', 'Hébergements et locations meublées', $id );
 	tfp_seed_set_field( 'methode_1_texte', implode( "\n", array(
-		'L\'activité touristique génère une demande importante sur les meublés de courte durée. Nous intervenons entre deux séjours : ménage complet ; le changement de linge, la vérification des consommables, le contrôle de l\'état du logement et le signalement photographique des dégradations sont possible lorsque prévu dans le cahier des charges et chiffré dans le devis.',
+		'L\'activité touristique génère une demande importante sur les meublés de courte durée. Nous intervenons entre deux séjours : ménage complet ; le changement de linge, la vérification des consommables, le contrôle de l\'état du logement et le signalement photographique des dégradations sont possibles lorsqu\'ils sont prévus au cahier des charges et chiffrés au devis.',
 		'Le créneau est calé sur vos horaires de départ et d\'arrivée, ce qui suppose une organisation anticipée en haute saison : les plages entre 10 h et 15 h sont très demandées. Nous conseillons de réserver les créneaux à l\'avance sur juillet, août et les périodes de grands événements viticoles.',
 	) ), $id );
 	tfp_seed_set_field( 'methode_1_liste', '', $id );
 	tfp_seed_set_field( 'methode_2_titre', 'Domaines, bureaux, cabinets et copropriétés', $id );
 	tfp_seed_set_field( 'methode_2_texte', implode( "\n", array(
 		'Pour un domaine ou une maison de négoce, nous entretenons les espaces recevant du public — accueil, salle et comptoir de dégustation, sanitaires visiteurs — ainsi que les bureaux et salles de réunion. Nous n\'intervenons pas dans les caves d\'élaboration, les chais ni les zones de conditionnement.',
-		'Pour les bureaux, la prestation comprend corbeilles, dépoussiérage, entretien des surfaces de contact courantes, sanitaires, coin cuisine et sols. Pour les cabinets, le cahier des charges prévoit l\'entretien courant des espaces recevant du public et des bureaux, avec consigne de confidentialité. Pour les immeubles, nous traitons hall, cage d\'escalier, paliers, ascenseur, local à conteneurs et sortie des bacs possible lorsque prévu dans le cahier des charges et chiffré dans le devis, selon le calendrier de collecte applicable à l\'adresse.',
+		'Pour les bureaux, la prestation comprend corbeilles, dépoussiérage, entretien des surfaces de contact courantes, sanitaires, coin cuisine et sols. Pour les cabinets, le cahier des charges prévoit l\'entretien courant des espaces recevant du public et des bureaux, avec consigne de confidentialité. Pour les immeubles, nous traitons hall, cage d\'escalier, paliers, ascenseur, local à conteneurs et sortie des bacs possible lorsqu\'elle est prévue au cahier des charges et chiffrée au devis, selon le calendrier de collecte applicable à l\'adresse.',
 	) ), $id );
 	tfp_seed_set_field( 'methode_2_liste', '', $id );
 	tfp_seed_set_field( 'methode_3_titre', 'Fonctionnement, saisonnalité et suivi', $id );
@@ -3963,7 +3963,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'faq_2', array( 'question' => 'Des frais de déplacement s\'appliquent-ils ?', 'reponse' => 'Les éventuelles indemnités kilométriques dépendent de l\'adresse des locaux, du planning et des conditions d\'intervention. Elles sont précisées dans le devis. Elles restent modérées compte tenu de la distance et sont chiffrées au devis avant signature.' ), $id );
 	tfp_seed_set_field( 'faq_3', array( 'question' => 'Pouvez-vous ajuster la fréquence entre haute et basse saison ?', 'reponse' => 'Oui, c\'est prévu dans le contrat : la fréquence et le volume d\'heures peuvent être modulés selon la saison, par devis actualisé et sans engagement de durée.' ), $id );
 	tfp_seed_set_field( 'faq_4', array( 'question' => 'Intervenez-vous dans les caves et les chais ?', 'reponse' => 'Non. Nous entretenons les espaces d\'accueil, de dégustation, les bureaux et les sanitaires visiteurs. Les caves d\'élaboration et zones de conditionnement ne font pas partie de notre offre.' ), $id );
-	tfp_seed_set_field( 'faq_5', array( 'question' => 'Entretenez-vous les locations meublées entre deux séjours ?', 'reponse' => 'Oui : ménage complet ; le changement de linge, la vérification des consommables et le signalement photographique des dégradations sont possible lorsque prévu dans le cahier des charges et chiffré dans le devis. Réservez les créneaux à l\'avance en haute saison.' ), $id );
+	tfp_seed_set_field( 'faq_5', array( 'question' => 'Entretenez-vous les locations meublées entre deux séjours ?', 'reponse' => 'Oui : ménage complet ; le changement de linge, la vérification des consommables et le signalement photographique des dégradations sont possibles lorsqu\'ils sont prévus au cahier des charges et chiffrés au devis. Réservez les créneaux à l\'avance en haute saison.' ), $id );
 	tfp_seed_set_field( 'faq_6', array( 'question' => 'Intervenez-vous à Savigny-lès-Beaune ou Pommard ?', 'reponse' => 'Oui, ces communes voisines sont proches de Beaune. Les demandes situées dans ces communes peuvent être étudiées selon l\'adresse exacte, le volume horaire et les possibilités d\'organisation du planning.' ), $id );
 	tfp_seed_set_field( 'faq_7', array( 'question' => 'Avez-vous un bureau à Beaune ?', 'reponse' => 'Non, et nous n\'en avons jamais eu. L\'entreprise est domiciliée à Saint-Apollinaire ; les interventions beaunoises sont organisées depuis cette adresse, avec le même numéro qu\'ailleurs.' ), $id );
 	tfp_seed_set_field( 'contact_titre', 'Nous contacter', $id );

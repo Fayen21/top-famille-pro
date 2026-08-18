@@ -95,6 +95,24 @@ const CORRECTIONS_VOULUES = [
 	},
 	{ maquette: '47 avis', raison: 'CLAUDE.md §5.5 — compteur d’avis non confirmé' },
 	{
+		maquette: 'lorsque prévu dans le cahier des charges',
+		raison:
+			'CLAUDE.md §9 — accords corrigés : « sont possible lorsque prévu … et chiffré » devient ' +
+			'« possibles lorsqu’elles sont prévues … et chiffrées », accordé au sujet de chaque phrase ' +
+			'(28 occurrences sur les 26 zones).',
+	},
+	{
+		maquette: 'lister precisément',
+		raison: 'CLAUDE.md §9 — faute d’orthographe du prototype corrigée en « lister précisément »',
+	},
+	{
+		maquette: "Quetigny est une commune de Côte-d'Or située à l'est de Dijon",
+		raison:
+			'Décision du 17 août 2026 — les huit communes sont desservies : la réponse directe de ' +
+			'Quetigny affirme l’intervention au lieu de décrire la commune (les sept autres l’affirmaient ' +
+			'déjà).',
+	},
+	{
 		maquette: 'Médiation de la consommation',
 		raison:
 			'Décision du 10 août 2026 — site strictement B2B : la médiation de la consommation ne ' +

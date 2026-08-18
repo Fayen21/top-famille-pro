@@ -70,6 +70,44 @@ posées par la consigne :
 - « Des guides locaux viendront compléter cette page » : promesse d'un contenu qui n'existe pas ;
 - toute occurrence de « Top-Entreprise » : l'ancienne marque doit disparaître du site public.
 
+### Corrections §9 appliquées le 18 août 2026
+
+Deux fautes de langue du prototype, nommées telles quelles par `CLAUDE.md` §9, étaient encore
+servies. Elles ne relèvent pas de la consigne du 10 août — celle-ci porte sur les **formulations**
+(« je modifierai ses formulations ultérieurement »), pas sur l'orthographe et les accords, que §9
+demande au contraire de corriger sur les 53 pages.
+
+| Maquette | Site | Portée |
+|---|---|---|
+| « … sont possible **lorsque prévu** dans le cahier des charges et **chiffré** dans le devis » | accordé au sujet de chaque phrase : « possibles lorsqu'elles sont prévues au cahier des charges et chiffrées au devis », « lorsqu'ils sont prévus … et chiffrés », « lorsqu'elle est prévue … et chiffrée » | **28 occurrences** sur les 26 zones |
+| « lister **precisément** » | « lister précisément » | 1 occurrence, `/conseils/cahier-des-charges-nettoyage/` |
+
+L'accord dépend du sujet, qui change d'une occurrence à l'autre — « la sortie des bacs » (féminin
+singulier), « la sortie et la rentrée » (féminin pluriel), « le changement de linge, la vérification
+… et le signalement » (masculin pluriel). Une règle unique aurait donc introduit une faute là où
+elle en corrigeait une autre : chaque sujet a la sienne, dans `tools/generate-zones.mjs`
+(`GRAMMAIRE`) et `tools/generate-articles.mjs` (`ORTHOGRAPHE`). Ces deux fichiers de seed étant
+**générés**, une correction faite dans le fichier produit aurait été écrasée à la régénération
+suivante.
+
+Le garde-fou est dans le générateur : si un « lorsque prévu » survit à toutes les règles, la
+génération **échoue** au lieu de publier la faute — c'est le cas si la maquette introduit un sujet
+non prévu. `tests/communes-affirmatif.spec.js` reprend le contrôle sur le HTML servi des 53 routes.
+
+### Réponse directe de Quetigny — décision du 17 août 2026
+
+Les huit communes secondaires étant desservies, leur texte passe à l'affirmatif. Sept des huit
+l'affirmaient déjà (« Top-Famille Pro y entretient … », et Saint-Apollinaire est le siège) ; la
+réponse directe de Quetigny décrivait la commune et le tarif sans jamais dire que nous y
+intervenons.
+
+| Maquette | Site |
+|---|---|
+| « Quetigny est une commune de Côte-d'Or située à l'est de Dijon, limitrophe de Saint-Apollinaire où Top-Famille Pro est implantée. » | « Top-Famille Pro entretient vos locaux à Quetigny, commune de Côte-d'Or située à l'est de Dijon, limitrophe de Saint-Apollinaire où l'entreprise est implantée. » |
+
+La correction est portée par `CORRECTIONS_EDITORIALES` dans `tools/generate-zones.mjs`, qui échoue
+si le fragment d'origine disparaît de la maquette.
+
 ## Ce que ce document ne couvre pas
 
 Les écarts de **structure, de texte, d'image, de style, de proportion, d'espacement ou de
