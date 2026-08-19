@@ -432,6 +432,64 @@ for (const p of PAGES) {
 			const img = el.querySelector('img');
 			const cs = getComputedStyle(el);
 
+			/*
+			 * ARCHÉTYPE TÉMOIGNAGE — relevé à part, avant la décomposition générique.
+			 *
+			 * Le prototype compose ses avis en `<figure>` : une rangée « ★★★★★ + Google », une
+			 * `<blockquote>`, puis une `<figcaption>` de deux lignes — le nom d'un côté, « rôle ·
+			 * société, ville · date » de l'autre. Trois niveaux typographiques : citation 16/25,6,
+			 * nom 17/27,5, métadonnées 13/21,1.
+			 *
+			 * La décomposition générique ne pouvait pas les rendre. Elle range les fragments dans
+			 * `titre` / `description` / `lignes` et ne porte que DEUX tailles : les trois niveaux
+			 * s'écrasaient sur le plus petit, les six cartes de `/avis-clients/` perdaient 77 px
+			 * chacune, et le nom de l'auteur se retrouvait à la place des étoiles. Le rendu était
+			 * faux, pas seulement plus court.
+			 *
+			 * On relève donc la structure telle qu'elle est, et le gabarit la rend avec le
+			 * composant de témoignage — qui a exactement cette forme.
+			 */
+			const citation = el.querySelector('blockquote');
+			const legende = el.querySelector('figcaption');
+			if (citation && legende) {
+				const geo = (n) => {
+					if (!n) return {};
+					const g = getComputedStyle(n);
+					return { taille: g.fontSize, interligne: g.lineHeight, graisse: parseInt(g.fontWeight, 10) || 400 };
+				};
+				const lignesLegende = [...legende.children]
+					.filter((c) => !/^inline/.test(getComputedStyle(c).display))
+					.map((c) => txt(c))
+					.filter(Boolean);
+				/* Une légende d'un seul bloc : on garde sa ligne unique comme nom. */
+				const [auteur, ...meta] = lignesLegende.length ? lignesLegende : [txt(legende)];
+				/* Les étoiles et la source vivent dans le premier bloc, avant la citation. */
+				const entete = [...el.children].find((c) => c !== citation && c !== legende && txt(c));
+				const texteEntete = entete ? txt(entete) : '';
+				const etoiles = (texteEntete.match(/★+/) || [ '' ])[0];
+				const source = texteEntete.replace(/★/g, '').trim();
+
+				/* Géométrie de la carte elle-même : rembourrage, rayon et écart entre ses trois blocs. */
+				const cc = getComputedStyle(el);
+				return {
+					archetype: 'temoignage',
+					carte_padding: cc.padding,
+					carte_rayon: cc.borderTopLeftRadius,
+					carte_gap: /^[0-9.]+px$/.test(cc.rowGap) ? cc.rowGap : '',
+					citation: txt(citation).replace(/^«\s*/, '').replace(/\s*»$/, ''),
+					auteur: auteur || '',
+					meta: meta.join(' · '),
+					etoiles,
+					source,
+					citation_geo: geo(citation),
+					auteur_geo: geo(legende.children[0] || legende),
+					meta_geo: geo(legende.children[1] || legende),
+					/* Un avis repris de la maquette est provisoire par construction (CLAUDE.md §5.5). */
+					provisoire: true,
+					ordre: rangIndex,
+				};
+			}
+
 			// Nœuds textuels porteurs, dans l'ordre, en ignorant les conteneurs sans texte propre.
 			/*
 			 * Les fragments sont collectés **par bloc rendu**, et non par nœud texte direct.

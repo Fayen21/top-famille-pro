@@ -57,6 +57,32 @@ const CLASSEMENT = {
 	},
 };
 
+/**
+ * Classement propre à la mesure du NOMBRE DE MOTS, qui n'existe que dans la comparaison des routes.
+ *
+ * Une page peut tenir la plage en hauteur et porter plus de mots que la maquette : le site écrit
+ * des choses que le prototype n'écrit pas, et pas par accident. Relevé fragment par fragment sur
+ * l'accueil — +89 mots — ce sont le lien d'évitement, les noms accessibles des deux déplieurs de
+ * menu, les exclusions réelles et la mention du matériel fourni par le client qu'impose
+ * `CLAUDE.md` §9, les mentions de contenu provisoire qu'impose §5.5, et les coordonnées du pied.
+ * Aucun de ces ajouts n'est retirable sans contrevenir au brief.
+ */
+const CLASSEMENT_MOTS = {
+	'#/': {
+		statut: 'ajouts imposés par le brief',
+		motif:
+			'+89 mots relevés un par un : lien d\'évitement, noms accessibles des déplieurs de menu, ' +
+			'exclusions réelles et mention « matériel fourni par le client » (CLAUDE.md §9), mentions ' +
+			'de contenu provisoire et « citation en attente de validation » (§5.5), coordonnées du pied.',
+	},
+	'#/avis-clients': {
+		statut: 'ajouts imposés par le brief',
+		motif:
+			'Mention « Exemple de présentation — témoignages authentiques en cours d\'intégration », ' +
+			'exigée par CLAUDE.md §5.5 au-dessus de la grille d\'avis provisoires.',
+	},
+};
+
 const baseline = JSON.parse( readFileSync( 'docs/baseline.json', 'utf8' ) );
 
 const controles = [];
@@ -93,6 +119,9 @@ const horsComparaison = ratiosComparaison.filter( ( r ) => r.ratio < BANDE[ 0 ] 
 
 /* --- Rapport --- */
 const defauts = hors.filter( ( c ) => ! CLASSEMENT[ c.route ] );
+const defautsComparaison = horsComparaison.filter(
+	( r ) => ! CLASSEMENT[ r.route ] && ! ( 'mots' === r.mesure && CLASSEMENT_MOTS[ r.route ] )
+);
 const L = [];
 L.push( '# Réconciliation des décomptes de ratios', '' );
 L.push( '> Fichier **généré** par `node tools/reconcilier-ratios.mjs`. Ne pas éditer à la main.', '' );
@@ -126,11 +155,14 @@ for ( const c of hors.sort( ( a, b ) => a.route.localeCompare( b.route ) || a.la
 L.push( '' );
 
 L.push( `## Comparaison des routes — les ${ horsComparaison.length } ratios hors bande`, '' );
-L.push( '| Route | Largeur | Mesure | Ratio | Statut |' );
-L.push( '|---|---:|---|---:|---|' );
+L.push( '| Route | Largeur | Mesure | Ratio | Statut | Motif |' );
+L.push( '|---|---:|---|---:|---|---|' );
 for ( const r of horsComparaison ) {
-	const k = CLASSEMENT[ r.route ];
-	L.push( `| \`${ r.route }\` | ${ r.largeur } px | ${ r.mesure } | ${ r.ratio } % | ${ k ? k.statut : '**défaut**' } |` );
+	const k = CLASSEMENT[ r.route ] || ( 'mots' === r.mesure ? CLASSEMENT_MOTS[ r.route ] : null );
+	L.push(
+		`| \`${ r.route }\` | ${ r.largeur } px | ${ r.mesure } | ${ r.ratio } % | ` +
+			`${ k ? k.statut : '**défaut**' } | ${ k ? k.motif : '**Non classé**' } |`
+	);
 }
 L.push( '' );
 
@@ -146,7 +178,10 @@ if ( defauts.length ) {
 
 writeFileSync( 'docs/RECONCILIATION-RATIOS.md', L.join( '\n' ) + '\n' );
 console.log( `Relevé de base   : ${ controles.length } contrôles · ${ dans.length } dans la bande · ${ hors.length } hors` );
-console.log( `Comparaison      : ${ ratiosComparaison.length } ratios · ${ horsComparaison.length } hors bande` );
+console.log(
+	`Comparaison      : ${ ratiosComparaison.length } ratios · ${ horsComparaison.length } hors bande · ` +
+		`${ defautsComparaison.length } non classé(s)`
+);
 console.log( `Défauts restants : ${ defauts.length }` );
 for ( const d of defauts ) console.log( `   ${ d.route } @ ${ d.largeur }px = ${ d.ratio } %` );
 console.log( '\nÉcrit : docs/RECONCILIATION-RATIOS.md' );

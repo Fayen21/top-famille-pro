@@ -4,8 +4,11 @@
 > Objectif de la passe : **300 / 318**, c'est-à-dire les 50 routes non légales dans 95-105 % aux
 > six largeurs, les trois pages légales seules autorisées hors tolérance.
 
-Deux contrôles sur 318 sortent de la bande sans être une page légale. Ils sont diagnostiqués ici
-jusqu'à la cause, mesure à l'appui — pas estimés.
+Deux contrôles sur 318 sortaient de la bande sans être une page légale. Ils sont diagnostiqués ici
+jusqu'à la cause, mesure à l'appui — pas estimés — **et tous les deux sont corrigés**.
+
+> **État final : 318 contrôles · 300 dans 95-105 % · 18 hors, toutes des pages légales.**
+> Les 50 routes non légales tiennent la plage aux six largeurs. Objectif atteint.
 
 ---
 
@@ -109,3 +112,68 @@ l'a été la typographie des intertitres.
 Le passage de l'en-tête de 141 à 120 px (§5) a retiré 21 px à **toutes** les pages. Il a suffi à
 faire rentrer `/pourquoi-nous/` de 106 % à un niveau plus proche de la cible, et il rapproche
 `/avis-clients/` de la borne basse. Aucune autre route non légale ne sort de la bande.
+
+
+---
+
+## Ce qui a été corrigé, et ce que cela a donné
+
+### `/avis-clients/` — de 94 % à 101-104 %
+
+La correction n'a pas été de rallonger la page : elle a été de **rendre les cartes d'avis comme la
+maquette les compose**.
+
+Le prototype écrit chaque avis en `<figure>` — une rangée « ★★★★★ + Google », une `<blockquote>`,
+puis une `<figcaption>` de deux lignes : le nom, puis « rôle · société, ville · date ». Trois
+niveaux typographiques. Le générateur ne relevait qu'**une** taille de description par grille et
+l'appliquait à toutes les lignes : les trois niveaux s'écrasaient sur le plus petit, le nom de
+l'auteur se retrouvait à la place des étoiles, et la ville comme la date disparaissaient. Le rendu
+était **faux**, pas seulement plus court.
+
+Un archétype `temoignage` est donc relevé à part, et rendu par le composant de témoignage — qui a
+exactement cette forme. La géométrie de la carte (rembourrage 26 px, rayon 16 px, écart 14 px) est
+relevée elle aussi.
+
+Une observation en cours de route a évité de surcorriger : après restauration des trois niveaux, la
+page passait à **106-110 %**, cette fois trop longue. La cause était la mention « Exemple de
+présentation » répétée **dans chaque carte** alors que la grille l'annonce déjà au-dessus d'elles :
+trois lignes × six cartes, soit 350 px pour une information déjà donnée. La mention reste — elle est
+exigée — mais une seule fois, là où le visiteur la lit avant les cartes.
+
+| Largeur | 320 | 375 | 768 | 1024 | 1440 | 1920 |
+|---|---|---|---|---|---|---|
+| Avant | **94 %** | 97 % | 99 % | 98 % | 98 % | 98 % |
+| Après | 101 % | 103 % | 103 % | 101 % | 104 % | 104 % |
+
+### `/pourquoi-nous/` — de 106 % à 105 %, sans toucher aux commandes
+
+Le hero dépassait de 239 px. La décomposition a montré deux blocs absents de la maquette :
+
+| Bloc | Maquette | Site | Écart |
+|---|---:|---:|---:|
+| Surtitre de hero (`.tfp-hero__eyebrow`) | — | 72 px + 10 px de marge | **+82** |
+| Rangée de commandes | — | 132 px + 24 px de marge | +156 |
+
+La rangée de commandes est **conservée** : c'est une décision, et le système de boutons est déjà
+celui de la maquette (60 px contre 61).
+
+Le surtitre, lui, est un **défaut pur** : le badge région en a été retiré (G26 §9) et la note Google
+est masquée (18/08/2026). Le conteneur ne reçoit donc plus rien — et gardait pourtant sa hauteur
+minimale, **72 px sous 600 px de large**, plus 16 px de marge. Quatre-vingt-deux pixels de vide
+au-dessus du H1, sur les sept pages institutionnelles.
+
+Corrigé par `:not(:has(> *))`, qui vise l'absence d'**enfant** : le conteneur contient des espaces
+et des retours à la ligne, et `:empty` ne l'aurait jamais reconnu. Un navigateur sans `:has()`
+ignore la règle et retrouve le comportement d'avant — une dégradation, pas une casse.
+
+Les sept pages institutionnelles y gagnent, aux six largeurs :
+
+| Route | 320 | 375 | 768 | 1024 | 1440 | 1920 |
+|---|---|---|---|---|---|---|
+| `/pourquoi-nous/` | 101 | **105** | 103 | 102 | 103 | 103 |
+| `/a-propos/` | 104 | 104 | 104 | 103 | 104 | 104 |
+| `/notre-fonctionnement/` | 98 | 102 | 102 | 102 | 103 | 103 |
+| `/avis-clients/` | 100 | 102 | 102 | 100 | 102 | 102 |
+| `/prestations/` | 101 | 101 | 101 | 100 | 103 | 103 |
+| `/recrutement/` | 102 | 103 | 100 | 100 | 103 | 103 |
+| `/zones-intervention/` | 98 | 99 | 99 | 100 | 101 | 101 |

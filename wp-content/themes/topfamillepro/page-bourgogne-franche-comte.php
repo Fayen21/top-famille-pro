@@ -136,6 +136,17 @@ if ( $tfp_bande_tarif ) :
 	}
 	$tfp_exemple = $tfp_grille['items'][0] ?? array();
 	$tfp_avis    = $tfp_grille['items'][1] ?? array();
+	/*
+	 * L'avis de cette bande est relevé comme ARCHÉTYPE témoignage depuis G27 : citation, auteur et
+	 * métadonnées dans des clés propres, avec la typographie des trois niveaux. L'ancienne forme
+	 * — citation dans `titre`, « Sophie M. · Cabinet comptable · Côte-d'Or » dans `description` —
+	 * reste lue en repli, pour qu'un seed antérieur continue de rendre la bande au lieu de la
+	 * laisser à deux colonnes sur trois.
+	 */
+	$tfp_avis_archetype = 'temoignage' === ( $tfp_avis['archetype'] ?? '' );
+	$tfp_avis_texte     = $tfp_avis_archetype
+		? (string) ( $tfp_avis['citation'] ?? '' )
+		: trim( (string) ( $tfp_avis['titre'] ?? '' ), "« »\u{a0} " );
 	// « Sophie M. · Cabinet comptable · Côte-d'Or » → auteur, rôle, ville — sans rien inventer.
 	$tfp_avis_parts = array_map( 'trim', explode( '·', (string) ( $tfp_avis['description'] ?? '' ) ) );
 	?>
@@ -161,14 +172,32 @@ if ( $tfp_bande_tarif ) :
 			<div class="tfp-price-example__disclaimer"><?php echo esc_html( $tfp_exemple['lignes'][0] ?? 'Exemple non contractuel.' ); ?></div>
 		</div>
 		<?php
-		if ( ! empty( $tfp_avis['titre'] ) ) {
+		if ( '' !== $tfp_avis_texte ) {
 			tfp_testimonial_card(
-				array(
-					'texte'  => trim( (string) $tfp_avis['titre'], "« »\u{a0} " ),
-					'auteur' => $tfp_avis_parts[0] ?? '',
-					'role'   => $tfp_avis_parts[1] ?? '',
-					'ville'  => $tfp_avis_parts[2] ?? '',
-				)
+				$tfp_avis_archetype
+					? array(
+						'texte'  => $tfp_avis_texte,
+						'auteur' => $tfp_avis['auteur'] ?? '',
+						'role'   => $tfp_avis['meta'] ?? '',
+						'ville'  => '',
+					)
+					: array(
+						'texte'  => $tfp_avis_texte,
+						'auteur' => $tfp_avis_parts[0] ?? '',
+						'role'   => $tfp_avis_parts[1] ?? '',
+						'ville'  => $tfp_avis_parts[2] ?? '',
+					),
+				$tfp_avis_archetype
+					? array(
+						'source'  => $tfp_avis['source'] ?? '',
+						'etoiles' => $tfp_avis['etoiles'] ?? '',
+						'geo'     => array(
+							'citation' => $tfp_avis['citation_geo'] ?? array(),
+							'auteur'   => $tfp_avis['auteur_geo'] ?? array(),
+							'meta'     => $tfp_avis['meta_geo'] ?? array(),
+						),
+					)
+					: array()
 			);
 		}
 		?>

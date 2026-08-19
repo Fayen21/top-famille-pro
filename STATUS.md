@@ -1566,3 +1566,81 @@ vers des fichiers absents. Corrigé.
 - `CLAUDE.md` §5.5 énonce toujours la note comme affichable : contradiction **signalée**, à trancher.
 - « Aucun simulateur » et « agences fictives » : corrections §9 différées, non touchées.
 - Verdict **`PARTIEL — ÉCARTS RESTANTS`** jusqu'à validation humaine des captures.
+
+
+## Passe G27 — §4 et §11 (19 août 2026)
+
+### §4 — objectif 300/318 ATTEINT
+
+**Relevé de base : 318 contrôles · 300 dans 95-105 % · 18 hors, toutes des pages légales · 0
+débordement · 0 erreur console.** Les 50 routes non légales tiennent la plage **aux six largeurs**.
+
+Deux défauts corrigés, tous deux à la cause :
+
+**`/avis-clients/` (94 % à 320 px → 101-104 % partout).** Le prototype compose ses avis en `<figure>`
+sur trois niveaux typographiques — citation 16/25,6, nom 17/27,5, métadonnées 13/21,1 — et le
+générateur ne relevait qu'**une** taille de description par grille : les trois s'écrasaient sur la
+plus petite, le nom de l'auteur passait à la place des étoiles, ville et date disparaissaient. Le
+rendu était **faux**, pas seulement court. Un archétype `temoignage` est relevé à part et rendu par
+le composant de témoignage, qui a exactement cette forme.
+
+En cours de correction, la page est passée à 106-110 % — trop longue cette fois. Cause : la mention
+« Exemple de présentation » répétée **dans chaque carte** alors que la grille l'annonce déjà
+au-dessus. Trois lignes × six cartes = 350 px pour une information déjà donnée. La mention reste,
+une seule fois.
+
+**`/pourquoi-nous/` (106 % à 375 px → 105 %), sans toucher aux commandes.** Le hero dépassait de
+239 px : 156 px pour la rangée de commandes — **conservée**, c'est une décision, et le système de
+boutons est déjà celui de la maquette (60 px contre 61) — et **82 px pour un surtitre de hero vide**.
+Le badge région en avait été retiré (G26 §9) et la note Google est masquée : le conteneur ne
+recevait plus rien et gardait pourtant `min-height: 72px` sous 600 px, plus 16 px de marge. Défaut
+pur, corrigé par `:not(:has(> *))` — l'absence d'**enfant**, car le conteneur porte des espaces et
+`:empty` ne l'aurait jamais reconnu. Les sept pages institutionnelles y gagnent.
+
+### §3 — décomptes réconciliés
+
+`318 − 298 = 20` et `19` venaient de **deux instruments**. `tools/reconcilier-ratios.mjs` les
+recalcule, vérifie leur arithmétique interne, et classe chaque écart avec sa cause :
+
+| | Relevé de base | Comparaison des routes |
+|---|---|---|
+| Contrôles | 53 × 6 = **318** | 53 × 2 × 2 = **212** |
+| Hors bande | **18**, toutes légales | **19**, toutes classées |
+
+Les trois ratios de **mots** de `/` et `/avis-clients` sont des ajouts imposés par le brief, relevés
+fragment par fragment : lien d'évitement, noms accessibles des déplieurs, exclusions réelles et
+matériel fourni par le client (§9), mentions de contenu provisoire (§5.5), coordonnées du pied.
+
+### §11 — diagnostic complet, correction NON appliquée
+
+`docs/DIAGNOSTIC-LCP.md` relève pour les 14 mesures : élément LCP, TTFB, découverte, transfert,
+rendu, taille et priorité de la ressource, poids et fin de chargement des polices et de la CSS.
+
+**Quatre mesures restent au-dessus de 2,5 s**, toutes en mobile, entre 2,71 et 2,87 s. Sur trois des
+quatre, l'élément LCP est **du texte** ; sur la quatrième, l'image pèse 17 ko en priorité High avec
+26 ms de transfert. **Il n'y a pas de ressource à optimiser.** La décomposition observée tient en
+190-250 ms : le reste vient de la **chaîne critique**, c'est-à-dire du nombre d'allers-retours avant
+le premier rendu.
+
+Trois leviers examinés, deux écartés avec leur raison :
+
+- **CSS critique en ligne** (`CLAUDE.md` §8) — levier principal, **non appliqué** ;
+- retirer la feuille du thème parent — **non mesurable honnêtement ici** : elle fait 47 octets sur
+  le banc et porte les styles de base en production ;
+- réduire les 4 préchargements de polices — **à ne pas faire** : ils corrigent un CLS mesuré à 0,25.
+
+> Le tableau distingue explicitement le LCP **simulé** de la décomposition **observée** : les quatre
+> temps ne s'additionnent pas jusqu'au LCP, et les additionner serait lire le tableau à l'envers.
+
+### Contrôles
+
+- Suite complète : **1250 verts**, 0 échec.
+- Parité dépôt ↔ livraison : **1279 fichiers**, 0 manquant, 0 divergent.
+- Baseline : 318/318 · 300 dans la plage · 0 débordement · 0 erreur.
+- 112 comparaisons régénérées · lint PHP 82 fichiers.
+
+### Reste à faire
+
+§6 (présentation des CTA — mesuré, déjà conforme), §10 (formulaire), §11 (CSS critique), §13
+(captures ciblées), §14 (batterie finale), §15 (rapport complet). Verdict **`PARTIEL — ÉCARTS
+RESTANTS`**.

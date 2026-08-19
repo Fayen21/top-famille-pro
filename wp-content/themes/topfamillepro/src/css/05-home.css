@@ -572,15 +572,47 @@
 .tfp-testimonial {
   background: var(--color-white);
   border: 1px solid var(--color-border);
-  border-radius: 18px;
-  padding: clamp(20px, 2.4vw, 32px);
+  /* Relevés quand la maquette les pose ; jetons du thème en repli. */
+  border-radius: var(--tfp-avis-rayon, 18px);
+  padding: var(--tfp-avis-padding, clamp(20px, 2.4vw, 32px));
   box-shadow: var(--shadow-md);
 }
 
+/* L'écart entre en-tête, citation et légende est relevé : la maquette pose 14 px, le thème
+   laissait les marges par défaut des blocs, ce qui ne donnait pas la même carte. */
+.tfp-testimonial[style*="--tfp-avis-gap"] {
+  display: flex;
+  flex-direction: column;
+  gap: var(--tfp-avis-gap);
+}
+
+.tfp-testimonial[style*="--tfp-avis-gap"] .tfp-testimonial__author {
+  margin-top: 0;
+}
+
+/* Rangée d'en-tête : étoiles à gauche, source de l'avis à droite — relevé de la maquette. */
+.tfp-testimonial__head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tfp-testimonial__source {
+  font-size: 12px;
+  font-weight: var(--fw-semibold);
+  color: var(--color-text-tertiary);
+}
+
+/*
+ * Les trois niveaux de la carte d'avis portent leur taille RELEVÉE quand elle existe, et
+ * retombent sinon sur l'échelle du thème. La maquette compose la citation, le nom et les
+ * métadonnées à trois tailles distinctes ; une valeur unique les écrasait sur la plus petite et
+ * retirait 77 px à chaque carte.
+ */
 .tfp-testimonial__quote {
-  font-size: clamp(17px, 1.6vw, 19px);
+  font-size: var(--tfp-avis-citation, clamp(17px, 1.6vw, 19px));
   font-weight: 500;
-  line-height: 1.5;
+  line-height: var(--tfp-avis-citation-lh, 1.5);
   color: var(--color-text);
 }
 
@@ -593,10 +625,13 @@
 
 .tfp-testimonial__name {
   font-weight: var(--fw-semibold);
+  font-size: var(--tfp-avis-auteur, inherit);
+  line-height: var(--tfp-avis-auteur-lh, inherit);
 }
 
 .tfp-testimonial__context {
-  font-size: var(--fs-sm);
+  font-size: var(--tfp-avis-meta, var(--fs-sm));
+  line-height: var(--tfp-avis-meta-lh, inherit);
   color: var(--color-text-tertiary);
 }
 

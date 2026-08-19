@@ -1299,6 +1299,23 @@ body.tfp-type-prestation .tfp-direct-answer__text {
   margin-bottom: 16px;
 }
 
+/*
+ * Un surtitre de hero SANS contenu ne réserve pas de place.
+ *
+ * Le badge région a été retiré des sept pages institutionnelles (G26 §9) et la note Google est
+ * masquée (18/08/2026) : sur ces pages, le conteneur ne reçoit plus rien. Il gardait pourtant sa
+ * hauteur minimale — 36 px, et **72 px sous 600 px de large** — plus 16 px de marge. Sur
+ * `/pourquoi-nous/` à 375 px, cela faisait 82 px de vide au-dessus du H1, et à lui seul cet écart
+ * sortait la page de la plage de fidélité.
+ *
+ * `:not(:has(> *))` vise l'absence d'ENFANT, pas `:empty` : le conteneur contient des espaces et
+ * des retours à la ligne, et `:empty` ne l'aurait jamais reconnu. Un navigateur sans `:has()`
+ * ignore la règle et retrouve le comportement d'avant — une dégradation, pas une casse.
+ */
+.tfp-hero__eyebrow:not(:has(> *)) {
+  display: none;
+}
+
 @media (max-width: 600px) {
   .tfp-hero__eyebrow {
     flex-direction: column;

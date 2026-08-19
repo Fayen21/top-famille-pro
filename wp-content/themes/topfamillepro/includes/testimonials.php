@@ -180,13 +180,61 @@ function tfp_testimonial_card( $item = null, $args = array() ) {
 	// `data-tfp-provisional` marque un témoignage repris de la maquette et non encore remplacé par
 	// un avis réel : la suite de tests s'en sert pour l'exclure du contrôle « aucune donnée
 	// fictive », et il suffit d'une recherche sur cet attribut pour tous les retrouver.
-	printf( '<figure class="tfp-testimonial"%s>', ! empty( $item['demo'] ) ? ' data-tfp-provisional="1"' : '' );
+	/*
+	 * Géométrie de la carte relevée sur la maquette — rembourrage, rayon, écart entre ses blocs.
+	 * Sans relevé, les jetons du thème s'appliquent : c'est le comportement d'avant.
+	 */
+	$carte      = isset( $args['carte'] ) && is_array( $args['carte'] ) ? $args['carte'] : array();
+	$vars_carte = array();
+	foreach ( array( 'padding' => '--tfp-avis-padding', 'rayon' => '--tfp-avis-rayon', 'gap' => '--tfp-avis-gap' ) as $cle => $var ) {
+		$v = trim( (string) ( $carte[ $cle ] ?? '' ) );
+		if ( '' !== $v && preg_match( '/^[0-9.px ]+$/', $v ) ) {
+			$vars_carte[] = $var . ':' . $v;
+		}
+	}
+	printf(
+		'<figure class="tfp-testimonial"%s%s>',
+		! empty( $item['demo'] ) ? ' data-tfp-provisional="1"' : '',
+		$vars_carte ? ' style="' . esc_attr( implode( ';', $vars_carte ) ) . '"' : ''
+	);
+
+	/*
+	 * Rangée d'en-tête relevée sur la maquette : les étoiles, puis la source de l'avis quand elle
+	 * est connue. La source n'est PAS une note du site — c'est le nom de la plateforme où l'avis a
+	 * été laissé, écrit à côté des étoiles, sans chiffre. Aucune donnée structurée n'en découle
+	 * (CLAUDE.md §5.5).
+	 */
+	$etoiles = ! empty( $args['etoiles'] ) ? (string) $args['etoiles'] : str_repeat( '★', 5 );
+	$source  = isset( $args['source'] ) ? trim( (string) $args['source'] ) : '';
+	echo '<span class="tfp-testimonial__head">';
+	printf( '<span class="tfp-testimonial__stars" aria-hidden="true">%s</span>', esc_html( $etoiles ) );
+	if ( '' !== $source ) {
+		printf( '<span class="tfp-testimonial__source">%s</span>', esc_html( $source ) );
+	}
+	echo '</span>';
+	/*
+	 * Géométrie relevée sur la maquette, niveau par niveau. La carte porte trois tailles — citation,
+	 * nom, métadonnées — là où une tuile générique n'en porte que deux. Sans relevé, l'échelle du
+	 * thème s'applique, comme avant.
+	 */
+	$geo  = isset( $args['geo'] ) && is_array( $args['geo'] ) ? $args['geo'] : array();
+	$vars = static function ( $niveau ) use ( $geo ) {
+		$g = $geo[ $niveau ] ?? array();
+		$out = array();
+		if ( preg_match( '/^[0-9.]+px$/', (string) ( $g['taille'] ?? '' ) ) ) {
+			$out[] = '--tfp-avis-' . $niveau . ':' . $g['taille'];
+		}
+		if ( preg_match( '/^[0-9.]+px$/', (string) ( $g['interligne'] ?? '' ) ) ) {
+			$out[] = '--tfp-avis-' . $niveau . '-lh:' . $g['interligne'];
+		}
+		return $out ? ' style="' . esc_attr( implode( ';', $out ) ) . '"' : '';
+	};
 
 	printf(
-		'<span class="tfp-testimonial__stars" aria-hidden="true">%s</span>',
-		esc_html( str_repeat( '★', 5 ) )
+		'<blockquote class="tfp-testimonial__quote"%s>« %s »</blockquote>',
+		$vars( 'citation' ), // phpcs:ignore WordPress.Security.EscapeOutput
+		esc_html( $item['texte'] )
 	);
-	printf( '<blockquote class="tfp-testimonial__quote">« %s »</blockquote>', esc_html( $item['texte'] ) );
 
 	echo '<figcaption class="tfp-testimonial__author">';
 	/*
@@ -203,14 +251,30 @@ function tfp_testimonial_card( $item = null, $args = array() ) {
 		tfp_picture( 'avatar-temoignage', array( 'sizes' => '44px', 'alt' => '' ) );
 		echo '</span>';
 	}
-	printf( '<span class="tfp-testimonial__name">%s</span>', esc_html( $item['nom'] ) );
+	printf(
+		'<span class="tfp-testimonial__name"%s>%s</span>',
+		$vars( 'auteur' ), // phpcs:ignore WordPress.Security.EscapeOutput
+		esc_html( $item['nom'] )
+	);
 	if ( ! empty( $item['contexte'] ) ) {
-		printf( '<span class="tfp-testimonial__context">%s</span>', esc_html( $item['contexte'] ) );
+		printf(
+			'<span class="tfp-testimonial__context"%s>%s</span>',
+			$vars( 'meta' ), // phpcs:ignore WordPress.Security.EscapeOutput
+			esc_html( $item['contexte'] )
+		);
 	}
 	echo '</figcaption>';
 
-	// La mention accompagne la carte elle-même : elle ne peut donc pas être oubliée sur une route.
-	if ( ! empty( $item['demo'] ) ) {
+	/*
+	 * La mention accompagne la carte elle-même : elle ne peut donc pas être oubliée sur une route.
+	 *
+	 * Sauf quand la GRILLE l'a déjà posée au-dessus de ses cartes — c'est le cas des six avis de
+	 * `/avis-clients/`, dont `tfp_card_grid()` annonce le caractère provisoire une fois pour
+	 * toutes. La répéter dans chaque carte ne dit rien de plus au visiteur et ajoute ici trois
+	 * lignes par carte : 58 px × 6, soit une page de 9 % plus longue que la maquette pour une
+	 * information déjà donnée juste au-dessus.
+	 */
+	if ( ! empty( $item['demo'] ) && false !== ( $args['mention'] ?? true ) ) {
 		echo '<figcaption class="tfp-provisional-notice" data-tfp-provisional-notice="1">'
 			. 'Exemple de présentation — témoignages authentiques en cours d’intégration.'
 			. '</figcaption>';

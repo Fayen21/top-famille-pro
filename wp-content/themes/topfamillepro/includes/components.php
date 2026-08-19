@@ -679,6 +679,45 @@ function tfp_card_grid( array $grille ) {
 	<ul class="tfp-card-grid tfp-card-grid--<?php echo (int) $colonnes; ?><?php echo esc_attr( $theme ); ?>"<?php echo $style; // phpcs:ignore WordPress.Security.EscapeOutput ?>>
 		<?php
 		foreach ( $items as $item ) :
+			/*
+			 * ARCHÉTYPE TÉMOIGNAGE — rendu par le composant dédié, pas par la tuile générique.
+			 *
+			 * Le prototype compose ses avis en `<figure>` : étoiles et source, citation, puis un
+			 * nom et une ligne « rôle · société, ville · date ». Trois niveaux typographiques que
+			 * la tuile générique ne sait pas porter — elle n'en a que deux — et qui s'écrasaient
+			 * donc sur le plus petit : les six cartes de `/avis-clients/` perdaient 77 px chacune,
+			 * et le nom de l'auteur se retrouvait à la place des étoiles. Le rendu était faux, pas
+			 * seulement plus court.
+			 */
+			if ( 'temoignage' === ( $item['archetype'] ?? '' ) ) {
+				echo '<li>';
+				tfp_testimonial_card(
+					array(
+						'texte'  => $item['citation'] ?? '',
+						'auteur' => $item['auteur'] ?? '',
+						'role'   => $item['meta'] ?? '',
+						'ville'  => '',
+					),
+					array(
+						// La grille annonce déjà le caractère provisoire au-dessus de ses cartes.
+						'mention' => false,
+						'source'  => $item['source'] ?? '',
+						'etoiles' => $item['etoiles'] ?? '',
+						'carte'   => array(
+							'padding' => $item['carte_padding'] ?? '',
+							'rayon'   => $item['carte_rayon'] ?? '',
+							'gap'     => $item['carte_gap'] ?? '',
+						),
+						'geo'     => array(
+							'citation' => $item['citation_geo'] ?? array(),
+							'auteur'   => $item['auteur_geo'] ?? array(),
+							'meta'     => $item['meta_geo'] ?? array(),
+						),
+					)
+				);
+				echo '</li>';
+				continue;
+			}
 			$item = wp_parse_args(
 				$item,
 				array(

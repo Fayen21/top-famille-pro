@@ -15,117 +15,117 @@
 
 | Route Claude | Route WordPress | Blocs | Hauteur | Mots | Titres | Puces | Images | Débord. | Triptyque |
 |---|---|---|---|---|---|---|---|---|---|
-| `#/` | `/` | 13 → 13 | 13402 → 13607 (102 %) | 1039 → 1102 (106 %) | 11 → 13 | 15 → 31 | 11 → 12 | non | [voir](captures/comparaison/accueil-375.jpg) |
-| `#/nos-tarifs` | `/tarifs/` | 13 → 13 | 9002 → 9230 (103 %) | 932 → 936 (100 %) | 10 → 16 | 24 → 51 | 2 → 3 | non | [voir](captures/comparaison/nos-tarifs-375.jpg) |
-| `#/pourquoi-top-famille-pro` | `/pourquoi-nous/` | 8 → 8 | 7837 → 8277 (106 %) | 1019 → 1028 (101 %) | 12 → 14 | 15 → 47 | 2 → 3 | non | [voir](captures/comparaison/pourquoi-top-famille-pro-375.jpg) |
-| `#/avis-clients` | `/avis-clients/` | 7 → 7 | 6173 → 5999 (97 %) | 594 → 621 (105 %) | 3 → 5 | 15 → 41 | 2 → 3 | non | [voir](captures/comparaison/avis-clients-375.jpg) |
-| `#/conseils` | `/conseils/` | 7 → 7 | 5147 → 5243 (102 %) | 446 → 438 (98 %) | 3 → 12 | 15 → 32 | 5 → 6 | non | [voir](captures/comparaison/conseils-375.jpg) |
-| `#/demande-de-devis` | `/demande-de-devis/` | 1 → 4 | 4175 → 4263 (102 %) | 347 → 383 (110 %) | 1 → 4 | 15 → 28 | 3 → 4 | non | [voir](captures/comparaison/demande-de-devis-375.jpg) |
-| `#/nos-prestations` | `/prestations/` | 6 → 6 | 7784 → 7956 (102 %) | 789 → 806 (102 %) | 5 → 7 | 15 → 40 | 8 → 9 | non | [voir](captures/comparaison/nos-prestations-375.jpg) |
-| `#/nettoyage-professionnel` | `/nettoyage-professionnel/` | 19 → 19 | 20090 → 20444 (102 %) | 2541 → 2543 (100 %) | 44 → 46 | 29 → 85 | 10 → 11 | non | [voir](captures/comparaison/nettoyage-professionnel-375.jpg) |
-| `#/service/bureaux` | `/prestations/bureaux/` | 14 → 14 | 14541 → 14658 (101 %) | 2055 → 2056 (100 %) | 30 → 32 | 28 → 52 | 3 → 4 | non | [voir](captures/comparaison/service-bureaux-375.jpg) |
-| `#/service/commerces` | `/prestations/commerces/` | 14 → 14 | 13666 → 13846 (101 %) | 1849 → 1854 (100 %) | 30 → 32 | 25 → 49 | 3 → 4 | non | [voir](captures/comparaison/service-commerces-375.jpg) |
-| `#/service/cabinets` | `/prestations/cabinets/` | 15 → 15 | 15216 → 15242 (100 %) | 2036 → 2032 (100 %) | 31 → 33 | 33 → 57 | 3 → 4 | non | [voir](captures/comparaison/service-cabinets-375.jpg) |
-| `#/service/coproprietes` | `/prestations/coproprietes/` | 14 → 14 | 14360 → 14603 (102 %) | 1991 → 1994 (100 %) | 31 → 33 | 26 → 50 | 3 → 4 | non | [voir](captures/comparaison/service-coproprietes-375.jpg) |
-| `#/service/meubles` | `/prestations/meubles/` | 14 → 14 | 14559 → 14803 (102 %) | 2067 → 2070 (100 %) | 30 → 32 | 26 → 50 | 3 → 4 | non | [voir](captures/comparaison/service-meubles-375.jpg) |
-| `#/service/ponctuel` | `/prestations/ponctuel/` | 14 → 14 | 14029 → 14254 (102 %) | 1931 → 1935 (100 %) | 31 → 33 | 25 → 49 | 3 → 4 | non | [voir](captures/comparaison/service-ponctuel-375.jpg) |
-| `#/notre-fonctionnement` | `/notre-fonctionnement/` | 5 → 5 | 7285 → 7470 (103 %) | 947 → 964 (102 %) | 9 → 11 | 15 → 37 | 2 → 3 | non | [voir](captures/comparaison/notre-fonctionnement-375.jpg) |
-| `#/departement/cote-dor` | `/zones-intervention/cote-dor/` | 11 → 11 | 11568 → 11879 (103 %) | 1357 → 1351 (100 %) | 16 → 18 | 21 → 35 | 2 → 3 | non | [voir](captures/comparaison/departement-cote-dor-375.jpg) |
-| `#/departement/doubs` | `/zones-intervention/doubs/` | 11 → 11 | 10618 → 10817 (102 %) | 1252 → 1235 (99 %) | 14 → 16 | 21 → 35 | 2 → 3 | non | [voir](captures/comparaison/departement-doubs-375.jpg) |
-| `#/departement/jura` | `/zones-intervention/jura/` | 11 → 11 | 10758 → 10883 (101 %) | 1242 → 1226 (99 %) | 15 → 17 | 21 → 35 | 2 → 3 | non | [voir](captures/comparaison/departement-jura-375.jpg) |
-| `#/departement/nievre` | `/zones-intervention/nievre/` | 11 → 11 | 10687 → 10939 (102 %) | 1265 → 1253 (99 %) | 15 → 17 | 21 → 35 | 2 → 3 | non | [voir](captures/comparaison/departement-nievre-375.jpg) |
-| `#/departement/haute-saone` | `/zones-intervention/haute-saone/` | 11 → 11 | 10944 → 11122 (102 %) | 1289 → 1272 (99 %) | 15 → 17 | 21 → 35 | 2 → 3 | non | [voir](captures/comparaison/departement-haute-saone-375.jpg) |
-| `#/departement/saone-et-loire` | `/zones-intervention/saone-et-loire/` | 11 → 11 | 10599 → 10595 (100 %) | 1203 → 1185 (99 %) | 14 → 16 | 21 → 35 | 2 → 3 | non | [voir](captures/comparaison/departement-saone-et-loire-375.jpg) |
-| `#/departement/yonne` | `/zones-intervention/yonne/` | 11 → 11 | 10662 → 10890 (102 %) | 1259 → 1248 (99 %) | 15 → 17 | 21 → 35 | 2 → 3 | non | [voir](captures/comparaison/departement-yonne-375.jpg) |
-| `#/departement/territoire-de-belfort` | `/zones-intervention/territoire-de-belfort/` | 11 → 11 | 10736 → 10966 (102 %) | 1291 → 1276 (99 %) | 15 → 17 | 21 → 35 | 2 → 3 | non | [voir](captures/comparaison/departement-territoire-de-belfort-375.jpg) |
-| `#/zones-intervention` | `/zones-intervention/` | 13 → 13 | 12442 → 12482 (100 %) | 1302 → 1293 (99 %) | 12 → 14 | 20 → 66 | 2 → 3 | non | [voir](captures/comparaison/zones-intervention-375.jpg) |
-| `#/contact` | `/contact/` | 4 → 4 | 4257 → 4450 (105 %) | 290 → 333 (115 %) | 1 → 4 | 15 → 38 | 3 → 4 | non | [voir](captures/comparaison/contact-375.jpg) |
-| `#/bourgogne-franche-comte` | `/zones-intervention/bourgogne-franche-comte/` | 12 → 12 | 16603 → 16734 (101 %) | 1936 → 1927 (100 %) | 17 → 19 | 27 → 67 | 3 → 4 | non | [voir](captures/comparaison/bourgogne-franche-comte-375.jpg) |
-| `#/ville/dijon` | `/zones-intervention/cote-dor/dijon/` | 13 → 13 | 14937 → 15291 (102 %) | 1899 → 1895 (100 %) | 20 → 22 | 27 → 42 | 3 → 4 | non | [voir](captures/comparaison/ville-dijon-375.jpg) |
-| `#/ville/beaune` | `/zones-intervention/cote-dor/beaune/` | 13 → 13 | 12426 → 12428 (100 %) | 1426 → 1402 (98 %) | 17 → 19 | 21 → 36 | 3 → 4 | non | [voir](captures/comparaison/ville-beaune-375.jpg) |
-| `#/ville/besancon` | `/zones-intervention/doubs/besancon/` | 13 → 13 | 14479 → 14804 (102 %) | 1803 → 1795 (100 %) | 19 → 21 | 27 → 42 | 3 → 4 | non | [voir](captures/comparaison/ville-besancon-375.jpg) |
-| `#/ville/dole` | `/zones-intervention/jura/dole/` | 13 → 13 | 14319 → 14505 (101 %) | 1787 → 1771 (99 %) | 20 → 22 | 27 → 42 | 3 → 4 | non | [voir](captures/comparaison/ville-dole-375.jpg) |
-| `#/ville/lons-le-saunier` | `/zones-intervention/jura/lons-le-saunier/` | 13 → 13 | 14567 → 14714 (101 %) | 1775 → 1759 (99 %) | 20 → 22 | 27 → 42 | 3 → 4 | non | [voir](captures/comparaison/ville-lons-le-saunier-375.jpg) |
-| `#/ville/nevers` | `/zones-intervention/nievre/nevers/` | 13 → 13 | 14211 → 14435 (102 %) | 1714 → 1708 (100 %) | 20 → 22 | 27 → 42 | 3 → 4 | non | [voir](captures/comparaison/ville-nevers-375.jpg) |
-| `#/ville/vesoul` | `/zones-intervention/haute-saone/vesoul/` | 13 → 13 | 14408 → 14711 (102 %) | 1759 → 1751 (100 %) | 20 → 22 | 27 → 42 | 3 → 4 | non | [voir](captures/comparaison/ville-vesoul-375.jpg) |
-| `#/ville/chalon-sur-saone` | `/zones-intervention/saone-et-loire/chalon-sur-saone/` | 13 → 13 | 14389 → 14523 (101 %) | 1742 → 1726 (99 %) | 20 → 22 | 27 → 42 | 3 → 4 | non | [voir](captures/comparaison/ville-chalon-sur-saone-375.jpg) |
-| `#/ville/macon` | `/zones-intervention/saone-et-loire/macon/` | 13 → 13 | 14071 → 14205 (101 %) | 1671 → 1656 (99 %) | 20 → 22 | 27 → 42 | 3 → 4 | non | [voir](captures/comparaison/ville-macon-375.jpg) |
-| `#/ville/auxerre` | `/zones-intervention/yonne/auxerre/` | 13 → 13 | 14172 → 14417 (102 %) | 1740 → 1735 (100 %) | 20 → 22 | 27 → 42 | 3 → 4 | non | [voir](captures/comparaison/ville-auxerre-375.jpg) |
-| `#/ville/belfort` | `/zones-intervention/territoire-de-belfort/belfort/` | 13 → 13 | 14145 → 14425 (102 %) | 1739 → 1729 (99 %) | 20 → 22 | 27 → 42 | 3 → 4 | non | [voir](captures/comparaison/ville-belfort-375.jpg) |
-| `#/a-propos` | `/a-propos/` | 6 → 6 | 8257 → 8700 (105 %) | 1089 → 1114 (102 %) | 10 → 12 | 15 → 32 | 3 → 4 | non | [voir](captures/comparaison/a-propos-375.jpg) |
-| `#/recrutement` | `/recrutement/` | 5 → 5 | 4729 → 4936 (104 %) | 368 → 379 (103 %) | 5 → 7 | 19 → 39 | 3 → 4 | non | [voir](captures/comparaison/recrutement-375.jpg) |
-| `#/mentions-legales` | `/mentions-legales/` | 3 → 3 | 3759 → 4684 (125 %) | 390 → 531 (136 %) | 6 → 10 | 15 → 28 | 2 → 3 | non | [voir](captures/comparaison/mentions-legales-375.jpg) |
-| `#/politique-de-confidentialite` | `/politique-de-confidentialite/` | 3 → 3 | 3607 → 4924 (137 %) | 380 → 601 (158 %) | 5 → 11 | 15 → 33 | 2 → 3 | non | [voir](captures/comparaison/politique-de-confidentialite-375.jpg) |
-| `#/gestion-des-cookies` | `/gestion-des-cookies/` | 3 → 3 | 3263 → 3905 (120 %) | 326 → 451 (138 %) | 4 → 9 | 15 → 28 | 2 → 3 | non | [voir](captures/comparaison/gestion-des-cookies-375.jpg) |
-| `#/plan-du-site` | `/plan-du-site/` | 3 → 3 | 4579 → 4629 (101 %) | 296 → 305 (103 %) | 8 → 10 | 65 → 82 | 2 → 3 | non | [voir](captures/comparaison/plan-du-site-375.jpg) |
-| `#/article/cout-nettoyage-bureaux` | `/conseils/cout-nettoyage-bureaux/` | 9 → 9 | 6564 → 6823 (104 %) | 820 → 839 (102 %) | 10 → 12 | 26 → 40 | 3 → 4 | non | [voir](captures/comparaison/article-cout-nettoyage-bureaux-375.jpg) |
-| `#/article/frequence-bureaux` | `/conseils/frequence-bureaux/` | 9 → 9 | 6427 → 6633 (103 %) | 752 → 752 (100 %) | 9 → 11 | 29 → 43 | 3 → 4 | non | [voir](captures/comparaison/article-frequence-bureaux-375.jpg) |
-| `#/article/cahier-des-charges-nettoyage` | `/conseils/cahier-des-charges-nettoyage/` | 9 → 9 | 6450 → 6656 (103 %) | 722 → 720 (100 %) | 10 → 12 | 32 → 46 | 3 → 4 | non | [voir](captures/comparaison/article-cahier-des-charges-nettoyage-375.jpg) |
-| `#/ville/saint-apollinaire` | `/zones-intervention/cote-dor/saint-apollinaire/` | 13 → 13 | 12481 → 12522 (100 %) | 1419 → 1402 (99 %) | 17 → 19 | 27 → 42 | 3 → 4 | non | [voir](captures/comparaison/ville-saint-apollinaire-375.jpg) |
-| `#/ville/chenove` | `/zones-intervention/cote-dor/chenove/` | 13 → 13 | 12309 → 12413 (101 %) | 1412 → 1396 (99 %) | 17 → 19 | 27 → 42 | 3 → 4 | non | [voir](captures/comparaison/ville-chenove-375.jpg) |
-| `#/ville/quetigny` | `/zones-intervention/cote-dor/quetigny/` | 13 → 13 | 12218 → 12301 (101 %) | 1390 → 1375 (99 %) | 17 → 19 | 21 → 36 | 3 → 4 | non | [voir](captures/comparaison/ville-quetigny-375.jpg) |
-| `#/ville/talant` | `/zones-intervention/cote-dor/talant/` | 13 → 13 | 11930 → 11997 (101 %) | 1337 → 1319 (99 %) | 17 → 19 | 27 → 42 | 3 → 4 | non | [voir](captures/comparaison/ville-talant-375.jpg) |
-| `#/ville/longvic` | `/zones-intervention/cote-dor/longvic/` | 13 → 13 | 12220 → 12219 (100 %) | 1402 → 1384 (99 %) | 17 → 19 | 27 → 42 | 3 → 4 | non | [voir](captures/comparaison/ville-longvic-375.jpg) |
-| `#/ville/fontaine-les-dijon` | `/zones-intervention/cote-dor/fontaine-les-dijon/` | 13 → 13 | 12771 → 12906 (101 %) | 1430 → 1412 (99 %) | 18 → 20 | 27 → 42 | 3 → 4 | non | [voir](captures/comparaison/ville-fontaine-les-dijon-375.jpg) |
-| `#/ville/marsannay-la-cote` | `/zones-intervention/cote-dor/marsannay-la-cote/` | 13 → 13 | 12128 → 12282 (101 %) | 1355 → 1337 (99 %) | 17 → 19 | 21 → 36 | 3 → 4 | non | [voir](captures/comparaison/ville-marsannay-la-cote-375.jpg) |
+| `#/` | `/` | 13 → 13 | 13402 → 13586 (101 %) | 1039 → 1102 (106 %) | 11 → 13 | 15 → 31 | 11 → 12 | non | [voir](captures/comparaison/accueil-375.jpg) |
+| `#/nos-tarifs` | `/tarifs/` | 13 → 13 | 9002 → 9209 (102 %) | 932 → 936 (100 %) | 10 → 16 | 24 → 51 | 2 → 3 | non | [voir](captures/comparaison/nos-tarifs-375.jpg) |
+| `#/pourquoi-top-famille-pro` | `/pourquoi-nous/` | 8 → 8 | 7837 → 8174 (104 %) | 1019 → 1028 (101 %) | 12 → 14 | 15 → 47 | 2 → 3 | non | [voir](captures/comparaison/pourquoi-top-famille-pro-375.jpg) |
+| `#/avis-clients` | `/avis-clients/` | 7 → 7 | 6173 → 6253 (101 %) | 594 → 621 (105 %) | 3 → 5 | 15 → 41 | 2 → 3 | non | [voir](captures/comparaison/avis-clients-375.jpg) |
+| `#/conseils` | `/conseils/` | 7 → 7 | 5147 → 5222 (101 %) | 446 → 438 (98 %) | 3 → 12 | 15 → 32 | 5 → 6 | non | [voir](captures/comparaison/conseils-375.jpg) |
+| `#/demande-de-devis` | `/demande-de-devis/` | 1 → 4 | 4175 → 4242 (102 %) | 347 → 383 (110 %) | 1 → 4 | 15 → 28 | 3 → 4 | non | [voir](captures/comparaison/demande-de-devis-375.jpg) |
+| `#/nos-prestations` | `/prestations/` | 6 → 6 | 7784 → 7853 (101 %) | 789 → 806 (102 %) | 5 → 7 | 15 → 40 | 8 → 9 | non | [voir](captures/comparaison/nos-prestations-375.jpg) |
+| `#/nettoyage-professionnel` | `/nettoyage-professionnel/` | 19 → 19 | 20090 → 20341 (101 %) | 2541 → 2543 (100 %) | 44 → 46 | 29 → 85 | 10 → 11 | non | [voir](captures/comparaison/nettoyage-professionnel-375.jpg) |
+| `#/service/bureaux` | `/prestations/bureaux/` | 14 → 14 | 14541 → 14637 (101 %) | 2055 → 2056 (100 %) | 30 → 32 | 28 → 52 | 3 → 4 | non | [voir](captures/comparaison/service-bureaux-375.jpg) |
+| `#/service/commerces` | `/prestations/commerces/` | 14 → 14 | 13666 → 13825 (101 %) | 1849 → 1854 (100 %) | 30 → 32 | 25 → 49 | 3 → 4 | non | [voir](captures/comparaison/service-commerces-375.jpg) |
+| `#/service/cabinets` | `/prestations/cabinets/` | 15 → 15 | 15216 → 15221 (100 %) | 2036 → 2032 (100 %) | 31 → 33 | 33 → 57 | 3 → 4 | non | [voir](captures/comparaison/service-cabinets-375.jpg) |
+| `#/service/coproprietes` | `/prestations/coproprietes/` | 14 → 14 | 14360 → 14582 (102 %) | 1991 → 1994 (100 %) | 31 → 33 | 26 → 50 | 3 → 4 | non | [voir](captures/comparaison/service-coproprietes-375.jpg) |
+| `#/service/meubles` | `/prestations/meubles/` | 14 → 14 | 14559 → 14782 (102 %) | 2067 → 2070 (100 %) | 30 → 32 | 26 → 50 | 3 → 4 | non | [voir](captures/comparaison/service-meubles-375.jpg) |
+| `#/service/ponctuel` | `/prestations/ponctuel/` | 14 → 14 | 14029 → 14233 (101 %) | 1931 → 1935 (100 %) | 31 → 33 | 25 → 49 | 3 → 4 | non | [voir](captures/comparaison/service-ponctuel-375.jpg) |
+| `#/notre-fonctionnement` | `/notre-fonctionnement/` | 5 → 5 | 7285 → 7367 (101 %) | 947 → 964 (102 %) | 9 → 11 | 15 → 37 | 2 → 3 | non | [voir](captures/comparaison/notre-fonctionnement-375.jpg) |
+| `#/departement/cote-dor` | `/zones-intervention/cote-dor/` | 11 → 11 | 11568 → 11858 (103 %) | 1357 → 1351 (100 %) | 16 → 18 | 21 → 35 | 2 → 3 | non | [voir](captures/comparaison/departement-cote-dor-375.jpg) |
+| `#/departement/doubs` | `/zones-intervention/doubs/` | 11 → 11 | 10618 → 10796 (102 %) | 1252 → 1235 (99 %) | 14 → 16 | 21 → 35 | 2 → 3 | non | [voir](captures/comparaison/departement-doubs-375.jpg) |
+| `#/departement/jura` | `/zones-intervention/jura/` | 11 → 11 | 10758 → 10862 (101 %) | 1242 → 1226 (99 %) | 15 → 17 | 21 → 35 | 2 → 3 | non | [voir](captures/comparaison/departement-jura-375.jpg) |
+| `#/departement/nievre` | `/zones-intervention/nievre/` | 11 → 11 | 10687 → 10918 (102 %) | 1265 → 1253 (99 %) | 15 → 17 | 21 → 35 | 2 → 3 | non | [voir](captures/comparaison/departement-nievre-375.jpg) |
+| `#/departement/haute-saone` | `/zones-intervention/haute-saone/` | 11 → 11 | 10944 → 11101 (101 %) | 1289 → 1272 (99 %) | 15 → 17 | 21 → 35 | 2 → 3 | non | [voir](captures/comparaison/departement-haute-saone-375.jpg) |
+| `#/departement/saone-et-loire` | `/zones-intervention/saone-et-loire/` | 11 → 11 | 10599 → 10574 (100 %) | 1203 → 1185 (99 %) | 14 → 16 | 21 → 35 | 2 → 3 | non | [voir](captures/comparaison/departement-saone-et-loire-375.jpg) |
+| `#/departement/yonne` | `/zones-intervention/yonne/` | 11 → 11 | 10662 → 10869 (102 %) | 1259 → 1248 (99 %) | 15 → 17 | 21 → 35 | 2 → 3 | non | [voir](captures/comparaison/departement-yonne-375.jpg) |
+| `#/departement/territoire-de-belfort` | `/zones-intervention/territoire-de-belfort/` | 11 → 11 | 10736 → 10945 (102 %) | 1291 → 1276 (99 %) | 15 → 17 | 21 → 35 | 2 → 3 | non | [voir](captures/comparaison/departement-territoire-de-belfort-375.jpg) |
+| `#/zones-intervention` | `/zones-intervention/` | 13 → 13 | 12442 → 12379 (99 %) | 1302 → 1293 (99 %) | 12 → 14 | 20 → 66 | 2 → 3 | non | [voir](captures/comparaison/zones-intervention-375.jpg) |
+| `#/contact` | `/contact/` | 4 → 4 | 4257 → 4429 (104 %) | 290 → 333 (115 %) | 1 → 4 | 15 → 38 | 3 → 4 | non | [voir](captures/comparaison/contact-375.jpg) |
+| `#/bourgogne-franche-comte` | `/zones-intervention/bourgogne-franche-comte/` | 12 → 12 | 16603 → 16342 (98 %) | 1936 → 1880 (97 %) | 17 → 19 | 27 → 67 | 3 → 4 | non | [voir](captures/comparaison/bourgogne-franche-comte-375.jpg) |
+| `#/ville/dijon` | `/zones-intervention/cote-dor/dijon/` | 13 → 13 | 14937 → 15270 (102 %) | 1899 → 1895 (100 %) | 20 → 22 | 27 → 42 | 3 → 4 | non | [voir](captures/comparaison/ville-dijon-375.jpg) |
+| `#/ville/beaune` | `/zones-intervention/cote-dor/beaune/` | 13 → 13 | 12426 → 12407 (100 %) | 1426 → 1402 (98 %) | 17 → 19 | 21 → 36 | 3 → 4 | non | [voir](captures/comparaison/ville-beaune-375.jpg) |
+| `#/ville/besancon` | `/zones-intervention/doubs/besancon/` | 13 → 13 | 14479 → 14783 (102 %) | 1803 → 1795 (100 %) | 19 → 21 | 27 → 42 | 3 → 4 | non | [voir](captures/comparaison/ville-besancon-375.jpg) |
+| `#/ville/dole` | `/zones-intervention/jura/dole/` | 13 → 13 | 14319 → 14484 (101 %) | 1787 → 1771 (99 %) | 20 → 22 | 27 → 42 | 3 → 4 | non | [voir](captures/comparaison/ville-dole-375.jpg) |
+| `#/ville/lons-le-saunier` | `/zones-intervention/jura/lons-le-saunier/` | 13 → 13 | 14567 → 14693 (101 %) | 1775 → 1759 (99 %) | 20 → 22 | 27 → 42 | 3 → 4 | non | [voir](captures/comparaison/ville-lons-le-saunier-375.jpg) |
+| `#/ville/nevers` | `/zones-intervention/nievre/nevers/` | 13 → 13 | 14211 → 14414 (101 %) | 1714 → 1708 (100 %) | 20 → 22 | 27 → 42 | 3 → 4 | non | [voir](captures/comparaison/ville-nevers-375.jpg) |
+| `#/ville/vesoul` | `/zones-intervention/haute-saone/vesoul/` | 13 → 13 | 14408 → 14690 (102 %) | 1759 → 1751 (100 %) | 20 → 22 | 27 → 42 | 3 → 4 | non | [voir](captures/comparaison/ville-vesoul-375.jpg) |
+| `#/ville/chalon-sur-saone` | `/zones-intervention/saone-et-loire/chalon-sur-saone/` | 13 → 13 | 14389 → 14502 (101 %) | 1742 → 1726 (99 %) | 20 → 22 | 27 → 42 | 3 → 4 | non | [voir](captures/comparaison/ville-chalon-sur-saone-375.jpg) |
+| `#/ville/macon` | `/zones-intervention/saone-et-loire/macon/` | 13 → 13 | 14071 → 14184 (101 %) | 1671 → 1656 (99 %) | 20 → 22 | 27 → 42 | 3 → 4 | non | [voir](captures/comparaison/ville-macon-375.jpg) |
+| `#/ville/auxerre` | `/zones-intervention/yonne/auxerre/` | 13 → 13 | 14172 → 14396 (102 %) | 1740 → 1735 (100 %) | 20 → 22 | 27 → 42 | 3 → 4 | non | [voir](captures/comparaison/ville-auxerre-375.jpg) |
+| `#/ville/belfort` | `/zones-intervention/territoire-de-belfort/belfort/` | 13 → 13 | 14145 → 14404 (102 %) | 1739 → 1729 (99 %) | 20 → 22 | 27 → 42 | 3 → 4 | non | [voir](captures/comparaison/ville-belfort-375.jpg) |
+| `#/a-propos` | `/a-propos/` | 6 → 6 | 8257 → 8597 (104 %) | 1089 → 1114 (102 %) | 10 → 12 | 15 → 32 | 3 → 4 | non | [voir](captures/comparaison/a-propos-375.jpg) |
+| `#/recrutement` | `/recrutement/` | 5 → 5 | 4729 → 4833 (102 %) | 368 → 379 (103 %) | 5 → 7 | 19 → 39 | 3 → 4 | non | [voir](captures/comparaison/recrutement-375.jpg) |
+| `#/mentions-legales` | `/mentions-legales/` | 3 → 3 | 3759 → 4663 (124 %) | 390 → 531 (136 %) | 6 → 10 | 15 → 28 | 2 → 3 | non | [voir](captures/comparaison/mentions-legales-375.jpg) |
+| `#/politique-de-confidentialite` | `/politique-de-confidentialite/` | 3 → 3 | 3607 → 4903 (136 %) | 380 → 601 (158 %) | 5 → 11 | 15 → 33 | 2 → 3 | non | [voir](captures/comparaison/politique-de-confidentialite-375.jpg) |
+| `#/gestion-des-cookies` | `/gestion-des-cookies/` | 3 → 3 | 3263 → 3884 (119 %) | 326 → 451 (138 %) | 4 → 9 | 15 → 28 | 2 → 3 | non | [voir](captures/comparaison/gestion-des-cookies-375.jpg) |
+| `#/plan-du-site` | `/plan-du-site/` | 3 → 3 | 4579 → 4608 (101 %) | 296 → 305 (103 %) | 8 → 10 | 65 → 82 | 2 → 3 | non | [voir](captures/comparaison/plan-du-site-375.jpg) |
+| `#/article/cout-nettoyage-bureaux` | `/conseils/cout-nettoyage-bureaux/` | 9 → 9 | 6564 → 6802 (104 %) | 820 → 839 (102 %) | 10 → 12 | 26 → 40 | 3 → 4 | non | [voir](captures/comparaison/article-cout-nettoyage-bureaux-375.jpg) |
+| `#/article/frequence-bureaux` | `/conseils/frequence-bureaux/` | 9 → 9 | 6427 → 6612 (103 %) | 752 → 752 (100 %) | 9 → 11 | 29 → 43 | 3 → 4 | non | [voir](captures/comparaison/article-frequence-bureaux-375.jpg) |
+| `#/article/cahier-des-charges-nettoyage` | `/conseils/cahier-des-charges-nettoyage/` | 9 → 9 | 6450 → 6635 (103 %) | 722 → 720 (100 %) | 10 → 12 | 32 → 46 | 3 → 4 | non | [voir](captures/comparaison/article-cahier-des-charges-nettoyage-375.jpg) |
+| `#/ville/saint-apollinaire` | `/zones-intervention/cote-dor/saint-apollinaire/` | 13 → 13 | 12481 → 12501 (100 %) | 1419 → 1402 (99 %) | 17 → 19 | 27 → 42 | 3 → 4 | non | [voir](captures/comparaison/ville-saint-apollinaire-375.jpg) |
+| `#/ville/chenove` | `/zones-intervention/cote-dor/chenove/` | 13 → 13 | 12309 → 12392 (101 %) | 1412 → 1396 (99 %) | 17 → 19 | 27 → 42 | 3 → 4 | non | [voir](captures/comparaison/ville-chenove-375.jpg) |
+| `#/ville/quetigny` | `/zones-intervention/cote-dor/quetigny/` | 13 → 13 | 12218 → 12280 (101 %) | 1390 → 1375 (99 %) | 17 → 19 | 21 → 36 | 3 → 4 | non | [voir](captures/comparaison/ville-quetigny-375.jpg) |
+| `#/ville/talant` | `/zones-intervention/cote-dor/talant/` | 13 → 13 | 11930 → 11976 (100 %) | 1337 → 1319 (99 %) | 17 → 19 | 27 → 42 | 3 → 4 | non | [voir](captures/comparaison/ville-talant-375.jpg) |
+| `#/ville/longvic` | `/zones-intervention/cote-dor/longvic/` | 13 → 13 | 12220 → 12198 (100 %) | 1402 → 1384 (99 %) | 17 → 19 | 27 → 42 | 3 → 4 | non | [voir](captures/comparaison/ville-longvic-375.jpg) |
+| `#/ville/fontaine-les-dijon` | `/zones-intervention/cote-dor/fontaine-les-dijon/` | 13 → 13 | 12771 → 12885 (101 %) | 1430 → 1412 (99 %) | 18 → 20 | 27 → 42 | 3 → 4 | non | [voir](captures/comparaison/ville-fontaine-les-dijon-375.jpg) |
+| `#/ville/marsannay-la-cote` | `/zones-intervention/cote-dor/marsannay-la-cote/` | 13 → 13 | 12128 → 12261 (101 %) | 1355 → 1337 (99 %) | 17 → 19 | 21 → 36 | 3 → 4 | non | [voir](captures/comparaison/ville-marsannay-la-cote-375.jpg) |
 
 ## Synthèse à 1440 px
 
 | Route Claude | Route WordPress | Blocs | Hauteur | Mots | Titres | Puces | Images | Débord. | Triptyque |
 |---|---|---|---|---|---|---|---|---|---|
-| `#/` | `/` | 13 → 13 | 7825 → 7830 (100 %) | 1058 → 1122 (106 %) | 11 → 13 | 15 → 31 | 11 → 12 | non | [voir](captures/comparaison/accueil-1440.jpg) |
-| `#/nos-tarifs` | `/tarifs/` | 13 → 13 | 5852 → 6011 (103 %) | 951 → 956 (101 %) | 10 → 16 | 24 → 51 | 2 → 3 | non | [voir](captures/comparaison/nos-tarifs-1440.jpg) |
-| `#/pourquoi-top-famille-pro` | `/pourquoi-nous/` | 8 → 8 | 4047 → 4214 (104 %) | 1038 → 1048 (101 %) | 12 → 14 | 15 → 47 | 2 → 3 | non | [voir](captures/comparaison/pourquoi-top-famille-pro-1440.jpg) |
-| `#/avis-clients` | `/avis-clients/` | 7 → 7 | 2938 → 2883 (98 %) | 613 → 641 (105 %) | 3 → 5 | 15 → 41 | 2 → 3 | non | [voir](captures/comparaison/avis-clients-1440.jpg) |
-| `#/conseils` | `/conseils/` | 7 → 7 | 2834 → 2910 (103 %) | 465 → 458 (98 %) | 3 → 12 | 15 → 32 | 5 → 6 | non | [voir](captures/comparaison/conseils-1440.jpg) |
-| `#/demande-de-devis` | `/demande-de-devis/` | 1 → 2 | 1947 → 2031 (104 %) | 366 → 403 (110 %) | 1 → 4 | 15 → 28 | 3 → 4 | non | [voir](captures/comparaison/demande-de-devis-1440.jpg) |
-| `#/nos-prestations` | `/prestations/` | 6 → 6 | 3510 → 3644 (104 %) | 808 → 826 (102 %) | 5 → 7 | 15 → 40 | 8 → 9 | non | [voir](captures/comparaison/nos-prestations-1440.jpg) |
-| `#/nettoyage-professionnel` | `/nettoyage-professionnel/` | 19 → 19 | 11192 → 11071 (99 %) | 2560 → 2563 (100 %) | 44 → 46 | 29 → 85 | 10 → 11 | non | [voir](captures/comparaison/nettoyage-professionnel-1440.jpg) |
-| `#/service/bureaux` | `/prestations/bureaux/` | 14 → 14 | 7745 → 7799 (101 %) | 2074 → 2076 (100 %) | 30 → 32 | 28 → 52 | 3 → 4 | non | [voir](captures/comparaison/service-bureaux-1440.jpg) |
-| `#/service/commerces` | `/prestations/commerces/` | 14 → 14 | 7484 → 7421 (99 %) | 1868 → 1874 (100 %) | 30 → 32 | 25 → 49 | 3 → 4 | non | [voir](captures/comparaison/service-commerces-1440.jpg) |
-| `#/service/cabinets` | `/prestations/cabinets/` | 15 → 15 | 8321 → 8305 (100 %) | 2055 → 2052 (100 %) | 31 → 33 | 33 → 57 | 3 → 4 | non | [voir](captures/comparaison/service-cabinets-1440.jpg) |
-| `#/service/coproprietes` | `/prestations/coproprietes/` | 14 → 14 | 7684 → 7648 (100 %) | 2010 → 2014 (100 %) | 31 → 33 | 26 → 50 | 3 → 4 | non | [voir](captures/comparaison/service-coproprietes-1440.jpg) |
-| `#/service/meubles` | `/prestations/meubles/` | 14 → 14 | 7955 → 8000 (101 %) | 2086 → 2090 (100 %) | 30 → 32 | 26 → 50 | 3 → 4 | non | [voir](captures/comparaison/service-meubles-1440.jpg) |
-| `#/service/ponctuel` | `/prestations/ponctuel/` | 14 → 14 | 7588 → 7451 (98 %) | 1950 → 1955 (100 %) | 31 → 33 | 25 → 49 | 3 → 4 | non | [voir](captures/comparaison/service-ponctuel-1440.jpg) |
-| `#/notre-fonctionnement` | `/notre-fonctionnement/` | 5 → 5 | 4095 → 4263 (104 %) | 966 → 984 (102 %) | 9 → 11 | 15 → 37 | 2 → 3 | non | [voir](captures/comparaison/notre-fonctionnement-1440.jpg) |
-| `#/departement/cote-dor` | `/zones-intervention/cote-dor/` | 11 → 11 | 6456 → 6649 (103 %) | 1376 → 1371 (100 %) | 16 → 18 | 21 → 35 | 2 → 3 | non | [voir](captures/comparaison/departement-cote-dor-1440.jpg) |
-| `#/departement/doubs` | `/zones-intervention/doubs/` | 11 → 11 | 6140 → 6393 (104 %) | 1271 → 1255 (99 %) | 14 → 16 | 21 → 35 | 2 → 3 | non | [voir](captures/comparaison/departement-doubs-1440.jpg) |
-| `#/departement/jura` | `/zones-intervention/jura/` | 11 → 11 | 6271 → 6515 (104 %) | 1261 → 1246 (99 %) | 15 → 17 | 21 → 35 | 2 → 3 | non | [voir](captures/comparaison/departement-jura-1440.jpg) |
-| `#/departement/nievre` | `/zones-intervention/nievre/` | 11 → 11 | 6301 → 6513 (103 %) | 1284 → 1273 (99 %) | 15 → 17 | 21 → 35 | 2 → 3 | non | [voir](captures/comparaison/departement-nievre-1440.jpg) |
-| `#/departement/haute-saone` | `/zones-intervention/haute-saone/` | 11 → 11 | 6376 → 6568 (103 %) | 1308 → 1292 (99 %) | 15 → 17 | 21 → 35 | 2 → 3 | non | [voir](captures/comparaison/departement-haute-saone-1440.jpg) |
-| `#/departement/saone-et-loire` | `/zones-intervention/saone-et-loire/` | 11 → 11 | 6034 → 6247 (104 %) | 1222 → 1205 (99 %) | 14 → 16 | 21 → 35 | 2 → 3 | non | [voir](captures/comparaison/departement-saone-et-loire-1440.jpg) |
-| `#/departement/yonne` | `/zones-intervention/yonne/` | 11 → 11 | 6270 → 6488 (103 %) | 1278 → 1268 (99 %) | 15 → 17 | 21 → 35 | 2 → 3 | non | [voir](captures/comparaison/departement-yonne-1440.jpg) |
-| `#/departement/territoire-de-belfort` | `/zones-intervention/territoire-de-belfort/` | 11 → 11 | 6333 → 6523 (103 %) | 1310 → 1296 (99 %) | 15 → 17 | 21 → 35 | 2 → 3 | non | [voir](captures/comparaison/departement-territoire-de-belfort-1440.jpg) |
-| `#/zones-intervention` | `/zones-intervention/` | 13 → 13 | 6753 → 6855 (102 %) | 1321 → 1313 (99 %) | 12 → 14 | 20 → 66 | 2 → 3 | non | [voir](captures/comparaison/zones-intervention-1440.jpg) |
-| `#/contact` | `/contact/` | 4 → 4 | 1924 → 2008 (104 %) | 309 → 353 (114 %) | 1 → 4 | 15 → 38 | 3 → 4 | non | [voir](captures/comparaison/contact-1440.jpg) |
-| `#/bourgogne-franche-comte` | `/zones-intervention/bourgogne-franche-comte/` | 12 → 12 | 8674 → 8854 (102 %) | 1955 → 1947 (100 %) | 17 → 19 | 27 → 67 | 3 → 4 | non | [voir](captures/comparaison/bourgogne-franche-comte-1440.jpg) |
-| `#/ville/dijon` | `/zones-intervention/cote-dor/dijon/` | 13 → 13 | 8508 → 8493 (100 %) | 1918 → 1915 (100 %) | 20 → 22 | 27 → 42 | 3 → 4 | non | [voir](captures/comparaison/ville-dijon-1440.jpg) |
-| `#/ville/beaune` | `/zones-intervention/cote-dor/beaune/` | 13 → 13 | 7106 → 7051 (99 %) | 1445 → 1422 (98 %) | 17 → 19 | 21 → 36 | 3 → 4 | non | [voir](captures/comparaison/ville-beaune-1440.jpg) |
-| `#/ville/besancon` | `/zones-intervention/doubs/besancon/` | 13 → 13 | 8076 → 8110 (100 %) | 1822 → 1815 (100 %) | 19 → 21 | 27 → 42 | 3 → 4 | non | [voir](captures/comparaison/ville-besancon-1440.jpg) |
-| `#/ville/dole` | `/zones-intervention/jura/dole/` | 13 → 13 | 8199 → 8138 (99 %) | 1806 → 1791 (99 %) | 20 → 22 | 27 → 42 | 3 → 4 | non | [voir](captures/comparaison/ville-dole-1440.jpg) |
-| `#/ville/lons-le-saunier` | `/zones-intervention/jura/lons-le-saunier/` | 13 → 13 | 8205 → 8241 (100 %) | 1794 → 1779 (99 %) | 20 → 22 | 27 → 42 | 3 → 4 | non | [voir](captures/comparaison/ville-lons-le-saunier-1440.jpg) |
-| `#/ville/nevers` | `/zones-intervention/nievre/nevers/` | 13 → 13 | 8077 → 8091 (100 %) | 1733 → 1728 (100 %) | 20 → 22 | 27 → 42 | 3 → 4 | non | [voir](captures/comparaison/ville-nevers-1440.jpg) |
-| `#/ville/vesoul` | `/zones-intervention/haute-saone/vesoul/` | 13 → 13 | 8211 → 8251 (100 %) | 1778 → 1771 (100 %) | 20 → 22 | 27 → 42 | 3 → 4 | non | [voir](captures/comparaison/ville-vesoul-1440.jpg) |
-| `#/ville/chalon-sur-saone` | `/zones-intervention/saone-et-loire/chalon-sur-saone/` | 13 → 13 | 8062 → 8129 (101 %) | 1761 → 1746 (99 %) | 20 → 22 | 27 → 42 | 3 → 4 | non | [voir](captures/comparaison/ville-chalon-sur-saone-1440.jpg) |
-| `#/ville/macon` | `/zones-intervention/saone-et-loire/macon/` | 13 → 13 | 8072 → 8076 (100 %) | 1690 → 1676 (99 %) | 20 → 22 | 27 → 42 | 3 → 4 | non | [voir](captures/comparaison/ville-macon-1440.jpg) |
-| `#/ville/auxerre` | `/zones-intervention/yonne/auxerre/` | 13 → 13 | 8089 → 8138 (101 %) | 1759 → 1755 (100 %) | 20 → 22 | 27 → 42 | 3 → 4 | non | [voir](captures/comparaison/ville-auxerre-1440.jpg) |
-| `#/ville/belfort` | `/zones-intervention/territoire-de-belfort/belfort/` | 13 → 13 | 8098 → 8138 (100 %) | 1758 → 1749 (99 %) | 20 → 22 | 27 → 42 | 3 → 4 | non | [voir](captures/comparaison/ville-belfort-1440.jpg) |
-| `#/a-propos` | `/a-propos/` | 6 → 6 | 4433 → 4643 (105 %) | 1108 → 1134 (102 %) | 10 → 12 | 15 → 32 | 3 → 4 | non | [voir](captures/comparaison/a-propos-1440.jpg) |
-| `#/recrutement` | `/recrutement/` | 5 → 5 | 2394 → 2464 (103 %) | 387 → 399 (103 %) | 5 → 7 | 19 → 39 | 3 → 4 | non | [voir](captures/comparaison/recrutement-1440.jpg) |
-| `#/mentions-legales` | `/mentions-legales/` | 3 → 3 | 2014 → 2687 (133 %) | 409 → 551 (135 %) | 6 → 10 | 15 → 28 | 2 → 3 | non | [voir](captures/comparaison/mentions-legales-1440.jpg) |
-| `#/politique-de-confidentialite` | `/politique-de-confidentialite/` | 3 → 3 | 1936 → 2784 (144 %) | 399 → 621 (156 %) | 5 → 11 | 15 → 33 | 2 → 3 | non | [voir](captures/comparaison/politique-de-confidentialite-1440.jpg) |
-| `#/gestion-des-cookies` | `/gestion-des-cookies/` | 3 → 3 | 1718 → 2110 (123 %) | 345 → 471 (137 %) | 4 → 9 | 15 → 28 | 2 → 3 | non | [voir](captures/comparaison/gestion-des-cookies-1440.jpg) |
-| `#/plan-du-site` | `/plan-du-site/` | 3 → 3 | 1975 → 2069 (105 %) | 315 → 325 (103 %) | 8 → 10 | 65 → 82 | 2 → 3 | non | [voir](captures/comparaison/plan-du-site-1440.jpg) |
-| `#/article/cout-nettoyage-bureaux` | `/conseils/cout-nettoyage-bureaux/` | 9 → 9 | 4542 → 4656 (103 %) | 839 → 859 (102 %) | 10 → 12 | 26 → 40 | 3 → 4 | non | [voir](captures/comparaison/article-cout-nettoyage-bureaux-1440.jpg) |
-| `#/article/frequence-bureaux` | `/conseils/frequence-bureaux/` | 9 → 9 | 4437 → 4484 (101 %) | 771 → 772 (100 %) | 9 → 11 | 29 → 43 | 3 → 4 | non | [voir](captures/comparaison/article-frequence-bureaux-1440.jpg) |
-| `#/article/cahier-des-charges-nettoyage` | `/conseils/cahier-des-charges-nettoyage/` | 9 → 9 | 4643 → 4765 (103 %) | 741 → 740 (100 %) | 10 → 12 | 32 → 46 | 3 → 4 | non | [voir](captures/comparaison/article-cahier-des-charges-nettoyage-1440.jpg) |
-| `#/ville/saint-apollinaire` | `/zones-intervention/cote-dor/saint-apollinaire/` | 13 → 13 | 7164 → 7113 (99 %) | 1438 → 1422 (99 %) | 17 → 19 | 27 → 42 | 3 → 4 | non | [voir](captures/comparaison/ville-saint-apollinaire-1440.jpg) |
-| `#/ville/chenove` | `/zones-intervention/cote-dor/chenove/` | 13 → 13 | 7115 → 7116 (100 %) | 1431 → 1416 (99 %) | 17 → 19 | 27 → 42 | 3 → 4 | non | [voir](captures/comparaison/ville-chenove-1440.jpg) |
-| `#/ville/quetigny` | `/zones-intervention/cote-dor/quetigny/` | 13 → 13 | 7031 → 7011 (100 %) | 1409 → 1395 (99 %) | 17 → 19 | 21 → 36 | 3 → 4 | non | [voir](captures/comparaison/ville-quetigny-1440.jpg) |
-| `#/ville/talant` | `/zones-intervention/cote-dor/talant/` | 13 → 13 | 6942 → 6914 (100 %) | 1356 → 1339 (99 %) | 17 → 19 | 27 → 42 | 3 → 4 | non | [voir](captures/comparaison/ville-talant-1440.jpg) |
-| `#/ville/longvic` | `/zones-intervention/cote-dor/longvic/` | 13 → 13 | 6995 → 6939 (99 %) | 1421 → 1404 (99 %) | 17 → 19 | 27 → 42 | 3 → 4 | non | [voir](captures/comparaison/ville-longvic-1440.jpg) |
-| `#/ville/fontaine-les-dijon` | `/zones-intervention/cote-dor/fontaine-les-dijon/` | 13 → 13 | 7322 → 7370 (101 %) | 1449 → 1432 (99 %) | 18 → 20 | 27 → 42 | 3 → 4 | non | [voir](captures/comparaison/ville-fontaine-les-dijon-1440.jpg) |
-| `#/ville/marsannay-la-cote` | `/zones-intervention/cote-dor/marsannay-la-cote/` | 13 → 13 | 6993 → 7044 (101 %) | 1374 → 1357 (99 %) | 17 → 19 | 21 → 36 | 3 → 4 | non | [voir](captures/comparaison/ville-marsannay-la-cote-1440.jpg) |
+| `#/` | `/` | 13 → 13 | 7825 → 7809 (100 %) | 1058 → 1129 (107 %) | 11 → 13 | 15 → 31 | 11 → 12 | non | [voir](captures/comparaison/accueil-1440.jpg) |
+| `#/nos-tarifs` | `/tarifs/` | 13 → 13 | 5852 → 5990 (102 %) | 951 → 963 (101 %) | 10 → 16 | 24 → 51 | 2 → 3 | non | [voir](captures/comparaison/nos-tarifs-1440.jpg) |
+| `#/pourquoi-top-famille-pro` | `/pourquoi-nous/` | 8 → 8 | 4047 → 4147 (102 %) | 1038 → 1055 (102 %) | 12 → 14 | 15 → 47 | 2 → 3 | non | [voir](captures/comparaison/pourquoi-top-famille-pro-1440.jpg) |
+| `#/avis-clients` | `/avis-clients/` | 7 → 7 | 2938 → 2964 (101 %) | 613 → 648 (106 %) | 3 → 5 | 15 → 41 | 2 → 3 | non | [voir](captures/comparaison/avis-clients-1440.jpg) |
+| `#/conseils` | `/conseils/` | 7 → 7 | 2834 → 2889 (102 %) | 465 → 465 (100 %) | 3 → 12 | 15 → 32 | 5 → 6 | non | [voir](captures/comparaison/conseils-1440.jpg) |
+| `#/demande-de-devis` | `/demande-de-devis/` | 1 → 2 | 1947 → 2010 (103 %) | 366 → 410 (112 %) | 1 → 4 | 15 → 28 | 3 → 4 | non | [voir](captures/comparaison/demande-de-devis-1440.jpg) |
+| `#/nos-prestations` | `/prestations/` | 6 → 6 | 3510 → 3577 (102 %) | 808 → 833 (103 %) | 5 → 7 | 15 → 40 | 8 → 9 | non | [voir](captures/comparaison/nos-prestations-1440.jpg) |
+| `#/nettoyage-professionnel` | `/nettoyage-professionnel/` | 19 → 19 | 11192 → 11004 (98 %) | 2560 → 2570 (100 %) | 44 → 46 | 29 → 85 | 10 → 11 | non | [voir](captures/comparaison/nettoyage-professionnel-1440.jpg) |
+| `#/service/bureaux` | `/prestations/bureaux/` | 14 → 14 | 7745 → 7778 (100 %) | 2074 → 2083 (100 %) | 30 → 32 | 28 → 52 | 3 → 4 | non | [voir](captures/comparaison/service-bureaux-1440.jpg) |
+| `#/service/commerces` | `/prestations/commerces/` | 14 → 14 | 7484 → 7400 (99 %) | 1868 → 1881 (101 %) | 30 → 32 | 25 → 49 | 3 → 4 | non | [voir](captures/comparaison/service-commerces-1440.jpg) |
+| `#/service/cabinets` | `/prestations/cabinets/` | 15 → 15 | 8321 → 8284 (100 %) | 2055 → 2059 (100 %) | 31 → 33 | 33 → 57 | 3 → 4 | non | [voir](captures/comparaison/service-cabinets-1440.jpg) |
+| `#/service/coproprietes` | `/prestations/coproprietes/` | 14 → 14 | 7684 → 7627 (99 %) | 2010 → 2021 (101 %) | 31 → 33 | 26 → 50 | 3 → 4 | non | [voir](captures/comparaison/service-coproprietes-1440.jpg) |
+| `#/service/meubles` | `/prestations/meubles/` | 14 → 14 | 7955 → 7979 (100 %) | 2086 → 2097 (101 %) | 30 → 32 | 26 → 50 | 3 → 4 | non | [voir](captures/comparaison/service-meubles-1440.jpg) |
+| `#/service/ponctuel` | `/prestations/ponctuel/` | 14 → 14 | 7588 → 7430 (98 %) | 1950 → 1962 (101 %) | 31 → 33 | 25 → 49 | 3 → 4 | non | [voir](captures/comparaison/service-ponctuel-1440.jpg) |
+| `#/notre-fonctionnement` | `/notre-fonctionnement/` | 5 → 5 | 4095 → 4196 (102 %) | 966 → 991 (103 %) | 9 → 11 | 15 → 37 | 2 → 3 | non | [voir](captures/comparaison/notre-fonctionnement-1440.jpg) |
+| `#/departement/cote-dor` | `/zones-intervention/cote-dor/` | 11 → 11 | 6456 → 6628 (103 %) | 1376 → 1378 (100 %) | 16 → 18 | 21 → 35 | 2 → 3 | non | [voir](captures/comparaison/departement-cote-dor-1440.jpg) |
+| `#/departement/doubs` | `/zones-intervention/doubs/` | 11 → 11 | 6140 → 6372 (104 %) | 1271 → 1262 (99 %) | 14 → 16 | 21 → 35 | 2 → 3 | non | [voir](captures/comparaison/departement-doubs-1440.jpg) |
+| `#/departement/jura` | `/zones-intervention/jura/` | 11 → 11 | 6271 → 6494 (104 %) | 1261 → 1253 (99 %) | 15 → 17 | 21 → 35 | 2 → 3 | non | [voir](captures/comparaison/departement-jura-1440.jpg) |
+| `#/departement/nievre` | `/zones-intervention/nievre/` | 11 → 11 | 6301 → 6492 (103 %) | 1284 → 1280 (100 %) | 15 → 17 | 21 → 35 | 2 → 3 | non | [voir](captures/comparaison/departement-nievre-1440.jpg) |
+| `#/departement/haute-saone` | `/zones-intervention/haute-saone/` | 11 → 11 | 6376 → 6547 (103 %) | 1308 → 1299 (99 %) | 15 → 17 | 21 → 35 | 2 → 3 | non | [voir](captures/comparaison/departement-haute-saone-1440.jpg) |
+| `#/departement/saone-et-loire` | `/zones-intervention/saone-et-loire/` | 11 → 11 | 6034 → 6226 (103 %) | 1222 → 1212 (99 %) | 14 → 16 | 21 → 35 | 2 → 3 | non | [voir](captures/comparaison/departement-saone-et-loire-1440.jpg) |
+| `#/departement/yonne` | `/zones-intervention/yonne/` | 11 → 11 | 6270 → 6467 (103 %) | 1278 → 1275 (100 %) | 15 → 17 | 21 → 35 | 2 → 3 | non | [voir](captures/comparaison/departement-yonne-1440.jpg) |
+| `#/departement/territoire-de-belfort` | `/zones-intervention/territoire-de-belfort/` | 11 → 11 | 6333 → 6502 (103 %) | 1310 → 1303 (99 %) | 15 → 17 | 21 → 35 | 2 → 3 | non | [voir](captures/comparaison/departement-territoire-de-belfort-1440.jpg) |
+| `#/zones-intervention` | `/zones-intervention/` | 13 → 13 | 6753 → 6788 (101 %) | 1321 → 1320 (100 %) | 12 → 14 | 20 → 66 | 2 → 3 | non | [voir](captures/comparaison/zones-intervention-1440.jpg) |
+| `#/contact` | `/contact/` | 4 → 4 | 1924 → 1987 (103 %) | 309 → 360 (117 %) | 1 → 4 | 15 → 38 | 3 → 4 | non | [voir](captures/comparaison/contact-1440.jpg) |
+| `#/bourgogne-franche-comte` | `/zones-intervention/bourgogne-franche-comte/` | 12 → 12 | 8674 → 8731 (101 %) | 1955 → 1907 (98 %) | 17 → 19 | 27 → 67 | 3 → 4 | non | [voir](captures/comparaison/bourgogne-franche-comte-1440.jpg) |
+| `#/ville/dijon` | `/zones-intervention/cote-dor/dijon/` | 13 → 13 | 8508 → 8472 (100 %) | 1918 → 1922 (100 %) | 20 → 22 | 27 → 42 | 3 → 4 | non | [voir](captures/comparaison/ville-dijon-1440.jpg) |
+| `#/ville/beaune` | `/zones-intervention/cote-dor/beaune/` | 13 → 13 | 7106 → 7030 (99 %) | 1445 → 1429 (99 %) | 17 → 19 | 21 → 36 | 3 → 4 | non | [voir](captures/comparaison/ville-beaune-1440.jpg) |
+| `#/ville/besancon` | `/zones-intervention/doubs/besancon/` | 13 → 13 | 8076 → 8089 (100 %) | 1822 → 1822 (100 %) | 19 → 21 | 27 → 42 | 3 → 4 | non | [voir](captures/comparaison/ville-besancon-1440.jpg) |
+| `#/ville/dole` | `/zones-intervention/jura/dole/` | 13 → 13 | 8199 → 8117 (99 %) | 1806 → 1798 (100 %) | 20 → 22 | 27 → 42 | 3 → 4 | non | [voir](captures/comparaison/ville-dole-1440.jpg) |
+| `#/ville/lons-le-saunier` | `/zones-intervention/jura/lons-le-saunier/` | 13 → 13 | 8205 → 8220 (100 %) | 1794 → 1786 (100 %) | 20 → 22 | 27 → 42 | 3 → 4 | non | [voir](captures/comparaison/ville-lons-le-saunier-1440.jpg) |
+| `#/ville/nevers` | `/zones-intervention/nievre/nevers/` | 13 → 13 | 8077 → 8070 (100 %) | 1733 → 1735 (100 %) | 20 → 22 | 27 → 42 | 3 → 4 | non | [voir](captures/comparaison/ville-nevers-1440.jpg) |
+| `#/ville/vesoul` | `/zones-intervention/haute-saone/vesoul/` | 13 → 13 | 8211 → 8230 (100 %) | 1778 → 1778 (100 %) | 20 → 22 | 27 → 42 | 3 → 4 | non | [voir](captures/comparaison/ville-vesoul-1440.jpg) |
+| `#/ville/chalon-sur-saone` | `/zones-intervention/saone-et-loire/chalon-sur-saone/` | 13 → 13 | 8062 → 8108 (101 %) | 1761 → 1753 (100 %) | 20 → 22 | 27 → 42 | 3 → 4 | non | [voir](captures/comparaison/ville-chalon-sur-saone-1440.jpg) |
+| `#/ville/macon` | `/zones-intervention/saone-et-loire/macon/` | 13 → 13 | 8072 → 8055 (100 %) | 1690 → 1683 (100 %) | 20 → 22 | 27 → 42 | 3 → 4 | non | [voir](captures/comparaison/ville-macon-1440.jpg) |
+| `#/ville/auxerre` | `/zones-intervention/yonne/auxerre/` | 13 → 13 | 8089 → 8117 (100 %) | 1759 → 1762 (100 %) | 20 → 22 | 27 → 42 | 3 → 4 | non | [voir](captures/comparaison/ville-auxerre-1440.jpg) |
+| `#/ville/belfort` | `/zones-intervention/territoire-de-belfort/belfort/` | 13 → 13 | 8098 → 8117 (100 %) | 1758 → 1756 (100 %) | 20 → 22 | 27 → 42 | 3 → 4 | non | [voir](captures/comparaison/ville-belfort-1440.jpg) |
+| `#/a-propos` | `/a-propos/` | 6 → 6 | 4433 → 4576 (103 %) | 1108 → 1141 (103 %) | 10 → 12 | 15 → 32 | 3 → 4 | non | [voir](captures/comparaison/a-propos-1440.jpg) |
+| `#/recrutement` | `/recrutement/` | 5 → 5 | 2394 → 2443 (102 %) | 387 → 406 (105 %) | 5 → 7 | 19 → 39 | 3 → 4 | non | [voir](captures/comparaison/recrutement-1440.jpg) |
+| `#/mentions-legales` | `/mentions-legales/` | 3 → 3 | 2014 → 2666 (132 %) | 409 → 558 (136 %) | 6 → 10 | 15 → 28 | 2 → 3 | non | [voir](captures/comparaison/mentions-legales-1440.jpg) |
+| `#/politique-de-confidentialite` | `/politique-de-confidentialite/` | 3 → 3 | 1936 → 2763 (143 %) | 399 → 628 (157 %) | 5 → 11 | 15 → 33 | 2 → 3 | non | [voir](captures/comparaison/politique-de-confidentialite-1440.jpg) |
+| `#/gestion-des-cookies` | `/gestion-des-cookies/` | 3 → 3 | 1718 → 2089 (122 %) | 345 → 478 (139 %) | 4 → 9 | 15 → 28 | 2 → 3 | non | [voir](captures/comparaison/gestion-des-cookies-1440.jpg) |
+| `#/plan-du-site` | `/plan-du-site/` | 3 → 3 | 1975 → 2048 (104 %) | 315 → 332 (105 %) | 8 → 10 | 65 → 82 | 2 → 3 | non | [voir](captures/comparaison/plan-du-site-1440.jpg) |
+| `#/article/cout-nettoyage-bureaux` | `/conseils/cout-nettoyage-bureaux/` | 9 → 9 | 4542 → 4635 (102 %) | 839 → 866 (103 %) | 10 → 12 | 26 → 40 | 3 → 4 | non | [voir](captures/comparaison/article-cout-nettoyage-bureaux-1440.jpg) |
+| `#/article/frequence-bureaux` | `/conseils/frequence-bureaux/` | 9 → 9 | 4437 → 4463 (101 %) | 771 → 779 (101 %) | 9 → 11 | 29 → 43 | 3 → 4 | non | [voir](captures/comparaison/article-frequence-bureaux-1440.jpg) |
+| `#/article/cahier-des-charges-nettoyage` | `/conseils/cahier-des-charges-nettoyage/` | 9 → 9 | 4643 → 4744 (102 %) | 741 → 747 (101 %) | 10 → 12 | 32 → 46 | 3 → 4 | non | [voir](captures/comparaison/article-cahier-des-charges-nettoyage-1440.jpg) |
+| `#/ville/saint-apollinaire` | `/zones-intervention/cote-dor/saint-apollinaire/` | 13 → 13 | 7164 → 7092 (99 %) | 1438 → 1429 (99 %) | 17 → 19 | 27 → 42 | 3 → 4 | non | [voir](captures/comparaison/ville-saint-apollinaire-1440.jpg) |
+| `#/ville/chenove` | `/zones-intervention/cote-dor/chenove/` | 13 → 13 | 7115 → 7095 (100 %) | 1431 → 1423 (99 %) | 17 → 19 | 27 → 42 | 3 → 4 | non | [voir](captures/comparaison/ville-chenove-1440.jpg) |
+| `#/ville/quetigny` | `/zones-intervention/cote-dor/quetigny/` | 13 → 13 | 7031 → 6990 (99 %) | 1409 → 1402 (100 %) | 17 → 19 | 21 → 36 | 3 → 4 | non | [voir](captures/comparaison/ville-quetigny-1440.jpg) |
+| `#/ville/talant` | `/zones-intervention/cote-dor/talant/` | 13 → 13 | 6942 → 6893 (99 %) | 1356 → 1346 (99 %) | 17 → 19 | 27 → 42 | 3 → 4 | non | [voir](captures/comparaison/ville-talant-1440.jpg) |
+| `#/ville/longvic` | `/zones-intervention/cote-dor/longvic/` | 13 → 13 | 6995 → 6918 (99 %) | 1421 → 1411 (99 %) | 17 → 19 | 27 → 42 | 3 → 4 | non | [voir](captures/comparaison/ville-longvic-1440.jpg) |
+| `#/ville/fontaine-les-dijon` | `/zones-intervention/cote-dor/fontaine-les-dijon/` | 13 → 13 | 7322 → 7349 (100 %) | 1449 → 1439 (99 %) | 18 → 20 | 27 → 42 | 3 → 4 | non | [voir](captures/comparaison/ville-fontaine-les-dijon-1440.jpg) |
+| `#/ville/marsannay-la-cote` | `/zones-intervention/cote-dor/marsannay-la-cote/` | 13 → 13 | 6993 → 7023 (100 %) | 1374 → 1364 (99 %) | 17 → 19 | 21 → 36 | 3 → 4 | non | [voir](captures/comparaison/ville-marsannay-la-cote-1440.jpg) |
 
 ## Détail bloc par bloc à 375 px
 
@@ -170,7 +170,7 @@
 | # | Bloc maquette | Bloc WordPress | Hauteur | État |
 |---|---|---|---|---|
 | 1 | (Accueil / Pourquoi Top-Famille Pro) | (Accueil/Pourquoi nous) | 42 → 47 | ✅ identique |
-| 2 | Pourquoi choisir Top-Famille Pro | Pourquoi choisir Top-Famille Pro | 463 → 702 | ⚠️ écart +239 px |
+| 2 | Pourquoi choisir Top-Famille Pro | Pourquoi choisir Top-Famille Pro | 463 → 620 | ⚠️ écart +157 px |
 | 3 | (Directement joignableAudrey est votre ) | (Directement joignable Audrey est votre) | 1119 → 1212 | ⚠️ écart +93 px |
 | 4 | Des preuves plutôt que des slogans | Des preuves plutôt que des slogans | 552 → 604 | ≈ proche |
 | 5 | Ce qui nous distingue, concrètement | Ce qui nous distingue, concrètement | 1855 → 1918 | ⚠️ écart +63 px |
@@ -183,10 +183,10 @@
 | # | Bloc maquette | Bloc WordPress | Hauteur | État |
 |---|---|---|---|---|
 | 1 | (Accueil / Avis clients) | (Accueil/Avis clients) | 42 → 47 | ✅ identique |
-| 2 | Avis de nos clients | Avis de nos clients | 205 → 439 | ⚠️ écart +234 px |
+| 2 | Avis de nos clients | Avis de nos clients | 205 → 357 | ⚠️ écart +152 px |
 | 3 | (5,0/5★★★★★Sur Google · 47 avis clients) | (Demander mon devis) | 201 → 76 | ⚠️ écart -125 px |
-| 4 | (★★★★★« Nous avons comparé une embauche) | (Exemples de présentation — témoignages) | 674 → 654 | ≈ proche |
-| 5 | (★★★★★Google« Même intervenante chaque ) | (Exemples de présentation — témoignages) | 1899 → 1549 | ⚠️ écart -350 px |
+| 4 | (★★★★★« Nous avons comparé une embauche) | (Exemples de présentation — témoignages) | 674 → 633 | ≈ proche |
+| 5 | (★★★★★Google« Même intervenante chaque ) | (Exemples de présentation — témoignages) | 1899 → 1928 | ≈ proche |
 | 6 | Un avis ne remplace pas un devis | Un avis ne remplace pas un devis | 611 → 618 | ✅ identique |
 | 7 | À votre tour ? | À votre tour ? | 335 → 335 | ✅ identique |
 
@@ -207,7 +207,7 @@
 | # | Bloc maquette | Bloc WordPress | Hauteur | État |
 |---|---|---|---|---|
 | 1 | Demandez votre devis gratuit | (Aller au contenu principal) | 900 → 52 | ⚠️ écart -848 px |
-| 2 | — | Demandez votre devis gratuit | — → 4182 | ➕ en plus côté WordPress |
+| 2 | — | Demandez votre devis gratuit | — → 4161 | ➕ en plus côté WordPress |
 | 3 | — | (☎ Appeler Demander mon devis) | — → 81 | ➕ en plus côté WordPress |
 | 4 | — | () | — → 81 | ➕ en plus côté WordPress |
 
@@ -216,7 +216,7 @@
 | # | Bloc maquette | Bloc WordPress | Hauteur | État |
 |---|---|---|---|---|
 | 1 | (Accueil / Nos prestations) | (Accueil/Nos prestations) | 42 → 47 | ✅ identique |
-| 2 | Nos prestations de nettoyage professionnel | Nos prestations de nettoyage professionnel | 572 → 821 | ⚠️ écart +249 px |
+| 2 | Nos prestations de nettoyage professionnel | Nos prestations de nettoyage professionnel | 572 → 739 | ⚠️ écart +167 px |
 | 3 | Comment choisir la bonne prestation ? | Comment choisir la bonne prestation ? | 812 → 804 | ✅ identique |
 | 4 | Ce qui est commun aux six prestations | Ce qui est commun aux six prestations | 782 → 860 | ⚠️ écart +78 px |
 | 5 | (Nettoyage de bureauxUn entretien régul) | (Nettoyage de bureaux Un entretien régu) | 3009 → 2800 | ⚠️ écart -209 px |
@@ -227,7 +227,7 @@
 | # | Bloc maquette | Bloc WordPress | Hauteur | État |
 |---|---|---|---|---|
 | 1 | (Accueil / Nettoyage professionnel) | (Accueil/Nettoyage professionnel) | 42 → 47 | ✅ identique |
-| 2 | Le nettoyage professionnel de vos locaux en Bo | Le nettoyage professionnel de vos locaux en Bo | 907 → 981 | ⚠️ écart +74 px |
+| 2 | Le nettoyage professionnel de vos locaux en Bo | Le nettoyage professionnel de vos locaux en Bo | 907 → 899 | ✅ identique |
 | 3 | (27 € HT/htarif unique en région✓Devis ) | (27 € HT/h tarif unique en région Voir ) | 295 → 221 | ⚠️ écart -74 px |
 | 4 | (Le nettoyage professionnel désigne l'e) | (Le nettoyage professionnel désigne l'e) | 626 → 640 | ≈ proche |
 | 5 | Les professionnels que nous accompagnons | Les professionnels que nous accompagnons | 1001 → 1120 | ⚠️ écart +119 px |
@@ -238,13 +238,13 @@
 | 10 | Les tâches, espace par espace | Les tâches, espace par espace | 1780 → 1847 | ⚠️ écart +67 px |
 | 11 | Un cahier des charges défini avec vous | Un cahier des charges défini avec vous | 862 → 898 | ≈ proche |
 | 12 | Comment se construit un cahier des charges | Comment se construit un cahier des charges | 1619 → 1665 | ≈ proche |
-| 13 | Cahier des charges, intervenants et suivi | (Exemples de présentation — témoignages) | 945 → 448 | ⚠️ écart -497 px |
-| 14 | (★★★★★« Nous avons comparé une embauche) | Trois situations concrètes | 396 → 1137 | ⚠️ écart +741 px |
-| 15 | Trois situations concrètes | Le tarif, en toute transparence | 1137 → 867 | ⚠️ écart -270 px |
-| 16 | Le tarif, en toute transparence | Pour aller plus loin | 783 → 413 | ⚠️ écart -370 px |
-| 17 | Pour aller plus loin | Questions fréquentes | 450 → 1028 | ⚠️ écart +578 px |
-| 18 | Questions fréquentes | Un projet d'entretien pour vos locaux ? | 1186 → 340 | ⚠️ écart -846 px |
-| 19 | Un projet d'entretien pour vos locaux ? | Cahier des charges, intervenants et suivi | 343 → 1032 | ⚠️ écart +689 px |
+| 13 | Cahier des charges, intervenants et suivi | Cahier des charges, intervenants et suivi | 945 → 1032 | ⚠️ écart +87 px |
+| 14 | (★★★★★« Nous avons comparé une embauche) | (Exemples de présentation — témoignages) | 396 → 448 | ≈ proche |
+| 15 | Trois situations concrètes | Trois situations concrètes | 1137 → 1137 | ✅ identique |
+| 16 | Le tarif, en toute transparence | Le tarif, en toute transparence | 783 → 867 | ⚠️ écart +84 px |
+| 17 | Pour aller plus loin | Pour aller plus loin | 450 → 413 | ≈ proche |
+| 18 | Questions fréquentes | Questions fréquentes | 1186 → 1028 | ⚠️ écart -158 px |
+| 19 | Un projet d'entretien pour vos locaux ? | Un projet d'entretien pour vos locaux ? | 343 → 340 | ✅ identique |
 
 ### `#/service/bureaux` → `/prestations/bureaux/`
 
@@ -366,7 +366,7 @@
 | # | Bloc maquette | Bloc WordPress | Hauteur | État |
 |---|---|---|---|---|
 | 1 | (Accueil / Notre fonctionnement) | (Accueil/Notre fonctionnement) | 42 → 47 | ✅ identique |
-| 2 | Notre fonctionnement | Notre fonctionnement | 379 → 648 | ⚠️ écart +269 px |
+| 2 | Notre fonctionnement | Notre fonctionnement | 379 → 566 | ⚠️ écart +187 px |
 | 3 | (01Prise de contactVous nous décrivez v) | (01 Prise de contact Vous nous décrivez) | 1925 → 1785 | ⚠️ écart -140 px |
 | 4 | Les informations dont nous avons besoin | Les informations dont nous avons besoin | 2468 → 2494 | ≈ proche |
 | 5 | Prêt à démarrer ? | Prêt à démarrer ? | 264 → 233 | ≈ proche |
@@ -504,7 +504,7 @@
 | # | Bloc maquette | Bloc WordPress | Hauteur | État |
 |---|---|---|---|---|
 | 1 | (Accueil / Zones d'intervention) | (Accueil/Zones d'intervention) | 42 → 47 | ✅ identique |
-| 2 | Nos zones d'intervention en Bourgogne-Franche- | Nos zones d'intervention en Bourgogne-Franche- | 538 → 608 | ⚠️ écart +70 px |
+| 2 | Nos zones d'intervention en Bourgogne-Franche- | Nos zones d'intervention en Bourgogne-Franche- | 538 → 526 | ≈ proche |
 | 3 | (27 € HT/htarif unique en région✓Devis ) | (27 € HT/h tarif unique en région Voir ) | 285 → 211 | ⚠️ écart -74 px |
 | 4 | (Réponse directeNous intervenons unique) | (Réponse directeNous intervenons unique) | 398 → 417 | ≈ proche |
 | 5 | Une couverture régionale organisée depuis Sain | Une couverture régionale organisée depuis Sain | 2298 → 2386 | ⚠️ écart +88 px |
@@ -538,7 +538,7 @@
 | 6 | Nos prestations partout en Bourgogne-Franche-C | Nos prestations partout en Bourgogne-Franche-C | 996 → 1004 | ✅ identique |
 | 7 | Les huit départements couverts | Les huit départements couverts | 2069 → 1858 | ⚠️ écart -211 px |
 | 8 | Nos dix villes principales | Nos dix villes principales | 1009 → 1038 | ≈ proche |
-| 9 | Un tarif régional unique | Un tarif régional unique | 1116 → 1224 | ⚠️ écart +108 px |
+| 9 | Un tarif régional unique | Un tarif régional unique | 1116 → 852 | ⚠️ écart -264 px |
 | 10 | Sélection des intervenants et suivi | Sélection des intervenants et suivi | 2726 → 2781 | ≈ proche |
 | 11 | Questions fréquentes — Bourgogne-Franche-Comté | Questions fréquentes — Bourgogne-Franche-Comté | 824 → 756 | ⚠️ écart -68 px |
 | 12 | Vos locaux, où que vous soyez en région | Vos locaux, où que vous soyez en région | 388 → 373 | ≈ proche |
@@ -746,7 +746,7 @@
 | # | Bloc maquette | Bloc WordPress | Hauteur | État |
 |---|---|---|---|---|
 | 1 | (Accueil / À propos) | (Accueil/À propos) | 42 → 47 | ✅ identique |
-| 2 | Une entreprise régionale, un visage | Une entreprise régionale, un visage | 1259 → 1507 | ⚠️ écart +248 px |
+| 2 | Une entreprise régionale, un visage | Une entreprise régionale, un visage | 1259 → 1425 | ⚠️ écart +166 px |
 | 3 | (« Mon rôle, c'est de rester joignable ) | (« Mon rôle, c'est de rester joignable ) | 235 → 365 | ⚠️ écart +130 px |
 | 4 | (ProximitéBasée à Saint-Apollinaire, no) | (Proximité Basée à Saint-Apollinaire, n) | 737 → 763 | ≈ proche |
 | 5 | Qui nous sommes | Qui nous sommes | 3511 → 3491 | ≈ proche |
@@ -757,7 +757,7 @@
 | # | Bloc maquette | Bloc WordPress | Hauteur | État |
 |---|---|---|---|---|
 | 1 | (Accueil / Recrutement) | (Accueil/Recrutement) | 42 → 47 | ✅ identique |
-| 2 | Rejoindre Top-Famille Pro | Rejoindre Top-Famille Pro | 778 → 844 | ⚠️ écart +66 px |
+| 2 | Rejoindre Top-Famille Pro | Rejoindre Top-Famille Pro | 778 → 762 | ≈ proche |
 | 3 | Les missions que nous confions | Les missions que nous confions | 668 → 662 | ✅ identique |
 | 4 | Ce que nous attendons | Ce que nous attendons | 684 → 767 | ⚠️ écart +83 px |
 | 5 | Envie de nous rejoindre ? | Envie de nous rejoindre ? | 350 → 354 | ✅ identique |
