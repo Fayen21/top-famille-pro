@@ -7,28 +7,30 @@
  * Ce fichier existe pour que les valeurs **décidées** soient reproductibles d'un banc à l'autre et
  * traçables dans l'historique, plutôt que saisies à la main et perdues au prochain montage.
  *
- * ## La note Google
+ * ## La note Google — masquée
  *
- * Note de 5,0/5, **confirmée réelle par Emmanuel le 9 août 2026**. Elle avait été retirée en
- * G26 §7 : la validation humaine du 17 août 2026 a été refusée notamment parce qu'elle était
- * affirmée sans lien vers la fiche qui la porte, donc invérifiable par le visiteur.
+ * La note de 5,0/5 a été confirmée réelle par Emmanuel le 9 août 2026, puis brièvement réaffichée
+ * le 17 août via une dérogation. **Cette dérogation est supprimée** : la consigne du 18 août 2026
+ * interdit d'afficher une note Google comme authentique tant qu'une fiche officielle vérifiable de
+ * Top-Famille Pro n'est pas fournie.
  *
- * Le 17 août 2026, la conséquence lui ayant été exposée, **Emmanuel a demandé de la réafficher en
- * attendant l'URL**. C'est ce que fait `note_sans_source`. Ce n'est pas un retrait de la garde :
- * la garde reste en place et redevient la règle dès que la case est décochée, ce qu'il faudra
- * faire le jour où l'URL sera connue — elle est alors inutile.
+ * La note reste donc **enregistrée** ici — c'est une donnée réelle, il n'y a pas de raison de la
+ * perdre — et reste **invisible**, parce que la garde de `tfp_reassurance_data()` exige désormais
+ * TROIS conditions simultanées : une note saisie, une URL de fiche non vide, et une URL qui a la
+ * forme d'une fiche Google. Aucun réglage ne permet plus de contourner la deuxième et la troisième.
  *
- * ## Ce que cette décision ne change PAS
+ * **Ce fichier ne peut pas réactiver la note** : il n'écrit jamais `google_url`, et le seul réglage
+ * qui permettait de l'afficher sans elle n'existe plus. Le jour où l'URL sera connue, elle se
+ * saisit en administration et la note revient d'elle-même, partout, sans toucher au code.
  *
- * Trois points ne dépendent d'aucun réglage et restent vrais quoi qu'il arrive :
+ * ## Ce qui ne dépend d'aucun réglage
  *
  *  1. **aucune donnée structurée `Review` ni `AggregateRating`** — baliser comme note du site une
  *     note de plateforme tierce contrevient aux règles de Google sur les résultats enrichis, et il
  *     manque de toute façon un nombre d'avis (CLAUDE.md §5.5) ;
  *  2. **aucun compteur d'avis** tant que le nombre réel n'est pas saisi — « 47 avis » est un
  *     chiffre du prototype, vérifiable et faux ;
- *  3. **aucun `href="#"`** à la place de l'URL de la fiche : sans URL, le badge s'affiche sans
- *     lien plutôt qu'avec un lien mort.
+ *  3. **aucun `href="#"`** à la place de l'URL de la fiche.
  *
  * Usage : wp eval-file bin/seed-reassurance.php
  */
@@ -40,23 +42,29 @@ if ( ! defined( 'WP_CLI' ) && ! defined( 'ABSPATH' ) ) {
 $actuel = get_option( TFP_REASSURANCE_OPTION, array() );
 $actuel = is_array( $actuel ) ? $actuel : array();
 
+// Purge de l'ancienne dérogation : une base montée avant le 18 août 2026 la porte encore, et la
+// laisser en place serait sans effet aujourd'hui mais trompeuse à la relecture de l'option.
+unset( $actuel['note_sans_source'] );
+
 $valeurs = array_merge(
 	tfp_reassurance_defaults(),
 	$actuel,
 	array(
-		'note'             => '5.0',
-		// Dérogation explicite — voir l'en-tête. À retirer avec l'arrivée de l'URL de la fiche.
-		'note_sans_source' => true,
-		// Volontairement laissés vides : ils ne sont pas connus, et rien ne s'invente ici.
-		'google_url'       => $actuel['google_url'] ?? '',
-		'nombre_avis'      => $actuel['nombre_avis'] ?? '',
+		// Enregistrée, et masquée tant que la fiche n'est pas fournie : c'est la garde qui décide.
+		'note'        => '5.0',
+		// Jamais écrits ici : ils ne sont pas connus, et rien ne s'invente. `google_url` en
+		// particulier est le seul interrupteur de la note — le seed ne doit pas pouvoir l'actionner.
+		'google_url'  => $actuel['google_url'] ?? '',
+		'nombre_avis' => $actuel['nombre_avis'] ?? '',
 	)
 );
 
 update_option( TFP_REASSURANCE_OPTION, $valeurs );
 
+$visible = '' !== $valeurs['note'] && tfp_reassurance_url_fiche_valide( $valeurs['google_url'] );
+
 echo "=== Réassurance & avis ===\n";
-echo '  note              : ' . ( '' !== $valeurs['note'] ? $valeurs['note'] . '/5' : '(vide)' ) . "\n";
-echo '  affichée sans URL : ' . ( ! empty( $valeurs['note_sans_source'] ) ? 'OUI (dérogation du 17/08/2026)' : 'non' ) . "\n";
-echo '  URL de la fiche   : ' . ( '' !== $valeurs['google_url'] ? $valeurs['google_url'] : '(à fournir — décocher la dérogation ce jour-là)' ) . "\n";
-echo '  nombre d’avis     : ' . ( '' !== (string) $valeurs['nombre_avis'] ? $valeurs['nombre_avis'] : '(à fournir — compteur masqué)' ) . "\n";
+echo '  note enregistrée : ' . ( '' !== $valeurs['note'] ? $valeurs['note'] . '/5' : '(vide)' ) . "\n";
+echo '  URL de la fiche  : ' . ( '' !== $valeurs['google_url'] ? $valeurs['google_url'] : '(à fournir)' ) . "\n";
+echo '  note AFFICHÉE    : ' . ( $visible ? 'oui' : 'NON — fiche vérifiable absente (consigne du 18/08/2026)' ) . "\n";
+echo '  nombre d’avis    : ' . ( '' !== (string) $valeurs['nombre_avis'] ? $valeurs['nombre_avis'] : '(à fournir — compteur masqué)' ) . "\n";

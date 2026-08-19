@@ -128,30 +128,73 @@ test.describe( 'G26 · la note Google n’apparaît que si elle est autorisée',
 		}
 	} );
 
-	test( 'la note revient si — et seulement si — elle est vérifiable', async () => {
-		// Contrat de la garde, éprouvé sans passer par le navigateur : la note seule ne sort pas,
-		// la note accompagnée de l'URL de sa fiche sort. C'est ce qui rend la suppression
-		// réversible le jour où la vérification officielle est fournie.
+	test( 'la note ne sort qu’aux trois conditions simultanées', async () => {
+		/*
+		 * Contrat de la garde, éprouvé sans passer par le navigateur. Consigne du 18 août 2026 :
+		 * une note Google ne s'affiche pas comme authentique tant qu'une fiche officielle
+		 * vérifiable n'est pas fournie. Trois conditions, et plus aucune dérogation :
+		 *
+		 *   1. une note saisie ;
+		 *   2. une URL de fiche non vide ;
+		 *   3. une URL qui a bien la forme d'une fiche Google.
+		 *
+		 * La troisième existe parce que la deuxième seule se contourne avec n'importe quelle
+		 * chaîne — l'adresse du site, un `#`, un texte d'attente. Le contrôle porte sur la forme,
+		 * pas sur l'appartenance de la fiche : aucun code ne peut prouver depuis le serveur qu'une
+		 * fiche est celle de Top-Famille Pro, et l'écran de saisie le dit.
+		 */
 		const { execFileSync } = await import( 'node:child_process' );
+		const cas = {
+			note_seule: [ '5.0', '' ],
+			url_vide_espaces: [ '5.0', '   ' ],
+			url_non_google: [ '5.0', 'https://top-famille-pro.fr/avis-clients/' ],
+			url_diese: [ '5.0', '#' ],
+			url_google_sans_fiche: [ '5.0', 'https://www.google.fr/' ],
+			url_http_non_securise: [ '5.0', 'http://maps.google.com/?cid=123' ],
+			sans_note_avec_url: [ '', 'https://maps.app.goo.gl/abc123' ],
+			fiche_maps: [ '5.0', 'https://www.google.fr/maps/place/Top-Famille+Pro/' ],
+			fiche_cid: [ '5.0', 'https://maps.google.com/?cid=123456789' ],
+			fiche_courte: [ '5.0', 'https://maps.app.goo.gl/abc123' ],
+			fiche_gpage: [ '5.0', 'https://g.page/top-famille-pro' ],
+		};
 		const php = `
 			define('ABSPATH', __DIR__ . '/');
 			define('TFP_REASSURANCE_OPTION', 'tfp_reassurance');
 			define('TFP_REASSURANCE_AVIS_MAX', 3);
 			function get_option($k, $d = array()) { return $GLOBALS['opt']; }
 			function wp_parse_args($a, $d) { return array_merge($d, is_array($a) ? $a : array()); }
+			function wp_parse_url($u) { return parse_url($u); }
 			function esc_attr($s) { return $s; } function esc_html($s) { return $s; }
 			function esc_url($s) { return $s; } function esc_textarea($s) { return $s; }
 			function add_action() {} function add_filter() {} function sanitize_text_field($s) { return $s; }
 			require_once 'wp-content/themes/topfamillepro/includes/reassurance-settings.php';
-			$GLOBALS['opt'] = array('note' => '5.0', 'google_url' => '');
-			$sans = tfp_reassurance_data()['note'];
-			$GLOBALS['opt'] = array('note' => '5.0', 'google_url' => 'https://maps.google.com/?cid=1');
-			$avec = tfp_reassurance_data()['note'];
-			echo json_encode(array('sans_url' => $sans, 'avec_url' => $avec));
+			$cas = json_decode(file_get_contents('php://stdin'), true);
+			$out = array();
+			foreach ($cas as $nom => $v) {
+				$GLOBALS['opt'] = array('note' => $v[0], 'google_url' => $v[1]);
+				$out[$nom] = tfp_reassurance_data()['note'];
+			}
+			echo json_encode($out);
 		`;
-		const sortie = execFileSync( 'php', [ '-r', php ], { encoding: 'utf8' } );
+		const sortie = execFileSync( 'php', [ '-r', php ], {
+			encoding: 'utf8',
+			input: JSON.stringify( cas ),
+		} );
 		const r = JSON.parse( sortie.trim().split( '\n' ).pop() );
-		expect( r.sans_url, 'la note sort alors que la fiche Google est absente' ).toBeNull();
-		expect( r.avec_url, 'la note ne revient pas quand la fiche Google est fournie' ).toBe( 5 );
+
+		for ( const nom of [
+			'note_seule',
+			'url_vide_espaces',
+			'url_non_google',
+			'url_diese',
+			'url_google_sans_fiche',
+			'url_http_non_securise',
+			'sans_note_avec_url',
+		] ) {
+			expect( r[ nom ], `la note sort alors qu'elle ne devrait pas (cas ${ nom })` ).toBeNull();
+		}
+		for ( const nom of [ 'fiche_maps', 'fiche_cid', 'fiche_courte', 'fiche_gpage' ] ) {
+			expect( r[ nom ], `la note ne revient pas avec une vraie fiche (cas ${ nom })` ).toBe( 5 );
+		}
 	} );
 } );

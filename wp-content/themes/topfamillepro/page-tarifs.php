@@ -266,8 +266,8 @@ get_header();
 <section class="tfp-section--tight">
 	<div class="tfp-container">
 		<h2>Trois exemples de budgets</h2>
-		<p class="tfp-section__lede">Calculés au tarif de <?php echo esc_html( $prix ); ?> HT/h + <?php echo esc_html( $gestion ); ?> HT de gestion. S'y ajoutent, le cas échéant, <?php echo esc_html( $setup ); ?> HT de frais de mise en place, selon les conditions précisées au devis.</p>
-		<div class="tfp-grid tfp-grid--autofit-lg" style="margin-top:24px">
+		<p class="tfp-section__lede">Calculés au tarif de <?php echo esc_html( $prix ); ?> HT/h + <?php echo esc_html( $gestion ); ?> HT de gestion, plus <?php echo esc_html( $setup ); ?> HT de frais de mise en place.</p>
+		<div class="tfp-grid tfp-grid--autofit-lg" style="margin-top:24px" aria-describedby="tfp-tarifs-conditions">
 			<?php foreach ( $exemples as $i => $row ) : ?>
 				<div class="tfp-budget-card">
 					<span class="tfp-budget-card__title"><?php echo esc_html( $exemples_labels[ $i ][0] ); ?></span>
@@ -276,11 +276,21 @@ get_header();
 					<ul class="tfp-budget-card__detail">
 						<li><?php echo (int) $row['hours']; ?> h × <?php echo esc_html( $prix ); ?> HT<span><?php echo esc_html( tfp_format_price( $row['hours'] * $site['price_unique'] ) ); ?> HT</span></li>
 						<li>Frais de gestion<span><?php echo esc_html( $gestion ); ?> HT</span></li>
-						<li>Premier mois, mise en place le cas échéant<span><?php echo esc_html( tfp_format_price( $row['first_month'] ) ); ?> HT</span></li>
+						<li>Premier mois, avec mise en place<span><?php echo esc_html( tfp_format_price( $row['first_month'] ) ); ?> HT</span></li>
 					</ul>
 				</div>
 			<?php endforeach; ?>
 		</div>
+		<?php
+		/*
+		 * Condition unique pour toute la bande. Elle figurait dans le chapeau ET dans les trois
+		 * intitulés de ligne : quatre fois la même réserve dans un seul bloc, ce qui la rendait
+		 * décorative au lieu d'informative. Elle est ici, une fois, et rattachée au tableau par
+		 * `aria-describedby` pour être annoncée avec lui — la retirer visuellement l'aurait
+		 * supprimée pour tout le monde, la répéter la rendait illisible pour tout le monde.
+		 */
+		?>
+		<p class="tfp-note-inline" id="tfp-tarifs-conditions">Ces frais et majorations s'appliquent uniquement lorsqu'ils sont prévus et indiqués au devis.</p>
 		<p class="tfp-note-inline">Exemple illustratif et non contractuel. Le volume horaire est défini selon les locaux et le cahier des charges.</p>
 	</div>
 </section>

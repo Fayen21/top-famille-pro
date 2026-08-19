@@ -11,8 +11,10 @@
     "images": "node build/optimize-images.mjs",
     "fonts": "node build/fetch-fonts.mjs",
     "lint:php": "node build/lint-php.mjs",
-    "test": "npm run lint:php && npm run build",
-    "test:e2e": "playwright test"
+    "test": "npm run lint:php && npm run build && npm run parite",
+    "test:e2e": "playwright test",
+    "parite": "node tools/verifier-parite-installeur.mjs",
+    "paquets": "node tools/build-paquets.mjs"
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.12.1",

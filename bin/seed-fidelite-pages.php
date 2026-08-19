@@ -129,7 +129,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 							array(
 								'type' => 'note',
 								'texte' => 'Devis gratuit sous 24 h Intervention régulière ou ponctuelle Conditions d\'arrêt précisées au devis',
-								'ligne' => 823,
+								'ligne' => 853,
 							),
 						),
 						'cartes' => array(
@@ -2825,7 +2825,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 							array(
 								'type' => 'note',
 								'texte' => 'Sélection & intervenant habituel recherché',
-								'ligne' => 7025,
+								'ligne' => 7055,
 							),
 							array(
 								'type' => 'paragraph',
@@ -2834,7 +2834,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 							array(
 								'type' => 'note',
 								'texte' => 'Recherche active d\'une solution en cas d\'absence',
-								'ligne' => 7119,
+								'ligne' => 7149,
 							),
 							array(
 								'type' => 'paragraph',
@@ -2843,7 +2843,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 							array(
 								'type' => 'note',
 								'texte' => 'Suivi & interlocuteur dédié',
-								'ligne' => 7213,
+								'ligne' => 7243,
 							),
 							array(
 								'type' => 'paragraph',
@@ -2918,7 +2918,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 							array(
 								'type' => 'note',
 								'texte' => '★★★★★',
-								'ligne' => 7569,
+								'ligne' => 7599,
 							),
 							array(
 								'type' => 'quote',
@@ -2927,7 +2927,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 							array(
 								'type' => 'note',
 								'texte' => '· · Marc V. Directeur administratif Chalon-sur-Saône',
-								'ligne' => 7725,
+								'ligne' => 7755,
 							),
 						),
 						'cartes' => array(),
@@ -3203,7 +3203,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 						'sequence' => array(
 							array(
 								'type' => 'paragraph',
-								'texte' => '27 € HT/h, identique en régulier et en ponctuel. S\'y ajoutent le cas échéant 9 € HT/mois de gestion, 50 € HT de frais de mise en place, le cas échéant, selon les conditions précisées au devis, une majoration de 10 % (dimanche, jours fériés, nuit) et 0,35 € HT/km.',
+								'texte' => '27 € HT/h, identique en régulier et en ponctuel. S\'y ajoutent, si prévu et indiqué au devis, 9 € HT/mois de gestion, 50 € HT de frais de mise en place, une majoration de 10 % (dimanche, jours fériés, nuit) et 0,35 € HT/km.',
 							),
 							array(
 								'type' => 'link',
@@ -3220,7 +3220,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 						),
 						'cartes' => array(),
 						'textes' => array(
-							'27 € HT/h, identique en régulier et en ponctuel. S\'y ajoutent le cas échéant 9 € HT/mois de gestion, 50 € HT de frais de mise en place, le cas échéant, selon les conditions précisées au devis, une majoration de 10 % (dimanche, jours fériés, nuit) et 0,35 € HT/km.',
+							'27 € HT/h, identique en régulier et en ponctuel. S\'y ajoutent, si prévu et indiqué au devis, 9 € HT/mois de gestion, 50 € HT de frais de mise en place, une majoration de 10 % (dimanche, jours fériés, nuit) et 0,35 € HT/km.',
 						),
 						'liste' => array(),
 						'liens' => array(
@@ -5179,7 +5179,7 @@ update_option( 'tfp_page_zones-intervention', array(
 							array(
 								'type' => 'note',
 								'texte' => 'Devis gratuit sous 24 h Intervention régulière ou ponctuelle Conditions d\'arrêt précisées au devis',
-								'ligne' => 545,
+								'ligne' => 575,
 							),
 						),
 						'cartes' => array(
@@ -5296,7 +5296,7 @@ update_option( 'tfp_page_zones-intervention', array(
 							array(
 								'type' => 'note',
 								'texte' => 'Réponse directe',
-								'ligne' => 751,
+								'ligne' => 781,
 							),
 							array(
 								'type' => 'paragraph',
@@ -8240,7 +8240,7 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 							array(
 								'type' => 'note',
 								'texte' => 'Devis gratuit sous 24 h Intervention régulière ou ponctuelle Conditions d\'arrêt précisées au devis',
-								'ligne' => 688,
+								'ligne' => 718,
 							),
 						),
 						'cartes' => array(
@@ -8357,7 +8357,7 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 							array(
 								'type' => 'note',
 								'texte' => 'Réponse directe',
-								'ligne' => 895,
+								'ligne' => 924,
 							),
 							array(
 								'type' => 'paragraph',
@@ -11031,7 +11031,7 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 						'sequence' => array(
 							array(
 								'type' => 'paragraph',
-								'texte' => 'Le taux horaire est de 27 € HT/h dans les huit départements, en régulier comme en ponctuel. S\'y ajoutent 9 € HT/mois de gestion pour les contrats réguliers, 50 € HT de frais de mise en place, le cas échéant, selon les conditions précisées au devis, et, le cas échéant, des indemnités kilométriques de 0,35 € HT/km. Les éventuelles indemnités kilométriques dépendent de l\'adresse des locaux, du planning et des conditions d\'intervention. Aucun de ces éléments n\'apparaît après coup : tout est écrit au devis.',
+								'texte' => 'Le taux horaire est de 27 € HT/h dans les huit départements, en régulier comme en ponctuel. S\'y ajoutent 9 € HT/mois de gestion pour les contrats réguliers, 50 € HT de frais de mise en place et des indemnités kilométriques de 0,35 € HT/km, lorsqu\'ils s\'appliquent, selon les conditions précisées au devis. Les éventuelles indemnités kilométriques dépendent de l\'adresse des locaux, du planning et des conditions d\'intervention. Aucun de ces éléments n\'apparaît après coup : tout est écrit au devis.',
 							),
 							array(
 								'type' => 'link',
@@ -11196,7 +11196,7 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 							),
 						),
 						'textes' => array(
-							'Le taux horaire est de 27 € HT/h dans les huit départements, en régulier comme en ponctuel. S\'y ajoutent 9 € HT/mois de gestion pour les contrats réguliers, 50 € HT de frais de mise en place, le cas échéant, selon les conditions précisées au devis, et, le cas échéant, des indemnités kilométriques de 0,35 € HT/km. Les éventuelles indemnités kilométriques dépendent de l\'adresse des locaux, du planning et des conditions d\'intervention. Aucun de ces éléments n\'apparaît après coup : tout est écrit au devis.',
+							'Le taux horaire est de 27 € HT/h dans les huit départements, en régulier comme en ponctuel. S\'y ajoutent 9 € HT/mois de gestion pour les contrats réguliers, 50 € HT de frais de mise en place et des indemnités kilométriques de 0,35 € HT/km, lorsqu\'ils s\'appliquent, selon les conditions précisées au devis. Les éventuelles indemnités kilométriques dépendent de l\'adresse des locaux, du planning et des conditions d\'intervention. Aucun de ces éléments n\'apparaît après coup : tout est écrit au devis.',
 						),
 						'liste' => array(),
 						'liens' => array(
@@ -16238,19 +16238,19 @@ update_option( 'tfp_page_recrutement', array(
 							array(
 								'type' => 'step-ligne',
 								'texte' => 'Vous envoyez votre candidature et vos disponibilités.',
-								'ligne' => 1116,
+								'ligne' => 1086,
 								'numero' => '01',
 							),
 							array(
 								'type' => 'step-ligne',
 								'texte' => 'Audrey vous recontacte pour un échange sur votre profil et votre secteur.',
-								'ligne' => 1154,
+								'ligne' => 1124,
 								'numero' => '02',
 							),
 							array(
 								'type' => 'step-ligne',
 								'texte' => 'Selon les missions disponibles près de chez vous, une proposition vous est faite.',
-								'ligne' => 1213,
+								'ligne' => 1183,
 								'numero' => '03',
 							),
 						),

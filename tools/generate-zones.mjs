@@ -141,6 +141,79 @@ function corriger(slugZone, champ, texte) {
 	return sortie;
 }
 
+/**
+ * Chapitre de méthode que le champ ACF `fonctionnement` alimente, zone par zone.
+ *
+ * Le champ existait, était enregistré, éditable en administration et alimenté sur les 26 zones —
+ * et n'était affiché nulle part. `single-zone.php` le lisait sans jamais l'écrire. Un éditeur
+ * pouvait donc y corriger un texte en croyant publier.
+ *
+ * Il devient la source éditable d'un chapitre **déjà existant**, désigné ici par son TITRE et non
+ * par son rang : si la maquette réordonne les chapitres, la correspondance suit. Si le titre
+ * disparaît, la génération échoue — mieux vaut un générateur qui s'arrête qu'un champ qui
+ * redevient muet sans bruit.
+ *
+ * Les dix villes et six communes ont un chapitre explicitement consacré au fonctionnement. Quatre
+ * départements n'en ont pas : la maquette y traite le sujet sous l'angle de l'organisation des
+ * tournées ou des accès, et c'est ce chapitre-là qui décrit comment la prestation se déroule sur
+ * la zone. C'est donc lui qui est désigné, faute d'équivalent plus proche.
+ */
+const SECTION_FONCTIONNEMENT = {
+	// Départements — chapitre consacré au fonctionnement quand la maquette en pose un…
+	jura: 'Fonctionnement et suivi',
+	'saone-et-loire': 'Fonctionnement, sélection et suivi',
+	yonne: 'Fonctionnement et suivi à distance',
+	'territoire-de-belfort': 'Démarrage : ce qui se passe après votre accord',
+	// … et chapitre d'organisation à défaut, pour les quatre qui n'en posent pas.
+	'cote-dor': 'Déplacements et organisation des tournées',
+	doubs: 'Organisation des déplacements depuis Saint-Apollinaire',
+	nievre: 'Organisation des déplacements',
+	'haute-saone': 'Accès, clés et interventions hors horaires',
+	// Villes.
+	dijon: 'Sélection, intervenant habituel et suivi',
+	besancon: 'Sélection des intervenants, remplacement et suivi',
+	dole: 'Sélection, intervenant habituel et suivi',
+	'lons-le-saunier': 'Sélection, intervenant habituel et suivi',
+	nevers: 'Sélection des intervenants, remplacement et suivi',
+	vesoul: 'Sélection, intervenant habituel et suivi',
+	'chalon-sur-saone': 'Sélection, intervenant habituel et suivi',
+	macon: 'Sélection, intervenant habituel et suivi',
+	auxerre: 'Sélection, intervenant habituel et remplacement',
+	belfort: 'Sélection, intervenant habituel et suivi',
+	// Communes.
+	'saint-apollinaire': 'Fonctionnement, sélection et suivi',
+	chenove: 'Fonctionnement, sélection et suivi',
+	quetigny: 'Fonctionnement, sélection et suivi',
+	talant: 'Fonctionnement, accès et suivi',
+	longvic: 'Fonctionnement, accès et suivi',
+	'fontaine-les-dijon': 'Fonctionnement, sélection et suivi',
+	'marsannay-la-cote': 'Fonctionnement, sélection et suivi',
+	beaune: 'Fonctionnement, saisonnalité et suivi',
+};
+
+/**
+ * Rang (1-based) du chapitre désigné, ou l'échec si la maquette ne le porte plus.
+ * Retourne aussi ses paragraphes : ce sont eux qui deviennent la valeur du champ.
+ */
+function chapitreFonctionnement(slugZone, methode) {
+	const titre = SECTION_FONCTIONNEMENT[slugZone];
+	if (!titre) {
+		throw new Error(
+			`zone « ${slugZone} » absente de SECTION_FONCTIONNEMENT : sans chapitre désigné, le champ ` +
+				'ACF « fonctionnement » redeviendrait muet sur cette page.'
+		);
+	}
+	const rang = methode.findIndex((g) => g.titre === titre) + 1;
+	if (rang === 0) {
+		throw new Error(
+			`zone « ${slugZone} » : le chapitre « ${titre} » n'existe plus dans la maquette. ` +
+				`Chapitres relevés : ${methode.map((g) => `« ${g.titre} »`).join(', ')}. ` +
+				'Revoir SECTION_FONCTIONNEMENT plutôt que laisser le champ sans destination.'
+		);
+	}
+	return { rang, textes: methode[rang - 1].textes };
+}
+
 const REF = 'file:///home/user/top-famille-pro/reference/Top-Famille-Pro-HANDOFF-READY.html';
 const OUT = 'bin/seed-fidelite-zones.php';
 
@@ -458,11 +531,19 @@ for (const z of all) {
 		set('temoignage_role', php(z.temoignage.role));
 	}
 
-	z.methode.slice(0, 4).forEach((g, i) => {
+	const chapitresMethode = z.methode.slice(0, 4);
+	chapitresMethode.forEach((g, i) => {
 		set(`methode_${i + 1}_titre`, php(g.titre));
+		// Conservé comme REPLI : le gabarit ne l'affiche que si `fonctionnement` est vide.
 		set(`methode_${i + 1}_texte`, phpLines(g.textes));
 		set(`methode_${i + 1}_liste`, phpLines(g.liste));
 	});
+
+	// Le champ « fonctionnement » et le chapitre qu'il pilote : une seule source de vérité, écrite
+	// ici, lue par le gabarit, embarquée telle quelle dans le paquet d'installation.
+	const fonc = chapitreFonctionnement(z.slug, chapitresMethode);
+	set('fonctionnement', phpLines(fonc.textes));
+	set('fonctionnement_bloc', fonc.rang);
 
 	z.locaux.slice(0, 8).forEach((g, i) => {
 		set(`locaux_${i + 1}_titre`, php(g.titre));

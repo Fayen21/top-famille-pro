@@ -13,12 +13,22 @@ const THEME_DIR = path.join(__dirname, '..', 'wp-content', 'themes', 'topfamille
 const isWatch = process.argv.includes('--watch');
 const isDev = process.argv.includes('--dev') || isWatch;
 
+/*
+ * Répertoire de sortie, `assets/dist` du thème par défaut. `--out-dir=…` sert au contrôle de
+ * parité : il reconstruit CSS et JS dans un répertoire jetable pour les comparer octet par octet
+ * à ceux du dépôt, sans jamais toucher au thème. Sans cette option, vérifier que les fichiers
+ * distribués sont à jour supposerait de les écraser d'abord — un contrôle qui répare ce qu'il
+ * mesure ne mesure plus rien.
+ */
+const outDirArg = (process.argv.find((a) => a.startsWith('--out-dir=')) || '').split('=')[1];
+const DIST = outDirArg ? path.resolve(outDirArg) : path.join(THEME_DIR, 'assets/dist');
+
 const cssBuild = {
   entryPoints: [path.join(THEME_DIR, 'src/css/main.css')],
   bundle: true,
   minify: !isDev,
   sourcemap: isDev,
-  outfile: path.join(THEME_DIR, 'assets/dist/css/main.css'),
+  outfile: path.join(DIST, 'css/main.css'),
   /* Les .woff2 vivent déjà à leur emplacement final (assets/dist/fonts/) : on laisse
      les url() telles quelles plutôt que de les faire résoudre/copier par esbuild. */
   external: ['*.woff2'],
@@ -30,7 +40,7 @@ const jsBuild = {
   minify: !isDev,
   sourcemap: isDev,
   target: ['es2018'],
-  outfile: path.join(THEME_DIR, 'assets/dist/js/main.js'),
+  outfile: path.join(DIST, 'js/main.js'),
 };
 
 async function run() {

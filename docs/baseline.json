@@ -107,7 +107,7 @@
     "formulaires": 0,
     "faq": 0,
     "cta": 4,
-    "mots": 920,
+    "mots": 917,
     "titres": 10,
     "debordement": 0,
     "horsEcran": 0
@@ -115,14 +115,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 3066,
+   "ms": 3126,
    "phases": {
-    "bascule": 1110,
-    "stabRef": 608,
-    "releveRef": 8,
-    "chargementWp": 680,
-    "stabWp": 651,
-    "releveWp": 7,
+    "bascule": 1117,
+    "stabRef": 611,
+    "releveRef": 11,
+    "chargementWp": 731,
+    "stabWp": 643,
+    "releveWp": 11,
     "cls": 2
    }
   },
@@ -184,7 +184,7 @@
     "horsEcran": 0
    },
    "wp": {
-    "hauteur": 13634,
+    "hauteur": 13607,
     "sections": 13,
     "bandes": [
      971,
@@ -195,7 +195,7 @@
      968,
      965,
      898,
-     847,
+     819,
      933,
      1197,
      1442,
@@ -233,7 +233,7 @@
     "formulaires": 0,
     "faq": 0,
     "cta": 4,
-    "mots": 920,
+    "mots": 917,
     "titres": 10,
     "debordement": 0,
     "horsEcran": 0
@@ -241,15 +241,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2982,
+   "ms": 3041,
    "phases": {
-    "bascule": 1107,
-    "stabRef": 578,
-    "releveRef": 6,
-    "chargementWp": 671,
-    "stabWp": 609,
-    "releveWp": 10,
-    "cls": 1
+    "bascule": 1108,
+    "stabRef": 580,
+    "releveRef": 8,
+    "chargementWp": 722,
+    "stabWp": 612,
+    "releveWp": 8,
+    "cls": 3
    }
   },
   "768": {
@@ -359,7 +359,7 @@
     "formulaires": 0,
     "faq": 0,
     "cta": 4,
-    "mots": 920,
+    "mots": 917,
     "titres": 10,
     "debordement": 0,
     "horsEcran": 0
@@ -367,15 +367,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2735,
+   "ms": 2851,
    "phases": {
-    "bascule": 1107,
-    "stabRef": 456,
-    "releveRef": 7,
-    "chargementWp": 667,
-    "stabWp": 489,
-    "releveWp": 8,
-    "cls": 1
+    "bascule": 1111,
+    "stabRef": 464,
+    "releveRef": 9,
+    "chargementWp": 762,
+    "stabWp": 491,
+    "releveWp": 12,
+    "cls": 2
    }
   },
   "1024": {
@@ -485,7 +485,7 @@
     "formulaires": 0,
     "faq": 0,
     "cta": 4,
-    "mots": 920,
+    "mots": 917,
     "titres": 10,
     "debordement": 0,
     "horsEcran": 0
@@ -493,15 +493,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2579,
+   "ms": 2654,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 396,
+    "bascule": 1111,
+    "stabRef": 402,
     "releveRef": 8,
-    "chargementWp": 661,
-    "stabWp": 398,
-    "releveWp": 7,
-    "cls": 3
+    "chargementWp": 721,
+    "stabWp": 401,
+    "releveWp": 9,
+    "cls": 2
    }
   },
   "1440": {
@@ -611,7 +611,7 @@
     "formulaires": 0,
     "faq": 0,
     "cta": 4,
-    "mots": 920,
+    "mots": 917,
     "titres": 10,
     "debordement": 0,
     "horsEcran": 0
@@ -619,14 +619,14 @@
    "cls": 0.0005,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2621,
+   "ms": 2707,
    "phases": {
-    "bascule": 1110,
-    "stabRef": 398,
-    "releveRef": 6,
-    "chargementWp": 678,
-    "stabWp": 420,
-    "releveWp": 7,
+    "bascule": 1113,
+    "stabRef": 455,
+    "releveRef": 9,
+    "chargementWp": 719,
+    "stabWp": 399,
+    "releveWp": 9,
     "cls": 2
    }
   },
@@ -737,7 +737,7 @@
     "formulaires": 0,
     "faq": 0,
     "cta": 4,
-    "mots": 920,
+    "mots": 917,
     "titres": 10,
     "debordement": 0,
     "horsEcran": 0
@@ -745,15 +745,15 @@
    "cls": 0.0003,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2671,
+   "ms": 2755,
    "phases": {
-    "bascule": 1110,
-    "stabRef": 406,
-    "releveRef": 8,
-    "chargementWp": 739,
-    "stabWp": 399,
-    "releveWp": 7,
-    "cls": 2
+    "bascule": 1117,
+    "stabRef": 480,
+    "releveRef": 9,
+    "chargementWp": 727,
+    "stabWp": 406,
+    "releveWp": 13,
+    "cls": 3
    }
   }
  },
@@ -829,7 +829,7 @@
     "horsEcran": 0
    },
    "wp": {
-    "hauteur": 22642,
+    "hauteur": 22614,
     "sections": 18,
     "bandes": [
      995,
@@ -845,7 +845,7 @@
      1849,
      477,
      1334,
-     1060,
+     1032,
      437,
      1084,
      368,
@@ -896,7 +896,7 @@
     "formulaires": 0,
     "faq": 10,
     "cta": 3,
-    "mots": 2627,
+    "mots": 2621,
     "titres": 43,
     "debordement": 0,
     "horsEcran": 0
@@ -904,14 +904,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 3615,
+   "ms": 3632,
    "phases": {
-    "bascule": 1106,
+    "bascule": 1108,
     "stabRef": 881,
-    "releveRef": 9,
-    "chargementWp": 693,
-    "stabWp": 914,
-    "releveWp": 10,
+    "releveRef": 11,
+    "chargementWp": 703,
+    "stabWp": 915,
+    "releveWp": 12,
     "cls": 2
    }
   },
@@ -986,7 +986,7 @@
     "horsEcran": 0
    },
    "wp": {
-    "hauteur": 20472,
+    "hauteur": 20444,
     "sections": 18,
     "bandes": [
      981,
@@ -1002,7 +1002,7 @@
      1665,
      448,
      1137,
-     895,
+     867,
      413,
      1028,
      340,
@@ -1053,7 +1053,7 @@
     "formulaires": 0,
     "faq": 10,
     "cta": 3,
-    "mots": 2627,
+    "mots": 2621,
     "titres": 43,
     "debordement": 0,
     "horsEcran": 0
@@ -1061,15 +1061,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 3434,
+   "ms": 3477,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 819,
-    "releveRef": 9,
-    "chargementWp": 667,
-    "stabWp": 820,
-    "releveWp": 10,
-    "cls": 3
+    "bascule": 1108,
+    "stabRef": 820,
+    "releveRef": 13,
+    "chargementWp": 696,
+    "stabWp": 824,
+    "releveWp": 14,
+    "cls": 2
    }
   },
   "768": {
@@ -1210,7 +1210,7 @@
     "formulaires": 0,
     "faq": 10,
     "cta": 3,
-    "mots": 2627,
+    "mots": 2621,
     "titres": 43,
     "debordement": 0,
     "horsEcran": 0
@@ -1218,15 +1218,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 3011,
+   "ms": 3062,
    "phases": {
     "bascule": 1106,
-    "stabRef": 607,
-    "releveRef": 7,
-    "chargementWp": 671,
+    "stabRef": 609,
+    "releveRef": 13,
+    "chargementWp": 710,
     "stabWp": 610,
-    "releveWp": 9,
-    "cls": 1
+    "releveWp": 12,
+    "cls": 2
    }
   },
   "1024": {
@@ -1367,7 +1367,7 @@
     "formulaires": 0,
     "faq": 10,
     "cta": 3,
-    "mots": 2627,
+    "mots": 2621,
     "titres": 43,
     "debordement": 0,
     "horsEcran": 0
@@ -1375,15 +1375,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2839,
+   "ms": 2915,
    "phases": {
-    "bascule": 1105,
-    "stabRef": 516,
-    "releveRef": 9,
-    "chargementWp": 677,
-    "stabWp": 520,
-    "releveWp": 10,
-    "cls": 2
+    "bascule": 1110,
+    "stabRef": 519,
+    "releveRef": 12,
+    "chargementWp": 735,
+    "stabWp": 522,
+    "releveWp": 14,
+    "cls": 3
    }
   },
   "1440": {
@@ -1457,7 +1457,7 @@
     "horsEcran": 0
    },
    "wp": {
-    "hauteur": 11077,
+    "hauteur": 11071,
     "sections": 18,
     "bandes": [
      626,
@@ -1473,7 +1473,7 @@
      713,
      381,
      546,
-     453,
+     448,
      318,
      873,
      334,
@@ -1524,7 +1524,7 @@
     "formulaires": 0,
     "faq": 10,
     "cta": 3,
-    "mots": 2627,
+    "mots": 2621,
     "titres": 43,
     "debordement": 0,
     "horsEcran": 0
@@ -1532,14 +1532,14 @@
    "cls": 0.0005,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2828,
+   "ms": 2936,
    "phases": {
-    "bascule": 1105,
-    "stabRef": 515,
-    "releveRef": 9,
-    "chargementWp": 669,
-    "stabWp": 519,
-    "releveWp": 8,
+    "bascule": 1106,
+    "stabRef": 523,
+    "releveRef": 11,
+    "chargementWp": 756,
+    "stabWp": 520,
+    "releveWp": 17,
     "cls": 3
    }
   },
@@ -1614,7 +1614,7 @@
     "horsEcran": 0
    },
    "wp": {
-    "hauteur": 11079,
+    "hauteur": 11074,
     "sections": 18,
     "bandes": [
      629,
@@ -1630,7 +1630,7 @@
      713,
      381,
      546,
-     453,
+     448,
      318,
      873,
      334,
@@ -1681,7 +1681,7 @@
     "formulaires": 0,
     "faq": 10,
     "cta": 3,
-    "mots": 2627,
+    "mots": 2621,
     "titres": 43,
     "debordement": 0,
     "horsEcran": 0
@@ -1689,15 +1689,15 @@
    "cls": 0.0003,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2837,
+   "ms": 2919,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 516,
-    "releveRef": 8,
-    "chargementWp": 677,
-    "stabWp": 519,
-    "releveWp": 9,
-    "cls": 2
+    "bascule": 1108,
+    "stabRef": 529,
+    "releveRef": 12,
+    "chargementWp": 732,
+    "stabWp": 523,
+    "releveWp": 12,
+    "cls": 3
    }
   }
  },
@@ -1776,14 +1776,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2596,
+   "ms": 2598,
    "phases": {
     "bascule": 1106,
     "stabRef": 396,
-    "releveRef": 4,
-    "chargementWp": 656,
-    "stabWp": 428,
-    "releveWp": 4,
+    "releveRef": 5,
+    "chargementWp": 654,
+    "stabWp": 430,
+    "releveWp": 5,
     "cls": 2
    }
   },
@@ -1861,15 +1861,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2543,
+   "ms": 2573,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 395,
-    "releveRef": 3,
-    "chargementWp": 637,
-    "stabWp": 397,
-    "releveWp": 4,
-    "cls": 1
+    "bascule": 1108,
+    "stabRef": 396,
+    "releveRef": 6,
+    "chargementWp": 656,
+    "stabWp": 399,
+    "releveWp": 6,
+    "cls": 2
    }
   },
   "768": {
@@ -1946,15 +1946,15 @@
    "cls": 0.0008,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2370,
+   "ms": 2404,
    "phases": {
-    "bascule": 1107,
-    "stabRef": 304,
-    "releveRef": 4,
-    "chargementWp": 621,
-    "stabWp": 329,
-    "releveWp": 4,
-    "cls": 1
+    "bascule": 1109,
+    "stabRef": 305,
+    "releveRef": 6,
+    "chargementWp": 664,
+    "stabWp": 312,
+    "releveWp": 6,
+    "cls": 2
    }
   },
   "1024": {
@@ -2031,15 +2031,15 @@
    "cls": 0.0005,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2298,
+   "ms": 2341,
    "phases": {
-    "bascule": 1105,
-    "stabRef": 274,
+    "bascule": 1108,
+    "stabRef": 275,
     "releveRef": 4,
-    "chargementWp": 634,
-    "stabWp": 276,
-    "releveWp": 4,
-    "cls": 1
+    "chargementWp": 670,
+    "stabWp": 277,
+    "releveWp": 5,
+    "cls": 2
    }
   },
   "1440": {
@@ -2116,13 +2116,13 @@
    "cls": 0.0009,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2276,
+   "ms": 2311,
    "phases": {
-    "bascule": 1108,
-    "stabRef": 243,
+    "bascule": 1109,
+    "stabRef": 245,
     "releveRef": 4,
-    "chargementWp": 638,
-    "stabWp": 277,
+    "chargementWp": 671,
+    "stabWp": 276,
     "releveWp": 5,
     "cls": 1
    }
@@ -2201,15 +2201,15 @@
    "cls": 0.0005,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2284,
+   "ms": 2340,
    "phases": {
-    "bascule": 1114,
-    "stabRef": 244,
+    "bascule": 1108,
+    "stabRef": 245,
     "releveRef": 4,
-    "chargementWp": 641,
+    "chargementWp": 700,
     "stabWp": 276,
-    "releveWp": 4,
-    "cls": 1
+    "releveWp": 5,
+    "cls": 2
    }
   }
  },
@@ -2328,13 +2328,13 @@
    "erreursReseau": [],
    "ms": 3148,
    "phases": {
-    "bascule": 1107,
-    "stabRef": 668,
-    "releveRef": 8,
-    "chargementWp": 686,
-    "stabWp": 669,
-    "releveWp": 9,
-    "cls": 1
+    "bascule": 1108,
+    "stabRef": 670,
+    "releveRef": 11,
+    "chargementWp": 674,
+    "stabWp": 673,
+    "releveWp": 10,
+    "cls": 2
    }
   },
   "375": {
@@ -2449,15 +2449,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 3053,
+   "ms": 3098,
    "phases": {
-    "bascule": 1108,
-    "stabRef": 636,
-    "releveRef": 7,
-    "chargementWp": 652,
-    "stabWp": 639,
-    "releveWp": 9,
-    "cls": 2
+    "bascule": 1105,
+    "stabRef": 638,
+    "releveRef": 9,
+    "chargementWp": 693,
+    "stabWp": 642,
+    "releveWp": 10,
+    "cls": 1
    }
   },
   "768": {
@@ -2572,15 +2572,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2690,
+   "ms": 2763,
    "phases": {
-    "bascule": 1106,
+    "bascule": 1107,
     "stabRef": 459,
-    "releveRef": 7,
-    "chargementWp": 652,
-    "stabWp": 457,
-    "releveWp": 7,
-    "cls": 2
+    "releveRef": 11,
+    "chargementWp": 711,
+    "stabWp": 460,
+    "releveWp": 12,
+    "cls": 3
    }
   },
   "1024": {
@@ -2695,14 +2695,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2594,
+   "ms": 2666,
    "phases": {
-    "bascule": 1105,
-    "stabRef": 425,
-    "releveRef": 8,
-    "chargementWp": 650,
-    "stabWp": 396,
-    "releveWp": 8,
+    "bascule": 1106,
+    "stabRef": 427,
+    "releveRef": 10,
+    "chargementWp": 713,
+    "stabWp": 398,
+    "releveWp": 11,
     "cls": 1
    }
   },
@@ -2818,14 +2818,14 @@
    "cls": 0.0005,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2554,
+   "ms": 2620,
    "phases": {
-    "bascule": 1105,
-    "stabRef": 395,
-    "releveRef": 9,
-    "chargementWp": 638,
-    "stabWp": 397,
-    "releveWp": 8,
+    "bascule": 1106,
+    "stabRef": 396,
+    "releveRef": 10,
+    "chargementWp": 698,
+    "stabWp": 398,
+    "releveWp": 10,
     "cls": 2
    }
   },
@@ -2941,14 +2941,14 @@
    "cls": 0.0003,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2608,
+   "ms": 2622,
    "phases": {
-    "bascule": 1105,
-    "stabRef": 415,
-    "releveRef": 8,
-    "chargementWp": 674,
-    "stabWp": 396,
-    "releveWp": 8,
+    "bascule": 1107,
+    "stabRef": 396,
+    "releveRef": 10,
+    "chargementWp": 698,
+    "stabWp": 399,
+    "releveWp": 10,
     "cls": 2
    }
   }
@@ -3066,14 +3066,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 3117,
+   "ms": 3094,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 650,
-    "releveRef": 7,
-    "chargementWp": 705,
-    "stabWp": 638,
-    "releveWp": 9,
+    "bascule": 1107,
+    "stabRef": 639,
+    "releveRef": 12,
+    "chargementWp": 682,
+    "stabWp": 642,
+    "releveWp": 10,
     "cls": 2
    }
   },
@@ -3189,14 +3189,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2978,
+   "ms": 3040,
    "phases": {
     "bascule": 1108,
-    "stabRef": 607,
-    "releveRef": 7,
-    "chargementWp": 638,
-    "stabWp": 608,
-    "releveWp": 8,
+    "stabRef": 610,
+    "releveRef": 11,
+    "chargementWp": 685,
+    "stabWp": 612,
+    "releveWp": 12,
     "cls": 2
    }
   },
@@ -3312,15 +3312,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2669,
+   "ms": 2788,
    "phases": {
-    "bascule": 1105,
-    "stabRef": 456,
-    "releveRef": 7,
-    "chargementWp": 636,
-    "stabWp": 457,
-    "releveWp": 7,
-    "cls": 1
+    "bascule": 1109,
+    "stabRef": 466,
+    "releveRef": 13,
+    "chargementWp": 728,
+    "stabWp": 460,
+    "releveWp": 10,
+    "cls": 2
    }
   },
   "1024": {
@@ -3435,14 +3435,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2558,
+   "ms": 2604,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 395,
-    "releveRef": 7,
-    "chargementWp": 643,
-    "stabWp": 397,
-    "releveWp": 8,
+    "bascule": 1105,
+    "stabRef": 396,
+    "releveRef": 9,
+    "chargementWp": 680,
+    "stabWp": 403,
+    "releveWp": 9,
     "cls": 2
    }
   },
@@ -3558,15 +3558,15 @@
    "cls": 0.0005,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2562,
+   "ms": 2607,
    "phases": {
     "bascule": 1107,
-    "stabRef": 395,
-    "releveRef": 7,
-    "chargementWp": 647,
-    "stabWp": 396,
-    "releveWp": 9,
-    "cls": 1
+    "stabRef": 396,
+    "releveRef": 8,
+    "chargementWp": 686,
+    "stabWp": 398,
+    "releveWp": 10,
+    "cls": 2
    }
   },
   "1920": {
@@ -3681,15 +3681,15 @@
    "cls": 0.0003,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2584,
+   "ms": 2644,
    "phases": {
-    "bascule": 1115,
-    "stabRef": 395,
-    "releveRef": 7,
-    "chargementWp": 663,
-    "stabWp": 396,
-    "releveWp": 7,
-    "cls": 1
+    "bascule": 1105,
+    "stabRef": 397,
+    "releveRef": 12,
+    "chargementWp": 704,
+    "stabWp": 399,
+    "releveWp": 17,
+    "cls": 10
    }
   }
  },
@@ -3812,15 +3812,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 3236,
+   "ms": 3223,
    "phases": {
-    "bascule": 1107,
-    "stabRef": 746,
-    "releveRef": 7,
-    "chargementWp": 667,
-    "stabWp": 700,
-    "releveWp": 8,
-    "cls": 1
+    "bascule": 1106,
+    "stabRef": 701,
+    "releveRef": 10,
+    "chargementWp": 682,
+    "stabWp": 710,
+    "releveWp": 12,
+    "cls": 2
    }
   },
   "375": {
@@ -3941,15 +3941,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 3042,
+   "ms": 3115,
    "phases": {
-    "bascule": 1107,
-    "stabRef": 637,
+    "bascule": 1110,
+    "stabRef": 640,
     "releveRef": 9,
-    "chargementWp": 640,
-    "stabWp": 639,
-    "releveWp": 7,
-    "cls": 3
+    "chargementWp": 704,
+    "stabWp": 641,
+    "releveWp": 9,
+    "cls": 2
    }
   },
   "768": {
@@ -4070,15 +4070,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2748,
+   "ms": 2836,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 486,
-    "releveRef": 8,
-    "chargementWp": 651,
-    "stabWp": 488,
-    "releveWp": 8,
-    "cls": 1
+    "bascule": 1107,
+    "stabRef": 488,
+    "releveRef": 10,
+    "chargementWp": 728,
+    "stabWp": 490,
+    "releveWp": 11,
+    "cls": 2
    }
   },
   "1024": {
@@ -4199,14 +4199,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2631,
+   "ms": 2673,
    "phases": {
-    "bascule": 1105,
-    "stabRef": 426,
-    "releveRef": 9,
-    "chargementWp": 653,
-    "stabWp": 427,
-    "releveWp": 9,
+    "bascule": 1106,
+    "stabRef": 427,
+    "releveRef": 10,
+    "chargementWp": 690,
+    "stabWp": 428,
+    "releveWp": 10,
     "cls": 2
    }
   },
@@ -4328,14 +4328,14 @@
    "cls": 0.0005,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2640,
+   "ms": 2696,
    "phases": {
     "bascule": 1107,
-    "stabRef": 443,
+    "stabRef": 427,
     "releveRef": 8,
-    "chargementWp": 645,
-    "stabWp": 427,
-    "releveWp": 8,
+    "chargementWp": 713,
+    "stabWp": 430,
+    "releveWp": 9,
     "cls": 2
    }
   },
@@ -4457,14 +4457,14 @@
    "cls": 0.0003,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2644,
+   "ms": 2721,
    "phases": {
-    "bascule": 1112,
-    "stabRef": 426,
-    "releveRef": 7,
-    "chargementWp": 661,
-    "stabWp": 428,
-    "releveWp": 8,
+    "bascule": 1113,
+    "stabRef": 429,
+    "releveRef": 13,
+    "chargementWp": 723,
+    "stabWp": 430,
+    "releveWp": 11,
     "cls": 2
    }
   }
@@ -4582,15 +4582,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 3108,
+   "ms": 3163,
    "phases": {
     "bascule": 1107,
-    "stabRef": 667,
+    "stabRef": 671,
     "releveRef": 8,
-    "chargementWp": 646,
-    "stabWp": 669,
-    "releveWp": 9,
-    "cls": 2
+    "chargementWp": 691,
+    "stabWp": 673,
+    "releveWp": 12,
+    "cls": 1
    }
   },
   "375": {
@@ -4705,14 +4705,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 3011,
+   "ms": 3045,
    "phases": {
-    "bascule": 1110,
-    "stabRef": 607,
-    "releveRef": 7,
-    "chargementWp": 637,
-    "stabWp": 639,
-    "releveWp": 9,
+    "bascule": 1106,
+    "stabRef": 609,
+    "releveRef": 10,
+    "chargementWp": 665,
+    "stabWp": 642,
+    "releveWp": 11,
     "cls": 2
    }
   },
@@ -4828,15 +4828,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2722,
+   "ms": 2766,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 456,
-    "releveRef": 7,
-    "chargementWp": 655,
-    "stabWp": 488,
-    "releveWp": 9,
-    "cls": 1
+    "bascule": 1109,
+    "stabRef": 457,
+    "releveRef": 9,
+    "chargementWp": 686,
+    "stabWp": 491,
+    "releveWp": 12,
+    "cls": 2
    }
   },
   "1024": {
@@ -4951,14 +4951,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2594,
+   "ms": 2631,
    "phases": {
-    "bascule": 1107,
-    "stabRef": 394,
-    "releveRef": 10,
-    "chargementWp": 676,
-    "stabWp": 396,
-    "releveWp": 9,
+    "bascule": 1106,
+    "stabRef": 397,
+    "releveRef": 9,
+    "chargementWp": 706,
+    "stabWp": 399,
+    "releveWp": 12,
     "cls": 2
    }
   },
@@ -5074,15 +5074,15 @@
    "cls": 0.0005,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2569,
+   "ms": 2639,
    "phases": {
-    "bascule": 1107,
-    "stabRef": 394,
-    "releveRef": 7,
-    "chargementWp": 652,
-    "stabWp": 397,
-    "releveWp": 10,
-    "cls": 2
+    "bascule": 1106,
+    "stabRef": 397,
+    "releveRef": 9,
+    "chargementWp": 713,
+    "stabWp": 399,
+    "releveWp": 14,
+    "cls": 1
    }
   },
   "1920": {
@@ -5197,14 +5197,14 @@
    "cls": 0.0003,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2555,
+   "ms": 2642,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 395,
-    "releveRef": 7,
-    "chargementWp": 640,
-    "stabWp": 397,
-    "releveWp": 8,
+    "bascule": 1108,
+    "stabRef": 397,
+    "releveRef": 11,
+    "chargementWp": 709,
+    "stabWp": 403,
+    "releveWp": 12,
     "cls": 2
    }
   }
@@ -5322,15 +5322,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 3114,
+   "ms": 3186,
    "phases": {
     "bascule": 1107,
-    "stabRef": 668,
-    "releveRef": 8,
-    "chargementWp": 652,
-    "stabWp": 668,
-    "releveWp": 10,
-    "cls": 1
+    "stabRef": 680,
+    "releveRef": 11,
+    "chargementWp": 700,
+    "stabWp": 674,
+    "releveWp": 11,
+    "cls": 3
    }
   },
   "375": {
@@ -5445,13 +5445,13 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 3043,
+   "ms": 3108,
    "phases": {
-    "bascule": 1107,
-    "stabRef": 637,
-    "releveRef": 7,
-    "chargementWp": 642,
-    "stabWp": 638,
+    "bascule": 1106,
+    "stabRef": 641,
+    "releveRef": 9,
+    "chargementWp": 699,
+    "stabWp": 641,
     "releveWp": 10,
     "cls": 2
    }
@@ -5568,14 +5568,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2702,
+   "ms": 2765,
    "phases": {
-    "bascule": 1107,
-    "stabRef": 455,
-    "releveRef": 7,
-    "chargementWp": 636,
-    "stabWp": 487,
-    "releveWp": 8,
+    "bascule": 1111,
+    "stabRef": 457,
+    "releveRef": 10,
+    "chargementWp": 685,
+    "stabWp": 490,
+    "releveWp": 10,
     "cls": 2
    }
   },
@@ -5691,15 +5691,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2602,
+   "ms": 2657,
    "phases": {
-    "bascule": 1105,
-    "stabRef": 425,
-    "releveRef": 7,
-    "chargementWp": 659,
-    "stabWp": 397,
-    "releveWp": 8,
-    "cls": 1
+    "bascule": 1107,
+    "stabRef": 428,
+    "releveRef": 10,
+    "chargementWp": 700,
+    "stabWp": 399,
+    "releveWp": 10,
+    "cls": 3
    }
   },
   "1440": {
@@ -5814,15 +5814,15 @@
    "cls": 0.0005,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2554,
+   "ms": 2650,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 395,
-    "releveRef": 7,
-    "chargementWp": 642,
-    "stabWp": 396,
-    "releveWp": 7,
-    "cls": 1
+    "bascule": 1107,
+    "stabRef": 397,
+    "releveRef": 10,
+    "chargementWp": 726,
+    "stabWp": 399,
+    "releveWp": 9,
+    "cls": 2
    }
   },
   "1920": {
@@ -5934,18 +5934,18 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0003,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2554,
+   "ms": 2748,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 394,
-    "releveRef": 7,
-    "chargementWp": 640,
-    "stabWp": 398,
-    "releveWp": 8,
-    "cls": 1
+    "bascule": 1109,
+    "stabRef": 397,
+    "releveRef": 16,
+    "chargementWp": 814,
+    "stabWp": 400,
+    "releveWp": 10,
+    "cls": 2
    }
   }
  },
@@ -6062,14 +6062,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 3130,
+   "ms": 3160,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 668,
+    "bascule": 1107,
+    "stabRef": 670,
     "releveRef": 9,
-    "chargementWp": 666,
-    "stabWp": 670,
-    "releveWp": 9,
+    "chargementWp": 689,
+    "stabWp": 671,
+    "releveWp": 12,
     "cls": 2
    }
   },
@@ -6185,15 +6185,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2989,
+   "ms": 3019,
    "phases": {
-    "bascule": 1107,
+    "bascule": 1106,
     "stabRef": 608,
-    "releveRef": 9,
-    "chargementWp": 647,
-    "stabWp": 608,
-    "releveWp": 8,
-    "cls": 2
+    "releveRef": 10,
+    "chargementWp": 670,
+    "stabWp": 611,
+    "releveWp": 11,
+    "cls": 3
    }
   },
   "768": {
@@ -6308,15 +6308,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2684,
+   "ms": 2749,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 455,
-    "releveRef": 7,
-    "chargementWp": 649,
-    "stabWp": 458,
-    "releveWp": 7,
-    "cls": 2
+    "bascule": 1107,
+    "stabRef": 472,
+    "releveRef": 9,
+    "chargementWp": 690,
+    "stabWp": 459,
+    "releveWp": 11,
+    "cls": 1
    }
   },
   "1024": {
@@ -6431,14 +6431,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2565,
+   "ms": 2635,
    "phases": {
-    "bascule": 1107,
-    "stabRef": 395,
-    "releveRef": 7,
-    "chargementWp": 646,
-    "stabWp": 398,
-    "releveWp": 10,
+    "bascule": 1108,
+    "stabRef": 397,
+    "releveRef": 10,
+    "chargementWp": 706,
+    "stabWp": 400,
+    "releveWp": 12,
     "cls": 2
    }
   },
@@ -6554,14 +6554,14 @@
    "cls": 0.0005,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2547,
+   "ms": 2675,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 394,
-    "releveRef": 8,
-    "chargementWp": 632,
-    "stabWp": 398,
-    "releveWp": 7,
+    "bascule": 1112,
+    "stabRef": 396,
+    "releveRef": 10,
+    "chargementWp": 746,
+    "stabWp": 399,
+    "releveWp": 10,
     "cls": 2
    }
   },
@@ -6677,21 +6677,21 @@
    "cls": 0.0003,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2557,
+   "ms": 2644,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 395,
-    "releveRef": 7,
-    "chargementWp": 644,
-    "stabWp": 397,
-    "releveWp": 7,
+    "bascule": 1108,
+    "stabRef": 396,
+    "releveRef": 11,
+    "chargementWp": 718,
+    "stabWp": 399,
+    "releveWp": 11,
     "cls": 1
    }
   }
  },
  "#/nos-tarifs": {
   "320": {
-   "ratio": 100,
+   "ratio": 101,
    "ref": {
     "hauteur": 9639,
     "sections": 12,
@@ -6743,7 +6743,7 @@
     "horsEcran": 0
    },
    "wp": {
-    "hauteur": 9629,
+    "hauteur": 9719,
     "sections": 12,
     "bandes": [
      425,
@@ -6753,14 +6753,14 @@
      633,
      649,
      496,
-     1365,
+     1456,
      602,
      834,
      837,
      363
     ],
-    "cartes": 35,
-    "microCartes": 21,
+    "cartes": 36,
+    "microCartes": 22,
     "grilles": [
      2,
      2,
@@ -6792,7 +6792,7 @@
     "formulaires": 0,
     "faq": 5,
     "cta": 4,
-    "mots": 896,
+    "mots": 893,
     "titres": 13,
     "debordement": 0,
     "horsEcran": 0
@@ -6800,15 +6800,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2719,
+   "ms": 2711,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 497,
-    "releveRef": 6,
-    "chargementWp": 639,
-    "stabWp": 458,
-    "releveWp": 8,
-    "cls": 5
+    "bascule": 1107,
+    "stabRef": 457,
+    "releveRef": 8,
+    "chargementWp": 667,
+    "stabWp": 459,
+    "releveWp": 12,
+    "cls": 1
    }
   },
   "375": {
@@ -6864,7 +6864,7 @@
     "horsEcran": 0
    },
    "wp": {
-    "hauteur": 9233,
+    "hauteur": 9230,
     "sections": 12,
     "bandes": [
      398,
@@ -6874,14 +6874,14 @@
      588,
      551,
      496,
-     1340,
+     1337,
      578,
      806,
      818,
      363
     ],
-    "cartes": 35,
-    "microCartes": 22,
+    "cartes": 36,
+    "microCartes": 23,
     "grilles": [
      2,
      2,
@@ -6913,7 +6913,7 @@
     "formulaires": 0,
     "faq": 5,
     "cta": 4,
-    "mots": 896,
+    "mots": 893,
     "titres": 13,
     "debordement": 0,
     "horsEcran": 0
@@ -6921,15 +6921,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2636,
+   "ms": 2691,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 425,
-    "releveRef": 7,
-    "chargementWp": 632,
-    "stabWp": 457,
-    "releveWp": 7,
-    "cls": 2
+    "bascule": 1109,
+    "stabRef": 428,
+    "releveRef": 8,
+    "chargementWp": 678,
+    "stabWp": 458,
+    "releveWp": 9,
+    "cls": 1
    }
   },
   "768": {
@@ -6985,7 +6985,7 @@
     "horsEcran": 0
    },
    "wp": {
-    "hauteur": 6513,
+    "hauteur": 6510,
     "sections": 12,
     "bandes": [
      248,
@@ -6995,13 +6995,13 @@
      561,
      328,
      332,
-     928,
+     925,
      479,
      653,
      468,
      270
     ],
-    "cartes": 35,
+    "cartes": 36,
     "microCartes": 14,
     "grilles": [
      2,
@@ -7034,7 +7034,7 @@
     "formulaires": 0,
     "faq": 5,
     "cta": 4,
-    "mots": 896,
+    "mots": 893,
     "titres": 13,
     "debordement": 0,
     "horsEcran": 0
@@ -7042,15 +7042,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2489,
+   "ms": 2531,
    "phases": {
-    "bascule": 1106,
+    "bascule": 1110,
     "stabRef": 366,
-    "releveRef": 6,
-    "chargementWp": 633,
-    "stabWp": 367,
+    "releveRef": 9,
+    "chargementWp": 666,
+    "stabWp": 368,
     "releveWp": 10,
-    "cls": 1
+    "cls": 2
    }
   },
   "1024": {
@@ -7106,7 +7106,7 @@
     "horsEcran": 0
    },
    "wp": {
-    "hauteur": 5898,
+    "hauteur": 5940,
     "sections": 12,
     "bandes": [
      275,
@@ -7116,13 +7116,13 @@
      587,
      324,
      358,
-     591,
+     633,
      482,
      653,
      497,
      310
     ],
-    "cartes": 35,
+    "cartes": 36,
     "microCartes": 15,
     "grilles": [
      2,
@@ -7155,7 +7155,7 @@
     "formulaires": 0,
     "faq": 5,
     "cta": 4,
-    "mots": 896,
+    "mots": 893,
     "titres": 13,
     "debordement": 0,
     "horsEcran": 0
@@ -7163,19 +7163,19 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2443,
+   "ms": 2490,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 335,
-    "releveRef": 6,
-    "chargementWp": 650,
+    "bascule": 1107,
+    "stabRef": 336,
+    "releveRef": 8,
+    "chargementWp": 688,
     "stabWp": 338,
-    "releveWp": 7,
-    "cls": 1
+    "releveWp": 11,
+    "cls": 2
    }
   },
   "1440": {
-   "ratio": 102,
+   "ratio": 103,
    "ref": {
     "hauteur": 5852,
     "sections": 12,
@@ -7227,7 +7227,7 @@
     "horsEcran": 0
    },
    "wp": {
-    "hauteur": 5965,
+    "hauteur": 6011,
     "sections": 12,
     "bandes": [
      383,
@@ -7237,13 +7237,13 @@
      616,
      346,
      387,
-     632,
+     678,
      523,
      714,
      421,
      359
     ],
-    "cartes": 35,
+    "cartes": 36,
     "microCartes": 12,
     "grilles": [
      2,
@@ -7276,7 +7276,7 @@
     "formulaires": 0,
     "faq": 5,
     "cta": 4,
-    "mots": 896,
+    "mots": 893,
     "titres": 13,
     "debordement": 0,
     "horsEcran": 0
@@ -7284,19 +7284,19 @@
    "cls": 0.0005,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2429,
+   "ms": 2494,
    "phases": {
     "bascule": 1106,
-    "stabRef": 335,
-    "releveRef": 6,
-    "chargementWp": 637,
-    "stabWp": 336,
-    "releveWp": 7,
+    "stabRef": 346,
+    "releveRef": 8,
+    "chargementWp": 684,
+    "stabWp": 337,
+    "releveWp": 10,
     "cls": 2
    }
   },
   "1920": {
-   "ratio": 102,
+   "ratio": 103,
    "ref": {
     "hauteur": 5857,
     "sections": 12,
@@ -7348,7 +7348,7 @@
     "horsEcran": 0
    },
    "wp": {
-    "hauteur": 5965,
+    "hauteur": 6011,
     "sections": 12,
     "bandes": [
      383,
@@ -7358,13 +7358,13 @@
      616,
      346,
      387,
-     632,
+     678,
      523,
      714,
      421,
      359
     ],
-    "cartes": 35,
+    "cartes": 36,
     "microCartes": 12,
     "grilles": [
      2,
@@ -7397,7 +7397,7 @@
     "formulaires": 0,
     "faq": 5,
     "cta": 4,
-    "mots": 896,
+    "mots": 893,
     "titres": 13,
     "debordement": 0,
     "horsEcran": 0
@@ -7405,14 +7405,14 @@
    "cls": 0.0003,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2420,
+   "ms": 2509,
    "phases": {
-    "bascule": 1105,
-    "stabRef": 335,
-    "releveRef": 6,
-    "chargementWp": 629,
-    "stabWp": 336,
-    "releveWp": 8,
+    "bascule": 1107,
+    "stabRef": 337,
+    "releveRef": 14,
+    "chargementWp": 702,
+    "stabWp": 338,
+    "releveWp": 10,
     "cls": 1
    }
   }
@@ -7527,15 +7527,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2963,
+   "ms": 3023,
    "phases": {
-    "bascule": 1108,
-    "stabRef": 606,
-    "releveRef": 7,
-    "chargementWp": 651,
-    "stabWp": 579,
-    "releveWp": 10,
-    "cls": 2
+    "bascule": 1110,
+    "stabRef": 609,
+    "releveRef": 8,
+    "chargementWp": 700,
+    "stabWp": 582,
+    "releveWp": 11,
+    "cls": 3
    }
   },
   "375": {
@@ -7647,14 +7647,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2869,
+   "ms": 2902,
    "phases": {
-    "bascule": 1107,
-    "stabRef": 545,
+    "bascule": 1108,
+    "stabRef": 546,
     "releveRef": 8,
-    "chargementWp": 649,
+    "chargementWp": 678,
     "stabWp": 549,
-    "releveWp": 9,
+    "releveWp": 11,
     "cls": 2
    }
   },
@@ -7767,14 +7767,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2560,
+   "ms": 2619,
    "phases": {
     "bascule": 1107,
-    "stabRef": 394,
-    "releveRef": 8,
-    "chargementWp": 644,
-    "stabWp": 398,
-    "releveWp": 8,
+    "stabRef": 397,
+    "releveRef": 11,
+    "chargementWp": 693,
+    "stabWp": 399,
+    "releveWp": 11,
     "cls": 1
    }
   },
@@ -7887,14 +7887,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2520,
+   "ms": 2566,
    "phases": {
-    "bascule": 1105,
-    "stabRef": 365,
-    "releveRef": 7,
-    "chargementWp": 665,
-    "stabWp": 367,
-    "releveWp": 10,
+    "bascule": 1107,
+    "stabRef": 366,
+    "releveRef": 9,
+    "chargementWp": 702,
+    "stabWp": 370,
+    "releveWp": 11,
     "cls": 1
    }
   },
@@ -8004,17 +8004,17 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0005,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2511,
+   "ms": 2594,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 364,
-    "releveRef": 7,
-    "chargementWp": 657,
-    "stabWp": 367,
-    "releveWp": 8,
+    "bascule": 1111,
+    "stabRef": 374,
+    "releveRef": 8,
+    "chargementWp": 721,
+    "stabWp": 368,
+    "releveWp": 10,
     "cls": 2
    }
   },
@@ -8127,14 +8127,14 @@
    "cls": 0.0003,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2561,
+   "ms": 2552,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 408,
-    "releveRef": 9,
-    "chargementWp": 660,
-    "stabWp": 366,
-    "releveWp": 10,
+    "bascule": 1107,
+    "stabRef": 366,
+    "releveRef": 10,
+    "chargementWp": 687,
+    "stabWp": 368,
+    "releveWp": 12,
     "cls": 2
    }
   }
@@ -8236,7 +8236,7 @@
     "formulaires": 0,
     "faq": 7,
     "cta": 3,
-    "mots": 1963,
+    "mots": 1959,
     "titres": 16,
     "debordement": 0,
     "horsEcran": 0
@@ -8244,14 +8244,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 3321,
+   "ms": 3393,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 758,
-    "releveRef": 9,
-    "chargementWp": 675,
-    "stabWp": 761,
-    "releveWp": 10,
+    "bascule": 1107,
+    "stabRef": 766,
+    "releveRef": 10,
+    "chargementWp": 734,
+    "stabWp": 762,
+    "releveWp": 12,
     "cls": 2
    }
   },
@@ -8351,7 +8351,7 @@
     "formulaires": 0,
     "faq": 7,
     "cta": 3,
-    "mots": 1963,
+    "mots": 1959,
     "titres": 16,
     "debordement": 0,
     "horsEcran": 0
@@ -8359,14 +8359,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 3257,
+   "ms": 3246,
    "phases": {
-    "bascule": 1105,
-    "stabRef": 698,
-    "releveRef": 10,
-    "chargementWp": 690,
-    "stabWp": 742,
-    "releveWp": 11,
+    "bascule": 1106,
+    "stabRef": 700,
+    "releveRef": 11,
+    "chargementWp": 714,
+    "stabWp": 702,
+    "releveWp": 12,
     "cls": 1
    }
   },
@@ -8466,7 +8466,7 @@
     "formulaires": 0,
     "faq": 7,
     "cta": 3,
-    "mots": 1963,
+    "mots": 1959,
     "titres": 16,
     "debordement": 0,
     "horsEcran": 0
@@ -8474,15 +8474,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2789,
+   "ms": 2828,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 490,
-    "releveRef": 8,
-    "chargementWp": 678,
-    "stabWp": 495,
-    "releveWp": 11,
-    "cls": 1
+    "bascule": 1108,
+    "stabRef": 486,
+    "releveRef": 11,
+    "chargementWp": 717,
+    "stabWp": 489,
+    "releveWp": 15,
+    "cls": 2
    }
   },
   "1024": {
@@ -8581,7 +8581,7 @@
     "formulaires": 0,
     "faq": 7,
     "cta": 3,
-    "mots": 1963,
+    "mots": 1959,
     "titres": 16,
     "debordement": 0,
     "horsEcran": 0
@@ -8589,14 +8589,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2666,
+   "ms": 2693,
    "phases": {
-    "bascule": 1108,
-    "stabRef": 425,
-    "releveRef": 7,
-    "chargementWp": 679,
-    "stabWp": 435,
-    "releveWp": 10,
+    "bascule": 1107,
+    "stabRef": 426,
+    "releveRef": 10,
+    "chargementWp": 705,
+    "stabWp": 429,
+    "releveWp": 14,
     "cls": 2
    }
   },
@@ -8696,7 +8696,7 @@
     "formulaires": 0,
     "faq": 7,
     "cta": 3,
-    "mots": 1963,
+    "mots": 1959,
     "titres": 16,
     "debordement": 0,
     "horsEcran": 0
@@ -8704,15 +8704,15 @@
    "cls": 0.0005,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2649,
+   "ms": 2726,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 426,
-    "releveRef": 8,
-    "chargementWp": 671,
-    "stabWp": 427,
-    "releveWp": 10,
-    "cls": 1
+    "bascule": 1107,
+    "stabRef": 428,
+    "releveRef": 13,
+    "chargementWp": 734,
+    "stabWp": 429,
+    "releveWp": 13,
+    "cls": 2
    }
   },
   "1920": {
@@ -8811,7 +8811,7 @@
     "formulaires": 0,
     "faq": 7,
     "cta": 3,
-    "mots": 1963,
+    "mots": 1959,
     "titres": 16,
     "debordement": 0,
     "horsEcran": 0
@@ -8819,14 +8819,14 @@
    "cls": 0.0003,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2660,
+   "ms": 2727,
    "phases": {
     "bascule": 1107,
-    "stabRef": 425,
-    "releveRef": 9,
-    "chargementWp": 680,
-    "stabWp": 427,
-    "releveWp": 10,
+    "stabRef": 428,
+    "releveRef": 11,
+    "chargementWp": 735,
+    "stabWp": 431,
+    "releveWp": 13,
     "cls": 2
    }
   }
@@ -8923,15 +8923,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2988,
+   "ms": 2966,
    "phases": {
-    "bascule": 1105,
-    "stabRef": 603,
-    "releveRef": 7,
-    "chargementWp": 687,
-    "stabWp": 578,
-    "releveWp": 7,
-    "cls": 1
+    "bascule": 1107,
+    "stabRef": 579,
+    "releveRef": 10,
+    "chargementWp": 676,
+    "stabWp": 581,
+    "releveWp": 11,
+    "cls": 2
    }
   },
   "375": {
@@ -9025,14 +9025,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2842,
+   "ms": 2859,
    "phases": {
-    "bascule": 1107,
+    "bascule": 1106,
     "stabRef": 517,
-    "releveRef": 8,
-    "chargementWp": 651,
-    "stabWp": 549,
-    "releveWp": 9,
+    "releveRef": 9,
+    "chargementWp": 666,
+    "stabWp": 550,
+    "releveWp": 10,
     "cls": 1
    }
   },
@@ -9127,14 +9127,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2568,
+   "ms": 2569,
    "phases": {
     "bascule": 1106,
-    "stabRef": 366,
-    "releveRef": 7,
-    "chargementWp": 682,
-    "stabWp": 398,
-    "releveWp": 8,
+    "stabRef": 367,
+    "releveRef": 8,
+    "chargementWp": 674,
+    "stabWp": 399,
+    "releveWp": 14,
     "cls": 1
    }
   },
@@ -9229,14 +9229,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2511,
+   "ms": 2547,
    "phases": {
-    "bascule": 1130,
-    "stabRef": 365,
-    "releveRef": 7,
-    "chargementWp": 633,
-    "stabWp": 366,
-    "releveWp": 8,
+    "bascule": 1109,
+    "stabRef": 366,
+    "releveRef": 8,
+    "chargementWp": 683,
+    "stabWp": 368,
+    "releveWp": 11,
     "cls": 2
    }
   },
@@ -9331,15 +9331,15 @@
    "cls": 0.0005,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2490,
+   "ms": 2538,
    "phases": {
-    "bascule": 1105,
-    "stabRef": 365,
-    "releveRef": 6,
-    "chargementWp": 639,
-    "stabWp": 367,
-    "releveWp": 7,
-    "cls": 1
+    "bascule": 1107,
+    "stabRef": 367,
+    "releveRef": 8,
+    "chargementWp": 676,
+    "stabWp": 368,
+    "releveWp": 10,
+    "cls": 2
    }
   },
   "1920": {
@@ -9433,14 +9433,14 @@
    "cls": 0.0003,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2495,
+   "ms": 2606,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 364,
-    "releveRef": 7,
-    "chargementWp": 641,
-    "stabWp": 368,
-    "releveWp": 7,
+    "bascule": 1111,
+    "stabRef": 367,
+    "releveRef": 8,
+    "chargementWp": 740,
+    "stabWp": 369,
+    "releveWp": 9,
     "cls": 2
    }
   }
@@ -9537,15 +9537,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2868,
+   "ms": 2899,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 547,
-    "releveRef": 7,
-    "chargementWp": 649,
-    "stabWp": 549,
-    "releveWp": 8,
-    "cls": 2
+    "bascule": 1107,
+    "stabRef": 548,
+    "releveRef": 9,
+    "chargementWp": 673,
+    "stabWp": 551,
+    "releveWp": 10,
+    "cls": 1
    }
   },
   "375": {
@@ -9639,14 +9639,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2749,
+   "ms": 2796,
    "phases": {
-    "bascule": 1105,
-    "stabRef": 486,
-    "releveRef": 6,
-    "chargementWp": 624,
-    "stabWp": 518,
-    "releveWp": 8,
+    "bascule": 1107,
+    "stabRef": 487,
+    "releveRef": 8,
+    "chargementWp": 663,
+    "stabWp": 520,
+    "releveWp": 9,
     "cls": 2
    }
   },
@@ -9741,15 +9741,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2489,
+   "ms": 2559,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 365,
-    "releveRef": 6,
-    "chargementWp": 623,
-    "stabWp": 378,
-    "releveWp": 8,
-    "cls": 3
+    "bascule": 1109,
+    "stabRef": 387,
+    "releveRef": 8,
+    "chargementWp": 676,
+    "stabWp": 368,
+    "releveWp": 9,
+    "cls": 2
    }
   },
   "1024": {
@@ -9843,15 +9843,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2416,
+   "ms": 2458,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 334,
-    "releveRef": 6,
-    "chargementWp": 625,
-    "stabWp": 337,
-    "releveWp": 7,
-    "cls": 1
+    "bascule": 1107,
+    "stabRef": 336,
+    "releveRef": 7,
+    "chargementWp": 657,
+    "stabWp": 338,
+    "releveWp": 11,
+    "cls": 2
    }
   },
   "1440": {
@@ -9945,14 +9945,14 @@
    "cls": 0.0005,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2447,
+   "ms": 2527,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 334,
+    "bascule": 1107,
+    "stabRef": 335,
     "releveRef": 7,
-    "chargementWp": 622,
+    "chargementWp": 698,
     "stabWp": 368,
-    "releveWp": 9,
+    "releveWp": 10,
     "cls": 1
    }
   },
@@ -10047,14 +10047,14 @@
    "cls": 0.0003,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2453,
+   "ms": 2533,
    "phases": {
-    "bascule": 1105,
-    "stabRef": 335,
-    "releveRef": 6,
-    "chargementWp": 631,
-    "stabWp": 366,
-    "releveWp": 8,
+    "bascule": 1107,
+    "stabRef": 337,
+    "releveRef": 7,
+    "chargementWp": 701,
+    "stabWp": 369,
+    "releveWp": 10,
     "cls": 2
    }
   }
@@ -10143,7 +10143,7 @@
     "formulaires": 0,
     "faq": 6,
     "cta": 2,
-    "mots": 1204,
+    "mots": 1203,
     "titres": 14,
     "debordement": 0,
     "horsEcran": 0
@@ -10151,15 +10151,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2864,
+   "ms": 2902,
    "phases": {
     "bascule": 1107,
-    "stabRef": 546,
+    "stabRef": 547,
     "releveRef": 8,
-    "chargementWp": 644,
-    "stabWp": 549,
-    "releveWp": 8,
-    "cls": 2
+    "chargementWp": 677,
+    "stabWp": 551,
+    "releveWp": 11,
+    "cls": 1
    }
   },
   "375": {
@@ -10245,7 +10245,7 @@
     "formulaires": 0,
     "faq": 6,
     "cta": 2,
-    "mots": 1204,
+    "mots": 1203,
     "titres": 14,
     "debordement": 0,
     "horsEcran": 0
@@ -10253,14 +10253,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2750,
+   "ms": 2882,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 486,
-    "releveRef": 6,
-    "chargementWp": 624,
-    "stabWp": 518,
-    "releveWp": 8,
+    "bascule": 1107,
+    "stabRef": 487,
+    "releveRef": 8,
+    "chargementWp": 749,
+    "stabWp": 519,
+    "releveWp": 10,
     "cls": 2
    }
   },
@@ -10347,7 +10347,7 @@
     "formulaires": 0,
     "faq": 6,
     "cta": 2,
-    "mots": 1204,
+    "mots": 1203,
     "titres": 14,
     "debordement": 0,
     "horsEcran": 0
@@ -10355,15 +10355,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2495,
+   "ms": 2548,
    "phases": {
-    "bascule": 1107,
-    "stabRef": 365,
-    "releveRef": 6,
-    "chargementWp": 641,
-    "stabWp": 367,
+    "bascule": 1106,
+    "stabRef": 367,
+    "releveRef": 9,
+    "chargementWp": 685,
+    "stabWp": 371,
     "releveWp": 8,
-    "cls": 1
+    "cls": 2
    }
   },
   "1024": {
@@ -10449,7 +10449,7 @@
     "formulaires": 0,
     "faq": 6,
     "cta": 2,
-    "mots": 1204,
+    "mots": 1203,
     "titres": 14,
     "debordement": 0,
     "horsEcran": 0
@@ -10457,15 +10457,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2450,
+   "ms": 2524,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 335,
-    "releveRef": 6,
-    "chargementWp": 626,
-    "stabWp": 367,
-    "releveWp": 7,
-    "cls": 3
+    "bascule": 1107,
+    "stabRef": 336,
+    "releveRef": 8,
+    "chargementWp": 690,
+    "stabWp": 368,
+    "releveWp": 13,
+    "cls": 2
    }
   },
   "1440": {
@@ -10551,7 +10551,7 @@
     "formulaires": 0,
     "faq": 6,
     "cta": 2,
-    "mots": 1204,
+    "mots": 1203,
     "titres": 14,
     "debordement": 0,
     "horsEcran": 0
@@ -10559,14 +10559,14 @@
    "cls": 0.0005,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2460,
+   "ms": 2581,
    "phases": {
     "bascule": 1106,
-    "stabRef": 335,
-    "releveRef": 5,
-    "chargementWp": 637,
-    "stabWp": 366,
-    "releveWp": 9,
+    "stabRef": 337,
+    "releveRef": 11,
+    "chargementWp": 746,
+    "stabWp": 369,
+    "releveWp": 10,
     "cls": 2
    }
   },
@@ -10653,7 +10653,7 @@
     "formulaires": 0,
     "faq": 6,
     "cta": 2,
-    "mots": 1204,
+    "mots": 1203,
     "titres": 14,
     "debordement": 0,
     "horsEcran": 0
@@ -10661,14 +10661,14 @@
    "cls": 0.0003,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2458,
+   "ms": 2538,
    "phases": {
-    "bascule": 1107,
-    "stabRef": 335,
-    "releveRef": 6,
-    "chargementWp": 633,
-    "stabWp": 367,
-    "releveWp": 8,
+    "bascule": 1108,
+    "stabRef": 336,
+    "releveRef": 9,
+    "chargementWp": 702,
+    "stabWp": 369,
+    "releveWp": 12,
     "cls": 2
    }
   }
@@ -10757,7 +10757,7 @@
     "formulaires": 0,
     "faq": 6,
     "cta": 2,
-    "mots": 1237,
+    "mots": 1236,
     "titres": 14,
     "debordement": 0,
     "horsEcran": 0
@@ -10765,15 +10765,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2859,
+   "ms": 2908,
    "phases": {
     "bascule": 1108,
-    "stabRef": 547,
-    "releveRef": 6,
-    "chargementWp": 638,
-    "stabWp": 550,
-    "releveWp": 8,
-    "cls": 2
+    "stabRef": 549,
+    "releveRef": 9,
+    "chargementWp": 678,
+    "stabWp": 551,
+    "releveWp": 10,
+    "cls": 3
    }
   },
   "375": {
@@ -10822,13 +10822,13 @@
     "horsEcran": 0
    },
    "wp": {
-    "hauteur": 10912,
+    "hauteur": 10939,
     "sections": 10,
     "bandes": [
      518,
      319,
      365,
-     2428,
+     2454,
      813,
      1023,
      1801,
@@ -10859,7 +10859,7 @@
     "formulaires": 0,
     "faq": 6,
     "cta": 2,
-    "mots": 1237,
+    "mots": 1236,
     "titres": 14,
     "debordement": 0,
     "horsEcran": 0
@@ -10867,15 +10867,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2766,
+   "ms": 2808,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 486,
-    "releveRef": 6,
-    "chargementWp": 641,
-    "stabWp": 518,
-    "releveWp": 8,
-    "cls": 1
+    "bascule": 1107,
+    "stabRef": 487,
+    "releveRef": 8,
+    "chargementWp": 658,
+    "stabWp": 536,
+    "releveWp": 10,
+    "cls": 2
    }
   },
   "768": {
@@ -10961,7 +10961,7 @@
     "formulaires": 0,
     "faq": 6,
     "cta": 2,
-    "mots": 1237,
+    "mots": 1236,
     "titres": 14,
     "debordement": 0,
     "horsEcran": 0
@@ -10969,15 +10969,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2499,
+   "ms": 2540,
    "phases": {
     "bascule": 1107,
-    "stabRef": 365,
-    "releveRef": 6,
-    "chargementWp": 644,
-    "stabWp": 367,
-    "releveWp": 8,
-    "cls": 2
+    "stabRef": 366,
+    "releveRef": 7,
+    "chargementWp": 682,
+    "stabWp": 368,
+    "releveWp": 9,
+    "cls": 1
    }
   },
   "1024": {
@@ -11063,7 +11063,7 @@
     "formulaires": 0,
     "faq": 6,
     "cta": 2,
-    "mots": 1237,
+    "mots": 1236,
     "titres": 14,
     "debordement": 0,
     "horsEcran": 0
@@ -11071,15 +11071,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2492,
+   "ms": 2507,
    "phases": {
     "bascule": 1107,
-    "stabRef": 334,
-    "releveRef": 5,
-    "chargementWp": 669,
-    "stabWp": 369,
-    "releveWp": 7,
-    "cls": 1
+    "stabRef": 338,
+    "releveRef": 7,
+    "chargementWp": 674,
+    "stabWp": 368,
+    "releveWp": 11,
+    "cls": 2
    }
   },
   "1440": {
@@ -11165,7 +11165,7 @@
     "formulaires": 0,
     "faq": 6,
     "cta": 2,
-    "mots": 1237,
+    "mots": 1236,
     "titres": 14,
     "debordement": 0,
     "horsEcran": 0
@@ -11173,15 +11173,15 @@
    "cls": 0.0005,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2459,
+   "ms": 2527,
    "phases": {
-    "bascule": 1105,
-    "stabRef": 334,
-    "releveRef": 6,
-    "chargementWp": 639,
-    "stabWp": 367,
-    "releveWp": 7,
-    "cls": 1
+    "bascule": 1111,
+    "stabRef": 335,
+    "releveRef": 7,
+    "chargementWp": 692,
+    "stabWp": 369,
+    "releveWp": 11,
+    "cls": 2
    }
   },
   "1920": {
@@ -11267,7 +11267,7 @@
     "formulaires": 0,
     "faq": 6,
     "cta": 2,
-    "mots": 1237,
+    "mots": 1236,
     "titres": 14,
     "debordement": 0,
     "horsEcran": 0
@@ -11275,14 +11275,14 @@
    "cls": 0.0003,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2467,
+   "ms": 2547,
    "phases": {
-    "bascule": 1105,
-    "stabRef": 335,
-    "releveRef": 5,
-    "chargementWp": 646,
-    "stabWp": 367,
-    "releveWp": 7,
+    "bascule": 1118,
+    "stabRef": 336,
+    "releveRef": 7,
+    "chargementWp": 706,
+    "stabWp": 369,
+    "releveWp": 9,
     "cls": 2
    }
   }
@@ -11379,14 +11379,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2875,
+   "ms": 2910,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 547,
+    "bascule": 1107,
+    "stabRef": 549,
     "releveRef": 7,
-    "chargementWp": 646,
-    "stabWp": 559,
-    "releveWp": 8,
+    "chargementWp": 683,
+    "stabWp": 552,
+    "releveWp": 10,
     "cls": 2
    }
   },
@@ -11481,15 +11481,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2787,
+   "ms": 2827,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 516,
-    "releveRef": 16,
-    "chargementWp": 622,
-    "stabWp": 518,
-    "releveWp": 8,
-    "cls": 1
+    "bascule": 1107,
+    "stabRef": 518,
+    "releveRef": 11,
+    "chargementWp": 659,
+    "stabWp": 520,
+    "releveWp": 10,
+    "cls": 2
    }
   },
   "768": {
@@ -11583,15 +11583,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2496,
+   "ms": 2558,
    "phases": {
-    "bascule": 1107,
-    "stabRef": 364,
-    "releveRef": 6,
-    "chargementWp": 641,
-    "stabWp": 369,
-    "releveWp": 8,
-    "cls": 1
+    "bascule": 1106,
+    "stabRef": 368,
+    "releveRef": 9,
+    "chargementWp": 692,
+    "stabWp": 370,
+    "releveWp": 11,
+    "cls": 2
    }
   },
   "1024": {
@@ -11685,15 +11685,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2490,
+   "ms": 2559,
    "phases": {
     "bascule": 1107,
-    "stabRef": 365,
-    "releveRef": 6,
-    "chargementWp": 634,
-    "stabWp": 367,
-    "releveWp": 10,
-    "cls": 1
+    "stabRef": 366,
+    "releveRef": 7,
+    "chargementWp": 696,
+    "stabWp": 369,
+    "releveWp": 12,
+    "cls": 2
    }
   },
   "1440": {
@@ -11787,15 +11787,15 @@
    "cls": 0.0005,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2496,
+   "ms": 2617,
    "phases": {
-    "bascule": 1105,
-    "stabRef": 364,
-    "releveRef": 6,
-    "chargementWp": 646,
-    "stabWp": 367,
-    "releveWp": 7,
-    "cls": 1
+    "bascule": 1110,
+    "stabRef": 366,
+    "releveRef": 8,
+    "chargementWp": 750,
+    "stabWp": 369,
+    "releveWp": 12,
+    "cls": 2
    }
   },
   "1920": {
@@ -11889,15 +11889,15 @@
    "cls": 0.0003,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2487,
+   "ms": 2529,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 365,
+    "bascule": 1107,
+    "stabRef": 367,
     "releveRef": 7,
-    "chargementWp": 633,
-    "stabWp": 367,
-    "releveWp": 7,
-    "cls": 2
+    "chargementWp": 669,
+    "stabWp": 368,
+    "releveWp": 10,
+    "cls": 1
    }
   }
  },
@@ -11993,15 +11993,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2812,
+   "ms": 2875,
    "phases": {
     "bascule": 1108,
-    "stabRef": 516,
-    "releveRef": 6,
-    "chargementWp": 624,
-    "stabWp": 549,
-    "releveWp": 8,
-    "cls": 1
+    "stabRef": 519,
+    "releveRef": 9,
+    "chargementWp": 673,
+    "stabWp": 551,
+    "releveWp": 13,
+    "cls": 2
    }
   },
   "375": {
@@ -12095,15 +12095,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2726,
+   "ms": 2765,
    "phases": {
-    "bascule": 1107,
-    "stabRef": 485,
-    "releveRef": 6,
-    "chargementWp": 632,
-    "stabWp": 488,
-    "releveWp": 7,
-    "cls": 1
+    "bascule": 1108,
+    "stabRef": 487,
+    "releveRef": 7,
+    "chargementWp": 663,
+    "stabWp": 489,
+    "releveWp": 9,
+    "cls": 2
    }
   },
   "768": {
@@ -12197,15 +12197,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2509,
+   "ms": 2562,
    "phases": {
-    "bascule": 1109,
-    "stabRef": 364,
-    "releveRef": 9,
-    "chargementWp": 650,
-    "stabWp": 367,
-    "releveWp": 8,
-    "cls": 2
+    "bascule": 1108,
+    "stabRef": 366,
+    "releveRef": 7,
+    "chargementWp": 700,
+    "stabWp": 369,
+    "releveWp": 11,
+    "cls": 1
    }
   },
   "1024": {
@@ -12299,15 +12299,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2439,
+   "ms": 2470,
    "phases": {
     "bascule": 1108,
-    "stabRef": 334,
-    "releveRef": 6,
-    "chargementWp": 646,
-    "stabWp": 336,
+    "stabRef": 335,
+    "releveRef": 8,
+    "chargementWp": 671,
+    "stabWp": 338,
     "releveWp": 8,
-    "cls": 1
+    "cls": 2
    }
   },
   "1440": {
@@ -12401,14 +12401,14 @@
    "cls": 0.0005,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2435,
+   "ms": 2522,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 334,
-    "releveRef": 6,
-    "chargementWp": 642,
-    "stabWp": 336,
-    "releveWp": 8,
+    "bascule": 1111,
+    "stabRef": 336,
+    "releveRef": 7,
+    "chargementWp": 718,
+    "stabWp": 338,
+    "releveWp": 9,
     "cls": 3
    }
   },
@@ -12503,15 +12503,15 @@
    "cls": 0.0003,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2422,
+   "ms": 2469,
    "phases": {
-    "bascule": 1105,
-    "stabRef": 335,
-    "releveRef": 6,
-    "chargementWp": 631,
-    "stabWp": 336,
-    "releveWp": 8,
-    "cls": 1
+    "bascule": 1107,
+    "stabRef": 336,
+    "releveRef": 7,
+    "chargementWp": 669,
+    "stabWp": 339,
+    "releveWp": 9,
+    "cls": 2
    }
   }
  },
@@ -12607,14 +12607,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2844,
+   "ms": 2921,
    "phases": {
-    "bascule": 1105,
-    "stabRef": 545,
-    "releveRef": 7,
-    "chargementWp": 630,
-    "stabWp": 548,
-    "releveWp": 7,
+    "bascule": 1110,
+    "stabRef": 548,
+    "releveRef": 8,
+    "chargementWp": 693,
+    "stabWp": 551,
+    "releveWp": 9,
     "cls": 2
    }
   },
@@ -12709,14 +12709,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2764,
+   "ms": 2796,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 486,
-    "releveRef": 8,
-    "chargementWp": 635,
-    "stabWp": 517,
-    "releveWp": 11,
+    "bascule": 1108,
+    "stabRef": 488,
+    "releveRef": 7,
+    "chargementWp": 661,
+    "stabWp": 521,
+    "releveWp": 10,
     "cls": 1
    }
   },
@@ -12811,14 +12811,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2505,
+   "ms": 2533,
    "phases": {
-    "bascule": 1111,
-    "stabRef": 365,
-    "releveRef": 6,
-    "chargementWp": 643,
-    "stabWp": 371,
-    "releveWp": 7,
+    "bascule": 1108,
+    "stabRef": 366,
+    "releveRef": 8,
+    "chargementWp": 671,
+    "stabWp": 369,
+    "releveWp": 9,
     "cls": 2
    }
   },
@@ -12913,15 +12913,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2476,
+   "ms": 2512,
    "phases": {
-    "bascule": 1107,
-    "stabRef": 354,
-    "releveRef": 6,
-    "chargementWp": 633,
-    "stabWp": 366,
-    "releveWp": 8,
-    "cls": 1
+    "bascule": 1108,
+    "stabRef": 336,
+    "releveRef": 9,
+    "chargementWp": 679,
+    "stabWp": 368,
+    "releveWp": 10,
+    "cls": 2
    }
   },
   "1440": {
@@ -13015,14 +13015,14 @@
    "cls": 0.0005,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2455,
+   "ms": 2541,
    "phases": {
     "bascule": 1106,
-    "stabRef": 335,
-    "releveRef": 5,
-    "chargementWp": 633,
-    "stabWp": 367,
-    "releveWp": 7,
+    "stabRef": 336,
+    "releveRef": 9,
+    "chargementWp": 704,
+    "stabWp": 369,
+    "releveWp": 15,
     "cls": 2
    }
   },
@@ -13117,15 +13117,15 @@
    "cls": 0.0003,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2455,
+   "ms": 2519,
    "phases": {
     "bascule": 1108,
-    "stabRef": 335,
-    "releveRef": 6,
-    "chargementWp": 631,
-    "stabWp": 367,
-    "releveWp": 7,
-    "cls": 1
+    "stabRef": 334,
+    "releveRef": 7,
+    "chargementWp": 690,
+    "stabWp": 368,
+    "releveWp": 10,
+    "cls": 2
    }
   }
  },
@@ -13221,15 +13221,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2866,
+   "ms": 2922,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 563,
-    "releveRef": 6,
-    "chargementWp": 634,
-    "stabWp": 548,
-    "releveWp": 8,
-    "cls": 1
+    "bascule": 1108,
+    "stabRef": 549,
+    "releveRef": 9,
+    "chargementWp": 692,
+    "stabWp": 552,
+    "releveWp": 10,
+    "cls": 2
    }
   },
   "375": {
@@ -13323,15 +13323,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2753,
+   "ms": 2787,
    "phases": {
-    "bascule": 1105,
-    "stabRef": 486,
-    "releveRef": 6,
-    "chargementWp": 629,
-    "stabWp": 518,
-    "releveWp": 7,
-    "cls": 2
+    "bascule": 1106,
+    "stabRef": 488,
+    "releveRef": 8,
+    "chargementWp": 655,
+    "stabWp": 520,
+    "releveWp": 9,
+    "cls": 1
    }
   },
   "768": {
@@ -13425,14 +13425,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2498,
+   "ms": 2523,
    "phases": {
-    "bascule": 1110,
-    "stabRef": 365,
-    "releveRef": 6,
-    "chargementWp": 639,
-    "stabWp": 366,
-    "releveWp": 10,
+    "bascule": 1108,
+    "stabRef": 366,
+    "releveRef": 7,
+    "chargementWp": 663,
+    "stabWp": 368,
+    "releveWp": 9,
     "cls": 2
    }
   },
@@ -13527,14 +13527,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2475,
+   "ms": 2547,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 365,
-    "releveRef": 5,
-    "chargementWp": 624,
-    "stabWp": 366,
-    "releveWp": 7,
+    "bascule": 1108,
+    "stabRef": 366,
+    "releveRef": 7,
+    "chargementWp": 685,
+    "stabWp": 369,
+    "releveWp": 10,
     "cls": 2
    }
   },
@@ -13629,14 +13629,14 @@
    "cls": 0.0005,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2487,
+   "ms": 2560,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 364,
-    "releveRef": 5,
-    "chargementWp": 638,
-    "stabWp": 366,
-    "releveWp": 7,
+    "bascule": 1112,
+    "stabRef": 366,
+    "releveRef": 7,
+    "chargementWp": 696,
+    "stabWp": 368,
+    "releveWp": 10,
     "cls": 1
    }
   },
@@ -13731,14 +13731,14 @@
    "cls": 0.0003,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2488,
+   "ms": 2567,
    "phases": {
-    "bascule": 1107,
-    "stabRef": 365,
-    "releveRef": 6,
-    "chargementWp": 634,
-    "stabWp": 366,
-    "releveWp": 8,
+    "bascule": 1108,
+    "stabRef": 366,
+    "releveRef": 8,
+    "chargementWp": 706,
+    "stabWp": 368,
+    "releveWp": 9,
     "cls": 2
    }
   }
@@ -13839,7 +13839,7 @@
     "formulaires": 0,
     "faq": 7,
     "cta": 3,
-    "mots": 1919,
+    "mots": 1917,
     "titres": 19,
     "debordement": 0,
     "horsEcran": 0
@@ -13847,15 +13847,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 3266,
+   "ms": 3245,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 698,
-    "releveRef": 8,
-    "chargementWp": 700,
-    "stabWp": 744,
-    "releveWp": 8,
-    "cls": 2
+    "bascule": 1108,
+    "stabRef": 701,
+    "releveRef": 10,
+    "chargementWp": 678,
+    "stabWp": 735,
+    "releveWp": 12,
+    "cls": 1
    }
   },
   "375": {
@@ -13953,7 +13953,7 @@
     "formulaires": 0,
     "faq": 7,
     "cta": 3,
-    "mots": 1919,
+    "mots": 1917,
     "titres": 19,
     "debordement": 0,
     "horsEcran": 0
@@ -13961,15 +13961,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 3047,
+   "ms": 3091,
    "phases": {
-    "bascule": 1107,
-    "stabRef": 637,
-    "releveRef": 7,
-    "chargementWp": 647,
-    "stabWp": 638,
-    "releveWp": 10,
-    "cls": 1
+    "bascule": 1106,
+    "stabRef": 638,
+    "releveRef": 10,
+    "chargementWp": 682,
+    "stabWp": 642,
+    "releveWp": 11,
+    "cls": 2
    }
   },
   "768": {
@@ -14067,7 +14067,7 @@
     "formulaires": 0,
     "faq": 7,
     "cta": 3,
-    "mots": 1919,
+    "mots": 1917,
     "titres": 19,
     "debordement": 0,
     "horsEcran": 0
@@ -14075,14 +14075,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2683,
+   "ms": 2766,
    "phases": {
-    "bascule": 1107,
-    "stabRef": 455,
-    "releveRef": 8,
-    "chargementWp": 646,
-    "stabWp": 458,
-    "releveWp": 8,
+    "bascule": 1108,
+    "stabRef": 459,
+    "releveRef": 10,
+    "chargementWp": 717,
+    "stabWp": 459,
+    "releveWp": 12,
     "cls": 1
    }
   },
@@ -14181,7 +14181,7 @@
     "formulaires": 0,
     "faq": 7,
     "cta": 3,
-    "mots": 1919,
+    "mots": 1917,
     "titres": 19,
     "debordement": 0,
     "horsEcran": 0
@@ -14189,14 +14189,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2624,
+   "ms": 2679,
    "phases": {
-    "bascule": 1105,
-    "stabRef": 425,
-    "releveRef": 8,
-    "chargementWp": 648,
-    "stabWp": 427,
-    "releveWp": 9,
+    "bascule": 1108,
+    "stabRef": 428,
+    "releveRef": 11,
+    "chargementWp": 690,
+    "stabWp": 429,
+    "releveWp": 11,
     "cls": 2
    }
   },
@@ -14295,7 +14295,7 @@
     "formulaires": 0,
     "faq": 7,
     "cta": 3,
-    "mots": 1919,
+    "mots": 1917,
     "titres": 19,
     "debordement": 0,
     "horsEcran": 0
@@ -14303,15 +14303,15 @@
    "cls": 0.0005,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2661,
+   "ms": 2712,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 426,
-    "releveRef": 7,
-    "chargementWp": 643,
-    "stabWp": 469,
-    "releveWp": 8,
-    "cls": 2
+    "bascule": 1109,
+    "stabRef": 427,
+    "releveRef": 10,
+    "chargementWp": 724,
+    "stabWp": 430,
+    "releveWp": 10,
+    "cls": 1
    }
   },
   "1920": {
@@ -14409,7 +14409,7 @@
     "formulaires": 0,
     "faq": 7,
     "cta": 3,
-    "mots": 1919,
+    "mots": 1917,
     "titres": 19,
     "debordement": 0,
     "horsEcran": 0
@@ -14417,15 +14417,15 @@
    "cls": 0.0003,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2639,
+   "ms": 2689,
    "phases": {
-    "bascule": 1125,
-    "stabRef": 426,
-    "releveRef": 8,
-    "chargementWp": 643,
+    "bascule": 1107,
+    "stabRef": 427,
+    "releveRef": 10,
+    "chargementWp": 698,
     "stabWp": 428,
-    "releveWp": 8,
-    "cls": 1
+    "releveWp": 17,
+    "cls": 2
    }
   }
  },
@@ -14533,15 +14533,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 3158,
+   "ms": 3216,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 698,
-    "releveRef": 7,
-    "chargementWp": 638,
-    "stabWp": 699,
-    "releveWp": 9,
-    "cls": 1
+    "bascule": 1107,
+    "stabRef": 700,
+    "releveRef": 10,
+    "chargementWp": 683,
+    "stabWp": 703,
+    "releveWp": 11,
+    "cls": 2
    }
   },
   "375": {
@@ -14647,15 +14647,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 3040,
+   "ms": 3101,
    "phases": {
     "bascule": 1107,
-    "stabRef": 637,
-    "releveRef": 8,
-    "chargementWp": 639,
-    "stabWp": 639,
-    "releveWp": 9,
-    "cls": 1
+    "stabRef": 638,
+    "releveRef": 10,
+    "chargementWp": 690,
+    "stabWp": 642,
+    "releveWp": 11,
+    "cls": 3
    }
   },
   "768": {
@@ -14761,15 +14761,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2670,
+   "ms": 2742,
    "phases": {
-    "bascule": 1106,
+    "bascule": 1108,
     "stabRef": 456,
-    "releveRef": 6,
-    "chargementWp": 635,
-    "stabWp": 456,
-    "releveWp": 9,
-    "cls": 1
+    "releveRef": 9,
+    "chargementWp": 697,
+    "stabWp": 458,
+    "releveWp": 12,
+    "cls": 2
    }
   },
   "1024": {
@@ -14875,13 +14875,13 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2575,
+   "ms": 2619,
    "phases": {
-    "bascule": 1107,
-    "stabRef": 395,
-    "releveRef": 8,
-    "chargementWp": 653,
-    "stabWp": 397,
+    "bascule": 1108,
+    "stabRef": 396,
+    "releveRef": 9,
+    "chargementWp": 692,
+    "stabWp": 399,
     "releveWp": 13,
     "cls": 2
    }
@@ -14989,15 +14989,15 @@
    "cls": 0.0005,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2577,
+   "ms": 2710,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 395,
-    "releveRef": 6,
-    "chargementWp": 633,
-    "stabWp": 427,
-    "releveWp": 8,
-    "cls": 2
+    "bascule": 1111,
+    "stabRef": 413,
+    "releveRef": 10,
+    "chargementWp": 732,
+    "stabWp": 430,
+    "releveWp": 11,
+    "cls": 3
    }
   },
   "1920": {
@@ -15103,15 +15103,15 @@
    "cls": 0.0003,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2616,
+   "ms": 2653,
    "phases": {
     "bascule": 1106,
-    "stabRef": 395,
-    "releveRef": 7,
-    "chargementWp": 642,
-    "stabWp": 457,
-    "releveWp": 8,
-    "cls": 1
+    "stabRef": 397,
+    "releveRef": 15,
+    "chargementWp": 692,
+    "stabWp": 429,
+    "releveWp": 12,
+    "cls": 2
    }
   }
  },
@@ -15211,7 +15211,7 @@
     "formulaires": 0,
     "faq": 6,
     "cta": 3,
-    "mots": 1749,
+    "mots": 1747,
     "titres": 19,
     "debordement": 0,
     "horsEcran": 0
@@ -15219,14 +15219,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 3108,
+   "ms": 3150,
    "phases": {
-    "bascule": 1107,
-    "stabRef": 673,
-    "releveRef": 6,
-    "chargementWp": 642,
-    "stabWp": 669,
-    "releveWp": 9,
+    "bascule": 1106,
+    "stabRef": 669,
+    "releveRef": 9,
+    "chargementWp": 682,
+    "stabWp": 671,
+    "releveWp": 10,
     "cls": 2
    }
   },
@@ -15282,13 +15282,13 @@
     "horsEcran": 0
    },
    "wp": {
-    "hauteur": 14451,
+    "hauteur": 14505,
     "sections": 12,
     "bandes": [
      769,
      319,
      365,
-     3146,
+     3200,
      1036,
      1111,
      2872,
@@ -15325,7 +15325,7 @@
     "formulaires": 0,
     "faq": 6,
     "cta": 3,
-    "mots": 1749,
+    "mots": 1747,
     "titres": 19,
     "debordement": 0,
     "horsEcran": 0
@@ -15333,15 +15333,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 3038,
+   "ms": 3043,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 606,
+    "bascule": 1107,
+    "stabRef": 608,
     "releveRef": 9,
-    "chargementWp": 640,
-    "stabWp": 668,
-    "releveWp": 8,
-    "cls": 1
+    "chargementWp": 665,
+    "stabWp": 641,
+    "releveWp": 11,
+    "cls": 2
    }
   },
   "768": {
@@ -15439,7 +15439,7 @@
     "formulaires": 0,
     "faq": 6,
     "cta": 3,
-    "mots": 1749,
+    "mots": 1747,
     "titres": 19,
     "debordement": 0,
     "horsEcran": 0
@@ -15447,15 +15447,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2683,
+   "ms": 2724,
    "phases": {
-    "bascule": 1107,
+    "bascule": 1108,
     "stabRef": 456,
-    "releveRef": 7,
-    "chargementWp": 630,
-    "stabWp": 475,
-    "releveWp": 7,
-    "cls": 1
+    "releveRef": 10,
+    "chargementWp": 680,
+    "stabWp": 459,
+    "releveWp": 9,
+    "cls": 2
    }
   },
   "1024": {
@@ -15553,7 +15553,7 @@
     "formulaires": 0,
     "faq": 6,
     "cta": 3,
-    "mots": 1749,
+    "mots": 1747,
     "titres": 19,
     "debordement": 0,
     "horsEcran": 0
@@ -15561,15 +15561,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2620,
+   "ms": 2735,
    "phases": {
-    "bascule": 1107,
-    "stabRef": 425,
-    "releveRef": 7,
-    "chargementWp": 644,
-    "stabWp": 427,
-    "releveWp": 9,
-    "cls": 1
+    "bascule": 1109,
+    "stabRef": 428,
+    "releveRef": 12,
+    "chargementWp": 741,
+    "stabWp": 432,
+    "releveWp": 10,
+    "cls": 3
    }
   },
   "1440": {
@@ -15667,22 +15667,22 @@
     "formulaires": 0,
     "faq": 6,
     "cta": 3,
-    "mots": 1749,
+    "mots": 1747,
     "titres": 19,
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0005,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2646,
+   "ms": 2691,
    "phases": {
-    "bascule": 1105,
-    "stabRef": 425,
-    "releveRef": 7,
-    "chargementWp": 672,
-    "stabWp": 427,
-    "releveWp": 8,
+    "bascule": 1109,
+    "stabRef": 428,
+    "releveRef": 8,
+    "chargementWp": 704,
+    "stabWp": 429,
+    "releveWp": 11,
     "cls": 2
    }
   },
@@ -15781,7 +15781,7 @@
     "formulaires": 0,
     "faq": 6,
     "cta": 3,
-    "mots": 1749,
+    "mots": 1747,
     "titres": 19,
     "debordement": 0,
     "horsEcran": 0
@@ -15789,14 +15789,14 @@
    "cls": 0.0003,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2611,
+   "ms": 2685,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 425,
-    "releveRef": 7,
-    "chargementWp": 635,
-    "stabWp": 428,
-    "releveWp": 8,
+    "bascule": 1108,
+    "stabRef": 427,
+    "releveRef": 9,
+    "chargementWp": 698,
+    "stabWp": 431,
+    "releveWp": 11,
     "cls": 1
    }
   }
@@ -15897,7 +15897,7 @@
     "formulaires": 0,
     "faq": 6,
     "cta": 3,
-    "mots": 1743,
+    "mots": 1741,
     "titres": 19,
     "debordement": 0,
     "horsEcran": 0
@@ -15905,15 +15905,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 3188,
+   "ms": 3175,
    "phases": {
     "bascule": 1107,
-    "stabRef": 739,
-    "releveRef": 8,
-    "chargementWp": 654,
-    "stabWp": 670,
-    "releveWp": 8,
-    "cls": 2
+    "stabRef": 701,
+    "releveRef": 9,
+    "chargementWp": 673,
+    "stabWp": 674,
+    "releveWp": 10,
+    "cls": 1
    }
   },
   "375": {
@@ -16011,7 +16011,7 @@
     "formulaires": 0,
     "faq": 6,
     "cta": 3,
-    "mots": 1743,
+    "mots": 1741,
     "titres": 19,
     "debordement": 0,
     "horsEcran": 0
@@ -16019,14 +16019,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 3033,
+   "ms": 3093,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 637,
-    "releveRef": 7,
-    "chargementWp": 634,
-    "stabWp": 639,
-    "releveWp": 8,
+    "bascule": 1109,
+    "stabRef": 640,
+    "releveRef": 8,
+    "chargementWp": 677,
+    "stabWp": 645,
+    "releveWp": 12,
     "cls": 2
    }
   },
@@ -16125,7 +16125,7 @@
     "formulaires": 0,
     "faq": 6,
     "cta": 3,
-    "mots": 1743,
+    "mots": 1741,
     "titres": 19,
     "debordement": 0,
     "horsEcran": 0
@@ -16133,15 +16133,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2693,
+   "ms": 2712,
    "phases": {
-    "bascule": 1107,
-    "stabRef": 455,
-    "releveRef": 6,
-    "chargementWp": 657,
-    "stabWp": 458,
-    "releveWp": 8,
-    "cls": 2
+    "bascule": 1108,
+    "stabRef": 456,
+    "releveRef": 8,
+    "chargementWp": 666,
+    "stabWp": 460,
+    "releveWp": 13,
+    "cls": 1
    }
   },
   "1024": {
@@ -16239,7 +16239,7 @@
     "formulaires": 0,
     "faq": 6,
     "cta": 3,
-    "mots": 1743,
+    "mots": 1741,
     "titres": 19,
     "debordement": 0,
     "horsEcran": 0
@@ -16247,14 +16247,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2659,
+   "ms": 2700,
    "phases": {
-    "bascule": 1105,
-    "stabRef": 425,
-    "releveRef": 6,
-    "chargementWp": 647,
-    "stabWp": 466,
-    "releveWp": 8,
+    "bascule": 1109,
+    "stabRef": 450,
+    "releveRef": 9,
+    "chargementWp": 688,
+    "stabWp": 430,
+    "releveWp": 12,
     "cls": 2
    }
   },
@@ -16353,7 +16353,7 @@
     "formulaires": 0,
     "faq": 6,
     "cta": 3,
-    "mots": 1743,
+    "mots": 1741,
     "titres": 19,
     "debordement": 0,
     "horsEcran": 0
@@ -16361,15 +16361,15 @@
    "cls": 0.0005,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2613,
+   "ms": 2698,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 425,
-    "releveRef": 8,
-    "chargementWp": 636,
-    "stabWp": 427,
-    "releveWp": 9,
-    "cls": 2
+    "bascule": 1107,
+    "stabRef": 427,
+    "releveRef": 9,
+    "chargementWp": 712,
+    "stabWp": 430,
+    "releveWp": 12,
+    "cls": 1
    }
   },
   "1920": {
@@ -16467,7 +16467,7 @@
     "formulaires": 0,
     "faq": 6,
     "cta": 3,
-    "mots": 1743,
+    "mots": 1741,
     "titres": 19,
     "debordement": 0,
     "horsEcran": 0
@@ -16475,15 +16475,15 @@
    "cls": 0.0003,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2656,
+   "ms": 2724,
    "phases": {
-    "bascule": 1106,
+    "bascule": 1122,
     "stabRef": 426,
-    "releveRef": 13,
-    "chargementWp": 670,
-    "stabWp": 428,
-    "releveWp": 12,
-    "cls": 1
+    "releveRef": 10,
+    "chargementWp": 719,
+    "stabWp": 431,
+    "releveWp": 13,
+    "cls": 3
    }
   }
  },
@@ -16540,13 +16540,13 @@
     "horsEcran": 0
    },
    "wp": {
-    "hauteur": 15818,
+    "hauteur": 15845,
     "sections": 12,
     "bandes": [
      788,
      367,
      447,
-     3859,
+     3886,
      1139,
      1212,
      2761,
@@ -16583,7 +16583,7 @@
     "formulaires": 0,
     "faq": 6,
     "cta": 3,
-    "mots": 1684,
+    "mots": 1683,
     "titres": 19,
     "debordement": 0,
     "horsEcran": 0
@@ -16591,15 +16591,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 3109,
+   "ms": 3172,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 668,
-    "releveRef": 9,
-    "chargementWp": 643,
-    "stabWp": 671,
-    "releveWp": 9,
-    "cls": 3
+    "bascule": 1108,
+    "stabRef": 670,
+    "releveRef": 12,
+    "chargementWp": 697,
+    "stabWp": 673,
+    "releveWp": 10,
+    "cls": 2
    }
   },
   "375": {
@@ -16697,7 +16697,7 @@
     "formulaires": 0,
     "faq": 6,
     "cta": 3,
-    "mots": 1684,
+    "mots": 1683,
     "titres": 19,
     "debordement": 0,
     "horsEcran": 0
@@ -16705,15 +16705,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 3000,
+   "ms": 3092,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 606,
-    "releveRef": 7,
-    "chargementWp": 633,
-    "stabWp": 639,
-    "releveWp": 8,
-    "cls": 1
+    "bascule": 1108,
+    "stabRef": 608,
+    "releveRef": 10,
+    "chargementWp": 708,
+    "stabWp": 641,
+    "releveWp": 14,
+    "cls": 3
    }
   },
   "768": {
@@ -16811,7 +16811,7 @@
     "formulaires": 0,
     "faq": 6,
     "cta": 3,
-    "mots": 1684,
+    "mots": 1683,
     "titres": 19,
     "debordement": 0,
     "horsEcran": 0
@@ -16819,14 +16819,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2677,
+   "ms": 2732,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 456,
+    "bascule": 1108,
+    "stabRef": 457,
     "releveRef": 7,
-    "chargementWp": 639,
-    "stabWp": 458,
-    "releveWp": 9,
+    "chargementWp": 689,
+    "stabWp": 459,
+    "releveWp": 10,
     "cls": 2
    }
   },
@@ -16925,7 +16925,7 @@
     "formulaires": 0,
     "faq": 6,
     "cta": 3,
-    "mots": 1684,
+    "mots": 1683,
     "titres": 19,
     "debordement": 0,
     "horsEcran": 0
@@ -16933,14 +16933,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2578,
+   "ms": 2635,
    "phases": {
-    "bascule": 1105,
-    "stabRef": 395,
+    "bascule": 1107,
+    "stabRef": 396,
     "releveRef": 8,
-    "chargementWp": 663,
-    "stabWp": 397,
-    "releveWp": 8,
+    "chargementWp": 711,
+    "stabWp": 399,
+    "releveWp": 12,
     "cls": 2
    }
   },
@@ -17039,7 +17039,7 @@
     "formulaires": 0,
     "faq": 6,
     "cta": 3,
-    "mots": 1684,
+    "mots": 1683,
     "titres": 19,
     "debordement": 0,
     "horsEcran": 0
@@ -17047,15 +17047,15 @@
    "cls": 0.0005,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2580,
+   "ms": 2639,
    "phases": {
-    "bascule": 1123,
+    "bascule": 1107,
     "stabRef": 397,
-    "releveRef": 7,
-    "chargementWp": 646,
-    "stabWp": 397,
-    "releveWp": 8,
-    "cls": 2
+    "releveRef": 8,
+    "chargementWp": 713,
+    "stabWp": 402,
+    "releveWp": 11,
+    "cls": 1
    }
   },
   "1920": {
@@ -17153,7 +17153,7 @@
     "formulaires": 0,
     "faq": 6,
     "cta": 3,
-    "mots": 1684,
+    "mots": 1683,
     "titres": 19,
     "debordement": 0,
     "horsEcran": 0
@@ -17161,14 +17161,14 @@
    "cls": 0.0003,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2577,
+   "ms": 2634,
    "phases": {
-    "bascule": 1107,
-    "stabRef": 395,
-    "releveRef": 7,
-    "chargementWp": 661,
+    "bascule": 1108,
+    "stabRef": 396,
+    "releveRef": 10,
+    "chargementWp": 709,
     "stabWp": 398,
-    "releveWp": 7,
+    "releveWp": 11,
     "cls": 2
    }
   }
@@ -17269,7 +17269,7 @@
     "formulaires": 0,
     "faq": 6,
     "cta": 3,
-    "mots": 1710,
+    "mots": 1709,
     "titres": 19,
     "debordement": 0,
     "horsEcran": 0
@@ -17277,13 +17277,13 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 3181,
+   "ms": 3219,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 698,
-    "releveRef": 8,
-    "chargementWp": 656,
-    "stabWp": 700,
+    "bascule": 1108,
+    "stabRef": 699,
+    "releveRef": 10,
+    "chargementWp": 688,
+    "stabWp": 703,
     "releveWp": 10,
     "cls": 1
    }
@@ -17383,7 +17383,7 @@
     "formulaires": 0,
     "faq": 6,
     "cta": 3,
-    "mots": 1710,
+    "mots": 1709,
     "titres": 19,
     "debordement": 0,
     "horsEcran": 0
@@ -17391,14 +17391,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 3019,
+   "ms": 3048,
    "phases": {
-    "bascule": 1107,
-    "stabRef": 607,
-    "releveRef": 7,
-    "chargementWp": 649,
-    "stabWp": 639,
-    "releveWp": 9,
+    "bascule": 1108,
+    "stabRef": 609,
+    "releveRef": 8,
+    "chargementWp": 668,
+    "stabWp": 643,
+    "releveWp": 11,
     "cls": 1
    }
   },
@@ -17497,7 +17497,7 @@
     "formulaires": 0,
     "faq": 6,
     "cta": 3,
-    "mots": 1710,
+    "mots": 1709,
     "titres": 19,
     "debordement": 0,
     "horsEcran": 0
@@ -17505,13 +17505,13 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2692,
+   "ms": 2722,
    "phases": {
-    "bascule": 1107,
-    "stabRef": 455,
-    "releveRef": 6,
-    "chargementWp": 653,
-    "stabWp": 458,
+    "bascule": 1109,
+    "stabRef": 458,
+    "releveRef": 9,
+    "chargementWp": 674,
+    "stabWp": 459,
     "releveWp": 10,
     "cls": 3
    }
@@ -17611,7 +17611,7 @@
     "formulaires": 0,
     "faq": 6,
     "cta": 3,
-    "mots": 1710,
+    "mots": 1709,
     "titres": 19,
     "debordement": 0,
     "horsEcran": 0
@@ -17619,15 +17619,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2624,
+   "ms": 2706,
    "phases": {
     "bascule": 1107,
-    "stabRef": 425,
-    "releveRef": 7,
-    "chargementWp": 647,
-    "stabWp": 427,
+    "stabRef": 428,
+    "releveRef": 11,
+    "chargementWp": 718,
+    "stabWp": 430,
     "releveWp": 10,
-    "cls": 1
+    "cls": 2
    }
   },
   "1440": {
@@ -17725,7 +17725,7 @@
     "formulaires": 0,
     "faq": 6,
     "cta": 3,
-    "mots": 1710,
+    "mots": 1709,
     "titres": 19,
     "debordement": 0,
     "horsEcran": 0
@@ -17733,14 +17733,14 @@
    "cls": 0.0005,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2628,
+   "ms": 2672,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 426,
-    "releveRef": 9,
-    "chargementWp": 651,
-    "stabWp": 427,
-    "releveWp": 8,
+    "bascule": 1112,
+    "stabRef": 427,
+    "releveRef": 8,
+    "chargementWp": 683,
+    "stabWp": 430,
+    "releveWp": 11,
     "cls": 1
    }
   },
@@ -17839,7 +17839,7 @@
     "formulaires": 0,
     "faq": 6,
     "cta": 3,
-    "mots": 1710,
+    "mots": 1709,
     "titres": 19,
     "debordement": 0,
     "horsEcran": 0
@@ -17847,15 +17847,15 @@
    "cls": 0.0003,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2632,
+   "ms": 2682,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 425,
-    "releveRef": 7,
-    "chargementWp": 656,
-    "stabWp": 427,
-    "releveWp": 9,
-    "cls": 2
+    "bascule": 1107,
+    "stabRef": 435,
+    "releveRef": 9,
+    "chargementWp": 689,
+    "stabWp": 431,
+    "releveWp": 10,
+    "cls": 1
    }
   }
  },
@@ -17955,7 +17955,7 @@
     "formulaires": 0,
     "faq": 6,
     "cta": 3,
-    "mots": 1685,
+    "mots": 1683,
     "titres": 19,
     "debordement": 0,
     "horsEcran": 0
@@ -17963,15 +17963,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 3116,
+   "ms": 3157,
    "phases": {
     "bascule": 1108,
-    "stabRef": 668,
-    "releveRef": 7,
-    "chargementWp": 653,
-    "stabWp": 670,
-    "releveWp": 9,
-    "cls": 1
+    "stabRef": 670,
+    "releveRef": 8,
+    "chargementWp": 684,
+    "stabWp": 674,
+    "releveWp": 11,
+    "cls": 2
    }
   },
   "375": {
@@ -18069,7 +18069,7 @@
     "formulaires": 0,
     "faq": 6,
     "cta": 3,
-    "mots": 1685,
+    "mots": 1683,
     "titres": 19,
     "debordement": 0,
     "horsEcran": 0
@@ -18077,15 +18077,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 3016,
+   "ms": 3070,
    "phases": {
-    "bascule": 1108,
-    "stabRef": 607,
-    "releveRef": 7,
-    "chargementWp": 635,
+    "bascule": 1109,
+    "stabRef": 609,
+    "releveRef": 8,
+    "chargementWp": 689,
     "stabWp": 641,
-    "releveWp": 16,
-    "cls": 2
+    "releveWp": 11,
+    "cls": 3
    }
   },
   "768": {
@@ -18183,7 +18183,7 @@
     "formulaires": 0,
     "faq": 6,
     "cta": 3,
-    "mots": 1685,
+    "mots": 1683,
     "titres": 19,
     "debordement": 0,
     "horsEcran": 0
@@ -18191,13 +18191,13 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2678,
+   "ms": 2765,
    "phases": {
-    "bascule": 1106,
+    "bascule": 1107,
     "stabRef": 457,
-    "releveRef": 7,
-    "chargementWp": 639,
-    "stabWp": 458,
+    "releveRef": 8,
+    "chargementWp": 721,
+    "stabWp": 461,
     "releveWp": 10,
     "cls": 1
    }
@@ -18297,7 +18297,7 @@
     "formulaires": 0,
     "faq": 6,
     "cta": 3,
-    "mots": 1685,
+    "mots": 1683,
     "titres": 19,
     "debordement": 0,
     "horsEcran": 0
@@ -18305,15 +18305,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2557,
+   "ms": 2627,
    "phases": {
     "bascule": 1107,
-    "stabRef": 394,
-    "releveRef": 7,
-    "chargementWp": 642,
-    "stabWp": 397,
+    "stabRef": 397,
+    "releveRef": 11,
+    "chargementWp": 700,
+    "stabWp": 401,
     "releveWp": 9,
-    "cls": 1
+    "cls": 2
    }
   },
   "1440": {
@@ -18411,7 +18411,7 @@
     "formulaires": 0,
     "faq": 6,
     "cta": 3,
-    "mots": 1685,
+    "mots": 1683,
     "titres": 19,
     "debordement": 0,
     "horsEcran": 0
@@ -18419,14 +18419,14 @@
    "cls": 0.0005,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2590,
+   "ms": 2654,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 395,
-    "releveRef": 10,
-    "chargementWp": 641,
-    "stabWp": 428,
-    "releveWp": 8,
+    "bascule": 1112,
+    "stabRef": 396,
+    "releveRef": 8,
+    "chargementWp": 697,
+    "stabWp": 429,
+    "releveWp": 10,
     "cls": 2
    }
   },
@@ -18525,7 +18525,7 @@
     "formulaires": 0,
     "faq": 6,
     "cta": 3,
-    "mots": 1685,
+    "mots": 1683,
     "titres": 19,
     "debordement": 0,
     "horsEcran": 0
@@ -18533,15 +18533,15 @@
    "cls": 0.0003,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2606,
+   "ms": 2651,
    "phases": {
-    "bascule": 1107,
-    "stabRef": 414,
-    "releveRef": 10,
-    "chargementWp": 638,
-    "stabWp": 427,
-    "releveWp": 9,
-    "cls": 1
+    "bascule": 1108,
+    "stabRef": 396,
+    "releveRef": 8,
+    "chargementWp": 698,
+    "stabWp": 429,
+    "releveWp": 10,
+    "cls": 2
    }
   }
  },
@@ -18641,7 +18641,7 @@
     "formulaires": 0,
     "faq": 6,
     "cta": 3,
-    "mots": 1631,
+    "mots": 1629,
     "titres": 19,
     "debordement": 0,
     "horsEcran": 0
@@ -18649,15 +18649,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 3108,
+   "ms": 3161,
    "phases": {
-    "bascule": 1105,
-    "stabRef": 667,
+    "bascule": 1109,
+    "stabRef": 670,
     "releveRef": 9,
-    "chargementWp": 647,
-    "stabWp": 671,
-    "releveWp": 8,
-    "cls": 1
+    "chargementWp": 685,
+    "stabWp": 674,
+    "releveWp": 12,
+    "cls": 2
    }
   },
   "375": {
@@ -18755,7 +18755,7 @@
     "formulaires": 0,
     "faq": 6,
     "cta": 3,
-    "mots": 1631,
+    "mots": 1629,
     "titres": 19,
     "debordement": 0,
     "horsEcran": 0
@@ -18763,15 +18763,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2990,
+   "ms": 3028,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 607,
-    "releveRef": 6,
-    "chargementWp": 652,
-    "stabWp": 609,
-    "releveWp": 8,
-    "cls": 2
+    "bascule": 1108,
+    "stabRef": 609,
+    "releveRef": 11,
+    "chargementWp": 671,
+    "stabWp": 612,
+    "releveWp": 13,
+    "cls": 4
    }
   },
   "768": {
@@ -18869,7 +18869,7 @@
     "formulaires": 0,
     "faq": 6,
     "cta": 3,
-    "mots": 1631,
+    "mots": 1629,
     "titres": 19,
     "debordement": 0,
     "horsEcran": 0
@@ -18877,15 +18877,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2717,
+   "ms": 2722,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 456,
-    "releveRef": 6,
-    "chargementWp": 649,
-    "stabWp": 487,
-    "releveWp": 11,
-    "cls": 2
+    "bascule": 1108,
+    "stabRef": 457,
+    "releveRef": 8,
+    "chargementWp": 677,
+    "stabWp": 459,
+    "releveWp": 10,
+    "cls": 3
    }
   },
   "1024": {
@@ -18983,7 +18983,7 @@
     "formulaires": 0,
     "faq": 6,
     "cta": 3,
-    "mots": 1631,
+    "mots": 1629,
     "titres": 19,
     "debordement": 0,
     "horsEcran": 0
@@ -18991,14 +18991,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2571,
+   "ms": 2654,
    "phases": {
-    "bascule": 1117,
-    "stabRef": 395,
-    "releveRef": 7,
-    "chargementWp": 645,
-    "stabWp": 398,
-    "releveWp": 7,
+    "bascule": 1111,
+    "stabRef": 397,
+    "releveRef": 9,
+    "chargementWp": 726,
+    "stabWp": 399,
+    "releveWp": 10,
     "cls": 2
    }
   },
@@ -19097,7 +19097,7 @@
     "formulaires": 0,
     "faq": 6,
     "cta": 3,
-    "mots": 1631,
+    "mots": 1629,
     "titres": 19,
     "debordement": 0,
     "horsEcran": 0
@@ -19105,14 +19105,14 @@
    "cls": 0.0005,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2571,
+   "ms": 2638,
    "phases": {
-    "bascule": 1106,
+    "bascule": 1112,
     "stabRef": 396,
-    "releveRef": 7,
-    "chargementWp": 653,
-    "stabWp": 399,
-    "releveWp": 8,
+    "releveRef": 8,
+    "chargementWp": 710,
+    "stabWp": 398,
+    "releveWp": 12,
     "cls": 2
    }
   },
@@ -19211,7 +19211,7 @@
     "formulaires": 0,
     "faq": 6,
     "cta": 3,
-    "mots": 1631,
+    "mots": 1629,
     "titres": 19,
     "debordement": 0,
     "horsEcran": 0
@@ -19219,15 +19219,15 @@
    "cls": 0.0003,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2554,
+   "ms": 2621,
    "phases": {
     "bascule": 1107,
-    "stabRef": 395,
-    "releveRef": 8,
-    "chargementWp": 638,
-    "stabWp": 397,
-    "releveWp": 7,
-    "cls": 2
+    "stabRef": 397,
+    "releveRef": 9,
+    "chargementWp": 696,
+    "stabWp": 399,
+    "releveWp": 12,
+    "cls": 1
    }
   }
  },
@@ -19335,15 +19335,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 3100,
+   "ms": 3177,
    "phases": {
     "bascule": 1106,
-    "stabRef": 668,
-    "releveRef": 7,
-    "chargementWp": 639,
-    "stabWp": 670,
-    "releveWp": 9,
-    "cls": 1
+    "stabRef": 674,
+    "releveRef": 12,
+    "chargementWp": 699,
+    "stabWp": 673,
+    "releveWp": 11,
+    "cls": 2
    }
   },
   "375": {
@@ -19449,15 +19449,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2996,
+   "ms": 3089,
    "phases": {
-    "bascule": 1107,
-    "stabRef": 606,
-    "releveRef": 7,
-    "chargementWp": 628,
-    "stabWp": 638,
-    "releveWp": 8,
-    "cls": 2
+    "bascule": 1108,
+    "stabRef": 614,
+    "releveRef": 8,
+    "chargementWp": 700,
+    "stabWp": 644,
+    "releveWp": 14,
+    "cls": 1
    }
   },
   "768": {
@@ -19563,15 +19563,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2673,
+   "ms": 2722,
    "phases": {
     "bascule": 1108,
-    "stabRef": 456,
-    "releveRef": 6,
-    "chargementWp": 636,
-    "stabWp": 458,
-    "releveWp": 8,
-    "cls": 1
+    "stabRef": 457,
+    "releveRef": 8,
+    "chargementWp": 676,
+    "stabWp": 459,
+    "releveWp": 12,
+    "cls": 2
    }
   },
   "1024": {
@@ -19677,15 +19677,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2568,
+   "ms": 2587,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 394,
+    "bascule": 1108,
+    "stabRef": 396,
     "releveRef": 8,
-    "chargementWp": 654,
-    "stabWp": 398,
-    "releveWp": 7,
-    "cls": 1
+    "chargementWp": 664,
+    "stabWp": 399,
+    "releveWp": 9,
+    "cls": 3
    }
   },
   "1440": {
@@ -19791,15 +19791,15 @@
    "cls": 0.0005,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2586,
+   "ms": 2701,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 395,
-    "releveRef": 10,
-    "chargementWp": 638,
-    "stabWp": 428,
-    "releveWp": 8,
-    "cls": 1
+    "bascule": 1107,
+    "stabRef": 397,
+    "releveRef": 9,
+    "chargementWp": 747,
+    "stabWp": 429,
+    "releveWp": 10,
+    "cls": 2
    }
   },
   "1920": {
@@ -19905,15 +19905,15 @@
    "cls": 0.0003,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2609,
+   "ms": 2661,
    "phases": {
-    "bascule": 1128,
-    "stabRef": 395,
+    "bascule": 1108,
+    "stabRef": 396,
     "releveRef": 7,
-    "chargementWp": 643,
-    "stabWp": 427,
-    "releveWp": 7,
-    "cls": 2
+    "chargementWp": 693,
+    "stabWp": 429,
+    "releveWp": 15,
+    "cls": 13
    }
   }
  },
@@ -20013,7 +20013,7 @@
     "formulaires": 0,
     "faq": 6,
     "cta": 3,
-    "mots": 1703,
+    "mots": 1702,
     "titres": 19,
     "debordement": 0,
     "horsEcran": 0
@@ -20021,14 +20021,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 3133,
+   "ms": 3199,
    "phases": {
-    "bascule": 1107,
-    "stabRef": 675,
-    "releveRef": 8,
-    "chargementWp": 661,
-    "stabWp": 670,
-    "releveWp": 10,
+    "bascule": 1108,
+    "stabRef": 670,
+    "releveRef": 10,
+    "chargementWp": 722,
+    "stabWp": 674,
+    "releveWp": 13,
     "cls": 2
    }
   },
@@ -20127,7 +20127,7 @@
     "formulaires": 0,
     "faq": 6,
     "cta": 3,
-    "mots": 1703,
+    "mots": 1702,
     "titres": 19,
     "debordement": 0,
     "horsEcran": 0
@@ -20135,14 +20135,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 3088,
+   "ms": 3093,
    "phases": {
-    "bascule": 1107,
-    "stabRef": 608,
-    "releveRef": 7,
-    "chargementWp": 678,
-    "stabWp": 677,
-    "releveWp": 9,
+    "bascule": 1109,
+    "stabRef": 610,
+    "releveRef": 9,
+    "chargementWp": 705,
+    "stabWp": 644,
+    "releveWp": 13,
     "cls": 2
    }
   },
@@ -20241,7 +20241,7 @@
     "formulaires": 0,
     "faq": 6,
     "cta": 3,
-    "mots": 1703,
+    "mots": 1702,
     "titres": 19,
     "debordement": 0,
     "horsEcran": 0
@@ -20249,14 +20249,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2676,
+   "ms": 2722,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 456,
-    "releveRef": 7,
-    "chargementWp": 640,
-    "stabWp": 458,
-    "releveWp": 8,
+    "bascule": 1108,
+    "stabRef": 458,
+    "releveRef": 9,
+    "chargementWp": 676,
+    "stabWp": 460,
+    "releveWp": 10,
     "cls": 1
    }
   },
@@ -20355,7 +20355,7 @@
     "formulaires": 0,
     "faq": 6,
     "cta": 3,
-    "mots": 1703,
+    "mots": 1702,
     "titres": 19,
     "debordement": 0,
     "horsEcran": 0
@@ -20363,13 +20363,13 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2566,
+   "ms": 2613,
    "phases": {
-    "bascule": 1109,
-    "stabRef": 394,
-    "releveRef": 8,
-    "chargementWp": 648,
-    "stabWp": 397,
+    "bascule": 1106,
+    "stabRef": 396,
+    "releveRef": 9,
+    "chargementWp": 693,
+    "stabWp": 399,
     "releveWp": 9,
     "cls": 1
    }
@@ -20469,7 +20469,7 @@
     "formulaires": 0,
     "faq": 6,
     "cta": 3,
-    "mots": 1703,
+    "mots": 1702,
     "titres": 19,
     "debordement": 0,
     "horsEcran": 0
@@ -20477,14 +20477,14 @@
    "cls": 0.0005,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2577,
+   "ms": 2636,
    "phases": {
     "bascule": 1107,
-    "stabRef": 395,
-    "releveRef": 7,
-    "chargementWp": 632,
-    "stabWp": 427,
-    "releveWp": 7,
+    "stabRef": 396,
+    "releveRef": 10,
+    "chargementWp": 683,
+    "stabWp": 428,
+    "releveWp": 10,
     "cls": 2
    }
   },
@@ -20583,23 +20583,23 @@
     "formulaires": 0,
     "faq": 6,
     "cta": 3,
-    "mots": 1703,
+    "mots": 1702,
     "titres": 19,
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0003,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2589,
+   "ms": 2773,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 395,
-    "releveRef": 6,
-    "chargementWp": 644,
-    "stabWp": 427,
-    "releveWp": 9,
-    "cls": 1
+    "bascule": 1112,
+    "stabRef": 422,
+    "releveRef": 12,
+    "chargementWp": 779,
+    "stabWp": 431,
+    "releveWp": 14,
+    "cls": 3
    }
   }
  },
@@ -20707,14 +20707,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2994,
+   "ms": 3046,
    "phases": {
-    "bascule": 1107,
-    "stabRef": 613,
-    "releveRef": 8,
-    "chargementWp": 647,
-    "stabWp": 609,
-    "releveWp": 8,
+    "bascule": 1108,
+    "stabRef": 609,
+    "releveRef": 10,
+    "chargementWp": 683,
+    "stabWp": 625,
+    "releveWp": 9,
     "cls": 2
    }
   },
@@ -20821,15 +20821,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2874,
+   "ms": 2925,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 547,
-    "releveRef": 10,
-    "chargementWp": 652,
-    "stabWp": 549,
-    "releveWp": 8,
-    "cls": 2
+    "bascule": 1109,
+    "stabRef": 557,
+    "releveRef": 8,
+    "chargementWp": 687,
+    "stabWp": 550,
+    "releveWp": 13,
+    "cls": 1
    }
   },
   "768": {
@@ -20935,14 +20935,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2643,
+   "ms": 2690,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 425,
+    "bascule": 1107,
+    "stabRef": 427,
     "releveRef": 9,
-    "chargementWp": 635,
-    "stabWp": 457,
-    "releveWp": 9,
+    "chargementWp": 706,
+    "stabWp": 429,
+    "releveWp": 10,
     "cls": 2
    }
   },
@@ -21049,15 +21049,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2506,
+   "ms": 2541,
    "phases": {
-    "bascule": 1107,
-    "stabRef": 364,
+    "bascule": 1109,
+    "stabRef": 366,
     "releveRef": 7,
-    "chargementWp": 639,
-    "stabWp": 381,
-    "releveWp": 7,
-    "cls": 1
+    "chargementWp": 679,
+    "stabWp": 368,
+    "releveWp": 10,
+    "cls": 2
    }
   },
   "1440": {
@@ -21163,15 +21163,15 @@
    "cls": 0.0005,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2485,
+   "ms": 2533,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 365,
-    "releveRef": 6,
-    "chargementWp": 631,
-    "stabWp": 367,
-    "releveWp": 9,
-    "cls": 1
+    "bascule": 1108,
+    "stabRef": 366,
+    "releveRef": 8,
+    "chargementWp": 668,
+    "stabWp": 369,
+    "releveWp": 12,
+    "cls": 2
    }
   },
   "1920": {
@@ -21277,21 +21277,21 @@
    "cls": 0.0003,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2506,
+   "ms": 2601,
    "phases": {
-    "bascule": 1105,
-    "stabRef": 377,
-    "releveRef": 6,
-    "chargementWp": 642,
-    "stabWp": 367,
-    "releveWp": 7,
+    "bascule": 1110,
+    "stabRef": 366,
+    "releveRef": 11,
+    "chargementWp": 730,
+    "stabWp": 372,
+    "releveWp": 10,
     "cls": 2
    }
   }
  },
  "#/ville/chenove": {
   "320": {
-   "ratio": 98,
+   "ratio": 99,
    "ref": {
     "hauteur": 13871,
     "sections": 12,
@@ -21342,13 +21342,13 @@
     "horsEcran": 0
    },
    "wp": {
-    "hauteur": 13662,
+    "hauteur": 13689,
     "sections": 12,
     "bandes": [
      801,
      367,
      447,
-     2222,
+     2249,
      1139,
      1204,
      2363,
@@ -21385,7 +21385,7 @@
     "formulaires": 0,
     "faq": 6,
     "cta": 3,
-    "mots": 1344,
+    "mots": 1341,
     "titres": 16,
     "debordement": 0,
     "horsEcran": 0
@@ -21393,15 +21393,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 3065,
+   "ms": 3050,
    "phases": {
-    "bascule": 1107,
-    "stabRef": 608,
-    "releveRef": 8,
-    "chargementWp": 721,
-    "stabWp": 610,
-    "releveWp": 9,
-    "cls": 2
+    "bascule": 1109,
+    "stabRef": 610,
+    "releveRef": 9,
+    "chargementWp": 697,
+    "stabWp": 613,
+    "releveWp": 11,
+    "cls": 1
    }
   },
   "375": {
@@ -21499,7 +21499,7 @@
     "formulaires": 0,
     "faq": 6,
     "cta": 3,
-    "mots": 1344,
+    "mots": 1341,
     "titres": 16,
     "debordement": 0,
     "horsEcran": 0
@@ -21507,15 +21507,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2865,
+   "ms": 2887,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 556,
-    "releveRef": 9,
-    "chargementWp": 635,
-    "stabWp": 550,
-    "releveWp": 7,
-    "cls": 2
+    "bascule": 1107,
+    "stabRef": 548,
+    "releveRef": 7,
+    "chargementWp": 660,
+    "stabWp": 551,
+    "releveWp": 11,
+    "cls": 3
    }
   },
   "768": {
@@ -21570,13 +21570,13 @@
     "horsEcran": 0
    },
    "wp": {
-    "hauteur": 8233,
+    "hauteur": 8260,
     "sections": 12,
     "bandes": [
      891,
      246,
      231,
-     1029,
+     1056,
      599,
      677,
      1156,
@@ -21613,7 +21613,7 @@
     "formulaires": 0,
     "faq": 6,
     "cta": 3,
-    "mots": 1344,
+    "mots": 1341,
     "titres": 16,
     "debordement": 0,
     "horsEcran": 0
@@ -21621,15 +21621,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2615,
+   "ms": 2651,
    "phases": {
-    "bascule": 1106,
+    "bascule": 1107,
     "stabRef": 425,
-    "releveRef": 6,
-    "chargementWp": 637,
+    "releveRef": 8,
+    "chargementWp": 672,
     "stabWp": 428,
-    "releveWp": 11,
-    "cls": 2
+    "releveWp": 10,
+    "cls": 1
    }
   },
   "1024": {
@@ -21727,7 +21727,7 @@
     "formulaires": 0,
     "faq": 6,
     "cta": 3,
-    "mots": 1344,
+    "mots": 1341,
     "titres": 16,
     "debordement": 0,
     "horsEcran": 0
@@ -21735,15 +21735,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2492,
+   "ms": 2577,
    "phases": {
-    "bascule": 1107,
-    "stabRef": 364,
-    "releveRef": 7,
-    "chargementWp": 637,
+    "bascule": 1106,
+    "stabRef": 366,
+    "releveRef": 12,
+    "chargementWp": 712,
     "stabWp": 368,
-    "releveWp": 8,
-    "cls": 1
+    "releveWp": 11,
+    "cls": 2
    }
   },
   "1440": {
@@ -21841,7 +21841,7 @@
     "formulaires": 0,
     "faq": 6,
     "cta": 3,
-    "mots": 1344,
+    "mots": 1341,
     "titres": 16,
     "debordement": 0,
     "horsEcran": 0
@@ -21849,14 +21849,14 @@
    "cls": 0.0005,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2497,
+   "ms": 2534,
    "phases": {
-    "bascule": 1105,
+    "bascule": 1107,
     "stabRef": 365,
     "releveRef": 7,
-    "chargementWp": 643,
+    "chargementWp": 676,
     "stabWp": 368,
-    "releveWp": 7,
+    "releveWp": 9,
     "cls": 2
    }
   },
@@ -21955,7 +21955,7 @@
     "formulaires": 0,
     "faq": 6,
     "cta": 3,
-    "mots": 1344,
+    "mots": 1341,
     "titres": 16,
     "debordement": 0,
     "horsEcran": 0
@@ -21963,21 +21963,21 @@
    "cls": 0.0003,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2485,
+   "ms": 2593,
    "phases": {
-    "bascule": 1105,
-    "stabRef": 365,
-    "releveRef": 6,
-    "chargementWp": 633,
-    "stabWp": 367,
-    "releveWp": 8,
-    "cls": 1
+    "bascule": 1109,
+    "stabRef": 367,
+    "releveRef": 12,
+    "chargementWp": 721,
+    "stabWp": 370,
+    "releveWp": 12,
+    "cls": 2
    }
   }
  },
  "#/ville/quetigny": {
   "320": {
-   "ratio": 99,
+   "ratio": 100,
    "ref": {
     "hauteur": 13435,
     "sections": 12,
@@ -22027,12 +22027,12 @@
     "horsEcran": 0
    },
    "wp": {
-    "hauteur": 13359,
+    "hauteur": 13386,
     "sections": 12,
     "bandes": [
      801,
      367,
-     447,
+     474,
      2142,
      1139,
      1184,
@@ -22052,7 +22052,7 @@
     "ordre": [
      "Entreprise de nettoyage à Quetigny",
      "27 € HT/h tarif unique en ré",
-     "Réponse directe Quetigny est",
+     "Réponse directe Top-Famille ",
      "Quetigny, commune voisine de notre impla",
      "Nos prestations sur place",
      "Tarif et exemple local",
@@ -22069,7 +22069,7 @@
     "formulaires": 0,
     "faq": 6,
     "cta": 3,
-    "mots": 1316,
+    "mots": 1318,
     "titres": 16,
     "debordement": 0,
     "horsEcran": 0
@@ -22077,19 +22077,19 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2915,
+   "ms": 2960,
    "phases": {
-    "bascule": 1107,
-    "stabRef": 576,
-    "releveRef": 7,
-    "chargementWp": 636,
-    "stabWp": 579,
-    "releveWp": 8,
+    "bascule": 1108,
+    "stabRef": 578,
+    "releveRef": 9,
+    "chargementWp": 670,
+    "stabWp": 582,
+    "releveWp": 11,
     "cls": 2
    }
   },
   "375": {
-   "ratio": 100,
+   "ratio": 101,
    "ref": {
     "hauteur": 12218,
     "sections": 12,
@@ -22139,12 +22139,12 @@
     "horsEcran": 0
    },
    "wp": {
-    "hauteur": 12274,
+    "hauteur": 12301,
     "sections": 12,
     "bandes": [
      769,
      319,
-     393,
+     420,
      1887,
      1036,
      1079,
@@ -22164,7 +22164,7 @@
     "ordre": [
      "Entreprise de nettoyage à Quetigny",
      "27 € HT/h tarif unique en ré",
-     "Réponse directe Quetigny est",
+     "Réponse directe Top-Famille ",
      "Quetigny, commune voisine de notre impla",
      "Nos prestations sur place",
      "Tarif et exemple local",
@@ -22181,7 +22181,7 @@
     "formulaires": 0,
     "faq": 6,
     "cta": 3,
-    "mots": 1316,
+    "mots": 1318,
     "titres": 16,
     "debordement": 0,
     "horsEcran": 0
@@ -22189,15 +22189,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2849,
+   "ms": 2899,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 547,
+    "bascule": 1110,
+    "stabRef": 548,
     "releveRef": 7,
-    "chargementWp": 630,
-    "stabWp": 549,
-    "releveWp": 9,
-    "cls": 1
+    "chargementWp": 671,
+    "stabWp": 550,
+    "releveWp": 11,
+    "cls": 2
    }
   },
   "768": {
@@ -22276,7 +22276,7 @@
     "ordre": [
      "Entreprise de nettoyage à Quetigny",
      "27 € HT/h tarif unique en ré",
-     "Réponse directe Quetigny est",
+     "Réponse directe Top-Famille ",
      "Quetigny, commune voisine de notre impla",
      "Nos prestations sur place",
      "Tarif et exemple local",
@@ -22293,7 +22293,7 @@
     "formulaires": 0,
     "faq": 6,
     "cta": 3,
-    "mots": 1316,
+    "mots": 1318,
     "titres": 16,
     "debordement": 0,
     "horsEcran": 0
@@ -22301,15 +22301,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2620,
+   "ms": 2671,
    "phases": {
-    "bascule": 1105,
+    "bascule": 1108,
     "stabRef": 426,
-    "releveRef": 6,
-    "chargementWp": 642,
-    "stabWp": 429,
+    "releveRef": 8,
+    "chargementWp": 686,
+    "stabWp": 430,
     "releveWp": 11,
-    "cls": 1
+    "cls": 2
    }
   },
   "1024": {
@@ -22388,7 +22388,7 @@
     "ordre": [
      "Entreprise de nettoyage à Quetigny",
      "27 € HT/h tarif unique en ré",
-     "Réponse directe Quetigny est",
+     "Réponse directe Top-Famille ",
      "Quetigny, commune voisine de notre impla",
      "Nos prestations sur place",
      "Tarif et exemple local",
@@ -22405,7 +22405,7 @@
     "formulaires": 0,
     "faq": 6,
     "cta": 3,
-    "mots": 1316,
+    "mots": 1318,
     "titres": 16,
     "debordement": 0,
     "horsEcran": 0
@@ -22413,14 +22413,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2505,
+   "ms": 2569,
    "phases": {
-    "bascule": 1105,
-    "stabRef": 365,
-    "releveRef": 7,
-    "chargementWp": 650,
-    "stabWp": 367,
-    "releveWp": 9,
+    "bascule": 1107,
+    "stabRef": 366,
+    "releveRef": 9,
+    "chargementWp": 706,
+    "stabWp": 369,
+    "releveWp": 10,
     "cls": 2
    }
   },
@@ -22500,7 +22500,7 @@
     "ordre": [
      "Entreprise de nettoyage à Quetigny",
      "27 € HT/h tarif unique en ré",
-     "Réponse directe Quetigny est",
+     "Réponse directe Top-Famille ",
      "Quetigny, commune voisine de notre impla",
      "Nos prestations sur place",
      "Tarif et exemple local",
@@ -22517,7 +22517,7 @@
     "formulaires": 0,
     "faq": 6,
     "cta": 3,
-    "mots": 1316,
+    "mots": 1318,
     "titres": 16,
     "debordement": 0,
     "horsEcran": 0
@@ -22525,14 +22525,14 @@
    "cls": 0.0005,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2481,
+   "ms": 2523,
    "phases": {
-    "bascule": 1105,
+    "bascule": 1108,
     "stabRef": 365,
-    "releveRef": 6,
-    "chargementWp": 629,
-    "stabWp": 367,
-    "releveWp": 7,
+    "releveRef": 8,
+    "chargementWp": 664,
+    "stabWp": 368,
+    "releveWp": 8,
     "cls": 2
    }
   },
@@ -22612,7 +22612,7 @@
     "ordre": [
      "Entreprise de nettoyage à Quetigny",
      "27 € HT/h tarif unique en ré",
-     "Réponse directe Quetigny est",
+     "Réponse directe Top-Famille ",
      "Quetigny, commune voisine de notre impla",
      "Nos prestations sur place",
      "Tarif et exemple local",
@@ -22629,7 +22629,7 @@
     "formulaires": 0,
     "faq": 6,
     "cta": 3,
-    "mots": 1316,
+    "mots": 1318,
     "titres": 16,
     "debordement": 0,
     "horsEcran": 0
@@ -22637,14 +22637,14 @@
    "cls": 0.0003,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2491,
+   "ms": 2602,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 365,
-    "releveRef": 7,
-    "chargementWp": 637,
-    "stabWp": 367,
-    "releveWp": 8,
+    "bascule": 1109,
+    "stabRef": 368,
+    "releveRef": 8,
+    "chargementWp": 734,
+    "stabWp": 372,
+    "releveWp": 10,
     "cls": 1
    }
   }
@@ -22702,13 +22702,13 @@
     "horsEcran": 0
    },
    "wp": {
-    "hauteur": 12949,
+    "hauteur": 12976,
     "sections": 12,
     "bandes": [
      755,
      367,
      447,
-     2050,
+     2076,
      1139,
      1083,
      2149,
@@ -22745,7 +22745,7 @@
     "formulaires": 0,
     "faq": 6,
     "cta": 3,
-    "mots": 1293,
+    "mots": 1291,
     "titres": 16,
     "debordement": 0,
     "horsEcran": 0
@@ -22753,15 +22753,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2938,
+   "ms": 3011,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 577,
-    "releveRef": 8,
-    "chargementWp": 659,
-    "stabWp": 578,
+    "bascule": 1107,
+    "stabRef": 578,
+    "releveRef": 9,
+    "chargementWp": 724,
+    "stabWp": 582,
     "releveWp": 9,
-    "cls": 1
+    "cls": 2
    }
   },
   "375": {
@@ -22859,7 +22859,7 @@
     "formulaires": 0,
     "faq": 6,
     "cta": 3,
-    "mots": 1293,
+    "mots": 1291,
     "titres": 16,
     "debordement": 0,
     "horsEcran": 0
@@ -22867,15 +22867,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2871,
+   "ms": 2905,
    "phases": {
     "bascule": 1107,
-    "stabRef": 547,
-    "releveRef": 7,
-    "chargementWp": 651,
-    "stabWp": 548,
-    "releveWp": 9,
-    "cls": 2
+    "stabRef": 548,
+    "releveRef": 12,
+    "chargementWp": 670,
+    "stabWp": 554,
+    "releveWp": 11,
+    "cls": 3
    }
   },
   "768": {
@@ -22973,7 +22973,7 @@
     "formulaires": 0,
     "faq": 6,
     "cta": 3,
-    "mots": 1293,
+    "mots": 1291,
     "titres": 16,
     "debordement": 0,
     "horsEcran": 0
@@ -22981,13 +22981,13 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2622,
+   "ms": 2659,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 426,
-    "releveRef": 7,
-    "chargementWp": 644,
-    "stabWp": 428,
+    "bascule": 1107,
+    "stabRef": 427,
+    "releveRef": 8,
+    "chargementWp": 677,
+    "stabWp": 429,
     "releveWp": 9,
     "cls": 2
    }
@@ -23087,7 +23087,7 @@
     "formulaires": 0,
     "faq": 6,
     "cta": 3,
-    "mots": 1293,
+    "mots": 1291,
     "titres": 16,
     "debordement": 0,
     "horsEcran": 0
@@ -23095,15 +23095,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2497,
+   "ms": 2583,
    "phases": {
-    "bascule": 1105,
-    "stabRef": 365,
-    "releveRef": 6,
-    "chargementWp": 645,
-    "stabWp": 367,
-    "releveWp": 8,
-    "cls": 1
+    "bascule": 1108,
+    "stabRef": 366,
+    "releveRef": 11,
+    "chargementWp": 713,
+    "stabWp": 369,
+    "releveWp": 13,
+    "cls": 3
    }
   },
   "1440": {
@@ -23201,7 +23201,7 @@
     "formulaires": 0,
     "faq": 6,
     "cta": 3,
-    "mots": 1293,
+    "mots": 1291,
     "titres": 16,
     "debordement": 0,
     "horsEcran": 0
@@ -23209,14 +23209,14 @@
    "cls": 0.0005,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2493,
+   "ms": 2555,
    "phases": {
     "bascule": 1108,
-    "stabRef": 364,
+    "stabRef": 366,
     "releveRef": 8,
-    "chargementWp": 634,
-    "stabWp": 368,
-    "releveWp": 9,
+    "chargementWp": 692,
+    "stabWp": 369,
+    "releveWp": 10,
     "cls": 2
    }
   },
@@ -23315,7 +23315,7 @@
     "formulaires": 0,
     "faq": 6,
     "cta": 3,
-    "mots": 1293,
+    "mots": 1291,
     "titres": 16,
     "debordement": 0,
     "horsEcran": 0
@@ -23323,14 +23323,14 @@
    "cls": 0.0003,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2512,
+   "ms": 2562,
    "phases": {
-    "bascule": 1107,
-    "stabRef": 364,
-    "releveRef": 7,
-    "chargementWp": 657,
-    "stabWp": 367,
-    "releveWp": 8,
+    "bascule": 1106,
+    "stabRef": 366,
+    "releveRef": 8,
+    "chargementWp": 699,
+    "stabWp": 368,
+    "releveWp": 13,
     "cls": 2
    }
   }
@@ -23431,7 +23431,7 @@
     "formulaires": 0,
     "faq": 6,
     "cta": 3,
-    "mots": 1323,
+    "mots": 1322,
     "titres": 16,
     "debordement": 0,
     "horsEcran": 0
@@ -23439,15 +23439,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2956,
+   "ms": 3001,
    "phases": {
-    "bascule": 1107,
-    "stabRef": 607,
-    "releveRef": 8,
-    "chargementWp": 644,
-    "stabWp": 579,
-    "releveWp": 9,
-    "cls": 2
+    "bascule": 1106,
+    "stabRef": 609,
+    "releveRef": 9,
+    "chargementWp": 682,
+    "stabWp": 583,
+    "releveWp": 11,
+    "cls": 1
    }
   },
   "375": {
@@ -23545,7 +23545,7 @@
     "formulaires": 0,
     "faq": 6,
     "cta": 3,
-    "mots": 1323,
+    "mots": 1322,
     "titres": 16,
     "debordement": 0,
     "horsEcran": 0
@@ -23553,14 +23553,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2857,
+   "ms": 2890,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 547,
-    "releveRef": 6,
-    "chargementWp": 640,
-    "stabWp": 549,
-    "releveWp": 7,
+    "bascule": 1107,
+    "stabRef": 548,
+    "releveRef": 7,
+    "chargementWp": 667,
+    "stabWp": 550,
+    "releveWp": 9,
     "cls": 2
    }
   },
@@ -23659,7 +23659,7 @@
     "formulaires": 0,
     "faq": 6,
     "cta": 3,
-    "mots": 1323,
+    "mots": 1322,
     "titres": 16,
     "debordement": 0,
     "horsEcran": 0
@@ -23667,15 +23667,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2619,
+   "ms": 2647,
    "phases": {
     "bascule": 1107,
-    "stabRef": 426,
-    "releveRef": 7,
-    "chargementWp": 641,
-    "stabWp": 428,
+    "stabRef": 427,
+    "releveRef": 8,
+    "chargementWp": 665,
+    "stabWp": 429,
     "releveWp": 9,
-    "cls": 1
+    "cls": 2
    }
   },
   "1024": {
@@ -23773,7 +23773,7 @@
     "formulaires": 0,
     "faq": 6,
     "cta": 3,
-    "mots": 1323,
+    "mots": 1322,
     "titres": 16,
     "debordement": 0,
     "horsEcran": 0
@@ -23781,15 +23781,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2502,
+   "ms": 2559,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 364,
-    "releveRef": 7,
-    "chargementWp": 648,
-    "stabWp": 367,
-    "releveWp": 7,
-    "cls": 3
+    "bascule": 1107,
+    "stabRef": 367,
+    "releveRef": 8,
+    "chargementWp": 696,
+    "stabWp": 369,
+    "releveWp": 10,
+    "cls": 2
    }
   },
   "1440": {
@@ -23887,7 +23887,7 @@
     "formulaires": 0,
     "faq": 6,
     "cta": 3,
-    "mots": 1323,
+    "mots": 1322,
     "titres": 16,
     "debordement": 0,
     "horsEcran": 0
@@ -23895,15 +23895,15 @@
    "cls": 0.0005,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2504,
+   "ms": 2533,
    "phases": {
-    "bascule": 1106,
+    "bascule": 1107,
     "stabRef": 365,
-    "releveRef": 6,
-    "chargementWp": 651,
-    "stabWp": 367,
-    "releveWp": 8,
-    "cls": 1
+    "releveRef": 7,
+    "chargementWp": 675,
+    "stabWp": 368,
+    "releveWp": 9,
+    "cls": 2
    }
   },
   "1920": {
@@ -24001,29 +24001,29 @@
     "formulaires": 0,
     "faq": 6,
     "cta": 3,
-    "mots": 1323,
+    "mots": 1322,
     "titres": 16,
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0003,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2495,
+   "ms": 2584,
    "phases": {
-    "bascule": 1105,
-    "stabRef": 366,
-    "releveRef": 6,
-    "chargementWp": 641,
-    "stabWp": 367,
-    "releveWp": 8,
-    "cls": 2
+    "bascule": 1108,
+    "stabRef": 367,
+    "releveRef": 7,
+    "chargementWp": 720,
+    "stabWp": 368,
+    "releveWp": 11,
+    "cls": 3
    }
   }
  },
  "#/ville/fontaine-les-dijon": {
   "320": {
-   "ratio": 98,
+   "ratio": 99,
    "ref": {
     "hauteur": 14142,
     "sections": 12,
@@ -24074,13 +24074,13 @@
     "horsEcran": 0
    },
    "wp": {
-    "hauteur": 13908,
+    "hauteur": 13935,
     "sections": 12,
     "bandes": [
      801,
      367,
      474,
-     2736,
+     2763,
      1139,
      1158,
      2205,
@@ -24117,7 +24117,7 @@
     "formulaires": 0,
     "faq": 6,
     "cta": 3,
-    "mots": 1360,
+    "mots": 1358,
     "titres": 17,
     "debordement": 0,
     "horsEcran": 0
@@ -24125,13 +24125,13 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2972,
+   "ms": 3040,
    "phases": {
     "bascule": 1107,
-    "stabRef": 608,
-    "releveRef": 8,
-    "chargementWp": 630,
-    "stabWp": 609,
+    "stabRef": 614,
+    "releveRef": 9,
+    "chargementWp": 689,
+    "stabWp": 611,
     "releveWp": 9,
     "cls": 1
    }
@@ -24231,7 +24231,7 @@
     "formulaires": 0,
     "faq": 6,
     "cta": 3,
-    "mots": 1360,
+    "mots": 1358,
     "titres": 17,
     "debordement": 0,
     "horsEcran": 0
@@ -24239,15 +24239,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2909,
+   "ms": 2960,
    "phases": {
-    "bascule": 1107,
-    "stabRef": 576,
-    "releveRef": 7,
-    "chargementWp": 630,
-    "stabWp": 578,
-    "releveWp": 9,
-    "cls": 1
+    "bascule": 1106,
+    "stabRef": 578,
+    "releveRef": 9,
+    "chargementWp": 674,
+    "stabWp": 581,
+    "releveWp": 10,
+    "cls": 2
    }
   },
   "768": {
@@ -24345,7 +24345,7 @@
     "formulaires": 0,
     "faq": 6,
     "cta": 3,
-    "mots": 1360,
+    "mots": 1358,
     "titres": 17,
     "debordement": 0,
     "horsEcran": 0
@@ -24353,15 +24353,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2670,
+   "ms": 2649,
    "phases": {
-    "bascule": 1107,
-    "stabRef": 431,
-    "releveRef": 11,
-    "chargementWp": 677,
-    "stabWp": 433,
-    "releveWp": 8,
-    "cls": 3
+    "bascule": 1108,
+    "stabRef": 427,
+    "releveRef": 8,
+    "chargementWp": 666,
+    "stabWp": 429,
+    "releveWp": 9,
+    "cls": 2
    }
   },
   "1024": {
@@ -24459,7 +24459,7 @@
     "formulaires": 0,
     "faq": 6,
     "cta": 3,
-    "mots": 1360,
+    "mots": 1358,
     "titres": 17,
     "debordement": 0,
     "horsEcran": 0
@@ -24467,15 +24467,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2584,
+   "ms": 2621,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 395,
+    "bascule": 1110,
+    "stabRef": 397,
     "releveRef": 8,
-    "chargementWp": 642,
-    "stabWp": 425,
-    "releveWp": 7,
-    "cls": 1
+    "chargementWp": 695,
+    "stabWp": 399,
+    "releveWp": 10,
+    "cls": 2
    }
   },
   "1440": {
@@ -24573,7 +24573,7 @@
     "formulaires": 0,
     "faq": 6,
     "cta": 3,
-    "mots": 1360,
+    "mots": 1358,
     "titres": 17,
     "debordement": 0,
     "horsEcran": 0
@@ -24581,15 +24581,15 @@
    "cls": 0.0005,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2546,
+   "ms": 2657,
    "phases": {
-    "bascule": 1105,
+    "bascule": 1107,
     "stabRef": 395,
-    "releveRef": 7,
-    "chargementWp": 633,
-    "stabWp": 397,
-    "releveWp": 7,
-    "cls": 2
+    "releveRef": 8,
+    "chargementWp": 738,
+    "stabWp": 399,
+    "releveWp": 9,
+    "cls": 1
    }
   },
   "1920": {
@@ -24687,7 +24687,7 @@
     "formulaires": 0,
     "faq": 6,
     "cta": 3,
-    "mots": 1360,
+    "mots": 1358,
     "titres": 17,
     "debordement": 0,
     "horsEcran": 0
@@ -24695,15 +24695,15 @@
    "cls": 0.0003,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2551,
+   "ms": 2642,
    "phases": {
-    "bascule": 1107,
-    "stabRef": 395,
+    "bascule": 1108,
+    "stabRef": 397,
     "releveRef": 7,
-    "chargementWp": 636,
-    "stabWp": 398,
-    "releveWp": 7,
-    "cls": 1
+    "chargementWp": 707,
+    "stabWp": 404,
+    "releveWp": 13,
+    "cls": 6
    }
   }
  },
@@ -24801,7 +24801,7 @@
     "formulaires": 0,
     "faq": 6,
     "cta": 3,
-    "mots": 1291,
+    "mots": 1290,
     "titres": 16,
     "debordement": 0,
     "horsEcran": 0
@@ -24809,14 +24809,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2951,
+   "ms": 2976,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 576,
-    "releveRef": 7,
-    "chargementWp": 636,
-    "stabWp": 616,
-    "releveWp": 8,
+    "bascule": 1108,
+    "stabRef": 579,
+    "releveRef": 8,
+    "chargementWp": 686,
+    "stabWp": 581,
+    "releveWp": 12,
     "cls": 2
    }
   },
@@ -24913,7 +24913,7 @@
     "formulaires": 0,
     "faq": 6,
     "cta": 3,
-    "mots": 1291,
+    "mots": 1290,
     "titres": 16,
     "debordement": 0,
     "horsEcran": 0
@@ -24921,14 +24921,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2862,
+   "ms": 2898,
    "phases": {
-    "bascule": 1105,
-    "stabRef": 547,
-    "releveRef": 7,
-    "chargementWp": 645,
+    "bascule": 1107,
+    "stabRef": 549,
+    "releveRef": 8,
+    "chargementWp": 673,
     "stabWp": 549,
-    "releveWp": 7,
+    "releveWp": 10,
     "cls": 2
    }
   },
@@ -25025,7 +25025,7 @@
     "formulaires": 0,
     "faq": 6,
     "cta": 3,
-    "mots": 1291,
+    "mots": 1290,
     "titres": 16,
     "debordement": 0,
     "horsEcran": 0
@@ -25033,14 +25033,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2629,
+   "ms": 2684,
    "phases": {
-    "bascule": 1107,
-    "stabRef": 426,
-    "releveRef": 6,
-    "chargementWp": 651,
-    "stabWp": 428,
-    "releveWp": 9,
+    "bascule": 1106,
+    "stabRef": 427,
+    "releveRef": 7,
+    "chargementWp": 702,
+    "stabWp": 429,
+    "releveWp": 11,
     "cls": 1
    }
   },
@@ -25137,7 +25137,7 @@
     "formulaires": 0,
     "faq": 6,
     "cta": 3,
-    "mots": 1291,
+    "mots": 1290,
     "titres": 16,
     "debordement": 0,
     "horsEcran": 0
@@ -25145,15 +25145,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2501,
+   "ms": 2544,
    "phases": {
-    "bascule": 1117,
-    "stabRef": 364,
-    "releveRef": 7,
-    "chargementWp": 636,
-    "stabWp": 368,
-    "releveWp": 8,
-    "cls": 1
+    "bascule": 1108,
+    "stabRef": 366,
+    "releveRef": 9,
+    "chargementWp": 679,
+    "stabWp": 369,
+    "releveWp": 11,
+    "cls": 2
    }
   },
   "1440": {
@@ -25249,7 +25249,7 @@
     "formulaires": 0,
     "faq": 6,
     "cta": 3,
-    "mots": 1291,
+    "mots": 1290,
     "titres": 16,
     "debordement": 0,
     "horsEcran": 0
@@ -25257,12 +25257,12 @@
    "cls": 0.0005,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2491,
+   "ms": 2552,
    "phases": {
-    "bascule": 1107,
-    "stabRef": 364,
-    "releveRef": 6,
-    "chargementWp": 636,
+    "bascule": 1106,
+    "stabRef": 365,
+    "releveRef": 9,
+    "chargementWp": 694,
     "stabWp": 367,
     "releveWp": 9,
     "cls": 2
@@ -25361,7 +25361,7 @@
     "formulaires": 0,
     "faq": 6,
     "cta": 3,
-    "mots": 1291,
+    "mots": 1290,
     "titres": 16,
     "debordement": 0,
     "horsEcran": 0
@@ -25369,14 +25369,14 @@
    "cls": 0.0003,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2505,
+   "ms": 2567,
    "phases": {
-    "bascule": 1117,
-    "stabRef": 365,
-    "releveRef": 7,
-    "chargementWp": 640,
-    "stabWp": 366,
-    "releveWp": 8,
+    "bascule": 1108,
+    "stabRef": 367,
+    "releveRef": 8,
+    "chargementWp": 703,
+    "stabWp": 369,
+    "releveWp": 10,
     "cls": 2
    }
   }
@@ -25475,7 +25475,7 @@
     "formulaires": 0,
     "faq": 7,
     "cta": 3,
-    "mots": 1417,
+    "mots": 1414,
     "titres": 16,
     "debordement": 0,
     "horsEcran": 0
@@ -25483,15 +25483,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2977,
+   "ms": 3013,
    "phases": {
-    "bascule": 1107,
-    "stabRef": 606,
-    "releveRef": 8,
-    "chargementWp": 637,
-    "stabWp": 609,
-    "releveWp": 8,
-    "cls": 2
+    "bascule": 1109,
+    "stabRef": 608,
+    "releveRef": 9,
+    "chargementWp": 664,
+    "stabWp": 612,
+    "releveWp": 10,
+    "cls": 1
    }
   },
   "375": {
@@ -25587,7 +25587,7 @@
     "formulaires": 0,
     "faq": 7,
     "cta": 3,
-    "mots": 1417,
+    "mots": 1414,
     "titres": 16,
     "debordement": 0,
     "horsEcran": 0
@@ -25595,14 +25595,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2851,
+   "ms": 2887,
    "phases": {
-    "bascule": 1105,
-    "stabRef": 547,
+    "bascule": 1107,
+    "stabRef": 548,
     "releveRef": 8,
-    "chargementWp": 632,
-    "stabWp": 549,
-    "releveWp": 8,
+    "chargementWp": 660,
+    "stabWp": 551,
+    "releveWp": 11,
     "cls": 2
    }
   },
@@ -25699,7 +25699,7 @@
     "formulaires": 0,
     "faq": 7,
     "cta": 3,
-    "mots": 1417,
+    "mots": 1414,
     "titres": 16,
     "debordement": 0,
     "horsEcran": 0
@@ -25707,15 +25707,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2621,
+   "ms": 2698,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 426,
-    "releveRef": 7,
-    "chargementWp": 643,
-    "stabWp": 429,
-    "releveWp": 8,
-    "cls": 2
+    "bascule": 1107,
+    "stabRef": 427,
+    "releveRef": 11,
+    "chargementWp": 713,
+    "stabWp": 428,
+    "releveWp": 11,
+    "cls": 1
    }
   },
   "1024": {
@@ -25811,7 +25811,7 @@
     "formulaires": 0,
     "faq": 7,
     "cta": 3,
-    "mots": 1417,
+    "mots": 1414,
     "titres": 16,
     "debordement": 0,
     "horsEcran": 0
@@ -25819,14 +25819,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2514,
+   "ms": 2572,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 365,
-    "releveRef": 7,
-    "chargementWp": 659,
-    "stabWp": 367,
-    "releveWp": 8,
+    "bascule": 1108,
+    "stabRef": 366,
+    "releveRef": 9,
+    "chargementWp": 707,
+    "stabWp": 369,
+    "releveWp": 11,
     "cls": 2
    }
   },
@@ -25923,7 +25923,7 @@
     "formulaires": 0,
     "faq": 7,
     "cta": 3,
-    "mots": 1417,
+    "mots": 1414,
     "titres": 16,
     "debordement": 0,
     "horsEcran": 0
@@ -25931,15 +25931,15 @@
    "cls": 0.0005,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2527,
+   "ms": 2547,
    "phases": {
-    "bascule": 1106,
+    "bascule": 1107,
     "stabRef": 365,
-    "releveRef": 6,
-    "chargementWp": 636,
-    "stabWp": 404,
-    "releveWp": 8,
-    "cls": 2
+    "releveRef": 9,
+    "chargementWp": 682,
+    "stabWp": 369,
+    "releveWp": 14,
+    "cls": 1
    }
   },
   "1920": {
@@ -26035,7 +26035,7 @@
     "formulaires": 0,
     "faq": 7,
     "cta": 3,
-    "mots": 1417,
+    "mots": 1414,
     "titres": 16,
     "debordement": 0,
     "horsEcran": 0
@@ -26043,14 +26043,14 @@
    "cls": 0.0003,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2525,
+   "ms": 2556,
    "phases": {
-    "bascule": 1105,
-    "stabRef": 365,
-    "releveRef": 7,
-    "chargementWp": 657,
-    "stabWp": 381,
-    "releveWp": 8,
+    "bascule": 1107,
+    "stabRef": 367,
+    "releveRef": 8,
+    "chargementWp": 695,
+    "stabWp": 368,
+    "releveWp": 9,
     "cls": 2
    }
   }
@@ -26133,15 +26133,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2412,
+   "ms": 2459,
    "phases": {
-    "bascule": 1107,
-    "stabRef": 335,
-    "releveRef": 4,
-    "chargementWp": 624,
-    "stabWp": 336,
+    "bascule": 1108,
+    "stabRef": 336,
+    "releveRef": 7,
+    "chargementWp": 662,
+    "stabWp": 339,
     "releveWp": 5,
-    "cls": 1
+    "cls": 2
    }
   },
   "375": {
@@ -26221,15 +26221,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2348,
+   "ms": 2392,
    "phases": {
-    "bascule": 1107,
-    "stabRef": 305,
+    "bascule": 1108,
+    "stabRef": 307,
     "releveRef": 4,
-    "chargementWp": 619,
-    "stabWp": 307,
+    "chargementWp": 657,
+    "stabWp": 308,
     "releveWp": 5,
-    "cls": 1
+    "cls": 3
    }
   },
   "768": {
@@ -26309,14 +26309,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2294,
+   "ms": 2337,
    "phases": {
-    "bascule": 1116,
+    "bascule": 1118,
     "stabRef": 275,
     "releveRef": 4,
-    "chargementWp": 617,
-    "stabWp": 277,
-    "releveWp": 3,
+    "chargementWp": 647,
+    "stabWp": 287,
+    "releveWp": 4,
     "cls": 2
    }
   },
@@ -26397,13 +26397,13 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2284,
+   "ms": 2260,
    "phases": {
-    "bascule": 1116,
-    "stabRef": 267,
-    "releveRef": 7,
-    "chargementWp": 642,
-    "stabWp": 245,
+    "bascule": 1107,
+    "stabRef": 245,
+    "releveRef": 4,
+    "chargementWp": 651,
+    "stabWp": 246,
     "releveWp": 5,
     "cls": 2
    }
@@ -26485,15 +26485,15 @@
    "cls": 0.0005,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2243,
+   "ms": 2277,
    "phases": {
-    "bascule": 1120,
+    "bascule": 1106,
     "stabRef": 244,
-    "releveRef": 4,
-    "chargementWp": 623,
+    "releveRef": 5,
+    "chargementWp": 671,
     "stabWp": 246,
     "releveWp": 4,
-    "cls": 2
+    "cls": 1
    }
   },
   "1920": {
@@ -26573,14 +26573,14 @@
    "cls": 0.0003,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2257,
+   "ms": 2312,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 244,
+    "bascule": 1110,
+    "stabRef": 245,
     "releveRef": 4,
-    "chargementWp": 652,
-    "stabWp": 246,
-    "releveWp": 4,
+    "chargementWp": 699,
+    "stabWp": 247,
+    "releveWp": 5,
     "cls": 1
    }
   }
@@ -26668,15 +26668,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2470,
+   "ms": 2515,
    "phases": {
-    "bascule": 1105,
-    "stabRef": 365,
-    "releveRef": 6,
-    "chargementWp": 621,
-    "stabWp": 366,
+    "bascule": 1108,
+    "stabRef": 366,
+    "releveRef": 8,
+    "chargementWp": 656,
+    "stabWp": 369,
     "releveWp": 6,
-    "cls": 1
+    "cls": 2
    }
   },
   "375": {
@@ -26761,14 +26761,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2483,
+   "ms": 2516,
    "phases": {
-    "bascule": 1107,
-    "stabRef": 381,
-    "releveRef": 6,
-    "chargementWp": 614,
-    "stabWp": 367,
-    "releveWp": 6,
+    "bascule": 1109,
+    "stabRef": 365,
+    "releveRef": 7,
+    "chargementWp": 646,
+    "stabWp": 379,
+    "releveWp": 8,
     "cls": 2
    }
   },
@@ -26854,15 +26854,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2352,
+   "ms": 2392,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 305,
-    "releveRef": 7,
-    "chargementWp": 621,
-    "stabWp": 307,
-    "releveWp": 5,
-    "cls": 1
+    "bascule": 1108,
+    "stabRef": 306,
+    "releveRef": 6,
+    "chargementWp": 653,
+    "stabWp": 308,
+    "releveWp": 9,
+    "cls": 2
    }
   },
   "1024": {
@@ -26947,15 +26947,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2351,
+   "ms": 2381,
    "phases": {
-    "bascule": 1105,
-    "stabRef": 304,
-    "releveRef": 4,
-    "chargementWp": 624,
-    "stabWp": 307,
+    "bascule": 1106,
+    "stabRef": 305,
+    "releveRef": 6,
+    "chargementWp": 649,
+    "stabWp": 308,
     "releveWp": 5,
-    "cls": 1
+    "cls": 2
    }
   },
   "1440": {
@@ -27040,14 +27040,14 @@
    "cls": 0.0005,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2309,
+   "ms": 2344,
    "phases": {
-    "bascule": 1105,
+    "bascule": 1108,
     "stabRef": 274,
-    "releveRef": 5,
-    "chargementWp": 643,
-    "stabWp": 275,
-    "releveWp": 5,
+    "releveRef": 6,
+    "chargementWp": 669,
+    "stabWp": 278,
+    "releveWp": 7,
     "cls": 2
    }
   },
@@ -27133,14 +27133,14 @@
    "cls": 0.0003,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2344,
+   "ms": 2362,
    "phases": {
-    "bascule": 1106,
+    "bascule": 1122,
     "stabRef": 274,
-    "releveRef": 5,
-    "chargementWp": 661,
-    "stabWp": 290,
-    "releveWp": 6,
+    "releveRef": 8,
+    "chargementWp": 671,
+    "stabWp": 278,
+    "releveWp": 7,
     "cls": 2
    }
   }
@@ -27228,15 +27228,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2509,
+   "ms": 2597,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 365,
-    "releveRef": 6,
-    "chargementWp": 626,
-    "stabWp": 398,
-    "releveWp": 6,
-    "cls": 2
+    "bascule": 1108,
+    "stabRef": 367,
+    "releveRef": 9,
+    "chargementWp": 690,
+    "stabWp": 412,
+    "releveWp": 8,
+    "cls": 3
    }
   },
   "375": {
@@ -27321,13 +27321,13 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2485,
+   "ms": 2530,
    "phases": {
-    "bascule": 1108,
-    "stabRef": 365,
-    "releveRef": 5,
-    "chargementWp": 632,
-    "stabWp": 367,
+    "bascule": 1110,
+    "stabRef": 367,
+    "releveRef": 7,
+    "chargementWp": 670,
+    "stabWp": 368,
     "releveWp": 6,
     "cls": 2
    }
@@ -27414,14 +27414,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2361,
+   "ms": 2384,
    "phases": {
-    "bascule": 1105,
-    "stabRef": 304,
-    "releveRef": 5,
-    "chargementWp": 633,
+    "bascule": 1107,
+    "stabRef": 306,
+    "releveRef": 7,
+    "chargementWp": 648,
     "stabWp": 307,
-    "releveWp": 5,
+    "releveWp": 7,
     "cls": 2
    }
   },
@@ -27507,15 +27507,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2359,
+   "ms": 2394,
    "phases": {
-    "bascule": 1105,
-    "stabRef": 304,
+    "bascule": 1109,
+    "stabRef": 305,
     "releveRef": 5,
-    "chargementWp": 632,
+    "chargementWp": 658,
     "stabWp": 307,
-    "releveWp": 5,
-    "cls": 1
+    "releveWp": 7,
+    "cls": 3
    }
   },
   "1440": {
@@ -27600,15 +27600,15 @@
    "cls": 0.0005,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2344,
+   "ms": 2416,
    "phases": {
     "bascule": 1107,
     "stabRef": 304,
-    "releveRef": 5,
-    "chargementWp": 616,
-    "stabWp": 305,
-    "releveWp": 5,
-    "cls": 2
+    "releveRef": 7,
+    "chargementWp": 683,
+    "stabWp": 308,
+    "releveWp": 6,
+    "cls": 1
    }
   },
   "1920": {
@@ -27693,15 +27693,15 @@
    "cls": 0.0003,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2343,
+   "ms": 2449,
    "phases": {
-    "bascule": 1105,
-    "stabRef": 304,
-    "releveRef": 5,
-    "chargementWp": 615,
-    "stabWp": 307,
-    "releveWp": 5,
-    "cls": 2
+    "bascule": 1108,
+    "stabRef": 306,
+    "releveRef": 7,
+    "chargementWp": 703,
+    "stabWp": 314,
+    "releveWp": 7,
+    "cls": 4
    }
   }
  },
@@ -27788,15 +27788,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2479,
+   "ms": 2571,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 365,
-    "releveRef": 5,
-    "chargementWp": 629,
-    "stabWp": 367,
-    "releveWp": 6,
-    "cls": 1
+    "bascule": 1108,
+    "stabRef": 367,
+    "releveRef": 8,
+    "chargementWp": 708,
+    "stabWp": 370,
+    "releveWp": 8,
+    "cls": 2
    }
   },
   "375": {
@@ -27881,15 +27881,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2463,
+   "ms": 2499,
    "phases": {
-    "bascule": 1108,
-    "stabRef": 364,
-    "releveRef": 5,
-    "chargementWp": 612,
-    "stabWp": 367,
+    "bascule": 1107,
+    "stabRef": 365,
+    "releveRef": 6,
+    "chargementWp": 644,
+    "stabWp": 369,
     "releveWp": 6,
-    "cls": 1
+    "cls": 2
    }
   },
   "768": {
@@ -27974,15 +27974,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2339,
+   "ms": 2388,
    "phases": {
     "bascule": 1107,
-    "stabRef": 304,
-    "releveRef": 4,
-    "chargementWp": 611,
-    "stabWp": 307,
-    "releveWp": 5,
-    "cls": 1
+    "stabRef": 305,
+    "releveRef": 5,
+    "chargementWp": 655,
+    "stabWp": 308,
+    "releveWp": 6,
+    "cls": 2
    }
   },
   "1024": {
@@ -28067,14 +28067,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2349,
+   "ms": 2377,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 305,
-    "releveRef": 4,
-    "chargementWp": 622,
-    "stabWp": 306,
-    "releveWp": 4,
+    "bascule": 1108,
+    "stabRef": 306,
+    "releveRef": 5,
+    "chargementWp": 641,
+    "stabWp": 307,
+    "releveWp": 8,
     "cls": 2
    }
   },
@@ -28160,14 +28160,14 @@
    "cls": 0.0005,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2358,
+   "ms": 2390,
    "phases": {
-    "bascule": 1106,
+    "bascule": 1107,
     "stabRef": 305,
     "releveRef": 5,
-    "chargementWp": 629,
-    "stabWp": 306,
-    "releveWp": 5,
+    "chargementWp": 657,
+    "stabWp": 307,
+    "releveWp": 7,
     "cls": 2
    }
   },
@@ -28253,15 +28253,15 @@
    "cls": 0.0003,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2342,
+   "ms": 2498,
    "phases": {
-    "bascule": 1105,
-    "stabRef": 304,
+    "bascule": 1108,
+    "stabRef": 306,
     "releveRef": 5,
-    "chargementWp": 614,
-    "stabWp": 307,
-    "releveWp": 4,
-    "cls": 3
+    "chargementWp": 762,
+    "stabWp": 309,
+    "releveWp": 6,
+    "cls": 2
    }
   }
  },
@@ -28351,14 +28351,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2597,
+   "ms": 2662,
    "phases": {
-    "bascule": 1107,
-    "stabRef": 426,
-    "releveRef": 5,
-    "chargementWp": 624,
-    "stabWp": 427,
-    "releveWp": 6,
+    "bascule": 1109,
+    "stabRef": 428,
+    "releveRef": 7,
+    "chargementWp": 678,
+    "stabWp": 429,
+    "releveWp": 9,
     "cls": 2
    }
   },
@@ -28447,15 +28447,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2563,
+   "ms": 2619,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 395,
-    "releveRef": 5,
-    "chargementWp": 622,
-    "stabWp": 428,
-    "releveWp": 6,
-    "cls": 1
+    "bascule": 1107,
+    "stabRef": 396,
+    "releveRef": 7,
+    "chargementWp": 669,
+    "stabWp": 430,
+    "releveWp": 8,
+    "cls": 2
    }
   },
   "768": {
@@ -28543,15 +28543,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2357,
+   "ms": 2406,
    "phases": {
-    "bascule": 1105,
-    "stabRef": 305,
+    "bascule": 1107,
+    "stabRef": 306,
     "releveRef": 6,
-    "chargementWp": 626,
-    "stabWp": 307,
-    "releveWp": 7,
-    "cls": 1
+    "chargementWp": 667,
+    "stabWp": 308,
+    "releveWp": 10,
+    "cls": 2
    }
   },
   "1024": {
@@ -28639,15 +28639,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2333,
+   "ms": 2377,
    "phases": {
     "bascule": 1106,
-    "stabRef": 273,
-    "releveRef": 6,
-    "chargementWp": 635,
-    "stabWp": 306,
-    "releveWp": 6,
-    "cls": 1
+    "stabRef": 275,
+    "releveRef": 7,
+    "chargementWp": 670,
+    "stabWp": 308,
+    "releveWp": 9,
+    "cls": 2
    }
   },
   "1440": {
@@ -28735,15 +28735,15 @@
    "cls": 0.0005,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2299,
+   "ms": 2388,
    "phases": {
     "bascule": 1106,
     "stabRef": 275,
-    "releveRef": 5,
-    "chargementWp": 629,
-    "stabWp": 276,
+    "releveRef": 8,
+    "chargementWp": 712,
+    "stabWp": 278,
     "releveWp": 7,
-    "cls": 1
+    "cls": 2
    }
   },
   "1920": {
@@ -28831,14 +28831,14 @@
    "cls": 0.0003,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2324,
+   "ms": 2367,
    "phases": {
-    "bascule": 1105,
-    "stabRef": 274,
-    "releveRef": 5,
-    "chargementWp": 656,
-    "stabWp": 276,
-    "releveWp": 6,
+    "bascule": 1107,
+    "stabRef": 281,
+    "releveRef": 7,
+    "chargementWp": 684,
+    "stabWp": 278,
+    "releveWp": 8,
     "cls": 2
    }
   }
@@ -28912,15 +28912,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2601,
+   "ms": 2658,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 425,
-    "releveRef": 4,
-    "chargementWp": 633,
-    "stabWp": 427,
-    "releveWp": 4,
-    "cls": 2
+    "bascule": 1107,
+    "stabRef": 427,
+    "releveRef": 5,
+    "chargementWp": 681,
+    "stabWp": 431,
+    "releveWp": 5,
+    "cls": 1
    }
   },
   "375": {
@@ -28991,15 +28991,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2541,
+   "ms": 2582,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 395,
-    "releveRef": 4,
-    "chargementWp": 632,
-    "stabWp": 398,
-    "releveWp": 5,
-    "cls": 1
+    "bascule": 1108,
+    "stabRef": 399,
+    "releveRef": 5,
+    "chargementWp": 650,
+    "stabWp": 410,
+    "releveWp": 8,
+    "cls": 2
    }
   },
   "768": {
@@ -29070,14 +29070,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2345,
+   "ms": 2373,
    "phases": {
     "bascule": 1106,
     "stabRef": 305,
-    "releveRef": 3,
-    "chargementWp": 618,
-    "stabWp": 306,
-    "releveWp": 4,
+    "releveRef": 4,
+    "chargementWp": 643,
+    "stabWp": 308,
+    "releveWp": 5,
     "cls": 2
    }
   },
@@ -29149,14 +29149,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2288,
+   "ms": 2327,
    "phases": {
-    "bascule": 1107,
-    "stabRef": 273,
+    "bascule": 1108,
+    "stabRef": 277,
     "releveRef": 4,
-    "chargementWp": 623,
+    "chargementWp": 656,
     "stabWp": 276,
-    "releveWp": 4,
+    "releveWp": 5,
     "cls": 1
    }
   },
@@ -29228,14 +29228,14 @@
    "cls": 0.0005,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2305,
+   "ms": 2359,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 275,
-    "releveRef": 4,
-    "chargementWp": 638,
-    "stabWp": 276,
-    "releveWp": 4,
+    "bascule": 1107,
+    "stabRef": 282,
+    "releveRef": 3,
+    "chargementWp": 682,
+    "stabWp": 278,
+    "releveWp": 5,
     "cls": 2
    }
   },
@@ -29307,15 +29307,15 @@
    "cls": 0.0003,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2295,
+   "ms": 2373,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 274,
-    "releveRef": 3,
-    "chargementWp": 628,
-    "stabWp": 278,
-    "releveWp": 5,
-    "cls": 1
+    "bascule": 1109,
+    "stabRef": 276,
+    "releveRef": 5,
+    "chargementWp": 697,
+    "stabWp": 277,
+    "releveWp": 7,
+    "cls": 2
    }
   }
  },
@@ -29398,14 +29398,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2450,
+   "ms": 2483,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 365,
-    "releveRef": 4,
-    "chargementWp": 634,
-    "stabWp": 336,
-    "releveWp": 4,
+    "bascule": 1108,
+    "stabRef": 366,
+    "releveRef": 5,
+    "chargementWp": 660,
+    "stabWp": 338,
+    "releveWp": 5,
     "cls": 1
    }
   },
@@ -29487,15 +29487,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2500,
+   "ms": 2482,
    "phases": {
-    "bascule": 1107,
-    "stabRef": 334,
-    "releveRef": 4,
-    "chargementWp": 659,
-    "stabWp": 388,
-    "releveWp": 6,
-    "cls": 2
+    "bascule": 1108,
+    "stabRef": 336,
+    "releveRef": 7,
+    "chargementWp": 687,
+    "stabWp": 338,
+    "releveWp": 5,
+    "cls": 1
    }
   },
   "768": {
@@ -29576,13 +29576,13 @@
    "cls": 0.0048,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2323,
+   "ms": 2343,
    "phases": {
-    "bascule": 1106,
+    "bascule": 1109,
     "stabRef": 275,
     "releveRef": 4,
-    "chargementWp": 655,
-    "stabWp": 276,
+    "chargementWp": 671,
+    "stabWp": 277,
     "releveWp": 5,
     "cls": 2
    }
@@ -29665,15 +29665,15 @@
    "cls": 0.0017,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2242,
+   "ms": 2281,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 243,
-    "releveRef": 4,
-    "chargementWp": 639,
-    "stabWp": 244,
+    "bascule": 1105,
+    "stabRef": 244,
+    "releveRef": 6,
+    "chargementWp": 671,
+    "stabWp": 247,
     "releveWp": 5,
-    "cls": 1
+    "cls": 3
    }
   },
   "1440": {
@@ -29754,15 +29754,15 @@
    "cls": 0.0005,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2232,
+   "ms": 2320,
    "phases": {
-    "bascule": 1106,
+    "bascule": 1107,
     "stabRef": 244,
     "releveRef": 5,
-    "chargementWp": 627,
-    "stabWp": 245,
-    "releveWp": 4,
-    "cls": 1
+    "chargementWp": 709,
+    "stabWp": 246,
+    "releveWp": 7,
+    "cls": 2
    }
   },
   "1920": {
@@ -29843,15 +29843,15 @@
    "cls": 0.0003,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2263,
+   "ms": 2281,
    "phases": {
-    "bascule": 1127,
-    "stabRef": 245,
-    "releveRef": 4,
-    "chargementWp": 635,
-    "stabWp": 245,
-    "releveWp": 5,
-    "cls": 2
+    "bascule": 1108,
+    "stabRef": 246,
+    "releveRef": 5,
+    "chargementWp": 668,
+    "stabWp": 247,
+    "releveWp": 4,
+    "cls": 3
    }
   }
  },
@@ -29927,14 +29927,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2624,
+   "ms": 2670,
    "phases": {
     "bascule": 1106,
-    "stabRef": 425,
-    "releveRef": 3,
-    "chargementWp": 628,
-    "stabWp": 456,
-    "releveWp": 4,
+    "stabRef": 427,
+    "releveRef": 4,
+    "chargementWp": 666,
+    "stabWp": 460,
+    "releveWp": 5,
     "cls": 2
    }
   },
@@ -30009,14 +30009,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2616,
+   "ms": 2669,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 426,
-    "releveRef": 5,
-    "chargementWp": 645,
-    "stabWp": 428,
-    "releveWp": 4,
+    "bascule": 1109,
+    "stabRef": 427,
+    "releveRef": 4,
+    "chargementWp": 692,
+    "stabWp": 430,
+    "releveWp": 5,
     "cls": 2
    }
   },
@@ -30091,15 +30091,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2418,
+   "ms": 2462,
    "phases": {
-    "bascule": 1109,
-    "stabRef": 334,
+    "bascule": 1106,
+    "stabRef": 335,
     "releveRef": 4,
-    "chargementWp": 629,
-    "stabWp": 337,
-    "releveWp": 4,
-    "cls": 1
+    "chargementWp": 669,
+    "stabWp": 339,
+    "releveWp": 7,
+    "cls": 2
    }
   },
   "1024": {
@@ -30173,15 +30173,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2363,
+   "ms": 2394,
    "phases": {
-    "bascule": 1105,
-    "stabRef": 304,
-    "releveRef": 4,
-    "chargementWp": 636,
-    "stabWp": 307,
-    "releveWp": 6,
-    "cls": 1
+    "bascule": 1107,
+    "stabRef": 308,
+    "releveRef": 5,
+    "chargementWp": 659,
+    "stabWp": 308,
+    "releveWp": 5,
+    "cls": 2
    }
   },
   "1440": {
@@ -30255,15 +30255,15 @@
    "cls": 0.0005,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2325,
+   "ms": 2361,
    "phases": {
     "bascule": 1108,
-    "stabRef": 274,
+    "stabRef": 276,
     "releveRef": 3,
-    "chargementWp": 628,
-    "stabWp": 306,
-    "releveWp": 4,
-    "cls": 2
+    "chargementWp": 657,
+    "stabWp": 309,
+    "releveWp": 5,
+    "cls": 3
    }
   },
   "1920": {
@@ -30337,14 +30337,14 @@
    "cls": 0.0003,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2330,
+   "ms": 2368,
    "phases": {
-    "bascule": 1106,
+    "bascule": 1108,
     "stabRef": 274,
     "releveRef": 4,
-    "chargementWp": 633,
-    "stabWp": 306,
-    "releveWp": 4,
+    "chargementWp": 667,
+    "stabWp": 307,
+    "releveWp": 5,
     "cls": 3
    }
   }
@@ -30419,15 +30419,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2344,
+   "ms": 2420,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 305,
+    "bascule": 1110,
+    "stabRef": 344,
     "releveRef": 3,
-    "chargementWp": 619,
-    "stabWp": 306,
-    "releveWp": 3,
-    "cls": 2
+    "chargementWp": 644,
+    "stabWp": 311,
+    "releveWp": 5,
+    "cls": 3
    }
   },
   "375": {
@@ -30499,15 +30499,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2354,
+   "ms": 2411,
    "phases": {
     "bascule": 1106,
-    "stabRef": 305,
-    "releveRef": 3,
-    "chargementWp": 627,
+    "stabRef": 306,
+    "releveRef": 4,
+    "chargementWp": 682,
     "stabWp": 308,
-    "releveWp": 3,
-    "cls": 2
+    "releveWp": 4,
+    "cls": 1
    }
   },
   "768": {
@@ -30579,15 +30579,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2231,
+   "ms": 2274,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 244,
+    "bascule": 1107,
+    "stabRef": 245,
     "releveRef": 4,
-    "chargementWp": 625,
-    "stabWp": 246,
+    "chargementWp": 664,
+    "stabWp": 247,
     "releveWp": 4,
-    "cls": 2
+    "cls": 3
    }
   },
   "1024": {
@@ -30659,15 +30659,15 @@
    "cls": 0.0003,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2178,
+   "ms": 2222,
    "phases": {
-    "bascule": 1107,
+    "bascule": 1121,
     "stabRef": 214,
     "releveRef": 4,
-    "chargementWp": 631,
-    "stabWp": 216,
-    "releveWp": 4,
-    "cls": 2
+    "chargementWp": 657,
+    "stabWp": 220,
+    "releveWp": 5,
+    "cls": 1
    }
   },
   "1440": {
@@ -30739,14 +30739,14 @@
    "cls": 0.001,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2166,
+   "ms": 2201,
    "phases": {
-    "bascule": 1106,
+    "bascule": 1107,
     "stabRef": 214,
     "releveRef": 3,
-    "chargementWp": 623,
-    "stabWp": 215,
-    "releveWp": 4,
+    "chargementWp": 655,
+    "stabWp": 216,
+    "releveWp": 5,
     "cls": 1
    }
   },
@@ -30819,13 +30819,13 @@
    "cls": 0.0006,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2183,
+   "ms": 2206,
    "phases": {
-    "bascule": 1106,
+    "bascule": 1108,
     "stabRef": 214,
     "releveRef": 3,
-    "chargementWp": 640,
-    "stabWp": 215,
+    "chargementWp": 659,
+    "stabWp": 217,
     "releveWp": 4,
     "cls": 1
    }
@@ -30888,15 +30888,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2309,
+   "ms": 2355,
    "phases": {
-    "bascule": 1105,
-    "stabRef": 274,
-    "releveRef": 18,
-    "chargementWp": 628,
-    "stabWp": 276,
-    "releveWp": 7,
-    "cls": 1
+    "bascule": 1106,
+    "stabRef": 275,
+    "releveRef": 21,
+    "chargementWp": 665,
+    "stabWp": 278,
+    "releveWp": 8,
+    "cls": 2
    }
   },
   "375": {
@@ -30955,15 +30955,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2304,
+   "ms": 2340,
    "phases": {
-    "bascule": 1105,
+    "bascule": 1106,
     "stabRef": 274,
-    "releveRef": 20,
-    "chargementWp": 620,
-    "stabWp": 276,
-    "releveWp": 8,
-    "cls": 1
+    "releveRef": 21,
+    "chargementWp": 651,
+    "stabWp": 277,
+    "releveWp": 9,
+    "cls": 2
    }
   },
   "768": {
@@ -31022,14 +31022,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2351,
+   "ms": 2300,
    "phases": {
-    "bascule": 1105,
-    "stabRef": 244,
-    "releveRef": 27,
-    "chargementWp": 707,
-    "stabWp": 260,
-    "releveWp": 6,
+    "bascule": 1110,
+    "stabRef": 245,
+    "releveRef": 23,
+    "chargementWp": 665,
+    "stabWp": 247,
+    "releveWp": 8,
     "cls": 2
    }
   },
@@ -31089,14 +31089,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2184,
+   "ms": 2253,
    "phases": {
-    "bascule": 1105,
-    "stabRef": 214,
-    "releveRef": 17,
-    "chargementWp": 623,
-    "stabWp": 216,
-    "releveWp": 7,
+    "bascule": 1107,
+    "stabRef": 215,
+    "releveRef": 23,
+    "chargementWp": 680,
+    "stabWp": 217,
+    "releveWp": 9,
     "cls": 2
    }
   },
@@ -31156,15 +31156,15 @@
    "cls": 0.0005,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2208,
+   "ms": 2260,
    "phases": {
-    "bascule": 1106,
+    "bascule": 1108,
     "stabRef": 213,
-    "releveRef": 22,
-    "chargementWp": 643,
-    "stabWp": 215,
-    "releveWp": 7,
-    "cls": 2
+    "releveRef": 25,
+    "chargementWp": 688,
+    "stabWp": 216,
+    "releveWp": 9,
+    "cls": 1
    }
   },
   "1920": {
@@ -31223,14 +31223,14 @@
    "cls": 0.0003,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2189,
+   "ms": 2278,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 213,
-    "releveRef": 17,
-    "chargementWp": 629,
-    "stabWp": 216,
-    "releveWp": 6,
+    "bascule": 1107,
+    "stabRef": 214,
+    "releveRef": 20,
+    "chargementWp": 710,
+    "stabWp": 217,
+    "releveWp": 8,
     "cls": 2
    }
   }
@@ -31305,14 +31305,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2343,
+   "ms": 2351,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 274,
+    "bascule": 1116,
+    "stabRef": 275,
     "releveRef": 4,
-    "chargementWp": 647,
-    "stabWp": 306,
-    "releveWp": 4,
+    "chargementWp": 641,
+    "stabWp": 308,
+    "releveWp": 5,
     "cls": 2
    }
   },
@@ -31385,15 +31385,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2328,
+   "ms": 2310,
    "phases": {
-    "bascule": 1147,
+    "bascule": 1107,
     "stabRef": 274,
     "releveRef": 4,
-    "chargementWp": 621,
-    "stabWp": 276,
-    "releveWp": 4,
-    "cls": 2
+    "chargementWp": 642,
+    "stabWp": 277,
+    "releveWp": 5,
+    "cls": 1
    }
   },
   "768": {
@@ -31465,14 +31465,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2268,
+   "ms": 2293,
    "phases": {
     "bascule": 1107,
-    "stabRef": 244,
-    "releveRef": 4,
-    "chargementWp": 652,
-    "stabWp": 253,
-    "releveWp": 6,
+    "stabRef": 251,
+    "releveRef": 3,
+    "chargementWp": 678,
+    "stabWp": 247,
+    "releveWp": 5,
     "cls": 2
    }
   },
@@ -31545,15 +31545,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2171,
+   "ms": 2221,
    "phases": {
-    "bascule": 1107,
+    "bascule": 1110,
     "stabRef": 214,
-    "releveRef": 4,
-    "chargementWp": 624,
-    "stabWp": 216,
-    "releveWp": 4,
-    "cls": 2
+    "releveRef": 5,
+    "chargementWp": 665,
+    "stabWp": 218,
+    "releveWp": 5,
+    "cls": 4
    }
   },
   "1440": {
@@ -31625,15 +31625,15 @@
    "cls": 0.0005,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2170,
+   "ms": 2258,
    "phases": {
-    "bascule": 1106,
+    "bascule": 1109,
     "stabRef": 214,
-    "releveRef": 4,
-    "chargementWp": 625,
-    "stabWp": 215,
-    "releveWp": 4,
-    "cls": 2
+    "releveRef": 9,
+    "chargementWp": 702,
+    "stabWp": 217,
+    "releveWp": 6,
+    "cls": 1
    }
   },
   "1920": {
@@ -31705,14 +31705,14 @@
    "cls": 0.0003,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2169,
+   "ms": 2208,
    "phases": {
-    "bascule": 1105,
-    "stabRef": 213,
+    "bascule": 1106,
+    "stabRef": 214,
     "releveRef": 4,
-    "chargementWp": 626,
+    "chargementWp": 661,
     "stabWp": 216,
-    "releveWp": 4,
+    "releveWp": 6,
     "cls": 1
    }
   }
@@ -31777,15 +31777,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2373,
+   "ms": 2428,
    "phases": {
-    "bascule": 1125,
-    "stabRef": 304,
+    "bascule": 1108,
+    "stabRef": 305,
     "releveRef": 4,
-    "chargementWp": 627,
-    "stabWp": 306,
-    "releveWp": 4,
-    "cls": 3
+    "chargementWp": 675,
+    "stabWp": 330,
+    "releveWp": 5,
+    "cls": 1
    }
   },
   "375": {
@@ -31847,15 +31847,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2336,
+   "ms": 2392,
    "phases": {
-    "bascule": 1107,
-    "stabRef": 304,
-    "releveRef": 3,
-    "chargementWp": 611,
-    "stabWp": 306,
+    "bascule": 1106,
+    "stabRef": 305,
+    "releveRef": 5,
+    "chargementWp": 662,
+    "stabWp": 308,
     "releveWp": 4,
-    "cls": 1
+    "cls": 2
    }
   },
   "768": {
@@ -31917,14 +31917,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2238,
+   "ms": 2256,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 249,
-    "releveRef": 4,
-    "chargementWp": 627,
-    "stabWp": 246,
-    "releveWp": 4,
+    "bascule": 1107,
+    "stabRef": 216,
+    "releveRef": 6,
+    "chargementWp": 671,
+    "stabWp": 248,
+    "releveWp": 6,
     "cls": 2
    }
   },
@@ -31987,14 +31987,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2159,
+   "ms": 2207,
    "phases": {
-    "bascule": 1107,
-    "stabRef": 213,
-    "releveRef": 4,
-    "chargementWp": 613,
-    "stabWp": 216,
-    "releveWp": 4,
+    "bascule": 1108,
+    "stabRef": 214,
+    "releveRef": 5,
+    "chargementWp": 656,
+    "stabWp": 217,
+    "releveWp": 5,
     "cls": 2
    }
   },
@@ -32057,14 +32057,14 @@
    "cls": 0.0005,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2173,
+   "ms": 2220,
    "phases": {
-    "bascule": 1107,
-    "stabRef": 213,
-    "releveRef": 4,
-    "chargementWp": 628,
-    "stabWp": 215,
-    "releveWp": 4,
+    "bascule": 1108,
+    "stabRef": 214,
+    "releveRef": 5,
+    "chargementWp": 669,
+    "stabWp": 217,
+    "releveWp": 5,
     "cls": 2
    }
   },
@@ -32127,14 +32127,14 @@
    "cls": 0.0003,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2181,
+   "ms": 2227,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 213,
-    "releveRef": 4,
-    "chargementWp": 636,
-    "stabWp": 215,
-    "releveWp": 4,
+    "bascule": 1112,
+    "stabRef": 214,
+    "releveRef": 6,
+    "chargementWp": 671,
+    "stabWp": 216,
+    "releveWp": 6,
     "cls": 2
    }
   }
@@ -32195,12 +32195,12 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2300,
+   "ms": 2339,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 274,
+    "bascule": 1108,
+    "stabRef": 277,
     "releveRef": 3,
-    "chargementWp": 605,
+    "chargementWp": 639,
     "stabWp": 307,
     "releveWp": 4,
     "cls": 1
@@ -32261,15 +32261,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2310,
+   "ms": 2379,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 274,
-    "releveRef": 2,
-    "chargementWp": 617,
-    "stabWp": 307,
-    "releveWp": 3,
-    "cls": 1
+    "bascule": 1107,
+    "stabRef": 275,
+    "releveRef": 4,
+    "chargementWp": 679,
+    "stabWp": 308,
+    "releveWp": 4,
+    "cls": 2
    }
   },
   "768": {
@@ -32327,14 +32327,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2192,
+   "ms": 2224,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 213,
-    "releveRef": 4,
-    "chargementWp": 617,
-    "stabWp": 246,
-    "releveWp": 4,
+    "bascule": 1108,
+    "stabRef": 215,
+    "releveRef": 3,
+    "chargementWp": 644,
+    "stabWp": 247,
+    "releveWp": 5,
     "cls": 2
    }
   },
@@ -32393,14 +32393,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2178,
+   "ms": 2221,
    "phases": {
-    "bascule": 1107,
-    "stabRef": 213,
-    "releveRef": 3,
-    "chargementWp": 604,
-    "stabWp": 246,
-    "releveWp": 3,
+    "bascule": 1108,
+    "stabRef": 214,
+    "releveRef": 4,
+    "chargementWp": 642,
+    "stabWp": 247,
+    "releveWp": 4,
     "cls": 2
    }
   },
@@ -32459,15 +32459,15 @@
    "cls": 0.0005,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2156,
+   "ms": 2210,
    "phases": {
-    "bascule": 1108,
+    "bascule": 1106,
     "stabRef": 214,
-    "releveRef": 3,
-    "chargementWp": 610,
+    "releveRef": 4,
+    "chargementWp": 662,
     "stabWp": 217,
-    "releveWp": 3,
-    "cls": 1
+    "releveWp": 5,
+    "cls": 2
    }
   },
   "1920": {
@@ -32525,15 +32525,15 @@
    "cls": 0.0003,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2158,
+   "ms": 2223,
    "phases": {
-    "bascule": 1107,
+    "bascule": 1136,
     "stabRef": 213,
     "releveRef": 3,
-    "chargementWp": 615,
-    "stabWp": 215,
-    "releveWp": 3,
-    "cls": 1
+    "chargementWp": 648,
+    "stabWp": 217,
+    "releveWp": 4,
+    "cls": 2
    }
   }
  },
@@ -32593,15 +32593,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2304,
+   "ms": 2348,
    "phases": {
-    "bascule": 1109,
+    "bascule": 1106,
     "stabRef": 274,
-    "releveRef": 3,
-    "chargementWp": 606,
-    "stabWp": 307,
+    "releveRef": 4,
+    "chargementWp": 649,
+    "stabWp": 308,
     "releveWp": 4,
-    "cls": 1
+    "cls": 2
    }
   },
   "375": {
@@ -32659,14 +32659,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2269,
+   "ms": 2309,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 243,
+    "bascule": 1109,
+    "stabRef": 244,
     "releveRef": 3,
-    "chargementWp": 606,
+    "chargementWp": 641,
     "stabWp": 307,
-    "releveWp": 3,
+    "releveWp": 4,
     "cls": 1
    }
   },
@@ -32725,15 +32725,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2210,
+   "ms": 2227,
    "phases": {
     "bascule": 1108,
-    "stabRef": 214,
+    "stabRef": 215,
     "releveRef": 3,
-    "chargementWp": 634,
+    "chargementWp": 649,
     "stabWp": 246,
     "releveWp": 4,
-    "cls": 1
+    "cls": 2
    }
   },
   "1024": {
@@ -32791,14 +32791,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2176,
+   "ms": 2259,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 213,
-    "releveRef": 3,
-    "chargementWp": 603,
-    "stabWp": 246,
-    "releveWp": 3,
+    "bascule": 1108,
+    "stabRef": 215,
+    "releveRef": 4,
+    "chargementWp": 678,
+    "stabWp": 248,
+    "releveWp": 4,
     "cls": 2
    }
   },
@@ -32857,14 +32857,14 @@
    "cls": 0.0005,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2186,
+   "ms": 2236,
    "phases": {
     "bascule": 1107,
-    "stabRef": 213,
-    "releveRef": 3,
-    "chargementWp": 613,
-    "stabWp": 246,
-    "releveWp": 3,
+    "stabRef": 214,
+    "releveRef": 4,
+    "chargementWp": 658,
+    "stabWp": 247,
+    "releveWp": 5,
     "cls": 1
    }
   },
@@ -32923,14 +32923,14 @@
    "cls": 0.0003,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2177,
+   "ms": 2256,
    "phases": {
-    "bascule": 1105,
+    "bascule": 1107,
     "stabRef": 214,
     "releveRef": 3,
-    "chargementWp": 604,
+    "chargementWp": 680,
     "stabWp": 246,
-    "releveWp": 3,
+    "releveWp": 4,
     "cls": 2
    }
   }
@@ -32991,15 +32991,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2237,
+   "ms": 2281,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 243,
-    "releveRef": 3,
-    "chargementWp": 603,
-    "stabWp": 277,
-    "releveWp": 3,
-    "cls": 2
+    "bascule": 1109,
+    "stabRef": 245,
+    "releveRef": 4,
+    "chargementWp": 640,
+    "stabWp": 278,
+    "releveWp": 4,
+    "cls": 1
    }
   },
   "375": {
@@ -33057,14 +33057,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2244,
+   "ms": 2271,
    "phases": {
     "bascule": 1106,
-    "stabRef": 243,
+    "stabRef": 245,
     "releveRef": 3,
-    "chargementWp": 611,
-    "stabWp": 276,
-    "releveWp": 3,
+    "chargementWp": 634,
+    "stabWp": 277,
+    "releveWp": 4,
     "cls": 2
    }
   },
@@ -33123,13 +33123,13 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2165,
+   "ms": 2208,
    "phases": {
-    "bascule": 1106,
+    "bascule": 1120,
     "stabRef": 214,
     "releveRef": 4,
-    "chargementWp": 620,
-    "stabWp": 216,
+    "chargementWp": 648,
+    "stabWp": 217,
     "releveWp": 3,
     "cls": 2
    }
@@ -33189,13 +33189,13 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2170,
+   "ms": 2196,
    "phases": {
-    "bascule": 1107,
-    "stabRef": 213,
+    "bascule": 1106,
+    "stabRef": 215,
     "releveRef": 3,
-    "chargementWp": 625,
-    "stabWp": 216,
+    "chargementWp": 649,
+    "stabWp": 217,
     "releveWp": 4,
     "cls": 2
    }
@@ -33255,15 +33255,15 @@
    "cls": 0.0005,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2113,
+   "ms": 2158,
    "phases": {
-    "bascule": 1105,
-    "stabRef": 183,
+    "bascule": 1106,
+    "stabRef": 184,
     "releveRef": 3,
-    "chargementWp": 602,
-    "stabWp": 216,
+    "chargementWp": 643,
+    "stabWp": 217,
     "releveWp": 3,
-    "cls": 1
+    "cls": 2
    }
   },
   "1920": {
@@ -33321,15 +33321,15 @@
    "cls": 0.0003,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2137,
+   "ms": 2163,
    "phases": {
-    "bascule": 1121,
-    "stabRef": 183,
-    "releveRef": 2,
-    "chargementWp": 611,
-    "stabWp": 215,
+    "bascule": 1107,
+    "stabRef": 184,
+    "releveRef": 3,
+    "chargementWp": 647,
+    "stabWp": 217,
     "releveWp": 3,
-    "cls": 1
+    "cls": 2
    }
   }
  }

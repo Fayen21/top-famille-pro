@@ -33,6 +33,18 @@ $reponse            = tfp_get_field( 'reponse_directe', $post_id );
 $secteur            = tfp_get_field( 'secteur_economique', $post_id );
 $locaux_types       = tfp_get_lines( tfp_get_field( 'locaux_types', $post_id ) );
 $fonctionnement     = tfp_get_field( 'fonctionnement', $post_id );
+/*
+ * Rang du chapitre de méthode que le champ « Fonctionnement » alimente. La maquette consacre un
+ * chapitre au fonctionnement sur chaque zone — « Sélection, intervenant habituel et suivi » sur
+ * Dijon, « Fonctionnement, sélection et suivi » sur Chenôve, « Organisation des déplacements » sur
+ * la Nièvre. Le seed de fidélité écrit son texte dans `fonctionnement` ET son rang ici : le champ
+ * devient la source éditable de ce chapitre, sans bande supplémentaire ni changement d'ordre.
+ *
+ * À 0 — contenu saisi avant l'introduction du champ — rien ne change : le chapitre garde son texte
+ * d'origine. Le repli et le champ ne s'affichent jamais ensemble.
+ */
+$fonctionnement_bloc = (int) tfp_get_field( 'fonctionnement_bloc', $post_id );
+$fonctionnement_lignes = tfp_get_lines( $fonctionnement );
 $zones_desservies   = tfp_get_lines( tfp_get_field( 'zones_desservies', $post_id ) );
 $cta_label          = tfp_get_field( 'cta_label', $post_id ) ?: 'Demander un devis à ' . get_the_title( $post_id );
 $exclusions_rappel  = tfp_get_field( 'exclusions_rappel', $post_id );
@@ -502,9 +514,20 @@ $render_sections = function ( array $groupes, $classe ) use ( $render_group, $is
 <section class="tfp-section--tight">
 	<div class="tfp-container tfp-container--narrow">
 		<?php foreach ( $methode as $bloc ) : ?>
-			<div class="tfp-zone-chapter">
+			<?php
+			/*
+			 * Un seul des deux textes sort : le champ « Fonctionnement » s'il désigne ce chapitre
+			 * et n'est pas vide, le texte d'origine sinon. Jamais les deux — c'est la condition
+			 * pour qu'une correction faite en administration soit visible sans doublon.
+			 */
+			$pilote_par_fonctionnement = $fonctionnement_bloc > 0
+				&& $bloc['rang'] === $fonctionnement_bloc
+				&& ! empty( $fonctionnement_lignes );
+			$paragraphes = $pilote_par_fonctionnement ? $fonctionnement_lignes : $bloc['textes'];
+			?>
+			<div class="tfp-zone-chapter"<?php echo $pilote_par_fonctionnement ? ' data-tfp-champ="fonctionnement"' : ''; ?>>
 				<h2><?php echo esc_html( $bloc['titre'] ); ?></h2>
-				<?php foreach ( $bloc['textes'] as $texte ) : ?>
+				<?php foreach ( $paragraphes as $texte ) : ?>
 					<p class="tfp-prose"><?php echo esc_html( $texte ); ?></p>
 				<?php endforeach; ?>
 				<?php if ( ! empty( $bloc['liste'] ) ) : ?>

@@ -32,13 +32,15 @@ aux mêmes contrôles : **il échoue**. La démonstration est faite, pas affirm�
 
 | Contrôle | Résultat |
 |---|---|
-| Suite de tests | **1063 verts**, 0 échec |
+| Suite de tests | **1223 verts**, 0 échec |
 | Images comparées par empreinte sur les 53 routes | **164 · 0 écart** |
 | Relevé de base, 6 largeurs | 318 contrôles · 298 dans 95-105 % · **0 débordement** · 0 erreur console |
 | Lighthouse, 7 routes × mobile/bureau | **14 mesures, 0 sous la cible** · accessibilité 100 partout |
 | CLS | maximum 0,0048 |
 | WCAG 2.2 AA — cibles tactiles | aucune violation |
 | Note Google non vérifiée, compteur d'avis, `Review`, `AggregateRating`, `href="#"` | **0 occurrence** sur les 53 routes |
+| Parité dépôt ↔ livraison | **1279 fichiers comparés par empreinte** · 0 manquant · 0 divergent |
+| Blocs de texte de la maquette absents du site | **0** sur les 53 routes (146 écarts nommés) |
 
 La fidélité **n'est pas** déclarée validée pour autant : c'est l'objet de cette relecture.
 
@@ -150,12 +152,18 @@ Luhn du SIREN ✅, du SIRET ✅, clé de TVA concordante avec le SIREN ✅. Ces 
 rejoués à chaque passage de la suite (`tests/legal.spec.js`) — un SIRET faux se publie exactement
 comme un vrai, et aucune relecture ne rattrape une transposition de deux chiffres.
 
-**Note Google réaffichée**, sur votre décision, la conséquence vous ayant été exposée. Elle passe
-par une case explicite — « Afficher sans la fiche », dans Réglages → Réassurance & avis — plutôt que
-par le retrait de la garde : **à décocher le jour où l'URL sera connue**, où elle devient inutile.
-Restent vrais quoi qu'il arrive, et vérifiés sur les 53 routes : aucun compteur d'avis (le nombre
-réel n'est toujours pas connu), aucune donnée structurée `Review` ni `AggregateRating`, aucun
-`href="#"` à la place de la fiche.
+**Note Google de nouveau masquée**, sur votre consigne du 18 août 2026. La case « Afficher sans la
+fiche » a été **supprimée** : elle permettait exactement ce que la consigne interdit. La garde exige
+maintenant trois conditions ensemble — une note saisie, une URL de fiche non vide, et une URL qui a
+la forme d'une fiche Google. Le jour où vous saisirez l'URL, la note reviendra d'elle-même partout,
+sans toucher au code.
+
+Un point d'honnêteté sur cette garde : **elle contrôle la forme de l'adresse, pas son
+appartenance**. Aucun code ne peut prouver depuis le serveur qu'une fiche est bien celle de
+Top-Famille Pro — l'écran de saisie le dit, et cette vérification-là reste la vôtre.
+
+Vérifié sur les 53 routes : aucune note `5,0/5`, aucune mention « sur Google », aucun compteur
+d'avis, aucune donnée structurée `Review` ni `AggregateRating`, aucun `href="#"`.
 
 **Photo d'Audrey et citation** : ne bloquent plus. Elles restent marquées provisoires avec leur
 mention visible — c'est ce qui les rend publiables.
@@ -203,10 +211,33 @@ simulateur » et « une couverture régionale, pas des agences fictives ».
 
 ## Un point de documentation à arbitrer
 
-`CLAUDE.md` §5.5 énonce toujours que la note de 5,0/5 est confirmée et affichable. La consigne de
-cette passe demande de la retirer tant qu'aucune vérification officielle n'est fournie. Les deux
-sont contradictoires. `CLAUDE.md` portant la consigne de ne pas être modifié sans votre validation,
-la contradiction est **signalée** plutôt que corrigée.
+`CLAUDE.md` §5.5 énonce toujours que la note de 5,0/5 est confirmée et affichable. Vos consignes des
+17 et 18 août ont tranché deux fois en sens inverse, et la dernière — masquer tant qu'une fiche
+vérifiable n'est pas fournie — est celle qui est appliquée. `CLAUDE.md` portant la consigne de ne
+pas être modifié sans votre validation, la contradiction est **signalée** plutôt que corrigée : une
+ligne à mettre à jour quand vous voudrez, pour que le fichier de règles cesse de dire l'inverse du
+site.
+
+## Deux corrections de fond livrées le 18 août 2026
+
+**Le champ « Fonctionnement réel sur cette zone » servait à rien.** Il était enregistré, éditable
+dans l'administration de chacune des 26 zones, rempli — et affiché nulle part. Le gabarit le lisait
+sans jamais l'écrire. C'est le pire des trois états possibles : un champ absent se voit, un champ
+affiché se relit, un champ muet se croit publié. Il alimente désormais le chapitre que la maquette
+consacre au fonctionnement sur chaque zone — « Sélection, intervenant habituel et suivi » sur Dijon,
+« Fonctionnement, sélection et suivi » sur Chenôve. Aucune bande nouvelle, aucun changement d'ordre,
+même géométrie. Éprouvé en écrivant un marqueur dans le champ et en relisant la page servie, puis en
+rétablissant la valeur d'origine.
+
+**Le paquet d'installation ne peut plus dériver en silence.** Un contrôle compare le dépôt et ce qui
+sera livré — seeds, gabarits, CSS et JS construits, manifeste d'images, archives — et **échoue** si
+un fichier manque ou diffère, en nommant les chemins. Il tourne dans la suite de tests et avant
+chaque construction de paquet. Trois fixtures cassent volontairement la parité pour vérifier qu'il
+s'en aperçoit.
+
+Ce contrôle a immédiatement trouvé un défaut réel : `topfamillepro-theme.zip` embarquait **143
+images sur les 378** que son propre manifeste réclame. Un site déployé depuis cette archive aurait
+servi des `srcset` vers des fichiers absents. Les archives sont reconstruites.
 
 ---
 

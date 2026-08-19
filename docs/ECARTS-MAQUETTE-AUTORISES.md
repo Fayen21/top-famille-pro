@@ -94,6 +94,39 @@ Le garde-fou est dans le générateur : si un « lorsque prévu » survit à tou
 génération **échoue** au lieu de publier la faute — c'est le cas si la maquette introduit un sujet
 non prévu. `tests/communes-affirmatif.spec.js` reprend le contrôle sur le HTML servi des 53 routes.
 
+### Note Google — masquée, consigne du 18 août 2026
+
+Réaffichée le 17 août sur décision d'Emmanuel, elle est **retirée à nouveau** : la consigne du
+18 août interdit d'afficher une note Google comme authentique tant qu'une fiche officielle
+vérifiable de Top-Famille Pro n'est pas fournie. La dérogation « Afficher sans la fiche » n'existe
+plus — elle permettait exactement ce que la consigne interdit.
+
+`tfp_reassurance_data()` exige désormais **trois conditions simultanées** :
+
+1. une note saisie ;
+2. une URL de fiche non vide ;
+3. une URL qui a la **forme** d'une fiche Google (`…google.<tld>/maps/…`, `maps.app.goo.gl/…`,
+   `g.page/…`, ou une adresse portant `cid=` / `place_id=` / `ludocid=`, en `https`).
+
+La troisième condition existe parce que la deuxième seule se contourne avec n'importe quelle chaîne.
+**Ce contrôle porte sur la forme, pas sur l'appartenance** : aucun code ne peut prouver depuis le
+serveur qu'une fiche est celle de Top-Famille Pro. L'écran de saisie le dit, et la vérification
+reste humaine.
+
+| Maquette | Site |
+|---|---|
+| « ★★★★★ 5,0/5 sur Google », hero et pastille du portrait | rien : ni note, ni étoiles de note, ni mention « sur Google », ni compteur d'avis |
+
+Vérifié sur les **53 routes** : 0 occurrence de `5,0/5`, de « sur Google », de compteur d'avis, de
+`Review`, d'`AggregateRating`, de `ratingValue` et de `href="#"`. Le seed `bin/seed-reassurance.php`
+n'écrit jamais `google_url` : **il ne peut pas réactiver la note**.
+
+### « Le cas échéant » — consigne du 18 août 2026
+
+La réserve ne doit plus être répétée dans plusieurs lignes d'un même bloc. Quatre blocs la posaient
+plusieurs fois ; aucune condition contractuelle n'a été retirée. Le détail des 30 occurrences
+restantes, avec leur route et leur justification, est dans **`docs/CONDITIONS-TARIFAIRES.md`**.
+
 ### Réponse directe de Quetigny — décision du 17 août 2026
 
 Les huit communes secondaires étant desservies, leur texte passe à l'affirmatif. Sept des huit

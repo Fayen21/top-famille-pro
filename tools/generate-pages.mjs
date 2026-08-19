@@ -31,6 +31,66 @@ const PAGES = [
 	{ hash: '#/recrutement', key: 'recrutement' },
 ];
 
+/**
+ * Corrections éditoriales décidées, appliquées à TOUT texte relevé dans la maquette.
+ *
+ * Le générateur reproduit le prototype ; il ne le corrige pas de lui-même. Ce qui est décidé vient
+ * ici plutôt que dans `bin/seed-fidelite-pages.php`, qui est **généré** : une correction faite dans
+ * le fichier produit serait écrasée à la régénération suivante.
+ *
+ * ## « le cas échéant », consigne du 18 août 2026
+ *
+ * La réserve ne doit plus être répétée dans plusieurs lignes d'un même bloc. Le prototype la pose
+ * deux fois dans la même phrase à deux endroits — sur la page pilier et sur la page région — à
+ * une douzaine de mots d'intervalle, ce qui la rend décorative plutôt qu'informative.
+ *
+ * **Aucune condition contractuelle n'est retirée** : les frais de mise en place, la majoration de
+ * 10 % (dimanche, jours fériés, nuit) et les indemnités de 0,35 € HT/km restent énoncés, ainsi que
+ * le renvoi au devis. C'est la réserve qui est mutualisée, pas ce qu'elle qualifie.
+ *
+ * Chaque entrée est appliquée par REMPLACEMENT EXACT. Le compte final est vérifié : si un fragment
+ * n'est plus trouvé — parce que la maquette a changé — la génération échoue au lieu de produire
+ * silencieusement un texte non corrigé.
+ */
+const CORRECTIONS_EDITORIALES = [
+	{
+		// Page pilier — bande tarifaire.
+		avant:
+			"S'y ajoutent le cas échéant 9 € HT/mois de gestion, 50 € HT de frais de mise en place, " +
+			'le cas échéant, selon les conditions précisées au devis, une majoration de 10 % ' +
+			'(dimanche, jours fériés, nuit) et 0,35 € HT/km.',
+		apres:
+			"S'y ajoutent, si prévu et indiqué au devis, 9 € HT/mois de gestion, 50 € HT de frais de " +
+			'mise en place, une majoration de 10 % (dimanche, jours fériés, nuit) et 0,35 € HT/km.',
+	},
+	{
+		// Page région — bande tarifaire.
+		avant:
+			"S'y ajoutent 9 € HT/mois de gestion pour les contrats réguliers, 50 € HT de frais de " +
+			'mise en place, le cas échéant, selon les conditions précisées au devis, et, le cas ' +
+			'échéant, des indemnités kilométriques de 0,35 € HT/km.',
+		apres:
+			"S'y ajoutent 9 € HT/mois de gestion pour les contrats réguliers, 50 € HT de frais de " +
+			'mise en place et des indemnités kilométriques de 0,35 € HT/km, lorsqu\'ils ' +
+			"s'appliquent, selon les conditions précisées au devis.",
+	},
+];
+
+/** Nombre de remplacements appliqués, contrôlé en fin de génération. */
+const comptesCorrections = CORRECTIONS_EDITORIALES.map(() => 0);
+
+/** Applique les corrections éditoriales à une chaîne relevée. */
+function corriger(texte) {
+	let sortie = String(texte ?? '');
+	CORRECTIONS_EDITORIALES.forEach((c, i) => {
+		while (sortie.includes(c.avant)) {
+			sortie = sortie.replace(c.avant, c.apres);
+			comptesCorrections[i]++;
+		}
+	});
+	return sortie;
+}
+
 function php(v, indent = '\t') {
 	if (Array.isArray(v)) {
 		if (!v.length) return 'array()';
@@ -53,7 +113,7 @@ function php(v, indent = '\t') {
 	// Un booléen sérialisé en chaîne devient `'false'`, qui est **vrai** en PHP. Bug silencieux et
 	// exactement inversé : la disposition en cartes s'appliquait partout au lieu de nulle part.
 	if (typeof v === 'boolean') return v ? 'true' : 'false';
-	return "'" + String(v ?? '').replace(/\\/g, '\\\\').replace(/'/g, "\\'") + "'";
+	return "'" + corriger(v).replace(/\\/g, '\\\\').replace(/'/g, "\\'") + "'";
 }
 
 const browser = await chromium.launch({ executablePath: '/opt/pw-browsers/chromium' });
@@ -1499,4 +1559,16 @@ for (const p of all) {
 L.push('echo "Terminé.\\n";');
 
 writeFileSync(OUT, L.join('\n') + '\n');
+CORRECTIONS_EDITORIALES.forEach((c, i) => {
+	if (comptesCorrections[i] === 0) {
+		throw new Error(
+			`correction éditoriale caduque — « ${c.avant.slice(0, 70)}… » n'existe plus dans la maquette. ` +
+				'Revoir CORRECTIONS_EDITORIALES plutôt que laisser passer un texte non corrigé.'
+		);
+	}
+});
+console.error(
+	`Corrections éditoriales appliquées : ${comptesCorrections.reduce((a, b) => a + b, 0)} ` +
+		`(${comptesCorrections.join(' + ')})`
+);
 console.error(`\nÉcrit : ${OUT}`);

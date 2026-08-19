@@ -66,7 +66,6 @@ function tfp_reassurance_defaults() {
 		 * sourcer. C'est le fichier de contenu (bin/seed-reassurance.php) qui porte la décision,
 		 * là où l'on va la chercher.
 		 */
-		'note_sans_source' => false,
 		'nombre_avis'     => '',
 		// Citation attribuée à Audrey sur l'accueil, reprise de la maquette Claude Design. Elle est
 		// administrable ici plutôt qu'écrite dans un gabarit : c'est le seul contenu du site qui
@@ -112,7 +111,6 @@ function tfp_sanitize_reassurance_settings( $input ) {
 	}
 
 	$clean['google_url'] = isset( $input['google_url'] ) ? esc_url_raw( trim( $input['google_url'] ) ) : '';
-	$clean['note_sans_source'] = ! empty( $input['note_sans_source'] );
 	$clean['citation_audrey'] = isset( $input['citation_audrey'] ) ? sanitize_textarea_field( trim( $input['citation_audrey'] ) ) : '';
 
 	if ( isset( $input['horaires_contact'] ) ) {
@@ -190,25 +188,14 @@ function tfp_render_reassurance_page() {
 					<td>
 						<input type="number" id="tfp-note" name="<?php echo esc_attr( TFP_REASSURANCE_OPTION ); ?>[note]" value="<?php echo esc_attr( $values['note'] ); ?>" min="0" max="5" step="0.1" class="small-text" aria-describedby="tfp-note-aide">
 						<p class="description" id="tfp-note-aide">
-							La note n'est affichée sur le site <strong>que si l'URL de la fiche Google ci-dessus est également renseignée</strong> :
-							une note de plateforme tierce doit rester vérifiable par le visiteur. Saisie seule, elle n'apparaît nulle part —
-							sauf si la dérogation ci-dessous est cochée.
-						</p>
-					</td>
-				</tr>
-				<tr>
-					<th scope="row">Afficher sans la fiche</th>
-					<td>
-						<label for="tfp-note-sans-source">
-							<input type="checkbox" id="tfp-note-sans-source" name="<?php echo esc_attr( TFP_REASSURANCE_OPTION ); ?>[note_sans_source]" value="1" <?php checked( ! empty( $values['note_sans_source'] ) ); ?> aria-describedby="tfp-note-sans-source-aide">
-							Afficher la note même sans URL de fiche Google
-						</label>
-						<p class="description" id="tfp-note-sans-source-aide">
-							<strong>À décocher dès que l'URL de la fiche est connue.</strong> Cochée, la note s'affiche sans que le
-							visiteur puisse remonter à sa source : c'est une décision assumée, pas un état normal. Le compteur d'avis
-							reste masqué tant que le nombre réel n'est pas saisi, aucune donnée structurée <code>Review</code> ou
-							<code>AggregateRating</code> n'est produite dans aucun cas, et le badge s'affiche sans lien plutôt qu'avec
-							un lien mort.
+							La note n'est affichée sur le site <strong>que si l'URL ci-dessus est renseignée et qu'il s'agit bien d'une
+							adresse de fiche Google</strong> (<code>google.fr/maps/…</code>, <code>maps.app.goo.gl/…</code>,
+							<code>g.page/…</code>, ou une adresse portant <code>cid=</code> / <code>place_id=</code>).
+							Saisie seule, ou accompagnée d'une adresse quelconque, la note n'apparaît nulle part.
+							<br><strong>Ce contrôle porte sur la forme de l'adresse, pas sur son contenu :</strong> vérifiez vous-même
+							que la fiche ouverte est bien celle de Top-Famille Pro. Aucun code ne peut le faire à votre place.
+							Le compteur d'avis reste masqué tant que le nombre réel n'est pas saisi, et aucune donnée structurée
+							<code>Review</code> ou <code>AggregateRating</code> n'est produite dans aucun cas.
 						</p>
 					</td>
 				</tr>
@@ -298,6 +285,59 @@ function tfp_render_reassurance_page() {
 }
 
 /**
+ * L'URL saisie est-elle celle d'une fiche Google exploitable par un visiteur ?
+ *
+ * Ce contrôle porte sur la FORME, et il faut le dire : aucun code ne peut prouver depuis le
+ * serveur qu'une fiche appartient bien à Top-Famille Pro. Ce qu'il garantit, c'est qu'une valeur
+ * quelconque — une chaîne d'attente, un `#`, l'adresse du site lui-même — ne suffit pas à faire
+ * sortir la note. La correspondance de la fiche avec l'entreprise reste une vérification humaine,
+ * rappelée à l'écran de saisie.
+ *
+ * @param string $url Valeur saisie en administration.
+ * @return bool
+ */
+function tfp_reassurance_url_fiche_valide( $url ) {
+	$url = trim( (string) $url );
+	if ( '' === $url ) {
+		return false;
+	}
+
+	$parts = wp_parse_url( $url );
+	if ( empty( $parts['scheme'] ) || empty( $parts['host'] ) || 'https' !== strtolower( $parts['scheme'] ) ) {
+		return false;
+	}
+
+	$host = strtolower( $parts['host'] );
+
+	/*
+	 * Les hôtes sous lesquels Google publie une fiche d'établissement. `google.<tld>` couvre les
+	 * domaines nationaux (google.fr, google.com) ; les trois autres sont les formes courtes que
+	 * Google génère lui-même depuis la fiche.
+	 */
+	$hotes_courts = array( 'maps.app.goo.gl', 'g.page', 'goo.gl' );
+	$est_google_maps = (bool) preg_match( '#^(www\.|maps\.|search\.)?google\.[a-z.]{2,6}$#', $host );
+
+	if ( in_array( $host, $hotes_courts, true ) ) {
+		// Forme courte : le chemin porte l'identifiant de la fiche, il ne peut pas être vide.
+		return ! empty( trim( (string) ( $parts['path'] ?? '' ), '/' ) );
+	}
+
+	if ( ! $est_google_maps ) {
+		return false;
+	}
+
+	// Sur un domaine Google, seules les adresses de fiche comptent : /maps/…, ou une requête qui
+	// désigne un établissement (`cid`, `place_id`, `ludocid`).
+	$chemin = strtolower( (string) ( $parts['path'] ?? '' ) );
+	if ( 0 === strpos( $chemin, '/maps' ) || 0 === strpos( $chemin, '/local' ) ) {
+		return true;
+	}
+
+	$requete = strtolower( (string) ( $parts['query'] ?? '' ) );
+	return (bool) preg_match( '#(^|&)(cid|place_id|ludocid)=[^&]+#', $requete );
+}
+
+/**
  * Retourne les données de réassurance réelles, ou des valeurs vides — jamais une valeur
  * fictive de repli. Ne dépend d'aucun plugin : lit directement l'option WordPress.
  *
@@ -327,20 +367,26 @@ function tfp_reassurance_data() {
 	 * administration les fait revenir partout, sans retoucher une ligne de code.
 	 */
 	/*
-	 * La note est exposée si elle est SOURÇABLE — l'URL de la fiche est saisie — ou si la
-	 * dérogation ci-dessus est explicitement activée. Dans les deux cas, ce qui suit reste vrai
-	 * quoi qu'il arrive, et n'est pas négociable par un réglage :
+	 * TROIS CONDITIONS SIMULTANÉES, sans dérogation possible par un réglage :
+	 *
+	 *  1. une note est saisie ;
+	 *  2. l'URL de la fiche est saisie et non vide ;
+	 *  3. cette URL est une adresse de fiche Google (`tfp_reassurance_url_fiche_valide`).
+	 *
+	 * La case « afficher sans la fiche » a été RETIRÉE : elle permettait d'exposer la note sans
+	 * qu'aucun visiteur puisse la contrôler, ce qui est exactement ce que la consigne interdit.
+	 *
+	 * Et quoi qu'il arrive, non négociable par aucun réglage :
 	 *
 	 *  - aucune donnée structurée `Review` ni `AggregateRating` n'est produite. Baliser comme note
 	 *    du site une note de plateforme tierce contrevient aux règles de Google sur les résultats
 	 *    enrichis, et il manque de toute façon un nombre d'avis (CLAUDE.md §5.5) ;
 	 *  - le compteur d'avis du prototype reste interdit tant que le nombre réel n'est pas saisi :
 	 *    c'est un chiffre vérifiable qui serait faux ;
-	 *  - aucun `href="#"` n'est publié à la place de l'URL de la fiche. Sans URL, le badge
-	 *    s'affiche sans lien plutôt qu'avec un lien mort.
+	 *  - aucun `href="#"` n'est publié à la place de l'URL de la fiche.
 	 */
 	$note_verifiable = '' !== $values['note']
-		&& ( '' !== trim( (string) $values['google_url'] ) || ! empty( $values['note_sans_source'] ) );
+		&& tfp_reassurance_url_fiche_valide( $values['google_url'] );
 
 	return array(
 		'google_url'       => $values['google_url'],

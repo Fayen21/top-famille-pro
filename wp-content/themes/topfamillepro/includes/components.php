@@ -170,6 +170,10 @@ function tfp_get_zone_blocks( $prefix, $post_id, $max ) {
 			continue;
 		}
 		$blocks[] = array(
+			// Rang ACF du groupe (1..$max), conservé parce que l'index dans le tableau retourné
+			// peut différer : un groupe sans titre est sauté. `single-zone.php` s'en sert pour
+			// savoir quel groupe le champ « fonctionnement » remplace.
+			'rang'   => $i,
 			'titre'  => $titre,
 			'textes' => tfp_get_lines( tfp_get_field( $prefix . '_' . $i . '_texte', $post_id ) ),
 			'liste'  => tfp_get_lines( tfp_get_field( $prefix . '_' . $i . '_liste', $post_id ) ),

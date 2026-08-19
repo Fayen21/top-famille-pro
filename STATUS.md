@@ -1502,3 +1502,65 @@ exactement les valeurs d'avant et d'après. Le rapport était périmé sur ce po
   intitulés de ligne de tableau, répétés par structure. C'est une reformulation, pas une faute :
   elle tombe sous la consigne du 10 août et attend un arbitrage.
 - Le verdict reste **`PARTIEL — ÉCARTS RESTANTS`** jusqu'à validation humaine des captures.
+
+## Complément G26 — contenu, ACF et installeur (18 août 2026)
+
+Rapport détaillé en 8 points : `docs/RAPPORT-G26-COMPLEMENT.md`.
+
+### Fait
+
+**Le champ ACF `fonctionnement` alimente enfin une section servie.** Il était enregistré, éditable
+sur les 26 zones, rempli — et affiché nulle part : `single-zone.php` le lisait (ligne 35) sans
+jamais l'écrire. Il pilote maintenant le chapitre de méthode que la maquette consacre au
+fonctionnement sur chaque zone, désigné **par son titre** dans `SECTION_FONCTIONNEMENT`
+(`tools/generate-zones.mjs`) — si le titre disparaît de la maquette, la génération échoue. Le seed
+écrit `fonctionnement` et `fonctionnement_bloc` ; le gabarit sert l'un **ou** le repli, jamais les
+deux. Quatre départements n'ont pas de chapitre « fonctionnement » : c'est leur chapitre
+d'organisation qui est désigné, faute d'équivalent plus proche, et c'est signalé.
+
+**Note Google masquée à nouveau.** La dérogation « Afficher sans la fiche » est supprimée : elle
+permettait exactement ce que la consigne du 18 août interdit. La garde exige trois conditions
+simultanées — note saisie, URL non vide, URL de **forme** « fiche Google ». Limite énoncée : ce
+contrôle ne prouve pas l'appartenance de la fiche, aucun code ne le peut, et l'écran de saisie le
+dit. `bin/seed-reassurance.php` n'écrit jamais `google_url` : il ne peut pas réactiver la note.
+
+**« Le cas échéant » réduit.** Quatre blocs la répétaient — dont la bande des budgets de `/tarifs/`,
+qui la posait **quatre fois** (chapeau + trois intitulés de ligne). Une note unique, visible et
+rattachée au tableau par `aria-describedby`, la porte désormais. Aucune condition contractuelle
+retirée. 30 occurrences restent, toutes uniques dans leur bloc, documentées route par route dans
+`docs/CONDITIONS-TARIFAIRES.md`.
+
+**La dérive du paquet d'installation ne peut plus passer inaperçue.**
+`tools/verifier-parite-installeur.mjs` compare le dépôt et la livraison — seeds (dans les trois
+sens), fichiers exigés nommément, CSS/JS reconstruits à part et comparés octet par octet, manifeste
+d'images, archives — et échoue en nommant les chemins. Joué par la suite **et** avant chaque export.
+Trois fixtures d'avarie prouvent qu'il détecte un seed absent, une copie modifiée et une feuille
+distribuée en retard. `tools/build-paquets.mjs` reconstruit les deux archives depuis l'arbre de
+travail, sur la liste des fichiers suivis par git.
+
+Ce contrôle a trouvé, en s'installant, que `topfamillepro-theme.zip` embarquait **143 images sur
+les 378** que son manifeste réclame — un déploiement depuis cette archive aurait servi des `srcset`
+vers des fichiers absents. Corrigé.
+
+### Contrôles
+
+- Suite complète : **1223 verts**, 0 échec (1156 + 67 nouveaux).
+- Parité dépôt ↔ livraison : **1279 fichiers comparés par empreinte**, 0 manquant, 0 divergent.
+- 53 routes × 16 motifs interdits : **0 occurrence** (note, compteur, `Review`, `AggregateRating`,
+  `ratingValue`, `href="#"`, fautes §9, anciens tarifs).
+- `diff-text` : **0 bloc de texte manquant**, 146 écarts nommés.
+- Baseline régénérée : **318/318 contrôles**, 298 dans 95-105 %, 0 débordement, 0 erreur console.
+- 112 comparaisons régénérées : 212 ratios, **19 hors bande** — les mêmes qu'avant la passe, tous
+  documentés. Les deux que la note Google avait fait sortir le 17 août sont rentrés.
+- Huit communes : `index,follow` et au sitemap (26 zones), décision du 17 août confirmée le 18.
+- Témoins de non-complaisance : gabarit d'avant → **7 échecs sur 8** au test du champ ACF ; trois
+  fixtures d'avarie → contrôle de parité en échec sur les trois.
+
+### Reste à faire
+
+- URL de la fiche Google, nombre réel d'avis : toujours non fournis. Note et compteur invisibles.
+- Photo d'Audrey et citation : provisoires ; la citation fait parler une personne réelle et reste à
+  valider par l'intéressée avant mise en ligne.
+- `CLAUDE.md` §5.5 énonce toujours la note comme affichable : contradiction **signalée**, à trancher.
+- « Aucun simulateur » et « agences fictives » : corrections §9 différées, non touchées.
+- Verdict **`PARTIEL — ÉCARTS RESTANTS`** jusqu'à validation humaine des captures.

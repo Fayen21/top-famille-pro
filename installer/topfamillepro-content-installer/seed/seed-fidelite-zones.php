@@ -103,6 +103,11 @@ if ( empty( $posts ) ) {
 		'Nous ne réalisons ni nettoyage industriel lourd, ni nettoyage de chaînes de production, ni nettoyage agroalimentaire spécialisé, ni bio-nettoyage hospitalier, ni traitement chimique, ni désamiantage, ni intervention en locaux à risque. Ces prestations exigent des protocoles et des habilitations spécifiques que nous n\'avons pas.',
 	) ), $id );
 	tfp_seed_set_field( 'methode_3_liste', '', $id );
+	tfp_seed_set_field( 'fonctionnement', implode( "\n", array(
+		'Depuis Saint-Apollinaire, l\'agglomération dijonnaise fait partie de nos secteurs prioritaires. L\'organisation de plusieurs sites sur une même matinée y est étudiée selon le planning ; la faisabilité d\'une prestation courte est étudiée au cas par cas, selon l\'adresse et le planning.',
+		'Sur les secteurs plus éloignés du département, le regroupement des interventions sur une même journée est étudié selon le planning, avec des créneaux plus longs. Les éventuelles indemnités kilométriques dépendent de l\'adresse des locaux, du planning et des conditions d\'intervention. Elles sont précisées dans le devis.',
+	) ), $id );
+	tfp_seed_set_field( 'fonctionnement_bloc', 2, $id );
 	tfp_seed_set_field( 'locaux_1_titre', 'Nos villes d\'intervention dans le département', $id );
 	tfp_seed_set_field( 'locaux_1_texte', '', $id );
 	tfp_seed_set_field( 'locaux_1_type', 'villes', $id );
@@ -233,6 +238,11 @@ if ( empty( $posts ) ) {
 		'En ponctuel, nous intervenons pour des remises en état après travaux, des fins de bail, des ouvertures de local ou un grand nettoyage saisonnier. Sur Besançon, ces interventions demandent un peu plus de délai de programmation qu\'en Côte-d\'Or : nous confirmons la date au devis.',
 	) ), $id );
 	tfp_seed_set_field( 'methode_3_liste', '', $id );
+	tfp_seed_set_field( 'fonctionnement', implode( "\n", array(
+		'Besançon est à environ une heure de route de notre adresse. Cela change la façon d\'organiser le travail : nous ne pouvons pas proposer un passage de trente minutes, et nous évitons les interventions isolées non planifiées. En revanche, un créneau régulier, fixé à l\'avance, avec un volume d\'heures suffisant, fonctionne très bien.',
+		'Concrètement, le regroupement des passages sur un même secteur est étudié selon le planning, l\'intervenant pouvant enchaîner plusieurs prestations sur le secteur. Le taux horaire reste de 27 € HT/h dans toute la région. Les éventuelles indemnités kilométriques dépendent de l\'adresse des locaux, du planning et des conditions d\'intervention. Elles sont précisées dans le devis.',
+	) ), $id );
+	tfp_seed_set_field( 'fonctionnement_bloc', 2, $id );
 	tfp_seed_set_field( 'locaux_1_titre', 'Nos villes d\'intervention dans le département', $id );
 	tfp_seed_set_field( 'locaux_1_texte', '', $id );
 	tfp_seed_set_field( 'locaux_1_type', 'villes', $id );
@@ -362,6 +372,11 @@ if ( empty( $posts ) ) {
 		'Les consignes s\'affinent au fil des premiers passages : ordre de passage, points sensibles, éléments à ne pas déplacer, matériel laissé sur site. Nous faisons ensuite un point avec vous, par téléphone ou sur place. Toute adaptation du volume horaire ou de l\'organisation est discutée avec vous avant d\'être appliquée, et fait l\'objet d\'un devis actualisé.',
 	) ), $id );
 	tfp_seed_set_field( 'methode_3_liste', '', $id );
+	tfp_seed_set_field( 'fonctionnement', implode( "\n", array(
+		'Sur Dole, une visite préalable est généralement organisée. Sur Lons-le-Saunier, nous procédons souvent par échange détaillé complété de photos, puis nous ajustons après les premiers passages : c\'est plus honnête que d\'annoncer un volume d\'heures approximatif au téléphone.',
+		'Chaque site dispose d\'un cahier de liaison où l\'intervenant note ce qui a été fait et ce qui mérite votre attention. Nous cherchons à maintenir le même intervenant d\'une semaine sur l\'autre et vous prévenons en cas de changement, avec transmission écrite des consignes au remplaçant.',
+	) ), $id );
+	tfp_seed_set_field( 'fonctionnement_bloc', 1, $id );
 	tfp_seed_set_field( 'locaux_1_titre', 'Nos villes d\'intervention dans le département', $id );
 	tfp_seed_set_field( 'locaux_1_texte', '', $id );
 	tfp_seed_set_field( 'locaux_1_type', 'villes', $id );
@@ -492,6 +507,11 @@ if ( empty( $posts ) ) {
 		'Si l\'un des trois ne passe pas, nous vous le disons et nous proposons une alternative : autre créneau, fréquence différente, regroupement de passages. Et si aucune solution n\'est tenable, nous préférons refuser plutôt que d\'installer une prestation qui se dégradera au bout de deux mois. C\'est aussi pour cela que nos plannings nivernais tiennent dans le temps.',
 	) ), $id );
 	tfp_seed_set_field( 'methode_3_liste', '', $id );
+	tfp_seed_set_field( 'fonctionnement', implode( "\n", array(
+		'Nevers fait partie de nos secteurs éloignés. Cela impose une discipline : créneaux réguliers, volumes d\'heures regroupés, plannings convenus à l\'avance. En contrepartie, la prestation est stable et l\'intervenant connaît le site, ce qui compte beaucoup pour un immeuble ou un cabinet.',
+		'Nous ne proposons pas ici de passages courts et improvisés : ce serait une promesse intenable. Si votre besoin est ponctuel et urgent, dites-le franchement au téléphone — nous vous répondrons aussi franchement sur notre capacité à le tenir.',
+	) ), $id );
+	tfp_seed_set_field( 'fonctionnement_bloc', 1, $id );
 	tfp_seed_set_field( 'locaux_1_titre', 'Nos villes d\'intervention dans le département', $id );
 	tfp_seed_set_field( 'locaux_1_texte', '', $id );
 	tfp_seed_set_field( 'locaux_1_type', 'villes', $id );
@@ -620,6 +640,11 @@ if ( empty( $posts ) ) {
 		'Les consommables — papier, savon, sacs — peuvent être gérés par vous ou par nous. Dans le second cas, ils sont refacturés au prix d\'achat, sans marge, et le cahier de liaison signale les niveaux bas avant la rupture. C\'est un détail qui évite les appels du lundi matin.',
 	) ), $id );
 	tfp_seed_set_field( 'methode_3_liste', '', $id );
+	tfp_seed_set_field( 'fonctionnement', implode( "\n", array(
+		'La majorité de nos prestations haut-saônoises se déroule en dehors des heures d\'ouverture. Cela suppose une organisation d\'accès formalisée : remise de clé ou de badge contre décharge écrite, code d\'alarme consigné, procédure de fermeture rappelée dans le cahier des charges. Nous ne conservons aucun accès sans document signé.',
+		'En cas de changement d\'intervenant, la remise des accès est refaite dans les mêmes conditions et vous en êtes informé. Les interventions de nuit, le dimanche et les jours fériés font l\'objet d\'une majoration de 10 %, indiquée au devis dès qu\'elle s\'applique.',
+	) ), $id );
+	tfp_seed_set_field( 'fonctionnement_bloc', 1, $id );
 	tfp_seed_set_field( 'locaux_1_titre', 'Nos villes d\'intervention dans le département', $id );
 	tfp_seed_set_field( 'locaux_1_texte', '', $id );
 	tfp_seed_set_field( 'locaux_1_type', 'villes', $id );
@@ -742,6 +767,11 @@ if ( empty( $posts ) ) {
 		'En ponctuel, nous intervenons pour des remises en état après travaux, des fins de bail, des ouvertures de local et des grands nettoyages saisonniers. Le tourisme viticole génère aussi des demandes sur les locations meublées entre deux séjours, à programmer à l\'avance en haute saison.',
 	) ), $id );
 	tfp_seed_set_field( 'methode_3_liste', '', $id );
+	tfp_seed_set_field( 'fonctionnement', implode( "\n", array(
+		'Une visite est organisée sur les deux bassins dès que la configuration le justifie : nous relevons les surfaces, les revêtements, les contraintes d\'accès et d\'horaires, puis nous rédigeons un cahier des charges détaillé, espace par espace. Le devis suit sous 24 heures avec un volume d\'heures argumenté.',
+		'Les intervenants sont recrutés et suivis par Audrey. Nous cherchons à confier chaque site au même intervenant sur la durée ; en cas d\'absence ou de départ, nous cherchons un remplaçant, lui transmettons les consignes écrites et vous prévenons du changement. Un point de suivi permet d\'ajuster ce qui doit l\'être.',
+	) ), $id );
+	tfp_seed_set_field( 'fonctionnement_bloc', 2, $id );
 	tfp_seed_set_field( 'locaux_1_titre', 'Nos villes d\'intervention dans le département', $id );
 	tfp_seed_set_field( 'locaux_1_texte', '', $id );
 	tfp_seed_set_field( 'locaux_1_type', 'villes', $id );
@@ -871,6 +901,11 @@ if ( empty( $posts ) ) {
 		'Les éventuelles indemnités kilométriques dépendent de l\'adresse des locaux, du planning et des conditions d\'intervention. Elles sont précisées dans le devis. Rien n\'apparaît après signature : s\'il faut ajouter une prestation, elle fait l\'objet d\'un devis complémentaire que vous validez avant intervention.',
 	) ), $id );
 	tfp_seed_set_field( 'methode_3_liste', '', $id );
+	tfp_seed_set_field( 'fonctionnement', implode( "\n", array(
+		'Sur ce département, la mise en place commence souvent par un échange détaillé complété de photos ou d\'un plan, puis par une visite lorsque le volume le justifie. Le cahier des charges liste les espaces, les tâches par passage et les tâches périodiques : c\'est le document de référence pour vous comme pour l\'intervenant.',
+		'Le suivi s\'appuie sur un cahier de liaison sur site et un point de suivi avec Audrey. Vous n\'avez pas besoin d\'être présent pendant l\'intervention pour savoir ce qui a été fait : ce qui a été traité et ce qui mérite votre attention y sont notés à chaque passage.',
+	) ), $id );
+	tfp_seed_set_field( 'fonctionnement_bloc', 1, $id );
 	tfp_seed_set_field( 'locaux_1_titre', 'Nos villes d\'intervention dans le département', $id );
 	tfp_seed_set_field( 'locaux_1_texte', '', $id );
 	tfp_seed_set_field( 'locaux_1_type', 'villes', $id );
@@ -999,6 +1034,11 @@ if ( empty( $posts ) ) {
 		'Le premier passage se fait en présence d\'Audrey ou avec un point téléphonique dans la journée, pour valider le circuit, les accès et les consignes de sécurité du site. Les premiers passages permettent de vérifier l\'adéquation entre le cahier des charges, le temps prévu et les contraintes des locaux. Si un écart significatif est constaté, Top-Famille Pro échange avec le client et peut proposer une adaptation de l\'organisation ou du volume horaire.',
 	) ), $id );
 	tfp_seed_set_field( 'methode_3_liste', '', $id );
+	tfp_seed_set_field( 'fonctionnement', implode( "\n", array(
+		'Une fois le devis accepté, l\'organisation du planning est l\'étape qui demande le plus de préparation sur un département éloigné. Le délai de démarrage dépend des disponibilités, de l\'adresse, du volume horaire et de l\'organisation nécessaire. Il est confirmé lors de l\'établissement du devis. Nous vous confirmons alors la date du premier passage et le nom de l\'intervenant recherché pour le site.',
+		'Le premier passage se fait en présence d\'Audrey ou avec un point téléphonique dans la journée, pour valider le circuit, les accès et les consignes de sécurité du site. Les premiers passages permettent de vérifier l\'adéquation entre le cahier des charges, le temps prévu et les contraintes des locaux. Si un écart significatif est constaté, Top-Famille Pro échange avec le client et peut proposer une adaptation de l\'organisation ou du volume horaire.',
+	) ), $id );
+	tfp_seed_set_field( 'fonctionnement_bloc', 3, $id );
 	tfp_seed_set_field( 'locaux_1_titre', 'Nos villes d\'intervention dans le département', $id );
 	tfp_seed_set_field( 'locaux_1_texte', '', $id );
 	tfp_seed_set_field( 'locaux_1_type', 'villes', $id );
@@ -1145,6 +1185,11 @@ if ( empty( $posts ) ) {
 		'En cas d\'absence, de congés ou de départ, nous cherchons une solution de remplacement, transmettons les consignes écrites au remplaçant et vous informons du changement. Nous ne garantissons pas une continuité automatique — personne ne peut le faire honnêtement. Chaque site dispose d\'un cahier de liaison, et un point de suivi permet d\'ajuster ce qui doit l\'être.',
 	) ), $id );
 	tfp_seed_set_field( 'methode_4_liste', '', $id );
+	tfp_seed_set_field( 'fonctionnement', implode( "\n", array(
+		'Les intervenants sont recrutés par Audrey, en entretien individuel, avec vérification des références et une période d\'observation sur site. Nous cherchons à confier votre site au même intervenant d\'une semaine sur l\'autre : c\'est la régularité, plus que la longueur de la liste de tâches, qui fait la qualité perçue.',
+		'En cas d\'absence, de congés ou de départ, nous cherchons une solution de remplacement, transmettons les consignes écrites au remplaçant et vous informons du changement. Nous ne garantissons pas une continuité automatique — personne ne peut le faire honnêtement. Chaque site dispose d\'un cahier de liaison, et un point de suivi permet d\'ajuster ce qui doit l\'être.',
+	) ), $id );
+	tfp_seed_set_field( 'fonctionnement_bloc', 4, $id );
 	tfp_seed_set_field( 'locaux_1_titre', 'Nos prestations sur place', $id );
 	tfp_seed_set_field( 'locaux_1_texte', implode( "\n", array(
 		'Même méthode que partout ailleurs : celle de notre page nettoyage professionnel, avec le tarif de 27 € HT/h.',
@@ -1313,6 +1358,11 @@ if ( empty( $posts ) ) {
 		'En cas d\'absence, de congés ou de départ, nous cherchons un remplacement, lui transmettons les consignes écrites et vous informons du changement. Nous ne promettons pas de continuité garantie. Le cahier de liaison sur site et le point de suivi avec Audrey permettent de suivre la prestation sans avoir à être présent.',
 	) ), $id );
 	tfp_seed_set_field( 'methode_4_liste', '', $id );
+	tfp_seed_set_field( 'fonctionnement', implode( "\n", array(
+		'Les intervenants sont recrutés et suivis par Audrey, avec vérification des références et observation sur site lors des premiers passages. Sur Besançon comme ailleurs, nous cherchons à confier votre site au même intervenant sur la durée : c\'est ce qui permet de repérer ce qu\'une liste de tâches ne dit pas.',
+		'En cas d\'absence, de congés ou de départ, nous cherchons un remplacement, lui transmettons les consignes écrites et vous informons du changement. Nous ne promettons pas de continuité garantie. Le cahier de liaison sur site et le point de suivi avec Audrey permettent de suivre la prestation sans avoir à être présent.',
+	) ), $id );
+	tfp_seed_set_field( 'fonctionnement_bloc', 4, $id );
 	tfp_seed_set_field( 'locaux_1_titre', 'Nos prestations sur place', $id );
 	tfp_seed_set_field( 'locaux_1_texte', implode( "\n", array(
 		'Même méthode que partout ailleurs : celle de notre page nettoyage professionnel, avec le tarif de 27 € HT/h.',
@@ -1488,6 +1538,11 @@ if ( empty( $posts ) ) {
 		'Les premiers passages permettent de vérifier l\'adéquation entre le cahier des charges, le temps prévu et les contraintes des locaux. Si un écart significatif est constaté, Top-Famille Pro échange avec le client et peut proposer une adaptation de l\'organisation ou du volume horaire. Si nous avons sous-estimé le temps nécessaire, nous vous le disons et nous corrigeons le devis : c\'est plus honnête que de réduire discrètement la liste des tâches pour tenir le budget annoncé.',
 	) ), $id );
 	tfp_seed_set_field( 'methode_4_liste', '', $id );
+	tfp_seed_set_field( 'fonctionnement', implode( "\n", array(
+		'Les intervenants sont recrutés par Audrey, avec vérification des références et une période d\'observation sur site. Sur Dole, nous cherchons à confier chaque site au même intervenant d\'une semaine sur l\'autre : pour un commerce ouvert six jours sur sept, la régularité de la personne compte autant que la liste des tâches.',
+		'En cas d\'absence, de congés ou de départ, nous cherchons un remplacement, transmettons les consignes écrites au remplaçant et vous informons du changement. Aucune continuité automatique n\'est promise. Le cahier de liaison sur site et le point de suivi permettent d\'ajuster la prestation au fil des semaines.',
+	) ), $id );
+	tfp_seed_set_field( 'fonctionnement_bloc', 3, $id );
 	tfp_seed_set_field( 'locaux_1_titre', 'Nos prestations sur place', $id );
 	tfp_seed_set_field( 'locaux_1_texte', implode( "\n", array(
 		'Même méthode que partout ailleurs : celle de notre page nettoyage professionnel, avec le tarif de 27 € HT/h.',
@@ -1661,6 +1716,11 @@ if ( empty( $posts ) ) {
 		'Les consommables — papier, savon, sacs — sont gérés par vous ou par nous, au choix. Dans le second cas, ils sont refacturés au prix d\'achat, sans marge, et le cahier de liaison signale les niveaux bas avant la rupture plutôt qu\'après. Sur un secteur où nous ne passons qu\'une ou deux fois par semaine, cette anticipation compte.',
 	) ), $id );
 	tfp_seed_set_field( 'methode_4_liste', '', $id );
+	tfp_seed_set_field( 'fonctionnement', implode( "\n", array(
+		'Les intervenants sont recrutés par Audrey, en entretien individuel, avec vérification des références et observation sur site lors des premiers passages. Nous cherchons à confier chaque site au même intervenant sur la durée : sur un secteur éloigné, la stabilité de la personne est ce qui évite les allers-retours et les rappels de consignes.',
+		'En cas d\'absence, de congés ou de départ, nous cherchons une solution de remplacement, transmettons les consignes écrites et vous informons du changement — sans promettre une continuité garantie. Le cahier de liaison sur site et le point de suivi avec Audrey servent de fil conducteur, sans que vous ayez à être présent.',
+	) ), $id );
+	tfp_seed_set_field( 'fonctionnement_bloc', 3, $id );
 	tfp_seed_set_field( 'locaux_1_titre', 'Nos prestations sur place', $id );
 	tfp_seed_set_field( 'locaux_1_texte', implode( "\n", array(
 		'Même méthode que partout ailleurs : celle de notre page nettoyage professionnel, avec le tarif de 27 € HT/h.',
@@ -1833,6 +1893,11 @@ if ( empty( $posts ) ) {
 		'Pour une copropriété, s\'ajoute le détail du circuit étage par étage et le calendrier de sortie des bacs. Rien n\'apparaît après signature : toute prestation supplémentaire fait l\'objet d\'un devis complémentaire que vous validez avant intervention. Aucun engagement de durée n\'est demandé, et l\'arrêt se fait avec un simple préavis écrit.',
 	) ), $id );
 	tfp_seed_set_field( 'methode_4_liste', '', $id );
+	tfp_seed_set_field( 'fonctionnement', implode( "\n", array(
+		'Les intervenants sont recrutés par Audrey, avec vérification des références et observation lors des premiers passages. Sur un immeuble, la stabilité de l\'intervenant compte particulièrement : c\'est en revenant chaque semaine que l\'on remarque une ampoule grillée, un encombrant déposé dans le local ou une porte qui ferme mal.',
+		'En cas d\'absence, de congés ou de départ, nous cherchons un remplacement, lui transmettons les consignes écrites et vous informons du changement. Aucune continuité automatique n\'est garantie. Le cahier de liaison, laissé sur site, sert de trace pour le syndic comme pour le conseil syndical.',
+	) ), $id );
+	tfp_seed_set_field( 'fonctionnement_bloc', 2, $id );
 	tfp_seed_set_field( 'locaux_1_titre', 'Nos prestations sur place', $id );
 	tfp_seed_set_field( 'locaux_1_texte', implode( "\n", array(
 		'Même méthode que partout ailleurs : celle de notre page nettoyage professionnel, avec le tarif de 27 € HT/h.',
@@ -2006,6 +2071,11 @@ if ( empty( $posts ) ) {
 		'Si nous nous en chargeons, ils sont refacturés au prix d\'achat, sans marge, et le cahier de liaison signale les niveaux bas avant la rupture. Le matériel, lui, est fourni par nos soins et dédié par zone — code couleur distinct pour les sanitaires — sauf si votre site impose ses propres références, ce qui est alors inscrit au cahier des charges.',
 	) ), $id );
 	tfp_seed_set_field( 'methode_4_liste', '', $id );
+	tfp_seed_set_field( 'fonctionnement', implode( "\n", array(
+		'Les intervenants sont recrutés par Audrey, en entretien individuel, avec vérification des références et observation sur site lors des premiers passages. Sur un site accessible par badge, en soirée, la stabilité de l\'intervenant est encore plus importante qu\'ailleurs : elle évite de reprendre à zéro les consignes d\'accès et de fermeture.',
+		'En cas d\'absence, de congés ou de départ, nous cherchons une solution de remplacement, transmettons les consignes écrites et vous informons du changement, sans promettre une continuité automatique. Le cahier de liaison et le point de suivi avec Audrey permettent de suivre la prestation à distance.',
+	) ), $id );
+	tfp_seed_set_field( 'fonctionnement_bloc', 3, $id );
 	tfp_seed_set_field( 'locaux_1_titre', 'Nos prestations sur place', $id );
 	tfp_seed_set_field( 'locaux_1_texte', implode( "\n", array(
 		'Même méthode que partout ailleurs : celle de notre page nettoyage professionnel, avec le tarif de 27 € HT/h.',
@@ -2178,6 +2248,11 @@ if ( empty( $posts ) ) {
 		'Un point est ensuite organisé avec Audrey, par téléphone ou sur place, selon les modalités de suivi définies avec le client. Si le volume d\'heures est mal calibré, nous corrigeons le devis dans un sens ou dans l\'autre plutôt que de laisser la prestation se dégrader. Toute évolution de l\'organisation ou du volume horaire est discutée avec vous avant d\'être appliquée et fait l\'objet d\'un devis actualisé.',
 	) ), $id );
 	tfp_seed_set_field( 'methode_4_liste', '', $id );
+	tfp_seed_set_field( 'fonctionnement', implode( "\n", array(
+		'Les intervenants sont recrutés par Audrey, avec vérification des références et une période d\'observation sur site. Nous cherchons à confier chaque site chalonnais au même intervenant d\'une semaine sur l\'autre : pour un commerce ouvert six jours sur sept comme pour un bureau d\'études, c\'est la régularité qui fait la qualité perçue.',
+		'En cas d\'absence, de congés ou de départ, nous cherchons une solution de remplacement, transmettons les consignes écrites au remplaçant et vous informons du changement. Nous ne promettons pas de continuité garantie. Le cahier de liaison sur site et le point de suivi permettent d\'ajuster la prestation dans le temps.',
+	) ), $id );
+	tfp_seed_set_field( 'fonctionnement_bloc', 3, $id );
 	tfp_seed_set_field( 'locaux_1_titre', 'Nos prestations sur place', $id );
 	tfp_seed_set_field( 'locaux_1_texte', implode( "\n", array(
 		'Même méthode que partout ailleurs : celle de notre page nettoyage professionnel, avec le tarif de 27 € HT/h.',
@@ -2350,6 +2425,11 @@ if ( empty( $posts ) ) {
 		'Si l\'un des trois ne passe pas, nous proposons une alternative — autre créneau, fréquence différente, regroupement de passages — et si rien n\'est tenable, nous préférons le dire. Un prestataire qui accepte tout finit par décaler, annuler et changer d\'intervenant tous les mois : c\'est la principale raison pour laquelle une entreprise change de prestataire.',
 	) ), $id );
 	tfp_seed_set_field( 'methode_4_liste', '', $id );
+	tfp_seed_set_field( 'fonctionnement', implode( "\n", array(
+		'Les intervenants sont recrutés par Audrey, en entretien individuel, avec vérification des références et observation sur site lors des premiers passages. Nous cherchons à confier chaque site au même intervenant sur la durée : pour un cabinet qui reçoit des clients, la discrétion et la connaissance des lieux comptent autant que la propreté.',
+		'En cas d\'absence, de congés ou de départ, nous cherchons une solution de remplacement, transmettons les consignes écrites et vous informons du changement, sans promettre une continuité automatique. Le cahier de liaison sur site et le point de suivi avec Audrey assurent le suivi sans que vous ayez à être présent.',
+	) ), $id );
+	tfp_seed_set_field( 'fonctionnement_bloc', 3, $id );
 	tfp_seed_set_field( 'locaux_1_titre', 'Nos prestations sur place', $id );
 	tfp_seed_set_field( 'locaux_1_texte', implode( "\n", array(
 		'Même méthode que partout ailleurs : celle de notre page nettoyage professionnel, avec le tarif de 27 € HT/h.',
@@ -2522,6 +2602,11 @@ if ( empty( $posts ) ) {
 		'Dans les cabinets et les espaces recevant du public, les surfaces de contact courantes font l\'objet d\'un entretien courant selon le cahier des charges. Si votre structure impose ses propres références de produits, nous les utilisons et cela figure au cahier des charges. Les consommables peuvent être gérés par vous ou par nous, refacturés au prix d\'achat, avec signalement des niveaux bas au cahier de liaison.',
 	) ), $id );
 	tfp_seed_set_field( 'methode_4_liste', '', $id );
+	tfp_seed_set_field( 'fonctionnement', implode( "\n", array(
+		'Les intervenants sont recrutés par Audrey, avec vérification des références et observation sur site lors des premiers passages. Sur un secteur éloigné comme celui-ci, nous cherchons particulièrement à stabiliser l\'affectation : un intervenant qui connaît le site, les accès et les consignes fait gagner du temps à tout le monde.',
+		'En cas d\'absence, de congés ou de départ, nous cherchons une solution de remplacement, lui transmettons les consignes écrites et vous informons du changement. Nous ne promettons pas de continuité garantie : nous nous engageons à informer et à transmettre, ce qui est tenable.',
+	) ), $id );
+	tfp_seed_set_field( 'fonctionnement_bloc', 3, $id );
 	tfp_seed_set_field( 'locaux_1_titre', 'Nos prestations sur place', $id );
 	tfp_seed_set_field( 'locaux_1_texte', implode( "\n", array(
 		'Même méthode que partout ailleurs : celle de notre page nettoyage professionnel, avec le tarif de 27 € HT/h.',
@@ -2695,6 +2780,11 @@ if ( empty( $posts ) ) {
 		'Les éventuelles indemnités kilométriques dépendent de l\'adresse des locaux, du planning et des conditions d\'intervention. Elles sont précisées dans le devis. Les consignes de sécurité du site sont annexées. Rien n\'apparaît après signature : toute prestation supplémentaire passe par un devis complémentaire que vous validez avant intervention.',
 	) ), $id );
 	tfp_seed_set_field( 'methode_4_liste', '', $id );
+	tfp_seed_set_field( 'fonctionnement', implode( "\n", array(
+		'Les intervenants sont recrutés par Audrey, en entretien individuel, avec vérification des références et une période d\'observation sur site. Sur un site soumis à des consignes de sécurité, la stabilité de l\'intervenant est déterminante : elle évite de reprendre les procédures à chaque passage.',
+		'En cas d\'absence, de congés ou de départ, nous cherchons une solution de remplacement, transmettons les consignes écrites — y compris les consignes de sécurité du site — et vous informons du changement. Aucune continuité automatique n\'est promise. Le cahier de liaison et le point de suivi complètent le suivi.',
+	) ), $id );
+	tfp_seed_set_field( 'fonctionnement_bloc', 3, $id );
 	tfp_seed_set_field( 'locaux_1_titre', 'Nos prestations sur place', $id );
 	tfp_seed_set_field( 'locaux_1_texte', implode( "\n", array(
 		'Même méthode que partout ailleurs : celle de notre page nettoyage professionnel, avec le tarif de 27 € HT/h.',
@@ -2850,6 +2940,11 @@ if ( empty( $posts ) ) {
 		'Nous ne réalisons ni nettoyage industriel lourd, ni nettoyage de lignes de production, ni nettoyage agroalimentaire spécialisé, ni bio-nettoyage hospitalier, ni traitement chimique, ni désamiantage. La proximité ne change rien à ces limites : elle change seulement notre réactivité sur ce que nous savons faire.',
 	) ), $id );
 	tfp_seed_set_field( 'methode_3_liste', '', $id );
+	tfp_seed_set_field( 'fonctionnement', implode( "\n", array(
+		'Une visite est proposée sur la commune : nous relevons les surfaces, les revêtements, les contraintes d\'accès et d\'horaires, puis nous rédigeons un cahier des charges détaillé. Le devis suit sous 24 heures, avec un volume d\'heures argumenté plutôt qu\'une fourchette approximative.',
+		'Les intervenants sont recrutés par Audrey, avec vérification des références et observation sur site. Nous cherchons à confier chaque site au même intervenant sur la durée ; en cas d\'absence ou de départ, nous cherchons un remplacement, transmettons les consignes écrites et vous informons du changement. Un cahier de liaison reste sur place.',
+	) ), $id );
+	tfp_seed_set_field( 'fonctionnement_bloc', 1, $id );
 	tfp_seed_set_field( 'locaux_1_titre', 'Nos prestations sur place', $id );
 	tfp_seed_set_field( 'locaux_1_texte', implode( "\n", array(
 		'Même méthode que partout ailleurs : celle de notre page nettoyage professionnel, avec le tarif de 27 € HT/h.',
@@ -3002,6 +3097,11 @@ if ( empty( $posts ) ) {
 		'Meublé : à chaque changement de locataire',
 		'Grand nettoyage annuel de parties communes : sur devis',
 	) ), $id );
+	tfp_seed_set_field( 'fonctionnement', implode( "\n", array(
+		'Une visite est proposée avant tout devis : relevé des surfaces, des revêtements, des accès et des contraintes d\'horaires, puis rédaction d\'un cahier des charges détaillé et devis sous 24 heures. Pour une copropriété, le document est transmis au syndic et peut être présenté au conseil syndical.',
+		'Les intervenants sont recrutés par Audrey, avec vérification des références. Nous cherchons à maintenir le même intervenant sur le site ; en cas d\'absence ou de départ, nous cherchons un remplacement, transmettons les consignes écrites et vous informons. Un cahier de liaison reste sur place et les modalités de suivi sont définies avec le client.',
+	) ), $id );
+	tfp_seed_set_field( 'fonctionnement_bloc', 2, $id );
 	tfp_seed_set_field( 'locaux_1_titre', 'Nos prestations sur place', $id );
 	tfp_seed_set_field( 'locaux_1_texte', implode( "\n", array(
 		'Même méthode que partout ailleurs : celle de notre page nettoyage professionnel, avec le tarif de 27 € HT/h.',
@@ -3145,6 +3245,11 @@ if ( empty( $posts ) ) {
 		'Nous ne réalisons ni nettoyage industriel lourd, ni nettoyage de lignes de production, ni nettoyage agroalimentaire spécialisé, ni bio-nettoyage hospitalier, ni traitement chimique, ni désamiantage. Ces prestations demandent des protocoles et des habilitations que nous n\'avons pas, et nous le disons avant toute visite.',
 	) ), $id );
 	tfp_seed_set_field( 'methode_3_liste', '', $id );
+	tfp_seed_set_field( 'fonctionnement', implode( "\n", array(
+		'La mise en place commence par une visite : relevé des surfaces, des revêtements, des accès et des horaires souhaités, puis cahier des charges détaillé et devis sous 24 heures. Le délai de démarrage dépend des disponibilités, de l\'adresse, du volume horaire et de l\'organisation nécessaire. Il est confirmé lors de l\'établissement du devis.',
+		'Les intervenants sont recrutés par Audrey, avec vérification des références et observation sur site. Nous cherchons à confier chaque site au même intervenant sur la durée ; en cas d\'absence ou de départ, nous cherchons un remplacement, transmettons les consignes écrites et vous prévenons du changement.',
+	) ), $id );
+	tfp_seed_set_field( 'fonctionnement_bloc', 2, $id );
 	tfp_seed_set_field( 'locaux_1_titre', 'Nos prestations sur place', $id );
 	tfp_seed_set_field( 'locaux_1_texte', implode( "\n", array(
 		'Même méthode que partout ailleurs : celle de notre page nettoyage professionnel, avec le tarif de 27 € HT/h.',
@@ -3296,6 +3401,11 @@ if ( empty( $posts ) ) {
 		'Petit bureau : 1 passage par semaine',
 		'Grand nettoyage annuel de parties communes : sur devis',
 	) ), $id );
+	tfp_seed_set_field( 'fonctionnement', implode( "\n", array(
+		'Une visite précède le devis : relevé des surfaces, des revêtements, du nombre d\'étages, des accès et du calendrier de collecte, puis cahier des charges détaillé et devis sous 24 heures. Pour une copropriété, le document est transmis au syndic et peut être présenté en conseil syndical.',
+		'Les clés ou badges nécessaires — porte d\'entrée, local à conteneurs, local technique — sont remis contre décharge écrite et restitués selon la même formalité. En cas de changement d\'intervenant, la remise est refaite et vous en êtes informé. Un cahier de liaison reste sur site et les modalités de suivi sont définies avec le client.',
+	) ), $id );
+	tfp_seed_set_field( 'fonctionnement_bloc', 2, $id );
 	tfp_seed_set_field( 'locaux_1_titre', 'Nos prestations sur place', $id );
 	tfp_seed_set_field( 'locaux_1_texte', implode( "\n", array(
 		'Même méthode que partout ailleurs : celle de notre page nettoyage professionnel, avec le tarif de 27 € HT/h.',
@@ -3446,6 +3556,11 @@ if ( empty( $posts ) ) {
 		'Parties communes : 1 passage hebdomadaire',
 		'Vitrages intérieurs et moquettes : périodique, chiffré à part',
 	) ), $id );
+	tfp_seed_set_field( 'fonctionnement', implode( "\n", array(
+		'Une visite précède le devis : relevé des surfaces, des revêtements, des accès, des horaires possibles et des consignes de sécurité éventuelles du site. Le cahier des charges est ensuite rédigé espace par espace, et le devis transmis sous 24 heures, avec un volume d\'heures argumenté.',
+		'La plupart des interventions se déroulent hors présence : la clé ou le badge est remis contre décharge écrite, avec le code d\'alarme consigné et la procédure de fermeture rappelée par écrit. Les consignes de sécurité propres au site sont annexées au cahier des charges et rappelées aux remplaçants.',
+	) ), $id );
+	tfp_seed_set_field( 'fonctionnement_bloc', 2, $id );
 	tfp_seed_set_field( 'locaux_1_titre', 'Nos prestations sur place', $id );
 	tfp_seed_set_field( 'locaux_1_texte', implode( "\n", array(
 		'Même méthode que partout ailleurs : celle de notre page nettoyage professionnel, avec le tarif de 27 € HT/h.',
@@ -3603,6 +3718,11 @@ if ( empty( $posts ) ) {
 		'Les premiers passages permettent de vérifier l\'adéquation entre le cahier des charges, le temps prévu et les contraintes des locaux. Si un écart significatif est constaté, Top-Famille Pro échange avec le client et peut proposer une adaptation de l\'organisation ou du volume horaire. Nous corrigeons alors le devis plutôt que de réduire silencieusement la liste des tâches, et toute évolution vous est proposée avant d\'être appliquée.',
 	) ), $id );
 	tfp_seed_set_field( 'methode_3_liste', '', $id );
+	tfp_seed_set_field( 'fonctionnement', implode( "\n", array(
+		'Une visite précède le devis : relevé des surfaces, des revêtements, des accès et des horaires souhaités, puis rédaction d\'un cahier des charges espace par espace et devis sous 24 heures, sans engagement de durée.',
+		'Les intervenants sont recrutés par Audrey, avec vérification des références et observation sur site lors des premiers passages. Nous cherchons à confier chaque site au même intervenant ; en cas d\'absence ou de départ, nous cherchons un remplacement, transmettons les consignes écrites et vous informons du changement.',
+	) ), $id );
+	tfp_seed_set_field( 'fonctionnement_bloc', 1, $id );
 	tfp_seed_set_field( 'locaux_1_titre', 'Nos prestations sur place', $id );
 	tfp_seed_set_field( 'locaux_1_texte', implode( "\n", array(
 		'Même méthode que partout ailleurs : celle de notre page nettoyage professionnel, avec le tarif de 27 € HT/h.',
@@ -3748,6 +3868,11 @@ if ( empty( $posts ) ) {
 		'Les intervenants sont recrutés par Audrey, avec vérification des références et observation sur site. Nous cherchons à maintenir le même intervenant sur la durée ; en cas d\'absence ou de départ, nous cherchons un remplacement, transmettons les consignes écrites et vous informons du changement. Un cahier de liaison reste sur place.',
 	) ), $id );
 	tfp_seed_set_field( 'methode_3_liste', '', $id );
+	tfp_seed_set_field( 'fonctionnement', implode( "\n", array(
+		'Une visite précède le devis : relevé des surfaces, des revêtements — pierre, carrelage ancien, parquet —, des accès et des horaires d\'ouverture au public, puis cahier des charges espace par espace et devis sous 24 heures, sans engagement de durée.',
+		'Les intervenants sont recrutés par Audrey, avec vérification des références et observation sur site. Nous cherchons à maintenir le même intervenant sur la durée ; en cas d\'absence ou de départ, nous cherchons un remplacement, transmettons les consignes écrites et vous informons du changement. Un cahier de liaison reste sur place.',
+	) ), $id );
+	tfp_seed_set_field( 'fonctionnement_bloc', 3, $id );
 	tfp_seed_set_field( 'locaux_1_titre', 'Nos prestations sur place', $id );
 	tfp_seed_set_field( 'locaux_1_texte', implode( "\n", array(
 		'Même méthode que partout ailleurs : celle de notre page nettoyage professionnel, avec le tarif de 27 € HT/h.',
@@ -3892,6 +4017,11 @@ if ( empty( $posts ) ) {
 		'La saisonnalité beaunoise est forte : nous en tenons compte dans le contrat, en prévoyant la possibilité d\'ajuster la fréquence entre haute et basse saison plutôt que de facturer douze mois au rythme de juillet. Un cahier de liaison reste sur site et les modalités de suivi sont définies avec le client.',
 	) ), $id );
 	tfp_seed_set_field( 'methode_3_liste', '', $id );
+	tfp_seed_set_field( 'fonctionnement', implode( "\n", array(
+		'Une visite précède le devis : surfaces, revêtements, accès, horaires d\'ouverture et contraintes de circulation dans le centre. Les éventuelles indemnités kilométriques dépendent de l\'adresse des locaux, du planning et des conditions d\'intervention. Elles sont précisées dans le devis.',
+		'La saisonnalité beaunoise est forte : nous en tenons compte dans le contrat, en prévoyant la possibilité d\'ajuster la fréquence entre haute et basse saison plutôt que de facturer douze mois au rythme de juillet. Un cahier de liaison reste sur site et les modalités de suivi sont définies avec le client.',
+	) ), $id );
+	tfp_seed_set_field( 'fonctionnement_bloc', 3, $id );
 	tfp_seed_set_field( 'locaux_1_titre', 'Nos prestations sur place', $id );
 	tfp_seed_set_field( 'locaux_1_texte', implode( "\n", array(
 		'Même méthode que partout ailleurs : celle de notre page nettoyage professionnel, avec le tarif de 27 € HT/h.',

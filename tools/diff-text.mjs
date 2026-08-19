@@ -95,6 +95,26 @@ const CORRECTIONS_VOULUES = [
 	},
 	{ maquette: '47 avis', raison: 'CLAUDE.md §5.5 — compteur d’avis non confirmé' },
 	{
+		maquette: '5,0/5',
+		raison:
+			'Consigne du 18 août 2026 — la note Google n’est pas affichée tant qu’une fiche officielle ' +
+			'vérifiable de Top-Famille Pro n’est pas fournie. La garde exige trois conditions ' +
+			'simultanées (note saisie, URL non vide, URL de forme « fiche Google ») : la note revient ' +
+			"d'elle-même le jour où la fiche est saisie, sans toucher au code.",
+	},
+	{
+		maquette: 'sur Google',
+		raison: 'Consigne du 18 août 2026 — voir ci-dessus : aucune mention de la note tant qu’elle n’est pas vérifiable',
+	},
+	{
+		maquette: 'le cas échéant',
+		raison:
+			'Consigne du 18 août 2026 — la réserve ne doit plus être répétée dans plusieurs lignes d’un ' +
+			'même bloc. Aucune condition contractuelle n’est retirée : mise en place, majoration de 10 % ' +
+			'(dimanche, jours fériés, nuit) et 0,35 € HT/km restent énoncés, la réserve est mutualisée. ' +
+			'Voir docs/CONDITIONS-TARIFAIRES.md.',
+	},
+	{
 		maquette: 'lorsque prévu dans le cahier des charges',
 		raison:
 			'CLAUDE.md §9 — accords corrigés : « sont possible lorsque prévu … et chiffré » devient ' +
