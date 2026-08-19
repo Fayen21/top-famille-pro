@@ -31,6 +31,7 @@ function tfp_enqueue_assets() {
 		$css_version
 	);
 
+
 	wp_enqueue_script(
 		'topfamillepro',
 		TFP_THEME_URI . '/assets/dist/js/main.js',
@@ -76,21 +77,27 @@ add_action( 'wp_enqueue_scripts', 'tfp_enqueue_assets' );
  * ce qui en a besoin ; celui-ci sert le premier écran de chacune des 53 routes.
  */
 function tfp_preload_fonts() {
+	/*
+	 * DEUX fichiers, et toutes les graisses.
+	 *
+	 * Les deux familles sont des polices variables : un seul fichier par famille porte 400 à 800.
+	 * Il en était téléchargé jusqu'à SEPT — le même fichier variable, servi sous sept noms — parce
+	 * que Google, interrogé graisse par graisse, renvoie quinze déclarations pointant toutes vers
+	 * le même woff2. Cela pesait 264 Ko sur les 341 Ko de l'accueil, soit 78 % du poids de la page
+	 * pour deux polices, et c'était le premier facteur du LCP mobile.
+	 *
+	 * Le préchargement reste indispensable, et pour la raison mesurée en G24 : sans lui, l'en-tête
+	 * passe de 48 à 73 px au remplacement de police et toute la page remonte de 25 px — un CLS de
+	 * 0,25. Deux fichiers suffisent désormais à couvrir ce que quatre couvraient, et ils couvrent
+	 * même davantage : toutes les graisses du premier écran arrivent ensemble.
+	 *
+	 * Seul le sous-ensemble `latin` est préchargé. `latin-ext` ne sert qu'aux caractères qui en
+	 * relèvent, que le premier écran ne contient pas ; le navigateur ne le charge d'ailleurs que
+	 * s'il en rencontre un.
+	 */
 	$polices = array(
-		'bricolage-grotesque-800-latin.woff2',
-		'hanken-grotesk-400-latin.woff2',
-		// Semi-gras : les deux boutons de l'en-tête, présents au premier écran des 53 routes.
-		// Sans lui, ils s'affichaient d'abord dans la police système, plus large : ils passaient
-		// sur deux lignes, l'en-tête faisait 73 px au lieu de 48, et **toute la page** remontait
-		// de 25 px au remplacement. C'était l'origine du CLS de 0,25 mesuré en profil bureau —
-		// le décalage était relevé sur le hero, mais il venait de l'en-tête au-dessus.
-		'hanken-grotesk-600-latin.woff2',
-		// Gras : les `strong` de la barre haute (« 27 € », « 5,0/5 »), présents au premier écran
-		// des 53 routes. Dernière graisse du premier écran encore en swap tardif : sa permutation
-		// refluait la barre haute et décalait toute la page sous elle (sonde CLS G24, fenêtres de
-		// session — sources .tfp-topbar__rating / .tfp-topbar__offer). Préchargée + optional,
-		// comme les deux autres.
-		'hanken-grotesk-700-latin.woff2',
+		'bricolage-grotesque-variable-latin.woff2',
+		'hanken-grotesk-variable-latin.woff2',
 	);
 	foreach ( $polices as $fichier ) {
 		printf(

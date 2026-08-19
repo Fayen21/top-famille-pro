@@ -98,3 +98,72 @@ test.describe( 'Relevé de base — plage de fidélité', () => {
 		expect( fautes ).toEqual( [] );
 	} );
 } );
+
+/**
+ * Poids des polices — le premier facteur du LCP mobile (G27 §11).
+ *
+ * ## Pourquoi ce contrôle existe
+ *
+ * L'accueil pesait 341 Ko, **dont 264 Ko de polices** : sept fichiers pour deux familles, tous de
+ * tailles rigoureusement identiques d'une graisse à l'autre. Ce n'étaient pas sept polices — c'était
+ * le même fichier variable téléchargé sept fois, parce que Google, interrogé graisse par graisse,
+ * renvoie quinze déclarations pointant vers trois URL, et que le téléchargeur en faisait quinze
+ * fichiers de noms différents.
+ *
+ * Une seule ligne de `build/fetch-fonts.mjs` peut ramener ce défaut — repasser d'une plage
+ * (`wght@400..800`) à une liste (`wght@400;500;…`) — et rien ne le signalerait : le site
+ * s'afficherait exactement pareil, en quatre fois plus lourd. D'où ce contrôle sur le rendu servi.
+ */
+test.describe( 'Polices — un fichier par famille, pas un par graisse', () => {
+	test( 'le premier écran ne charge que deux fichiers de police', async ( { page } ) => {
+		const polices = [];
+		page.on( 'request', ( r ) => {
+			if ( /\.woff2?(\?|$)/.test( r.url() ) ) polices.push( r.url().split( '/' ).pop() );
+		} );
+
+		await page.goto( '/', { waitUntil: 'networkidle' } );
+
+		expect(
+			polices.length,
+			`fichiers de police chargés : ${ polices.join( ', ' ) } — la famille doit être servie en ` +
+				'variable, un fichier par sous-ensemble'
+		).toBeLessThanOrEqual( 2 );
+
+		// Et ce sont bien les fichiers variables, pas deux graisses parmi d'autres.
+		for ( const f of polices ) {
+			expect( f, `${ f } : nom de fichier par graisse, la police n’est plus variable` ).toContain(
+				'variable'
+			);
+		}
+	} );
+
+	test( 'chaque @font-face déclare une PLAGE de graisses', async ( { page } ) => {
+		await page.goto( '/' );
+		const faces = await page.evaluate( () => {
+			const out = [];
+			for ( const f of document.styleSheets ) {
+				let regles;
+				try {
+					regles = f.cssRules;
+				} catch {
+					continue;
+				}
+				for ( const r of regles ) {
+					if ( r.constructor.name === 'CSSFontFaceRule' ) {
+						out.push( { famille: r.style.fontFamily, poids: r.style.fontWeight } );
+					}
+				}
+			}
+			return out;
+		} );
+
+		expect( faces.length, 'aucune déclaration @font-face relevée : le contrôle ne mesure rien' ).toBeGreaterThan( 0 );
+		for ( const f of faces ) {
+			expect(
+				f.poids,
+				`${ f.famille } déclare une graisse fixe (${ f.poids }) : un fichier par graisse revient, ` +
+					'et avec lui 264 Ko de doublons'
+			).toMatch( /\d+\s+\d+/ );
+		}
+	} );
+} );

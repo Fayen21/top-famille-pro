@@ -115,15 +115,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 3084,
+   "ms": 3005,
    "phases": {
-    "bascule": 1110,
-    "stabRef": 649,
-    "releveRef": 10,
-    "chargementWp": 695,
-    "stabWp": 610,
-    "releveWp": 8,
-    "cls": 1
+    "bascule": 1112,
+    "stabRef": 611,
+    "releveRef": 9,
+    "chargementWp": 649,
+    "stabWp": 614,
+    "releveWp": 7,
+    "cls": 3
    }
   },
   "375": {
@@ -241,13 +241,13 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 3016,
+   "ms": 2993,
    "phases": {
-    "bascule": 1108,
-    "stabRef": 578,
+    "bascule": 1115,
+    "stabRef": 580,
     "releveRef": 8,
-    "chargementWp": 700,
-    "stabWp": 612,
+    "chargementWp": 666,
+    "stabWp": 614,
     "releveWp": 7,
     "cls": 3
    }
@@ -367,15 +367,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2773,
+   "ms": 2724,
    "phases": {
     "bascule": 1108,
-    "stabRef": 457,
+    "stabRef": 465,
     "releveRef": 8,
-    "chargementWp": 702,
-    "stabWp": 489,
-    "releveWp": 7,
-    "cls": 2
+    "chargementWp": 643,
+    "stabWp": 490,
+    "releveWp": 9,
+    "cls": 1
    }
   },
   "1024": {
@@ -493,15 +493,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2678,
+   "ms": 2601,
    "phases": {
-    "bascule": 1109,
-    "stabRef": 416,
-    "releveRef": 10,
-    "chargementWp": 731,
-    "stabWp": 401,
-    "releveWp": 8,
-    "cls": 3
+    "bascule": 1108,
+    "stabRef": 399,
+    "releveRef": 7,
+    "chargementWp": 677,
+    "stabWp": 399,
+    "releveWp": 9,
+    "cls": 2
    }
   },
   "1440": {
@@ -616,18 +616,18 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0003,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2662,
+   "ms": 2581,
    "phases": {
-    "bascule": 1113,
-    "stabRef": 404,
-    "releveRef": 8,
-    "chargementWp": 730,
-    "stabWp": 398,
-    "releveWp": 8,
-    "cls": 1
+    "bascule": 1107,
+    "stabRef": 400,
+    "releveRef": 7,
+    "chargementWp": 658,
+    "stabWp": 399,
+    "releveWp": 7,
+    "cls": 3
    }
   },
   "1920": {
@@ -742,18 +742,18 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0002,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2626,
+   "ms": 2592,
    "phases": {
     "bascule": 1111,
-    "stabRef": 399,
-    "releveRef": 8,
-    "chargementWp": 697,
-    "stabWp": 401,
-    "releveWp": 9,
-    "cls": 1
+    "stabRef": 402,
+    "releveRef": 7,
+    "chargementWp": 664,
+    "stabWp": 399,
+    "releveWp": 7,
+    "cls": 2
    }
   }
  },
@@ -904,14 +904,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 3595,
+   "ms": 3566,
    "phases": {
     "bascule": 1106,
-    "stabRef": 882,
-    "releveRef": 10,
-    "chargementWp": 670,
-    "stabWp": 914,
-    "releveWp": 11,
+    "stabRef": 883,
+    "releveRef": 9,
+    "chargementWp": 642,
+    "stabWp": 916,
+    "releveWp": 8,
     "cls": 2
    }
   },
@@ -1061,15 +1061,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 3463,
+   "ms": 3414,
    "phases": {
-    "bascule": 1105,
-    "stabRef": 821,
-    "releveRef": 10,
-    "chargementWp": 689,
-    "stabWp": 825,
-    "releveWp": 11,
-    "cls": 2
+    "bascule": 1106,
+    "stabRef": 822,
+    "releveRef": 9,
+    "chargementWp": 642,
+    "stabWp": 823,
+    "releveWp": 9,
+    "cls": 3
    }
   },
   "768": {
@@ -1218,14 +1218,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 3039,
+   "ms": 2978,
    "phases": {
-    "bascule": 1108,
-    "stabRef": 609,
-    "releveRef": 10,
-    "chargementWp": 686,
+    "bascule": 1106,
+    "stabRef": 610,
+    "releveRef": 8,
+    "chargementWp": 630,
     "stabWp": 612,
-    "releveWp": 12,
+    "releveWp": 10,
     "cls": 2
    }
   },
@@ -1375,15 +1375,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2867,
+   "ms": 2811,
    "phases": {
-    "bascule": 1108,
-    "stabRef": 519,
-    "releveRef": 10,
-    "chargementWp": 695,
-    "stabWp": 520,
-    "releveWp": 12,
-    "cls": 3
+    "bascule": 1106,
+    "stabRef": 516,
+    "releveRef": 9,
+    "chargementWp": 648,
+    "stabWp": 519,
+    "releveWp": 11,
+    "cls": 2
    }
   },
   "1440": {
@@ -1529,18 +1529,18 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0003,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2832,
+   "ms": 2819,
    "phases": {
-    "bascule": 1108,
-    "stabRef": 517,
-    "releveRef": 7,
-    "chargementWp": 667,
-    "stabWp": 519,
-    "releveWp": 11,
-    "cls": 3
+    "bascule": 1106,
+    "stabRef": 516,
+    "releveRef": 8,
+    "chargementWp": 632,
+    "stabWp": 542,
+    "releveWp": 13,
+    "cls": 2
    }
   },
   "1920": {
@@ -1686,18 +1686,18 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0002,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2889,
+   "ms": 2819,
    "phases": {
-    "bascule": 1113,
-    "stabRef": 527,
-    "releveRef": 9,
-    "chargementWp": 706,
-    "stabWp": 523,
-    "releveWp": 9,
-    "cls": 2
+    "bascule": 1108,
+    "stabRef": 517,
+    "releveRef": 10,
+    "chargementWp": 650,
+    "stabWp": 520,
+    "releveWp": 13,
+    "cls": 1
    }
   }
  },
@@ -1776,15 +1776,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2577,
+   "ms": 2650,
    "phases": {
-    "bascule": 1105,
-    "stabRef": 396,
+    "bascule": 1106,
+    "stabRef": 397,
     "releveRef": 4,
-    "chargementWp": 638,
-    "stabWp": 428,
+    "chargementWp": 703,
+    "stabWp": 431,
     "releveWp": 5,
-    "cls": 1
+    "cls": 3
    }
   },
   "375": {
@@ -1861,15 +1861,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2589,
+   "ms": 2519,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 412,
-    "releveRef": 7,
-    "chargementWp": 659,
+    "bascule": 1109,
+    "stabRef": 396,
+    "releveRef": 4,
+    "chargementWp": 606,
     "stabWp": 398,
-    "releveWp": 4,
-    "cls": 3
+    "releveWp": 5,
+    "cls": 1
    }
   },
   "768": {
@@ -1943,15 +1943,15 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0025,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2379,
+   "ms": 2338,
    "phases": {
-    "bascule": 1109,
+    "bascule": 1107,
     "stabRef": 305,
     "releveRef": 5,
-    "chargementWp": 646,
+    "chargementWp": 607,
     "stabWp": 307,
     "releveWp": 5,
     "cls": 2
@@ -2028,18 +2028,18 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0005,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2304,
+   "ms": 2291,
    "phases": {
-    "bascule": 1108,
-    "stabRef": 275,
+    "bascule": 1105,
+    "stabRef": 274,
     "releveRef": 4,
-    "chargementWp": 634,
+    "chargementWp": 624,
     "stabWp": 277,
     "releveWp": 5,
-    "cls": 1
+    "cls": 2
    }
   },
   "1440": {
@@ -2113,18 +2113,18 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0007,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2246,
+   "ms": 2248,
    "phases": {
     "bascule": 1107,
-    "stabRef": 244,
+    "stabRef": 245,
     "releveRef": 4,
-    "chargementWp": 639,
-    "stabWp": 247,
+    "chargementWp": 640,
+    "stabWp": 246,
     "releveWp": 4,
-    "cls": 1
+    "cls": 2
    }
   },
   "1920": {
@@ -2198,16 +2198,16 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0004,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2260,
+   "ms": 2240,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 244,
+    "bascule": 1107,
+    "stabRef": 245,
     "releveRef": 3,
-    "chargementWp": 654,
-    "stabWp": 246,
+    "chargementWp": 632,
+    "stabWp": 247,
     "releveWp": 4,
     "cls": 2
    }
@@ -2326,13 +2326,13 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 3125,
+   "ms": 3109,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 669,
+    "bascule": 1107,
+    "stabRef": 670,
     "releveRef": 9,
-    "chargementWp": 659,
-    "stabWp": 671,
+    "chargementWp": 640,
+    "stabWp": 672,
     "releveWp": 9,
     "cls": 2
    }
@@ -2449,14 +2449,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 3065,
+   "ms": 3018,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 638,
-    "releveRef": 8,
-    "chargementWp": 659,
-    "stabWp": 642,
-    "releveWp": 9,
+    "bascule": 1107,
+    "stabRef": 639,
+    "releveRef": 11,
+    "chargementWp": 610,
+    "stabWp": 641,
+    "releveWp": 8,
     "cls": 2
    }
   },
@@ -2572,15 +2572,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2711,
+   "ms": 2651,
    "phases": {
-    "bascule": 1107,
+    "bascule": 1106,
     "stabRef": 457,
-    "releveRef": 11,
-    "chargementWp": 668,
+    "releveRef": 7,
+    "chargementWp": 612,
     "stabWp": 458,
-    "releveWp": 9,
-    "cls": 1
+    "releveWp": 8,
+    "cls": 3
    }
   },
   "1024": {
@@ -2695,14 +2695,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2593,
+   "ms": 2556,
    "phases": {
-    "bascule": 1107,
-    "stabRef": 426,
-    "releveRef": 8,
-    "chargementWp": 645,
-    "stabWp": 397,
-    "releveWp": 9,
+    "bascule": 1106,
+    "stabRef": 427,
+    "releveRef": 7,
+    "chargementWp": 610,
+    "stabWp": 398,
+    "releveWp": 7,
     "cls": 1
    }
   },
@@ -2815,18 +2815,18 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0003,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2584,
+   "ms": 2547,
    "phases": {
-    "bascule": 1106,
+    "bascule": 1108,
     "stabRef": 396,
-    "releveRef": 7,
-    "chargementWp": 669,
-    "stabWp": 397,
-    "releveWp": 8,
-    "cls": 1
+    "releveRef": 8,
+    "chargementWp": 627,
+    "stabWp": 398,
+    "releveWp": 7,
+    "cls": 3
    }
   },
   "1920": {
@@ -2938,16 +2938,16 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0002,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2576,
+   "ms": 2545,
    "phases": {
-    "bascule": 1107,
-    "stabRef": 395,
-    "releveRef": 7,
-    "chargementWp": 660,
-    "stabWp": 397,
+    "bascule": 1110,
+    "stabRef": 396,
+    "releveRef": 8,
+    "chargementWp": 623,
+    "stabWp": 398,
     "releveWp": 8,
     "cls": 2
    }
@@ -3066,15 +3066,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 3045,
+   "ms": 3032,
    "phases": {
-    "bascule": 1107,
+    "bascule": 1105,
     "stabRef": 639,
     "releveRef": 8,
-    "chargementWp": 640,
-    "stabWp": 642,
+    "chargementWp": 627,
+    "stabWp": 643,
     "releveWp": 8,
-    "cls": 1
+    "cls": 2
    }
   },
   "375": {
@@ -3189,14 +3189,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2983,
+   "ms": 2988,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 608,
+    "bascule": 1107,
+    "stabRef": 609,
     "releveRef": 8,
-    "chargementWp": 638,
+    "chargementWp": 642,
     "stabWp": 611,
-    "releveWp": 10,
+    "releveWp": 9,
     "cls": 2
    }
   },
@@ -3312,15 +3312,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2709,
+   "ms": 2676,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 457,
+    "bascule": 1107,
+    "stabRef": 458,
     "releveRef": 7,
-    "chargementWp": 666,
-    "stabWp": 464,
-    "releveWp": 8,
-    "cls": 1
+    "chargementWp": 637,
+    "stabWp": 458,
+    "releveWp": 7,
+    "cls": 2
    }
   },
   "1024": {
@@ -3435,15 +3435,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2566,
+   "ms": 2534,
    "phases": {
     "bascule": 1105,
-    "stabRef": 396,
+    "stabRef": 395,
     "releveRef": 7,
-    "chargementWp": 652,
-    "stabWp": 397,
-    "releveWp": 7,
-    "cls": 2
+    "chargementWp": 620,
+    "stabWp": 398,
+    "releveWp": 6,
+    "cls": 3
    }
   },
   "1440": {
@@ -3555,16 +3555,16 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0003,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2563,
+   "ms": 2562,
    "phases": {
-    "bascule": 1105,
+    "bascule": 1106,
     "stabRef": 396,
-    "releveRef": 6,
-    "chargementWp": 650,
-    "stabWp": 397,
+    "releveRef": 11,
+    "chargementWp": 642,
+    "stabWp": 398,
     "releveWp": 8,
     "cls": 1
    }
@@ -3678,18 +3678,18 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0002,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2593,
+   "ms": 2539,
    "phases": {
     "bascule": 1106,
-    "stabRef": 396,
+    "stabRef": 397,
     "releveRef": 7,
-    "chargementWp": 675,
-    "stabWp": 397,
-    "releveWp": 11,
-    "cls": 1
+    "chargementWp": 620,
+    "stabWp": 398,
+    "releveWp": 8,
+    "cls": 3
    }
   }
  },
@@ -3812,14 +3812,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 3178,
+   "ms": 3212,
    "phases": {
-    "bascule": 1105,
-    "stabRef": 701,
-    "releveRef": 9,
-    "chargementWp": 650,
-    "stabWp": 702,
-    "releveWp": 9,
+    "bascule": 1106,
+    "stabRef": 700,
+    "releveRef": 8,
+    "chargementWp": 639,
+    "stabWp": 746,
+    "releveWp": 11,
     "cls": 2
    }
   },
@@ -3941,14 +3941,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 3063,
+   "ms": 3028,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 638,
+    "bascule": 1107,
+    "stabRef": 639,
     "releveRef": 10,
-    "chargementWp": 659,
-    "stabWp": 641,
-    "releveWp": 7,
+    "chargementWp": 618,
+    "stabWp": 642,
+    "releveWp": 10,
     "cls": 2
    }
   },
@@ -4070,15 +4070,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2774,
+   "ms": 2730,
    "phases": {
-    "bascule": 1107,
-    "stabRef": 487,
+    "bascule": 1108,
+    "stabRef": 488,
     "releveRef": 8,
-    "chargementWp": 671,
-    "stabWp": 489,
-    "releveWp": 10,
-    "cls": 2
+    "chargementWp": 626,
+    "stabWp": 490,
+    "releveWp": 7,
+    "cls": 3
    }
   },
   "1024": {
@@ -4199,15 +4199,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2622,
+   "ms": 2599,
    "phases": {
     "bascule": 1106,
-    "stabRef": 426,
-    "releveRef": 8,
-    "chargementWp": 642,
-    "stabWp": 427,
-    "releveWp": 11,
-    "cls": 2
+    "stabRef": 427,
+    "releveRef": 7,
+    "chargementWp": 621,
+    "stabWp": 429,
+    "releveWp": 6,
+    "cls": 3
    }
   },
   "1440": {
@@ -4325,17 +4325,17 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0003,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2660,
+   "ms": 2621,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 425,
+    "bascule": 1108,
+    "stabRef": 447,
     "releveRef": 7,
-    "chargementWp": 684,
-    "stabWp": 427,
-    "releveWp": 9,
+    "chargementWp": 620,
+    "stabWp": 429,
+    "releveWp": 8,
     "cls": 2
    }
   },
@@ -4454,18 +4454,18 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0002,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2625,
+   "ms": 2611,
    "phases": {
-    "bascule": 1105,
+    "bascule": 1107,
     "stabRef": 426,
     "releveRef": 8,
-    "chargementWp": 647,
-    "stabWp": 429,
-    "releveWp": 9,
-    "cls": 1
+    "chargementWp": 634,
+    "stabWp": 427,
+    "releveWp": 7,
+    "cls": 2
    }
   }
  },
@@ -4582,14 +4582,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 3137,
+   "ms": 3107,
    "phases": {
-    "bascule": 1105,
-    "stabRef": 692,
-    "releveRef": 9,
-    "chargementWp": 645,
-    "stabWp": 671,
-    "releveWp": 13,
+    "bascule": 1108,
+    "stabRef": 670,
+    "releveRef": 7,
+    "chargementWp": 624,
+    "stabWp": 688,
+    "releveWp": 8,
     "cls": 2
    }
   },
@@ -4705,14 +4705,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 3140,
+   "ms": 2992,
    "phases": {
-    "bascule": 1105,
-    "stabRef": 674,
-    "releveRef": 9,
-    "chargementWp": 672,
-    "stabWp": 668,
-    "releveWp": 10,
+    "bascule": 1107,
+    "stabRef": 609,
+    "releveRef": 8,
+    "chargementWp": 615,
+    "stabWp": 642,
+    "releveWp": 9,
     "cls": 2
    }
   },
@@ -4828,14 +4828,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2734,
+   "ms": 2685,
    "phases": {
     "bascule": 1106,
-    "stabRef": 456,
-    "releveRef": 9,
-    "chargementWp": 663,
-    "stabWp": 488,
-    "releveWp": 9,
+    "stabRef": 457,
+    "releveRef": 7,
+    "chargementWp": 609,
+    "stabWp": 493,
+    "releveWp": 10,
     "cls": 3
    }
   },
@@ -4951,14 +4951,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2606,
+   "ms": 2552,
    "phases": {
-    "bascule": 1110,
+    "bascule": 1119,
     "stabRef": 396,
-    "releveRef": 11,
-    "chargementWp": 678,
+    "releveRef": 7,
+    "chargementWp": 620,
     "stabWp": 398,
-    "releveWp": 11,
+    "releveWp": 10,
     "cls": 2
    }
   },
@@ -5071,15 +5071,15 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0003,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2572,
+   "ms": 2531,
    "phases": {
-    "bascule": 1107,
+    "bascule": 1106,
     "stabRef": 395,
-    "releveRef": 8,
-    "chargementWp": 654,
+    "releveRef": 7,
+    "chargementWp": 615,
     "stabWp": 398,
     "releveWp": 8,
     "cls": 2
@@ -5194,18 +5194,18 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0002,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2579,
+   "ms": 2538,
    "phases": {
-    "bascule": 1133,
-    "stabRef": 396,
-    "releveRef": 7,
-    "chargementWp": 636,
-    "stabWp": 397,
+    "bascule": 1107,
+    "stabRef": 397,
+    "releveRef": 6,
+    "chargementWp": 621,
+    "stabWp": 398,
     "releveWp": 8,
-    "cls": 2
+    "cls": 1
    }
   }
  },
@@ -5322,15 +5322,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 3131,
+   "ms": 3084,
    "phases": {
-    "bascule": 1107,
-    "stabRef": 670,
-    "releveRef": 8,
-    "chargementWp": 665,
+    "bascule": 1106,
+    "stabRef": 676,
+    "releveRef": 9,
+    "chargementWp": 610,
     "stabWp": 672,
     "releveWp": 8,
-    "cls": 1
+    "cls": 3
    }
   },
   "375": {
@@ -5445,14 +5445,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 3060,
+   "ms": 3010,
    "phases": {
     "bascule": 1106,
-    "stabRef": 640,
-    "releveRef": 7,
-    "chargementWp": 655,
-    "stabWp": 641,
-    "releveWp": 9,
+    "stabRef": 639,
+    "releveRef": 9,
+    "chargementWp": 607,
+    "stabWp": 640,
+    "releveWp": 7,
     "cls": 2
    }
   },
@@ -5568,14 +5568,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2707,
+   "ms": 2692,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 456,
+    "bascule": 1107,
+    "stabRef": 457,
     "releveRef": 7,
-    "chargementWp": 641,
-    "stabWp": 488,
-    "releveWp": 7,
+    "chargementWp": 621,
+    "stabWp": 490,
+    "releveWp": 8,
     "cls": 2
    }
   },
@@ -5691,15 +5691,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2595,
+   "ms": 2581,
    "phases": {
     "bascule": 1106,
-    "stabRef": 427,
-    "releveRef": 8,
-    "chargementWp": 647,
-    "stabWp": 398,
-    "releveWp": 8,
-    "cls": 1
+    "stabRef": 426,
+    "releveRef": 6,
+    "chargementWp": 635,
+    "stabWp": 399,
+    "releveWp": 7,
+    "cls": 2
    }
   },
   "1440": {
@@ -5811,17 +5811,17 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0003,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2593,
+   "ms": 2528,
    "phases": {
-    "bascule": 1106,
+    "bascule": 1105,
     "stabRef": 396,
-    "releveRef": 8,
-    "chargementWp": 675,
-    "stabWp": 398,
-    "releveWp": 8,
+    "releveRef": 7,
+    "chargementWp": 612,
+    "stabWp": 399,
+    "releveWp": 7,
     "cls": 2
    }
   },
@@ -5934,18 +5934,18 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0002,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2604,
+   "ms": 2530,
    "phases": {
     "bascule": 1105,
-    "stabRef": 397,
-    "releveRef": 10,
-    "chargementWp": 682,
-    "stabWp": 400,
-    "releveWp": 9,
-    "cls": 1
+    "stabRef": 396,
+    "releveRef": 6,
+    "chargementWp": 615,
+    "stabWp": 399,
+    "releveWp": 7,
+    "cls": 2
    }
   }
  },
@@ -6062,15 +6062,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 3129,
+   "ms": 3099,
    "phases": {
     "bascule": 1107,
-    "stabRef": 670,
-    "releveRef": 8,
-    "chargementWp": 663,
-    "stabWp": 672,
-    "releveWp": 8,
-    "cls": 1
+    "stabRef": 671,
+    "releveRef": 9,
+    "chargementWp": 630,
+    "stabWp": 673,
+    "releveWp": 7,
+    "cls": 2
    }
   },
   "375": {
@@ -6185,15 +6185,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 3052,
+   "ms": 2970,
    "phases": {
-    "bascule": 1108,
-    "stabRef": 610,
-    "releveRef": 11,
-    "chargementWp": 673,
-    "stabWp": 640,
-    "releveWp": 9,
-    "cls": 1
+    "bascule": 1107,
+    "stabRef": 609,
+    "releveRef": 7,
+    "chargementWp": 625,
+    "stabWp": 611,
+    "releveWp": 8,
+    "cls": 2
    }
   },
   "768": {
@@ -6308,15 +6308,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2690,
+   "ms": 2664,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 456,
+    "bascule": 1108,
+    "stabRef": 457,
     "releveRef": 7,
-    "chargementWp": 654,
-    "stabWp": 458,
+    "chargementWp": 623,
+    "stabWp": 459,
     "releveWp": 8,
-    "cls": 1
+    "cls": 2
    }
   },
   "1024": {
@@ -6431,15 +6431,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2597,
+   "ms": 2528,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 408,
-    "releveRef": 9,
-    "chargementWp": 668,
+    "bascule": 1107,
+    "stabRef": 396,
+    "releveRef": 6,
+    "chargementWp": 611,
     "stabWp": 398,
-    "releveWp": 7,
-    "cls": 1
+    "releveWp": 8,
+    "cls": 2
    }
   },
   "1440": {
@@ -6551,18 +6551,18 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0003,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2570,
+   "ms": 2515,
    "phases": {
-    "bascule": 1107,
+    "bascule": 1106,
     "stabRef": 396,
-    "releveRef": 9,
-    "chargementWp": 649,
-    "stabWp": 397,
-    "releveWp": 11,
-    "cls": 1
+    "releveRef": 6,
+    "chargementWp": 600,
+    "stabWp": 398,
+    "releveWp": 6,
+    "cls": 3
    }
   },
   "1920": {
@@ -6674,18 +6674,18 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0002,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2586,
+   "ms": 2559,
    "phases": {
-    "bascule": 1108,
+    "bascule": 1106,
     "stabRef": 396,
-    "releveRef": 7,
-    "chargementWp": 664,
-    "stabWp": 402,
-    "releveWp": 8,
-    "cls": 1
+    "releveRef": 9,
+    "chargementWp": 627,
+    "stabWp": 412,
+    "releveWp": 7,
+    "cls": 2
    }
   }
  },
@@ -6800,15 +6800,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2699,
+   "ms": 2660,
    "phases": {
     "bascule": 1109,
-    "stabRef": 459,
-    "releveRef": 7,
-    "chargementWp": 655,
-    "stabWp": 459,
-    "releveWp": 9,
-    "cls": 1
+    "stabRef": 457,
+    "releveRef": 6,
+    "chargementWp": 618,
+    "stabWp": 460,
+    "releveWp": 7,
+    "cls": 3
    }
   },
   "375": {
@@ -6921,13 +6921,13 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2695,
+   "ms": 2612,
    "phases": {
     "bascule": 1107,
-    "stabRef": 428,
-    "releveRef": 8,
-    "chargementWp": 681,
-    "stabWp": 460,
+    "stabRef": 427,
+    "releveRef": 6,
+    "chargementWp": 602,
+    "stabWp": 459,
     "releveWp": 9,
     "cls": 2
    }
@@ -7042,15 +7042,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2500,
+   "ms": 2466,
    "phases": {
     "bascule": 1106,
-    "stabRef": 365,
+    "stabRef": 367,
     "releveRef": 8,
-    "chargementWp": 643,
-    "stabWp": 367,
-    "releveWp": 10,
-    "cls": 1
+    "chargementWp": 605,
+    "stabWp": 369,
+    "releveWp": 9,
+    "cls": 2
    }
   },
   "1024": {
@@ -7163,15 +7163,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2427,
+   "ms": 2405,
    "phases": {
-    "bascule": 1107,
-    "stabRef": 334,
+    "bascule": 1108,
+    "stabRef": 335,
     "releveRef": 6,
-    "chargementWp": 635,
-    "stabWp": 336,
-    "releveWp": 8,
-    "cls": 1
+    "chargementWp": 607,
+    "stabWp": 337,
+    "releveWp": 10,
+    "cls": 2
    }
   },
   "1440": {
@@ -7281,17 +7281,17 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0003,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2443,
+   "ms": 2404,
    "phases": {
-    "bascule": 1108,
-    "stabRef": 335,
-    "releveRef": 8,
-    "chargementWp": 644,
+    "bascule": 1106,
+    "stabRef": 343,
+    "releveRef": 6,
+    "chargementWp": 603,
     "stabWp": 337,
-    "releveWp": 10,
+    "releveWp": 8,
     "cls": 1
    }
   },
@@ -7402,18 +7402,18 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0002,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2445,
+   "ms": 2394,
    "phases": {
     "bascule": 1106,
     "stabRef": 335,
-    "releveRef": 6,
-    "chargementWp": 644,
+    "releveRef": 5,
+    "chargementWp": 601,
     "stabWp": 338,
-    "releveWp": 14,
-    "cls": 2
+    "releveWp": 6,
+    "cls": 3
    }
   }
  },
@@ -7527,15 +7527,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2965,
+   "ms": 2947,
    "phases": {
     "bascule": 1106,
-    "stabRef": 608,
-    "releveRef": 7,
-    "chargementWp": 653,
+    "stabRef": 610,
+    "releveRef": 6,
+    "chargementWp": 634,
     "stabWp": 580,
     "releveWp": 9,
-    "cls": 2
+    "cls": 1
    }
   },
   "375": {
@@ -7647,15 +7647,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2926,
+   "ms": 2837,
    "phases": {
-    "bascule": 1109,
+    "bascule": 1107,
     "stabRef": 548,
     "releveRef": 7,
-    "chargementWp": 702,
-    "stabWp": 549,
-    "releveWp": 10,
-    "cls": 1
+    "chargementWp": 610,
+    "stabWp": 554,
+    "releveWp": 9,
+    "cls": 2
    }
   },
   "768": {
@@ -7767,15 +7767,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2602,
+   "ms": 2534,
    "phases": {
     "bascule": 1106,
-    "stabRef": 396,
+    "stabRef": 397,
     "releveRef": 7,
-    "chargementWp": 652,
-    "stabWp": 398,
-    "releveWp": 12,
-    "cls": 30
+    "chargementWp": 615,
+    "stabWp": 400,
+    "releveWp": 8,
+    "cls": 1
    }
   },
   "1024": {
@@ -7887,15 +7887,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2502,
+   "ms": 2492,
    "phases": {
-    "bascule": 1106,
+    "bascule": 1108,
     "stabRef": 365,
     "releveRef": 7,
-    "chargementWp": 646,
+    "chargementWp": 632,
     "stabWp": 367,
-    "releveWp": 9,
-    "cls": 2
+    "releveWp": 10,
+    "cls": 3
    }
   },
   "1440": {
@@ -8004,18 +8004,18 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0003,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2519,
+   "ms": 2508,
    "phases": {
-    "bascule": 1105,
+    "bascule": 1106,
     "stabRef": 365,
-    "releveRef": 8,
-    "chargementWp": 665,
+    "releveRef": 9,
+    "chargementWp": 650,
     "stabWp": 367,
-    "releveWp": 8,
-    "cls": 1
+    "releveWp": 9,
+    "cls": 2
    }
   },
   "1920": {
@@ -8124,24 +8124,24 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0002,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2533,
+   "ms": 2478,
    "phases": {
-    "bascule": 1108,
-    "stabRef": 367,
-    "releveRef": 8,
-    "chargementWp": 673,
+    "bascule": 1107,
+    "stabRef": 368,
+    "releveRef": 7,
+    "chargementWp": 617,
     "stabWp": 367,
-    "releveWp": 9,
-    "cls": 1
+    "releveWp": 10,
+    "cls": 2
    }
   }
  },
  "#/bourgogne-franche-comte": {
   "320": {
-   "ratio": 97,
+   "ratio": 98,
    "ref": {
     "hauteur": 18326,
     "sections": 11,
@@ -8192,7 +8192,7 @@
     "horsEcran": 0
    },
    "wp": {
-    "hauteur": 17705,
+    "hauteur": 18035,
     "sections": 11,
     "bandes": [
      869,
@@ -8202,12 +8202,12 @@
      1133,
      1924,
      1056,
-     932,
+     1262,
      3197,
      783,
      401
     ],
-    "cartes": 75,
+    "cartes": 76,
     "microCartes": 50,
     "grilles": [
      1,
@@ -8236,7 +8236,7 @@
     "formulaires": 0,
     "faq": 7,
     "cta": 3,
-    "mots": 1916,
+    "mots": 1961,
     "titres": 16,
     "debordement": 0,
     "horsEcran": 0
@@ -8244,19 +8244,19 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 3272,
+   "ms": 3285,
    "phases": {
-    "bascule": 1106,
+    "bascule": 1107,
     "stabRef": 760,
-    "releveRef": 9,
-    "chargementWp": 655,
-    "stabWp": 731,
+    "releveRef": 8,
+    "chargementWp": 632,
+    "stabWp": 764,
     "releveWp": 10,
-    "cls": 1
+    "cls": 4
    }
   },
   "375": {
-   "ratio": 98,
+   "ratio": 100,
    "ref": {
     "hauteur": 16603,
     "sections": 11,
@@ -8307,7 +8307,7 @@
     "horsEcran": 0
    },
    "wp": {
-    "hauteur": 16342,
+    "hauteur": 16672,
     "sections": 11,
     "bandes": [
      883,
@@ -8317,12 +8317,12 @@
      1004,
      1858,
      1038,
-     852,
+     1182,
      2781,
      756,
      373
     ],
-    "cartes": 75,
+    "cartes": 76,
     "microCartes": 50,
     "grilles": [
      1,
@@ -8351,7 +8351,7 @@
     "formulaires": 0,
     "faq": 7,
     "cta": 3,
-    "mots": 1916,
+    "mots": 1961,
     "titres": 16,
     "debordement": 0,
     "horsEcran": 0
@@ -8359,19 +8359,19 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 3324,
+   "ms": 3178,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 768,
-    "releveRef": 8,
-    "chargementWp": 666,
-    "stabWp": 765,
-    "releveWp": 9,
+    "bascule": 1107,
+    "stabRef": 700,
+    "releveRef": 9,
+    "chargementWp": 648,
+    "stabWp": 702,
+    "releveWp": 10,
     "cls": 2
    }
   },
   "768": {
-   "ratio": 98,
+   "ratio": 100,
    "ref": {
     "hauteur": 10152,
     "sections": 11,
@@ -8422,7 +8422,7 @@
     "horsEcran": 0
    },
    "wp": {
-    "hauteur": 9939,
+    "hauteur": 10179,
     "sections": 11,
     "bandes": [
      917,
@@ -8432,12 +8432,12 @@
      566,
      1000,
      541,
-     471,
+     711,
      1514,
      568,
      243
     ],
-    "cartes": 75,
+    "cartes": 76,
     "microCartes": 41,
     "grilles": [
      1,
@@ -8466,7 +8466,7 @@
     "formulaires": 0,
     "faq": 7,
     "cta": 3,
-    "mots": 1916,
+    "mots": 1961,
     "titres": 16,
     "debordement": 0,
     "horsEcran": 0
@@ -8474,19 +8474,19 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2799,
+   "ms": 2754,
    "phases": {
-    "bascule": 1107,
-    "stabRef": 488,
-    "releveRef": 9,
-    "chargementWp": 693,
-    "stabWp": 491,
-    "releveWp": 9,
-    "cls": 2
+    "bascule": 1108,
+    "stabRef": 487,
+    "releveRef": 8,
+    "chargementWp": 641,
+    "stabWp": 492,
+    "releveWp": 10,
+    "cls": 8
    }
   },
   "1024": {
-   "ratio": 100,
+   "ratio": 101,
    "ref": {
     "hauteur": 8774,
     "sections": 11,
@@ -8537,7 +8537,7 @@
     "horsEcran": 0
    },
    "wp": {
-    "hauteur": 8743,
+    "hauteur": 8883,
     "sections": 11,
     "bandes": [
      409,
@@ -8547,12 +8547,12 @@
      545,
      846,
      470,
-     420,
+     560,
      1482,
      601,
      322
     ],
-    "cartes": 75,
+    "cartes": 76,
     "microCartes": 41,
     "grilles": [
      1,
@@ -8581,7 +8581,7 @@
     "formulaires": 0,
     "faq": 7,
     "cta": 3,
-    "mots": 1916,
+    "mots": 1961,
     "titres": 16,
     "debordement": 0,
     "horsEcran": 0
@@ -8589,19 +8589,19 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2642,
+   "ms": 2602,
    "phases": {
-    "bascule": 1105,
+    "bascule": 1106,
     "stabRef": 426,
-    "releveRef": 8,
-    "chargementWp": 663,
+    "releveRef": 7,
+    "chargementWp": 620,
     "stabWp": 428,
-    "releveWp": 11,
-    "cls": 1
+    "releveWp": 12,
+    "cls": 3
    }
   },
   "1440": {
-   "ratio": 101,
+   "ratio": 102,
    "ref": {
     "hauteur": 8674,
     "sections": 11,
@@ -8652,7 +8652,7 @@
     "horsEcran": 0
    },
    "wp": {
-    "hauteur": 8731,
+    "hauteur": 8815,
     "sections": 11,
     "bandes": [
      533,
@@ -8662,12 +8662,12 @@
      616,
      669,
      443,
-     428,
+     512,
      1533,
      671,
      357
     ],
-    "cartes": 75,
+    "cartes": 76,
     "microCartes": 37,
     "grilles": [
      1,
@@ -8696,27 +8696,27 @@
     "formulaires": 0,
     "faq": 7,
     "cta": 3,
-    "mots": 1916,
+    "mots": 1961,
     "titres": 16,
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0003,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2672,
+   "ms": 2608,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 425,
-    "releveRef": 10,
-    "chargementWp": 689,
-    "stabWp": 429,
-    "releveWp": 12,
-    "cls": 1
+    "bascule": 1107,
+    "stabRef": 427,
+    "releveRef": 7,
+    "chargementWp": 625,
+    "stabWp": 428,
+    "releveWp": 10,
+    "cls": 3
    }
   },
   "1920": {
-   "ratio": 101,
+   "ratio": 102,
    "ref": {
     "hauteur": 8675,
     "sections": 11,
@@ -8767,7 +8767,7 @@
     "horsEcran": 0
    },
    "wp": {
-    "hauteur": 8734,
+    "hauteur": 8818,
     "sections": 11,
     "bandes": [
      535,
@@ -8777,12 +8777,12 @@
      616,
      669,
      443,
-     428,
+     512,
      1533,
      671,
      357
     ],
-    "cartes": 75,
+    "cartes": 76,
     "microCartes": 37,
     "grilles": [
      1,
@@ -8811,23 +8811,23 @@
     "formulaires": 0,
     "faq": 7,
     "cta": 3,
-    "mots": 1916,
+    "mots": 1961,
     "titres": 16,
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0002,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2657,
+   "ms": 2618,
    "phases": {
-    "bascule": 1106,
+    "bascule": 1107,
     "stabRef": 426,
-    "releveRef": 9,
-    "chargementWp": 676,
-    "stabWp": 428,
+    "releveRef": 7,
+    "chargementWp": 636,
+    "stabWp": 429,
     "releveWp": 11,
-    "cls": 1
+    "cls": 2
    }
   }
  },
@@ -8923,14 +8923,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2926,
+   "ms": 2911,
    "phases": {
-    "bascule": 1107,
-    "stabRef": 577,
-    "releveRef": 6,
-    "chargementWp": 646,
-    "stabWp": 579,
-    "releveWp": 9,
+    "bascule": 1108,
+    "stabRef": 578,
+    "releveRef": 7,
+    "chargementWp": 627,
+    "stabWp": 581,
+    "releveWp": 8,
     "cls": 2
    }
   },
@@ -9025,14 +9025,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2833,
+   "ms": 2805,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 516,
-    "releveRef": 6,
-    "chargementWp": 645,
+    "bascule": 1105,
+    "stabRef": 517,
+    "releveRef": 10,
+    "chargementWp": 612,
     "stabWp": 550,
-    "releveWp": 8,
+    "releveWp": 9,
     "cls": 2
    }
   },
@@ -9127,15 +9127,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2519,
+   "ms": 2544,
    "phases": {
-    "bascule": 1105,
+    "bascule": 1112,
     "stabRef": 366,
-    "releveRef": 6,
-    "chargementWp": 637,
-    "stabWp": 397,
-    "releveWp": 7,
-    "cls": 1
+    "releveRef": 7,
+    "chargementWp": 651,
+    "stabWp": 398,
+    "releveWp": 8,
+    "cls": 2
    }
   },
   "1024": {
@@ -9229,15 +9229,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2543,
+   "ms": 2478,
    "phases": {
     "bascule": 1106,
-    "stabRef": 373,
+    "stabRef": 365,
     "releveRef": 8,
-    "chargementWp": 670,
-    "stabWp": 368,
-    "releveWp": 17,
-    "cls": 1
+    "chargementWp": 619,
+    "stabWp": 370,
+    "releveWp": 8,
+    "cls": 2
    }
   },
   "1440": {
@@ -9328,18 +9328,18 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0003,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2524,
+   "ms": 2518,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 368,
-    "releveRef": 9,
-    "chargementWp": 663,
+    "bascule": 1125,
+    "stabRef": 366,
+    "releveRef": 8,
+    "chargementWp": 641,
     "stabWp": 368,
-    "releveWp": 9,
-    "cls": 1
+    "releveWp": 8,
+    "cls": 2
    }
   },
   "1920": {
@@ -9430,17 +9430,17 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0002,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2523,
+   "ms": 2471,
    "phases": {
-    "bascule": 1106,
+    "bascule": 1107,
     "stabRef": 366,
-    "releveRef": 10,
-    "chargementWp": 662,
-    "stabWp": 368,
-    "releveWp": 9,
+    "releveRef": 6,
+    "chargementWp": 616,
+    "stabWp": 367,
+    "releveWp": 7,
     "cls": 2
    }
   }
@@ -9537,14 +9537,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2859,
+   "ms": 2838,
    "phases": {
-    "bascule": 1107,
-    "stabRef": 547,
-    "releveRef": 7,
-    "chargementWp": 640,
-    "stabWp": 549,
-    "releveWp": 7,
+    "bascule": 1106,
+    "stabRef": 548,
+    "releveRef": 8,
+    "chargementWp": 616,
+    "stabWp": 550,
+    "releveWp": 8,
     "cls": 2
    }
   },
@@ -9639,13 +9639,13 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2747,
+   "ms": 2712,
    "phases": {
     "bascule": 1107,
-    "stabRef": 487,
-    "releveRef": 7,
-    "chargementWp": 646,
-    "stabWp": 489,
+    "stabRef": 488,
+    "releveRef": 6,
+    "chargementWp": 609,
+    "stabWp": 491,
     "releveWp": 9,
     "cls": 2
    }
@@ -9741,15 +9741,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2493,
+   "ms": 2484,
    "phases": {
-    "bascule": 1104,
+    "bascule": 1107,
     "stabRef": 366,
-    "releveRef": 5,
-    "chargementWp": 641,
+    "releveRef": 7,
+    "chargementWp": 625,
     "stabWp": 368,
-    "releveWp": 7,
-    "cls": 2
+    "releveWp": 8,
+    "cls": 3
    }
   },
   "1024": {
@@ -9843,15 +9843,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2436,
+   "ms": 2398,
    "phases": {
-    "bascule": 1110,
-    "stabRef": 335,
+    "bascule": 1107,
+    "stabRef": 336,
     "releveRef": 6,
-    "chargementWp": 640,
+    "chargementWp": 602,
     "stabWp": 337,
     "releveWp": 7,
-    "cls": 1
+    "cls": 3
    }
   },
   "1440": {
@@ -9942,17 +9942,17 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0003,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2462,
+   "ms": 2464,
    "phases": {
-    "bascule": 1111,
-    "stabRef": 335,
+    "bascule": 1107,
+    "stabRef": 336,
     "releveRef": 6,
-    "chargementWp": 633,
+    "chargementWp": 637,
     "stabWp": 368,
-    "releveWp": 7,
+    "releveWp": 8,
     "cls": 2
    }
   },
@@ -10044,16 +10044,16 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0002,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2505,
+   "ms": 2456,
    "phases": {
     "bascule": 1106,
     "stabRef": 335,
-    "releveRef": 7,
-    "chargementWp": 679,
-    "stabWp": 368,
+    "releveRef": 6,
+    "chargementWp": 632,
+    "stabWp": 367,
     "releveWp": 8,
     "cls": 2
    }
@@ -10151,12 +10151,12 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2848,
+   "ms": 2838,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 547,
+    "bascule": 1108,
+    "stabRef": 548,
     "releveRef": 7,
-    "chargementWp": 628,
+    "chargementWp": 615,
     "stabWp": 550,
     "releveWp": 8,
     "cls": 2
@@ -10253,13 +10253,13 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2777,
+   "ms": 2738,
    "phases": {
-    "bascule": 1106,
+    "bascule": 1107,
     "stabRef": 487,
-    "releveRef": 7,
-    "chargementWp": 646,
-    "stabWp": 521,
+    "releveRef": 6,
+    "chargementWp": 609,
+    "stabWp": 519,
     "releveWp": 8,
     "cls": 2
    }
@@ -10355,13 +10355,13 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2483,
+   "ms": 2469,
    "phases": {
     "bascule": 1106,
-    "stabRef": 365,
+    "stabRef": 366,
     "releveRef": 6,
-    "chargementWp": 628,
-    "stabWp": 368,
+    "chargementWp": 612,
+    "stabWp": 369,
     "releveWp": 8,
     "cls": 2
    }
@@ -10457,13 +10457,13 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2481,
+   "ms": 2435,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 335,
-    "releveRef": 9,
-    "chargementWp": 653,
-    "stabWp": 369,
+    "bascule": 1107,
+    "stabRef": 336,
+    "releveRef": 5,
+    "chargementWp": 611,
+    "stabWp": 367,
     "releveWp": 7,
     "cls": 2
    }
@@ -10556,18 +10556,18 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0003,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2460,
+   "ms": 2444,
    "phases": {
-    "bascule": 1106,
+    "bascule": 1108,
     "stabRef": 335,
-    "releveRef": 6,
-    "chargementWp": 635,
+    "releveRef": 7,
+    "chargementWp": 615,
     "stabWp": 368,
     "releveWp": 9,
-    "cls": 1
+    "cls": 2
    }
   },
   "1920": {
@@ -10658,17 +10658,17 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0002,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2486,
+   "ms": 2432,
    "phases": {
-    "bascule": 1117,
+    "bascule": 1106,
     "stabRef": 336,
-    "releveRef": 6,
-    "chargementWp": 649,
-    "stabWp": 368,
-    "releveWp": 9,
+    "releveRef": 7,
+    "chargementWp": 607,
+    "stabWp": 367,
+    "releveWp": 8,
     "cls": 1
    }
   }
@@ -10765,15 +10765,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2858,
+   "ms": 2852,
    "phases": {
-    "bascule": 1106,
+    "bascule": 1107,
     "stabRef": 548,
     "releveRef": 7,
-    "chargementWp": 636,
+    "chargementWp": 629,
     "stabWp": 550,
-    "releveWp": 9,
-    "cls": 2
+    "releveWp": 10,
+    "cls": 1
    }
   },
   "375": {
@@ -10867,14 +10867,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2773,
+   "ms": 2765,
    "phases": {
     "bascule": 1106,
     "stabRef": 488,
     "releveRef": 6,
-    "chargementWp": 641,
+    "chargementWp": 635,
     "stabWp": 519,
-    "releveWp": 11,
+    "releveWp": 9,
     "cls": 2
    }
   },
@@ -10969,15 +10969,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2528,
+   "ms": 2911,
    "phases": {
-    "bascule": 1108,
+    "bascule": 1110,
     "stabRef": 366,
     "releveRef": 7,
-    "chargementWp": 669,
-    "stabWp": 368,
+    "chargementWp": 617,
+    "stabWp": 802,
     "releveWp": 8,
-    "cls": 2
+    "cls": 1
    }
   },
   "1024": {
@@ -11071,14 +11071,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2479,
+   "ms": 2430,
    "phases": {
     "bascule": 1106,
     "stabRef": 335,
-    "releveRef": 7,
-    "chargementWp": 651,
-    "stabWp": 369,
-    "releveWp": 9,
+    "releveRef": 6,
+    "chargementWp": 607,
+    "stabWp": 367,
+    "releveWp": 7,
     "cls": 2
    }
   },
@@ -11170,17 +11170,17 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0003,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2461,
+   "ms": 2489,
    "phases": {
     "bascule": 1106,
     "stabRef": 335,
-    "releveRef": 5,
-    "chargementWp": 639,
-    "stabWp": 367,
-    "releveWp": 7,
+    "releveRef": 7,
+    "chargementWp": 613,
+    "stabWp": 417,
+    "releveWp": 9,
     "cls": 2
    }
   },
@@ -11272,18 +11272,18 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0002,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2497,
+   "ms": 2439,
    "phases": {
     "bascule": 1106,
-    "stabRef": 337,
-    "releveRef": 8,
-    "chargementWp": 669,
-    "stabWp": 367,
-    "releveWp": 9,
-    "cls": 1
+    "stabRef": 335,
+    "releveRef": 6,
+    "chargementWp": 614,
+    "stabWp": 368,
+    "releveWp": 7,
+    "cls": 2
    }
   }
  },
@@ -11379,13 +11379,13 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2855,
+   "ms": 2833,
    "phases": {
     "bascule": 1107,
     "stabRef": 548,
     "releveRef": 6,
-    "chargementWp": 635,
-    "stabWp": 549,
+    "chargementWp": 612,
+    "stabWp": 550,
     "releveWp": 8,
     "cls": 2
    }
@@ -11481,14 +11481,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2802,
+   "ms": 2772,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 516,
-    "releveRef": 7,
-    "chargementWp": 643,
+    "bascule": 1109,
+    "stabRef": 517,
+    "releveRef": 6,
+    "chargementWp": 611,
     "stabWp": 520,
-    "releveWp": 8,
+    "releveWp": 7,
     "cls": 2
    }
   },
@@ -11583,12 +11583,12 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2515,
+   "ms": 2455,
    "phases": {
-    "bascule": 1107,
+    "bascule": 1106,
     "stabRef": 366,
-    "releveRef": 7,
-    "chargementWp": 656,
+    "releveRef": 6,
+    "chargementWp": 598,
     "stabWp": 369,
     "releveWp": 8,
     "cls": 2
@@ -11685,14 +11685,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2522,
+   "ms": 2498,
    "phases": {
-    "bascule": 1107,
-    "stabRef": 366,
+    "bascule": 1106,
+    "stabRef": 394,
     "releveRef": 6,
-    "chargementWp": 656,
-    "stabWp": 377,
-    "releveWp": 8,
+    "chargementWp": 615,
+    "stabWp": 368,
+    "releveWp": 7,
     "cls": 2
    }
   },
@@ -11784,18 +11784,18 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0003,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2516,
+   "ms": 2494,
    "phases": {
     "bascule": 1107,
     "stabRef": 366,
-    "releveRef": 6,
-    "chargementWp": 657,
-    "stabWp": 369,
-    "releveWp": 9,
-    "cls": 2
+    "releveRef": 7,
+    "chargementWp": 635,
+    "stabWp": 368,
+    "releveWp": 8,
+    "cls": 3
    }
   },
   "1920": {
@@ -11886,18 +11886,18 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0002,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2548,
+   "ms": 2465,
    "phases": {
-    "bascule": 1108,
-    "stabRef": 367,
-    "releveRef": 10,
-    "chargementWp": 686,
+    "bascule": 1107,
+    "stabRef": 366,
+    "releveRef": 6,
+    "chargementWp": 611,
     "stabWp": 367,
-    "releveWp": 8,
-    "cls": 2
+    "releveWp": 7,
+    "cls": 1
    }
   }
  },
@@ -11993,15 +11993,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2805,
+   "ms": 2784,
    "phases": {
-    "bascule": 1108,
-    "stabRef": 517,
+    "bascule": 1107,
+    "stabRef": 518,
     "releveRef": 6,
-    "chargementWp": 644,
+    "chargementWp": 623,
     "stabWp": 521,
-    "releveWp": 8,
-    "cls": 1
+    "releveWp": 7,
+    "cls": 2
    }
   },
   "375": {
@@ -12095,15 +12095,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2736,
+   "ms": 2709,
    "phases": {
     "bascule": 1106,
     "stabRef": 487,
-    "releveRef": 7,
-    "chargementWp": 635,
-    "stabWp": 488,
-    "releveWp": 12,
-    "cls": 1
+    "releveRef": 6,
+    "chargementWp": 611,
+    "stabWp": 489,
+    "releveWp": 8,
+    "cls": 2
    }
   },
   "768": {
@@ -12197,14 +12197,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2521,
+   "ms": 2460,
    "phases": {
     "bascule": 1106,
-    "stabRef": 366,
+    "stabRef": 367,
     "releveRef": 6,
-    "chargementWp": 662,
-    "stabWp": 369,
-    "releveWp": 10,
+    "chargementWp": 603,
+    "stabWp": 368,
+    "releveWp": 8,
     "cls": 2
    }
   },
@@ -12299,15 +12299,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2432,
+   "ms": 2403,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 336,
+    "bascule": 1107,
+    "stabRef": 335,
     "releveRef": 6,
-    "chargementWp": 638,
-    "stabWp": 337,
-    "releveWp": 8,
-    "cls": 1
+    "chargementWp": 608,
+    "stabWp": 338,
+    "releveWp": 7,
+    "cls": 2
    }
   },
   "1440": {
@@ -12398,17 +12398,17 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0003,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2454,
+   "ms": 2444,
    "phases": {
-    "bascule": 1110,
-    "stabRef": 336,
-    "releveRef": 8,
-    "chargementWp": 653,
-    "stabWp": 338,
-    "releveWp": 7,
+    "bascule": 1107,
+    "stabRef": 335,
+    "releveRef": 6,
+    "chargementWp": 613,
+    "stabWp": 372,
+    "releveWp": 9,
     "cls": 2
    }
   },
@@ -12500,17 +12500,17 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0002,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2454,
+   "ms": 2419,
    "phases": {
-    "bascule": 1105,
+    "bascule": 1106,
     "stabRef": 336,
-    "releveRef": 7,
-    "chargementWp": 657,
-    "stabWp": 338,
-    "releveWp": 9,
+    "releveRef": 6,
+    "chargementWp": 624,
+    "stabWp": 337,
+    "releveWp": 8,
     "cls": 2
    }
   }
@@ -12607,14 +12607,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2859,
+   "ms": 2850,
    "phases": {
-    "bascule": 1107,
-    "stabRef": 547,
+    "bascule": 1106,
+    "stabRef": 548,
     "releveRef": 7,
-    "chargementWp": 638,
-    "stabWp": 551,
-    "releveWp": 8,
+    "chargementWp": 619,
+    "stabWp": 560,
+    "releveWp": 9,
     "cls": 1
    }
   },
@@ -12709,12 +12709,12 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2768,
+   "ms": 2789,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 486,
+    "bascule": 1110,
+    "stabRef": 530,
     "releveRef": 7,
-    "chargementWp": 639,
+    "chargementWp": 612,
     "stabWp": 520,
     "releveWp": 8,
     "cls": 2
@@ -12811,15 +12811,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2499,
+   "ms": 2463,
    "phases": {
     "bascule": 1106,
-    "stabRef": 370,
-    "releveRef": 7,
-    "chargementWp": 641,
-    "stabWp": 367,
+    "stabRef": 366,
+    "releveRef": 6,
+    "chargementWp": 605,
+    "stabWp": 370,
     "releveWp": 7,
-    "cls": 1
+    "cls": 2
    }
   },
   "1024": {
@@ -12913,15 +12913,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2441,
+   "ms": 2417,
    "phases": {
-    "bascule": 1107,
-    "stabRef": 336,
-    "releveRef": 6,
-    "chargementWp": 644,
-    "stabWp": 338,
-    "releveWp": 8,
-    "cls": 2
+    "bascule": 1115,
+    "stabRef": 335,
+    "releveRef": 7,
+    "chargementWp": 613,
+    "stabWp": 337,
+    "releveWp": 9,
+    "cls": 1
    }
   },
   "1440": {
@@ -13012,18 +13012,18 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0003,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2466,
+   "ms": 2441,
    "phases": {
     "bascule": 1106,
     "stabRef": 336,
-    "releveRef": 7,
-    "chargementWp": 641,
-    "stabWp": 367,
+    "releveRef": 6,
+    "chargementWp": 615,
+    "stabWp": 368,
     "releveWp": 8,
-    "cls": 1
+    "cls": 2
    }
   },
   "1920": {
@@ -13114,17 +13114,17 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0002,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2487,
+   "ms": 2430,
    "phases": {
-    "bascule": 1108,
+    "bascule": 1106,
     "stabRef": 335,
-    "releveRef": 7,
-    "chargementWp": 658,
-    "stabWp": 369,
-    "releveWp": 8,
+    "releveRef": 5,
+    "chargementWp": 607,
+    "stabWp": 368,
+    "releveWp": 7,
     "cls": 2
    }
   }
@@ -13221,14 +13221,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2856,
+   "ms": 2842,
    "phases": {
-    "bascule": 1107,
-    "stabRef": 548,
-    "releveRef": 8,
-    "chargementWp": 634,
-    "stabWp": 549,
-    "releveWp": 8,
+    "bascule": 1106,
+    "stabRef": 549,
+    "releveRef": 6,
+    "chargementWp": 618,
+    "stabWp": 550,
+    "releveWp": 11,
     "cls": 2
    }
   },
@@ -13323,15 +13323,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2761,
+   "ms": 2748,
    "phases": {
-    "bascule": 1107,
-    "stabRef": 487,
+    "bascule": 1105,
+    "stabRef": 488,
     "releveRef": 6,
-    "chargementWp": 633,
-    "stabWp": 519,
-    "releveWp": 7,
-    "cls": 2
+    "chargementWp": 616,
+    "stabWp": 520,
+    "releveWp": 10,
+    "cls": 3
    }
   },
   "768": {
@@ -13425,15 +13425,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2499,
+   "ms": 2465,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 368,
-    "releveRef": 7,
-    "chargementWp": 641,
-    "stabWp": 368,
-    "releveWp": 7,
-    "cls": 2
+    "bascule": 1105,
+    "stabRef": 366,
+    "releveRef": 8,
+    "chargementWp": 608,
+    "stabWp": 369,
+    "releveWp": 8,
+    "cls": 1
    }
   },
   "1024": {
@@ -13527,15 +13527,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2497,
+   "ms": 2478,
    "phases": {
     "bascule": 1106,
     "stabRef": 366,
-    "releveRef": 5,
-    "chargementWp": 645,
-    "stabWp": 366,
-    "releveWp": 8,
-    "cls": 1
+    "releveRef": 6,
+    "chargementWp": 623,
+    "stabWp": 368,
+    "releveWp": 7,
+    "cls": 2
    }
   },
   "1440": {
@@ -13626,16 +13626,16 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0003,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2533,
+   "ms": 2478,
    "phases": {
-    "bascule": 1107,
-    "stabRef": 366,
+    "bascule": 1109,
+    "stabRef": 365,
     "releveRef": 7,
-    "chargementWp": 674,
-    "stabWp": 370,
+    "chargementWp": 621,
+    "stabWp": 367,
     "releveWp": 8,
     "cls": 1
    }
@@ -13728,17 +13728,17 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0002,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2508,
+   "ms": 2459,
    "phases": {
-    "bascule": 1108,
-    "stabRef": 365,
+    "bascule": 1106,
+    "stabRef": 367,
     "releveRef": 6,
-    "chargementWp": 650,
-    "stabWp": 368,
-    "releveWp": 9,
+    "chargementWp": 603,
+    "stabWp": 367,
+    "releveWp": 8,
     "cls": 2
    }
   }
@@ -13847,15 +13847,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 3196,
+   "ms": 3176,
    "phases": {
     "bascule": 1106,
-    "stabRef": 697,
+    "stabRef": 700,
     "releveRef": 8,
-    "chargementWp": 643,
-    "stabWp": 731,
+    "chargementWp": 617,
+    "stabWp": 733,
     "releveWp": 9,
-    "cls": 2
+    "cls": 3
    }
   },
   "375": {
@@ -13961,14 +13961,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 3056,
+   "ms": 3036,
    "phases": {
-    "bascule": 1108,
-    "stabRef": 637,
-    "releveRef": 8,
-    "chargementWp": 652,
-    "stabWp": 640,
-    "releveWp": 9,
+    "bascule": 1109,
+    "stabRef": 641,
+    "releveRef": 7,
+    "chargementWp": 627,
+    "stabWp": 642,
+    "releveWp": 8,
     "cls": 2
    }
   },
@@ -14075,15 +14075,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2690,
+   "ms": 2663,
    "phases": {
     "bascule": 1106,
     "stabRef": 457,
-    "releveRef": 7,
-    "chargementWp": 654,
-    "stabWp": 457,
+    "releveRef": 10,
+    "chargementWp": 621,
+    "stabWp": 459,
     "releveWp": 8,
-    "cls": 1
+    "cls": 2
    }
   },
   "1024": {
@@ -14189,15 +14189,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2648,
+   "ms": 2615,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 427,
-    "releveRef": 8,
-    "chargementWp": 668,
-    "stabWp": 428,
-    "releveWp": 9,
-    "cls": 2
+    "bascule": 1110,
+    "stabRef": 426,
+    "releveRef": 7,
+    "chargementWp": 632,
+    "stabWp": 427,
+    "releveWp": 10,
+    "cls": 3
    }
   },
   "1440": {
@@ -14300,18 +14300,18 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0003,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2649,
+   "ms": 2604,
    "phases": {
-    "bascule": 1108,
-    "stabRef": 428,
+    "bascule": 1106,
+    "stabRef": 426,
     "releveRef": 9,
-    "chargementWp": 665,
-    "stabWp": 428,
-    "releveWp": 10,
-    "cls": 1
+    "chargementWp": 623,
+    "stabWp": 429,
+    "releveWp": 9,
+    "cls": 2
    }
   },
   "1920": {
@@ -14414,18 +14414,18 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0002,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2640,
+   "ms": 2612,
    "phases": {
-    "bascule": 1108,
-    "stabRef": 427,
-    "releveRef": 8,
-    "chargementWp": 658,
+    "bascule": 1114,
+    "stabRef": 426,
+    "releveRef": 7,
+    "chargementWp": 625,
     "stabWp": 428,
-    "releveWp": 9,
-    "cls": 2
+    "releveWp": 10,
+    "cls": 1
    }
   }
  },
@@ -14533,13 +14533,13 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 3187,
+   "ms": 3148,
    "phases": {
-    "bascule": 1106,
+    "bascule": 1107,
     "stabRef": 699,
-    "releveRef": 8,
-    "chargementWp": 664,
-    "stabWp": 700,
+    "releveRef": 7,
+    "chargementWp": 622,
+    "stabWp": 703,
     "releveWp": 9,
     "cls": 1
    }
@@ -14647,14 +14647,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 3109,
+   "ms": 3053,
    "phases": {
-    "bascule": 1106,
+    "bascule": 1107,
     "stabRef": 639,
-    "releveRef": 9,
-    "chargementWp": 653,
-    "stabWp": 689,
-    "releveWp": 11,
+    "releveRef": 8,
+    "chargementWp": 619,
+    "stabWp": 671,
+    "releveWp": 7,
     "cls": 2
    }
   },
@@ -14761,15 +14761,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2718,
+   "ms": 2704,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 457,
+    "bascule": 1107,
+    "stabRef": 496,
     "releveRef": 7,
-    "chargementWp": 675,
-    "stabWp": 459,
-    "releveWp": 12,
-    "cls": 1
+    "chargementWp": 621,
+    "stabWp": 460,
+    "releveWp": 10,
+    "cls": 3
    }
   },
   "1024": {
@@ -14875,15 +14875,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2633,
+   "ms": 2525,
    "phases": {
-    "bascule": 1132,
-    "stabRef": 411,
+    "bascule": 1107,
+    "stabRef": 396,
     "releveRef": 7,
-    "chargementWp": 675,
+    "chargementWp": 604,
     "stabWp": 399,
-    "releveWp": 8,
-    "cls": 1
+    "releveWp": 9,
+    "cls": 3
    }
   },
   "1440": {
@@ -14986,18 +14986,18 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0003,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2565,
+   "ms": 2547,
    "phases": {
-    "bascule": 1107,
+    "bascule": 1110,
     "stabRef": 396,
-    "releveRef": 9,
-    "chargementWp": 643,
-    "stabWp": 400,
-    "releveWp": 9,
-    "cls": 1
+    "releveRef": 8,
+    "chargementWp": 622,
+    "stabWp": 398,
+    "releveWp": 10,
+    "cls": 3
    }
   },
   "1920": {
@@ -15100,18 +15100,18 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0002,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2650,
+   "ms": 2525,
    "phases": {
-    "bascule": 1108,
-    "stabRef": 439,
+    "bascule": 1107,
+    "stabRef": 396,
     "releveRef": 6,
-    "chargementWp": 690,
-    "stabWp": 397,
-    "releveWp": 9,
-    "cls": 1
+    "chargementWp": 607,
+    "stabWp": 398,
+    "releveWp": 8,
+    "cls": 3
    }
   }
  },
@@ -15219,14 +15219,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 3109,
+   "ms": 3082,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 668,
-    "releveRef": 8,
-    "chargementWp": 644,
-    "stabWp": 672,
-    "releveWp": 9,
+    "bascule": 1109,
+    "stabRef": 670,
+    "releveRef": 7,
+    "chargementWp": 612,
+    "stabWp": 674,
+    "releveWp": 8,
     "cls": 2
    }
   },
@@ -15333,15 +15333,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 3042,
+   "ms": 2984,
    "phases": {
-    "bascule": 1108,
-    "stabRef": 608,
-    "releveRef": 9,
-    "chargementWp": 664,
-    "stabWp": 643,
-    "releveWp": 9,
-    "cls": 1
+    "bascule": 1107,
+    "stabRef": 609,
+    "releveRef": 7,
+    "chargementWp": 609,
+    "stabWp": 642,
+    "releveWp": 8,
+    "cls": 2
    }
   },
   "768": {
@@ -15447,15 +15447,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2702,
+   "ms": 2656,
    "phases": {
     "bascule": 1107,
-    "stabRef": 456,
-    "releveRef": 9,
-    "chargementWp": 662,
-    "stabWp": 459,
-    "releveWp": 8,
-    "cls": 1
+    "stabRef": 457,
+    "releveRef": 7,
+    "chargementWp": 614,
+    "stabWp": 460,
+    "releveWp": 9,
+    "cls": 2
    }
   },
   "1024": {
@@ -15561,14 +15561,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2642,
+   "ms": 2599,
    "phases": {
-    "bascule": 1107,
-    "stabRef": 446,
-    "releveRef": 7,
-    "chargementWp": 644,
-    "stabWp": 429,
-    "releveWp": 7,
+    "bascule": 1106,
+    "stabRef": 426,
+    "releveRef": 8,
+    "chargementWp": 621,
+    "stabWp": 427,
+    "releveWp": 9,
     "cls": 2
    }
   },
@@ -15672,17 +15672,17 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0003,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2648,
+   "ms": 2599,
    "phases": {
-    "bascule": 1107,
+    "bascule": 1108,
     "stabRef": 427,
-    "releveRef": 8,
-    "chargementWp": 665,
-    "stabWp": 429,
-    "releveWp": 10,
+    "releveRef": 7,
+    "chargementWp": 619,
+    "stabWp": 428,
+    "releveWp": 8,
     "cls": 2
    }
   },
@@ -15786,18 +15786,18 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0002,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2628,
+   "ms": 2590,
    "phases": {
-    "bascule": 1117,
-    "stabRef": 426,
-    "releveRef": 6,
-    "chargementWp": 643,
-    "stabWp": 427,
-    "releveWp": 8,
-    "cls": 1
+    "bascule": 1106,
+    "stabRef": 427,
+    "releveRef": 7,
+    "chargementWp": 609,
+    "stabWp": 428,
+    "releveWp": 11,
+    "cls": 2
    }
   }
  },
@@ -15905,14 +15905,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 3160,
+   "ms": 3126,
    "phases": {
-    "bascule": 1107,
-    "stabRef": 699,
+    "bascule": 1106,
+    "stabRef": 700,
     "releveRef": 7,
-    "chargementWp": 666,
-    "stabWp": 669,
-    "releveWp": 10,
+    "chargementWp": 627,
+    "stabWp": 673,
+    "releveWp": 11,
     "cls": 2
    }
   },
@@ -16019,13 +16019,13 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 3128,
+   "ms": 3019,
    "phases": {
-    "bascule": 1109,
-    "stabRef": 640,
-    "releveRef": 8,
-    "chargementWp": 681,
-    "stabWp": 679,
+    "bascule": 1106,
+    "stabRef": 639,
+    "releveRef": 7,
+    "chargementWp": 614,
+    "stabWp": 642,
     "releveWp": 9,
     "cls": 2
    }
@@ -16133,15 +16133,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2724,
+   "ms": 2670,
    "phases": {
-    "bascule": 1107,
+    "bascule": 1106,
     "stabRef": 458,
-    "releveRef": 9,
-    "chargementWp": 680,
-    "stabWp": 460,
-    "releveWp": 9,
-    "cls": 1
+    "releveRef": 8,
+    "chargementWp": 629,
+    "stabWp": 459,
+    "releveWp": 8,
+    "cls": 2
    }
   },
   "1024": {
@@ -16247,15 +16247,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2613,
+   "ms": 2602,
    "phases": {
     "bascule": 1106,
-    "stabRef": 426,
+    "stabRef": 427,
     "releveRef": 7,
-    "chargementWp": 637,
-    "stabWp": 428,
-    "releveWp": 8,
-    "cls": 1
+    "chargementWp": 623,
+    "stabWp": 429,
+    "releveWp": 7,
+    "cls": 3
    }
   },
   "1440": {
@@ -16358,18 +16358,18 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0003,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2654,
+   "ms": 2624,
    "phases": {
     "bascule": 1107,
     "stabRef": 427,
-    "releveRef": 8,
-    "chargementWp": 671,
-    "stabWp": 431,
-    "releveWp": 8,
-    "cls": 2
+    "releveRef": 7,
+    "chargementWp": 643,
+    "stabWp": 429,
+    "releveWp": 10,
+    "cls": 1
    }
   },
   "1920": {
@@ -16472,18 +16472,18 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0002,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2614,
+   "ms": 2602,
    "phases": {
-    "bascule": 1107,
-    "stabRef": 426,
+    "bascule": 1108,
+    "stabRef": 439,
     "releveRef": 7,
-    "chargementWp": 637,
-    "stabWp": 428,
+    "chargementWp": 608,
+    "stabWp": 429,
     "releveWp": 8,
-    "cls": 1
+    "cls": 3
    }
   }
  },
@@ -16591,14 +16591,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 3105,
+   "ms": 3082,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 669,
-    "releveRef": 6,
-    "chargementWp": 643,
-    "stabWp": 671,
-    "releveWp": 8,
+    "bascule": 1110,
+    "stabRef": 670,
+    "releveRef": 8,
+    "chargementWp": 610,
+    "stabWp": 673,
+    "releveWp": 9,
     "cls": 2
    }
   },
@@ -16705,15 +16705,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 3029,
+   "ms": 2992,
    "phases": {
-    "bascule": 1107,
+    "bascule": 1106,
     "stabRef": 609,
-    "releveRef": 8,
-    "chargementWp": 652,
+    "releveRef": 7,
+    "chargementWp": 619,
     "stabWp": 642,
-    "releveWp": 10,
-    "cls": 1
+    "releveWp": 7,
+    "cls": 2
    }
   },
   "768": {
@@ -16819,15 +16819,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2696,
+   "ms": 2662,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 471,
+    "bascule": 1107,
+    "stabRef": 459,
     "releveRef": 7,
-    "chargementWp": 641,
+    "chargementWp": 619,
     "stabWp": 459,
-    "releveWp": 10,
-    "cls": 1
+    "releveWp": 9,
+    "cls": 2
    }
   },
   "1024": {
@@ -16933,15 +16933,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2572,
+   "ms": 2541,
    "phases": {
     "bascule": 1106,
     "stabRef": 396,
     "releveRef": 7,
-    "chargementWp": 656,
+    "chargementWp": 622,
     "stabWp": 398,
-    "releveWp": 8,
-    "cls": 1
+    "releveWp": 10,
+    "cls": 2
    }
   },
   "1440": {
@@ -17044,18 +17044,18 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0003,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2593,
+   "ms": 2536,
    "phases": {
     "bascule": 1106,
     "stabRef": 397,
-    "releveRef": 7,
-    "chargementWp": 673,
+    "releveRef": 6,
+    "chargementWp": 617,
     "stabWp": 399,
-    "releveWp": 10,
-    "cls": 1
+    "releveWp": 9,
+    "cls": 2
    }
   },
   "1920": {
@@ -17158,18 +17158,18 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0002,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2570,
+   "ms": 2534,
    "phases": {
-    "bascule": 1106,
+    "bascule": 1107,
     "stabRef": 396,
-    "releveRef": 7,
-    "chargementWp": 654,
-    "stabWp": 397,
-    "releveWp": 9,
-    "cls": 1
+    "releveRef": 6,
+    "chargementWp": 615,
+    "stabWp": 398,
+    "releveWp": 10,
+    "cls": 2
    }
   }
  },
@@ -17277,14 +17277,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 3157,
+   "ms": 3142,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 698,
-    "releveRef": 6,
-    "chargementWp": 638,
-    "stabWp": 700,
-    "releveWp": 7,
+    "bascule": 1107,
+    "stabRef": 700,
+    "releveRef": 7,
+    "chargementWp": 616,
+    "stabWp": 702,
+    "releveWp": 8,
     "cls": 2
    }
   },
@@ -17391,15 +17391,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 3042,
+   "ms": 2985,
    "phases": {
     "bascule": 1107,
-    "stabRef": 608,
-    "releveRef": 8,
-    "chargementWp": 665,
-    "stabWp": 642,
-    "releveWp": 10,
-    "cls": 2
+    "stabRef": 610,
+    "releveRef": 6,
+    "chargementWp": 610,
+    "stabWp": 641,
+    "releveWp": 8,
+    "cls": 3
    }
   },
   "768": {
@@ -17505,14 +17505,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2740,
+   "ms": 2669,
    "phases": {
-    "bascule": 1108,
-    "stabRef": 457,
-    "releveRef": 9,
-    "chargementWp": 695,
-    "stabWp": 460,
-    "releveWp": 9,
+    "bascule": 1106,
+    "stabRef": 458,
+    "releveRef": 7,
+    "chargementWp": 629,
+    "stabWp": 459,
+    "releveWp": 8,
     "cls": 2
    }
   },
@@ -17619,13 +17619,13 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2617,
+   "ms": 2590,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 426,
-    "releveRef": 6,
-    "chargementWp": 640,
-    "stabWp": 429,
+    "bascule": 1107,
+    "stabRef": 427,
+    "releveRef": 7,
+    "chargementWp": 612,
+    "stabWp": 428,
     "releveWp": 8,
     "cls": 1
    }
@@ -17730,17 +17730,17 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0003,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2645,
+   "ms": 2598,
    "phases": {
-    "bascule": 1106,
+    "bascule": 1107,
     "stabRef": 427,
-    "releveRef": 8,
-    "chargementWp": 665,
+    "releveRef": 9,
+    "chargementWp": 617,
     "stabWp": 429,
-    "releveWp": 9,
+    "releveWp": 8,
     "cls": 1
    }
   },
@@ -17844,18 +17844,18 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0002,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2648,
+   "ms": 2596,
    "phases": {
     "bascule": 1106,
-    "stabRef": 426,
-    "releveRef": 8,
-    "chargementWp": 671,
+    "stabRef": 428,
+    "releveRef": 7,
+    "chargementWp": 616,
     "stabWp": 428,
-    "releveWp": 8,
-    "cls": 1
+    "releveWp": 9,
+    "cls": 2
    }
   }
  },
@@ -17963,15 +17963,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 3100,
+   "ms": 4028,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 668,
-    "releveRef": 6,
-    "chargementWp": 640,
-    "stabWp": 670,
-    "releveWp": 8,
-    "cls": 2
+    "bascule": 1107,
+    "stabRef": 677,
+    "releveRef": 8,
+    "chargementWp": 1551,
+    "stabWp": 674,
+    "releveWp": 10,
+    "cls": 1
    }
   },
   "375": {
@@ -18077,15 +18077,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 3030,
+   "ms": 3000,
    "phases": {
-    "bascule": 1106,
+    "bascule": 1107,
     "stabRef": 609,
-    "releveRef": 9,
-    "chargementWp": 654,
-    "stabWp": 641,
-    "releveWp": 9,
-    "cls": 2
+    "releveRef": 8,
+    "chargementWp": 624,
+    "stabWp": 642,
+    "releveWp": 7,
+    "cls": 3
    }
   },
   "768": {
@@ -18191,15 +18191,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2700,
+   "ms": 2659,
    "phases": {
-    "bascule": 1110,
-    "stabRef": 459,
-    "releveRef": 7,
-    "chargementWp": 654,
-    "stabWp": 460,
-    "releveWp": 8,
-    "cls": 2
+    "bascule": 1107,
+    "stabRef": 458,
+    "releveRef": 6,
+    "chargementWp": 616,
+    "stabWp": 459,
+    "releveWp": 10,
+    "cls": 3
    }
   },
   "1024": {
@@ -18305,15 +18305,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2560,
+   "ms": 2519,
    "phases": {
-    "bascule": 1106,
+    "bascule": 1107,
     "stabRef": 396,
     "releveRef": 6,
-    "chargementWp": 645,
-    "stabWp": 397,
+    "chargementWp": 601,
+    "stabWp": 398,
     "releveWp": 9,
-    "cls": 1
+    "cls": 2
    }
   },
   "1440": {
@@ -18416,17 +18416,17 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0003,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2603,
+   "ms": 2564,
    "phases": {
-    "bascule": 1108,
+    "bascule": 1106,
     "stabRef": 396,
     "releveRef": 7,
-    "chargementWp": 654,
-    "stabWp": 428,
-    "releveWp": 8,
+    "chargementWp": 615,
+    "stabWp": 429,
+    "releveWp": 9,
     "cls": 2
    }
   },
@@ -18530,18 +18530,18 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0002,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2603,
+   "ms": 2570,
    "phases": {
-    "bascule": 1110,
+    "bascule": 1106,
     "stabRef": 396,
-    "releveRef": 7,
-    "chargementWp": 650,
-    "stabWp": 429,
-    "releveWp": 10,
-    "cls": 1
+    "releveRef": 6,
+    "chargementWp": 624,
+    "stabWp": 428,
+    "releveWp": 7,
+    "cls": 3
    }
   }
  },
@@ -18649,15 +18649,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 3120,
+   "ms": 3080,
    "phases": {
-    "bascule": 1107,
+    "bascule": 1108,
     "stabRef": 669,
-    "releveRef": 6,
-    "chargementWp": 658,
-    "stabWp": 671,
+    "releveRef": 8,
+    "chargementWp": 613,
+    "stabWp": 672,
     "releveWp": 8,
-    "cls": 1
+    "cls": 2
    }
   },
   "375": {
@@ -18763,15 +18763,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 3022,
+   "ms": 2957,
    "phases": {
-    "bascule": 1107,
+    "bascule": 1106,
     "stabRef": 609,
-    "releveRef": 8,
-    "chargementWp": 673,
-    "stabWp": 612,
-    "releveWp": 12,
-    "cls": 1
+    "releveRef": 7,
+    "chargementWp": 614,
+    "stabWp": 611,
+    "releveWp": 7,
+    "cls": 3
    }
   },
   "768": {
@@ -18877,15 +18877,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2723,
+   "ms": 2665,
    "phases": {
-    "bascule": 1106,
+    "bascule": 1107,
     "stabRef": 457,
     "releveRef": 7,
-    "chargementWp": 672,
-    "stabWp": 471,
-    "releveWp": 9,
-    "cls": 1
+    "chargementWp": 623,
+    "stabWp": 460,
+    "releveWp": 8,
+    "cls": 3
    }
   },
   "1024": {
@@ -18991,15 +18991,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2566,
+   "ms": 2556,
    "phases": {
-    "bascule": 1105,
+    "bascule": 1106,
     "stabRef": 396,
-    "releveRef": 11,
-    "chargementWp": 643,
-    "stabWp": 402,
-    "releveWp": 8,
-    "cls": 1
+    "releveRef": 6,
+    "chargementWp": 638,
+    "stabWp": 399,
+    "releveWp": 9,
+    "cls": 2
    }
   },
   "1440": {
@@ -19102,18 +19102,18 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0003,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2578,
+   "ms": 2549,
    "phases": {
-    "bascule": 1105,
-    "stabRef": 396,
+    "bascule": 1106,
+    "stabRef": 397,
     "releveRef": 7,
-    "chargementWp": 663,
+    "chargementWp": 629,
     "stabWp": 398,
-    "releveWp": 8,
-    "cls": 1
+    "releveWp": 9,
+    "cls": 3
    }
   },
   "1920": {
@@ -19216,18 +19216,18 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0002,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2597,
+   "ms": 2532,
    "phases": {
-    "bascule": 1108,
-    "stabRef": 396,
+    "bascule": 1118,
+    "stabRef": 395,
     "releveRef": 7,
-    "chargementWp": 666,
-    "stabWp": 399,
-    "releveWp": 11,
-    "cls": 10
+    "chargementWp": 605,
+    "stabWp": 397,
+    "releveWp": 8,
+    "cls": 2
    }
   }
  },
@@ -19335,14 +19335,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 3090,
+   "ms": 3073,
    "phases": {
-    "bascule": 1108,
-    "stabRef": 667,
+    "bascule": 1105,
+    "stabRef": 671,
     "releveRef": 7,
-    "chargementWp": 628,
-    "stabWp": 670,
-    "releveWp": 8,
+    "chargementWp": 607,
+    "stabWp": 672,
+    "releveWp": 9,
     "cls": 2
    }
   },
@@ -19449,15 +19449,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 3003,
+   "ms": 2949,
    "phases": {
-    "bascule": 1109,
+    "bascule": 1106,
     "stabRef": 609,
-    "releveRef": 7,
-    "chargementWp": 651,
-    "stabWp": 614,
+    "releveRef": 6,
+    "chargementWp": 606,
+    "stabWp": 611,
     "releveWp": 9,
-    "cls": 4
+    "cls": 2
    }
   },
   "768": {
@@ -19563,15 +19563,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2724,
+   "ms": 2654,
    "phases": {
-    "bascule": 1108,
-    "stabRef": 456,
-    "releveRef": 7,
-    "chargementWp": 684,
+    "bascule": 1106,
+    "stabRef": 458,
+    "releveRef": 6,
+    "chargementWp": 615,
     "stabWp": 459,
-    "releveWp": 9,
-    "cls": 1
+    "releveWp": 8,
+    "cls": 2
    }
   },
   "1024": {
@@ -19677,13 +19677,13 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2579,
+   "ms": 2540,
    "phases": {
-    "bascule": 1116,
-    "stabRef": 396,
-    "releveRef": 8,
-    "chargementWp": 651,
-    "stabWp": 398,
+    "bascule": 1106,
+    "stabRef": 395,
+    "releveRef": 7,
+    "chargementWp": 623,
+    "stabWp": 399,
     "releveWp": 8,
     "cls": 2
    }
@@ -19788,18 +19788,18 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0003,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2587,
+   "ms": 2565,
    "phases": {
     "bascule": 1106,
-    "stabRef": 396,
-    "releveRef": 6,
-    "chargementWp": 642,
-    "stabWp": 427,
-    "releveWp": 8,
-    "cls": 2
+    "stabRef": 395,
+    "releveRef": 8,
+    "chargementWp": 618,
+    "stabWp": 428,
+    "releveWp": 9,
+    "cls": 1
    }
   },
   "1920": {
@@ -19902,18 +19902,18 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0002,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2609,
+   "ms": 2567,
    "phases": {
-    "bascule": 1111,
-    "stabRef": 396,
-    "releveRef": 7,
-    "chargementWp": 658,
-    "stabWp": 428,
-    "releveWp": 8,
-    "cls": 1
+    "bascule": 1106,
+    "stabRef": 399,
+    "releveRef": 6,
+    "chargementWp": 617,
+    "stabWp": 429,
+    "releveWp": 7,
+    "cls": 2
    }
   }
  },
@@ -20021,14 +20021,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 3094,
+   "ms": 3091,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 668,
-    "releveRef": 6,
-    "chargementWp": 633,
-    "stabWp": 670,
-    "releveWp": 9,
+    "bascule": 1107,
+    "stabRef": 671,
+    "releveRef": 7,
+    "chargementWp": 622,
+    "stabWp": 672,
+    "releveWp": 10,
     "cls": 2
    }
   },
@@ -20135,15 +20135,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 3039,
+   "ms": 2987,
    "phases": {
     "bascule": 1107,
-    "stabRef": 608,
-    "releveRef": 8,
-    "chargementWp": 658,
-    "stabWp": 645,
-    "releveWp": 10,
-    "cls": 3
+    "stabRef": 609,
+    "releveRef": 6,
+    "chargementWp": 611,
+    "stabWp": 642,
+    "releveWp": 11,
+    "cls": 1
    }
   },
   "768": {
@@ -20249,14 +20249,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2703,
+   "ms": 2672,
    "phases": {
     "bascule": 1107,
     "stabRef": 457,
-    "releveRef": 7,
-    "chargementWp": 661,
-    "stabWp": 460,
-    "releveWp": 9,
+    "releveRef": 6,
+    "chargementWp": 633,
+    "stabWp": 459,
+    "releveWp": 8,
     "cls": 2
    }
   },
@@ -20363,13 +20363,13 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2562,
+   "ms": 2525,
    "phases": {
     "bascule": 1107,
     "stabRef": 396,
-    "releveRef": 7,
-    "chargementWp": 642,
-    "stabWp": 399,
+    "releveRef": 6,
+    "chargementWp": 607,
+    "stabWp": 398,
     "releveWp": 9,
     "cls": 2
    }
@@ -20474,18 +20474,18 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0003,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2602,
+   "ms": 2561,
    "phases": {
     "bascule": 1106,
     "stabRef": 396,
-    "releveRef": 8,
-    "chargementWp": 653,
-    "stabWp": 428,
-    "releveWp": 10,
-    "cls": 1
+    "releveRef": 9,
+    "chargementWp": 610,
+    "stabWp": 429,
+    "releveWp": 8,
+    "cls": 3
    }
   },
   "1920": {
@@ -20588,18 +20588,18 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0002,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2607,
+   "ms": 2568,
    "phases": {
     "bascule": 1106,
     "stabRef": 396,
     "releveRef": 7,
-    "chargementWp": 659,
-    "stabWp": 429,
-    "releveWp": 9,
-    "cls": 1
+    "chargementWp": 622,
+    "stabWp": 427,
+    "releveWp": 8,
+    "cls": 2
    }
   }
  },
@@ -20707,14 +20707,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 3020,
+   "ms": 2958,
    "phases": {
     "bascule": 1106,
-    "stabRef": 607,
-    "releveRef": 7,
-    "chargementWp": 681,
+    "stabRef": 608,
+    "releveRef": 8,
+    "chargementWp": 616,
     "stabWp": 611,
-    "releveWp": 7,
+    "releveWp": 8,
     "cls": 1
    }
   },
@@ -20821,13 +20821,13 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2867,
+   "ms": 2836,
    "phases": {
-    "bascule": 1108,
+    "bascule": 1107,
     "stabRef": 548,
-    "releveRef": 8,
-    "chargementWp": 640,
-    "stabWp": 553,
+    "releveRef": 7,
+    "chargementWp": 614,
+    "stabWp": 550,
     "releveWp": 8,
     "cls": 2
    }
@@ -20935,14 +20935,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2656,
+   "ms": 2597,
    "phases": {
-    "bascule": 1107,
-    "stabRef": 429,
+    "bascule": 1106,
+    "stabRef": 427,
     "releveRef": 7,
-    "chargementWp": 670,
+    "chargementWp": 618,
     "stabWp": 429,
-    "releveWp": 12,
+    "releveWp": 8,
     "cls": 2
    }
   },
@@ -21049,15 +21049,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2518,
+   "ms": 2462,
    "phases": {
-    "bascule": 1107,
-    "stabRef": 366,
-    "releveRef": 8,
-    "chargementWp": 658,
-    "stabWp": 369,
-    "releveWp": 9,
-    "cls": 1
+    "bascule": 1106,
+    "stabRef": 365,
+    "releveRef": 6,
+    "chargementWp": 607,
+    "stabWp": 368,
+    "releveWp": 8,
+    "cls": 2
    }
   },
   "1440": {
@@ -21160,18 +21160,18 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0003,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2517,
+   "ms": 2459,
    "phases": {
-    "bascule": 1106,
+    "bascule": 1107,
     "stabRef": 366,
-    "releveRef": 10,
-    "chargementWp": 658,
-    "stabWp": 368,
+    "releveRef": 6,
+    "chargementWp": 598,
+    "stabWp": 372,
     "releveWp": 8,
-    "cls": 1
+    "cls": 2
    }
   },
   "1920": {
@@ -21274,18 +21274,18 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0002,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2516,
+   "ms": 2472,
    "phases": {
     "bascule": 1106,
-    "stabRef": 366,
-    "releveRef": 8,
-    "chargementWp": 659,
-    "stabWp": 368,
+    "stabRef": 365,
+    "releveRef": 6,
+    "chargementWp": 617,
+    "stabWp": 367,
     "releveWp": 8,
-    "cls": 1
+    "cls": 3
    }
   }
  },
@@ -21393,14 +21393,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2985,
+   "ms": 2967,
    "phases": {
     "bascule": 1107,
-    "stabRef": 608,
-    "releveRef": 6,
-    "chargementWp": 641,
+    "stabRef": 609,
+    "releveRef": 7,
+    "chargementWp": 622,
     "stabWp": 611,
-    "releveWp": 10,
+    "releveWp": 9,
     "cls": 2
    }
   },
@@ -21507,15 +21507,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2873,
+   "ms": 2838,
    "phases": {
     "bascule": 1107,
     "stabRef": 547,
-    "releveRef": 7,
-    "chargementWp": 650,
-    "stabWp": 551,
-    "releveWp": 10,
-    "cls": 1
+    "releveRef": 8,
+    "chargementWp": 616,
+    "stabWp": 550,
+    "releveWp": 8,
+    "cls": 2
    }
   },
   "768": {
@@ -21621,14 +21621,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2632,
+   "ms": 2595,
    "phases": {
-    "bascule": 1109,
-    "stabRef": 425,
+    "bascule": 1106,
+    "stabRef": 427,
     "releveRef": 7,
-    "chargementWp": 650,
+    "chargementWp": 616,
     "stabWp": 429,
-    "releveWp": 9,
+    "releveWp": 8,
     "cls": 2
    }
   },
@@ -21735,15 +21735,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2521,
+   "ms": 2467,
    "phases": {
     "bascule": 1107,
-    "stabRef": 365,
-    "releveRef": 9,
-    "chargementWp": 662,
-    "stabWp": 367,
-    "releveWp": 9,
-    "cls": 2
+    "stabRef": 366,
+    "releveRef": 6,
+    "chargementWp": 605,
+    "stabWp": 372,
+    "releveWp": 7,
+    "cls": 4
    }
   },
   "1440": {
@@ -21846,17 +21846,17 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0003,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2500,
+   "ms": 2479,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 366,
-    "releveRef": 7,
-    "chargementWp": 643,
+    "bascule": 1108,
+    "stabRef": 365,
+    "releveRef": 10,
+    "chargementWp": 619,
     "stabWp": 368,
-    "releveWp": 8,
+    "releveWp": 7,
     "cls": 2
    }
   },
@@ -21960,18 +21960,18 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0002,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2538,
+   "ms": 2501,
    "phases": {
-    "bascule": 1109,
-    "stabRef": 366,
+    "bascule": 1106,
+    "stabRef": 396,
     "releveRef": 7,
-    "chargementWp": 679,
+    "chargementWp": 613,
     "stabWp": 367,
-    "releveWp": 8,
-    "cls": 2
+    "releveWp": 9,
+    "cls": 3
    }
   }
  },
@@ -22077,14 +22077,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2951,
+   "ms": 2900,
    "phases": {
     "bascule": 1106,
-    "stabRef": 577,
-    "releveRef": 8,
-    "chargementWp": 670,
-    "stabWp": 579,
-    "releveWp": 9,
+    "stabRef": 578,
+    "releveRef": 6,
+    "chargementWp": 616,
+    "stabWp": 581,
+    "releveWp": 11,
     "cls": 2
    }
   },
@@ -22189,15 +22189,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2888,
+   "ms": 2853,
    "phases": {
     "bascule": 1106,
-    "stabRef": 548,
-    "releveRef": 8,
-    "chargementWp": 665,
-    "stabWp": 550,
-    "releveWp": 9,
-    "cls": 2
+    "stabRef": 549,
+    "releveRef": 6,
+    "chargementWp": 626,
+    "stabWp": 555,
+    "releveWp": 8,
+    "cls": 3
    }
   },
   "768": {
@@ -22301,13 +22301,13 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2631,
+   "ms": 2610,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 426,
-    "releveRef": 7,
-    "chargementWp": 654,
-    "stabWp": 429,
+    "bascule": 1107,
+    "stabRef": 427,
+    "releveRef": 8,
+    "chargementWp": 629,
+    "stabWp": 430,
     "releveWp": 7,
     "cls": 2
    }
@@ -22413,15 +22413,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2502,
+   "ms": 2467,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 367,
+    "bascule": 1110,
+    "stabRef": 366,
     "releveRef": 6,
-    "chargementWp": 645,
-    "stabWp": 368,
-    "releveWp": 9,
-    "cls": 1
+    "chargementWp": 608,
+    "stabWp": 367,
+    "releveWp": 8,
+    "cls": 2
    }
   },
   "1440": {
@@ -22522,17 +22522,17 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0003,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2504,
+   "ms": 2482,
    "phases": {
     "bascule": 1108,
-    "stabRef": 365,
-    "releveRef": 7,
-    "chargementWp": 644,
+    "stabRef": 366,
+    "releveRef": 6,
+    "chargementWp": 624,
     "stabWp": 368,
-    "releveWp": 9,
+    "releveWp": 8,
     "cls": 2
    }
   },
@@ -22634,18 +22634,18 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0002,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2579,
+   "ms": 2468,
    "phases": {
     "bascule": 1107,
-    "stabRef": 366,
-    "releveRef": 7,
-    "chargementWp": 719,
+    "stabRef": 365,
+    "releveRef": 6,
+    "chargementWp": 613,
     "stabWp": 368,
-    "releveWp": 10,
-    "cls": 2
+    "releveWp": 8,
+    "cls": 1
    }
   }
  },
@@ -22753,15 +22753,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2928,
+   "ms": 2899,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 578,
-    "releveRef": 10,
-    "chargementWp": 644,
-    "stabWp": 580,
-    "releveWp": 9,
-    "cls": 1
+    "bascule": 1109,
+    "stabRef": 579,
+    "releveRef": 8,
+    "chargementWp": 612,
+    "stabWp": 581,
+    "releveWp": 8,
+    "cls": 2
    }
   },
   "375": {
@@ -22867,14 +22867,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2908,
+   "ms": 2860,
    "phases": {
-    "bascule": 1107,
-    "stabRef": 584,
-    "releveRef": 7,
-    "chargementWp": 645,
-    "stabWp": 550,
-    "releveWp": 13,
+    "bascule": 1106,
+    "stabRef": 549,
+    "releveRef": 6,
+    "chargementWp": 636,
+    "stabWp": 552,
+    "releveWp": 9,
     "cls": 2
    }
   },
@@ -22981,14 +22981,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2628,
+   "ms": 2593,
    "phases": {
     "bascule": 1107,
     "stabRef": 427,
     "releveRef": 6,
-    "chargementWp": 649,
+    "chargementWp": 615,
     "stabWp": 429,
-    "releveWp": 9,
+    "releveWp": 8,
     "cls": 1
    }
   },
@@ -23095,15 +23095,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2526,
+   "ms": 2492,
    "phases": {
-    "bascule": 1107,
-    "stabRef": 366,
-    "releveRef": 7,
-    "chargementWp": 669,
+    "bascule": 1106,
+    "stabRef": 365,
+    "releveRef": 10,
+    "chargementWp": 634,
     "stabWp": 368,
-    "releveWp": 8,
-    "cls": 1
+    "releveWp": 7,
+    "cls": 2
    }
   },
   "1440": {
@@ -23206,18 +23206,18 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0003,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2523,
+   "ms": 2479,
    "phases": {
     "bascule": 1108,
     "stabRef": 366,
-    "releveRef": 7,
-    "chargementWp": 665,
+    "releveRef": 6,
+    "chargementWp": 623,
     "stabWp": 367,
-    "releveWp": 9,
-    "cls": 1
+    "releveWp": 7,
+    "cls": 2
    }
   },
   "1920": {
@@ -23320,18 +23320,18 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0002,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2652,
+   "ms": 2515,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 366,
-    "releveRef": 9,
-    "chargementWp": 779,
-    "stabWp": 381,
-    "releveWp": 9,
-    "cls": 2
+    "bascule": 1114,
+    "stabRef": 365,
+    "releveRef": 7,
+    "chargementWp": 651,
+    "stabWp": 369,
+    "releveWp": 8,
+    "cls": 1
    }
   }
  },
@@ -23439,15 +23439,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2985,
+   "ms": 2940,
    "phases": {
     "bascule": 1107,
-    "stabRef": 608,
-    "releveRef": 6,
-    "chargementWp": 672,
+    "stabRef": 610,
+    "releveRef": 7,
+    "chargementWp": 624,
     "stabWp": 581,
-    "releveWp": 10,
-    "cls": 1
+    "releveWp": 7,
+    "cls": 4
    }
   },
   "375": {
@@ -23553,14 +23553,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2876,
+   "ms": 2831,
    "phases": {
-    "bascule": 1107,
-    "stabRef": 548,
-    "releveRef": 9,
-    "chargementWp": 649,
-    "stabWp": 551,
-    "releveWp": 10,
+    "bascule": 1106,
+    "stabRef": 549,
+    "releveRef": 7,
+    "chargementWp": 606,
+    "stabWp": 552,
+    "releveWp": 8,
     "cls": 2
    }
   },
@@ -23667,15 +23667,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2662,
+   "ms": 2597,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 426,
+    "bascule": 1107,
+    "stabRef": 428,
     "releveRef": 6,
-    "chargementWp": 685,
-    "stabWp": 429,
+    "chargementWp": 615,
+    "stabWp": 430,
     "releveWp": 8,
-    "cls": 2
+    "cls": 3
    }
   },
   "1024": {
@@ -23781,14 +23781,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2501,
+   "ms": 2474,
    "phases": {
     "bascule": 1106,
-    "stabRef": 365,
-    "releveRef": 6,
-    "chargementWp": 644,
-    "stabWp": 370,
-    "releveWp": 8,
+    "stabRef": 366,
+    "releveRef": 8,
+    "chargementWp": 615,
+    "stabWp": 368,
+    "releveWp": 9,
     "cls": 2
    }
   },
@@ -23892,16 +23892,16 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0003,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2534,
+   "ms": 2465,
    "phases": {
     "bascule": 1106,
-    "stabRef": 366,
-    "releveRef": 12,
-    "chargementWp": 671,
-    "stabWp": 370,
+    "stabRef": 365,
+    "releveRef": 7,
+    "chargementWp": 610,
+    "stabWp": 368,
     "releveWp": 7,
     "cls": 2
    }
@@ -24006,17 +24006,17 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0002,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2527,
+   "ms": 2484,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 366,
-    "releveRef": 6,
-    "chargementWp": 672,
-    "stabWp": 368,
-    "releveWp": 8,
+    "bascule": 1107,
+    "stabRef": 365,
+    "releveRef": 7,
+    "chargementWp": 627,
+    "stabWp": 367,
+    "releveWp": 10,
     "cls": 1
    }
   }
@@ -24125,15 +24125,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2986,
+   "ms": 2955,
    "phases": {
     "bascule": 1106,
-    "stabRef": 609,
+    "stabRef": 608,
     "releveRef": 7,
-    "chargementWp": 646,
-    "stabWp": 609,
-    "releveWp": 8,
-    "cls": 1
+    "chargementWp": 612,
+    "stabWp": 611,
+    "releveWp": 9,
+    "cls": 2
    }
   },
   "375": {
@@ -24239,14 +24239,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2930,
+   "ms": 2893,
    "phases": {
     "bascule": 1107,
     "stabRef": 578,
-    "releveRef": 10,
-    "chargementWp": 645,
-    "stabWp": 580,
-    "releveWp": 8,
+    "releveRef": 6,
+    "chargementWp": 611,
+    "stabWp": 582,
+    "releveWp": 7,
     "cls": 2
    }
   },
@@ -24353,15 +24353,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2638,
+   "ms": 2605,
    "phases": {
     "bascule": 1107,
     "stabRef": 427,
     "releveRef": 6,
-    "chargementWp": 647,
-    "stabWp": 440,
-    "releveWp": 9,
-    "cls": 2
+    "chargementWp": 625,
+    "stabWp": 429,
+    "releveWp": 8,
+    "cls": 3
    }
   },
   "1024": {
@@ -24467,14 +24467,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2605,
+   "ms": 2530,
    "phases": {
-    "bascule": 1107,
-    "stabRef": 396,
-    "releveRef": 9,
-    "chargementWp": 682,
-    "stabWp": 400,
-    "releveWp": 9,
+    "bascule": 1106,
+    "stabRef": 397,
+    "releveRef": 6,
+    "chargementWp": 613,
+    "stabWp": 398,
+    "releveWp": 8,
     "cls": 2
    }
   },
@@ -24578,18 +24578,18 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0003,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2568,
+   "ms": 2530,
    "phases": {
     "bascule": 1106,
     "stabRef": 396,
     "releveRef": 6,
-    "chargementWp": 652,
-    "stabWp": 399,
-    "releveWp": 8,
-    "cls": 1
+    "chargementWp": 613,
+    "stabWp": 398,
+    "releveWp": 9,
+    "cls": 2
    }
   },
   "1920": {
@@ -24695,15 +24695,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2622,
+   "ms": 2530,
    "phases": {
-    "bascule": 1140,
-    "stabRef": 397,
-    "releveRef": 8,
-    "chargementWp": 670,
+    "bascule": 1106,
+    "stabRef": 396,
+    "releveRef": 6,
+    "chargementWp": 613,
     "stabWp": 398,
     "releveWp": 8,
-    "cls": 1
+    "cls": 3
    }
   }
  },
@@ -24809,14 +24809,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2916,
+   "ms": 2894,
    "phases": {
     "bascule": 1107,
-    "stabRef": 577,
-    "releveRef": 6,
-    "chargementWp": 638,
-    "stabWp": 579,
-    "releveWp": 7,
+    "stabRef": 579,
+    "releveRef": 7,
+    "chargementWp": 608,
+    "stabWp": 581,
+    "releveWp": 10,
     "cls": 2
    }
   },
@@ -24921,14 +24921,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2879,
+   "ms": 2832,
    "phases": {
     "bascule": 1107,
     "stabRef": 548,
-    "releveRef": 8,
-    "chargementWp": 658,
+    "releveRef": 7,
+    "chargementWp": 611,
     "stabWp": 550,
-    "releveWp": 7,
+    "releveWp": 8,
     "cls": 1
    }
   },
@@ -25033,15 +25033,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2624,
+   "ms": 2587,
    "phases": {
-    "bascule": 1108,
-    "stabRef": 426,
-    "releveRef": 7,
-    "chargementWp": 642,
-    "stabWp": 429,
-    "releveWp": 10,
-    "cls": 2
+    "bascule": 1107,
+    "stabRef": 427,
+    "releveRef": 6,
+    "chargementWp": 607,
+    "stabWp": 430,
+    "releveWp": 7,
+    "cls": 3
    }
   },
   "1024": {
@@ -25145,14 +25145,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2496,
+   "ms": 2469,
    "phases": {
     "bascule": 1107,
-    "stabRef": 366,
-    "releveRef": 5,
-    "chargementWp": 641,
-    "stabWp": 367,
-    "releveWp": 8,
+    "stabRef": 365,
+    "releveRef": 6,
+    "chargementWp": 614,
+    "stabWp": 368,
+    "releveWp": 7,
     "cls": 2
    }
   },
@@ -25254,17 +25254,17 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0003,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2504,
+   "ms": 2483,
    "phases": {
     "bascule": 1106,
-    "stabRef": 365,
+    "stabRef": 366,
     "releveRef": 7,
-    "chargementWp": 648,
-    "stabWp": 369,
-    "releveWp": 7,
+    "chargementWp": 626,
+    "stabWp": 368,
+    "releveWp": 8,
     "cls": 2
    }
   },
@@ -25366,15 +25366,15 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0002,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2516,
+   "ms": 2478,
    "phases": {
-    "bascule": 1111,
+    "bascule": 1106,
     "stabRef": 365,
-    "releveRef": 7,
-    "chargementWp": 655,
+    "releveRef": 6,
+    "chargementWp": 623,
     "stabWp": 367,
     "releveWp": 9,
     "cls": 2
@@ -25483,15 +25483,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 3003,
+   "ms": 2954,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 635,
+    "bascule": 1107,
+    "stabRef": 609,
     "releveRef": 7,
-    "chargementWp": 637,
-    "stabWp": 609,
+    "chargementWp": 608,
+    "stabWp": 612,
     "releveWp": 8,
-    "cls": 1
+    "cls": 3
    }
   },
   "375": {
@@ -25595,15 +25595,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2870,
+   "ms": 2844,
    "phases": {
-    "bascule": 1108,
-    "stabRef": 547,
-    "releveRef": 8,
-    "chargementWp": 647,
+    "bascule": 1107,
+    "stabRef": 548,
+    "releveRef": 7,
+    "chargementWp": 621,
     "stabWp": 550,
     "releveWp": 8,
-    "cls": 2
+    "cls": 3
    }
   },
   "768": {
@@ -25707,15 +25707,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2622,
+   "ms": 2621,
    "phases": {
     "bascule": 1107,
-    "stabRef": 426,
-    "releveRef": 8,
-    "chargementWp": 643,
-    "stabWp": 429,
+    "stabRef": 453,
+    "releveRef": 6,
+    "chargementWp": 615,
+    "stabWp": 430,
     "releveWp": 8,
-    "cls": 1
+    "cls": 2
    }
   },
   "1024": {
@@ -25819,15 +25819,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2488,
+   "ms": 2465,
    "phases": {
     "bascule": 1106,
     "stabRef": 365,
-    "releveRef": 7,
-    "chargementWp": 634,
+    "releveRef": 6,
+    "chargementWp": 609,
     "stabWp": 368,
-    "releveWp": 7,
-    "cls": 1
+    "releveWp": 9,
+    "cls": 2
    }
   },
   "1440": {
@@ -25928,18 +25928,18 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0003,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2502,
+   "ms": 2456,
    "phases": {
-    "bascule": 1108,
+    "bascule": 1106,
     "stabRef": 366,
     "releveRef": 7,
-    "chargementWp": 644,
+    "chargementWp": 599,
     "stabWp": 368,
-    "releveWp": 7,
-    "cls": 1
+    "releveWp": 8,
+    "cls": 2
    }
   },
   "1920": {
@@ -26040,18 +26040,18 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0002,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2522,
+   "ms": 2521,
    "phases": {
     "bascule": 1107,
-    "stabRef": 365,
-    "releveRef": 8,
-    "chargementWp": 665,
-    "stabWp": 368,
-    "releveWp": 8,
-    "cls": 1
+    "stabRef": 366,
+    "releveRef": 6,
+    "chargementWp": 658,
+    "stabWp": 374,
+    "releveWp": 7,
+    "cls": 3
    }
   }
  },
@@ -26135,11 +26135,11 @@
    "erreursReseau": [],
    "ms": 2398,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 335,
-    "releveRef": 3,
-    "chargementWp": 611,
-    "stabWp": 337,
+    "bascule": 1108,
+    "stabRef": 336,
+    "releveRef": 4,
+    "chargementWp": 605,
+    "stabWp": 339,
     "releveWp": 4,
     "cls": 2
    }
@@ -26221,15 +26221,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2361,
+   "ms": 2335,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 304,
+    "bascule": 1107,
+    "stabRef": 306,
     "releveRef": 4,
-    "chargementWp": 634,
-    "stabWp": 307,
-    "releveWp": 5,
-    "cls": 1
+    "chargementWp": 604,
+    "stabWp": 308,
+    "releveWp": 4,
+    "cls": 2
    }
   },
   "768": {
@@ -26309,15 +26309,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2302,
+   "ms": 2281,
    "phases": {
     "bascule": 1106,
-    "stabRef": 275,
-    "releveRef": 5,
-    "chargementWp": 632,
+    "stabRef": 276,
+    "releveRef": 4,
+    "chargementWp": 611,
     "stabWp": 277,
-    "releveWp": 5,
-    "cls": 2
+    "releveWp": 4,
+    "cls": 3
    }
   },
   "1024": {
@@ -26397,14 +26397,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2216,
+   "ms": 2196,
    "phases": {
-    "bascule": 1105,
-    "stabRef": 244,
+    "bascule": 1106,
+    "stabRef": 245,
     "releveRef": 4,
-    "chargementWp": 612,
+    "chargementWp": 589,
     "stabWp": 246,
-    "releveWp": 3,
+    "releveWp": 4,
     "cls": 2
    }
   },
@@ -26482,18 +26482,18 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0003,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2272,
+   "ms": 2201,
    "phases": {
-    "bascule": 1107,
+    "bascule": 1106,
     "stabRef": 244,
-    "releveRef": 4,
-    "chargementWp": 666,
-    "stabWp": 246,
-    "releveWp": 4,
-    "cls": 1
+    "releveRef": 3,
+    "chargementWp": 596,
+    "stabWp": 247,
+    "releveWp": 3,
+    "cls": 2
    }
   },
   "1920": {
@@ -26570,18 +26570,18 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0002,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2263,
+   "ms": 2210,
    "phases": {
     "bascule": 1106,
-    "stabRef": 244,
-    "releveRef": 3,
-    "chargementWp": 658,
-    "stabWp": 247,
+    "stabRef": 245,
+    "releveRef": 4,
+    "chargementWp": 602,
+    "stabWp": 246,
     "releveWp": 4,
-    "cls": 1
+    "cls": 3
    }
   }
  },
@@ -26668,15 +26668,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2466,
+   "ms": 2460,
    "phases": {
     "bascule": 1106,
-    "stabRef": 365,
+    "stabRef": 368,
     "releveRef": 6,
-    "chargementWp": 617,
-    "stabWp": 366,
+    "chargementWp": 605,
+    "stabWp": 368,
     "releveWp": 5,
-    "cls": 1
+    "cls": 2
    }
   },
   "375": {
@@ -26761,15 +26761,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2479,
+   "ms": 2467,
    "phases": {
     "bascule": 1107,
-    "stabRef": 366,
+    "stabRef": 365,
     "releveRef": 6,
-    "chargementWp": 624,
+    "chargementWp": 613,
     "stabWp": 369,
     "releveWp": 5,
-    "cls": 1
+    "cls": 2
    }
   },
   "768": {
@@ -26854,15 +26854,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2378,
+   "ms": 2352,
    "phases": {
-    "bascule": 1119,
+    "bascule": 1106,
     "stabRef": 305,
     "releveRef": 6,
-    "chargementWp": 622,
-    "stabWp": 307,
-    "releveWp": 16,
-    "cls": 3
+    "chargementWp": 620,
+    "stabWp": 308,
+    "releveWp": 6,
+    "cls": 1
    }
   },
   "1024": {
@@ -26947,15 +26947,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2348,
+   "ms": 2337,
    "phases": {
     "bascule": 1106,
-    "stabRef": 304,
-    "releveRef": 5,
-    "chargementWp": 620,
-    "stabWp": 306,
-    "releveWp": 6,
-    "cls": 1
+    "stabRef": 305,
+    "releveRef": 6,
+    "chargementWp": 603,
+    "stabWp": 308,
+    "releveWp": 5,
+    "cls": 4
    }
   },
   "1440": {
@@ -27037,17 +27037,17 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0003,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2310,
+   "ms": 2280,
    "phases": {
     "bascule": 1105,
-    "stabRef": 274,
-    "releveRef": 5,
-    "chargementWp": 642,
+    "stabRef": 275,
+    "releveRef": 6,
+    "chargementWp": 608,
     "stabWp": 277,
-    "releveWp": 5,
+    "releveWp": 7,
     "cls": 2
    }
   },
@@ -27130,15 +27130,15 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0002,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2321,
+   "ms": 2282,
    "phases": {
-    "bascule": 1119,
-    "stabRef": 275,
+    "bascule": 1118,
+    "stabRef": 274,
     "releveRef": 6,
-    "chargementWp": 637,
+    "chargementWp": 600,
     "stabWp": 277,
     "releveWp": 5,
     "cls": 2
@@ -27228,15 +27228,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2498,
+   "ms": 2493,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 365,
-    "releveRef": 4,
-    "chargementWp": 619,
+    "bascule": 1108,
+    "stabRef": 366,
+    "releveRef": 6,
+    "chargementWp": 606,
     "stabWp": 398,
-    "releveWp": 5,
-    "cls": 1
+    "releveWp": 7,
+    "cls": 2
    }
   },
   "375": {
@@ -27321,15 +27321,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2488,
+   "ms": 2457,
    "phases": {
     "bascule": 1108,
-    "stabRef": 365,
-    "releveRef": 7,
-    "chargementWp": 632,
+    "stabRef": 367,
+    "releveRef": 4,
+    "chargementWp": 603,
     "stabWp": 368,
     "releveWp": 5,
-    "cls": 3
+    "cls": 2
    }
   },
   "768": {
@@ -27414,14 +27414,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2364,
+   "ms": 2345,
    "phases": {
-    "bascule": 1107,
+    "bascule": 1108,
     "stabRef": 305,
     "releveRef": 5,
-    "chargementWp": 632,
-    "stabWp": 305,
-    "releveWp": 8,
+    "chargementWp": 610,
+    "stabWp": 309,
+    "releveWp": 6,
     "cls": 2
    }
   },
@@ -27507,14 +27507,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2356,
+   "ms": 2328,
    "phases": {
-    "bascule": 1106,
+    "bascule": 1107,
     "stabRef": 305,
-    "releveRef": 6,
-    "chargementWp": 621,
-    "stabWp": 309,
-    "releveWp": 8,
+    "releveRef": 5,
+    "chargementWp": 598,
+    "stabWp": 307,
+    "releveWp": 5,
     "cls": 1
    }
   },
@@ -27597,18 +27597,18 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0003,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2360,
+   "ms": 2345,
    "phases": {
     "bascule": 1106,
-    "stabRef": 305,
+    "stabRef": 307,
     "releveRef": 5,
-    "chargementWp": 630,
+    "chargementWp": 611,
     "stabWp": 307,
     "releveWp": 6,
-    "cls": 1
+    "cls": 3
    }
   },
   "1920": {
@@ -27690,17 +27690,17 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0002,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2356,
+   "ms": 2328,
    "phases": {
-    "bascule": 1105,
-    "stabRef": 305,
-    "releveRef": 5,
-    "chargementWp": 627,
-    "stabWp": 306,
-    "releveWp": 6,
+    "bascule": 1106,
+    "stabRef": 306,
+    "releveRef": 4,
+    "chargementWp": 598,
+    "stabWp": 307,
+    "releveWp": 5,
     "cls": 2
    }
   }
@@ -27788,14 +27788,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2471,
+   "ms": 2468,
    "phases": {
-    "bascule": 1107,
-    "stabRef": 365,
+    "bascule": 1108,
+    "stabRef": 367,
     "releveRef": 5,
-    "chargementWp": 620,
-    "stabWp": 367,
-    "releveWp": 6,
+    "chargementWp": 612,
+    "stabWp": 369,
+    "releveWp": 5,
     "cls": 1
    }
   },
@@ -27881,15 +27881,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2474,
+   "ms": 2454,
    "phases": {
-    "bascule": 1108,
-    "stabRef": 365,
-    "releveRef": 5,
-    "chargementWp": 622,
-    "stabWp": 368,
-    "releveWp": 5,
-    "cls": 1
+    "bascule": 1106,
+    "stabRef": 367,
+    "releveRef": 4,
+    "chargementWp": 598,
+    "stabWp": 371,
+    "releveWp": 6,
+    "cls": 2
    }
   },
   "768": {
@@ -27974,15 +27974,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2366,
+   "ms": 2339,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 304,
-    "releveRef": 5,
-    "chargementWp": 630,
-    "stabWp": 314,
-    "releveWp": 6,
-    "cls": 1
+    "bascule": 1107,
+    "stabRef": 305,
+    "releveRef": 6,
+    "chargementWp": 607,
+    "stabWp": 308,
+    "releveWp": 4,
+    "cls": 2
    }
   },
   "1024": {
@@ -28067,15 +28067,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2386,
+   "ms": 2338,
    "phases": {
-    "bascule": 1110,
-    "stabRef": 306,
-    "releveRef": 7,
-    "chargementWp": 647,
-    "stabWp": 308,
+    "bascule": 1107,
+    "stabRef": 305,
+    "releveRef": 5,
+    "chargementWp": 605,
+    "stabWp": 307,
     "releveWp": 6,
-    "cls": 2
+    "cls": 3
    }
   },
   "1440": {
@@ -28157,17 +28157,17 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0003,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2387,
+   "ms": 2378,
    "phases": {
     "bascule": 1107,
-    "stabRef": 313,
-    "releveRef": 7,
-    "chargementWp": 646,
+    "stabRef": 304,
+    "releveRef": 5,
+    "chargementWp": 647,
     "stabWp": 308,
-    "releveWp": 5,
+    "releveWp": 6,
     "cls": 1
    }
   },
@@ -28250,17 +28250,17 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0002,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2363,
+   "ms": 2330,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 305,
-    "releveRef": 5,
-    "chargementWp": 634,
+    "bascule": 1107,
+    "stabRef": 306,
+    "releveRef": 4,
+    "chargementWp": 598,
     "stabWp": 307,
-    "releveWp": 4,
+    "releveWp": 6,
     "cls": 2
    }
   }
@@ -28351,14 +28351,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2615,
+   "ms": 2576,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 427,
+    "bascule": 1107,
+    "stabRef": 426,
     "releveRef": 5,
-    "chargementWp": 641,
-    "stabWp": 429,
-    "releveWp": 6,
+    "chargementWp": 599,
+    "stabWp": 430,
+    "releveWp": 8,
     "cls": 1
    }
   },
@@ -28447,14 +28447,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2578,
+   "ms": 2545,
    "phases": {
     "bascule": 1106,
-    "stabRef": 395,
-    "releveRef": 5,
-    "chargementWp": 633,
-    "stabWp": 429,
-    "releveWp": 8,
+    "stabRef": 396,
+    "releveRef": 6,
+    "chargementWp": 599,
+    "stabWp": 430,
+    "releveWp": 6,
     "cls": 2
    }
   },
@@ -28543,14 +28543,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2355,
+   "ms": 2358,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 304,
+    "bascule": 1107,
+    "stabRef": 306,
     "releveRef": 5,
-    "chargementWp": 626,
-    "stabWp": 306,
-    "releveWp": 6,
+    "chargementWp": 623,
+    "stabWp": 308,
+    "releveWp": 7,
     "cls": 2
    }
   },
@@ -28639,15 +28639,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2356,
+   "ms": 2277,
    "phases": {
-    "bascule": 1142,
-    "stabRef": 287,
-    "releveRef": 5,
-    "chargementWp": 635,
-    "stabWp": 277,
+    "bascule": 1106,
+    "stabRef": 275,
+    "releveRef": 4,
+    "chargementWp": 607,
+    "stabWp": 276,
     "releveWp": 7,
-    "cls": 3
+    "cls": 2
    }
   },
   "1440": {
@@ -28732,18 +28732,18 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0003,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2335,
+   "ms": 2303,
    "phases": {
     "bascule": 1106,
-    "stabRef": 276,
-    "releveRef": 7,
-    "chargementWp": 661,
-    "stabWp": 277,
-    "releveWp": 6,
-    "cls": 2
+    "stabRef": 275,
+    "releveRef": 4,
+    "chargementWp": 629,
+    "stabWp": 279,
+    "releveWp": 9,
+    "cls": 1
    }
   },
   "1920": {
@@ -28828,18 +28828,18 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0002,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2313,
+   "ms": 2279,
    "phases": {
-    "bascule": 1107,
+    "bascule": 1106,
     "stabRef": 275,
     "releveRef": 5,
-    "chargementWp": 642,
+    "chargementWp": 606,
     "stabWp": 277,
     "releveWp": 6,
-    "cls": 1
+    "cls": 4
    }
   }
  },
@@ -28912,14 +28912,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2587,
+   "ms": 2585,
    "phases": {
     "bascule": 1106,
-    "stabRef": 426,
-    "releveRef": 4,
-    "chargementWp": 618,
-    "stabWp": 428,
-    "releveWp": 4,
+    "stabRef": 427,
+    "releveRef": 5,
+    "chargementWp": 611,
+    "stabWp": 430,
+    "releveWp": 5,
     "cls": 1
    }
   },
@@ -28991,15 +28991,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2537,
+   "ms": 2511,
    "phases": {
-    "bascule": 1109,
-    "stabRef": 396,
+    "bascule": 1106,
+    "stabRef": 397,
     "releveRef": 4,
-    "chargementWp": 624,
+    "chargementWp": 599,
     "stabWp": 399,
     "releveWp": 4,
-    "cls": 1
+    "cls": 2
    }
   },
   "768": {
@@ -29070,15 +29070,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2359,
+   "ms": 2327,
    "phases": {
-    "bascule": 1106,
+    "bascule": 1107,
     "stabRef": 305,
-    "releveRef": 7,
-    "chargementWp": 628,
-    "stabWp": 307,
-    "releveWp": 5,
-    "cls": 1
+    "releveRef": 4,
+    "chargementWp": 597,
+    "stabWp": 308,
+    "releveWp": 4,
+    "cls": 2
    }
   },
   "1024": {
@@ -29149,13 +29149,13 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2299,
+   "ms": 2274,
    "phases": {
-    "bascule": 1106,
+    "bascule": 1107,
     "stabRef": 275,
-    "releveRef": 4,
-    "chargementWp": 630,
-    "stabWp": 278,
+    "releveRef": 3,
+    "chargementWp": 606,
+    "stabWp": 277,
     "releveWp": 4,
     "cls": 2
    }
@@ -29225,18 +29225,18 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0003,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2294,
+   "ms": 2280,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 274,
+    "bascule": 1118,
+    "stabRef": 275,
     "releveRef": 4,
-    "chargementWp": 627,
+    "chargementWp": 601,
     "stabWp": 277,
     "releveWp": 4,
-    "cls": 2
+    "cls": 1
    }
   },
   "1920": {
@@ -29304,18 +29304,18 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0002,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2286,
+   "ms": 2277,
    "phases": {
-    "bascule": 1105,
-    "stabRef": 274,
+    "bascule": 1107,
+    "stabRef": 275,
     "releveRef": 4,
-    "chargementWp": 620,
+    "chargementWp": 608,
     "stabWp": 277,
-    "releveWp": 5,
-    "cls": 1
+    "releveWp": 4,
+    "cls": 2
    }
   }
  },
@@ -29398,14 +29398,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2493,
+   "ms": 2455,
    "phases": {
-    "bascule": 1110,
+    "bascule": 1106,
     "stabRef": 366,
     "releveRef": 5,
-    "chargementWp": 637,
-    "stabWp": 368,
-    "releveWp": 5,
+    "chargementWp": 603,
+    "stabWp": 369,
+    "releveWp": 4,
     "cls": 2
    }
   },
@@ -29487,14 +29487,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2412,
+   "ms": 2401,
    "phases": {
-    "bascule": 1105,
+    "bascule": 1107,
     "stabRef": 336,
     "releveRef": 4,
-    "chargementWp": 624,
-    "stabWp": 337,
-    "releveWp": 4,
+    "chargementWp": 609,
+    "stabWp": 338,
+    "releveWp": 5,
     "cls": 2
    }
   },
@@ -29573,17 +29573,17 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.007,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2314,
+   "ms": 2274,
    "phases": {
-    "bascule": 1107,
+    "bascule": 1106,
     "stabRef": 275,
-    "releveRef": 3,
-    "chargementWp": 645,
-    "stabWp": 277,
-    "releveWp": 5,
+    "releveRef": 4,
+    "chargementWp": 607,
+    "stabWp": 276,
+    "releveWp": 4,
     "cls": 2
    }
   },
@@ -29662,18 +29662,18 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0021,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2235,
+   "ms": 2217,
    "phases": {
-    "bascule": 1107,
+    "bascule": 1119,
     "stabRef": 245,
     "releveRef": 4,
-    "chargementWp": 627,
+    "chargementWp": 596,
     "stabWp": 247,
     "releveWp": 4,
-    "cls": 1
+    "cls": 2
    }
   },
   "1440": {
@@ -29751,18 +29751,18 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0012,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2239,
+   "ms": 2208,
    "phases": {
     "bascule": 1106,
-    "stabRef": 244,
-    "releveRef": 3,
-    "chargementWp": 635,
-    "stabWp": 246,
+    "stabRef": 245,
+    "releveRef": 4,
+    "chargementWp": 600,
+    "stabWp": 247,
     "releveWp": 4,
-    "cls": 1
+    "cls": 2
    }
   },
   "1920": {
@@ -29840,17 +29840,17 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0007,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2243,
+   "ms": 2207,
    "phases": {
-    "bascule": 1106,
+    "bascule": 1107,
     "stabRef": 245,
     "releveRef": 4,
-    "chargementWp": 638,
-    "stabWp": 245,
-    "releveWp": 4,
+    "chargementWp": 599,
+    "stabWp": 246,
+    "releveWp": 5,
     "cls": 1
    }
   }
@@ -29927,13 +29927,13 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2628,
+   "ms": 2601,
    "phases": {
     "bascule": 1107,
     "stabRef": 426,
     "releveRef": 4,
-    "chargementWp": 626,
-    "stabWp": 459,
+    "chargementWp": 598,
+    "stabWp": 460,
     "releveWp": 4,
     "cls": 2
    }
@@ -30009,15 +30009,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2612,
+   "ms": 2577,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 425,
-    "releveRef": 3,
-    "chargementWp": 644,
-    "stabWp": 428,
+    "bascule": 1108,
+    "stabRef": 426,
+    "releveRef": 4,
+    "chargementWp": 603,
+    "stabWp": 429,
     "releveWp": 5,
-    "cls": 1
+    "cls": 2
    }
   },
   "768": {
@@ -30091,14 +30091,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2418,
+   "ms": 2403,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 336,
+    "bascule": 1107,
+    "stabRef": 338,
     "releveRef": 4,
-    "chargementWp": 628,
+    "chargementWp": 609,
     "stabWp": 338,
-    "releveWp": 4,
+    "releveWp": 5,
     "cls": 2
    }
   },
@@ -30173,15 +30173,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2339,
+   "ms": 2347,
    "phases": {
     "bascule": 1106,
-    "stabRef": 304,
+    "stabRef": 305,
     "releveRef": 4,
-    "chargementWp": 613,
+    "chargementWp": 618,
     "stabWp": 307,
-    "releveWp": 4,
-    "cls": 1
+    "releveWp": 5,
+    "cls": 2
    }
   },
   "1440": {
@@ -30252,16 +30252,16 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0003,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2327,
+   "ms": 2311,
    "phases": {
-    "bascule": 1105,
+    "bascule": 1108,
     "stabRef": 274,
-    "releveRef": 3,
-    "chargementWp": 633,
-    "stabWp": 307,
+    "releveRef": 4,
+    "chargementWp": 610,
+    "stabWp": 308,
     "releveWp": 4,
     "cls": 1
    }
@@ -30334,18 +30334,18 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0002,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2327,
+   "ms": 2314,
    "phases": {
-    "bascule": 1105,
+    "bascule": 1106,
     "stabRef": 274,
-    "releveRef": 3,
-    "chargementWp": 630,
+    "releveRef": 4,
+    "chargementWp": 614,
     "stabWp": 307,
-    "releveWp": 5,
-    "cls": 3
+    "releveWp": 7,
+    "cls": 2
    }
   }
  },
@@ -30419,15 +30419,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2371,
+   "ms": 2334,
    "phases": {
     "bascule": 1107,
-    "stabRef": 305,
+    "stabRef": 306,
     "releveRef": 3,
-    "chargementWp": 641,
-    "stabWp": 308,
-    "releveWp": 5,
-    "cls": 2
+    "chargementWp": 604,
+    "stabWp": 309,
+    "releveWp": 4,
+    "cls": 1
    }
   },
   "375": {
@@ -30499,15 +30499,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2356,
+   "ms": 2329,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 306,
+    "bascule": 1107,
+    "stabRef": 305,
     "releveRef": 4,
-    "chargementWp": 626,
-    "stabWp": 309,
-    "releveWp": 4,
-    "cls": 1
+    "chargementWp": 598,
+    "stabWp": 307,
+    "releveWp": 5,
+    "cls": 2
    }
   },
   "768": {
@@ -30579,14 +30579,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2261,
+   "ms": 2219,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 245,
+    "bascule": 1107,
+    "stabRef": 246,
     "releveRef": 4,
-    "chargementWp": 652,
-    "stabWp": 247,
-    "releveWp": 5,
+    "chargementWp": 608,
+    "stabWp": 248,
+    "releveWp": 4,
     "cls": 2
    }
   },
@@ -30656,17 +30656,17 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0005,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2156,
+   "ms": 2167,
    "phases": {
-    "bascule": 1106,
+    "bascule": 1108,
     "stabRef": 214,
     "releveRef": 3,
-    "chargementWp": 611,
-    "stabWp": 216,
-    "releveWp": 4,
+    "chargementWp": 618,
+    "stabWp": 217,
+    "releveWp": 5,
     "cls": 2
    }
   },
@@ -30736,15 +30736,15 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0006,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2185,
+   "ms": 2155,
    "phases": {
     "bascule": 1106,
     "stabRef": 214,
-    "releveRef": 4,
-    "chargementWp": 640,
+    "releveRef": 3,
+    "chargementWp": 611,
     "stabWp": 216,
     "releveWp": 4,
     "cls": 1
@@ -30816,16 +30816,16 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0003,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2164,
+   "ms": 2167,
    "phases": {
     "bascule": 1107,
     "stabRef": 214,
-    "releveRef": 2,
+    "releveRef": 3,
     "chargementWp": 621,
-    "stabWp": 215,
+    "stabWp": 217,
     "releveWp": 4,
     "cls": 1
    }
@@ -30888,14 +30888,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2335,
+   "ms": 2308,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 277,
-    "releveRef": 18,
-    "chargementWp": 646,
+    "bascule": 1108,
+    "stabRef": 275,
+    "releveRef": 17,
+    "chargementWp": 621,
     "stabWp": 278,
-    "releveWp": 8,
+    "releveWp": 7,
     "cls": 2
    }
   },
@@ -30955,14 +30955,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2322,
+   "ms": 2310,
    "phases": {
-    "bascule": 1107,
-    "stabRef": 275,
-    "releveRef": 17,
-    "chargementWp": 636,
+    "bascule": 1108,
+    "stabRef": 276,
+    "releveRef": 18,
+    "chargementWp": 622,
     "stabWp": 277,
-    "releveWp": 8,
+    "releveWp": 7,
     "cls": 2
    }
   },
@@ -31022,15 +31022,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2262,
+   "ms": 2245,
    "phases": {
-    "bascule": 1107,
+    "bascule": 1120,
     "stabRef": 245,
-    "releveRef": 22,
-    "chargementWp": 634,
-    "stabWp": 246,
+    "releveRef": 16,
+    "chargementWp": 608,
+    "stabWp": 247,
     "releveWp": 7,
-    "cls": 1
+    "cls": 2
    }
   },
   "1024": {
@@ -31089,14 +31089,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2218,
+   "ms": 2191,
    "phases": {
-    "bascule": 1106,
+    "bascule": 1107,
     "stabRef": 214,
-    "releveRef": 30,
-    "chargementWp": 641,
+    "releveRef": 13,
+    "chargementWp": 633,
     "stabWp": 216,
-    "releveWp": 10,
+    "releveWp": 7,
     "cls": 1
    }
   },
@@ -31153,18 +31153,18 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0003,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2228,
+   "ms": 2177,
    "phases": {
     "bascule": 1107,
-    "stabRef": 214,
-    "releveRef": 27,
-    "chargementWp": 655,
-    "stabWp": 216,
-    "releveWp": 8,
-    "cls": 1
+    "stabRef": 215,
+    "releveRef": 16,
+    "chargementWp": 613,
+    "stabWp": 217,
+    "releveWp": 7,
+    "cls": 2
    }
   },
   "1920": {
@@ -31220,18 +31220,18 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0002,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2211,
+   "ms": 2181,
    "phases": {
-    "bascule": 1128,
-    "stabRef": 214,
-    "releveRef": 19,
-    "chargementWp": 627,
-    "stabWp": 215,
-    "releveWp": 7,
-    "cls": 1
+    "bascule": 1106,
+    "stabRef": 215,
+    "releveRef": 16,
+    "chargementWp": 618,
+    "stabWp": 216,
+    "releveWp": 8,
+    "cls": 2
    }
   }
  },
@@ -31305,14 +31305,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2343,
+   "ms": 2313,
    "phases": {
-    "bascule": 1108,
-    "stabRef": 274,
-    "releveRef": 3,
-    "chargementWp": 644,
-    "stabWp": 307,
-    "releveWp": 5,
+    "bascule": 1106,
+    "stabRef": 275,
+    "releveRef": 4,
+    "chargementWp": 614,
+    "stabWp": 308,
+    "releveWp": 4,
     "cls": 2
    }
   },
@@ -31385,14 +31385,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2303,
+   "ms": 2278,
    "phases": {
-    "bascule": 1106,
+    "bascule": 1107,
     "stabRef": 275,
-    "releveRef": 4,
-    "chargementWp": 634,
-    "stabWp": 277,
-    "releveWp": 5,
+    "releveRef": 5,
+    "chargementWp": 607,
+    "stabWp": 278,
+    "releveWp": 4,
     "cls": 2
    }
   },
@@ -31465,14 +31465,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2231,
+   "ms": 2216,
    "phases": {
-    "bascule": 1106,
+    "bascule": 1107,
     "stabRef": 244,
     "releveRef": 4,
-    "chargementWp": 624,
-    "stabWp": 246,
-    "releveWp": 6,
+    "chargementWp": 608,
+    "stabWp": 247,
+    "releveWp": 5,
     "cls": 1
    }
   },
@@ -31545,14 +31545,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2181,
+   "ms": 2147,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 215,
-    "releveRef": 3,
-    "chargementWp": 621,
-    "stabWp": 229,
-    "releveWp": 5,
+    "bascule": 1107,
+    "stabRef": 214,
+    "releveRef": 4,
+    "chargementWp": 599,
+    "stabWp": 217,
+    "releveWp": 4,
     "cls": 2
    }
   },
@@ -31622,18 +31622,18 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0003,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2198,
+   "ms": 2164,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 215,
+    "bascule": 1107,
+    "stabRef": 214,
     "releveRef": 4,
-    "chargementWp": 651,
+    "chargementWp": 617,
     "stabWp": 216,
-    "releveWp": 5,
-    "cls": 1
+    "releveWp": 4,
+    "cls": 2
    }
   },
   "1920": {
@@ -31702,17 +31702,17 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0002,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2187,
+   "ms": 2164,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 215,
-    "releveRef": 5,
-    "chargementWp": 639,
+    "bascule": 1107,
+    "stabRef": 214,
+    "releveRef": 4,
+    "chargementWp": 616,
     "stabWp": 216,
-    "releveWp": 4,
+    "releveWp": 5,
     "cls": 2
    }
   }
@@ -31777,15 +31777,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2353,
+   "ms": 2334,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 304,
-    "releveRef": 4,
-    "chargementWp": 626,
-    "stabWp": 308,
+    "bascule": 1107,
+    "stabRef": 305,
+    "releveRef": 3,
+    "chargementWp": 603,
+    "stabWp": 309,
     "releveWp": 4,
-    "cls": 1
+    "cls": 3
    }
   },
   "375": {
@@ -31847,15 +31847,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2350,
+   "ms": 2333,
    "phases": {
-    "bascule": 1107,
-    "stabRef": 304,
+    "bascule": 1108,
+    "stabRef": 305,
     "releveRef": 4,
-    "chargementWp": 622,
+    "chargementWp": 603,
     "stabWp": 308,
-    "releveWp": 3,
-    "cls": 2
+    "releveWp": 4,
+    "cls": 1
    }
   },
   "768": {
@@ -31917,15 +31917,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2228,
+   "ms": 2182,
    "phases": {
-    "bascule": 1106,
+    "bascule": 1108,
     "stabRef": 214,
-    "releveRef": 5,
-    "chargementWp": 651,
-    "stabWp": 247,
+    "releveRef": 4,
+    "chargementWp": 602,
+    "stabWp": 248,
     "releveWp": 4,
-    "cls": 1
+    "cls": 2
    }
   },
   "1024": {
@@ -31987,15 +31987,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2184,
+   "ms": 2150,
    "phases": {
-    "bascule": 1107,
+    "bascule": 1108,
     "stabRef": 214,
     "releveRef": 4,
-    "chargementWp": 638,
+    "chargementWp": 602,
     "stabWp": 216,
     "releveWp": 4,
-    "cls": 1
+    "cls": 2
    }
   },
   "1440": {
@@ -32054,16 +32054,16 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0003,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2169,
+   "ms": 2173,
    "phases": {
-    "bascule": 1106,
+    "bascule": 1108,
     "stabRef": 214,
     "releveRef": 4,
-    "chargementWp": 624,
-    "stabWp": 216,
+    "chargementWp": 625,
+    "stabWp": 217,
     "releveWp": 4,
     "cls": 1
    }
@@ -32124,17 +32124,17 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0002,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2180,
+   "ms": 2165,
    "phases": {
-    "bascule": 1108,
-    "stabRef": 213,
+    "bascule": 1106,
+    "stabRef": 214,
     "releveRef": 4,
-    "chargementWp": 634,
+    "chargementWp": 619,
     "stabWp": 216,
-    "releveWp": 4,
+    "releveWp": 5,
     "cls": 1
    }
   }
@@ -32195,14 +32195,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2316,
+   "ms": 2303,
    "phases": {
-    "bascule": 1105,
-    "stabRef": 276,
+    "bascule": 1107,
+    "stabRef": 275,
     "releveRef": 3,
-    "chargementWp": 619,
-    "stabWp": 308,
-    "releveWp": 3,
+    "chargementWp": 605,
+    "stabWp": 307,
+    "releveWp": 4,
     "cls": 2
    }
   },
@@ -32261,14 +32261,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2313,
+   "ms": 2290,
    "phases": {
     "bascule": 1107,
     "stabRef": 275,
     "releveRef": 3,
-    "chargementWp": 616,
-    "stabWp": 307,
-    "releveWp": 3,
+    "chargementWp": 591,
+    "stabWp": 308,
+    "releveWp": 4,
     "cls": 2
    }
   },
@@ -32327,15 +32327,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2193,
+   "ms": 2171,
    "phases": {
     "bascule": 1107,
     "stabRef": 214,
-    "releveRef": 3,
-    "chargementWp": 619,
-    "stabWp": 246,
-    "releveWp": 3,
-    "cls": 1
+    "releveRef": 4,
+    "chargementWp": 592,
+    "stabWp": 248,
+    "releveWp": 4,
+    "cls": 2
    }
   },
   "1024": {
@@ -32393,15 +32393,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2192,
+   "ms": 2171,
    "phases": {
     "bascule": 1106,
-    "stabRef": 214,
+    "stabRef": 215,
     "releveRef": 2,
-    "chargementWp": 618,
+    "chargementWp": 596,
     "stabWp": 247,
-    "releveWp": 4,
-    "cls": 1
+    "releveWp": 3,
+    "cls": 2
    }
   },
   "1440": {
@@ -32456,16 +32456,16 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0003,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2177,
+   "ms": 2143,
    "phases": {
-    "bascule": 1107,
-    "stabRef": 214,
+    "bascule": 1106,
+    "stabRef": 215,
     "releveRef": 3,
-    "chargementWp": 632,
-    "stabWp": 216,
+    "chargementWp": 595,
+    "stabWp": 219,
     "releveWp": 3,
     "cls": 2
    }
@@ -32522,18 +32522,18 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0002,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2169,
+   "ms": 2137,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 214,
+    "bascule": 1107,
+    "stabRef": 215,
     "releveRef": 3,
-    "chargementWp": 627,
-    "stabWp": 215,
+    "chargementWp": 591,
+    "stabWp": 216,
     "releveWp": 3,
-    "cls": 1
+    "cls": 2
    }
   }
  },
@@ -32593,15 +32593,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2365,
+   "ms": 2298,
    "phases": {
-    "bascule": 1108,
+    "bascule": 1106,
     "stabRef": 274,
     "releveRef": 4,
-    "chargementWp": 650,
-    "stabWp": 325,
-    "releveWp": 3,
-    "cls": 1
+    "chargementWp": 599,
+    "stabWp": 308,
+    "releveWp": 5,
+    "cls": 2
    }
   },
   "375": {
@@ -32659,15 +32659,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2289,
+   "ms": 2270,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 245,
-    "releveRef": 3,
-    "chargementWp": 620,
+    "bascule": 1107,
+    "stabRef": 244,
+    "releveRef": 4,
+    "chargementWp": 601,
     "stabWp": 308,
     "releveWp": 4,
-    "cls": 3
+    "cls": 2
    }
   },
   "768": {
@@ -32728,12 +32728,12 @@
    "ms": 2187,
    "phases": {
     "bascule": 1106,
-    "stabRef": 214,
+    "stabRef": 215,
     "releveRef": 3,
-    "chargementWp": 613,
-    "stabWp": 246,
-    "releveWp": 3,
-    "cls": 1
+    "chargementWp": 610,
+    "stabWp": 247,
+    "releveWp": 4,
+    "cls": 2
    }
   },
   "1024": {
@@ -32793,13 +32793,13 @@
    "erreursReseau": [],
    "ms": 2193,
    "phases": {
-    "bascule": 1107,
+    "bascule": 1119,
     "stabRef": 214,
-    "releveRef": 3,
-    "chargementWp": 617,
-    "stabWp": 246,
-    "releveWp": 4,
-    "cls": 2
+    "releveRef": 4,
+    "chargementWp": 602,
+    "stabWp": 248,
+    "releveWp": 3,
+    "cls": 3
    }
   },
   "1440": {
@@ -32854,18 +32854,18 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0003,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2194,
+   "ms": 2181,
    "phases": {
-    "bascule": 1107,
+    "bascule": 1105,
     "stabRef": 214,
     "releveRef": 3,
-    "chargementWp": 619,
+    "chargementWp": 606,
     "stabWp": 247,
-    "releveWp": 3,
-    "cls": 1
+    "releveWp": 4,
+    "cls": 2
    }
   },
   "1920": {
@@ -32920,16 +32920,16 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0002,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2200,
+   "ms": 2164,
    "phases": {
-    "bascule": 1107,
-    "stabRef": 213,
+    "bascule": 1106,
+    "stabRef": 214,
     "releveRef": 3,
-    "chargementWp": 625,
-    "stabWp": 247,
+    "chargementWp": 590,
+    "stabWp": 246,
     "releveWp": 3,
     "cls": 2
    }
@@ -32991,15 +32991,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2267,
+   "ms": 2240,
    "phases": {
-    "bascule": 1109,
-    "stabRef": 243,
-    "releveRef": 3,
-    "chargementWp": 630,
+    "bascule": 1106,
+    "stabRef": 245,
+    "releveRef": 4,
+    "chargementWp": 602,
     "stabWp": 277,
-    "releveWp": 3,
-    "cls": 2
+    "releveWp": 5,
+    "cls": 1
    }
   },
   "375": {
@@ -33057,14 +33057,14 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2257,
+   "ms": 2232,
    "phases": {
-    "bascule": 1106,
-    "stabRef": 245,
-    "releveRef": 2,
-    "chargementWp": 621,
-    "stabWp": 278,
-    "releveWp": 3,
+    "bascule": 1108,
+    "stabRef": 244,
+    "releveRef": 3,
+    "chargementWp": 594,
+    "stabWp": 277,
+    "releveWp": 4,
     "cls": 2
    }
   },
@@ -33123,15 +33123,15 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2156,
+   "ms": 2151,
    "phases": {
     "bascule": 1106,
     "stabRef": 214,
     "releveRef": 3,
-    "chargementWp": 612,
-    "stabWp": 216,
-    "releveWp": 3,
-    "cls": 2
+    "chargementWp": 600,
+    "stabWp": 223,
+    "releveWp": 4,
+    "cls": 1
    }
   },
   "1024": {
@@ -33189,13 +33189,13 @@
    "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2160,
+   "ms": 2133,
    "phases": {
-    "bascule": 1106,
+    "bascule": 1108,
     "stabRef": 214,
     "releveRef": 3,
-    "chargementWp": 615,
-    "stabWp": 217,
+    "chargementWp": 587,
+    "stabWp": 216,
     "releveWp": 3,
     "cls": 2
    }
@@ -33252,18 +33252,18 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0003,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2139,
+   "ms": 2115,
    "phases": {
-    "bascule": 1109,
+    "bascule": 1108,
     "stabRef": 184,
     "releveRef": 3,
-    "chargementWp": 623,
-    "stabWp": 216,
-    "releveWp": 3,
-    "cls": 1
+    "chargementWp": 597,
+    "stabWp": 217,
+    "releveWp": 4,
+    "cls": 2
    }
   },
   "1920": {
@@ -33318,18 +33318,18 @@
     "debordement": 0,
     "horsEcran": 0
    },
-   "cls": 0.0002,
+   "cls": 0,
    "erreursConsole": [],
    "erreursReseau": [],
-   "ms": 2138,
+   "ms": 2124,
    "phases": {
-    "bascule": 1106,
+    "bascule": 1123,
     "stabRef": 184,
     "releveRef": 3,
-    "chargementWp": 625,
+    "chargementWp": 593,
     "stabWp": 216,
     "releveWp": 3,
-    "cls": 1
+    "cls": 2
    }
   }
  }

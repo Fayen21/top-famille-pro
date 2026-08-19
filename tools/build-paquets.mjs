@@ -17,7 +17,7 @@
  * Usage : node tools/build-paquets.mjs [--sans-controle-prealable]
  */
 import { execFileSync } from 'node:child_process';
-import { copyFileSync, mkdirSync, rmSync, statSync } from 'node:fs';
+import { copyFileSync, existsSync, mkdirSync, rmSync, statSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { exigerParite, verifierParite } from './verifier-parite-installeur.mjs';
@@ -69,9 +69,22 @@ function construire(p) {
 	 * compare lui aussi à l'arbre de travail : les deux mesurent la même chose.
 	 */
 	for (const rel of fichiers) {
+		const origine = path.join(RACINE, p.source, rel);
+		if (!existsSync(origine)) {
+			/*
+			 * Le fichier est SUIVI par git mais absent du disque : une suppression non indexée.
+			 * L'erreur brute d'ENOENT ne dirait pas quoi faire ; celle-ci si. C'est arrivé en
+			 * remplaçant dix-huit fichiers de police par quatre.
+			 */
+			throw new Error(
+				`${p.source}/${rel} est suivi par git mais absent du disque. ` +
+					'Indexer la suppression (`git add -A`) avant de construire les paquets, ' +
+					"sinon l'archive serait construite sur une liste qui ne décrit plus le dépôt."
+			);
+		}
 		const cibleFichier = path.join(dest, rel);
 		mkdirSync(path.dirname(cibleFichier), { recursive: true });
-		copyFileSync(path.join(RACINE, p.source, rel), cibleFichier);
+		copyFileSync(origine, cibleFichier);
 	}
 
 	const cible = path.join(EXPORT, p.zip);

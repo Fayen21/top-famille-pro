@@ -1644,3 +1644,68 @@ Trois leviers examinés, deux écartés avec leur raison :
 §6 (présentation des CTA — mesuré, déjà conforme), §10 (formulaire), §11 (CSS critique), §13
 (captures ciblées), §14 (batterie finale), §15 (rapport complet). Verdict **`PARTIEL — ÉCARTS
 RESTANTS`**.
+
+
+## G27 §11 — LCP mobile sous la cible sur les sept routes (19 août 2026)
+
+### Le CSS critique a été appliqué, mesuré, et RETIRÉ
+
+`CLAUDE.md` §8 le demande, et le raisonnement tenait : un LCP texte est peint dès que le HTML et la
+CSS sont là, donc supprimer l'aller-retour de la feuille devrait le devancer. **La mesure dit le
+contraire.**
+
+L'extracteur (`tools/extraire-css-critique.mjs`) relève les règles réellement appliquées au premier
+écran des 53 routes, à 375 et 1440 px — 317 règles sur 741, 40 Ko minifiés. Mis en ligne, feuille
+complète en `preload` + bascule :
+
+| Mesure mobile | Avant | Avec CSS critique | Sans aucune feuille bloquante |
+|---|---:|---:|---:|
+| Accueil | 2,87 s | **3,02 s** | **3,01 s** |
+| Prestation | 2,87 s | **3,01 s** | **3,01 s** |
+
+Le dispositif dégrade de 0,14 s, et vider la chaîne bloquante n'y change rien : **l'aller-retour de
+la feuille n'était pas le goulot**. Les 40 Ko en ligne portent le HTML transféré de 12 à 19,4 Ko, et
+c'est ce poids qui se paie. Retiré du thème. L'extracteur reste : il a produit la mesure et permet
+de la refaire. C'était la deuxième tentative sur ce chemin — la première, le 9 août, avait produit
+un CLS de 1,002 — et la trace écrite est ce qui évitera une troisième.
+
+### La vraie cause : sept fichiers de police pour deux polices
+
+L'accueil pesait **341 Ko, dont 264 Ko de polices** — 78 % de la page. Sept fichiers au premier
+écran, tous de tailles rigoureusement identiques d'une graisse à l'autre : ce n'étaient pas sept
+polices, **c'était le même fichier variable téléchargé sept fois**.
+
+Les deux familles sont variables. Demandées graisse par graisse (`wght@400;500;600;700;800`),
+l'API Google renvoie quinze déclarations `@font-face` pointant vers **trois URL** ; le téléchargeur
+en faisait quinze fichiers de noms différents, et le navigateur, ne pouvant deviner qu'ils sont
+identiques, en chargeait sept. Demandées en plage (`wght@400..800`), les mêmes octets arrivent en un
+fichier par famille et par sous-ensemble : **18 fichiers deviennent 4**, l'accueil en charge **2**.
+
+Le rendu ne peut pas changer — mêmes glyphes, même fichier. Seul le nombre de téléchargements change.
+`build/fetch-fonts.mjs` refuse désormais de continuer si Google renvoie une graisse fixe ou deux
+fichiers distincts pour un même sous-ensemble.
+
+### Résultat
+
+| Route | LCP mobile avant | après |
+|---|---:|---:|
+| Accueil | 2,87 s | **1,82 s** |
+| Prestation | 2,87 s | **1,82 s** |
+| Ville | 2,87 s | **1,82 s** |
+| Tarifs | 2,72 s | **1,66 s** |
+| Article | 2,42 s | **1,82 s** |
+| Contact | 2,42 s | **1,66 s** |
+| Formulaire de devis | 2,50 s | **1,67 s** |
+
+**Sept routes sur sept sous 2,5 s, avec 0,7 s de marge.** Performance mobile de 93-97 à **99-100**,
+bureau **100 partout**. **CLS 0,000 sur les quatorze mesures** : le préchargement qui corrigeait le
+CLS de 0,25 en G24 est préservé, avec deux fichiers au lieu de quatre et davantage de graisses
+couvertes.
+
+### Contrôles
+
+- Relevé de base après changement : **318/318 · 300 dans 95-105 %** — inchangé, aucune régression
+  visuelle. Le 320 px gagne même un point dans la bande resserrée 98-102 %.
+- `tests/ratios-baseline.spec.js` verrouille les deux faces : au plus **deux fichiers de police** au
+  premier écran, et chaque `@font-face` déclarant une **plage** de graisses. Une seule ligne de
+  `build/fetch-fonts.mjs` suffirait à ramener les 264 Ko sans que rien ne s'affiche différemment.
