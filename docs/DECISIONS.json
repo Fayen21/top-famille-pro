@@ -1,0 +1,153 @@
+{
+  "_lisez_moi": [
+    "Décisions humaines TRANCHÉES, sous forme exploitable par un test.",
+    "STATUS.md et CLAUDE.md racontent ; ce fichier est ce qui se vérifie.",
+    "tests/decisions.spec.js compare chaque entrée au HTML RÉELLEMENT SERVI des 53 routes.",
+    "Une consigne périmée réintroduite dans un document ne suffit donc plus à changer le site :",
+    "elle ferait échouer la suite, en nommant la décision qu'elle contredit.",
+    "Toute modification ici exige une décision humaine explicite, datée, reportée dans `decisions`."
+  ],
+  "version": 1,
+  "derniere_mise_a_jour": "2026-08-19",
+  "decisions": [
+    {
+      "id": "note-google-masquee",
+      "titre": "Aucune note Google affichée sans fiche officielle vérifiée",
+      "decide_le": "2026-08-18",
+      "confirme_le": "2026-08-19",
+      "remplace": [
+        {
+          "date": "2026-08-09",
+          "regle": "la note 5,0/5 est confirmée et peut être affichée"
+        },
+        {
+          "date": "2026-08-17",
+          "regle": "la note est réaffichée via la case « Afficher sans la fiche »"
+        }
+      ],
+      "regle": {
+        "interdit_dans_le_html_servi": [
+          {
+            "motif": "\\\\d[,.]\\\\d\\\\s*/\\\\s*5",
+            "nom": "note sur 5"
+          },
+          {
+            "motif": "sur\\\\s+Google",
+            "nom": "mention « sur Google »"
+          },
+          {
+            "motif": "\\\\b\\\\d+\\\\s+avis\\\\b",
+            "nom": "compteur d'avis"
+          },
+          {
+            "motif": "\"Review\"",
+            "nom": "donnée structurée Review"
+          },
+          {
+            "motif": "AggregateRating",
+            "nom": "donnée structurée AggregateRating"
+          },
+          {
+            "motif": "ratingValue",
+            "nom": "note dans le JSON-LD"
+          },
+          {
+            "motif": "href=\"#\"",
+            "nom": "lien mort à la place de la fiche"
+          }
+        ],
+        "conditions_d_affichage": [
+          "une note est saisie en administration",
+          "l'URL de la fiche est saisie et non vide",
+          "cette URL a la forme d'une fiche Google (contrôle de forme, pas d'appartenance)",
+          "l'appartenance de la fiche à Top-Famille Pro est vérifiée humainement"
+        ],
+        "aucun_seed_ne_peut_reactiver": true
+      }
+    },
+    {
+      "id": "communes-secondaires-indexees",
+      "titre": "Les huit communes secondaires sont desservies, donc indexées",
+      "decide_le": "2026-08-17",
+      "confirme_le": "2026-08-19",
+      "remplace": [
+        {
+          "date": "2026-08-07",
+          "regle": "les 8 communes secondaires restent en noindex,follow tant qu'Audrey ne les a pas validées"
+        }
+      ],
+      "regle": {
+        "robots_attendu": "index,follow",
+        "present_au_sitemap": true,
+        "texte_affirmatif": true,
+        "routes": [
+          "/zones-intervention/cote-dor/saint-apollinaire/",
+          "/zones-intervention/cote-dor/chenove/",
+          "/zones-intervention/cote-dor/quetigny/",
+          "/zones-intervention/cote-dor/talant/",
+          "/zones-intervention/cote-dor/longvic/",
+          "/zones-intervention/cote-dor/fontaine-les-dijon/",
+          "/zones-intervention/cote-dor/marsannay-la-cote/",
+          "/zones-intervention/cote-dor/beaune/"
+        ]
+      }
+    },
+    {
+      "id": "navigation-six-entrees",
+      "titre": "Navigation principale à six entrées, « Prestations » porte le lien pilier",
+      "decide_le": "2026-08-19",
+      "remplace": [
+        {
+          "date": "2026-08-17",
+          "regle": "l'entrée autonome « Nettoyage professionnel » est conservée au menu"
+        }
+      ],
+      "regle": {
+        "entrees": [
+          "Prestations",
+          "Tarifs",
+          "Zones",
+          "Pourquoi nous",
+          "Avis",
+          "Conseils"
+        ],
+        "lien_pilier_porte_par": "Prestations",
+        "url_pilier": "/nettoyage-professionnel/",
+        "entree_autonome_pilier_interdite": true,
+        "hauteur_entete_max_px": 121
+      }
+    },
+    {
+      "id": "cta-heros-institutionnels",
+      "titre": "Les commandes de hero restent sur les cinq pages institutionnelles",
+      "decide_le": "2026-08-17",
+      "confirme_le": "2026-08-19",
+      "regle": {
+        "routes": [
+          "/a-propos/",
+          "/pourquoi-nous/",
+          "/notre-fonctionnement/",
+          "/avis-clients/",
+          "/prestations/"
+        ],
+        "commandes_attendues": 2,
+        "motif": "priorité commerciale du brief (CLAUDE.md §4)"
+      }
+    },
+    {
+      "id": "elements-provisoires",
+      "titre": "Éléments provisoires maintenus en l'état",
+      "decide_le": "2026-08-19",
+      "regle": {
+        "non_modifiables_cette_passe": [
+          "« Aucun simulateur » (correction §9 différée)",
+          "« agences fictives » (correction §9 différée)",
+          "photo temporaire d'Audrey — reste identifiée comme illustration",
+          "citation attribuée à Audrey — non validée pour publication"
+        ],
+        "photo_audrey_marquee_illustration": true,
+        "citation_audrey_validee_par_l_interessee": false
+      }
+    }
+  ]
+}

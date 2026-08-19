@@ -25,6 +25,8 @@ import { ROUTE_MAP } from './route-map.mjs';
 const REF = 'file://' + process.cwd() + '/reference/Top-Famille-Pro-HANDOFF-READY.html';
 const WP = process.env.TFP_BASE_URL || 'http://localhost:8901';
 const DIST = 'wp-content/themes/topfamillepro/assets/dist/images';
+import { comparerPosition } from './lib/position-bande.mjs';
+
 const arg = (n) => (process.argv.find((a) => a.startsWith(`--${n}=`)) || '').split('=')[1];
 const routes = arg('routes') ? arg('routes').split(',') : Object.keys(ROUTE_MAP);
 
@@ -75,8 +77,26 @@ const RELEVE = () => {
 		else if (r.width <= 80) role = 'vignette';
 		else if (bande <= 2 && r.width >= 300) role = 'hero';
 		else role = 'editoriale';
+		/*
+		 * POSITION DANS LE FLUX (G27 §7).
+		 *
+		 * L'empreinte prouve qu'un fichier est le bon ; elle ne dit rien de l'endroit où il est
+		 * servi. La bande « Cahier des charges, intervenants et suivi » du pilier portait le bon
+		 * visuel, aux bons octets, à la 18ᵉ position au lieu de la 11ᵉ — et l'audit la déclarait
+		 * identique. On relève donc aussi le titre de la bande qui porte l'image, et ceux des
+		 * bandes qui l'encadrent : un fichier correct à la mauvaise place devient un écart.
+		 */
+		const titreDe = (sec) => {
+			if (!sec) return '';
+			const h = sec.querySelector('h1, h2, h3');
+			return h ? txt(h).slice(0, 60) : '';
+		};
+		const idx = bande - 1;
 		return {
 			ordre: i, role, bande,
+			titreBande: titreDe(sections[idx]),
+			titrePrecedent: titreDe(sections[idx - 1]),
+			titreSuivant: titreDe(sections[idx + 1]),
 			rendu: Math.round(r.width) + '×' + Math.round(r.height),
 			natif: im.naturalWidth + '×' + im.naturalHeight,
 			src: im.currentSrc || im.src || '',
@@ -154,16 +174,27 @@ for (const hash of routes) {
 		const la = ra[role] || [], lb = rb[role] || [];
 		for (let i = 0; i < Math.max(la.length, lb.length); i++) {
 			const x = la[i], y = lb[i];
+			// Comparaison de POSITION, en plus de l'empreinte — voir tools/lib/position-bande.mjs.
+			const place =
+				x && y
+					? comparerPosition(
+							{ bande: x.titreBande, avant: x.titrePrecedent, apres: x.titreSuivant },
+							{ bande: y.titreBande, avant: y.titrePrecedent, apres: y.titreSuivant }
+						)
+					: null;
+
 			let verdict;
 			if (!x) verdict = 'EN TROP côté thème';
 			else if (!y) verdict = 'MANQUANTE côté thème';
-			else if (x.sha && y.sha && x.sha === y.sha) verdict = 'IDENTIQUE';
-			else if (x.sha && y.sha) verdict = 'IMAGE DIFFÉRENTE';
-			else verdict = 'empreinte indisponible';
+			else if (!x.sha || !y.sha) verdict = 'empreinte indisponible';
+			else if (x.sha !== y.sha) verdict = 'IMAGE DIFFÉRENTE';
+			else if (place.verdict === 'deplacee') verdict = 'BONNE IMAGE, MAUVAISE BANDE';
+			else verdict = 'IDENTIQUE';
+
 			lignes.push({
 				route: hash, role, rang: i + 1,
-				maquette: x ? { rendu: x.rendu, natif: x.natif, sha: x.sha, voisin: x.voisin, alt: x.alt } : null,
-				wordpress: y ? { rendu: y.rendu, natif: y.natif, sha: y.sha, slot: y.slot, fichier: y.fichier, alt: y.alt } : null,
+				maquette: x ? { rendu: x.rendu, natif: x.natif, sha: x.sha, voisin: x.voisin, alt: x.alt, bande: x.titreBande, avant: x.titrePrecedent, apres: x.titreSuivant } : null,
+				wordpress: y ? { rendu: y.rendu, natif: y.natif, sha: y.sha, slot: y.slot, fichier: y.fichier, alt: y.alt, bande: y.titreBande, avant: y.titrePrecedent, apres: y.titreSuivant } : null,
 				verdict,
 			});
 		}
@@ -177,11 +208,26 @@ const ecarts = lignes.filter((l) => l.verdict !== 'IDENTIQUE');
 const L = ['# Audit des images par rôle — maquette ↔ WordPress', '',
 	'> Fichier **généré** par `node tools/audit-images-role.mjs`. Ne pas éditer à la main.', '>',
 	'> Les images sont appariées sur leur **rôle** dans la page (logo, hero, éditoriale, vignette),',
-	'> pas comptées en bloc, puis comparées sur les **octets de leur source** (SHA-256).', '',
+	'> pas comptées en bloc, puis comparées sur les **octets de leur source** (SHA-256)',
+	'> **et sur leur position dans le flux** : titre de la bande qui les porte, titres des bandes',
+	'> qui l\'encadrent. Un fichier correct servi dans la mauvaise bande est un écart — l\'empreinte',
+	'> seule ne l\'aurait jamais montré (G27 §7).', '',
 	`**${lignes.length} images auditées sur ${routes.length} routes · ${ecarts.length} écart(s).**`, '',
-	'| Route | Rôle | # | SHA-256 maquette | SHA-256 WordPress | Slot | Résultat |', '|---|---|---:|---|---|---|---|'];
+	'| Route | Rôle | # | SHA-256 maquette | SHA-256 WordPress | Slot | Bande (maquette → site) | Avant | Après | Résultat |',
+	'|---|---|---:|---|---|---|---|---|---|---|'];
+const cellule = (a, b) => {
+	const ta = (a || '—').slice(0, 34), tb = (b || '—').slice(0, 34);
+	return ta === tb ? ta : `**${ta}** → **${tb}**`;
+};
 for (const l of lignes) {
-	L.push(`| \`${l.route}\` | ${l.role} | ${l.rang} | ${l.maquette?.sha?.slice(0, 16) || '—'} | ${l.wordpress?.sha?.slice(0, 16) || '—'} | ${l.wordpress?.slot || '—'} | ${l.verdict === 'IDENTIQUE' ? '✅ identique' : '⚠️ ' + l.verdict} |`);
+	L.push(
+		`| \`${l.route}\` | ${l.role} | ${l.rang} | ${l.maquette?.sha?.slice(0, 16) || '—'} | ` +
+			`${l.wordpress?.sha?.slice(0, 16) || '—'} | ${l.wordpress?.slot || '—'} | ` +
+			`${cellule(l.maquette?.bande, l.wordpress?.bande)} | ` +
+			`${cellule(l.maquette?.avant, l.wordpress?.avant)} | ` +
+			`${cellule(l.maquette?.apres, l.wordpress?.apres)} | ` +
+			`${l.verdict === 'IDENTIQUE' ? '✅ identique' : '⚠️ ' + l.verdict} |`
+	);
 }
 writeFileSync('docs/AUDIT-IMAGES-ROLE.md', L.join('\n') + '\n');
 writeFileSync('docs/audit-images-role.json', JSON.stringify({ total: lignes.length, ecarts: ecarts.length, lignes }, null, 1) + '\n');

@@ -75,12 +75,47 @@ L'entreprise a **un seul site, à Saint-Apollinaire**. Les pages locales sont de
 La grille tarifaire de `PROJECT_INPUTS.md` §5 s'applique **à l'identique partout**. Le prototype affiche des blocs tarifaires différenciés par ville : c'est faux, et à corriger. La différenciation d'une page locale porte sur le tissu économique du secteur, les types de locaux, la FAQ — jamais sur le prix.
 
 ### 5.4 Zones — seules celles validées
-Les 8 départements et 10 villes de `PROJECT_INPUTS.md` §6 sont réels et confirmés. Les **8 communes secondaires du prototype n'existent sur aucune source** : elles restent en `noindex,follow` tant qu'Audrey ne les a pas validées une par une. Une page qui promet une intervention impossible coûte plus qu'elle ne rapporte.
+Les 8 départements et 10 villes de `PROJECT_INPUTS.md` §6 sont réels et confirmés.
+
+**Les 8 communes secondaires sont validées — décision d'Emmanuel du 17 août 2026, confirmée le 19.**
+Saint-Apollinaire, Chenôve, Quetigny, Talant, Longvic, Fontaine-lès-Dijon, Marsannay-la-Côte et
+Beaune : Audrey y intervient. Ces huit pages sont en **`index,follow`** et figurent au sitemap.
+Leur texte affirme la desserte, il n'est plus au conditionnel.
+
+> La consigne antérieure — « elles restent en `noindex,follow` tant qu'Audrey ne les a pas validées
+> une par une » — est **périmée pour ces huit routes**. Elle a été appliquée jusqu'au 17 août 2026 ;
+> la validation demandée a été obtenue. Ne pas la réintroduire.
+
+La règle générale demeure pour **toute nouvelle** zone : une page qui promet une intervention
+impossible coûte plus qu'elle ne rapporte. Une zone dont la desserte n'est pas confirmée par Audrey
+naît en `noindex,follow`, champ ACF `statut_validation` décoché, et n'en sort que sur validation
+nominative.
 
 ### 5.5 Preuves — seules les authentiques
 Les **six témoignages publiés sur l'ancien site** (Jean-Louis D., Anna P., Michel G., Laurent, Laura, Anne-Sophie) sont réels et réutilisables.
 
-**Note Google : 5,0/5 — confirmée par Emmanuel le 9 août 2026.** Elle n'est donc plus considérée comme fictive et peut être affichée (badge du hero et pastille du portrait, comme dans la maquette). Restent à fournir : le **nombre réel d'avis** et l'**URL de la fiche Google Business** — jamais inventés, le badge s'affiche sans eux tant qu'ils manquent.
+**Note Google : 5,0/5 — confirmée réelle par Emmanuel le 9 août 2026, et NON AFFICHÉE.**
+Règle finale, consigne du 18 août 2026, confirmée le 19 :
+
+- **aucune note Google affichée** tant qu'une URL officielle correspondant réellement à
+  Top-Famille Pro n'a pas été fournie **et validée humainement** ;
+- **aucune** donnée structurée `Review` ni `AggregateRating`, dans aucun cas ;
+- **aucune réactivation par un seed** : un seed ne doit jamais écrire l'URL de la fiche.
+
+Une note confirmée par oral reste invérifiable par un visiteur. La note est donc **enregistrée**
+(c'est une donnée réelle) et **invisible** : `tfp_reassurance_data()` exige trois conditions
+simultanées — note saisie, URL de fiche non vide, et URL ayant la forme d'une fiche Google. Ce
+contrôle porte sur la **forme** de l'adresse, pas sur son appartenance : aucun code ne peut prouver
+depuis le serveur qu'une fiche est celle de Top-Famille Pro, d'où la validation humaine exigée
+ci-dessus.
+
+> Deux consignes antérieures sont **périmées** et ne doivent pas être réintroduites : « elle peut
+> être affichée (badge du hero et pastille du portrait) » (9 août) et la case « Afficher sans la
+> fiche » (17 août), qui a été supprimée du code.
+
+Restent à fournir : le **nombre réel d'avis** et l'**URL de la fiche Google Business** — jamais
+inventés. Le jour où l'URL est saisie et vérifiée, la note revient d'elle-même partout, sans
+toucher au code.
 
 **Témoignages de la maquette — décision d'Emmanuel du 10 août 2026 : reproduits tels quels dans cette version de travail, y compris en production.** Auteurs, textes, étoiles et cartes sont repris à l'identique du prototype, ainsi que la photo provisoire d'Audrey et la citation qui lui est attribuée. Ils sont **provisoires** : destinés à être remplacés par de vrais avis clients.
 

@@ -1,5 +1,11 @@
 # AUDIT-PRODUCTION.md — Écart entre `top-famille-pro.fr` et le dépôt (hotfix)
 
+> **Document historique.** Il décrit l'état du site à la date de la passe qui l'a produit. Trois
+> décisions humaines l'ont dépassé depuis : la note Google **n'est plus affichée** (18/08/2026), les
+> huit communes secondaires sont **`index,follow`** (17/08/2026), et l'entrée de menu autonome
+> « Nettoyage professionnel » a été **supprimée** (19/08/2026). L'état qui fait foi est
+> `docs/DECISIONS.json`, vérifié contre le HTML servi par `tests/decisions.spec.js`.
+
 > Diagnostic obligatoire mené avant toute modification, conformément à la demande du 9 août 2026
 > (« corriger un problème critique de déploiement et de fidélité »). Branche :
 > `hotfix-production-fidelite-claude-design`, créée depuis `main` à `40caf66` (fusion de la PR #8,

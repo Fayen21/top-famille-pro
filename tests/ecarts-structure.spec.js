@@ -14,12 +14,15 @@ import { test, expect } from '@playwright/test';
  *
  * Les deux ont été présentés avec leur coût mesuré, et Emmanuel a décidé de les **conserver** :
  *
- *  - l'entrée « Nettoyage professionnel » reste au menu — la page pilier est la porte d'entrée du
- *    site sur sa requête principale, et son retrait serait un arbitrage de référencement, pas une
- *    correction de fidélité ;
  *  - les commandes de hero restent sur les cinq pages institutionnelles, au titre de CLAUDE.md §4
  *    (modification de structure autorisée si elle améliore objectivement la conversion, à
  *    condition d'être signalée).
+ *
+ * **L'entrée de menu n'est plus ici.** Elle y a été, au titre de la même décision du 17 août ; la
+ * décision définitive du 19 août 2026 l'a renversée : l'entrée autonome « Nettoyage professionnel »
+ * est supprimée, et le lien vers la page pilier vit désormais dans l'entrée « Prestations ». C'est
+ * `tests/navigation.spec.js` qui tient ce contrôle — y compris la garantie que le lien SEO n'a pas
+ * été perdu au passage.
  *
  * Ces tests sont donc l'inverse des autres : ils échouent si quelqu'un rend le site PLUS fidèle à
  * la maquette sur ces deux points précis. Une passe ultérieure qui les fait tomber doit revenir à
@@ -40,13 +43,6 @@ const PAGES_AVEC_COMMANDES = [
 ];
 
 test.describe( 'Écarts de structure validés le 17 août 2026', () => {
-	test( 'la navigation principale garde l’entrée « Nettoyage professionnel »', async ( { page } ) => {
-		await page.goto( '/' );
-		const lien = page.locator( '.tfp-nav a[href$="/nettoyage-professionnel/"]' );
-		await expect( lien, 'écart n° 8 validé : la page pilier reste au menu' ).toHaveCount( 1 );
-		await expect( lien ).toBeVisible();
-	} );
-
 	for ( const route of PAGES_AVEC_COMMANDES ) {
 		test( `${ route } garde ses deux commandes de hero`, async ( { page } ) => {
 			await page.goto( route );

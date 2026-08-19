@@ -142,7 +142,11 @@ if ( $tfp_bande_tarif ) :
 <section class="tfp-section--turquoise tfp-section--tight" style="--tfp-bande-haut:clamp(38px, 5vw, 68px);--tfp-bande-bas:clamp(38px, 5vw, 68px)">
 	<div class="tfp-container tfp-zone-tarif">
 		<div>
-			<h2><?php echo esc_html( $tfp_bloc['titre'] ?? 'Un tarif régional unique' ); ?></h2>
+			<?php
+			// Géométrie d'intertitre relevée sur la maquette (31 px à 1440 px) : rendue à la main,
+			// cette bande retombait sur l'échelle du thème et sortait à 29 px.
+			tfp_bloc_titre( $tfp_bloc, 'Un tarif régional unique' );
+			?>
 			<?php foreach ( $tfp_paras as $tfp_texte ) : ?>
 				<p class="tfp-prose"><?php echo esc_html( $tfp_texte ); ?></p>
 			<?php endforeach; ?>

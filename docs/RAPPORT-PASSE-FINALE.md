@@ -1,5 +1,11 @@
 # Rapport de la passe finale — fidélité Claude Design
 
+> **Document historique.** Il décrit l'état du site à la date de la passe qui l'a produit. Trois
+> décisions humaines l'ont dépassé depuis : la note Google **n'est plus affichée** (18/08/2026), les
+> huit communes secondaires sont **`index,follow`** (17/08/2026), et l'entrée de menu autonome
+> « Nettoyage professionnel » a été **supprimée** (19/08/2026). L'état qui fait foi est
+> `docs/DECISIONS.json`, vérifié contre le HTML servi par `tests/decisions.spec.js`.
+
 > Branche `hotfix-production-fidelite-claude-design`, PR #9. Rien n'a été fusionné, rien n'a été
 > déployé, aucune donnée de production n'a été touchée.
 
@@ -75,7 +81,8 @@ de l'article et non le logo du site (elle renvoie bien 200), aucun schéma d'avi
 ## 8. SEO complémentaire
 
 `title` et canonical uniques sur les 53 routes. Aucune fuite de `localhost` dans l'export. Sitemap
-et robots.txt cohérents. Les huit communes non validées restent en `noindex,follow`.
+et robots.txt cohérents. Les huit communes non validées restaient alors en `noindex,follow`
+(**périmé** : validées le 17 août 2026, elles sont depuis en `index,follow` — voir `docs/DECISIONS.json`).
 
 ## 9. Politique de confidentialité
 

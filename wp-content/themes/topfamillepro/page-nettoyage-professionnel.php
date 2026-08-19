@@ -144,8 +144,18 @@ $page = tfp_static_page_data( 'nettoyage-professionnel' );
  * La bande est rendue ici, comme la bande tarifaire de la page région (G23) : le SEED reste
  * l'unique source du texte, seul le visuel manquant est ajouté à sa place.
  */
-get_template_part( 'template-parts/components/static-blocks', null, array( 'key' => 'nettoyage-professionnel', 'skip' => array( 12 ) ) );
-
+/*
+ * La bande 12 est rendue À SA PLACE dans le flux, entre la bande 11 et la bande 13.
+ *
+ * Elle était rendue en fin de page : le composant de bandes statiques la sautait, puis le gabarit
+ * l'ajoutait après tout le reste. Le fichier image était le bon, son contenu aussi — mais la bande
+ * arrivait 18ᵉ au lieu de 11ᵉ, entre « Questions fréquentes » et le pied de page au lieu d'être
+ * entre « Comment se construit un cahier des charges » et « Trois situations concrètes ». Un
+ * visuel correct à la mauvaise place reste un défaut de fidélité, et il ne se voit sur aucun
+ * contrôle d'empreinte.
+ *
+ * D'où les deux appels encadrant la bande : le composant sait désormais rendre une plage.
+ */
 $tfp_bande_methode = null;
 foreach ( ( $page['sections'] ?? array() ) as $tfp_section ) {
 	if ( 12 === (int) ( $tfp_section['index'] ?? -1 ) ) {
@@ -153,6 +163,13 @@ foreach ( ( $page['sections'] ?? array() ) as $tfp_section ) {
 		break;
 	}
 }
+
+get_template_part(
+	'template-parts/components/static-blocks',
+	null,
+	array( 'key' => 'nettoyage-professionnel', 'skip' => array( 12 ), 'a' => 11 )
+);
+
 if ( $tfp_bande_methode ) :
 	$tfp_bloc = $tfp_bande_methode['blocs'][0] ?? array();
 	?>
@@ -168,7 +185,11 @@ if ( $tfp_bande_methode ) :
 			<p class="tfp-provisional-notice" data-tfp-provisional-notice="1">Photo d’illustration provisoire — portrait d’Audrey à venir.</p>
 		</div>
 		<div class="tfp-methode-rangee__corps">
-			<h2><?php echo esc_html( $tfp_bloc['titre'] ?? 'Cahier des charges, intervenants et suivi' ); ?></h2>
+			<?php
+			// Géométrie d'intertitre relevée sur la maquette (36 px à 1440 px) : rendue à la main,
+			// cette bande retombait sur l'échelle du thème et sortait à 34 px.
+			tfp_bloc_titre( $tfp_bloc, 'Cahier des charges, intervenants et suivi' );
+			?>
 			<?php
 			foreach ( ( $tfp_bloc['sequence'] ?? array() ) as $tfp_enfant ) {
 				$type = $tfp_enfant['type'] ?? '';
@@ -194,5 +215,14 @@ if ( $tfp_bande_methode ) :
 	</div>
 </section>
 <?php endif; ?>
+
+<?php
+// … puis la suite du flux, à partir de la bande 13.
+get_template_part(
+	'template-parts/components/static-blocks',
+	null,
+	array( 'key' => 'nettoyage-professionnel', 'skip' => array( 12 ), 'de' => 13 )
+);
+?>
 
 <?php get_footer(); ?>

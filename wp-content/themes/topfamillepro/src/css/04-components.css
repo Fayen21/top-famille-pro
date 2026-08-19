@@ -493,7 +493,12 @@
 .tfp-header__inner {
   max-width: var(--container-max);
   margin-inline: auto;
-  padding: 14px var(--container-padding);
+  /*
+   * 3,5 px de marge verticale, relevés sur la maquette : sa rangée mesure 89 px pour un logo de
+   * 82 px. Les 14 px d'avant portaient l'en-tête à 141 px contre 119 px, sur les 53 pages — un
+   * écart qui repoussait d'autant le pli de chaque page et faussait tous les rapports de hauteur.
+   */
+  padding: 3.5px var(--container-padding);
   display: flex;
   align-items: center;
   gap: var(--space-4);
@@ -555,14 +560,69 @@
   background: var(--color-navy);
 }
 
+/*
+ * Entrée à double commande — « Prestations ▾ », « Zones ▾ ».
+ *
+ * Le libellé est un LIEN vers la page pilier, le chevron est un BOUTON de dépliage : deux actions
+ * distinctes, donc deux commandes distinctes, sinon un lecteur d'écran ne peut pas les annoncer
+ * pour ce qu'elles sont. Visuellement, les deux forment une seule entrée — d'où le survol et le
+ * fond partagés, et l'absence d'espace entre elles.
+ */
+.tfp-nav__group {
+  position: relative;
+  display: flex;
+  align-items: center;
+  border-radius: 9px;
+}
+
+.tfp-nav__group:hover {
+  background: var(--color-turquoise-pale);
+}
+
+.tfp-nav__group:hover .tfp-nav__link--parent {
+  color: var(--color-primary);
+}
+
+/* Le lien parent perd son fond propre : c'est le groupe qui le porte, d'un bloc. */
+.tfp-nav__link--parent {
+  padding-right: 4px;
+}
+
+.tfp-nav__link--parent:hover {
+  background: transparent;
+}
+
+.tfp-nav__caret-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Cible tactile : 44 px de haut comme les liens voisins, 26 px de large — au-delà du minimum
+     de 24 px de WCAG 2.5.8, sans élargir la barre au point de la faire replier. */
+  min-height: var(--tap-target-min);
+  min-width: 26px;
+  padding: 10px 9px 10px 2px;
+  background: transparent;
+  border: none;
+  border-radius: 9px;
+  cursor: pointer;
+  color: inherit;
+}
+
 .tfp-nav__caret {
   font-size: var(--fs-3xs);
   color: var(--color-text-tertiary);
   transition: transform var(--transition-base);
 }
 
-.tfp-nav__button[aria-expanded="true"] .tfp-nav__caret {
+.tfp-nav__button[aria-expanded="true"] .tfp-nav__caret,
+.tfp-nav__caret-btn[aria-expanded="true"] .tfp-nav__caret {
   transform: rotate(180deg);
+}
+
+/* Lien « Toutes les prestations → » du sous-menu : repris de son style en ligne d'origine. */
+.tfp-submenu__item--all {
+  font-weight: var(--fw-semibold);
+  color: var(--color-primary);
 }
 
 .tfp-submenu {
@@ -681,6 +741,30 @@
   align-items: center;
   justify-content: space-between;
   min-height: var(--tap-target-min);
+}
+
+/*
+ * Rangée « lien + déplieur » du panneau mobile : le trait de séparation appartient à la rangée,
+ * pas à chacun de ses deux enfants, sinon il se dédouble.
+ */
+.tfp-mobile-nav__row {
+  display: flex;
+  align-items: stretch;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.tfp-mobile-nav__row .tfp-mobile-nav__link {
+  flex: 1;
+  border-bottom: none;
+}
+
+.tfp-mobile-nav__row .tfp-mobile-nav__button {
+  width: auto;
+  flex: 0 0 auto;
+  border-bottom: none;
+  /* Cible tactile pleine hauteur, largeur confortable au pouce. */
+  min-width: var(--tap-target-min);
+  justify-content: center;
 }
 
 .tfp-mobile-submenu {
@@ -3140,7 +3224,14 @@ body.tfp-type-legale .tfp-section__lede {
    servent que de repli. La maquette compose ces intertitres de 17 à 40 px selon la bande (G26 §5). */
 /* Sélecteur à deux classes, et non une : l'échelle du thème s'écrit `body.tfp-type-pilier h2`,
    plus spécifique qu'une classe seule, et l'aurait emporté sur la valeur relevée. */
-.tfp-static-block > .tfp-static-block__titre {
+/* Deux parents possibles : la bande statique du composant commun, et la rangée « média + corps »
+   que les gabarits du pilier et de la région rendent à la main. Le sélecteur ne visait que le
+   premier : l'intertitre de la bande « Cahier des charges, intervenants et suivi » portait bien la
+   variable relevée, mais aucune règle ne la lisait — il sortait à 34 px au lieu de 36. */
+.tfp-static-block > .tfp-static-block__titre,
+.tfp-methode-rangee__corps > .tfp-static-block__titre,
+.tfp-zone-tarif > div > .tfp-static-block__titre,
+.tfp-container > .tfp-static-block__titre {
   font-size: var(--tfp-bloc-titre);
   line-height: var(--tfp-bloc-titre-lh);
   font-weight: var(--tfp-bloc-titre-graisse);

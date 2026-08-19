@@ -29,6 +29,14 @@ if ( empty( $data['sections'] ) ) {
 }
 $skip = $args['skip'] ?? array();
 /*
+ * Plage d'index à rendre, bornes comprises. Sert aux gabarits qui insèrent une bande à la main
+ * AU MILIEU du flux : ils appellent le composant deux fois, avant puis après. Sans cela, la bande
+ * ajoutée ne peut atterrir qu'en fin de page — c'est exactement ce qui déplaçait la bande
+ * « Cahier des charges, intervenants et suivi » du pilier de la 11ᵉ à la 18ᵉ position.
+ */
+$index_min = isset( $args['de'] ) ? (int) $args['de'] : null;
+$index_max = isset( $args['a'] ) ? (int) $args['a'] : null;
+/*
  * Redirections de liens relevés → URL réelles, déclarées par le gabarit appelant (G26 §5).
  * Clé : la route telle qu'elle a été relevée sur la maquette. Voir le `case 'link'` plus bas.
  */
@@ -36,6 +44,12 @@ $liens_rediriges = is_array( $args['liens'] ?? null ) ? $args['liens'] : array()
 
 foreach ( $data['sections'] as $section ) {
 	if ( in_array( $section['index'], $skip, true ) ) {
+		continue;
+	}
+	if ( null !== $index_min && (int) $section['index'] < $index_min ) {
+		continue;
+	}
+	if ( null !== $index_max && (int) $section['index'] > $index_max ) {
 		continue;
 	}
 	$classes = array( 'tfp-section--tight' );
@@ -281,34 +295,7 @@ foreach ( $data['sections'] as $section ) {
 						 * fenêtre au lieu d'y être figés. Sans relevé, les jetons du thème
 						 * s'appliquent — c'est-à-dire le comportement d'avant.
 						 */
-						$titre_vars   = array();
-						$titre_taille = tfp_longueur_css( $bloc['titre_taille'] ?? '' );
-						if ( '' !== $titre_taille ) {
-							$titre_vars[] = '--tfp-bloc-titre:' . $titre_taille;
-						}
-						$titre_lh = (float) ( $bloc['titre_interligne'] ?? 0 );
-						if ( $titre_lh >= 0.8 && $titre_lh <= 3 ) {
-							$titre_vars[] = '--tfp-bloc-titre-lh:' . $titre_lh;
-						}
-						$titre_fw = (int) ( $bloc['titre_graisse'] ?? 0 );
-						if ( $titre_fw >= 100 && $titre_fw <= 900 ) {
-							$titre_vars[] = '--tfp-bloc-titre-graisse:' . $titre_fw;
-						}
-						/*
-						 * La classe n'est posée QUE si une géométrie a été relevée : sans elle, le
-						 * titre reste soumis à l'échelle du thème par type de page, qui est déjà
-						 * relevée elle aussi. Poser la classe sans variables la remplacerait par un
-						 * repli plus pauvre — une correction qui en casserait une autre.
-						 */
-						if ( $bloc['titre'] ) {
-							printf(
-								'<%1$s%3$s%4$s>%2$s</%1$s>',
-								esc_attr( 'h3' === $bloc['niveau'] ? 'h3' : 'h2' ),
-								esc_html( $bloc['titre'] ),
-								$titre_vars ? ' class="tfp-static-block__titre"' : '',
-								$titre_vars ? ' style="' . esc_attr( implode( ';', $titre_vars ) ) . '"' : ''
-							);
-						}
+						tfp_bloc_titre( $bloc );
 						?>
 
 						<?php

@@ -12,8 +12,8 @@
 > à 25,5 px au lieu de 42 px (token `--fs-h2` jamais branché), débordement horizontal de 57 px à
 > 1024 px. Lighthouse : **mobile 90 / desktop 99, accessibilité 100, bonnes pratiques 100, SEO 100**
 > — après avoir corrigé un CLS de 1,002 causé par le chargement asynchrone des feuilles de style.
-> Note Google 5,0/5 **confirmée réelle par Emmanuel** et désormais affichée (CLAUDE.md §5.5 mis à
-> jour) ; le nombre d'avis et l'URL de la fiche restent à fournir. Témoignages : démonstration hors
+> Note Google 5,0/5 confirmée réelle par Emmanuel mais **NON AFFICHÉE** (consigne du 18 août 2026,
+> confirmée le 19) : pas de note sans URL de fiche officielle fournie et validée humainement. Témoignages : démonstration hors
 > production, état neutre en production, prouvé sur deux instances WordPress réelles.
 > Verdict : `PARTIEL — ÉCARTS RESTANTS` (pages internes moins travaillées que l'accueil, photos
 > définitives toujours absentes).
@@ -84,20 +84,18 @@ verrouillées par `tests/ecarts-structure.spec.js` — une passe ultérieure qui
 nom de la fidélité fera échouer la suite. Le badge région, lui, reste retiré des sept heros
 concernés : la décision portait sur les commandes, pas sur le badge.
 
-**Contradictions signalées, non corrigées** — `CLAUDE.md` ne se modifie pas sans validation
-d'Emmanuel, et deux de ses paragraphes sont désormais dépassés :
-- §5.5 dit la note 5,0/5 confirmée et affichable ; la consigne de G26 §7 demande son retrait tant
-  qu'aucune vérification officielle n'est fournie.
-- §5.7 porte les données d'immatriculation comme un bloqueur de mise en ligne non levé ;
-  `PROJECT_INPUTS.md` §2 les enregistre comme résolues depuis la phase 7, et **Emmanuel les a
-  actées le 17 août 2026**.
+**Contradictions levées le 19 août 2026.** Elles étaient signalées et non corrigées parce que
+`CLAUDE.md` ne se modifie pas sans validation d'Emmanuel ; la consigne G27 §2 a donné cette
+validation. `CLAUDE.md` §5.4 et §5.5 sont désormais alignés sur les décisions finales, avec la
+mention explicite des consignes **périmées** pour qu'aucune session ne les réintroduise.
 
 **Bloqueurs de mise en ligne — TOUS LEVÉS le 17 août 2026.** Le **Kbis est acté** : identifiants
 contre-vérifiés par arithmétique (Luhn du SIREN ✅, Luhn du SIRET ✅, clé de TVA concordante avec le
 SIREN ✅), contrôles désormais rejoués à chaque passage de `tests/legal.spec.js`. La **note Google
-est réaffichée** sur décision d'Emmanuel, par une case explicite `note_sans_source` — à décocher dès
-que l'URL de la fiche sera connue ; le compteur d'avis reste masqué, aucun balisage `Review` ni
-`AggregateRating` n'est produit, aucun `href="#"` n'est publié. La **photo d'Audrey** et sa
+n'est pas affichée** (consigne du 18 août 2026, confirmée le 19) : la case `note_sans_source` a été
+supprimée du code, et la garde exige note + URL de fiche non vide + URL de forme « fiche Google ».
+Le compteur d'avis reste masqué, aucun balisage `Review` ni `AggregateRating` n'est produit, aucun
+`href="#"` n'est publié. La **photo d'Audrey** et sa
 **citation** ne bloquent plus et restent marquées provisoires. Les **huit communes secondaires sont
 validées** — Audrey y intervient — et passent en `index,follow` avec entrée au sitemap.
 
@@ -605,9 +603,13 @@ honnête (« la demande peut être étudiée »). Elles sont liées depuis la pa
 `communes_proches` — noindex n'empêche pas le suivi d'un lien, seulement l'indexation de la page
 cible.
 
-**Ces 8 pages restent noindex,follow tant qu'Audrey ne les a pas validées une par une.** Aucune
-action supplémentaire n'est attendue de la phase 4 sur ce point : c'est une décision humaine, pas
-un chantier technique.
+**Ces 8 pages restaient `noindex,follow` tant qu'Audrey ne les avait pas validées une par une.**
+C'était une décision humaine, pas un chantier technique.
+
+> **PÉRIMÉ depuis le 17 août 2026.** La validation a été donnée : Audrey intervient dans les huit
+> communes. Elles sont passées en **`index,follow`**, figurent au sitemap, et leur texte affirme la
+> desserte. Voir `CLAUDE.md` §5.4 et `docs/DECISIONS.json`. Ce paragraphe est conservé comme trace
+> de l'état d'alors ; il ne décrit plus le site.
 
 ### Lot 5/6 — formulaire de demande de devis, réellement fonctionnel
 
@@ -686,8 +688,8 @@ commit du lot 6.
   vers `/demande-de-devis/` sans paramètres `?prestation=&ville=`. Le formulaire sait déjà lire ces
   paramètres pour préremplir le champ prestation (`src/js/quote-form.js`) ; relier les CTA des 43
   pages concernées reste à faire — amélioration mineure, pas un défaut fonctionnel.
-- **8 communes secondaires** : restent `noindex,follow` tant qu'Audrey ne les a pas validées une par
-  une (voir plus haut) — décision humaine attendue, aucune action technique requise.
+- **8 communes secondaires** : restaient `noindex,follow` en attente de validation.
+  **PÉRIMÉ — validées le 17 août 2026, désormais `index,follow` et au sitemap.**
 
 ### Base de cette branche
 

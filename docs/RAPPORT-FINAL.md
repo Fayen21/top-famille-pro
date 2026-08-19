@@ -1,5 +1,11 @@
 # RAPPORT FINAL — Top-Famille Pro
 
+> **Document historique.** Il décrit l'état du site à la date de la passe qui l'a produit. Trois
+> décisions humaines l'ont dépassé depuis : la note Google **n'est plus affichée** (18/08/2026), les
+> huit communes secondaires sont **`index,follow`** (17/08/2026), et l'entrée de menu autonome
+> « Nettoyage professionnel » a été **supprimée** (19/08/2026). L'état qui fait foi est
+> `docs/DECISIONS.json`, vérifié contre le HTML servi par `tests/decisions.spec.js`.
+
 > Produit en phase 6 (PROMPT-PHASES.md), à l'issue des phases 0 à 6 ; mis à jour en phase 7
 > (informations légales confirmées + paquet de livraison Hostinger) puis lors du hotfix de fidélité
 > production (9 août 2026). Référence unique de l'état du projet ; `STATUS.md` reste le journal

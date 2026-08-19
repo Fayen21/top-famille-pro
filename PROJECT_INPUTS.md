@@ -171,7 +171,14 @@ Le prototype prévoit 8 pages départementales + 10 pages villes : **cela corres
 | 89 — Yonne | Auxerre |
 | 90 — Territoire de Belfort | Belfort |
 
-⛔ **Les 8 « communes secondaires » du prototype n'existent pas sur le site actuel.** Elles ont été inventées ou déduites par Claude Design. À faire valider une par une par Audrey : toute commune non réellement desservie passe en `noindex,follow` ou disparaît.
+✅ **Les 8 « communes secondaires » sont validées — décision d'Emmanuel du 17 août 2026, confirmée le 19.**
+Saint-Apollinaire, Chenôve, Quetigny, Talant, Longvic, Fontaine-lès-Dijon, Marsannay-la-Côte et Beaune :
+Audrey y intervient. Ces huit pages sont en **`index,follow`**, figurent au sitemap, et leur texte affirme
+la desserte.
+
+> La consigne antérieure — elles avaient été proposées par Claude Design sans source, et restaient donc en
+> `noindex,follow` en attendant validation — est **périmée pour ces huit routes**. Elle reste la règle pour
+> toute nouvelle commune : non validée par Audrey, elle naît `noindex,follow` ou n'est pas créée.
 
 ⛔ Le site actuel ne couvre **pas** le 71 côté Chalon dans le menu principal alors qu'il a une page : vérifier la cohérence du maillage réel avec Audrey.
 
@@ -269,7 +276,7 @@ Correspondances identifiées ✅ (à compléter après relevé exhaustif via le 
 | 3 | Les tarifs relevés sont-ils toujours à jour ? | Audrey | Phase 3 |
 | 4 | Adresse de réception des demandes de devis + configuration SMTP Hostinger | Client | Phase 4 |
 | 5 | E-mails en `@top-famille-pro.fr` ou maintien de `@top-famille.fr` ? | Emmanuel / client | Phase 1 |
-| 6 | ~~Note Google réelle~~ **confirmée 5,0/5 le 9 août 2026** (CLAUDE.md §5.5, badge affiché) — restent à fournir : **nombre d'avis réel** et **URL de la fiche Google Business** | Client | Non bloquant — le badge s'affiche sans eux et les intègre dès leur saisie |
+| 6 | **Note Google 5,0/5 — confirmée réelle le 9 août 2026, mais NON AFFICHÉE.** Consigne du 18 août 2026, confirmée le 19 : aucune note tant qu'une **URL officielle** de fiche Top-Famille Pro n'est pas fournie **et validée humainement**. Elle est enregistrée en réglages et invisible ; le jour où l'URL est saisie, elle revient d'elle-même. Le **nombre réel d'avis** reste à fournir : le compteur reste masqué. |
 | 7 | Portrait HD d'Audrey + visuels réels | Client | Mise en ligne |
 | 8 | Validation des 8 communes secondaires du prototype (absentes du site actuel) | Audrey | Phase 3 |
 | 9 | Que devient topentreprise.fr ? | Emmanuel / client | Phase 6 |

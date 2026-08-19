@@ -162,6 +162,50 @@ function tfp_link_phrases( $text, array $map ) {
  * @param int    $max
  * @return array<int,array{titre:string,textes:string[],liste:string[],noms:string[],type:string}>
  */
+/**
+ * Rend le titre d'un bloc relevé, avec la géométrie de la maquette.
+ *
+ * La taille, l'interligne et la graisse sont relevés bloc par bloc sur le prototype : deux bandes
+ * voisines n'y portent pas le même intertitre, et l'échelle du thème par type de page ne peut donc
+ * pas les rendre toutes. Sans relevé, on laisse l'échelle du thème s'appliquer — poser la classe
+ * sans variables la remplacerait par un repli plus pauvre.
+ *
+ * Extrait du composant de bandes statiques pour être appelé aussi par les gabarits qui rendent
+ * une bande à la main (page pilier, page région) : c'est justement là que la géométrie relevée se
+ * perdait, et qu'un intertitre sortait à 34 px au lieu de 36.
+ *
+ * @param array  $bloc  Bloc relevé (`titre`, `niveau`, `titre_taille`, `titre_interligne`, `titre_graisse`).
+ * @param string $repli Titre de repli si le bloc n'en porte pas.
+ */
+function tfp_bloc_titre( $bloc, $repli = '' ) {
+	$titre = $bloc['titre'] ?? $repli;
+	if ( '' === (string) $titre ) {
+		return;
+	}
+
+	$vars   = array();
+	$taille = tfp_longueur_css( $bloc['titre_taille'] ?? '' );
+	if ( '' !== $taille ) {
+		$vars[] = '--tfp-bloc-titre:' . $taille;
+	}
+	$lh = (float) ( $bloc['titre_interligne'] ?? 0 );
+	if ( $lh >= 0.8 && $lh <= 3 ) {
+		$vars[] = '--tfp-bloc-titre-lh:' . $lh;
+	}
+	$fw = (int) ( $bloc['titre_graisse'] ?? 0 );
+	if ( $fw >= 100 && $fw <= 900 ) {
+		$vars[] = '--tfp-bloc-titre-graisse:' . $fw;
+	}
+
+	printf(
+		'<%1$s%3$s%4$s>%2$s</%1$s>',
+		esc_attr( 'h3' === ( $bloc['niveau'] ?? 'h2' ) ? 'h3' : 'h2' ),
+		esc_html( $titre ),
+		$vars ? ' class="tfp-static-block__titre"' : '',
+		$vars ? ' style="' . esc_attr( implode( ';', $vars ) ) . '"' : ''
+	);
+}
+
 function tfp_get_zone_blocks( $prefix, $post_id, $max ) {
 	$blocks = array();
 	for ( $i = 1; $i <= $max; $i++ ) {
