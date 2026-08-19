@@ -653,6 +653,12 @@ function tfp_card_grid( array $grille ) {
 	if ( preg_match( '/^rgba?\([0-9, .]+\)$/', (string) ( $grille['fond'] ?? '' ) ) ) {
 		$vars[] = '--tfp-tuile-fond:' . $grille['fond'];
 	}
+	// Couleur du filet, relevée elle aussi. Sur une bande bleue, la maquette borde ses tuiles d'un
+	// bleu plus clair que leur fond ; le thème y posait le filet pâle des cartes blanches, visible
+	// sur les six vignettes du pilier comme un liseré clair au lieu d'un bleu.
+	if ( preg_match( '/^rgba?\([0-9, .]+\)$/', (string) ( $grille['filet_couleur'] ?? '' ) ) ) {
+		$vars[] = '--tfp-tuile-filet-couleur:' . $grille['filet_couleur'];
+	}
 	$style = $vars ? ' style="' . esc_attr( implode( ';', $vars ) ) . '"' : '';
 	?>
 	<?php

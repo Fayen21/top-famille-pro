@@ -3911,7 +3911,11 @@ body.tfp-body .tfp-card-tile {
   gap: 12px;
   width: 100%;
   padding: var(--tfp-tuile-padding, 16px 18px);
-  border: var(--tfp-tuile-filet, 1px) solid var(--color-border);
+  /* Couleur relevée quand la maquette en pose une (bandes bleues et sombres) ; le filet pâle des
+     cartes blanches reste le repli. La déclarer ICI, dans le raccourci `border`, plutôt que dans
+     une règle de variante : le raccourci s'écrit avec une spécificité de (0,3,0) et écrasait
+     toute `border-color` posée plus loin par un sélecteur de variante, à (0,2,0). */
+  border: var(--tfp-tuile-filet, 1px) solid var(--tfp-tuile-filet-couleur, var(--color-border));
   border-radius: var(--tfp-tuile-rayon, 12px);
   background: var(--tfp-tuile-fond, var(--color-bg-card));
   color: var(--color-text);

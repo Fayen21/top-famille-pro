@@ -898,6 +898,10 @@ for (const p of PAGES) {
 					fond: ks.backgroundColor,
 					rayon: ks.borderTopLeftRadius,
 					filet: ks.borderTopWidth,
+					// Couleur du filet, relevée comme le fond : sur une bande bleue, la maquette
+					// borde ses tuiles d'un bleu plus clair (#1E5C9E), là où le thème appliquait le
+					// filet pâle des cartes blanches. Un jeton du thème ne peut pas le deviner.
+					filet_couleur: ks.borderTopColor,
 					padding: ks.padding,
 					theme: estSombre(ks.backgroundColor) ? 'sombre' : 'clair',
 					titre_taille: g0.titre_taille || '',
