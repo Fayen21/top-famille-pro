@@ -1846,3 +1846,83 @@ humainement**, nombre réel d'avis, photo authentique d'Audrey et validation de 
 l'intéressée, remplacement des témoignages provisoires.
 
 **Verdict G27 : PARTIEL — ÉCARTS RESTANTS.** Rien ne doit être déclaré `PRODUCTION READY`.
+
+---
+
+## G27 — les deux défauts restants, corrigés (20 août 2026)
+
+Détail complet : `docs/RAPPORT-G27.md` §13.
+
+### H1 de la page région
+
+Maquette : `clamp(30px, 4.2vw, 52px)`, `line-height: 1`. Le thème appliquait l'échelle des villes.
+Corps de police et interligne désormais **identiques aux six largeurs**, hauteurs identiques à 320,
+768, 1 024, 1 440 et 1 920 px. La page reste classée `tfp-type-zone` — elle partage l'échelle de
+bandes et de cartes des zones — et un marqueur `tfp-page-region` distingue son seul H1.
+
+Trouvé au passage, et repris : le prototype écrit en clair
+`h1,h2,h3,h4,p,a,span,li,td,th,label,button,blockquote{overflow-wrap:break-word}`, que le thème
+n'avait **pas du tout**. Non repris en revanche : `html,body{overflow-x:clip}`, filet qui masque
+les débordements au lieu de les corriger — le relevé en compte zéro sur 318 contrôles, l'ajouter
+aveuglerait le contrôle qui le garantit.
+
+Reste 375 px, quatre lignes contre trois. Cause **mesurée** : à 30 px / graisse 800, la même chaîne
+fait 344,7 px chez nous contre 337,4 dans la maquette, pour une colonne de 339. C'est la fonte
+**variable** de Bricolage Grotesque, 2,2 % plus large que la coupe statique 800 du prototype (axe
+`opsz` testé, sans effet). Contrepartie directe du §11, qui a valu 1 s de LCP — non défaite.
+
+### Carte marine du témoignage mis en avant
+
+Le relevé mesurait le fond sur la **carte**, jamais sur le **conteneur**. Trois relevés ajoutés :
+`panneau_fond/rayon/padding/couleur`, `colonnes_flex` (les colonnes valent 2 et 1, pas 1 et 1), et
+la taille **déclarée** de la citation — `clamp(19px, 2.2vw, 25px)` était figé à 25 px.
+
+Citation 684 × 150 contre 684 × 150 à 1 440 ; 228 px de haut contre 228 à 320 ; panneau 1 180 × 321
+contre 1 180 × 326.
+
+Deux garde-fous ont failli avaler ces corrections en silence, élargis plutôt que contournés : un
+panneau n'est relevé que s'il **tranche** sur ce qu'il y a derrière, et le filtre du composant
+témoignage n'acceptait que des pixels — il rejetait le `clamp` sans rien dire.
+
+### Ce que la correction a révélé : 298/318
+
+`/avis-clients/` passe de 101 à 106 % à 1 440 et 1 920 px. Mesuré bande par bande, thème du commit
+précédent remonté sur le banc :
+
+| Bande, 1 440 px | Avant | Après | Maquette |
+|---|---|---|---|
+| Note / CTA | 88 | **152** | 157 |
+| Avis mis en avant | 324 | **419** | 386 |
+| Page | 2 964 (101 %) | 3 123 (106 %) | 2 938 |
+
+Les deux bandes se **rapprochent** du prototype. La page tenait la plage **grâce à deux erreurs qui
+se compensaient**. Décomposition des +185 px : **84 px** de rangée de commandes de hero (décision
+d'Emmanuel, verrouillée par test) et **60 px** de mentions provisoires (`CLAUDE.md` §5.5). Sans ces
+deux exigences, la page serait à 101 %.
+
+Ne garder qu'une mention ferait repasser la page sous 105 %. `tests/provisoire.spec.js` remonte
+jusqu'à la `<section>` et les deux grilles sont dans deux sections distinctes : aucune n'est
+superflue. **La règle n'est pas affaiblie pour un ratio.** L'arbitrage revient à Emmanuel.
+
+### Défaut restant dans cette bande, non corrigé à moitié
+
+La seconde colonne du prototype porte **deux** tuiles bleues distinctes ; le relevé les aplatit en
+une seule carte. Panneau 628 px contre 733 à 320 px. Le corriger demande que le modèle de carte
+accepte une pile de sous-cartes — une modification d'architecture, pas un correctif.
+
+### Une planche qui recule sans que rien n'ait régressé
+
+La planche ciblée de la page région passe de 30,3 à **36,6 %** de pixels colorés, et celle du pilier
+à 375 px de 42,5 à 44,2 %. Ce n'est pas une régression : un H1 désormais conforme est plus haut,
+donc tout ce qui suit se décale, et un décalage vertical colorie l'intégralité de la colonne. Le
+préambule de `docs/CAPTURES-CIBLEES.md` le dit — le taux sert à repérer *où* regarder, pas à
+conclure. La mesure qui conclut, elle, est le ratio de hauteur : la page région passe de
+98·100·100·100·100·100 à **99·101·101·101·101·101**, et se rapproche donc de la maquette.
+
+À l'inverse, la planche d'`/avis-clients/` à 320 px descend de 38,4 à **31,0 %** : la carte marine
+s'y superpose désormais à celle du prototype.
+
+### Contrôles
+
+Suite Playwright **1 253 passés, 0 échec** · relevé 318/318 dont **298** dans la bande, 0
+débordement, 0 erreur console · parité **1 265 fichiers, 0 divergent**.

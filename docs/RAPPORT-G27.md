@@ -160,12 +160,7 @@ composition : les mentions de l'ancien site ont dû être **réécrites** et non
 (`CLAUDE.md` §5.7), et le corps de texte est donc plus long. `docs/AUDIT-PAGES-LEGALES.md` mesure la
 part ajoutée ligne à ligne ; le résidu reste négatif partout, c'est-à-dire entièrement expliqué.
 
-**Deux défauts mesurés et non corrigés**, consignés pour la passe suivante :
-
-| Où | Maquette | Thème | Écart |
-|---|---|---|---|
-| `/avis-clients/`, témoignage mis en avant | carte marine `#10263B`, citation 19 px | carte blanche, citation 25 px | 228 px contre 300 à 320 px de large |
-| `/bourgogne-franche-comte/`, H1 | `clamp(30px, 4.2vw, 52px)` → 52 px | `--fs-h1-zone` → 49 px | 3 px, une occurrence |
+**Les deux défauts mesurés ont depuis été corrigés** — voir §13 ci-dessous, ajouté après coup.
 
 ### Les quatre bloqueurs, qui ne dépendent pas du code
 
@@ -181,3 +176,114 @@ part ajoutée ligne à ligne ; le résidu reste négatif partout, c'est-à-dire 
 
 Tant que ces quatre points sont ouverts, le verdict reste **PARTIEL — ÉCARTS RESTANTS**, et rien ne
 doit être déclaré `PRODUCTION READY`.
+
+---
+
+## 13. Les deux défauts restants, corrigés — et ce que leur correction a révélé
+
+Ajouté après la clôture, sur demande. Les deux défauts consignés au §12 sont corrigés à la cause.
+
+### H1 de la page région
+
+La maquette déclare `clamp(30px, 4.2vw, 52px)` et `line-height: 1` ; le thème appliquait l'échelle
+des villes. Corps de police désormais **identique aux six largeurs** — 30 · 30 · 32,3 · 43 · 52 ·
+52 — interligne identique, hauteurs identiques à 320, 768, 1 024, 1 440 et 1 920 px.
+
+En cherchant pourquoi le repli différait encore à 375 px, j'ai trouvé une règle que le prototype
+écrit en clair et que le thème **n'avait pas du tout** :
+`h1,h2,h3,h4,p,a,span,li,td,th,label,button,blockquote{overflow-wrap:break-word}`. Reprise telle
+quelle. Ce qui l'accompagne — `html,body{overflow-x:clip}` — n'est **pas** repris : c'est un filet
+qui masque les débordements au lieu de les corriger, et le relevé en compte zéro sur 318 contrôles.
+L'ajouter aveuglerait le contrôle qui le garantit.
+
+Il reste 375 px, où le H1 tient sur quatre lignes contre trois. Cause **mesurée** : à 30 px et
+graisse 800, la même chaîne fait **344,7 px chez nous contre 337,4 dans la maquette**, pour une
+colonne de 339. C'est la fonte **variable** de Bricolage Grotesque, 2,2 % plus large que la coupe
+statique 800 du prototype. L'axe `opsz` a été testé, sans effet. C'est la contrepartie directe du
+§11, qui a valu 1 s de LCP ; elle n'est pas défaite pour 30 px sur une route.
+
+### Carte marine du témoignage mis en avant
+
+Le relevé mesurait le fond sur la **carte**, jamais sur le **conteneur** — or ici c'est le
+`<figure>` qui porte le panneau. Trois relevés ajoutés :
+
+| Relevé | Ce qu'il corrige |
+|---|---|
+| `panneau_fond` / `rayon` / `padding` / `couleur` | le panneau marine, rayon 20, rembourrage 44 — la bande sortait en cartes blanches sur fond blanc |
+| `colonnes_flex` | les deux colonnes valent 2 et 1, pas 1 et 1 : la citation tombait dans 528 px au lieu de 684 |
+| taille **déclarée** de la citation | `clamp(19px, 2.2vw, 25px)` était figé à 25 px : la citation faisait 375 px de haut à 320 px de large contre 228 |
+
+| | Maquette | Thème |
+|---|---|---|
+| Citation à 1 440 px | 684 × 150 | **684 × 150** |
+| Citation à 320 px | 228 × 228 | **236 × 228** |
+| Panneau à 1 440 px | 1 180 × 326 | **1 180 × 321** |
+
+Deux garde-fous ont failli avaler ces corrections en silence, et ils sont **élargis plutôt que
+contournés** : un panneau n'est relevé que s'il **tranche** sur ce qu'il y a derrière — sans quoi
+six bandes auraient été repeintes de leur propre couleur en n'y gagnant que du rembourrage — et le
+filtre du composant témoignage n'acceptait que des pixels, rejetant le `clamp` sans rien dire.
+
+### Ce que la correction a révélé : 298/318, et non plus 300
+
+Le relevé rejoué donne **318/318 · 298 dans 95-105 % · 0 débordement · 0 erreur console**. Les deux
+contrôles sortants sont `/avis-clients/` à 1 440 et 1 920 px, de 101 à 106 %.
+
+C'est une conséquence directe des corrections, mesurée bande par bande — thème du commit précédent
+remonté sur le banc pour comparer :
+
+| Bande, à 1 440 px | Avant | Après | Maquette |
+|---|---|---|---|
+| Note / CTA | 88 | **152** | 157 |
+| Avis mis en avant | 324 | **419** | 386 |
+| **Page entière** | **2 964 (101 %)** | **3 123 (106 %)** | **2 938** |
+
+Les deux bandes se **rapprochent** du prototype. La page tenait la plage **grâce à deux erreurs qui
+se compensaient** : la carte blanche trop courte absorbait le coût des mentions obligatoires. En la
+rendant fidèle, l'écart devient visible.
+
+Décomposition des +185 px, mesurée sur le rendu :
+
+| Part | Hauteur | Nature |
+|---|---:|---|
+| Rangée de commandes du hero | **84 px** | Décision d'Emmanuel, verrouillée par `tests/ecarts-structure.spec.js` |
+| Deux mentions « Exemples de présentation » | **60 px** | Exigées par `CLAUDE.md` §5.5 |
+| Reste | 41 px | Composition |
+
+**Sans ces deux exigences, la page serait à 101 %.**
+
+Ce qui n'a **pas** été fait, et pourquoi : ne garder qu'une seule mention ferait repasser la page
+sous 105 %. `tests/provisoire.spec.js` remonte jusqu'à la `<section>`, et les deux grilles sont dans
+deux sections distinctes — aucune des deux mentions n'est superflue. Affaiblir la règle pour un
+ratio serait maquiller la mesure. Les commandes de hero, elles, sont protégées par le brief §12.
+
+**L'arbitrage revient à Emmanuel** : soit `/avis-clients/` rejoint les pages légales dans la
+catégorie « hors bande pour cause de contenu obligatoire », soit l'une des deux exigences est revue.
+
+### Un défaut demeure dans cette bande, non corrigé à moitié
+
+La seconde colonne du prototype porte **deux tuiles bleues distinctes** (`#174A81`, rayon 12,
+rembourrage 14/16) ; le relevé les aplatit en une seule carte portant deux rangées d'étoiles et
+deux citations. Le panneau fait 628 px contre 733 à 320 px de large. Le corriger demande que le
+modèle de carte accepte une **pile de sous-cartes** — une modification d'architecture, pas un
+correctif.
+
+### Une planche qui recule sans que rien n'ait régressé
+
+La planche ciblée de la page région passe de 30,3 à **36,6 %** de pixels colorés, et celle du pilier
+à 375 px de 42,5 à 44,2 %. Ce n'est pas une régression : un H1 désormais conforme est plus haut,
+donc tout ce qui suit se décale, et un décalage vertical colorie l'intégralité de la colonne. Le
+préambule de `docs/CAPTURES-CIBLEES.md` le dit — le taux sert à repérer *où* regarder, pas à
+conclure. La mesure qui conclut, elle, est le ratio de hauteur : la page région passe de
+98·100·100·100·100·100 à **99·101·101·101·101·101**, et se rapproche donc de la maquette.
+
+À l'inverse, la planche d'`/avis-clients/` à 320 px descend de 38,4 à **31,0 %** : la carte marine
+s'y superpose désormais à celle du prototype.
+
+### Contrôles après correction
+
+| Contrôle | Résultat |
+|---|---|
+| Suite Playwright complète | **1 253 passés, 0 échec** (après reconstruction des archives) |
+| Relevé de base | 318/318 · **298** dans 95-105 % · 0 débordement · 0 erreur console |
+| Parité dépôt ↔ livraison | **1 265 fichiers comparés, 0 divergent** |

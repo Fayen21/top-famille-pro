@@ -13,8 +13,8 @@
 |---|---|---|---|---|
 | En-tête et navigation | 375 px | 22.85 % (×8) | identique (11 bandes) | `docs/captures/ciblees/entete-375.jpg` |
 | En-tête et navigation | 1440 px | 12.56 % (×8) | identique (11 bandes) | `docs/captures/ciblees/entete-1440.jpg` |
-| Page pilier, page entière | 375 px | 42.47 % (×8) | identique (19 bandes) | `docs/captures/ciblees/pilier-375.jpg` |
-| Page pilier, page entière | 1440 px | 35.91 % (×8) | identique (19 bandes) | `docs/captures/ciblees/pilier-1440.jpg` |
+| Page pilier, page entière | 375 px | 44.24 % (×8) | identique (19 bandes) | `docs/captures/ciblees/pilier-375.jpg` |
+| Page pilier, page entière | 1440 px | 34.09 % (×8) | identique (19 bandes) | `docs/captures/ciblees/pilier-1440.jpg` |
 | Pilier — bande des six vignettes de 56 px | 375 px | 44.06 % (×8) | identique (19 bandes) | `docs/captures/ciblees/pilier-vignettes-375.jpg` |
 | Pilier — bande des six vignettes de 56 px | 768 px | 51.21 % (×8) | identique (19 bandes) | `docs/captures/ciblees/pilier-vignettes-768.jpg` |
 | Pilier — bande des six vignettes de 56 px | 1440 px | 29.62 % (×8) | identique (19 bandes) | `docs/captures/ciblees/pilier-vignettes-1440.jpg` |
@@ -23,8 +23,8 @@
 | Formulaire de devis — étape 2 | 375 px | 47.01 % (×8) | identique (1 bande) | `docs/captures/ciblees/formulaire-etape2-375.jpg` |
 | Formulaire de devis — étape 2 | 1440 px | 50.02 % (×8) | identique (1 bande) | `docs/captures/ciblees/formulaire-etape2-1440.jpg` |
 | Pourquoi Top-Famille Pro | 375 px | 46.37 % (×8) | identique (6 bandes) | `docs/captures/ciblees/pourquoi-375.jpg` |
-| Avis clients | 320 px | 38.38 % (×8) | identique (3 bandes) | `docs/captures/ciblees/avis-320.jpg` |
-| Page région Bourgogne-Franche-Comté | 1440 px | 30.27 % (×8) | identique (16 bandes) | `docs/captures/ciblees/region-1440.jpg` |
+| Avis clients | 320 px | 30.97 % (×8) | identique (3 bandes) | `docs/captures/ciblees/avis-320.jpg` |
+| Page région Bourgogne-Franche-Comté | 1440 px | 36.55 % (×8) | identique (16 bandes) | `docs/captures/ciblees/region-1440.jpg` |
 
 ---
 
