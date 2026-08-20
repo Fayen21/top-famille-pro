@@ -1807,3 +1807,42 @@ planche seule laissait croire à plusieurs replis différents — c'est la mesur
 URL de la fiche Google Business à fournir **et à valider humainement**, nombre réel d'avis, photo
 authentique d'Audrey et validation de sa citation par l'intéressée, remplacement des témoignages
 provisoires.
+
+---
+
+## G27 §14 et §15 — batterie finale et clôture (20 août 2026)
+
+Rapport de clôture en douze points : `docs/RAPPORT-G27.md`.
+
+### Batterie rejouée après §10 et §13
+
+| Contrôle | Résultat |
+|---|---|
+| Suite Playwright complète | **1 253 passés, 0 échec** |
+| Relevé de base 53 routes × 6 largeurs | **318/318 · 300 dans 95-105 % · 0 débordement · 0 erreur console** |
+| Lighthouse, 7 routes × mobile/bureau | **14/14 conformes** — perf mobile 99-100, bureau 100, a11y / BP / SEO 100 partout |
+| Cœurs Web | LCP mobile **1,66-1,97 s** · CLS **0,000** sur 14 mesures |
+| Planche de validation, 12 routes × 2 largeurs | **22 des 24 comparaisons dans 95-105 %** |
+| Captures ciblées, 14 planches | ordre des bandes identique des deux côtés sur les quatorze |
+| Données structurées | conformes sur les 53 routes |
+| Cibles tactiles (WCAG 2.5.8 AA) | aucune violation |
+| Images par rôle | **164 images, 0 écart** |
+| Maillage interne | aucun lien mort, aucune page orpheline |
+| Lint PHP | 82 fichiers |
+| Parité dépôt ↔ livraison | **1 265 fichiers comparés, 0 divergent** |
+
+Les deux comparaisons hors bande de la planche sont les **mentions légales** (132 % à 1 440 px,
+124 % à 375). Même cause que les trois routes hors bande du relevé : les mentions ont dû être
+réécrites et non recopiées (`CLAUDE.md` §5.7), et `docs/AUDIT-PAGES-LEGALES.md` mesure la part
+ajoutée ligne à ligne — le résidu reste négatif partout, donc entièrement expliqué.
+
+### Ce qui reste ouvert
+
+Deux défauts mesurés et non corrigés, consignés pour la passe suivante : la carte marine du
+témoignage mis en avant d'`/avis-clients/` et le H1 de la page région à 49 px au lieu de 52.
+
+Quatre bloqueurs qui ne dépendent pas du code : URL de la fiche Google à fournir **et à valider
+humainement**, nombre réel d'avis, photo authentique d'Audrey et validation de sa citation par
+l'intéressée, remplacement des témoignages provisoires.
+
+**Verdict G27 : PARTIEL — ÉCARTS RESTANTS.** Rien ne doit être déclaré `PRODUCTION READY`.
