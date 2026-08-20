@@ -270,9 +270,10 @@ for (const l of lignes) {
 		md += `| ${l.cas.titre} | ${l.largeur} px | — | — | ⚠ ${l.erreur} |\n`;
 		continue;
 	}
+	const n = l.bandes.site.length;
 	const ordre = ordreIdentique(l.bandes.maquette, l.bandes.site)
-		? `identique (${l.bandes.site.length} bandes)`
-		: `**différent** — ${l.bandes.maquette.length} contre ${l.bandes.site.length}`;
+		? `identique (${n} bande${n > 1 ? 's' : ''})`
+		: `**différent** — ${l.bandes.maquette.length} contre ${n}`;
 	md += `| ${l.cas.titre} | ${l.largeur} px | ${l.mesure.pourcentage} % (×${l.mesure.amplification}) | ${ordre} | \`${l.fichier}\` |\n`;
 }
 
@@ -281,8 +282,8 @@ for (const l of lignes) {
 	if (!l.fichier) continue;
 	md += `### ${l.cas.titre} — ${l.largeur} px\n\n`;
 	md += `| # | Maquette | WordPress |\n|---|---|---|\n`;
-	const n = Math.max(l.bandes.maquette.length, l.bandes.site.length);
-	for (let i = 0; i < n; i += 1) {
+	const rangs = Math.max(l.bandes.maquette.length, l.bandes.site.length);
+	for (let i = 0; i < rangs; i += 1) {
 		const a = l.bandes.maquette[i] || '—';
 		const b = l.bandes.site[i] || '—';
 		md += `| ${i + 1} | ${a === b ? a : `*${a}*`} | ${a === b ? b : `**${b}**`} |\n`;

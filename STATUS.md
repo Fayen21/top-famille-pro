@@ -1786,6 +1786,17 @@ largeurs, mêmes nombres de lignes, et l'exemple tarifaire donne 333 € HT/mois
 37,6 % de pixels colorés de la planche viennent du décalage vertical des blocs de note masqués. La
 planche seule laissait croire à plusieurs replis différents — c'est la mesure qui a tranché.
 
+### Contrôles
+
+- Relevé de base rejoué après la correction de `titre_largeur_max` : **318/318 · 300 dans
+  95-105 % · 0 débordement · 0 erreur console**. Les 18 hors bande sont les trois pages légales aux
+  six largeurs — exactement les mêmes qu'avant la passe. Aucune route n'est entrée ni sortie de la
+  bande.
+- Parité dépôt ↔ livraison : **1 265 fichiers comparés, 0 divergent**, seed resynchronisé et deux
+  archives reconstruites.
+- Planches ciblées : pilier 1 440 px de 53,9 à **35,9 %**, bande des vignettes de 33,3 à **29,6 %**,
+  page région de 37,6 à **30,3 %**, formulaire étape 1 à **20,2 %** (375) et **12,7 %** (1 440).
+
 ### Verdict
 
 **PARTIEL — ÉCARTS RESTANTS**, inchangé. Les quatre points bloquants ne dépendent pas du code :

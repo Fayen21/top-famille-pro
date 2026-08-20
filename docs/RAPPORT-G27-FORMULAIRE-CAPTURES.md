@@ -143,9 +143,22 @@ panneau, la planche donnait à croire que plusieurs titres se repliaient différ
 
 | Contrôle | Résultat |
 |---|---|
-| Suite Playwright complète | 1 252 passés, 1 échec — `parite-installeur`, attendu tant que l'installeur n'est pas resynchronisé après modification du thème |
-| Suite fonctionnelle + accessibilité + provisoire + G26 | 133 passés, 0 échec |
-| Baseline 318 contrôles | rejouée après la correction de `titre_largeur_max` — voir `docs/baseline-g27-s10.json` |
+| Relevé de base, 53 routes × 6 largeurs | **318/318 · 300 dans 95-105 % · 0 débordement · 0 erreur console ou réseau** (`docs/baseline-g27-s10.json`) |
+| Les 18 contrôles hors bande | les **trois pages légales**, aux six largeurs — exactement les mêmes qu'avant la passe, à 111-143 %. Aucune route n'est entrée ni sortie de la bande. |
+| Parité dépôt ↔ livraison | **1 265 fichiers comparés, 0 divergent**, après resynchronisation du seed et reconstruction des deux archives |
+
+Le relevé a été rejoué **après** la correction de `titre_largeur_max`, qui touche neuf titres sur
+six pages : le total dans la bande est inchangé à l'unité près, ce qui était l'objet du contrôle.
+
+Effet mesuré des corrections sur les planches ciblées :
+
+| Planche | Avant | Après |
+|---|---|---|
+| Pilier, page entière, 1 440 px | 53,9 % | **35,9 %** |
+| Pilier, bande des six vignettes, 1 440 px | 33,3 % | **29,6 %** |
+| Page région, 1 440 px | 37,6 % | **30,3 %** |
+| Formulaire étape 1, 375 px | 34 à 51 % (relevé G26) | **20,2 %** |
+| Formulaire étape 1, 1 440 px | 34 à 51 % (relevé G26) | **12,7 %** |
 
 ---
 
