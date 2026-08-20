@@ -433,6 +433,75 @@ for (const p of PAGES) {
 			const cs = getComputedStyle(el);
 
 			/*
+			 * ARCHÉTYPE PILE — une carte qui est elle-même une COLONNE DE SOUS-CARTES.
+			 *
+			 * La seconde colonne du panneau d'avis mis en avant de `/avis-clients/` n'est pas une
+			 * carte : c'est un empilement de deux tuiles bleues distinctes, chacune avec ses
+			 * étoiles et sa citation. La décomposition générique les aplatissait en UNE carte dont
+			 * l'intitulé était la première citation, la description une seconde rangée d'étoiles et
+			 * la ligne suivante la seconde citation. Le rendu ne montrait plus deux avis mais un
+			 * seul, bavard — faux, pas seulement plus court.
+			 *
+			 * La détection est volontairement étroite, pour ne capturer que cela :
+			 *  - au moins deux enfants directs, tous ÉLÉMENTS et tous porteurs de texte ;
+			 *  - tous PEINTS (fond non transparent) — un empilement de blocs nus n'est pas une pile
+			 *    de cartes, c'est une mise en page ;
+			 *  - tous de MÊME fond, MÊME rayon et MÊME rembourrage — deux tuiles d'une même série ;
+			 *  - le parent lui-même sans fond ni rembourrage propre : il n'est qu'un conteneur.
+			 *
+			 * Une seule grille du site y répond. Partout ailleurs, rien n'est écrit et rien ne
+			 * change.
+			 */
+			const enfantsPile = [...el.children].filter((c) => txt(c));
+			if (enfantsPile.length >= 2) {
+				const styles = enfantsPile.map((c) => getComputedStyle(c));
+				const peintes = styles.every((g) => !/rgba\([^)]*,\s*0\s*\)|^transparent$/.test(g.backgroundColor));
+				const memeFond = new Set(styles.map((g) => g.backgroundColor)).size === 1;
+				const memeRayon = new Set(styles.map((g) => g.borderTopLeftRadius)).size === 1;
+				const memePad = new Set(styles.map((g) => g.padding)).size === 1;
+				const parentNu = /rgba\([^)]*,\s*0\s*\)|^transparent$/.test(cs.backgroundColor);
+				/* Le texte de la carte n'est QUE celui de ses tuiles : aucun intitulé propre. */
+				const texteHorsTuiles = txt(el).replace(/\s/g, '').length
+					- enfantsPile.map((c) => txt(c).replace(/\s/g, '').length).reduce((a, b) => a + b, 0);
+				if (peintes && memeFond && memeRayon && memePad && parentNu && texteHorsTuiles <= 2) {
+					const geoTuile = (n) => {
+						const g = getComputedStyle(n);
+						return {
+							taille: (n.style && n.style.fontSize) || g.fontSize,
+							interligne: Math.round((parseFloat(g.lineHeight) / parseFloat(g.fontSize)) * 1000) / 1000 || 0,
+							couleur: g.color,
+						};
+					};
+					const tuiles = enfantsPile.map((c) => {
+						/* Étoiles et citation : relevées telles quelles, jamais fabriquées. */
+						const blocs = [...c.children].filter((x) => txt(x));
+						const bEtoiles = blocs.find((x) => /★/.test(txt(x)));
+						const bTexte = blocs.find((x) => x !== bEtoiles && txt(x));
+						return {
+							etoiles: bEtoiles ? (txt(bEtoiles).match(/★+/) || [''])[0] : '',
+							etoiles_geo: bEtoiles ? geoTuile(bEtoiles) : {},
+							texte: bTexte ? txt(bTexte).replace(/^«\s*/, '').replace(/\s*»$/, '') : '',
+							texte_geo: bTexte ? geoTuile(bTexte) : {},
+						};
+					}).filter((t) => t.texte);
+					if (tuiles.length >= 2) {
+						const g0 = styles[0];
+						return {
+							archetype: 'pile',
+							pile_fond: g0.backgroundColor,
+							pile_rayon: g0.borderTopLeftRadius,
+							pile_padding: (enfantsPile[0].style && enfantsPile[0].style.padding) || g0.padding,
+							pile_gap: /^[0-9.]+px$/.test(cs.rowGap) ? cs.rowGap : '',
+							tuiles,
+							/* Un avis repris de la maquette est provisoire par construction (§5.5). */
+							provisoire: true,
+							ordre: rangIndex,
+						};
+					}
+				}
+			}
+
+			/*
 			 * ARCHÉTYPE TÉMOIGNAGE — relevé à part, avant la décomposition générique.
 			 *
 			 * Le prototype compose ses avis en `<figure>` : une rangée « ★★★★★ + Google », une

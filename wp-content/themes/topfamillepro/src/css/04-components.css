@@ -1111,6 +1111,40 @@
   flex-wrap: wrap;
 }
 
+/* Pile de sous-cartes : une colonne de tuiles identiques, relevée sur le prototype. La seule du
+   site est la seconde colonne du panneau d'avis mis en avant de /avis-clients/ — deux tuiles
+   bleues, chacune avec ses étoiles et sa citation. */
+.tfp-card-stack {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--tfp-pile-gap, var(--space-2));
+  height: 100%;
+}
+
+.tfp-card-stack__item {
+  background: var(--tfp-pile-fond, var(--color-primary));
+  border-radius: var(--tfp-pile-rayon, var(--radius-md));
+  padding: var(--tfp-pile-padding, 14px 16px);
+}
+
+.tfp-card-stack__stars {
+  display: block;
+  font-size: var(--tfp-pile-etoiles, 12px);
+  line-height: var(--tfp-pile-etoiles-lh, 1.6);
+  letter-spacing: 1px;
+  color: var(--color-star);
+}
+
+.tfp-card-stack__quote {
+  margin: 6px 0 0;
+  font-size: var(--tfp-pile-texte, 13.5px);
+  line-height: var(--tfp-pile-texte-lh, 1.5);
+  color: var(--color-turquoise-pale);
+}
+
 /* Un témoignage posé DANS un panneau sombre n'a plus de carte à lui : la maquette le compose à
    même le panneau — pas de fond, pas de filet, pas d'ombre — en blanc, avec sa légende en
    turquoise clair et ses étoiles à 19 px. Rendu tel quel, il ressortait blanc sur blanc. */

@@ -602,11 +602,18 @@ function tfp_card_grid( array $grille ) {
 		array_filter(
 			$items,
 			static function ( $i ) {
+				// Les textes d'une PILE comptent comme les autres : une tuile qui affirmerait une note
+				// de plateforme doit être filtrée comme n'importe quelle carte.
+				$tuiles = array();
+				foreach ( (array) ( $i['tuiles'] ?? array() ) as $t ) {
+					$tuiles[] = (string) ( $t['texte'] ?? '' );
+				}
 				return ! tfp_fragment_note_interdite(
 					$i['titre'] ?? '',
 					$i['description'] ?? '',
 					$i['surtitre'] ?? '',
-					implode( ' ', (array) ( $i['lignes'] ?? array() ) )
+					implode( ' ', (array) ( $i['lignes'] ?? array() ) ),
+					implode( ' ', $tuiles )
 				);
 			}
 		)
@@ -754,6 +761,76 @@ function tfp_card_grid( array $grille ) {
 			 * et le nom de l'auteur se retrouvait à la place des étoiles. Le rendu était faux, pas
 			 * seulement plus court.
 			 */
+			/*
+			 * ARCHÉTYPE PILE — une colonne de sous-cartes, rendue comme telle.
+			 *
+			 * La seconde colonne du panneau d'avis mis en avant de `/avis-clients/` empile deux
+			 * tuiles distinctes. La tuile générique les aplatissait en une seule carte : le premier
+			 * avis devenait l'intitulé, les étoiles du second sa description, et le second avis une
+			 * ligne de plus — un seul avis bavard au lieu de deux.
+			 *
+			 * Chaque tuile porte `data-tfp-provisional` : ce sont des témoignages repris de la
+			 * maquette (CLAUDE.md §5.5). La grille annonce leur caractère provisoire une fois,
+			 * au-dessus d'elle.
+			 */
+			if ( 'pile' === ( $item['archetype'] ?? '' ) && ! empty( $item['tuiles'] ) ) {
+				$vars_pile = array();
+				foreach ( array(
+					'pile_fond'    => '--tfp-pile-fond',
+					'pile_rayon'   => '--tfp-pile-rayon',
+					'pile_padding' => '--tfp-pile-padding',
+					'pile_gap'     => '--tfp-pile-gap',
+				) as $cle => $var ) {
+					$valeur = 'pile_fond' === $cle
+						? ( preg_match( '/^rgba?\([0-9, .]+\)$/', (string) ( $item[ $cle ] ?? '' ) ) ? $item[ $cle ] : '' )
+						: $px( $item[ $cle ] ?? '' );
+					if ( '' !== $valeur ) {
+						$vars_pile[] = $var . ':' . $valeur;
+					}
+				}
+				printf(
+					'<li%s><ul class="tfp-card-stack"%s>',
+					$style_colonne, // phpcs:ignore WordPress.Security.EscapeOutput
+					$vars_pile ? ' style="' . esc_attr( implode( ';', $vars_pile ) ) . '"' : ''
+				);
+				foreach ( (array) $item['tuiles'] as $tuile ) {
+					$texte = trim( (string) ( $tuile['texte'] ?? '' ) );
+					if ( '' === $texte ) {
+						continue;
+					}
+					$geo = static function ( $niveau ) use ( $tuile, $px ) {
+						$g   = is_array( $tuile[ $niveau . '_geo' ] ?? null ) ? $tuile[ $niveau . '_geo' ] : array();
+						$out = array();
+						$t   = $px( $g['taille'] ?? '' );
+						if ( '' !== $t ) {
+							$out[] = '--tfp-pile-' . $niveau . ':' . $t;
+						}
+						$lh = (float) ( $g['interligne'] ?? 0 );
+						if ( $lh >= 0.8 && $lh <= 3 ) {
+							$out[] = '--tfp-pile-' . $niveau . '-lh:' . $lh;
+						}
+						return $out ? ' style="' . esc_attr( implode( ';', $out ) ) . '"' : '';
+					};
+					echo '<li class="tfp-card-stack__item" data-tfp-provisional="1">';
+					$etoiles = (string) ( $tuile['etoiles'] ?? '' );
+					if ( '' !== $etoiles ) {
+						printf(
+							'<span class="tfp-card-stack__stars" aria-hidden="true"%s>%s</span>',
+							$geo( 'etoiles' ), // phpcs:ignore WordPress.Security.EscapeOutput
+							esc_html( $etoiles )
+						);
+					}
+					printf(
+						'<p class="tfp-card-stack__quote"%s>&laquo;&nbsp;%s&nbsp;&raquo;</p>',
+						$geo( 'texte' ), // phpcs:ignore WordPress.Security.EscapeOutput
+						esc_html( $texte )
+					);
+					echo '</li>';
+				}
+				echo '</ul></li>';
+				continue;
+			}
+
 			if ( 'temoignage' === ( $item['archetype'] ?? '' ) ) {
 				echo '<li' . $style_colonne . '>'; // phpcs:ignore WordPress.Security.EscapeOutput
 				tfp_testimonial_card(
