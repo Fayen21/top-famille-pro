@@ -323,8 +323,12 @@ préambule de `docs/CAPTURES-CIBLEES.md` le dit — le taux sert à repérer *o�
 conclure. La mesure qui conclut, elle, est le ratio de hauteur : la page région passe de
 98·100·100·100·100·100 à **99·101·101·101·101·101**, et se rapproche donc de la maquette.
 
-À l'inverse, la planche d'`/avis-clients/` à 320 px descend de 38,4 à **31,0 %** : la carte marine
-s'y superpose désormais à celle du prototype.
+La planche d'`/avis-clients/` à 320 px illustre les deux effets l'un après l'autre : **38,4 %**
+avant la carte marine, **31,0 %** une fois le panneau posé — la bande se superposait enfin — puis
+**37,5 %** après la séparation des deux tuiles. Cette dernière hausse n'est pas une régression : à
+320 px les colonnes s'empilent, deux tuiles fidèles sont plus hautes qu'une carte aplatie, et tout
+ce qui suit se décale. La mesure qui conclut reste la géométrie de la bande : panneau 725 px contre
+733, tuiles 155 px contre 155.
 
 ### Contrôles après correction
 

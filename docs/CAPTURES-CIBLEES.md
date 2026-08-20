@@ -23,7 +23,7 @@
 | Formulaire de devis — étape 2 | 375 px | 47.01 % (×8) | identique (1 bande) | `docs/captures/ciblees/formulaire-etape2-375.jpg` |
 | Formulaire de devis — étape 2 | 1440 px | 50.02 % (×8) | identique (1 bande) | `docs/captures/ciblees/formulaire-etape2-1440.jpg` |
 | Pourquoi Top-Famille Pro | 375 px | 46.37 % (×8) | identique (6 bandes) | `docs/captures/ciblees/pourquoi-375.jpg` |
-| Avis clients | 320 px | 30.97 % (×8) | identique (3 bandes) | `docs/captures/ciblees/avis-320.jpg` |
+| Avis clients | 320 px | 37.51 % (×8) | identique (3 bandes) | `docs/captures/ciblees/avis-320.jpg` |
 | Page région Bourgogne-Franche-Comté | 1440 px | 36.55 % (×8) | identique (16 bandes) | `docs/captures/ciblees/region-1440.jpg` |
 
 ---
