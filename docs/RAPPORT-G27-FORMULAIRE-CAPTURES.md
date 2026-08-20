@@ -143,6 +143,7 @@ panneau, la planche donnait à croire que plusieurs titres se repliaient différ
 
 | Contrôle | Résultat |
 |---|---|
+| Suite Playwright complète | **1 253 passés, 0 échec** |
 | Relevé de base, 53 routes × 6 largeurs | **318/318 · 300 dans 95-105 % · 0 débordement · 0 erreur console ou réseau** (`docs/baseline-g27-s10.json`) |
 | Les 18 contrôles hors bande | les **trois pages légales**, aux six largeurs — exactement les mêmes qu'avant la passe, à 111-143 %. Aucune route n'est entrée ni sortie de la bande. |
 | Parité dépôt ↔ livraison | **1 265 fichiers comparés, 0 divergent**, après resynchronisation du seed et reconstruction des deux archives |
@@ -172,3 +173,15 @@ Inchangé depuis les passes précédentes, et bloquant pour toute déclaration d
 3. photo authentique d'Audrey, et validation par l'intéressée de la citation qui lui est
    attribuée ;
 4. remplacement des témoignages provisoires par de vrais avis clients.
+
+### Un échec qui n'en était pas un, et ce qu'il a appris
+
+Le premier passage de la suite complète a donné 1 246 passés, 6 ignorés et **1 échec** :
+`tests/contact.spec.js` refusait de jouer ses tests de soumission. Le message était le bon —
+« les tests de soumission exigent une installation local/development : aucun test ne doit faire
+partir un e-mail réel ». La cause était de mon fait : `tools/banc-local.sh --seed-only`, que j'avais
+lancé pour réinjecter le contenu après la correction de `titre_largeur_max`, remonte le banc en
+environnement `production`. Le garde-fou a fonctionné exactement comme prévu.
+
+Banc remonté en `--development`, la suite complète donne **1 253 passés, 0 échec**. C'est le
+chiffre à retenir ; le précédent mesurait l'environnement du banc, pas le code.

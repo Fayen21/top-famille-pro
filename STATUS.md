@@ -1788,6 +1788,10 @@ planche seule laissait croire à plusieurs replis différents — c'est la mesur
 
 ### Contrôles
 
+- Suite Playwright complète : **1 253 passés, 0 échec**. Un premier passage avait donné 1 échec —
+  `tests/contact.spec.js` refusant ses tests de soumission — parce que `banc-local.sh --seed-only`
+  remonte le banc en environnement `production`, où le garde-fou empêche tout envoi réel. Le
+  contrôle mesurait l'environnement du banc, pas le code : remonté en `--development`, tout passe.
 - Relevé de base rejoué après la correction de `titre_largeur_max` : **318/318 · 300 dans
   95-105 % · 0 débordement · 0 erreur console**. Les 18 hors bande sont les trois pages légales aux
   six largeurs — exactement les mêmes qu'avant la passe. Aucune route n'est entrée ni sortie de la
