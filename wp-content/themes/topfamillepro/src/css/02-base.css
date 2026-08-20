@@ -101,6 +101,21 @@ body.tfp-type-zone.tfp-hero-w-900 h1 {
   font-size: var(--fs-h1);
 }
 
+/* La page région n'est ni une ville ni un département : la maquette lui donne sa propre courbe,
+   relevée aux six largeurs (30 · 30 · 32,3 · 43 · 52 · 52 px). Le thème lui appliquait l'échelle
+   des villes — 32 · 32 · 32 · 35,8 · 49 · 49 — et son H1 se repliait sur quatre lignes à 375 px
+   là où le prototype en tient trois. */
+body.tfp-type-zone.tfp-page-region h1 {
+  font-size: var(--fs-h1-region);
+  /* Interligne relevé : la maquette pose `line-height: 1` sur ce H1, contre les 1,04 du jeton de
+     titrage. Sur trois lignes, cela vaut 6 px.
+
+     La maquette n'a pas UN interligne de H1 : elle en emploie 1,0 sur la plupart de ses pages,
+     1,02 sur les zones et 1,04 à 1,06 sur les articles. Seule la valeur de cette page est relevée
+     ici ; l'échelle complète reste à faire, et est consignée dans STATUS.md. */
+  line-height: 1;
+}
+
 body.tfp-type-prestation h1 {
   font-size: var(--fs-h1-prestation);
 }
@@ -208,6 +223,35 @@ summary {
 
 summary::-webkit-details-marker {
   display: none;
+}
+
+/* Coupure des mots longs — règle reprise telle quelle du prototype, qui l'écrit en clair :
+   `h1,h2,h3,h4,p,a,span,li,td,th,label,button,blockquote{overflow-wrap:break-word}`.
+
+   Le thème ne l'avait pas du tout. Conséquence visible : le H1 de la page région se repliait sur
+   QUATRE lignes à 375 px là où le prototype en tient trois, parce que « Bourgogne-Franche-Comté »
+   ne pouvait pas se couper. C'est aussi une protection : un nom de commune long, une adresse
+   électronique ou une URL dans un corps de texte ne peuvent plus pousser une colonne au-delà de sa
+   largeur.
+
+   Ce qui accompagne cette règle dans le prototype — `html,body{max-width:100%;overflow-x:clip}` —
+   n'est PAS repris : c'est un filet qui masque les débordements au lieu de les corriger, et le
+   relevé de base en compte zéro sur 318 contrôles. L'ajouter aveuglerait le contrôle qui le
+   garantit. */
+h1,
+h2,
+h3,
+h4,
+p,
+a,
+span,
+li,
+td,
+th,
+label,
+button,
+blockquote {
+  overflow-wrap: break-word;
 }
 
 fieldset {

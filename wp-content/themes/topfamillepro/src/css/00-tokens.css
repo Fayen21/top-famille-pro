@@ -71,6 +71,10 @@
   --fs-h1-accueil: clamp(2.25rem, 4.4vw, 3.625rem); /* 36–58px — H1 du hero d'accueil */
   --fs-h1-pilier: clamp(2.125rem, 3.9vw, 3.375rem); /* 34–54px — page pilier, tarifs */
   --fs-h1-zone: clamp(2rem, 3.5vw, 3.0625rem); /* 32–49px — villes et communes */
+  /* 30–52px — page région. Relevé tel quel sur la maquette : `clamp(30px, 4.2vw, 52px)`. Ce n'est
+     pas l'échelle des villes rehaussée, c'est une autre courbe — 30 px sous 715 px de large contre
+     32, et 52 au plafond contre 49. Mesuré aux six largeurs. */
+  --fs-h1-region: clamp(1.875rem, 4.2vw, 3.25rem);
   --fs-h1-prestation: clamp(1.9375rem, 3.4vw, 3rem); /* 31–48px — prestations, plan du site */
   --fs-h1-legale: clamp(1.875rem, 3.3vw, 2.875rem); /* 30–46px — pages légales */
   --fs-h1-article: clamp(1.8125rem, 3.1vw, 2.75rem); /* 29–44px — articles */

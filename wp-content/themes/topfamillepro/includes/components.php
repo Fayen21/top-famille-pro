@@ -669,6 +669,58 @@ function tfp_card_grid( array $grille ) {
 	if ( preg_match( '/^rgba?\([0-9, .]+\)$/', (string) ( $grille['filet_couleur'] ?? '' ) ) ) {
 		$vars[] = '--tfp-tuile-filet-couleur:' . $grille['filet_couleur'];
 	}
+	/*
+	 * PANNEAU : le conteneur de la grille peint, quand la maquette en fait une carte à lui seul.
+	 *
+	 * Trois valeurs relevées sur le conteneur — fond, rayon, rembourrage — plus sa couleur de
+	 * texte. La bande d'avis mis en avant de `/avis-clients/` est exactement cela : ses colonnes
+	 * sont transparentes et c'est le `<figure>` qui les enferme qui porte le marine, le rayon de 20
+	 * et 44 px de rembourrage. Sans ce relevé, la bande sortait en cartes blanches sur fond blanc.
+	 *
+	 * Le relevé ne s'écrit que si le conteneur tranche réellement sur ce qu'il y a derrière
+	 * (tools/generate-pages.mjs) : les dizaines de grilles nues du site n'en portent pas.
+	 */
+	$panneau = false;
+	if ( preg_match( '/^rgba?\([0-9, .]+\)$/', (string) ( $grille['panneau_fond'] ?? '' ) ) ) {
+		$panneau = true;
+		$vars[]  = '--tfp-grille-panneau-fond:' . $grille['panneau_fond'];
+		if ( preg_match( '/^rgba?\([0-9, .]+\)$/', (string) ( $grille['panneau_couleur'] ?? '' ) ) ) {
+			$vars[] = '--tfp-grille-panneau-couleur:' . $grille['panneau_couleur'];
+		}
+		$r = $px( $grille['panneau_rayon'] ?? '' );
+		if ( '' !== $r ) {
+			$vars[] = '--tfp-grille-panneau-rayon:' . $r;
+		}
+		$pd = $px( $grille['panneau_padding'] ?? '' );
+		if ( '' !== $pd ) {
+			$vars[] = '--tfp-grille-panneau-padding:' . $pd;
+		}
+	}
+
+	/*
+	 * COLONNES DE PROPORTIONS INÉGALES — relevées, et rendues en flex.
+	 *
+	 * La grille du thème répartit ses colonnes à parts égales et se replie d'elle-même : c'est ce
+	 * que fait la maquette partout, sauf sur la bande d'avis mis en avant de `/avis-clients/`, dont
+	 * les deux colonnes valent 2 et 1. Une grille CSS ne sait pas exprimer « deux tiers / un tiers
+	 * ET repli intrinsèque » ; un conteneur flex, si — c'est d'ailleurs ce que le prototype
+	 * emploie. Le repli reste donc dicté par la place disponible, jamais par un seuil de fenêtre.
+	 */
+	$colonnes_flex = array();
+	foreach ( (array) ( $grille['colonnes_flex'] ?? array() ) as $c ) {
+		$grow = (float) ( $c['grow'] ?? 0 );
+		$base = $px( $c['base'] ?? '' );
+		$min  = $px( $c['min'] ?? '' );
+		if ( $grow <= 0 || '' === $base ) {
+			$colonnes_flex = array();
+			break;
+		}
+		$colonnes_flex[] = 'flex:' . $grow . ' 1 ' . $base . ( '' !== $min ? ';min-width:' . $min : '' );
+	}
+	if ( count( $colonnes_flex ) !== count( $items ) ) {
+		$colonnes_flex = array();
+	}
+
 	$style = $vars ? ' style="' . esc_attr( implode( ';', $vars ) ) . '"' : '';
 	?>
 	<?php
@@ -686,9 +738,12 @@ function tfp_card_grid( array $grille ) {
 		tfp_provisional_notice();
 	}
 	?>
-	<ul class="tfp-card-grid tfp-card-grid--<?php echo (int) $colonnes; ?><?php echo esc_attr( $theme ); ?>"<?php echo $style; // phpcs:ignore WordPress.Security.EscapeOutput ?>>
+	<ul class="tfp-card-grid tfp-card-grid--<?php echo (int) $colonnes; ?><?php echo esc_attr( $theme ); ?><?php echo $panneau ? ' tfp-card-grid--panneau' : ''; ?><?php echo $colonnes_flex ? ' tfp-card-grid--proportions' : ''; ?>"<?php echo $style; // phpcs:ignore WordPress.Security.EscapeOutput ?>>
 		<?php
+		$rang_colonne = 0;
 		foreach ( $items as $item ) :
+			$style_colonne = $colonnes_flex ? ' style="' . esc_attr( $colonnes_flex[ $rang_colonne ] ) . '"' : '';
+			$rang_colonne++;
 			/*
 			 * ARCHÉTYPE TÉMOIGNAGE — rendu par le composant dédié, pas par la tuile générique.
 			 *
@@ -700,7 +755,7 @@ function tfp_card_grid( array $grille ) {
 			 * seulement plus court.
 			 */
 			if ( 'temoignage' === ( $item['archetype'] ?? '' ) ) {
-				echo '<li>';
+				echo '<li' . $style_colonne . '>'; // phpcs:ignore WordPress.Security.EscapeOutput
 				tfp_testimonial_card(
 					array(
 						'texte'  => $item['citation'] ?? '',
@@ -825,7 +880,7 @@ function tfp_card_grid( array $grille ) {
 			$est_thumb  = $item['image'] && $image_l > 0 && $image_l <= 80;
 			$classe_var = $est_thumb ? 'thumb' : $variante;
 			?>
-			<li<?php echo ! empty( $item['provisoire'] ) ? ' data-tfp-provisional="1"' : ''; ?>>
+			<li<?php echo ! empty( $item['provisoire'] ) ? ' data-tfp-provisional="1"' : ''; ?><?php echo $style_colonne; // phpcs:ignore WordPress.Security.EscapeOutput ?>>
 				<<?php echo $balise; ?> class="tfp-card-tile tfp-card-tile--<?php echo esc_attr( $classe_var ); ?><?php echo $item['en_ligne'] ? ' tfp-card-tile--en-ligne' : ''; ?>"<?php echo $style_item; // phpcs:ignore WordPress.Security.EscapeOutput ?><?php echo $attributs; // phpcs:ignore WordPress.Security.EscapeOutput ?>>
 					<?php
 					/*

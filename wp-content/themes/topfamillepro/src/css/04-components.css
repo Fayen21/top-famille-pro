@@ -1091,6 +1091,58 @@
   --tfp-btn-fw: var(--fw-bold);
 }
 
+/* Grille-panneau : le conteneur est lui-même une carte, relevé sur la maquette (fond, rayon,
+   rembourrage, couleur de texte). N'existe que là où le prototype en pose une. */
+/* Deux classes, et non une : `.tfp-card-grid` remet `padding: 0` plus bas dans la feuille — c'est
+   la remise à zéro d'une liste — et l'aurait emporté à spécificité égale. */
+.tfp-card-grid.tfp-card-grid--panneau {
+  background: var(--tfp-grille-panneau-fond);
+  color: var(--tfp-grille-panneau-couleur, inherit);
+  border-radius: var(--tfp-grille-panneau-rayon, var(--radius-xl));
+  padding: var(--tfp-grille-panneau-padding, 0);
+  align-items: center;
+}
+
+/* Colonnes de proportions inégales : conteneur flex, comme le prototype. Chaque colonne porte sa
+   part, sa base et sa largeur minimale relevées — c'est ce trio qui décide du repli, et ce repli
+   dépend de la place disponible, pas de la largeur de la fenêtre. */
+.tfp-card-grid.tfp-card-grid--proportions {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* Un témoignage posé DANS un panneau sombre n'a plus de carte à lui : la maquette le compose à
+   même le panneau — pas de fond, pas de filet, pas d'ombre — en blanc, avec sa légende en
+   turquoise clair et ses étoiles à 19 px. Rendu tel quel, il ressortait blanc sur blanc. */
+.tfp-card-grid--dark.tfp-card-grid--panneau .tfp-testimonial {
+  background: none;
+  border: 0;
+  box-shadow: none;
+  padding: 0;
+  color: var(--color-text-on-dark);
+}
+
+.tfp-card-grid--dark.tfp-card-grid--panneau .tfp-testimonial__stars {
+  margin-bottom: 0;
+  font-size: 19px;
+  letter-spacing: 2px;
+}
+
+.tfp-card-grid--dark.tfp-card-grid--panneau .tfp-testimonial__quote {
+  margin-top: 14px;
+  font-family: var(--font-heading);
+  color: var(--color-text-on-dark);
+}
+
+.tfp-card-grid--dark.tfp-card-grid--panneau .tfp-testimonial__author {
+  margin-top: 16px;
+}
+
+.tfp-card-grid--dark.tfp-card-grid--panneau .tfp-testimonial__name,
+.tfp-card-grid--dark.tfp-card-grid--panneau .tfp-testimonial__context {
+  color: var(--color-turquoise);
+}
+
 /* ---------- Étapes du formulaire de devis ----------
    Relevé de la maquette : rangée de 13 px, graisse 600, écart 12 ; le rang en bleu principal, une
    jauge de 3 px qui prend la place restante, l'objet de l'étape à droite en gris. */

@@ -63,6 +63,10 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 								'colonnes' => 1,
 								'colonne_min' => '',
 								'gap' => '14px 26px',
+								'panneau_fond' => 'rgb(221, 244, 243)',
+								'panneau_rayon' => '16px',
+								'panneau_padding' => '14px 16px',
+								'panneau_couleur' => 'rgb(24, 35, 45)',
 								'fond' => 'rgb(23, 74, 129)',
 								'rayon' => '12px',
 								'filet' => '0px',
@@ -131,7 +135,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 							array(
 								'type' => 'note',
 								'texte' => 'Devis gratuit sous 24 h Intervention régulière ou ponctuelle Conditions d\'arrêt précisées au devis',
-								'ligne' => 823,
+								'ligne' => 853,
 							),
 						),
 						'cartes' => array(
@@ -144,6 +148,10 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 								'colonnes' => 1,
 								'colonne_min' => '',
 								'gap' => '14px 26px',
+								'panneau_fond' => 'rgb(221, 244, 243)',
+								'panneau_rayon' => '16px',
+								'panneau_padding' => '14px 16px',
+								'panneau_couleur' => 'rgb(24, 35, 45)',
 								'fond' => 'rgb(23, 74, 129)',
 								'rayon' => '12px',
 								'filet' => '0px',
@@ -2858,7 +2866,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 							array(
 								'type' => 'note',
 								'texte' => 'Sélection & intervenant habituel recherché',
-								'ligne' => 7025,
+								'ligne' => 7055,
 							),
 							array(
 								'type' => 'paragraph',
@@ -2867,7 +2875,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 							array(
 								'type' => 'note',
 								'texte' => 'Recherche active d\'une solution en cas d\'absence',
-								'ligne' => 7119,
+								'ligne' => 7149,
 							),
 							array(
 								'type' => 'paragraph',
@@ -2876,7 +2884,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 							array(
 								'type' => 'note',
 								'texte' => 'Suivi & interlocuteur dédié',
-								'ligne' => 7213,
+								'ligne' => 7243,
 							),
 							array(
 								'type' => 'paragraph',
@@ -2952,7 +2960,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 							array(
 								'type' => 'note',
 								'texte' => '★★★★★',
-								'ligne' => 7569,
+								'ligne' => 7599,
 							),
 							array(
 								'type' => 'quote',
@@ -2961,7 +2969,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 							array(
 								'type' => 'note',
 								'texte' => '· · Marc V. Directeur administratif Chalon-sur-Saône',
-								'ligne' => 7725,
+								'ligne' => 7755,
 							),
 						),
 						'cartes' => array(),
@@ -5167,6 +5175,10 @@ update_option( 'tfp_page_zones-intervention', array(
 								'colonnes' => 1,
 								'colonne_min' => '',
 								'gap' => '14px 26px',
+								'panneau_fond' => 'rgb(221, 244, 243)',
+								'panneau_rayon' => '16px',
+								'panneau_padding' => '14px 16px',
+								'panneau_couleur' => 'rgb(24, 35, 45)',
 								'fond' => 'rgb(23, 74, 129)',
 								'rayon' => '12px',
 								'filet' => '0px',
@@ -5248,6 +5260,10 @@ update_option( 'tfp_page_zones-intervention', array(
 								'colonnes' => 1,
 								'colonne_min' => '',
 								'gap' => '14px 26px',
+								'panneau_fond' => 'rgb(221, 244, 243)',
+								'panneau_rayon' => '16px',
+								'panneau_padding' => '14px 16px',
+								'panneau_couleur' => 'rgb(24, 35, 45)',
 								'fond' => 'rgb(23, 74, 129)',
 								'rayon' => '12px',
 								'filet' => '0px',
@@ -8257,6 +8273,10 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 								'colonnes' => 1,
 								'colonne_min' => '',
 								'gap' => '14px 26px',
+								'panneau_fond' => 'rgb(221, 244, 243)',
+								'panneau_rayon' => '16px',
+								'panneau_padding' => '14px 16px',
+								'panneau_couleur' => 'rgb(24, 35, 45)',
 								'fond' => 'rgb(23, 74, 129)',
 								'rayon' => '12px',
 								'filet' => '0px',
@@ -8325,7 +8345,7 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 							array(
 								'type' => 'note',
 								'texte' => 'Devis gratuit sous 24 h Intervention régulière ou ponctuelle Conditions d\'arrêt précisées au devis',
-								'ligne' => 688,
+								'ligne' => 718,
 							),
 						),
 						'cartes' => array(
@@ -8338,6 +8358,10 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 								'colonnes' => 1,
 								'colonne_min' => '',
 								'gap' => '14px 26px',
+								'panneau_fond' => 'rgb(221, 244, 243)',
+								'panneau_rayon' => '16px',
+								'panneau_padding' => '14px 16px',
+								'panneau_couleur' => 'rgb(24, 35, 45)',
 								'fond' => 'rgb(23, 74, 129)',
 								'rayon' => '12px',
 								'filet' => '0px',
@@ -8444,7 +8468,7 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 							array(
 								'type' => 'note',
 								'texte' => 'Réponse directe',
-								'ligne' => 895,
+								'ligne' => 924,
 							),
 							array(
 								'type' => 'paragraph',
@@ -11212,7 +11236,7 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 										'source' => '',
 										'citation_geo' => array(
 											'taille' => '15.5px',
-											'interligne' => '24.025px',
+											'interligne' => '1.55',
 											'graisse' => 400,
 										),
 										'auteur_geo' => array(
@@ -11291,7 +11315,7 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 										'source' => '',
 										'citation_geo' => array(
 											'taille' => '15.5px',
-											'interligne' => '24.025px',
+											'interligne' => '1.55',
 											'graisse' => 400,
 										),
 										'auteur_geo' => array(
@@ -14111,6 +14135,10 @@ update_option( 'tfp_page_avis-clients', array(
 								'colonnes' => 2,
 								'colonne_min' => '',
 								'gap' => '20px',
+								'panneau_fond' => 'rgb(255, 255, 255)',
+								'panneau_rayon' => '16px',
+								'panneau_padding' => 'clamp(22px, 3vw, 32px)',
+								'panneau_couleur' => 'rgb(24, 35, 45)',
 								'fond' => 'rgba(0, 0, 0, 0)',
 								'rayon' => '0px',
 								'filet' => '0px',
@@ -14185,6 +14213,10 @@ update_option( 'tfp_page_avis-clients', array(
 								'colonnes' => 2,
 								'colonne_min' => '',
 								'gap' => '20px',
+								'panneau_fond' => 'rgb(255, 255, 255)',
+								'panneau_rayon' => '16px',
+								'panneau_padding' => 'clamp(22px, 3vw, 32px)',
+								'panneau_couleur' => 'rgb(24, 35, 45)',
 								'fond' => 'rgba(0, 0, 0, 0)',
 								'rayon' => '0px',
 								'filet' => '0px',
@@ -14296,6 +14328,22 @@ update_option( 'tfp_page_avis-clients', array(
 								'colonnes' => 2,
 								'colonne_min' => '380px',
 								'gap' => '36px',
+								'colonnes_flex' => array(
+									array(
+										'grow' => 2,
+										'base' => '380px',
+										'min' => 'min(100%, 300px)',
+									),
+									array(
+										'grow' => 1,
+										'base' => '220px',
+										'min' => 'min(100%, 220px)',
+									),
+								),
+								'panneau_fond' => 'rgb(16, 38, 59)',
+								'panneau_rayon' => '20px',
+								'panneau_padding' => 'clamp(28px, 4vw, 44px)',
+								'panneau_couleur' => 'rgb(255, 255, 255)',
 								'fond' => 'rgba(0, 0, 0, 0)',
 								'rayon' => '0px',
 								'filet' => '0px',
@@ -14320,8 +14368,8 @@ update_option( 'tfp_page_avis-clients', array(
 										'etoiles' => '★★★★★',
 										'source' => '',
 										'citation_geo' => array(
-											'taille' => '25px',
-											'interligne' => '37.5px',
+											'taille' => 'clamp(19px, 2.2vw, 25px)',
+											'interligne' => '1.5',
 											'graisse' => 500,
 										),
 										'auteur_geo' => array(
@@ -14375,6 +14423,22 @@ update_option( 'tfp_page_avis-clients', array(
 								'colonnes' => 2,
 								'colonne_min' => '380px',
 								'gap' => '36px',
+								'colonnes_flex' => array(
+									array(
+										'grow' => 2,
+										'base' => '380px',
+										'min' => 'min(100%, 300px)',
+									),
+									array(
+										'grow' => 1,
+										'base' => '220px',
+										'min' => 'min(100%, 220px)',
+									),
+								),
+								'panneau_fond' => 'rgb(16, 38, 59)',
+								'panneau_rayon' => '20px',
+								'panneau_padding' => 'clamp(28px, 4vw, 44px)',
+								'panneau_couleur' => 'rgb(255, 255, 255)',
 								'fond' => 'rgba(0, 0, 0, 0)',
 								'rayon' => '0px',
 								'filet' => '0px',
@@ -14399,8 +14463,8 @@ update_option( 'tfp_page_avis-clients', array(
 										'etoiles' => '★★★★★',
 										'source' => '',
 										'citation_geo' => array(
-											'taille' => '25px',
-											'interligne' => '37.5px',
+											'taille' => 'clamp(19px, 2.2vw, 25px)',
+											'interligne' => '1.5',
 											'graisse' => 500,
 										),
 										'auteur_geo' => array(
@@ -14520,7 +14584,7 @@ update_option( 'tfp_page_avis-clients', array(
 										'source' => 'Google',
 										'citation_geo' => array(
 											'taille' => '16px',
-											'interligne' => '25.6px',
+											'interligne' => '1.6',
 											'graisse' => 400,
 										),
 										'auteur_geo' => array(
@@ -14530,7 +14594,7 @@ update_option( 'tfp_page_avis-clients', array(
 										),
 										'meta_geo' => array(
 											'taille' => '13px',
-											'interligne' => '21.06px',
+											'interligne' => '1.62',
 											'graisse' => 400,
 										),
 										'provisoire' => true,
@@ -14548,7 +14612,7 @@ update_option( 'tfp_page_avis-clients', array(
 										'source' => 'Google',
 										'citation_geo' => array(
 											'taille' => '16px',
-											'interligne' => '25.6px',
+											'interligne' => '1.6',
 											'graisse' => 400,
 										),
 										'auteur_geo' => array(
@@ -14558,7 +14622,7 @@ update_option( 'tfp_page_avis-clients', array(
 										),
 										'meta_geo' => array(
 											'taille' => '13px',
-											'interligne' => '21.06px',
+											'interligne' => '1.62',
 											'graisse' => 400,
 										),
 										'provisoire' => true,
@@ -14576,7 +14640,7 @@ update_option( 'tfp_page_avis-clients', array(
 										'source' => 'Google',
 										'citation_geo' => array(
 											'taille' => '16px',
-											'interligne' => '25.6px',
+											'interligne' => '1.6',
 											'graisse' => 400,
 										),
 										'auteur_geo' => array(
@@ -14586,7 +14650,7 @@ update_option( 'tfp_page_avis-clients', array(
 										),
 										'meta_geo' => array(
 											'taille' => '13px',
-											'interligne' => '21.06px',
+											'interligne' => '1.62',
 											'graisse' => 400,
 										),
 										'provisoire' => true,
@@ -14604,7 +14668,7 @@ update_option( 'tfp_page_avis-clients', array(
 										'source' => 'Google',
 										'citation_geo' => array(
 											'taille' => '16px',
-											'interligne' => '25.6px',
+											'interligne' => '1.6',
 											'graisse' => 400,
 										),
 										'auteur_geo' => array(
@@ -14614,7 +14678,7 @@ update_option( 'tfp_page_avis-clients', array(
 										),
 										'meta_geo' => array(
 											'taille' => '13px',
-											'interligne' => '21.06px',
+											'interligne' => '1.62',
 											'graisse' => 400,
 										),
 										'provisoire' => true,
@@ -14632,7 +14696,7 @@ update_option( 'tfp_page_avis-clients', array(
 										'source' => 'Google',
 										'citation_geo' => array(
 											'taille' => '16px',
-											'interligne' => '25.6px',
+											'interligne' => '1.6',
 											'graisse' => 400,
 										),
 										'auteur_geo' => array(
@@ -14642,7 +14706,7 @@ update_option( 'tfp_page_avis-clients', array(
 										),
 										'meta_geo' => array(
 											'taille' => '13px',
-											'interligne' => '21.06px',
+											'interligne' => '1.62',
 											'graisse' => 400,
 										),
 										'provisoire' => true,
@@ -14660,7 +14724,7 @@ update_option( 'tfp_page_avis-clients', array(
 										'source' => 'Google',
 										'citation_geo' => array(
 											'taille' => '16px',
-											'interligne' => '25.6px',
+											'interligne' => '1.6',
 											'graisse' => 400,
 										),
 										'auteur_geo' => array(
@@ -14670,7 +14734,7 @@ update_option( 'tfp_page_avis-clients', array(
 										),
 										'meta_geo' => array(
 											'taille' => '13px',
-											'interligne' => '21.06px',
+											'interligne' => '1.62',
 											'graisse' => 400,
 										),
 										'provisoire' => true,
@@ -14718,7 +14782,7 @@ update_option( 'tfp_page_avis-clients', array(
 										'source' => 'Google',
 										'citation_geo' => array(
 											'taille' => '16px',
-											'interligne' => '25.6px',
+											'interligne' => '1.6',
 											'graisse' => 400,
 										),
 										'auteur_geo' => array(
@@ -14728,7 +14792,7 @@ update_option( 'tfp_page_avis-clients', array(
 										),
 										'meta_geo' => array(
 											'taille' => '13px',
-											'interligne' => '21.06px',
+											'interligne' => '1.62',
 											'graisse' => 400,
 										),
 										'provisoire' => true,
@@ -14746,7 +14810,7 @@ update_option( 'tfp_page_avis-clients', array(
 										'source' => 'Google',
 										'citation_geo' => array(
 											'taille' => '16px',
-											'interligne' => '25.6px',
+											'interligne' => '1.6',
 											'graisse' => 400,
 										),
 										'auteur_geo' => array(
@@ -14756,7 +14820,7 @@ update_option( 'tfp_page_avis-clients', array(
 										),
 										'meta_geo' => array(
 											'taille' => '13px',
-											'interligne' => '21.06px',
+											'interligne' => '1.62',
 											'graisse' => 400,
 										),
 										'provisoire' => true,
@@ -14774,7 +14838,7 @@ update_option( 'tfp_page_avis-clients', array(
 										'source' => 'Google',
 										'citation_geo' => array(
 											'taille' => '16px',
-											'interligne' => '25.6px',
+											'interligne' => '1.6',
 											'graisse' => 400,
 										),
 										'auteur_geo' => array(
@@ -14784,7 +14848,7 @@ update_option( 'tfp_page_avis-clients', array(
 										),
 										'meta_geo' => array(
 											'taille' => '13px',
-											'interligne' => '21.06px',
+											'interligne' => '1.62',
 											'graisse' => 400,
 										),
 										'provisoire' => true,
@@ -14802,7 +14866,7 @@ update_option( 'tfp_page_avis-clients', array(
 										'source' => 'Google',
 										'citation_geo' => array(
 											'taille' => '16px',
-											'interligne' => '25.6px',
+											'interligne' => '1.6',
 											'graisse' => 400,
 										),
 										'auteur_geo' => array(
@@ -14812,7 +14876,7 @@ update_option( 'tfp_page_avis-clients', array(
 										),
 										'meta_geo' => array(
 											'taille' => '13px',
-											'interligne' => '21.06px',
+											'interligne' => '1.62',
 											'graisse' => 400,
 										),
 										'provisoire' => true,
@@ -14830,7 +14894,7 @@ update_option( 'tfp_page_avis-clients', array(
 										'source' => 'Google',
 										'citation_geo' => array(
 											'taille' => '16px',
-											'interligne' => '25.6px',
+											'interligne' => '1.6',
 											'graisse' => 400,
 										),
 										'auteur_geo' => array(
@@ -14840,7 +14904,7 @@ update_option( 'tfp_page_avis-clients', array(
 										),
 										'meta_geo' => array(
 											'taille' => '13px',
-											'interligne' => '21.06px',
+											'interligne' => '1.62',
 											'graisse' => 400,
 										),
 										'provisoire' => true,
@@ -14858,7 +14922,7 @@ update_option( 'tfp_page_avis-clients', array(
 										'source' => 'Google',
 										'citation_geo' => array(
 											'taille' => '16px',
-											'interligne' => '25.6px',
+											'interligne' => '1.6',
 											'graisse' => 400,
 										),
 										'auteur_geo' => array(
@@ -14868,7 +14932,7 @@ update_option( 'tfp_page_avis-clients', array(
 										),
 										'meta_geo' => array(
 											'taille' => '13px',
-											'interligne' => '21.06px',
+											'interligne' => '1.62',
 											'graisse' => 400,
 										),
 										'provisoire' => true,

@@ -233,11 +233,23 @@ function tfp_testimonial_card( $item = null, $args = array() ) {
 	$vars = static function ( $niveau ) use ( $geo ) {
 		$g = $geo[ $niveau ] ?? array();
 		$out = array();
-		if ( preg_match( '/^[0-9.]+px$/', (string) ( $g['taille'] ?? '' ) ) ) {
-			$out[] = '--tfp-avis-' . $niveau . ':' . $g['taille'];
+		/*
+		 * La taille passe par le filtre de longueur commun, et non par un `\d+px` : la maquette
+		 * écrit la citation de l'avis mis en avant `clamp(19px, 2.2vw, 25px)`, et un motif qui
+		 * n'accepte que des pixels rejetait silencieusement le relevé — la citation retombait sur
+		 * l'échelle du thème à toutes les largeurs.
+		 */
+		$taille = function_exists( 'tfp_longueur_css' ) ? tfp_longueur_css( $g['taille'] ?? '' ) : '';
+		if ( '' !== $taille ) {
+			$out[] = '--tfp-avis-' . $niveau . ':' . $taille;
 		}
-		if ( preg_match( '/^[0-9.]+px$/', (string) ( $g['interligne'] ?? '' ) ) ) {
-			$out[] = '--tfp-avis-' . $niveau . '-lh:' . $g['interligne'];
+		/*
+		 * L'interligne est accepté en pixels OU en ratio sans unité. Le ratio est ce qu'il faut
+		 * quand la taille est une fonction : 1,5 suit le `clamp`, 37,5 px ne le suit pas.
+		 */
+		$lh = trim( (string) ( $g['interligne'] ?? '' ) );
+		if ( preg_match( '/^[0-9.]+(px)?$/', $lh ) && (float) $lh > 0 ) {
+			$out[] = '--tfp-avis-' . $niveau . '-lh:' . $lh;
 		}
 		return $out ? ' style="' . esc_attr( implode( ';', $out ) ) . '"' : '';
 	};

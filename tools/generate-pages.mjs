@@ -452,10 +452,27 @@ for (const p of PAGES) {
 			const citation = el.querySelector('blockquote');
 			const legende = el.querySelector('figcaption');
 			if (citation && legende) {
+				/*
+				 * La taille DÉCLARÉE l'emporte sur la taille calculée, comme pour les titres.
+				 *
+				 * La maquette écrit la citation de l'avis mis en avant `clamp(19px, 2.2vw, 25px)` :
+				 * 25 px à 1440, mais 19 à 320. Relever la valeur calculée au moment du relevé
+				 * figeait 25 px à toutes les largeurs — la citation faisait alors 375 px de haut à
+				 * 320 px de large contre 228 dans le prototype. C'est le défaut corrigé en G07 puis
+				 * en G11 sur les rembourrages, exactement.
+				 *
+				 * L'interligne reste relevé en RATIO : il suit la taille quelle que soit la largeur.
+				 */
 				const geo = (n) => {
 					if (!n) return {};
 					const g = getComputedStyle(n);
-					return { taille: g.fontSize, interligne: g.lineHeight, graisse: parseInt(g.fontWeight, 10) || 400 };
+					const declaree = (n.style && n.style.fontSize) || '';
+					const ratio = Math.round((parseFloat(g.lineHeight) / parseFloat(g.fontSize)) * 1000) / 1000;
+					return {
+						taille: declaree || g.fontSize,
+						interligne: declaree && ratio ? String(ratio) : g.lineHeight,
+						graisse: parseInt(g.fontWeight, 10) || 400,
+					};
 				};
 				const lignesLegende = [...legende.children]
 					.filter((c) => !/^inline/.test(getComputedStyle(c).display))
@@ -953,6 +970,71 @@ for (const p of PAGES) {
 						return es && /^[\d.]+px$/.test(es.flexBasis) ? es.flexBasis : '';
 					})(),
 					gap: gs.gap,
+					/*
+					 * PROPORTIONS des colonnes, quand elles ne sont pas égales.
+					 *
+					 * La grille du thème répartit ses colonnes à parts égales — c'est ce que fait
+					 * la maquette presque partout. Presque : la bande d'avis mis en avant de
+					 * `/avis-clients/` est un conteneur FLEX dont les deux colonnes valent 2 et 1.
+					 * Réparties à parts égales, la citation tombait dans 528 px au lieu de 684 et
+					 * gagnait deux lignes.
+					 *
+					 * Relevé uniquement quand les `flex-grow` DIFFÈRENT : partout ailleurs, rien
+					 * n'est écrit et rien ne change. La base et la largeur minimale de chaque
+					 * colonne sont relevées avec, parce que c'est le trio qui décide du repli — et
+					 * ce repli est INTRINSÈQUE, il dépend de la place disponible et non de la
+					 * largeur de la fenêtre.
+					 */
+					...((() => {
+						if (!/flex/.test(gs.display) || enfants.length < 2) return {};
+						const cols = enfants.map((c) => {
+							const cs = getComputedStyle(c);
+							return {
+								grow: parseFloat(cs.flexGrow) || 0,
+								base: (c.style && c.style.flexBasis) || cs.flexBasis,
+								min: (c.style && c.style.minWidth) || cs.minWidth,
+							};
+						});
+						const grows = cols.map((c) => c.grow);
+						if (new Set(grows).size < 2) return {};
+						return { colonnes_flex: cols };
+					})()),
+					/*
+					 * Panneau : le CONTENEUR de la grille, quand il est lui-même une carte.
+					 *
+					 * `fond`, `rayon` et `padding` ci-dessous sont relevés sur la CARTE — c'est ce
+					 * qu'il faut pour les six vignettes du pilier, dont le conteneur n'est qu'une
+					 * grille nue. Mais la bande d'avis mis en avant de `/avis-clients/` est
+					 * l'inverse : ses deux colonnes sont transparentes et c'est le `<figure>` qui
+					 * les enferme qui porte le fond marine, le rayon de 20 et 44 px de rembourrage.
+					 * Rien ne le relevait, et la bande sortait en cartes blanches sur fond blanc.
+					 *
+					 * Les clés ne sont écrites que si le conteneur a réellement un fond : sur les
+					 * dizaines de grilles nues du site, le seed reste inchangé.
+					 */
+					...((() => {
+						const transparent = (c) => /^rgba\([^)]*,\s*0\s*\)$/.test(c) || c === 'transparent';
+						if (transparent(gs.backgroundColor)) return {};
+						/*
+						 * Un panneau est un panneau parce qu'il TRANCHE sur ce qu'il y a derrière.
+						 * Une grille peinte de la même couleur que sa bande n'en est pas un : la
+						 * repeindre ne se verrait pas, mais son rembourrage, lui, ajouterait de la
+						 * hauteur. On remonte donc jusqu'au premier ancêtre réellement peint et on
+						 * compare.
+						 */
+						let derriere = 'rgb(255, 255, 255)';
+						for (let n = g.parentElement; n; n = n.parentElement) {
+							const c = getComputedStyle(n).backgroundColor;
+							if (!transparent(c)) { derriere = c; break; }
+						}
+						if (derriere === gs.backgroundColor) return {};
+						return {
+							panneau_fond: gs.backgroundColor,
+							panneau_rayon: (g.style && g.style.borderRadius) || gs.borderTopLeftRadius,
+							panneau_padding: (g.style && g.style.padding) || gs.padding,
+							panneau_couleur: gs.color,
+						};
+					})()),
 					fond: ks.backgroundColor,
 					rayon: ks.borderTopLeftRadius,
 					filet: ks.borderTopWidth,
