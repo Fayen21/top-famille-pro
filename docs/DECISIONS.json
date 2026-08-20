@@ -177,17 +177,20 @@
 						"source": "CLAUDE.md §5.5, verrouillée par tests/provisoire.spec.js"
 					},
 					{
-						"part": "composition restante",
-						"hauteur": 41,
-						"source": "seconde colonne du panneau d'avis, deux tuiles aplaties en une"
+						"part": "composition restante, diffuse",
+						"hauteur": 45,
+						"source": "marges de bandes, aucune cause unique identifiée"
 					}
 				],
 				"sans_ces_exigences": "101 %",
 				"seuil_de_reference": 298,
 				"note": [
-					"Cette route tenait la plage AVANT le 2026-08-20 grâce à deux erreurs qui se compensaient :",
+					"Cette route tenait la plage AVANT le 2026-08-20 grâce à des erreurs qui se compensaient :",
 					"une carte d'avis blanche et trop courte absorbait la hauteur des mentions obligatoires.",
 					"La rendre fidèle au prototype a rendu l'écart visible ; il n'a pas été créé, il a été révélé.",
+					"Le panneau d'avis mis en avant mesure désormais 326 px à 1440, comme la maquette, au pixel.",
+					"La décomposition citait d'abord 41 px imputés à deux tuiles aplaties en une seule carte.",
+					"Ce défaut a été corrigé le même jour (archétype `pile`) : le reste n'a plus de cause unique.",
 					"Ne garder qu'une seule mention ferait repasser la page sous 105 %. Les deux grilles sont dans",
 					"deux sections distinctes et tests/provisoire.spec.js remonte jusqu'à la section : aucune n'est",
 					"superflue. La règle n'est pas affaiblie pour un ratio."

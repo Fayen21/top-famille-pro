@@ -788,10 +788,26 @@ function tfp_card_grid( array $grille ) {
 						$vars_pile[] = $var . ':' . $valeur;
 					}
 				}
+				/*
+				 * La pile est le `<li>` LUI-MÊME, sans liste imbriquée.
+				 *
+				 * Deux raisons, l'une sémantique et l'autre vérifiable. La maquette empile des
+				 * `<div>` : une liste de deux dans une liste de deux n'apporte rien à un lecteur
+				 * d'écran, elle lui fait annoncer deux niveaux pour un seul groupe. Et surtout,
+				 * `tests/g26.spec.js` exige que la mention provisoire soit atteignable en trois
+				 * remontées depuis les étoiles — borne délibérée, sans laquelle une seule mention
+				 * sur la page validerait n'importe quelles étoiles. Un `<ul>` intermédiaire ajoutait
+				 * exactement le niveau de trop.
+				 */
+				$style_pile = trim( $style_colonne );
+				if ( $vars_pile ) {
+					$style_pile = $style_pile
+						? preg_replace( '/"$/', ';' . esc_attr( implode( ';', $vars_pile ) ) . '"', $style_pile )
+						: ' style="' . esc_attr( implode( ';', $vars_pile ) ) . '"';
+				}
 				printf(
-					'<li%s><ul class="tfp-card-stack"%s>',
-					$style_colonne, // phpcs:ignore WordPress.Security.EscapeOutput
-					$vars_pile ? ' style="' . esc_attr( implode( ';', $vars_pile ) ) . '"' : ''
+					'<li class="tfp-card-stack"%s>',
+					$style_pile ? ' ' . ltrim( $style_pile ) : '' // phpcs:ignore WordPress.Security.EscapeOutput
 				);
 				foreach ( (array) $item['tuiles'] as $tuile ) {
 					$texte = trim( (string) ( $tuile['texte'] ?? '' ) );
@@ -811,7 +827,7 @@ function tfp_card_grid( array $grille ) {
 						}
 						return $out ? ' style="' . esc_attr( implode( ';', $out ) ) . '"' : '';
 					};
-					echo '<li class="tfp-card-stack__item" data-tfp-provisional="1">';
+					echo '<div class="tfp-card-stack__item" data-tfp-provisional="1">';
 					$etoiles = (string) ( $tuile['etoiles'] ?? '' );
 					if ( '' !== $etoiles ) {
 						printf(
@@ -825,9 +841,9 @@ function tfp_card_grid( array $grille ) {
 						$geo( 'texte' ), // phpcs:ignore WordPress.Security.EscapeOutput
 						esc_html( $texte )
 					);
-					echo '</li>';
+					echo '</div>';
 				}
-				echo '</ul></li>';
+				echo '</li>';
 				continue;
 			}
 

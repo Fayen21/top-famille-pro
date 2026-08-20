@@ -279,13 +279,40 @@ désormais en clair quand il écrit ailleurs que `docs/baseline.json`, en donnan
 promouvoir le fichier. Un contrôle qui ne contrôle plus rien est pire qu'un contrôle absent : il
 rassure.
 
-### Un défaut demeure dans cette bande, non corrigé à moitié
+### Les deux tuiles bleues, corrigées à leur tour
 
-La seconde colonne du prototype porte **deux tuiles bleues distinctes** (`#174A81`, rayon 12,
-rembourrage 14/16) ; le relevé les aplatit en une seule carte portant deux rangées d'étoiles et
-deux citations. Le panneau fait 628 px contre 733 à 320 px de large. Le corriger demande que le
-modèle de carte accepte une **pile de sous-cartes** — une modification d'architecture, pas un
-correctif.
+La seconde colonne du prototype porte **deux tuiles distinctes** (`#174A81`, rayon 12, rembourrage
+14/16) ; le relevé les fondait en une seule carte — le premier avis en intitulé, les étoiles du
+second en description, le second avis en ligne supplémentaire. Un seul avis bavard au lieu de deux :
+faux, pas seulement plus court.
+
+Nouvel archétype **`pile`**, relevé et rendu. La détection est étroite à dessein, pour ne capturer
+que cela : au moins deux enfants directs tous porteurs de texte, tous peints, de même fond, même
+rayon et même rembourrage, dans un parent nu et sans texte propre. Une seule grille du site y
+répond ; partout ailleurs rien n'est écrit et rien ne change.
+
+| À 1 440 px | Maquette | Thème |
+|---|---|---|
+| Panneau | 1 180 × 326 | **1 180 × 326** |
+| Colonne témoignage | 684 × 233 | **684 × 233** |
+| Tuiles bleues | 2 × 372 × 114 | **2 × 372 × 114** |
+
+À 320 px le panneau fait 725 contre 733. Le résidu vient d'un conteneur de page 8 px plus large que
+celui du prototype — écart pré-existant — qui fait perdre une ligne à la seconde tuile.
+
+Chaque tuile porte `data-tfp-provisional` (`CLAUDE.md` §5.5), et le filtre des notes interdites voit
+désormais aussi les textes des tuiles : une pile est du contenu comme un autre, elle passe les mêmes
+contrôles.
+
+**Conséquence sur le relevé**, dans le même sens que les corrections précédentes : deux tuiles
+fidèles sont plus hautes qu'une carte aplatie, donc `/avis-clients/` s'allonge encore — 320 :
+100 → 102 %, 768 : 100 → 103 %, 1 440 et 1 920 restent à 106 %. Le total demeure **298/318**, sans
+nouvelle route hors plage.
+
+La décision `avis-clients-hors-plage` est **corrigée** : sa décomposition imputait 41 px à ces
+tuiles aplaties. Ce défaut n'existe plus ; les 45 px restants sont des marges de bandes, sans cause
+unique identifiée. Une décision enregistrée qui garderait une explication périmée serait pire
+qu'aucune explication.
 
 ### Une planche qui recule sans que rien n'ait régressé
 

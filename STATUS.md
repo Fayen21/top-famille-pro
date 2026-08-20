@@ -1921,11 +1921,32 @@ Le relevé courant devient la référence, et `tools/baseline.mjs` affiche déso
 explicite quand il écrit ailleurs que `docs/baseline.json` — avec la commande pour promouvoir le
 fichier. Un contrôle qui ne contrôle plus rien est pire qu'un contrôle absent : il rassure.
 
-### Défaut restant dans cette bande, non corrigé à moitié
+### Les deux tuiles bleues, corrigées à leur tour
 
-La seconde colonne du prototype porte **deux** tuiles bleues distinctes ; le relevé les aplatit en
-une seule carte. Panneau 628 px contre 733 à 320 px. Le corriger demande que le modèle de carte
-accepte une pile de sous-cartes — une modification d'architecture, pas un correctif.
+La seconde colonne du prototype porte **deux** tuiles distinctes ; le relevé les fondait en une
+seule carte — le premier avis en intitulé, les étoiles du second en description, le second avis en
+ligne supplémentaire. Un seul avis bavard au lieu de deux.
+
+Nouvel archétype **`pile`**, relevé et rendu. La détection est étroite à dessein : au moins deux
+enfants tous porteurs de texte, tous peints, de même fond, même rayon et même rembourrage, dans un
+parent nu et sans texte propre. Une seule grille du site y répond.
+
+| À 1 440 px | Maquette | Thème |
+|---|---|---|
+| Panneau | 1 180 × 326 | **1 180 × 326** |
+| Colonne témoignage | 684 × 233 | **684 × 233** |
+| Tuiles bleues | 2 × 372 × 114 | **2 × 372 × 114** |
+
+À 320 px, le panneau fait 725 contre 733 : le conteneur de page est 8 px plus large que celui du
+prototype — écart pré-existant — et la seconde tuile y gagne une ligne de moins.
+
+Chaque tuile porte `data-tfp-provisional` (§5.5), et le filtre des notes interdites voit désormais
+aussi les textes des tuiles : une pile est du contenu comme un autre.
+
+La page s'allonge encore un peu — 320 : 100 → 102 %, 768 : 100 → 103 % — pour la même raison que
+précédemment : deux tuiles fidèles sont plus hautes qu'une carte aplatie. Le total reste
+**298/318**, sans nouvelle route hors plage. La décomposition enregistrée dans `DECISIONS.json` est
+corrigée en conséquence : elle imputait 41 px à ces tuiles aplaties, ce qui n'est plus vrai.
 
 ### Une planche qui recule sans que rien n'ait régressé
 
