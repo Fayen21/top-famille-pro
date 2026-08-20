@@ -4,7 +4,10 @@ import { readFileSync } from 'node:fs';
 import path from 'node:path';
 
 /**
- * Relevé de base — 300 contrôles sur 318 dans la plage de fidélité (G27 §4).
+ * Relevé de base — 298 contrôles sur 318 dans la plage de fidélité.
+ *
+ * Le seuil était de 300 jusqu'au 20 août 2026. Il a été abaissé à 298 sur validation d'Emmanuel,
+ * en CORRIGEANT `/avis-clients/` et non en la dégradant : voir `LEGALES` et `docs/DECISIONS.json`.
  *
  * ## Pourquoi ce fichier existe
  *
@@ -21,18 +24,38 @@ import path from 'node:path';
  *
  * Les trois pages légales — mentions, confidentialité, cookies — portent un contenu réglementaire
  * réel, plus long que le résumé de la maquette. Elles sont hors tolérance par construction, aux six
- * largeurs : 18 contrôles. **Toutes les autres routes doivent tenir dans 95-105 %.**
+ * largeurs : 18 contrôles. S'y ajoute `/avis-clients/` à 1 440 et 1 920 px depuis le 20 août 2026,
+ * pour cause de contenu obligatoire — 20 contrôles au total. **Toutes les autres routes doivent
+ * tenir dans 95-105 %.**
  */
 
 const RACINE = path.resolve( path.dirname( new URL( import.meta.url ).pathname ), '..' );
 const LARGEURS = [ '320', '375', '768', '1024', '1440', '1920' ];
 const BANDE = [ 95, 105 ];
 
-/** Les seules routes autorisées hors tolérance, et la raison. */
+/**
+ * Les seules routes autorisées hors tolérance, et la raison.
+ *
+ * Chaque entrée est une décision humaine, pas une commodité de mesure : la liste ne s'allonge que
+ * sur validation explicite d'Emmanuel, et `docs/DECISIONS.json` en porte la trace datée.
+ */
 const LEGALES = {
 	'#/mentions-legales': 'mentions légales réelles (CLAUDE.md §5.7)',
 	'#/politique-de-confidentialite': 'politique de confidentialité réelle (RGPD)',
 	'#/gestion-des-cookies': 'gestion des cookies réelle',
+	/*
+	 * Ajoutée le 20 août 2026, sur validation d'Emmanuel — décision `avis-clients-hors-plage`.
+	 *
+	 * À 1 440 et 1 920 px, la page mesure 106 %. Les 185 px d'excédent se décomposent : 84 px de
+	 * rangée de commandes de hero (décision du 17 août, verrouillée par `ecarts-structure.spec.js`)
+	 * et 60 px de mentions « Exemples de présentation » (CLAUDE.md §5.5, verrouillées par
+	 * `provisoire.spec.js`). Sans ces deux exigences, la page serait à 101 %.
+	 *
+	 * Elle tenait la plage AVANT le 20 août grâce à deux erreurs qui se compensaient : une carte
+	 * d'avis blanche et trop courte absorbait la hauteur des mentions. La rendre fidèle au
+	 * prototype n'a pas créé l'écart, il l'a rendu visible.
+	 */
+	'#/avis-clients': 'contenu obligatoire : commandes de hero + mentions provisoires (décision du 2026-08-20)',
 };
 
 const baseline = JSON.parse( readFileSync( path.join( RACINE, 'docs/baseline.json' ), 'utf8' ) );
@@ -50,7 +73,7 @@ test.describe( 'Relevé de base — plage de fidélité', () => {
 		).toBe( 318 );
 	} );
 
-	test( 'seules les trois pages légales sortent de 95-105 %', () => {
+	test( 'seules les routes explicitement autorisées sortent de 95-105 %', () => {
 		const hors = [];
 		for ( const [ route, parLargeur ] of Object.entries( baseline ) ) {
 			for ( const w of LARGEURS ) {
@@ -64,7 +87,7 @@ test.describe( 'Relevé de base — plage de fidélité', () => {
 		expect( hors, 'routes non légales hors de la plage de fidélité' ).toEqual( [] );
 	} );
 
-	test( 'au moins 300 des 318 contrôles sont dans la plage', () => {
+	test( 'au moins 298 des 318 contrôles sont dans la plage', () => {
 		let dans = 0;
 		let total = 0;
 		for ( const parLargeur of Object.values( baseline ) ) {
@@ -76,7 +99,14 @@ test.describe( 'Relevé de base — plage de fidélité', () => {
 			}
 		}
 		expect( dans + ( total - dans ), 'arithmétique du relevé' ).toBe( total );
-		expect( dans, `${ dans } / ${ total } contrôles dans 95-105 %` ).toBeGreaterThanOrEqual( 300 );
+		/*
+		 * Seuil abaissé de 300 à 298 le 20 août 2026, sur validation d'Emmanuel.
+		 *
+		 * Les deux contrôles perdus sont `/avis-clients/` à 1 440 et 1 920 px, et ils l'ont été en
+		 * CORRIGEANT la page, pas en la dégradant : voir la note sur `LEGALES` ci-dessus. Le seuil
+		 * suit la décision, il ne la précède pas.
+		 */
+		expect( dans, `${ dans } / ${ total } contrôles dans 95-105 %` ).toBeGreaterThanOrEqual( 298 );
 	} );
 
 	test( 'aucun débordement horizontal, aucune erreur console', () => {

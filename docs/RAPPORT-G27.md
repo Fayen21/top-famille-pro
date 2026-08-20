@@ -257,8 +257,27 @@ sous 105 %. `tests/provisoire.spec.js` remonte jusqu'à la `<section>`, et les d
 deux sections distinctes — aucune des deux mentions n'est superflue. Affaiblir la règle pour un
 ratio serait maquiller la mesure. Les commandes de hero, elles, sont protégées par le brief §12.
 
-**L'arbitrage revient à Emmanuel** : soit `/avis-clients/` rejoint les pages légales dans la
-catégorie « hors bande pour cause de contenu obligatoire », soit l'une des deux exigences est revue.
+**Arbitrage rendu le 20 août 2026 : Emmanuel accepte les 298 — c'est du contenu obligatoire.**
+
+La décision est enregistrée sous `avis-clients-hors-plage` dans `docs/DECISIONS.json`, avec sa
+décomposition chiffrée, et le verrou `tests/ratios-baseline.spec.js` la reflète : seuil ramené de
+300 à 298, `/avis-clients/` ajoutée aux routes autorisées hors plage avec son motif et l'historique
+de la compensation qui la masquait. Les 18 contrôles hors plage deviennent **20** — 18 pages
+légales, 2 largeurs d'`/avis-clients/`.
+
+### Et un verrou qui validait un relevé vieux de trois passes
+
+En appliquant la décision, j'ai découvert que `tests/ratios-baseline.spec.js` lit
+`docs/baseline.json`, et que ce fichier datait de `f35f680`. Mes relevés successifs avaient été
+écrits sous d'autres noms via `--sortie=`, pour ne pas écraser la référence avant de savoir si le
+résultat tenait — précaution raisonnable, effet désastreux : **la suite passait au vert sur un état
+du site qui n'existait plus**. Les quatre exécutions complètes de cette passe n'ont donc rien
+contrôlé sur ce point précis.
+
+Deux corrections : le relevé courant devient la référence, et `tools/baseline.mjs` avertit
+désormais en clair quand il écrit ailleurs que `docs/baseline.json`, en donnant la commande pour
+promouvoir le fichier. Un contrôle qui ne contrôle plus rien est pire qu'un contrôle absent : il
+rassure.
 
 ### Un défaut demeure dans cette bande, non corrigé à moitié
 

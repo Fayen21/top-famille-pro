@@ -1902,7 +1902,24 @@ deux exigences, la page serait à 101 %.
 
 Ne garder qu'une mention ferait repasser la page sous 105 %. `tests/provisoire.spec.js` remonte
 jusqu'à la `<section>` et les deux grilles sont dans deux sections distinctes : aucune n'est
-superflue. **La règle n'est pas affaiblie pour un ratio.** L'arbitrage revient à Emmanuel.
+superflue. **La règle n'est pas affaiblie pour un ratio.**
+
+**Arbitrage rendu le 20 août 2026 — Emmanuel accepte les 298 : c'est du contenu obligatoire.**
+La décision est enregistrée sous `avis-clients-hors-plage` dans `docs/DECISIONS.json`, et le
+verrou `tests/ratios-baseline.spec.js` la reflète : seuil 298, `/avis-clients/` ajoutée aux routes
+autorisées hors plage avec son motif. Les 18 contrôles hors plage deviennent **20**.
+
+### Un verrou qui validait un relevé périmé
+
+En appliquant cette décision, j'ai découvert que `tests/ratios-baseline.spec.js` lit
+`docs/baseline.json` — et que ce fichier datait de `f35f680`, trois passes plus tôt. Mes relevés
+successifs avaient été écrits sous d'autres noms via `--sortie=`, pour ne pas écraser la référence
+avant de savoir si le résultat tenait. Conséquence : **la suite passait au vert sur un état du site
+qui n'existait plus**. C'est exactement le défaut que ce test doit prévenir.
+
+Le relevé courant devient la référence, et `tools/baseline.mjs` affiche désormais un avertissement
+explicite quand il écrit ailleurs que `docs/baseline.json` — avec la commande pour promouvoir le
+fichier. Un contrôle qui ne contrôle plus rien est pire qu'un contrôle absent : il rassure.
 
 ### Défaut restant dans cette bande, non corrigé à moitié
 
