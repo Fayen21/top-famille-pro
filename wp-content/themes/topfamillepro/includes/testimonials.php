@@ -192,8 +192,20 @@ function tfp_testimonial_card( $item = null, $args = array() ) {
 			$vars_carte[] = $var . ':' . $v;
 		}
 	}
+	/*
+	 * Variantes de carte relevées sur la maquette. La liste est fermée : un appelant ne peut pas
+	 * injecter une classe arbitraire, et une variante inconnue retombe silencieusement sur la
+	 * carte de base plutôt que de produire un rendu sans style.
+	 *
+	 * `compacte` — colonne latérale du formulaire de devis : fond glacier, pas d'ombre, 22 px de
+	 * rembourrage, étoiles et légende réduites, auteur et contexte sur une seule ligne.
+	 */
+	$variantes = array( 'compacte' );
+	$variante  = in_array( (string) ( $args['variante'] ?? '' ), $variantes, true ) ? (string) $args['variante'] : '';
+
 	printf(
-		'<figure class="tfp-testimonial"%s%s>',
+		'<figure class="tfp-testimonial%s"%s%s>',
+		$variante ? ' tfp-testimonial--' . $variante : '',
 		! empty( $item['demo'] ) ? ' data-tfp-provisional="1"' : '',
 		$vars_carte ? ' style="' . esc_attr( implode( ';', $vars_carte ) ) . '"' : ''
 	);
@@ -257,6 +269,16 @@ function tfp_testimonial_card( $item = null, $args = array() ) {
 		esc_html( $item['nom'] )
 	);
 	if ( ! empty( $item['contexte'] ) ) {
+		/*
+		 * En variante compacte, la maquette écrit « Sarah B. · Commerçante · Dole » sur une seule
+		 * ligne. Le point médian est un VRAI caractère dans un élément dédié, pas un `::before` :
+		 * un contenu généré par la CSS est restitué par la plupart des lecteurs d'écran, et
+		 * « point médian » entre le nom et le métier n'apporte rien. Marqué `aria-hidden`, il se
+		 * voit et ne s'entend pas.
+		 */
+		if ( 'compacte' === $variante ) {
+			echo '<span class="tfp-testimonial__sep" aria-hidden="true"> · </span>';
+		}
 		printf(
 			'<span class="tfp-testimonial__context"%s>%s</span>',
 			$vars( 'meta' ), // phpcs:ignore WordPress.Security.EscapeOutput

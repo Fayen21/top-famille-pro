@@ -1059,6 +1059,17 @@ for (const p of PAGES) {
 							interligne:
 								Math.round((parseFloat(st.lineHeight) / parseFloat(st.fontSize)) * 100) / 100 || 0,
 							graisse: parseInt(st.fontWeight, 10) || 0,
+							/*
+							 * Largeur maximale DÉCLARÉE, comme la taille et pour la même raison.
+							 *
+							 * Huit titres de la maquette en portent une — 520 à 720 px — et c'est
+							 * elle qui décide du repli : « Nos six prestations de nettoyage
+							 * professionnel » tient sur une ligne dans une colonne de 1180 px, sur
+							 * deux dans les 620 px que déclare le prototype. Sans ce relevé, la
+							 * bande du pilier sortait 53 px plus courte que la maquette sans
+							 * qu'aucune valeur relevée ne soit fausse.
+							 */
+							largeur_max: (n.style && n.style.maxWidth) || '',
 						});
 					}
 					else if (tag === 'p') out.push({ t: 'p', v: txt(n) });
@@ -1250,6 +1261,7 @@ for (const p of PAGES) {
 				titre_taille: '',
 				titre_interligne: 0,
 				titre_graisse: 0,
+				titre_largeur_max: '',
 				carte: '',
 				colonne_min: '',
 				rangee_gap: '',
@@ -1290,6 +1302,7 @@ for (const p of PAGES) {
 					cur.titre_taille = n.taille || '';
 					cur.titre_interligne = n.interligne || 0;
 					cur.titre_graisse = n.graisse || 0;
+					cur.titre_largeur_max = n.largeur_max || '';
 					// Encadrement propre à ce bloc, relevé sur la maquette. Vide = bloc plat.
 					cur.carte = ( cadres && cadres.parTitre && cadres.parTitre[n.v] ) || '';
 					// Repli intrinsèque de la rangée : relevé sur le prototype, pas déduit d'un seuil.

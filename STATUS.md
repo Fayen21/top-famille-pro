@@ -1709,3 +1709,86 @@ couvertes.
 - `tests/ratios-baseline.spec.js` verrouille les deux faces : au plus **deux fichiers de police** au
   premier écran, et chaque `@font-face` déclarant une **plage** de graisses. Une seule ligne de
   `build/fetch-fonts.mjs` suffirait à ramener les 264 Ko sans que rien ne s'affiche différemment.
+
+---
+
+## G27 §10 et §13 — formulaire de devis, captures ciblées (20 août 2026)
+
+Rapport complet : `docs/RAPPORT-G27-FORMULAIRE-CAPTURES.md`.
+Détail des écarts du formulaire : `docs/FORMULAIRE-DIFFERENCES.md`, restructuré en trois sections
+— écarts fonctionnels obligatoires (§2), défauts purement visuels corrigés (§4), contenus de la
+maquette délibérément non repris (§5). La clé de lecture est en tête du fichier : confondre les
+deux natures d'écart conduit soit à retirer un jeton de sécurité pour gagner une mesure, soit à
+laisser passer un défaut en le déclarant fonctionnel.
+
+### Formulaire de devis — corps à 100 % de la maquette
+
+Hauteur du corps du formulaire, du haut du premier champ au bas de la dernière commande :
+**876,9 px contre 879,7 à 375 px**, **596,9 contre 599,7 à 1 440**. Les huit champs de l'étape 1
+sont appariés un à un, corps, rembourrage et rayon identiques.
+
+Rien de fonctionnel n'a bougé : jeton, piège à robots (mesuré hors flux à `x = -10 017`),
+validation client et serveur, consentement, contexte visiteur, UTM, anti-double-soumission,
+confirmation après succès réel.
+
+Quatre causes, toutes de même nature — une valeur relevée que rien n'appliquait :
+
+1. **Deux jeux de règles concurrents** sur les mêmes champs. Le second venait d'un relevé du seul
+   formulaire de contact ; or la maquette applique la **même** géométrie aux deux formulaires
+   (49 px pour une saisie, 51 pour une liste, 112 pour une zone de texte — mesuré sur `#/contact`
+   comme sur `#/demande-de-devis`). Un seul jeu subsiste.
+2. **La normalisation de base était trop spécifique** : `body.tfp-body select` (0,1,2) battait
+   `.tfp-field select` (0,1,1). Aucune correction dans le composant ne pouvait aboutir tant que
+   cette règle restait écrite ainsi. Une normalisation n'a pas à être spécifique.
+3. **`min-height: max(44px, 60px)` sur le bouton** annulait tout rembourrage posé. Le correctif
+   passe par les variables du composant et reste confiné au formulaire — les boutons du hero sont
+   déjà conformes (60 px contre 61).
+4. **L'indicateur d'étape et le résumé de l'étape 1 n'existaient pas.** Le premier remplace un
+   titre de 20 px en gras et reste dans le `<legend>` ; le second est rempli depuis les champs
+   eux-mêmes et reste masqué sans JavaScript.
+
+Et une correction qui déborde du formulaire : **les étoiles étaient en cuivre**. Le prototype les
+écrit en `#EAB308` dans ses vingt-quatre occurrences, sans exception. Corrigé pour toutes les
+cartes témoignage du site.
+
+### Captures ciblées — trois pièges de méthode
+
+`tools/captures-ciblees.mjs`, quatorze planches, récapitulatif dans `docs/CAPTURES-CIBLEES.md`.
+Trois précautions, chacune découverte parce qu'elle produisait un chiffre faux :
+
+1. **La zone comparable du formulaire n'est pas la balise `<form>`** : la maquette place
+   l'indicateur d'étape avant, le thème le met dedans. Découper les deux `<form>` affichait 66 %
+   d'écart là où les deux rendus se superposent.
+2. **Remplir `[required]` ne suffit pas à passer à l'étape 2** : la maquette marque ses champs en
+   `aria-required`. La planche comparait une étape 1 en erreur à une étape 2.
+3. **Un titre réservé aux lecteurs d'écran ne compte pas dans l'ordre des bandes** : 1 px de haut,
+   il faisait déclarer « ordre différent » sur des pages identiques.
+
+### Ce que les captures ont trouvé
+
+**Corrigé** — la bande « Nos six prestations » du pilier sortait à **90 %** (506,8 px contre
+560,3). Le prototype déclare `max-width: 620px` sur ce titre, ce qui le replie sur deux lignes ; le
+thème le laissait occuper les 1 180 px de la colonne. **Huit autres titres de la maquette portent
+une largeur maximale déclarée**, de 520 à 720 px, et aucun relevé ne la capturait. Le champ
+`titre_largeur_max` existe désormais dans `tools/generate-pages.mjs` et `tfp_bloc_titre()`
+l'applique. La bande passe à **98 %**.
+
+**Relevés, non corrigés** — deux défauts réels et mesurés, laissés à la passe suivante :
+
+- `/avis-clients/`, témoignage mis en avant : **carte marine** `#10263B` texte blanc citation 19 px
+  dans la maquette, **carte blanche** citation 25 px dans le thème — 228 px contre 300 à 320 px de
+  large ;
+- `/bourgogne-franche-comte/`, H1 : la maquette déclare `clamp(30px, 4.2vw, 52px)` soit **52 px** à
+  1 440 ; la page est classée `tfp-type-zone` et hérite de l'échelle des villes, **49 px**.
+
+Le reste de la page région est en revanche **superposable** : seize titres, mêmes tailles, mêmes
+largeurs, mêmes nombres de lignes, et l'exemple tarifaire donne 333 € HT/mois des deux côtés. Les
+37,6 % de pixels colorés de la planche viennent du décalage vertical des blocs de note masqués. La
+planche seule laissait croire à plusieurs replis différents — c'est la mesure qui a tranché.
+
+### Verdict
+
+**PARTIEL — ÉCARTS RESTANTS**, inchangé. Les quatre points bloquants ne dépendent pas du code :
+URL de la fiche Google Business à fournir **et à valider humainement**, nombre réel d'avis, photo
+authentique d'Audrey et validation de sa citation par l'intéressée, remplacement des témoignages
+provisoires.

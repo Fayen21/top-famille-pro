@@ -635,6 +635,54 @@
   color: var(--color-text-tertiary);
 }
 
+/*
+ * Variante compacte — relevée sur la colonne latérale de `/demande-de-devis/`.
+ *
+ * La maquette y pose une carte plus petite que celle des bandes d'avis : fond glacier plutôt que
+ * blanc, aucune ombre, 22 px de rembourrage, rayon 16, étoiles à 13 px, citation à 15/1,55 en
+ * graisse normale, et surtout nom et contexte sur UNE SEULE ligne à 13 px. La carte générique
+ * mesurait 277,7 px de haut contre 154,6 dans le prototype — l'écart venait entièrement de la
+ * typographie et du repli en deux lignes de la légende, pas du contenu.
+ */
+.tfp-testimonial--compacte {
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  padding: 22px;
+  box-shadow: none;
+}
+
+.tfp-testimonial--compacte .tfp-testimonial__stars {
+  margin-bottom: 0;
+  font-size: 13px;
+  letter-spacing: 1px;
+}
+
+.tfp-testimonial--compacte .tfp-testimonial__quote {
+  margin-top: 10px;
+  font-size: 15px;
+  font-weight: var(--fw-regular);
+  line-height: 1.55;
+}
+
+/* La taille est posée sur la LÉGENDE, pas seulement sur ses fragments : la boîte de ligne se
+   calcule sur la police de l'élément parent, et une légende laissée à 17 px produisait une ligne
+   de 27,5 px pour du texte de 13. */
+.tfp-testimonial--compacte .tfp-testimonial__author {
+  margin-top: 10px;
+  display: block;
+  font-size: 13px;
+}
+
+.tfp-testimonial--compacte .tfp-testimonial__name,
+.tfp-testimonial--compacte .tfp-testimonial__context,
+.tfp-testimonial--compacte .tfp-testimonial__sep {
+  display: inline;
+  font-size: 13px;
+  font-weight: var(--fw-regular);
+  color: var(--color-text-tertiary);
+}
+
 /* Mention de démonstration — volontairement lisible, jamais rendue en production
    (includes/testimonials.php). */
 .tfp-demo-notice {

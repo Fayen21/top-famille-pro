@@ -217,9 +217,15 @@ fieldset {
   min-width: 0;
 }
 
-body.tfp-body input,
-body.tfp-body select,
-body.tfp-body textarea {
+/* Normalisation des commandes de formulaire : les navigateurs leur imposent une police système
+   à 13,33 px que rien n'hérite. La règle était écrite `body.tfp-body select` — soit (0,1,2), plus
+   spécifique que `.tfp-field select` (0,1,1). Résultat : les listes déroulantes du site
+   ressortaient à 17 px là où la maquette les pose à 16, et aucune correction dans le composant ne
+   pouvait l'emporter. Une normalisation n'a pas à être spécifique : elle est ramenée au sélecteur
+   d'élément, que le composant surclasse naturellement. */
+input,
+select,
+textarea {
   font-family: inherit;
   font-size: inherit;
 }

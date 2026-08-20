@@ -994,15 +994,23 @@
   color: var(--color-text-tertiary);
 }
 
+/*
+ * Géométrie de champ relevée sur la maquette (G27 §10) : 13/15 de rembourrage, rayon 10, texte 16.
+ *
+ * Le thème posait 12/14, rayon 12 et 17 à 18 px de texte selon la balise — trois écarts sur
+ * CHAQUE champ, donc sur toute la hauteur des deux formulaires. Les 16 px comptent doublement :
+ * c'est la valeur de la maquette, et c'est aussi le seuil sous lequel iOS agrandit la page à la
+ * mise au point d'un champ.
+ */
 .tfp-field input:not([type="checkbox"]):not([type="radio"]),
 .tfp-field textarea,
 .tfp-field select {
   min-height: var(--tap-target-min);
-  padding: 12px 14px;
+  padding: 13px 15px;
   border: 1px solid var(--color-border-strong);
-  border-radius: var(--radius-md);
+  border-radius: 10px;
   font-family: inherit;
-  font-size: var(--fs-md);
+  font-size: 16px;
   color: var(--color-text);
   background: var(--color-white);
 }
@@ -1065,6 +1073,141 @@
   gap: var(--space-3);
   flex-wrap: wrap;
   margin-top: var(--space-4);
+}
+
+/* Les commandes du formulaire de devis suivent la maquette : 16px/30px de rembourrage, 16,5px de
+   corps, graisse 700 — soit 54 px de haut au lieu des 60 du bouton générique. Les valeurs passent
+   par les variables du bouton (`--tfp-btn-*`), pas par des déclarations concurrentes : sans
+   `--tfp-btn-h`, la `min-height: max(44px, 60px)` du composant maintenait la commande à 60 px
+   quel que soit le rembourrage posé.
+
+   La règle est confinée au formulaire. Les boutons du hero, eux, sont déjà conformes — 60 px
+   mesurés contre 61 dans la maquette — et un correctif global les casserait. */
+.tfp-quote-form .tfp-form-actions .tfp-btn {
+  --tfp-btn-h: 54px;
+  --tfp-btn-pv: 16px;
+  --tfp-btn-ph: 30px;
+  --tfp-btn-fs: 16.5px;
+  --tfp-btn-fw: var(--fw-bold);
+}
+
+/* ---------- Étapes du formulaire de devis ----------
+   Relevé de la maquette : rangée de 13 px, graisse 600, écart 12 ; le rang en bleu principal, une
+   jauge de 3 px qui prend la place restante, l'objet de l'étape à droite en gris. */
+.tfp-form-step {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  /* Un <legend> se dimensionne sur son contenu : sans cette largeur, la jauge n'a pas de place
+     à prendre et se réduit à rien. */
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0;
+  font-size: 13px;
+  font-weight: var(--fw-semibold);
+  color: var(--color-text-tertiary);
+}
+
+.tfp-form-step__rang {
+  color: var(--color-primary);
+}
+
+.tfp-form-step__jauge {
+  flex: 1;
+  height: 3px;
+  border-radius: 3px;
+  background: var(--color-border);
+  overflow: hidden;
+}
+
+.tfp-form-step__part {
+  display: block;
+  height: 100%;
+  background: var(--color-primary);
+}
+
+.tfp-form-step__lede {
+  margin: 12px 0 18px;
+  font-size: 15.5px;
+  color: var(--color-text-secondary);
+}
+
+/* Résumé de l'étape 1, affiché en tête de l'étape 2 — filet turquoise à gauche, relevé. */
+.tfp-form-recap {
+  margin: 14px 0 16px;
+  padding-left: 14px;
+  border-left: 2px solid var(--color-turquoise);
+  font-size: 15px;
+  color: var(--color-text);
+}
+
+.tfp-form-recap[hidden] {
+  display: none;
+}
+
+/* Bouton d'apparence textuelle : même cible tactile qu'un bouton plein, aucun fond. Le
+   soulignement est permanent sur le résumé — un lien identifiable autrement que par la couleur
+   (CLAUDE.md §8) — et apparaît au survol sur la commande de retour, qui porte déjà sa flèche. */
+.tfp-btn-lien {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--tap-target-min);
+  padding: 0;
+  border: 0;
+  background: none;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: var(--fw-semibold);
+  color: var(--color-primary);
+  cursor: pointer;
+}
+
+.tfp-form-recap .tfp-btn-lien {
+  text-decoration: underline;
+}
+
+.tfp-form-actions .tfp-btn-lien:hover,
+.tfp-btn-lien:focus-visible {
+  text-decoration: underline;
+}
+
+/* Rangée de commandes du formulaire de devis : écart 14, alignement centré, 4 px de recul —
+   relevés. La mention de réassurance y tient sa place à droite du bouton. */
+.tfp-quote-form .tfp-form-actions {
+  gap: 14px;
+  align-items: center;
+  margin-top: 4px;
+}
+
+.tfp-form-actions__note {
+  font-size: 13.5px;
+  color: var(--color-text-tertiary);
+}
+
+.tfp-form-note {
+  margin: 16px 0 0;
+  font-size: 13px;
+  color: var(--color-text-tertiary);
+}
+
+/* Case de consentement — relevé de la maquette : écart 10, case de 17 px calée à 3 px du haut,
+   texte à 13,5 px. Les valeurs étaient posées en style en ligne dans le gabarit, où rien ne
+   pouvait les comparer à la maquette. */
+.tfp-field--consent > label {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 13.5px;
+  font-weight: var(--fw-regular);
+  color: var(--color-text-secondary);
+}
+
+.tfp-field--consent input[type="checkbox"] {
+  flex: 0 0 auto;
+  width: 17px;
+  height: 17px;
+  margin-top: 3px;
+  accent-color: var(--color-primary);
 }
 
 /* ---------- Bandeau supérieur ----------
@@ -1722,12 +1865,15 @@ body.tfp-body .tfp-row-heading {
   color: var(--color-text-secondary);
 }
 
+/* La maquette écrit TOUTES ses étoiles en #EAB308 — les vingt-quatre occurrences relevées, des
+   pastilles de 11 px aux bandeaux de 20 px, sans une seule exception. Le thème les rendait en
+   cuivre : c'est la couleur d'accent de la charte, pas celle des étoiles du prototype. */
 .tfp-testimonial__stars {
   display: block;
   margin-bottom: 10px;
   font-size: 16px;
   letter-spacing: 2px;
-  color: var(--color-copper);
+  color: var(--color-star);
 }
 
 /* Liste d'exclusions explicites : le marqueur « ✕ » est décoratif et posé en ::before, jamais
@@ -3012,34 +3158,41 @@ details.tfp-card {
 .tfp-quote-aside__manager strong {
   display: block;
   font-family: var(--font-heading);
-  font-size: 17px;
+  font-size: 18px;
   color: var(--color-navy);
 }
 
 .tfp-quote-aside__manager span {
   display: block;
-  font-size: 14px;
-  color: var(--color-text-secondary);
+  font-size: 13.5px;
+  color: var(--color-text-tertiary);
 }
 
+/* Rythme vertical relevé sur la maquette, bloc par bloc : l'intitulé, puis le numéro à 6 px, puis
+   le tarif à 12 px, puis la mention collée. Un `gap` unique de 10 px donnait quatre intervalles
+   identiques que le prototype ne pose pas. */
 .tfp-quote-aside__phone {
   padding: 24px;
   background: var(--color-primary);
   color: var(--color-white);
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 0;
 }
 
-.tfp-quote-aside__phone strong {
-  font-family: var(--font-heading);
-  font-size: 17px;
-  color: var(--color-white);
+/* L'intitulé n'est pas un titre : c'est une amorce, écrite en turquoise clair à 14 px, graisse
+   normale, dans la police de texte. Le thème la composait comme un titre — 17 px, 700, police de
+   titres — et elle prenait le pas sur le numéro, qui est le vrai objet de la carte. */
+.tfp-quote-aside__phone-label {
+  font-size: 14px;
+  font-weight: var(--fw-regular);
+  color: var(--color-turquoise);
 }
 
 body.tfp-body .tfp-quote-aside__tel {
+  margin-top: 6px;
   font-family: var(--font-heading);
-  font-size: 26px;
+  font-size: 24px;
   font-weight: 800;
   color: var(--color-white);
   text-decoration: none;
@@ -3051,9 +3204,10 @@ body.tfp-body .tfp-quote-aside__tel:focus-visible {
 }
 
 .tfp-quote-aside__price {
+  margin-top: 12px;
   font-family: var(--font-heading);
   font-size: 22px;
-  font-weight: 700;
+  font-weight: 800;
 }
 
 .tfp-quote-aside__note {
@@ -3252,6 +3406,9 @@ body.tfp-type-legale .tfp-section__lede {
   font-size: var(--tfp-bloc-titre);
   line-height: var(--tfp-bloc-titre-lh);
   font-weight: var(--tfp-bloc-titre-graisse);
+  /* Largeur maximale relevée quand la maquette en déclare une — huit intertitres en portent une,
+     de 520 à 720 px. Sans borne, `none` : le titre occupe la colonne, comme avant. */
+  max-width: var(--tfp-bloc-titre-max, none);
 }
 
 /* Étapes numérotées EN LIGNE — le panneau « Les étapes de candidature » de /recrutement/ (G26 §5).
@@ -4489,8 +4646,23 @@ body.tfp-body .tfp-section--primary .tfp-link-row:focus-visible {
   margin: 0 0 15px;
 }
 
+/*
+ * Ville + code postal : EMPILÉS sous 560 px, comme la maquette.
+ *
+ * Le thème les mettait côte à côte à toutes les largeurs, y compris à 375 px où la maquette les
+ * empile : le code postal y tombait à 32 % de la largeur du formulaire, soit une centaine de
+ * pixels pour saisir cinq chiffres au pouce. Le seuil de 560 px et la colonne fixe de 227 px sont
+ * relevés sur le prototype, largeur par largeur — il empile jusqu'à 480 px inclus et aligne à
+ * partir de 560.
+ */
 .tfp-form-row--2-1 {
-  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 560px) {
+  .tfp-form-row--2-1 {
+    grid-template-columns: minmax(0, 1fr) 227px;
+  }
 }
 
 .tfp-form-row > *,
@@ -4511,19 +4683,19 @@ body.tfp-body .tfp-section--primary .tfp-link-row:focus-visible {
   color: var(--color-navy);
 }
 
+/* La géométrie des champs est posée une seule fois, plus haut (`.tfp-field input/textarea/select`),
+   sur les valeurs relevées : 13px 15px de rembourrage, corps 16, rayon 10. Ce bloc en portait un
+   second jeu — 13px 14px, corps 15 — hérité d'un relevé antérieur du seul formulaire de contact.
+   Or la maquette applique EXACTEMENT la même géométrie aux deux formulaires : mesurée sur
+   `/contact` comme sur `/demande-de-devis`, elle donne 49 px de haut pour une saisie, 51 pour une
+   liste, 112 pour une zone de texte. Deux jeux concurrents ne pouvaient que diverger ; il n'en
+   reste qu'un, et ce bloc ne conserve que ce qui lui est propre. */
 .tfp-field input[type="text"],
 .tfp-field input[type="email"],
 .tfp-field input[type="tel"],
 .tfp-field select,
 .tfp-field textarea {
   width: 100%;
-  padding: 13px 14px;
-  border: 1px solid var(--color-border-strong);
-  border-radius: 10px;
-  background: var(--color-white);
-  font-family: inherit;
-  font-size: 15px;
-  color: var(--color-text);
 }
 
 /* 112 px relevés sur la maquette. `min-height` seule ne suffisait pas : l'attribut `rows` du

@@ -174,7 +174,8 @@ function tfp_link_phrases( $text, array $map ) {
  * une bande à la main (page pilier, page région) : c'est justement là que la géométrie relevée se
  * perdait, et qu'un intertitre sortait à 34 px au lieu de 36.
  *
- * @param array  $bloc  Bloc relevé (`titre`, `niveau`, `titre_taille`, `titre_interligne`, `titre_graisse`).
+ * @param array  $bloc  Bloc relevé (`titre`, `niveau`, `titre_taille`, `titre_interligne`,
+ *                      `titre_graisse`, `titre_largeur_max`).
  * @param string $repli Titre de repli si le bloc n'en porte pas.
  */
 function tfp_bloc_titre( $bloc, $repli = '' ) {
@@ -195,6 +196,15 @@ function tfp_bloc_titre( $bloc, $repli = '' ) {
 	$fw = (int) ( $bloc['titre_graisse'] ?? 0 );
 	if ( $fw >= 100 && $fw <= 900 ) {
 		$vars[] = '--tfp-bloc-titre-graisse:' . $fw;
+	}
+	/*
+	 * Largeur maximale relevée : c'est elle qui décide du repli du titre. « Nos six prestations de
+	 * nettoyage professionnel » tient sur une ligne dans une colonne de 1180 px, sur deux dans les
+	 * 620 px que déclare le prototype — 42 px de hauteur de bande, et une composition différente.
+	 */
+	$lmax = tfp_longueur_css( $bloc['titre_largeur_max'] ?? '' );
+	if ( '' !== $lmax ) {
+		$vars[] = '--tfp-bloc-titre-max:' . $lmax;
 	}
 
 	printf(
