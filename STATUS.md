@@ -1964,3 +1964,72 @@ s'y superpose désormais à celle du prototype.
 
 Suite Playwright **1 253 passés, 0 échec** · relevé 318/318 dont **298** dans la bande, 0
 débordement, 0 erreur console · parité **1 265 fichiers, 0 divergent**.
+
+---
+
+## G28 — dossier de validation humaine (20 août 2026)
+
+**Statut : `G28=PRET_POUR_VALIDATION_HUMAINE`** · verdict global : `PARTIEL — ÉCARTS RESTANTS`.
+
+Détail mesuré : `docs/DOSSIER-G28.md`. Empreintes : `release/SHA256SUMS-dossier-g28.txt`.
+
+### Ce qui a été produit
+
+**110 comparaisons** maquette / WordPress / différence amplifiée, **toutes régénérées depuis
+`f917741`** — les archives G25 et G26 sont périmées, et un dossier qui mélangerait deux états
+ferait valider des pages qui n'existent plus. Trois volumes autonomes, navigables hors ligne :
+
+| Volume | Contenu | Comparaisons | Poids |
+|---|---|---:|---:|
+| 1 — prioritaire | les 14 cibles demandées, plus le rapport G27, la fiche de décision et le mode d'emploi | 28 | 32 Mo |
+| 2 — pages | prestations, index, institutionnelles, articles et pages légales restantes | 30 | 25 Mo |
+| 3 — zones | départements, villes et communes | 52 | 64 Mo |
+
+Les 375 et 1 440 px sont fournis pour chaque cible. Le bandeau de chaque triptyque est **gravé
+dans l'image** — route, largeur, nom des trois colonnes, amplification, taux — pour qu'une capture
+sortie du dossier reste interprétable seule.
+
+### L'épreuve hors ligne a trouvé un vrai défaut
+
+Les trois archives sont extraites dans un répertoire neuf et ouvertes en `file://` avec le réseau
+**coupé au niveau du navigateur** : toute requête sortante est refusée et comptée.
+
+Premier passage : **88 ancres mortes**. La fiche de décision et les index liaient vers les autres
+volumes par `../volume-2-pages/…`, or une archive extraite seule ne contient pas ses voisines — et
+c'est le cas normal, 119 Mo ne se transmettent pas d'un bloc. Les autres volumes sont désormais
+**nommés, pas liés**.
+
+Second passage : **aucune image cassée, aucune ressource externe, aucune URL interdite, aucune
+ancre morte, aucun chemin absolu, navigation complète** sur les trois archives.
+
+### Régénérer les pages sans refaire les captures
+
+Les 110 comparaisons demandent près de deux heures. Corriger un lien ne doit pas les refaire : la
+capture dépose un `manifeste.json` par volume, et `--pages-seules` réécrit toutes les pages depuis
+ce manifeste en quelques secondes. Aucune valeur n'est reconstituée de mémoire — le manifeste porte
+exactement ce que les pages affichent.
+
+### Ce qui n'est PAS soumis à cette validation
+
+Trois éléments retirés des bloqueurs sur décision du 20 août : la citation attribuée à Audrey, sa
+photo provisoire, et l'URL, la note et le nombre d'avis Google. **Aucune correction n'a été faite
+sur eux** et la note Google reste masquée : ils sont retirés du jugement, pas résolus. La fiche de
+décision le dit en clair.
+
+### Ce qui est attendu
+
+Toutes les pages portent le statut **`À VALIDER`** — 110 comparaisons, 55 lignes de fiche, zéro
+statut proposé. Une case pré-remplie ferait valider par défaut ce que le dossier prétend soumettre
+au jugement.
+
+Réponse attendue : `Validé`, ou `Refusé : page — défaut constaté` pour chaque page en défaut. Ce
+qui n'est pas nommé est considéré comme non encore jugé, jamais comme accepté.
+
+Après validation humaine explicite seulement : `FIDÉLITÉ CLAUDE DESIGN VALIDÉE`. Rien n'est
+fusionné dans `main`, rien n'est déployé, aucun DNS n'est modifié avant cela.
+
+### Les archives ne sont pas versionnées
+
+119 Mo régénérés à chaque passe, dans un dépôt qui pèse déjà 1 Go. Le dépôt garde la trace
+mesurable — `docs/DOSSIER-G28.md`, ses 110 taux — et les empreintes SHA-256 qui rendent la
+livraison vérifiable. Les archives sont transmises directement.

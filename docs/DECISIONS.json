@@ -196,6 +196,30 @@
 					"superflue. La règle n'est pas affaiblie pour un ratio."
 				]
 			}
+		},
+		{
+			"id": "g28-elements-hors-validation",
+			"titre": "Trois éléments retirés des bloqueurs, non soumis à la validation G28",
+			"decide_le": "2026-08-20",
+			"remplace": [
+				{
+					"date": "2026-08-19",
+					"regle": "citation, photo et note Google sont des bloqueurs de mise en ligne"
+				}
+			],
+			"regle": {
+				"retires_des_bloqueurs": [
+					"citation attribuée à Audrey",
+					"photo temporaire d'Audrey",
+					"URL, note et nombre d'avis Google"
+				],
+				"inchange": "la note Google reste MASQUÉE : aucune correction n'a été faite sur ces éléments",
+				"note": [
+					"Ces trois éléments ne doivent plus faire obstacle à la validation humaine.",
+					"Ils ne sont pas pour autant corrigés ni validés : l'état du site est inchangé sur ce point.",
+					"La fiche de décision du dossier G28 le dit en clair, pour qu'aucune relecture ne les juge."
+				]
+			}
 		}
 	]
 }

@@ -325,9 +325,17 @@ function pageIndex(volume, volumes) {
 		)
 		.join('\n');
 
+	/*
+	 * Les autres volumes sont NOMMÉS, pas liés.
+	 *
+	 * Chaque volume est livré dans son archive et doit s'ouvrir seul : un `../volume-2/index.html`
+	 * est un lien mort dès que l'archive est extraite sans ses voisines — et c'est le cas normal,
+	 * 119 Mo ne se transmettent pas d'un bloc. Un repère qui marche toujours vaut mieux qu'un lien
+	 * qui marche une fois sur deux.
+	 */
 	const autres = volumes
 		.filter((v) => v.id !== volume.id)
-		.map((v) => `<li><a href="../${esc(v.dossier)}/index.html"><span class="i">▸</span><span>Volume ${esc(v.titre)}</span><span class="r">${v.items.length} comparaisons</span></a></li>`)
+		.map((v) => `<li><span style="display:flex;gap:14px;align-items:baseline;padding:12px 15px"><span class="i">▸</span><span>Volume ${esc(v.titre)} — archive <code>dossier-g28-${esc(v.dossier)}.zip</code></span><span class="r">${v.items.length} comparaisons</span></span></li>`)
 		.join('\n');
 
 	const docs = volume.id === 'prioritaire'
@@ -356,7 +364,7 @@ ${docs}
 ${lignes}
 </ul>
 <h2>Autres volumes</h2>
-<p>Les volumes sont indépendants. S’ils sont extraits côte à côte dans le même répertoire, les liens ci-dessous fonctionnent ; sinon, ouvrez le fichier <code>index.html</code> du volume voulu.</p>
+<p>Chaque volume est livré dans sa propre archive et s’ouvre indépendamment. Pour consulter l’un des volumes ci-dessous, décompressez son archive et ouvrez son <code>index.html</code>.</p>
 <ul class="liste">
 ${autres}
 </ul>`
@@ -379,9 +387,15 @@ function pageFiche(volumes) {
 	}
 	const lignes = [ ...parPage.entries() ]
 		.map(([ id, p ]) => {
-			const liens = p.largeurs
-				.map((it) => `<a href="${ p.volume.id === 'prioritaire' ? '' : `../${p.volume.dossier}/` }${esc(it.fichierHtml)}">${it.largeur} px</a>`)
-				.join(' · ');
+			/*
+			 * Seules les captures DU MÊME VOLUME sont cliquables. Pour les autres, le volume est
+			 * nommé : la fiche est jointe au volume prioritaire, et un lien vers un fichier absent
+			 * de l'archive serait mort à l'ouverture.
+			 */
+			const memeVolume = p.volume.id === 'prioritaire';
+			const liens = memeVolume
+				? p.largeurs.map((it) => `<a href="${esc(it.fichierHtml)}">${it.largeur} px</a>`).join(' · ')
+				: `<span style="color:var(--encre3)">volume ${esc(p.volume.titre)}</span>`;
 			return `<tr><td><strong>${esc(p.libelle)}</strong><br><code>${esc(p.wp)}</code></td><td>${liens}</td><td><strong>À VALIDER</strong></td><td></td></tr>`;
 		})
 		.join('\n');
@@ -562,6 +576,14 @@ modifié avant cette validation.
 /* -------------------------------------------------------------- exécution */
 
 const seul = (process.argv.find((a) => a.startsWith('--only=')) || '').split('=')[1] || '';
+/*
+ * `--pages-seules` réécrit les pages HTML à partir du manifeste déposé lors de la capture, sans
+ * rouvrir un seul navigateur. Les 110 comparaisons demandent près de deux heures ; corriger une
+ * formulation, un lien ou une note ne doit pas les refaire. Le manifeste porte tout ce que les
+ * pages affichent — routes, largeurs, taux, amplification, notes — si bien qu'aucune valeur n'est
+ * reconstituée de mémoire.
+ */
+const pagesSeules = process.argv.includes('--pages-seules');
 const comp = complementaires();
 
 const VOLUMES = [
@@ -593,11 +615,21 @@ const VOLUMES = [
 
 const actifs = VOLUMES.filter((v) => !seul || v.id === seul);
 
-rmSync(RACINE, { recursive: true, force: true });
+if (!pagesSeules) rmSync(RACINE, { recursive: true, force: true });
 
-const navigateur = await chromium.launch({ executablePath: '/opt/pw-browsers/chromium' });
+const navigateur = pagesSeules ? null : await chromium.launch({ executablePath: '/opt/pw-browsers/chromium' });
 
 for (const volume of actifs) {
+	if (pagesSeules) {
+		const manifeste = path.join(RACINE, volume.dossier, 'manifeste.json');
+		if (!existsSync(manifeste)) {
+			console.error(`manifeste absent : ${manifeste} — relancer une capture complète`);
+			process.exit(2);
+		}
+		volume.items = JSON.parse(readFileSync(manifeste, 'utf8'));
+		console.log(`${volume.dossier} · ${volume.items.length} comparaisons relues du manifeste`);
+		continue;
+	}
 	const base = path.join(RACINE, volume.dossier);
 	mkdirSync(path.join(base, 'captures'), { recursive: true });
 	volume.items = [];
@@ -640,11 +672,12 @@ for (const volume of actifs) {
 		}
 	}
 }
-await navigateur.close();
+if (navigateur) await navigateur.close();
 
 /* Pages HTML : écrites APRÈS toutes les captures, pour que la navigation connaisse ses voisins. */
 for (const volume of actifs) {
 	const base = path.join(RACINE, volume.dossier);
+	if (!pagesSeules) writeFileSync(path.join(base, 'manifeste.json'), JSON.stringify(volume.items, null, '\t'));
 	volume.items.forEach((it, i) => {
 		writeFileSync(path.join(base, it.fichierHtml), pageCapture(it, i, volume.items.length, volume));
 	});
