@@ -28,9 +28,3 @@ export/lighthouse/
 # Les captures pèsent des dizaines de Mo et seraient périmées au premier correctif ;
 # ce sont les ARCHIVES de release/ qui constituent la livraison.
 docs/dossier-g28/
-
-# Archives du dossier de validation G28 : livrées directement, pas versionnées.
-# Elles pèsent 119 Mo et sont régénérées à chaque passe ; le dépôt fait déjà 1 Go.
-# Ce qui est versionné à leur place : docs/DOSSIER-G28.md, qui porte les 110 taux
-# mesurés, et release/SHA256SUMS-dossier-g28.txt, qui rend la livraison vérifiable.
-release/dossier-g28-*.zip

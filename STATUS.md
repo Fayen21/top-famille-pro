@@ -2028,8 +2028,19 @@ qui n'est pas nommé est considéré comme non encore jugé, jamais comme accept
 Après validation humaine explicite seulement : `FIDÉLITÉ CLAUDE DESIGN VALIDÉE`. Rien n'est
 fusionné dans `main`, rien n'est déployé, aucun DNS n'est modifié avant cela.
 
-### Les archives ne sont pas versionnées
+### Les archives sont versionnées, à contrecœur et pour une bonne raison
 
-119 Mo régénérés à chaque passe, dans un dépôt qui pèse déjà 1 Go. Le dépôt garde la trace
-mesurable — `docs/DOSSIER-G28.md`, ses 110 taux — et les empreintes SHA-256 qui rendent la
-livraison vérifiable. Les archives sont transmises directement.
+Elles pèsent 119 Mo dans un dépôt qui fait déjà 1 Go, et elles seront régénérées à la prochaine
+passe. J'avais donc décidé de ne pas les versionner et de les transmettre directement — jusqu'à ce
+que le canal d'envoi les refuse : 31,5 Mo pour le seul volume prioritaire, contre 30 admis.
+
+Deux façons de contourner cette limite, toutes deux mauvaises : recompresser les images, ce qui
+ajoute une double compression à un dossier dont l'objet même est de juger des différences visuelles
+fines ; ou découper les volumes, ce qui casse la navigation qu'on vient de vérifier. Un livrable
+qu'on ne peut pas recevoir n'est pas livré : les archives entrent donc dans `release/`, intactes.
+
+Le dépôt garde par ailleurs la trace mesurable — `docs/DOSSIER-G28.md` et ses 110 taux — et les
+empreintes SHA-256, qui restent utiles pour vérifier une archive transmise par un autre chemin.
+
+À la prochaine régénération, il faudra **supprimer les archives de la passe précédente dans le même
+commit** plutôt que d'en empiler une seconde série.
