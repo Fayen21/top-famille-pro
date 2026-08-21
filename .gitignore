@@ -23,3 +23,8 @@ docs/baseline-2026-*.json
 export/*.zip
 # Rapports Lighthouse complets (JSON + HTML), reproduits par tools/lighthouse.mjs.
 export/lighthouse/
+
+# Dossier de validation G28 : régénéré à la demande depuis le banc, jamais commité.
+# Les captures pèsent des dizaines de Mo et seraient périmées au premier correctif ;
+# ce sont les ARCHIVES de release/ qui constituent la livraison.
+docs/dossier-g28/
