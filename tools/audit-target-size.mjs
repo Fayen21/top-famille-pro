@@ -26,6 +26,7 @@
  *   node tools/audit-target-size.mjs --widths=375
  */
 import { chromium } from '@playwright/test';
+import { pathToFileURL } from 'node:url';
 import { ROUTE_MAP } from './route-map.mjs';
 
 const WP = process.env.TFP_BASE_URL || 'http://localhost:8899';
@@ -38,7 +39,19 @@ const widths = ((process.argv.find((a) => a.startsWith('--widths=')) || '').spli
 
 const routes = Object.keys(ROUTE_MAP).filter((r) => !only || r === only);
 
-const AUDIT = (MIN) => {
+export const AUDIT = (MIN) => {
+	/**
+	 * Couche de positionnement d'une cible : l'élément fixe ou collant le plus proche au-dessus
+	 * d'elle, ou `null` quand elle est dans le flux. Deux cibles de couches différentes ne se
+	 * comparent PAS pour l'espacement — voir le commentaire de la condition d'espacement.
+	 */
+	const couche = (el) => {
+		for (let n = el; n && n !== document.documentElement; n = n.parentElement) {
+			const pos = getComputedStyle(n).position;
+			if (pos === 'fixed' || pos === 'sticky') return n;
+		}
+		return null;
+	};
 	const cibles = [...document.querySelectorAll('a[href], button, input, select, textarea, [role="button"], summary, details > summary')]
 		.filter((el) => {
 			const r = el.getBoundingClientRect();
@@ -50,6 +63,7 @@ const AUDIT = (MIN) => {
 			const r = el.getBoundingClientRect();
 			return {
 				el,
+				couche: couche(el),
 				x: r.left + window.scrollX,
 				y: r.top + window.scrollY,
 				w: r.width,
@@ -90,6 +104,14 @@ const AUDIT = (MIN) => {
 		let voisineTropProche = null;
 		for (const autre of cibles) {
 			if (autre === c) continue;
+			// Une cible FIXE n'a pas de position dans le document : `top + scrollY` lui en fabrique
+			// une, qui glisse à travers la page au fil du défilement. Comparer une barre d'action
+			// fixe au contenu qu'elle survole invente une adjacence dépendante du défilement ET de
+			// la hauteur de fenêtre. C'est ce qui a fait signaler un lien du plan du site : la barre
+			// d'appel mobile, `position: fixed; bottom: 0`, tombait dessus à 900 px de haut et pas à
+			// 800. Un recouvrement de ce genre est une OCCULTATION (2.4.11), pas un défaut
+			// d'espacement — chaque couche ne se compare donc qu'à elle-même.
+			if (autre.couche !== c.couche) continue;
 			const d = Math.hypot(autre.cx - c.cx, autre.cy - c.cy);
 			if (d < MIN) {
 				voisineTropProche = { texte: autre.texte, distance: Math.round(d) };
@@ -110,6 +132,14 @@ const AUDIT = (MIN) => {
 	}
 	return { total: cibles.length, violations };
 };
+
+/*
+ * Le module s'importe pour ses fixtures (tests/target-size.spec.js réutilise AUDIT tel quel sur des
+ * pages de fixture) : le balayage des 53 routes ne se déclenche donc qu'en exécution directe.
+ */
+if (import.meta.url !== pathToFileURL(process.argv[1] || '').href) {
+	// Importé comme module : rien à balayer.
+} else {
 
 const browser = await chromium.launch({ executablePath: '/opt/pw-browsers/chromium' });
 let totalViolations = 0;
@@ -139,3 +169,5 @@ console.log(
 		(totalViolations ? `❌ ${totalViolations} violation(s)` : '✅ aucune violation')
 );
 process.exit(totalViolations ? 1 : 0);
+
+}
