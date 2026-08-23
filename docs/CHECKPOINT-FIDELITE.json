@@ -742,13 +742,14 @@
    "statut": "FAUX_POSITIF_CORRIGÉ_DANS_OUTIL — appliqué"
   },
   {
-   "id": "FP06",
+   "id": "FP11",
    "outil": "tools/audit-target-size.mjs",
    "symptome": "Une violation WCAG 2.5.8 signalée sur #/plan-du-site à 375 px : un <a> « Nettoyage de bureaux » de 153 × 21 px, display inline, « voisine « ☎ Appeler » à 5 px ». Elle contredisait le « 0 violation sur 53 routes × 2 largeurs » affiché par docs/RAPPORT-CARTES.md.",
    "cause": "La voisine réelle du lien, mesurée, est à 33 px — au-dessus du seuil de 24. Le « 5 px » venait de .tfp-mobile-cta-bar, `position: fixed; bottom: 0`, dont l'audit calculait la position documentaire par `top + scrollY`. Pour un élément fixe ce calcul n'a pas de sens : il fait glisser la barre à travers le document au fil du défilement, et la fait tomber sur un contenu différent selon la hauteur de fenêtre. Mesuré : barre à 719 px de haut de fenêtre dans une fenêtre de 800, à 819 dans une fenêtre de 900 — position d'écran CONSTANTE, position documentaire fabriquée. À 900 px (la hauteur de l'audit) elle retombait pile sur le lien du plan du site ; à 800 px, rien n'était signalé. Une géométrie qui dépend de la hauteur de fenêtre ne décrit pas la page.",
    "correction": "Chaque cible porte désormais sa COUCHE de positionnement — l'ancêtre fixe ou collant le plus proche, ou `null` dans le flux — et la condition d'espacement ne compare que des cibles de même couche. Un recouvrement entre une barre fixe et le contenu qu'elle survole relève de l'occultation (2.4.11), pas de l'espacement de 2.5.8.",
    "fixture": "tests/target-size.spec.js + tests/fixtures/cibles-barre-fixe.html et cibles-trop-serrees.html. La première reproduit la géométrie exacte du faux positif — et vérifie explicitement qu'elle la reproduit encore, sinon elle passerait au vert pour la mauvaise raison ; la seconde tient l'autre bout : deux boutons de 16 px à 4 px l'un de l'autre DANS LA MÊME COUCHE restent signalés, la séparation des couches ne rend pas l'audit aveugle. Vérifié en retirant la ligne de correction : la première fixture échoue, la seconde passe.",
-   "controle": "53 routes × 2 largeurs contre le banc : ✅ aucune violation, code de sortie 0. Le « 0 violation » des rapports était donc exact, et c'est le signalement qui était faux."
+   "controle": "53 routes × 2 largeurs contre le banc : ✅ aucune violation, code de sortie 0. Le « 0 violation » des rapports était donc exact, et c'est le signalement qui était faux.",
+   "numerotation": "Numéroté FP11 et non FP06 : G22 a ouvert FP06 à FP10 pour le classificateur de cartes (tools/lib/cartes.mjs), dans sa propre liste imbriquée. Les deux séries partagent ce fichier, la numérotation est donc continue."
   }
  ],
  "prochain_groupe_a_traiter": {
@@ -902,6 +903,6 @@
   "commande_de_verification": "bash tools/banc-local.sh && bash tools/banc-local.sh --theme-only && TFP_BASE_URL=http://localhost:8901 node tools/inventaire-cartes.mjs && node tools/classer-anomalies.mjs"
  },
  "anomalies_hors_perimetre": {
-  "wcag_258_plan_du_site": "CLOS — SANS OBJET. Le signalement d'une violation 2.5.8 sur le plan du site était un faux positif de l'outil, instruit et corrigé sous FP06. Ne pas rouvrir sur la seule foi d'un ancien relevé : la commande de contrôle est `TFP_BASE_URL=http://localhost:8901 node tools/audit-target-size.mjs`, elle balaie les 53 routes à 1440 et 375 px et sort en 0."
+  "wcag_258_plan_du_site": "CLOS — SANS OBJET. Le signalement d'une violation 2.5.8 sur le plan du site était un faux positif de l'outil, instruit et corrigé sous FP11. Ne pas rouvrir sur la seule foi d'un ancien relevé : la commande de contrôle est `TFP_BASE_URL=http://localhost:8901 node tools/audit-target-size.mjs`, elle balaie les 53 routes à 1440 et 375 px et sort en 0."
  }
 }
