@@ -13,7 +13,7 @@
  *   node tools/lighthouse.mjs --only=/contact/
  */
 import { execFileSync } from 'node:child_process';
-import { mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 
@@ -35,23 +35,29 @@ const seule = (process.argv.find((a) => a.startsWith('--only=')) || '').split('=
 const pages = seule ? PAGES.filter((p) => p.url === seule) : PAGES;
 
 const dossier = mkdtempSync(join(tmpdir(), 'tfp-lh-'));
+// Rapports complets conservés (JSON + HTML par audit), hors Git : export/lighthouse/.
+const RAPPORTS = 'export/lighthouse';
+mkdirSync(RAPPORTS, { recursive: true });
 
-/** Une passe Lighthouse, en JSON, sur le Chromium déjà installé. */
-function mesurer(url, mobile) {
-	const fichier = join(dossier, 'rapport.json');
+/** Une passe Lighthouse — JSON + HTML conservés, cache froid (chaque passe lance son Chromium). */
+function mesurer(url, mobile, etiquette) {
+	const base = join(dossier, 'rapport');
 	execFileSync(
 		'node_modules/.bin/lighthouse',
 		[
 			url,
 			'--output=json',
-			`--output-path=${fichier}`,
+			'--output=html',
+			`--output-path=${base}`,
 			'--quiet',
 			'--chrome-flags=--headless=new --no-sandbox --disable-dev-shm-usage',
 			...(mobile ? [] : ['--preset=desktop']),
 		],
 		{ stdio: ['ignore', 'ignore', 'pipe'], env: { ...process.env, CHROME_PATH: '/opt/pw-browsers/chromium' } }
 	);
-	const r = JSON.parse(readFileSync(fichier, 'utf8'));
+	const r = JSON.parse(readFileSync(base + '.report.json', 'utf8'));
+	writeFileSync(join(RAPPORTS, etiquette + '.report.json'), readFileSync(base + '.report.json'));
+	writeFileSync(join(RAPPORTS, etiquette + '.report.html'), readFileSync(base + '.report.html'));
 	const note = (c) => Math.round((r.categories[c]?.score ?? 0) * 100);
 	const audit = (a) => r.audits[a]?.numericValue ?? null;
 	return {
@@ -65,15 +71,30 @@ function mesurer(url, mobile) {
 	};
 }
 
+const sousCible = (m) => m.perf < 90 || m.a11y < 100 || m.bp < 100 || m.seo < 100;
+const mediane = (v) => v.slice().sort((a, b) => a - b)[Math.floor(v.length / 2)];
+
 const lignes = [];
 for (const p of pages) {
 	for (const mobile of [true, false]) {
-		const m = mesurer(BASE + p.url, mobile);
-		lignes.push({ ...p, profil: mobile ? 'mobile' : 'bureau', ...m });
+		const profil = mobile ? 'mobile' : 'bureau';
+		const etiquette = (p.url === '/' ? 'accueil' : p.url.replace(/^\/|\/$/g, '').replace(/\//g, '-')) + '-' + profil;
+		/*
+		 * Un score sous la cible ne se juge pas sur un passage : deux passages supplémentaires dans
+		 * les mêmes conditions, et la MÉDIANE des trois est publiée — jamais le meilleur des trois.
+		 */
+		let runs = [mesurer(BASE + p.url, mobile, etiquette)];
+		if (sousCible(runs[0])) {
+			runs.push(mesurer(BASE + p.url, mobile, etiquette + '-r2'));
+			runs.push(mesurer(BASE + p.url, mobile, etiquette + '-r3'));
+		}
+		const m = Object.fromEntries(['perf', 'a11y', 'bp', 'seo', 'lcp', 'cls', 'tbt'].map((k) => [k, mediane(runs.map((x) => x[k]))]));
+		lignes.push({ ...p, profil, passages: runs.length, ...m });
 		console.log(
-			`${(mobile ? 'mobile' : 'bureau').padEnd(7)} ${p.nom.padEnd(20)} ` +
+			`${profil.padEnd(7)} ${p.nom.padEnd(20)} ` +
 				`perf ${String(m.perf).padStart(3)} · a11y ${m.a11y} · bp ${m.bp} · seo ${m.seo} · ` +
-				`LCP ${(m.lcp / 1000).toFixed(2)} s · CLS ${m.cls.toFixed(3)} · TBT ${Math.round(m.tbt)} ms`
+				`LCP ${(m.lcp / 1000).toFixed(2)} s · CLS ${m.cls.toFixed(3)} · TBT ${Math.round(m.tbt)} ms` +
+				(runs.length > 1 ? ` · médiane de ${runs.length}` : '')
 		);
 	}
 }

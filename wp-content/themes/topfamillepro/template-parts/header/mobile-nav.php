@@ -27,27 +27,36 @@ $site            = $args['site'];
 
 	<div class="tfp-mobile-nav__body">
 		<nav aria-label="Navigation principale">
+			<?php
+			/*
+			 * Même ordre et même principe qu'en bureau : le libellé d'une entrée à sous-menu est un
+			 * LIEN vers sa page (pilier pour « Prestations », hub pour « Zones »), le « + » est un
+			 * BOUTON qui déplie. Sur un panneau mobile, confondre les deux condamne l'accès à la
+			 * page parente : le doigt tombe forcément sur l'un ou sur l'autre.
+			 */
+			?>
 			<div class="tfp-mobile-nav__list">
-				<button type="button" class="tfp-mobile-nav__button" id="tfp-mobile-btn-prestations" aria-controls="tfp-mobile-sub-prestations" aria-expanded="false" data-tfp-mobile-submenu-toggle>
-					Prestations <span aria-hidden="true">＋</span>
-				</button>
-				<div class="tfp-mobile-submenu" id="tfp-mobile-sub-prestations" hidden>
-					<?php foreach ( $prestations_nav as $item ) : ?>
-						<a href="<?php echo esc_url( $item['url'] ); ?>"><?php echo esc_html( $item['label'] ); ?></a>
-					<?php endforeach; ?>
-				</div>
-
-				<button type="button" class="tfp-mobile-nav__button" id="tfp-mobile-btn-zones" aria-controls="tfp-mobile-sub-zones" aria-expanded="false" data-tfp-mobile-submenu-toggle>
-					Zones d'intervention <span aria-hidden="true">＋</span>
-				</button>
-				<div class="tfp-mobile-submenu" id="tfp-mobile-sub-zones" hidden>
-					<?php foreach ( $zones_nav as $item ) : ?>
-						<a href="<?php echo esc_url( $item['url'] ); ?>"><?php echo esc_html( $item['label'] ); ?></a>
-					<?php endforeach; ?>
-				</div>
-
 				<?php foreach ( $main_nav as $item ) : ?>
-					<a class="tfp-mobile-nav__link" href="<?php echo esc_url( $item['url'] ); ?>"><?php echo esc_html( $item['label'] ); ?></a>
+					<?php if ( 'submenu' === $item['type'] ) : ?>
+						<?php $tfp_msub = 'tfp-mobile-sub-' . $item['key']; ?>
+						<div class="tfp-mobile-nav__row">
+							<a class="tfp-mobile-nav__link" href="<?php echo esc_url( $item['url'] ); ?>"><?php echo esc_html( $item['label'] ); ?></a>
+							<button type="button" class="tfp-mobile-nav__button" id="tfp-mobile-btn-<?php echo esc_attr( $item['key'] ); ?>" aria-controls="<?php echo esc_attr( $tfp_msub ); ?>" aria-expanded="false" data-tfp-mobile-submenu-toggle>
+								<span aria-hidden="true">＋</span>
+								<span class="visually-hidden">Ouvrir le menu <?php echo esc_html( $item['aide'] ); ?></span>
+							</button>
+						</div>
+						<div class="tfp-mobile-submenu" id="<?php echo esc_attr( $tfp_msub ); ?>" hidden>
+							<?php foreach ( $item['items'] as $sub ) : ?>
+								<a href="<?php echo esc_url( $sub['url'] ); ?>"><?php echo esc_html( $sub['label'] ); ?></a>
+							<?php endforeach; ?>
+							<?php if ( 'prestations' === $item['key'] ) : ?>
+								<a href="<?php echo esc_url( home_url( '/prestations/' ) ); ?>">Toutes les prestations →</a>
+							<?php endif; ?>
+						</div>
+					<?php else : ?>
+						<a class="tfp-mobile-nav__link" href="<?php echo esc_url( $item['url'] ); ?>"><?php echo esc_html( $item['label'] ); ?></a>
+					<?php endif; ?>
 				<?php endforeach; ?>
 			</div>
 		</nav>

@@ -323,6 +323,18 @@ for (const parLargeur of Object.values(resultat)) {
 }
 console.log(
 	`\n${SORTIE} — ${total}/${attendus} contrôles · ${dans} dans 95-105 % · ${deborde} avec débordement · ${erreurs} avec erreur console ou réseau` +
+	/*
+	 * `docs/baseline.json` est la RÉFÉRENCE que `tests/ratios-baseline.spec.js` contrôle. Un relevé
+	 * écrit ailleurs avec `--sortie=` ne la remplace pas : la suite continue alors de valider un
+	 * état périmé, et passe au vert sur un site qui a changé. C'est arrivé le 20 août 2026 — le
+	 * verrou validait le relevé d'un commit vieux de trois passes. L'avertissement ci-dessous
+	 * existe pour que cela ne se reproduise pas en silence.
+	 */
+	(SORTIE !== 'docs/baseline.json'
+		? `\n\n⚠  Ce relevé N'EST PAS la référence de la suite de tests.\n` +
+			`   tests/ratios-baseline.spec.js lit docs/baseline.json, qui n'a pas été touché.\n` +
+			`   Pour en faire la référence : cp ${SORTIE} docs/baseline.json`
+		: '') +
 		(total < attendus ? `\n⚠️  RELEVÉ INCOMPLET : relancer la même commande avec --resume jusqu'à ${attendus}/${attendus}.` : '')
 );
 for (const largeur of LARGEURS) {

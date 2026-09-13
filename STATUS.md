@@ -1,7 +1,7 @@
 # STATUS — Top-Famille Pro
 
 > Lien entre deux sessions Claude Code Web. Mis à jour à la fin de chaque phase.
-> Dernière mise à jour : **Hotfix — fidélité production, troisième vague**, 9 août 2026.
+> Dernière mise à jour : **G26 — passe ouverte après le refus de validation**, 17 août 2026 (§-8).
 >
 > **Troisième vague (`docs/AUDIT-PRODUCTION.md` §3c, `docs/RAPPORT-FINAL.md` §21)** : la maquette
 > Claude Design a été **exécutée et mesurée** dans Chromium (c'est un bundle auto-décompressant),
@@ -12,8 +12,8 @@
 > à 25,5 px au lieu de 42 px (token `--fs-h2` jamais branché), débordement horizontal de 57 px à
 > 1024 px. Lighthouse : **mobile 90 / desktop 99, accessibilité 100, bonnes pratiques 100, SEO 100**
 > — après avoir corrigé un CLS de 1,002 causé par le chargement asynchrone des feuilles de style.
-> Note Google 5,0/5 **confirmée réelle par Emmanuel** et désormais affichée (CLAUDE.md §5.5 mis à
-> jour) ; le nombre d'avis et l'URL de la fiche restent à fournir. Témoignages : démonstration hors
+> Note Google 5,0/5 confirmée réelle par Emmanuel mais **NON AFFICHÉE** (consigne du 18 août 2026,
+> confirmée le 19) : pas de note sans URL de fiche officielle fournie et validée humainement. Témoignages : démonstration hors
 > production, état neutre en production, prouvé sur deux instances WordPress réelles.
 > Verdict : `PARTIEL — ÉCARTS RESTANTS` (pages internes moins travaillées que l'accueil, photos
 > définitives toujours absentes).
@@ -26,6 +26,85 @@
 > honnête : `PARTIEL — ÉCARTS RESTANTS` sur la fidélité visuelle pixel-près demandée (reproduction
 > complète des 17 sections de l'accueil, Lighthouse, 6 largeurs testées) — voir
 > `docs/RAPPORT-FINAL.md` §20 pour le détail de ce qui est fait et de ce qui reste.
+
+---
+
+## -8. G26 — passe ouverte après le REFUS de validation du 17 août 2026
+
+Branche `claude/g23-fidelite-claude-design-7doxg4`, depuis `7e6dc04` (checkpoint de clôture G25).
+Rapport complet : **`docs/RAPPORT-G26.md`**. Fiche de décision : **`docs/VALIDATION-HUMAINE-G26.md`**.
+
+**Ce qui a été refusé, et ce qui a été fait.**
+
+1. **Le panneau de différence des triptyques était inutile.** Le générateur composait `difference`
+   puis `negate()` : sur deux rendus proches, tout ressortait blanc. `tools/lib/diff-visuel.mjs`
+   calcule l'écart de luminance, l'amplifie d'un facteur écrit dans l'image, le rend en magenta et
+   **mesure** la proportion de pixels qui s'écartent. `tests/diff-visuel.spec.js` l'éprouve sur une
+   fixture volontairement différente, et **passe l'ancien générateur aux mêmes assertions : il
+   échoue**.
+
+2. **Images.** L'audit compare désormais les images **par rôle et sur leurs octets**
+   (`tools/audit-images-role.mjs`), et la table des sources est établie sur les octets de la
+   maquette (`tools/mapper-photos-maquette.mjs`). Huit défauts trouvés au-delà des trois nommés,
+   dont des héros de prestation et de ville **croisés**. Résultat : **164 images, 0 écart**.
+
+3. **`/a-propos/`** : image à gauche sur ordinateur et avant le texte sur mobile, citation dans sa
+   bande, attribution sur une ligne, mention de provisoire erronée retirée des quatre valeurs,
+   commandes en rangées de boutons, bouton téléphone rétabli (le relevé jetait les liens `tel:`).
+
+4. **`/recrutement/`** : parcours de candidature au lieu des appels commerciaux, vers le site
+   carrière (CLAUDE.md §8), panneau des étapes en marine, étapes en liste numérotée.
+
+5. **Formulaires** : anti-double-soumission **ajouté** (il n'existait que sur le contact),
+   présentation rapprochée, protocole de capture explicite, et **différences fonctionnelles
+   documentées une par une** dans `docs/FORMULAIRE-DIFFERENCES.md` — le dossier n'affirme plus
+   « mêmes champs ».
+
+6. **Note Google** : garde de vérifiabilité **réversible** dans `includes/reassurance-settings.php`
+   — la note n'est exposée que si l'URL de la fiche l'accompagne. Compteur d'avis bloqué.
+   `tests/g26.spec.js` éprouve les 53 routes. **0 occurrence** de note, d'étoiles hors provisoire,
+   de `Review` ou d'`AggregateRating`.
+
+7. **Pied de page et logos** repris au relevé ; **badge région** retiré des sept heros où la maquette
+   n'en pose pas ; **pré-pied** recomposé ; logos portés de la densité 2 à la densité 3.
+
+**État technique.** 1063 tests verts · relevé de base 318 contrôles, 298 dans 95-105 %,
+**0 débordement**, 0 erreur console · Lighthouse **14 mesures, 0 sous la cible**, accessibilité 100
+partout · CLS maximum 0,0048 · WCAG 2.2 AA 2.5.8 sans violation · images 0 écart.
+
+**Deux régressions introduites puis corrigées dans la passe**, signalées plutôt que tues : un
+débordement horizontal de 263 px (carte-lien promue bouton) et l'accessibilité Lighthouse tombée à
+96 (contraste du rappel téléphonique du pré-pied). **L'audit axe-core de la suite n'a pas vu le
+second** : une suite verte ne vaut pas preuve de contraste.
+
+**Deux points tranchés par Emmanuel le 17 août 2026** : l'entrée « Nettoyage professionnel » du menu
+(sept entrées contre six, en-tête +22 px) et les commandes de hero de cinq pages institutionnelles
+sont **conservées**. Inscrites au registre `docs/ECARTS-MAQUETTE-AUTORISES.md` §7 et §8, et
+verrouillées par `tests/ecarts-structure.spec.js` — une passe ultérieure qui les « corrigerait » au
+nom de la fidélité fera échouer la suite. Le badge région, lui, reste retiré des sept heros
+concernés : la décision portait sur les commandes, pas sur le badge.
+
+**Contradictions levées le 19 août 2026.** Elles étaient signalées et non corrigées parce que
+`CLAUDE.md` ne se modifie pas sans validation d'Emmanuel ; la consigne G27 §2 a donné cette
+validation. `CLAUDE.md` §5.4 et §5.5 sont désormais alignés sur les décisions finales, avec la
+mention explicite des consignes **périmées** pour qu'aucune session ne les réintroduise.
+
+**Bloqueurs de mise en ligne — TOUS LEVÉS le 17 août 2026.** Le **Kbis est acté** : identifiants
+contre-vérifiés par arithmétique (Luhn du SIREN ✅, Luhn du SIRET ✅, clé de TVA concordante avec le
+SIREN ✅), contrôles désormais rejoués à chaque passage de `tests/legal.spec.js`. La **note Google
+n'est pas affichée** (consigne du 18 août 2026, confirmée le 19) : la case `note_sans_source` a été
+supprimée du code, et la garde exige note + URL de fiche non vide + URL de forme « fiche Google ».
+Le compteur d'avis reste masqué, aucun balisage `Review` ni `AggregateRating` n'est produit, aucun
+`href="#"` n'est publié. La **photo d'Audrey** et sa
+**citation** ne bloquent plus et restent marquées provisoires. Les **huit communes secondaires sont
+validées** — Audrey y intervient — et passent en `index,follow` avec entrée au sitemap.
+
+**Reste à décider, sans urgence** : le texte des huit pages de commune date de l'époque où la
+desserte n'était pas confirmée (« la demande peut être étudiée » plutôt que « nous intervenons »).
+Le passer à l'affirmatif est une réécriture éditoriale, pas une conséquence mécanique de la
+validation ; elle n'a pas été faite d'office.
+
+**Verdict : `PARTIEL — ÉCARTS RESTANTS`**, jusqu'à une nouvelle validation humaine explicite.
 
 ---
 
@@ -524,9 +603,13 @@ honnête (« la demande peut être étudiée »). Elles sont liées depuis la pa
 `communes_proches` — noindex n'empêche pas le suivi d'un lien, seulement l'indexation de la page
 cible.
 
-**Ces 8 pages restent noindex,follow tant qu'Audrey ne les a pas validées une par une.** Aucune
-action supplémentaire n'est attendue de la phase 4 sur ce point : c'est une décision humaine, pas
-un chantier technique.
+**Ces 8 pages restaient `noindex,follow` tant qu'Audrey ne les avait pas validées une par une.**
+C'était une décision humaine, pas un chantier technique.
+
+> **PÉRIMÉ depuis le 17 août 2026.** La validation a été donnée : Audrey intervient dans les huit
+> communes. Elles sont passées en **`index,follow`**, figurent au sitemap, et leur texte affirme la
+> desserte. Voir `CLAUDE.md` §5.4 et `docs/DECISIONS.json`. Ce paragraphe est conservé comme trace
+> de l'état d'alors ; il ne décrit plus le site.
 
 ### Lot 5/6 — formulaire de demande de devis, réellement fonctionnel
 
@@ -605,8 +688,8 @@ commit du lot 6.
   vers `/demande-de-devis/` sans paramètres `?prestation=&ville=`. Le formulaire sait déjà lire ces
   paramètres pour préremplir le champ prestation (`src/js/quote-form.js`) ; relier les CTA des 43
   pages concernées reste à faire — amélioration mineure, pas un défaut fonctionnel.
-- **8 communes secondaires** : restent `noindex,follow` tant qu'Audrey ne les a pas validées une par
-  une (voir plus haut) — décision humaine attendue, aucune action technique requise.
+- **8 communes secondaires** : restaient `noindex,follow` en attente de validation.
+  **PÉRIMÉ — validées le 17 août 2026, désormais `index,follow` et au sitemap.**
 
 ### Base de cette branche
 
@@ -1343,3 +1426,621 @@ Rapport complet : `docs/RAPPORT-PASSE-FINALE.md`. Verdict : **PARTIEL — ÉCART
   par Audrey · validation une par une des huit communes secondaires · remplacement des témoignages
   provisoires · horaires de contact réels · sort des contenus que `verifier-installation.php`
   signalera sur l'installation réelle.
+
+## Passe G26, suite — 18 août 2026 (branche `claude/g23-fidelite-claude-design-7doxg4`)
+
+### Fait
+
+**Texte des huit communes passé à l'affirmatif**, à la demande d'Emmanuel après la validation de
+leur desserte le 17 août. En instruisant la demande, une **erreur de mon compte rendu de la veille**
+est apparue : j'avais annoncé que les huit pages disaient « la demande peut être étudiée ». C'était
+vrai du champ `reponse_directe` posé par `bin/seed-phase3-batch4-communes.php`, mais **ce champ est
+réécrit ensuite** par `bin/seed-fidelite-zones.php`, qui s'exécute après lui dans `tools/banc-local.sh`.
+Le texte réellement servi affirmait donc déjà l'intervention sur **sept des huit** (« Top-Famille Pro
+y entretient … » ; Saint-Apollinaire est le siège). Une seule page restait à reprendre — Quetigny,
+dont la réponse directe décrivait la commune sans jamais dire que nous y intervenons.
+
+Beaune garde une formulation prudente, **et c'est voulu** : elle porte sur Savigny-lès-Beaune et
+Pommard, qui ne font pas partie des huit communes validées.
+
+**Deux fautes de langue nommées par `CLAUDE.md` §9 étaient encore servies** et sont corrigées :
+
+| Faute | Occurrences | Correction |
+|---|---|---|
+| « … sont possible **lorsque prévu** dans le cahier des charges et **chiffré** dans le devis » | **28**, sur les 26 zones | accordé au sujet de chaque phrase (féminin singulier, féminin pluriel, masculin pluriel selon les cas) |
+| « lister **precisément** » | 1, `/conseils/cahier-des-charges-nettoyage/` | « lister précisément » |
+
+Elles ne relèvent pas de la consigne du 10 août 2026, qui porte sur les **formulations** ; §9 demande
+au contraire la correction orthographique et grammaticale des 53 pages en nommant ces deux cas.
+« Aucun simulateur » et « une couverture régionale, pas des agences fictives » **restent différées**
+et n'ont pas été touchées.
+
+**Où les corrections sont portées.** `bin/seed-fidelite-zones.php` et `bin/seed-fidelite-articles.php`
+sont **générés** : corriger le fichier produit aurait été effacé à la régénération suivante. Les
+règles vivent donc dans `tools/generate-zones.mjs` (`CORRECTIONS_EDITORIALES`, `GRAMMAIRE`) et
+`tools/generate-articles.mjs` (`ORTHOGRAPHE`). Les deux générateurs **échouent** si un fragment
+attendu a disparu de la maquette, plutôt que de produire silencieusement un texte non corrigé.
+
+**Paquet d'installation resynchronisé.** `installer/topfamillepro-content-installer/seed/` avait
+**dérivé de `bin/`** — dérive antérieure à cette passe, jamais signalée : `seed-fidelite-pages.php`
+1216 lignes d'écart, `seed-fidelite-zones.php` 401, `seed-phase3-batch4-communes.php` 133,
+`seed-phase4-maillage.php` 72. Et `bin/seed-reassurance.php`, qui porte la décision du 17 août sur la
+note Google, **n'était pas du tout dans le paquet**. Le plugin d'installation aurait donc déployé un
+site plus ancien que le dépôt. Les six fichiers sont resynchronisés, `seed-reassurance.php` est
+ajouté à la liste ordonnée de `includes/installer.php`, et l'étiquette « 8 communes secondaires
+(noindex,follow) » y devient « 8 communes desservies (validées le 17/08/2026, index) ».
+
+### Contrôles
+
+- Suite complète : **1156 verts**, 0 échec (1079 + 77 nouveaux).
+- `tests/communes-affirmatif.spec.js` (nouveau) : réponse directe affirmative, aucune tournure
+  conditionnelle sur la commune de la page, `index,follow` et description qui la nomme, pour les
+  huit ; puis les quatre fautes nommées par §9 absentes des **53 routes**. Contrôle sur le HTML
+  servi, pas sur le seed — le seed étant généré, c'est le seul endroit où la régression se verrait.
+- **Témoin** : contenu d'avant rechargé dans le banc, ces mêmes tests rejoués → **16 échecs**. Le
+  verrou n'est pas complaisant.
+- `tools/diff-text.mjs` : **0 bloc de texte manquant** sur les 53 routes, 36 écarts nommés.
+- 112 comparaisons régénérées, `docs/COMPARAISON-53-ROUTES.md` à jour, **0 débordement**.
+
+### Un écart de mesure élucidé, à ne pas relire comme une régression
+
+Trois ratios du rapport de comparaison sortent de la bande 95-105 % alors qu'ils y étaient : mots de
+`/avis-clients/` 105 → 106 %, de `/a-propos/` 102 → 103 %. **Ce n'est pas cette passe.** Le rapport
+au dépôt datait du commit `b2f3951`, mesuré quand la note Google était masquée ; `5a5a02a` l'a
+réaffichée sur décision d'Emmanuel sans régénérer le rapport. Vérifié par bascule du réglage
+« Afficher sans la fiche » : 649 → 641 mots sur `/avis-clients/`, 1142 → 1134 sur `/a-propos/`, soit
+exactement les valeurs d'avant et d'après. Le rapport était périmé sur ce point ; il ne l'est plus.
+
+### Reste à faire
+
+- **`fonctionnement` est un champ ACF mort** : `single-zone.php` le lit (ligne 35) et ne l'affiche
+  jamais. Il est pourtant enregistré, éditable en administration et alimenté sur les 26 zones par
+  les seeds de phase 3. La bande « Fonctionnement, accès et suivi » réellement servie vient de
+  `methode_2_titre`/`methode_2_texte`, posés par le seed de fidélité. En l'état, un éditeur peut
+  écrire dans ce champ en croyant publier. À trancher : le brancher au gabarit, ou le retirer.
+  **Non corrigé de moi-même** : le brancher changerait la composition des 26 pages de zone.
+- **Répétitions de « le cas échéant »** (§9) : 5 sur `/tarifs/`, 3 sur `/zones-intervention/bourgogne-franche-comte/`,
+  2 sur l'accueil et le pilier. La maquette en compte 40. Trois des cinq de `/tarifs/` sont des
+  intitulés de ligne de tableau, répétés par structure. C'est une reformulation, pas une faute :
+  elle tombe sous la consigne du 10 août et attend un arbitrage.
+- Le verdict reste **`PARTIEL — ÉCARTS RESTANTS`** jusqu'à validation humaine des captures.
+
+## Complément G26 — contenu, ACF et installeur (18 août 2026)
+
+Rapport détaillé en 8 points : `docs/RAPPORT-G26-COMPLEMENT.md`.
+
+### Fait
+
+**Le champ ACF `fonctionnement` alimente enfin une section servie.** Il était enregistré, éditable
+sur les 26 zones, rempli — et affiché nulle part : `single-zone.php` le lisait (ligne 35) sans
+jamais l'écrire. Il pilote maintenant le chapitre de méthode que la maquette consacre au
+fonctionnement sur chaque zone, désigné **par son titre** dans `SECTION_FONCTIONNEMENT`
+(`tools/generate-zones.mjs`) — si le titre disparaît de la maquette, la génération échoue. Le seed
+écrit `fonctionnement` et `fonctionnement_bloc` ; le gabarit sert l'un **ou** le repli, jamais les
+deux. Quatre départements n'ont pas de chapitre « fonctionnement » : c'est leur chapitre
+d'organisation qui est désigné, faute d'équivalent plus proche, et c'est signalé.
+
+**Note Google masquée à nouveau.** La dérogation « Afficher sans la fiche » est supprimée : elle
+permettait exactement ce que la consigne du 18 août interdit. La garde exige trois conditions
+simultanées — note saisie, URL non vide, URL de **forme** « fiche Google ». Limite énoncée : ce
+contrôle ne prouve pas l'appartenance de la fiche, aucun code ne le peut, et l'écran de saisie le
+dit. `bin/seed-reassurance.php` n'écrit jamais `google_url` : il ne peut pas réactiver la note.
+
+**« Le cas échéant » réduit.** Quatre blocs la répétaient — dont la bande des budgets de `/tarifs/`,
+qui la posait **quatre fois** (chapeau + trois intitulés de ligne). Une note unique, visible et
+rattachée au tableau par `aria-describedby`, la porte désormais. Aucune condition contractuelle
+retirée. 30 occurrences restent, toutes uniques dans leur bloc, documentées route par route dans
+`docs/CONDITIONS-TARIFAIRES.md`.
+
+**La dérive du paquet d'installation ne peut plus passer inaperçue.**
+`tools/verifier-parite-installeur.mjs` compare le dépôt et la livraison — seeds (dans les trois
+sens), fichiers exigés nommément, CSS/JS reconstruits à part et comparés octet par octet, manifeste
+d'images, archives — et échoue en nommant les chemins. Joué par la suite **et** avant chaque export.
+Trois fixtures d'avarie prouvent qu'il détecte un seed absent, une copie modifiée et une feuille
+distribuée en retard. `tools/build-paquets.mjs` reconstruit les deux archives depuis l'arbre de
+travail, sur la liste des fichiers suivis par git.
+
+Ce contrôle a trouvé, en s'installant, que `topfamillepro-theme.zip` embarquait **143 images sur
+les 378** que son manifeste réclame — un déploiement depuis cette archive aurait servi des `srcset`
+vers des fichiers absents. Corrigé.
+
+### Contrôles
+
+- Suite complète : **1223 verts**, 0 échec (1156 + 67 nouveaux).
+- Parité dépôt ↔ livraison : **1279 fichiers comparés par empreinte**, 0 manquant, 0 divergent.
+- 53 routes × 16 motifs interdits : **0 occurrence** (note, compteur, `Review`, `AggregateRating`,
+  `ratingValue`, `href="#"`, fautes §9, anciens tarifs).
+- `diff-text` : **0 bloc de texte manquant**, 146 écarts nommés.
+- Baseline régénérée : **318/318 contrôles**, 298 dans 95-105 %, 0 débordement, 0 erreur console.
+- 112 comparaisons régénérées : 212 ratios, **19 hors bande** — les mêmes qu'avant la passe, tous
+  documentés. Les deux que la note Google avait fait sortir le 17 août sont rentrés.
+- Huit communes : `index,follow` et au sitemap (26 zones), décision du 17 août confirmée le 18.
+- Témoins de non-complaisance : gabarit d'avant → **7 échecs sur 8** au test du champ ACF ; trois
+  fixtures d'avarie → contrôle de parité en échec sur les trois.
+
+### Reste à faire
+
+- URL de la fiche Google, nombre réel d'avis : toujours non fournis. Note et compteur invisibles.
+- Photo d'Audrey et citation : provisoires ; la citation fait parler une personne réelle et reste à
+  valider par l'intéressée avant mise en ligne.
+- `CLAUDE.md` §5.5 énonce toujours la note comme affichable : contradiction **signalée**, à trancher.
+- « Aucun simulateur » et « agences fictives » : corrections §9 différées, non touchées.
+- Verdict **`PARTIEL — ÉCARTS RESTANTS`** jusqu'à validation humaine des captures.
+
+
+## Passe G27 — §4 et §11 (19 août 2026)
+
+### §4 — objectif 300/318 ATTEINT
+
+**Relevé de base : 318 contrôles · 300 dans 95-105 % · 18 hors, toutes des pages légales · 0
+débordement · 0 erreur console.** Les 50 routes non légales tiennent la plage **aux six largeurs**.
+
+Deux défauts corrigés, tous deux à la cause :
+
+**`/avis-clients/` (94 % à 320 px → 101-104 % partout).** Le prototype compose ses avis en `<figure>`
+sur trois niveaux typographiques — citation 16/25,6, nom 17/27,5, métadonnées 13/21,1 — et le
+générateur ne relevait qu'**une** taille de description par grille : les trois s'écrasaient sur la
+plus petite, le nom de l'auteur passait à la place des étoiles, ville et date disparaissaient. Le
+rendu était **faux**, pas seulement court. Un archétype `temoignage` est relevé à part et rendu par
+le composant de témoignage, qui a exactement cette forme.
+
+En cours de correction, la page est passée à 106-110 % — trop longue cette fois. Cause : la mention
+« Exemple de présentation » répétée **dans chaque carte** alors que la grille l'annonce déjà
+au-dessus. Trois lignes × six cartes = 350 px pour une information déjà donnée. La mention reste,
+une seule fois.
+
+**`/pourquoi-nous/` (106 % à 375 px → 105 %), sans toucher aux commandes.** Le hero dépassait de
+239 px : 156 px pour la rangée de commandes — **conservée**, c'est une décision, et le système de
+boutons est déjà celui de la maquette (60 px contre 61) — et **82 px pour un surtitre de hero vide**.
+Le badge région en avait été retiré (G26 §9) et la note Google est masquée : le conteneur ne
+recevait plus rien et gardait pourtant `min-height: 72px` sous 600 px, plus 16 px de marge. Défaut
+pur, corrigé par `:not(:has(> *))` — l'absence d'**enfant**, car le conteneur porte des espaces et
+`:empty` ne l'aurait jamais reconnu. Les sept pages institutionnelles y gagnent.
+
+### §3 — décomptes réconciliés
+
+`318 − 298 = 20` et `19` venaient de **deux instruments**. `tools/reconcilier-ratios.mjs` les
+recalcule, vérifie leur arithmétique interne, et classe chaque écart avec sa cause :
+
+| | Relevé de base | Comparaison des routes |
+|---|---|---|
+| Contrôles | 53 × 6 = **318** | 53 × 2 × 2 = **212** |
+| Hors bande | **18**, toutes légales | **19**, toutes classées |
+
+Les trois ratios de **mots** de `/` et `/avis-clients` sont des ajouts imposés par le brief, relevés
+fragment par fragment : lien d'évitement, noms accessibles des déplieurs, exclusions réelles et
+matériel fourni par le client (§9), mentions de contenu provisoire (§5.5), coordonnées du pied.
+
+### §11 — diagnostic complet, correction NON appliquée
+
+`docs/DIAGNOSTIC-LCP.md` relève pour les 14 mesures : élément LCP, TTFB, découverte, transfert,
+rendu, taille et priorité de la ressource, poids et fin de chargement des polices et de la CSS.
+
+**Quatre mesures restent au-dessus de 2,5 s**, toutes en mobile, entre 2,71 et 2,87 s. Sur trois des
+quatre, l'élément LCP est **du texte** ; sur la quatrième, l'image pèse 17 ko en priorité High avec
+26 ms de transfert. **Il n'y a pas de ressource à optimiser.** La décomposition observée tient en
+190-250 ms : le reste vient de la **chaîne critique**, c'est-à-dire du nombre d'allers-retours avant
+le premier rendu.
+
+Trois leviers examinés, deux écartés avec leur raison :
+
+- **CSS critique en ligne** (`CLAUDE.md` §8) — levier principal, **non appliqué** ;
+- retirer la feuille du thème parent — **non mesurable honnêtement ici** : elle fait 47 octets sur
+  le banc et porte les styles de base en production ;
+- réduire les 4 préchargements de polices — **à ne pas faire** : ils corrigent un CLS mesuré à 0,25.
+
+> Le tableau distingue explicitement le LCP **simulé** de la décomposition **observée** : les quatre
+> temps ne s'additionnent pas jusqu'au LCP, et les additionner serait lire le tableau à l'envers.
+
+### Contrôles
+
+- Suite complète : **1250 verts**, 0 échec.
+- Parité dépôt ↔ livraison : **1279 fichiers**, 0 manquant, 0 divergent.
+- Baseline : 318/318 · 300 dans la plage · 0 débordement · 0 erreur.
+- 112 comparaisons régénérées · lint PHP 82 fichiers.
+
+### Reste à faire
+
+§6 (présentation des CTA — mesuré, déjà conforme), §10 (formulaire), §11 (CSS critique), §13
+(captures ciblées), §14 (batterie finale), §15 (rapport complet). Verdict **`PARTIEL — ÉCARTS
+RESTANTS`**.
+
+
+## G27 §11 — LCP mobile sous la cible sur les sept routes (19 août 2026)
+
+### Le CSS critique a été appliqué, mesuré, et RETIRÉ
+
+`CLAUDE.md` §8 le demande, et le raisonnement tenait : un LCP texte est peint dès que le HTML et la
+CSS sont là, donc supprimer l'aller-retour de la feuille devrait le devancer. **La mesure dit le
+contraire.**
+
+L'extracteur (`tools/extraire-css-critique.mjs`) relève les règles réellement appliquées au premier
+écran des 53 routes, à 375 et 1440 px — 317 règles sur 741, 40 Ko minifiés. Mis en ligne, feuille
+complète en `preload` + bascule :
+
+| Mesure mobile | Avant | Avec CSS critique | Sans aucune feuille bloquante |
+|---|---:|---:|---:|
+| Accueil | 2,87 s | **3,02 s** | **3,01 s** |
+| Prestation | 2,87 s | **3,01 s** | **3,01 s** |
+
+Le dispositif dégrade de 0,14 s, et vider la chaîne bloquante n'y change rien : **l'aller-retour de
+la feuille n'était pas le goulot**. Les 40 Ko en ligne portent le HTML transféré de 12 à 19,4 Ko, et
+c'est ce poids qui se paie. Retiré du thème. L'extracteur reste : il a produit la mesure et permet
+de la refaire. C'était la deuxième tentative sur ce chemin — la première, le 9 août, avait produit
+un CLS de 1,002 — et la trace écrite est ce qui évitera une troisième.
+
+### La vraie cause : sept fichiers de police pour deux polices
+
+L'accueil pesait **341 Ko, dont 264 Ko de polices** — 78 % de la page. Sept fichiers au premier
+écran, tous de tailles rigoureusement identiques d'une graisse à l'autre : ce n'étaient pas sept
+polices, **c'était le même fichier variable téléchargé sept fois**.
+
+Les deux familles sont variables. Demandées graisse par graisse (`wght@400;500;600;700;800`),
+l'API Google renvoie quinze déclarations `@font-face` pointant vers **trois URL** ; le téléchargeur
+en faisait quinze fichiers de noms différents, et le navigateur, ne pouvant deviner qu'ils sont
+identiques, en chargeait sept. Demandées en plage (`wght@400..800`), les mêmes octets arrivent en un
+fichier par famille et par sous-ensemble : **18 fichiers deviennent 4**, l'accueil en charge **2**.
+
+Le rendu ne peut pas changer — mêmes glyphes, même fichier. Seul le nombre de téléchargements change.
+`build/fetch-fonts.mjs` refuse désormais de continuer si Google renvoie une graisse fixe ou deux
+fichiers distincts pour un même sous-ensemble.
+
+### Résultat
+
+| Route | LCP mobile avant | après |
+|---|---:|---:|
+| Accueil | 2,87 s | **1,82 s** |
+| Prestation | 2,87 s | **1,82 s** |
+| Ville | 2,87 s | **1,82 s** |
+| Tarifs | 2,72 s | **1,66 s** |
+| Article | 2,42 s | **1,82 s** |
+| Contact | 2,42 s | **1,66 s** |
+| Formulaire de devis | 2,50 s | **1,67 s** |
+
+**Sept routes sur sept sous 2,5 s, avec 0,7 s de marge.** Performance mobile de 93-97 à **99-100**,
+bureau **100 partout**. **CLS 0,000 sur les quatorze mesures** : le préchargement qui corrigeait le
+CLS de 0,25 en G24 est préservé, avec deux fichiers au lieu de quatre et davantage de graisses
+couvertes.
+
+### Contrôles
+
+- Relevé de base après changement : **318/318 · 300 dans 95-105 %** — inchangé, aucune régression
+  visuelle. Le 320 px gagne même un point dans la bande resserrée 98-102 %.
+- `tests/ratios-baseline.spec.js` verrouille les deux faces : au plus **deux fichiers de police** au
+  premier écran, et chaque `@font-face` déclarant une **plage** de graisses. Une seule ligne de
+  `build/fetch-fonts.mjs` suffirait à ramener les 264 Ko sans que rien ne s'affiche différemment.
+
+---
+
+## G27 §10 et §13 — formulaire de devis, captures ciblées (20 août 2026)
+
+Rapport complet : `docs/RAPPORT-G27-FORMULAIRE-CAPTURES.md`.
+Détail des écarts du formulaire : `docs/FORMULAIRE-DIFFERENCES.md`, restructuré en trois sections
+— écarts fonctionnels obligatoires (§2), défauts purement visuels corrigés (§4), contenus de la
+maquette délibérément non repris (§5). La clé de lecture est en tête du fichier : confondre les
+deux natures d'écart conduit soit à retirer un jeton de sécurité pour gagner une mesure, soit à
+laisser passer un défaut en le déclarant fonctionnel.
+
+### Formulaire de devis — corps à 100 % de la maquette
+
+Hauteur du corps du formulaire, du haut du premier champ au bas de la dernière commande :
+**876,9 px contre 879,7 à 375 px**, **596,9 contre 599,7 à 1 440**. Les huit champs de l'étape 1
+sont appariés un à un, corps, rembourrage et rayon identiques.
+
+Rien de fonctionnel n'a bougé : jeton, piège à robots (mesuré hors flux à `x = -10 017`),
+validation client et serveur, consentement, contexte visiteur, UTM, anti-double-soumission,
+confirmation après succès réel.
+
+Quatre causes, toutes de même nature — une valeur relevée que rien n'appliquait :
+
+1. **Deux jeux de règles concurrents** sur les mêmes champs. Le second venait d'un relevé du seul
+   formulaire de contact ; or la maquette applique la **même** géométrie aux deux formulaires
+   (49 px pour une saisie, 51 pour une liste, 112 pour une zone de texte — mesuré sur `#/contact`
+   comme sur `#/demande-de-devis`). Un seul jeu subsiste.
+2. **La normalisation de base était trop spécifique** : `body.tfp-body select` (0,1,2) battait
+   `.tfp-field select` (0,1,1). Aucune correction dans le composant ne pouvait aboutir tant que
+   cette règle restait écrite ainsi. Une normalisation n'a pas à être spécifique.
+3. **`min-height: max(44px, 60px)` sur le bouton** annulait tout rembourrage posé. Le correctif
+   passe par les variables du composant et reste confiné au formulaire — les boutons du hero sont
+   déjà conformes (60 px contre 61).
+4. **L'indicateur d'étape et le résumé de l'étape 1 n'existaient pas.** Le premier remplace un
+   titre de 20 px en gras et reste dans le `<legend>` ; le second est rempli depuis les champs
+   eux-mêmes et reste masqué sans JavaScript.
+
+Et une correction qui déborde du formulaire : **les étoiles étaient en cuivre**. Le prototype les
+écrit en `#EAB308` dans ses vingt-quatre occurrences, sans exception. Corrigé pour toutes les
+cartes témoignage du site.
+
+### Captures ciblées — trois pièges de méthode
+
+`tools/captures-ciblees.mjs`, quatorze planches, récapitulatif dans `docs/CAPTURES-CIBLEES.md`.
+Trois précautions, chacune découverte parce qu'elle produisait un chiffre faux :
+
+1. **La zone comparable du formulaire n'est pas la balise `<form>`** : la maquette place
+   l'indicateur d'étape avant, le thème le met dedans. Découper les deux `<form>` affichait 66 %
+   d'écart là où les deux rendus se superposent.
+2. **Remplir `[required]` ne suffit pas à passer à l'étape 2** : la maquette marque ses champs en
+   `aria-required`. La planche comparait une étape 1 en erreur à une étape 2.
+3. **Un titre réservé aux lecteurs d'écran ne compte pas dans l'ordre des bandes** : 1 px de haut,
+   il faisait déclarer « ordre différent » sur des pages identiques.
+
+### Ce que les captures ont trouvé
+
+**Corrigé** — la bande « Nos six prestations » du pilier sortait à **90 %** (506,8 px contre
+560,3). Le prototype déclare `max-width: 620px` sur ce titre, ce qui le replie sur deux lignes ; le
+thème le laissait occuper les 1 180 px de la colonne. **Huit autres titres de la maquette portent
+une largeur maximale déclarée**, de 520 à 720 px, et aucun relevé ne la capturait. Le champ
+`titre_largeur_max` existe désormais dans `tools/generate-pages.mjs` et `tfp_bloc_titre()`
+l'applique. La bande passe à **98 %**.
+
+**Relevés, non corrigés** — deux défauts réels et mesurés, laissés à la passe suivante :
+
+- `/avis-clients/`, témoignage mis en avant : **carte marine** `#10263B` texte blanc citation 19 px
+  dans la maquette, **carte blanche** citation 25 px dans le thème — 228 px contre 300 à 320 px de
+  large ;
+- `/bourgogne-franche-comte/`, H1 : la maquette déclare `clamp(30px, 4.2vw, 52px)` soit **52 px** à
+  1 440 ; la page est classée `tfp-type-zone` et hérite de l'échelle des villes, **49 px**.
+
+Le reste de la page région est en revanche **superposable** : seize titres, mêmes tailles, mêmes
+largeurs, mêmes nombres de lignes, et l'exemple tarifaire donne 333 € HT/mois des deux côtés. Les
+37,6 % de pixels colorés de la planche viennent du décalage vertical des blocs de note masqués. La
+planche seule laissait croire à plusieurs replis différents — c'est la mesure qui a tranché.
+
+### Contrôles
+
+- Suite Playwright complète : **1 253 passés, 0 échec**. Un premier passage avait donné 1 échec —
+  `tests/contact.spec.js` refusant ses tests de soumission — parce que `banc-local.sh --seed-only`
+  remonte le banc en environnement `production`, où le garde-fou empêche tout envoi réel. Le
+  contrôle mesurait l'environnement du banc, pas le code : remonté en `--development`, tout passe.
+- Relevé de base rejoué après la correction de `titre_largeur_max` : **318/318 · 300 dans
+  95-105 % · 0 débordement · 0 erreur console**. Les 18 hors bande sont les trois pages légales aux
+  six largeurs — exactement les mêmes qu'avant la passe. Aucune route n'est entrée ni sortie de la
+  bande.
+- Parité dépôt ↔ livraison : **1 265 fichiers comparés, 0 divergent**, seed resynchronisé et deux
+  archives reconstruites.
+- Planches ciblées : pilier 1 440 px de 53,9 à **35,9 %**, bande des vignettes de 33,3 à **29,6 %**,
+  page région de 37,6 à **30,3 %**, formulaire étape 1 à **20,2 %** (375) et **12,7 %** (1 440).
+
+### Verdict
+
+**PARTIEL — ÉCARTS RESTANTS**, inchangé. Les quatre points bloquants ne dépendent pas du code :
+URL de la fiche Google Business à fournir **et à valider humainement**, nombre réel d'avis, photo
+authentique d'Audrey et validation de sa citation par l'intéressée, remplacement des témoignages
+provisoires.
+
+---
+
+## G27 §14 et §15 — batterie finale et clôture (20 août 2026)
+
+Rapport de clôture en douze points : `docs/RAPPORT-G27.md`.
+
+### Batterie rejouée après §10 et §13
+
+| Contrôle | Résultat |
+|---|---|
+| Suite Playwright complète | **1 253 passés, 0 échec** |
+| Relevé de base 53 routes × 6 largeurs | **318/318 · 300 dans 95-105 % · 0 débordement · 0 erreur console** |
+| Lighthouse, 7 routes × mobile/bureau | **14/14 conformes** — perf mobile 99-100, bureau 100, a11y / BP / SEO 100 partout |
+| Cœurs Web | LCP mobile **1,66-1,97 s** · CLS **0,000** sur 14 mesures |
+| Planche de validation, 12 routes × 2 largeurs | **22 des 24 comparaisons dans 95-105 %** |
+| Captures ciblées, 14 planches | ordre des bandes identique des deux côtés sur les quatorze |
+| Données structurées | conformes sur les 53 routes |
+| Cibles tactiles (WCAG 2.5.8 AA) | aucune violation |
+| Images par rôle | **164 images, 0 écart** |
+| Maillage interne | aucun lien mort, aucune page orpheline |
+| Lint PHP | 82 fichiers |
+| Parité dépôt ↔ livraison | **1 265 fichiers comparés, 0 divergent** |
+
+Les deux comparaisons hors bande de la planche sont les **mentions légales** (132 % à 1 440 px,
+124 % à 375). Même cause que les trois routes hors bande du relevé : les mentions ont dû être
+réécrites et non recopiées (`CLAUDE.md` §5.7), et `docs/AUDIT-PAGES-LEGALES.md` mesure la part
+ajoutée ligne à ligne — le résidu reste négatif partout, donc entièrement expliqué.
+
+### Ce qui reste ouvert
+
+Deux défauts mesurés et non corrigés, consignés pour la passe suivante : la carte marine du
+témoignage mis en avant d'`/avis-clients/` et le H1 de la page région à 49 px au lieu de 52.
+
+Quatre bloqueurs qui ne dépendent pas du code : URL de la fiche Google à fournir **et à valider
+humainement**, nombre réel d'avis, photo authentique d'Audrey et validation de sa citation par
+l'intéressée, remplacement des témoignages provisoires.
+
+**Verdict G27 : PARTIEL — ÉCARTS RESTANTS.** Rien ne doit être déclaré `PRODUCTION READY`.
+
+---
+
+## G27 — les deux défauts restants, corrigés (20 août 2026)
+
+Détail complet : `docs/RAPPORT-G27.md` §13.
+
+### H1 de la page région
+
+Maquette : `clamp(30px, 4.2vw, 52px)`, `line-height: 1`. Le thème appliquait l'échelle des villes.
+Corps de police et interligne désormais **identiques aux six largeurs**, hauteurs identiques à 320,
+768, 1 024, 1 440 et 1 920 px. La page reste classée `tfp-type-zone` — elle partage l'échelle de
+bandes et de cartes des zones — et un marqueur `tfp-page-region` distingue son seul H1.
+
+Trouvé au passage, et repris : le prototype écrit en clair
+`h1,h2,h3,h4,p,a,span,li,td,th,label,button,blockquote{overflow-wrap:break-word}`, que le thème
+n'avait **pas du tout**. Non repris en revanche : `html,body{overflow-x:clip}`, filet qui masque
+les débordements au lieu de les corriger — le relevé en compte zéro sur 318 contrôles, l'ajouter
+aveuglerait le contrôle qui le garantit.
+
+Reste 375 px, quatre lignes contre trois. Cause **mesurée** : à 30 px / graisse 800, la même chaîne
+fait 344,7 px chez nous contre 337,4 dans la maquette, pour une colonne de 339. C'est la fonte
+**variable** de Bricolage Grotesque, 2,2 % plus large que la coupe statique 800 du prototype (axe
+`opsz` testé, sans effet). Contrepartie directe du §11, qui a valu 1 s de LCP — non défaite.
+
+### Carte marine du témoignage mis en avant
+
+Le relevé mesurait le fond sur la **carte**, jamais sur le **conteneur**. Trois relevés ajoutés :
+`panneau_fond/rayon/padding/couleur`, `colonnes_flex` (les colonnes valent 2 et 1, pas 1 et 1), et
+la taille **déclarée** de la citation — `clamp(19px, 2.2vw, 25px)` était figé à 25 px.
+
+Citation 684 × 150 contre 684 × 150 à 1 440 ; 228 px de haut contre 228 à 320 ; panneau 1 180 × 321
+contre 1 180 × 326.
+
+Deux garde-fous ont failli avaler ces corrections en silence, élargis plutôt que contournés : un
+panneau n'est relevé que s'il **tranche** sur ce qu'il y a derrière, et le filtre du composant
+témoignage n'acceptait que des pixels — il rejetait le `clamp` sans rien dire.
+
+### Ce que la correction a révélé : 298/318
+
+`/avis-clients/` passe de 101 à 106 % à 1 440 et 1 920 px. Mesuré bande par bande, thème du commit
+précédent remonté sur le banc :
+
+| Bande, 1 440 px | Avant | Après | Maquette |
+|---|---|---|---|
+| Note / CTA | 88 | **152** | 157 |
+| Avis mis en avant | 324 | **419** | 386 |
+| Page | 2 964 (101 %) | 3 123 (106 %) | 2 938 |
+
+Les deux bandes se **rapprochent** du prototype. La page tenait la plage **grâce à deux erreurs qui
+se compensaient**. Décomposition des +185 px : **84 px** de rangée de commandes de hero (décision
+d'Emmanuel, verrouillée par test) et **60 px** de mentions provisoires (`CLAUDE.md` §5.5). Sans ces
+deux exigences, la page serait à 101 %.
+
+Ne garder qu'une mention ferait repasser la page sous 105 %. `tests/provisoire.spec.js` remonte
+jusqu'à la `<section>` et les deux grilles sont dans deux sections distinctes : aucune n'est
+superflue. **La règle n'est pas affaiblie pour un ratio.**
+
+**Arbitrage rendu le 20 août 2026 — Emmanuel accepte les 298 : c'est du contenu obligatoire.**
+La décision est enregistrée sous `avis-clients-hors-plage` dans `docs/DECISIONS.json`, et le
+verrou `tests/ratios-baseline.spec.js` la reflète : seuil 298, `/avis-clients/` ajoutée aux routes
+autorisées hors plage avec son motif. Les 18 contrôles hors plage deviennent **20**.
+
+### Un verrou qui validait un relevé périmé
+
+En appliquant cette décision, j'ai découvert que `tests/ratios-baseline.spec.js` lit
+`docs/baseline.json` — et que ce fichier datait de `f35f680`, trois passes plus tôt. Mes relevés
+successifs avaient été écrits sous d'autres noms via `--sortie=`, pour ne pas écraser la référence
+avant de savoir si le résultat tenait. Conséquence : **la suite passait au vert sur un état du site
+qui n'existait plus**. C'est exactement le défaut que ce test doit prévenir.
+
+Le relevé courant devient la référence, et `tools/baseline.mjs` affiche désormais un avertissement
+explicite quand il écrit ailleurs que `docs/baseline.json` — avec la commande pour promouvoir le
+fichier. Un contrôle qui ne contrôle plus rien est pire qu'un contrôle absent : il rassure.
+
+### Les deux tuiles bleues, corrigées à leur tour
+
+La seconde colonne du prototype porte **deux** tuiles distinctes ; le relevé les fondait en une
+seule carte — le premier avis en intitulé, les étoiles du second en description, le second avis en
+ligne supplémentaire. Un seul avis bavard au lieu de deux.
+
+Nouvel archétype **`pile`**, relevé et rendu. La détection est étroite à dessein : au moins deux
+enfants tous porteurs de texte, tous peints, de même fond, même rayon et même rembourrage, dans un
+parent nu et sans texte propre. Une seule grille du site y répond.
+
+| À 1 440 px | Maquette | Thème |
+|---|---|---|
+| Panneau | 1 180 × 326 | **1 180 × 326** |
+| Colonne témoignage | 684 × 233 | **684 × 233** |
+| Tuiles bleues | 2 × 372 × 114 | **2 × 372 × 114** |
+
+À 320 px, le panneau fait 725 contre 733 : le conteneur de page est 8 px plus large que celui du
+prototype — écart pré-existant — et la seconde tuile y gagne une ligne de moins.
+
+Chaque tuile porte `data-tfp-provisional` (§5.5), et le filtre des notes interdites voit désormais
+aussi les textes des tuiles : une pile est du contenu comme un autre.
+
+La page s'allonge encore un peu — 320 : 100 → 102 %, 768 : 100 → 103 % — pour la même raison que
+précédemment : deux tuiles fidèles sont plus hautes qu'une carte aplatie. Le total reste
+**298/318**, sans nouvelle route hors plage. La décomposition enregistrée dans `DECISIONS.json` est
+corrigée en conséquence : elle imputait 41 px à ces tuiles aplaties, ce qui n'est plus vrai.
+
+### Une planche qui recule sans que rien n'ait régressé
+
+La planche ciblée de la page région passe de 30,3 à **36,6 %** de pixels colorés, et celle du pilier
+à 375 px de 42,5 à 44,2 %. Ce n'est pas une régression : un H1 désormais conforme est plus haut,
+donc tout ce qui suit se décale, et un décalage vertical colorie l'intégralité de la colonne. Le
+préambule de `docs/CAPTURES-CIBLEES.md` le dit — le taux sert à repérer *où* regarder, pas à
+conclure. La mesure qui conclut, elle, est le ratio de hauteur : la page région passe de
+98·100·100·100·100·100 à **99·101·101·101·101·101**, et se rapproche donc de la maquette.
+
+À l'inverse, la planche d'`/avis-clients/` à 320 px descend de 38,4 à **31,0 %** : la carte marine
+s'y superpose désormais à celle du prototype.
+
+### Contrôles
+
+Suite Playwright **1 253 passés, 0 échec** · relevé 318/318 dont **298** dans la bande, 0
+débordement, 0 erreur console · parité **1 265 fichiers, 0 divergent**.
+
+---
+
+## G28 — dossier de validation humaine (20 août 2026)
+
+**Statut : `G28=PRET_POUR_VALIDATION_HUMAINE`** · verdict global : `PARTIEL — ÉCARTS RESTANTS`.
+
+Détail mesuré : `docs/DOSSIER-G28.md`. Empreintes : `release/SHA256SUMS-dossier-g28.txt`.
+
+### Ce qui a été produit
+
+**110 comparaisons** maquette / WordPress / différence amplifiée, **toutes régénérées depuis
+`f917741`** — les archives G25 et G26 sont périmées, et un dossier qui mélangerait deux états
+ferait valider des pages qui n'existent plus. Trois volumes autonomes, navigables hors ligne :
+
+| Volume | Contenu | Comparaisons | Poids |
+|---|---|---:|---:|
+| 1 — prioritaire | les 14 cibles demandées, plus le rapport G27, la fiche de décision et le mode d'emploi | 28 | 32 Mo |
+| 2 — pages | prestations, index, institutionnelles, articles et pages légales restantes | 30 | 25 Mo |
+| 3 — zones | départements, villes et communes | 52 | 64 Mo |
+
+Les 375 et 1 440 px sont fournis pour chaque cible. Le bandeau de chaque triptyque est **gravé
+dans l'image** — route, largeur, nom des trois colonnes, amplification, taux — pour qu'une capture
+sortie du dossier reste interprétable seule.
+
+### L'épreuve hors ligne a trouvé un vrai défaut
+
+Les trois archives sont extraites dans un répertoire neuf et ouvertes en `file://` avec le réseau
+**coupé au niveau du navigateur** : toute requête sortante est refusée et comptée.
+
+Premier passage : **88 ancres mortes**. La fiche de décision et les index liaient vers les autres
+volumes par `../volume-2-pages/…`, or une archive extraite seule ne contient pas ses voisines — et
+c'est le cas normal, 119 Mo ne se transmettent pas d'un bloc. Les autres volumes sont désormais
+**nommés, pas liés**.
+
+Second passage : **aucune image cassée, aucune ressource externe, aucune URL interdite, aucune
+ancre morte, aucun chemin absolu, navigation complète** sur les trois archives.
+
+### Régénérer les pages sans refaire les captures
+
+Les 110 comparaisons demandent près de deux heures. Corriger un lien ne doit pas les refaire : la
+capture dépose un `manifeste.json` par volume, et `--pages-seules` réécrit toutes les pages depuis
+ce manifeste en quelques secondes. Aucune valeur n'est reconstituée de mémoire — le manifeste porte
+exactement ce que les pages affichent.
+
+### Ce qui n'est PAS soumis à cette validation
+
+Trois éléments retirés des bloqueurs sur décision du 20 août : la citation attribuée à Audrey, sa
+photo provisoire, et l'URL, la note et le nombre d'avis Google. **Aucune correction n'a été faite
+sur eux** et la note Google reste masquée : ils sont retirés du jugement, pas résolus. La fiche de
+décision le dit en clair.
+
+### Ce qui est attendu
+
+Toutes les pages portent le statut **`À VALIDER`** — 110 comparaisons, 55 lignes de fiche, zéro
+statut proposé. Une case pré-remplie ferait valider par défaut ce que le dossier prétend soumettre
+au jugement.
+
+Réponse attendue : `Validé`, ou `Refusé : page — défaut constaté` pour chaque page en défaut. Ce
+qui n'est pas nommé est considéré comme non encore jugé, jamais comme accepté.
+
+Après validation humaine explicite seulement : `FIDÉLITÉ CLAUDE DESIGN VALIDÉE`. Rien n'est
+fusionné dans `main`, rien n'est déployé, aucun DNS n'est modifié avant cela.
+
+### Les archives sont versionnées, à contrecœur et pour une bonne raison
+
+Elles pèsent 119 Mo dans un dépôt qui fait déjà 1 Go, et elles seront régénérées à la prochaine
+passe. J'avais donc décidé de ne pas les versionner et de les transmettre directement — jusqu'à ce
+que le canal d'envoi les refuse : 31,5 Mo pour le seul volume prioritaire, contre 30 admis.
+
+Deux façons de contourner cette limite, toutes deux mauvaises : recompresser les images, ce qui
+ajoute une double compression à un dossier dont l'objet même est de juger des différences visuelles
+fines ; ou découper les volumes, ce qui casse la navigation qu'on vient de vérifier. Un livrable
+qu'on ne peut pas recevoir n'est pas livré : les archives entrent donc dans `release/`, intactes.
+
+Le dépôt garde par ailleurs la trace mesurable — `docs/DOSSIER-G28.md` et ses 110 taux — et les
+empreintes SHA-256, qui restent utiles pour vérifier une archive transmise par un autre chemin.
+
+À la prochaine régénération, il faudra **supprimer les archives de la passe précédente dans le même
+commit** plutôt que d'en empiler une seconde série.

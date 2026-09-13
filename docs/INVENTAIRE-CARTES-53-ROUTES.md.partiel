@@ -11,13 +11,18 @@
 > Un conteneur qui contient visuellement plusieurs micro-cartes n’est jamais compté pour une
 > carte : il compte pour ses enfants.
 
-**1 routes × 1 largeurs · 2 anomalie(s), dont 0 grave(s)** (carte absente ou fusionnée).
+**6 routes × 2 largeurs · 4 anomalie(s), dont 0 grave(s)** (carte absente ou fusionnée).
 
 ## Synthèse
 
-| Route | Cartes 1440 px | Anomalies 1440 px |
-|---|---|---|
-| `#/departement/cote-dor` | 31 → 31 | ⚠️ 2 |
+| Route | Cartes 1440 px | Cartes 375 px | Anomalies 1440 px | Anomalies 375 px |
+|---|---|---|---|---|
+| `#/service/bureaux` | 21 → 21 | 22 → 22 | ✅ | ✅ |
+| `#/service/commerces` | 20 → 20 | 21 → 21 | ✅ | ✅ |
+| `#/service/cabinets` | 28 → 28 | 29 → 29 | ⚠️ 1 | ⚠️ 1 |
+| `#/service/coproprietes` | 21 → 21 | 22 → 22 | ✅ | ✅ |
+| `#/service/meubles` | 21 → 21 | 22 → 22 | ⚠️ 1 | ⚠️ 1 |
+| `#/service/ponctuel` | 21 → 21 | 22 → 22 | ✅ | ✅ |
 
 ## Routes à corriger en priorité
 
@@ -27,22 +32,71 @@ Aucune : aucune carte absente ni fusionnée à 1440 px.
 
 | Archétype | Occurrences dans la maquette |
 |---|---|
-| `carte-titre-texte` | 8 |
-| `chip` | 7 |
+| `faq` | 47 |
+| `carte-titre-texte` | 36 |
+| `carte-titre` | 18 |
+| `tarif` | 12 |
+| `carte-sombre` | 7 |
+| `chip` | 6 |
 | `micro-carte` | 6 |
-| `faq` | 6 |
-| `tarif` | 3 |
-| `temoignage` | 1 |
 
 ## Détail par route
 
-### `#/departement/cote-dor` → `/zones-intervention/cote-dor/`
+### `#/service/bureaux` → `/prestations/bureaux/`
 
-**1440 px** — bandes 11 → 11 · cartes 31 → 31 · 2 anomalie(s)
+**1440 px** — bandes 14 → 14 · cartes 21 → 21 · 0 anomalie(s)
+
+**375 px** — bandes 14 → 14 · cartes 22 → 22 · 0 anomalie(s)
+
+
+### `#/service/commerces` → `/prestations/commerces/`
+
+**1440 px** — bandes 14 → 14 · cartes 20 → 20 · 0 anomalie(s)
+
+**375 px** — bandes 14 → 14 · cartes 21 → 21 · 0 anomalie(s)
+
+
+### `#/service/cabinets` → `/prestations/cabinets/`
+
+**1440 px** — bandes 15 → 15 · cartes 28 → 28 · 1 anomalie(s)
 
 | Anomalie | Archétype | Bande | Détail |
 |---|---|---|---|
-| colonnes | `tarif` | 7 | « Exemple · bureaux à Dijon, 12 h/mois333 € HT/moisTrois passa » — 3 colonnes attendues, 1 rendues |
-| colonnes | `temoignage` | 7 | « ★★★★★« Nous cherchions un prestataire capable de passer avan » — 3 colonnes attendues, 2 rendues |
+| type | `carte-titre-texte` | 4 | « Cette prestation est un entretien courant de locaux professi » — rendue en `micro-carte` |
+
+**375 px** — bandes 15 → 15 · cartes 29 → 29 · 1 anomalie(s)
+
+| Anomalie | Archétype | Bande | Détail |
+|---|---|---|---|
+| type | `carte-titre-texte` | 4 | « Cette prestation est un entretien courant de locaux professi » — rendue en `micro-carte` |
+
+
+### `#/service/coproprietes` → `/prestations/coproprietes/`
+
+**1440 px** — bandes 14 → 14 · cartes 21 → 21 · 0 anomalie(s)
+
+**375 px** — bandes 14 → 14 · cartes 22 → 22 · 0 anomalie(s)
+
+
+### `#/service/meubles` → `/prestations/meubles/`
+
+**1440 px** — bandes 14 → 14 · cartes 21 → 21 · 1 anomalie(s)
+
+| Anomalie | Archétype | Bande | Détail |
+|---|---|---|---|
+| type | `carte-titre` | 13 | « Encore une question sur Locations meublées ? Audrey vous rép » — rendue en `carte-titre-texte` |
+
+**375 px** — bandes 14 → 14 · cartes 22 → 22 · 1 anomalie(s)
+
+| Anomalie | Archétype | Bande | Détail |
+|---|---|---|---|
+| type | `carte-titre` | 13 | « Encore une question sur Locations meublées ? Audrey vous rép » — rendue en `carte-titre-texte` |
+
+
+### `#/service/ponctuel` → `/prestations/ponctuel/`
+
+**1440 px** — bandes 14 → 14 · cartes 21 → 21 · 0 anomalie(s)
+
+**375 px** — bandes 14 → 14 · cartes 22 → 22 · 0 anomalie(s)
 
 

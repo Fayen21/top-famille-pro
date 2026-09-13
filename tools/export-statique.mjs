@@ -22,6 +22,17 @@ import { chromium } from '@playwright/test';
 import { cpSync, existsSync, mkdirSync, readFileSync, readdirSync, rmSync, statSync, writeFileSync } from 'node:fs';
 import { dirname, join, relative } from 'node:path';
 import { ROUTE_MAP } from './route-map.mjs';
+import { exigerParite } from './verifier-parite-installeur.mjs';
+
+/*
+ * Contrôle de parité AVANT tout export. Un export part de ce que le dépôt contient : si le paquet
+ * d'installation ou les fichiers distribués ne concordent déjà pas avec lui, l'export propage la
+ * dérive au lieu de la révéler. Il échoue ici, bruyamment, plutôt que trois écrans plus loin.
+ */
+{
+	const parite = exigerParite();
+	console.log(`Parité dépôt ↔ livraison vérifiée : ${parite.compares} fichiers comparés.`);
+}
 
 const WP = process.env.TFP_BASE_URL || 'http://localhost:8901';
 const DOMAINE = 'https://top-famille-pro.fr';

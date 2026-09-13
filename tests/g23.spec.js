@@ -1,0 +1,278 @@
+// @ts-check
+import { test, expect } from '@playwright/test';
+
+/**
+ * G23 — tests ciblés des sept causes DEFAUT_THEME fermées dans cette passe.
+ *
+ * Chaque bloc verrouille l'état CORRIGÉ : rejoué sur le thème d'avant G23, chacun échoue sur la
+ * propriété précise que la mesure avait mise en cause (docs/anomalies-g22.json, groupes_causaux).
+ * Les valeurs attendues sont les règles DÉCLARÉES par la maquette, pas des hauteurs de confort.
+ */
+
+test.describe('G23 · badge-reassurance — la note des eyebrows intérieurs est nue', () => {
+	// Sur ces pages, la maquette ne compose PAS la note en pastille au-dessus du H1 : sa seule
+	// occurrence encadrée est celle de la barre haute. La pastille blanche du thème y comptait une
+	// carte de plus (15 occurrences G22).
+	const routesNues = [ '/prestations/', '/pourquoi-nous/', '/recrutement/' ];
+
+	/*
+	 * G26 §7 — la note Google n'est plus exposée aux gabarits tant que la fiche qui la porte n'est
+	 * pas saisie (includes/reassurance-settings.php). Les badges disparaissent donc de toutes les
+	 * routes, et la géométrie relevée en G23 n'a plus de support à mesurer.
+	 *
+	 * Ces tests ne sont pas supprimés : la garantie G23 doit revenir d'elle-même le jour où l'URL
+	 * de la fiche est fournie. Chacun constate donc l'absence complète de badge quand la note n'est
+	 * pas exposée, et reprend ses mesures dès qu'elle l'est. Un test supprimé aurait laissé la
+	 * régression possible sans que rien ne la signale.
+	 */
+	const noteExposee = async ( page ) => ( await page.locator( '.tfp-google-badge' ).count() ) > 0;
+
+	for ( const route of routesNues ) {
+		test( `${ route } : badge sans fond, sans filet, sans rayon`, async ( { page } ) => {
+			await page.goto( route );
+			if ( ! ( await noteExposee( page ) ) ) {
+				await expect( page.locator( '.tfp-google-badge' ) ).toHaveCount( 0 );
+				return;
+			}
+			const badge = page.locator( '.tfp-google-badge--nu' ).first();
+			await expect( badge ).toBeVisible();
+			const s = await badge.evaluate( ( el ) => {
+				const c = getComputedStyle( el );
+				return { fond: c.backgroundColor, filet: parseFloat( c.borderTopWidth ) || 0, rayon: parseFloat( c.borderTopLeftRadius ) || 0 };
+			} );
+			expect( s.fond ).toBe( 'rgba(0, 0, 0, 0)' );
+			expect( s.filet ).toBe( 0 );
+			expect( s.rayon ).toBe( 0 );
+			// Et aucune pastille encadrée résiduelle dans l'eyebrow de ces pages.
+			await expect( page.locator( '.tfp-hero__eyebrow .tfp-google-badge--inline' ) ).toHaveCount( 0 );
+		} );
+	}
+
+	test( 'accueil : le hero garde sa pastille blanche encadrée (non-régression)', async ( { page } ) => {
+		await page.goto( '/' );
+		if ( ! ( await noteExposee( page ) ) ) {
+			await expect( page.locator( '.tfp-google-badge' ) ).toHaveCount( 0 );
+			return;
+		}
+		const badge = page.locator( '.tfp-hero .tfp-google-badge--inline' ).first();
+		await expect( badge ).toBeVisible();
+		const s = await badge.evaluate( ( el ) => {
+			const c = getComputedStyle( el );
+			return { fond: c.backgroundColor, rayon: parseFloat( c.borderTopLeftRadius ) || 0 };
+		} );
+		expect( s.fond ).toBe( 'rgb(255, 255, 255)' );
+		expect( s.rayon ).toBeGreaterThanOrEqual( 40 );
+	} );
+
+	test( 'tarifs : le témoignage est nu, centré, et garde son marquage provisoire', async ( { page } ) => {
+		// La maquette pose la citation « Un devis clair… » NUE : aucun ancêtre encadré jusqu'au
+		// corps de page. La carte commune (fond blanc, rayon 18) comptait une carte de plus.
+		await page.goto( '/tarifs/' );
+		const figure = page.locator( '.tfp-testimonial--plain.tfp-testimonial--centre .tfp-testimonial' ).first();
+		await expect( figure ).toBeVisible();
+		const s = await figure.evaluate( ( el ) => {
+			const c = getComputedStyle( el );
+			return { fond: c.backgroundColor, filet: parseFloat( c.borderTopWidth ) || 0, rayon: parseFloat( c.borderTopLeftRadius ) || 0, centre: c.textAlign };
+		} );
+		expect( s.fond ).toBe( 'rgba(0, 0, 0, 0)' );
+		expect( s.filet ).toBe( 0 );
+		expect( s.rayon ).toBe( 0 );
+		expect( s.centre ).toBe( 'center' );
+		// Le marquage provisoire survit au changement de forme (CLAUDE.md §5.5).
+		await expect( figure ).toHaveAttribute( 'data-tfp-provisional', '1' );
+		await expect( figure.locator( '[data-tfp-provisional-notice]' ) ).toBeVisible();
+	} );
+
+	test( 'pilier : la pastille est seule dans l’eyebrow, sans badge région', async ( { page } ) => {
+		// La maquette du pilier pose la pastille SEULE au-dessus du H1. Le badge région du thème
+		// partageait sa rangée (35 px) et faisait compter 2 colonnes contre 1 (relevé G23).
+		await page.goto( '/nettoyage-professionnel/' );
+		const eyebrow = page.locator( '.tfp-hero__eyebrow' ).first();
+		if ( ! ( await noteExposee( page ) ) ) {
+			await expect( page.locator( '.tfp-google-badge' ) ).toHaveCount( 0 );
+			// Le badge région reste absent de cet eyebrow, note ou pas : c'est le relevé G23.
+			await expect( eyebrow.locator( '.tfp-region-badge' ) ).toHaveCount( 0 );
+			return;
+		}
+		await expect( eyebrow.locator( '.tfp-google-badge--inline' ) ).toHaveCount( 1 );
+		await expect( eyebrow.locator( '.tfp-region-badge' ) ).toHaveCount( 0 );
+	} );
+} );
+
+test.describe( 'G23 · prestations-accueil-segmentees — carte segmentée claire, pas quatre cartes marine', () => {
+	test( 'accueil : les quatre tuiles secondaires forment une carte segmentée claire', async ( { page } ) => {
+		// Maquette : UNE carte 1180×123 — grille auto-fit base 220, gap 1px sur fond #DCE7EB qui
+		// dessine les séparations, rayon 16, overflow hidden ; cellules blanches 20/22, intitulé
+		// 17 px/700, description 13,5 px. Le thème rendait quatre cartes marine détachées.
+		await page.goto( '/' );
+		const grille = page.locator( '.tfp-grid--divided' ).first();
+		await expect( grille ).toBeVisible();
+		const g = await grille.evaluate( ( el ) => {
+			const c = getComputedStyle( el );
+			return { gap: c.gap, rayon: parseFloat( c.borderTopLeftRadius ), debord: c.overflow };
+		} );
+		expect( g.gap ).toBe( '1px' );
+		expect( g.rayon ).toBe( 16 );
+		expect( g.debord ).toBe( 'hidden' );
+
+		const tuile = grille.locator( '.tfp-service-tile' ).first();
+		const t = await tuile.evaluate( ( el ) => {
+			const c = getComputedStyle( el );
+			const titre = getComputedStyle( el.querySelector( '.tfp-service-tile__title' ) );
+			const desc = getComputedStyle( el.querySelector( '.tfp-service-tile__desc' ) );
+			return {
+				fond: c.backgroundColor,
+				rayon: parseFloat( c.borderTopLeftRadius ) || 0,
+				pad: c.padding,
+				titreTaille: titre.fontSize,
+				titreGraisse: titre.fontWeight,
+				descTaille: desc.fontSize,
+			};
+		} );
+		expect( t.fond ).toBe( 'rgb(255, 255, 255)' );
+		expect( t.rayon ).toBe( 0 );
+		expect( t.pad ).toBe( '20px 22px' );
+		expect( t.titreTaille ).toBe( '17px' );
+		expect( t.titreGraisse ).toBe( '700' );
+		expect( t.descTaille ).toBe( '13.5px' );
+	} );
+
+	test( 'zone : les tuiles de prestation restent des cartes marine (non-régression)', async ( { page } ) => {
+		await page.goto( '/zones-intervention/cote-dor/dijon/' );
+		const tuile = page.locator( '.tfp-service-tiles .tfp-service-tile' ).first();
+		await expect( tuile ).toBeVisible();
+		const t = await tuile.evaluate( ( el ) => {
+			const c = getComputedStyle( el );
+			return { fond: c.backgroundColor, rayon: parseFloat( c.borderTopLeftRadius ) || 0 };
+		} );
+		expect( t.rayon ).toBe( 14 );
+		expect( t.fond ).not.toBe( 'rgb(255, 255, 255)' );
+	} );
+} );
+
+test.describe( 'G23 · couverture régionale de l’accueil — rangée étirée, liens sur une ligne', () => {
+	test.use( { viewport: { width: 1440, height: 900 } } );
+
+	test( 'les deux colonnes partagent leur ordonnée (pas de centrage vertical)', async ( { page } ) => {
+		// Maquette : rangée flex SANS align-items — les colonnes s'étirent. Le centrage du thème
+		// posait la carte des départements 90 px sous le haut de la colonne de liens : l'inventaire
+		// la comptait seule sur sa rangée (colonnes 2 → 1).
+		await page.goto( '/' );
+		const rangee = page.locator( '.tfp-couverture' );
+		await expect( rangee ).toBeVisible();
+		const y = await rangee.evaluate( ( el ) => {
+			const enfants = [ ...el.children ].map( ( c ) => c.getBoundingClientRect().top );
+			return Math.abs( enfants[ 0 ] - enfants[ 1 ] );
+		} );
+		expect( y ).toBeLessThanOrEqual( 2 );
+	} );
+
+	test( 'chaque lien de département tient sur une ligne', async ( { page } ) => {
+		// Maquette : 187×49 — nom à gauche, numéro à droite, une seule ligne. Le repli à 75 px
+		// faisait compter deux cartes en surplus (« Yonne 89 », « Territoire de Belfort 90 »).
+		await page.goto( '/' );
+		const liens = page.locator( '.tfp-dept-link' );
+		await expect( liens ).toHaveCount( 8 );
+		for ( let i = 0; i < 8; i++ ) {
+			const h = await liens.nth( i ).evaluate( ( el ) => el.getBoundingClientRect().height );
+			expect( h, `lien de département ${ i + 1 } replié sur deux lignes` ).toBeLessThanOrEqual( 56 );
+		}
+		await expect( liens.first() ).toHaveCSS( 'font-size', '14.5px' );
+	} );
+} );
+
+test.describe( 'G23 · tarif-prestation-alignement — bande Exemple des prestations', () => {
+	test.use( { viewport: { width: 1440, height: 900 } } );
+
+	test( 'la carte Exemple porte la géométrie déclarée par la maquette', async ( { page } ) => {
+		await page.goto( '/prestations/commerces/' );
+		const carte = page.locator( '.tfp-presta-tarif > .tfp-price-example' );
+		await expect( carte ).toBeVisible();
+		await expect( carte ).toHaveCSS( 'padding', '28px' );
+		await expect( carte ).toHaveCSS( 'border-top-left-radius', '18px' );
+		const valeur = carte.locator( '.tfp-price-example__value' );
+		await expect( valeur ).toHaveCSS( 'font-size', '38px' );
+		// #174A81 : le montant est en bleu principal dans la maquette, pas en couleur de texte.
+		await expect( valeur ).toHaveCSS( 'color', 'rgb(23, 74, 129)' );
+	} );
+
+	test( 'les deux boîtes centrées ont des ordonnées décalées, comme la maquette', async ( { page } ) => {
+		// Maquette : align-items:center et des hauteurs franchement différentes (265 contre ~212) —
+		// chaque boîte compte pour une colonne de 1. Les conteneurs intermédiaires du thème, de
+		// hauteurs voisines, faisaient partager l'ordonnée : 2 colonnes comptées (5 occurrences).
+		await page.goto( '/prestations/commerces/' );
+		const rangee = page.locator( '.tfp-presta-tarif' );
+		await expect( rangee ).toHaveCSS( 'align-items', 'center' );
+		const delta = await rangee.evaluate( ( el ) => {
+			const tops = [ ...el.children ].map( ( c ) => c.getBoundingClientRect().top );
+			return Math.abs( tops[ 0 ] - tops[ 1 ] );
+		} );
+		expect( delta ).toBeGreaterThan( 8 );
+	} );
+} );
+
+test.describe( 'G23 · tarif-region-triple — la bande tarifaire de la région en composant de zone', () => {
+	test.use( { viewport: { width: 1440, height: 900 } } );
+
+	test( 'trois colonnes d’ordonnée partagée : texte, exemple, témoignage', async ( { page } ) => {
+		// Maquette : l'architecture .tfp-zone-tarif des pages de zone — trois colonnes de
+		// 394/344/374 à 1440 px. Le composant générique rendait deux cartes de 573 px sur une
+		// grille statique, texte au-dessus : 2 colonnes comptées contre 3.
+		await page.goto( '/zones-intervention/bourgogne-franche-comte/' );
+		const bande = page.locator( '.tfp-zone-tarif' );
+		await expect( bande ).toBeVisible();
+		await expect( bande.locator( '> div' ).first() ).toContainText( 'Un tarif régional unique' );
+		const mesure = await bande.evaluate( ( el ) => {
+			const enfants = [ ...el.children ].map( ( c ) => {
+				const r = c.getBoundingClientRect();
+				return { top: Math.round( r.top ), largeur: Math.round( r.width ) };
+			} );
+			return enfants;
+		} );
+		expect( mesure.length ).toBe( 3 );
+		// Ordonnée partagée (align-items: stretch du composant de zone).
+		expect( Math.abs( mesure[ 0 ].top - mesure[ 1 ].top ) ).toBeLessThanOrEqual( 2 );
+		expect( Math.abs( mesure[ 1 ].top - mesure[ 2 ].top ) ).toBeLessThanOrEqual( 2 );
+		// Largeurs relevées sur la maquette à 1440 px : 394 / 344 / 374 (± arrondis de flex).
+		expect( Math.abs( mesure[ 0 ].largeur - 394 ) ).toBeLessThanOrEqual( 2 );
+		expect( Math.abs( mesure[ 1 ].largeur - 344 ) ).toBeLessThanOrEqual( 2 );
+		expect( Math.abs( mesure[ 2 ].largeur - 374 ) ).toBeLessThanOrEqual( 2 );
+		// Le témoignage régional reste marqué provisoire (CLAUDE.md §5.5).
+		await expect( bande.locator( '.tfp-testimonial[data-tfp-provisional="1"]' ) ).toHaveCount( 1 );
+	} );
+} );
+
+test.describe( 'G23 · /prestations/meubles/ à 1024 px — les règles déclarées du gabarit prestation', () => {
+	// La chute à 94 % venait de règles responsives déclarées par la maquette et absentes du
+	// thème, toutes inactives sous ~850 px : conteneur de lecture 820 px de la bande « Réponse
+	// directe », corps clamp(16px, 1.6vw, 20px), maillage 680 px, écart de grille
+	// clamp(22px, 2.6vw, 34px), max-width 620/560 des H2, H1 en pente 4vw, lède 600 px.
+	test.use( { viewport: { width: 1024, height: 900 } } );
+
+	test( 'la bande Réponse directe vit dans le conteneur de lecture de 820 px', async ( { page } ) => {
+		await page.goto( '/prestations/meubles/' );
+		const bande = page.locator( '.tfp-presta-reponse' );
+		await expect( bande ).toBeVisible();
+		const largeur = await bande.evaluate( ( el ) => el.getBoundingClientRect().width );
+		expect( largeur ).toBeLessThanOrEqual( 820 );
+		await expect( bande.locator( '.tfp-maillage' ) ).toHaveCSS( 'max-width', '680px' );
+		await expect( bande.locator( '.tfp-maillage' ) ).toHaveCSS( 'font-size', '15.5px' );
+	} );
+
+	test( 'typographies et écarts déclarés : corps 1.6vw plafond 20, grille 2.6vw, H1 4vw', async ( { page } ) => {
+		await page.goto( '/prestations/meubles/' );
+		// À 1024 px : 1.6vw = 16.384px, 2.6vw = 26.624px, 4vw = 40.96px.
+		await expect( page.locator( '.tfp-direct-answer__text' ) ).toHaveCSS( 'font-size', '16.384px' );
+		await expect( page.locator( '.tfp-detail-grid' ).first() ).toHaveCSS( 'gap', '26.624px' );
+		await expect( page.locator( '.tfp-hero__content h1' ) ).toHaveCSS( 'font-size', '40.96px' );
+		// La variante orga garde son écart déclaré de 18 px.
+		await expect( page.locator( '.tfp-detail-grid--orga' ) ).toHaveCSS( 'gap', '18px' );
+	} );
+
+	test( 'zone et article gardent leurs valeurs (non-régression du scope)', async ( { page } ) => {
+		// Le corps de la réponse directe des pages de zone reste clamp(17px, 1.6vw, 19px) :
+		// à 1024 px, 1.6vw = 16.384 < 17 → 17px.
+		await page.goto( '/zones-intervention/cote-dor/dijon/' );
+		await expect( page.locator( '.tfp-direct-answer__text' ).first() ).toHaveCSS( 'font-size', '17px' );
+	} );
+} );

@@ -43,8 +43,20 @@ $page = tfp_static_page_data( 'recrutement' );
 <section class="tfp-hero">
 	<div class="tfp-hero__content">
 		<div class="tfp-hero__eyebrow">
-			<a class="tfp-region-badge" href="<?php echo esc_url( home_url( '/zones-intervention/bourgogne-franche-comte/' ) ); ?>"><?php echo esc_html( $site['address_region'] ); ?></a>
-			<?php tfp_google_rating_badge( 'inline' ); ?>
+			<?php
+			/*
+			 * PAS de badge région dans ce hero — relevé sur la maquette (G26 §8/§9).
+			 *
+			 * Le prototype ne pose ce badge que sur les pages qui parlent d'un territoire : la page
+			 * région, les huit départements, les dix-huit villes, les six prestations et la page
+			 * tarifs. Les pages institutionnelles — à propos, pourquoi nous, notre fonctionnement,
+			 * avis, index des prestations, index des zones, recrutement — n'en portent pas. Le thème
+			 * l'ajoutait sur les sept, soit un composant de 35 px et une rangée de plus au-dessus de
+			 * chaque H1, ce qui décalait tout le hero. Trois de ces routes en sortaient de la plage de
+			 * fidélité au relevé de base.
+			 */
+			?>
+			<?php tfp_google_rating_badge( 'nu' ); ?>
 		</div>
 		<h1><?php echo esc_html( $page['h1'] ); ?></h1>
 		<?php foreach ( $page['lede'] as $lede ) : ?>
@@ -52,8 +64,37 @@ $page = tfp_static_page_data( 'recrutement' );
 		<?php endforeach; ?>
 		<div class="tfp-action-row" style="margin-top:24px">
 			<?php
-			tfp_button( array( 'label' => 'Demander mon devis', 'href' => home_url( '/demande-de-devis/' ), 'variant' => 'primary' ) );
-			tfp_button( array( 'label' => '☎ Appeler ' . explode( ' ', $site['manager'] )[0], 'href' => 'tel:' . $site['phone_href'], 'variant' => 'secondary' ) );
+			/*
+			 * PARCOURS DE CANDIDATURE, et non appels commerciaux — corrigé en G26 §5.
+			 *
+			 * Le hero affichait « Demander mon devis » et « Appeler Audrey » : les deux commandes
+			 * de conversion commerciale du site, sur la seule page qui ne s'adresse pas à un
+			 * client. Un candidat n'y trouvait aucun moyen de candidater avant le bas de page.
+			 * La maquette y pose « Envoyer ma candidature » et le numéro en clair ; ce sont ces
+			 * deux commandes, avec leur géométrie relevée.
+			 *
+			 * SEULE la destination du premier bouton s'écarte de la maquette, qui pointe vers un
+			 * `mailto:`. CLAUDE.md §8 est explicite : la page renvoie vers le site carrière
+			 * existant, sans dupliquer de formulaire de candidature ni collecter de CV ici. Une
+			 * règle du projet l'emporte sur le prototype (CLAUDE.md §2), et aucun second
+			 * formulaire n'est créé — c'est un lien, pas un formulaire.
+			 */
+			tfp_button(
+				array(
+					'label'   => 'Envoyer ma candidature',
+					'href'    => $careers_url,
+					'variant' => 'primary',
+					'mesures' => array( 'pad_v' => '15px', 'pad_h' => '24px', 'taille' => '17px', 'graisse' => 700, 'hauteur' => '60px' ),
+				)
+			);
+			tfp_button(
+				array(
+					'label'   => '☎ ' . $site['phone'],
+					'href'    => 'tel:' . $site['phone_href'],
+					'variant' => 'secondary',
+					'mesures' => array( 'pad_v' => '15px', 'pad_h' => '22px', 'taille' => '17px', 'graisse' => 600, 'hauteur' => '60px' ),
+				)
+			);
 			?>
 		</div>
 	</div>
@@ -74,6 +115,20 @@ $page = tfp_static_page_data( 'recrutement' );
 	</div>
 </section>
 
-<?php get_template_part( 'template-parts/components/static-blocks', null, array( 'key' => 'recrutement' ) ); ?>
+<?php
+/*
+ * La commande « Envoyer ma candidature » de la bande finale pointe, dans le prototype, vers un
+ * `mailto:`. CLAUDE.md §8 impose le site carrière : la substitution est déclarée ici, en clair,
+ * plutôt que devinée par le composant d'après un libellé.
+ */
+get_template_part(
+	'template-parts/components/static-blocks',
+	null,
+	array(
+		'key'   => 'recrutement',
+		'liens' => array( 'mailto:' . $site['email'] => $careers_url ),
+	)
+);
+?>
 
 <?php get_footer(); ?>

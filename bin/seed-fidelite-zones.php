@@ -103,6 +103,11 @@ if ( empty( $posts ) ) {
 		'Nous ne réalisons ni nettoyage industriel lourd, ni nettoyage de chaînes de production, ni nettoyage agroalimentaire spécialisé, ni bio-nettoyage hospitalier, ni traitement chimique, ni désamiantage, ni intervention en locaux à risque. Ces prestations exigent des protocoles et des habilitations spécifiques que nous n\'avons pas.',
 	) ), $id );
 	tfp_seed_set_field( 'methode_3_liste', '', $id );
+	tfp_seed_set_field( 'fonctionnement', implode( "\n", array(
+		'Depuis Saint-Apollinaire, l\'agglomération dijonnaise fait partie de nos secteurs prioritaires. L\'organisation de plusieurs sites sur une même matinée y est étudiée selon le planning ; la faisabilité d\'une prestation courte est étudiée au cas par cas, selon l\'adresse et le planning.',
+		'Sur les secteurs plus éloignés du département, le regroupement des interventions sur une même journée est étudié selon le planning, avec des créneaux plus longs. Les éventuelles indemnités kilométriques dépendent de l\'adresse des locaux, du planning et des conditions d\'intervention. Elles sont précisées dans le devis.',
+	) ), $id );
+	tfp_seed_set_field( 'fonctionnement_bloc', 2, $id );
 	tfp_seed_set_field( 'locaux_1_titre', 'Nos villes d\'intervention dans le département', $id );
 	tfp_seed_set_field( 'locaux_1_texte', '', $id );
 	tfp_seed_set_field( 'locaux_1_type', 'villes', $id );
@@ -233,6 +238,11 @@ if ( empty( $posts ) ) {
 		'En ponctuel, nous intervenons pour des remises en état après travaux, des fins de bail, des ouvertures de local ou un grand nettoyage saisonnier. Sur Besançon, ces interventions demandent un peu plus de délai de programmation qu\'en Côte-d\'Or : nous confirmons la date au devis.',
 	) ), $id );
 	tfp_seed_set_field( 'methode_3_liste', '', $id );
+	tfp_seed_set_field( 'fonctionnement', implode( "\n", array(
+		'Besançon est à environ une heure de route de notre adresse. Cela change la façon d\'organiser le travail : nous ne pouvons pas proposer un passage de trente minutes, et nous évitons les interventions isolées non planifiées. En revanche, un créneau régulier, fixé à l\'avance, avec un volume d\'heures suffisant, fonctionne très bien.',
+		'Concrètement, le regroupement des passages sur un même secteur est étudié selon le planning, l\'intervenant pouvant enchaîner plusieurs prestations sur le secteur. Le taux horaire reste de 27 € HT/h dans toute la région. Les éventuelles indemnités kilométriques dépendent de l\'adresse des locaux, du planning et des conditions d\'intervention. Elles sont précisées dans le devis.',
+	) ), $id );
+	tfp_seed_set_field( 'fonctionnement_bloc', 2, $id );
 	tfp_seed_set_field( 'locaux_1_titre', 'Nos villes d\'intervention dans le département', $id );
 	tfp_seed_set_field( 'locaux_1_texte', '', $id );
 	tfp_seed_set_field( 'locaux_1_type', 'villes', $id );
@@ -362,6 +372,11 @@ if ( empty( $posts ) ) {
 		'Les consignes s\'affinent au fil des premiers passages : ordre de passage, points sensibles, éléments à ne pas déplacer, matériel laissé sur site. Nous faisons ensuite un point avec vous, par téléphone ou sur place. Toute adaptation du volume horaire ou de l\'organisation est discutée avec vous avant d\'être appliquée, et fait l\'objet d\'un devis actualisé.',
 	) ), $id );
 	tfp_seed_set_field( 'methode_3_liste', '', $id );
+	tfp_seed_set_field( 'fonctionnement', implode( "\n", array(
+		'Sur Dole, une visite préalable est généralement organisée. Sur Lons-le-Saunier, nous procédons souvent par échange détaillé complété de photos, puis nous ajustons après les premiers passages : c\'est plus honnête que d\'annoncer un volume d\'heures approximatif au téléphone.',
+		'Chaque site dispose d\'un cahier de liaison où l\'intervenant note ce qui a été fait et ce qui mérite votre attention. Nous cherchons à maintenir le même intervenant d\'une semaine sur l\'autre et vous prévenons en cas de changement, avec transmission écrite des consignes au remplaçant.',
+	) ), $id );
+	tfp_seed_set_field( 'fonctionnement_bloc', 1, $id );
 	tfp_seed_set_field( 'locaux_1_titre', 'Nos villes d\'intervention dans le département', $id );
 	tfp_seed_set_field( 'locaux_1_texte', '', $id );
 	tfp_seed_set_field( 'locaux_1_type', 'villes', $id );
@@ -409,7 +424,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'faq_2', array( 'question' => 'Couvrez-vous le Haut-Jura, vers Saint-Claude ou Morez ?', 'reponse' => 'Ce ne sont pas nos secteurs prioritaires, en raison de la distance. Nous étudions les demandes au cas par cas, mais nous préférons annoncer clairement nos limites plutôt qu\'une couverture départementale complète.' ), $id );
 	tfp_seed_set_field( 'faq_3', array( 'question' => 'Le tarif est-il différent à Lons-le-Saunier ?', 'reponse' => 'Non, 27 € HT/h dans les deux villes. Les éventuelles indemnités kilométriques dépendent de l\'adresse des locaux, du planning et des conditions d\'intervention. Elles sont précisées dans le devis.' ), $id );
 	tfp_seed_set_field( 'faq_4', array( 'question' => 'Faites-vous du nettoyage agroalimentaire ?', 'reponse' => 'Non. Sur les sites agroalimentaires, nous intervenons uniquement dans les bureaux, accueils, salles de réunion et vestiaires de bureau. Les zones de production relèvent d\'entreprises spécialisées.' ), $id );
-	tfp_seed_set_field( 'faq_5', array( 'question' => 'Pouvez-vous entretenir une location meublée dans le Jura ?', 'reponse' => 'Oui, entre deux séjours ou en fin de bail : ménage complet, changement de linge, vérification des consommables et signalement photographique des dégradations, chacun possible lorsque prévu dans le cahier des charges et chiffré dans le devis.' ), $id );
+	tfp_seed_set_field( 'faq_5', array( 'question' => 'Pouvez-vous entretenir une location meublée dans le Jura ?', 'reponse' => 'Oui, entre deux séjours ou en fin de bail : ménage complet, changement de linge, vérification des consommables et signalement photographique des dégradations, chacun possible lorsqu\'il est prévu au cahier des charges et chiffré au devis.' ), $id );
 	tfp_seed_set_field( 'faq_6', array( 'question' => 'Quel délai pour une intervention ponctuelle ?', 'reponse' => 'Le délai de démarrage dépend des disponibilités, de l\'adresse, du volume horaire et de l\'organisation nécessaire. Il est confirmé lors de l\'établissement du devis.' ), $id );
 	tfp_seed_set_field( 'contact_titre', '', $id );
 	tfp_seed_set_field( 'contact_texte', '', $id );
@@ -462,7 +477,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'recit_4_titre', 'Copropriétés : le détail de la prestation', $id );
 	tfp_seed_set_field( 'recit_4_texte', implode( "\n", array(
 		'Pour un immeuble, le cahier des charges précise le circuit exact : hall d\'entrée, boîtes aux lettres, sol et vitrages de la porte, cage d\'escalier étage par étage, rampes, ascenseur, paliers, local à conteneurs et abords immédiats. Nous indiquons ce qui est fait à chaque passage et ce qui est fait périodiquement.',
-		'La sortie et la rentrée des bacs sont possible lorsque prévu dans le cahier des charges et chiffré dans le devis ; les jours retenus y sont inscrits. Le syndic ou le conseil syndical reçoit un point de suivi, et le cahier de liaison sert de trace : consommables à recommander, ampoule grillée, dégradation constatée, encombrant déposé dans le local.',
+		'La sortie et la rentrée des bacs sont possibles lorsqu\'elles sont prévues au cahier des charges et chiffrées au devis ; les jours retenus y sont inscrits. Le syndic ou le conseil syndical reçoit un point de suivi, et le cahier de liaison sert de trace : consommables à recommander, ampoule grillée, dégradation constatée, encombrant déposé dans le local.',
 	) ), $id );
 	tfp_seed_set_field( 'recit_4_liste', '', $id );
 	tfp_seed_set_field( 'tarif_titre', 'Tarif et déplacements', $id );
@@ -492,6 +507,11 @@ if ( empty( $posts ) ) {
 		'Si l\'un des trois ne passe pas, nous vous le disons et nous proposons une alternative : autre créneau, fréquence différente, regroupement de passages. Et si aucune solution n\'est tenable, nous préférons refuser plutôt que d\'installer une prestation qui se dégradera au bout de deux mois. C\'est aussi pour cela que nos plannings nivernais tiennent dans le temps.',
 	) ), $id );
 	tfp_seed_set_field( 'methode_3_liste', '', $id );
+	tfp_seed_set_field( 'fonctionnement', implode( "\n", array(
+		'Nevers fait partie de nos secteurs éloignés. Cela impose une discipline : créneaux réguliers, volumes d\'heures regroupés, plannings convenus à l\'avance. En contrepartie, la prestation est stable et l\'intervenant connaît le site, ce qui compte beaucoup pour un immeuble ou un cabinet.',
+		'Nous ne proposons pas ici de passages courts et improvisés : ce serait une promesse intenable. Si votre besoin est ponctuel et urgent, dites-le franchement au téléphone — nous vous répondrons aussi franchement sur notre capacité à le tenir.',
+	) ), $id );
+	tfp_seed_set_field( 'fonctionnement_bloc', 1, $id );
 	tfp_seed_set_field( 'locaux_1_titre', 'Nos villes d\'intervention dans le département', $id );
 	tfp_seed_set_field( 'locaux_1_texte', '', $id );
 	tfp_seed_set_field( 'locaux_1_type', 'villes', $id );
@@ -620,6 +640,11 @@ if ( empty( $posts ) ) {
 		'Les consommables — papier, savon, sacs — peuvent être gérés par vous ou par nous. Dans le second cas, ils sont refacturés au prix d\'achat, sans marge, et le cahier de liaison signale les niveaux bas avant la rupture. C\'est un détail qui évite les appels du lundi matin.',
 	) ), $id );
 	tfp_seed_set_field( 'methode_3_liste', '', $id );
+	tfp_seed_set_field( 'fonctionnement', implode( "\n", array(
+		'La majorité de nos prestations haut-saônoises se déroule en dehors des heures d\'ouverture. Cela suppose une organisation d\'accès formalisée : remise de clé ou de badge contre décharge écrite, code d\'alarme consigné, procédure de fermeture rappelée dans le cahier des charges. Nous ne conservons aucun accès sans document signé.',
+		'En cas de changement d\'intervenant, la remise des accès est refaite dans les mêmes conditions et vous en êtes informé. Les interventions de nuit, le dimanche et les jours fériés font l\'objet d\'une majoration de 10 %, indiquée au devis dès qu\'elle s\'applique.',
+	) ), $id );
+	tfp_seed_set_field( 'fonctionnement_bloc', 1, $id );
 	tfp_seed_set_field( 'locaux_1_titre', 'Nos villes d\'intervention dans le département', $id );
 	tfp_seed_set_field( 'locaux_1_texte', '', $id );
 	tfp_seed_set_field( 'locaux_1_type', 'villes', $id );
@@ -742,6 +767,11 @@ if ( empty( $posts ) ) {
 		'En ponctuel, nous intervenons pour des remises en état après travaux, des fins de bail, des ouvertures de local et des grands nettoyages saisonniers. Le tourisme viticole génère aussi des demandes sur les locations meublées entre deux séjours, à programmer à l\'avance en haute saison.',
 	) ), $id );
 	tfp_seed_set_field( 'methode_3_liste', '', $id );
+	tfp_seed_set_field( 'fonctionnement', implode( "\n", array(
+		'Une visite est organisée sur les deux bassins dès que la configuration le justifie : nous relevons les surfaces, les revêtements, les contraintes d\'accès et d\'horaires, puis nous rédigeons un cahier des charges détaillé, espace par espace. Le devis suit sous 24 heures avec un volume d\'heures argumenté.',
+		'Les intervenants sont recrutés et suivis par Audrey. Nous cherchons à confier chaque site au même intervenant sur la durée ; en cas d\'absence ou de départ, nous cherchons un remplaçant, lui transmettons les consignes écrites et vous prévenons du changement. Un point de suivi permet d\'ajuster ce qui doit l\'être.',
+	) ), $id );
+	tfp_seed_set_field( 'fonctionnement_bloc', 2, $id );
 	tfp_seed_set_field( 'locaux_1_titre', 'Nos villes d\'intervention dans le département', $id );
 	tfp_seed_set_field( 'locaux_1_texte', '', $id );
 	tfp_seed_set_field( 'locaux_1_type', 'villes', $id );
@@ -871,6 +901,11 @@ if ( empty( $posts ) ) {
 		'Les éventuelles indemnités kilométriques dépendent de l\'adresse des locaux, du planning et des conditions d\'intervention. Elles sont précisées dans le devis. Rien n\'apparaît après signature : s\'il faut ajouter une prestation, elle fait l\'objet d\'un devis complémentaire que vous validez avant intervention.',
 	) ), $id );
 	tfp_seed_set_field( 'methode_3_liste', '', $id );
+	tfp_seed_set_field( 'fonctionnement', implode( "\n", array(
+		'Sur ce département, la mise en place commence souvent par un échange détaillé complété de photos ou d\'un plan, puis par une visite lorsque le volume le justifie. Le cahier des charges liste les espaces, les tâches par passage et les tâches périodiques : c\'est le document de référence pour vous comme pour l\'intervenant.',
+		'Le suivi s\'appuie sur un cahier de liaison sur site et un point de suivi avec Audrey. Vous n\'avez pas besoin d\'être présent pendant l\'intervention pour savoir ce qui a été fait : ce qui a été traité et ce qui mérite votre attention y sont notés à chaque passage.',
+	) ), $id );
+	tfp_seed_set_field( 'fonctionnement_bloc', 1, $id );
 	tfp_seed_set_field( 'locaux_1_titre', 'Nos villes d\'intervention dans le département', $id );
 	tfp_seed_set_field( 'locaux_1_texte', '', $id );
 	tfp_seed_set_field( 'locaux_1_type', 'villes', $id );
@@ -999,6 +1034,11 @@ if ( empty( $posts ) ) {
 		'Le premier passage se fait en présence d\'Audrey ou avec un point téléphonique dans la journée, pour valider le circuit, les accès et les consignes de sécurité du site. Les premiers passages permettent de vérifier l\'adéquation entre le cahier des charges, le temps prévu et les contraintes des locaux. Si un écart significatif est constaté, Top-Famille Pro échange avec le client et peut proposer une adaptation de l\'organisation ou du volume horaire.',
 	) ), $id );
 	tfp_seed_set_field( 'methode_3_liste', '', $id );
+	tfp_seed_set_field( 'fonctionnement', implode( "\n", array(
+		'Une fois le devis accepté, l\'organisation du planning est l\'étape qui demande le plus de préparation sur un département éloigné. Le délai de démarrage dépend des disponibilités, de l\'adresse, du volume horaire et de l\'organisation nécessaire. Il est confirmé lors de l\'établissement du devis. Nous vous confirmons alors la date du premier passage et le nom de l\'intervenant recherché pour le site.',
+		'Le premier passage se fait en présence d\'Audrey ou avec un point téléphonique dans la journée, pour valider le circuit, les accès et les consignes de sécurité du site. Les premiers passages permettent de vérifier l\'adéquation entre le cahier des charges, le temps prévu et les contraintes des locaux. Si un écart significatif est constaté, Top-Famille Pro échange avec le client et peut proposer une adaptation de l\'organisation ou du volume horaire.',
+	) ), $id );
+	tfp_seed_set_field( 'fonctionnement_bloc', 3, $id );
 	tfp_seed_set_field( 'locaux_1_titre', 'Nos villes d\'intervention dans le département', $id );
 	tfp_seed_set_field( 'locaux_1_texte', '', $id );
 	tfp_seed_set_field( 'locaux_1_type', 'villes', $id );
@@ -1097,7 +1137,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'recit_4_titre', 'Commerces, cabinets et copropriétés', $id );
 	tfp_seed_set_field( 'recit_4_texte', implode( "\n", array(
 		'Pour un commerce du centre-ville, le passage se fait avant l\'ouverture : surface de vente, cabines ou zone d\'essayage, sanitaires clients, vitrages intérieurs et abords de la vitrine. Les rues piétonnes imposent des contraintes d\'accès véhicule que nous intégrons au planning plutôt que de les découvrir le premier jour.',
-		'Pour les cabinets médicaux et dentaires, le cahier des charges prévoit l\'entretien courant de l\'accueil, de la salle d\'attente, des bureaux, des sanitaires, des sols et des surfaces courantes. Top-Famille Pro ne réalise pas de bio-nettoyage hospitalier, de stérilisation, de traitement des DASRI ni de protocole médical spécialisé. Pour les copropriétés, nous traitons hall, cages d\'escalier, ascenseur, paliers, local à conteneurs et sortie des bacs possible lorsque prévu dans le cahier des charges et chiffré dans le devis, selon le calendrier de collecte applicable à l\'adresse.',
+		'Pour les cabinets médicaux et dentaires, le cahier des charges prévoit l\'entretien courant de l\'accueil, de la salle d\'attente, des bureaux, des sanitaires, des sols et des surfaces courantes. Top-Famille Pro ne réalise pas de bio-nettoyage hospitalier, de stérilisation, de traitement des DASRI ni de protocole médical spécialisé. Pour les copropriétés, nous traitons hall, cages d\'escalier, ascenseur, paliers, local à conteneurs et sortie des bacs possible lorsqu\'elle est prévue au cahier des charges et chiffrée au devis, selon le calendrier de collecte applicable à l\'adresse.',
 	) ), $id );
 	tfp_seed_set_field( 'recit_4_liste', '', $id );
 	tfp_seed_set_field( 'recit_5_titre', 'Locations meublées et interventions ponctuelles', $id );
@@ -1145,6 +1185,11 @@ if ( empty( $posts ) ) {
 		'En cas d\'absence, de congés ou de départ, nous cherchons une solution de remplacement, transmettons les consignes écrites au remplaçant et vous informons du changement. Nous ne garantissons pas une continuité automatique — personne ne peut le faire honnêtement. Chaque site dispose d\'un cahier de liaison, et un point de suivi permet d\'ajuster ce qui doit l\'être.',
 	) ), $id );
 	tfp_seed_set_field( 'methode_4_liste', '', $id );
+	tfp_seed_set_field( 'fonctionnement', implode( "\n", array(
+		'Les intervenants sont recrutés par Audrey, en entretien individuel, avec vérification des références et une période d\'observation sur site. Nous cherchons à confier votre site au même intervenant d\'une semaine sur l\'autre : c\'est la régularité, plus que la longueur de la liste de tâches, qui fait la qualité perçue.',
+		'En cas d\'absence, de congés ou de départ, nous cherchons une solution de remplacement, transmettons les consignes écrites au remplaçant et vous informons du changement. Nous ne garantissons pas une continuité automatique — personne ne peut le faire honnêtement. Chaque site dispose d\'un cahier de liaison, et un point de suivi permet d\'ajuster ce qui doit l\'être.',
+	) ), $id );
+	tfp_seed_set_field( 'fonctionnement_bloc', 4, $id );
 	tfp_seed_set_field( 'locaux_1_titre', 'Nos prestations sur place', $id );
 	tfp_seed_set_field( 'locaux_1_texte', implode( "\n", array(
 		'Même méthode que partout ailleurs : celle de notre page nettoyage professionnel, avec le tarif de 27 € HT/h.',
@@ -1217,7 +1262,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'faq_3', array( 'question' => 'Pouvez-vous passer avant 8 h ?', 'reponse' => 'Oui, c\'est un créneau pouvant être envisagé à Dijon, pour les bureaux comme pour les commerces. Le tôt matin et la fin de journée sont les deux plages généralement retenues.' ), $id );
 	tfp_seed_set_field( 'faq_4', array( 'question' => 'Y a-t-il des frais de déplacement sur Dijon ?', 'reponse' => 'Les éventuelles indemnités kilométriques dépendent de l\'adresse des locaux, du planning et des conditions d\'intervention. Elles sont précisées dans le devis.' ), $id );
 	tfp_seed_set_field( 'faq_5', array( 'question' => 'Aurai-je toujours le même intervenant ?', 'reponse' => 'C\'est ce que nous recherchons pour chaque site dijonnais. Ce n\'est pas une garantie : en cas d\'absence ou de départ, nous cherchons un remplacement, transmettons les consignes écrites et vous prévenons.' ), $id );
-	tfp_seed_set_field( 'faq_6', array( 'question' => 'Entretenez-vous les copropriétés de la métropole ?', 'reponse' => 'Oui : halls, cages d\'escalier, ascenseurs, paliers, locaux à conteneurs et sortie des bacs possible lorsque prévu dans le cahier des charges et chiffré dans le devis, selon le calendrier de collecte applicable à l\'adresse. Nous travaillons avec des syndics comme avec des conseils syndicaux.' ), $id );
+	tfp_seed_set_field( 'faq_6', array( 'question' => 'Entretenez-vous les copropriétés de la métropole ?', 'reponse' => 'Oui : halls, cages d\'escalier, ascenseurs, paliers, locaux à conteneurs et sortie des bacs possible lorsqu\'elle est prévue au cahier des charges et chiffrée au devis, selon le calendrier de collecte applicable à l\'adresse. Nous travaillons avec des syndics comme avec des conseils syndicaux.' ), $id );
 	tfp_seed_set_field( 'faq_7', array( 'question' => 'Quel est le délai pour démarrer ?', 'reponse' => 'Le délai de démarrage dépend des disponibilités, de l\'adresse, du volume horaire et de l\'organisation nécessaire. Il est confirmé lors de l\'établissement du devis. Pour une intervention ponctuelle, la date est indiquée lors de l\'échange puis confirmée au devis.' ), $id );
 	tfp_seed_set_field( 'contact_titre', 'Nous contacter', $id );
 	tfp_seed_set_field( 'contact_texte', 'Audrey est votre interlocutrice unique, de la première visite au suivi mensuel. Un seul numéro pour toute la région : 06 36 17 63 39 — ou par e-mail à audrey.b@top-famille.fr. Nous n\'utilisons pas de numéro local différent selon la commune.', $id );
@@ -1313,6 +1358,11 @@ if ( empty( $posts ) ) {
 		'En cas d\'absence, de congés ou de départ, nous cherchons un remplacement, lui transmettons les consignes écrites et vous informons du changement. Nous ne promettons pas de continuité garantie. Le cahier de liaison sur site et le point de suivi avec Audrey permettent de suivre la prestation sans avoir à être présent.',
 	) ), $id );
 	tfp_seed_set_field( 'methode_4_liste', '', $id );
+	tfp_seed_set_field( 'fonctionnement', implode( "\n", array(
+		'Les intervenants sont recrutés et suivis par Audrey, avec vérification des références et observation sur site lors des premiers passages. Sur Besançon comme ailleurs, nous cherchons à confier votre site au même intervenant sur la durée : c\'est ce qui permet de repérer ce qu\'une liste de tâches ne dit pas.',
+		'En cas d\'absence, de congés ou de départ, nous cherchons un remplacement, lui transmettons les consignes écrites et vous informons du changement. Nous ne promettons pas de continuité garantie. Le cahier de liaison sur site et le point de suivi avec Audrey permettent de suivre la prestation sans avoir à être présent.',
+	) ), $id );
+	tfp_seed_set_field( 'fonctionnement_bloc', 4, $id );
 	tfp_seed_set_field( 'locaux_1_titre', 'Nos prestations sur place', $id );
 	tfp_seed_set_field( 'locaux_1_texte', implode( "\n", array(
 		'Même méthode que partout ailleurs : celle de notre page nettoyage professionnel, avec le tarif de 27 € HT/h.',
@@ -1445,8 +1495,8 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'recit_4_liste', '', $id );
 	tfp_seed_set_field( 'recit_5_titre', 'Copropriétés, meublés et interventions ponctuelles', $id );
 	tfp_seed_set_field( 'recit_5_texte', implode( "\n", array(
-		'Pour un immeuble, le circuit est écrit dans le cahier des charges : hall, boîtes aux lettres, sol et vitrage de la porte d\'entrée, cage d\'escalier étage par étage, rampes, paliers, local à conteneurs, sortie et rentrée des bacs possible lorsque prévu dans le cahier des charges et chiffré dans le devis. Le conseil syndical reçoit un point de suivi.',
-		'Pour les meublés, nous intervenons entre deux séjours : ménage complet ; le changement de linge, la vérification des consommables et le signalement photographique des dégradations sont possible lorsque prévu dans le cahier des charges et chiffré dans le devis. En ponctuel, nous traitons les remises en état après travaux, les fins de bail et les préparations de local avant ouverture.',
+		'Pour un immeuble, le circuit est écrit dans le cahier des charges : hall, boîtes aux lettres, sol et vitrage de la porte d\'entrée, cage d\'escalier étage par étage, rampes, paliers, local à conteneurs, sortie et rentrée des bacs possibles lorsqu\'elles sont prévues au cahier des charges et chiffrées au devis. Le conseil syndical reçoit un point de suivi.',
+		'Pour les meublés, nous intervenons entre deux séjours : ménage complet ; le changement de linge, la vérification des consommables et le signalement photographique des dégradations sont possibles lorsqu\'ils sont prévus au cahier des charges et chiffrés au devis. En ponctuel, nous traitons les remises en état après travaux, les fins de bail et les préparations de local avant ouverture.',
 	) ), $id );
 	tfp_seed_set_field( 'recit_5_liste', '', $id );
 	tfp_seed_set_field( 'tarif_titre', 'Tarif et exemple local', $id );
@@ -1488,6 +1538,11 @@ if ( empty( $posts ) ) {
 		'Les premiers passages permettent de vérifier l\'adéquation entre le cahier des charges, le temps prévu et les contraintes des locaux. Si un écart significatif est constaté, Top-Famille Pro échange avec le client et peut proposer une adaptation de l\'organisation ou du volume horaire. Si nous avons sous-estimé le temps nécessaire, nous vous le disons et nous corrigeons le devis : c\'est plus honnête que de réduire discrètement la liste des tâches pour tenir le budget annoncé.',
 	) ), $id );
 	tfp_seed_set_field( 'methode_4_liste', '', $id );
+	tfp_seed_set_field( 'fonctionnement', implode( "\n", array(
+		'Les intervenants sont recrutés par Audrey, avec vérification des références et une période d\'observation sur site. Sur Dole, nous cherchons à confier chaque site au même intervenant d\'une semaine sur l\'autre : pour un commerce ouvert six jours sur sept, la régularité de la personne compte autant que la liste des tâches.',
+		'En cas d\'absence, de congés ou de départ, nous cherchons un remplacement, transmettons les consignes écrites au remplaçant et vous informons du changement. Aucune continuité automatique n\'est promise. Le cahier de liaison sur site et le point de suivi permettent d\'ajuster la prestation au fil des semaines.',
+	) ), $id );
+	tfp_seed_set_field( 'fonctionnement_bloc', 3, $id );
 	tfp_seed_set_field( 'locaux_1_titre', 'Nos prestations sur place', $id );
 	tfp_seed_set_field( 'locaux_1_texte', implode( "\n", array(
 		'Même méthode que partout ailleurs : celle de notre page nettoyage professionnel, avec le tarif de 27 € HT/h.',
@@ -1613,7 +1668,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'recit_4_titre', 'Commerces, copropriétés et meublés', $id );
 	tfp_seed_set_field( 'recit_4_texte', implode( "\n", array(
 		'Pour un commerce du centre-ville, le passage se fait avant l\'ouverture : surface de vente, sanitaires clients, comptoir, vitrages intérieurs et abords de la vitrine, sortie des déchets. La réserve est traitée périodiquement, généralement une fois par semaine, selon un rythme convenu au devis.',
-		'Pour un immeuble, le circuit est écrit : hall, boîtes aux lettres, cage d\'escalier étage par étage, rampes, paliers, local à conteneurs, sortie et rentrée des bacs possible lorsque prévu dans le cahier des charges et chiffré dans le devis. Pour les meublés, nous intervenons entre deux séjours, avec ménage complet, le signalement photographique des dégradations étant possible lorsque prévu dans le cahier des charges et chiffré dans le devis.',
+		'Pour un immeuble, le circuit est écrit : hall, boîtes aux lettres, cage d\'escalier étage par étage, rampes, paliers, local à conteneurs, sortie et rentrée des bacs possibles lorsqu\'elles sont prévues au cahier des charges et chiffrées au devis. Pour les meublés, nous intervenons entre deux séjours, avec ménage complet, le signalement photographique des dégradations étant possibles lorsqu\'ils sont prévus au cahier des charges et chiffrés au devis.',
 	) ), $id );
 	tfp_seed_set_field( 'recit_4_liste', '', $id );
 	tfp_seed_set_field( 'recit_5_titre', 'Fréquences et horaires adaptés à la distance', $id );
@@ -1661,6 +1716,11 @@ if ( empty( $posts ) ) {
 		'Les consommables — papier, savon, sacs — sont gérés par vous ou par nous, au choix. Dans le second cas, ils sont refacturés au prix d\'achat, sans marge, et le cahier de liaison signale les niveaux bas avant la rupture plutôt qu\'après. Sur un secteur où nous ne passons qu\'une ou deux fois par semaine, cette anticipation compte.',
 	) ), $id );
 	tfp_seed_set_field( 'methode_4_liste', '', $id );
+	tfp_seed_set_field( 'fonctionnement', implode( "\n", array(
+		'Les intervenants sont recrutés par Audrey, en entretien individuel, avec vérification des références et observation sur site lors des premiers passages. Nous cherchons à confier chaque site au même intervenant sur la durée : sur un secteur éloigné, la stabilité de la personne est ce qui évite les allers-retours et les rappels de consignes.',
+		'En cas d\'absence, de congés ou de départ, nous cherchons une solution de remplacement, transmettons les consignes écrites et vous informons du changement — sans promettre une continuité garantie. Le cahier de liaison sur site et le point de suivi avec Audrey servent de fil conducteur, sans que vous ayez à être présent.',
+	) ), $id );
+	tfp_seed_set_field( 'fonctionnement_bloc', 3, $id );
 	tfp_seed_set_field( 'locaux_1_titre', 'Nos prestations sur place', $id );
 	tfp_seed_set_field( 'locaux_1_texte', implode( "\n", array(
 		'Même méthode que partout ailleurs : celle de notre page nettoyage professionnel, avec le tarif de 27 € HT/h.',
@@ -1779,7 +1839,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'recit_3_titre', 'Parties communes : le circuit détaillé', $id );
 	tfp_seed_set_field( 'recit_3_texte', implode( "\n", array(
 		'C\'est une prestation fréquemment étudiée pour les copropriétés. Le cahier des charges décrit le circuit exact : hall d\'entrée, sol et vitrage de la porte, boîtes aux lettres, cage d\'escalier étage par étage, rampes et plinthes, paliers, cabine et miroir d\'ascenseur, local à conteneurs et abords immédiats de l\'immeuble.',
-		'La sortie et la rentrée des bacs sont possible lorsque prévu dans le cahier des charges et chiffré dans le devis ; les jours retenus y sont inscrits. Nous distinguons les tâches faites à chaque passage de celles réalisées périodiquement — vitrages de cage d\'escalier, plinthes, local à vélos — pour éviter les malentendus entre le syndic, le conseil syndical et les résidents.',
+		'La sortie et la rentrée des bacs sont possibles lorsqu\'elles sont prévues au cahier des charges et chiffrées au devis ; les jours retenus y sont inscrits. Nous distinguons les tâches faites à chaque passage de celles réalisées périodiquement — vitrages de cage d\'escalier, plinthes, local à vélos — pour éviter les malentendus entre le syndic, le conseil syndical et les résidents.',
 	) ), $id );
 	tfp_seed_set_field( 'recit_3_liste', '', $id );
 	tfp_seed_set_field( 'recit_4_titre', 'Bureaux, commerces et cabinets', $id );
@@ -1833,6 +1893,11 @@ if ( empty( $posts ) ) {
 		'Pour une copropriété, s\'ajoute le détail du circuit étage par étage et le calendrier de sortie des bacs. Rien n\'apparaît après signature : toute prestation supplémentaire fait l\'objet d\'un devis complémentaire que vous validez avant intervention. Aucun engagement de durée n\'est demandé, et l\'arrêt se fait avec un simple préavis écrit.',
 	) ), $id );
 	tfp_seed_set_field( 'methode_4_liste', '', $id );
+	tfp_seed_set_field( 'fonctionnement', implode( "\n", array(
+		'Les intervenants sont recrutés par Audrey, avec vérification des références et observation lors des premiers passages. Sur un immeuble, la stabilité de l\'intervenant compte particulièrement : c\'est en revenant chaque semaine que l\'on remarque une ampoule grillée, un encombrant déposé dans le local ou une porte qui ferme mal.',
+		'En cas d\'absence, de congés ou de départ, nous cherchons un remplacement, lui transmettons les consignes écrites et vous informons du changement. Aucune continuité automatique n\'est garantie. Le cahier de liaison, laissé sur site, sert de trace pour le syndic comme pour le conseil syndical.',
+	) ), $id );
+	tfp_seed_set_field( 'fonctionnement_bloc', 2, $id );
 	tfp_seed_set_field( 'locaux_1_titre', 'Nos prestations sur place', $id );
 	tfp_seed_set_field( 'locaux_1_texte', implode( "\n", array(
 		'Même méthode que partout ailleurs : celle de notre page nettoyage professionnel, avec le tarif de 27 € HT/h.',
@@ -1964,7 +2029,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'recit_5_titre', 'Commerces, cabinets et parties communes', $id );
 	tfp_seed_set_field( 'recit_5_texte', implode( "\n", array(
 		'Pour un commerce du centre-ville, le passage se fait avant l\'ouverture : surface de vente, sanitaires clients, comptoir, vitrages intérieurs et abords de la vitrine. La réserve est traitée périodiquement selon un rythme fixé au devis, généralement une fois par semaine.',
-		'Pour les cabinets, le cahier des charges prévoit l\'entretien courant de la salle d\'attente, de l\'accueil, des bureaux et des sanitaires, avec consigne écrite de confidentialité. Pour les immeubles, nous traitons hall, cage d\'escalier, rampes, paliers, ascenseur, local à conteneurs et sortie des bacs possible lorsque prévu dans le cahier des charges et chiffré dans le devis, selon le calendrier de collecte applicable à l\'adresse.',
+		'Pour les cabinets, le cahier des charges prévoit l\'entretien courant de la salle d\'attente, de l\'accueil, des bureaux et des sanitaires, avec consigne écrite de confidentialité. Pour les immeubles, nous traitons hall, cage d\'escalier, rampes, paliers, ascenseur, local à conteneurs et sortie des bacs possible lorsqu\'elle est prévue au cahier des charges et chiffrée au devis, selon le calendrier de collecte applicable à l\'adresse.',
 	) ), $id );
 	tfp_seed_set_field( 'recit_5_liste', '', $id );
 	tfp_seed_set_field( 'tarif_titre', 'Tarif et exemple local', $id );
@@ -2006,6 +2071,11 @@ if ( empty( $posts ) ) {
 		'Si nous nous en chargeons, ils sont refacturés au prix d\'achat, sans marge, et le cahier de liaison signale les niveaux bas avant la rupture. Le matériel, lui, est fourni par nos soins et dédié par zone — code couleur distinct pour les sanitaires — sauf si votre site impose ses propres références, ce qui est alors inscrit au cahier des charges.',
 	) ), $id );
 	tfp_seed_set_field( 'methode_4_liste', '', $id );
+	tfp_seed_set_field( 'fonctionnement', implode( "\n", array(
+		'Les intervenants sont recrutés par Audrey, en entretien individuel, avec vérification des références et observation sur site lors des premiers passages. Sur un site accessible par badge, en soirée, la stabilité de l\'intervenant est encore plus importante qu\'ailleurs : elle évite de reprendre à zéro les consignes d\'accès et de fermeture.',
+		'En cas d\'absence, de congés ou de départ, nous cherchons une solution de remplacement, transmettons les consignes écrites et vous informons du changement, sans promettre une continuité automatique. Le cahier de liaison et le point de suivi avec Audrey permettent de suivre la prestation à distance.',
+	) ), $id );
+	tfp_seed_set_field( 'fonctionnement_bloc', 3, $id );
 	tfp_seed_set_field( 'locaux_1_titre', 'Nos prestations sur place', $id );
 	tfp_seed_set_field( 'locaux_1_texte', implode( "\n", array(
 		'Même méthode que partout ailleurs : celle de notre page nettoyage professionnel, avec le tarif de 27 € HT/h.',
@@ -2136,7 +2206,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'recit_5_titre', 'Cabinets, copropriétés et meublés', $id );
 	tfp_seed_set_field( 'recit_5_texte', implode( "\n", array(
 		'Entretien courant de l\'accueil, de la salle d\'attente, des bureaux, des sanitaires, des sols, du mobilier et des surfaces courantes, selon le cahier des charges. Les consignes de confidentialité sur les dossiers laissés en place sont annexées au cahier des charges.',
-		'Pour les copropriétés, le circuit est décrit au cahier des charges : hall, cage d\'escalier étage par étage, rampes, paliers, ascenseur, local à conteneurs, sortie et rentrée des bacs possible lorsque prévu dans le cahier des charges et chiffré dans le devis. Pour les meublés, nous intervenons entre deux séjours, le signalement photographique des dégradations étant possible lorsque prévu dans le cahier des charges et chiffré dans le devis.',
+		'Pour les copropriétés, le circuit est décrit au cahier des charges : hall, cage d\'escalier étage par étage, rampes, paliers, ascenseur, local à conteneurs, sortie et rentrée des bacs possibles lorsqu\'elles sont prévues au cahier des charges et chiffrées au devis. Pour les meublés, nous intervenons entre deux séjours, le signalement photographique des dégradations étant possibles lorsqu\'ils sont prévus au cahier des charges et chiffrés au devis.',
 	) ), $id );
 	tfp_seed_set_field( 'recit_5_liste', '', $id );
 	tfp_seed_set_field( 'tarif_titre', 'Tarif et exemple local', $id );
@@ -2178,6 +2248,11 @@ if ( empty( $posts ) ) {
 		'Un point est ensuite organisé avec Audrey, par téléphone ou sur place, selon les modalités de suivi définies avec le client. Si le volume d\'heures est mal calibré, nous corrigeons le devis dans un sens ou dans l\'autre plutôt que de laisser la prestation se dégrader. Toute évolution de l\'organisation ou du volume horaire est discutée avec vous avant d\'être appliquée et fait l\'objet d\'un devis actualisé.',
 	) ), $id );
 	tfp_seed_set_field( 'methode_4_liste', '', $id );
+	tfp_seed_set_field( 'fonctionnement', implode( "\n", array(
+		'Les intervenants sont recrutés par Audrey, avec vérification des références et une période d\'observation sur site. Nous cherchons à confier chaque site chalonnais au même intervenant d\'une semaine sur l\'autre : pour un commerce ouvert six jours sur sept comme pour un bureau d\'études, c\'est la régularité qui fait la qualité perçue.',
+		'En cas d\'absence, de congés ou de départ, nous cherchons une solution de remplacement, transmettons les consignes écrites au remplaçant et vous informons du changement. Nous ne promettons pas de continuité garantie. Le cahier de liaison sur site et le point de suivi permettent d\'ajuster la prestation dans le temps.',
+	) ), $id );
+	tfp_seed_set_field( 'fonctionnement_bloc', 3, $id );
 	tfp_seed_set_field( 'locaux_1_titre', 'Nos prestations sur place', $id );
 	tfp_seed_set_field( 'locaux_1_texte', implode( "\n", array(
 		'Même méthode que partout ailleurs : celle de notre page nettoyage professionnel, avec le tarif de 27 € HT/h.',
@@ -2302,7 +2377,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'recit_4_titre', 'Commerces, meublés et tourisme', $id );
 	tfp_seed_set_field( 'recit_4_texte', implode( "\n", array(
 		'Pour un commerce mâconnais, le passage se fait avant l\'ouverture : surface de vente, sanitaires clients, comptoir, vitrages intérieurs et abords immédiats de la vitrine. La réserve est traitée périodiquement, selon un rythme fixé au devis.',
-		'L\'activité touristique du Mâconnais génère une demande soutenue sur les locations meublées, surtout en haute saison. Nous intervenons entre deux séjours : ménage complet ; le changement de linge, la vérification des consommables et le signalement photographique des dégradations sont possible lorsque prévu dans le cahier des charges et chiffré dans le devis. En période chargée, les créneaux se réservent à l\'avance.',
+		'L\'activité touristique du Mâconnais génère une demande soutenue sur les locations meublées, surtout en haute saison. Nous intervenons entre deux séjours : ménage complet ; le changement de linge, la vérification des consommables et le signalement photographique des dégradations sont possibles lorsqu\'ils sont prévus au cahier des charges et chiffrés au devis. En période chargée, les créneaux se réservent à l\'avance.',
 	) ), $id );
 	tfp_seed_set_field( 'recit_4_liste', '', $id );
 	tfp_seed_set_field( 'recit_5_titre', 'Viticulture et logistique : notre périmètre', $id );
@@ -2350,6 +2425,11 @@ if ( empty( $posts ) ) {
 		'Si l\'un des trois ne passe pas, nous proposons une alternative — autre créneau, fréquence différente, regroupement de passages — et si rien n\'est tenable, nous préférons le dire. Un prestataire qui accepte tout finit par décaler, annuler et changer d\'intervenant tous les mois : c\'est la principale raison pour laquelle une entreprise change de prestataire.',
 	) ), $id );
 	tfp_seed_set_field( 'methode_4_liste', '', $id );
+	tfp_seed_set_field( 'fonctionnement', implode( "\n", array(
+		'Les intervenants sont recrutés par Audrey, en entretien individuel, avec vérification des références et observation sur site lors des premiers passages. Nous cherchons à confier chaque site au même intervenant sur la durée : pour un cabinet qui reçoit des clients, la discrétion et la connaissance des lieux comptent autant que la propreté.',
+		'En cas d\'absence, de congés ou de départ, nous cherchons une solution de remplacement, transmettons les consignes écrites et vous informons du changement, sans promettre une continuité automatique. Le cahier de liaison sur site et le point de suivi avec Audrey assurent le suivi sans que vous ayez à être présent.',
+	) ), $id );
+	tfp_seed_set_field( 'fonctionnement_bloc', 3, $id );
 	tfp_seed_set_field( 'locaux_1_titre', 'Nos prestations sur place', $id );
 	tfp_seed_set_field( 'locaux_1_texte', implode( "\n", array(
 		'Même méthode que partout ailleurs : celle de notre page nettoyage professionnel, avec le tarif de 27 € HT/h.',
@@ -2420,7 +2500,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'faq_1', array( 'question' => 'Avez-vous une agence à Mâcon ?', 'reponse' => 'Non. Notre unique implantation est à Saint-Apollinaire, près de Dijon. Il n\'y a ni agence mâconnaise, ni responsable local, ni numéro spécifique à la ville.' ), $id );
 	tfp_seed_set_field( 'faq_2', array( 'question' => 'Les frais de déplacement s\'appliquent-ils ?', 'reponse' => 'Les éventuelles indemnités kilométriques dépendent de l\'adresse des locaux, du planning et des conditions d\'intervention. Elles sont précisées dans le devis. Elles figurent au devis, en ligne distincte du tarif horaire.' ), $id );
 	tfp_seed_set_field( 'faq_3', array( 'question' => 'Entretenez-vous les caveaux et espaces de dégustation ?', 'reponse' => 'Oui, en tant qu\'espaces recevant du public : sols, comptoir, vitrages intérieurs, sanitaires. Les caves d\'élaboration et les zones de conditionnement, non.' ), $id );
-	tfp_seed_set_field( 'faq_4', array( 'question' => 'Pouvez-vous entretenir une location meublée entre deux séjours ?', 'reponse' => 'Oui : ménage complet ; le changement de linge, la vérification des consommables et le signalement photographique des dégradations sont possible lorsque prévu dans le cahier des charges et chiffré dans le devis. En haute saison, réservez les créneaux à l\'avance.' ), $id );
+	tfp_seed_set_field( 'faq_4', array( 'question' => 'Pouvez-vous entretenir une location meublée entre deux séjours ?', 'reponse' => 'Oui : ménage complet ; le changement de linge, la vérification des consommables et le signalement photographique des dégradations sont possibles lorsqu\'ils sont prévus au cahier des charges et chiffrés au devis. En haute saison, réservez les créneaux à l\'avance.' ), $id );
 	tfp_seed_set_field( 'faq_5', array( 'question' => 'Intervenez-vous à Charnay-lès-Mâcon ou Sancé ?', 'reponse' => 'Oui, ces communes de l\'agglomération sont proches de Mâcon. Les demandes situées dans ces communes peuvent être étudiées selon l\'adresse exacte, le volume horaire et les possibilités d\'organisation du planning.' ), $id );
 	tfp_seed_set_field( 'faq_6', array( 'question' => 'Quel volume minimum conseillez-vous ?', 'reponse' => 'Au moins deux heures par passage, ou un regroupement hebdomadaire. En dessous, la distance rend l\'organisation difficile à tenir durablement.' ), $id );
 	tfp_seed_set_field( 'contact_titre', 'Nous contacter', $id );
@@ -2522,6 +2602,11 @@ if ( empty( $posts ) ) {
 		'Dans les cabinets et les espaces recevant du public, les surfaces de contact courantes font l\'objet d\'un entretien courant selon le cahier des charges. Si votre structure impose ses propres références de produits, nous les utilisons et cela figure au cahier des charges. Les consommables peuvent être gérés par vous ou par nous, refacturés au prix d\'achat, avec signalement des niveaux bas au cahier de liaison.',
 	) ), $id );
 	tfp_seed_set_field( 'methode_4_liste', '', $id );
+	tfp_seed_set_field( 'fonctionnement', implode( "\n", array(
+		'Les intervenants sont recrutés par Audrey, avec vérification des références et observation sur site lors des premiers passages. Sur un secteur éloigné comme celui-ci, nous cherchons particulièrement à stabiliser l\'affectation : un intervenant qui connaît le site, les accès et les consignes fait gagner du temps à tout le monde.',
+		'En cas d\'absence, de congés ou de départ, nous cherchons une solution de remplacement, lui transmettons les consignes écrites et vous informons du changement. Nous ne promettons pas de continuité garantie : nous nous engageons à informer et à transmettre, ce qui est tenable.',
+	) ), $id );
+	tfp_seed_set_field( 'fonctionnement_bloc', 3, $id );
 	tfp_seed_set_field( 'locaux_1_titre', 'Nos prestations sur place', $id );
 	tfp_seed_set_field( 'locaux_1_texte', implode( "\n", array(
 		'Même méthode que partout ailleurs : celle de notre page nettoyage professionnel, avec le tarif de 27 € HT/h.',
@@ -2653,7 +2738,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'recit_5_titre', 'Commerces, cabinets et parties communes', $id );
 	tfp_seed_set_field( 'recit_5_texte', implode( "\n", array(
 		'Pour un commerce du centre-ville, le passage se fait avant l\'ouverture : surface de vente, sanitaires clients, comptoir, vitrages intérieurs et abords de la vitrine. La réserve est traitée périodiquement, selon un rythme fixé au devis.',
-		'Entretien courant de l\'accueil, de la salle d\'attente, des bureaux, des sanitaires, des sols, du mobilier et des surfaces courantes, selon le cahier des charges. Les consignes de confidentialité sont annexées au cahier des charges. Pour les immeubles, nous traitons hall, cage d\'escalier, rampes, paliers, ascenseur, local à conteneurs et sortie des bacs possible lorsque prévu dans le cahier des charges et chiffré dans le devis, selon le calendrier de collecte applicable à l\'adresse.',
+		'Entretien courant de l\'accueil, de la salle d\'attente, des bureaux, des sanitaires, des sols, du mobilier et des surfaces courantes, selon le cahier des charges. Les consignes de confidentialité sont annexées au cahier des charges. Pour les immeubles, nous traitons hall, cage d\'escalier, rampes, paliers, ascenseur, local à conteneurs et sortie des bacs possible lorsqu\'elle est prévue au cahier des charges et chiffrée au devis, selon le calendrier de collecte applicable à l\'adresse.',
 	) ), $id );
 	tfp_seed_set_field( 'recit_5_liste', '', $id );
 	tfp_seed_set_field( 'tarif_titre', 'Tarif et exemple local', $id );
@@ -2695,6 +2780,11 @@ if ( empty( $posts ) ) {
 		'Les éventuelles indemnités kilométriques dépendent de l\'adresse des locaux, du planning et des conditions d\'intervention. Elles sont précisées dans le devis. Les consignes de sécurité du site sont annexées. Rien n\'apparaît après signature : toute prestation supplémentaire passe par un devis complémentaire que vous validez avant intervention.',
 	) ), $id );
 	tfp_seed_set_field( 'methode_4_liste', '', $id );
+	tfp_seed_set_field( 'fonctionnement', implode( "\n", array(
+		'Les intervenants sont recrutés par Audrey, en entretien individuel, avec vérification des références et une période d\'observation sur site. Sur un site soumis à des consignes de sécurité, la stabilité de l\'intervenant est déterminante : elle évite de reprendre les procédures à chaque passage.',
+		'En cas d\'absence, de congés ou de départ, nous cherchons une solution de remplacement, transmettons les consignes écrites — y compris les consignes de sécurité du site — et vous informons du changement. Aucune continuité automatique n\'est promise. Le cahier de liaison et le point de suivi complètent le suivi.',
+	) ), $id );
+	tfp_seed_set_field( 'fonctionnement_bloc', 3, $id );
 	tfp_seed_set_field( 'locaux_1_titre', 'Nos prestations sur place', $id );
 	tfp_seed_set_field( 'locaux_1_texte', implode( "\n", array(
 		'Même méthode que partout ailleurs : celle de notre page nettoyage professionnel, avec le tarif de 27 € HT/h.',
@@ -2850,6 +2940,11 @@ if ( empty( $posts ) ) {
 		'Nous ne réalisons ni nettoyage industriel lourd, ni nettoyage de lignes de production, ni nettoyage agroalimentaire spécialisé, ni bio-nettoyage hospitalier, ni traitement chimique, ni désamiantage. La proximité ne change rien à ces limites : elle change seulement notre réactivité sur ce que nous savons faire.',
 	) ), $id );
 	tfp_seed_set_field( 'methode_3_liste', '', $id );
+	tfp_seed_set_field( 'fonctionnement', implode( "\n", array(
+		'Une visite est proposée sur la commune : nous relevons les surfaces, les revêtements, les contraintes d\'accès et d\'horaires, puis nous rédigeons un cahier des charges détaillé. Le devis suit sous 24 heures, avec un volume d\'heures argumenté plutôt qu\'une fourchette approximative.',
+		'Les intervenants sont recrutés par Audrey, avec vérification des références et observation sur site. Nous cherchons à confier chaque site au même intervenant sur la durée ; en cas d\'absence ou de départ, nous cherchons un remplacement, transmettons les consignes écrites et vous informons du changement. Un cahier de liaison reste sur place.',
+	) ), $id );
+	tfp_seed_set_field( 'fonctionnement_bloc', 1, $id );
 	tfp_seed_set_field( 'locaux_1_titre', 'Nos prestations sur place', $id );
 	tfp_seed_set_field( 'locaux_1_texte', implode( "\n", array(
 		'Même méthode que partout ailleurs : celle de notre page nettoyage professionnel, avec le tarif de 27 € HT/h.',
@@ -2966,7 +3061,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'recit_3_titre', 'Parties communes : une prestation fréquemment étudiée ici', $id );
 	tfp_seed_set_field( 'recit_3_texte', implode( "\n", array(
 		'Pour un immeuble chenevelier, le cahier des charges décrit le circuit exact : hall d\'entrée, sol et vitrage de la porte, boîtes aux lettres, cage d\'escalier étage par étage, rampes et plinthes, paliers, cabine et miroir d\'ascenseur, local à conteneurs et abords immédiats.',
-		'La sortie et la rentrée des bacs sont possible lorsque prévu dans le cahier des charges et chiffré dans le devis ; les jours retenus y sont inscrits. Nous distinguons ce qui est fait à chaque passage de ce qui est fait périodiquement — vitrages de cage d\'escalier, plinthes, local à vélos — afin que syndic, conseil syndical et résidents lisent la même chose.',
+		'La sortie et la rentrée des bacs sont possibles lorsqu\'elles sont prévues au cahier des charges et chiffrées au devis ; les jours retenus y sont inscrits. Nous distinguons ce qui est fait à chaque passage de ce qui est fait périodiquement — vitrages de cage d\'escalier, plinthes, local à vélos — afin que syndic, conseil syndical et résidents lisent la même chose.',
 	) ), $id );
 	tfp_seed_set_field( 'recit_3_liste', '', $id );
 	tfp_seed_set_field( 'tarif_titre', 'Tarif et exemple local', $id );
@@ -2974,7 +3069,7 @@ if ( empty( $posts ) ) {
 		'27 € HT/h, plus 9 € HT/mois de gestion en contrat régulier et 50 € HT de frais de mise en place, le cas échéant, selon les conditions précisées au devis. Les éventuelles indemnités kilométriques dépendent de l\'adresse des locaux, du planning et des conditions d\'intervention. Elles sont précisées dans le devis. Majoration de 10 % pour les interventions de nuit, le dimanche et les jours fériés.',
 	) ), $id );
 	tfp_seed_set_field( 'exemple_label', 'Exemple · copropriété, 8 h/mois', $id );
-	tfp_seed_set_field( 'exemple_texte', 'Deux heures par semaine : trois cages d\'escalier, hall, local à conteneurs et sortie des bacs possible lorsque prévu dans le cahier des charges et chiffré dans le devis, selon le calendrier de collecte applicable à l\'adresse. 225 € HT/mois.', $id );
+	tfp_seed_set_field( 'exemple_texte', 'Deux heures par semaine : trois cages d\'escalier, hall, local à conteneurs et sortie des bacs possible lorsqu\'elle est prévue au cahier des charges et chiffrée au devis, selon le calendrier de collecte applicable à l\'adresse. 225 € HT/mois.', $id );
 	tfp_seed_set_field( 'temoignage_texte', 'L\'entretien de nos parties communes est régulier et le local à conteneurs est enfin propre. Le cahier de liaison nous signale ce qu\'il faut réparer, ce que nous n\'avions pas avant.', $id );
 	tfp_seed_set_field( 'temoignage_auteur', 'Client Top-Famille Pro', $id );
 	tfp_seed_set_field( 'temoignage_role', 'Avis général · Côte-d\'Or', $id );
@@ -3002,6 +3097,11 @@ if ( empty( $posts ) ) {
 		'Meublé : à chaque changement de locataire',
 		'Grand nettoyage annuel de parties communes : sur devis',
 	) ), $id );
+	tfp_seed_set_field( 'fonctionnement', implode( "\n", array(
+		'Une visite est proposée avant tout devis : relevé des surfaces, des revêtements, des accès et des contraintes d\'horaires, puis rédaction d\'un cahier des charges détaillé et devis sous 24 heures. Pour une copropriété, le document est transmis au syndic et peut être présenté au conseil syndical.',
+		'Les intervenants sont recrutés par Audrey, avec vérification des références. Nous cherchons à maintenir le même intervenant sur le site ; en cas d\'absence ou de départ, nous cherchons un remplacement, transmettons les consignes écrites et vous informons. Un cahier de liaison reste sur place et les modalités de suivi sont définies avec le client.',
+	) ), $id );
+	tfp_seed_set_field( 'fonctionnement_bloc', 2, $id );
 	tfp_seed_set_field( 'locaux_1_titre', 'Nos prestations sur place', $id );
 	tfp_seed_set_field( 'locaux_1_texte', implode( "\n", array(
 		'Même méthode que partout ailleurs : celle de notre page nettoyage professionnel, avec le tarif de 27 € HT/h.',
@@ -3067,7 +3167,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'faq_1', array( 'question' => 'Chenôve fait-elle partie de votre secteur prioritaire ?', 'reponse' => 'Oui, c\'est une commune limitrophe de Dijon et l\'un de nos secteurs prioritaires, notamment pour les parties communes de copropriétés.' ), $id );
 	tfp_seed_set_field( 'faq_2', array( 'question' => 'Des frais de déplacement s\'appliquent-ils ?', 'reponse' => 'Les éventuelles indemnités kilométriques dépendent de l\'adresse des locaux, du planning et des conditions d\'intervention. Elles sont précisées dans le devis.' ), $id );
 	tfp_seed_set_field( 'faq_3', array( 'question' => 'Travaillez-vous avec les syndics et les conseils syndicaux ?', 'reponse' => 'Oui, avec les deux. Le cahier des charges détaille le circuit, la fréquence et les tâches périodiques, et le cahier de liaison sert de compte rendu.' ), $id );
-	tfp_seed_set_field( 'faq_4', array( 'question' => 'Gérez-vous la sortie des bacs ?', 'reponse' => 'C\'est possible lorsque prévu dans le cahier des charges et chiffré dans le devis : les jours concernés sont alors inscrits au cahier des charges, selon le calendrier de collecte applicable à l\'adresse.' ), $id );
+	tfp_seed_set_field( 'faq_4', array( 'question' => 'Gérez-vous la sortie des bacs ?', 'reponse' => 'C\'est possible lorsque c\'est prévu au cahier des charges et chiffré au devis : les jours concernés sont alors inscrits au cahier des charges, selon le calendrier de collecte applicable à l\'adresse.' ), $id );
 	tfp_seed_set_field( 'faq_5', array( 'question' => 'Intervenez-vous aussi pour les commerces ?', 'reponse' => 'Oui, au même tarif de 27 € HT/h, avec un passage avant ouverture adapté à vos jours d\'activité.' ), $id );
 	tfp_seed_set_field( 'faq_6', array( 'question' => 'Avez-vous un bureau à Chenôve ?', 'reponse' => 'Non. Notre unique adresse est à Saint-Apollinaire, et le numéro est le même pour tous nos clients : 06 36 17 63 39.' ), $id );
 	tfp_seed_set_field( 'contact_titre', 'Nous contacter', $id );
@@ -3093,7 +3193,7 @@ if ( empty( $posts ) ) {
 		'Intervention régulière ou ponctuelle',
 		'Conditions d\'arrêt précisées au devis',
 	) ), $id );
-	tfp_seed_set_field( 'reponse_directe', 'Quetigny est une commune de Côte-d\'Or située à l\'est de Dijon, limitrophe de Saint-Apollinaire où Top-Famille Pro est implantée. Le taux horaire reste de 27 € HT/h dans toute la région. Les éventuelles indemnités kilométriques dépendent de l\'adresse des locaux, du planning et des conditions d\'intervention. Elles sont précisées dans le devis. Devis gratuit sous 24 heures auprès d\'Audrey, au 06 36 17 63 39.', $id );
+	tfp_seed_set_field( 'reponse_directe', 'Top-Famille Pro entretient vos locaux à Quetigny, commune de Côte-d\'Or située à l\'est de Dijon, limitrophe de Saint-Apollinaire où l\'entreprise est implantée. Le taux horaire reste de 27 € HT/h dans toute la région. Les éventuelles indemnités kilométriques dépendent de l\'adresse des locaux, du planning et des conditions d\'intervention. Elles sont précisées dans le devis. Devis gratuit sous 24 heures auprès d\'Audrey, au 06 36 17 63 39.', $id );
 	tfp_seed_set_field( 'recit_1_titre', 'Quetigny, commune voisine de notre implantation', $id );
 	tfp_seed_set_field( 'recit_1_texte', implode( "\n", array(
 		'Quetigny est limitrophe de Saint-Apollinaire, où Top-Famille Pro est domiciliée. C\'est donc, avec notre propre commune, le secteur le plus proche de notre implantation : visite de devis et passage supplémentaire sont proposés selon les disponibilités du planning.',
@@ -3130,7 +3230,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'methode_1_titre', 'Bureaux, cabinets et parties communes', $id );
 	tfp_seed_set_field( 'methode_1_texte', implode( "\n", array(
 		'Pour un bureau, la prestation comprend le vidage des corbeilles, le dépoussiérage des surfaces libres, l\'entretien des surfaces de contact courantes, les sanitaires, l\'espace café, puis l\'aspiration et le lavage des sols. La salle de réunion est remise en ordre à chaque passage.',
-		'Entretien courant de l\'accueil, de la salle d\'attente, des bureaux, des sanitaires, des sols, du mobilier et des surfaces courantes, selon le cahier des charges. Les consignes de confidentialité sont annexées au cahier des charges. Pour les immeubles, nous traitons hall, cage d\'escalier, rampes, paliers, ascenseur, local à conteneurs et sortie des bacs possible lorsque prévu dans le cahier des charges et chiffré dans le devis, selon le calendrier de collecte applicable à l\'adresse.',
+		'Entretien courant de l\'accueil, de la salle d\'attente, des bureaux, des sanitaires, des sols, du mobilier et des surfaces courantes, selon le cahier des charges. Les consignes de confidentialité sont annexées au cahier des charges. Pour les immeubles, nous traitons hall, cage d\'escalier, rampes, paliers, ascenseur, local à conteneurs et sortie des bacs possible lorsqu\'elle est prévue au cahier des charges et chiffrée au devis, selon le calendrier de collecte applicable à l\'adresse.',
 	) ), $id );
 	tfp_seed_set_field( 'methode_1_liste', '', $id );
 	tfp_seed_set_field( 'methode_2_titre', 'Fonctionnement, sélection et suivi', $id );
@@ -3145,6 +3245,11 @@ if ( empty( $posts ) ) {
 		'Nous ne réalisons ni nettoyage industriel lourd, ni nettoyage de lignes de production, ni nettoyage agroalimentaire spécialisé, ni bio-nettoyage hospitalier, ni traitement chimique, ni désamiantage. Ces prestations demandent des protocoles et des habilitations que nous n\'avons pas, et nous le disons avant toute visite.',
 	) ), $id );
 	tfp_seed_set_field( 'methode_3_liste', '', $id );
+	tfp_seed_set_field( 'fonctionnement', implode( "\n", array(
+		'La mise en place commence par une visite : relevé des surfaces, des revêtements, des accès et des horaires souhaités, puis cahier des charges détaillé et devis sous 24 heures. Le délai de démarrage dépend des disponibilités, de l\'adresse, du volume horaire et de l\'organisation nécessaire. Il est confirmé lors de l\'établissement du devis.',
+		'Les intervenants sont recrutés par Audrey, avec vérification des références et observation sur site. Nous cherchons à confier chaque site au même intervenant sur la durée ; en cas d\'absence ou de départ, nous cherchons un remplacement, transmettons les consignes écrites et vous prévenons du changement.',
+	) ), $id );
+	tfp_seed_set_field( 'fonctionnement_bloc', 2, $id );
 	tfp_seed_set_field( 'locaux_1_titre', 'Nos prestations sur place', $id );
 	tfp_seed_set_field( 'locaux_1_texte', implode( "\n", array(
 		'Même méthode que partout ailleurs : celle de notre page nettoyage professionnel, avec le tarif de 27 € HT/h.',
@@ -3260,7 +3365,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'recit_3_titre', 'Parties communes : le détail du circuit', $id );
 	tfp_seed_set_field( 'recit_3_texte', implode( "\n", array(
 		'Pour une résidence talantaise, le cahier des charges décrit le circuit précis : hall d\'entrée, sol et vitrage de la porte, boîtes aux lettres, cage d\'escalier étage par étage, rampes et plinthes, paliers, cabine et miroir d\'ascenseur, local à conteneurs et abords immédiats de l\'immeuble.',
-		'Les tâches faites à chaque passage sont distinguées des tâches périodiques — vitrages de cage d\'escalier, plinthes, local à vélos, grille de ventilation. La sortie et la rentrée des bacs sont possible lorsque prévu dans le cahier des charges et chiffré dans le devis ; les jours retenus y sont inscrits noir sur blanc.',
+		'Les tâches faites à chaque passage sont distinguées des tâches périodiques — vitrages de cage d\'escalier, plinthes, local à vélos, grille de ventilation. La sortie et la rentrée des bacs sont possibles lorsqu\'elles sont prévues au cahier des charges et chiffrées au devis ; les jours retenus y sont inscrits noir sur blanc.',
 	) ), $id );
 	tfp_seed_set_field( 'recit_3_liste', '', $id );
 	tfp_seed_set_field( 'tarif_titre', 'Tarif et exemple local', $id );
@@ -3296,6 +3401,11 @@ if ( empty( $posts ) ) {
 		'Petit bureau : 1 passage par semaine',
 		'Grand nettoyage annuel de parties communes : sur devis',
 	) ), $id );
+	tfp_seed_set_field( 'fonctionnement', implode( "\n", array(
+		'Une visite précède le devis : relevé des surfaces, des revêtements, du nombre d\'étages, des accès et du calendrier de collecte, puis cahier des charges détaillé et devis sous 24 heures. Pour une copropriété, le document est transmis au syndic et peut être présenté en conseil syndical.',
+		'Les clés ou badges nécessaires — porte d\'entrée, local à conteneurs, local technique — sont remis contre décharge écrite et restitués selon la même formalité. En cas de changement d\'intervenant, la remise est refaite et vous en êtes informé. Un cahier de liaison reste sur site et les modalités de suivi sont définies avec le client.',
+	) ), $id );
+	tfp_seed_set_field( 'fonctionnement_bloc', 2, $id );
 	tfp_seed_set_field( 'locaux_1_titre', 'Nos prestations sur place', $id );
 	tfp_seed_set_field( 'locaux_1_texte', implode( "\n", array(
 		'Même méthode que partout ailleurs : celle de notre page nettoyage professionnel, avec le tarif de 27 € HT/h.',
@@ -3360,7 +3470,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'locaux_avant_tarif', 1, $id );
 	tfp_seed_set_field( 'faq_titre', 'Questions fréquentes — Talant', $id );
 	tfp_seed_set_field( 'faq_1', array( 'question' => 'Talant fait-elle partie de votre secteur prioritaire ?', 'reponse' => 'Oui, la commune est limitrophe de Dijon et fait partie de notre zone prioritaire. Les éventuelles indemnités kilométriques dépendent de l\'adresse des locaux, du planning et des conditions d\'intervention. Elles sont précisées dans le devis.' ), $id );
-	tfp_seed_set_field( 'faq_2', array( 'question' => 'Intervenez-vous auprès des résidences et copropriétés ?', 'reponse' => 'Oui, c\'est une prestation fréquemment étudiée ici : hall, cage d\'escalier, ascenseur, paliers, local à conteneurs, la gestion des bacs étant possible lorsque prévu dans le cahier des charges et chiffré dans le devis.' ), $id );
+	tfp_seed_set_field( 'faq_2', array( 'question' => 'Intervenez-vous auprès des résidences et copropriétés ?', 'reponse' => 'Oui, c\'est une prestation fréquemment étudiée ici : hall, cage d\'escalier, ascenseur, paliers, local à conteneurs, la gestion des bacs étant possible lorsqu\'elle est prévue au cahier des charges et chiffrée au devis.' ), $id );
 	tfp_seed_set_field( 'faq_3', array( 'question' => 'Un passage bimensuel est-il possible ?', 'reponse' => 'Oui pour une petite copropriété peu fréquentée. Nous ajustons la fréquence à la taille de l\'immeuble et au nombre d\'occupants plutôt qu\'à un forfait standard.' ), $id );
 	tfp_seed_set_field( 'faq_4', array( 'question' => 'Comment sont gérées les clés de l\'immeuble ?', 'reponse' => 'Elles sont remises contre décharge écrite par le syndic ou le conseil syndical, et restituées selon la même formalité en fin de contrat.' ), $id );
 	tfp_seed_set_field( 'faq_5', array( 'question' => 'Proposez-vous vos services aux cabinets de la commune ?', 'reponse' => 'Oui, pour l\'entretien courant de leurs locaux : accueil, salle d\'attente, bureaux, sanitaires et sols, avec consigne écrite de confidentialité. Il s\'agit d\'un entretien de cabinet courant.' ), $id );
@@ -3425,7 +3535,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'methode_1_titre', 'Bureaux, commerces, cabinets et parties communes', $id );
 	tfp_seed_set_field( 'methode_1_texte', implode( "\n", array(
 		'Pour un plateau de bureaux, la prestation comprend le vidage des corbeilles, le dépoussiérage des surfaces libres, l\'entretien des surfaces de contact courantes, l\'entretien des sanitaires et du coin cuisine, puis l\'aspiration et le lavage des sols. Les salles de réunion sont remises en ordre après usage.',
-		'Pour un commerce, le passage se fait avant l\'ouverture. Pour un cabinet, le cahier des charges prévoit l\'entretien courant de la salle d\'attente, de l\'accueil, des bureaux, des sanitaires et des sols, avec consigne de confidentialité. Pour un immeuble, nous traitons hall, cage d\'escalier, paliers, ascenseur, local à conteneurs et sortie des bacs possible lorsque prévu dans le cahier des charges et chiffré dans le devis, selon le calendrier de collecte applicable à l\'adresse.',
+		'Pour un commerce, le passage se fait avant l\'ouverture. Pour un cabinet, le cahier des charges prévoit l\'entretien courant de la salle d\'attente, de l\'accueil, des bureaux, des sanitaires et des sols, avec consigne de confidentialité. Pour un immeuble, nous traitons hall, cage d\'escalier, paliers, ascenseur, local à conteneurs et sortie des bacs possible lorsqu\'elle est prévue au cahier des charges et chiffrée au devis, selon le calendrier de collecte applicable à l\'adresse.',
 	) ), $id );
 	tfp_seed_set_field( 'methode_1_liste', '', $id );
 	tfp_seed_set_field( 'methode_2_titre', 'Fonctionnement, accès et suivi', $id );
@@ -3446,6 +3556,11 @@ if ( empty( $posts ) ) {
 		'Parties communes : 1 passage hebdomadaire',
 		'Vitrages intérieurs et moquettes : périodique, chiffré à part',
 	) ), $id );
+	tfp_seed_set_field( 'fonctionnement', implode( "\n", array(
+		'Une visite précède le devis : relevé des surfaces, des revêtements, des accès, des horaires possibles et des consignes de sécurité éventuelles du site. Le cahier des charges est ensuite rédigé espace par espace, et le devis transmis sous 24 heures, avec un volume d\'heures argumenté.',
+		'La plupart des interventions se déroulent hors présence : la clé ou le badge est remis contre décharge écrite, avec le code d\'alarme consigné et la procédure de fermeture rappelée par écrit. Les consignes de sécurité propres au site sont annexées au cahier des charges et rappelées aux remplaçants.',
+	) ), $id );
+	tfp_seed_set_field( 'fonctionnement_bloc', 2, $id );
 	tfp_seed_set_field( 'locaux_1_titre', 'Nos prestations sur place', $id );
 	tfp_seed_set_field( 'locaux_1_texte', implode( "\n", array(
 		'Même méthode que partout ailleurs : celle de notre page nettoyage professionnel, avec le tarif de 27 € HT/h.',
@@ -3567,7 +3682,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'recit_4_titre', 'Bureaux, commerces et parties communes', $id );
 	tfp_seed_set_field( 'recit_4_texte', implode( "\n", array(
 		'Pour un bureau, la prestation comprend le vidage des corbeilles, le dépoussiérage des surfaces libres, l\'entretien des surfaces de contact courantes, l\'entretien des sanitaires et du coin cuisine, puis l\'aspiration et le lavage des sols selon leur nature.',
-		'Pour une résidence, le circuit est décrit au cahier des charges : hall, boîtes aux lettres, cage d\'escalier étage par étage, rampes, paliers, ascenseur, local à conteneurs, sortie et rentrée des bacs possible lorsque prévu dans le cahier des charges et chiffré dans le devis. Pour un commerce de proximité, le passage se fait avant l\'ouverture.',
+		'Pour une résidence, le circuit est décrit au cahier des charges : hall, boîtes aux lettres, cage d\'escalier étage par étage, rampes, paliers, ascenseur, local à conteneurs, sortie et rentrée des bacs possibles lorsqu\'elles sont prévues au cahier des charges et chiffrées au devis. Pour un commerce de proximité, le passage se fait avant l\'ouverture.',
 	) ), $id );
 	tfp_seed_set_field( 'recit_4_liste', '', $id );
 	tfp_seed_set_field( 'tarif_titre', 'Tarif et exemple local', $id );
@@ -3603,6 +3718,11 @@ if ( empty( $posts ) ) {
 		'Les premiers passages permettent de vérifier l\'adéquation entre le cahier des charges, le temps prévu et les contraintes des locaux. Si un écart significatif est constaté, Top-Famille Pro échange avec le client et peut proposer une adaptation de l\'organisation ou du volume horaire. Nous corrigeons alors le devis plutôt que de réduire silencieusement la liste des tâches, et toute évolution vous est proposée avant d\'être appliquée.',
 	) ), $id );
 	tfp_seed_set_field( 'methode_3_liste', '', $id );
+	tfp_seed_set_field( 'fonctionnement', implode( "\n", array(
+		'Une visite précède le devis : relevé des surfaces, des revêtements, des accès et des horaires souhaités, puis rédaction d\'un cahier des charges espace par espace et devis sous 24 heures, sans engagement de durée.',
+		'Les intervenants sont recrutés par Audrey, avec vérification des références et observation sur site lors des premiers passages. Nous cherchons à confier chaque site au même intervenant ; en cas d\'absence ou de départ, nous cherchons un remplacement, transmettons les consignes écrites et vous informons du changement.',
+	) ), $id );
+	tfp_seed_set_field( 'fonctionnement_bloc', 1, $id );
 	tfp_seed_set_field( 'locaux_1_titre', 'Nos prestations sur place', $id );
 	tfp_seed_set_field( 'locaux_1_texte', implode( "\n", array(
 		'Même méthode que partout ailleurs : celle de notre page nettoyage professionnel, avec le tarif de 27 € HT/h.',
@@ -3671,7 +3791,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'faq_2', array( 'question' => 'Faites-vous du bio-nettoyage hospitalier ?', 'reponse' => 'Non. Nous entretenons les cabinets médicaux et paramédicaux courants. Les blocs, salles de soins critiques et laboratoires relèvent d\'entreprises spécialisées.' ), $id );
 	tfp_seed_set_field( 'faq_3', array( 'question' => 'Des frais de déplacement s\'appliquent-ils ?', 'reponse' => 'Les éventuelles indemnités kilométriques dépendent de l\'adresse des locaux, du planning et des conditions d\'intervention. Elles sont précisées dans le devis.' ), $id );
 	tfp_seed_set_field( 'faq_4', array( 'question' => 'Pouvez-vous passer après la fermeture du cabinet ?', 'reponse' => 'Oui, c\'est un créneau pouvant être envisagé. La clé ou le code est remis contre décharge écrite, avec la procédure de fermeture consignée.' ), $id );
-	tfp_seed_set_field( 'faq_5', array( 'question' => 'Entretenez-vous les parties communes des résidences ?', 'reponse' => 'Oui : hall, cage d\'escalier, paliers, ascenseur, local à conteneurs et sortie des bacs possible lorsque prévu dans le cahier des charges et chiffré dans le devis, selon le calendrier de collecte applicable à l\'adresse.' ), $id );
+	tfp_seed_set_field( 'faq_5', array( 'question' => 'Entretenez-vous les parties communes des résidences ?', 'reponse' => 'Oui : hall, cage d\'escalier, paliers, ascenseur, local à conteneurs et sortie des bacs possible lorsqu\'elle est prévue au cahier des charges et chiffrée au devis, selon le calendrier de collecte applicable à l\'adresse.' ), $id );
 	tfp_seed_set_field( 'faq_6', array( 'question' => 'Avez-vous un bureau à Fontaine-lès-Dijon ?', 'reponse' => 'Non. Notre unique implantation est à Saint-Apollinaire, et le numéro est le même pour tous nos clients : 06 36 17 63 39.' ), $id );
 	tfp_seed_set_field( 'contact_titre', 'Nous contacter', $id );
 	tfp_seed_set_field( 'contact_texte', 'Audrey est votre interlocutrice unique, de la première visite au suivi mensuel. Un seul numéro pour toute la région : 06 36 17 63 39 — ou par e-mail à audrey.b@top-famille.fr. Nous n\'utilisons pas de numéro local différent selon la commune.', $id );
@@ -3739,7 +3859,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'methode_2_titre', 'Bureaux, commerces, cabinets et parties communes', $id );
 	tfp_seed_set_field( 'methode_2_texte', implode( "\n", array(
 		'Pour un bureau, la prestation comprend corbeilles, dépoussiérage des surfaces libres, entretien des surfaces de contact courantes, sanitaires, coin cuisine, aspiration et lavage des sols. Pour un commerce, le passage se fait avant l\'ouverture, avec sanitaires clients et vitrages intérieurs.',
-		'Entretien courant de l\'accueil, de la salle d\'attente, des bureaux, des sanitaires, des sols, du mobilier et des surfaces courantes, selon le cahier des charges. Les consignes de confidentialité sont annexées au cahier des charges. Pour une résidence, nous traitons hall, cage d\'escalier, paliers, ascenseur, local à conteneurs et sortie des bacs possible lorsque prévu dans le cahier des charges et chiffré dans le devis, selon le calendrier de collecte applicable à l\'adresse.',
+		'Entretien courant de l\'accueil, de la salle d\'attente, des bureaux, des sanitaires, des sols, du mobilier et des surfaces courantes, selon le cahier des charges. Les consignes de confidentialité sont annexées au cahier des charges. Pour une résidence, nous traitons hall, cage d\'escalier, paliers, ascenseur, local à conteneurs et sortie des bacs possible lorsqu\'elle est prévue au cahier des charges et chiffrée au devis, selon le calendrier de collecte applicable à l\'adresse.',
 	) ), $id );
 	tfp_seed_set_field( 'methode_2_liste', '', $id );
 	tfp_seed_set_field( 'methode_3_titre', 'Fonctionnement, sélection et suivi', $id );
@@ -3748,6 +3868,11 @@ if ( empty( $posts ) ) {
 		'Les intervenants sont recrutés par Audrey, avec vérification des références et observation sur site. Nous cherchons à maintenir le même intervenant sur la durée ; en cas d\'absence ou de départ, nous cherchons un remplacement, transmettons les consignes écrites et vous informons du changement. Un cahier de liaison reste sur place.',
 	) ), $id );
 	tfp_seed_set_field( 'methode_3_liste', '', $id );
+	tfp_seed_set_field( 'fonctionnement', implode( "\n", array(
+		'Une visite précède le devis : relevé des surfaces, des revêtements — pierre, carrelage ancien, parquet —, des accès et des horaires d\'ouverture au public, puis cahier des charges espace par espace et devis sous 24 heures, sans engagement de durée.',
+		'Les intervenants sont recrutés par Audrey, avec vérification des références et observation sur site. Nous cherchons à maintenir le même intervenant sur la durée ; en cas d\'absence ou de départ, nous cherchons un remplacement, transmettons les consignes écrites et vous informons du changement. Un cahier de liaison reste sur place.',
+	) ), $id );
+	tfp_seed_set_field( 'fonctionnement_bloc', 3, $id );
 	tfp_seed_set_field( 'locaux_1_titre', 'Nos prestations sur place', $id );
 	tfp_seed_set_field( 'locaux_1_texte', implode( "\n", array(
 		'Même méthode que partout ailleurs : celle de notre page nettoyage professionnel, avec le tarif de 27 € HT/h.',
@@ -3876,14 +4001,14 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'temoignage_role', 'Avis général · Côte-d\'Or', $id );
 	tfp_seed_set_field( 'methode_1_titre', 'Hébergements et locations meublées', $id );
 	tfp_seed_set_field( 'methode_1_texte', implode( "\n", array(
-		'L\'activité touristique génère une demande importante sur les meublés de courte durée. Nous intervenons entre deux séjours : ménage complet ; le changement de linge, la vérification des consommables, le contrôle de l\'état du logement et le signalement photographique des dégradations sont possible lorsque prévu dans le cahier des charges et chiffré dans le devis.',
+		'L\'activité touristique génère une demande importante sur les meublés de courte durée. Nous intervenons entre deux séjours : ménage complet ; le changement de linge, la vérification des consommables, le contrôle de l\'état du logement et le signalement photographique des dégradations sont possibles lorsqu\'ils sont prévus au cahier des charges et chiffrés au devis.',
 		'Le créneau est calé sur vos horaires de départ et d\'arrivée, ce qui suppose une organisation anticipée en haute saison : les plages entre 10 h et 15 h sont très demandées. Nous conseillons de réserver les créneaux à l\'avance sur juillet, août et les périodes de grands événements viticoles.',
 	) ), $id );
 	tfp_seed_set_field( 'methode_1_liste', '', $id );
 	tfp_seed_set_field( 'methode_2_titre', 'Domaines, bureaux, cabinets et copropriétés', $id );
 	tfp_seed_set_field( 'methode_2_texte', implode( "\n", array(
 		'Pour un domaine ou une maison de négoce, nous entretenons les espaces recevant du public — accueil, salle et comptoir de dégustation, sanitaires visiteurs — ainsi que les bureaux et salles de réunion. Nous n\'intervenons pas dans les caves d\'élaboration, les chais ni les zones de conditionnement.',
-		'Pour les bureaux, la prestation comprend corbeilles, dépoussiérage, entretien des surfaces de contact courantes, sanitaires, coin cuisine et sols. Pour les cabinets, le cahier des charges prévoit l\'entretien courant des espaces recevant du public et des bureaux, avec consigne de confidentialité. Pour les immeubles, nous traitons hall, cage d\'escalier, paliers, ascenseur, local à conteneurs et sortie des bacs possible lorsque prévu dans le cahier des charges et chiffré dans le devis, selon le calendrier de collecte applicable à l\'adresse.',
+		'Pour les bureaux, la prestation comprend corbeilles, dépoussiérage, entretien des surfaces de contact courantes, sanitaires, coin cuisine et sols. Pour les cabinets, le cahier des charges prévoit l\'entretien courant des espaces recevant du public et des bureaux, avec consigne de confidentialité. Pour les immeubles, nous traitons hall, cage d\'escalier, paliers, ascenseur, local à conteneurs et sortie des bacs possible lorsqu\'elle est prévue au cahier des charges et chiffrée au devis, selon le calendrier de collecte applicable à l\'adresse.',
 	) ), $id );
 	tfp_seed_set_field( 'methode_2_liste', '', $id );
 	tfp_seed_set_field( 'methode_3_titre', 'Fonctionnement, saisonnalité et suivi', $id );
@@ -3892,6 +4017,11 @@ if ( empty( $posts ) ) {
 		'La saisonnalité beaunoise est forte : nous en tenons compte dans le contrat, en prévoyant la possibilité d\'ajuster la fréquence entre haute et basse saison plutôt que de facturer douze mois au rythme de juillet. Un cahier de liaison reste sur site et les modalités de suivi sont définies avec le client.',
 	) ), $id );
 	tfp_seed_set_field( 'methode_3_liste', '', $id );
+	tfp_seed_set_field( 'fonctionnement', implode( "\n", array(
+		'Une visite précède le devis : surfaces, revêtements, accès, horaires d\'ouverture et contraintes de circulation dans le centre. Les éventuelles indemnités kilométriques dépendent de l\'adresse des locaux, du planning et des conditions d\'intervention. Elles sont précisées dans le devis.',
+		'La saisonnalité beaunoise est forte : nous en tenons compte dans le contrat, en prévoyant la possibilité d\'ajuster la fréquence entre haute et basse saison plutôt que de facturer douze mois au rythme de juillet. Un cahier de liaison reste sur site et les modalités de suivi sont définies avec le client.',
+	) ), $id );
+	tfp_seed_set_field( 'fonctionnement_bloc', 3, $id );
 	tfp_seed_set_field( 'locaux_1_titre', 'Nos prestations sur place', $id );
 	tfp_seed_set_field( 'locaux_1_texte', implode( "\n", array(
 		'Même méthode que partout ailleurs : celle de notre page nettoyage professionnel, avec le tarif de 27 € HT/h.',
@@ -3963,7 +4093,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'faq_2', array( 'question' => 'Des frais de déplacement s\'appliquent-ils ?', 'reponse' => 'Les éventuelles indemnités kilométriques dépendent de l\'adresse des locaux, du planning et des conditions d\'intervention. Elles sont précisées dans le devis. Elles restent modérées compte tenu de la distance et sont chiffrées au devis avant signature.' ), $id );
 	tfp_seed_set_field( 'faq_3', array( 'question' => 'Pouvez-vous ajuster la fréquence entre haute et basse saison ?', 'reponse' => 'Oui, c\'est prévu dans le contrat : la fréquence et le volume d\'heures peuvent être modulés selon la saison, par devis actualisé et sans engagement de durée.' ), $id );
 	tfp_seed_set_field( 'faq_4', array( 'question' => 'Intervenez-vous dans les caves et les chais ?', 'reponse' => 'Non. Nous entretenons les espaces d\'accueil, de dégustation, les bureaux et les sanitaires visiteurs. Les caves d\'élaboration et zones de conditionnement ne font pas partie de notre offre.' ), $id );
-	tfp_seed_set_field( 'faq_5', array( 'question' => 'Entretenez-vous les locations meublées entre deux séjours ?', 'reponse' => 'Oui : ménage complet ; le changement de linge, la vérification des consommables et le signalement photographique des dégradations sont possible lorsque prévu dans le cahier des charges et chiffré dans le devis. Réservez les créneaux à l\'avance en haute saison.' ), $id );
+	tfp_seed_set_field( 'faq_5', array( 'question' => 'Entretenez-vous les locations meublées entre deux séjours ?', 'reponse' => 'Oui : ménage complet ; le changement de linge, la vérification des consommables et le signalement photographique des dégradations sont possibles lorsqu\'ils sont prévus au cahier des charges et chiffrés au devis. Réservez les créneaux à l\'avance en haute saison.' ), $id );
 	tfp_seed_set_field( 'faq_6', array( 'question' => 'Intervenez-vous à Savigny-lès-Beaune ou Pommard ?', 'reponse' => 'Oui, ces communes voisines sont proches de Beaune. Les demandes situées dans ces communes peuvent être étudiées selon l\'adresse exacte, le volume horaire et les possibilités d\'organisation du planning.' ), $id );
 	tfp_seed_set_field( 'faq_7', array( 'question' => 'Avez-vous un bureau à Beaune ?', 'reponse' => 'Non, et nous n\'en avons jamais eu. L\'entreprise est domiciliée à Saint-Apollinaire ; les interventions beaunoises sont organisées depuis cette adresse, avec le même numéro qu\'ailleurs.' ), $id );
 	tfp_seed_set_field( 'contact_titre', 'Nous contacter', $id );

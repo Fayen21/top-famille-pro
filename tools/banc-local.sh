@@ -108,7 +108,7 @@ for f in bin/seed-phase2-content.php bin/seed-phase3-batch1-prestations.php \
 	bin/seed-phase3-batch7-pages.php bin/seed-phase4-maillage.php \
 	bin/seed-fidelite-prestations.php bin/seed-fidelite-zones.php \
 	bin/seed-fidelite-articles.php bin/seed-fidelite-pages.php \
-	bin/cleanup-wp-defaults.php; do
+	bin/seed-reassurance.php bin/cleanup-wp-defaults.php; do
 	WP eval-file "$f" >/dev/null
 done
 

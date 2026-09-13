@@ -29,10 +29,15 @@ const TFP_REASSURANCE_AVIS_MAX = 6; // Les six témoignages authentiques listés
  * valeurs explicitement confirmées par le client y ont leur place, pour qu'elles soient
  * versionnées et présentes sur toute installation sans ressaisie.
  *
- * `note` = 5.0 : note Google réelle, confirmée par Emmanuel le 9 août 2026 (CLAUDE.md §5.5).
- * `nombre_avis` et `google_url` restent vides — non communiqués à ce jour, jamais inventés. Le
- * badge s'affiche correctement sans eux (includes/testimonials.php) et les intègre dès qu'ils
- * sont saisis en administration.
+ * `note` est VIDE depuis G26. Elle valait 5.0 par défaut, sur la confirmation orale du 9 août
+ * 2026 ; la validation humaine du 17 août a refusé cet affichage tant qu'aucune **vérification
+ * officielle** n'est fournie. Une note de plateforme tierce affichée comme un fait doit être
+ * vérifiable par le visiteur : elle n'est donc rendue que lorsque la note ET l'URL de la fiche
+ * Google réelle sont saisies ensemble (voir `tfp_reassurance_data()`). Saisir la note seule ne
+ * la fait plus apparaître nulle part — c'est volontaire, et c'est le sens de « jamais une valeur
+ * plausible » (CLAUDE.md §5.1).
+ *
+ * `nombre_avis` et `google_url` restent vides — non communiqués à ce jour, jamais inventés.
  *
  * @return array
  */
@@ -50,7 +55,17 @@ function tfp_reassurance_defaults() {
 
 	return array(
 		'google_url'      => '',
-		'note'            => '5.0',
+		'note'            => '',
+		/*
+		 * Dérogation EXPLICITE à la garde de vérifiabilité — décidée par Emmanuel le 17 août 2026,
+		 * après que la conséquence lui a été exposée. Elle n'existe que pour rendre cette décision
+		 * visible et réversible : sans elle, il aurait fallu retirer la garde, et plus rien
+		 * n'aurait distingué « affichage assumé sans source » de « garde jamais posée ».
+		 *
+		 * Par défaut à `false` : une installation neuve n'affiche pas une note qu'elle ne peut pas
+		 * sourcer. C'est le fichier de contenu (bin/seed-reassurance.php) qui porte la décision,
+		 * là où l'on va la chercher.
+		 */
 		'nombre_avis'     => '',
 		// Citation attribuée à Audrey sur l'accueil, reprise de la maquette Claude Design. Elle est
 		// administrable ici plutôt qu'écrite dans un gabarit : c'est le seul contenu du site qui
@@ -170,7 +185,19 @@ function tfp_render_reassurance_page() {
 				</tr>
 				<tr>
 					<th scope="row"><label for="tfp-note">Note réelle (sur 5)</label></th>
-					<td><input type="number" id="tfp-note" name="<?php echo esc_attr( TFP_REASSURANCE_OPTION ); ?>[note]" value="<?php echo esc_attr( $values['note'] ); ?>" min="0" max="5" step="0.1" class="small-text"></td>
+					<td>
+						<input type="number" id="tfp-note" name="<?php echo esc_attr( TFP_REASSURANCE_OPTION ); ?>[note]" value="<?php echo esc_attr( $values['note'] ); ?>" min="0" max="5" step="0.1" class="small-text" aria-describedby="tfp-note-aide">
+						<p class="description" id="tfp-note-aide">
+							La note n'est affichée sur le site <strong>que si l'URL ci-dessus est renseignée et qu'il s'agit bien d'une
+							adresse de fiche Google</strong> (<code>google.fr/maps/…</code>, <code>maps.app.goo.gl/…</code>,
+							<code>g.page/…</code>, ou une adresse portant <code>cid=</code> / <code>place_id=</code>).
+							Saisie seule, ou accompagnée d'une adresse quelconque, la note n'apparaît nulle part.
+							<br><strong>Ce contrôle porte sur la forme de l'adresse, pas sur son contenu :</strong> vérifiez vous-même
+							que la fiche ouverte est bien celle de Top-Famille Pro. Aucun code ne peut le faire à votre place.
+							Le compteur d'avis reste masqué tant que le nombre réel n'est pas saisi, et aucune donnée structurée
+							<code>Review</code> ou <code>AggregateRating</code> n'est produite dans aucun cas.
+						</p>
+					</td>
 				</tr>
 				<tr>
 					<th scope="row"><label for="tfp-nombre-avis">Nombre d'avis réel</label></th>
@@ -258,6 +285,59 @@ function tfp_render_reassurance_page() {
 }
 
 /**
+ * L'URL saisie est-elle celle d'une fiche Google exploitable par un visiteur ?
+ *
+ * Ce contrôle porte sur la FORME, et il faut le dire : aucun code ne peut prouver depuis le
+ * serveur qu'une fiche appartient bien à Top-Famille Pro. Ce qu'il garantit, c'est qu'une valeur
+ * quelconque — une chaîne d'attente, un `#`, l'adresse du site lui-même — ne suffit pas à faire
+ * sortir la note. La correspondance de la fiche avec l'entreprise reste une vérification humaine,
+ * rappelée à l'écran de saisie.
+ *
+ * @param string $url Valeur saisie en administration.
+ * @return bool
+ */
+function tfp_reassurance_url_fiche_valide( $url ) {
+	$url = trim( (string) $url );
+	if ( '' === $url ) {
+		return false;
+	}
+
+	$parts = wp_parse_url( $url );
+	if ( empty( $parts['scheme'] ) || empty( $parts['host'] ) || 'https' !== strtolower( $parts['scheme'] ) ) {
+		return false;
+	}
+
+	$host = strtolower( $parts['host'] );
+
+	/*
+	 * Les hôtes sous lesquels Google publie une fiche d'établissement. `google.<tld>` couvre les
+	 * domaines nationaux (google.fr, google.com) ; les trois autres sont les formes courtes que
+	 * Google génère lui-même depuis la fiche.
+	 */
+	$hotes_courts = array( 'maps.app.goo.gl', 'g.page', 'goo.gl' );
+	$est_google_maps = (bool) preg_match( '#^(www\.|maps\.|search\.)?google\.[a-z.]{2,6}$#', $host );
+
+	if ( in_array( $host, $hotes_courts, true ) ) {
+		// Forme courte : le chemin porte l'identifiant de la fiche, il ne peut pas être vide.
+		return ! empty( trim( (string) ( $parts['path'] ?? '' ), '/' ) );
+	}
+
+	if ( ! $est_google_maps ) {
+		return false;
+	}
+
+	// Sur un domaine Google, seules les adresses de fiche comptent : /maps/…, ou une requête qui
+	// désigne un établissement (`cid`, `place_id`, `ludocid`).
+	$chemin = strtolower( (string) ( $parts['path'] ?? '' ) );
+	if ( 0 === strpos( $chemin, '/maps' ) || 0 === strpos( $chemin, '/local' ) ) {
+		return true;
+	}
+
+	$requete = strtolower( (string) ( $parts['query'] ?? '' ) );
+	return (bool) preg_match( '#(^|&)(cid|place_id|ludocid)=[^&]+#', $requete );
+}
+
+/**
  * Retourne les données de réassurance réelles, ou des valeurs vides — jamais une valeur
  * fictive de repli. Ne dépend d'aucun plugin : lit directement l'option WordPress.
  *
@@ -275,9 +355,42 @@ function tfp_reassurance_data() {
 		)
 	);
 
+	/*
+	 * GARDE DE VÉRIFIABILITÉ (G26). La note n'est exposée aux gabarits que si la fiche Google
+	 * réelle est saisie avec elle : une note de plateforme tierce affirmée sans lien vers sa
+	 * source est une allégation que le visiteur ne peut pas contrôler, et c'est le motif du refus
+	 * de validation du 17 août 2026. Tant que `google_url` est vide, `note` vaut null et TOUS les
+	 * affichages dépendants disparaissent d'eux-mêmes — barre haute, badges, encarts contact et
+	 * tarifs, pastille du portrait — sans qu'aucun gabarit n'ait à le savoir.
+	 *
+	 * Ce n'est pas une suppression du composant : saisir ensemble la note et l'URL de la fiche en
+	 * administration les fait revenir partout, sans retoucher une ligne de code.
+	 */
+	/*
+	 * TROIS CONDITIONS SIMULTANÉES, sans dérogation possible par un réglage :
+	 *
+	 *  1. une note est saisie ;
+	 *  2. l'URL de la fiche est saisie et non vide ;
+	 *  3. cette URL est une adresse de fiche Google (`tfp_reassurance_url_fiche_valide`).
+	 *
+	 * La case « afficher sans la fiche » a été RETIRÉE : elle permettait d'exposer la note sans
+	 * qu'aucun visiteur puisse la contrôler, ce qui est exactement ce que la consigne interdit.
+	 *
+	 * Et quoi qu'il arrive, non négociable par aucun réglage :
+	 *
+	 *  - aucune donnée structurée `Review` ni `AggregateRating` n'est produite. Baliser comme note
+	 *    du site une note de plateforme tierce contrevient aux règles de Google sur les résultats
+	 *    enrichis, et il manque de toute façon un nombre d'avis (CLAUDE.md §5.5) ;
+	 *  - le compteur d'avis du prototype reste interdit tant que le nombre réel n'est pas saisi :
+	 *    c'est un chiffre vérifiable qui serait faux ;
+	 *  - aucun `href="#"` n'est publié à la place de l'URL de la fiche.
+	 */
+	$note_verifiable = '' !== $values['note']
+		&& tfp_reassurance_url_fiche_valide( $values['google_url'] );
+
 	return array(
 		'google_url'       => $values['google_url'],
-		'note'             => '' !== $values['note'] ? (float) $values['note'] : null,
+		'note'             => $note_verifiable ? (float) $values['note'] : null,
 		'nombre_avis'      => '' !== $values['nombre_avis'] ? (int) $values['nombre_avis'] : null,
 		'horaires_contact' => (string) $values['horaires_contact'],
 		'avis'             => $avis,

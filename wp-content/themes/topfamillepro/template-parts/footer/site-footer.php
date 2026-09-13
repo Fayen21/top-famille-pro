@@ -43,27 +43,44 @@ $zones = tfp_footer_zones_tree();
 				<?php echo esc_html( $prenom ); ?> étudie votre demande et vous transmet un devis clair sous 24 heures.
 			</p>
 			<?php
-			tfp_button(
-				array(
-					'label'   => 'Demander mon devis',
-					'href'    => home_url( '/demande-de-devis/' ),
-					'variant' => 'primary',
-				)
-			);
-			tfp_button(
-				array(
-					'label'   => '☎ ' . $site['phone'],
-					'href'    => 'tel:' . $site['phone_href'],
-					'variant' => 'secondary',
-				)
-			);
+			/*
+			 * Rangée de rappel — composition relevée sur la maquette (G26 §9).
+			 *
+			 * Le prototype pose UN bouton (192×53, 15,5 px) suivi d'un lien nu « ☎ Appeler Audrey »
+			 * de 24 px et du rappel tarifaire « 27 € HT/h ». Le thème posait deux boutons pleins de
+			 * 60 px et omettait le rappel : à 375 px, où la rangée s'empile, la bande faisait 325 px
+			 * pour 263 relevés — et cette bande est sur les 53 routes. Le second appel n'est pas un
+			 * bouton dans la maquette : c'est un rappel discret à côté de la commande principale.
+			 */
 			?>
+			<div class="tfp-prefooter__actions">
+				<?php
+				tfp_button(
+					array(
+						'label'   => 'Demander mon devis',
+						'href'    => home_url( '/demande-de-devis/' ),
+						'variant' => 'primary',
+						'mesures' => array( 'pad_v' => '14px', 'pad_h' => '22px', 'taille' => '15.5px', 'graisse' => 700, 'hauteur' => '53px' ),
+					)
+				);
+				?>
+				<a class="tfp-prefooter__phone" href="tel:<?php echo esc_attr( $site['phone_href'] ); ?>"><span aria-hidden="true">☎</span> Appeler <?php echo esc_html( $prenom ); ?></a>
+				<span class="tfp-prefooter__price"><?php echo esc_html( $site['price_unique_display'] ); ?> HT/h</span>
+			</div>
 		</div>
 	</section>
 	<div class="tfp-footer__inner">
 		<div class="tfp-footer__col tfp-footer__col--brand">
 			<div class="tfp-footer__brand">
-				<img class="tfp-footer__logo" src="<?php echo esc_url( TFP_THEME_URI . '/assets/dist/images/logo-horizontal.png' ); ?>" alt="" width="110" height="58" loading="lazy" decoding="async">
+				<?php
+				/*
+				 * Logo CARRÉ, comme la maquette : 60×60, rayon 12, object-fit cover. Le pied
+				 * servait l'horizontal de l'en-tête — écart relevé sur les octets par l'audit
+				 * d'images par rôle (G26). L'`alt` reste vide : le nom de la marque est juste à
+				 * côté, en texte, et le répéter n'apporterait rien à un lecteur d'écran.
+				 */
+				?>
+				<img class="tfp-footer__logo" src="<?php echo esc_url( TFP_THEME_URI . '/assets/dist/images/logo-carre.png' ); ?>" alt="" width="60" height="60" loading="lazy" decoding="async">
 				<span class="tfp-footer__brand-name"><?php echo esc_html( $site['brand_name'] ); ?></span>
 			</div>
 			<p class="tfp-footer__tagline">Nettoyage professionnel régulier ou ponctuel en <?php echo esc_html( $site['address_region'] ); ?>.</p>
@@ -121,7 +138,7 @@ $zones = tfp_footer_zones_tree();
 			</div>
 		</div>
 
-		<div class="tfp-footer__col">
+		<div class="tfp-footer__col tfp-footer__col--infos">
 			<h3>Informations</h3>
 			<ul>
 				<li><a href="<?php echo esc_url( home_url( '/tarifs/' ) ); ?>">Tarifs</a></li>
@@ -136,7 +153,15 @@ $zones = tfp_footer_zones_tree();
 		</div>
 	</div>
 
+	<?php
+	/*
+	 * Barre légale : bande pleine largeur au fond plus sombre, contenu aligné sur le conteneur du
+	 * site — comme la maquette (G26 §8). Sans conteneur intérieur, le texte partait à 40 px du bord
+	 * pendant que les colonnes au-dessus commençaient à 130.
+	 */
+	?>
 	<div class="tfp-footer__bottom">
+	  <div class="tfp-footer__bottom-inner">
 		<span>© <?php echo esc_html( $year ); ?> <?php echo esc_html( $site['legal_name'] ); ?> au capital de <?php echo esc_html( $site['legal_capital_display'] ); ?>, SIRET <?php echo esc_html( $site['legal_siret'] ); ?> — <?php echo esc_html( $site['brand_name'] ); ?></span>
 		<nav aria-label="Liens légaux" style="display:flex;flex-wrap:wrap;gap:16px">
 			<a href="<?php echo esc_url( home_url( '/mentions-legales/' ) ); ?>">Mentions légales</a>
@@ -144,5 +169,6 @@ $zones = tfp_footer_zones_tree();
 			<a href="<?php echo esc_url( home_url( '/gestion-des-cookies/' ) ); ?>">Cookies</a>
 			<a href="<?php echo esc_url( home_url( '/plan-du-site/' ) ); ?>">Plan du site</a>
 		</nav>
+	  </div>
 	</div>
 </footer>

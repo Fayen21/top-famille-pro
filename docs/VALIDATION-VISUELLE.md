@@ -12,42 +12,42 @@
 
 | Route | Écran | Hauteur maquette | Hauteur WordPress | Rapport | Maquette | WordPress | Différence |
 |---|---|---|---|---|---|---|---|
-| Accueil | 1440 px | 7825 px | 7943 px | 102 % | [voir](captures/validation-finale/accueil-1440-maquette.jpg) | [voir](captures/validation-finale/accueil-1440-wordpress.jpg) | [voir](captures/validation-finale/accueil-1440-difference.jpg) |
-| ↳ | 375 px | 13402 px | 13783 px | 103 % | [voir](captures/validation-finale/accueil-375-maquette.jpg) | [voir](captures/validation-finale/accueil-375-wordpress.jpg) | [voir](captures/validation-finale/accueil-375-difference.jpg) |
-| Page pilier | 1440 px | 11192 px | 11009 px | 98 % | [voir](captures/validation-finale/nettoyage-professionnel-1440-maquette.jpg) | [voir](captures/validation-finale/nettoyage-professionnel-1440-wordpress.jpg) | [voir](captures/validation-finale/nettoyage-professionnel-1440-difference.jpg) |
-| ↳ | 375 px | 20090 px | 21749 px | 108 % | [voir](captures/validation-finale/nettoyage-professionnel-375-maquette.jpg) | [voir](captures/validation-finale/nettoyage-professionnel-375-wordpress.jpg) | [voir](captures/validation-finale/nettoyage-professionnel-375-difference.jpg) |
-| Nettoyage de bureaux | 1440 px | 7745 px | 8036 px | 104 % | [voir](captures/validation-finale/service-bureaux-1440-maquette.jpg) | [voir](captures/validation-finale/service-bureaux-1440-wordpress.jpg) | [voir](captures/validation-finale/service-bureaux-1440-difference.jpg) |
-| ↳ | 375 px | 14541 px | 15933 px | 110 % | [voir](captures/validation-finale/service-bureaux-375-maquette.jpg) | [voir](captures/validation-finale/service-bureaux-375-wordpress.jpg) | [voir](captures/validation-finale/service-bureaux-375-difference.jpg) |
-| Nettoyage de cabinets | 1440 px | 8321 px | 8460 px | 102 % | [voir](captures/validation-finale/service-cabinets-1440-maquette.jpg) | [voir](captures/validation-finale/service-cabinets-1440-wordpress.jpg) | [voir](captures/validation-finale/service-cabinets-1440-difference.jpg) |
-| ↳ | 375 px | 15216 px | 16551 px | 109 % | [voir](captures/validation-finale/service-cabinets-375-maquette.jpg) | [voir](captures/validation-finale/service-cabinets-375-wordpress.jpg) | [voir](captures/validation-finale/service-cabinets-375-difference.jpg) |
-| Tarifs | 1440 px | 5852 px | 5996 px | 102 % | [voir](captures/validation-finale/nos-tarifs-1440-maquette.jpg) | [voir](captures/validation-finale/nos-tarifs-1440-wordpress.jpg) | [voir](captures/validation-finale/nos-tarifs-1440-difference.jpg) |
-| ↳ | 375 px | 9002 px | 10291 px | 114 % | [voir](captures/validation-finale/nos-tarifs-375-maquette.jpg) | [voir](captures/validation-finale/nos-tarifs-375-wordpress.jpg) | [voir](captures/validation-finale/nos-tarifs-375-difference.jpg) |
-| Dijon (ville) | 1440 px | 8508 px | 8512 px | 100 % | [voir](captures/validation-finale/ville-dijon-1440-maquette.jpg) | [voir](captures/validation-finale/ville-dijon-1440-wordpress.jpg) | [voir](captures/validation-finale/ville-dijon-1440-difference.jpg) |
-| ↳ | 375 px | 14937 px | 16174 px | 108 % | [voir](captures/validation-finale/ville-dijon-375-maquette.jpg) | [voir](captures/validation-finale/ville-dijon-375-wordpress.jpg) | [voir](captures/validation-finale/ville-dijon-375-difference.jpg) |
-| Beaune (ville) | 1440 px | 7106 px | 7085 px | 100 % | [voir](captures/validation-finale/ville-beaune-1440-maquette.jpg) | [voir](captures/validation-finale/ville-beaune-1440-wordpress.jpg) | [voir](captures/validation-finale/ville-beaune-1440-difference.jpg) |
-| ↳ | 375 px | 12426 px | 13041 px | 105 % | [voir](captures/validation-finale/ville-beaune-375-maquette.jpg) | [voir](captures/validation-finale/ville-beaune-375-wordpress.jpg) | [voir](captures/validation-finale/ville-beaune-375-difference.jpg) |
-| Pourquoi nous | 1440 px | 4047 px | 4328 px | 107 % | [voir](captures/validation-finale/pourquoi-top-famille-pro-1440-maquette.jpg) | [voir](captures/validation-finale/pourquoi-top-famille-pro-1440-wordpress.jpg) | [voir](captures/validation-finale/pourquoi-top-famille-pro-1440-difference.jpg) |
-| ↳ | 375 px | 7837 px | 9025 px | 115 % | [voir](captures/validation-finale/pourquoi-top-famille-pro-375-maquette.jpg) | [voir](captures/validation-finale/pourquoi-top-famille-pro-375-wordpress.jpg) | [voir](captures/validation-finale/pourquoi-top-famille-pro-375-difference.jpg) |
-| Index Conseils | 1440 px | 2834 px | 3309 px | 117 % | [voir](captures/validation-finale/conseils-1440-maquette.jpg) | [voir](captures/validation-finale/conseils-1440-wordpress.jpg) | [voir](captures/validation-finale/conseils-1440-difference.jpg) |
-| ↳ | 375 px | 5147 px | 5976 px | 116 % | [voir](captures/validation-finale/conseils-375-maquette.jpg) | [voir](captures/validation-finale/conseils-375-wordpress.jpg) | [voir](captures/validation-finale/conseils-375-difference.jpg) |
-| Article — fréquence de nettoyage | 1440 px | 4437 px | 4899 px | 110 % | [voir](captures/validation-finale/article-frequence-bureaux-1440-maquette.jpg) | [voir](captures/validation-finale/article-frequence-bureaux-1440-wordpress.jpg) | [voir](captures/validation-finale/article-frequence-bureaux-1440-difference.jpg) |
-| ↳ | 375 px | 6427 px | 7333 px | 114 % | [voir](captures/validation-finale/article-frequence-bureaux-375-maquette.jpg) | [voir](captures/validation-finale/article-frequence-bureaux-375-wordpress.jpg) | [voir](captures/validation-finale/article-frequence-bureaux-375-difference.jpg) |
-| Formulaire de devis | 1440 px | 1947 px | 2196 px | 113 % | [voir](captures/validation-finale/demande-de-devis-1440-maquette.jpg) | [voir](captures/validation-finale/demande-de-devis-1440-wordpress.jpg) | [voir](captures/validation-finale/demande-de-devis-1440-difference.jpg) |
-| ↳ | 375 px | 4175 px | 4359 px | 104 % | [voir](captures/validation-finale/demande-de-devis-375-maquette.jpg) | [voir](captures/validation-finale/demande-de-devis-375-wordpress.jpg) | [voir](captures/validation-finale/demande-de-devis-375-difference.jpg) |
-| Mentions légales | 1440 px | 2014 px | 2763 px | 137 % | [voir](captures/validation-finale/mentions-legales-1440-maquette.jpg) | [voir](captures/validation-finale/mentions-legales-1440-wordpress.jpg) | [voir](captures/validation-finale/mentions-legales-1440-difference.jpg) |
-| ↳ | 375 px | 3759 px | 4962 px | 132 % | [voir](captures/validation-finale/mentions-legales-375-maquette.jpg) | [voir](captures/validation-finale/mentions-legales-375-wordpress.jpg) | [voir](captures/validation-finale/mentions-legales-375-difference.jpg) |
+| Accueil | 1440 px | 7825 px | 7809 px | 100 % | [voir](captures/validation-finale/accueil-1440-maquette.jpg) | [voir](captures/validation-finale/accueil-1440-wordpress.jpg) | [voir](captures/validation-finale/accueil-1440-difference.jpg) |
+| ↳ | 375 px | 13402 px | 13586 px | 101 % | [voir](captures/validation-finale/accueil-375-maquette.jpg) | [voir](captures/validation-finale/accueil-375-wordpress.jpg) | [voir](captures/validation-finale/accueil-375-difference.jpg) |
+| Page pilier | 1440 px | 11192 px | 11165 px | 100 % | [voir](captures/validation-finale/nettoyage-professionnel-1440-maquette.jpg) | [voir](captures/validation-finale/nettoyage-professionnel-1440-wordpress.jpg) | [voir](captures/validation-finale/nettoyage-professionnel-1440-difference.jpg) |
+| ↳ | 375 px | 20090 px | 20341 px | 101 % | [voir](captures/validation-finale/nettoyage-professionnel-375-maquette.jpg) | [voir](captures/validation-finale/nettoyage-professionnel-375-wordpress.jpg) | [voir](captures/validation-finale/nettoyage-professionnel-375-difference.jpg) |
+| Nettoyage de bureaux | 1440 px | 7745 px | 7778 px | 100 % | [voir](captures/validation-finale/service-bureaux-1440-maquette.jpg) | [voir](captures/validation-finale/service-bureaux-1440-wordpress.jpg) | [voir](captures/validation-finale/service-bureaux-1440-difference.jpg) |
+| ↳ | 375 px | 14541 px | 14637 px | 101 % | [voir](captures/validation-finale/service-bureaux-375-maquette.jpg) | [voir](captures/validation-finale/service-bureaux-375-wordpress.jpg) | [voir](captures/validation-finale/service-bureaux-375-difference.jpg) |
+| Nettoyage de cabinets | 1440 px | 8321 px | 8284 px | 100 % | [voir](captures/validation-finale/service-cabinets-1440-maquette.jpg) | [voir](captures/validation-finale/service-cabinets-1440-wordpress.jpg) | [voir](captures/validation-finale/service-cabinets-1440-difference.jpg) |
+| ↳ | 375 px | 15216 px | 15221 px | 100 % | [voir](captures/validation-finale/service-cabinets-375-maquette.jpg) | [voir](captures/validation-finale/service-cabinets-375-wordpress.jpg) | [voir](captures/validation-finale/service-cabinets-375-difference.jpg) |
+| Tarifs | 1440 px | 5852 px | 5990 px | 102 % | [voir](captures/validation-finale/nos-tarifs-1440-maquette.jpg) | [voir](captures/validation-finale/nos-tarifs-1440-wordpress.jpg) | [voir](captures/validation-finale/nos-tarifs-1440-difference.jpg) |
+| ↳ | 375 px | 9002 px | 9209 px | 102 % | [voir](captures/validation-finale/nos-tarifs-375-maquette.jpg) | [voir](captures/validation-finale/nos-tarifs-375-wordpress.jpg) | [voir](captures/validation-finale/nos-tarifs-375-difference.jpg) |
+| Dijon (ville) | 1440 px | 8508 px | 8472 px | 100 % | [voir](captures/validation-finale/ville-dijon-1440-maquette.jpg) | [voir](captures/validation-finale/ville-dijon-1440-wordpress.jpg) | [voir](captures/validation-finale/ville-dijon-1440-difference.jpg) |
+| ↳ | 375 px | 14937 px | 15270 px | 102 % | [voir](captures/validation-finale/ville-dijon-375-maquette.jpg) | [voir](captures/validation-finale/ville-dijon-375-wordpress.jpg) | [voir](captures/validation-finale/ville-dijon-375-difference.jpg) |
+| Beaune (ville) | 1440 px | 7106 px | 7030 px | 99 % | [voir](captures/validation-finale/ville-beaune-1440-maquette.jpg) | [voir](captures/validation-finale/ville-beaune-1440-wordpress.jpg) | [voir](captures/validation-finale/ville-beaune-1440-difference.jpg) |
+| ↳ | 375 px | 12426 px | 12407 px | 100 % | [voir](captures/validation-finale/ville-beaune-375-maquette.jpg) | [voir](captures/validation-finale/ville-beaune-375-wordpress.jpg) | [voir](captures/validation-finale/ville-beaune-375-difference.jpg) |
+| Pourquoi nous | 1440 px | 4047 px | 4187 px | 103 % | [voir](captures/validation-finale/pourquoi-top-famille-pro-1440-maquette.jpg) | [voir](captures/validation-finale/pourquoi-top-famille-pro-1440-wordpress.jpg) | [voir](captures/validation-finale/pourquoi-top-famille-pro-1440-difference.jpg) |
+| ↳ | 375 px | 7837 px | 8174 px | 104 % | [voir](captures/validation-finale/pourquoi-top-famille-pro-375-maquette.jpg) | [voir](captures/validation-finale/pourquoi-top-famille-pro-375-wordpress.jpg) | [voir](captures/validation-finale/pourquoi-top-famille-pro-375-difference.jpg) |
+| Index Conseils | 1440 px | 2834 px | 2889 px | 102 % | [voir](captures/validation-finale/conseils-1440-maquette.jpg) | [voir](captures/validation-finale/conseils-1440-wordpress.jpg) | [voir](captures/validation-finale/conseils-1440-difference.jpg) |
+| ↳ | 375 px | 5147 px | 5222 px | 101 % | [voir](captures/validation-finale/conseils-375-maquette.jpg) | [voir](captures/validation-finale/conseils-375-wordpress.jpg) | [voir](captures/validation-finale/conseils-375-difference.jpg) |
+| Article — fréquence de nettoyage | 1440 px | 4437 px | 4463 px | 101 % | [voir](captures/validation-finale/article-frequence-bureaux-1440-maquette.jpg) | [voir](captures/validation-finale/article-frequence-bureaux-1440-wordpress.jpg) | [voir](captures/validation-finale/article-frequence-bureaux-1440-difference.jpg) |
+| ↳ | 375 px | 6427 px | 6612 px | 103 % | [voir](captures/validation-finale/article-frequence-bureaux-375-maquette.jpg) | [voir](captures/validation-finale/article-frequence-bureaux-375-wordpress.jpg) | [voir](captures/validation-finale/article-frequence-bureaux-375-difference.jpg) |
+| Formulaire de devis | 1440 px | 1947 px | 1928 px | 99 % | [voir](captures/validation-finale/demande-de-devis-1440-maquette.jpg) | [voir](captures/validation-finale/demande-de-devis-1440-wordpress.jpg) | [voir](captures/validation-finale/demande-de-devis-1440-difference.jpg) |
+| ↳ | 375 px | 4175 px | 4147 px | 99 % | [voir](captures/validation-finale/demande-de-devis-375-maquette.jpg) | [voir](captures/validation-finale/demande-de-devis-375-wordpress.jpg) | [voir](captures/validation-finale/demande-de-devis-375-difference.jpg) |
+| Mentions légales | 1440 px | 2014 px | 2666 px | 132 % | [voir](captures/validation-finale/mentions-legales-1440-maquette.jpg) | [voir](captures/validation-finale/mentions-legales-1440-wordpress.jpg) | [voir](captures/validation-finale/mentions-legales-1440-difference.jpg) |
+| ↳ | 375 px | 3759 px | 4663 px | 124 % | [voir](captures/validation-finale/mentions-legales-375-maquette.jpg) | [voir](captures/validation-finale/mentions-legales-375-wordpress.jpg) | [voir](captures/validation-finale/mentions-legales-375-difference.jpg) |
 
 ## Planches
 
 ### Accueil — `#/` → `/`
 
-**1440 px** — maquette 7825 px, WordPress 7943 px (102 %)
+**1440 px** — maquette 7825 px, WordPress 7809 px (100 %)
 
 | Maquette Claude Design | WordPress | Différence |
 |---|---|---|
 | <img src="captures/validation-finale/accueil-1440-maquette.jpg" width="260" alt="Rendu de la maquette"> | <img src="captures/validation-finale/accueil-1440-wordpress.jpg" width="260" alt="Rendu WordPress"> | <img src="captures/validation-finale/accueil-1440-difference.jpg" width="260" alt="Différence pixel à pixel"> |
 
-**375 px** — maquette 13402 px, WordPress 13783 px (103 %)
+**375 px** — maquette 13402 px, WordPress 13586 px (101 %)
 
 | Maquette Claude Design | WordPress | Différence |
 |---|---|---|
@@ -66,13 +66,13 @@
 
 ### Page pilier — `#/nettoyage-professionnel` → `/nettoyage-professionnel/`
 
-**1440 px** — maquette 11192 px, WordPress 11009 px (98 %)
+**1440 px** — maquette 11192 px, WordPress 11165 px (100 %)
 
 | Maquette Claude Design | WordPress | Différence |
 |---|---|---|
 | <img src="captures/validation-finale/nettoyage-professionnel-1440-maquette.jpg" width="260" alt="Rendu de la maquette"> | <img src="captures/validation-finale/nettoyage-professionnel-1440-wordpress.jpg" width="260" alt="Rendu WordPress"> | <img src="captures/validation-finale/nettoyage-professionnel-1440-difference.jpg" width="260" alt="Différence pixel à pixel"> |
 
-**375 px** — maquette 20090 px, WordPress 21749 px (108 %)
+**375 px** — maquette 20090 px, WordPress 20341 px (101 %)
 
 | Maquette Claude Design | WordPress | Différence |
 |---|---|---|
@@ -101,13 +101,13 @@
 
 ### Nettoyage de bureaux — `#/service/bureaux` → `/prestations/bureaux/`
 
-**1440 px** — maquette 7745 px, WordPress 8036 px (104 %)
+**1440 px** — maquette 7745 px, WordPress 7778 px (100 %)
 
 | Maquette Claude Design | WordPress | Différence |
 |---|---|---|
 | <img src="captures/validation-finale/service-bureaux-1440-maquette.jpg" width="260" alt="Rendu de la maquette"> | <img src="captures/validation-finale/service-bureaux-1440-wordpress.jpg" width="260" alt="Rendu WordPress"> | <img src="captures/validation-finale/service-bureaux-1440-difference.jpg" width="260" alt="Différence pixel à pixel"> |
 
-**375 px** — maquette 14541 px, WordPress 15933 px (110 %)
+**375 px** — maquette 14541 px, WordPress 14637 px (101 %)
 
 | Maquette Claude Design | WordPress | Différence |
 |---|---|---|
@@ -129,13 +129,13 @@
 
 ### Nettoyage de cabinets — `#/service/cabinets` → `/prestations/cabinets/`
 
-**1440 px** — maquette 8321 px, WordPress 8460 px (102 %)
+**1440 px** — maquette 8321 px, WordPress 8284 px (100 %)
 
 | Maquette Claude Design | WordPress | Différence |
 |---|---|---|
 | <img src="captures/validation-finale/service-cabinets-1440-maquette.jpg" width="260" alt="Rendu de la maquette"> | <img src="captures/validation-finale/service-cabinets-1440-wordpress.jpg" width="260" alt="Rendu WordPress"> | <img src="captures/validation-finale/service-cabinets-1440-difference.jpg" width="260" alt="Différence pixel à pixel"> |
 
-**375 px** — maquette 15216 px, WordPress 16551 px (109 %)
+**375 px** — maquette 15216 px, WordPress 15221 px (100 %)
 
 | Maquette Claude Design | WordPress | Différence |
 |---|---|---|
@@ -157,13 +157,13 @@
 
 ### Tarifs — `#/nos-tarifs` → `/tarifs/`
 
-**1440 px** — maquette 5852 px, WordPress 5996 px (102 %)
+**1440 px** — maquette 5852 px, WordPress 5990 px (102 %)
 
 | Maquette Claude Design | WordPress | Différence |
 |---|---|---|
 | <img src="captures/validation-finale/nos-tarifs-1440-maquette.jpg" width="260" alt="Rendu de la maquette"> | <img src="captures/validation-finale/nos-tarifs-1440-wordpress.jpg" width="260" alt="Rendu WordPress"> | <img src="captures/validation-finale/nos-tarifs-1440-difference.jpg" width="260" alt="Différence pixel à pixel"> |
 
-**375 px** — maquette 9002 px, WordPress 10291 px (114 %)
+**375 px** — maquette 9002 px, WordPress 9209 px (102 %)
 
 | Maquette Claude Design | WordPress | Différence |
 |---|---|---|
@@ -186,13 +186,13 @@
 
 ### Dijon (ville) — `#/ville/dijon` → `/zones-intervention/cote-dor/dijon/`
 
-**1440 px** — maquette 8508 px, WordPress 8512 px (100 %)
+**1440 px** — maquette 8508 px, WordPress 8472 px (100 %)
 
 | Maquette Claude Design | WordPress | Différence |
 |---|---|---|
 | <img src="captures/validation-finale/ville-dijon-1440-maquette.jpg" width="260" alt="Rendu de la maquette"> | <img src="captures/validation-finale/ville-dijon-1440-wordpress.jpg" width="260" alt="Rendu WordPress"> | <img src="captures/validation-finale/ville-dijon-1440-difference.jpg" width="260" alt="Différence pixel à pixel"> |
 
-**375 px** — maquette 14937 px, WordPress 16174 px (108 %)
+**375 px** — maquette 14937 px, WordPress 15270 px (102 %)
 
 | Maquette Claude Design | WordPress | Différence |
 |---|---|---|
@@ -207,13 +207,13 @@
 
 ### Beaune (ville) — `#/ville/beaune` → `/zones-intervention/cote-dor/beaune/`
 
-**1440 px** — maquette 7106 px, WordPress 7085 px (100 %)
+**1440 px** — maquette 7106 px, WordPress 7030 px (99 %)
 
 | Maquette Claude Design | WordPress | Différence |
 |---|---|---|
 | <img src="captures/validation-finale/ville-beaune-1440-maquette.jpg" width="260" alt="Rendu de la maquette"> | <img src="captures/validation-finale/ville-beaune-1440-wordpress.jpg" width="260" alt="Rendu WordPress"> | <img src="captures/validation-finale/ville-beaune-1440-difference.jpg" width="260" alt="Différence pixel à pixel"> |
 
-**375 px** — maquette 12426 px, WordPress 13041 px (105 %)
+**375 px** — maquette 12426 px, WordPress 12407 px (100 %)
 
 | Maquette Claude Design | WordPress | Différence |
 |---|---|---|
@@ -225,13 +225,13 @@
 
 ### Pourquoi nous — `#/pourquoi-top-famille-pro` → `/pourquoi-nous/`
 
-**1440 px** — maquette 4047 px, WordPress 4328 px (107 %)
+**1440 px** — maquette 4047 px, WordPress 4187 px (103 %)
 
 | Maquette Claude Design | WordPress | Différence |
 |---|---|---|
 | <img src="captures/validation-finale/pourquoi-top-famille-pro-1440-maquette.jpg" width="260" alt="Rendu de la maquette"> | <img src="captures/validation-finale/pourquoi-top-famille-pro-1440-wordpress.jpg" width="260" alt="Rendu WordPress"> | <img src="captures/validation-finale/pourquoi-top-famille-pro-1440-difference.jpg" width="260" alt="Différence pixel à pixel"> |
 
-**375 px** — maquette 7837 px, WordPress 9025 px (115 %)
+**375 px** — maquette 7837 px, WordPress 8174 px (104 %)
 
 | Maquette Claude Design | WordPress | Différence |
 |---|---|---|
@@ -245,13 +245,13 @@
 
 ### Index Conseils — `#/conseils` → `/conseils/`
 
-**1440 px** — maquette 2834 px, WordPress 3309 px (117 %)
+**1440 px** — maquette 2834 px, WordPress 2889 px (102 %)
 
 | Maquette Claude Design | WordPress | Différence |
 |---|---|---|
 | <img src="captures/validation-finale/conseils-1440-maquette.jpg" width="260" alt="Rendu de la maquette"> | <img src="captures/validation-finale/conseils-1440-wordpress.jpg" width="260" alt="Rendu WordPress"> | <img src="captures/validation-finale/conseils-1440-difference.jpg" width="260" alt="Différence pixel à pixel"> |
 
-**375 px** — maquette 5147 px, WordPress 5976 px (116 %)
+**375 px** — maquette 5147 px, WordPress 5222 px (101 %)
 
 | Maquette Claude Design | WordPress | Différence |
 |---|---|---|
@@ -264,13 +264,13 @@
 
 ### Article — fréquence de nettoyage — `#/article/frequence-bureaux` → `/conseils/frequence-bureaux/`
 
-**1440 px** — maquette 4437 px, WordPress 4899 px (110 %)
+**1440 px** — maquette 4437 px, WordPress 4463 px (101 %)
 
 | Maquette Claude Design | WordPress | Différence |
 |---|---|---|
 | <img src="captures/validation-finale/article-frequence-bureaux-1440-maquette.jpg" width="260" alt="Rendu de la maquette"> | <img src="captures/validation-finale/article-frequence-bureaux-1440-wordpress.jpg" width="260" alt="Rendu WordPress"> | <img src="captures/validation-finale/article-frequence-bureaux-1440-difference.jpg" width="260" alt="Différence pixel à pixel"> |
 
-**375 px** — maquette 6427 px, WordPress 7333 px (114 %)
+**375 px** — maquette 6427 px, WordPress 6612 px (103 %)
 
 | Maquette Claude Design | WordPress | Différence |
 |---|---|---|
@@ -283,13 +283,13 @@
 
 ### Formulaire de devis — `#/demande-de-devis` → `/demande-de-devis/`
 
-**1440 px** — maquette 1947 px, WordPress 2196 px (113 %)
+**1440 px** — maquette 1947 px, WordPress 1928 px (99 %)
 
 | Maquette Claude Design | WordPress | Différence |
 |---|---|---|
 | <img src="captures/validation-finale/demande-de-devis-1440-maquette.jpg" width="260" alt="Rendu de la maquette"> | <img src="captures/validation-finale/demande-de-devis-1440-wordpress.jpg" width="260" alt="Rendu WordPress"> | <img src="captures/validation-finale/demande-de-devis-1440-difference.jpg" width="260" alt="Différence pixel à pixel"> |
 
-**375 px** — maquette 4175 px, WordPress 4359 px (104 %)
+**375 px** — maquette 4175 px, WordPress 4147 px (99 %)
 
 | Maquette Claude Design | WordPress | Différence |
 |---|---|---|
@@ -305,13 +305,13 @@
 
 ### Mentions légales — `#/mentions-legales` → `/mentions-legales/`
 
-**1440 px** — maquette 2014 px, WordPress 2763 px (137 %)
+**1440 px** — maquette 2014 px, WordPress 2666 px (132 %)
 
 | Maquette Claude Design | WordPress | Différence |
 |---|---|---|
 | <img src="captures/validation-finale/mentions-legales-1440-maquette.jpg" width="260" alt="Rendu de la maquette"> | <img src="captures/validation-finale/mentions-legales-1440-wordpress.jpg" width="260" alt="Rendu WordPress"> | <img src="captures/validation-finale/mentions-legales-1440-difference.jpg" width="260" alt="Différence pixel à pixel"> |
 
-**375 px** — maquette 3759 px, WordPress 4962 px (132 %)
+**375 px** — maquette 3759 px, WordPress 4663 px (124 %)
 
 | Maquette Claude Design | WordPress | Différence |
 |---|---|---|

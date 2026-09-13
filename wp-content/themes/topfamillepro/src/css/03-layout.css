@@ -41,6 +41,37 @@
   border-bottom: 1px solid var(--color-turquoise-light);
 }
 
+/* Bande GLACIER — #EDF5F6. La maquette n'y pose qu'une bande, celle de la citation d'Audrey sur
+   /a-propos/, mais elle porte à elle seule la mise en valeur de la seule parole attribuée du site :
+   sans fond, la citation se confondait avec la page (G26 §4). */
+.tfp-section--glacier {
+  background: var(--color-bg-glacier);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* Le prototype ne se sert de cette bande que pour mettre en avant une parole : le texte y est
+   composé en titrage — 25 px de Bricolage Grotesque en graisse 500, interligne 1,55 — et non en
+   texte courant, et l'attribution qui le suit en 17 px gras. Rendue en `tfp-prose`, la citation
+   d'Audrey tenait sur deux lignes de 17 px : la bande perdait 60 px de haut et la seule parole
+   attribuée du site n'était plus mise en avant du tout. Les valeurs sont celles relevées. */
+.tfp-section--glacier .tfp-prose {
+  font-family: var(--font-heading);
+  font-size: 25px;
+  line-height: 1.55;
+  font-weight: var(--fw-medium);
+  color: var(--color-text);
+  max-width: none;
+}
+
+.tfp-section--glacier .tfp-static-note {
+  margin-top: 16px;
+  font-family: var(--font-heading);
+  font-size: 17px;
+  font-weight: var(--fw-bold);
+  color: var(--color-text);
+}
+
 .tfp-section--primary {
   background: var(--color-primary);
   color: var(--color-white);

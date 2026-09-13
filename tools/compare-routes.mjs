@@ -22,6 +22,7 @@ import { chromium } from '@playwright/test';
 import { mkdirSync, writeFileSync, readFileSync } from 'node:fs';
 import sharp from 'sharp';
 import { ROUTE_MAP } from './route-map.mjs';
+import { panneauDifference } from './lib/diff-visuel.mjs';
 
 const REF = 'file:///home/user/top-famille-pro/reference/Top-Famille-Pro-HANDOFF-READY.html';
 const WP = process.env.TFP_BASE_URL || 'http://localhost:8899';
@@ -104,21 +105,26 @@ async function goRoute(page, hash) {
 
 /** Triptyque référence | WordPress | différence, à panneaux de même largeur et même hauteur. */
 async function triptych(refBuf, wpBuf, out) {
-	const a = sharp(refBuf).resize({ width: PANEL });
-	const b = sharp(wpBuf).resize({ width: PANEL });
-	const [ab, bb] = await Promise.all([a.png().toBuffer(), b.png().toBuffer()]);
-	const [am, bm] = await Promise.all([sharp(ab).metadata(), sharp(bb).metadata()]);
-	const H = Math.max(am.height, bm.height);
+	// Les deux captures sont réduites à la MÊME largeur de panneau avant toute comparaison : un
+	// écart de largeur fabriquerait un décalage horizontal qui noierait les vrais écarts.
+	const [ab, bb] = await Promise.all([
+		sharp(refBuf).resize({ width: PANEL }).png().toBuffer(),
+		sharp(wpBuf).resize({ width: PANEL }).png().toBuffer(),
+	]);
+	/*
+	 * Panneau de différence AMPLIFIÉ et MESURÉ (tools/lib/diff-visuel.mjs, G26). L'ancienne
+	 * composition `difference` + `negate()` rendait un panneau blanc uniforme sur deux rendus
+	 * proches : une image manquante ou un bloc déplacé y étaient invisibles, ce qui a motivé le
+	 * refus de validation du 17 août 2026.
+	 */
+	const { png: diff, pourcentage, hauteur: H } = await panneauDifference(ab, bb);
 
-	// La différence n'a de sens que sur deux images de même géométrie : on complète la plus courte
-	// en blanc plutôt que de recadrer, pour qu'un manque en fin de page ressorte comme un écart.
-	const pad = (buf, h) =>
+	const pad = (buf) =>
 		sharp({ create: { width: PANEL, height: H, channels: 3, background: '#ffffff' } })
 			.composite([{ input: buf, top: 0, left: 0 }])
 			.png()
 			.toBuffer();
-	const [ap, bp] = await Promise.all([pad(ab, am.height), pad(bb, bm.height)]);
-	const diff = await sharp(ap).composite([{ input: bp, blend: 'difference' }]).negate().png().toBuffer();
+	const [ap, bp] = await Promise.all([pad(ab), pad(bb)]);
 
 	await sharp({ create: { width: PANEL * 3 + 16, height: H, channels: 3, background: '#d0d0d0' } })
 		.composite([
@@ -128,6 +134,7 @@ async function triptych(refBuf, wpBuf, out) {
 		])
 		.jpeg({ quality: 70 })
 		.toFile(out);
+	return pourcentage;
 }
 
 function pct(refV, wpV) {

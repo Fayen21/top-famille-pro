@@ -94,6 +94,21 @@ function tfp_body_class( $classes ) {
 	$classes[] = 'tfp-type-' . $type;
 
 	/*
+	 * Marqueur de la page région, EN PLUS de son type.
+	 *
+	 * `/bourgogne-franche-comte/` est classée `tfp-type-zone` à dessein : elle partage l'échelle de
+	 * titres, de bandes et de cartes des pages de zone, et lui donner un type à elle seule la
+	 * priverait de tout cela. Son H1, en revanche, n'est pas celui d'une ville : la maquette y
+	 * déclare `clamp(30px, 4.2vw, 52px)` quand une ville reçoit l'échelle des zones.
+	 *
+	 * Les départements se distinguent par leur largeur de hero, déjà relevée — pas la région, qui
+	 * n'en porte aucune. D'où ce marqueur, qui ne sert qu'à cela et ne change aucun autre héritage.
+	 */
+	if ( is_page( 'bourgogne-franche-comte' ) ) {
+		$classes[] = 'tfp-page-region';
+	}
+
+	/*
 	 * Largeur du hero, relevée sur la maquette route par route (tools/compare-styles.mjs).
 	 *
 	 * Le prototype n'a pas une seule largeur de hero : il en a deux familles. Les pages dont le

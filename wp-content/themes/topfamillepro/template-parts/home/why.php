@@ -48,7 +48,7 @@ $why_items = array(
 		</div>
 
 		<div class="tfp-why__aside">
-			<?php tfp_testimonial_card(); ?>
+			<?php tfp_testimonial_card( null, array( 'avatar' => true ) ); ?>
 		</div>
 	</div>
 </section>

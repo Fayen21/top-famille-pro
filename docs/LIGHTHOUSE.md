@@ -10,20 +10,20 @@ Cibles : Performance ≥ 90 · Accessibilité, Bonnes pratiques, SEO = 100 · CL
 
 | Page | Profil | Perf. | A11y | BP | SEO | LCP | CLS | TBT |
 |---|---|---:|---:|---:|---:|---:|---:|---:|
-| Accueil | mobile | 92 | 100 | 100 | 100 | 2.88 s | 0.000 | 145 ms |
-| Accueil | bureau | 100 | 100 | 100 | 100 | 0.57 s | 0.028 | 0 ms |
-| Prestation | mobile | 94 | 100 | 100 | 100 | 2.87 s | 0.000 | 0 ms |
-| Prestation | bureau | 100 | 100 | 100 | 100 | 0.59 s | 0.029 | 0 ms |
-| Ville | mobile | 94 | 100 | 100 | 100 | 2.87 s | 0.000 | 0 ms |
-| Ville | bureau | 100 | 100 | 100 | 100 | 0.58 s | 0.029 | 0 ms |
-| Tarifs | mobile | 95 | 100 | 100 | 100 | 2.72 s | 0.000 | 0 ms |
-| Tarifs | bureau | 100 | 100 | 100 | 100 | 0.58 s | 0.029 | 0 ms |
-| Article | mobile | 98 | 100 | 100 | 100 | 2.27 s | 0.000 | 0 ms |
-| Article | bureau | 100 | 100 | 100 | 100 | 0.51 s | 0.028 | 0 ms |
-| Contact | mobile | 98 | 100 | 100 | 100 | 2.12 s | 0.000 | 0 ms |
-| Contact | bureau | 100 | 100 | 100 | 100 | 0.53 s | 0.029 | 0 ms |
-| Formulaire de devis | mobile | 96 | 100 | 100 | 100 | 2.58 s | 0.000 | 0 ms |
-| Formulaire de devis | bureau | 100 | 100 | 100 | 100 | 0.60 s | 0.029 | 0 ms |
+| Accueil | mobile | 99 | 100 | 100 | 100 | 1.83 s | 0.000 | 38 ms |
+| Accueil | bureau | 100 | 100 | 100 | 100 | 0.44 s | 0.000 | 0 ms |
+| Prestation | mobile | 99 | 100 | 100 | 100 | 1.82 s | 0.000 | 0 ms |
+| Prestation | bureau | 100 | 100 | 100 | 100 | 0.42 s | 0.000 | 0 ms |
+| Ville | mobile | 99 | 100 | 100 | 100 | 1.82 s | 0.000 | 9 ms |
+| Ville | bureau | 100 | 100 | 100 | 100 | 0.42 s | 0.000 | 0 ms |
+| Tarifs | mobile | 100 | 100 | 100 | 100 | 1.67 s | 0.000 | 0 ms |
+| Tarifs | bureau | 100 | 100 | 100 | 100 | 0.42 s | 0.000 | 0 ms |
+| Article | mobile | 99 | 100 | 100 | 100 | 1.82 s | 0.000 | 0 ms |
+| Article | bureau | 100 | 100 | 100 | 100 | 0.42 s | 0.000 | 0 ms |
+| Contact | mobile | 100 | 100 | 100 | 100 | 1.66 s | 0.000 | 0 ms |
+| Contact | bureau | 100 | 100 | 100 | 100 | 0.41 s | 0.000 | 0 ms |
+| Formulaire de devis | mobile | 100 | 100 | 100 | 100 | 1.67 s | 0.000 | 0 ms |
+| Formulaire de devis | bureau | 100 | 100 | 100 | 100 | 0.42 s | 0.000 | 0 ms |
 
-**7 mesure(s) sous la cible** : Accueil (bureau), Prestation (bureau), Ville (bureau), Tarifs (bureau), Article (bureau), Contact (bureau), Formulaire de devis (bureau).
+**Toutes les mesures atteignent leur cible.**
 

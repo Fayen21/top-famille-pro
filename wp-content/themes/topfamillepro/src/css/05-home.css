@@ -384,6 +384,27 @@
 }
 
 /* ---------- Couverture régionale ---------- */
+/* ---------- Bande de couverture régionale ----------
+   Rangée relevée sur la maquette (G23) : flex sans align-items (les colonnes s'étirent et
+   partagent leur ordonnée), colonne de liens en base 360, carte des départements en base 320 /
+   min-height 280. À 1440 px, ces bases redonnent d'elles-mêmes 582 + 542 px — et 582 px de
+   colonne donnent des liens de 187 px, où « Territoire de Belfort » tient sur sa ligne. */
+.tfp-couverture {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(30px, 4vw, 56px);
+}
+
+.tfp-couverture__col {
+  flex: 1 1 360px;
+  min-width: min(100%, 320px);
+}
+
+.tfp-couverture__carte {
+  flex: 1 1 320px;
+  min-width: min(100%, 300px);
+}
+
 .tfp-dept-link {
   background: var(--color-white);
   border: 1px solid var(--color-turquoise-light);
@@ -394,7 +415,9 @@
   align-items: center;
   color: var(--color-text);
   font-weight: var(--fw-semibold);
-  font-size: var(--fs-sm);
+  /* 14,5 px : taille déclarée par le lien de département de la maquette — 15 px suffisait à
+     replier « Territoire de Belfort » sur deux lignes dans une colonne de 187 px. */
+  font-size: 14.5px;
   transition: transform var(--transition-base), border-color var(--transition-base);
   min-height: var(--tap-target-min);
 }
@@ -549,15 +572,47 @@
 .tfp-testimonial {
   background: var(--color-white);
   border: 1px solid var(--color-border);
-  border-radius: 18px;
-  padding: clamp(20px, 2.4vw, 32px);
+  /* Relevés quand la maquette les pose ; jetons du thème en repli. */
+  border-radius: var(--tfp-avis-rayon, 18px);
+  padding: var(--tfp-avis-padding, clamp(20px, 2.4vw, 32px));
   box-shadow: var(--shadow-md);
 }
 
+/* L'écart entre en-tête, citation et légende est relevé : la maquette pose 14 px, le thème
+   laissait les marges par défaut des blocs, ce qui ne donnait pas la même carte. */
+.tfp-testimonial[style*="--tfp-avis-gap"] {
+  display: flex;
+  flex-direction: column;
+  gap: var(--tfp-avis-gap);
+}
+
+.tfp-testimonial[style*="--tfp-avis-gap"] .tfp-testimonial__author {
+  margin-top: 0;
+}
+
+/* Rangée d'en-tête : étoiles à gauche, source de l'avis à droite — relevé de la maquette. */
+.tfp-testimonial__head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tfp-testimonial__source {
+  font-size: 12px;
+  font-weight: var(--fw-semibold);
+  color: var(--color-text-tertiary);
+}
+
+/*
+ * Les trois niveaux de la carte d'avis portent leur taille RELEVÉE quand elle existe, et
+ * retombent sinon sur l'échelle du thème. La maquette compose la citation, le nom et les
+ * métadonnées à trois tailles distinctes ; une valeur unique les écrasait sur la plus petite et
+ * retirait 77 px à chaque carte.
+ */
 .tfp-testimonial__quote {
-  font-size: clamp(17px, 1.6vw, 19px);
+  font-size: var(--tfp-avis-citation, clamp(17px, 1.6vw, 19px));
   font-weight: 500;
-  line-height: 1.5;
+  line-height: var(--tfp-avis-citation-lh, 1.5);
   color: var(--color-text);
 }
 
@@ -570,10 +625,61 @@
 
 .tfp-testimonial__name {
   font-weight: var(--fw-semibold);
+  font-size: var(--tfp-avis-auteur, inherit);
+  line-height: var(--tfp-avis-auteur-lh, inherit);
 }
 
 .tfp-testimonial__context {
-  font-size: var(--fs-sm);
+  font-size: var(--tfp-avis-meta, var(--fs-sm));
+  line-height: var(--tfp-avis-meta-lh, inherit);
+  color: var(--color-text-tertiary);
+}
+
+/*
+ * Variante compacte — relevée sur la colonne latérale de `/demande-de-devis/`.
+ *
+ * La maquette y pose une carte plus petite que celle des bandes d'avis : fond glacier plutôt que
+ * blanc, aucune ombre, 22 px de rembourrage, rayon 16, étoiles à 13 px, citation à 15/1,55 en
+ * graisse normale, et surtout nom et contexte sur UNE SEULE ligne à 13 px. La carte générique
+ * mesurait 277,7 px de haut contre 154,6 dans le prototype — l'écart venait entièrement de la
+ * typographie et du repli en deux lignes de la légende, pas du contenu.
+ */
+.tfp-testimonial--compacte {
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  padding: 22px;
+  box-shadow: none;
+}
+
+.tfp-testimonial--compacte .tfp-testimonial__stars {
+  margin-bottom: 0;
+  font-size: 13px;
+  letter-spacing: 1px;
+}
+
+.tfp-testimonial--compacte .tfp-testimonial__quote {
+  margin-top: 10px;
+  font-size: 15px;
+  font-weight: var(--fw-regular);
+  line-height: 1.55;
+}
+
+/* La taille est posée sur la LÉGENDE, pas seulement sur ses fragments : la boîte de ligne se
+   calcule sur la police de l'élément parent, et une légende laissée à 17 px produisait une ligne
+   de 27,5 px pour du texte de 13. */
+.tfp-testimonial--compacte .tfp-testimonial__author {
+  margin-top: 10px;
+  display: block;
+  font-size: 13px;
+}
+
+.tfp-testimonial--compacte .tfp-testimonial__name,
+.tfp-testimonial--compacte .tfp-testimonial__context,
+.tfp-testimonial--compacte .tfp-testimonial__sep {
+  display: inline;
+  font-size: 13px;
+  font-weight: var(--fw-regular);
   color: var(--color-text-tertiary);
 }
 

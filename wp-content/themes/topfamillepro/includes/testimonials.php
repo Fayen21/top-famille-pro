@@ -37,7 +37,14 @@ if ( ! defined( 'ABSPATH' ) ) {
  * consommation. Le composant est prêt : dès que la vraie note est saisie, les deux badges
  * apparaissent, sans retoucher une ligne de gabarit.
  *
- * @param string $variant 'inline' (hero) ou 'floating' (superposé au portrait).
+ * Variantes : 'inline' (pastille blanche encadrée — hero de l'accueil, pilier, tarifs, pages
+ * prestation et zone, là où la maquette la compose ainsi), 'floating' (superposée au portrait
+ * d'Audrey), 'nu' (étoiles + note à plat, sans fond ni filet ni rayon — les eyebrows des pages
+ * intérieures dont la maquette ne rend PAS la pastille : la seule occurrence de la note y est le
+ * lien nu de la barre haute, et une pastille de plus y comptait une carte absente du prototype —
+ * relevé G23).
+ *
+ * @param string $variant 'inline', 'floating' ou 'nu'.
  */
 function tfp_google_rating_badge( $variant = 'inline' ) {
 	$data = tfp_reassurance_data();
@@ -138,7 +145,14 @@ function tfp_featured_testimonial() {
  *                         champs ACF d'une prestation. À défaut, le témoignage mis en avant des
  *                         réglages, sinon celui de la maquette.
  */
-function tfp_testimonial_card( $item = null ) {
+function tfp_testimonial_card( $item = null, $args = array() ) {
+	/*
+	 * La vignette d'auteur n'est PAS un attribut du composant : c'est un choix de la maquette,
+	 * bande par bande. Elle n'apparaît que sur le témoignage mis en avant de l'accueil ; les
+	 * trente-deux autres cartes du site n'en portent pas. Un défaut à `true` la posait partout et
+	 * fabriquait trente-deux visuels que le prototype n'a pas.
+	 */
+	$avec_avatar = ! empty( $args['avatar'] );
 	if ( is_array( $item ) && ! empty( $item['texte'] ) ) {
 		$contexte = implode(
 			' · ',
@@ -166,23 +180,135 @@ function tfp_testimonial_card( $item = null ) {
 	// `data-tfp-provisional` marque un témoignage repris de la maquette et non encore remplacé par
 	// un avis réel : la suite de tests s'en sert pour l'exclure du contrôle « aucune donnée
 	// fictive », et il suffit d'une recherche sur cet attribut pour tous les retrouver.
-	printf( '<figure class="tfp-testimonial"%s>', ! empty( $item['demo'] ) ? ' data-tfp-provisional="1"' : '' );
+	/*
+	 * Géométrie de la carte relevée sur la maquette — rembourrage, rayon, écart entre ses blocs.
+	 * Sans relevé, les jetons du thème s'appliquent : c'est le comportement d'avant.
+	 */
+	$carte      = isset( $args['carte'] ) && is_array( $args['carte'] ) ? $args['carte'] : array();
+	$vars_carte = array();
+	foreach ( array( 'padding' => '--tfp-avis-padding', 'rayon' => '--tfp-avis-rayon', 'gap' => '--tfp-avis-gap' ) as $cle => $var ) {
+		$v = trim( (string) ( $carte[ $cle ] ?? '' ) );
+		if ( '' !== $v && preg_match( '/^[0-9.px ]+$/', $v ) ) {
+			$vars_carte[] = $var . ':' . $v;
+		}
+	}
+	/*
+	 * Variantes de carte relevées sur la maquette. La liste est fermée : un appelant ne peut pas
+	 * injecter une classe arbitraire, et une variante inconnue retombe silencieusement sur la
+	 * carte de base plutôt que de produire un rendu sans style.
+	 *
+	 * `compacte` — colonne latérale du formulaire de devis : fond glacier, pas d'ombre, 22 px de
+	 * rembourrage, étoiles et légende réduites, auteur et contexte sur une seule ligne.
+	 */
+	$variantes = array( 'compacte' );
+	$variante  = in_array( (string) ( $args['variante'] ?? '' ), $variantes, true ) ? (string) $args['variante'] : '';
 
 	printf(
-		'<span class="tfp-testimonial__stars" aria-hidden="true">%s</span>',
-		esc_html( str_repeat( '★', 5 ) )
+		'<figure class="tfp-testimonial%s"%s%s>',
+		$variante ? ' tfp-testimonial--' . $variante : '',
+		! empty( $item['demo'] ) ? ' data-tfp-provisional="1"' : '',
+		$vars_carte ? ' style="' . esc_attr( implode( ';', $vars_carte ) ) . '"' : ''
 	);
-	printf( '<blockquote class="tfp-testimonial__quote">« %s »</blockquote>', esc_html( $item['texte'] ) );
+
+	/*
+	 * Rangée d'en-tête relevée sur la maquette : les étoiles, puis la source de l'avis quand elle
+	 * est connue. La source n'est PAS une note du site — c'est le nom de la plateforme où l'avis a
+	 * été laissé, écrit à côté des étoiles, sans chiffre. Aucune donnée structurée n'en découle
+	 * (CLAUDE.md §5.5).
+	 */
+	$etoiles = ! empty( $args['etoiles'] ) ? (string) $args['etoiles'] : str_repeat( '★', 5 );
+	$source  = isset( $args['source'] ) ? trim( (string) $args['source'] ) : '';
+	echo '<span class="tfp-testimonial__head">';
+	printf( '<span class="tfp-testimonial__stars" aria-hidden="true">%s</span>', esc_html( $etoiles ) );
+	if ( '' !== $source ) {
+		printf( '<span class="tfp-testimonial__source">%s</span>', esc_html( $source ) );
+	}
+	echo '</span>';
+	/*
+	 * Géométrie relevée sur la maquette, niveau par niveau. La carte porte trois tailles — citation,
+	 * nom, métadonnées — là où une tuile générique n'en porte que deux. Sans relevé, l'échelle du
+	 * thème s'applique, comme avant.
+	 */
+	$geo  = isset( $args['geo'] ) && is_array( $args['geo'] ) ? $args['geo'] : array();
+	$vars = static function ( $niveau ) use ( $geo ) {
+		$g = $geo[ $niveau ] ?? array();
+		$out = array();
+		/*
+		 * La taille passe par le filtre de longueur commun, et non par un `\d+px` : la maquette
+		 * écrit la citation de l'avis mis en avant `clamp(19px, 2.2vw, 25px)`, et un motif qui
+		 * n'accepte que des pixels rejetait silencieusement le relevé — la citation retombait sur
+		 * l'échelle du thème à toutes les largeurs.
+		 */
+		$taille = function_exists( 'tfp_longueur_css' ) ? tfp_longueur_css( $g['taille'] ?? '' ) : '';
+		if ( '' !== $taille ) {
+			$out[] = '--tfp-avis-' . $niveau . ':' . $taille;
+		}
+		/*
+		 * L'interligne est accepté en pixels OU en ratio sans unité. Le ratio est ce qu'il faut
+		 * quand la taille est une fonction : 1,5 suit le `clamp`, 37,5 px ne le suit pas.
+		 */
+		$lh = trim( (string) ( $g['interligne'] ?? '' ) );
+		if ( preg_match( '/^[0-9.]+(px)?$/', $lh ) && (float) $lh > 0 ) {
+			$out[] = '--tfp-avis-' . $niveau . '-lh:' . $lh;
+		}
+		return $out ? ' style="' . esc_attr( implode( ';', $out ) ) . '"' : '';
+	};
+
+	printf(
+		'<blockquote class="tfp-testimonial__quote"%s>« %s »</blockquote>',
+		$vars( 'citation' ), // phpcs:ignore WordPress.Security.EscapeOutput
+		esc_html( $item['texte'] )
+	);
 
 	echo '<figcaption class="tfp-testimonial__author">';
-	printf( '<span class="tfp-testimonial__name">%s</span>', esc_html( $item['nom'] ) );
+	/*
+	 * Vignette d'auteur — 44 px, ronde, relevée sur la maquette (G26 §3).
+	 *
+	 * Elle manquait, et l'audit d'images par rôle la comptait absente sur l'accueil. Elle n'est
+	 * rendue QUE pour un témoignage provisoire, et son `alt` est vide : la carte porte déjà
+	 * `data-tfp-provisional` et sa mention visible, le nom est écrit juste à côté, et le visuel ne
+	 * prétend donc représenter personne (CLAUDE.md §5.6). Un vrai avis saisi en administration
+	 * n'en reçoit pas : rien n'irait alors illustrer un client réel par une photo de stock.
+	 */
+	if ( $avec_avatar && ! empty( $item['demo'] ) && function_exists( 'tfp_image_exists' ) && tfp_image_exists( 'avatar-temoignage' ) ) {
+		echo '<span class="tfp-testimonial__avatar">';
+		tfp_picture( 'avatar-temoignage', array( 'sizes' => '44px', 'alt' => '' ) );
+		echo '</span>';
+	}
+	printf(
+		'<span class="tfp-testimonial__name"%s>%s</span>',
+		$vars( 'auteur' ), // phpcs:ignore WordPress.Security.EscapeOutput
+		esc_html( $item['nom'] )
+	);
 	if ( ! empty( $item['contexte'] ) ) {
-		printf( '<span class="tfp-testimonial__context">%s</span>', esc_html( $item['contexte'] ) );
+		/*
+		 * En variante compacte, la maquette écrit « Sarah B. · Commerçante · Dole » sur une seule
+		 * ligne. Le point médian est un VRAI caractère dans un élément dédié, pas un `::before` :
+		 * un contenu généré par la CSS est restitué par la plupart des lecteurs d'écran, et
+		 * « point médian » entre le nom et le métier n'apporte rien. Marqué `aria-hidden`, il se
+		 * voit et ne s'entend pas.
+		 */
+		if ( 'compacte' === $variante ) {
+			echo '<span class="tfp-testimonial__sep" aria-hidden="true"> · </span>';
+		}
+		printf(
+			'<span class="tfp-testimonial__context"%s>%s</span>',
+			$vars( 'meta' ), // phpcs:ignore WordPress.Security.EscapeOutput
+			esc_html( $item['contexte'] )
+		);
 	}
 	echo '</figcaption>';
 
-	// La mention accompagne la carte elle-même : elle ne peut donc pas être oubliée sur une route.
-	if ( ! empty( $item['demo'] ) ) {
+	/*
+	 * La mention accompagne la carte elle-même : elle ne peut donc pas être oubliée sur une route.
+	 *
+	 * Sauf quand la GRILLE l'a déjà posée au-dessus de ses cartes — c'est le cas des six avis de
+	 * `/avis-clients/`, dont `tfp_card_grid()` annonce le caractère provisoire une fois pour
+	 * toutes. La répéter dans chaque carte ne dit rien de plus au visiteur et ajoute ici trois
+	 * lignes par carte : 58 px × 6, soit une page de 9 % plus longue que la maquette pour une
+	 * information déjà donnée juste au-dessus.
+	 */
+	if ( ! empty( $item['demo'] ) && false !== ( $args['mention'] ?? true ) ) {
 		echo '<figcaption class="tfp-provisional-notice" data-tfp-provisional-notice="1">'
 			. 'Exemple de présentation — témoignages authentiques en cours d’intégration.'
 			. '</figcaption>';

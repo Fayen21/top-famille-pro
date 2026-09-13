@@ -31,6 +31,66 @@ const PAGES = [
 	{ hash: '#/recrutement', key: 'recrutement' },
 ];
 
+/**
+ * Corrections éditoriales décidées, appliquées à TOUT texte relevé dans la maquette.
+ *
+ * Le générateur reproduit le prototype ; il ne le corrige pas de lui-même. Ce qui est décidé vient
+ * ici plutôt que dans `bin/seed-fidelite-pages.php`, qui est **généré** : une correction faite dans
+ * le fichier produit serait écrasée à la régénération suivante.
+ *
+ * ## « le cas échéant », consigne du 18 août 2026
+ *
+ * La réserve ne doit plus être répétée dans plusieurs lignes d'un même bloc. Le prototype la pose
+ * deux fois dans la même phrase à deux endroits — sur la page pilier et sur la page région — à
+ * une douzaine de mots d'intervalle, ce qui la rend décorative plutôt qu'informative.
+ *
+ * **Aucune condition contractuelle n'est retirée** : les frais de mise en place, la majoration de
+ * 10 % (dimanche, jours fériés, nuit) et les indemnités de 0,35 € HT/km restent énoncés, ainsi que
+ * le renvoi au devis. C'est la réserve qui est mutualisée, pas ce qu'elle qualifie.
+ *
+ * Chaque entrée est appliquée par REMPLACEMENT EXACT. Le compte final est vérifié : si un fragment
+ * n'est plus trouvé — parce que la maquette a changé — la génération échoue au lieu de produire
+ * silencieusement un texte non corrigé.
+ */
+const CORRECTIONS_EDITORIALES = [
+	{
+		// Page pilier — bande tarifaire.
+		avant:
+			"S'y ajoutent le cas échéant 9 € HT/mois de gestion, 50 € HT de frais de mise en place, " +
+			'le cas échéant, selon les conditions précisées au devis, une majoration de 10 % ' +
+			'(dimanche, jours fériés, nuit) et 0,35 € HT/km.',
+		apres:
+			"S'y ajoutent, si prévu et indiqué au devis, 9 € HT/mois de gestion, 50 € HT de frais de " +
+			'mise en place, une majoration de 10 % (dimanche, jours fériés, nuit) et 0,35 € HT/km.',
+	},
+	{
+		// Page région — bande tarifaire.
+		avant:
+			"S'y ajoutent 9 € HT/mois de gestion pour les contrats réguliers, 50 € HT de frais de " +
+			'mise en place, le cas échéant, selon les conditions précisées au devis, et, le cas ' +
+			'échéant, des indemnités kilométriques de 0,35 € HT/km.',
+		apres:
+			"S'y ajoutent 9 € HT/mois de gestion pour les contrats réguliers, 50 € HT de frais de " +
+			'mise en place et des indemnités kilométriques de 0,35 € HT/km, lorsqu\'ils ' +
+			"s'appliquent, selon les conditions précisées au devis.",
+	},
+];
+
+/** Nombre de remplacements appliqués, contrôlé en fin de génération. */
+const comptesCorrections = CORRECTIONS_EDITORIALES.map(() => 0);
+
+/** Applique les corrections éditoriales à une chaîne relevée. */
+function corriger(texte) {
+	let sortie = String(texte ?? '');
+	CORRECTIONS_EDITORIALES.forEach((c, i) => {
+		while (sortie.includes(c.avant)) {
+			sortie = sortie.replace(c.avant, c.apres);
+			comptesCorrections[i]++;
+		}
+	});
+	return sortie;
+}
+
 function php(v, indent = '\t') {
 	if (Array.isArray(v)) {
 		if (!v.length) return 'array()';
@@ -53,7 +113,7 @@ function php(v, indent = '\t') {
 	// Un booléen sérialisé en chaîne devient `'false'`, qui est **vrai** en PHP. Bug silencieux et
 	// exactement inversé : la disposition en cartes s'appliquait partout au lieu de nulle part.
 	if (typeof v === 'boolean') return v ? 'true' : 'false';
-	return "'" + String(v ?? '').replace(/\\/g, '\\\\').replace(/'/g, "\\'") + "'";
+	return "'" + corriger(v).replace(/\\/g, '\\\\').replace(/'/g, "\\'") + "'";
 }
 
 const browser = await chromium.launch({ executablePath: '/opt/pw-browsers/chromium' });
@@ -76,6 +136,10 @@ for (const p of PAGES) {
 	});
 
 	const data = await page.evaluate(() => {
+		// La page du prototype est unique pour les neuf routes : les avertissements accumulés d'une
+		// route ne doivent pas être imputés à la suivante.
+		window.__tfpFondsInconnus = [];
+		window.__tfpRangeeSeq = 0;
 		const txt = (el) => (el ? (el.textContent || '').replace(/\s+/g, ' ').trim() : '');
 		// Conteneur du flux de page : le plus proche ancêtre du H1 qui porte plusieurs `<section>`
 		// directes. Compter les enfants d'un conteneur quelconque ne suffit pas — sur une page
@@ -99,6 +163,19 @@ for (const p of PAGES) {
 			if (bg === 'rgb(16, 38, 59)') return 'navy';
 			if (bg === 'rgb(255, 255, 255)') return 'blanc';
 			if (bg === 'rgb(244, 247, 248)') return 'alt';
+			/*
+			 * Bande glacier — #EDF5F6 (G26 §4). La bande de citation de /a-propos/ est la seule du
+			 * prototype à l'employer ; faute d'entrée ici, elle repartait « sans fond » et la
+			 * citation d'Audrey se fondait dans la page. Un relevé de couleur qui retombe
+			 * silencieusement sur la chaîne vide efface une bande entière sans rien signaler : la
+			 * liste est donc close par un contrôle, et non par un défaut muet.
+			 */
+			if (bg === 'rgb(237, 245, 246)') return 'glacier';
+			if (bg !== 'rgba(0, 0, 0, 0)' && bg !== 'transparent') {
+				// Une couleur de bande non répertoriée est une perte de fidélité, pas un cas neutre :
+				// on la remonte pour qu'elle soit traitée, au lieu de la laisser disparaître.
+				(window.__tfpFondsInconnus ||= []).push(bg);
+			}
 			return '';
 		};
 
@@ -355,6 +432,150 @@ for (const p of PAGES) {
 			const img = el.querySelector('img');
 			const cs = getComputedStyle(el);
 
+			/*
+			 * ARCHÉTYPE PILE — une carte qui est elle-même une COLONNE DE SOUS-CARTES.
+			 *
+			 * La seconde colonne du panneau d'avis mis en avant de `/avis-clients/` n'est pas une
+			 * carte : c'est un empilement de deux tuiles bleues distinctes, chacune avec ses
+			 * étoiles et sa citation. La décomposition générique les aplatissait en UNE carte dont
+			 * l'intitulé était la première citation, la description une seconde rangée d'étoiles et
+			 * la ligne suivante la seconde citation. Le rendu ne montrait plus deux avis mais un
+			 * seul, bavard — faux, pas seulement plus court.
+			 *
+			 * La détection est volontairement étroite, pour ne capturer que cela :
+			 *  - au moins deux enfants directs, tous ÉLÉMENTS et tous porteurs de texte ;
+			 *  - tous PEINTS (fond non transparent) — un empilement de blocs nus n'est pas une pile
+			 *    de cartes, c'est une mise en page ;
+			 *  - tous de MÊME fond, MÊME rayon et MÊME rembourrage — deux tuiles d'une même série ;
+			 *  - le parent lui-même sans fond ni rembourrage propre : il n'est qu'un conteneur.
+			 *
+			 * Une seule grille du site y répond. Partout ailleurs, rien n'est écrit et rien ne
+			 * change.
+			 */
+			const enfantsPile = [...el.children].filter((c) => txt(c));
+			if (enfantsPile.length >= 2) {
+				const styles = enfantsPile.map((c) => getComputedStyle(c));
+				const peintes = styles.every((g) => !/rgba\([^)]*,\s*0\s*\)|^transparent$/.test(g.backgroundColor));
+				const memeFond = new Set(styles.map((g) => g.backgroundColor)).size === 1;
+				const memeRayon = new Set(styles.map((g) => g.borderTopLeftRadius)).size === 1;
+				const memePad = new Set(styles.map((g) => g.padding)).size === 1;
+				const parentNu = /rgba\([^)]*,\s*0\s*\)|^transparent$/.test(cs.backgroundColor);
+				/* Le texte de la carte n'est QUE celui de ses tuiles : aucun intitulé propre. */
+				const texteHorsTuiles = txt(el).replace(/\s/g, '').length
+					- enfantsPile.map((c) => txt(c).replace(/\s/g, '').length).reduce((a, b) => a + b, 0);
+				if (peintes && memeFond && memeRayon && memePad && parentNu && texteHorsTuiles <= 2) {
+					const geoTuile = (n) => {
+						const g = getComputedStyle(n);
+						return {
+							taille: (n.style && n.style.fontSize) || g.fontSize,
+							interligne: Math.round((parseFloat(g.lineHeight) / parseFloat(g.fontSize)) * 1000) / 1000 || 0,
+							couleur: g.color,
+						};
+					};
+					const tuiles = enfantsPile.map((c) => {
+						/* Étoiles et citation : relevées telles quelles, jamais fabriquées. */
+						const blocs = [...c.children].filter((x) => txt(x));
+						const bEtoiles = blocs.find((x) => /★/.test(txt(x)));
+						const bTexte = blocs.find((x) => x !== bEtoiles && txt(x));
+						return {
+							etoiles: bEtoiles ? (txt(bEtoiles).match(/★+/) || [''])[0] : '',
+							etoiles_geo: bEtoiles ? geoTuile(bEtoiles) : {},
+							texte: bTexte ? txt(bTexte).replace(/^«\s*/, '').replace(/\s*»$/, '') : '',
+							texte_geo: bTexte ? geoTuile(bTexte) : {},
+						};
+					}).filter((t) => t.texte);
+					if (tuiles.length >= 2) {
+						const g0 = styles[0];
+						return {
+							archetype: 'pile',
+							pile_fond: g0.backgroundColor,
+							pile_rayon: g0.borderTopLeftRadius,
+							pile_padding: (enfantsPile[0].style && enfantsPile[0].style.padding) || g0.padding,
+							pile_gap: /^[0-9.]+px$/.test(cs.rowGap) ? cs.rowGap : '',
+							tuiles,
+							/* Un avis repris de la maquette est provisoire par construction (§5.5). */
+							provisoire: true,
+							ordre: rangIndex,
+						};
+					}
+				}
+			}
+
+			/*
+			 * ARCHÉTYPE TÉMOIGNAGE — relevé à part, avant la décomposition générique.
+			 *
+			 * Le prototype compose ses avis en `<figure>` : une rangée « ★★★★★ + Google », une
+			 * `<blockquote>`, puis une `<figcaption>` de deux lignes — le nom d'un côté, « rôle ·
+			 * société, ville · date » de l'autre. Trois niveaux typographiques : citation 16/25,6,
+			 * nom 17/27,5, métadonnées 13/21,1.
+			 *
+			 * La décomposition générique ne pouvait pas les rendre. Elle range les fragments dans
+			 * `titre` / `description` / `lignes` et ne porte que DEUX tailles : les trois niveaux
+			 * s'écrasaient sur le plus petit, les six cartes de `/avis-clients/` perdaient 77 px
+			 * chacune, et le nom de l'auteur se retrouvait à la place des étoiles. Le rendu était
+			 * faux, pas seulement plus court.
+			 *
+			 * On relève donc la structure telle qu'elle est, et le gabarit la rend avec le
+			 * composant de témoignage — qui a exactement cette forme.
+			 */
+			const citation = el.querySelector('blockquote');
+			const legende = el.querySelector('figcaption');
+			if (citation && legende) {
+				/*
+				 * La taille DÉCLARÉE l'emporte sur la taille calculée, comme pour les titres.
+				 *
+				 * La maquette écrit la citation de l'avis mis en avant `clamp(19px, 2.2vw, 25px)` :
+				 * 25 px à 1440, mais 19 à 320. Relever la valeur calculée au moment du relevé
+				 * figeait 25 px à toutes les largeurs — la citation faisait alors 375 px de haut à
+				 * 320 px de large contre 228 dans le prototype. C'est le défaut corrigé en G07 puis
+				 * en G11 sur les rembourrages, exactement.
+				 *
+				 * L'interligne reste relevé en RATIO : il suit la taille quelle que soit la largeur.
+				 */
+				const geo = (n) => {
+					if (!n) return {};
+					const g = getComputedStyle(n);
+					const declaree = (n.style && n.style.fontSize) || '';
+					const ratio = Math.round((parseFloat(g.lineHeight) / parseFloat(g.fontSize)) * 1000) / 1000;
+					return {
+						taille: declaree || g.fontSize,
+						interligne: declaree && ratio ? String(ratio) : g.lineHeight,
+						graisse: parseInt(g.fontWeight, 10) || 400,
+					};
+				};
+				const lignesLegende = [...legende.children]
+					.filter((c) => !/^inline/.test(getComputedStyle(c).display))
+					.map((c) => txt(c))
+					.filter(Boolean);
+				/* Une légende d'un seul bloc : on garde sa ligne unique comme nom. */
+				const [auteur, ...meta] = lignesLegende.length ? lignesLegende : [txt(legende)];
+				/* Les étoiles et la source vivent dans le premier bloc, avant la citation. */
+				const entete = [...el.children].find((c) => c !== citation && c !== legende && txt(c));
+				const texteEntete = entete ? txt(entete) : '';
+				const etoiles = (texteEntete.match(/★+/) || [ '' ])[0];
+				const source = texteEntete.replace(/★/g, '').trim();
+
+				/* Géométrie de la carte elle-même : rembourrage, rayon et écart entre ses trois blocs. */
+				const cc = getComputedStyle(el);
+				return {
+					archetype: 'temoignage',
+					carte_padding: cc.padding,
+					carte_rayon: cc.borderTopLeftRadius,
+					carte_gap: /^[0-9.]+px$/.test(cc.rowGap) ? cc.rowGap : '',
+					citation: txt(citation).replace(/^«\s*/, '').replace(/\s*»$/, ''),
+					auteur: auteur || '',
+					meta: meta.join(' · '),
+					etoiles,
+					source,
+					citation_geo: geo(citation),
+					auteur_geo: geo(legende.children[0] || legende),
+					meta_geo: geo(legende.children[1] || legende),
+					/* Un avis repris de la maquette est provisoire par construction (CLAUDE.md §5.5). */
+					provisoire: true,
+					ordre: rangIndex,
+				};
+			}
+
 			// Nœuds textuels porteurs, dans l'ordre, en ignorant les conteneurs sans texte propre.
 			/*
 			 * Les fragments sont collectés **par bloc rendu**, et non par nœud texte direct.
@@ -545,7 +766,21 @@ for (const p of PAGES) {
 			 * est le rendu — étoiles ou citation entre guillemets — et non un nom d'auteur, qu'on ne
 			 * saurait pas reconnaître de façon fiable.
 			 */
-			const provisoire = /★{3,}/.test(txt(el)) || !!el.querySelector('blockquote') || /[«"]/.test(description);
+			/*
+			 * Le guillemet est éprouvé EN TÊTE de la description, pas n'importe où (G26 §4).
+			 *
+			 * `/[«"]/` frappait toute carte qui cite un mot au fil d'une phrase. Sur /a-propos/, la
+			 * valeur « Transparence » se conclut par « nous nous interdisons les formulations vagues
+			 * du type "satisfaction garantie" » : la carte passait pour un témoignage, la grille des
+			 * quatre valeurs recevait la mention « Exemples de présentation — témoignages
+			 * authentiques en cours d'intégration », et le lecteur se voyait annoncer comme
+			 * provisoires les valeurs de l'entreprise. Une mention de provisoire posée à tort n'est
+			 * pas une prudence : elle décrédibilise un contenu qui, lui, est définitif.
+			 *
+			 * Un témoignage commence par sa citation. C'est ce que le repère décrit désormais.
+			 */
+			const provisoire =
+				/★{3,}/.test(txt(el)) || !!el.querySelector('blockquote') || /^\s*[«"]/.test(description);
 
 			/*
 				 * Disposition **en ligne** : l'intitulé et la description partagent la même ligne.
@@ -643,7 +878,17 @@ for (const p of PAGES) {
 				provisoire,
 				surtitre,
 				icone,
-				image: img ? img.getAttribute('alt') || '' : '',
+				/*
+				 * Une image DÉCORATIVE (alt vide) est une image quand même : l'ancien relevé
+				 * `alt || ''` la confondait avec « pas d'image », et les six vignettes 56 px de la
+				 * bande de maillage du pilier disparaissaient du seed (relevé G25). Le marqueur
+				 * `(décorative)` garde l'information sans inventer d'alt ; `image_rendu` porte la
+				 * taille RENDUE, qui distingue une miniature d'un visuel de tête de carte.
+				 */
+				image: img ? img.getAttribute('alt') || '(décorative)' : '',
+				image_rendu: img
+					? Math.round(img.getBoundingClientRect().width) + '×' + Math.round(img.getBoundingClientRect().height)
+					: '',
 				route: lien ? lien.getAttribute('href') || '' : '',
 				libelle_lien: libelleLien,
 				aria: el.getAttribute('aria-label') || (lien ? lien.getAttribute('aria-label') || '' : ''),
@@ -794,9 +1039,78 @@ for (const p of PAGES) {
 						return es && /^[\d.]+px$/.test(es.flexBasis) ? es.flexBasis : '';
 					})(),
 					gap: gs.gap,
+					/*
+					 * PROPORTIONS des colonnes, quand elles ne sont pas égales.
+					 *
+					 * La grille du thème répartit ses colonnes à parts égales — c'est ce que fait
+					 * la maquette presque partout. Presque : la bande d'avis mis en avant de
+					 * `/avis-clients/` est un conteneur FLEX dont les deux colonnes valent 2 et 1.
+					 * Réparties à parts égales, la citation tombait dans 528 px au lieu de 684 et
+					 * gagnait deux lignes.
+					 *
+					 * Relevé uniquement quand les `flex-grow` DIFFÈRENT : partout ailleurs, rien
+					 * n'est écrit et rien ne change. La base et la largeur minimale de chaque
+					 * colonne sont relevées avec, parce que c'est le trio qui décide du repli — et
+					 * ce repli est INTRINSÈQUE, il dépend de la place disponible et non de la
+					 * largeur de la fenêtre.
+					 */
+					...((() => {
+						if (!/flex/.test(gs.display) || enfants.length < 2) return {};
+						const cols = enfants.map((c) => {
+							const cs = getComputedStyle(c);
+							return {
+								grow: parseFloat(cs.flexGrow) || 0,
+								base: (c.style && c.style.flexBasis) || cs.flexBasis,
+								min: (c.style && c.style.minWidth) || cs.minWidth,
+							};
+						});
+						const grows = cols.map((c) => c.grow);
+						if (new Set(grows).size < 2) return {};
+						return { colonnes_flex: cols };
+					})()),
+					/*
+					 * Panneau : le CONTENEUR de la grille, quand il est lui-même une carte.
+					 *
+					 * `fond`, `rayon` et `padding` ci-dessous sont relevés sur la CARTE — c'est ce
+					 * qu'il faut pour les six vignettes du pilier, dont le conteneur n'est qu'une
+					 * grille nue. Mais la bande d'avis mis en avant de `/avis-clients/` est
+					 * l'inverse : ses deux colonnes sont transparentes et c'est le `<figure>` qui
+					 * les enferme qui porte le fond marine, le rayon de 20 et 44 px de rembourrage.
+					 * Rien ne le relevait, et la bande sortait en cartes blanches sur fond blanc.
+					 *
+					 * Les clés ne sont écrites que si le conteneur a réellement un fond : sur les
+					 * dizaines de grilles nues du site, le seed reste inchangé.
+					 */
+					...((() => {
+						const transparent = (c) => /^rgba\([^)]*,\s*0\s*\)$/.test(c) || c === 'transparent';
+						if (transparent(gs.backgroundColor)) return {};
+						/*
+						 * Un panneau est un panneau parce qu'il TRANCHE sur ce qu'il y a derrière.
+						 * Une grille peinte de la même couleur que sa bande n'en est pas un : la
+						 * repeindre ne se verrait pas, mais son rembourrage, lui, ajouterait de la
+						 * hauteur. On remonte donc jusqu'au premier ancêtre réellement peint et on
+						 * compare.
+						 */
+						let derriere = 'rgb(255, 255, 255)';
+						for (let n = g.parentElement; n; n = n.parentElement) {
+							const c = getComputedStyle(n).backgroundColor;
+							if (!transparent(c)) { derriere = c; break; }
+						}
+						if (derriere === gs.backgroundColor) return {};
+						return {
+							panneau_fond: gs.backgroundColor,
+							panneau_rayon: (g.style && g.style.borderRadius) || gs.borderTopLeftRadius,
+							panneau_padding: (g.style && g.style.padding) || gs.padding,
+							panneau_couleur: gs.color,
+						};
+					})()),
 					fond: ks.backgroundColor,
 					rayon: ks.borderTopLeftRadius,
 					filet: ks.borderTopWidth,
+					// Couleur du filet, relevée comme le fond : sur une bande bleue, la maquette
+					// borde ses tuiles d'un bleu plus clair (#1E5C9E), là où le thème appliquait le
+					// filet pâle des cartes blanches. Un jeton du thème ne peut pas le deviner.
+					filet_couleur: ks.borderTopColor,
 					padding: ks.padding,
 					theme: estSombre(ks.backgroundColor) ? 'sombre' : 'clair',
 					titre_taille: g0.titre_taille || '',
@@ -872,12 +1186,109 @@ for (const p of PAGES) {
 							}
 						}
 						const r = colonne.getBoundingClientRect();
-						out.push({ t: tag, v: txt(n), top: Math.round(r.top + window.scrollY) });
+						/*
+						 * Taille de l'intertitre — DÉCLARÉE, pas calculée (G26 §5).
+						 *
+						 * La maquette ne compose pas tous ses intertitres pareil : 40 px pour une
+						 * bande d'ouverture, 34 pour une bande courante, 19 pour l'intitulé d'un
+						 * panneau, 17 ou 18 pour un sous-groupe. Le thème appliquait partout ses deux
+						 * jetons, et 70 des 108 intertitres appariés des neuf pages statiques sont
+						 * rendus à la mauvaise taille.
+						 *
+						 * La valeur lue est celle du style en ligne — `clamp(24px, 3vw, 34px)` — et
+						 * non la valeur calculée à 1440 px : ne garder que la borne haute d'une
+						 * fonction, c'est être juste à la largeur du relevé et faux partout ailleurs.
+						 * C'est le défaut corrigé en G07 puis en G11 sur les rembourrages de bande.
+						 */
+						const st = getComputedStyle(n);
+						out.push({
+							t: tag,
+							v: txt(n),
+							top: Math.round(r.top + window.scrollY),
+							taille: (n.style && n.style.fontSize) || st.fontSize,
+							// Interligne relevé en RATIO : il suit la taille quelle que soit la largeur.
+							interligne:
+								Math.round((parseFloat(st.lineHeight) / parseFloat(st.fontSize)) * 100) / 100 || 0,
+							graisse: parseInt(st.fontWeight, 10) || 0,
+							/*
+							 * Largeur maximale DÉCLARÉE, comme la taille et pour la même raison.
+							 *
+							 * Huit titres de la maquette en portent une — 520 à 720 px — et c'est
+							 * elle qui décide du repli : « Nos six prestations de nettoyage
+							 * professionnel » tient sur une ligne dans une colonne de 1180 px, sur
+							 * deux dans les 620 px que déclare le prototype. Sans ce relevé, la
+							 * bande du pilier sortait 53 px plus courte que la maquette sans
+							 * qu'aucune valeur relevée ne soit fausse.
+							 */
+							largeur_max: (n.style && n.style.maxWidth) || '',
+						});
 					}
 					else if (tag === 'p') out.push({ t: 'p', v: txt(n) });
 					else if (tag === 'li') out.push({ t: 'li', v: txt(n) });
 					else if (tag === 'img') out.push({ t: 'img', v: n.getAttribute('alt') || '' });
-					else if (tag === 'a' && !n.querySelector('h1,h2,h3,h4,p,li,img')) out.push({ t: 'a', v: txt(n), href: n.getAttribute('href') || '' });
+					else if (tag === 'a' && !n.querySelector('h1,h2,h3,h4,p,li,img')) {
+						/*
+						 * ARCHÉTYPE ET RANGÉE d'un lien — relevés sur le rendu (G26 §4 et §5).
+						 *
+						 * Le relevé ne gardait que le libellé et la route. Le thème rendait donc tout
+						 * appel à l'action en ligne de texte pleine largeur empilée, là où la maquette
+						 * pose des boutons côte à côte : sur /a-propos/, six commandes en rangées de
+						 * deux puis de quatre ; sur /recrutement/, « Envoyer ma candidature » avec le
+						 * téléphone à côté. Ce n'est pas une nuance de style, c'est la disparition du
+						 * point de conversion de la page.
+						 *
+						 * Le repère est mesurable et ne dépend d'aucune classe : un bouton plein sans
+						 * filet est PRIMAIRE, un bouton bordé est SECONDAIRE, un lien sans fond ni
+						 * filet reste une ligne. La rangée est l'ancêtre flex commun : c'est lui qui
+						 * met les commandes côte à côte, et son index suffit à les regrouper.
+						 */
+						const s = getComputedStyle(n);
+						const filet = parseFloat(s.borderTopWidth) || 0;
+						const plein = s.backgroundColor !== 'rgba(0, 0, 0, 0)' && s.backgroundColor !== 'transparent';
+						/*
+						 * UN BOUTON EST UNE COMMANDE COURTE — garde ajoutée après le relevé de base.
+						 *
+						 * Le repère « fond plein ou filet » suffisait pour les rangées de commandes,
+						 * mais il frappait aussi les CARTES-LIENS : sur l'index des zones, la carte
+						 * « Bourgogne-Franche-Comté / La page régionale · huit départements… » est un
+						 * `<a>` à fond plein, sans titre ni paragraphe à l'intérieur. Promue bouton,
+						 * elle héritait de `white-space: nowrap` et étalait 1 000 px de texte sur une
+						 * seule ligne : 263 px de débordement horizontal à 768 px — exactement ce que
+						 * CLAUDE.md §10 interdit de laisser passer.
+						 *
+						 * Une commande tient sur une ligne et porte un libellé court. Au-delà, c'est
+						 * une carte, et elle garde son rendu de carte.
+						 */
+						const boiteA = n.getBoundingClientRect();
+						const lignes = n.getClientRects().length;
+						const estCommande = boiteA.height <= 72 && lignes <= 1 && txt(n).length <= 60;
+						const rangee = n.parentElement && /flex/.test(getComputedStyle(n.parentElement).display) ? n.parentElement : null;
+						if (rangee && !rangee.dataset.tfpRangee) {
+							rangee.dataset.tfpRangee = 'r' + ++window.__tfpRangeeSeq;
+						}
+						out.push({
+							t: 'a',
+							v: txt(n),
+							href: n.getAttribute('href') || '',
+							archetype: ! estCommande ? 'ligne' : filet >= 1 ? 'secondaire' : plein ? 'primaire' : 'ligne',
+							rangee: rangee ? rangee.dataset.tfpRangee : '',
+							/*
+							 * Géométrie du bouton, relevée comme celle des tuiles l'est déjà.
+							 *
+							 * Le prototype ne compose pas tous ses boutons pareil : 15/26 et 17 px en
+							 * graisse 700 pour l'appel principal, 14/22 et 16 px pour une commande
+							 * secondaire, 14/18 et 15 px pour les pastilles de maillage. Le jeton
+							 * unique du thème — celui du bouton principal — élargissait les
+							 * pastilles de 38 px chacune : à 375 px, quatre pastilles que la maquette
+							 * range sur trois lignes en occupaient quatre.
+							 */
+							pad_v: s.paddingTop,
+							pad_h: s.paddingLeft,
+							taille: s.fontSize,
+							graisse: parseInt(s.fontWeight, 10) || 0,
+							hauteur: Math.round(n.getBoundingClientRect().height) + 'px',
+						});
+					}
 					else if (tag === 'blockquote') out.push({ t: 'quote', v: txt(n) });
 					else if (!n.children.length && txt(n)) {
 						/*
@@ -893,6 +1304,9 @@ for (const p of PAGES) {
 							t: 'span',
 							v: txt(n),
 							pastille: parseFloat(sp.borderTopLeftRadius) >= 40 && (fond || parseFloat(sp.borderTopWidth) > 0),
+							// Ordonnée de la PREMIÈRE ligne du fragment : sert à recoller deux fragments
+							// que la maquette rend sur une même ligne (voir la fusion des notes).
+							ligne: Math.round((n.getClientRects()[0] || n.getBoundingClientRect()).top + window.scrollY),
 						});
 					}
 					else {
@@ -904,7 +1318,13 @@ for (const p of PAGES) {
 							.map((c) => c.textContent.replace(/\s+/g, ' ').trim())
 							.filter(Boolean)
 							.join(' ');
-						if (direct) out.push({ t: 'span', v: direct });
+						if (direct) {
+							out.push({
+								t: 'span',
+								v: direct,
+								ligne: Math.round((n.getClientRects()[0] || n.getBoundingClientRect()).top + window.scrollY),
+							});
+						}
 						walk(n);
 					}
 				}
@@ -989,6 +1409,10 @@ for (const p of PAGES) {
 			const vide = () => ({
 				titre: '',
 				niveau: 'h2',
+				titre_taille: '',
+				titre_interligne: 0,
+				titre_graisse: 0,
+				titre_largeur_max: '',
 				carte: '',
 				colonne_min: '',
 				rangee_gap: '',
@@ -1026,6 +1450,10 @@ for (const p of PAGES) {
 					cur = vide();
 					cur.titre = n.v;
 					cur.niveau = n.t;
+					cur.titre_taille = n.taille || '';
+					cur.titre_interligne = n.interligne || 0;
+					cur.titre_graisse = n.graisse || 0;
+					cur.titre_largeur_max = n.largeur_max || '';
 					// Encadrement propre à ce bloc, relevé sur la maquette. Vide = bloc plat.
 					cur.carte = ( cadres && cadres.parTitre && cadres.parTitre[n.v] ) || '';
 					// Repli intrinsèque de la rangée : relevé sur le prototype, pas déduit d'un seuil.
@@ -1105,9 +1533,33 @@ for (const p of PAGES) {
 					} else if (n.t === 'quote') {
 						cur.citations.push(n.v);
 						seq('quote', { texte: n.v });
-					} else if (n.t === 'a' && n.href.startsWith('#/')) {
-						cur.liens.push({ texte: n.v, route: n.href });
-						seq('link', { texte: n.v, route: n.href });
+					} else if (n.t === 'a' && /^(#\/|tel:|mailto:)/.test(n.href)) {
+						/*
+						 * `tel:` et `mailto:` sont relevés au même titre que les routes internes.
+						 *
+						 * Le filtre `startsWith('#/')` les jetait en silence, et avec eux les deux
+						 * commandes les plus directes du site : « ☎ Parler de mes locaux avec Audrey »
+						 * sur /a-propos/ et « Envoyer ma candidature » sur /recrutement/. Une page de
+						 * recrutement sans lien de candidature n'a plus d'objet ; c'est l'un des motifs
+						 * du refus de validation du 17 août 2026.
+						 *
+						 * Ces liens sortent tels quels : ce ne sont pas des routes du prototype, il n'y
+						 * a rien à traduire, et le numéro comme l'adresse viennent de PROJECT_INPUTS
+						 * — le gabarit les remplace par les coordonnées réelles du site.
+						 */
+						const lien = {
+							texte: n.v,
+							route: n.href,
+							archetype: n.archetype || 'ligne',
+							rangee: n.rangee || '',
+							pad_v: n.pad_v || '',
+							pad_h: n.pad_h || '',
+							taille: n.taille || '',
+							graisse: n.graisse || 0,
+							hauteur: n.hauteur || '',
+						};
+						cur.liens.push(lien);
+						seq('link', lien);
 					} else if (n.t === 'span' && n.v.length > 1 && !/^[✓✕·+]$/.test(n.v)) {
 						/*
 						 * **Plus de repli destructeur.** Un fragment n'est rendu en pastille que si la
@@ -1120,7 +1572,47 @@ for (const p of PAGES) {
 							cur.noms.push(n.v);
 							seq('chip', { texte: n.v });
 						} else {
-							seq('note', { texte: n.v });
+							/*
+							 * Deux fragments que la maquette rend SUR LA MÊME LIGNE restent une seule
+							 * note (G26 §4).
+							 *
+							 * L'attribution de la citation de /a-propos/ s'écrit « Audrey » suivi, dans
+							 * la même ligne, de « · Top-Famille Pro » : le nom est un nœud texte du
+							 * bloc, la suite un `span` inline. Rendus en deux paragraphes, ils
+							 * s'empilaient — le point médian ouvrait une ligne à lui seul, et la bande
+							 * gagnait 35 px de haut pour une attribution devenue bancale.
+							 *
+							 * Le repère est l'ordonnée relevée, pas la ponctuation : n'importe quelle
+							 * césure inline se recolle, et un vrai paragraphe suivant ne se colle jamais.
+							 */
+							const dernier = cur.sequence[cur.sequence.length - 1];
+							const memeLigne =
+								dernier &&
+								typeof n.ligne === 'number' &&
+								typeof dernier.ligne === 'number' &&
+								Math.abs(dernier.ligne - n.ligne) <= 4;
+							/*
+							 * Un numéro à deux chiffres suivi de son texte SUR LA MÊME LIGNE est une
+							 * étape numérotée, pas une note (G26 §5).
+							 *
+							 * Le panneau « Les étapes de candidature » de /recrutement/ écrit « 01 »
+							 * en turquoise gras à côté de son libellé. Recollés en un seul
+							 * paragraphe, les trois étapes perdaient leur numérotation, leur
+							 * hiérarchie visuelle et leur structure de liste pour un lecteur
+							 * d'écran. La règle `step` existante ne les voyait pas : elle attend un
+							 * paragraphe en troisième position, et ici le texte est un `span`.
+							 */
+							if ( memeLigne && dernier.type === 'note' && /^\d{2}$/.test( dernier.texte ) ) {
+								dernier.type = 'step-ligne';
+								dernier.numero = dernier.texte;
+								dernier.texte = n.v;
+								continue;
+							}
+							if ( memeLigne && dernier.type === 'note' ) {
+								dernier.texte = `${dernier.texte} ${n.v}`.replace(/\s+/g, ' ').trim();
+								continue;
+							}
+							seq('note', { texte: n.v, ligne: n.ligne });
 						}
 					}
 				}
@@ -1246,8 +1738,14 @@ for (const p of PAGES) {
 			heroAlt: (heroSeulement.find((n) => n.t === 'img') || {}).v || '',
 			heroCtas: heroSeulement.filter((n) => n.t === 'a').map((n) => ({ texte: n.v, route: n.href })),
 			sections: out,
+			fondsInconnus: [...new Set(window.__tfpFondsInconnus || [])],
 		};
 	});
+
+	// Une couleur de bande que le relevé ne sait pas traduire doit être VUE, pas absorbée.
+	if (data.fondsInconnus.length) {
+		console.error(`  ⚠ ${p.key} : fonds de bande non répertoriés → ${data.fondsInconnus.join(', ')}`);
+	}
 
 	all.push({ ...p, ...data });
 	console.error(
@@ -1287,4 +1785,16 @@ for (const p of all) {
 L.push('echo "Terminé.\\n";');
 
 writeFileSync(OUT, L.join('\n') + '\n');
+CORRECTIONS_EDITORIALES.forEach((c, i) => {
+	if (comptesCorrections[i] === 0) {
+		throw new Error(
+			`correction éditoriale caduque — « ${c.avant.slice(0, 70)}… » n'existe plus dans la maquette. ` +
+				'Revoir CORRECTIONS_EDITORIALES plutôt que laisser passer un texte non corrigé.'
+		);
+	}
+});
+console.error(
+	`Corrections éditoriales appliquées : ${comptesCorrections.reduce((a, b) => a + b, 0)} ` +
+		`(${comptesCorrections.join(' + ')})`
+);
 console.error(`\nÉcrit : ${OUT}`);

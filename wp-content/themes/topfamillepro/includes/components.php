@@ -32,6 +32,17 @@ function tfp_button( $args ) {
 			'size'    => '',
 			'block'   => false,
 			'icon'    => '',
+			/*
+			 * Géométrie relevée sur le prototype, bouton par bouton (G26 §4).
+			 *
+			 * Le jeton du thème est celui de l'appel principal — 15/26, 17 px, graisse 600. La
+			 * maquette compose ses commandes secondaires en 14/22 et 16 px, et ses pastilles de
+			 * maillage en 14/18 et 15 px. Appliquer partout le jeton du bouton principal élargit
+			 * chaque pastille de 38 px, ce qui change le nombre de rangées à 375 px. Les valeurs
+			 * relevées passent donc en variables, comme celles des tuiles ; sans relevé, le jeton
+			 * s'applique et rien ne change.
+			 */
+			'mesures' => array(),
 		)
 	);
 
@@ -43,12 +54,25 @@ function tfp_button( $args ) {
 		$classes[] = 'tfp-btn--block';
 	}
 
+	$vars = array();
+	foreach ( array( 'pad_v' => '--tfp-btn-pv', 'pad_h' => '--tfp-btn-ph', 'taille' => '--tfp-btn-fs', 'hauteur' => '--tfp-btn-h' ) as $cle => $var ) {
+		$valeur = function_exists( 'tfp_longueur_css' ) ? tfp_longueur_css( $args['mesures'][ $cle ] ?? '' ) : '';
+		if ( '' !== $valeur ) {
+			$vars[] = $var . ':' . $valeur;
+		}
+	}
+	$graisse = (int) ( $args['mesures']['graisse'] ?? 0 );
+	if ( $graisse >= 100 && $graisse <= 900 ) {
+		$vars[] = '--tfp-btn-fw:' . $graisse;
+	}
+
 	printf(
-		'<a class="%1$s" href="%2$s">%3$s%4$s</a>',
+		'<a class="%1$s" href="%2$s"%5$s>%3$s%4$s</a>',
 		esc_attr( implode( ' ', $classes ) ),
 		esc_url( $args['href'] ),
 		$args['icon'], // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- HTML de picto contrôlé en interne, jamais de donnée utilisateur.
-		esc_html( $args['label'] )
+		esc_html( $args['label'] ),
+		$vars ? ' style="' . esc_attr( implode( ';', $vars ) ) . '"' : ''
 	);
 }
 
@@ -138,6 +162,60 @@ function tfp_link_phrases( $text, array $map ) {
  * @param int    $max
  * @return array<int,array{titre:string,textes:string[],liste:string[],noms:string[],type:string}>
  */
+/**
+ * Rend le titre d'un bloc relevé, avec la géométrie de la maquette.
+ *
+ * La taille, l'interligne et la graisse sont relevés bloc par bloc sur le prototype : deux bandes
+ * voisines n'y portent pas le même intertitre, et l'échelle du thème par type de page ne peut donc
+ * pas les rendre toutes. Sans relevé, on laisse l'échelle du thème s'appliquer — poser la classe
+ * sans variables la remplacerait par un repli plus pauvre.
+ *
+ * Extrait du composant de bandes statiques pour être appelé aussi par les gabarits qui rendent
+ * une bande à la main (page pilier, page région) : c'est justement là que la géométrie relevée se
+ * perdait, et qu'un intertitre sortait à 34 px au lieu de 36.
+ *
+ * @param array  $bloc  Bloc relevé (`titre`, `niveau`, `titre_taille`, `titre_interligne`,
+ *                      `titre_graisse`, `titre_largeur_max`).
+ * @param string $repli Titre de repli si le bloc n'en porte pas.
+ */
+function tfp_bloc_titre( $bloc, $repli = '' ) {
+	$titre = $bloc['titre'] ?? $repli;
+	if ( '' === (string) $titre ) {
+		return;
+	}
+
+	$vars   = array();
+	$taille = tfp_longueur_css( $bloc['titre_taille'] ?? '' );
+	if ( '' !== $taille ) {
+		$vars[] = '--tfp-bloc-titre:' . $taille;
+	}
+	$lh = (float) ( $bloc['titre_interligne'] ?? 0 );
+	if ( $lh >= 0.8 && $lh <= 3 ) {
+		$vars[] = '--tfp-bloc-titre-lh:' . $lh;
+	}
+	$fw = (int) ( $bloc['titre_graisse'] ?? 0 );
+	if ( $fw >= 100 && $fw <= 900 ) {
+		$vars[] = '--tfp-bloc-titre-graisse:' . $fw;
+	}
+	/*
+	 * Largeur maximale relevée : c'est elle qui décide du repli du titre. « Nos six prestations de
+	 * nettoyage professionnel » tient sur une ligne dans une colonne de 1180 px, sur deux dans les
+	 * 620 px que déclare le prototype — 42 px de hauteur de bande, et une composition différente.
+	 */
+	$lmax = tfp_longueur_css( $bloc['titre_largeur_max'] ?? '' );
+	if ( '' !== $lmax ) {
+		$vars[] = '--tfp-bloc-titre-max:' . $lmax;
+	}
+
+	printf(
+		'<%1$s%3$s%4$s>%2$s</%1$s>',
+		esc_attr( 'h3' === ( $bloc['niveau'] ?? 'h2' ) ? 'h3' : 'h2' ),
+		esc_html( $titre ),
+		$vars ? ' class="tfp-static-block__titre"' : '',
+		$vars ? ' style="' . esc_attr( implode( ';', $vars ) ) . '"' : ''
+	);
+}
+
 function tfp_get_zone_blocks( $prefix, $post_id, $max ) {
 	$blocks = array();
 	for ( $i = 1; $i <= $max; $i++ ) {
@@ -146,6 +224,10 @@ function tfp_get_zone_blocks( $prefix, $post_id, $max ) {
 			continue;
 		}
 		$blocks[] = array(
+			// Rang ACF du groupe (1..$max), conservé parce que l'index dans le tableau retourné
+			// peut différer : un groupe sans titre est sauté. `single-zone.php` s'en sert pour
+			// savoir quel groupe le champ « fonctionnement » remplace.
+			'rang'   => $i,
 			'titre'  => $titre,
 			'textes' => tfp_get_lines( tfp_get_field( $prefix . '_' . $i . '_texte', $post_id ) ),
 			'liste'  => tfp_get_lines( tfp_get_field( $prefix . '_' . $i . '_liste', $post_id ) ),
@@ -384,15 +466,20 @@ function tfp_chip_list( array $items ) {
  *
  * @param string $titre Intitulé de la carte.
  * @param string $route Route interne visée par la carte (`#/service/bureaux`…).
+ * @param bool   $thumb Vrai pour une MINIATURE (56 px) : les slots `thumb-*`, construits sur les
+ *                      fichiers exacts de la maquette (SERVICES[].photo), pas les visuels de carte.
  * @return string Slug du manifeste, ou chaîne vide.
  */
-function tfp_card_image_slug( $titre, $route ) {
+function tfp_card_image_slug( $titre, $route, $thumb = false ) {
 	$manifeste = function_exists( 'tfp_image_manifest' ) ? tfp_image_manifest() : array();
 	if ( ! $manifeste ) {
 		return '';
 	}
 	$route = (string) $route;
 	if ( preg_match( '~#/service/([a-z-]+)~', $route, $m ) ) {
+		if ( $thumb ) {
+			return isset( $manifeste[ 'thumb-' . $m[1] ] ) ? 'thumb-' . $m[1] : '';
+		}
 		foreach ( array( 'service-' . $m[1], 'service-generic' ) as $slug ) {
 			if ( isset( $manifeste[ $slug ] ) ) {
 				return $slug;
@@ -470,11 +557,71 @@ function tfp_longueur_css( $v ) {
  *     @type array  $items     Cartes, dans l'ordre de la maquette.
  * }
  */
+/**
+ * Ce fragment affirme-t-il une note de plateforme tierce, ou un compteur d'avis ?
+ *
+ * Le prototype pose ces chiffres en clair dans plusieurs bandes relevées (« 5,0/5 », « Sur
+ * Google · 47 avis clients »). Ils arrivent donc par le SEED, sans passer par le composant de
+ * badge — c'est ainsi qu'ils avaient survécu à la suppression du badge, et c'est l'un des motifs
+ * du refus de validation du 17 août 2026.
+ *
+ * Deux règles, distinctes :
+ *  - la NOTE n'est publiable que si elle est vérifiable (note + URL de fiche saisies ensemble,
+ *    voir `tfp_reassurance_data()`) : sans cela, tout fragment qui l'affirme est retiré ;
+ *  - le COMPTEUR d'avis du prototype (47) est faux et le reste : il est retiré sans condition
+ *    (CLAUDE.md §5.5 — « suppression totale, aucune exception »).
+ *
+ * @param string ...$textes Fragments de la carte ou du bloc.
+ * @return bool Vrai si le contenu doit être retiré du rendu public.
+ */
+function tfp_fragment_note_interdite( ...$textes ) {
+	$texte = trim( implode( ' ', array_filter( array_map( 'strval', $textes ) ) ) );
+	if ( '' === $texte ) {
+		return false;
+	}
+	// Compteur d'avis du prototype : jamais publiable, quelle que soit la configuration.
+	if ( preg_match( '/\b\d+\s*avis\b/iu', $texte ) ) {
+		return true;
+	}
+	$note_verifiable = function_exists( 'tfp_reassurance_data' ) && null !== tfp_reassurance_data()['note'];
+	if ( $note_verifiable ) {
+		return false;
+	}
+	// Note de plateforme sous ses formes relevées : « 5,0/5 », « x/5 sur Google », « sur Google ».
+	return (bool) preg_match( '~(sur\s+google|\bgoogle\b\s*·|\d[.,]\d\s*/\s*5|\b\d\s*/\s*5\b)~iu', $texte );
+}
+
 function tfp_card_grid( array $grille ) {
 	$items = $grille['items'] ?? array();
+	/*
+	 * Filtre des cartes qui affirment une note de plateforme non vérifiable ou un compteur d'avis.
+	 * Retirer la carte plutôt que son texte : une carte vidée de son chiffre n'a plus de sens et
+	 * laisserait un cadre décoratif que la maquette n'a pas.
+	 */
+	$items = array_values(
+		array_filter(
+			$items,
+			static function ( $i ) {
+				// Les textes d'une PILE comptent comme les autres : une tuile qui affirmerait une note
+				// de plateforme doit être filtrée comme n'importe quelle carte.
+				$tuiles = array();
+				foreach ( (array) ( $i['tuiles'] ?? array() ) as $t ) {
+					$tuiles[] = (string) ( $t['texte'] ?? '' );
+				}
+				return ! tfp_fragment_note_interdite(
+					$i['titre'] ?? '',
+					$i['description'] ?? '',
+					$i['surtitre'] ?? '',
+					implode( ' ', (array) ( $i['lignes'] ?? array() ) ),
+					implode( ' ', $tuiles )
+				);
+			}
+		)
+	);
 	if ( ! $items ) {
 		return;
 	}
+	$grille['items'] = $items;
 	$colonnes = max( 1, min( 6, (int) ( $grille['colonnes'] ?? 1 ) ) );
 	$theme    = 'sombre' === ( $grille['theme'] ?? 'clair' ) ? ' tfp-card-grid--dark' : '';
 	$variante = preg_replace( '/[^a-z]/', '', (string) ( $grille['variante'] ?? 'texte' ) );
@@ -523,6 +670,64 @@ function tfp_card_grid( array $grille ) {
 	if ( preg_match( '/^rgba?\([0-9, .]+\)$/', (string) ( $grille['fond'] ?? '' ) ) ) {
 		$vars[] = '--tfp-tuile-fond:' . $grille['fond'];
 	}
+	// Couleur du filet, relevée elle aussi. Sur une bande bleue, la maquette borde ses tuiles d'un
+	// bleu plus clair que leur fond ; le thème y posait le filet pâle des cartes blanches, visible
+	// sur les six vignettes du pilier comme un liseré clair au lieu d'un bleu.
+	if ( preg_match( '/^rgba?\([0-9, .]+\)$/', (string) ( $grille['filet_couleur'] ?? '' ) ) ) {
+		$vars[] = '--tfp-tuile-filet-couleur:' . $grille['filet_couleur'];
+	}
+	/*
+	 * PANNEAU : le conteneur de la grille peint, quand la maquette en fait une carte à lui seul.
+	 *
+	 * Trois valeurs relevées sur le conteneur — fond, rayon, rembourrage — plus sa couleur de
+	 * texte. La bande d'avis mis en avant de `/avis-clients/` est exactement cela : ses colonnes
+	 * sont transparentes et c'est le `<figure>` qui les enferme qui porte le marine, le rayon de 20
+	 * et 44 px de rembourrage. Sans ce relevé, la bande sortait en cartes blanches sur fond blanc.
+	 *
+	 * Le relevé ne s'écrit que si le conteneur tranche réellement sur ce qu'il y a derrière
+	 * (tools/generate-pages.mjs) : les dizaines de grilles nues du site n'en portent pas.
+	 */
+	$panneau = false;
+	if ( preg_match( '/^rgba?\([0-9, .]+\)$/', (string) ( $grille['panneau_fond'] ?? '' ) ) ) {
+		$panneau = true;
+		$vars[]  = '--tfp-grille-panneau-fond:' . $grille['panneau_fond'];
+		if ( preg_match( '/^rgba?\([0-9, .]+\)$/', (string) ( $grille['panneau_couleur'] ?? '' ) ) ) {
+			$vars[] = '--tfp-grille-panneau-couleur:' . $grille['panneau_couleur'];
+		}
+		$r = $px( $grille['panneau_rayon'] ?? '' );
+		if ( '' !== $r ) {
+			$vars[] = '--tfp-grille-panneau-rayon:' . $r;
+		}
+		$pd = $px( $grille['panneau_padding'] ?? '' );
+		if ( '' !== $pd ) {
+			$vars[] = '--tfp-grille-panneau-padding:' . $pd;
+		}
+	}
+
+	/*
+	 * COLONNES DE PROPORTIONS INÉGALES — relevées, et rendues en flex.
+	 *
+	 * La grille du thème répartit ses colonnes à parts égales et se replie d'elle-même : c'est ce
+	 * que fait la maquette partout, sauf sur la bande d'avis mis en avant de `/avis-clients/`, dont
+	 * les deux colonnes valent 2 et 1. Une grille CSS ne sait pas exprimer « deux tiers / un tiers
+	 * ET repli intrinsèque » ; un conteneur flex, si — c'est d'ailleurs ce que le prototype
+	 * emploie. Le repli reste donc dicté par la place disponible, jamais par un seuil de fenêtre.
+	 */
+	$colonnes_flex = array();
+	foreach ( (array) ( $grille['colonnes_flex'] ?? array() ) as $c ) {
+		$grow = (float) ( $c['grow'] ?? 0 );
+		$base = $px( $c['base'] ?? '' );
+		$min  = $px( $c['min'] ?? '' );
+		if ( $grow <= 0 || '' === $base ) {
+			$colonnes_flex = array();
+			break;
+		}
+		$colonnes_flex[] = 'flex:' . $grow . ' 1 ' . $base . ( '' !== $min ? ';min-width:' . $min : '' );
+	}
+	if ( count( $colonnes_flex ) !== count( $items ) ) {
+		$colonnes_flex = array();
+	}
+
 	$style = $vars ? ' style="' . esc_attr( implode( ';', $vars ) ) . '"' : '';
 	?>
 	<?php
@@ -540,9 +745,137 @@ function tfp_card_grid( array $grille ) {
 		tfp_provisional_notice();
 	}
 	?>
-	<ul class="tfp-card-grid tfp-card-grid--<?php echo (int) $colonnes; ?><?php echo esc_attr( $theme ); ?>"<?php echo $style; // phpcs:ignore WordPress.Security.EscapeOutput ?>>
+	<ul class="tfp-card-grid tfp-card-grid--<?php echo (int) $colonnes; ?><?php echo esc_attr( $theme ); ?><?php echo $panneau ? ' tfp-card-grid--panneau' : ''; ?><?php echo $colonnes_flex ? ' tfp-card-grid--proportions' : ''; ?>"<?php echo $style; // phpcs:ignore WordPress.Security.EscapeOutput ?>>
 		<?php
+		$rang_colonne = 0;
 		foreach ( $items as $item ) :
+			$style_colonne = $colonnes_flex ? ' style="' . esc_attr( $colonnes_flex[ $rang_colonne ] ) . '"' : '';
+			$rang_colonne++;
+			/*
+			 * ARCHÉTYPE TÉMOIGNAGE — rendu par le composant dédié, pas par la tuile générique.
+			 *
+			 * Le prototype compose ses avis en `<figure>` : étoiles et source, citation, puis un
+			 * nom et une ligne « rôle · société, ville · date ». Trois niveaux typographiques que
+			 * la tuile générique ne sait pas porter — elle n'en a que deux — et qui s'écrasaient
+			 * donc sur le plus petit : les six cartes de `/avis-clients/` perdaient 77 px chacune,
+			 * et le nom de l'auteur se retrouvait à la place des étoiles. Le rendu était faux, pas
+			 * seulement plus court.
+			 */
+			/*
+			 * ARCHÉTYPE PILE — une colonne de sous-cartes, rendue comme telle.
+			 *
+			 * La seconde colonne du panneau d'avis mis en avant de `/avis-clients/` empile deux
+			 * tuiles distinctes. La tuile générique les aplatissait en une seule carte : le premier
+			 * avis devenait l'intitulé, les étoiles du second sa description, et le second avis une
+			 * ligne de plus — un seul avis bavard au lieu de deux.
+			 *
+			 * Chaque tuile porte `data-tfp-provisional` : ce sont des témoignages repris de la
+			 * maquette (CLAUDE.md §5.5). La grille annonce leur caractère provisoire une fois,
+			 * au-dessus d'elle.
+			 */
+			if ( 'pile' === ( $item['archetype'] ?? '' ) && ! empty( $item['tuiles'] ) ) {
+				$vars_pile = array();
+				foreach ( array(
+					'pile_fond'    => '--tfp-pile-fond',
+					'pile_rayon'   => '--tfp-pile-rayon',
+					'pile_padding' => '--tfp-pile-padding',
+					'pile_gap'     => '--tfp-pile-gap',
+				) as $cle => $var ) {
+					$valeur = 'pile_fond' === $cle
+						? ( preg_match( '/^rgba?\([0-9, .]+\)$/', (string) ( $item[ $cle ] ?? '' ) ) ? $item[ $cle ] : '' )
+						: $px( $item[ $cle ] ?? '' );
+					if ( '' !== $valeur ) {
+						$vars_pile[] = $var . ':' . $valeur;
+					}
+				}
+				/*
+				 * La pile est le `<li>` LUI-MÊME, sans liste imbriquée.
+				 *
+				 * Deux raisons, l'une sémantique et l'autre vérifiable. La maquette empile des
+				 * `<div>` : une liste de deux dans une liste de deux n'apporte rien à un lecteur
+				 * d'écran, elle lui fait annoncer deux niveaux pour un seul groupe. Et surtout,
+				 * `tests/g26.spec.js` exige que la mention provisoire soit atteignable en trois
+				 * remontées depuis les étoiles — borne délibérée, sans laquelle une seule mention
+				 * sur la page validerait n'importe quelles étoiles. Un `<ul>` intermédiaire ajoutait
+				 * exactement le niveau de trop.
+				 */
+				$style_pile = trim( $style_colonne );
+				if ( $vars_pile ) {
+					$style_pile = $style_pile
+						? preg_replace( '/"$/', ';' . esc_attr( implode( ';', $vars_pile ) ) . '"', $style_pile )
+						: ' style="' . esc_attr( implode( ';', $vars_pile ) ) . '"';
+				}
+				printf(
+					'<li class="tfp-card-stack"%s>',
+					$style_pile ? ' ' . ltrim( $style_pile ) : '' // phpcs:ignore WordPress.Security.EscapeOutput
+				);
+				foreach ( (array) $item['tuiles'] as $tuile ) {
+					$texte = trim( (string) ( $tuile['texte'] ?? '' ) );
+					if ( '' === $texte ) {
+						continue;
+					}
+					$geo = static function ( $niveau ) use ( $tuile, $px ) {
+						$g   = is_array( $tuile[ $niveau . '_geo' ] ?? null ) ? $tuile[ $niveau . '_geo' ] : array();
+						$out = array();
+						$t   = $px( $g['taille'] ?? '' );
+						if ( '' !== $t ) {
+							$out[] = '--tfp-pile-' . $niveau . ':' . $t;
+						}
+						$lh = (float) ( $g['interligne'] ?? 0 );
+						if ( $lh >= 0.8 && $lh <= 3 ) {
+							$out[] = '--tfp-pile-' . $niveau . '-lh:' . $lh;
+						}
+						return $out ? ' style="' . esc_attr( implode( ';', $out ) ) . '"' : '';
+					};
+					echo '<div class="tfp-card-stack__item" data-tfp-provisional="1">';
+					$etoiles = (string) ( $tuile['etoiles'] ?? '' );
+					if ( '' !== $etoiles ) {
+						printf(
+							'<span class="tfp-card-stack__stars" aria-hidden="true"%s>%s</span>',
+							$geo( 'etoiles' ), // phpcs:ignore WordPress.Security.EscapeOutput
+							esc_html( $etoiles )
+						);
+					}
+					printf(
+						'<p class="tfp-card-stack__quote"%s>&laquo;&nbsp;%s&nbsp;&raquo;</p>',
+						$geo( 'texte' ), // phpcs:ignore WordPress.Security.EscapeOutput
+						esc_html( $texte )
+					);
+					echo '</div>';
+				}
+				echo '</li>';
+				continue;
+			}
+
+			if ( 'temoignage' === ( $item['archetype'] ?? '' ) ) {
+				echo '<li' . $style_colonne . '>'; // phpcs:ignore WordPress.Security.EscapeOutput
+				tfp_testimonial_card(
+					array(
+						'texte'  => $item['citation'] ?? '',
+						'auteur' => $item['auteur'] ?? '',
+						'role'   => $item['meta'] ?? '',
+						'ville'  => '',
+					),
+					array(
+						// La grille annonce déjà le caractère provisoire au-dessus de ses cartes.
+						'mention' => false,
+						'source'  => $item['source'] ?? '',
+						'etoiles' => $item['etoiles'] ?? '',
+						'carte'   => array(
+							'padding' => $item['carte_padding'] ?? '',
+							'rayon'   => $item['carte_rayon'] ?? '',
+							'gap'     => $item['carte_gap'] ?? '',
+						),
+						'geo'     => array(
+							'citation' => $item['citation_geo'] ?? array(),
+							'auteur'   => $item['auteur_geo'] ?? array(),
+							'meta'     => $item['meta_geo'] ?? array(),
+						),
+					)
+				);
+				echo '</li>';
+				continue;
+			}
 			$item = wp_parse_args(
 				$item,
 				array(
@@ -555,6 +888,7 @@ function tfp_card_grid( array $grille ) {
 					'surtitre'     => '',
 					'icone'        => '',
 					'image'        => '',
+					'image_rendu'  => '',
 					'route'        => '',
 					'libelle_lien' => '',
 					'aria'         => '',
@@ -627,9 +961,20 @@ function tfp_card_grid( array $grille ) {
 			if ( $item['aria'] ) {
 				$attributs .= ' aria-label="' . esc_attr( $item['aria'] ) . '"';
 			}
+
+			/*
+			 * MINIATURE ou visuel de tête ? La maquette emploie les deux sur le même composant :
+			 * un visuel pleine largeur en tête de tuile (cartes d'articles, 16/10) et une
+			 * miniature de 56 px posée À GAUCHE de l'intitulé (bande de maillage du pilier,
+			 * THUMB_56 — relevé G25). La taille RENDUE relevée par le générateur tranche :
+			 * jusqu'à 80 px de large, c'est une miniature.
+			 */
+			$image_l    = (int) ( $item['image_rendu'] ? explode( '×', $item['image_rendu'] )[0] : 0 );
+			$est_thumb  = $item['image'] && $image_l > 0 && $image_l <= 80;
+			$classe_var = $est_thumb ? 'thumb' : $variante;
 			?>
-			<li<?php echo ! empty( $item['provisoire'] ) ? ' data-tfp-provisional="1"' : ''; ?>>
-				<<?php echo $balise; ?> class="tfp-card-tile tfp-card-tile--<?php echo esc_attr( $variante ); ?><?php echo $item['en_ligne'] ? ' tfp-card-tile--en-ligne' : ''; ?>"<?php echo $style_item; // phpcs:ignore WordPress.Security.EscapeOutput ?><?php echo $attributs; // phpcs:ignore WordPress.Security.EscapeOutput ?>>
+			<li<?php echo ! empty( $item['provisoire'] ) ? ' data-tfp-provisional="1"' : ''; ?><?php echo $style_colonne; // phpcs:ignore WordPress.Security.EscapeOutput ?>>
+				<<?php echo $balise; ?> class="tfp-card-tile tfp-card-tile--<?php echo esc_attr( $classe_var ); ?><?php echo $item['en_ligne'] ? ' tfp-card-tile--en-ligne' : ''; ?>"<?php echo $style_item; // phpcs:ignore WordPress.Security.EscapeOutput ?><?php echo $attributs; // phpcs:ignore WordPress.Security.EscapeOutput ?>>
 					<?php
 					/*
 					 * Visuel de la carte. Le slug vient du manifeste d'images du thème, jamais d'un
@@ -637,8 +982,14 @@ function tfp_card_grid( array $grille ) {
 					 * noms. Une carte dont le visuel n'a pas d'équivalent au manifeste se rend sans
 					 * image plutôt qu'avec une image cassée.
 					 */
-					$slug_image = $item['image'] ? tfp_card_image_slug( $item['titre'], $item['route'] ) : '';
-					if ( $slug_image ) {
+					$slug_image = $item['image'] ? tfp_card_image_slug( $item['titre'], $item['route'], $est_thumb ) : '';
+					if ( $slug_image && $est_thumb ) {
+						// Alt vide : la maquette déclare elle-même ces miniatures décoratives
+						// (imgEl(s.photo, '')) — le sens est porté par l'intitulé voisin.
+						echo '<span class="tfp-card-tile__thumb">';
+						tfp_picture( $slug_image, array( 'sizes' => '56px', 'alt' => '' ) );
+						echo '</span>';
+					} elseif ( $slug_image ) {
 						echo '<span class="tfp-card-tile__media">';
 						tfp_picture( $slug_image, array( 'sizes' => '(max-width: 819px) 100vw, 383px', 'alt' => '' ) );
 						echo '</span>';

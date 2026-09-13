@@ -324,7 +324,15 @@ if ( '' !== $horaires ) {
 		</div>
 		<div class="tfp-contact-cols__aside">
 			<div class="tfp-contact-person">
-				<?php tfp_picture( 'audrey-placeholder', array( 'sizes' => '64px', 'alt' => '', 'class' => 'tfp-contact-person__photo' ) ); ?>
+				<?php
+				/*
+				 * Portrait propre à /contact/ et /demande-de-devis/ : la maquette y pose un troisième
+				 * visuel de stock, distinct de celui de /a-propos/ (relevé par empreinte, G26 §3).
+				 * `alt` vide : le nom est écrit juste à côté, et aucune photo ne prétend représenter
+				 * Audrey tant que la vraie n'est pas fournie (CLAUDE.md §5.6).
+				 */
+				tfp_picture( 'portrait-contact', array( 'sizes' => '64px', 'alt' => '', 'class' => 'tfp-contact-person__photo' ) );
+				?>
 				<div>
 					<strong><?php echo esc_html( $prenom ); ?></strong>
 					<span>Votre interlocutrice, du devis au suivi</span>

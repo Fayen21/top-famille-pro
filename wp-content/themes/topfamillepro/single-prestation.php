@@ -92,17 +92,22 @@ $devis_url = add_query_arg(
 
 $canonical_path = wp_parse_url( get_permalink( $post_id ), PHP_URL_PATH );
 
-// Visuel d'illustration : un slug dédié pour bureaux/commerces (photos correspondant au
-// prototype Claude Design), un visuel générique honnête pour les 4 autres prestations — pas de
-// photo prétendant montrer un type de local précis qu'elle ne montre pas réellement.
+/*
+ * Visuel d'illustration : UN slug par prestation (G26 §3).
+ *
+ * Seuls « bureaux » et « commerces » avaient le leur ; les quatre autres partageaient un visuel
+ * générique, quand la maquette pose six photos distinctes. L'audit par empreinte l'a montré, et
+ * les six fichiers sont ceux du standalone, appariés sur leurs octets
+ * (`node tools/mapper-photos-maquette.mjs`). Les `alt` restent honnêtes : ils décrivent la scène
+ * et disent « photo d'illustration », jamais un local réel de l'entreprise (CLAUDE.md §5.6).
+ */
 $image_slug = tfp_get_field( 'image_slug', $post_id );
 if ( ! $image_slug ) {
-	$slug_map   = array(
-		'bureaux'   => 'service-bureaux',
-		'commerces' => 'service-commerces',
-	);
 	$post_name  = get_post_field( 'post_name', $post_id );
-	$image_slug = $slug_map[ $post_name ] ?? 'service-generic';
+	$candidat   = 'service-' . $post_name;
+	// Le manifeste tranche : une prestation ajoutée sans photo garde le visuel générique plutôt
+	// qu'une image cassée.
+	$image_slug = tfp_image_exists( $candidat ) ? $candidat : 'service-generic';
 }
 
 // Table de maillage de la phrase d'introduction : les expressions exactes employées par la
@@ -206,7 +211,15 @@ get_header();
 </section>
 
 <?php if ( $reponse ) : ?>
-<section class="tfp-container tfp-section--tight">
+<?php
+/*
+ * La bande « Réponse directe » du gabarit prestation vit dans un conteneur de LECTURE de 820 px
+ * (relevé G23 sur la règle déclarée de la maquette), pas dans le conteneur générique de 1260 :
+ * 80 px de large en plus font tenir le même texte sur une ligne de moins, et la page perdait
+ * cette hauteur à 1024 px et au-delà — l'une des causes mesurées de la chute de /meubles/ à 94 %.
+ */
+?>
+<section class="tfp-container tfp-section--tight tfp-presta-reponse" style="--container-max:820px">
 	<?php
 	/*
 	 * La réponse directe n'est **pas** une carte dans la maquette : c'est du texte courant, précédé
@@ -338,7 +351,8 @@ get_header();
 <?php if ( $detail_titre && ! empty( $details ) ) : ?>
 <section class="tfp-section--alt tfp-section--tight">
 	<div class="tfp-container">
-		<h2><?php echo esc_html( $detail_titre ); ?></h2>
+		<?php // max-width 620 : déclaré par la maquette sur le H2 de cette bande — il replie le titre sur deux lignes dès 1024 px (relevé G23). ?>
+		<h2 style="max-width:620px"><?php echo esc_html( $detail_titre ); ?></h2>
 		<div class="tfp-detail-grid">
 			<?php foreach ( $details as $bloc ) : ?>
 				<div class="tfp-detail-item">
@@ -354,7 +368,8 @@ get_header();
 <?php if ( $orga_titre && ! empty( $orga ) ) : ?>
 <section class="tfp-section--turquoise tfp-section--tight">
 	<div class="tfp-container">
-		<h2><?php echo esc_html( $orga_titre ); ?></h2>
+		<?php // max-width 560 : déclaré par la maquette sur le H2 de cette bande (relevé G23). ?>
+		<h2 style="max-width:560px"><?php echo esc_html( $orga_titre ); ?></h2>
 		<?php
 		/*
 		 * La bande mêle deux traitements, relevés sur la maquette : cinq blocs rangés sur une grille
@@ -403,19 +418,27 @@ get_header();
 </section>
 <?php endif; ?>
 
+<?php
+/*
+ * Bande « Exemple tarifaire + avis », relevée sur la maquette (G23) : rangée flex align-items:
+ * center à l'écart clamp(28px, 4vw, 48px), carte Exemple en ENFANT DIRECT (flex 1 1 300,
+ * rembourrage 28, rayon 18, montant 38 px en bleu principal), témoignage nu en enfant direct
+ * (flex 1 1 360). Le composant générique .tfp-two-col, avec ses conteneurs intermédiaires de
+ * hauteurs voisines, faisait partager leur ordonnée aux deux boîtes : deux colonnes comptées là
+ * où la maquette, centrant deux boîtes de hauteurs franchement différentes, n'en compte qu'une.
+ */
+?>
 <section class="tfp-section--tight">
-	<div class="tfp-container tfp-two-col">
-		<div>
-			<div class="tfp-price-example">
-				<div class="tfp-price-example__label">Exemple · <?php echo (int) $budget['hours']; ?> h/mois</div>
-				<div class="tfp-price-example__value"><?php echo esc_html( tfp_format_price( $budget['monthly'] ) ); ?> <span>HT/mois</span></div>
-				<div class="tfp-price-example__note">
-					<?php echo (int) $budget['hours']; ?> h × <?php echo esc_html( tfp_format_price( $site['price_unique'] ) ); ?> + <?php echo esc_html( tfp_format_price( $site['price_gestion'] ) ); ?> de gestion.
-					Le cas échéant, avec les frais de mise en place : <?php echo esc_html( tfp_format_price( $budget['first_month'] ) ); ?> HT
-				</div>
-				<div class="tfp-price-example__disclaimer">Exemple non contractuel.</div>
-				<a class="tfp-eyebrow-link" href="<?php echo esc_url( home_url( '/tarifs/' ) ); ?>">Tous les tarifs →</a>
+	<div class="tfp-container tfp-presta-tarif">
+		<div class="tfp-price-example">
+			<div class="tfp-price-example__label">Exemple · <?php echo (int) $budget['hours']; ?> h/mois</div>
+			<div class="tfp-price-example__value"><?php echo esc_html( tfp_format_price( $budget['monthly'] ) ); ?> <span>HT/mois</span></div>
+			<div class="tfp-price-example__note">
+				<?php echo (int) $budget['hours']; ?> h × <?php echo esc_html( tfp_format_price( $site['price_unique'] ) ); ?> + <?php echo esc_html( tfp_format_price( $site['price_gestion'] ) ); ?> de gestion.
+				Le cas échéant, avec les frais de mise en place : <?php echo esc_html( tfp_format_price( $budget['first_month'] ) ); ?> HT
 			</div>
+			<div class="tfp-price-example__disclaimer">Exemple non contractuel.</div>
+			<a class="tfp-eyebrow-link" href="<?php echo esc_url( home_url( '/tarifs/' ) ); ?>">Tous les tarifs →</a>
 		</div>
 		<?php if ( $temoignage['texte'] ) : ?>
 			<div class="tfp-testimonial--plain">

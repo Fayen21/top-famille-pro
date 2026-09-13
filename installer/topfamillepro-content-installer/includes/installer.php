@@ -24,7 +24,7 @@ function tfp_installer_seed_files() {
 		'5 prestations restantes'                    => $dir . 'seed-phase3-batch1-prestations.php',
 		'7 départements restants'                    => $dir . 'seed-phase3-batch2-departements.php',
 		'9 villes restantes'                         => $dir . 'seed-phase3-batch3-villes.php',
-		'8 communes secondaires (noindex,follow)'    => $dir . 'seed-phase3-batch4-communes.php',
+		'8 communes desservies (validées le 17/08/2026, index)' => $dir . 'seed-phase3-batch4-communes.php',
 		'2 articles restants'                        => $dir . 'seed-phase3-batch5-articles.php',
 		'4 pages statiques (prestations, tarifs, zones, région)' => $dir . 'seed-phase3-batch5-pages.php',
 		'8 pages statiques (confiance et conversion)' => $dir . 'seed-phase3-batch6-pages.php',
@@ -34,6 +34,7 @@ function tfp_installer_seed_files() {
 		'Fidélité Claude Design — 26 zones'          => $dir . 'seed-fidelite-zones.php',
 		'Fidélité Claude Design — 3 articles Conseils' => $dir . 'seed-fidelite-articles.php',
 		'Fidélité Claude Design — 9 pages statiques' => $dir . 'seed-fidelite-pages.php',
+		'Réassurance & avis — décision du 17/08/2026' => $dir . 'seed-reassurance.php',
 		'Nettoyage du contenu WordPress par défaut'   => $dir . 'cleanup-wp-defaults.php',
 	);
 }

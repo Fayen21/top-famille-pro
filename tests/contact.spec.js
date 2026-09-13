@@ -366,21 +366,32 @@ test.describe('Contact — validation serveur', () => {
 		await page.goto(PAGE, { waitUntil: 'domcontentloaded' });
 		test.skip(!(await envoiNeutralise(page)), 'installation réelle : soumission non testée');
 
-		// La soumission est interceptée : on observe l'état du bouton sans partir sur le serveur.
+		/*
+		 * La soumission est interceptée AU RÉSEAU, pas par `preventDefault()`.
+		 *
+		 * Le gestionnaire anti-double-envoi ignore désormais une soumission annulée (G26 §6) :
+		 * le formulaire de devis valide ses deux étapes lui-même et appelle `preventDefault()`
+		 * quand un champ manque, et sans ce contrôle le bouton se serait désactivé sur un
+		 * formulaire jamais parti, bloquant le visiteur. Annuler l'événement dans le test
+		 * mesurerait donc ce contrôle-là, et non le comportement réel d'un envoi valide.
+		 */
+		// La réponse au POST est un 204 : le navigateur émet bien la soumission — donc le
+		// gestionnaire s'exécute pour de vrai — mais ne quitte pas le document, ce qui laisse
+		// observer l'état du bouton.
+		await page.route('**/*', (route) =>
+			'POST' === route.request().method() ? route.fulfill({ status: 204, body: '' }) : route.continue()
+		);
+
+		await page.fill('#contact-nom', 'Test');
+		await page.fill('#contact-email', 'test@example.com');
+		await page.fill('#contact-message', 'Message de test suffisamment long.');
+		await page.check('#contact-consentement');
+		await page.click('.tfp-contact-form button[type="submit"]');
+		await page.waitForTimeout(200);
+
 		const etat = await page.evaluate(() => {
-			const f = document.querySelector('.tfp-contact-form');
-			f.addEventListener('submit', (e) => e.preventDefault(), { capture: false });
-			f.querySelector('#contact-nom').value = 'Test';
-			f.querySelector('#contact-email').value = 'test@example.com';
-			f.querySelector('#contact-message').value = 'Message de test suffisamment long.';
-			f.querySelector('#contact-consentement').checked = true;
-			f.requestSubmit(f.querySelector('button[type="submit"]'));
-			return new Promise((r) =>
-				setTimeout(() => {
-					const b = f.querySelector('button[type="submit"]');
-					r({ desactive: b.disabled, occupe: b.getAttribute('aria-busy'), libelle: b.textContent.trim() });
-				}, 60)
-			);
+			const b = document.querySelector('.tfp-contact-form button[type="submit"]');
+			return { desactive: b.disabled, occupe: b.getAttribute('aria-busy'), libelle: b.textContent.trim() };
 		});
 
 		expect(etat.desactive, 'le bouton doit être neutralisé après la première soumission').toBe(true);
