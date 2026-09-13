@@ -2044,3 +2044,80 @@ empreintes SHA-256, qui restent utiles pour vérifier une archive transmise par 
 
 À la prochaine régénération, il faudra **supprimer les archives de la passe précédente dans le même
 commit** plutôt que d'en empiler une seconde série.
+
+---
+
+## Réunification des deux troncs et clôture — 13 septembre 2026 (branche `hotfix-production-fidelite-claude-design`, PR #9)
+
+Rapport complet réécrit sur l'état final : `docs/RAPPORT-CLOTURE.md`.
+Verdict : **`PARTIEL — ÉCARTS RESTANTS`** — mais le verdict ne désigne plus aucun défaut de thème.
+
+### Le problème que cette passe a résolu
+
+Le chantier s'était scindé en deux troncs pendant trois semaines. La PR #9 portait l'état G22 ; une
+branche de travail, `claude/g23-fidelite-claude-design-7doxg4`, portait G23 à G28 — **soixante-quatre
+commits de travail fini qui ne figuraient dans aucune PR**.
+
+Le symptôme était mesurable et trompeur : rejouer Lighthouse sur la branche de la PR donnait sept
+échecs et un LCP mobile à 2,88 s. Non parce que le site était lent, mais parce que le correctif qui
+le rend rapide était sur l'autre tronc. **Une mesure rejouée sur la mauvaise branche ne constate pas
+un défaut, elle constate une absence.**
+
+### Fait
+
+- **Fusion des 64 commits** (`906ad57`). 127 conflits, dont 124 sur des artefacts générés
+  (`export/`, `docs/captures/`) tranchés en faveur du tronc le plus avancé sans arbitrage de
+  contenu — ils allaient être régénérés. Les trois vrais tranchés à la main :
+  `package-lock.json` reconstruit par npm plutôt que résolu ligne à ligne ; `CHECKPOINT-FIDELITE.json`
+  sur base G28 avec réinjection de FP11 ; `LIGHTHOUSE.md` pris puis régénéré.
+  Les six apports de la branche PR ont été **vérifiés présents après fusion**, un par un.
+- **Tout régénéré sur l'état fusionné** (`07db33e`) — aucun chiffre du rapport ne provient d'un des
+  deux états antérieurs.
+- **Lighthouse : 14 mesures sur 14 conformes.** LCP mobile 1,66–1,83 s, CLS 0,000 sur les quatorze.
+- **Relevé de base** : 318/318 · 298 dans 95–105 % · 0 débordement · 0 image cassée · 0 erreur.
+- **Classement des anomalies clos** : `defauts_reels_non_corriges: 0`, verdict `PASS`. Les sept
+  causes `DEFAUT_THEME` qui portaient le verdict précédent sont corrigées.
+- **WCAG 2.5.8** : aucune violation sur 53 routes × 2 largeurs. L'audit lui-même a été corrigé
+  (FP11) — il fabriquait une position documentaire à une barre `position: fixed` par `top + scrollY`,
+  ce qui signalait une violation à 900 px de hauteur de fenêtre et rien à 800.
+- **Formulaire de devis : un défaut réel corrigé.** Il n'avait aucune garde de neutralisation
+  d'envoi, contrairement au formulaire de contact. Il ne devait sa sûreté qu'à l'absence de transport
+  mail sur le banc — une circonstance, pas une garantie. Sur une préproduction Hostinger, la suite
+  aurait expédié six demandes de devis à la gérante à chaque exécution.
+- **Paquet reconstruit**, parité contrôlée avant et après : 1 265 fichiers comparés par empreinte.
+  Thème en **0.13.0**.
+- **1 255 tests, 0 échec**, captures comprises. Lint PHP 82 fichiers OK.
+
+### Trois pièges de livraison trouvés en chemin
+
+1. `tools/export-statique.mjs` **vide `export/`** : les paquets se construisent APRÈS l'export
+   statique, jamais avant — sinon les archives disparaissent sans bruit. C'est arrivé une fois dans
+   cette passe.
+2. **La version du thème ne bougeait pas** alors que son contenu changeait de 64 commits : un paquet
+   indistinguable du précédent à l'installation, que WordPress ne signale pas comme mise à jour.
+3. `release/INFORMATIONS-MANQUANTES.md` réclamait encore la confirmation de la grille 24,30 / 26,00 /
+   30,00 € HT/h — des montants que le site ne sert plus nulle part. La demande invitait à rétablir un
+   tarif mort. Elle vise désormais le tarif unique de 27,00 € HT/h.
+
+### Reste à faire
+
+- **Validation humaine du dossier G28** — 110 comparaisons au statut `À VALIDER`. Les captures
+  restent valides malgré la fusion : les trois apports de la branche PR ne changent aucun rendu en
+  production.
+- **Envoi réel du formulaire** — étape 18 du guide, le seul test impossible depuis cet
+  environnement. Trois pièges y sont écrits, dont le premier créé par la correction ci-dessus : sur
+  une installation restée en `development`, la confirmation s'affiche sans qu'aucun e-mail ne parte.
+- **Décisions humaines** — citation d'Audrey, nombre d'avis Google et URL de la fiche, photo
+  authentique, validation des 8 communes secondaires, textes des vrais témoignages. Aucune ne bloque :
+  chacune a un défaut sûr (section masquée, pastille à initiale, `noindex,follow`, marquage
+  provisoire).
+- **Réglages d'hébergement** — cache LiteSpeed et compression à configurer explicitement. Les
+  chiffres Lighthouse ci-dessus sont mesurés *avec*.
+- **Archives du dossier G28** — à supprimer dans le commit qui en produira une nouvelle série,
+  plutôt que d'en empiler une seconde.
+
+### Décision prise
+
+Le chantier repart d'**un seul tronc**. Toute reprise se fait sur
+`hotfix-production-fidelite-claude-design` ; la branche `claude/g23-fidelite-claude-design-7doxg4`
+est entièrement contenue dedans et n'a plus à être reprise.

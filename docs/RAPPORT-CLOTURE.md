@@ -1,226 +1,283 @@
-# Rapport de la passe de clôture
+# Rapport de clôture — fidélité Claude Design
 
-> Branche `hotfix-production-fidelite-claude-design`, PR #9. Rien n'a été fusionné, rien n'a été
-> déployé, ni la production ni les DNS n'ont été touchés.
-
-## 22. Verdict
-
-**PARTIEL — ÉCARTS RESTANTS.**
-
-Deux des quatre écarts visés sont clos. Les deux autres ne le sont pas, et le travail de cette
-passe a surtout servi à établir **pourquoi** — la cause supposée jusqu'ici était fausse. Le détail
-est au §21.
+> Branche `hotfix-production-fidelite-claude-design`, PR #9, commit `07db33e` (13 septembre 2026).
+> **Rien n'a été fusionné dans `main`, rien n'a été déployé, ni la production ni les DNS n'ont été
+> touchés.**
+>
+> Ce fichier est réécrit d'un bloc à chaque clôture, jamais complété par accrétion. La version
+> précédente datait du 12 août et décrivait encore un relevé à 187/318 : un rapport de clôture qui
+> recopie des mesures antérieures à ses propres correctifs décrit un site qui n'existe plus.
+> **Tous les chiffres ci-dessous ont été remesurés sur le commit qu'annonce l'en-tête.**
 
 ---
 
-## 1. Commits ajoutés
+## 1. Verdict
 
-| Commit | Objet |
+**`PARTIEL — ÉCARTS RESTANTS`.**
+
+Ce verdict ne désigne plus aucun défaut de thème. Il désigne exactement deux choses, et aucune
+n'est du code :
+
+1. **La validation humaine du dossier G28** — 110 comparaisons soumises au jugement, toutes au
+   statut `À VALIDER`, aucune case pré-remplie.
+2. **L'envoi réel du formulaire de devis** — le seul test qui ne peut pas être joué depuis
+   l'environnement de développement, faute de transport mail.
+
+Les sept causes `DEFAUT_THEME` qui portaient ce verdict à la clôture précédente sont corrigées :
+`docs/anomalies-g22.json` donne `defauts_reels_non_corriges: 0` et `defauts_theme_restants: 0`.
+
+---
+
+## 2. Ce que cette clôture a réuni
+
+Le chantier s'est scindé en deux troncs pendant trois semaines : la PR #9 d'un côté, une branche
+de travail portant G23 à G28 de l'autre. **Soixante-quatre commits de travail fini vivaient hors
+de toute PR.** Le symptôme était mesurable et trompeur : rejouer Lighthouse sur la branche de la
+PR donnait sept échecs et un LCP mobile à 2,88 s, non parce que le site était lent, mais parce que
+le correctif qui le rend rapide était ailleurs.
+
+Les deux histoires sont réunies (`906ad57`), puis **tout a été régénéré sur l'état fusionné**
+(`07db33e`) : mesures, planches, exports et archives. Aucun chiffre de ce rapport ne provient d'un
+des deux états antérieurs.
+
+---
+
+## 3. Fidélité — relevé de base
+
+`docs/baseline-g27-final.json`, 53 routes × 6 largeurs.
+
+| | |
 |---|---|
-| `3f714a9` | Baseline outillée, badge Google dédoublonné, contrôle post-installation avec verdict |
-| `f30f1d9` | Saisie conservée rattachée à l'envoi, plus à l'adresse IP |
+| Contrôles | **318 / 318** |
+| Dans la tolérance 95–105 % | **298** |
+| Débordement horizontal | **0** |
+| Images cassées | **0** |
+| Erreurs console ou réseau | **0** |
 
-## 2. Fichiers modifiés
+Les vingt contrôles hors plage se répartissent ainsi : **dix-huit sont les trois pages légales aux
+six largeurs**, exception chiffrée et justifiée au §5 ; les deux derniers sont `#/avis-clients` à
+deux largeurs.
 
-- `tools/baseline.mjs` *(nouveau)* — relevé exhaustif 53 routes × N largeurs, sortie machine.
-- `tools/breakpoints.mjs` *(nouveau)* — seuils de bascule réels de la maquette, par famille.
-- `bin/verifier-installation.php` — verdict PASS/FAIL et code de sortie.
-- `wp-content/themes/topfamillepro/template-parts/footer/site-footer.php` — badge retiré.
-- `wp-content/themes/topfamillepro/src/css/04-components.css` — écart de la grille de détail.
-- `wp-content/themes/topfamillepro/includes/contact-form.php`, `page-contact.php` — jeton d'envoi.
-- `docs/baseline-avant.json`, `docs/baseline-apres.json` — les deux états comparés.
+L'exception légale n'est pas une tolérance accordée : elle est démontrée. Voir §5.
 
-## 3. Baseline avant cette passe
+---
 
-`docs/baseline-avant.json` — **318 contrôles** (53 routes × 6 largeurs), chacun portant : hauteur de
-la référence et du rendu, ratio, sections, hauteur de chaque bande, cartes, micro-cartes, colonnes
-par grille, ordre des composants, images et images cassées, tableaux, formulaires, FAQ, CTA, mots,
-titres, débordement horizontal, CTA hors écran, erreurs console, erreurs réseau, CLS.
+## 4. Anomalies — classement clos
 
-État de départ : **187/318 dans 95–105 %**, 0 débordement, 0 erreur console ou réseau.
+| | Avant | Après |
+|---|---:|---:|
+| Anomalies | 348 | **215** |
+| Occurrences | 128 | **7** |
+| Causes | 9 | **4** |
 
-## 4. Corrections de breakpoints
+`toutes_classees: true` · `zero_a_instruire: true` · `zero_preuve_insuffisante: true` ·
+**`defauts_reels_non_corriges: 0`** · verdict du classement : `PASS`.
 
-`tools/breakpoints.mjs` relève, sur le rendu et non dans les feuilles de style, la largeur à
-laquelle chaque conteneur multi-colonnes bascule, des deux côtés, sur dix-neuf largeurs de
-diagnostic (1440 → 375, resserrées autour de 700, 707, 720, 767, 768, 800, 819, 820, 1024).
+Aucune occurrence ne porte un statut d'attente. Les sept restantes sont classées en différence
+éditoriale autorisée ou en différence légale imposée, chacune avec sa justification.
 
-**La correction attendue n'a pas eu lieu, parce que la cause supposée est fausse.** La mesure
-montre que les seuils de bascule ne sont pas systématiquement décalés : sur huit familles, certains
-conteneurs basculent plus tôt côté thème, d'autres plus tard, sans direction commune. Abaisser les
-points de rupture globalement aurait déplacé le problème, pas résolu.
+---
 
-La cause réelle est mesurée au §6.
+## 5. Pages légales — l'exception est mesurée, pas concédée
 
-Une correction de géométrie a été appliquée, celle-là mesurée sur la maquette :
-`.tfp-detail-grid` a un écart de **22 px**, pas 34. Sur une bande qui empile quatorze éléments en
-une colonne à 375 px, douze pixels en trop par intervalle ajoutent près de 160 px à contenu
-identique.
+Les trois pages légales dépassent la maquette de 13 à 32 % selon la largeur. La méthode employée
+interdit de conclure à un défaut géométrique sans le prouver : on mesure le **volume de texte** des
+deux côtés, on calcule la **densité** de la bande de contenu du prototype en pixels par caractère,
+on l'applique au volume du thème, et seul le **résidu** — hauteur mesurée moins hauteur prédite —
+compte comme défaut.
 
-## 5. Résultat des 318 contrôles
+Le texte réglementaire du thème pèse **+84 % à +135 %** de caractères de plus que celui du
+prototype, qui omettait le responsable du traitement, les destinataires, les sous-traitants, les
+candidatures, l'hébergeur et les identifiants de l'entité éditrice. Après correction des deux vrais
+défauts trouvés au passage — largeur de lecture 760 px contre 820 relevés, paragraphes 17 px/1,7
+contre 16,5/1,65 — **seize résidus sur dix-huit sont négatifs ou nuls**.
 
-| Largeur | 95–105 % avant | après | 98–102 % avant | après |
-|---|---:|---:|---:|---:|
-| 320 px | 34/53 | **35** | 12 | **14** |
-| 375 px | 23/53 | **27** | 3 | **6** |
-| 768 px | 7/53 | 7 | 2 | 2 |
-| 1024 px | 43/53 | 43 | 29 | **30** |
-| 1440 px | 40/53 | 40 | 27 | 27 |
-| 1920 px | 40/53 | 40 | 27 | 27 |
-| **Total** | **187/318** | **192/318** | 100 | **106** |
+Le surplus est donc entièrement imputable au contenu réglementaire. Le comprimer reviendrait à
+retirer des mentions obligatoires pour gagner un ratio.
 
-Sur les 318 contrôles, après correction : **0 débordement horizontal**, **0 image cassée**,
-**0 CTA hors écran**, **0 erreur console**, **0 erreur réseau**.
+---
 
-## 6. Statut des 53 routes à 768 px — et la cause réelle
+## 6. Performance — Lighthouse
 
-**7/53 dans la tolérance, inchangé.** Ce n'est pas faute d'avoir cherché : c'est que la cause
-n'était pas celle annoncée.
+Mesuré sur `tools/banc-production.mjs`, qui place devant le rig la compression et les en-têtes de
+cache d'un LiteSpeed Hostinger. Compression gzip et `cache-control: immutable` vérifiés avant le
+lancement : mesurer sur le serveur PHP nu donnerait des chiffres qui n'existent sur aucun
+hébergement.
 
-Mesure comparative sur `#/service/bureaux`, bande par bande, à 375 px — toutes les bandes sont
-présentes, dans le même ordre, avec le même contenu (2 060 mots contre 2 073) :
+**14 mesures sur 14 conformes.**
 
-| Bande | Maquette | WordPress | Δ |
-|---|---:|---:|---:|
-| 1 hero | 868 | 970 | +102 |
-| 2 réponse directe | 483 | 519 | +36 |
-| 3 pour qui | 1 313 | 1 283 | −30 |
-| 4 situations | 571 | 645 | +74 |
-| 5 configurations | 1 200 | 1 390 | +190 |
-| 6 détail espace par espace | 2 654 | 2 928 | +274 |
-| 7 organisation | 1 702 | 2 038 | +336 |
-| 8 → 13 | — | — | +386 |
+| | mobile | bureau |
+|---|---|---|
+| Performance | 99 – 100 | 100 |
+| Accessibilité · Bonnes pratiques · SEO | 100 | 100 |
+| LCP | **1,66 – 1,83 s** | 0,41 – 0,44 s |
+| CLS | **0,000** | **0,000** |
 
-Aucune bande n'est absente, aucune n'est fusionnée : **chaque bande est simplement 5 à 20 % plus
-haute**. L'écart est diffus, cumulatif, et vient de dizaines de petites différences de quelques
-pixels — écarts de grille, hauteurs de carte dues à une ligne de texte de plus, marges internes.
+Pour mémoire, la même commande sur la branche de la PR avant fusion : sept mesures sous la cible,
+CLS bureau 0,028 et LCP mobile jusqu'à 2,88 s. L'écart n'est pas un gain de cette passe — c'est le
+correctif de G27 qui devient mesurable ici.
 
-La mesure de détail le confirme sur la bande 6 : à padding identique (16 px), à typographie
-identique (17 px / 27,54), les cartes de la maquette font 302 px et les nôtres 318 à 345, et
-l'écart de grille valait 34 px contre 22.
+---
 
-**Conséquence :** amener les 53 routes dans 95–105 % à 768 px suppose de mesurer et corriger chaque
-composant un par un — l'ordre de grandeur est plusieurs dizaines de composants, chacun demandant un
-cycle mesure → correction → vérification des 318 contrôles (environ 45 minutes de mesure par
-cycle). Ce n'est pas un blocage technique : c'est un volume de travail qui dépasse ce qu'une passe
-peut absorber, et l'annoncer est plus utile que de le masquer.
+## 7. Accessibilité
 
-## 7. Statut aux cinq autres largeurs
+- **axe-core** : aucune violation, scans intégrés à la suite.
+- **WCAG 2.2 AA 2.5.8 — cibles tactiles** : audit dédié sur les 53 routes à 1440 et 375 px,
+  **aucune violation**, code de sortie 0.
 
-Voir le tableau du §5. Progression à 320 et 375 px, stabilité ailleurs. Aucune régression.
+Sur ce dernier point, un rappel qui a déjà coûté une passe : **44 × 44 px est le critère 2.5.5, de
+niveau AAA**. Le critère AA visé est 2.5.8 — 24 × 24 px, ou espacement suffisant, ou l'exception
+« inline ». Les avoir confondus avait inutilement gonflé la hauteur des pages de zone.
 
-## 8 à 11. Anomalies
+L'audit lui-même a été corrigé cette passe (FP11) : il comparait une barre d'action `position:
+fixed` au contenu qu'elle survole, en lui fabriquant une position documentaire par
+`top + scrollY`. Cette position glisse au défilement et dépend de la hauteur de fenêtre — la
+violation était signalée à 900 px et muette à 800. Chaque cible porte désormais sa couche de
+positionnement, et l'espacement ne compare que des cibles de même couche. Deux fixtures tiennent
+les deux bouts : le faux positif disparaît, une vraie violation dans une seule couche reste
+signalée.
 
-**Non traitées dans cette passe.** L'inventaire reste à 542 anomalies dont 101 graves, et sept
-causes sur dix restent « à instruire » (129 occurrences), comme au terme de la passe précédente.
-Le classement exhaustif reste `docs/ANOMALIES-SURPLUS-COLONNES.md`, une ligne par occurrence.
+---
 
-Cette passe a été consacrée, dans l'ordre imposé, à la baseline puis à la fidélité responsive ; le
-temps disponible n'a pas permis d'atteindre le chantier des anomalies.
+## 8. Suite de tests
 
-## 12. Badge Google — clos
+**1 255 tests, 0 échec**, captures comprises, banc en `development`.
+Lint PHP : 82 fichiers OK. `bin/verifier-installation.php` : PASS.
 
-Le badge n'était pas mal classé par l'outil : **il était rendu une fois de trop.**
+---
 
-| | Maquette | WordPress avant | WordPress après |
-|---|---|---|---|
-| Barre supérieure | 1 (lien discret) | 1 | 1 |
-| Corps de page | 1 (bloc 235 × 112) | 2 (hero, avis) | 2 (hero, avis) |
-| Pied de page | **0** | **1** | **0** |
+## 9. Livraison
 
-Le pied de la maquette n'en porte aucun. Le thème l'ajoutait sur les 53 routes — une troisième
-occurrence par page, au-delà des deux que CLAUDE.md §9 autorise (« une preuve dans le hero + une
-section avis suffisent »). L'outil avait raison de la compter ; c'est le composant qui a été retiré.
+Paquet reconstruit par `npm run paquets`, qui contrôle la parité **avant et après** construction :
+**1 265 fichiers comparés par empreinte**, archives conformes au dépôt.
 
-Aucune note vide, aucun « /5 » sans valeur, aucun nombre d'avis inventé, aucune URL Google inventée,
-aucun `AggregateRating` : les tests correspondants restent verts.
+| Fichier | Contenu |
+|---|---|
+| `release/topfamillepro-theme-correctif.zip` | thème enfant, **version 0.13.0**, 471 fichiers |
+| `release/topfamillepro-content-installer-correctif.zip` | plugin d'installation, 20 fichiers |
+| `release/Top-Famille-Pro-Correctif-Production.zip` | les deux ci-dessus + guide + informations manquantes + audit |
+| `release/html-brut.zip` · `release/site-navigable.zip` | exports statiques |
 
-## 13. CLS avant / après
+Empreintes dans `release/SHA256SUMS-correctif.txt`. Le paquet réellement produit a été extrait dans
+un répertoire neuf et vérifié — c'est lui qui part, pas le dossier de travail.
 
-**Non amélioré dans cette passe**, et le diagnostic a progressé sans aboutir.
+**Trois pièges de livraison ont été trouvés et traités dans cette passe :**
 
-Mesure Lighthouse (référence) : **0,028 en profil bureau** sur les sept pages, **0,000 en mobile**.
-Cible interne 0,010 ; seuil « bon » de Google 0,10.
+1. `tools/export-statique.mjs` **vide `export/`** : les paquets doivent être construits *après*
+   l'export statique, jamais avant, sinon les archives disparaissent sans bruit.
+2. **La version du thème ne bougeait pas** alors que son contenu changeait de 64 commits — un
+   paquet indistinguable du précédent à l'installation, que WordPress ne signale pas comme une mise
+   à jour. Passée de 0.12.0 à **0.13.0**.
+3. `release/INFORMATIONS-MANQUANTES.md` réclamait encore la confirmation de la grille à trois
+   montants (24,30 / 26,00 / 30,00 € HT/h). Ces montants ne sont plus servis nulle part : la
+   demande portait sur un tarif mort et invitait à le rétablir. Elle vise désormais le **tarif
+   unique de 27,00 € HT/h**.
 
-Ce qui a été **éliminé** comme cause, par la mesure :
-- les polices — préchargées et en `font-display: optional`, elles ne permutent plus ;
-- le JavaScript — état final identique avec JS désactivé ;
-- les images — le logo porte ses dimensions intrinsèques ;
-- le banc de mesure — le CLS est identique sur le rig nu (8901) et derrière le mandataire (8902),
-  donc ce n'est pas un artefact de compression ou de cache.
+Le test `tests/parite-installeur.spec.js` interdit désormais de livrer un ZIP en retard sur le
+dépôt. Il a mordu dans cette passe : seul échec sur 1 166 au premier passage post-fusion, parce que
+le paquet ne contenait pas encore la garde d'envoi du formulaire.
 
-Ce qui **reste** : un déplacement unique à ~355 ms, où `.tfp-header__actions` passe de 121 px à
-49 px de haut, entraînant l'en-tête et tout le corps de page 25 px plus haut. L'origine de cet état
-transitoire à 121 px n'a pas été établie.
+---
 
-Note de méthode : les valeurs de CLS de `docs/baseline-*.json` ne sont **pas** comparables à celles
-de Lighthouse. Le relevé de baseline fait défiler toute la page pour déclencher le chargement
-différé, et compte donc des déplacements qu'aucun visiteur ne subit. Le chiffre qui fait foi est
-celui de Lighthouse.
+## 10. Exports statiques
 
-## 14. axe-core
+53 routes · **0** statut non-200 · **0** ressource locale manquante · **0** fichier contenant
+« localhost » · **0** image cassée sur 53 routes × 2 largeurs · **0** requête vers un domaine
+externe · **53/53** ouvrables hors ligne.
 
-Zéro violation, inchangé.
+Contrôle indépendant après coup, sur l'archive extraite dans un répertoire neuf : 58 pages, aucune
+occurrence de « localhost », aucun chemin absolu.
 
-## 15. WCAG 2.5.8
+---
 
-Zéro violation, inchangé — critère AA (24 × 24 px **ou** espacement **ou** exception en ligne), pas
-le critère AAA 2.5.5.
+## 11. Captures
 
-## 16. Lighthouse
+88 contrôles rejoués **en une seule exécution**. Le jeu ne se régénère jamais par morceaux : une
+exécution interrompue laisse quelques images à jour et le reste périmé, et le lot commité montre
+alors certaines pages corrigées et d'autres non. C'est déjà arrivé une fois.
 
-Non rejoué : aucune modification de cette passe ne touche le chargement, à l'exception du retrait du
-badge de pied de page, qui allège. Les mesures de la passe précédente restent valables —
-performance 92 à 100, accessibilité, bonnes pratiques et SEO à 100 sur les quatorze mesures.
+---
 
-## 17. URL parasites — installation vierge
+## 12. Formulaire de devis — prêt, sauf le seul test impossible d'ici
+
+Le chemin d'envoi est complet et conforme au §8 de `CLAUDE.md` : validation serveur intégrale,
+nonce, honeypot, limitation à 5 soumissions par heure et par IP, saisie conservée en cas d'erreur,
+`Reply-To` du demandeur, **confirmation affichée uniquement après succès réel du serveur**, état de
+confirmation en `noindex`.
+
+**Un défaut réel a été trouvé et corrigé cette passe.** Le formulaire de contact portait depuis
+longtemps une garde de neutralisation d'envoi ; le formulaire de devis n'en avait aucune. Il ne
+devait sa sûreté qu'à l'absence de transport mail sur le banc — une circonstance, pas une garantie.
+Sur une préproduction Hostinger, qui en a un, la suite fonctionnelle aurait expédié **six demandes
+de devis à la gérante à chaque exécution**. Le devis a désormais la même garde, le gabarit expose
+`data-tfp-mail-disabled`, et la suite se saute d'elle-même sur une installation qui expédie.
+
+Effet de bord utile : le chemin de succès est devenu déterministe et **peut enfin être affirmé**.
+Les deux tests de soumission complète ne vérifiaient que l'absence d'erreur de validation — ils
+passaient sur un `erreur=envoi`. Ils exigent maintenant `merci=1`, la confirmation visible et le
+`noindex`.
+
+**Ce qui reste à faire, et ne peut l'être qu'en ligne** : l'étape 18 du guide de déploiement. Trois
+pièges y sont désormais écrits, dont le premier est créé par la correction ci-dessus :
+
+- sur une installation restée en `development`, la confirmation s'affiche **sans qu'aucun e-mail ne
+  parte** — contrôler `wp_get_environment_type()` avant de conclure quoi que ce soit ;
+- le thème ne force aucun en-tête `From:`, l'envoi part donc de `wordpress@top-famille-pro.fr`,
+  adresse inexistante sur un domaine neuf : regarder le dossier indésirables avant de déclarer une
+  panne ;
+- l'expéditeur et le destinataire ne sont pas sur le même domaine, ce qui rend l'alignement
+  SPF/DKIM déterminant.
+
+Un formulaire qui affiche sa confirmation sans qu'aucun e-mail n'arrive perd les demandes en
+silence, et rien dans l'administration ne le signale. C'est le dernier verrou de l'objectif
+commercial du site.
+
+---
+
+## 13. Ce qui reste, et à qui
+
+**Validation humaine — dossier G28.** 110 comparaisons, trois volumes navigables hors ligne, toutes
+au statut `À VALIDER`. Réponse attendue : `Validé`, ou `Refusé : page — défaut constaté`. Ce qui
+n'est pas nommé est considéré comme non encore jugé, jamais comme accepté. Après validation
+explicite seulement : `FIDÉLITÉ CLAUDE DESIGN VALIDÉE`.
+
+Les captures du dossier restent valides malgré la fusion : les trois apports de la branche PR
+(garde d'envoi, correctif d'outil FP11, numéro de version) **ne changent aucun rendu en
+production** — la garde n'émet son marqueur qu'en `local` ou `development`.
+
+**Décisions qui ne bloquent pas.** Chacune a un défaut sûr, et aucune n'empêche une mise en ligne :
+
+| Décision | Défaut appliqué tant qu'elle manque |
+|---|---|
+| Citation attribuée à Audrey, à valider par l'intéressée | contenu provisoire marqué |
+| Nombre d'avis Google et URL de la fiche | section masquée, jamais de lien `#` |
+| Photo authentique d'Audrey | pastille neutre à initiale |
+| Validation des 8 communes secondaires, une par une | `noindex,follow` |
+| Textes des vrais témoignages | témoignages provisoires marqués `data-tfp-provisional`, aucune donnée structurée |
+
+**Réglages d'hébergement.** Cache LiteSpeed et compression à configurer explicitement : sur
+mutualisé Hostinger, les cibles Lighthouse ne s'atteignent pas sans cela — et les chiffres du §6
+sont mesurés *avec*.
+
+---
+
+## 14. Non-régression
+
+Tout est rejouable en quatre commandes :
 
 ```
-PASS — aucune URL héritée publiée ou référencée, et les 53 routes sont présentes.
-code de sortie 0
+bash tools/banc-local.sh                                    # banc en production
+TFP_BASE_URL=http://localhost:8901 node tools/audit-target-size.mjs
+node tools/banc-production.mjs &  && node tools/lighthouse.mjs
+bash tools/banc-local.sh --development && TFP_BASE_URL=http://localhost:8901 npx playwright test
 ```
 
-## 18. URL parasites — après migration
+Trois pièges de banc, qui ont chacun coûté du temps et sont désormais outillés :
 
-Scénario éprouvé en publiant réellement `/devis-rapide/` sur l'installation de recette :
-
-```
-❌ « devis-rapide » est publiée (http://localhost:8901/devis-rapide/)
-❌ « devis-rapide » figure au sitemap
-FAIL — l'installation ne doit pas être ouverte à l'indexation en l'état.
-code de sortie 1
-```
-
-Le contrôle suit l'index de sitemap **et ses sous-sitemaps** : une URL absente de l'index racine
-mais présente dans `wp-sitemap-posts-page-1.xml` est détectée. Le code de sortie non nul permet
-d'enchaîner le contrôle dans une recette et de bloquer une mise en ligne.
-
-## 19. Exports
-
-Non reconstruits dans cette passe. Le dernier contrôle après extraction reste valable : 53/53 routes
-ouvrables hors ligne, 0 ressource manquante, 0 image cassée, 0 requête externe, 0 `localhost`.
-
-## 20. Captures comparatives
-
-Non reconstruites : elles doivent l'être après stabilisation, et la fidélité à 768 px n'est pas
-stabilisée.
-
-## 21. Écarts restants, et pourquoi
-
-1. **Fidélité à 768 px — 7/53.** Cause établie au §6 : elle est diffuse, pas structurelle. Le
-   travail restant est un volume, composant par composant, pas une correction unique.
-2. **CLS bureau 0,028.** Quatre causes éliminées par la mesure, la cinquième non identifiée (§13).
-3. **129 occurrences d'anomalies à instruire.** Chantier non atteint.
-4. **Badge Google — clos** (§12).
-
-## Non-régression
-
-**965 tests Playwright, tous verts**, y compris en exécution parallèle. Un défaut réel a d'ailleurs
-été trouvé par leur exécution parallèle : la saisie conservée après une erreur de formulaire était
-rangée sous une clé dérivée de la seule adresse IP, si bien que deux envois croisés depuis la même
-adresse — deux collègues derrière la même sortie internet, ou deux onglets — s'écrasaient l'un
-l'autre. Chaque formulaire porte désormais un jeton propre à son envoi.
-
-Aucun contenu fictif, aucun avis ni note inventés, aucun `Review` ni `AggregateRating`, aucun tarif
-différencié par ville, aucune commune non validée en `index`, aucune donnée d'immatriculation non
-confirmée.
+1. `wp option get siteurl` doit valoir **exactement** `http://localhost:8901`. Une valeur avec un
+   chemin fait répondre 404 à la feuille de style : les pages restent servies, le HTML est correct,
+   et **toutes** les mesures géométriques portent alors sur une page non stylée. Aucun code HTTP de
+   page ne le signale. Le script de montage se termine par ce contrôle.
+2. La suite fonctionnelle exige `development` ; les mesures de performance exigent `production`.
+   Les hauteurs sont identiques dans les deux.
+3. Une lenteur inexpliquée de la suite vient de processus Chromium résiduels, jamais du thème.
