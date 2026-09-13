@@ -160,6 +160,39 @@ confirmation s'affiche, (b) qu'un e-mail arrive bien dans la boîte configurée 
 en quelques minutes. **C'est le seul test qui ne peut pas être fait avant la mise en ligne réelle**
 (l'environnement de développement n'a pas de transport mail).
 
+**Avant de conclure quoi que ce soit de ce test, trois pièges.**
+
+**a) L'affichage de la confirmation ne prouve pas l'envoi — sauf en production.** Le thème
+neutralise l'expédition quand `WP_ENVIRONMENT_TYPE` vaut `local` ou `development` : le formulaire
+valide alors tout de bout en bout et affiche sa confirmation **sans rien envoyer**. C'est
+volontaire — c'est ce qui empêche la suite de tests d'expédier de vraies demandes à la gérante.
+Mais sur une préproduction laissée en `development`, l'étape 18 afficherait une confirmation
+trompeuse. Contrôlez donc d'abord :
+
+```
+wp eval 'echo wp_get_environment_type();'      # doit afficher : production
+```
+
+Si le code source de la page contient `data-tfp-mail-disabled` sur le formulaire, l'envoi est
+neutralisé sur cette installation : le test ne vaut rien tant que ce n'est pas corrigé.
+
+**b) Regardez le dossier indésirables avant de déclarer une panne.** Le thème ne force aucun
+en-tête `From:` ; `wp_mail()` expédie donc depuis `wordpress@top-famille-pro.fr`, une adresse qui
+n'existe pas comme boîte réelle. Sur un domaine neuf, sans SPF ni DKIM alignés, ce couple
+« expéditeur inexistant + domaine sans historique » est la première cause d'un devis qui n'arrive
+jamais. Si le message est en indésirables, ne changez rien au thème : traitez-le à l'étape 17 en
+posant, via le plugin SMTP, une adresse d'expédition réelle du domaine.
+
+**c) L'expéditeur et le destinataire ne sont pas sur le même domaine.** Le site tourne sur
+`top-famille-pro.fr` et les demandes partent vers `audrey.b@top-famille.fr`. Rien d'anormal, mais
+cela rend l'alignement SPF/DKIM de l'étape 17 plus déterminant qu'il ne le serait pour un envoi
+interne au domaine. Comptez ce test comme réussi seulement quand le message arrive **en boîte de
+réception**, pas en indésirables.
+
+Ce test est le dernier verrou de l'objectif commercial du site : un formulaire qui affiche sa
+confirmation sans qu'aucun e-mail n'arrive perd les demandes en silence, et rien dans l'interface
+d'administration ne le signalera.
+
 ### 19. Configurer LiteSpeed Cache
 
 **Extensions → Ajouter une extension**, installez et activez **LiteSpeed Cache** (généralement déjà

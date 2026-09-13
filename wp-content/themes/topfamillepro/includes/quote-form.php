@@ -32,6 +32,21 @@ function tfp_quote_rate_limit_ok( $ip ) {
 	return true;
 }
 
+/**
+ * L'envoi d'e-mail est-il neutralisé sur cette installation ?
+ *
+ * Même garde-fou que `tfp_contact_mail_disabled()`, et pour la même raison : aucun test ne doit
+ * faire partir un e-mail réel. Le formulaire de devis en était dépourvu — il ne devait sa
+ * sûreté qu'à l'ABSENCE de transport mail sur le banc, ce qui n'est pas une garantie mais une
+ * circonstance. Sur une préproduction Hostinger, qui a un transport, la suite fonctionnelle
+ * aurait expédié six demandes de devis à la gérante à chaque exécution.
+ *
+ * @return bool
+ */
+function tfp_quote_mail_disabled() {
+	return in_array( wp_get_environment_type(), array( 'local', 'development' ), true );
+}
+
 function tfp_handle_quote_submission() {
 	$redirect_base = home_url( '/demande-de-devis/' );
 
@@ -127,7 +142,8 @@ function tfp_handle_quote_submission() {
 		$headers[] = 'Reply-To: ' . $nom . ' <' . $email . '>';
 	}
 
-	$sent = wp_mail( $site['email'], $subject, $body, $headers );
+	// Sur une installation de test, la demande est validée de bout en bout mais jamais expédiée.
+	$sent = tfp_quote_mail_disabled() ? true : wp_mail( $site['email'], $subject, $body, $headers );
 
 	if ( ! $sent ) {
 		wp_safe_redirect( add_query_arg( 'erreur', 'envoi', $redirect_base ) );

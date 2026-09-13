@@ -114,7 +114,7 @@ get_header();
 				</div>
 			<?php endif; ?>
 
-			<form class="tfp-quote-form" method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" novalidate data-tfp-analytics="quote">
+			<form class="tfp-quote-form" method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" novalidate data-tfp-analytics="quote"<?php echo tfp_quote_mail_disabled() ? ' data-tfp-mail-disabled' : ''; ?>>
 				<div class="tfp-form-errors" role="alert" aria-live="polite" data-form-errors></div>
 
 				<input type="hidden" name="action" value="tfp_submit_devis">
