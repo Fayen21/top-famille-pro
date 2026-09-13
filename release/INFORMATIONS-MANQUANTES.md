@@ -20,7 +20,14 @@
 | 9 | ~~Validation des 8 communes secondaires~~ | Pages de zone correspondantes | **OBTENUE le 17 août 2026, confirmée le 19** : Audrey intervient dans les huit. Elles sont passées en `index,follow` et au sitemap, texte affirmatif. Plus rien à fournir. |
 | 10 | **Décision sur `topentreprise.fr`** (redirection vers le nouveau site ou abandon) | Plan de redirections 301 | Non — le plan (`docs/REDIRECTIONS.md`) est prêt, mais pas appliqué tant que la décision n'est pas prise |
 | 11 | **Inventaire des articles du blog de l'ancien site**, pour les redirections d'articles manquantes | Idem | Non — seules les redirections de pages confirmées figurent dans le plan actuel |
-| 12 | **Confirmation que la grille tarifaire est toujours à jour** (24,30 € / 26,00 € / 30,00 € HT/h) | Toutes les pages tarifaires | Non — souhaitable avant mise en ligne, pas un blocage technique |
+| 12 | **Confirmation que le tarif est toujours à jour** (27,00 € HT/h, tarif unique) | Toutes les pages tarifaires | Non — souhaitable avant mise en ligne, pas un blocage technique |
+
+## Ce qui n'est plus d'actualité
+
+- ~~Grille à trois montants 24,30 € / 26,00 € / 30,00 € HT/h~~ — **remplacée par un tarif unique
+  de 27,00 € HT/h**, appliqué à l'identique sur toutes les pages et sur toutes les zones. Ce
+  document réclamait encore la confirmation de l'ancienne grille : la demande portait sur des
+  montants que le site ne sert plus nulle part. Une suite de tests dédiée interdit leur retour.
 
 ## Ce qui n'est plus manquant (phase 7)
 
