@@ -48,10 +48,41 @@ function tfp_customize_register( $wp_customize ) {
 add_action( 'customize_register', 'tfp_customize_register' );
 
 /**
- * URL de la photo d'Audrey si elle a été renseignée dans le Customizer, sinon chaîne vide.
+ * URL de la photo d'Audrey : celle renseignée dans le Customizer si elle existe, sinon un visuel
+ * d'illustration temporaire (assets/dist/images, slug 'audrey-placeholder') — jamais présenté
+ * comme Audrey dans les gabarits, qui doivent utiliser tfp_audrey_photo_is_real() pour afficher
+ * l'alt et la mention honnêtes appropriés (CLAUDE.md §5.6). Un seul point de bascule : une fois
+ * la vraie photo renseignée dans le Customizer, elle remplace automatiquement le placeholder
+ * partout où cette fonction est appelée.
  *
  * @return string
  */
-function tfp_get_audrey_photo_url() {
-	return (string) get_theme_mod( 'tfp_audrey_photo', '' );
+/**
+ * @param string $slug Slot de repli. La maquette n'emploie PAS le même visuel d'illustration
+ *                     partout : `audrey-portrait` (800×1007) sur l'accueil et dans la bande
+ *                     « Cahier des charges » du pilier, `audrey-placeholder` (800×1198) sur
+ *                     /a-propos/. Le contrôle par nombre d'images ne voyait pas la différence ;
+ *                     l'audit par rôle de G26 l'a relevée sur les octets.
+ */
+function tfp_get_audrey_photo_url( $slug = 'audrey-placeholder' ) {
+	$real = (string) get_theme_mod( 'tfp_audrey_photo', '' );
+	if ( $real ) {
+		return $real;
+	}
+	$manifest = tfp_image_manifest();
+	if ( empty( $manifest[ $slug ] ) ) {
+		return '';
+	}
+	$entry    = $manifest[ $slug ];
+	$fallback = end( $entry['variants']['jpg'] );
+	return TFP_THEME_URI . '/assets/dist/images/' . $fallback['file'];
+}
+
+/**
+ * True si une vraie photo d'Audrey a été renseignée dans le Customizer (pas le placeholder).
+ *
+ * @return bool
+ */
+function tfp_audrey_photo_is_real() {
+	return (bool) get_theme_mod( 'tfp_audrey_photo', '' );
 }

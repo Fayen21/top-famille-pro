@@ -165,3 +165,55 @@ function tfp_flush_rewrite_rules_on_activation() {
 	flush_rewrite_rules();
 }
 add_action( 'after_switch_theme', 'tfp_flush_rewrite_rules_on_activation' );
+
+/**
+ * Arborescence « département → villes principales » du pied de page.
+ *
+ * Reprend la colonne « Zones d'intervention » de la maquette Claude Design, qui liste chaque
+ * département suivi de ses villes. La liste est construite depuis le contenu réel (CPT `zone`),
+ * pas codée en dur : ajouter une ville en administration la fait apparaître au pied de page sans
+ * toucher au gabarit. Seules les zones de niveau « ville » sont listées — les communes secondaires
+ * ne sont pas validées (CLAUDE.md §5.4) et n'ont donc pas à être poussées sur les 53 pages.
+ *
+ * @return array<int,array{post:WP_Post,villes:WP_Post[]}>
+ */
+function tfp_footer_zones_tree() {
+	static $tree = null;
+	if ( null !== $tree ) {
+		return $tree;
+	}
+
+	$departements = get_posts(
+		array(
+			'post_type'   => 'zone',
+			'numberposts' => -1,
+			'meta_key'    => 'niveau',
+			'meta_value'  => 'departement',
+			'orderby'     => 'menu_order title',
+			'order'       => 'ASC',
+		)
+	);
+
+	$tree = array();
+	foreach ( $departements as $dept ) {
+		$villes = get_posts(
+			array(
+				'post_type'   => 'zone',
+				'numberposts' => -1,
+				'meta_key'    => 'niveau',
+				'meta_value'  => 'ville',
+				'orderby'     => 'title',
+				'order'       => 'ASC',
+				'tax_query'   => array(
+					array(
+						'taxonomy' => 'departement',
+						'field'    => 'slug',
+						'terms'    => $dept->post_name,
+					),
+				),
+			)
+		);
+		$tree[] = array( 'post' => $dept, 'villes' => $villes );
+	}
+	return $tree;
+}

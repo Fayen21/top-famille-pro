@@ -11,9 +11,19 @@
  * (SIRET, APE, TVA) — l'incohérence relevée en phase 0 sur le SIREN (l'ancien site annonçait
  * 938 472 242, valeur confirmée : 938 472 420) est levée. Toutes les valeurs proviennent de
  * `tfp_site_data()` (includes/site-options.php), jamais recopiées ni recalculées ici.
- * CLAUDE.md §5.1 : ce qui reste manquant (assurance RC pro, coordonnées complètes de
- * l'hébergeur, directrice de la publication) s'écrit [À COMPLÉTER] en clair, jamais une valeur
- * plausible.
+ *
+ * 9 août 2026 (hotfix fidélité Claude Design) : directrice de la publication et coordonnées
+ * complètes de l'hébergeur confirmées, plus aucun [À COMPLÉTER] sur cette page.
+ *
+ * La rubrique « Médiation de la consommation » de la maquette n'est pas reproduite : le dispositif
+ * de médiation ne concerne que les litiges avec des consommateurs (code de la consommation,
+ * art. L612-1). Top-Famille Pro vend à des professionnels — la rubrique n'aurait rien à annoncer,
+ * et un médiateur inventé serait pire que son absence. À réexaminer si l'entreprise contracte un
+ * jour avec des particuliers (voir release/GUIDE-DEPLOIEMENT-HOSTINGER.md).
+ *
+ * La section
+ * « Assurance professionnelle » est retirée (sur instruction explicite) plutôt que laissée en
+ * placeholder — l'assureur et le numéro de police restent à transmettre, PROJECT_INPUTS.md §12.
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -43,14 +53,15 @@ get_header();
 
 <section class="tfp-container tfp-section--tight">
 	<h1>Mentions légales</h1>
+	<p class="tfp-section__lede">Informations légales relatives au site top-famille-pro.fr et à son éditeur.</p>
 </section>
 
 <section class="tfp-section">
-	<div class="tfp-container" style="max-width:760px;display:flex;flex-direction:column;gap:32px">
+	<div class="tfp-container tfp-legal-body" style="display:flex;flex-direction:column;gap:32px">
 
 		<div>
 			<h2>Éditeur du site</h2>
-			<p style="margin-top:10px;color:var(--color-text-secondary);line-height:1.7">
+			<p class="tfp-legal-p">
 				<?php echo esc_html( $site['legal_name'] ); ?>, exploitant la marque commerciale <?php echo esc_html( $site['brand_name'] ); ?>, <?php echo esc_html( $site['legal_form'] ); ?> au capital social de <?php echo esc_html( $site['legal_capital_display'] ); ?>.<br>
 				Siège social : <?php echo esc_html( $site['address_street'] . ', ' . $site['address_cp'] . ' ' . $site['address_city'] ); ?>.<br>
 				Immatriculée au RCS (registre du commerce et des sociétés) de <?php echo esc_html( $site['legal_rcs_city'] ); ?> sous le numéro <?php echo esc_html( $site['legal_siren'] ); ?>, le <?php echo esc_html( $site['legal_immatriculation_date'] ); ?>.<br>
@@ -59,42 +70,51 @@ get_header();
 				Numéro de TVA intracommunautaire : <?php echo esc_html( $site['legal_tva'] ); ?>.<br>
 				Activité : <?php echo esc_html( lcfirst( $site['legal_activity'] ) ); ?>, débutée le <?php echo esc_html( $site['legal_activity_start_date'] ); ?>.<br>
 				Gérante : <?php echo esc_html( $site['manager'] ); ?>.<br>
-				Directrice de la publication : [À COMPLÉTER].<br>
+				Directrice de la publication : <?php echo esc_html( $site['legal_publication_director'] ); ?>.<br>
 				Contact : <a class="tfp-underline" href="mailto:<?php echo esc_attr( $site['email'] ); ?>"><?php echo esc_html( $site['email'] ); ?></a> — <?php echo esc_html( $site['phone'] ); ?>.
 			</p>
 		</div>
 
 		<div>
-			<h2>Assurance professionnelle</h2>
-			<p style="margin-top:10px;color:var(--color-text-secondary);line-height:1.7">Assureur et numéro de police : [À COMPLÉTER].</p>
-		</div>
-
-		<div>
 			<h2>Hébergement</h2>
-			<p style="margin-top:10px;color:var(--color-text-secondary);line-height:1.7">
-				Ce site est hébergé par Hostinger International Ltd.<br>
-				Adresse et coordonnées complètes de l'hébergeur : [À COMPLÉTER].
+			<p class="tfp-legal-p">
+				Le site est hébergé par :<br>
+				<?php echo esc_html( $site['host_name'] ); ?><br>
+				<?php echo esc_html( $site['host_address'] ); ?><br>
+				E-mail : <a class="tfp-underline" href="mailto:<?php echo esc_attr( $site['host_email'] ); ?>"><?php echo esc_html( $site['host_email'] ); ?></a><br>
+				Site : <a class="tfp-underline" href="<?php echo esc_url( $site['host_website'] ); ?>" rel="noopener"><?php echo esc_html( $site['host_website'] ); ?></a>
 			</p>
 		</div>
 
 		<div>
 			<h2>Établissement unique</h2>
-			<p style="margin-top:10px;color:var(--color-text-secondary);line-height:1.7"><?php echo esc_html( $site['brand_name'] ); ?> dispose d'un seul établissement, à l'adresse indiquée ci-dessus. Les pages de zones d'intervention de ce site présentent des secteurs géographiques desservis, pas des agences ou des implantations locales.</p>
+			<?php
+			/*
+			 * Phrase reprise de la maquette, à une exception près, la seule autorisée : elle y
+			 * annonce « forme juridique, capital, SIREN/SIRET, RCS et TVA : à compléter ». Ces
+			 * données sont désormais confirmées par le Kbis, donc écrites en clair — publier
+			 * « à compléter » sur des mentions légales serait une non-conformité, pas une fidélité.
+			 */
+			?>
+			<p class="tfp-legal-p"><?php echo esc_html( $site['brand_name'] ); ?> — activité dédiée aux professionnels de Top-Famille. Implantation : <?php echo esc_html( $site['address_city'] ); ?> (<?php echo esc_html( $site['address_cp'] ); ?>), Côte-d'Or, <?php echo esc_html( $site['address_region'] ); ?>. Responsable de la publication : <?php echo esc_html( $site['legal_publication_director'] ); ?>. Téléphone : <?php echo esc_html( $site['phone'] ); ?>. E-mail : <?php echo esc_html( $site['email'] ); ?>.</p>
+			<p class="tfp-legal-p"><?php echo esc_html( $site['brand_name'] ); ?> dispose d'un seul établissement, à l'adresse indiquée ci-dessus. Les pages de zones d'intervention de ce site présentent des secteurs géographiques desservis, pas des agences ou des implantations locales.</p>
 		</div>
 
 		<div>
 			<h2>Propriété intellectuelle</h2>
-			<p style="margin-top:10px;color:var(--color-text-secondary);line-height:1.7">L'ensemble des contenus de ce site (textes, structure, mise en page) est la propriété de <?php echo esc_html( $site['legal_name'] ); ?>, sauf mention contraire. Toute reproduction non autorisée est interdite.</p>
+			<p class="tfp-legal-p">Les textes, la charte graphique et les logos <?php echo esc_html( $site['brand_name'] ); ?> sont la propriété de leur éditeur. Les photographies actuellement affichées sont des visuels sous licence, utilisés à titre provisoire ; leur auteur et leur licence seront précisés lors de la mise en ligne. Elles ne représentent ni les locaux de nos clients, ni nos intervenants, ni la gérante.</p>
+			<p class="tfp-legal-p">L'ensemble des contenus de ce site (textes, structure, mise en page) est la propriété de <?php echo esc_html( $site['legal_name'] ); ?>, sauf mention contraire. Toute reproduction non autorisée est interdite.</p>
 		</div>
 
 		<div>
 			<h2>Données personnelles</h2>
-			<p style="margin-top:10px;color:var(--color-text-secondary);line-height:1.7">Le traitement des données personnelles collectées via ce site (notamment le formulaire de demande de devis) est détaillé dans notre <a class="tfp-underline" href="<?php echo esc_url( home_url( '/politique-de-confidentialite/' ) ); ?>">politique de confidentialité</a>.</p>
+			<p class="tfp-legal-p">Le traitement des données personnelles collectées via ce site (notamment le formulaire de demande de devis) est détaillé dans notre <a class="tfp-underline" href="<?php echo esc_url( home_url( '/politique-de-confidentialite/' ) ); ?>">politique de confidentialité</a>.</p>
 		</div>
 
 		<div>
 			<h2>Droit applicable</h2>
-			<p style="margin-top:10px;color:var(--color-text-secondary);line-height:1.7">Le présent site est soumis au droit français. En cas de litige, et à défaut de résolution amiable, les tribunaux français seront seuls compétents.</p>
+			<h2 style="font-size:20px;margin-top:28px">Droit applicable</h2>
+			<p class="tfp-legal-p">Le présent site est soumis au droit français. En cas de litige, et à défaut de résolution amiable, les tribunaux français seront seuls compétents.</p>
 		</div>
 
 	</div>
