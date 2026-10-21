@@ -31,7 +31,7 @@
 
 ## -9. Passe visuelle — décisions du 14 octobre 2026 (21 octobre 2026)
 
-Branche `hotfix-production-fidelite-claude-design`, PR #9, commit `{{HEAD}}`. Rapport complet :
+Branche `hotfix-production-fidelite-claude-design`, PR #9, commit `f516b6d`. Rapport complet :
 **`docs/RAPPORT-PASSE-VISUELLE.md`**. Matrice des 53 routes × 2 largeurs avec lecture humaine :
 **`docs/REVUE-VISUELLE.md`**. Captures avant/après : `docs/captures-passe-visuelle/`.
 **Statut : `PRET_POUR_VALIDATION_VISUELLE_HUMAINE`** — aucune validation finale sans réponse

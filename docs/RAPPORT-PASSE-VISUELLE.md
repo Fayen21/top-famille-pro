@@ -1,6 +1,6 @@
 # Rapport — passe visuelle, décisions du 14 octobre 2026
 
-> Branche `hotfix-production-fidelite-claude-design`, PR #9, commit `{{HEAD}}` (21 octobre 2026).
+> Branche `hotfix-production-fidelite-claude-design`, PR #9, commit `f516b6d` (21 octobre 2026).
 > **Rien n'a été fusionné dans `main`, rien n'a été déployé, aucun DNS n'a été touché.**
 > Aucun e-mail réel n'a été envoyé pendant les tests : la suite fonctionnelle tourne sur un banc
 > `development` où l'envoi est neutralisé, et le banc `production` ne reçoit aucune soumission.
