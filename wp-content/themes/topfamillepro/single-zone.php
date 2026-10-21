@@ -59,7 +59,7 @@ $faq                = tfp_get_faq_items( 'faq', $post_id, 8 );
    `locaux_avant_tarif`, qui dit combien de groupes précèdent le bloc tarifaire. */
 $hero_lede       = tfp_get_field( 'hero_lede', $post_id );
 $hero_alt        = tfp_get_field( 'hero_alt', $post_id );
-$cta_phone_label = tfp_get_field( 'cta_phone_label', $post_id ) ?: '☎ Appeler ' . $site['manager'];
+$cta_phone_label = tfp_get_field( 'cta_phone_label', $post_id ) ?: tfp_phone_cta_label();
 $band_items      = tfp_get_lines( tfp_get_field( 'band_items', $post_id ) );
 $recit           = tfp_get_zone_blocks( 'recit', $post_id, 6 );
 $methode         = tfp_get_zone_blocks( 'methode', $post_id, 4 );
@@ -210,19 +210,26 @@ get_header();
 	 * dernier faisait dépendre la mise en page de la largeur du plus long libellé.
 	 */
 	?>
+	<?php
+	/*
+	 * Décision du 14 octobre 2026 : le renvoi « Voir les tarifs » appartient au même groupe visuel que
+	 * le prix — à côté de la pastille, pas seul sur une seconde ligne alignée à droite. Même
+	 * composition que le bandeau de l'accueil : [prix + bouton] puis [garanties].
+	 */
+	?>
 	<div class="tfp-zone-band">
-		<div class="tfp-zone-band__row">
+		<div class="tfp-zone-band__lead">
 			<div class="tfp-zone-band__price">
 				<strong><?php echo esc_html( tfp_format_price( $site['price_unique'] ) ); ?> HT/h</strong>
 				<span>tarif unique en région</span>
 			</div>
-			<div class="tfp-zone-band__items">
-				<?php foreach ( $band_items as $item ) : ?>
-					<?php tfp_check_item( $item ); ?>
-				<?php endforeach; ?>
-			</div>
+			<a class="tfp-btn tfp-btn--secondary tfp-btn--sm tfp-zone-band__cta" href="<?php echo esc_url( home_url( '/tarifs/' ) ); ?>">Voir les tarifs →</a>
 		</div>
-		<a class="tfp-eyebrow-link" href="<?php echo esc_url( home_url( '/tarifs/' ) ); ?>">Voir les tarifs →</a>
+		<ul class="tfp-zone-band__items" aria-label="Garanties">
+			<?php foreach ( $band_items as $item ) : ?>
+				<li><?php tfp_check_item( $item ); ?></li>
+			<?php endforeach; ?>
+		</ul>
 	</div>
 </section>
 

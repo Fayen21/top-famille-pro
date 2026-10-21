@@ -21,6 +21,7 @@
     "@playwright/test": "^1.62.1",
     "esbuild": "^0.28.1",
     "lighthouse": "^13.4.1",
+    "mapshaper": "^0.7.93",
     "sharp": "^0.35.3"
   }
 }

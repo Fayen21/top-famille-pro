@@ -1,71 +1,82 @@
 <?php
 /**
- * 7. Couverture régionale.
- * Titre corrigé selon CLAUDE.md §9 : « Une couverture régionale, pas des agences fictives »
- * Titre repris mot pour mot de la maquette (décision du 10 août 2026). Il ne contredit d'ailleurs
- * pas CLAUDE.md §5.2 : il affirme précisément qu'il n'y a pas d'agences. Un seul établissement :
- * les liens ci-dessous pointent vers des pages de zone desservie, jamais une adresse locale.
+ * 7. Couverture régionale — colonne de liens + VRAIE carte des huit départements.
+ *
+ * Décision du 14 octobre 2026 : le polygone stylisé et ses huit pastilles approximatives sont
+ * remplacés par un SVG construit à partir de géométries administratives réelles — IGN ADMIN
+ * EXPRESS COG 2018, projection et échelle communes, topologie intacte (tools/carte-bfc.mjs,
+ * docs/CARTE-BFC-SOURCE.md). Les huit surfaces portent la même couleur : le zonage représente la
+ * couverture déclarée, pas des niveaux de service. Un seul repère, Saint-Apollinaire, légendé
+ * « Implantation de Top-Famille Pro » — aucun repère sur une autre ville, qui laisserait croire à
+ * des agences (CLAUDE.md §5.2).
+ *
+ * Chaque département de la carte est un lien vers sa page, avec un état de focus visible. La
+ * colonne de gauche garde sa liste de liens : c'est la version accessible et lisible sans carte.
+ *
+ * Titre repris mot pour mot de la maquette (décision du 10 août 2026), conservé pour cette passe.
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-$site = tfp_site_data();
-
-$dept_nums = array(
-	"Côte-d'Or"              => '21',
-	'Doubs'                  => '25',
-	'Jura'                   => '39',
-	'Nièvre'                 => '58',
-	'Haute-Saône'            => '70',
-	'Saône-et-Loire'         => '71',
-	'Yonne'                  => '89',
-	'Territoire de Belfort'  => '90',
-);
+$site  = tfp_site_data();
+$depts = tfp_departements_nav();
+$carte = include __DIR__ . '/carte-bfc.php';
+$par_code = array();
+foreach ( $carte['departements'] as $d ) {
+	$par_code[ $d['code'] ] = $d;
+}
 ?>
-<section class="tfp-section tfp-section--turquoise">
-	<?php
-	/*
-	 * Rangée relevée sur la maquette (G23) : PAS d'align-items — les deux colonnes s'étirent à la
-	 * même hauteur et partagent leur ordonnée — bases déclarées 360/320. Le composant .tfp-two-col
-	 * (align-items: center, bases 380/380) centrait la carte des départements 90 px sous le haut
-	 * de la colonne de liens : l'inventaire la comptait seule sur sa rangée, et la colonne de
-	 * gauche, plus étroite de 20 px, faisait replier « Territoire de Belfort » sur deux lignes.
-	 */
-	?>
+<section class="tfp-section tfp-section--turquoise" aria-labelledby="tfp-couverture-titre">
 	<div class="tfp-container tfp-couverture">
 		<div class="tfp-couverture__col">
-			<h2>Une couverture régionale, pas des agences fictives</h2>
-			<p style="margin-top:14px;font-size:17px;color:var(--color-text-secondary)">
+			<h2 id="tfp-couverture-titre">Une couverture régionale, pas des agences fictives</h2>
+			<p class="tfp-couverture__lede">
 				Nous intervenons depuis <?php echo esc_html( $site['address_city'] ); ?> sur les huit départements de la <?php echo esc_html( $site['address_region'] ); ?>, avec la même organisation partout.
 			</p>
-			<div class="tfp-grid" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:10px;margin-top:22px">
-				<?php foreach ( $site['departements'] as $dept_name ) : ?>
-					<?php $slug = sanitize_title( remove_accents( $dept_name ) ); ?>
-					<a class="tfp-dept-link" href="<?php echo esc_url( home_url( '/zones-intervention/' . $slug . '/' ) ); ?>">
-						<span><?php echo esc_html( $dept_name ); ?></span>
-						<span class="tfp-dept-link__num"><?php echo esc_html( $dept_nums[ $dept_name ] ?? '' ); ?></span>
-					</a>
+			<ul class="tfp-dept-list" aria-label="Les huit départements couverts">
+				<?php foreach ( $depts as $dept ) : ?>
+					<li>
+						<a class="tfp-dept-link" href="<?php echo esc_url( $dept['url'] ); ?>">
+							<span><?php echo esc_html( $dept['label'] ); ?></span>
+							<span class="tfp-dept-link__num"><?php echo esc_html( $dept['num'] ); ?></span>
+						</a>
+					</li>
 				<?php endforeach; ?>
-			</div>
+			</ul>
 			<a href="<?php echo esc_url( home_url( '/zones-intervention/' ) ); ?>" class="tfp-eyebrow-link">Toutes les villes →</a>
 		</div>
 
-		<div class="tfp-couverture__carte" style="background:var(--color-white);border:1px solid var(--color-border);border-radius:var(--radius-xl);padding:26px;display:flex;align-items:center;justify-content:center;min-height:280px">
-			<svg viewBox="0 0 320 280" style="width:100%;max-width:300px" role="img" aria-label="Carte stylisée des huit départements de Bourgogne-Franche-Comté">
-				<path d="M60,40 L150,18 L232,44 L272,92 L282,152 L248,212 L188,252 L108,256 L52,210 L28,138 L34,78 Z" fill="var(--color-turquoise-pale-2)" stroke="var(--color-turquoise)" stroke-width="2.5" stroke-linejoin="round"></path>
-				<g font-family="'Bricolage Grotesque'" font-size="12" font-weight="700" fill="#fff" text-anchor="middle">
-					<circle cx="118" cy="82" r="16" fill="var(--color-primary)"></circle><text x="118" y="86.5">21</text>
-					<circle cx="205" cy="102" r="16" fill="var(--color-primary)"></circle><text x="205" y="106.5">25</text>
-					<circle cx="238" cy="160" r="16" fill="var(--color-primary)"></circle><text x="238" y="164.5">39</text>
-					<circle cx="72" cy="152" r="16" fill="var(--color-primary)"></circle><text x="72" y="156.5">58</text>
-					<circle cx="222" cy="68" r="16" fill="var(--color-primary)"></circle><text x="222" y="72.5">70</text>
-					<circle cx="145" cy="196" r="16" fill="var(--color-primary)"></circle><text x="145" y="200.5">71</text>
-					<circle cx="92" cy="70" r="16" fill="var(--color-primary)"></circle><text x="92" y="74.5">89</text>
-					<circle cx="262" cy="112" r="16" fill="var(--color-copper)"></circle><text x="262" y="116.5" fill="var(--color-navy)">90</text>
+		<div class="tfp-couverture__carte">
+			<svg class="tfp-carte-bfc" viewBox="<?php echo esc_attr( $carte['viewbox'] ); ?>" role="img" aria-labelledby="tfp-carte-titre tfp-carte-desc" preserveAspectRatio="xMidYMid meet">
+				<title id="tfp-carte-titre">Carte des huit départements de Bourgogne-Franche-Comté couverts par <?php echo esc_html( $site['brand_name'] ); ?></title>
+				<desc id="tfp-carte-desc">Tracés IGN ADMIN EXPRESS COG. Les huit départements sont couverts à conditions identiques ; l'unique implantation de l'entreprise est à <?php echo esc_html( $site['address_city'] ); ?>.</desc>
+				<g class="tfp-carte-bfc__departements">
+					<?php foreach ( $depts as $dept ) : ?>
+						<?php $g = $par_code[ $dept['num'] ] ?? null; if ( ! $g ) { continue; } ?>
+						<a class="tfp-carte-bfc__dept" href="<?php echo esc_url( $dept['url'] ); ?>" aria-label="<?php echo esc_attr( $dept['label'] . ' (' . $dept['num'] . ') — voir la page' ); ?>">
+							<path d="<?php echo esc_attr( $g['d'] ); ?>"></path>
+							<?php if ( ! empty( $g['renvoi'] ) ) : ?>
+								<line class="tfp-carte-bfc__renvoi" x1="<?php echo esc_attr( $g['etiquette']['x'] ); ?>" y1="<?php echo esc_attr( $g['etiquette']['y'] ); ?>" x2="<?php echo esc_attr( $g['renvoi']['x'] - 10 ); ?>" y2="<?php echo esc_attr( $g['renvoi']['y'] + 4 ); ?>"></line>
+								<text class="tfp-carte-bfc__code tfp-carte-bfc__code--renvoi" x="<?php echo esc_attr( $g['renvoi']['x'] ); ?>" y="<?php echo esc_attr( $g['renvoi']['y'] + 8 ); ?>"><?php echo esc_html( $dept['num'] ); ?></text>
+							<?php else : ?>
+								<text class="tfp-carte-bfc__code" x="<?php echo esc_attr( $g['etiquette']['x'] ); ?>" y="<?php echo esc_attr( $g['etiquette']['y'] + 6 ); ?>"><?php echo esc_html( $dept['num'] ); ?></text>
+							<?php endif; ?>
+						</a>
+					<?php endforeach; ?>
 				</g>
+				<g class="tfp-carte-bfc__siege" aria-hidden="true">
+					<circle class="tfp-carte-bfc__siege-halo" cx="<?php echo esc_attr( $carte['siege']['x'] ); ?>" cy="<?php echo esc_attr( $carte['siege']['y'] ); ?>" r="13"></circle>
+					<circle class="tfp-carte-bfc__siege-point" cx="<?php echo esc_attr( $carte['siege']['x'] ); ?>" cy="<?php echo esc_attr( $carte['siege']['y'] ); ?>" r="6"></circle>
+					<text class="tfp-carte-bfc__siege-label" x="<?php echo esc_attr( $carte['siege']['x'] + 17 ); ?>" y="<?php echo esc_attr( $carte['siege']['y'] + 5 ); ?>">Implantation de <?php echo esc_html( $site['brand_name'] ); ?></text>
+				</g>
+				<text class="tfp-carte-bfc__source" x="<?php echo esc_attr( (int) explode( ' ', $carte['viewbox'] )[2] - 6 ); ?>" y="<?php echo esc_attr( (int) explode( ' ', $carte['viewbox'] )[3] - 6 ); ?>" aria-hidden="true">Tracés : <?php echo esc_html( $carte['source'] ); ?></text>
 			</svg>
+			<p class="tfp-carte-bfc__legende">
+				<span class="tfp-carte-bfc__legende-point" aria-hidden="true"></span>
+				Implantation de <?php echo esc_html( $site['brand_name'] ); ?> — <?php echo esc_html( $site['address_city'] ); ?>. Les huit départements sont couverts aux mêmes conditions.
+			</p>
 		</div>
 	</div>
 </section>

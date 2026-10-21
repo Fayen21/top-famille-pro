@@ -23,8 +23,9 @@ import { test, expect } from '@playwright/test';
  * et l'accessibilité de l'entrée composite (clavier, tactile, `aria-expanded`, Échap).
  */
 
-/** Ordre et libellés relevés sur la maquette Claude Design. */
-const ENTREES = [ 'Prestations', 'Tarifs', 'Zones', 'Pourquoi nous', 'Avis', 'Conseils' ];
+/** Ordre relevé sur la maquette Claude Design ; libellé « Zones d'intervention » par décision du
+ *  14 octobre 2026 (la maquette abrégeait en « Zones »). */
+const ENTREES = [ 'Prestations', 'Tarifs', "Zones d'intervention", 'Pourquoi nous', 'Avis', 'Conseils' ];
 
 /** Les six prestations du sous-menu, dans l'ordre de la maquette. */
 const PRESTATIONS = [

@@ -48,10 +48,16 @@ $site            = $args['site'];
 						</div>
 						<div class="tfp-mobile-submenu" id="<?php echo esc_attr( $tfp_msub ); ?>" hidden>
 							<?php foreach ( $item['items'] as $sub ) : ?>
-								<a href="<?php echo esc_url( $sub['url'] ); ?>"><?php echo esc_html( $sub['label'] ); ?></a>
+								<a href="<?php echo esc_url( $sub['url'] ); ?>">
+									<?php echo esc_html( $sub['label'] ); ?>
+									<?php if ( ! empty( $sub['num'] ) ) : ?>
+										<span class="tfp-submenu__num" aria-hidden="true"><?php echo esc_html( $sub['num'] ); ?></span>
+										<span class="visually-hidden">(<?php echo esc_html( $sub['num'] ); ?>)</span>
+									<?php endif; ?>
+								</a>
 							<?php endforeach; ?>
-							<?php if ( 'prestations' === $item['key'] ) : ?>
-								<a href="<?php echo esc_url( home_url( '/prestations/' ) ); ?>">Toutes les prestations →</a>
+							<?php if ( ! empty( $item['tout'] ) ) : ?>
+								<a class="tfp-mobile-submenu__all" href="<?php echo esc_url( $item['tout']['url'] ); ?>"><?php echo esc_html( $item['tout']['label'] ); ?> →</a>
 							<?php endif; ?>
 						</div>
 					<?php else : ?>

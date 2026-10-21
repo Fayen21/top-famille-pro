@@ -524,6 +524,15 @@
   align-items: center;
   gap: 2px;
   font-size: var(--fs-sm);
+  /* La barre ne se comprime pas : une entrée qui se replierait sur deux lignes (« Zones
+     d'intervention » à 1100 px) casserait l'alignement de toute la rangée. Sa largeur est
+     intrinsèque ; ce sont les écarts des actions qui absorbent, sur la plage 1100–1199. */
+  flex-shrink: 0;
+}
+
+.tfp-nav__link,
+.tfp-nav__button {
+  white-space: nowrap;
 }
 
 .tfp-nav__link,
@@ -646,9 +655,45 @@
   width: 300px;
 }
 
+/* Panneau « Zones d'intervention » — décision du 14 octobre 2026 : les huit départements sur deux
+   colonnes compactes, espacement régulier, et un lien « Voir toutes les villes » en pied. Plus de
+   grand panneau vide pour deux entrées. La largeur est celle de deux colonnes de 200 px. */
 .tfp-submenu--zones {
-  width: min(430px, 90vw);
-  padding: var(--space-4);
+  width: min(436px, calc(100vw - 32px));
+  padding: var(--space-2);
+}
+
+.tfp-submenu--zones .tfp-submenu__items {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2px 6px;
+}
+
+.tfp-submenu--zones .tfp-submenu__item--all {
+  margin-top: 4px;
+  border-top: 1px solid var(--color-border);
+  border-radius: 0 0 9px 9px;
+}
+
+/* Numéro de département dans le panneau : à droite du nom, même ligne, mêmes 44 px de haut. */
+.tfp-submenu__item {
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.tfp-submenu__num {
+  flex: 0 0 auto;
+  padding: 1px 8px;
+  border-radius: 100px;
+  background: var(--color-bg-alt);
+  font-size: 12px;
+  font-weight: var(--fw-semibold);
+  color: var(--color-text-secondary);
+}
+
+.tfp-submenu__item:hover .tfp-submenu__num {
+  background: var(--color-white);
+  color: var(--color-primary);
 }
 
 .tfp-submenu__item {
@@ -682,6 +727,8 @@
   font-weight: var(--fw-semibold);
   font-size: var(--fs-sm);
   min-height: var(--tap-target-min);
+  /* Téléphone secondaire : un numéro ne se coupe jamais sur deux lignes. */
+  white-space: nowrap;
 }
 
 .tfp-menu-toggle {
@@ -784,6 +831,14 @@
   min-height: var(--tap-target-min);
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.tfp-mobile-submenu .tfp-mobile-submenu__all {
+  margin-top: 4px;
+  font-weight: var(--fw-semibold);
+  color: var(--color-primary);
 }
 
 /* ---------- Barre CTA mobile fixe ---------- */
@@ -818,6 +873,37 @@
 .tfp-mobile-cta-spacer {
   display: none;
   height: 84px;
+}
+
+/* Entre 1100 et 1219 px, la barre complète ne tient pas dans sa géométrie de maquette : mesuré à
+   1100 px, 40 + 155 + 16 + 624 + 16 + 315 + 40 = 1 206 px — « Zones d'intervention » a allongé la
+   troisième entrée de 60 px le 14 octobre 2026, et la page débordait de 66 px. Sur cette seule
+   plage : rembourrage du conteneur ramené à 24 px, entrées à 10 px de rembourrage horizontal, et le
+   numéro de téléphone se réduit à son pictogramme — c'est déjà ce que fait la règle sous 1099 px,
+   et le numéro reste dans la barre haute. Budget résultant : 1 082 px. À partir de 1220 px la
+   géométrie relevée reprend (1 206 ≤ 1 220). Le point de bascule vers le menu compact reste
+   1099/1100 ; 1219/1220 devient la seconde limite à vérifier. */
+@media (min-width: 1100px) and (max-width: 1219px) {
+  .tfp-header__inner {
+    padding-inline: 24px;
+  }
+
+  .tfp-nav {
+    margin-left: 0;
+  }
+
+  .tfp-nav__link,
+  .tfp-nav__button {
+    padding-inline: 10px;
+  }
+
+  .tfp-header__actions {
+    gap: 10px;
+  }
+
+  .tfp-header__phone-label {
+    display: none;
+  }
 }
 
 /* La navigation complète (logo 155px + 7 entrées 621px + actions 225px) ne tient pas sous
@@ -2483,23 +2569,33 @@ body.tfp-body .tfp-price-headline__offer .tfp-btn {
   color: rgba(255, 255, 255, 0.86);
 }
 
-/* Renvoi vers les tarifs : bouton blanc dans la maquette (136×47, rayon 10), pas un lien nu —
-   c'est la seule action de la bande. */
-.tfp-zone-band > .tfp-eyebrow-link {
-  align-self: flex-end;
-  /* La marge que ce lien porte ailleurs ajoutait 20 px à la hauteur de la bande : ici, c'est
-     l'écart de la colonne qui règle l'espacement. */
-  margin: 0;
-  padding: 10px 16px;
-  border-radius: 10px;
-  background: var(--color-white);
+/* Décision du 14 octobre 2026 : [prix + bouton] forment un groupe, les garanties en forment un
+   autre. Le renvoi « Voir les tarifs » n'est plus seul sur une seconde ligne alignée à droite. */
+.tfp-zone-band__lead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 12px;
+}
+
+.tfp-zone-band__cta {
+  flex: 0 0 auto;
 }
 
 .tfp-zone-band__items {
+  list-style: none;
+  margin: 0;
+  padding: 0;
   display: flex;
   flex-wrap: wrap;
   gap: 10px 20px;
-  flex: 1 1 320px;
+}
+
+@media (max-width: 559px) {
+  .tfp-zone-band__items {
+    flex-direction: column;
+    gap: 8px;
+  }
 }
 
 /* Chapitres narratifs : colonne de lecture, respiration entre chapitres. */
@@ -4279,6 +4375,55 @@ body.tfp-body a.tfp-card-tile:focus-visible {
 .tfp-card-tile--en-ligne .tfp-card-tile__desc {
   margin-top: 0;
   font-weight: var(--tfp-tuile-desc-graisse, 400);
+}
+
+/* ---------- Carte de VILLE : nom, puis code postal sur sa propre ligne ----------
+   Décision du 14 octobre 2026. Le relevé `en_ligne` posait nom et code postal sur une même rangée
+   flex avec un écart par défaut de 0 : « Dijon21000 » quand la justification relevée manquait, et
+   un code déporté à droite dès que le nom tenait sur deux lignes (« Lons-le-Saunier », « Chalon-sur-
+   Saône »). Les cartes de villes — et elles seules : le composant en ligne sert aussi au bandeau
+   tarifaire et aux en-têtes d'avis — présentent désormais deux niveaux : le nom, puis
+   « Code postal : 21000 » en taille secondaire. Aucune concaténation, aucune position absolue, et la
+   même composition quel que soit le nombre de lignes du nom. */
+body.tfp-body .tfp-card-tile--ville {
+  align-items: stretch;
+  padding: var(--tfp-tuile-padding, 14px 16px);
+  min-height: var(--tap-target-min);
+}
+
+.tfp-card-tile--ville .tfp-card-tile__body {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 3px;
+}
+
+.tfp-card-tile--ville .tfp-card-tile__title {
+  font-family: var(--font-body);
+  font-size: var(--tfp-tuile-titre, 16px);
+  font-weight: var(--fw-semibold);
+  line-height: 1.3;
+  overflow-wrap: anywhere;
+}
+
+.tfp-card-tile--ville .tfp-card-tile__desc {
+  margin-top: 0;
+  font-size: 13.5px;
+  line-height: 1.4;
+  font-weight: var(--fw-regular);
+  color: var(--color-text-secondary);
+}
+
+.tfp-card-tile--ville .tfp-card-tile__desc-label {
+  color: var(--color-text-tertiary);
+}
+
+/* Grille de villes : cinq colonnes pour les dix villes à 1440 px (cartes de ~220 px), et une
+   réduction du nombre de colonnes dès que la largeur de lecture l'exige — jamais six colonnes
+   coûte que coûte. La base de 200 px remplace celle relevée sur la maquette (170–180 px), qui
+   donnait des cartes trop étroites pour deux niveaux. */
+.tfp-card-grid--villes {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)) !important;
 }
 
 /* Liste portée par une carte : géométrie relevée sur la maquette, qui met un item par ligne et les

@@ -108,7 +108,7 @@ $coordonnees = array(
 			'titre'       => 'Téléphone',
 			'description' => $site['phone'],
 			'route'       => 'tel:' . $site['phone_href'],
-			'aria'        => 'Appeler ' . $prenom . ' au ' . $site['phone'],
+			'aria'        => tfp_phone_cta_label( false ) . ' au ' . $site['phone'],
 		),
 		array(
 			'icone'       => '✉',

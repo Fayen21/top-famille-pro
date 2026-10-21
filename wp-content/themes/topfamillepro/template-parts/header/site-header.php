@@ -23,10 +23,17 @@ $prestations_nav = array(
 	array( 'label' => 'Nettoyage ponctuel & remise en état', 'url' => home_url( '/prestations/ponctuel/' ) ),
 );
 
-$zones_nav = array(
-	array( 'label' => 'Toutes les zones', 'url' => home_url( '/zones-intervention/' ) ),
-	array( 'label' => 'Bourgogne-Franche-Comté', 'url' => home_url( '/zones-intervention/bourgogne-franche-comte/' ) ),
-);
+/*
+ * Décision du 14 octobre 2026 : le panneau « Zones d'intervention » propose les HUIT départements
+ * et un lien « Voir toutes les villes ». Le sous-menu précédent — « Toutes les zones » et
+ * « Bourgogne-Franche-Comté » — offrait deux choix insuffisamment distincts dans un panneau de
+ * 430 px presque vide. La page régionale n'est pas supprimée : elle reste liée depuis le contenu
+ * (hub des zones, bande de couverture, pied de page).
+ */
+$zones_nav = array();
+foreach ( tfp_departements_nav() as $dept ) {
+	$zones_nav[] = array( 'label' => $dept['label'], 'num' => $dept['num'], 'url' => $dept['url'] );
+}
 
 /*
  * Navigation principale — décision définitive du 19 août 2026.
@@ -45,9 +52,9 @@ $zones_nav = array(
  * Avis, Conseils. Six entrées, une seule ligne, en-tête de 119 px à 1440 px.
  */
 $main_nav = array(
-	array( 'type' => 'submenu', 'key' => 'prestations', 'label' => 'Prestations', 'url' => home_url( '/nettoyage-professionnel/' ), 'items' => $prestations_nav, 'classe' => 'tfp-submenu--wide', 'aide' => 'des prestations' ),
+	array( 'type' => 'submenu', 'key' => 'prestations', 'label' => 'Prestations', 'url' => home_url( '/nettoyage-professionnel/' ), 'items' => $prestations_nav, 'classe' => 'tfp-submenu--wide', 'aide' => 'des prestations', 'tout' => array( 'label' => 'Toutes les prestations', 'url' => home_url( '/prestations/' ) ) ),
 	array( 'type' => 'link', 'label' => 'Tarifs', 'url' => home_url( '/tarifs/' ) ),
-	array( 'type' => 'submenu', 'key' => 'zones', 'label' => 'Zones', 'url' => home_url( '/zones-intervention/' ), 'items' => $zones_nav, 'classe' => 'tfp-submenu--zones', 'aide' => 'des zones d’intervention' ),
+	array( 'type' => 'submenu', 'key' => 'zones', 'label' => "Zones d'intervention", 'url' => home_url( '/zones-intervention/' ), 'items' => $zones_nav, 'classe' => 'tfp-submenu--zones', 'aide' => 'des zones d’intervention', 'tout' => array( 'label' => 'Voir toutes les villes', 'url' => home_url( '/zones-intervention/' ) ) ),
 	array( 'type' => 'link', 'label' => 'Pourquoi nous', 'url' => home_url( '/pourquoi-nous/' ) ),
 	array( 'type' => 'link', 'label' => 'Avis', 'url' => home_url( '/avis-clients/' ) ),
 	array( 'type' => 'link', 'label' => 'Conseils', 'url' => home_url( '/conseils/' ) ),
@@ -92,11 +99,19 @@ $main_nav = array(
 							<span class="visually-hidden">Ouvrir le menu <?php echo esc_html( $item['aide'] ); ?></span>
 						</button>
 						<div class="tfp-submenu <?php echo esc_attr( $item['classe'] ); ?>" id="<?php echo esc_attr( $tfp_menu_id ); ?>" role="menu" aria-labelledby="tfp-btn-<?php echo esc_attr( $item['key'] ); ?>" hidden>
-							<?php foreach ( $item['items'] as $sub ) : ?>
-								<a class="tfp-submenu__item" role="menuitem" href="<?php echo esc_url( $sub['url'] ); ?>"><?php echo esc_html( $sub['label'] ); ?></a>
-							<?php endforeach; ?>
-							<?php if ( 'prestations' === $item['key'] ) : ?>
-								<a class="tfp-submenu__item tfp-submenu__item--all" role="menuitem" href="<?php echo esc_url( home_url( '/prestations/' ) ); ?>">Toutes les prestations →</a>
+							<div class="tfp-submenu__items">
+								<?php foreach ( $item['items'] as $sub ) : ?>
+									<a class="tfp-submenu__item" role="menuitem" href="<?php echo esc_url( $sub['url'] ); ?>">
+										<?php echo esc_html( $sub['label'] ); ?>
+										<?php if ( ! empty( $sub['num'] ) ) : ?>
+											<span class="tfp-submenu__num" aria-hidden="true"><?php echo esc_html( $sub['num'] ); ?></span>
+											<span class="visually-hidden">(<?php echo esc_html( $sub['num'] ); ?>)</span>
+										<?php endif; ?>
+									</a>
+								<?php endforeach; ?>
+							</div>
+							<?php if ( ! empty( $item['tout'] ) ) : ?>
+								<a class="tfp-submenu__item tfp-submenu__item--all" role="menuitem" href="<?php echo esc_url( $item['tout']['url'] ); ?>"><?php echo esc_html( $item['tout']['label'] ); ?> →</a>
 							<?php endif; ?>
 						</div>
 					</div>
@@ -110,7 +125,7 @@ $main_nav = array(
 			<a class="tfp-header__phone" href="tel:<?php echo esc_attr( $site['phone_href'] ); ?>">
 				<span aria-hidden="true">☎</span>
 				<span class="tfp-header__phone-label"><?php echo esc_html( $site['phone'] ); ?></span>
-				<span class="visually-hidden">Appeler <?php echo esc_html( $site['manager'] ); ?></span>
+				<span class="visually-hidden"><?php echo esc_html( tfp_phone_cta_label( false ) ); ?></span>
 			</a>
 			<?php
 			tfp_button(

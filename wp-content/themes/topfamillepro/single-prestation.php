@@ -198,7 +198,7 @@ get_header();
 		<div class="tfp-action-row" style="margin-top:24px">
 			<?php
 			tfp_button( array( 'label' => 'Demander mon devis', 'href' => $devis_url, 'variant' => 'primary' ) );
-			tfp_button( array( 'label' => '☎ Appeler ' . $prenom, 'href' => 'tel:' . $site['phone_href'], 'variant' => 'secondary' ) );
+			tfp_button( array( 'label' => tfp_phone_cta_label(), 'href' => 'tel:' . $site['phone_href'], 'variant' => 'secondary' ) );
 			?>
 		</div>
 		<p class="tfp-hero__microcopy"><?php echo esc_html( tfp_format_price( $site['price_unique'] ) ); ?> HT/h · régulier ou ponctuel · réponse sous 24 h</p>

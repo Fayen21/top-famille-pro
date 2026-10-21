@@ -6382,7 +6382,7 @@ update_option( 'tfp_page_zones-intervention', array(
 				),
 				'blocs' => array(
 					array(
-						'titre' => 'Nos dix villes principales',
+						'titre' => 'Nos villes d\'intervention',
 						'niveau' => 'h2',
 						'titre_taille' => 'clamp(22px, 2.6vw, 30px)',
 						'titre_interligne' => 1.04,
@@ -7033,7 +7033,7 @@ update_option( 'tfp_page_zones-intervention', array(
 				),
 				'blocs' => array(
 					array(
-						'titre' => 'Premières communes secondaires',
+						'titre' => 'Autour de Dijon et de Beaune',
 						'niveau' => 'h2',
 						'titre_taille' => 'clamp(22px, 2.6vw, 30px)',
 						'titre_interligne' => 1.04,
@@ -7047,7 +7047,7 @@ update_option( 'tfp_page_zones-intervention', array(
 						'sequence' => array(
 							array(
 								'type' => 'paragraph',
-								'texte' => 'Autour de Dijon et de Beaune, ces communes disposent déjà de leur page. D\'autres suivront selon les demandes reçues.',
+								'texte' => 'Huit communes proches de Dijon et de Beaune, desservies aux mêmes conditions que le reste de la région.',
 							),
 							array(
 								'type' => 'grid',
@@ -7546,7 +7546,7 @@ update_option( 'tfp_page_zones-intervention', array(
 							),
 						),
 						'textes' => array(
-							'Autour de Dijon et de Beaune, ces communes disposent déjà de leur page. D\'autres suivront selon les demandes reçues.',
+							'Huit communes proches de Dijon et de Beaune, desservies aux mêmes conditions que le reste de la région.',
 						),
 						'liste' => array(),
 						'liens' => array(),
@@ -8345,7 +8345,7 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 							array(
 								'type' => 'note',
 								'texte' => 'Devis gratuit sous 24 h Intervention régulière ou ponctuelle Conditions d\'arrêt précisées au devis',
-								'ligne' => 688,
+								'ligne' => 718,
 							),
 						),
 						'cartes' => array(
@@ -8468,7 +8468,7 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 							array(
 								'type' => 'note',
 								'texte' => 'Réponse directe',
-								'ligne' => 895,
+								'ligne' => 925,
 							),
 							array(
 								'type' => 'paragraph',
@@ -10295,7 +10295,7 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 				),
 				'blocs' => array(
 					array(
-						'titre' => 'Nos dix villes principales',
+						'titre' => 'Nos villes d\'intervention',
 						'niveau' => 'h2',
 						'titre_taille' => 'clamp(23px, 3vw, 34px)',
 						'titre_interligne' => 1.04,
@@ -16527,19 +16527,19 @@ update_option( 'tfp_page_recrutement', array(
 							array(
 								'type' => 'step-ligne',
 								'texte' => 'Vous envoyez votre candidature et vos disponibilités.',
-								'ligne' => 1086,
+								'ligne' => 1116,
 								'numero' => '01',
 							),
 							array(
 								'type' => 'step-ligne',
 								'texte' => 'Audrey vous recontacte pour un échange sur votre profil et votre secteur.',
-								'ligne' => 1124,
+								'ligne' => 1154,
 								'numero' => '02',
 							),
 							array(
 								'type' => 'step-ligne',
 								'texte' => 'Selon les missions disponibles près de chez vous, une proposition vous est faite.',
-								'ligne' => 1183,
+								'ligne' => 1213,
 								'numero' => '03',
 							),
 						),

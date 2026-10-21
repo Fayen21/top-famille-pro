@@ -91,7 +91,7 @@ $page = tfp_static_page_data( 'pourquoi-nous' );
 	<div class="tfp-action-row" style="margin-top:24px">
 		<?php
 		tfp_button( array( 'label' => 'Demander mon devis', 'href' => home_url( '/demande-de-devis/' ), 'variant' => 'primary' ) );
-		tfp_button( array( 'label' => '☎ Appeler ' . explode( ' ', $site['manager'] )[0], 'href' => 'tel:' . $site['phone_href'], 'variant' => 'secondary' ) );
+		tfp_button( array( 'label' => tfp_phone_cta_label(), 'href' => 'tel:' . $site['phone_href'], 'variant' => 'secondary' ) );
 		?>
 	</div>
 </section>

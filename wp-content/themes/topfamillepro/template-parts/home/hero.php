@@ -32,16 +32,22 @@ $reassurance = tfp_reassurance_data();
 					'variant' => 'primary',
 				)
 			);
+			/*
+			 * Décision du 14 octobre 2026 : « Appeler Top-Famille Pro » et « Devis étudié
+			 * personnellement » — les commandes génériques nomment l'entreprise ; Audrey reste nommée
+			 * là où le texte décrit son rôle (bloc de la gérante, réassurance).
+			 */
 			tfp_button(
 				array(
-					'label'   => '☎ Appeler ' . $site['manager'],
+					'label'   => tfp_phone_cta_label(),
 					'href'    => 'tel:' . $site['phone_href'],
 					'variant' => 'secondary',
+					'aria'    => tfp_phone_cta_label( false ) . ' au ' . $site['phone'],
 				)
 			);
 			?>
 		</div>
-		<div class="tfp-hero__microcopy">Réponse sous 24 h · Gratuit · Sans engagement · Devis étudié personnellement par <?php echo esc_html( explode( ' ', $site['manager'] )[0] ); ?></div>
+		<div class="tfp-hero__microcopy">Réponse sous 24 h · Gratuit · Sans engagement · Devis étudié personnellement</div>
 	</div>
 
 	<div class="tfp-hero__media tfp-hero__media--accueil">

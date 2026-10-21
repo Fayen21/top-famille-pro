@@ -32,6 +32,9 @@ function tfp_button( $args ) {
 			'size'    => '',
 			'block'   => false,
 			'icon'    => '',
+			// Nom accessible explicite quand le libellé visible ne suffit pas (« ☎ Appeler
+			// Top-Famille Pro » → « Appeler Top-Famille Pro au 06 … »).
+			'aria'    => '',
 			/*
 			 * Géométrie relevée sur le prototype, bouton par bouton (G26 §4).
 			 *
@@ -67,12 +70,13 @@ function tfp_button( $args ) {
 	}
 
 	printf(
-		'<a class="%1$s" href="%2$s"%5$s>%3$s%4$s</a>',
+		'<a class="%1$s" href="%2$s"%5$s%6$s>%3$s%4$s</a>',
 		esc_attr( implode( ' ', $classes ) ),
 		esc_url( $args['href'] ),
 		$args['icon'], // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- HTML de picto contrôlé en interne, jamais de donnée utilisateur.
 		esc_html( $args['label'] ),
-		$vars ? ' style="' . esc_attr( implode( ';', $vars ) ) . '"' : ''
+		$vars ? ' style="' . esc_attr( implode( ';', $vars ) ) . '"' : '',
+		$args['aria'] ? ' aria-label="' . esc_attr( $args['aria'] ) . '"' : ''
 	);
 }
 
@@ -622,6 +626,22 @@ function tfp_card_grid( array $grille ) {
 		return;
 	}
 	$grille['items'] = $items;
+	/*
+	 * Grille de VILLES — décision du 14 octobre 2026. Une grille dont chaque carte est un lien
+	 * portant un nom et, pour toute description, un code postal (cinq chiffres, éventuellement
+	 * plusieurs séparés par « / » ou « , » pour une ville qui en a plusieurs) reçoit le modificateur
+	 * dédié : nom en premier, « Code postal : 21000 » sur sa propre ligne, cinq colonnes à 1440 px.
+	 * Le composant en ligne reste intact pour ses autres emplois (bandeau tarifaire, en-têtes d'avis).
+	 * La reconnaissance porte sur la FORME de la donnée, pas sur un drapeau que chaque seed devrait
+	 * porter : une ville ajoutée en administration sort directement dans la bonne composition.
+	 */
+	$est_ville = count( $items ) >= 2;
+	foreach ( $items as $i ) {
+		if ( empty( $i['route'] ) || empty( $i['titre'] ) || ! preg_match( '/^\d{5}(\s*[\/,]\s*\d{5})*$/', trim( (string) ( $i['description'] ?? '' ) ) ) ) {
+			$est_ville = false;
+			break;
+		}
+	}
 	$colonnes = max( 1, min( 6, (int) ( $grille['colonnes'] ?? 1 ) ) );
 	$theme    = 'sombre' === ( $grille['theme'] ?? 'clair' ) ? ' tfp-card-grid--dark' : '';
 	$variante = preg_replace( '/[^a-z]/', '', (string) ( $grille['variante'] ?? 'texte' ) );
@@ -745,7 +765,7 @@ function tfp_card_grid( array $grille ) {
 		tfp_provisional_notice();
 	}
 	?>
-	<ul class="tfp-card-grid tfp-card-grid--<?php echo (int) $colonnes; ?><?php echo esc_attr( $theme ); ?><?php echo $panneau ? ' tfp-card-grid--panneau' : ''; ?><?php echo $colonnes_flex ? ' tfp-card-grid--proportions' : ''; ?>"<?php echo $style; // phpcs:ignore WordPress.Security.EscapeOutput ?>>
+	<ul class="tfp-card-grid tfp-card-grid--<?php echo (int) $colonnes; ?><?php echo esc_attr( $theme ); ?><?php echo $panneau ? ' tfp-card-grid--panneau' : ''; ?><?php echo $colonnes_flex ? ' tfp-card-grid--proportions' : ''; ?><?php echo $est_ville ? ' tfp-card-grid--villes' : ''; ?>"<?php echo $style; // phpcs:ignore WordPress.Security.EscapeOutput ?>>
 		<?php
 		$rang_colonne = 0;
 		foreach ( $items as $item ) :
@@ -974,7 +994,7 @@ function tfp_card_grid( array $grille ) {
 			$classe_var = $est_thumb ? 'thumb' : $variante;
 			?>
 			<li<?php echo ! empty( $item['provisoire'] ) ? ' data-tfp-provisional="1"' : ''; ?><?php echo $style_colonne; // phpcs:ignore WordPress.Security.EscapeOutput ?>>
-				<<?php echo $balise; ?> class="tfp-card-tile tfp-card-tile--<?php echo esc_attr( $classe_var ); ?><?php echo $item['en_ligne'] ? ' tfp-card-tile--en-ligne' : ''; ?>"<?php echo $style_item; // phpcs:ignore WordPress.Security.EscapeOutput ?><?php echo $attributs; // phpcs:ignore WordPress.Security.EscapeOutput ?>>
+				<<?php echo $balise; ?> class="tfp-card-tile tfp-card-tile--<?php echo esc_attr( $classe_var ); ?><?php echo $est_ville ? ' tfp-card-tile--ville' : ( $item['en_ligne'] ? ' tfp-card-tile--en-ligne' : '' ); ?>"<?php echo $style_item; // phpcs:ignore WordPress.Security.EscapeOutput ?><?php echo $attributs; // phpcs:ignore WordPress.Security.EscapeOutput ?>>
 					<?php
 					/*
 					 * Visuel de la carte. Le slug vient du manifeste d'images du thème, jamais d'un
@@ -1023,7 +1043,18 @@ function tfp_card_grid( array $grille ) {
 								<?php endif; ?>
 							</<?php echo $balise_titre; ?>>
 						<?php endif; ?>
-						<?php if ( $item['description'] ) : ?>
+						<?php if ( $item['description'] && $est_ville ) : ?>
+							<?php
+							/*
+							 * Le libellé « Code postal : » est posé en texte, pas en pseudo-élément :
+							 * il doit être lu par un lecteur d'écran et copié avec le reste. Une ville
+							 * à plusieurs codes garde sa donnée validée telle quelle (« 21000 / 21100 »),
+							 * le libellé passe au pluriel.
+							 */
+							$pluriel = preg_match( '/\d{5}\s*[\/,]\s*\d{5}/', $item['description'] );
+							?>
+							<p class="tfp-card-tile__desc"><span class="tfp-card-tile__desc-label"><?php echo $pluriel ? 'Codes postaux : ' : 'Code postal : '; ?></span><?php echo esc_html( $item['description'] ); ?></p>
+						<?php elseif ( $item['description'] ) : ?>
 							<p class="tfp-card-tile__desc"><?php echo esc_html( $item['description'] ); ?></p>
 						<?php endif; ?>
 						<?php

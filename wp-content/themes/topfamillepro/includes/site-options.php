@@ -227,3 +227,59 @@ function tfp_format_date_fr( $post_id_or_timestamp, $is_post_id = true ) {
 
 	return $jour . ' ' . $mois[ $mois_index ] . ' ' . $annee;
 }
+
+/**
+ * Les huit départements couverts, avec leur numéro et leur page — pour la navigation.
+ *
+ * Décision du 14 octobre 2026 : le menu « Zones d'intervention » propose les huit départements,
+ * pas un sous-menu à deux entrées. Le header, le panneau mobile, la bande de couverture de
+ * l'accueil et la carte lisent TOUS cette liste : un département ajouté ici apparaît partout,
+ * et aucun gabarit ne porte sa propre copie des numéros.
+ *
+ * Les numéros sont des faits (PROJECT_INPUTS.md §6), les slugs ceux des pages de zone existantes.
+ *
+ * @return array<int,array{label:string,num:string,slug:string,url:string}>
+ */
+function tfp_departements_nav() {
+	static $liste = null;
+	if ( null !== $liste ) {
+		return $liste;
+	}
+	$numeros = array(
+		"Côte-d'Or"             => '21',
+		'Doubs'                 => '25',
+		'Jura'                  => '39',
+		'Nièvre'                => '58',
+		'Haute-Saône'           => '70',
+		'Saône-et-Loire'        => '71',
+		'Yonne'                 => '89',
+		'Territoire de Belfort' => '90',
+	);
+	$liste = array();
+	foreach ( tfp_site_data()['departements'] as $nom ) {
+		$slug    = sanitize_title( remove_accents( $nom ) );
+		$liste[] = array(
+			'label' => $nom,
+			'num'   => $numeros[ $nom ] ?? '',
+			'slug'  => $slug,
+			'url'   => home_url( '/zones-intervention/' . $slug . '/' ),
+		);
+	}
+	return $liste;
+}
+
+/**
+ * Libellé du bouton d'appel générique — « ☎ Appeler Top-Famille Pro ».
+ *
+ * Décision du 14 octobre 2026 : les commandes téléphoniques génériques nomment l'entreprise, pas la
+ * gérante. Une seule fonction, lue par le hero, le header, la barre mobile, le pied de page et les
+ * rangées d'actions des pages intérieures — sinon chaque gabarit recomposait le libellé à sa façon
+ * (prénom seul, nom complet) et les boutons variaient d'une page à l'autre. Les textes qui décrivent
+ * le RÔLE d'Audrey continuent, eux, de la nommer.
+ *
+ * @param bool $icone Préfixer du pictogramme téléphone.
+ * @return string
+ */
+function tfp_phone_cta_label( $icone = true ) {
+	return ( $icone ? '☎ ' : '' ) . 'Appeler ' . tfp_site_data()['brand_name'];
+}

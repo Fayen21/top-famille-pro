@@ -19,13 +19,16 @@ const HOME_BLOCKS = [
 	{ n: 5, match: /Nos prestations de nettoyage/i, label: 'Prestations' },
 	{ n: 6, match: /Les difficultés que nous prenons en charge/i, label: 'Difficultés' },
 	{ n: 7, match: /Pourquoi Top-Famille Pro/i, label: 'Pourquoi + témoignage' },
-	{ n: 8, match: /Notre fonctionnement, en cinq temps/i, label: 'Fonctionnement' },
+	// Décision du 14 octobre 2026 : composant des cinq étapes refait, intitulé « Votre prestation,
+	// en 5 étapes ».
+	{ n: 8, match: /Votre prestation, en 5 étapes/i, label: 'Fonctionnement' },
 	{ n: 9, match: /Un tarif clair, affiché avant le devis/i, label: 'Tarif' },
 	// Intitulé de la maquette, rétabli le 10 août 2026 sur décision d'Emmanuel : reproduire d'abord
 	// le prototype, reformuler ensuite. La correction éditoriale de CLAUDE.md §9 (« Une entreprise
 	// régionale basée à Saint-Apollinaire ») reste à appliquer dans une passe ultérieure.
 	{ n: 10, match: /Une couverture régionale, pas des agences fictives/i, label: 'Couverture régionale' },
-	{ n: 11, match: /Audrey, votre interlocutrice/i, label: 'Audrey' },
+	// Décision du 14 octobre 2026 : le bloc présente la gérante.
+	{ n: 11, match: /Audrey Brançon, gérante de Top-Famille Pro/i, label: 'Audrey' },
 	{ n: 12, match: /Conseils & repères/i, label: 'Conseils' },
 	{ n: 13, match: /Demandez votre devis gratuit/i, label: 'CTA final' },
 ];

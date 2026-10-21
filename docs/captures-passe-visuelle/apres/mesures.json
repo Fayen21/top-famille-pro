@@ -1,0 +1,18 @@
+{
+ "bandeau-tarif-1440": {
+  "largeur": 1440,
+  "boite": {
+   "w": 1260,
+   "h": 96
+  },
+  "portrait": null
+ },
+ "bandeau-tarif-375": {
+  "largeur": 375,
+  "boite": {
+   "w": 375,
+   "h": 256
+  },
+  "portrait": null
+ }
+}

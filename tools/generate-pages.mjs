@@ -53,6 +53,22 @@ const PAGES = [
  * silencieusement un texte non corrigé.
  */
 const CORRECTIONS_EDITORIALES = [
+	/*
+	 * Décisions du 14 octobre 2026 — hub des zones et page région.
+	 *
+	 * Les intitulés techniques et les formulations de chantier ne s'adressent pas au client :
+	 * « dix villes principales », « communes secondaires », « disposent déjà de leur page »,
+	 * « d'autres suivront » décrivent l'avancement d'un projet, pas une offre. Les classifications
+	 * restent possibles dans les données (niveau=commune) ; elles n'apparaissent plus à l'écran.
+	 */
+	{ avant: 'Nos dix villes principales', apres: "Nos villes d'intervention" },
+	{ avant: 'Premières communes secondaires', apres: 'Autour de Dijon et de Beaune' },
+	{
+		avant:
+			"Autour de Dijon et de Beaune, ces communes disposent déjà de leur page. D'autres suivront " +
+			'selon les demandes reçues.',
+		apres: 'Huit communes proches de Dijon et de Beaune, desservies aux mêmes conditions que le reste de la région.',
+	},
 	{
 		// Page pilier — bande tarifaire.
 		avant:

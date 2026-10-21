@@ -64,7 +64,7 @@ $zones = tfp_footer_zones_tree();
 					)
 				);
 				?>
-				<a class="tfp-prefooter__phone" href="tel:<?php echo esc_attr( $site['phone_href'] ); ?>"><span aria-hidden="true">☎</span> Appeler <?php echo esc_html( $prenom ); ?></a>
+				<a class="tfp-prefooter__phone" href="tel:<?php echo esc_attr( $site['phone_href'] ); ?>"><span aria-hidden="true">☎</span> <?php echo esc_html( tfp_phone_cta_label( false ) ); ?></a>
 				<span class="tfp-prefooter__price"><?php echo esc_html( $site['price_unique_display'] ); ?> HT/h</span>
 			</div>
 		</div>
