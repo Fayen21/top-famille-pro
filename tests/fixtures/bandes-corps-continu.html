@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="fr-FR">
+	<head>
+		<meta charset="utf-8" />
+		<title>Fixture — article WordPress, corps éditorial continu</title>
+		<style>
+			body { margin: 0; }
+			main > * { min-height: 60px; }
+		</style>
+	</head>
+	<body>
+		<!--
+			Forme du thème, à contenu STRICTEMENT identique à bandes-maquette.html : mêmes intitulés,
+			même ordre, même nombre de bandes visibles. Deux balises seules diffèrent —
+			`<header>` pour l'en-tête d'article et `<article>` pour le corps rendu par `the_content()`,
+			là où la maquette écrit deux `<section>`. Le fil d'Ariane est un `<div>`, pas une bande.
+
+			C'est exactement le cas qui faisait annoncer « bandes 8 → 6 » sur les trois articles :
+			huit bandes des deux côtés, aucune perdue.
+		-->
+		<main>
+			<div class="tfp-container">Accueil › Conseils › Combien coûte le nettoyage de bureaux ?</div>
+
+			<header class="tfp-container tfp-container--narrow">
+				<span>Tarifs</span>
+				<h1>Combien coûte le nettoyage de bureaux ?</h1>
+				<p>Audrey · Publié le 4 août 2026</p>
+			</header>
+
+			<section><p>Comptez 27 € HT de l'heure, quel que soit le rythme.</p></section>
+
+			<section>
+				<strong>Sommaire</strong>
+				<ul><li>Comment se calcule le prix</li><li>Erreurs à éviter</li></ul>
+			</section>
+
+			<article class="tfp-article-body">
+				<h2>Comment se calcule le prix du nettoyage de bureaux ?</h2>
+				<p>Le prix se construit à partir d'un volume d'heures.</p>
+				<h2>Le tarif horaire, un repère plus fiable que le forfait</h2>
+				<p>Un forfait masque le volume réellement passé sur place.</p>
+				<h2>Exemples de budgets réels</h2>
+				<p>8 h par mois : 225 € HT.</p>
+			</article>
+
+			<section>
+				<h2>Erreurs à éviter</h2>
+				<ul><li>Comparer deux devis sans comparer les volumes d'heures.</li></ul>
+			</section>
+
+			<section>
+				<h2>Questions fréquentes</h2>
+				<details><summary>Le matériel est-il fourni ?</summary><p>Le matériel et les produits sont fournis par le client.</p></details>
+			</section>
+
+			<section><p>Voir aussi nos tarifs et le nettoyage professionnel.</p></section>
+
+			<section>
+				<h2>Un devis pour vos locaux ?</h2>
+				<p>Gratuit · Sans engagement · Réponse sous 24 h</p>
+			</section>
+		</main>
+	</body>
+</html>

@@ -1,0 +1,233 @@
+{
+ "header-ferme-1440": {
+  "largeur": 1440,
+  "boite": {
+   "w": 1440,
+   "h": 120
+  },
+  "portrait": null
+ },
+ "header-zones-ouvert-1440": {
+  "largeur": 1440,
+  "zone": {
+   "x": 0,
+   "y": 0,
+   "w": 1440,
+   "h": 560
+  }
+ },
+ "header-ferme-375": {
+  "largeur": 375,
+  "boite": {
+   "w": 375,
+   "h": 101
+  },
+  "portrait": null
+ },
+ "header-zones-ouvert-375": {
+  "largeur": 375,
+  "boite": {
+   "w": 375,
+   "h": 900
+  },
+  "portrait": null
+ },
+ "header-819": {
+  "largeur": 819,
+  "boite": {
+   "w": 819,
+   "h": 120
+  },
+  "portrait": null
+ },
+ "header-820": {
+  "largeur": 820,
+  "boite": {
+   "w": 820,
+   "h": 120
+  },
+  "portrait": null
+ },
+ "header-1099": {
+  "largeur": 1099,
+  "boite": {
+   "w": 1099,
+   "h": 120
+  },
+  "portrait": null
+ },
+ "header-1100": {
+  "largeur": 1100,
+  "boite": {
+   "w": 1100,
+   "h": 120
+  },
+  "portrait": null
+ },
+ "header-1219": {
+  "largeur": 1219,
+  "boite": {
+   "w": 1219,
+   "h": 120
+  },
+  "portrait": null
+ },
+ "header-1220": {
+  "largeur": 1220,
+  "boite": {
+   "w": 1220,
+   "h": 120
+  },
+  "portrait": null
+ },
+ "villes-1440": {
+  "largeur": 1440,
+  "boite": {
+   "w": 1180,
+   "h": 162
+  },
+  "portrait": null
+ },
+ "villes-375": {
+  "largeur": 375,
+  "boite": {
+   "w": 339,
+   "h": 850
+  },
+  "portrait": null
+ },
+ "villes-768": {
+  "largeur": 768,
+  "boite": {
+   "w": 707,
+   "h": 334
+  },
+  "portrait": null
+ },
+ "communes-1440": {
+  "largeur": 1440,
+  "boite": {
+   "w": 1180,
+   "h": 153
+  },
+  "portrait": null
+ },
+ "communes-375": {
+  "largeur": 375,
+  "boite": {
+   "w": 339,
+   "h": 641
+  },
+  "portrait": null
+ },
+ "villes-region-1440": {
+  "largeur": 1440,
+  "boite": {
+   "w": 1180,
+   "h": 418
+  },
+  "portrait": null
+ },
+ "bandeau-tarif-1440": {
+  "largeur": 1440,
+  "boite": {
+   "w": 1260,
+   "h": 128
+  },
+  "portrait": null
+ },
+ "bandeau-tarif-375": {
+  "largeur": 375,
+  "boite": {
+   "w": 375,
+   "h": 256
+  },
+  "portrait": null
+ },
+ "bandeau-zone-1440": {
+  "largeur": 1440,
+  "boite": {
+   "w": 1180,
+   "h": 130
+  },
+  "portrait": null
+ },
+ "bandeau-zone-375": {
+  "largeur": 375,
+  "boite": {
+   "w": 339,
+   "h": 259
+  },
+  "portrait": null
+ },
+ "etapes-1440": {
+  "largeur": 1440,
+  "boite": {
+   "w": 1440,
+   "h": 512
+  },
+  "portrait": null
+ },
+ "etapes-768": {
+  "largeur": 768,
+  "boite": {
+   "w": 768,
+   "h": 585
+  },
+  "portrait": null
+ },
+ "etapes-375": {
+  "largeur": 375,
+  "boite": {
+   "w": 375,
+   "h": 1120
+  },
+  "portrait": null
+ },
+ "carte-1440": {
+  "largeur": 1440,
+  "boite": {
+   "w": 1260,
+   "h": 486
+  },
+  "portrait": null
+ },
+ "carte-375": {
+  "largeur": 375,
+  "boite": {
+   "w": 375,
+   "h": 877
+  },
+  "portrait": null
+ },
+ "gerante-1440": {
+  "largeur": 1440,
+  "boite": {
+   "w": 1440,
+   "h": 573
+  },
+  "portrait": {
+   "w": 294,
+   "h": 368
+  }
+ },
+ "gerante-375": {
+  "largeur": 375,
+  "boite": {
+   "w": 375,
+   "h": 1109
+  },
+  "portrait": {
+   "w": 240,
+   "h": 300
+  }
+ },
+ "accueil-1440": {
+  "largeur": 1440,
+  "hauteur": 7729
+ },
+ "accueil-375": {
+  "largeur": 375,
+  "hauteur": 13770
+ }
+}

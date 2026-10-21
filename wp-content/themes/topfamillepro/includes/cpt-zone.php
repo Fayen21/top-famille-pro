@@ -142,6 +142,47 @@ add_action( 'template_redirect', 'tfp_zone_canonical_redirect', 5 );
  * @param string $dept_slug
  * @return WP_Post|null
  */
+/**
+ * Zone (tout niveau) par son slug — pour résoudre les cibles relevées sur la maquette.
+ *
+ * @param string $slug Slug WordPress de la zone.
+ * @return WP_Post|null
+ */
+function tfp_get_zone_by_slug( $slug ) {
+	static $cache = array();
+	$slug = sanitize_title( $slug );
+	if ( '' === $slug ) {
+		return null;
+	}
+	if ( ! array_key_exists( $slug, $cache ) ) {
+		$posts          = get_posts( array( 'post_type' => 'zone', 'name' => $slug, 'numberposts' => 1 ) );
+		$cache[ $slug ] = ! empty( $posts ) ? $posts[0] : null;
+	}
+	return $cache[ $slug ];
+}
+
+/**
+ * Numéro du département d'une zone (« 21 »), ou chaîne vide.
+ *
+ * Le numéro vient de la table de `tfp_departements_nav()`, jamais d'un champ saisi : il est
+ * apparié par le slug du terme `departement` de la zone.
+ *
+ * @param WP_Post|int $zone Zone ou identifiant.
+ * @return string
+ */
+function tfp_zone_departement_num( $zone ) {
+	$terms = get_the_terms( $zone, 'departement' );
+	if ( empty( $terms ) || is_wp_error( $terms ) || ! function_exists( 'tfp_departements_nav' ) ) {
+		return '';
+	}
+	foreach ( tfp_departements_nav() as $entree ) {
+		if ( $entree['slug'] === $terms[0]->slug ) {
+			return (string) $entree['num'];
+		}
+	}
+	return '';
+}
+
 function tfp_get_zone_by_department_slug( $dept_slug ) {
 	$posts = get_posts(
 		array(
@@ -165,3 +206,55 @@ function tfp_flush_rewrite_rules_on_activation() {
 	flush_rewrite_rules();
 }
 add_action( 'after_switch_theme', 'tfp_flush_rewrite_rules_on_activation' );
+
+/**
+ * Arborescence « département → villes principales » du pied de page.
+ *
+ * Reprend la colonne « Zones d'intervention » de la maquette Claude Design, qui liste chaque
+ * département suivi de ses villes. La liste est construite depuis le contenu réel (CPT `zone`),
+ * pas codée en dur : ajouter une ville en administration la fait apparaître au pied de page sans
+ * toucher au gabarit. Seules les zones de niveau « ville » sont listées — les communes secondaires
+ * ne sont pas validées (CLAUDE.md §5.4) et n'ont donc pas à être poussées sur les 53 pages.
+ *
+ * @return array<int,array{post:WP_Post,villes:WP_Post[]}>
+ */
+function tfp_footer_zones_tree() {
+	static $tree = null;
+	if ( null !== $tree ) {
+		return $tree;
+	}
+
+	$departements = get_posts(
+		array(
+			'post_type'   => 'zone',
+			'numberposts' => -1,
+			'meta_key'    => 'niveau',
+			'meta_value'  => 'departement',
+			'orderby'     => 'menu_order title',
+			'order'       => 'ASC',
+		)
+	);
+
+	$tree = array();
+	foreach ( $departements as $dept ) {
+		$villes = get_posts(
+			array(
+				'post_type'   => 'zone',
+				'numberposts' => -1,
+				'meta_key'    => 'niveau',
+				'meta_value'  => 'ville',
+				'orderby'     => 'title',
+				'order'       => 'ASC',
+				'tax_query'   => array(
+					array(
+						'taxonomy' => 'departement',
+						'field'    => 'slug',
+						'terms'    => $dept->post_name,
+					),
+				),
+			)
+		);
+		$tree[] = array( 'post' => $dept, 'villes' => $villes );
+	}
+	return $tree;
+}

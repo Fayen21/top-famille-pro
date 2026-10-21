@@ -1,0 +1,106 @@
+{
+ "#/service/bureaux": {
+  "375": {
+   "cartesRef": 22,
+   "cartesWp": 22,
+   "anomalies": []
+  },
+  "1440": {
+   "cartesRef": 21,
+   "cartesWp": 21,
+   "anomalies": []
+  }
+ },
+ "#/service/commerces": {
+  "375": {
+   "cartesRef": 21,
+   "cartesWp": 21,
+   "anomalies": []
+  },
+  "1440": {
+   "cartesRef": 20,
+   "cartesWp": 20,
+   "anomalies": []
+  }
+ },
+ "#/service/cabinets": {
+  "375": {
+   "cartesRef": 29,
+   "cartesWp": 29,
+   "anomalies": [
+    {
+     "genre": "type",
+     "type": "carte-titre-texte",
+     "recu": "micro-carte",
+     "bande": 4,
+     "texte": "Cette prestation est un entretien courant de locaux professi"
+    }
+   ]
+  },
+  "1440": {
+   "cartesRef": 28,
+   "cartesWp": 28,
+   "anomalies": [
+    {
+     "genre": "type",
+     "type": "carte-titre-texte",
+     "recu": "micro-carte",
+     "bande": 4,
+     "texte": "Cette prestation est un entretien courant de locaux professi"
+    }
+   ]
+  }
+ },
+ "#/service/coproprietes": {
+  "375": {
+   "cartesRef": 22,
+   "cartesWp": 22,
+   "anomalies": []
+  },
+  "1440": {
+   "cartesRef": 21,
+   "cartesWp": 21,
+   "anomalies": []
+  }
+ },
+ "#/service/meubles": {
+  "375": {
+   "cartesRef": 22,
+   "cartesWp": 22,
+   "anomalies": [
+    {
+     "genre": "type",
+     "type": "carte-titre",
+     "recu": "carte-titre-texte",
+     "bande": 13,
+     "texte": "Encore une question sur Locations meublées ? Audrey vous rép"
+    }
+   ]
+  },
+  "1440": {
+   "cartesRef": 21,
+   "cartesWp": 21,
+   "anomalies": [
+    {
+     "genre": "type",
+     "type": "carte-titre",
+     "recu": "carte-titre-texte",
+     "bande": 13,
+     "texte": "Encore une question sur Locations meublées ? Audrey vous rép"
+    }
+   ]
+  }
+ },
+ "#/service/ponctuel": {
+  "375": {
+   "cartesRef": 22,
+   "cartesWp": 22,
+   "anomalies": []
+  },
+  "1440": {
+   "cartesRef": 21,
+   "cartesWp": 21,
+   "anomalies": []
+  }
+ }
+}

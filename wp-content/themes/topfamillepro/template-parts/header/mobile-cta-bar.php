@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 $site = tfp_site_data();
 ?>
 <div class="tfp-mobile-cta-bar">
-	<a class="tfp-btn tfp-btn--secondary" href="tel:<?php echo esc_attr( $site['phone_href'] ); ?>" aria-label="Appeler <?php echo esc_attr( $site['manager'] ); ?>">
+	<a class="tfp-btn tfp-btn--secondary" href="tel:<?php echo esc_attr( $site['phone_href'] ); ?>" aria-label="<?php echo esc_attr( tfp_phone_cta_label( false ) . ' au ' . $site['phone'] ); ?>">
 		☎ Appeler
 	</a>
 	<a class="tfp-btn tfp-btn--primary" href="<?php echo esc_url( home_url( '/demande-de-devis/' ) ); ?>">

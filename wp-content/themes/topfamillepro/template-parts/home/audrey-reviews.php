@@ -1,88 +1,79 @@
 <?php
 /**
- * 8. Audrey et avis — fusionne les deux blocs « Pourquoi Top-Famille Pro » et « Avis + Audrey »
- * du prototype (brief phase 1 §6 : redondant de garder deux blocs de réassurance/confiance
- * séparés). Pas de portrait de stock présenté comme Audrey (brief §5/§7, docs/DONNEES-FICTIVES.md) :
- * une pastille avec son initiale tient lieu de visuel tant que la photo réelle n'est pas fournie
- * (remplaçable en un geste depuis Apparence → Personnaliser → Équipe, includes/customizer.php,
- * sans dépendre d'ACF).
- * Aucune citation inventée en son nom (brief §7 : « n'invente aucune information biographique
- * sur Audrey ») — le texte reste descriptif, à la troisième personne.
+ * 15. Bloc de la gérante — bloc 11 du prototype Claude Design.
+ *
+ * Décision du 14 octobre 2026 : le bloc présente Audrey Brançon comme GÉRANTE de Top-Famille Pro —
+ * titre, texte et signature — et le portrait est réduit de 30 % en dimensions linéaires par rapport
+ * au rendu précédent (420 × 525 → 294 × 368 à 1440 px). La réduction porte sur la colonne réelle et
+ * les attributs de l'image, pas sur un `transform: scale()` qui aurait conservé l'ancien espace. Le
+ * rôle d'interlocutrice reste évoqué comme une qualité de service, sans se substituer au rôle de
+ * direction.
+ *
+ * Ne contient plus les quatre points « Pourquoi Top-Famille Pro » ni la carte témoignage : ils
+ * ont retrouvé leur section propre (template-parts/home/why.php) le 9 août 2026, comme dans la
+ * maquette.
+ *
+ * La pastille « ★★★★★ 5,0/5 Google » superposée au portrait n'est rendue que si une note est
+ * configurée ET son URL de fiche vérifiée (CLAUDE.md §5.5, consigne du 18 août 2026) ; elle
+ * n'alimente aucune donnée structurée.
+ *
+ * La citation attribuée à Audrey est reprise telle quelle de la maquette (consigne du 10 août
+ * 2026). Elle est marquée `data-tfp-provisional` et reste à faire valider par l'intéressée : c'est
+ * la seule phrase du site qui fasse parler une personne réelle. Pas de chantier d'authentification
+ * dans cette passe (brief du 14 octobre §8).
+ *
+ * Portrait : visuel d'illustration temporaire (même photo que le prototype) tant que la vraie photo
+ * n'est pas fournie, avec un alt honnête et une mention visible — cf. tfp_audrey_photo_is_real(),
+ * includes/customizer.php. La photo existante et sa mention sont conservées ; ce n'est pas un
+ * nouveau bloqueur de validation.
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-$site        = tfp_site_data();
-$reassurance = tfp_reassurance_data();
-$first_name  = explode( ' ', $site['manager'] )[0];
-
-$why_items = array(
-	array( 'num' => '01', 'title' => 'Directement joignable', 'desc' => $first_name . ', une interlocutrice identifiée qui connaît votre dossier — pas un standard anonyme.' ),
-	array( 'num' => '02', 'title' => 'Intervenants sélectionnés & attitrés', 'desc' => 'La même personne autant que possible, qui connaît vos locaux et vos consignes.' ),
-	array( 'num' => '03', 'title' => 'Gestion prise en charge', 'desc' => 'Planning, administratif et suivi gérés par nos soins. Vous gardez un seul contact.' ),
-	array( 'num' => '04', 'title' => 'Tarif transparent', 'desc' => 'Tarif annoncé avant le devis, frais indiqués à l\'avance. Aucune offre opaque.' ),
-);
-
-$featured_review = ! empty( $reassurance['avis'] ) ? $reassurance['avis'][0] : null;
-$audrey_photo    = tfp_get_audrey_photo_url();
+$site         = tfp_site_data();
+$first_name   = explode( ' ', $site['manager'] )[0];
+// `audrey-portrait` : le visuel que la maquette pose sur l'accueil — distinct de celui de /a-propos/.
+$audrey_photo = tfp_get_audrey_photo_url( 'audrey-portrait' );
+$is_real      = tfp_audrey_photo_is_real();
 ?>
-<section class="tfp-section">
-	<div class="tfp-container tfp-two-col" style="align-items:flex-start">
-		<div class="tfp-audrey-portrait">
+<section class="tfp-section--alt tfp-section" aria-labelledby="tfp-gerante-titre">
+	<div class="tfp-container tfp-gerante">
+		<div class="tfp-audrey-portrait tfp-gerante__portrait">
 			<?php if ( $audrey_photo ) : ?>
 				<img
 					src="<?php echo esc_url( $audrey_photo ); ?>"
-					alt="<?php echo esc_attr( $site['manager'] . ', gérante de ' . $site['brand_name'] ); ?>"
-					style="width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:var(--radius-xl);background:var(--color-border)"
+					alt="<?php echo esc_attr( $is_real ? ( $site['manager'] . ', gérante de ' . $site['brand_name'] ) : 'Photo d’illustration temporaire — portrait définitif à venir' ); ?>"
+					width="294" height="368"
+					class="tfp-audrey-portrait__img"
 					loading="lazy"
 				>
+				<?php tfp_google_rating_badge( 'floating' ); ?>
+				<?php if ( ! $is_real ) : ?>
+					<p class="tfp-audrey-portrait__note">Photo d’illustration</p>
+				<?php endif; ?>
 			<?php else : ?>
-				<div style="width:100%;aspect-ratio:4/5;border-radius:var(--radius-xl);background:linear-gradient(160deg,var(--color-primary),var(--color-navy));display:flex;align-items:center;justify-content:center">
-					<span style="font-family:var(--font-heading);font-weight:800;font-size:96px;color:var(--color-turquoise-pale)" aria-hidden="true"><?php echo esc_html( mb_substr( $first_name, 0, 1 ) ); ?></span>
+				<div class="tfp-audrey-portrait__fallback">
+					<span aria-hidden="true"><?php echo esc_html( mb_substr( $first_name, 0, 1 ) ); ?></span>
 				</div>
-				<p style="margin-top:10px;font-size:12.5px;color:var(--color-text-tertiary);text-align:center">Photo à venir</p>
+				<p class="tfp-audrey-portrait__note">Photo à venir</p>
 			<?php endif; ?>
 		</div>
 
-		<div>
-			<h2 style="font-size:clamp(26px,3.4vw,40px)"><?php echo esc_html( $first_name ); ?>, votre interlocutrice</h2>
-			<p style="margin-top:16px;font-size:19px;color:var(--color-text-secondary);line-height:1.6">
-				<?php echo esc_html( $first_name ); ?> suit votre dossier du premier échange jusqu'au suivi de la prestation : un seul contact, joignable directement, qui connaît vos locaux et vos consignes.
+		<div class="tfp-gerante__texte">
+			<h2 id="tfp-gerante-titre" class="tfp-gerante__titre"><?php echo esc_html( $site['manager'] ); ?>, gérante de <?php echo esc_html( $site['brand_name'] ); ?></h2>
+			<p class="tfp-gerante__lede">
+				Gérante de <?php echo esc_html( $site['brand_name'] ); ?>, <?php echo esc_html( $first_name ); ?> supervise l'organisation des prestations et le suivi des clients. Elle reste directement joignable pour échanger sur vos locaux et vos besoins.
+			</p>
+			<blockquote class="tfp-quote" data-tfp-provisional="1">&laquo;&nbsp;Mon rôle, c'est de rester joignable et de tenir mes engagements. Chaque client sait à qui parler, et sait ce qui a été fait dans ses locaux.&nbsp;&raquo;</blockquote>
+			<p class="tfp-provisional-notice" data-tfp-provisional-notice="1">Citation en attente de validation par l’intéressée.</p>
+			<p class="tfp-gerante__signature">
+				<strong><?php echo esc_html( $site['manager'] ); ?></strong>
+				<span class="tfp-gerante__fonction"> · Gérante, <?php echo esc_html( $site['brand_name'] . ' — ' . $site['address_city'] ); ?></span>
 			</p>
 
-			<div class="tfp-why-list">
-				<?php foreach ( $why_items as $item ) : ?>
-					<div class="tfp-why-item">
-						<span class="tfp-why-item__num" aria-hidden="true"><?php echo esc_html( $item['num'] ); ?></span>
-						<div>
-							<div class="tfp-why-item__title"><?php echo esc_html( $item['title'] ); ?></div>
-							<p class="tfp-why-item__desc"><?php echo esc_html( $item['desc'] ); ?></p>
-						</div>
-					</div>
-				<?php endforeach; ?>
-			</div>
-
-			<a href="<?php echo esc_url( home_url( '/pourquoi-nous/' ) ); ?>" class="tfp-eyebrow-link">Toutes nos preuves →</a>
-
-			<?php if ( $featured_review && ! empty( $featured_review['texte'] ) ) : ?>
-				<div class="tfp-card" style="margin-top:28px">
-					<blockquote style="font-size:17px;line-height:1.55;color:var(--color-text)">« <?php echo esc_html( $featured_review['texte'] ); ?> »</blockquote>
-					<div style="margin-top:14px;font-weight:600">
-						<?php echo esc_html( $featured_review['nom'] ); ?>
-						<?php if ( ! empty( $featured_review['contexte'] ) ) : ?>
-							<span style="font-weight:400;color:var(--color-text-tertiary)"> · <?php echo esc_html( $featured_review['contexte'] ); ?></span>
-						<?php endif; ?>
-					</div>
-				</div>
-			<?php else : ?>
-				<div class="tfp-todo-block" style="margin-top:28px">
-					<strong>Avis clients à venir.</strong> Les six témoignages authentiques déjà publiés seront intégrés ici (page Réassurance &amp; avis de l'administration).
-				</div>
-			<?php endif; ?>
-
-			<div class="tfp-flex" style="margin-top:24px">
+			<div class="tfp-action-row tfp-gerante__actions">
 				<?php
 				tfp_button(
 					array(

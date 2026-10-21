@@ -3,8 +3,8 @@
  * (source de vérité des URL cibles). Sert de base aux tests génériques (tests/seo.spec.js) et au
  * crawl (tests/crawl.spec.js) : une seule liste, pas une copie par test.
  *
- * `robots` reflète l'état CIBLE défini par CLAUDE.md §5.4, pas l'état du prototype (qui servait ces
- * 8 communes en index,follow — corrigé pendant la migration, phase 3).
+ * `robots` reflète l'état CIBLE. Les 8 communes secondaires y sont passées de `noindex,follow` à
+ * `index,follow` le 17 août 2026, quand Emmanuel a confirmé la desserte — voir plus bas.
  */
 
 const STATIQUE = [
@@ -72,7 +72,17 @@ const COMMUNE = [
 	'/zones-intervention/cote-dor/fontaine-les-dijon/',
 	'/zones-intervention/cote-dor/marsannay-la-cote/',
 	'/zones-intervention/cote-dor/beaune/',
-].map((url) => ({ url, family: 'commune', robots: 'noindex,follow' }));
+/*
+ * VALIDÉES LE 17 AOÛT 2026 — Emmanuel confirme qu'Audrey intervient sur ces huit communes.
+ *
+ * CLAUDE.md §5.4 les tenait en `noindex,follow` tant que la desserte n'était pas confirmée : « une
+ * page qui promet une intervention impossible coûte plus qu'elle ne rapporte ». La condition est
+ * remplie, elles passent donc en `index,follow` et rejoignent le sitemap. Le mécanisme n'a pas
+ * bougé — `single-zone.php` lit `statut_validation`, coché par bin/seed-phase3-batch4-communes.php.
+ *
+ * Saint-Apollinaire n'aurait jamais dû figurer parmi elles : c'est le siège de l'entreprise.
+ */
+].map((url) => ({ url, family: 'commune', robots: 'index,follow' }));
 
 const ARTICLE = [
 	'/conseils/frequence-bureaux/',

@@ -40,17 +40,82 @@ const SLOTS = [
     widths: [220, 340, 460],
     alt: 'Nettoyage de vitres avec équipement de protection (photo d’illustration)',
   },
+  /*
+   * SIX héros de prestation, un par prestation — table établie sur les OCTETS de la maquette par
+   * `node tools/mapper-photos-maquette.mjs` (G26 §3).
+   *
+   * Le thème n'en définissait que deux et servait `service-generic` aux quatre autres : quatre
+   * pages de prestation partageaient une même photo là où la maquette en pose quatre distinctes.
+   * Les deux qui existaient étaient de surcroît CROISÉES avec des héros de ville — le fichier
+   * `prestation-bureaux.jpg` est celui qu'Auxerre et Longvic portent dans le prototype, pas
+   * celui de la prestation « bureaux ». Une table écrite de mémoire ne pouvait pas voir cela ;
+   * une comparaison d'empreintes, si.
+   */
   {
     slug: 'service-bureaux',
-    src: 'prestation-bureaux.jpg',
+    src: 'unsplash-1531973576160-7125cd663d86-800.jpg',
     widths: [320, 480, 640],
     alt: 'Nettoyage de bureaux et open-spaces (photo d’illustration)',
   },
   {
     slug: 'service-commerces',
+    src: 'unsplash-1441986300917-64674bd600d8-800.jpg',
+    widths: [320, 480, 640],
+    alt: 'Nettoyage de commerces et de surfaces de vente (photo d’illustration)',
+  },
+  /*
+   * Cartes de prestation de l'ACCUEIL — G26 §3. La maquette n'y pose pas les mêmes photos que sur
+   * les pages de prestation : `prestation-bureaux.jpg` et `prestation-commerces.jpg` illustrent
+   * les deux cartes de l'accueil, tandis que les héros des pages emploient les fichiers Unsplash
+   * ci-dessus. Le thème servait les slots des pages aux deux endroits ; l'audit par empreinte l'a
+   * relevé.
+   */
+  {
+    slug: 'accueil-bureaux',
+    src: 'prestation-bureaux.jpg',
+    widths: [320, 480, 640],
+    alt: 'Nettoyage de bureaux et open-spaces (photo d’illustration)',
+  },
+  {
+    slug: 'accueil-commerces',
     src: 'prestation-commerces.jpg',
     widths: [320, 480, 640],
     alt: 'Nettoyage de commerces et de surfaces de vente (photo d’illustration)',
+  },
+  /*
+   * Portrait des pages /contact/ et /demande-de-devis/ — un troisième visuel de stock dans la
+   * maquette, distinct de celui de /a-propos/. Le thème servait `audrey-placeholder` aux trois.
+   * L'`alt` reste honnête : aucune photo ne prétend représenter Audrey (CLAUDE.md §5.6).
+   */
+  {
+    slug: 'portrait-contact',
+    src: 'portrait-stock-contact.jpg',
+    widths: [96, 144, 192],
+    alt: 'Photo d’illustration temporaire — portrait définitif à venir',
+  },
+  {
+    slug: 'service-cabinets',
+    src: 'unsplash-1497366811353-6870744d04b2-800.jpg',
+    widths: [320, 480, 640],
+    alt: 'Cabinet et salle d’attente (photo d’illustration)',
+  },
+  {
+    slug: 'service-coproprietes',
+    src: 'unsplash-1524758631624-e2822e304c36-800.jpg',
+    widths: [320, 480, 640],
+    alt: 'Hall d’immeuble et parties communes (photo d’illustration)',
+  },
+  {
+    slug: 'service-meubles',
+    src: 'unsplash-1600585152220-90363fe7e115-800.jpg',
+    widths: [320, 480, 640],
+    alt: 'Séjour d’un logement meublé (photo d’illustration)',
+  },
+  {
+    slug: 'service-ponctuel',
+    src: 'unsplash-1581578731548-c64695cc6952-800.jpg',
+    widths: [320, 480, 640],
+    alt: 'Bureau en cours de remise en état (photo d’illustration)',
   },
   {
     slug: 'article-1',
@@ -60,15 +125,119 @@ const SLOTS = [
   },
   {
     slug: 'article-2',
-    src: 'unsplash-1497215842964-222b430dc094-900.jpg',
+    // Relevé G26 sur ARTICLES[1].photo : le thème servait une autre photo.
+    src: 'unsplash-1454165804606-c3d57bc86b40-900.jpg',
     widths: [320, 480, 640],
     alt: 'Poste de travail avec ordinateur (photo d’illustration)',
   },
   {
     slug: 'article-3',
-    src: 'locaux-professionnels-region.jpg',
+    // Relevé G26 sur ARTICLES[2].photo : le thème servait la photo de la page région.
+    src: 'unsplash-1581578731548-c64695cc6952-900.jpg',
     widths: [320, 480, 640],
     alt: 'Bureau avec documents et ordinateur (photo d’illustration)',
+  },
+  {
+    slug: 'service-generic',
+    src: 'intervenante-stock-materiel.jpg',
+    widths: [480, 760, 960],
+    alt: 'Intervention de nettoyage professionnel avec équipement de protection (photo d’illustration)',
+  },
+  /*
+   * G26 — images relevées PAR RÔLE, après le refus de validation du 17 août 2026.
+   *
+   * Le contrôle précédent comparait le NOMBRE d'images d'une page : trois visuels pouvaient être
+   * faux sans que rien ne le signale. L'audit par rôle (tools/audit-images-role.mjs) compare
+   * désormais les octets, et ces slots corrigent ce qu'il a trouvé. Tous les fichiers sont ceux
+   * du standalone, déjà présents dans le dépôt — rien n'est généré ni approché.
+   */
+  {
+    // Portrait du bloc « Audrey » de l'accueil ET de la bande « Cahier des charges » du pilier :
+    // la maquette y pose portrait-stock-01 (800×1007, sha 18af9088…), pas le portrait de
+    // /a-propos/ (800×1198). Visuel d'illustration : jamais présenté comme Audrey (CLAUDE.md §5.6).
+    slug: 'audrey-portrait',
+    src: 'portrait-stock-01.jpg',
+    widths: [320, 480, 640],
+    alt: 'Photo d’illustration temporaire — portrait définitif à venir',
+  },
+  {
+    // Avatar de la carte de témoignage de l'accueil (44×44 dans la maquette), absent du thème.
+    slug: 'avatar-temoignage',
+    src: 'avatar-avis-demo.jpg',
+    widths: [88, 132],
+    alt: '',
+  },
+  /*
+   * Vignettes 56×56 de la bande de maillage du pilier (« Nos six prestations »), relevé G25 :
+   * la maquette y pose la photo de CHAQUE prestation en miniature (THUMB_56 — 56 px, rayon 10,
+   * cover, alt vide : décoratives, le sens est porté par l'intitulé voisin). Les sources sont
+   * les fichiers EXACTS du standalone (SERVICES[].photo, empreintes SHA-256 identiques aux
+   * assets du manifeste __bundler). Largeurs 112/168 : un rendu de 56 px jusqu'à 3× de densité —
+   * générer plus large serait du poids mort.
+   */
+  { slug: 'thumb-bureaux', src: 'unsplash-1531973576160-7125cd663d86-800.jpg', widths: [112, 168], alt: '' },
+  { slug: 'thumb-commerces', src: 'unsplash-1441986300917-64674bd600d8-800.jpg', widths: [112, 168], alt: '' },
+  { slug: 'thumb-cabinets', src: 'unsplash-1497366811353-6870744d04b2-800.jpg', widths: [112, 168], alt: '' },
+  { slug: 'thumb-coproprietes', src: 'unsplash-1524758631624-e2822e304c36-800.jpg', widths: [112, 168], alt: '' },
+  { slug: 'thumb-meubles', src: 'unsplash-1600585152220-90363fe7e115-800.jpg', widths: [112, 168], alt: '' },
+  { slug: 'thumb-ponctuel', src: 'unsplash-1581578731548-c64695cc6952-800.jpg', widths: [112, 168], alt: '' },
+  /*
+   * Hero des 18 pages de zone : la maquette déclare UNE photo par ville (CITIES[].photo /
+   * SECONDARY[].photo). Le thème servait « article-3 » — la même image partout, et pas celle de
+   * la maquette.
+   *
+   * La table est établie sur les OCTETS par `node tools/mapper-photos-maquette.mjs`, et non de
+   * mémoire : quatre villes — Auxerre, Belfort, Quetigny, Longvic — portent dans le prototype les
+   * fichiers `prestation-bureaux.jpg` et `prestation-commerces.jpg`, que la première rédaction de
+   * cette table avait attribués aux prestations du même nom. Les vingt-quatre routes concernées
+   * sont désormais appariées par empreinte, sans exception.
+   */
+  { slug: 'ville-dijon', src: 'unsplash-1497366754035-f200968a6e72-900.jpg', widths: [480, 760, 960], alt: 'Locaux professionnels (photo d’illustration)' },
+  { slug: 'ville-besancon', src: 'unsplash-1524758631624-e2822e304c36-900.jpg', widths: [480, 760, 960], alt: 'Locaux professionnels (photo d’illustration)' },
+  { slug: 'ville-dole', src: 'unsplash-1497366216548-37526070297c-900.jpg', widths: [480, 760, 960], alt: 'Locaux professionnels (photo d’illustration)' },
+  { slug: 'ville-lons-le-saunier', src: 'unsplash-1497215842964-222b430dc094-900.jpg', widths: [480, 760, 960], alt: 'Locaux professionnels (photo d’illustration)' },
+  { slug: 'ville-nevers', src: 'unsplash-1541746972996-4e0b0f43e02a-900.jpg', widths: [480, 760, 960], alt: 'Locaux professionnels (photo d’illustration)' },
+  { slug: 'ville-vesoul', src: 'unsplash-1556761175-b413da4baf72-900.jpg', widths: [480, 760, 960], alt: 'Locaux professionnels (photo d’illustration)' },
+  { slug: 'ville-chalon-sur-saone', src: 'unsplash-1600880292203-757bb62b4baf-900.jpg', widths: [480, 760, 960], alt: 'Locaux professionnels (photo d’illustration)' },
+  { slug: 'ville-macon', src: 'unsplash-1497366811353-6870744d04b2-900.jpg', widths: [480, 760, 960], alt: 'Locaux professionnels (photo d’illustration)' },
+  { slug: 'ville-auxerre', src: 'prestation-bureaux.jpg', widths: [480, 760, 960], alt: 'Locaux professionnels (photo d’illustration)' },
+  { slug: 'ville-belfort', src: 'prestation-commerces.jpg', widths: [480, 760, 960], alt: 'Locaux professionnels (photo d’illustration)' },
+  { slug: 'ville-saint-apollinaire', src: 'unsplash-1497366811353-6870744d04b2-900.jpg', widths: [480, 760, 960], alt: 'Locaux professionnels (photo d’illustration)' },
+  { slug: 'ville-chenove', src: 'unsplash-1524758631624-e2822e304c36-900.jpg', widths: [480, 760, 960], alt: 'Locaux professionnels (photo d’illustration)' },
+  { slug: 'ville-quetigny', src: 'prestation-commerces.jpg', widths: [480, 760, 960], alt: 'Locaux professionnels (photo d’illustration)' },
+  { slug: 'ville-talant', src: 'unsplash-1497215842964-222b430dc094-900.jpg', widths: [480, 760, 960], alt: 'Locaux professionnels (photo d’illustration)' },
+  { slug: 'ville-longvic', src: 'prestation-bureaux.jpg', widths: [480, 760, 960], alt: 'Locaux professionnels (photo d’illustration)' },
+  { slug: 'ville-fontaine-les-dijon', src: 'unsplash-1600585152220-90363fe7e115-900.jpg', widths: [480, 760, 960], alt: 'Locaux professionnels (photo d’illustration)' },
+  { slug: 'ville-marsannay-la-cote', src: 'unsplash-1600880292203-757bb62b4baf-900.jpg', widths: [480, 760, 960], alt: 'Locaux professionnels (photo d’illustration)' },
+  { slug: 'ville-beaune', src: 'unsplash-1454165804606-c3d57bc86b40-900.jpg', widths: [480, 760, 960], alt: 'Locaux professionnels (photo d’illustration)' },
+  {
+    // Hero du pilier /nettoyage-professionnel/ — l'image EXACTE de la maquette (G24) :
+    // assets/photos/intervenante-stock-bureaux.jpg est octet pour octet l'asset embarqué du
+    // standalone Claude Design (sha256 dbc3d616…, 1000×667). L'alt de la maquette présentait la
+    // photo comme un intervenant réel de l'entreprise : interdit (CLAUDE.md §5.6), l'alt honnête
+    // dit « photo d'illustration ».
+    slug: 'hero-pilier',
+    src: 'intervenante-stock-bureaux.jpg',
+    widths: [480, 760, 960],
+    alt: 'Nettoyage de bureaux professionnels (photo d’illustration)',
+  },
+  {
+    // Hero de la page région — l'image EXACTE de la maquette (G24) :
+    // assets/photos/locaux-professionnels-region.jpg, octet pour octet l'asset du standalone
+    // (sha256 64547308…, 1000×667). Ce fichier alimente aussi article-3, aux largeurs d'article.
+    slug: 'hero-region',
+    src: 'locaux-professionnels-region.jpg',
+    widths: [480, 760, 960],
+    alt: 'Locaux professionnels en Bourgogne-Franche-Comté (photo d’illustration)',
+  },
+  {
+    // Visuel temporaire (accueil + À propos) tant que le portrait authentique d'Audrey n'est pas
+    // fourni — jamais présenté comme Audrey (alt honnête défini dans les gabarits, pas ici),
+    // CLAUDE.md §5.6. Centralisé sur ce seul slug : remplacer le fichier source suffit.
+    slug: 'audrey-placeholder',
+    src: 'portrait-stock-a-propos.jpg',
+    widths: [320, 480, 640],
+    alt: 'Photo d’illustration temporaire — portrait définitif à venir',
   },
 ];
 
@@ -132,16 +301,63 @@ async function processLogo() {
     console.warn('  (logo ignoré : assets/logo/logo-horizontal.png introuvable)');
     return;
   }
-  // Affiché à hauteur fixe 36px (.tfp-logo img, src/css/04-components.css), quel que soit le
-  // breakpoint : avec le ratio réel du fichier source (759×402, pas 5:1 comme le laissaient croire
-  // d'anciens attributs width/height erronés), ça correspond à ~68px de large. 140px = 2x pour les
-  // écrans à forte densité, avec une marge — pas 360px, mesurément inutile (Lighthouse,
-  // image-delivery-insight, ~10 Ko gaspillés).
+  // Affiché en clamp(120px, 32vw, 155px) de large (.tfp-logo img, src/css/04-components.css),
+  // conformément à la maquette. 320px = 2x la taille d'affichage maximale, pour les écrans à forte
+  // densité. Il était auparavant généré à 140px, ce qui correspondait à l'ancien affichage à ~68px
+  // de large : après l'agrandissement du logo, Lighthouse signalait à juste titre une image servie
+  // en trop basse résolution (« Serves images with low resolution »).
+  /*
+   * 465 px = TROIS fois la taille d'affichage maximale (G26 §8). 320 px couvrait les écrans à
+   * densité 2 mais pas ceux à densité 3, courants sur mobile : le logo — présent sur les 53 pages,
+   * et la seule marque visible en haut de chaque écran — y était rendu à partir d'une source deux
+   * fois trop petite. La source en fournit 759 ; le fichier reste sous 25 ko.
+   */
   await sharp(srcPath)
-    .resize({ width: 140 })
+    .resize({ width: 465 })
     .png({ quality: 90, compressionLevel: 9 })
     .toFile(path.join(OUT_DIR, 'logo-horizontal.png'));
-  console.log('  logo-horizontal.png (recompressé, 140px)');
+  console.log('  logo-horizontal.png (recompressé, 465px)');
+
+  /*
+   * Logo CARRÉ du pied de page (G26). La maquette pose deux logos distincts : l'horizontal dans
+   * l'en-tête (155×82) et le carré dans le pied (60×60, rayon 12, object-fit cover). Le thème
+   * servait l'horizontal aux deux endroits — relevé par l'audit d'images par rôle, sur les
+   * octets. 180 px = trois fois la taille d'affichage, comme le logo de l'en-tête.
+   */
+  const carre = path.join(ROOT, 'assets', 'logo', 'logo-square.jpg');
+  try {
+    await stat(carre);
+    await sharp(carre).resize({ width: 180, height: 180 }).png({ quality: 90, compressionLevel: 9 }).toFile(path.join(OUT_DIR, 'logo-carre.png'));
+    console.log('  logo-carre.png (pied de page, 180px)');
+  } catch {
+    console.warn('  (logo carré ignoré : assets/logo/logo-square.jpg introuvable)');
+  }
+}
+
+/**
+ * Favicon et icône Open Graph dédiée, à partir du logo carré (assets/logo/logo-square.jpg).
+ * Absent jusqu'ici (aucune balise <link rel="icon"> n'était émise) — gap réel identifié lors du
+ * hotfix de fidélité production, indépendant du problème de déploiement.
+ */
+async function processFavicon() {
+  const srcPath = path.join(ROOT, 'assets', 'logo', 'logo-square.jpg');
+  try {
+    await stat(srcPath);
+  } catch {
+    console.warn('  (favicon ignoré : assets/logo/logo-square.jpg introuvable)');
+    return;
+  }
+  const sizes = [32, 180, 512];
+  for (const size of sizes) {
+    await sharp(srcPath).resize({ width: size, height: size }).png({ quality: 90 }).toFile(path.join(OUT_DIR, `favicon-${size}.png`));
+  }
+  // og-image : format 1200×630 recommandé pour un aperçu de partage correct (le logo seul, à
+  // 140px, était utilisé jusqu'ici comme image Open Graph — proportions non adaptées).
+  await sharp(srcPath)
+    .resize({ width: 1200, height: 630, fit: 'cover', position: 'centre' })
+    .jpeg({ quality: 82, mozjpeg: true })
+    .toFile(path.join(OUT_DIR, 'og-image.jpg'));
+  console.log('  favicon-32.png, favicon-180.png, favicon-512.png, og-image.jpg (depuis logo-square.jpg)');
 }
 
 async function main() {
@@ -151,6 +367,7 @@ async function main() {
     manifest[slot.slug] = await processSlot(slot);
   }
   await processLogo();
+  await processFavicon();
   const manifestPath = path.join(OUT_DIR, 'manifest.json');
   await writeFile(manifestPath, JSON.stringify(manifest, null, 2));
   console.log(`\nManifeste écrit : ${manifestPath}`);

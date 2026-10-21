@@ -1,0 +1,244 @@
+# Vérification visuelle des 53 routes — styles calculés
+
+> Fichier **généré** par `node tools/compare-styles.mjs`. Ne pas éditer à la main.
+>
+> Une hauteur identique ne prouve pas une page identique. Ce relevé compare, des deux côtés
+> et sur le rendu réel, ce qui décide de l’aspect : polices résolues, couleurs, tailles et
+> interlignes, largeur et marge du conteneur, nombre de bandes, rayon / filet / fond des
+> cartes, taille et rayon du bouton principal, nombre de colonnes des grilles, cadrage des
+> images, fond du pied de page.
+
+**5 routes × 1 largeurs · 30 écart(s) relevé(s).**
+
+## Synthèse
+
+| Route | 1440 px |
+|---|---|
+| `#/` | ⚠️ 3 |
+| `#/nos-tarifs` | ⚠️ 6 |
+| `#/ville/dijon` | ⚠️ 6 |
+| `#/article/frequence-bureaux` | ⚠️ 7 |
+| `#/pourquoi-top-famille-pro` | ⚠️ 8 |
+
+## Écarts par nature
+
+### Rayons de cartes employés — 5 cas
+
+- `#/ @1440px — maquette 16px×5 14px×5 20px×2 18px×1 · WordPress 16px×10 20px×2 12px×1 18px×1`
+- `#/nos-tarifs @1440px — maquette 12px×9 16px×3 18px×3 20px×2 · WordPress 16px×10 18px×1`
+- `#/ville/dijon @1440px — maquette 10px×12 18px×10 12px×7 16px×3 · WordPress 10px×12 18px×10 16px×2`
+- `#/article/frequence-bureaux @1440px — maquette 14px×1 10px×1 · WordPress 12px×3`
+- `#/pourquoi-top-famille-pro @1440px — maquette 14px×4 12px×4 · WordPress `
+
+### Fonds de cartes employés — 5 cas
+
+- `#/ @1440px — maquette rgb(244, 247, 248)×5 rgb(255, 255, 255)×3 rgb(220, 231, 235)×2 rgba(0, 0, 0, 0)×1 · WordPress rgb(244, 247, 248)×5 rgb(255, 255, 255)×4 rgb(220, 231, 235)×2 rgba(0, 0, 0, 0)×1`
+- `#/nos-tarifs @1440px — maquette rgb(255, 255, 255)×11 rgb(244, 247, 248)×4 rgb(23, 74, 129)×1 rgb(221, 244, 243)×1 · WordPress rgb(255, 255, 255)×6 rgb(244, 247, 248)×4 rgb(221, 244, 243)×1`
+- `#/ville/dijon @1440px — maquette rgb(255, 255, 255)×19 rgb(244, 247, 248)×12 rgb(221, 244, 243)×1 · WordPress rgb(255, 255, 255)×12 rgb(244, 247, 248)×12`
+- `#/article/frequence-bureaux @1440px — maquette rgb(244, 247, 248)×2 · WordPress rgb(255, 255, 255)×3`
+- `#/pourquoi-top-famille-pro @1440px — maquette rgb(221, 244, 243)×4 rgb(255, 255, 255)×4 · WordPress `
+
+### Filets de cartes employés — 5 cas
+
+- `#/ @1440px — maquette 1px×11 5px×1 0px×1 · WordPress 1px×12 5px×1 0px×1`
+- `#/nos-tarifs @1440px — maquette 1px×16 0px×1 · WordPress 1px×11`
+- `#/ville/dijon @1440px — maquette 1px×32 · WordPress 1px×24`
+- `#/article/frequence-bureaux @1440px — maquette 1px×2 · WordPress 1px×3`
+- `#/pourquoi-top-famille-pro @1440px — maquette 1px×8 · WordPress `
+
+### Colonnes des grilles — 4 cas
+
+- `#/nos-tarifs @1440px — maquette 3 col × 4 / 3 col × 3 / 4 col × 4 · WordPress 4 col × 4 / 3 col × 3 / 4 col × 4`
+- `#/ville/dijon @1440px — maquette 3 col × 6 / 4 col × 6 / 3 col × 6 / 3 col × 4 / 5 col × 13 · WordPress 3 col × 6 / 4 col × 6 / 3 col × 6 / 3 col × 4 / 5 col × 8 / 4 col × 6`
+- `#/article/frequence-bureaux @1440px — maquette 3 col × 3 · WordPress 2 col × 3`
+- `#/pourquoi-top-famille-pro @1440px — maquette 4 col × 4 / 4 col × 4 · WordPress 6 col × 6 / 7 col × 7`
+
+### Nombre de cartes — 3 cas
+
+- `#/nos-tarifs @1440px — maquette 17 · WordPress 11 (écart 6)`
+- `#/ville/dijon @1440px — maquette 32 · WordPress 24 (écart 8)`
+- `#/pourquoi-top-famille-pro @1440px — maquette 8 · WordPress 0 (écart 8)`
+
+### Fond du bouton — 2 cas
+
+- `#/nos-tarifs @1440px — maquette rgb(255, 255, 255) · WordPress rgb(23, 74, 129)`
+- `#/pourquoi-top-famille-pro @1440px — maquette rgb(255, 255, 255) · WordPress rgb(23, 74, 129)`
+
+### Couleur des liens — 2 cas
+
+- `#/ville/dijon @1440px — absent d'un côté (maquette rgb(147, 218, 219) · WordPress null)`
+- `#/pourquoi-top-famille-pro @1440px — absent d'un côté (maquette rgb(23, 74, 129) · WordPress null)`
+
+### Couleur du texte — 1 cas
+
+- `#/article/frequence-bureaux @1440px — maquette rgb(24, 35, 45) · WordPress rgb(74, 98, 115)`
+
+### Taille du texte — 1 cas
+
+- `#/article/frequence-bureaux @1440px — maquette 19 · WordPress 14 (écart 5)`
+
+### Interligne du texte — 1 cas
+
+- `#/article/frequence-bureaux @1440px — maquette 30 · WordPress 23 (écart 7)`
+
+### Taille du premier H2 — 1 cas
+
+- `#/pourquoi-top-famille-pro @1440px — maquette 22 · WordPress 34 (écart 12)`
+
+## Relevé complet, route par route
+
+### `#/` → `/`
+
+**1440 px** — ⚠️ 3 écart(s)
+
+| Relevé | Maquette | WordPress | État |
+|---|---|---|---|
+| Police des titres | bricolage grotesque | bricolage grotesque | ✅ |
+| Police du texte | hanken grotesk | hanken grotesk | ✅ |
+| Fond de page | rgb(244, 247, 248) | rgb(244, 247, 248) | ✅ |
+| Couleur du texte | rgb(52, 72, 90) | rgb(52, 72, 90) | ✅ |
+| Couleur des liens | rgb(23, 74, 129) | rgb(23, 74, 129) | ✅ |
+| Taille du H1 | 58 | 58 | ✅ |
+| Graisse du H1 | 800 | 800 | ✅ |
+| Interligne du H1 | 58 | 60 | ✅ |
+| Taille du premier H2 | 42 | 42 | ✅ |
+| Taille du texte | 20 | 20 | ✅ |
+| Interligne du texte | 32 | 32 | ✅ |
+| Largeur du conteneur | 612 | 612 | ✅ |
+| Marge gauche du conteneur | 130 | 130 | ✅ |
+| Nombre de bandes | 13 | 13 | ✅ |
+| Nombre de cartes | 13 | 14 | ✅ |
+| Rayons de cartes employés | 16px×5 14px×5 20px×2 18px×1 | 16px×10 20px×2 12px×1 18px×1 | ⚠️ |
+| Fonds de cartes employés | rgb(244, 247, 248)×5 rgb(255, 255, 255)×3 rgb(220, 231, 235)×2 rgba(0, 0, 0, 0)×1 | rgb(244, 247, 248)×5 rgb(255, 255, 255)×4 rgb(220, 231, 235)×2 rgba(0, 0, 0, 0)×1 | ⚠️ |
+| Filets de cartes employés | 1px×11 5px×1 0px×1 | 1px×12 5px×1 0px×1 | ⚠️ |
+| Taille du bouton principal | 209×61 | 216×60 | ✅ |
+| Rayon du bouton | 12px | 12px | ✅ |
+| Fond du bouton | rgb(23, 74, 129) | rgb(23, 74, 129) | ✅ |
+| Colonnes des grilles | 5 col × 5 / 5 col × 5 / 3 col × 8 / 3 col × 3 | 5 col × 5 / 5 col × 5 / 3 col × 8 / 3 col × 3 | ✅ |
+| Cadrage de l’image | fill | fill | ✅ |
+| Fond du pied de page | rgb(16, 38, 59) | rgb(16, 38, 59) | ✅ |
+
+### `#/nos-tarifs` → `/tarifs/`
+
+**1440 px** — ⚠️ 6 écart(s)
+
+| Relevé | Maquette | WordPress | État |
+|---|---|---|---|
+| Police des titres | bricolage grotesque | bricolage grotesque | ✅ |
+| Police du texte | hanken grotesk | hanken grotesk | ✅ |
+| Fond de page | rgb(244, 247, 248) | rgb(244, 247, 248) | ✅ |
+| Couleur du texte | rgb(52, 72, 90) | rgb(52, 72, 90) | ✅ |
+| Couleur des liens | rgb(23, 74, 129) | rgb(23, 74, 129) | ✅ |
+| Taille du H1 | 54 | 54 | ✅ |
+| Graisse du H1 | 800 | 800 | ✅ |
+| Interligne du H1 | 54 | 56 | ✅ |
+| Taille du premier H2 | 36 | 36 | ✅ |
+| Taille du texte | 20 | 20 | ✅ |
+| Interligne du texte | 32 | 32 | ✅ |
+| Largeur du conteneur | 900 | 900 | ✅ |
+| Marge gauche du conteneur | 270 | 270 | ✅ |
+| Nombre de bandes | 13 | 13 | ✅ |
+| Nombre de cartes | 17 | 11 | ⚠️ |
+| Rayons de cartes employés | 12px×9 16px×3 18px×3 20px×2 | 16px×10 18px×1 | ⚠️ |
+| Fonds de cartes employés | rgb(255, 255, 255)×11 rgb(244, 247, 248)×4 rgb(23, 74, 129)×1 rgb(221, 244, 243)×1 | rgb(255, 255, 255)×6 rgb(244, 247, 248)×4 rgb(221, 244, 243)×1 | ⚠️ |
+| Filets de cartes employés | 1px×16 0px×1 | 1px×11 | ⚠️ |
+| Taille du bouton principal | 215×58 | 216×60 | ✅ |
+| Rayon du bouton | 12px | 12px | ✅ |
+| Fond du bouton | rgb(255, 255, 255) | rgb(23, 74, 129) | ⚠️ |
+| Colonnes des grilles | 3 col × 4 / 3 col × 3 / 4 col × 4 | 4 col × 4 / 3 col × 3 / 4 col × 4 | ⚠️ |
+| Cadrage de l’image | fill | fill | ✅ |
+| Fond du pied de page | rgb(16, 38, 59) | rgb(16, 38, 59) | ✅ |
+
+### `#/ville/dijon` → `/zones-intervention/cote-dor/dijon/`
+
+**1440 px** — ⚠️ 6 écart(s)
+
+| Relevé | Maquette | WordPress | État |
+|---|---|---|---|
+| Police des titres | bricolage grotesque | bricolage grotesque | ✅ |
+| Police du texte | hanken grotesk | hanken grotesk | ✅ |
+| Fond de page | rgb(244, 247, 248) | rgb(244, 247, 248) | ✅ |
+| Couleur du texte | rgb(52, 72, 90) | rgb(52, 72, 90) | ✅ |
+| Couleur des liens | rgb(147, 218, 219) | — | ⚠️ |
+| Taille du H1 | 49 | 49 | ✅ |
+| Graisse du H1 | 800 | 800 | ✅ |
+| Interligne du H1 | 50 | 51 | ✅ |
+| Taille du premier H2 | 29 | 29 | ✅ |
+| Taille du texte | 20 | 20 | ✅ |
+| Interligne du texte | 32 | 32 | ✅ |
+| Largeur du conteneur | 612 | 612 | ✅ |
+| Marge gauche du conteneur | 130 | 130 | ✅ |
+| Nombre de bandes | 13 | 13 | ✅ |
+| Nombre de cartes | 32 | 24 | ⚠️ |
+| Rayons de cartes employés | 10px×12 18px×10 12px×7 16px×3 | 10px×12 18px×10 16px×2 | ⚠️ |
+| Fonds de cartes employés | rgb(255, 255, 255)×19 rgb(244, 247, 248)×12 rgb(221, 244, 243)×1 | rgb(255, 255, 255)×12 rgb(244, 247, 248)×12 | ⚠️ |
+| Filets de cartes employés | 1px×32 | 1px×24 | ⚠️ |
+| Taille du bouton principal | 253×60 | 259×60 | ✅ |
+| Rayon du bouton | 12px | 12px | ✅ |
+| Fond du bouton | rgb(23, 74, 129) | rgb(23, 74, 129) | ✅ |
+| Colonnes des grilles | 3 col × 6 / 4 col × 6 / 3 col × 6 / 3 col × 4 / 5 col × 13 | 3 col × 6 / 4 col × 6 / 3 col × 6 / 3 col × 4 / 5 col × 8 / 4 col × 6 | ⚠️ |
+| Cadrage de l’image | fill | fill | ✅ |
+| Fond du pied de page | rgb(16, 38, 59) | rgb(16, 38, 59) | ✅ |
+
+### `#/article/frequence-bureaux` → `/conseils/frequence-bureaux/`
+
+**1440 px** — ⚠️ 7 écart(s)
+
+| Relevé | Maquette | WordPress | État |
+|---|---|---|---|
+| Police des titres | bricolage grotesque | bricolage grotesque | ✅ |
+| Police du texte | hanken grotesk | hanken grotesk | ✅ |
+| Fond de page | rgb(244, 247, 248) | rgb(244, 247, 248) | ✅ |
+| Couleur du texte | rgb(24, 35, 45) | rgb(74, 98, 115) | ⚠️ |
+| Couleur des liens | rgb(23, 74, 129) | rgb(23, 74, 129) | ✅ |
+| Taille du H1 | 44 | 44 | ✅ |
+| Graisse du H1 | 800 | 800 | ✅ |
+| Interligne du H1 | 47 | 46 | ✅ |
+| Taille du premier H2 | 27 | 27 | ✅ |
+| Taille du texte | 19 | 14 | ⚠️ |
+| Interligne du texte | 30 | 23 | ⚠️ |
+| Largeur du conteneur | 900 | 900 | ✅ |
+| Marge gauche du conteneur | 270 | 270 | ✅ |
+| Nombre de bandes | 9 | 9 | ✅ |
+| Nombre de cartes | 2 | 3 | ✅ |
+| Rayons de cartes employés | 14px×1 10px×1 | 12px×3 | ⚠️ |
+| Fonds de cartes employés | rgb(244, 247, 248)×2 | rgb(255, 255, 255)×3 | ⚠️ |
+| Filets de cartes employés | 1px×2 | 1px×3 | ⚠️ |
+| Taille du bouton principal | 215×60 | 216×60 | ✅ |
+| Rayon du bouton | 12px | 12px | ✅ |
+| Fond du bouton | rgb(255, 255, 255) | rgb(255, 255, 255) | ✅ |
+| Colonnes des grilles | 3 col × 3 | 2 col × 3 | ⚠️ |
+| Cadrage de l’image | fill | fill | ✅ |
+| Fond du pied de page | rgb(16, 38, 59) | rgb(16, 38, 59) | ✅ |
+
+### `#/pourquoi-top-famille-pro` → `/pourquoi-nous/`
+
+**1440 px** — ⚠️ 8 écart(s)
+
+| Relevé | Maquette | WordPress | État |
+|---|---|---|---|
+| Police des titres | bricolage grotesque | bricolage grotesque | ✅ |
+| Police du texte | hanken grotesk | hanken grotesk | ✅ |
+| Fond de page | rgb(244, 247, 248) | rgb(244, 247, 248) | ✅ |
+| Couleur du texte | rgb(52, 72, 90) | rgb(52, 72, 90) | ✅ |
+| Couleur des liens | rgb(23, 74, 129) | — | ⚠️ |
+| Taille du H1 | 52 | 52 | ✅ |
+| Graisse du H1 | 800 | 800 | ✅ |
+| Interligne du H1 | 52 | 54 | ✅ |
+| Taille du premier H2 | 22 | 34 | ⚠️ |
+| Taille du texte | 20 | 20 | ✅ |
+| Interligne du texte | 32 | 32 | ✅ |
+| Largeur du conteneur | 900 | 900 | ✅ |
+| Marge gauche du conteneur | 270 | 270 | ✅ |
+| Nombre de bandes | 8 | 8 | ✅ |
+| Nombre de cartes | 8 | 0 | ⚠️ |
+| Rayons de cartes employés | 14px×4 12px×4 |  | ⚠️ |
+| Fonds de cartes employés | rgb(221, 244, 243)×4 rgb(255, 255, 255)×4 |  | ⚠️ |
+| Filets de cartes employés | 1px×8 |  | ⚠️ |
+| Taille du bouton principal | 215×60 | 216×60 | ✅ |
+| Rayon du bouton | 12px | 12px | ✅ |
+| Fond du bouton | rgb(255, 255, 255) | rgb(23, 74, 129) | ⚠️ |
+| Colonnes des grilles | 4 col × 4 / 4 col × 4 | 6 col × 6 / 7 col × 7 | ⚠️ |
+| Cadrage de l’image | fill | fill | ✅ |
+| Fond du pied de page | rgb(16, 38, 59) | rgb(16, 38, 59) | ✅ |
+

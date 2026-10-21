@@ -15,15 +15,48 @@ function tfpInitQuoteForm() {
 	if (steps.length < 2) return;
 
 	const nextBtn = form.querySelector('[data-step-next]');
-	const prevBtn = form.querySelector('[data-step-prev]');
+	// Deux commandes ramènent à l'étape 1 : le bouton de la rangée de commandes et le lien du
+	// résumé. Elles portent le même attribut et se comportent de la même façon.
+	const prevBtns = Array.from(form.querySelectorAll('[data-step-prev]'));
 	const liveRegion = form.querySelector('[data-form-errors]');
+	const recap = form.querySelector('[data-quote-recap]');
+	const recapText = form.querySelector('[data-quote-recap-text]');
 	let current = 0;
+
+	/**
+	 * Résume l'étape 1 à partir des champs eux-mêmes.
+	 *
+	 * Rien n'est reconstitué ni deviné : on lit ce que le visiteur a saisi, dans l'ordre où il l'a
+	 * saisi. Si aucun des trois champs n'est renseigné — cas impossible en usage normal, les deux
+	 * premiers étant obligatoires — le résumé reste masqué plutôt que d'afficher une phrase vide.
+	 */
+	function updateRecap() {
+		if (!recap || !recapText) return;
+		const lire = (selector) => {
+			const el = form.querySelector(selector);
+			if (!el || !el.value) return '';
+			if (el.tagName === 'SELECT') {
+				const opt = el.options[el.selectedIndex];
+				return opt ? opt.textContent.trim() : '';
+			}
+			return el.value.trim();
+		};
+		const parts = [lire('#tfp-type-locaux'), lire('#tfp-regime'), lire('#tfp-ville-visible')].filter(Boolean);
+		if (!parts.length) {
+			recap.hidden = true;
+			return;
+		}
+		recapText.textContent = `Étape 1 renseignée : ${parts.join(' · ')}. `;
+		recap.hidden = false;
+	}
 
 	function showStep(index) {
 		steps.forEach((step, i) => {
 			step.hidden = i !== index;
 		});
-		if (prevBtn) prevBtn.hidden = index === 0;
+		prevBtns.forEach((btn) => {
+			btn.hidden = index === 0;
+		});
 		if (nextBtn) nextBtn.hidden = index !== 0;
 		const submitBtn = form.querySelector('[data-step-submit]');
 		if (submitBtn) submitBtn.hidden = index === 0;
@@ -79,16 +112,17 @@ function tfpInitQuoteForm() {
 			}
 			announce([]);
 			current = 1;
+			updateRecap();
 			showStep(current);
 		});
 	}
 
-	if (prevBtn) {
-		prevBtn.addEventListener('click', () => {
+	prevBtns.forEach((btn) => {
+		btn.addEventListener('click', () => {
 			current = 0;
 			showStep(current);
 		});
-	}
+	});
 
 	form.addEventListener('submit', (event) => {
 		const errorsStep0 = validateStep(0);

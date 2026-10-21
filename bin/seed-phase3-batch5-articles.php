@@ -4,12 +4,12 @@
  * Fréquence de nettoyage des bureaux a été créée en phase 2.
  *
  * Contenu repris du prototype, corrigé selon CLAUDE.md §9 :
- * - tarif fictif « 27 € HT/h » retiré partout ;
- * - le tableau de budgets de « cout-nettoyage-bureaux » recalculé sur le tarif réel « autres
- *   locaux » (26,00 € HT/h, PROJECT_INPUTS.md §5 — les bureaux ne relèvent pas du tarif
- *   « locations » à 24,30 €) : 8 h/mois → 217 € HT (267 € le 1er mois), 12 h/mois → 321 € HT
- *   (371 € le 1er mois, valeur déjà utilisée sur l'accueil via tfp_home_budget_example()),
- *   20 h/mois → 529 € HT (579 € le 1er mois).
+ * - tarif réel appliqué : 27,00 € HT/h, tarif unique (PROJECT_INPUTS.md §5, mis à jour le
+ *   9 août 2026 — remplace l'ancienne grille à trois montants) ;
+ * - le tableau de budgets de « cout-nettoyage-bureaux » recalculé sur ce tarif unique :
+ *   8 h/mois → 225 € HT (275 € le 1er mois), 12 h/mois → 333 € HT (383 € le 1er mois, valeur
+ *   déjà utilisée sur l'accueil via tfp_home_budget_example()), 20 h/mois → 549 € HT
+ *   (599 € le 1er mois).
  *
  * Usage : wp eval-file bin/seed-phase3-batch5-articles.php
  */
@@ -41,7 +41,7 @@ echo "=== Seed phase 3, lot 5a : 2 articles restants ===\n";
 /* 1. Combien coûte le nettoyage de bureaux ?                          */
 /* ------------------------------------------------------------------ */
 
-$cout_content = "<p>Le budget final résulte de deux éléments : un tarif horaire fixe et un volume d'heures mensuel variable. Chez Top-Famille Pro, le tarif horaire est de 26,00 € HT/h pour des bureaux (tarif « autres locaux » de la grille, voir la page Tarifs pour le détail complet), identique pour les prestations régulières et ponctuelles hors majoration. S'y ajoutent, selon les cas, des frais de gestion de 9 € HT par mois et, au démarrage, des frais de mise en place de 50 € HT.</p>
+$cout_content = "<p>Le budget final résulte de deux éléments : un tarif horaire fixe et un volume d'heures mensuel variable. Chez Top-Famille Pro, le tarif horaire est unique — 27,00 € HT/h, identique pour tous les types de locaux et pour les prestations régulières et ponctuelles, hors majoration. S'y ajoutent, selon les cas, des frais de gestion de 9 € HT par mois et, au démarrage, des frais de mise en place de 50 € HT.</p>
 
 <h2>Le tarif horaire, un repère plus fiable que le prix au m²</h2>
 <p>Un prix affiché au m² masque souvent le volume d'heures réellement effectué, ce qui rend la comparaison entre prestataires difficile. Le tarif horaire, lui, est directement lisible : vous savez ce que vaut chaque heure de travail, et pouvez vérifier que le volume proposé correspond à vos besoins réels.</p>
@@ -50,11 +50,11 @@ $cout_content = "<p>Le budget final résulte de deux éléments : un tarif horai
 <p>Le nombre d'heures nécessaires dépend de la surface, du type de locaux, de la fréquence retenue et du niveau d'exigence (standard ou renforcé, notamment pour les espaces recevant du public). Deux bureaux de même surface peuvent ainsi nécessiter des volumes différents selon leur usage.</p>
 
 <h2>Exemples de budgets réels</h2>
-<p>À titre indicatif, calculé à 26,00 € HT/h (tarif « autres locaux ») + 9 € HT de gestion :</p>
+<p>À titre indicatif, calculé au tarif unique de 27,00 € HT/h + 9 € HT de gestion :</p>
 <ul>
-<li>Petit bureau ou cabinet, 8 h/mois : 217 € HT/mois (267 € HT le premier mois, frais de mise en place compris)</li>
-<li>Bureaux réguliers, 12 h/mois : 321 € HT/mois (371 € HT le premier mois)</li>
-<li>Besoin plus important, 20 h/mois : 529 € HT/mois (579 € HT le premier mois)</li>
+<li>Petit bureau ou cabinet, 8 h/mois : 225 € HT/mois (275 € HT le premier mois, frais de mise en place compris)</li>
+<li>Bureaux réguliers, 12 h/mois : 333 € HT/mois (383 € HT le premier mois)</li>
+<li>Besoin plus important, 20 h/mois : 549 € HT/mois (599 € HT le premier mois)</li>
 </ul>
 
 <h2>Ce qui est inclus, ce qui ne l'est pas</h2>
@@ -85,11 +85,11 @@ $cout_id = tfp_seed_upsert_post(
 update_post_meta(
 	$cout_id,
 	'_tfp_direct_answer',
-	"Le nettoyage de bureaux est facturé au tarif horaire, 26,00 € HT/h chez Top-Famille Pro pour des bureaux (tarif « autres locaux »), identique en régulier et en ponctuel hors majoration. Pour un petit bureau (8 h/mois), comptez environ 217 € HT/mois, frais de gestion compris ; pour un plateau plus large (20 h/mois), environ 529 € HT/mois. Le premier mois inclut, le cas échéant, 50 € HT de frais de mise en place."
+	"Le nettoyage de bureaux est facturé au tarif horaire unique de 27,00 € HT/h chez Top-Famille Pro, identique en régulier et en ponctuel hors majoration. Pour un petit bureau (8 h/mois), comptez environ 225 € HT/mois, frais de gestion compris ; pour un plateau plus large (20 h/mois), environ 549 € HT/mois. Le premier mois inclut, le cas échéant, 50 € HT de frais de mise en place."
 );
 
 $cout_faqs = array(
-	array( 'q' => 'Le prix est-il différent pour un contrat régulier ou une intervention ponctuelle ?', 'a' => "Le tarif ponctuel (30,00 € HT/h) est légèrement supérieur au tarif régulier « autres locaux » (26,00 € HT/h) — voir la page Tarifs pour le détail. Les frais de gestion mensuels ne s'appliquent qu'aux contrats réguliers." ),
+	array( 'q' => 'Le prix est-il différent pour un contrat régulier ou une intervention ponctuelle ?', 'a' => "Non. Le tarif horaire est unique — 27,00 € HT/h, identique en régulier et en ponctuel. Les frais de gestion mensuels ne s'appliquent qu'aux contrats réguliers." ),
 	array( 'q' => 'Peut-on avoir un budget précis avant de s\'engager ?', 'a' => 'Oui, le devis détaille le volume d\'heures estimé et le budget mensuel correspondant, avant toute décision de votre part.' ),
 	array( 'q' => 'Le budget peut-il changer en cours de contrat ?', 'a' => "Oui, si votre besoin évolue (surface, fréquence, effectif), le volume d'heures et donc le budget sont ajustés avec votre interlocutrice." ),
 );
@@ -160,7 +160,7 @@ update_post_meta( $cahier_id, '_tfp_seo_title', 'Rédiger un cahier des charges 
 $cahier_faqs = array(
 	array( 'q' => 'Qui rédige le cahier des charges ?', 'a' => 'Il est rédigé conjointement, à partir de votre description des locaux et de vos attentes, formalisé par votre interlocutrice avant la première intervention.' ),
 	array( 'q' => 'Peut-on le modifier après le début de la prestation ?', 'a' => 'Oui, à tout moment, en lien avec votre interlocutrice, notamment si vos locaux ou votre organisation évoluent.' ),
-	array( 'q' => 'Le cahier des charges a-t-il un impact sur le tarif ?', 'a' => "Il permet surtout d'estimer précisément le volume d'heures nécessaire ; le tarif horaire (24,30 à 30,00 € HT/h selon le type de local et le régime, voir la page Tarifs) reste, lui, inchangé." ),
+	array( 'q' => 'Le cahier des charges a-t-il un impact sur le tarif ?', 'a' => "Il permet surtout d'estimer précisément le volume d'heures nécessaire ; le tarif horaire (27,00 € HT/h, tarif unique — voir la page Tarifs) reste, lui, inchangé." ),
 );
 foreach ( $cahier_faqs as $i => $item ) {
 	update_post_meta( $cahier_id, '_tfp_faq_' . ( $i + 1 ) . '_q', $item['q'] );

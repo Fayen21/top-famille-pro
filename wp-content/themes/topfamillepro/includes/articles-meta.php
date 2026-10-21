@@ -160,13 +160,69 @@ function tfp_get_article_related_prestations( $article_id ) {
  * @return WP_Post[]
  */
 function tfp_get_prestation_related_articles( $prestation_id ) {
+	/*
+	 * La maquette liste les **trois** articles sous « À lire aussi » sur chacune des six pages
+	 * prestation, dans le même ordre : fréquence, coût, cahier des charges. Le filtre par
+	 * `_tfp_related_prestation` n'en rendait qu'un sous-ensemble, variable d'une prestation à
+	 * l'autre — deux renvois ici, un seul là — alors que le prototype en montre trois partout.
+	 *
+	 * L'ordre est celui de publication (le plus ancien d'abord), qui est aussi celui de la maquette.
+	 */
+	unset( $prestation_id );
+
 	return get_posts(
 		array(
-			'post_type'      => 'post',
-			'category_name'  => 'conseils',
-			'numberposts'    => -1,
-			'meta_key'       => '_tfp_related_prestation',
-			'meta_value'     => (int) $prestation_id,
+			'post_type'     => 'post',
+			'category_name' => 'conseils',
+			'numberposts'   => 3,
+			'orderby'       => 'date',
+			'order'         => 'ASC',
 		)
 	);
+}
+
+/**
+ * Visuel d'illustration d'un article, par ordre de préférence : image mise en avant WordPress,
+ * puis le visuel du pipeline correspondant à son rang de publication (article-1/2/3, mêmes
+ * fichiers que la maquette). Aucun visuel ne prétend montrer un lieu ou une personne réels.
+ *
+ * @param int $post_id
+ * @return string Slug du manifeste d'images.
+ */
+function tfp_article_image_slug( $post_id ) {
+	$map = array(
+		'frequence-bureaux'            => 'article-1',
+		'cout-nettoyage-bureaux'       => 'article-2',
+		'cahier-des-charges-nettoyage' => 'article-3',
+	);
+	$slug = get_post_field( 'post_name', $post_id );
+	return $map[ $slug ] ?? 'article-1';
+}
+
+/**
+ * URL absolue du visuel d'un article, pour la propriété `image` du schéma `Article`.
+ *
+ * Le manifeste du pipeline d'images porte, pour chaque emplacement, les variantes générées et
+ * leurs largeurs. On déclare la plus grande variante JPEG : c'est le format que tous les
+ * consommateurs de données structurées savent lire, contrairement à l'AVIF.
+ *
+ * Le repli reste le logo, mais il ne devrait jamais servir : les trois articles ont leur visuel.
+ *
+ * @param int $post_id
+ * @return string
+ */
+function tfp_article_schema_image( $post_id ) {
+	$site      = tfp_site_data();
+	$manifeste = function_exists( 'tfp_image_manifest' ) ? tfp_image_manifest() : array();
+	$slug      = tfp_article_image_slug( $post_id );
+
+	if ( ! empty( $manifeste[ $slug ]['variants']['jpg'] ) ) {
+		$variantes = $manifeste[ $slug ]['variants']['jpg'];
+		$plus      = end( $variantes );
+		if ( ! empty( $plus['file'] ) ) {
+			return TFP_THEME_URI . '/assets/dist/images/' . $plus['file'];
+		}
+	}
+
+	return trailingslashit( $site['origin'] ) . ltrim( $site['logo_path'], '/' );
 }

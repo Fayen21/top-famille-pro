@@ -41,6 +41,37 @@
   border-bottom: 1px solid var(--color-turquoise-light);
 }
 
+/* Bande GLACIER — #EDF5F6. La maquette n'y pose qu'une bande, celle de la citation d'Audrey sur
+   /a-propos/, mais elle porte à elle seule la mise en valeur de la seule parole attribuée du site :
+   sans fond, la citation se confondait avec la page (G26 §4). */
+.tfp-section--glacier {
+  background: var(--color-bg-glacier);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* Le prototype ne se sert de cette bande que pour mettre en avant une parole : le texte y est
+   composé en titrage — 25 px de Bricolage Grotesque en graisse 500, interligne 1,55 — et non en
+   texte courant, et l'attribution qui le suit en 17 px gras. Rendue en `tfp-prose`, la citation
+   d'Audrey tenait sur deux lignes de 17 px : la bande perdait 60 px de haut et la seule parole
+   attribuée du site n'était plus mise en avant du tout. Les valeurs sont celles relevées. */
+.tfp-section--glacier .tfp-prose {
+  font-family: var(--font-heading);
+  font-size: 25px;
+  line-height: 1.55;
+  font-weight: var(--fw-medium);
+  color: var(--color-text);
+  max-width: none;
+}
+
+.tfp-section--glacier .tfp-static-note {
+  margin-top: 16px;
+  font-family: var(--font-heading);
+  font-size: 17px;
+  font-weight: var(--fw-bold);
+  color: var(--color-text);
+}
+
 .tfp-section--primary {
   background: var(--color-primary);
   color: var(--color-white);
@@ -66,6 +97,16 @@
 
 .tfp-grid--autofit-lg {
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+}
+
+/* Grille à repli intrinsèque dont la base de colonne est DÉCLARÉE, instance par instance.
+
+   Les trois tailles nommées ci-dessus couvrent les cas courants, mais le prototype ne s'y tient
+   pas : il déclare une base par bande — 220, 250, 260, 280, 340 px selon le contenu. Quand la
+   valeur relevée n'est aucune des trois, c'est celle-ci qu'on pose, en variable, plutôt que
+   d'arrondir à la taille nommée la plus proche ou d'inventer une quatrième taille générique. */
+.tfp-grid--autofit {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--tfp-colonne, 260px)), 1fr));
 }
 
 .tfp-grid--divided {
@@ -111,4 +152,36 @@
   .tfp-container {
     padding-inline: 14px;
   }
+}
+
+/* ------------------------------------------------------------------
+   Largeur du hero, relevée route par route sur la maquette.
+
+   Le prototype a deux familles de hero. Celles dont le hero tient sur
+   deux colonnes (accueil, prestation, ville, page pilier, à-propos,
+   devis) posent leur texte dans une colonne d'environ 610 px, gérée par
+   la mise en page de ces gabarits. Les autres centrent un bloc étroit :
+   900 px pour la plupart, 820 px pour l'index des prestations et les
+   pages légales, 1260 px pour le plan du site.
+
+   Le thème les rendait toutes à 1260 px. Deux conséquences : des lignes
+   de texte trop longues pour un confort de lecture, et des pages
+   mécaniquement plus courtes que la maquette — c'est une part de l'écart
+   relevé sur /zones-intervention/, /conseils/, /avis-clients/ et
+   /pourquoi-nous/.
+
+   `:has()` évite de toucher aux gabarits pour poser une classe ; un
+   navigateur qui ne le connaît pas garde simplement la largeur générale.
+   ------------------------------------------------------------------ */
+
+body.tfp-hero-w-900 .tfp-container:has(> h1) {
+  max-width: 900px;
+}
+
+body.tfp-hero-w-820 .tfp-container:has(> h1) {
+  max-width: 820px;
+}
+
+body.tfp-hero-w-1260 .tfp-container:has(> h1) {
+  max-width: 1260px;
 }

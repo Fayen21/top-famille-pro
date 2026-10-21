@@ -27,7 +27,7 @@ get_header();
 	<p style="margin-top:14px;font-size:17px;color:var(--color-text-secondary)">
 		Cette page n'existe pas, plus, ou l'adresse comporte une erreur. Vous pouvez repartir de l'accueil ou de l'une de ces pages :
 	</p>
-	<div class="tfp-flex" style="justify-content:center;margin-top:28px">
+	<div class="tfp-action-row" style="justify-content:center;margin-top:28px">
 		<?php
 		tfp_button(
 			array(

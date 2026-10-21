@@ -1,8 +1,14 @@
 <?php
 /**
  * 2. Bandeau tarifaire + réassurance.
- * Aucune fausse note Google ici (docs/DONNEES-FICTIVES.md) : la grille de réassurance
- * n'affiche que des faits confirmés (PROJECT_INPUTS.md).
+ *
+ * Décision du 14 octobre 2026 : le bouton « Voir les tarifs » appartient au MÊME groupe visuel que le
+ * prix — juste à côté de la pastille marine, jamais isolé sur une seconde ligne à l'extrémité droite
+ * d'un bandeau vide. Le bandeau est le composant PARTAGÉ tfp_bande_tarif() : l'accueil et les
+ * pages statiques relevées sur la maquette composent le même.
+ *
+ * Aucune fausse note Google ici (docs/DONNEES-FICTIVES.md) : la grille de réassurance n'affiche
+ * que des faits confirmés (PROJECT_INPUTS.md).
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -11,17 +17,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 $site = tfp_site_data();
 ?>
-<section class="tfp-container tfp-section--tight">
-	<div class="tfp-price-band">
-		<span class="tfp-price-band__value">
-			<strong>à partir de <?php echo esc_html( $site['price_entry_display'] ); ?> HT/h</strong>
-			<span>tarif indiqué avant le devis</span>
-		</span>
-		<?php tfp_check_item( 'Devis gratuit sous 24 h' ); ?>
-		<?php tfp_check_item( 'Intervention régulière ou ponctuelle' ); ?>
-		<?php tfp_check_item( "Conditions d'arrêt précisées au devis" ); ?>
-		<a href="<?php echo esc_url( home_url( '/tarifs/' ) ); ?>" class="tfp-btn tfp-btn--secondary tfp-btn--sm" style="margin-left:auto">Voir les tarifs →</a>
-	</div>
+<section class="tfp-container tfp-price-band-section">
+	<?php tfp_bande_tarif(); ?>
 </section>
 
 <section class="tfp-container tfp-section--tight">

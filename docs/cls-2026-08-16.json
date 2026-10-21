@@ -1,0 +1,4871 @@
+{
+ "#/": {
+  "320": {
+   "cls": 0,
+   "entrees": 1,
+   "sources": []
+  },
+  "375": {
+   "cls": 0,
+   "entrees": 1,
+   "sources": []
+  },
+  "768": {
+   "cls": 0.0001,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@262,4",
+     "apres": "169×22@250,4",
+     "contribution": 0.00012476630819187244
+    }
+   ]
+  },
+  "1024": {
+   "cls": 0.0008,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@271,4",
+     "apres": "169×22@259,4",
+     "contribution": 0.0008274918794631957
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "306×47@678,61",
+     "apres": "271×47@713,61",
+     "contribution": 0.0008274918794631957
+    },
+    {
+     "noeud": "main > section.tfp-container > div.tfp-price-band > a.tfp-btn",
+     "avant": "169×24@798,876",
+     "apres": "146×24@821,876",
+     "contribution": 0.0008274918794631957
+    }
+   ]
+  },
+  "1440": {
+   "cls": 0.0255,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@361,4",
+     "apres": "169×22@349,4",
+     "contribution": 0.02551604636863426
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > a.tfp-logo",
+     "avant": "155×82@130,64",
+     "apres": "155×82@130,44",
+     "contribution": 0.02551604636863426
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > nav.tfp-nav",
+     "avant": "697×69@309,70",
+     "apres": "702×68@309,51",
+     "contribution": 0.02551604636863426
+    }
+   ]
+  },
+  "1920": {
+   "cls": 0.0187,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@601,4",
+     "apres": "169×22@589,4",
+     "contribution": 0.018703958808051216
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > a.tfp-logo",
+     "avant": "155×82@370,64",
+     "apres": "155×82@370,44",
+     "contribution": 0.018703958808051216
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > nav.tfp-nav",
+     "avant": "697×69@549,70",
+     "apres": "702×68@549,51",
+     "contribution": 0.018703958808051216
+    }
+   ]
+  }
+ },
+ "#/nettoyage-professionnel": {
+  "320": {
+   "cls": 0,
+   "entrees": 1,
+   "sources": []
+  },
+  "375": {
+   "cls": 0,
+   "entrees": 1,
+   "sources": []
+  },
+  "768": {
+   "cls": 0.0001,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@262,4",
+     "apres": "169×22@250,4",
+     "contribution": 0.00012476630819187244
+    }
+   ]
+  },
+  "1024": {
+   "cls": 0.0008,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@271,4",
+     "apres": "169×22@259,4",
+     "contribution": 0.0007660549879074096
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "306×47@678,61",
+     "apres": "271×47@713,61",
+     "contribution": 0.0007660549879074096
+    },
+    {
+     "noeud": "li > div.tfp-card-tile > div.tfp-card-tile__body > p.tfp-card-tile__desc",
+     "avant": "119×17@186,788",
+     "apres": "119×17@165,788",
+     "contribution": 0.0007660549879074096
+    }
+   ]
+  },
+  "1440": {
+   "cls": 0.0268,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@361,4",
+     "apres": "169×22@349,4",
+     "contribution": 0.02680392252604167
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > a.tfp-logo",
+     "avant": "155×82@130,64",
+     "apres": "155×82@130,44",
+     "contribution": 0.02680392252604167
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > nav.tfp-nav",
+     "avant": "697×69@309,70",
+     "apres": "702×68@309,51",
+     "contribution": 0.02680392252604167
+    }
+   ]
+  },
+  "1920": {
+   "cls": 0.0196,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@601,4",
+     "apres": "169×22@589,4",
+     "contribution": 0.019648007202148435
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > a.tfp-logo",
+     "avant": "155×82@370,64",
+     "apres": "155×82@370,44",
+     "contribution": 0.019648007202148435
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > nav.tfp-nav",
+     "avant": "697×69@549,70",
+     "apres": "702×68@549,51",
+     "contribution": 0.019648007202148435
+    }
+   ]
+  }
+ },
+ "#/nos-prestations": {
+  "320": {
+   "cls": 0,
+   "entrees": 1,
+   "sources": []
+  },
+  "375": {
+   "cls": 0,
+   "entrees": 1,
+   "sources": []
+  },
+  "768": {
+   "cls": 0.0001,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@262,4",
+     "apres": "169×22@250,4",
+     "contribution": 0.00012476630819187244
+    }
+   ]
+  },
+  "1024": {
+   "cls": 0.0007,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@271,4",
+     "apres": "169×22@259,4",
+     "contribution": 0.0006788116693496705
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "306×47@678,61",
+     "apres": "271×47@713,61",
+     "contribution": 0.0006788116693496705
+    }
+   ]
+  },
+  "1440": {
+   "cls": 0.0262,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@361,4",
+     "apres": "169×22@349,4",
+     "contribution": 0.026159984447337966
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > a.tfp-logo",
+     "avant": "155×82@130,64",
+     "apres": "155×82@130,44",
+     "contribution": 0.026159984447337966
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > nav.tfp-nav",
+     "avant": "697×69@309,70",
+     "apres": "702×68@309,51",
+     "contribution": 0.026159984447337966
+    }
+   ]
+  },
+  "1920": {
+   "cls": 0.0306,
+   "entrees": 2,
+   "sources": [
+    {
+     "noeud": "?",
+     "avant": "0×0@0,0",
+     "apres": "243×32@988,868",
+     "contribution": 0.03018708311952191
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > a.tfp-logo",
+     "avant": "155×82@370,64",
+     "apres": "155×82@370,44",
+     "contribution": 0.03018708311952191
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > nav.tfp-nav",
+     "avant": "697×69@549,70",
+     "apres": "717×68@549,51",
+     "contribution": 0.03018708311952191
+    },
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "84×68@1092,51",
+     "apres": "85×68@1081,51",
+     "contribution": 0.00043706780892831314
+    }
+   ]
+  }
+ },
+ "#/service/bureaux": {
+  "320": {
+   "cls": 0,
+   "entrees": 1,
+   "sources": []
+  },
+  "375": {
+   "cls": 0,
+   "entrees": 1,
+   "sources": []
+  },
+  "768": {
+   "cls": 0.0001,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@262,4",
+     "apres": "169×22@250,4",
+     "contribution": 0.00012476630819187244
+    }
+   ]
+  },
+  "1024": {
+   "cls": 0.0007,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@271,4",
+     "apres": "169×22@259,4",
+     "contribution": 0.0006788116693496705
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "306×47@678,61",
+     "apres": "271×47@713,61",
+     "contribution": 0.0006788116693496705
+    }
+   ]
+  },
+  "1440": {
+   "cls": 0.0262,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@361,4",
+     "apres": "169×22@349,4",
+     "contribution": 0.026159984447337966
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > a.tfp-logo",
+     "avant": "155×82@130,64",
+     "apres": "155×82@130,44",
+     "contribution": 0.026159984447337966
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > nav.tfp-nav",
+     "avant": "697×69@309,70",
+     "apres": "702×68@309,51",
+     "contribution": 0.026159984447337966
+    }
+   ]
+  },
+  "1920": {
+   "cls": 0.0192,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@601,4",
+     "apres": "169×22@589,4",
+     "contribution": 0.019175983005099827
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > a.tfp-logo",
+     "avant": "155×82@370,64",
+     "apres": "155×82@370,44",
+     "contribution": 0.019175983005099827
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > nav.tfp-nav",
+     "avant": "697×69@549,70",
+     "apres": "702×68@549,51",
+     "contribution": 0.019175983005099827
+    }
+   ]
+  }
+ },
+ "#/service/commerces": {
+  "320": {
+   "cls": 0,
+   "entrees": 1,
+   "sources": []
+  },
+  "375": {
+   "cls": 0,
+   "entrees": 1,
+   "sources": []
+  },
+  "768": {
+   "cls": 0.0001,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@262,4",
+     "apres": "169×22@250,4",
+     "contribution": 0.00012476630819187244
+    }
+   ]
+  },
+  "1024": {
+   "cls": 0.0007,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@271,4",
+     "apres": "169×22@259,4",
+     "contribution": 0.0006788116693496705
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "306×47@678,61",
+     "apres": "271×47@713,61",
+     "contribution": 0.0006788116693496705
+    }
+   ]
+  },
+  "1440": {
+   "cls": 0.0262,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@361,4",
+     "apres": "169×22@349,4",
+     "contribution": 0.026159984447337966
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > a.tfp-logo",
+     "avant": "155×82@130,64",
+     "apres": "155×82@130,44",
+     "contribution": 0.026159984447337966
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > nav.tfp-nav",
+     "avant": "697×69@309,70",
+     "apres": "702×68@309,51",
+     "contribution": 0.026159984447337966
+    }
+   ]
+  },
+  "1920": {
+   "cls": 0.0192,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@601,4",
+     "apres": "169×22@589,4",
+     "contribution": 0.019175983005099827
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > a.tfp-logo",
+     "avant": "155×82@370,64",
+     "apres": "155×82@370,44",
+     "contribution": 0.019175983005099827
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > nav.tfp-nav",
+     "avant": "697×69@549,70",
+     "apres": "702×68@549,51",
+     "contribution": 0.019175983005099827
+    }
+   ]
+  }
+ },
+ "#/service/cabinets": {
+  "320": {
+   "cls": 0,
+   "entrees": 1,
+   "sources": []
+  },
+  "375": {
+   "cls": 0,
+   "entrees": 1,
+   "sources": []
+  },
+  "768": {
+   "cls": 0.0001,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@262,4",
+     "apres": "169×22@250,4",
+     "contribution": 0.00012476630819187244
+    }
+   ]
+  },
+  "1024": {
+   "cls": 0.0007,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@271,4",
+     "apres": "169×22@259,4",
+     "contribution": 0.0006788116693496705
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "306×47@678,61",
+     "apres": "271×47@713,61",
+     "contribution": 0.0006788116693496705
+    }
+   ]
+  },
+  "1440": {
+   "cls": 0.0262,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@361,4",
+     "apres": "169×22@349,4",
+     "contribution": 0.026159984447337966
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > a.tfp-logo",
+     "avant": "155×82@130,64",
+     "apres": "155×82@130,44",
+     "contribution": 0.026159984447337966
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > nav.tfp-nav",
+     "avant": "697×69@309,70",
+     "apres": "702×68@309,51",
+     "contribution": 0.026159984447337966
+    }
+   ]
+  },
+  "1920": {
+   "cls": 0.0192,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@601,4",
+     "apres": "169×22@589,4",
+     "contribution": 0.019175983005099827
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > a.tfp-logo",
+     "avant": "155×82@370,64",
+     "apres": "155×82@370,44",
+     "contribution": 0.019175983005099827
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > nav.tfp-nav",
+     "avant": "697×69@549,70",
+     "apres": "702×68@549,51",
+     "contribution": 0.019175983005099827
+    }
+   ]
+  }
+ },
+ "#/service/coproprietes": {
+  "320": {
+   "cls": 0,
+   "entrees": 1,
+   "sources": []
+  },
+  "375": {
+   "cls": 0,
+   "entrees": 1,
+   "sources": []
+  },
+  "768": {
+   "cls": 0.0001,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@262,4",
+     "apres": "169×22@250,4",
+     "contribution": 0.00012476630819187244
+    }
+   ]
+  },
+  "1024": {
+   "cls": 0.0007,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@271,4",
+     "apres": "169×22@259,4",
+     "contribution": 0.0006788116693496705
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "306×47@678,61",
+     "apres": "271×47@713,61",
+     "contribution": 0.0006788116693496705
+    }
+   ]
+  },
+  "1440": {
+   "cls": 0.0262,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@361,4",
+     "apres": "169×22@349,4",
+     "contribution": 0.026159984447337966
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > a.tfp-logo",
+     "avant": "155×82@130,64",
+     "apres": "155×82@130,44",
+     "contribution": 0.026159984447337966
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > nav.tfp-nav",
+     "avant": "697×69@309,70",
+     "apres": "702×68@309,51",
+     "contribution": 0.026159984447337966
+    }
+   ]
+  },
+  "1920": {
+   "cls": 0.0192,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@601,4",
+     "apres": "169×22@589,4",
+     "contribution": 0.019175983005099827
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > a.tfp-logo",
+     "avant": "155×82@370,64",
+     "apres": "155×82@370,44",
+     "contribution": 0.019175983005099827
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > nav.tfp-nav",
+     "avant": "697×69@549,70",
+     "apres": "702×68@549,51",
+     "contribution": 0.019175983005099827
+    }
+   ]
+  }
+ },
+ "#/service/meubles": {
+  "320": {
+   "cls": 0,
+   "entrees": 1,
+   "sources": []
+  },
+  "375": {
+   "cls": 0,
+   "entrees": 1,
+   "sources": []
+  },
+  "768": {
+   "cls": 0.0001,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@262,4",
+     "apres": "169×22@250,4",
+     "contribution": 0.00012476630819187244
+    }
+   ]
+  },
+  "1024": {
+   "cls": 0.0007,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@271,4",
+     "apres": "169×22@259,4",
+     "contribution": 0.0006788116693496705
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "306×47@678,61",
+     "apres": "271×47@713,61",
+     "contribution": 0.0006788116693496705
+    }
+   ]
+  },
+  "1440": {
+   "cls": 0.0262,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@361,4",
+     "apres": "169×22@349,4",
+     "contribution": 0.026159984447337966
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > a.tfp-logo",
+     "avant": "155×82@130,64",
+     "apres": "155×82@130,44",
+     "contribution": 0.026159984447337966
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > nav.tfp-nav",
+     "avant": "697×69@309,70",
+     "apres": "702×68@309,51",
+     "contribution": 0.026159984447337966
+    }
+   ]
+  },
+  "1920": {
+   "cls": 0.0192,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@601,4",
+     "apres": "169×22@589,4",
+     "contribution": 0.019175983005099827
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > a.tfp-logo",
+     "avant": "155×82@370,64",
+     "apres": "155×82@370,44",
+     "contribution": 0.019175983005099827
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > nav.tfp-nav",
+     "avant": "697×69@549,70",
+     "apres": "702×68@549,51",
+     "contribution": 0.019175983005099827
+    }
+   ]
+  }
+ },
+ "#/service/ponctuel": {
+  "320": {
+   "cls": 0,
+   "entrees": 1,
+   "sources": []
+  },
+  "375": {
+   "cls": 0,
+   "entrees": 1,
+   "sources": []
+  },
+  "768": {
+   "cls": 0.0001,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@262,4",
+     "apres": "169×22@250,4",
+     "contribution": 0.00012476630819187244
+    }
+   ]
+  },
+  "1024": {
+   "cls": 0.0007,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@271,4",
+     "apres": "169×22@259,4",
+     "contribution": 0.0006788116693496705
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "306×47@678,61",
+     "apres": "271×47@713,61",
+     "contribution": 0.0006788116693496705
+    }
+   ]
+  },
+  "1440": {
+   "cls": 0.0262,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@361,4",
+     "apres": "169×22@349,4",
+     "contribution": 0.026159984447337966
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > a.tfp-logo",
+     "avant": "155×82@130,64",
+     "apres": "155×82@130,44",
+     "contribution": 0.026159984447337966
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > nav.tfp-nav",
+     "avant": "697×69@309,70",
+     "apres": "702×68@309,51",
+     "contribution": 0.026159984447337966
+    }
+   ]
+  },
+  "1920": {
+   "cls": 0.0192,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@601,4",
+     "apres": "169×22@589,4",
+     "contribution": 0.019175983005099827
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > a.tfp-logo",
+     "avant": "155×82@370,64",
+     "apres": "155×82@370,44",
+     "contribution": 0.019175983005099827
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > nav.tfp-nav",
+     "avant": "697×69@549,70",
+     "apres": "702×68@549,51",
+     "contribution": 0.019175983005099827
+    }
+   ]
+  }
+ },
+ "#/nos-tarifs": {
+  "320": {
+   "cls": 0,
+   "entrees": 1,
+   "sources": []
+  },
+  "375": {
+   "cls": 0,
+   "entrees": 1,
+   "sources": []
+  },
+  "768": {
+   "cls": 0.0001,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@262,4",
+     "apres": "169×22@250,4",
+     "contribution": 0.00012476630819187244
+    }
+   ]
+  },
+  "1024": {
+   "cls": 0.0825,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "body.wp-singular > div > main > section.tfp-section--alt",
+     "avant": "1024×84@0,816",
+     "apres": "1024×168@0,732",
+     "contribution": 0.08253023400902748
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "306×47@678,61",
+     "apres": "271×47@713,61",
+     "contribution": 0.08253023400902748
+    },
+    {
+     "noeud": "section.tfp-section--tight > div.tfp-container > div.tfp-price-headline__offer > a.tfp-btn",
+     "avant": "257×60@81,664",
+     "apres": "217×60@381,545",
+     "contribution": 0.08253023400902748
+    }
+   ]
+  },
+  "1440": {
+   "cls": 0.0273,
+   "entrees": 2,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@361,4",
+     "apres": "169×22@349,4",
+     "contribution": 0.02682060607156636
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > a.tfp-logo",
+     "avant": "155×82@130,64",
+     "apres": "155×82@130,44",
+     "contribution": 0.02682060607156636
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > nav.tfp-nav",
+     "avant": "697×69@309,70",
+     "apres": "717×68@309,51",
+     "contribution": 0.02682060607156636
+    },
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "84×68@852,51",
+     "apres": "85×68@841,51",
+     "contribution": 0.00047119070296424895
+    }
+   ]
+  },
+  "1920": {
+   "cls": 0.0192,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@601,4",
+     "apres": "169×22@589,4",
+     "contribution": 0.019175983005099827
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > a.tfp-logo",
+     "avant": "155×82@370,64",
+     "apres": "155×82@370,44",
+     "contribution": 0.019175983005099827
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > nav.tfp-nav",
+     "avant": "697×69@549,70",
+     "apres": "702×68@549,51",
+     "contribution": 0.019175983005099827
+    }
+   ]
+  }
+ },
+ "#/zones-intervention": {
+  "320": {
+   "cls": 0.0003,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating > span",
+     "avant": "64×21@130,29",
+     "apres": "63×21@124,29",
+     "contribution": 0.00031029670621141975
+    },
+    {
+     "noeud": "li > div.tfp-card-tile > div.tfp-card-tile__body > p.tfp-card-tile__desc",
+     "avant": "119×17@160,869",
+     "apres": "119×17@139,869",
+     "contribution": 0.00031029670621141975
+    }
+   ]
+  },
+  "375": {
+   "cls": 0.0003,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating > span",
+     "avant": "64×21@130,29",
+     "apres": "63×21@124,29",
+     "contribution": 0.00026478652263374486
+    },
+    {
+     "noeud": "li > div.tfp-card-tile > div.tfp-card-tile__body > p.tfp-card-tile__desc",
+     "avant": "119×17@164,842",
+     "apres": "119×17@143,842",
+     "contribution": 0.00026478652263374486
+    }
+   ]
+  },
+  "768": {
+   "cls": 0.0002,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@262,4",
+     "apres": "169×22@250,4",
+     "contribution": 0.00021881962528935188
+    },
+    {
+     "noeud": "li > div.tfp-card-tile > div.tfp-card-tile__body > p.tfp-card-tile__desc",
+     "avant": "119×17@177,588",
+     "apres": "119×17@156,588",
+     "contribution": 0.00021881962528935188
+    }
+   ]
+  },
+  "1024": {
+   "cls": 0.0008,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@271,4",
+     "apres": "169×22@259,4",
+     "contribution": 0.0007660549879074096
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "306×47@678,61",
+     "apres": "271×47@713,61",
+     "contribution": 0.0007660549879074096
+    },
+    {
+     "noeud": "li > div.tfp-card-tile > div.tfp-card-tile__body > p.tfp-card-tile__desc",
+     "avant": "119×17@186,619",
+     "apres": "119×17@165,619",
+     "contribution": 0.0007660549879074096
+    }
+   ]
+  },
+  "1440": {
+   "cls": 0.0268,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@361,4",
+     "apres": "169×22@349,4",
+     "contribution": 0.02680392252604167
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > a.tfp-logo",
+     "avant": "155×82@130,64",
+     "apres": "155×82@130,44",
+     "contribution": 0.02680392252604167
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > nav.tfp-nav",
+     "avant": "697×69@309,70",
+     "apres": "702×68@309,51",
+     "contribution": 0.02680392252604167
+    }
+   ]
+  },
+  "1920": {
+   "cls": 0.0196,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@601,4",
+     "apres": "169×22@589,4",
+     "contribution": 0.019648007202148435
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > a.tfp-logo",
+     "avant": "155×82@370,64",
+     "apres": "155×82@370,44",
+     "contribution": 0.019648007202148435
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > nav.tfp-nav",
+     "avant": "697×69@549,70",
+     "apres": "702×68@549,51",
+     "contribution": 0.019648007202148435
+    }
+   ]
+  }
+ },
+ "#/bourgogne-franche-comte": {
+  "320": {
+   "cls": 0,
+   "entrees": 1,
+   "sources": []
+  },
+  "375": {
+   "cls": 0,
+   "entrees": 1,
+   "sources": []
+  },
+  "768": {
+   "cls": 0.0001,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@262,4",
+     "apres": "169×22@250,4",
+     "contribution": 0.00012476630819187244
+    }
+   ]
+  },
+  "1024": {
+   "cls": 0.0008,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@271,4",
+     "apres": "169×22@259,4",
+     "contribution": 0.0007660549879074096
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "306×47@678,61",
+     "apres": "271×47@713,61",
+     "contribution": 0.0007660549879074096
+    },
+    {
+     "noeud": "li > div.tfp-card-tile > div.tfp-card-tile__body > p.tfp-card-tile__desc",
+     "avant": "119×17@186,634",
+     "apres": "119×17@165,634",
+     "contribution": 0.0007660549879074096
+    }
+   ]
+  },
+  "1440": {
+   "cls": 0.0268,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@361,4",
+     "apres": "169×22@349,4",
+     "contribution": 0.02680392252604167
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > a.tfp-logo",
+     "avant": "155×82@130,64",
+     "apres": "155×82@130,44",
+     "contribution": 0.02680392252604167
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > nav.tfp-nav",
+     "avant": "697×69@309,70",
+     "apres": "702×68@309,51",
+     "contribution": 0.02680392252604167
+    }
+   ]
+  },
+  "1920": {
+   "cls": 0.0196,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@601,4",
+     "apres": "169×22@589,4",
+     "contribution": 0.019648007202148435
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > a.tfp-logo",
+     "avant": "155×82@370,64",
+     "apres": "155×82@370,44",
+     "contribution": 0.019648007202148435
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > nav.tfp-nav",
+     "avant": "697×69@549,70",
+     "apres": "702×68@549,51",
+     "contribution": 0.019648007202148435
+    }
+   ]
+  }
+ },
+ "#/departement/cote-dor": {
+  "320": {
+   "cls": 0,
+   "entrees": 1,
+   "sources": []
+  },
+  "375": {
+   "cls": 0,
+   "entrees": 1,
+   "sources": []
+  },
+  "768": {
+   "cls": 0.0001,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@262,4",
+     "apres": "169×22@250,4",
+     "contribution": 0.00012476630819187244
+    }
+   ]
+  },
+  "1024": {
+   "cls": 0.0007,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@271,4",
+     "apres": "169×22@259,4",
+     "contribution": 0.0006788116693496705
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "306×47@678,61",
+     "apres": "271×47@713,61",
+     "contribution": 0.0006788116693496705
+    }
+   ]
+  },
+  "1440": {
+   "cls": 0.0255,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@361,4",
+     "apres": "169×22@349,4",
+     "contribution": 0.02551604636863426
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > a.tfp-logo",
+     "avant": "155×82@130,64",
+     "apres": "155×82@130,44",
+     "contribution": 0.02551604636863426
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > nav.tfp-nav",
+     "avant": "697×69@309,70",
+     "apres": "702×68@309,51",
+     "contribution": 0.02551604636863426
+    }
+   ]
+  },
+  "1920": {
+   "cls": 0.0187,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@601,4",
+     "apres": "169×22@589,4",
+     "contribution": 0.018703958808051216
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > a.tfp-logo",
+     "avant": "155×82@370,64",
+     "apres": "155×82@370,44",
+     "contribution": 0.018703958808051216
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > nav.tfp-nav",
+     "avant": "697×69@549,70",
+     "apres": "702×68@549,51",
+     "contribution": 0.018703958808051216
+    }
+   ]
+  }
+ },
+ "#/departement/doubs": {
+  "320": {
+   "cls": 0,
+   "entrees": 1,
+   "sources": []
+  },
+  "375": {
+   "cls": 0,
+   "entrees": 1,
+   "sources": []
+  },
+  "768": {
+   "cls": 0.0001,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@262,4",
+     "apres": "169×22@250,4",
+     "contribution": 0.00012476630819187244
+    }
+   ]
+  },
+  "1024": {
+   "cls": 0.0007,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@271,4",
+     "apres": "169×22@259,4",
+     "contribution": 0.0006788116693496705
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "306×47@678,61",
+     "apres": "271×47@713,61",
+     "contribution": 0.0006788116693496705
+    }
+   ]
+  },
+  "1440": {
+   "cls": 0.0255,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@361,4",
+     "apres": "169×22@349,4",
+     "contribution": 0.02551604636863426
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > a.tfp-logo",
+     "avant": "155×82@130,64",
+     "apres": "155×82@130,44",
+     "contribution": 0.02551604636863426
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > nav.tfp-nav",
+     "avant": "697×69@309,70",
+     "apres": "702×68@309,51",
+     "contribution": 0.02551604636863426
+    }
+   ]
+  },
+  "1920": {
+   "cls": 0.0187,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@601,4",
+     "apres": "169×22@589,4",
+     "contribution": 0.018703958808051216
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > a.tfp-logo",
+     "avant": "155×82@370,64",
+     "apres": "155×82@370,44",
+     "contribution": 0.018703958808051216
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > nav.tfp-nav",
+     "avant": "697×69@549,70",
+     "apres": "702×68@549,51",
+     "contribution": 0.018703958808051216
+    }
+   ]
+  }
+ },
+ "#/departement/jura": {
+  "320": {
+   "cls": 0,
+   "entrees": 1,
+   "sources": []
+  },
+  "375": {
+   "cls": 0,
+   "entrees": 1,
+   "sources": []
+  },
+  "768": {
+   "cls": 0.0001,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@262,4",
+     "apres": "169×22@250,4",
+     "contribution": 0.00012476630819187244
+    }
+   ]
+  },
+  "1024": {
+   "cls": 0.0007,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@271,4",
+     "apres": "169×22@259,4",
+     "contribution": 0.0006788116693496705
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "306×47@678,61",
+     "apres": "271×47@713,61",
+     "contribution": 0.0006788116693496705
+    }
+   ]
+  },
+  "1440": {
+   "cls": 0.0255,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@361,4",
+     "apres": "169×22@349,4",
+     "contribution": 0.02551604636863426
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > a.tfp-logo",
+     "avant": "155×82@130,64",
+     "apres": "155×82@130,44",
+     "contribution": 0.02551604636863426
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > nav.tfp-nav",
+     "avant": "697×69@309,70",
+     "apres": "702×68@309,51",
+     "contribution": 0.02551604636863426
+    }
+   ]
+  },
+  "1920": {
+   "cls": 0.0187,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@601,4",
+     "apres": "169×22@589,4",
+     "contribution": 0.018703958808051216
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > a.tfp-logo",
+     "avant": "155×82@370,64",
+     "apres": "155×82@370,44",
+     "contribution": 0.018703958808051216
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > nav.tfp-nav",
+     "avant": "697×69@549,70",
+     "apres": "702×68@549,51",
+     "contribution": 0.018703958808051216
+    }
+   ]
+  }
+ },
+ "#/departement/nievre": {
+  "320": {
+   "cls": 0,
+   "entrees": 1,
+   "sources": []
+  },
+  "375": {
+   "cls": 0,
+   "entrees": 1,
+   "sources": []
+  },
+  "768": {
+   "cls": 0.0001,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@262,4",
+     "apres": "169×22@250,4",
+     "contribution": 0.00012476630819187244
+    }
+   ]
+  },
+  "1024": {
+   "cls": 0.0007,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@271,4",
+     "apres": "169×22@259,4",
+     "contribution": 0.0006788116693496705
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "306×47@678,61",
+     "apres": "271×47@713,61",
+     "contribution": 0.0006788116693496705
+    }
+   ]
+  },
+  "1440": {
+   "cls": 0.0255,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@361,4",
+     "apres": "169×22@349,4",
+     "contribution": 0.02551604636863426
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > a.tfp-logo",
+     "avant": "155×82@130,64",
+     "apres": "155×82@130,44",
+     "contribution": 0.02551604636863426
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > nav.tfp-nav",
+     "avant": "697×69@309,70",
+     "apres": "702×68@309,51",
+     "contribution": 0.02551604636863426
+    }
+   ]
+  },
+  "1920": {
+   "cls": 0.0187,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@601,4",
+     "apres": "169×22@589,4",
+     "contribution": 0.018703958808051216
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > a.tfp-logo",
+     "avant": "155×82@370,64",
+     "apres": "155×82@370,44",
+     "contribution": 0.018703958808051216
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > nav.tfp-nav",
+     "avant": "697×69@549,70",
+     "apres": "702×68@549,51",
+     "contribution": 0.018703958808051216
+    }
+   ]
+  }
+ },
+ "#/departement/haute-saone": {
+  "320": {
+   "cls": 0,
+   "entrees": 1,
+   "sources": []
+  },
+  "375": {
+   "cls": 0,
+   "entrees": 1,
+   "sources": []
+  },
+  "768": {
+   "cls": 0.0001,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@262,4",
+     "apres": "169×22@250,4",
+     "contribution": 0.00012476630819187244
+    }
+   ]
+  },
+  "1024": {
+   "cls": 0.0007,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@271,4",
+     "apres": "169×22@259,4",
+     "contribution": 0.0006788116693496705
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "306×47@678,61",
+     "apres": "271×47@713,61",
+     "contribution": 0.0006788116693496705
+    }
+   ]
+  },
+  "1440": {
+   "cls": 0.0255,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@361,4",
+     "apres": "169×22@349,4",
+     "contribution": 0.02551604636863426
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > a.tfp-logo",
+     "avant": "155×82@130,64",
+     "apres": "155×82@130,44",
+     "contribution": 0.02551604636863426
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > nav.tfp-nav",
+     "avant": "697×69@309,70",
+     "apres": "702×68@309,51",
+     "contribution": 0.02551604636863426
+    }
+   ]
+  },
+  "1920": {
+   "cls": 0.0187,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@601,4",
+     "apres": "169×22@589,4",
+     "contribution": 0.018703958808051216
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > a.tfp-logo",
+     "avant": "155×82@370,64",
+     "apres": "155×82@370,44",
+     "contribution": 0.018703958808051216
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > nav.tfp-nav",
+     "avant": "697×69@549,70",
+     "apres": "702×68@549,51",
+     "contribution": 0.018703958808051216
+    }
+   ]
+  }
+ },
+ "#/departement/saone-et-loire": {
+  "320": {
+   "cls": 0,
+   "entrees": 1,
+   "sources": []
+  },
+  "375": {
+   "cls": 0,
+   "entrees": 1,
+   "sources": []
+  },
+  "768": {
+   "cls": 0.0001,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@262,4",
+     "apres": "169×22@250,4",
+     "contribution": 0.00012476630819187244
+    }
+   ]
+  },
+  "1024": {
+   "cls": 0.0007,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@271,4",
+     "apres": "169×22@259,4",
+     "contribution": 0.0006788116693496705
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "306×47@678,61",
+     "apres": "271×47@713,61",
+     "contribution": 0.0006788116693496705
+    }
+   ]
+  },
+  "1440": {
+   "cls": 0.0255,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@361,4",
+     "apres": "169×22@349,4",
+     "contribution": 0.02551604636863426
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > a.tfp-logo",
+     "avant": "155×82@130,64",
+     "apres": "155×82@130,44",
+     "contribution": 0.02551604636863426
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > nav.tfp-nav",
+     "avant": "697×69@309,70",
+     "apres": "702×68@309,51",
+     "contribution": 0.02551604636863426
+    }
+   ]
+  },
+  "1920": {
+   "cls": 0.0187,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@601,4",
+     "apres": "169×22@589,4",
+     "contribution": 0.018703958808051216
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > a.tfp-logo",
+     "avant": "155×82@370,64",
+     "apres": "155×82@370,44",
+     "contribution": 0.018703958808051216
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > nav.tfp-nav",
+     "avant": "697×69@549,70",
+     "apres": "702×68@549,51",
+     "contribution": 0.018703958808051216
+    }
+   ]
+  }
+ },
+ "#/departement/yonne": {
+  "320": {
+   "cls": 0,
+   "entrees": 1,
+   "sources": []
+  },
+  "375": {
+   "cls": 0,
+   "entrees": 1,
+   "sources": []
+  },
+  "768": {
+   "cls": 0.0001,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@262,4",
+     "apres": "169×22@250,4",
+     "contribution": 0.00012476630819187244
+    }
+   ]
+  },
+  "1024": {
+   "cls": 0.0007,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@271,4",
+     "apres": "169×22@259,4",
+     "contribution": 0.0006788116693496705
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "306×47@678,61",
+     "apres": "271×47@713,61",
+     "contribution": 0.0006788116693496705
+    }
+   ]
+  },
+  "1440": {
+   "cls": 0.0255,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@361,4",
+     "apres": "169×22@349,4",
+     "contribution": 0.02551604636863426
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > a.tfp-logo",
+     "avant": "155×82@130,64",
+     "apres": "155×82@130,44",
+     "contribution": 0.02551604636863426
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > nav.tfp-nav",
+     "avant": "697×69@309,70",
+     "apres": "702×68@309,51",
+     "contribution": 0.02551604636863426
+    }
+   ]
+  },
+  "1920": {
+   "cls": 0.0187,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@601,4",
+     "apres": "169×22@589,4",
+     "contribution": 0.018703958808051216
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > a.tfp-logo",
+     "avant": "155×82@370,64",
+     "apres": "155×82@370,44",
+     "contribution": 0.018703958808051216
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > nav.tfp-nav",
+     "avant": "697×69@549,70",
+     "apres": "702×68@549,51",
+     "contribution": 0.018703958808051216
+    }
+   ]
+  }
+ },
+ "#/departement/territoire-de-belfort": {
+  "320": {
+   "cls": 0,
+   "entrees": 1,
+   "sources": []
+  },
+  "375": {
+   "cls": 0,
+   "entrees": 1,
+   "sources": []
+  },
+  "768": {
+   "cls": 0.0001,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@262,4",
+     "apres": "169×22@250,4",
+     "contribution": 0.00012476630819187244
+    }
+   ]
+  },
+  "1024": {
+   "cls": 0.0007,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@271,4",
+     "apres": "169×22@259,4",
+     "contribution": 0.0006788116693496705
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "306×47@678,61",
+     "apres": "271×47@713,61",
+     "contribution": 0.0006788116693496705
+    }
+   ]
+  },
+  "1440": {
+   "cls": 0.0255,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@361,4",
+     "apres": "169×22@349,4",
+     "contribution": 0.02551604636863426
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > a.tfp-logo",
+     "avant": "155×82@130,64",
+     "apres": "155×82@130,44",
+     "contribution": 0.02551604636863426
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > nav.tfp-nav",
+     "avant": "697×69@309,70",
+     "apres": "702×68@309,51",
+     "contribution": 0.02551604636863426
+    }
+   ]
+  },
+  "1920": {
+   "cls": 0.0187,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@601,4",
+     "apres": "169×22@589,4",
+     "contribution": 0.018703958808051216
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > a.tfp-logo",
+     "avant": "155×82@370,64",
+     "apres": "155×82@370,44",
+     "contribution": 0.018703958808051216
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > nav.tfp-nav",
+     "avant": "697×69@549,70",
+     "apres": "702×68@549,51",
+     "contribution": 0.018703958808051216
+    }
+   ]
+  }
+ },
+ "#/ville/dijon": {
+  "320": {
+   "cls": 0,
+   "entrees": 1,
+   "sources": []
+  },
+  "375": {
+   "cls": 0,
+   "entrees": 1,
+   "sources": []
+  },
+  "768": {
+   "cls": 0.0001,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@262,4",
+     "apres": "169×22@250,4",
+     "contribution": 0.00012476630819187244
+    }
+   ]
+  },
+  "1024": {
+   "cls": 0.0007,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@271,4",
+     "apres": "169×22@259,4",
+     "contribution": 0.0006788116693496705
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "306×47@678,61",
+     "apres": "271×47@713,61",
+     "contribution": 0.0006788116693496705
+    }
+   ]
+  },
+  "1440": {
+   "cls": 0.0255,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@361,4",
+     "apres": "169×22@349,4",
+     "contribution": 0.02551604636863426
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > a.tfp-logo",
+     "avant": "155×82@130,64",
+     "apres": "155×82@130,44",
+     "contribution": 0.02551604636863426
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > nav.tfp-nav",
+     "avant": "697×69@309,70",
+     "apres": "702×68@309,51",
+     "contribution": 0.02551604636863426
+    }
+   ]
+  },
+  "1920": {
+   "cls": 0.0187,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@601,4",
+     "apres": "169×22@589,4",
+     "contribution": 0.018703958808051216
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > a.tfp-logo",
+     "avant": "155×82@370,64",
+     "apres": "155×82@370,44",
+     "contribution": 0.018703958808051216
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > nav.tfp-nav",
+     "avant": "697×69@549,70",
+     "apres": "702×68@549,51",
+     "contribution": 0.018703958808051216
+    }
+   ]
+  }
+ },
+ "#/ville/besancon": {
+  "320": {
+   "cls": 0,
+   "entrees": 1,
+   "sources": []
+  },
+  "375": {
+   "cls": 0,
+   "entrees": 1,
+   "sources": []
+  },
+  "768": {
+   "cls": 0.0001,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@262,4",
+     "apres": "169×22@250,4",
+     "contribution": 0.00012476630819187244
+    }
+   ]
+  },
+  "1024": {
+   "cls": 0.0007,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@271,4",
+     "apres": "169×22@259,4",
+     "contribution": 0.0006788116693496705
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "306×47@678,61",
+     "apres": "271×47@713,61",
+     "contribution": 0.0006788116693496705
+    }
+   ]
+  },
+  "1440": {
+   "cls": 0.0255,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@361,4",
+     "apres": "169×22@349,4",
+     "contribution": 0.02551604636863426
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > a.tfp-logo",
+     "avant": "155×82@130,64",
+     "apres": "155×82@130,44",
+     "contribution": 0.02551604636863426
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > nav.tfp-nav",
+     "avant": "697×69@309,70",
+     "apres": "702×68@309,51",
+     "contribution": 0.02551604636863426
+    }
+   ]
+  },
+  "1920": {
+   "cls": 0.0187,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@601,4",
+     "apres": "169×22@589,4",
+     "contribution": 0.018703958808051216
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > a.tfp-logo",
+     "avant": "155×82@370,64",
+     "apres": "155×82@370,44",
+     "contribution": 0.018703958808051216
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > nav.tfp-nav",
+     "avant": "697×69@549,70",
+     "apres": "702×68@549,51",
+     "contribution": 0.018703958808051216
+    }
+   ]
+  }
+ },
+ "#/ville/dole": {
+  "320": {
+   "cls": 0,
+   "entrees": 1,
+   "sources": []
+  },
+  "375": {
+   "cls": 0,
+   "entrees": 1,
+   "sources": []
+  },
+  "768": {
+   "cls": 0.0001,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@262,4",
+     "apres": "169×22@250,4",
+     "contribution": 0.00012476630819187244
+    }
+   ]
+  },
+  "1024": {
+   "cls": 0.0007,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@271,4",
+     "apres": "169×22@259,4",
+     "contribution": 0.0006788116693496705
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "306×47@678,61",
+     "apres": "271×47@713,61",
+     "contribution": 0.0006788116693496705
+    }
+   ]
+  },
+  "1440": {
+   "cls": 0.0255,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@361,4",
+     "apres": "169×22@349,4",
+     "contribution": 0.02551604636863426
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > a.tfp-logo",
+     "avant": "155×82@130,64",
+     "apres": "155×82@130,44",
+     "contribution": 0.02551604636863426
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > nav.tfp-nav",
+     "avant": "697×69@309,70",
+     "apres": "702×68@309,51",
+     "contribution": 0.02551604636863426
+    }
+   ]
+  },
+  "1920": {
+   "cls": 0.0187,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@601,4",
+     "apres": "169×22@589,4",
+     "contribution": 0.018703958808051216
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > a.tfp-logo",
+     "avant": "155×82@370,64",
+     "apres": "155×82@370,44",
+     "contribution": 0.018703958808051216
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > nav.tfp-nav",
+     "avant": "697×69@549,70",
+     "apres": "702×68@549,51",
+     "contribution": 0.018703958808051216
+    }
+   ]
+  }
+ },
+ "#/ville/lons-le-saunier": {
+  "320": {
+   "cls": 0,
+   "entrees": 1,
+   "sources": []
+  },
+  "375": {
+   "cls": 0,
+   "entrees": 1,
+   "sources": []
+  },
+  "768": {
+   "cls": 0.0001,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@262,4",
+     "apres": "169×22@250,4",
+     "contribution": 0.00012476630819187244
+    }
+   ]
+  },
+  "1024": {
+   "cls": 0.0007,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@271,4",
+     "apres": "169×22@259,4",
+     "contribution": 0.0006788116693496705
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "306×47@678,61",
+     "apres": "271×47@713,61",
+     "contribution": 0.0006788116693496705
+    }
+   ]
+  },
+  "1440": {
+   "cls": 0.0255,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@361,4",
+     "apres": "169×22@349,4",
+     "contribution": 0.02551604636863426
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > a.tfp-logo",
+     "avant": "155×82@130,64",
+     "apres": "155×82@130,44",
+     "contribution": 0.02551604636863426
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > nav.tfp-nav",
+     "avant": "697×69@309,70",
+     "apres": "702×68@309,51",
+     "contribution": 0.02551604636863426
+    }
+   ]
+  },
+  "1920": {
+   "cls": 0.0187,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@601,4",
+     "apres": "169×22@589,4",
+     "contribution": 0.018703958808051216
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > a.tfp-logo",
+     "avant": "155×82@370,64",
+     "apres": "155×82@370,44",
+     "contribution": 0.018703958808051216
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > nav.tfp-nav",
+     "avant": "697×69@549,70",
+     "apres": "702×68@549,51",
+     "contribution": 0.018703958808051216
+    }
+   ]
+  }
+ },
+ "#/ville/nevers": {
+  "320": {
+   "cls": 0,
+   "entrees": 1,
+   "sources": []
+  },
+  "375": {
+   "cls": 0,
+   "entrees": 1,
+   "sources": []
+  },
+  "768": {
+   "cls": 0.0001,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@262,4",
+     "apres": "169×22@250,4",
+     "contribution": 0.00012476630819187244
+    }
+   ]
+  },
+  "1024": {
+   "cls": 0.0007,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@271,4",
+     "apres": "169×22@259,4",
+     "contribution": 0.0006788116693496705
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "306×47@678,61",
+     "apres": "271×47@713,61",
+     "contribution": 0.0006788116693496705
+    }
+   ]
+  },
+  "1440": {
+   "cls": 0.0255,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@361,4",
+     "apres": "169×22@349,4",
+     "contribution": 0.02551604636863426
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > a.tfp-logo",
+     "avant": "155×82@130,64",
+     "apres": "155×82@130,44",
+     "contribution": 0.02551604636863426
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > nav.tfp-nav",
+     "avant": "697×69@309,70",
+     "apres": "702×68@309,51",
+     "contribution": 0.02551604636863426
+    }
+   ]
+  },
+  "1920": {
+   "cls": 0.0187,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@601,4",
+     "apres": "169×22@589,4",
+     "contribution": 0.018703958808051216
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > a.tfp-logo",
+     "avant": "155×82@370,64",
+     "apres": "155×82@370,44",
+     "contribution": 0.018703958808051216
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > nav.tfp-nav",
+     "avant": "697×69@549,70",
+     "apres": "702×68@549,51",
+     "contribution": 0.018703958808051216
+    }
+   ]
+  }
+ },
+ "#/ville/vesoul": {
+  "320": {
+   "cls": 0,
+   "entrees": 1,
+   "sources": []
+  },
+  "375": {
+   "cls": 0,
+   "entrees": 1,
+   "sources": []
+  },
+  "768": {
+   "cls": 0.0001,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@262,4",
+     "apres": "169×22@250,4",
+     "contribution": 0.00012476630819187244
+    }
+   ]
+  },
+  "1024": {
+   "cls": 0.0007,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@271,4",
+     "apres": "169×22@259,4",
+     "contribution": 0.0006788116693496705
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "306×47@678,61",
+     "apres": "271×47@713,61",
+     "contribution": 0.0006788116693496705
+    }
+   ]
+  },
+  "1440": {
+   "cls": 0.0255,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@361,4",
+     "apres": "169×22@349,4",
+     "contribution": 0.02551604636863426
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > a.tfp-logo",
+     "avant": "155×82@130,64",
+     "apres": "155×82@130,44",
+     "contribution": 0.02551604636863426
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > nav.tfp-nav",
+     "avant": "697×69@309,70",
+     "apres": "702×68@309,51",
+     "contribution": 0.02551604636863426
+    }
+   ]
+  },
+  "1920": {
+   "cls": 0.0187,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@601,4",
+     "apres": "169×22@589,4",
+     "contribution": 0.018703958808051216
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > a.tfp-logo",
+     "avant": "155×82@370,64",
+     "apres": "155×82@370,44",
+     "contribution": 0.018703958808051216
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > nav.tfp-nav",
+     "avant": "697×69@549,70",
+     "apres": "702×68@549,51",
+     "contribution": 0.018703958808051216
+    }
+   ]
+  }
+ },
+ "#/ville/chalon-sur-saone": {
+  "320": {
+   "cls": 0,
+   "entrees": 1,
+   "sources": []
+  },
+  "375": {
+   "cls": 0,
+   "entrees": 1,
+   "sources": []
+  },
+  "768": {
+   "cls": 0.0001,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@262,4",
+     "apres": "169×22@250,4",
+     "contribution": 0.00012476630819187244
+    }
+   ]
+  },
+  "1024": {
+   "cls": 0.0007,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@271,4",
+     "apres": "169×22@259,4",
+     "contribution": 0.0006788116693496705
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "306×47@678,61",
+     "apres": "271×47@713,61",
+     "contribution": 0.0006788116693496705
+    }
+   ]
+  },
+  "1440": {
+   "cls": 0.0255,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@361,4",
+     "apres": "169×22@349,4",
+     "contribution": 0.02551604636863426
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > a.tfp-logo",
+     "avant": "155×82@130,64",
+     "apres": "155×82@130,44",
+     "contribution": 0.02551604636863426
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > nav.tfp-nav",
+     "avant": "697×69@309,70",
+     "apres": "702×68@309,51",
+     "contribution": 0.02551604636863426
+    }
+   ]
+  },
+  "1920": {
+   "cls": 0.0187,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@601,4",
+     "apres": "169×22@589,4",
+     "contribution": 0.018703958808051216
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > a.tfp-logo",
+     "avant": "155×82@370,64",
+     "apres": "155×82@370,44",
+     "contribution": 0.018703958808051216
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > nav.tfp-nav",
+     "avant": "697×69@549,70",
+     "apres": "702×68@549,51",
+     "contribution": 0.018703958808051216
+    }
+   ]
+  }
+ },
+ "#/ville/macon": {
+  "320": {
+   "cls": 0,
+   "entrees": 1,
+   "sources": []
+  },
+  "375": {
+   "cls": 0,
+   "entrees": 1,
+   "sources": []
+  },
+  "768": {
+   "cls": 0.0001,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@262,4",
+     "apres": "169×22@250,4",
+     "contribution": 0.00012476630819187244
+    }
+   ]
+  },
+  "1024": {
+   "cls": 0.0007,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@271,4",
+     "apres": "169×22@259,4",
+     "contribution": 0.0006788116693496705
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "306×47@678,61",
+     "apres": "271×47@713,61",
+     "contribution": 0.0006788116693496705
+    }
+   ]
+  },
+  "1440": {
+   "cls": 0.0255,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@361,4",
+     "apres": "169×22@349,4",
+     "contribution": 0.02551604636863426
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > a.tfp-logo",
+     "avant": "155×82@130,64",
+     "apres": "155×82@130,44",
+     "contribution": 0.02551604636863426
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > nav.tfp-nav",
+     "avant": "697×69@309,70",
+     "apres": "702×68@309,51",
+     "contribution": 0.02551604636863426
+    }
+   ]
+  },
+  "1920": {
+   "cls": 0.0187,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@601,4",
+     "apres": "169×22@589,4",
+     "contribution": 0.018703958808051216
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > a.tfp-logo",
+     "avant": "155×82@370,64",
+     "apres": "155×82@370,44",
+     "contribution": 0.018703958808051216
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > nav.tfp-nav",
+     "avant": "697×69@549,70",
+     "apres": "702×68@549,51",
+     "contribution": 0.018703958808051216
+    }
+   ]
+  }
+ },
+ "#/ville/auxerre": {
+  "320": {
+   "cls": 0,
+   "entrees": 1,
+   "sources": []
+  },
+  "375": {
+   "cls": 0,
+   "entrees": 1,
+   "sources": []
+  },
+  "768": {
+   "cls": 0.0001,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@262,4",
+     "apres": "169×22@250,4",
+     "contribution": 0.00012476630819187244
+    }
+   ]
+  },
+  "1024": {
+   "cls": 0.0007,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@271,4",
+     "apres": "169×22@259,4",
+     "contribution": 0.0006788116693496705
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "306×47@678,61",
+     "apres": "271×47@713,61",
+     "contribution": 0.0006788116693496705
+    }
+   ]
+  },
+  "1440": {
+   "cls": 0.0255,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@361,4",
+     "apres": "169×22@349,4",
+     "contribution": 0.02551604636863426
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > a.tfp-logo",
+     "avant": "155×82@130,64",
+     "apres": "155×82@130,44",
+     "contribution": 0.02551604636863426
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > nav.tfp-nav",
+     "avant": "697×69@309,70",
+     "apres": "702×68@309,51",
+     "contribution": 0.02551604636863426
+    }
+   ]
+  },
+  "1920": {
+   "cls": 0.0187,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@601,4",
+     "apres": "169×22@589,4",
+     "contribution": 0.018703958808051216
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > a.tfp-logo",
+     "avant": "155×82@370,64",
+     "apres": "155×82@370,44",
+     "contribution": 0.018703958808051216
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > nav.tfp-nav",
+     "avant": "697×69@549,70",
+     "apres": "702×68@549,51",
+     "contribution": 0.018703958808051216
+    }
+   ]
+  }
+ },
+ "#/ville/belfort": {
+  "320": {
+   "cls": 0,
+   "entrees": 1,
+   "sources": []
+  },
+  "375": {
+   "cls": 0,
+   "entrees": 1,
+   "sources": []
+  },
+  "768": {
+   "cls": 0.0001,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@262,4",
+     "apres": "169×22@250,4",
+     "contribution": 0.00012476630819187244
+    }
+   ]
+  },
+  "1024": {
+   "cls": 0.0007,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@271,4",
+     "apres": "169×22@259,4",
+     "contribution": 0.0006788116693496705
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "306×47@678,61",
+     "apres": "271×47@713,61",
+     "contribution": 0.0006788116693496705
+    }
+   ]
+  },
+  "1440": {
+   "cls": 0.0255,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@361,4",
+     "apres": "169×22@349,4",
+     "contribution": 0.02551604636863426
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > a.tfp-logo",
+     "avant": "155×82@130,64",
+     "apres": "155×82@130,44",
+     "contribution": 0.02551604636863426
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > nav.tfp-nav",
+     "avant": "697×69@309,70",
+     "apres": "702×68@309,51",
+     "contribution": 0.02551604636863426
+    }
+   ]
+  },
+  "1920": {
+   "cls": 0.0187,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@601,4",
+     "apres": "169×22@589,4",
+     "contribution": 0.018703958808051216
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > a.tfp-logo",
+     "avant": "155×82@370,64",
+     "apres": "155×82@370,44",
+     "contribution": 0.018703958808051216
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > nav.tfp-nav",
+     "avant": "697×69@549,70",
+     "apres": "702×68@549,51",
+     "contribution": 0.018703958808051216
+    }
+   ]
+  }
+ },
+ "#/ville/saint-apollinaire": {
+  "320": {
+   "cls": 0,
+   "entrees": 1,
+   "sources": []
+  },
+  "375": {
+   "cls": 0,
+   "entrees": 1,
+   "sources": []
+  },
+  "768": {
+   "cls": 0.0001,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@262,4",
+     "apres": "169×22@250,4",
+     "contribution": 0.00012476630819187244
+    }
+   ]
+  },
+  "1024": {
+   "cls": 0.0007,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@271,4",
+     "apres": "169×22@259,4",
+     "contribution": 0.0006788116693496705
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "306×47@678,61",
+     "apres": "271×47@713,61",
+     "contribution": 0.0006788116693496705
+    }
+   ]
+  },
+  "1440": {
+   "cls": 0.0255,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@361,4",
+     "apres": "169×22@349,4",
+     "contribution": 0.02551604636863426
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > a.tfp-logo",
+     "avant": "155×82@130,64",
+     "apres": "155×82@130,44",
+     "contribution": 0.02551604636863426
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > nav.tfp-nav",
+     "avant": "697×69@309,70",
+     "apres": "702×68@309,51",
+     "contribution": 0.02551604636863426
+    }
+   ]
+  },
+  "1920": {
+   "cls": 0.0187,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@601,4",
+     "apres": "169×22@589,4",
+     "contribution": 0.018703958808051216
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > a.tfp-logo",
+     "avant": "155×82@370,64",
+     "apres": "155×82@370,44",
+     "contribution": 0.018703958808051216
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > nav.tfp-nav",
+     "avant": "697×69@549,70",
+     "apres": "702×68@549,51",
+     "contribution": 0.018703958808051216
+    }
+   ]
+  }
+ },
+ "#/ville/chenove": {
+  "320": {
+   "cls": 0,
+   "entrees": 1,
+   "sources": []
+  },
+  "375": {
+   "cls": 0,
+   "entrees": 1,
+   "sources": []
+  },
+  "768": {
+   "cls": 0.0001,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@262,4",
+     "apres": "169×22@250,4",
+     "contribution": 0.00012476630819187244
+    }
+   ]
+  },
+  "1024": {
+   "cls": 0.0007,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@271,4",
+     "apres": "169×22@259,4",
+     "contribution": 0.0006788116693496705
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "306×47@678,61",
+     "apres": "271×47@713,61",
+     "contribution": 0.0006788116693496705
+    }
+   ]
+  },
+  "1440": {
+   "cls": 0.0255,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@361,4",
+     "apres": "169×22@349,4",
+     "contribution": 0.02551604636863426
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > a.tfp-logo",
+     "avant": "155×82@130,64",
+     "apres": "155×82@130,44",
+     "contribution": 0.02551604636863426
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > nav.tfp-nav",
+     "avant": "697×69@309,70",
+     "apres": "702×68@309,51",
+     "contribution": 0.02551604636863426
+    }
+   ]
+  },
+  "1920": {
+   "cls": 0.0187,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@601,4",
+     "apres": "169×22@589,4",
+     "contribution": 0.018703958808051216
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > a.tfp-logo",
+     "avant": "155×82@370,64",
+     "apres": "155×82@370,44",
+     "contribution": 0.018703958808051216
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > nav.tfp-nav",
+     "avant": "697×69@549,70",
+     "apres": "702×68@549,51",
+     "contribution": 0.018703958808051216
+    }
+   ]
+  }
+ },
+ "#/ville/quetigny": {
+  "320": {
+   "cls": 0,
+   "entrees": 1,
+   "sources": []
+  },
+  "375": {
+   "cls": 0,
+   "entrees": 1,
+   "sources": []
+  },
+  "768": {
+   "cls": 0.0001,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@262,4",
+     "apres": "169×22@250,4",
+     "contribution": 0.00012476630819187244
+    }
+   ]
+  },
+  "1024": {
+   "cls": 0.0007,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@271,4",
+     "apres": "169×22@259,4",
+     "contribution": 0.0006788116693496705
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "306×47@678,61",
+     "apres": "271×47@713,61",
+     "contribution": 0.0006788116693496705
+    }
+   ]
+  },
+  "1440": {
+   "cls": 0.0255,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@361,4",
+     "apres": "169×22@349,4",
+     "contribution": 0.02551604636863426
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > a.tfp-logo",
+     "avant": "155×82@130,64",
+     "apres": "155×82@130,44",
+     "contribution": 0.02551604636863426
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > nav.tfp-nav",
+     "avant": "697×69@309,70",
+     "apres": "702×68@309,51",
+     "contribution": 0.02551604636863426
+    }
+   ]
+  },
+  "1920": {
+   "cls": 0.0187,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@601,4",
+     "apres": "169×22@589,4",
+     "contribution": 0.018703958808051216
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > a.tfp-logo",
+     "avant": "155×82@370,64",
+     "apres": "155×82@370,44",
+     "contribution": 0.018703958808051216
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > nav.tfp-nav",
+     "avant": "697×69@549,70",
+     "apres": "702×68@549,51",
+     "contribution": 0.018703958808051216
+    }
+   ]
+  }
+ },
+ "#/ville/talant": {
+  "320": {
+   "cls": 0,
+   "entrees": 1,
+   "sources": []
+  },
+  "375": {
+   "cls": 0,
+   "entrees": 1,
+   "sources": []
+  },
+  "768": {
+   "cls": 0.0001,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@262,4",
+     "apres": "169×22@250,4",
+     "contribution": 0.00012476630819187244
+    }
+   ]
+  },
+  "1024": {
+   "cls": 0.0007,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@271,4",
+     "apres": "169×22@259,4",
+     "contribution": 0.0006788116693496705
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "306×47@678,61",
+     "apres": "271×47@713,61",
+     "contribution": 0.0006788116693496705
+    }
+   ]
+  },
+  "1440": {
+   "cls": 0.0255,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@361,4",
+     "apres": "169×22@349,4",
+     "contribution": 0.02551604636863426
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > a.tfp-logo",
+     "avant": "155×82@130,64",
+     "apres": "155×82@130,44",
+     "contribution": 0.02551604636863426
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > nav.tfp-nav",
+     "avant": "697×69@309,70",
+     "apres": "702×68@309,51",
+     "contribution": 0.02551604636863426
+    }
+   ]
+  },
+  "1920": {
+   "cls": 0.0187,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@601,4",
+     "apres": "169×22@589,4",
+     "contribution": 0.018703958808051216
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > a.tfp-logo",
+     "avant": "155×82@370,64",
+     "apres": "155×82@370,44",
+     "contribution": 0.018703958808051216
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > nav.tfp-nav",
+     "avant": "697×69@549,70",
+     "apres": "702×68@549,51",
+     "contribution": 0.018703958808051216
+    }
+   ]
+  }
+ },
+ "#/ville/longvic": {
+  "320": {
+   "cls": 0,
+   "entrees": 1,
+   "sources": []
+  },
+  "375": {
+   "cls": 0,
+   "entrees": 1,
+   "sources": []
+  },
+  "768": {
+   "cls": 0.0001,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@262,4",
+     "apres": "169×22@250,4",
+     "contribution": 0.00012476630819187244
+    }
+   ]
+  },
+  "1024": {
+   "cls": 0.0007,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@271,4",
+     "apres": "169×22@259,4",
+     "contribution": 0.0006788116693496705
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "306×47@678,61",
+     "apres": "271×47@713,61",
+     "contribution": 0.0006788116693496705
+    }
+   ]
+  },
+  "1440": {
+   "cls": 0.0255,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@361,4",
+     "apres": "169×22@349,4",
+     "contribution": 0.02551604636863426
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > a.tfp-logo",
+     "avant": "155×82@130,64",
+     "apres": "155×82@130,44",
+     "contribution": 0.02551604636863426
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > nav.tfp-nav",
+     "avant": "697×69@309,70",
+     "apres": "702×68@309,51",
+     "contribution": 0.02551604636863426
+    }
+   ]
+  },
+  "1920": {
+   "cls": 0.0187,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@601,4",
+     "apres": "169×22@589,4",
+     "contribution": 0.018703958808051216
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > a.tfp-logo",
+     "avant": "155×82@370,64",
+     "apres": "155×82@370,44",
+     "contribution": 0.018703958808051216
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > nav.tfp-nav",
+     "avant": "697×69@549,70",
+     "apres": "702×68@549,51",
+     "contribution": 0.018703958808051216
+    }
+   ]
+  }
+ },
+ "#/ville/fontaine-les-dijon": {
+  "320": {
+   "cls": 0,
+   "entrees": 1,
+   "sources": []
+  },
+  "375": {
+   "cls": 0,
+   "entrees": 1,
+   "sources": []
+  },
+  "768": {
+   "cls": 0.0001,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@262,4",
+     "apres": "169×22@250,4",
+     "contribution": 0.00012476630819187244
+    }
+   ]
+  },
+  "1024": {
+   "cls": 0.0007,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@271,4",
+     "apres": "169×22@259,4",
+     "contribution": 0.0006788116693496705
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "306×47@678,61",
+     "apres": "271×47@713,61",
+     "contribution": 0.0006788116693496705
+    }
+   ]
+  },
+  "1440": {
+   "cls": 0.0255,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@361,4",
+     "apres": "169×22@349,4",
+     "contribution": 0.02551604636863426
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > a.tfp-logo",
+     "avant": "155×82@130,64",
+     "apres": "155×82@130,44",
+     "contribution": 0.02551604636863426
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > nav.tfp-nav",
+     "avant": "697×69@309,70",
+     "apres": "702×68@309,51",
+     "contribution": 0.02551604636863426
+    }
+   ]
+  },
+  "1920": {
+   "cls": 0.0187,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@601,4",
+     "apres": "169×22@589,4",
+     "contribution": 0.018703958808051216
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > a.tfp-logo",
+     "avant": "155×82@370,64",
+     "apres": "155×82@370,44",
+     "contribution": 0.018703958808051216
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > nav.tfp-nav",
+     "avant": "697×69@549,70",
+     "apres": "702×68@549,51",
+     "contribution": 0.018703958808051216
+    }
+   ]
+  }
+ },
+ "#/ville/marsannay-la-cote": {
+  "320": {
+   "cls": 0,
+   "entrees": 1,
+   "sources": []
+  },
+  "375": {
+   "cls": 0,
+   "entrees": 1,
+   "sources": []
+  },
+  "768": {
+   "cls": 0.0001,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@262,4",
+     "apres": "169×22@250,4",
+     "contribution": 0.00012476630819187244
+    }
+   ]
+  },
+  "1024": {
+   "cls": 0.0007,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@271,4",
+     "apres": "169×22@259,4",
+     "contribution": 0.0006788116693496705
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "306×47@678,61",
+     "apres": "271×47@713,61",
+     "contribution": 0.0006788116693496705
+    }
+   ]
+  },
+  "1440": {
+   "cls": 0.0255,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@361,4",
+     "apres": "169×22@349,4",
+     "contribution": 0.02551604636863426
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > a.tfp-logo",
+     "avant": "155×82@130,64",
+     "apres": "155×82@130,44",
+     "contribution": 0.02551604636863426
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > nav.tfp-nav",
+     "avant": "697×69@309,70",
+     "apres": "702×68@309,51",
+     "contribution": 0.02551604636863426
+    }
+   ]
+  },
+  "1920": {
+   "cls": 0.0187,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@601,4",
+     "apres": "169×22@589,4",
+     "contribution": 0.018703958808051216
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > a.tfp-logo",
+     "avant": "155×82@370,64",
+     "apres": "155×82@370,44",
+     "contribution": 0.018703958808051216
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > nav.tfp-nav",
+     "avant": "697×69@549,70",
+     "apres": "702×68@549,51",
+     "contribution": 0.018703958808051216
+    }
+   ]
+  }
+ },
+ "#/ville/beaune": {
+  "320": {
+   "cls": 0,
+   "entrees": 1,
+   "sources": []
+  },
+  "375": {
+   "cls": 0,
+   "entrees": 1,
+   "sources": []
+  },
+  "768": {
+   "cls": 0.0001,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@262,4",
+     "apres": "169×22@250,4",
+     "contribution": 0.00012476630819187244
+    }
+   ]
+  },
+  "1024": {
+   "cls": 0.0007,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@271,4",
+     "apres": "169×22@259,4",
+     "contribution": 0.0006788116693496705
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "306×47@678,61",
+     "apres": "271×47@713,61",
+     "contribution": 0.0006788116693496705
+    }
+   ]
+  },
+  "1440": {
+   "cls": 0.0255,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@361,4",
+     "apres": "169×22@349,4",
+     "contribution": 0.02551604636863426
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > a.tfp-logo",
+     "avant": "155×82@130,64",
+     "apres": "155×82@130,44",
+     "contribution": 0.02551604636863426
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > nav.tfp-nav",
+     "avant": "697×69@309,70",
+     "apres": "702×68@309,51",
+     "contribution": 0.02551604636863426
+    }
+   ]
+  },
+  "1920": {
+   "cls": 0.0187,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@601,4",
+     "apres": "169×22@589,4",
+     "contribution": 0.018703958808051216
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > a.tfp-logo",
+     "avant": "155×82@370,64",
+     "apres": "155×82@370,44",
+     "contribution": 0.018703958808051216
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > nav.tfp-nav",
+     "avant": "697×69@549,70",
+     "apres": "702×68@549,51",
+     "contribution": 0.018703958808051216
+    }
+   ]
+  }
+ },
+ "#/conseils": {
+  "320": {
+   "cls": 0,
+   "entrees": 1,
+   "sources": []
+  },
+  "375": {
+   "cls": 0,
+   "entrees": 1,
+   "sources": []
+  },
+  "768": {
+   "cls": 0.0001,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@262,4",
+     "apres": "169×22@250,4",
+     "contribution": 0.00012476630819187244
+    }
+   ]
+  },
+  "1024": {
+   "cls": 0.0007,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@271,4",
+     "apres": "169×22@259,4",
+     "contribution": 0.0006788116693496705
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "306×47@678,61",
+     "apres": "271×47@713,61",
+     "contribution": 0.0006788116693496705
+    }
+   ]
+  },
+  "1440": {
+   "cls": 0.0255,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@361,4",
+     "apres": "169×22@349,4",
+     "contribution": 0.02551604636863426
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > a.tfp-logo",
+     "avant": "155×82@130,64",
+     "apres": "155×82@130,44",
+     "contribution": 0.02551604636863426
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > nav.tfp-nav",
+     "avant": "697×69@309,70",
+     "apres": "702×68@309,51",
+     "contribution": 0.02551604636863426
+    }
+   ]
+  },
+  "1920": {
+   "cls": 0.0187,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@601,4",
+     "apres": "169×22@589,4",
+     "contribution": 0.018703958808051216
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > a.tfp-logo",
+     "avant": "155×82@370,64",
+     "apres": "155×82@370,44",
+     "contribution": 0.018703958808051216
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > nav.tfp-nav",
+     "avant": "697×69@549,70",
+     "apres": "702×68@549,51",
+     "contribution": 0.018703958808051216
+    }
+   ]
+  }
+ },
+ "#/article/frequence-bureaux": {
+  "320": {
+   "cls": 0,
+   "entrees": 1,
+   "sources": []
+  },
+  "375": {
+   "cls": 0,
+   "entrees": 1,
+   "sources": []
+  },
+  "768": {
+   "cls": 0.0001,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@262,4",
+     "apres": "169×22@250,4",
+     "contribution": 0.00012476630819187244
+    }
+   ]
+  },
+  "1024": {
+   "cls": 0.0007,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@271,4",
+     "apres": "169×22@259,4",
+     "contribution": 0.0006788116693496705
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "306×47@678,61",
+     "apres": "271×47@713,61",
+     "contribution": 0.0006788116693496705
+    }
+   ]
+  },
+  "1440": {
+   "cls": 0.0255,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@361,4",
+     "apres": "169×22@349,4",
+     "contribution": 0.02551604636863426
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > a.tfp-logo",
+     "avant": "155×82@130,64",
+     "apres": "155×82@130,44",
+     "contribution": 0.02551604636863426
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > nav.tfp-nav",
+     "avant": "697×69@309,70",
+     "apres": "702×68@309,51",
+     "contribution": 0.02551604636863426
+    }
+   ]
+  },
+  "1920": {
+   "cls": 0.0187,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@601,4",
+     "apres": "169×22@589,4",
+     "contribution": 0.018703958808051216
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > a.tfp-logo",
+     "avant": "155×82@370,64",
+     "apres": "155×82@370,44",
+     "contribution": 0.018703958808051216
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > nav.tfp-nav",
+     "avant": "697×69@549,70",
+     "apres": "702×68@549,51",
+     "contribution": 0.018703958808051216
+    }
+   ]
+  }
+ },
+ "#/article/cout-nettoyage-bureaux": {
+  "320": {
+   "cls": 0,
+   "entrees": 1,
+   "sources": []
+  },
+  "375": {
+   "cls": 0,
+   "entrees": 1,
+   "sources": []
+  },
+  "768": {
+   "cls": 0.0001,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@262,4",
+     "apres": "169×22@250,4",
+     "contribution": 0.00012476630819187244
+    }
+   ]
+  },
+  "1024": {
+   "cls": 0.0007,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@271,4",
+     "apres": "169×22@259,4",
+     "contribution": 0.0006788116693496705
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "306×47@678,61",
+     "apres": "271×47@713,61",
+     "contribution": 0.0006788116693496705
+    }
+   ]
+  },
+  "1440": {
+   "cls": 0.0255,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@361,4",
+     "apres": "169×22@349,4",
+     "contribution": 0.02551604636863426
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > a.tfp-logo",
+     "avant": "155×82@130,64",
+     "apres": "155×82@130,44",
+     "contribution": 0.02551604636863426
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > nav.tfp-nav",
+     "avant": "697×69@309,70",
+     "apres": "702×68@309,51",
+     "contribution": 0.02551604636863426
+    }
+   ]
+  },
+  "1920": {
+   "cls": 0.0187,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@601,4",
+     "apres": "169×22@589,4",
+     "contribution": 0.018703958808051216
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > a.tfp-logo",
+     "avant": "155×82@370,64",
+     "apres": "155×82@370,44",
+     "contribution": 0.018703958808051216
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > nav.tfp-nav",
+     "avant": "697×69@549,70",
+     "apres": "702×68@549,51",
+     "contribution": 0.018703958808051216
+    }
+   ]
+  }
+ },
+ "#/article/cahier-des-charges-nettoyage": {
+  "320": {
+   "cls": 0,
+   "entrees": 1,
+   "sources": []
+  },
+  "375": {
+   "cls": 0,
+   "entrees": 1,
+   "sources": []
+  },
+  "768": {
+   "cls": 0.0001,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@262,4",
+     "apres": "169×22@250,4",
+     "contribution": 0.00012476630819187244
+    }
+   ]
+  },
+  "1024": {
+   "cls": 0.0007,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@271,4",
+     "apres": "169×22@259,4",
+     "contribution": 0.0006788116693496705
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "306×47@678,61",
+     "apres": "271×47@713,61",
+     "contribution": 0.0006788116693496705
+    }
+   ]
+  },
+  "1440": {
+   "cls": 0.0255,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@361,4",
+     "apres": "169×22@349,4",
+     "contribution": 0.02551604636863426
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > a.tfp-logo",
+     "avant": "155×82@130,64",
+     "apres": "155×82@130,44",
+     "contribution": 0.02551604636863426
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > nav.tfp-nav",
+     "avant": "697×69@309,70",
+     "apres": "702×68@309,51",
+     "contribution": 0.02551604636863426
+    }
+   ]
+  },
+  "1920": {
+   "cls": 0.0187,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@601,4",
+     "apres": "169×22@589,4",
+     "contribution": 0.018703958808051216
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > a.tfp-logo",
+     "avant": "155×82@370,64",
+     "apres": "155×82@370,44",
+     "contribution": 0.018703958808051216
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > nav.tfp-nav",
+     "avant": "697×69@549,70",
+     "apres": "702×68@549,51",
+     "contribution": 0.018703958808051216
+    }
+   ]
+  }
+ },
+ "#/pourquoi-top-famille-pro": {
+  "320": {
+   "cls": 0,
+   "entrees": 1,
+   "sources": []
+  },
+  "375": {
+   "cls": 0,
+   "entrees": 1,
+   "sources": []
+  },
+  "768": {
+   "cls": 0.0001,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@262,4",
+     "apres": "169×22@250,4",
+     "contribution": 0.00012476630819187244
+    }
+   ]
+  },
+  "1024": {
+   "cls": 0.0007,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@271,4",
+     "apres": "169×22@259,4",
+     "contribution": 0.0006788116693496705
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "306×47@678,61",
+     "apres": "271×47@713,61",
+     "contribution": 0.0006788116693496705
+    }
+   ]
+  },
+  "1440": {
+   "cls": 0.0262,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@361,4",
+     "apres": "169×22@349,4",
+     "contribution": 0.026159984447337966
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > a.tfp-logo",
+     "avant": "155×82@130,64",
+     "apres": "155×82@130,44",
+     "contribution": 0.026159984447337966
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > nav.tfp-nav",
+     "avant": "697×69@309,70",
+     "apres": "702×68@309,51",
+     "contribution": 0.026159984447337966
+    }
+   ]
+  },
+  "1920": {
+   "cls": 0.0192,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@601,4",
+     "apres": "169×22@589,4",
+     "contribution": 0.019175983005099827
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > a.tfp-logo",
+     "avant": "155×82@370,64",
+     "apres": "155×82@370,44",
+     "contribution": 0.019175983005099827
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > nav.tfp-nav",
+     "avant": "697×69@549,70",
+     "apres": "702×68@549,51",
+     "contribution": 0.019175983005099827
+    }
+   ]
+  }
+ },
+ "#/notre-fonctionnement": {
+  "320": {
+   "cls": 0,
+   "entrees": 1,
+   "sources": []
+  },
+  "375": {
+   "cls": 0,
+   "entrees": 1,
+   "sources": []
+  },
+  "768": {
+   "cls": 0.0001,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@262,4",
+     "apres": "169×22@250,4",
+     "contribution": 0.00012476630819187244
+    }
+   ]
+  },
+  "1024": {
+   "cls": 0.0007,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@271,4",
+     "apres": "169×22@259,4",
+     "contribution": 0.0006788116693496705
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "306×47@678,61",
+     "apres": "271×47@713,61",
+     "contribution": 0.0006788116693496705
+    }
+   ]
+  },
+  "1440": {
+   "cls": 0.0262,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@361,4",
+     "apres": "169×22@349,4",
+     "contribution": 0.026159984447337966
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > a.tfp-logo",
+     "avant": "155×82@130,64",
+     "apres": "155×82@130,44",
+     "contribution": 0.026159984447337966
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > nav.tfp-nav",
+     "avant": "697×69@309,70",
+     "apres": "702×68@309,51",
+     "contribution": 0.026159984447337966
+    }
+   ]
+  },
+  "1920": {
+   "cls": 0.0192,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@601,4",
+     "apres": "169×22@589,4",
+     "contribution": 0.019175983005099827
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > a.tfp-logo",
+     "avant": "155×82@370,64",
+     "apres": "155×82@370,44",
+     "contribution": 0.019175983005099827
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > nav.tfp-nav",
+     "avant": "697×69@549,70",
+     "apres": "702×68@549,51",
+     "contribution": 0.019175983005099827
+    }
+   ]
+  }
+ },
+ "#/avis-clients": {
+  "320": {
+   "cls": 0,
+   "entrees": 1,
+   "sources": []
+  },
+  "375": {
+   "cls": 0,
+   "entrees": 1,
+   "sources": []
+  },
+  "768": {
+   "cls": 0.0001,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@262,4",
+     "apres": "169×22@250,4",
+     "contribution": 0.00012476630819187244
+    }
+   ]
+  },
+  "1024": {
+   "cls": 0.0007,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@271,4",
+     "apres": "169×22@259,4",
+     "contribution": 0.0006788116693496705
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "306×47@678,61",
+     "apres": "271×47@713,61",
+     "contribution": 0.0006788116693496705
+    }
+   ]
+  },
+  "1440": {
+   "cls": 0.0268,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@361,4",
+     "apres": "169×22@349,4",
+     "contribution": 0.02680392252604167
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > a.tfp-logo",
+     "avant": "155×82@130,64",
+     "apres": "155×82@130,44",
+     "contribution": 0.02680392252604167
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > nav.tfp-nav",
+     "avant": "697×69@309,70",
+     "apres": "702×68@309,51",
+     "contribution": 0.02680392252604167
+    }
+   ]
+  },
+  "1920": {
+   "cls": 0.0196,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@601,4",
+     "apres": "169×22@589,4",
+     "contribution": 0.019648007202148435
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > a.tfp-logo",
+     "avant": "155×82@370,64",
+     "apres": "155×82@370,44",
+     "contribution": 0.019648007202148435
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > nav.tfp-nav",
+     "avant": "697×69@549,70",
+     "apres": "702×68@549,51",
+     "contribution": 0.019648007202148435
+    }
+   ]
+  }
+ },
+ "#/a-propos": {
+  "320": {
+   "cls": 0,
+   "entrees": 1,
+   "sources": []
+  },
+  "375": {
+   "cls": 0,
+   "entrees": 1,
+   "sources": []
+  },
+  "768": {
+   "cls": 0.0001,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@262,4",
+     "apres": "169×22@250,4",
+     "contribution": 0.00012476630819187244
+    }
+   ]
+  },
+  "1024": {
+   "cls": 0.0007,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@271,4",
+     "apres": "169×22@259,4",
+     "contribution": 0.0006788116693496705
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "306×47@678,61",
+     "apres": "271×47@713,61",
+     "contribution": 0.0006788116693496705
+    }
+   ]
+  },
+  "1440": {
+   "cls": 0.0255,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@361,4",
+     "apres": "169×22@349,4",
+     "contribution": 0.02551604636863426
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > a.tfp-logo",
+     "avant": "155×82@130,64",
+     "apres": "155×82@130,44",
+     "contribution": 0.02551604636863426
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > nav.tfp-nav",
+     "avant": "697×69@309,70",
+     "apres": "702×68@309,51",
+     "contribution": 0.02551604636863426
+    }
+   ]
+  },
+  "1920": {
+   "cls": 0.0187,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@601,4",
+     "apres": "169×22@589,4",
+     "contribution": 0.018703958808051216
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > a.tfp-logo",
+     "avant": "155×82@370,64",
+     "apres": "155×82@370,44",
+     "contribution": 0.018703958808051216
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > nav.tfp-nav",
+     "avant": "697×69@549,70",
+     "apres": "702×68@549,51",
+     "contribution": 0.018703958808051216
+    }
+   ]
+  }
+ },
+ "#/recrutement": {
+  "320": {
+   "cls": 0,
+   "entrees": 1,
+   "sources": []
+  },
+  "375": {
+   "cls": 0,
+   "entrees": 1,
+   "sources": []
+  },
+  "768": {
+   "cls": 0.0001,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@262,4",
+     "apres": "169×22@250,4",
+     "contribution": 0.00012476630819187244
+    }
+   ]
+  },
+  "1024": {
+   "cls": 0.0007,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@271,4",
+     "apres": "169×22@259,4",
+     "contribution": 0.0006788116693496705
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "306×47@678,61",
+     "apres": "271×47@713,61",
+     "contribution": 0.0006788116693496705
+    }
+   ]
+  },
+  "1440": {
+   "cls": 0.0262,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@361,4",
+     "apres": "169×22@349,4",
+     "contribution": 0.026159984447337966
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > a.tfp-logo",
+     "avant": "155×82@130,64",
+     "apres": "155×82@130,44",
+     "contribution": 0.026159984447337966
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > nav.tfp-nav",
+     "avant": "697×69@309,70",
+     "apres": "702×68@309,51",
+     "contribution": 0.026159984447337966
+    }
+   ]
+  },
+  "1920": {
+   "cls": 0.0192,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@601,4",
+     "apres": "169×22@589,4",
+     "contribution": 0.019175983005099827
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > a.tfp-logo",
+     "avant": "155×82@370,64",
+     "apres": "155×82@370,44",
+     "contribution": 0.019175983005099827
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > nav.tfp-nav",
+     "avant": "697×69@549,70",
+     "apres": "702×68@549,51",
+     "contribution": 0.019175983005099827
+    }
+   ]
+  }
+ },
+ "#/demande-de-devis": {
+  "320": {
+   "cls": 0.0161,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating > span",
+     "avant": "64×21@130,29",
+     "apres": "63×21@124,29",
+     "contribution": 0.01609259223090278
+    },
+    {
+     "noeud": "div.tfp-quote-main > form.tfp-quote-form > fieldset > p",
+     "avant": "292×82@14,502",
+     "apres": "292×83@14,469",
+     "contribution": 0.01609259223090278
+    },
+    {
+     "noeud": "div.tfp-quote-main > form.tfp-quote-form > fieldset > div.tfp-form-row",
+     "avant": "300×150@10,600",
+     "apres": "300×150@10,568",
+     "contribution": 0.01609259223090278
+    }
+   ]
+  },
+  "375": {
+   "cls": 0,
+   "entrees": 1,
+   "sources": []
+  },
+  "768": {
+   "cls": 0.0001,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@262,4",
+     "apres": "169×22@250,4",
+     "contribution": 0.00012476630819187244
+    }
+   ]
+  },
+  "1024": {
+   "cls": 0.0097,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "div.tfp-quote-main > form.tfp-quote-form > fieldset > div.tfp-field",
+     "avant": "507×78@40,709",
+     "apres": "507×77@40,677",
+     "contribution": 0.009672681391239167
+    },
+    {
+     "noeud": "div.tfp-quote-main > form.tfp-quote-form > fieldset > div.tfp-form-row",
+     "avant": "507×78@40,801",
+     "apres": "507×78@40,768",
+     "contribution": 0.009672681391239167
+    },
+    {
+     "noeud": "div.tfp-quote-main > form.tfp-quote-form > fieldset > p",
+     "avant": "507×55@40,450",
+     "apres": "507×55@40,417",
+     "contribution": 0.009672681391239167
+    }
+   ]
+  },
+  "1440": {
+   "cls": 0.0268,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@361,4",
+     "apres": "169×22@349,4",
+     "contribution": 0.02680392252604167
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > a.tfp-logo",
+     "avant": "155×82@130,64",
+     "apres": "155×82@130,44",
+     "contribution": 0.02680392252604167
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > nav.tfp-nav",
+     "avant": "697×69@309,70",
+     "apres": "702×68@309,51",
+     "contribution": 0.02680392252604167
+    }
+   ]
+  },
+  "1920": {
+   "cls": 0.0196,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@601,4",
+     "apres": "169×22@589,4",
+     "contribution": 0.019648007202148435
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > a.tfp-logo",
+     "avant": "155×82@370,64",
+     "apres": "155×82@370,44",
+     "contribution": 0.019648007202148435
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > nav.tfp-nav",
+     "avant": "697×69@549,70",
+     "apres": "702×68@549,51",
+     "contribution": 0.019648007202148435
+    }
+   ]
+  }
+ },
+ "#/contact": {
+  "320": {
+   "cls": 0,
+   "entrees": 1,
+   "sources": []
+  },
+  "375": {
+   "cls": 0,
+   "entrees": 1,
+   "sources": []
+  },
+  "768": {
+   "cls": 0.0001,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@262,4",
+     "apres": "169×22@250,4",
+     "contribution": 0.00012476630819187244
+    }
+   ]
+  },
+  "1024": {
+   "cls": 0.0007,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@271,4",
+     "apres": "169×22@259,4",
+     "contribution": 0.0006788116693496705
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "306×47@678,61",
+     "apres": "271×47@713,61",
+     "contribution": 0.0006788116693496705
+    }
+   ]
+  },
+  "1440": {
+   "cls": 0.0262,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@361,4",
+     "apres": "169×22@349,4",
+     "contribution": 0.026159984447337966
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > a.tfp-logo",
+     "avant": "155×82@130,64",
+     "apres": "155×82@130,44",
+     "contribution": 0.026159984447337966
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > nav.tfp-nav",
+     "avant": "697×69@309,70",
+     "apres": "702×68@309,51",
+     "contribution": 0.026159984447337966
+    }
+   ]
+  },
+  "1920": {
+   "cls": 0.0192,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@601,4",
+     "apres": "169×22@589,4",
+     "contribution": 0.019175983005099827
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > a.tfp-logo",
+     "avant": "155×82@370,64",
+     "apres": "155×82@370,44",
+     "contribution": 0.019175983005099827
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > nav.tfp-nav",
+     "avant": "697×69@549,70",
+     "apres": "702×68@549,51",
+     "contribution": 0.019175983005099827
+    }
+   ]
+  }
+ },
+ "#/plan-du-site": {
+  "320": {
+   "cls": 0,
+   "entrees": 1,
+   "sources": []
+  },
+  "375": {
+   "cls": 0,
+   "entrees": 1,
+   "sources": []
+  },
+  "768": {
+   "cls": 0.0001,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@262,4",
+     "apres": "169×22@250,4",
+     "contribution": 0.00012476630819187244
+    }
+   ]
+  },
+  "1024": {
+   "cls": 0.0007,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@271,4",
+     "apres": "169×22@259,4",
+     "contribution": 0.0006788116693496705
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "306×47@678,61",
+     "apres": "271×47@713,61",
+     "contribution": 0.0006788116693496705
+    }
+   ]
+  },
+  "1440": {
+   "cls": 0.0255,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@361,4",
+     "apres": "169×22@349,4",
+     "contribution": 0.02551604636863426
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > a.tfp-logo",
+     "avant": "155×82@130,64",
+     "apres": "155×82@130,44",
+     "contribution": 0.02551604636863426
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > nav.tfp-nav",
+     "avant": "697×69@309,70",
+     "apres": "702×68@309,51",
+     "contribution": 0.02551604636863426
+    }
+   ]
+  },
+  "1920": {
+   "cls": 0.0187,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@601,4",
+     "apres": "169×22@589,4",
+     "contribution": 0.018703958808051216
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > a.tfp-logo",
+     "avant": "155×82@370,64",
+     "apres": "155×82@370,44",
+     "contribution": 0.018703958808051216
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > nav.tfp-nav",
+     "avant": "697×69@549,70",
+     "apres": "702×68@549,51",
+     "contribution": 0.018703958808051216
+    }
+   ]
+  }
+ },
+ "#/mentions-legales": {
+  "320": {
+   "cls": 0,
+   "entrees": 1,
+   "sources": []
+  },
+  "375": {
+   "cls": 0,
+   "entrees": 1,
+   "sources": []
+  },
+  "768": {
+   "cls": 0.0001,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@262,4",
+     "apres": "169×22@250,4",
+     "contribution": 0.00012476630819187244
+    }
+   ]
+  },
+  "1024": {
+   "cls": 0.0007,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@271,4",
+     "apres": "169×22@259,4",
+     "contribution": 0.0006788116693496705
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "306×47@678,61",
+     "apres": "271×47@713,61",
+     "contribution": 0.0006788116693496705
+    }
+   ]
+  },
+  "1440": {
+   "cls": 0.0268,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "?",
+     "avant": "0×0@0,0",
+     "apres": "740×8@350,892",
+     "contribution": 0.02680392252604167
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > a.tfp-logo",
+     "avant": "155×82@130,64",
+     "apres": "155×82@130,44",
+     "contribution": 0.02680392252604167
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > nav.tfp-nav",
+     "avant": "697×69@309,70",
+     "apres": "702×68@309,51",
+     "contribution": 0.02680392252604167
+    }
+   ]
+  },
+  "1920": {
+   "cls": 0.0196,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "?",
+     "avant": "0×0@0,0",
+     "apres": "740×6@590,894",
+     "contribution": 0.019648007202148435
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > a.tfp-logo",
+     "avant": "155×82@370,64",
+     "apres": "155×82@370,44",
+     "contribution": 0.019648007202148435
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > nav.tfp-nav",
+     "avant": "697×69@549,70",
+     "apres": "702×68@549,51",
+     "contribution": 0.019648007202148435
+    }
+   ]
+  }
+ },
+ "#/politique-de-confidentialite": {
+  "320": {
+   "cls": 0,
+   "entrees": 1,
+   "sources": []
+  },
+  "375": {
+   "cls": 0,
+   "entrees": 1,
+   "sources": []
+  },
+  "768": {
+   "cls": 0.0001,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@262,4",
+     "apres": "169×22@250,4",
+     "contribution": 0.00012476630819187244
+    }
+   ]
+  },
+  "1024": {
+   "cls": 0.0007,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@271,4",
+     "apres": "169×22@259,4",
+     "contribution": 0.0006788116693496705
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "306×47@678,61",
+     "apres": "271×47@713,61",
+     "contribution": 0.0006788116693496705
+    }
+   ]
+  },
+  "1440": {
+   "cls": 0.0268,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@361,4",
+     "apres": "169×22@349,4",
+     "contribution": 0.02680392252604167
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > a.tfp-logo",
+     "avant": "155×82@130,64",
+     "apres": "155×82@130,44",
+     "contribution": 0.02680392252604167
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > nav.tfp-nav",
+     "avant": "697×69@309,70",
+     "apres": "702×68@309,51",
+     "contribution": 0.02680392252604167
+    }
+   ]
+  },
+  "1920": {
+   "cls": 0.0196,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@601,4",
+     "apres": "169×22@589,4",
+     "contribution": 0.019648007202148435
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > a.tfp-logo",
+     "avant": "155×82@370,64",
+     "apres": "155×82@370,44",
+     "contribution": 0.019648007202148435
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > nav.tfp-nav",
+     "avant": "697×69@549,70",
+     "apres": "702×68@549,51",
+     "contribution": 0.019648007202148435
+    }
+   ]
+  }
+ },
+ "#/gestion-des-cookies": {
+  "320": {
+   "cls": 0,
+   "entrees": 1,
+   "sources": []
+  },
+  "375": {
+   "cls": 0,
+   "entrees": 1,
+   "sources": []
+  },
+  "768": {
+   "cls": 0.0001,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@262,4",
+     "apres": "169×22@250,4",
+     "contribution": 0.00012476630819187244
+    }
+   ]
+  },
+  "1024": {
+   "cls": 0.0007,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@271,4",
+     "apres": "169×22@259,4",
+     "contribution": 0.0006788116693496705
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "306×47@678,61",
+     "apres": "271×47@713,61",
+     "contribution": 0.0006788116693496705
+    }
+   ]
+  },
+  "1440": {
+   "cls": 0.0268,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@361,4",
+     "apres": "169×22@349,4",
+     "contribution": 0.02680392252604167
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > a.tfp-logo",
+     "avant": "155×82@130,64",
+     "apres": "155×82@130,44",
+     "contribution": 0.02680392252604167
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > nav.tfp-nav",
+     "avant": "697×69@309,70",
+     "apres": "702×68@309,51",
+     "contribution": 0.02680392252604167
+    }
+   ]
+  },
+  "1920": {
+   "cls": 0.0196,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-topbar > div.tfp-topbar__inner > span.tfp-topbar__rating",
+     "avant": "176×22@601,4",
+     "apres": "169×22@589,4",
+     "contribution": 0.019648007202148435
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > a.tfp-logo",
+     "avant": "155×82@370,64",
+     "apres": "155×82@370,44",
+     "contribution": 0.019648007202148435
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > nav.tfp-nav",
+     "avant": "697×69@549,70",
+     "apres": "702×68@549,51",
+     "contribution": 0.019648007202148435
+    }
+   ]
+  }
+ }
+}
