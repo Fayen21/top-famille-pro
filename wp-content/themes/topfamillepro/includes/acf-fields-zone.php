@@ -398,6 +398,14 @@ function tfp_register_acf_fields_zone() {
 					'instructions' => "Un nom par ligne. Communes ou quartiers sans page dédiée : affichés en texte, jamais en lien mort.",
 					'rows'         => 6,
 				);
+				$fields[] = array(
+					'key'          => 'field_tfp_zone_' . $name . '_' . $i . '_cibles',
+					'label'        => $label . ' ' . $i . ' — zones liées',
+					'name'         => $name . '_' . $i . '_cibles',
+					'type'         => 'textarea',
+					'instructions' => "Identifiants (slugs) des pages ville ou commune liées par ce groupe, un par ligne, tels que relevés sur la maquette. Vide : le gabarit reconstruit la liste depuis le département.",
+					'rows'         => 4,
+				);
 			}
 		}
 		acf_add_local_field_group(

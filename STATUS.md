@@ -1,7 +1,7 @@
 # STATUS — Top-Famille Pro
 
 > Lien entre deux sessions Claude Code Web. Mis à jour à la fin de chaque phase.
-> Dernière mise à jour : **G26 — passe ouverte après le refus de validation**, 17 août 2026 (§-8).
+> Dernière mise à jour : **passe visuelle — décisions du 14 octobre 2026**, 21 octobre 2026 (§-9).
 >
 > **Troisième vague (`docs/AUDIT-PRODUCTION.md` §3c, `docs/RAPPORT-FINAL.md` §21)** : la maquette
 > Claude Design a été **exécutée et mesurée** dans Chromium (c'est un bundle auto-décompressant),
@@ -26,6 +26,49 @@
 > honnête : `PARTIEL — ÉCARTS RESTANTS` sur la fidélité visuelle pixel-près demandée (reproduction
 > complète des 17 sections de l'accueil, Lighthouse, 6 largeurs testées) — voir
 > `docs/RAPPORT-FINAL.md` §20 pour le détail de ce qui est fait et de ce qui reste.
+
+---
+
+## -9. Passe visuelle — décisions du 14 octobre 2026 (21 octobre 2026)
+
+Branche `hotfix-production-fidelite-claude-design`, PR #9, commit `{{HEAD}}`. Rapport complet :
+**`docs/RAPPORT-PASSE-VISUELLE.md`**. Matrice des 53 routes × 2 largeurs avec lecture humaine :
+**`docs/REVUE-VISUELLE.md`**. Captures avant/après : `docs/captures-passe-visuelle/`.
+**Statut : `PRET_POUR_VALIDATION_VISUELLE_HUMAINE`** — aucune validation finale sans réponse
+explicite d'Emmanuel. Rien fusionné, rien déployé, aucun DNS touché, aucun e-mail réel envoyé.
+
+**Fait.**
+
+1. Les six composants visés par la décision, refaits à la source et non plus au pixel :
+   header (six entrées, panneau Zones à huit départements numérotés + « Voir toutes les villes »,
+   un CTA dominant, téléphone sans retour à la ligne, limites 819/820 · 1099/1100 · 1219/1220
+   tenues) ; villes avec « Code postal : … » sur sa ligne (`tfp-card-tile--ville`, cinq colonnes) ;
+   libellés de l'accueil (« Appeler Top-Famille Pro », « Devis étudié personnellement », aria) et
+   bandeau tarifaire partagé `tfp_bande_tarif()` (bouton à côté du prix) ; cinq étapes en liste
+   ordonnée verticale `.tfp-etape` ; **vraie carte SVG** des huit départements (IGN ADMIN EXPRESS
+   COG 2018, Licence Ouverte 2.0, `docs/CARTE-BFC-SOURCE.md`, `tools/carte-bfc.mjs`, un seul
+   marqueur Saint-Apollinaire) ; gérante présentée, portrait 420 × 525 → **294 × 368** par la colonne.
+2. Audit transversal des 106 écrans (53 routes × 375/1440, menus ouverts, étape 2 du devis), lus
+   tuile par tuile : vingt familles de défauts corrigées à la source — carte régionale aplatie,
+   rangées dupliquées des départements, maillage des pages ville (cibles relevées, nouveau champ
+   ACF `locaux_N_cibles`), phrase « guides locaux » supprimée (CLAUDE.md §9), bandeaux tarifaires
+   relevés, cartes blanches sur fond clair (`rgba(0,0,0,0)` lu comme du noir), intertitres, filets
+   d'un côté, appels finaux centrés, puces parasites et carte « inclus » des tarifs, ombres de
+   défilement des tableaux, orientation et horaires du contact, panneau vide des avis, pages
+   légales (titre doublé, vide de 136 px), « communes secondaires » partout, cibles tactiles.
+   Détail et causes : rapport §4.
+3. Outils : `tools/revue-visuelle.mjs` (revue 53 × 2 avec relevé automatique, fusion des relances
+   partielles, lecture humaine dans `docs/revue-visuelle-lecture.json`),
+   `tools/captures-passe-visuelle.mjs` (avant/après ciblés), `tools/carte-bfc.mjs`,
+   `tools/rogner.mjs` et `tools/mesurer.mjs` (inspection d'un composant sur le banc).
+4. Contrôles : `tests/passe-visuelle.spec.js` (48 contrôles nouveaux), suite complète 1 303 contrôles (1 298 verts, 5 échecs instruits et corrigés, spécifications rejouées 68/68 · 782/782 · 4/4),
+   relevé de base 318/318, 300 dans 95–105 % (hors plage : 18 contrôles légaux autorisés), 0 débordement, 0 erreur, parité 1 266 fichiers conformes, archives reconstruites, export 53/53 routes, 0 défaut, Lighthouse 14/14 conformes, mobile 99–100, LCP mobile ≤ 1,98 s, CLS 0.
+
+**Reste à faire / décisions humaines** (rapport §9) : validation visuelle des captures ;
+« ☎ Échanger avec Audrey » des appels finaux de zone (champ ACF, hors décision) ; intitulé
+« Une couverture régionale, pas des agences fictives » (CLAUDE.md §9 différé le 10 août) ; phrase
+doublée du pilier (contenu maquette) ; données IGN en accès direct ; et les attentes inchangées
+(photo définitive, avis réels, Kbis, envoi réel du formulaire).
 
 ---
 

@@ -85,6 +85,64 @@ function tfp_button( $args ) {
  *
  * @param string $label
  */
+/**
+ * Les trois garanties du bandeau tarifaire — une seule source pour toutes ses compositions.
+ *
+ * @return string[]
+ */
+function tfp_band_items() {
+	return array( 'Devis gratuit sous 24 h', 'Intervention régulière ou ponctuelle', "Conditions d'arrêt précisées au devis" );
+}
+
+/**
+ * Bandeau tarifaire PARTAGÉ — décision du 14 octobre 2026.
+ *
+ * Deux groupes : [prix + bouton « Voir les tarifs »] puis [garanties]. Le bouton appartient au
+ * groupe du prix, jamais seul à l'extrémité droite ; les garanties se placent sous le groupe,
+ * sur une ligne, et s'empilent sous 560 px. L'accueil et les pages statiques relevées sur la
+ * maquette (pilier, région, prestations, tarifs…) composent toutes ce bandeau ici ; la bande des
+ * pages de zone garde son gabarit propre, dont la composition a été alignée sur la même règle.
+ *
+ * Avant cela, le bandeau relevé des pages statiques sortait du rendu générique des grilles :
+ * un panneau à une colonne, dont les deux « cartes » — la pastille du prix et le bouton —
+ * devenaient deux barres marine pleine largeur, et dont les garanties tombaient en texte nu
+ * dessous, sans coche ni séparateur (revue transversale du 21 octobre, page pilier).
+ *
+ * @param array $args { prix, note, lien_label, lien_url, garanties, classe }
+ */
+function tfp_bande_tarif( array $args = array() ) {
+	$site = tfp_site_data();
+	$args = wp_parse_args(
+		$args,
+		array(
+			'prix'       => $site['price_unique_display'] . ' HT/h',
+			'note'       => 'tarif unique en région',
+			'lien_label' => 'Voir les tarifs →',
+			'lien_url'   => home_url( '/tarifs/' ),
+			'garanties'  => tfp_band_items(),
+			'classe'     => '',
+		)
+	);
+	?>
+	<div class="tfp-price-band<?php echo $args['classe'] ? ' ' . esc_attr( $args['classe'] ) : ''; ?>">
+		<div class="tfp-price-band__lead">
+			<span class="tfp-price-band__value">
+				<strong><?php echo esc_html( $args['prix'] ); ?></strong>
+				<?php if ( $args['note'] ) : ?><span><?php echo esc_html( $args['note'] ); ?></span><?php endif; ?>
+			</span>
+			<a href="<?php echo esc_url( $args['lien_url'] ); ?>" class="tfp-btn tfp-btn--secondary tfp-btn--sm tfp-price-band__cta"><?php echo esc_html( $args['lien_label'] ); ?></a>
+		</div>
+		<?php if ( ! empty( $args['garanties'] ) ) : ?>
+			<ul class="tfp-price-band__items" aria-label="Garanties">
+				<?php foreach ( (array) $args['garanties'] as $g ) : ?>
+					<li><?php tfp_check_item( $g ); ?></li>
+				<?php endforeach; ?>
+			</ul>
+		<?php endif; ?>
+	</div>
+	<?php
+}
+
 function tfp_check_item( $label ) {
 	printf(
 		'<span class="tfp-badge--check"><span class="tfp-check-icon" aria-hidden="true">✓</span>%s</span>',
@@ -236,6 +294,8 @@ function tfp_get_zone_blocks( $prefix, $post_id, $max ) {
 			'textes' => tfp_get_lines( tfp_get_field( $prefix . '_' . $i . '_texte', $post_id ) ),
 			'liste'  => tfp_get_lines( tfp_get_field( $prefix . '_' . $i . '_liste', $post_id ) ),
 			'noms'   => tfp_get_lines( tfp_get_field( $prefix . '_' . $i . '_noms', $post_id ) ),
+			// Zones liées relevées sur la maquette (slugs). Vide pour un contenu antérieur au champ.
+			'cibles' => tfp_get_lines( tfp_get_field( $prefix . '_' . $i . '_cibles', $post_id ) ),
 			'type'   => tfp_get_field( $prefix . '_' . $i . '_type', $post_id ) ?: 'noms',
 			// « cartes » (tuile avec description) ou « liens » (rangée simple) : la maquette emploie
 			// les deux pour le même groupe de prestations, selon le niveau de la page.
@@ -664,6 +724,8 @@ function tfp_card_grid( array $grille ) {
 		'gap'             => '--tfp-tuile-gap',
 		'rayon'           => '--tfp-tuile-rayon',
 		'filet'           => '--tfp-tuile-filet',
+		// Quatre largeurs quand la maquette ne borde qu'un côté (« 2px 0px 0px 0px »).
+		'filet_cotes'     => '--tfp-tuile-filet-largeurs',
 		'titre_taille'    => '--tfp-tuile-titre',
 		'titre_interligne' => '--tfp-tuile-titre-lh',
 		'desc_taille'     => '--tfp-tuile-desc',

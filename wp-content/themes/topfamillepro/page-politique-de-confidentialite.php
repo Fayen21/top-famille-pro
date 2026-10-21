@@ -38,12 +38,12 @@ get_header();
 	<?php tfp_breadcrumb( tfp_seo()['breadcrumb'] ); ?>
 </div>
 
-<section class="tfp-container tfp-section--tight">
+<section class="tfp-container tfp-section--tight tfp-legal-tete">
 	<h1>Politique de confidentialité</h1>
 	<p class="tfp-section__lede">Comment les données transmises via ce site sont collectées, utilisées et conservées.</p>
 </section>
 
-<section class="tfp-section">
+<section class="tfp-section tfp-legal-corps">
 	<div class="tfp-container tfp-legal-body" style="display:flex;flex-direction:column;gap:32px">
 
 		<div>

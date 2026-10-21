@@ -117,7 +117,8 @@ get_header();
 		</div>
 
 		<div>
-			<h2>Communes secondaires</h2>
+			<?php // Décision du 14 octobre 2026 : plus de « communes secondaires » à l'écran — même intitulé que l'index des zones. ?>
+			<h2>Autour de Dijon et de Beaune</h2>
 			<ul>
 				<?php foreach ( $communes as $c ) : ?>
 					<li><a href="<?php echo esc_url( get_permalink( $c ) ); ?>"><?php echo esc_html( get_the_title( $c ) ); ?></a></li>

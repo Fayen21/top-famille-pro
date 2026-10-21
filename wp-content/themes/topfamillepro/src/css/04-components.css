@@ -729,6 +729,10 @@
   min-height: var(--tap-target-min);
   /* Téléphone secondaire : un numéro ne se coupe jamais sur deux lignes. */
   white-space: nowrap;
+  /* Quand le libellé est masqué (sous 1220 px), il ne reste que le pictogramme : 19 px de large.
+     La cible garde 44 px, centrée — relevé par la revue transversale sur les 53 routes à 375 px. */
+  min-width: var(--tap-target-min);
+  justify-content: center;
 }
 
 .tfp-menu-toggle {
@@ -1414,6 +1418,14 @@
   margin-left: auto;
   font-weight: var(--fw-semibold);
   color: var(--color-navy);
+  /* Enfant d'un conteneur flex, ce lien n'est plus « inline » et ne bénéficie pas de l'exception
+     du critère 2.5.8 : 21 px de haut dans une barre de 30. La cible prend toute la hauteur de la
+     barre, sans changer sa ligne de texte. */
+  display: inline-flex;
+  align-items: center;
+  min-height: 30px;
+  padding-inline: 4px;
+  margin-right: -4px;
 }
 
 /* Sous 560px, le téléphone du bandeau ferait passer la ligne à deux niveaux : il reste accessible
@@ -1723,10 +1735,6 @@ body.tfp-body .tfp-article-body p a {
   line-height: 1.62;
 }
 
-.tfp-list-plain--nue li::before {
-  content: none;
-}
-
 .tfp-list-plain li::before,
 .tfp-list-marked li::before {
   content: "";
@@ -1737,6 +1745,21 @@ body.tfp-body .tfp-article-body p a {
   height: 7px;
   border-radius: 2px;
   background: var(--color-turquoise);
+}
+
+/* Passe visuelle du 14 octobre 2026 : cette règle était écrite AVANT la règle générale, à
+   spécificité égale — la puce revenait donc, posée à 19 px sous un item sans rembourrage, soit un
+   carré turquoise collé sous la première lettre de chaque ligne sur /tarifs/. Elle vient après,
+   et porte les deux classes pour ne plus dépendre de l'ordre. */
+.tfp-list-plain.tfp-list-plain--nue li::before {
+  content: none;
+}
+
+/* Carte « Ce qui est inclus » : fond turquoise pâle et filet turquoise clair relevés sur la
+   maquette (#DDF4F3 / #B8E4E4), contre la carte blanche « Fourni par le client ». */
+.tfp-card--inclus {
+  background: var(--color-turquoise-pale);
+  border-color: var(--color-turquoise-light);
 }
 
 .tfp-list-marked li::before {
@@ -1825,6 +1848,27 @@ body.tfp-body .tfp-article-body p a {
    à corriger et à laisser diverger. Elles vivent maintenant ici. */
 .tfp-legal-body {
   max-width: 820px;
+}
+
+/* Passe visuelle du 14 octobre 2026 : entre le chapeau et le premier chapitre des trois pages
+   légales, le thème cumulait 52 px de bas de bande et 84 px de haut de bande — un vide de 136 px
+   sans rien dedans. La maquette ferme le chapeau à clamp(20px, 3vw, 30px) et ouvre le corps à
+   clamp(8px, 2vw, 20px). */
+.tfp-legal-tete {
+  padding-top: clamp(26px, 4vw, 44px);
+  padding-bottom: clamp(20px, 3vw, 30px);
+}
+
+.tfp-legal-corps {
+  padding-top: clamp(8px, 2vw, 20px);
+  padding-bottom: clamp(48px, 6vw, 80px);
+}
+
+/* Deux chapitres écrits dans le même bloc (« Finalité et base légale » puis « Destinataire »,
+   « Cookies strictement nécessaires » puis « Cookies techniques ») se collaient : l'écart de 32 px
+   est celui de la colonne, pas du titre. Un titre qui suit un paragraphe reçoit le même écart. */
+.tfp-legal-body h2:not(:first-child) {
+  margin-top: 32px;
 }
 
 .tfp-legal-p {
@@ -1961,6 +2005,20 @@ body.tfp-body .tfp-row-heading {
   color: var(--color-text-secondary);
 }
 
+/* Intertitre relevé en graisse 600 (17 px) dans la maquette — « Suivi & interlocuteur dédié ».
+   Il annonce le paragraphe qui suit ; composé comme lui, il s'y confondait. */
+.tfp-prose--intertitre {
+  margin-top: 22px;
+  font-size: 17px;
+  font-weight: var(--fw-semibold);
+  line-height: 1.4;
+  color: var(--color-text);
+}
+
+.tfp-prose--intertitre + .tfp-prose {
+  margin-top: 6px;
+}
+
 .tfp-stack {
   display: flex;
   flex-direction: column;
@@ -1991,6 +2049,85 @@ body.tfp-body .tfp-row-heading {
   color: var(--color-primary);
   text-decoration: underline;
   text-underline-offset: 3px;
+}
+
+/* Bande centrée (relevé `text-align: center` sur la maquette — appels finaux à fond primaire) :
+   titre, phrase et rangée de boutons se centrent ensemble. */
+.tfp-section--centre {
+  text-align: center;
+}
+
+.tfp-section--centre .tfp-static-block__titre,
+.tfp-section--centre .tfp-prose,
+.tfp-section--centre .tfp-static-note {
+  margin-inline: auto;
+}
+
+.tfp-section--centre .tfp-action-row--statique {
+  justify-content: center;
+}
+
+/* Carte générique : un titre h3 suivi de son paragraphe garde l'écart de la maquette (10 px),
+   au lieu de coller (« Trois configurations » des pages prestation). */
+.tfp-card > h3 + p {
+  margin-top: 10px;
+}
+
+/* Carte-lien à fond plein — relevée sur /zones-intervention/ (carte « Bourgogne-Franche-Comté »,
+   passe visuelle du 14 octobre 2026) : fond primaire, rayon 18, rembourrage clamp(24px, 3vw, 34px),
+   titre Bricolage 700 clamp(20px, 2.4vw, 26px), sous-ligne turquoise 15 px, pseudo-bouton blanc
+   12/22 rayon 11. Le bloc de texte et la pastille passent l'un sous l'autre dès que la largeur
+   manque : rien ne déborde à 375 px. */
+.tfp-carte-lien {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: clamp(24px, 3vw, 34px);
+  color: var(--color-text-on-dark);
+  text-decoration: none;
+  background: var(--color-primary);
+  border-radius: 18px;
+  transition: background-color .18s ease;
+}
+
+.tfp-carte-lien:hover,
+.tfp-carte-lien:focus-visible {
+  color: var(--color-text-on-dark);
+  background: var(--color-primary-hover);
+}
+
+.tfp-carte-lien__corps {
+  display: block;
+  flex: 1 1 320px;
+  min-width: 0;
+}
+
+.tfp-carte-lien__titre {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: clamp(20px, 2.4vw, 26px);
+  font-weight: var(--fw-bold);
+  line-height: 1.15;
+  overflow-wrap: anywhere;
+}
+
+.tfp-carte-lien__desc {
+  display: block;
+  margin-top: 4px;
+  font-size: 15px;
+  color: var(--color-turquoise);
+}
+
+.tfp-carte-lien__cta {
+  display: inline-block;
+  flex: 0 0 auto;
+  padding: 12px 22px;
+  font-weight: var(--fw-bold);
+  color: var(--color-primary);
+  background: var(--color-white);
+  border-radius: 11px;
 }
 
 /* Panneau de liens de maillage — géométrie relevée sur la maquette : fond #DCE7EB, rayon 14,
@@ -2166,6 +2303,10 @@ body.tfp-body .tfp-row-heading {
   font-size: 15px;
   font-weight: 700;
   color: var(--color-copper);
+  /* 23 px de haut en ligne de texte : sous les 24 px du critère 2.5.8. Un rembourrage vertical
+     porte la cible à 27 px sans déplacer le texte — relevé par la revue transversale. */
+  padding-block: 2px;
+  min-height: 24px;
 }
 
 /* Le renvoi de tête de la colonne « Zones » fait exception : la maquette l'écrit en blanc, en
@@ -2465,6 +2606,37 @@ body.tfp-body .tfp-price-headline__offer .tfp-btn {
 .tfp-table-scroll {
   margin-top: 24px;
   overflow-x: auto;
+}
+
+/* Ombres de défilement (passe visuelle du 14 octobre 2026) : à 375 px, le tableau des budgets se
+   coupait net sur « Fréquenc » sans rien qui dise qu'il défile. Deux dégradés attachés au contenu
+   (`background-attachment: local`) et deux ombres fixes : l'ombre n'apparaît que du côté où il
+   reste du tableau à voir, sans JavaScript. */
+.tfp-table-scroll,
+.tfp-table-wrap {
+  background:
+    linear-gradient(to right, var(--color-bg, #F4F7F8) 30%, rgba(244, 247, 248, 0)),
+    linear-gradient(to left, var(--color-bg, #F4F7F8) 30%, rgba(244, 247, 248, 0)),
+    linear-gradient(to right, rgba(16, 38, 59, .18), rgba(16, 38, 59, 0)),
+    linear-gradient(to left, rgba(16, 38, 59, .18), rgba(16, 38, 59, 0));
+  background-attachment: local, local, scroll, scroll;
+  background-position: left center, right center, left center, right center;
+  background-repeat: no-repeat;
+  background-size: 40px 100%, 40px 100%, 14px 100%, 14px 100%;
+}
+
+/* Panneau de la page Avis : note Google réelle à gauche, appel à droite (relevé maquette :
+   fond blanc, filet, rayon 16, rembourrage clamp(22px, 3vw, 32px)). */
+.tfp-avis-panneau {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: clamp(22px, 3vw, 32px);
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
 }
 
 .tfp-table {
@@ -3073,10 +3245,14 @@ body.tfp-type-prestation .tfp-hero__content h1 {
 }
 
 /* Sous-groupe : son titre est un `h3`, plus discret que le `h2` qui ouvre la colonne. */
+/* Sous-groupe d'une page département (« Autour de Dijon et de Beaune », « Autres communes
+   citées ») : la maquette écrit son h3 en 17 px / 700 avec 20 px au-dessus. Sans cette marge, le
+   titre collait à la rangée de villes qui le précède (revue du 21 octobre). */
 .tfp-zone-links--sous > h3 {
-  font-size: var(--fs-sm, 0.9375rem);
-  font-weight: var(--fw-semibold, 600);
+  margin-top: 20px;
   margin-bottom: 0;
+  font-size: 17px;
+  font-weight: var(--fw-bold, 700);
 }
 
 /* Tuile de prestation dans une page de zone : compacte, titre + une ligne. */
@@ -3920,6 +4096,91 @@ body.tfp-body a.tfp-link-card:focus-visible {
   gap: 9px;
 }
 
+/* Rangées de villes principales d'une page département — relevées sur la maquette : cartes
+   blanches empilées à 10 px, filet #DCE7EB, rayon 12, rembourrage 16/18, nom en 600, code postal
+   en 13 px #7FAEBF à côté du nom, flèche primaire à droite. */
+.tfp-ville-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tfp-ville-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 44px;
+  padding: 16px 18px;
+  color: var(--color-text);
+  text-decoration: none;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  transition: border-color .18s ease;
+}
+
+.tfp-ville-row:hover,
+.tfp-ville-row:focus-visible {
+  border-color: var(--color-primary);
+}
+
+.tfp-ville-row__nom {
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.tfp-ville-row__cp {
+  font-size: 13px;
+  font-weight: 500;
+  /* La maquette écrit le code postal en #7FAEBF : 2,41:1 sur blanc, sous le minimum AA (4,5:1,
+     CLAUDE.md §8). Même correction que sur l'accueil : le gris tertiaire du thème (≈ 5:1). */
+  color: var(--color-text-tertiary);
+  white-space: nowrap;
+}
+
+.tfp-ville-row__fleche {
+  flex: 0 0 auto;
+  color: var(--color-primary);
+}
+
+/* Rangée « Nettoyage en Côte-d'Or → » en tête du groupe « Dans le même département » d'une page
+   de ville — relevée sur la maquette : fond #F4F7F8, filet, rayon 14, rembourrage 17/19, titre
+   Bricolage 700 16,5 px. Elle occupe toute la largeur de la rangée de pastilles qui la suit. */
+.tfp-dept-row {
+  display: flex;
+  flex: 1 1 100%;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 4px;
+  padding: 17px 19px;
+  color: var(--color-text);
+  text-decoration: none;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 14px;
+  transition: border-color .18s ease;
+}
+
+.tfp-dept-row:hover,
+.tfp-dept-row:focus-visible {
+  border-color: var(--color-primary);
+}
+
+.tfp-dept-row__nom {
+  font-family: var(--font-heading);
+  font-size: 16.5px;
+  font-weight: var(--fw-bold);
+}
+
+.tfp-dept-row__fleche {
+  color: var(--color-primary);
+}
+
 .tfp-chip-row--10 {
   gap: 10px;
 }
@@ -4255,6 +4516,15 @@ body.tfp-body .tfp-chip-list a:focus-visible {
 
 .tfp-card-grid > li {
   display: flex;
+  /* Une mention propre à la carte (« Horaires indicatifs… ») se place SOUS la carte, pas à côté :
+     sans repli, la carte des horaires de /contact/ se resserrait à la moitié de la colonne et la
+     mention flottait à sa droite. */
+  flex-wrap: wrap;
+}
+
+.tfp-card-grid > li > .tfp-provisional-notice {
+  flex: 1 1 100%;
+  margin-top: 8px;
 }
 
 body.tfp-body .tfp-card-tile {
@@ -4268,6 +4538,8 @@ body.tfp-body .tfp-card-tile {
      une règle de variante : le raccourci s'écrit avec une spécificité de (0,3,0) et écrasait
      toute `border-color` posée plus loin par un sélecteur de variante, à (0,2,0). */
   border: var(--tfp-tuile-filet, 1px) solid var(--tfp-tuile-filet-couleur, var(--color-border));
+  /* Filet d'un seul côté quand la maquette le relève ainsi (« 2px 0px 0px 0px »). */
+  border-width: var(--tfp-tuile-filet-largeurs, var(--tfp-tuile-filet, 1px));
   border-radius: var(--tfp-tuile-rayon, 12px);
   background: var(--tfp-tuile-fond, var(--color-bg-card));
   color: var(--color-text);
@@ -4310,7 +4582,9 @@ body.tfp-body a.tfp-card-tile:focus-visible {
   display: block;
   font-family: var(--font-heading);
   font-size: var(--tfp-tuile-titre, 16px);
-  font-weight: var(--fw-bold);
+  /* Graisse relevée quand la maquette en déclare une (carte réduite à un texte courant : les cinq
+     phrases « Ce qui change selon votre adresse » sortaient en gras) ; gras sinon. */
+  font-weight: var(--tfp-tuile-titre-graisse, var(--fw-bold));
   line-height: var(--tfp-tuile-titre-lh, 1.35);
   color: var(--color-navy);
 }
@@ -4851,6 +5125,39 @@ body.tfp-body .tfp-section--primary .tfp-link-row:focus-visible {
 .tfp-contact-orientation .tfp-card-grid {
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
   margin-top: 0;
+}
+
+/* Carte d'orientation : état actif en fond primaire (le parcours affiché), carte blanche cliquable
+   pour l'autre parcours — géométrie et couleurs relevées sur la maquette. */
+body.tfp-body .tfp-card-tile--orientation .tfp-card-tile__title {
+  font-family: var(--font-heading);
+  font-size: 18px;
+  font-weight: var(--fw-bold);
+}
+
+body.tfp-body .tfp-card-tile--orientation .tfp-card-tile__desc {
+  margin-top: 6px;
+  font-size: 14px;
+  color: var(--color-text-secondary);
+}
+
+body.tfp-body a.tfp-card-tile--orientation:hover,
+body.tfp-body a.tfp-card-tile--orientation:focus-visible {
+  border-color: var(--color-primary);
+}
+
+body.tfp-body .tfp-card-tile--orientation-active {
+  color: var(--color-text-on-dark);
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+body.tfp-body .tfp-card-tile--orientation-active .tfp-card-tile__title {
+  color: var(--color-text-on-dark);
+}
+
+body.tfp-body .tfp-card-tile--orientation-active .tfp-card-tile__desc {
+  color: var(--color-text-on-dark-muted);
 }
 
 .tfp-field {

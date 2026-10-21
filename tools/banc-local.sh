@@ -124,8 +124,10 @@ done
 
 cd "$RIG/wp-core"
 # `php -S` est mono-processus : la suite Playwright sérialise alors toutes ses requêtes.
+# Le routeur sert les URL « fichier » que WordPress génère (sitemaps natifs) : sans lui, le serveur
+# intégré répond 404 avant WordPress — voir tools/banc-router.php.
 PHP_CLI_SERVER_WORKERS="${TFP_WORKERS:-6}" WP_ENVIRONMENT_TYPE="$ENVIRONNEMENT" \
-	nohup php -S "localhost:${PORT}" -t "$RIG/wp-core" > "$RIG/php.log" 2>&1 &
+	nohup php -S "localhost:${PORT}" -t "$RIG/wp-core" "$DEPOT/tools/banc-router.php" > "$RIG/php.log" 2>&1 &
 for _ in $(seq 1 40); do
 	curl -s -o /dev/null --max-time 1 "$URL/" && break
 	sleep 0.5

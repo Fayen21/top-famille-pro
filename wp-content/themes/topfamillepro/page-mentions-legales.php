@@ -51,12 +51,12 @@ get_header();
 	<?php tfp_breadcrumb( tfp_seo()['breadcrumb'] ); ?>
 </div>
 
-<section class="tfp-container tfp-section--tight">
+<section class="tfp-container tfp-section--tight tfp-legal-tete">
 	<h1>Mentions légales</h1>
 	<p class="tfp-section__lede">Informations légales relatives au site top-famille-pro.fr et à son éditeur.</p>
 </section>
 
-<section class="tfp-section">
+<section class="tfp-section tfp-legal-corps">
 	<div class="tfp-container tfp-legal-body" style="display:flex;flex-direction:column;gap:32px">
 
 		<div>
@@ -113,7 +113,6 @@ get_header();
 
 		<div>
 			<h2>Droit applicable</h2>
-			<h2 style="font-size:20px;margin-top:28px">Droit applicable</h2>
 			<p class="tfp-legal-p">Le présent site est soumis au droit français. En cas de litige, et à défaut de résolution amiable, les tribunaux français seront seuls compétents.</p>
 		</div>
 

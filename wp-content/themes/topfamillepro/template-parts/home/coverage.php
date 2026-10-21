@@ -31,6 +31,16 @@ foreach ( $carte['departements'] as $d ) {
 <section class="tfp-section tfp-section--turquoise" aria-labelledby="tfp-couverture-titre">
 	<div class="tfp-container tfp-couverture">
 		<div class="tfp-couverture__col">
+			<?php
+			/*
+			 * Intitulé de la maquette, volontairement conservé : CLAUDE.md §9 demande « Une entreprise
+			 * régionale basée à Saint-Apollinaire », mais Emmanuel a différé cette reformulation le
+			 * 10 août 2026 (« je veux d'abord reproduire la maquette, puis je modifierai ses
+			 * formulations ultérieurement » — docs/ECARTS-MAQUETTE-AUTORISES.md). Le bloc ayant été
+			 * refait sur la décision du 14 octobre, le moment de trancher est signalé dans le rapport
+			 * de passe ; la décision n'est pas prise ici.
+			 */
+			?>
 			<h2 id="tfp-couverture-titre">Une couverture régionale, pas des agences fictives</h2>
 			<p class="tfp-couverture__lede">
 				Nous intervenons depuis <?php echo esc_html( $site['address_city'] ); ?> sur les huit départements de la <?php echo esc_html( $site['address_region'] ); ?>, avec la même organisation partout.
@@ -49,7 +59,15 @@ foreach ( $carte['departements'] as $d ) {
 		</div>
 
 		<div class="tfp-couverture__carte">
-			<svg class="tfp-carte-bfc" viewBox="<?php echo esc_attr( $carte['viewbox'] ); ?>" role="img" aria-labelledby="tfp-carte-titre tfp-carte-desc" preserveAspectRatio="xMidYMid meet">
+			<?php
+			/*
+			 * `role="group"`, pas `role="img"` : un rôle d'image rend ses descendants
+			 * présentationnels, et les huit liens de département deviennent des contrôles imbriqués
+			 * dans une image (axe « nested-interactive », WCAG 4.1.2). La carte est un groupe de
+			 * liens nommé par son titre et sa description.
+			 */
+			?>
+			<svg class="tfp-carte-bfc" viewBox="<?php echo esc_attr( $carte['viewbox'] ); ?>" role="group" aria-labelledby="tfp-carte-titre tfp-carte-desc" preserveAspectRatio="xMidYMid meet">
 				<title id="tfp-carte-titre">Carte des huit départements de Bourgogne-Franche-Comté couverts par <?php echo esc_html( $site['brand_name'] ); ?></title>
 				<desc id="tfp-carte-desc">Tracés IGN ADMIN EXPRESS COG. Les huit départements sont couverts à conditions identiques ; l'unique implantation de l'entreprise est à <?php echo esc_html( $site['address_city'] ); ?>.</desc>
 				<g class="tfp-carte-bfc__departements">

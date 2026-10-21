@@ -62,7 +62,12 @@ const CORRECTIONS_EDITORIALES = [
 	 * restent possibles dans les données (niveau=commune) ; elles n'apparaissent plus à l'écran.
 	 */
 	{ avant: 'Nos dix villes principales', apres: "Nos villes d'intervention" },
+	// Signature d'un témoignage de la page pilier : le relevé perdait la structure de la légende
+	// (deux séparateurs en tête, plus aucun entre les champs). Lu sur la revue transversale.
+	{ avant: '· · Marc V. Directeur administratif Chalon-sur-Saône', apres: 'Marc V. · Directeur administratif · Chalon-sur-Saône' },
 	{ avant: 'Premières communes secondaires', apres: 'Autour de Dijon et de Beaune' },
+	// Page région : même décision, même intitulé que l'index des zones.
+	{ avant: 'Secteurs secondaires déjà documentés', apres: 'Autour de Dijon et de Beaune' },
 	{
 		avant:
 			"Autour de Dijon et de Beaune, ces communes disposent déjà de leur page. D'autres suivront " +
@@ -424,17 +429,41 @@ for (const p of PAGES) {
 			if (['button', 'input', 'select', 'textarea'].includes(tag)) return true;
 			if (tag === 'a') {
 				const r = el.getBoundingClientRect();
-				return r.height <= 64 && el.children.length <= 2 && txt(el).length <= 40;
+				if (r.height > 72 || el.children.length > 2) return false;
+				if (txt(el).length <= 40) return true;
+				/*
+				 * Un libellé de 41 à 60 caractères reste une commande quand il tient sur une ligne
+				 * dans une RANGÉE flex : « Vérifier notre intervention dans ma commune » (43) fermait
+				 * l'index des zones en deux cartes blanches étirées sur toute la bande au lieu de
+				 * deux boutons côte à côte (revue du 21 octobre). Le seuil de 40 reste la règle dans
+				 * une grille, où un lien court est une carte-lien.
+				 */
+				const parent = el.parentElement;
+				return txt(el).length <= 60 && !!parent && /flex/.test(getComputedStyle(parent).display);
 			}
 			return false;
 		};
 
 		/** Luminance perçue : sert à dire si une carte est claire ou sombre. */
 		const estSombre = (couleur) => {
-			const m = (couleur || '').match(/\d+/g);
+			const m = (couleur || '').match(/[\d.]+/g);
 			if (!m || m.length < 3) return false;
+			// `rgba(0, 0, 0, 0)` n'est pas du noir : c'est l'absence de fond. Lu comme du noir, il
+			// classait « sombre » toute carte transparente — et le thème composait alors leur
+			// texte en blanc sur une bande claire : « Tâches par espace », « Quotidienne » et
+			// leurs voisines rendaient des cartes vides sur la page pilier (revue du 21 octobre).
+			if (m.length >= 4 && Number(m[3]) === 0) return false;
 			const [r, v, b] = m.map(Number);
 			return 0.299 * r + 0.587 * v + 0.114 * b < 128;
+		};
+		/** Fond RÉELLEMENT visible derrière un élément : le premier fond peint en remontant. */
+		const fondEffectif = (el) => {
+			for (let n = el; n && n !== document.documentElement; n = n.parentElement) {
+				const bg = getComputedStyle(n).backgroundColor;
+				const m = (bg || '').match(/[\d.]+/g);
+				if (m && m.length >= 3 && !(m.length >= 4 && Number(m[3]) === 0)) return bg;
+			}
+			return 'rgb(255, 255, 255)';
 		};
 
 		/**
@@ -881,6 +910,14 @@ for (const p of PAGES) {
 				desc_marge: mDesc || mListe ? (mDesc || mListe).marge || '' : '',
 				// Clés présentes seulement quand la disposition est relevée : le seed ne porte pas de
 				// `en_ligne => false` sur des centaines de cartes empilées.
+				/*
+				 * Carte réduite à un seul texte (liste de la maquette rendue en tuiles : « Ce qui
+				 * change selon votre adresse ») : sa graisse est relevée, sinon le composant lui
+				 * pose la semi-graisse d'un titre et cinq phrases de 14,5 px sortent en gras.
+				 */
+				...(premier && !mDesc && !mListe && !descEnLigne && premier.graisse
+					? { titre_graisse: premier.graisse }
+					: {}),
 				...(descEnLigne
 					? {
 							en_ligne: true,
@@ -1123,12 +1160,26 @@ for (const p of PAGES) {
 					fond: ks.backgroundColor,
 					rayon: ks.borderTopLeftRadius,
 					filet: ks.borderTopWidth,
+					/*
+					 * Côtés du filet. La maquette borde certaines cartes d'un SEUL côté — « Les
+					 * tâches, espace par espace » du pilier : `border-top: 2px solid #174A81`,
+					 * sans fond ni rayon. Relevé sur le seul côté haut, le filet était appliqué aux
+					 * quatre : six boîtes marine à angles droits, le texte collé au cadre (revue du
+					 * 21 octobre). Les quatre largeurs sont relevées ; vide quand elles sont égales.
+					 */
+					filet_cotes: (() => {
+						const c = [ks.borderTopWidth, ks.borderRightWidth, ks.borderBottomWidth, ks.borderLeftWidth];
+						return c.every((w) => w === c[0]) ? '' : c.join(' ');
+					})(),
 					// Couleur du filet, relevée comme le fond : sur une bande bleue, la maquette
 					// borde ses tuiles d'un bleu plus clair (#1E5C9E), là où le thème appliquait le
 					// filet pâle des cartes blanches. Un jeton du thème ne peut pas le deviner.
 					filet_couleur: ks.borderTopColor,
 					padding: ks.padding,
-					theme: estSombre(ks.backgroundColor) ? 'sombre' : 'clair',
+					// Le thème se juge sur le fond VISIBLE derrière la carte : une carte transparente
+					// sur une bande marine est sombre, une carte transparente sur une bande claire
+					// est claire.
+					theme: estSombre(fondEffectif(k)) ? 'sombre' : 'clair',
 					titre_taille: g0.titre_taille || '',
 					titre_interligne: g0.titre_interligne || '',
 					desc_taille: g0.desc_taille || '',
@@ -1282,11 +1333,48 @@ for (const p of PAGES) {
 						if (rangee && !rangee.dataset.tfpRangee) {
 							rangee.dataset.tfpRangee = 'r' + ++window.__tfpRangeeSeq;
 						}
+						/*
+						 * UNE CARTE-LIEN GARDE SA STRUCTURE — passe visuelle du 14 octobre 2026.
+						 *
+						 * La garde ci-dessus empêchait la carte régionale de /zones-intervention/ de
+						 * devenir un bouton, mais la rétrogradait en « ligne » : le gabarit aplatissait
+						 * alors ses trois textes (titre, sous-ligne, pseudo-bouton) en UNE phrase de
+						 * 138 px collée sans espace — « Bourgogne-Franche-ComtéLa page régionale ·
+						 * … Voir la page régionale → ». La maquette pose un `<a>` à fond plein avec
+						 * un bloc de deux lignes à gauche et une pastille blanche à droite.
+						 *
+						 * Le repère reste mesurable : un lien à fond plein, trop grand pour une
+						 * commande, dont les enfants sont des blocs. Le titre est la feuille au plus
+						 * grand corps, le pseudo-bouton est le dernier enfant à fond propre, le reste
+						 * est la sous-ligne. Chaque texte est relevé séparément, et c'est le gabarit
+						 * qui recompose la carte.
+						 */
+						let carte = null;
+						if (!estCommande && plein && n.children.length >= 2) {
+							const feuilles = [...n.querySelectorAll('*')].filter((e) => !e.children.length && txt(e));
+							const bouton = [...n.children].reverse().find((e) => {
+								const cs = getComputedStyle(e);
+								return cs.backgroundColor !== 'rgba(0, 0, 0, 0)' && cs.backgroundColor !== 'transparent' && txt(e).length <= 60;
+							}) || null;
+							const corps = feuilles.filter((e) => !bouton || !bouton.contains(e));
+							const titre = corps.reduce((best, e) => {
+								const fs = parseFloat(getComputedStyle(e).fontSize) || 0;
+								return !best || fs > best.fs ? { e, fs } : best;
+							}, null);
+							if (titre && bouton) {
+								carte = {
+									titre: txt(titre.e),
+									description: corps.filter((e) => e !== titre.e).map(txt).join(' '),
+									cta: txt(bouton),
+								};
+							}
+						}
 						out.push({
 							t: 'a',
 							v: txt(n),
 							href: n.getAttribute('href') || '',
-							archetype: ! estCommande ? 'ligne' : filet >= 1 ? 'secondaire' : plein ? 'primaire' : 'ligne',
+							archetype: carte ? 'carte' : ! estCommande ? 'ligne' : filet >= 1 ? 'secondaire' : plein ? 'primaire' : 'ligne',
+							...(carte ? { carte } : {}),
 							rangee: rangee ? rangee.dataset.tfpRangee : '',
 							/*
 							 * Géométrie du bouton, relevée comme celle des tuiles l'est déjà.
@@ -1319,6 +1407,9 @@ for (const p of PAGES) {
 						out.push({
 							t: 'span',
 							v: txt(n),
+							// Graisse relevée : un fragment en 600 et court est un intertitre de la
+							// maquette (« Suivi & interlocuteur dédié », 17 px / 600), pas une note.
+							graisse: parseInt(sp.fontWeight, 10) || 400,
 							pastille: parseFloat(sp.borderTopLeftRadius) >= 40 && (fond || parseFloat(sp.borderTopWidth) > 0),
 							// Ordonnée de la PREMIÈRE ligne du fragment : sert à recoller deux fragments
 							// que la maquette rend sur une même ligne (voir la fusion des notes).
@@ -1567,6 +1658,7 @@ for (const p of PAGES) {
 							texte: n.v,
 							route: n.href,
 							archetype: n.archetype || 'ligne',
+							...(n.carte ? { carte: n.carte } : {}),
 							rangee: n.rangee || '',
 							pad_v: n.pad_v || '',
 							pad_h: n.pad_h || '',
@@ -1628,7 +1720,7 @@ for (const p of PAGES) {
 								dernier.texte = `${dernier.texte} ${n.v}`.replace(/\s+/g, ' ').trim();
 								continue;
 							}
-							seq('note', { texte: n.v, ligne: n.ligne });
+							seq('note', { texte: n.v, ligne: n.ligne, ...(n.graisse >= 600 ? { graisse: n.graisse } : {}) });
 						}
 					}
 				}
@@ -1732,6 +1824,12 @@ for (const p of PAGES) {
 				out.push({
 					index: i,
 					fond: fondOf(sec),
+					/*
+					 * Alignement de la bande. Les quatorze bandes d'appel final de la maquette
+					 * (fond primaire) centrent titre, phrase et boutons ; rendues sans ce relevé,
+					 * elles sortaient alignées à gauche (revue du 21 octobre, page pilier).
+					 */
+					alignement: [sec, ...sec.children].some((e) => /center/.test(getComputedStyle(e).textAlign)) ? 'centre' : '',
 					padding_haut: (declarePadding && declarePadding.haut) || cs.paddingTop,
 					padding_bas: (declarePadding && declarePadding.bas) || cs.paddingBottom,
 					largeur_texte: largeurTexte,

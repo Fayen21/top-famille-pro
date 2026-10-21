@@ -25,22 +25,29 @@
  *
  * Usage :
  *   TFP_BASE_URL=http://localhost:8901 node tools/revue-visuelle.mjs [--widths=375,1440] [--only=#/x,#/y]
+ *
+ * Une relance `--only=` fusionne ses résultats dans `docs/revue-visuelle.json` et régénère la
+ * matrice entière. La colonne « Lecture humaine » vient de `docs/revue-visuelle-lecture.json`
+ * (une entrée par route), écrite à la main après lecture des tuiles — jamais par l'outil.
  *   → docs/revue-visuelle/*.png · docs/revue-visuelle.json · docs/REVUE-VISUELLE.md
  */
 import { chromium } from '@playwright/test';
-import { mkdirSync, writeFileSync } from 'node:fs';
+import { mkdirSync, writeFileSync, existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { ROUTE_MAP } from './route-map.mjs';
 
 const WP = process.env.TFP_BASE_URL || 'http://localhost:8901';
 const SORTIE = join('docs', 'revue-visuelle');
-mkdirSync(SORTIE, { recursive: true });
+const TUILES = join(SORTIE, 'tuiles');
+mkdirSync(TUILES, { recursive: true });
 const arg = (n, d) => ((process.argv.find((a) => a.startsWith(`--${n}=`)) || '').split('=')[1] || d);
 const LARGEURS = arg('widths', '375,1440').split(',').map(Number);
 const ONLY = arg('only', '').split(',').filter(Boolean);
 const ROUTES = Object.keys(ROUTE_MAP).filter((h) => !ONLY.length || ONLY.includes(h));
 
-const JARGON = ['communes secondaires', 'villes principales', 'disposent déjà de leur page', "D'autres suivront", '[À COMPLÉTER]', 'lorem', 'TODO', 'phase 2', 'phase 3'];
+// « villes principales » n'y figure pas : c'est un mot de l'offre (« dix villes principales »,
+// « villes principales par département »), pas une formulation de chantier.
+const JARGON = ['communes secondaires', 'secteurs secondaires', 'déjà document', 'disposent déjà de leur page', "D'autres suivront", '[À COMPLÉTER]', 'lorem', 'TODO', 'phase 2', 'phase 3'];
 
 /** Déplie tout ce qui se déplie, puis parcourt la page jusqu'en bas pour déclencher le paresseux. */
 async function parcourir(page) {
@@ -66,8 +73,15 @@ const RELEVE = (JARGON) => {
 		if (!vis(el)) continue;
 		const r = el.getBoundingClientRect();
 		if (r.right > cw + 1 || r.left < -1) {
-			const p = el.parentElement; const ps = p ? getComputedStyle(p) : null;
-			if (ps && /hidden|clip|auto|scroll/.test(ps.overflowX + ps.overflow)) continue;
+			// Un élément sorti volontairement de l'écran (champ piège à robots à -9999 px) n'est
+			// pas un débordement.
+			if (r.right < 0) continue;
+			// Un tableau plus large que la fenêtre dans un conteneur qui défile est un choix de
+			// mise en page, pas un défaut : on cherche l'overflow sur TOUS les ancêtres, pas
+			// seulement le parent direct.
+			let a = el.parentElement, defile = false;
+			while (a && a !== document.body) { const s = getComputedStyle(a); if (/hidden|clip|auto|scroll/.test(s.overflowX + s.overflow)) { defile = true; break; } a = a.parentElement; }
+			if (defile) continue;
 			if (getComputedStyle(el).position === 'fixed') continue;
 			out.hors_fenetre.push({ el: desc(el), left: Math.round(r.left), right: Math.round(r.right) });
 			if (out.hors_fenetre.length >= 12) break;
@@ -160,23 +174,45 @@ for (const hash of ROUTES) {
 		await parcourir(page);
 		const releve = await page.evaluate(RELEVE, JARGON);
 		releve.erreurs_console = erreurs.filter((e) => !/google|gstatic|ERR_/.test(e));
-		await page.screenshot({ path: join(SORTIE, `${nom}-${largeur}.png`), fullPage: true });
+		// Pleine page en JPEG (la PNG de 53 routes pesait 110 Mo pour un usage de lecture), plus des
+		// TUILES à hauteur d'écran : une pleine page de 13 000 px réduite à 2 000 ne se lit pas, et
+		// une revue qui ne se lit pas n'en est pas une. 1 800 px de haut à 1440, 2 400 à 375 — la
+		// hauteur qui reste lisible une fois l'image réduite.
+		await page.screenshot({ path: join(SORTIE, `${nom}-${largeur}.jpg`), fullPage: true, type: 'jpeg', quality: 82 });
+		{
+			const hauteurPage = await page.evaluate(() => document.documentElement.scrollHeight);
+			const pas = largeur >= 1000 ? 1800 : 2400;
+			for (let y = 0, i = 1; y < hauteurPage; y += pas, i++) {
+				await page.screenshot({ path: join(TUILES, `${nom}-${largeur}-${String(i).padStart(2, '0')}.jpg`), type: 'jpeg', quality: 80, fullPage: true, clip: { x: 0, y, width: largeur, height: Math.min(pas, hauteurPage - y) } });
+			}
+		}
 
 		// Écrans supplémentaires : menu ouvert sur l'accueil, étape 2 du devis, menu mobile.
 		if (hash === '#/') {
-			if (largeur >= 1100) { await page.click('#tfp-btn-zones'); await page.waitForTimeout(150); await page.screenshot({ path: join(SORTIE, `${nom}-${largeur}-menu-zones.png`), clip: { x: 0, y: 0, width: largeur, height: 520 } }); }
-			else { await page.click('[data-tfp-mobile-open]'); await page.click('#tfp-mobile-btn-zones'); await page.waitForTimeout(150); await page.screenshot({ path: join(SORTIE, `${nom}-${largeur}-menu-mobile.png`), fullPage: true }); }
+			if (largeur >= 1100) { await page.click('#tfp-btn-zones'); await page.waitForTimeout(150); await page.screenshot({ path: join(SORTIE, `${nom}-${largeur}-menu-zones.jpg`), type: 'jpeg', quality: 85, clip: { x: 0, y: 0, width: largeur, height: 520 } }); }
+			else {
+				// Le tiroir mobile est fixé à la fenêtre : une capture pleine page l'écrasait en
+				// tête d'une image de 13 000 px, illisible. On capture la FENÊTRE, tiroir ouvert.
+				await page.evaluate(() => window.scrollTo(0, 0));
+				await page.click('[data-tfp-mobile-open]'); await page.click('#tfp-mobile-btn-zones'); await page.waitForTimeout(250);
+				await page.screenshot({ path: join(SORTIE, `${nom}-${largeur}-menu-mobile.jpg`), type: 'jpeg', quality: 85, fullPage: false });
+				await page.keyboard.press('Escape').catch(() => {});
+			}
 		}
 		if (hash === '#/demande-de-devis') {
+			// « Régulier ou ponctuel » est un <select>, pas un groupe de boutons radio : sans cette
+			// valeur, l'étape 1 refusait d'avancer et la capture « étape 2 » montrait l'étape 1 en erreur.
 			await page.selectOption('#tfp-type-locaux', 'bureaux').catch(() => {});
-			await page.check('input[name="regime"][value="regulier"]').catch(() => {});
+			await page.selectOption('#tfp-regime', 'regulier').catch(() => {});
 			await page.fill('#tfp-nom', 'Revue visuelle').catch(() => {});
 			await page.fill('#tfp-telephone', '0600000000').catch(() => {});
 			await page.click('[data-step-next]').catch(() => {});
-			await page.waitForTimeout(200);
+			await page.waitForTimeout(250);
+			await page.evaluate(() => window.scrollTo(0, 0));
+			await page.waitForTimeout(100);
 			const r2 = await page.evaluate(RELEVE, JARGON);
 			releve.etape2 = { debordement_page: r2.debordement_page, textes_debordants: r2.textes_debordants, hors_fenetre: r2.hors_fenetre };
-			await page.screenshot({ path: join(SORTIE, `${nom}-${largeur}-etape-2.png`), fullPage: true });
+			await page.screenshot({ path: join(SORTIE, `${nom}-${largeur}-etape-2.jpg`), type: 'jpeg', quality: 85, fullPage: true });
 		}
 		resultats[hash][largeur] = releve;
 		const defauts = ['debordement_page', 'hors_fenetre', 'textes_debordants', 'enfants_hors_carte', 'mots_coupes', 'cta_doubles', 'images_sans_dimensions', 'jargon', 'cibles_petites', 'erreurs_console']
@@ -185,15 +221,31 @@ for (const hash of ROUTES) {
 		await page.close();
 		n++;
 	}
-	writeFileSync('docs/revue-visuelle.json', JSON.stringify(resultats, null, 1) + '\n');
 }
 await navigateur.close();
 
+/*
+ * Une relance partielle (`--only=`) FUSIONNE ses résultats avec le relevé complet précédent, au
+ * lieu de réduire le fichier et la matrice aux seules routes relancées : la matrice des 53 routes
+ * reste entière, et la colonne « Lecture humaine » vient d'un fichier à part
+ * (docs/revue-visuelle-lecture.json), que la relance ne touche jamais.
+ */
+if (ONLY.length && existsSync('docs/revue-visuelle.json')) {
+	const precedent = JSON.parse(readFileSync('docs/revue-visuelle.json', 'utf8'));
+	for (const hash of Object.keys(precedent)) {
+		if (!resultats[hash]) resultats[hash] = precedent[hash];
+		else resultats[hash] = { ...precedent[hash], ...resultats[hash] };
+	}
+}
+writeFileSync('docs/revue-visuelle.json', JSON.stringify(resultats, null, 1) + '\n');
+const LECTURE = existsSync('docs/revue-visuelle-lecture.json') ? JSON.parse(readFileSync('docs/revue-visuelle-lecture.json', 'utf8')) : {};
+
 // Matrice Markdown.
 const L = ['# Revue visuelle transversale — 53 routes × ' + LARGEURS.join(' / ') + ' px', '', `> Généré par \`tools/revue-visuelle.mjs\` le ${new Date().toISOString().slice(0, 10)}. Chaque route a été ouverte, FAQ dépliées, parcourue jusqu'au pied de page ; l'accueil avec le menu Zones ouvert, le devis à ses deux étapes. Les captures sont dans \`docs/revue-visuelle/\`. Le relevé automatique ci-dessous TRIE la lecture, il ne la remplace pas : la colonne « lecture » est remplie à la main.`, '', '| Route | ' + LARGEURS.map((w) => `${w} px — relevé auto`).join(' | ') + ' | Lecture humaine |', '|---|' + LARGEURS.map(() => '---').join('|') + '|---|'];
-for (const hash of ROUTES) {
+for (const hash of Object.keys(ROUTE_MAP)) {
+	if (!resultats[hash]) { L.push(`| \`${hash}\` | ${LARGEURS.map(() => '—').join(' | ')} | ${LECTURE[hash] || ''} |`); continue; }
 	const cells = LARGEURS.map((w) => {
-		const r = resultats[hash][w]; const items = [];
+		const r = resultats[hash][w]; if (!r) return '—'; const items = [];
 		if (r.debordement_page) items.push('débordement page');
 		if (r.hors_fenetre.length) items.push(`${r.hors_fenetre.length} hors fenêtre`);
 		if (r.textes_debordants.length) items.push(`${r.textes_debordants.length} texte(s) débordant(s)`);
@@ -207,7 +259,7 @@ for (const hash of ROUTES) {
 		if (!r.pied_de_page) items.push('PIED DE PAGE NON ATTEINT');
 		return items.length ? items.join(' · ') : '✓ rien';
 	});
-	L.push(`| \`${hash}\` | ${cells.join(' | ')} | |`);
+	L.push(`| \`${hash}\` | ${cells.join(' | ')} | ${LECTURE[hash] || ''} |`);
 }
 writeFileSync('docs/REVUE-VISUELLE.md', L.join('\n') + '\n');
 console.log(`\n${n} écrans → ${SORTIE} · docs/revue-visuelle.json · docs/REVUE-VISUELLE.md`);

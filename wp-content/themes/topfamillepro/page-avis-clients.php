@@ -89,6 +89,31 @@ $page = tfp_static_page_data( 'avis-clients' );
 	</div>
 </section>
 
-<?php get_template_part( 'template-parts/components/static-blocks', null, array( 'key' => 'avis-clients' ) ); ?>
+<?php
+/*
+ * Passe visuelle du 14 octobre 2026 — panneau « note Google + Demander mon devis ».
+ *
+ * La maquette pose, sous le hero, un panneau blanc : « 5,0/5 ★★★★★ Sur Google · 47 avis » et un
+ * bouton. La note et le compteur sont fictifs (CLAUDE.md §5.5) et la grille les écartait au rendu ;
+ * il restait un panneau blanc de 110 px ne contenant que les mots « Demander mon devis », sans
+ * même la forme d'un bouton (revue du 21 octobre). La bande relevée (index 2) n'est donc plus
+ * rendue : tant que la note réelle n'est pas saisie, rien — le hero porte déjà l'appel ; dès
+ * qu'elle l'est (Réglages → Réassurance & avis), le panneau se compose ici avec la VRAIE note,
+ * jamais avec celle de la maquette.
+ */
+if ( ! empty( $reassurance['note'] ) ) :
+	?>
+	<section class="tfp-section--tight" style="--tfp-bande-haut:0px;--tfp-bande-bas:clamp(20px, 3vw, 32px)">
+		<div class="tfp-container">
+			<div class="tfp-avis-panneau">
+				<?php tfp_google_rating_badge( 'nu' ); ?>
+				<?php tfp_button( array( 'label' => 'Demander mon devis', 'href' => home_url( '/demande-de-devis/' ), 'variant' => 'primary' ) ); ?>
+			</div>
+		</div>
+	</section>
+	<?php
+endif;
+get_template_part( 'template-parts/components/static-blocks', null, array( 'key' => 'avis-clients', 'skip' => array( 2 ) ) );
+?>
 
 <?php get_footer(); ?>

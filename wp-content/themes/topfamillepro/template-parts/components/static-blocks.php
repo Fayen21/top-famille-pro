@@ -53,6 +53,10 @@ foreach ( $data['sections'] as $section ) {
 		continue;
 	}
 	$classes = array( 'tfp-section--tight' );
+	if ( 'centre' === ( $section['alignement'] ?? '' ) ) {
+		// Bande centrée sur la maquette (appels finaux à fond primaire) — relevé, jamais déduit.
+		$classes[] = 'tfp-section--centre';
+	}
 	if ( 'turquoise' === $section['fond'] ) {
 		$classes[] = 'tfp-section--turquoise';
 	} elseif ( 'navy' === $section['fond'] ) {
@@ -414,8 +418,36 @@ foreach ( $data['sections'] as $section ) {
 						};
 
 						$rangee_courante = null;
+						/*
+						 * Bandeau tarifaire relevé (pilier, région, prestations, tarifs) : la maquette
+						 * compose pastille, garanties et bouton dans une seule rangée ; le relevé en
+						 * fait un panneau à une colonne de deux « cartes » suivi d'un paragraphe qui
+						 * concatène les trois garanties. Rendu générique, cela donnait deux barres
+						 * marine pleine largeur et un texte nu sans coche (revue du 21 octobre). Le
+						 * panneau est reconnu à sa forme et rendu par le composant partagé ; le
+						 * paragraphe des garanties qui le suit est consommé, puisque le composant les
+						 * porte déjà.
+						 */
+						$garanties_a_consommer = false;
+						$est_bande_tarif       = static function ( array $g ) {
+							$items = (array) ( $g['items'] ?? array() );
+							if ( empty( $g['panneau_fond'] ) || 2 !== count( $items ) ) {
+								return false;
+							}
+							return (bool) preg_match( '/^\d+(?:[,.]\d+)?\s*€\s*HT\/h$/u', trim( (string) ( $items[0]['titre'] ?? '' ) ) )
+								&& ! empty( $items[1]['route'] );
+						};
 						foreach ( $sequence_bloc as $enfant ) {
 							$type = $enfant['type'] ?? '';
+							if ( $garanties_a_consommer ) {
+								$garanties_a_consommer = false;
+								$attendu = preg_replace( '/\s+/u', ' ', implode( ' ', tfp_band_items() ) );
+								$recu    = preg_replace( '/\s+/u', ' ', trim( (string) ( $enfant['texte'] ?? '' ) ) );
+								// Relevé tantôt en paragraphe, tantôt en note : la forme varie, le texte non.
+								if ( in_array( $type, array( 'paragraph', 'note' ), true ) && $attendu === $recu ) {
+									continue;
+								}
+							}
 							if ( 'chip' !== $type ) {
 								$vider_chips();
 							}
@@ -430,7 +462,15 @@ foreach ( $data['sections'] as $section ) {
 							}
 							switch ( $type ) {
 								case 'paragraph':
-									printf( '<p class="tfp-prose">%s</p>', esc_html( $enfant['texte'] ) );
+									/*
+									 * Un paragraphe relevé en graisse 600 et court est un INTERTITRE de la
+									 * maquette (« Suivi & interlocuteur dédié », 17 px / 600), pas une ligne de
+									 * texte courant. Rendu en gris 17 px régulier, il se confondait avec le
+									 * paragraphe qu'il annonce (page pilier, revue du 21 octobre).
+									 */
+									$graisse  = (int) ( $enfant['graisse'] ?? 400 );
+									$intertitre = $graisse >= 600 && mb_strlen( (string) $enfant['texte'] ) <= 90;
+									printf( '<p class="tfp-prose%s">%s</p>', $intertitre ? ' tfp-prose--intertitre' : '', esc_html( $enfant['texte'] ) );
 									break;
 
 								case 'step-ligne':
@@ -444,10 +484,29 @@ foreach ( $data['sections'] as $section ) {
 									// Phrase de transition, précision, conclusion : du texte courant, et
 									// non une pastille. C'est exactement ce que produisait le repli
 									// supprimé, et cela inventait des cartes absentes du prototype.
-									printf( '<p class="tfp-static-note">%s</p>', esc_html( $enfant['texte'] ) );
+									// Une note relevée en graisse 600 et courte est un INTERTITRE de la maquette
+									// (« Suivi & interlocuteur dédié ») : rendue en note grise, elle se
+									// confondait avec le paragraphe qu'elle annonce (page pilier, revue du
+									// 21 octobre).
+									$intertitre = (int) ( $enfant['graisse'] ?? 400 ) >= 600 && mb_strlen( (string) $enfant['texte'] ) <= 90;
+									printf( '<p class="%s">%s</p>', $intertitre ? 'tfp-prose tfp-prose--intertitre' : 'tfp-static-note', esc_html( $enfant['texte'] ) );
 									break;
 
 								case 'grid':
+									if ( $est_bande_tarif( $enfant ) ) {
+										$items = $enfant['items'];
+										tfp_bande_tarif(
+											array(
+												'prix'       => trim( (string) $items[0]['titre'] ),
+												'note'       => trim( (string) ( $items[0]['description'] ?? '' ) ),
+												'lien_label' => trim( (string) ( $items[1]['titre'] ?? 'Voir les tarifs →' ) ),
+												'lien_url'   => tfp_route_to_url( (string) $items[1]['route'] ),
+												'classe'     => 'tfp-price-band--statique',
+											)
+										);
+										$garanties_a_consommer = true;
+										break;
+									}
 									tfp_card_grid( $enfant );
 									break;
 
@@ -494,13 +553,48 @@ foreach ( $data['sections'] as $section ) {
 									}
 
 									$archetype = (string) ( $enfant['archetype'] ?? 'ligne' );
+									/*
+									 * Décision du 14 octobre 2026 : l'appel téléphonique se nomme « Appeler
+									 * Top-Famille Pro » sur tout le site. La maquette écrit encore « ☎ Appeler
+									 * Audrey » sur /avis-clients/ ; le libellé est aligné ici, à la source,
+									 * sans toucher aux autres formulations relevées (« ☎ 06 36 17 63 39 »).
+									 */
+									$libelle_lien = (string) $enfant['texte'];
+									if ( 0 === strpos( $route, 'tel:' ) && preg_match( '/Appeler Audrey/u', $libelle_lien ) && function_exists( 'tfp_phone_cta_label' ) ) {
+										$libelle_lien = tfp_phone_cta_label();
+									}
+									/*
+									 * Carte-lien à fond plein (passe visuelle du 14 octobre 2026).
+									 *
+									 * La carte « Bourgogne-Franche-Comté » de /zones-intervention/ était
+									 * relevée comme une « ligne » et rendue comme telle : ses trois
+									 * textes se retrouvaient collés en une seule phrase de 138 px sans
+									 * espace. Le générateur relève désormais le titre, la sous-ligne et
+									 * le pseudo-bouton séparément ; la carte est recomposée ici, avec
+									 * la géométrie de la maquette (fond primaire, rayon 18, pastille
+									 * blanche). Tout est en `<span>` : un `<a>` reste un contenu
+									 * phrasé valide, et aucun bouton n'est imbriqué dans un lien.
+									 */
+									if ( $url && 'carte' === $archetype && ! empty( $enfant['carte']['titre'] ) ) {
+										$carte = (array) $enfant['carte'];
+										$desc  = trim( (string) ( $carte['description'] ?? '' ) );
+										printf(
+											'<a class="tfp-carte-lien" href="%s"><span class="tfp-carte-lien__corps"><span class="tfp-carte-lien__titre">%s</span>%s</span>'
+												. '<span class="tfp-carte-lien__cta">%s<span aria-hidden="true"> →</span></span></a>',
+											esc_url( $url ),
+											esc_html( $carte['titre'] ),
+											'' !== $desc ? '<span class="tfp-carte-lien__desc">' . esc_html( $desc ) . '</span>' : '',
+											esc_html( rtrim( (string) ( $carte['cta'] ?? '' ), '→ ' ) )
+										);
+										break;
+									}
 									if ( $url && 'ligne' !== $archetype ) {
 										// Bouton relevé : il rejoint sa rangée, vidée par le tour suivant.
 										$liens_en_attente[] = array(
 											// Libellé conservé tel quel, flèche comprise : la maquette écrit
 										// « Pourquoi nous choisir → » dans la pastille, et « Page
 										// contact » sans flèche. La distinction est la sienne.
-										'label'     => $enfant['texte'],
+										'label'     => $libelle_lien,
 											'href'      => $url,
 											'archetype' => $archetype,
 											'mesures'   => array(
@@ -518,7 +612,7 @@ foreach ( $data['sections'] as $section ) {
 										printf(
 											'<a class="tfp-link-row" href="%s">%s<span aria-hidden="true">→</span></a>',
 											esc_url( $url ),
-											esc_html( rtrim( $enfant['texte'], '→ ' ) )
+											esc_html( rtrim( $libelle_lien, '→ ' ) )
 										);
 									} else {
 										// Aucun lien mort publié : le libellé reste du texte (CLAUDE.md §8).

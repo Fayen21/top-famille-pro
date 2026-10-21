@@ -109,13 +109,13 @@ $zones = tfp_footer_zones_tree();
 				<?php foreach ( $prestations as $prestation ) : ?>
 					<li><a href="<?php echo esc_url( get_permalink( $prestation ) ); ?>"><?php echo esc_html( tfp_get_field( 'nav_label', $prestation->ID ) ?: get_the_title( $prestation ) ); ?></a></li>
 				<?php endforeach; ?>
-				<li><a class="tfp-footer__more" href="<?php echo esc_url( home_url( '/prestations/' ) ); ?>">Toutes les prestations →</a></li>
+				<li><a class="tfp-footer__more" href="<?php echo esc_url( home_url( '/prestations/' ) ); ?>">Toutes les prestations&nbsp;→</a></li>
 			</ul>
 		</div>
 
 		<div class="tfp-footer__col tfp-footer__col--zones">
 			<h3>Zones d'intervention</h3>
-			<a class="tfp-footer__more" href="<?php echo esc_url( home_url( '/zones-intervention/bourgogne-franche-comte/' ) ); ?>">Toute la <?php echo esc_html( $site['address_region'] ); ?> →</a>
+			<a class="tfp-footer__more" href="<?php echo esc_url( home_url( '/zones-intervention/bourgogne-franche-comte/' ) ); ?>">Toute la <?php echo esc_html( $site['address_region'] ); ?>&nbsp;→</a>
 			<p class="tfp-footer__zones-label">Villes principales par département</p>
 			<ul class="tfp-footer__zones">
 				<?php foreach ( $zones as $entry ) : ?>
@@ -133,8 +133,8 @@ $zones = tfp_footer_zones_tree();
 				<?php endforeach; ?>
 			</ul>
 			<div class="tfp-footer__zones-links">
-				<a class="tfp-footer__more" href="<?php echo esc_url( home_url( '/zones-intervention/' ) ); ?>">Voir les <?php echo count( $zones ); ?> départements →</a>
-				<a class="tfp-footer__more" href="<?php echo esc_url( home_url( '/zones-intervention/' ) ); ?>">Toutes les villes →</a>
+				<a class="tfp-footer__more" href="<?php echo esc_url( home_url( '/zones-intervention/' ) ); ?>">Voir les <?php echo count( $zones ); ?> départements&nbsp;→</a>
+				<a class="tfp-footer__more" href="<?php echo esc_url( home_url( '/zones-intervention/' ) ); ?>">Toutes les villes&nbsp;→</a>
 			</div>
 		</div>
 

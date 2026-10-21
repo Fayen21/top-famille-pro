@@ -35,12 +35,12 @@ get_header();
 	<?php tfp_breadcrumb( tfp_seo()['breadcrumb'] ); ?>
 </div>
 
-<section class="tfp-container tfp-section--tight">
+<section class="tfp-container tfp-section--tight tfp-legal-tete">
 	<h1>Gestion des cookies</h1>
 	<p class="tfp-section__lede">Ce que le site dépose sur votre navigateur, et comment le refuser.</p>
 </section>
 
-<section class="tfp-section">
+<section class="tfp-section tfp-legal-corps">
 	<div class="tfp-container tfp-legal-body" style="display:flex;flex-direction:column;gap:24px">
 		<div class="tfp-card">
 			<h2 style="font-size:19px">Aucun cookie de mesure d'audience ni de traçage publicitaire</h2>

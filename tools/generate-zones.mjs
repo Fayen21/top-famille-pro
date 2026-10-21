@@ -105,6 +105,21 @@ const GRAMMAIRE = [
 /** Nombre de corrections grammaticales appliquées, pour le compte rendu de fin de génération. */
 let accordsCorriges = 0;
 
+/** Phrase que CLAUDE.md §9 impose de supprimer, mot pour mot telle que la maquette l'écrit. */
+const PHRASE_SUPPRIMEE = 'Des guides locaux (fréquences, budget, cahier des charges) viendront compléter cette page.';
+let phrasesSupprimees = 0;
+
+/**
+ * Intitulés de groupes remplacés sur décision du 14 octobre 2026 : plus de « communes
+ * secondaires » ni de « documentées » à l'écran, même intitulé que l'index des zones. Appliqué
+ * aux titres de groupes relevés, et compté : une maquette qui ne les contiendrait plus ferait
+ * échouer la génération (comme les corrections éditoriales).
+ */
+const TITRES_REMPLACES = {
+	'Communes secondaires documentées': 'Autour de Dijon et de Beaune',
+};
+let titresRemplaces = 0;
+
 /** Applique les règles d'accord ; échoue si une tournure fautive non couverte subsiste. */
 function grammaire(texte) {
 	let sortie = String(texte ?? '');
@@ -250,8 +265,9 @@ for (const zone of ZONES) {
 		window.scrollTo(0, 0);
 	});
 
-	const data = await page.evaluate(() => {
+	const data = await page.evaluate((PHRASE_SUPPRIMEE) => {
 		const txt = (el) => (el ? (el.textContent || '').replace(/\s+/g, ' ').trim() : '');
+		window.__tfpSuppressions = 0;
 		let root = document.body;
 		let count = 0;
 		for (const el of document.querySelectorAll('body *')) {
@@ -331,7 +347,16 @@ for (const zone of ZONES) {
 					cur = { titre: n.v, niveau: n.t === 'h3' ? 3 : 2, textes: [], liste: [], chips: [], liens: [] };
 					out.push(cur);
 				} else if (cur) {
-					if (n.t === 'p') cur.textes.push(n.v);
+					if (n.t === 'p') {
+						/*
+						 * CLAUDE.md §9 impose de supprimer « Des guides locaux viendront compléter
+						 * cette page » : la maquette l'écrit sous « Aller plus loin » sur les dix-huit
+						 * pages ville et commune. La phrase est retirée ici, à la source, et comptée ;
+						 * si elle disparaît de la maquette, la génération le signale (plus bas).
+						 */
+						if (n.v === PHRASE_SUPPRIMEE) window.__tfpSuppressions = (window.__tfpSuppressions || 0) + 1;
+						else cur.textes.push(n.v);
+					}
 					else if (n.t === 'li') cur.liste.push(n.v);
 					else if (n.t === 'a') cur.liens.push({ v: n.v, href: n.href });
 					else if (n.t === 'span' && n.v.length > 1 && !/^[✓✕·+]$/.test(n.v)) cur.chips.push(n.v);
@@ -346,6 +371,17 @@ for (const zone of ZONES) {
 				// et en simples liens sur une page de département (« Nettoyage de bureaux → »).
 				// Rendre des cartes dans les deux cas triplait la hauteur de la section.
 				g.variante = g.liens.some((l) => l.v.length > 40) ? 'cartes' : 'liens';
+				/*
+				 * Cibles RELEVÉES du groupe : les identifiants des pages ville/commune que la maquette
+				 * lie ici. Le gabarit les résout en contenus WordPress réels. Sans ce relevé, il
+				 * reconstruisait chaque groupe « villes » d'une page de ville avec la même liste de
+				 * communes proches : « Autres secteurs couverts en région » — Chalon-sur-Saône,
+				 * Besançon, Auxerre sur la maquette — affichait les sept communes de l'agglomération
+				 * dijonnaise sous une phrase qui dit l'inverse (revue du 21 octobre).
+				 */
+				g.cibles = g.liens
+					.filter((l) => /^#\/(ville|departement)\/[a-z0-9-]+$/.test(l.href))
+					.map((l) => l.href.replace(/^#\/(ville|departement)\//, ''));
 				if (g.liens.some((l) => l.href.startsWith('#/service/'))) g.kind = 'prestations';
 				else if (g.liens.some((l) => l.href.startsWith('#/ville/'))) g.kind = 'villes';
 				else if (g.liens.some((l) => l.href.startsWith('#/departement/'))) g.kind = 'departements';
@@ -450,9 +486,11 @@ for (const zone of ZONES) {
 			contactTexte: (contactSec.find((n) => n.t === 'p') || {}).v || '',
 			ctaTitre: (ctaSec.find((n) => n.t === 'h2') || {}).v || '',
 			ctaTexte: (ctaSec.find((n) => n.t === 'p') || {}).v || '',
+			suppressions: window.__tfpSuppressions || 0,
 		};
-	});
+	}, PHRASE_SUPPRIMEE);
 
+	phrasesSupprimees += data.suppressions;
 	all.push({ ...zone, ...data });
 	console.error(
 		`  ${zone.slug.padEnd(22)} ${zone.niveau.padEnd(12)} récit ${data.recit.length} · ` +
@@ -546,6 +584,10 @@ for (const z of all) {
 	set('fonctionnement_bloc', fonc.rang);
 
 	z.locaux.slice(0, 8).forEach((g, i) => {
+		if (TITRES_REMPLACES[g.titre]) {
+			g.titre = TITRES_REMPLACES[g.titre];
+			titresRemplaces++;
+		}
 		set(`locaux_${i + 1}_titre`, php(g.titre));
 		set(`locaux_${i + 1}_texte`, phpLines(g.textes));
 		set(`locaux_${i + 1}_type`, php(g.kind));
@@ -557,6 +599,8 @@ for (const z of all) {
 		// Les noms sans lien sont des communes ou quartiers cités, sans page dédiée : ils restent
 		// du texte, jamais un lien mort.
 		set(`locaux_${i + 1}_noms`, phpLines(g.chips));
+		// Identifiants des zones liées par la maquette dans ce groupe, un par ligne (voir `g.cibles`).
+		set(`locaux_${i + 1}_cibles`, phpLines(g.cibles || []));
 	});
 
 	set('locaux_avant_tarif', z.locauxAvantTarif);
@@ -578,3 +622,14 @@ L.push('echo "Terminé.\\n";');
 writeFileSync(OUT, L.join('\n') + '\n');
 console.error(`\nÉcrit : ${OUT}`);
 console.error(`Accords corrigés (CLAUDE.md §9) : ${accordsCorriges}`);
+if (!phrasesSupprimees) {
+	throw new Error(
+		'« Des guides locaux … viendront compléter cette page » n\'a été trouvée sur aucune zone : la maquette a ' +
+			'changé, revoir PHRASE_SUPPRIMEE plutôt que de laisser passer un texte non contrôlé (CLAUDE.md §9).'
+	);
+}
+console.error(`Phrases supprimées (CLAUDE.md §9, « guides locaux ») : ${phrasesSupprimees}`);
+if (!titresRemplaces) {
+	throw new Error('« Communes secondaires documentées » introuvable : revoir TITRES_REMPLACES plutôt que de laisser passer un intitulé non contrôlé.');
+}
+console.error(`Intitulés remplacés (décision du 14 octobre 2026) : ${titresRemplaces}`);

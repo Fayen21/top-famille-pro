@@ -28,3 +28,8 @@ export/lighthouse/
 # Les captures pèsent des dizaines de Mo et seraient périmées au premier correctif ;
 # ce sont les ARCHIVES de release/ qui constituent la livraison.
 docs/dossier-g28/
+
+# Revue visuelle transversale : les tuiles de lecture se régénèrent, seules les pleines pages sont suivies
+docs/revue-visuelle/tuiles/
+# Idem pour les 110 pleines pages JPEG de la revue (78 Mo) : `node tools/revue-visuelle.mjs` les régénère.
+docs/revue-visuelle/*.jpg

@@ -4,9 +4,8 @@
  *
  * Décision du 14 octobre 2026 : le bouton « Voir les tarifs » appartient au MÊME groupe visuel que le
  * prix — juste à côté de la pastille marine, jamais isolé sur une seconde ligne à l'extrémité droite
- * d'un bandeau vide. Le bandeau se compose donc de deux groupes : [prix + bouton] et [garanties].
- * Les garanties s'organisent à côté sur ordinateur, s'empilent proprement en dessous quand la place
- * manque ; sur mobile le prix et le bouton restent collés et utilisables, les garanties suivent.
+ * d'un bandeau vide. Le bandeau est le composant PARTAGÉ tfp_bande_tarif() : l'accueil et les
+ * pages statiques relevées sur la maquette composent le même.
  *
  * Aucune fausse note Google ici (docs/DONNEES-FICTIVES.md) : la grille de réassurance n'affiche
  * que des faits confirmés (PROJECT_INPUTS.md).
@@ -19,20 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 $site = tfp_site_data();
 ?>
 <section class="tfp-container tfp-price-band-section">
-	<div class="tfp-price-band">
-		<div class="tfp-price-band__lead">
-			<span class="tfp-price-band__value">
-				<strong><?php echo esc_html( $site['price_unique_display'] ); ?> HT/h</strong>
-				<span>tarif unique en région</span>
-			</span>
-			<a href="<?php echo esc_url( home_url( '/tarifs/' ) ); ?>" class="tfp-btn tfp-btn--secondary tfp-btn--sm tfp-price-band__cta">Voir les tarifs →</a>
-		</div>
-		<ul class="tfp-price-band__items" aria-label="Garanties">
-			<li><?php tfp_check_item( 'Devis gratuit sous 24 h' ); ?></li>
-			<li><?php tfp_check_item( 'Intervention régulière ou ponctuelle' ); ?></li>
-			<li><?php tfp_check_item( "Conditions d'arrêt précisées au devis" ); ?></li>
-		</ul>
-	</div>
+	<?php tfp_bande_tarif(); ?>
 </section>
 
 <section class="tfp-container tfp-section--tight">

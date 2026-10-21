@@ -115,13 +115,26 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'locaux_1_section', 5, $id );
 	tfp_seed_set_field( 'locaux_1_niveau', 2, $id );
 	tfp_seed_set_field( 'locaux_1_noms', '', $id );
-	tfp_seed_set_field( 'locaux_2_titre', 'Communes secondaires documentées', $id );
+	tfp_seed_set_field( 'locaux_1_cibles', implode( "\n", array(
+		'dijon',
+	) ), $id );
+	tfp_seed_set_field( 'locaux_2_titre', 'Autour de Dijon et de Beaune', $id );
 	tfp_seed_set_field( 'locaux_2_texte', '', $id );
 	tfp_seed_set_field( 'locaux_2_type', 'villes', $id );
 	tfp_seed_set_field( 'locaux_2_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_2_section', 5, $id );
 	tfp_seed_set_field( 'locaux_2_niveau', 3, $id );
 	tfp_seed_set_field( 'locaux_2_noms', '', $id );
+	tfp_seed_set_field( 'locaux_2_cibles', implode( "\n", array(
+		'saint-apollinaire',
+		'chenove',
+		'quetigny',
+		'talant',
+		'longvic',
+		'fontaine-les-dijon',
+		'marsannay-la-cote',
+		'beaune',
+	) ), $id );
 	tfp_seed_set_field( 'locaux_3_titre', 'Autres communes citées dans ce département', $id );
 	tfp_seed_set_field( 'locaux_3_texte', '', $id );
 	tfp_seed_set_field( 'locaux_3_type', 'noms', $id );
@@ -137,6 +150,7 @@ if ( empty( $posts ) ) {
 		'Sennecey-lès-Dijon',
 		'Nuits-Saint-Georges',
 	) ), $id );
+	tfp_seed_set_field( 'locaux_3_cibles', '', $id );
 	tfp_seed_set_field( 'locaux_4_titre', 'Nos prestations dans le département', $id );
 	tfp_seed_set_field( 'locaux_4_texte', implode( "\n", array(
 		'Le périmètre de chaque prestation est détaillé dans notre page nettoyage professionnel.',
@@ -146,6 +160,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'locaux_4_section', 5, $id );
 	tfp_seed_set_field( 'locaux_4_niveau', 2, $id );
 	tfp_seed_set_field( 'locaux_4_noms', '', $id );
+	tfp_seed_set_field( 'locaux_4_cibles', '', $id );
 	tfp_seed_set_field( 'locaux_5_titre', 'Départements limitrophes couverts', $id );
 	tfp_seed_set_field( 'locaux_5_texte', implode( "\n", array(
 		'Départements voisins, également couverts par Top-Famille Pro :',
@@ -155,6 +170,11 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'locaux_5_section', 8, $id );
 	tfp_seed_set_field( 'locaux_5_niveau', 2, $id );
 	tfp_seed_set_field( 'locaux_5_noms', '', $id );
+	tfp_seed_set_field( 'locaux_5_cibles', implode( "\n", array(
+		'saone-et-loire',
+		'yonne',
+		'haute-saone',
+	) ), $id );
 	tfp_seed_set_field( 'locaux_avant_tarif', 4, $id );
 	tfp_seed_set_field( 'faq_titre', 'Questions fréquentes — Côte-d\'Or', $id );
 	tfp_seed_set_field( 'faq_1', array( 'question' => 'Êtes-vous vraiment installés en Côte-d\'Or ?', 'reponse' => 'Oui, à Saint-Apollinaire (21850), commune limitrophe de Dijon. C\'est notre unique implantation : nous n\'avons pas d\'agence à Dijon même, ni ailleurs dans la région.' ), $id );
@@ -250,6 +270,9 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'locaux_1_section', 5, $id );
 	tfp_seed_set_field( 'locaux_1_niveau', 2, $id );
 	tfp_seed_set_field( 'locaux_1_noms', '', $id );
+	tfp_seed_set_field( 'locaux_1_cibles', implode( "\n", array(
+		'besancon',
+	) ), $id );
 	tfp_seed_set_field( 'locaux_2_titre', 'Autres communes citées dans ce département', $id );
 	tfp_seed_set_field( 'locaux_2_texte', '', $id );
 	tfp_seed_set_field( 'locaux_2_type', 'noms', $id );
@@ -265,6 +288,7 @@ if ( empty( $posts ) ) {
 		'Serre-les-Sapins',
 		'Beure',
 	) ), $id );
+	tfp_seed_set_field( 'locaux_2_cibles', '', $id );
 	tfp_seed_set_field( 'locaux_3_titre', 'Nos prestations dans le département', $id );
 	tfp_seed_set_field( 'locaux_3_texte', implode( "\n", array(
 		'Le périmètre de chaque prestation est détaillé dans notre page nettoyage professionnel.',
@@ -274,6 +298,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'locaux_3_section', 5, $id );
 	tfp_seed_set_field( 'locaux_3_niveau', 2, $id );
 	tfp_seed_set_field( 'locaux_3_noms', '', $id );
+	tfp_seed_set_field( 'locaux_3_cibles', '', $id );
 	tfp_seed_set_field( 'locaux_4_titre', 'Départements limitrophes couverts', $id );
 	tfp_seed_set_field( 'locaux_4_texte', implode( "\n", array(
 		'Départements voisins, également couverts par Top-Famille Pro :',
@@ -283,6 +308,11 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'locaux_4_section', 8, $id );
 	tfp_seed_set_field( 'locaux_4_niveau', 2, $id );
 	tfp_seed_set_field( 'locaux_4_noms', '', $id );
+	tfp_seed_set_field( 'locaux_4_cibles', implode( "\n", array(
+		'jura',
+		'haute-saone',
+		'territoire-de-belfort',
+	) ), $id );
 	tfp_seed_set_field( 'locaux_avant_tarif', 3, $id );
 	tfp_seed_set_field( 'faq_titre', 'Questions fréquentes — Doubs', $id );
 	tfp_seed_set_field( 'faq_1', array( 'question' => 'Avez-vous une agence à Besançon ?', 'reponse' => 'Non. Notre unique implantation est à Saint-Apollinaire, près de Dijon. Nous intervenons à Besançon avec des tournées organisées, et votre interlocutrice reste Audrey au 06 36 17 63 39.' ), $id );
@@ -384,6 +414,10 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'locaux_1_section', 5, $id );
 	tfp_seed_set_field( 'locaux_1_niveau', 2, $id );
 	tfp_seed_set_field( 'locaux_1_noms', '', $id );
+	tfp_seed_set_field( 'locaux_1_cibles', implode( "\n", array(
+		'dole',
+		'lons-le-saunier',
+	) ), $id );
 	tfp_seed_set_field( 'locaux_2_titre', 'Autres communes citées dans ce département', $id );
 	tfp_seed_set_field( 'locaux_2_texte', '', $id );
 	tfp_seed_set_field( 'locaux_2_type', 'noms', $id );
@@ -400,6 +434,7 @@ if ( empty( $posts ) ) {
 		'Perrigny',
 		'Macornay',
 	) ), $id );
+	tfp_seed_set_field( 'locaux_2_cibles', '', $id );
 	tfp_seed_set_field( 'locaux_3_titre', 'Nos prestations dans le département', $id );
 	tfp_seed_set_field( 'locaux_3_texte', implode( "\n", array(
 		'Le périmètre de chaque prestation est détaillé dans notre page nettoyage professionnel.',
@@ -409,6 +444,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'locaux_3_section', 5, $id );
 	tfp_seed_set_field( 'locaux_3_niveau', 2, $id );
 	tfp_seed_set_field( 'locaux_3_noms', '', $id );
+	tfp_seed_set_field( 'locaux_3_cibles', '', $id );
 	tfp_seed_set_field( 'locaux_4_titre', 'Départements limitrophes couverts', $id );
 	tfp_seed_set_field( 'locaux_4_texte', implode( "\n", array(
 		'Départements voisins, également couverts par Top-Famille Pro :',
@@ -418,6 +454,10 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'locaux_4_section', 8, $id );
 	tfp_seed_set_field( 'locaux_4_niveau', 2, $id );
 	tfp_seed_set_field( 'locaux_4_noms', '', $id );
+	tfp_seed_set_field( 'locaux_4_cibles', implode( "\n", array(
+		'doubs',
+		'saone-et-loire',
+	) ), $id );
 	tfp_seed_set_field( 'locaux_avant_tarif', 3, $id );
 	tfp_seed_set_field( 'faq_titre', 'Questions fréquentes — Jura', $id );
 	tfp_seed_set_field( 'faq_1', array( 'question' => 'Intervenez-vous à Dole et à Lons-le-Saunier ?', 'reponse' => 'Oui, ce sont nos deux villes d\'intervention dans le Jura, avec les communes immédiatement voisines de chacune. Chaque ville dispose de sa page détaillée.' ), $id );
@@ -519,6 +559,9 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'locaux_1_section', 5, $id );
 	tfp_seed_set_field( 'locaux_1_niveau', 2, $id );
 	tfp_seed_set_field( 'locaux_1_noms', '', $id );
+	tfp_seed_set_field( 'locaux_1_cibles', implode( "\n", array(
+		'nevers',
+	) ), $id );
 	tfp_seed_set_field( 'locaux_2_titre', 'Autres communes citées dans ce département', $id );
 	tfp_seed_set_field( 'locaux_2_texte', '', $id );
 	tfp_seed_set_field( 'locaux_2_type', 'noms', $id );
@@ -533,6 +576,7 @@ if ( empty( $posts ) ) {
 		'Challuy',
 		'Garchizy',
 	) ), $id );
+	tfp_seed_set_field( 'locaux_2_cibles', '', $id );
 	tfp_seed_set_field( 'locaux_3_titre', 'Nos prestations dans le département', $id );
 	tfp_seed_set_field( 'locaux_3_texte', implode( "\n", array(
 		'Le périmètre de chaque prestation est détaillé dans notre page nettoyage professionnel.',
@@ -542,6 +586,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'locaux_3_section', 5, $id );
 	tfp_seed_set_field( 'locaux_3_niveau', 2, $id );
 	tfp_seed_set_field( 'locaux_3_noms', '', $id );
+	tfp_seed_set_field( 'locaux_3_cibles', '', $id );
 	tfp_seed_set_field( 'locaux_4_titre', 'Départements limitrophes couverts', $id );
 	tfp_seed_set_field( 'locaux_4_texte', implode( "\n", array(
 		'Départements voisins, également couverts par Top-Famille Pro :',
@@ -551,6 +596,9 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'locaux_4_section', 8, $id );
 	tfp_seed_set_field( 'locaux_4_niveau', 2, $id );
 	tfp_seed_set_field( 'locaux_4_noms', '', $id );
+	tfp_seed_set_field( 'locaux_4_cibles', implode( "\n", array(
+		'saone-et-loire',
+	) ), $id );
 	tfp_seed_set_field( 'locaux_avant_tarif', 3, $id );
 	tfp_seed_set_field( 'faq_titre', 'Questions fréquentes — Nièvre', $id );
 	tfp_seed_set_field( 'faq_1', array( 'question' => 'Intervenez-vous ailleurs qu\'à Nevers dans la Nièvre ?', 'reponse' => 'Notre secteur prioritaire couvre Nevers et son agglomération proche. Pour une commune plus éloignée, contactez-nous : nous vous dirons honnêtement si nous pouvons tenir un planning fiable.' ), $id );
@@ -652,6 +700,9 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'locaux_1_section', 5, $id );
 	tfp_seed_set_field( 'locaux_1_niveau', 2, $id );
 	tfp_seed_set_field( 'locaux_1_noms', '', $id );
+	tfp_seed_set_field( 'locaux_1_cibles', implode( "\n", array(
+		'vesoul',
+	) ), $id );
 	tfp_seed_set_field( 'locaux_2_titre', 'Autres communes citées dans ce département', $id );
 	tfp_seed_set_field( 'locaux_2_texte', '', $id );
 	tfp_seed_set_field( 'locaux_2_type', 'noms', $id );
@@ -666,6 +717,7 @@ if ( empty( $posts ) ) {
 		'Échenoz-la-Méline',
 		'Frotey-lès-Vesoul',
 	) ), $id );
+	tfp_seed_set_field( 'locaux_2_cibles', '', $id );
 	tfp_seed_set_field( 'locaux_3_titre', 'Nos prestations dans le département', $id );
 	tfp_seed_set_field( 'locaux_3_texte', implode( "\n", array(
 		'Le périmètre de chaque prestation est détaillé dans notre page nettoyage professionnel.',
@@ -675,6 +727,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'locaux_3_section', 5, $id );
 	tfp_seed_set_field( 'locaux_3_niveau', 2, $id );
 	tfp_seed_set_field( 'locaux_3_noms', '', $id );
+	tfp_seed_set_field( 'locaux_3_cibles', '', $id );
 	tfp_seed_set_field( 'locaux_4_titre', 'Départements limitrophes couverts', $id );
 	tfp_seed_set_field( 'locaux_4_texte', implode( "\n", array(
 		'Départements voisins, également couverts par Top-Famille Pro :',
@@ -684,6 +737,11 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'locaux_4_section', 8, $id );
 	tfp_seed_set_field( 'locaux_4_niveau', 2, $id );
 	tfp_seed_set_field( 'locaux_4_noms', '', $id );
+	tfp_seed_set_field( 'locaux_4_cibles', implode( "\n", array(
+		'doubs',
+		'territoire-de-belfort',
+		'cote-dor',
+	) ), $id );
 	tfp_seed_set_field( 'locaux_avant_tarif', 3, $id );
 	tfp_seed_set_field( 'faq_titre', 'Questions fréquentes — Haute-Saône', $id );
 	tfp_seed_set_field( 'faq_1', array( 'question' => 'Intervenez-vous ailleurs qu\'à Vesoul en Haute-Saône ?', 'reponse' => 'Notre secteur prioritaire couvre Vesoul et sa couronne immédiate. Gray, Lure, Luxeuil-les-Bains ou Héricourt ne sont pas des secteurs prioritaires : contactez-nous, nous vous répondrons honnêtement.' ), $id );
@@ -779,6 +837,10 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'locaux_1_section', 5, $id );
 	tfp_seed_set_field( 'locaux_1_niveau', 2, $id );
 	tfp_seed_set_field( 'locaux_1_noms', '', $id );
+	tfp_seed_set_field( 'locaux_1_cibles', implode( "\n", array(
+		'chalon-sur-saone',
+		'macon',
+	) ), $id );
 	tfp_seed_set_field( 'locaux_2_titre', 'Autres communes citées dans ce département', $id );
 	tfp_seed_set_field( 'locaux_2_texte', '', $id );
 	tfp_seed_set_field( 'locaux_2_type', 'noms', $id );
@@ -794,6 +856,7 @@ if ( empty( $posts ) ) {
 		'Charnay-lès-Mâcon',
 		'Crêches-sur-Saône',
 	) ), $id );
+	tfp_seed_set_field( 'locaux_2_cibles', '', $id );
 	tfp_seed_set_field( 'locaux_3_titre', 'Nos prestations dans le département', $id );
 	tfp_seed_set_field( 'locaux_3_texte', implode( "\n", array(
 		'Le périmètre de chaque prestation est détaillé dans notre page nettoyage professionnel.',
@@ -803,6 +866,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'locaux_3_section', 5, $id );
 	tfp_seed_set_field( 'locaux_3_niveau', 2, $id );
 	tfp_seed_set_field( 'locaux_3_noms', '', $id );
+	tfp_seed_set_field( 'locaux_3_cibles', '', $id );
 	tfp_seed_set_field( 'locaux_4_titre', 'Départements limitrophes couverts', $id );
 	tfp_seed_set_field( 'locaux_4_texte', implode( "\n", array(
 		'Départements voisins, également couverts par Top-Famille Pro :',
@@ -812,6 +876,11 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'locaux_4_section', 8, $id );
 	tfp_seed_set_field( 'locaux_4_niveau', 2, $id );
 	tfp_seed_set_field( 'locaux_4_noms', '', $id );
+	tfp_seed_set_field( 'locaux_4_cibles', implode( "\n", array(
+		'cote-dor',
+		'jura',
+		'nievre',
+	) ), $id );
 	tfp_seed_set_field( 'locaux_avant_tarif', 3, $id );
 	tfp_seed_set_field( 'faq_titre', 'Questions fréquentes — Saône-et-Loire', $id );
 	tfp_seed_set_field( 'faq_1', array( 'question' => 'Intervenez-vous à Chalon-sur-Saône et à Mâcon ?', 'reponse' => 'Oui, ce sont nos deux villes d\'intervention en Saône-et-Loire, chacune avec ses communes proches. Chaque ville a sa page détaillée sur le site.' ), $id );
@@ -913,6 +982,9 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'locaux_1_section', 5, $id );
 	tfp_seed_set_field( 'locaux_1_niveau', 2, $id );
 	tfp_seed_set_field( 'locaux_1_noms', '', $id );
+	tfp_seed_set_field( 'locaux_1_cibles', implode( "\n", array(
+		'auxerre',
+	) ), $id );
 	tfp_seed_set_field( 'locaux_2_titre', 'Autres communes citées dans ce département', $id );
 	tfp_seed_set_field( 'locaux_2_texte', '', $id );
 	tfp_seed_set_field( 'locaux_2_type', 'noms', $id );
@@ -927,6 +999,7 @@ if ( empty( $posts ) ) {
 		'Venoy',
 		'Chevannes',
 	) ), $id );
+	tfp_seed_set_field( 'locaux_2_cibles', '', $id );
 	tfp_seed_set_field( 'locaux_3_titre', 'Nos prestations dans le département', $id );
 	tfp_seed_set_field( 'locaux_3_texte', implode( "\n", array(
 		'Le périmètre de chaque prestation est détaillé dans notre page nettoyage professionnel.',
@@ -936,6 +1009,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'locaux_3_section', 5, $id );
 	tfp_seed_set_field( 'locaux_3_niveau', 2, $id );
 	tfp_seed_set_field( 'locaux_3_noms', '', $id );
+	tfp_seed_set_field( 'locaux_3_cibles', '', $id );
 	tfp_seed_set_field( 'locaux_4_titre', 'Départements limitrophes couverts', $id );
 	tfp_seed_set_field( 'locaux_4_texte', implode( "\n", array(
 		'Départements voisins, également couverts par Top-Famille Pro :',
@@ -945,6 +1019,9 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'locaux_4_section', 8, $id );
 	tfp_seed_set_field( 'locaux_4_niveau', 2, $id );
 	tfp_seed_set_field( 'locaux_4_noms', '', $id );
+	tfp_seed_set_field( 'locaux_4_cibles', implode( "\n", array(
+		'cote-dor',
+	) ), $id );
 	tfp_seed_set_field( 'locaux_avant_tarif', 3, $id );
 	tfp_seed_set_field( 'faq_titre', 'Questions fréquentes — Yonne', $id );
 	tfp_seed_set_field( 'faq_1', array( 'question' => 'Intervenez-vous à Sens, Joigny ou Avallon ?', 'reponse' => 'Non, pas de façon régulière : ces villes sont trop éloignées de nos tournées actuelles pour que nous garantissions un planning stable. Notre secteur icaunais s\'arrête à Auxerre et sa couronne.' ), $id );
@@ -1046,6 +1123,9 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'locaux_1_section', 5, $id );
 	tfp_seed_set_field( 'locaux_1_niveau', 2, $id );
 	tfp_seed_set_field( 'locaux_1_noms', '', $id );
+	tfp_seed_set_field( 'locaux_1_cibles', implode( "\n", array(
+		'belfort',
+	) ), $id );
 	tfp_seed_set_field( 'locaux_2_titre', 'Autres communes citées dans ce département', $id );
 	tfp_seed_set_field( 'locaux_2_texte', '', $id );
 	tfp_seed_set_field( 'locaux_2_type', 'noms', $id );
@@ -1060,6 +1140,7 @@ if ( empty( $posts ) ) {
 		'Cravanche',
 		'Essert',
 	) ), $id );
+	tfp_seed_set_field( 'locaux_2_cibles', '', $id );
 	tfp_seed_set_field( 'locaux_3_titre', 'Nos prestations dans le département', $id );
 	tfp_seed_set_field( 'locaux_3_texte', implode( "\n", array(
 		'Le périmètre de chaque prestation est détaillé dans notre page nettoyage professionnel.',
@@ -1069,6 +1150,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'locaux_3_section', 5, $id );
 	tfp_seed_set_field( 'locaux_3_niveau', 2, $id );
 	tfp_seed_set_field( 'locaux_3_noms', '', $id );
+	tfp_seed_set_field( 'locaux_3_cibles', '', $id );
 	tfp_seed_set_field( 'locaux_4_titre', 'Départements limitrophes couverts', $id );
 	tfp_seed_set_field( 'locaux_4_texte', implode( "\n", array(
 		'Départements voisins, également couverts par Top-Famille Pro :',
@@ -1078,6 +1160,10 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'locaux_4_section', 8, $id );
 	tfp_seed_set_field( 'locaux_4_niveau', 2, $id );
 	tfp_seed_set_field( 'locaux_4_noms', '', $id );
+	tfp_seed_set_field( 'locaux_4_cibles', implode( "\n", array(
+		'doubs',
+		'haute-saone',
+	) ), $id );
 	tfp_seed_set_field( 'locaux_avant_tarif', 3, $id );
 	tfp_seed_set_field( 'faq_titre', 'Questions fréquentes — Territoire de Belfort', $id );
 	tfp_seed_set_field( 'faq_1', array( 'question' => 'Le Territoire de Belfort est-il vraiment couvert ?', 'reponse' => 'Le taux horaire reste de 27 € HT/h dans toute la région. Les éventuelles indemnités kilométriques dépendent de l\'adresse des locaux, du planning et des conditions d\'intervention. Elles sont précisées dans le devis.' ), $id );
@@ -1200,6 +1286,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'locaux_1_section', 5, $id );
 	tfp_seed_set_field( 'locaux_1_niveau', 2, $id );
 	tfp_seed_set_field( 'locaux_1_noms', '', $id );
+	tfp_seed_set_field( 'locaux_1_cibles', '', $id );
 	tfp_seed_set_field( 'locaux_2_titre', 'Quartiers et zones d\'activité', $id );
 	tfp_seed_set_field( 'locaux_2_texte', implode( "\n", array(
 		'Nous intervenons dans l\'ensemble de la ville, sans secteur réservé :',
@@ -1214,6 +1301,7 @@ if ( empty( $posts ) ) {
 		'Zones d\'activité',
 		'Secteurs commerçants',
 	) ), $id );
+	tfp_seed_set_field( 'locaux_2_cibles', '', $id );
 	tfp_seed_set_field( 'locaux_3_titre', 'Communes proches desservies', $id );
 	tfp_seed_set_field( 'locaux_3_texte', implode( "\n", array(
 		'Communes proches de Dijon, dans le même bassin géographique. Les demandes situées dans ces communes peuvent être étudiées selon l\'adresse exacte, le volume horaire et les possibilités d\'organisation du planning :',
@@ -1230,6 +1318,15 @@ if ( empty( $posts ) ) {
 		'Sennecey-lès-Dijon',
 		'Ruffey-lès-Echirey',
 	) ), $id );
+	tfp_seed_set_field( 'locaux_3_cibles', implode( "\n", array(
+		'saint-apollinaire',
+		'chenove',
+		'quetigny',
+		'talant',
+		'longvic',
+		'fontaine-les-dijon',
+		'marsannay-la-cote',
+	) ), $id );
 	tfp_seed_set_field( 'locaux_4_titre', 'Dans le même département', $id );
 	tfp_seed_set_field( 'locaux_4_texte', '', $id );
 	tfp_seed_set_field( 'locaux_4_type', 'villes', $id );
@@ -1237,6 +1334,10 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'locaux_4_section', 9, $id );
 	tfp_seed_set_field( 'locaux_4_niveau', 2, $id );
 	tfp_seed_set_field( 'locaux_4_noms', '', $id );
+	tfp_seed_set_field( 'locaux_4_cibles', implode( "\n", array(
+		'cote-dor',
+		'beaune',
+	) ), $id );
 	tfp_seed_set_field( 'locaux_5_titre', 'Autres secteurs couverts en région', $id );
 	tfp_seed_set_field( 'locaux_5_texte', implode( "\n", array(
 		'Villes éloignées, couvertes depuis Saint-Apollinaire — ce ne sont pas des communes voisines.',
@@ -1246,15 +1347,19 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'locaux_5_section', 9, $id );
 	tfp_seed_set_field( 'locaux_5_niveau', 2, $id );
 	tfp_seed_set_field( 'locaux_5_noms', '', $id );
-	tfp_seed_set_field( 'locaux_6_titre', 'Aller plus loin', $id );
-	tfp_seed_set_field( 'locaux_6_texte', implode( "\n", array(
-		'Des guides locaux (fréquences, budget, cahier des charges) viendront compléter cette page.',
+	tfp_seed_set_field( 'locaux_5_cibles', implode( "\n", array(
+		'chalon-sur-saone',
+		'besancon',
+		'auxerre',
 	) ), $id );
+	tfp_seed_set_field( 'locaux_6_titre', 'Aller plus loin', $id );
+	tfp_seed_set_field( 'locaux_6_texte', '', $id );
 	tfp_seed_set_field( 'locaux_6_type', 'liens', $id );
 	tfp_seed_set_field( 'locaux_6_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_6_section', 9, $id );
 	tfp_seed_set_field( 'locaux_6_niveau', 2, $id );
 	tfp_seed_set_field( 'locaux_6_noms', '', $id );
+	tfp_seed_set_field( 'locaux_6_cibles', '', $id );
 	tfp_seed_set_field( 'locaux_avant_tarif', 1, $id );
 	tfp_seed_set_field( 'faq_titre', 'Questions fréquentes — Dijon', $id );
 	tfp_seed_set_field( 'faq_1', array( 'question' => 'Où êtes-vous exactement installés ?', 'reponse' => 'À Saint-Apollinaire (21850), commune limitrophe de Dijon. Nous n\'avons pas de bureau dans le centre-ville dijonnais : c\'est notre unique implantation pour toute la région.' ), $id );
@@ -1373,6 +1478,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'locaux_1_section', 5, $id );
 	tfp_seed_set_field( 'locaux_1_niveau', 2, $id );
 	tfp_seed_set_field( 'locaux_1_noms', '', $id );
+	tfp_seed_set_field( 'locaux_1_cibles', '', $id );
 	tfp_seed_set_field( 'locaux_2_titre', 'Quartiers et zones d\'activité', $id );
 	tfp_seed_set_field( 'locaux_2_texte', implode( "\n", array(
 		'Nous intervenons dans l\'ensemble de la ville, sans secteur réservé :',
@@ -1387,6 +1493,7 @@ if ( empty( $posts ) ) {
 		'Zones d\'activité',
 		'Secteurs commerçants',
 	) ), $id );
+	tfp_seed_set_field( 'locaux_2_cibles', '', $id );
 	tfp_seed_set_field( 'locaux_3_titre', 'Communes proches desservies', $id );
 	tfp_seed_set_field( 'locaux_3_texte', implode( "\n", array(
 		'Communes de la couronne bisontine. Les demandes situées dans ces communes peuvent être étudiées selon l\'adresse exacte, le volume horaire et les possibilités d\'organisation du planning :',
@@ -1405,6 +1512,7 @@ if ( empty( $posts ) ) {
 		'Beure',
 		'Montfaucon',
 	) ), $id );
+	tfp_seed_set_field( 'locaux_3_cibles', '', $id );
 	tfp_seed_set_field( 'locaux_4_titre', 'Dans le même département', $id );
 	tfp_seed_set_field( 'locaux_4_texte', '', $id );
 	tfp_seed_set_field( 'locaux_4_type', 'departements', $id );
@@ -1412,6 +1520,9 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'locaux_4_section', 9, $id );
 	tfp_seed_set_field( 'locaux_4_niveau', 2, $id );
 	tfp_seed_set_field( 'locaux_4_noms', '', $id );
+	tfp_seed_set_field( 'locaux_4_cibles', implode( "\n", array(
+		'doubs',
+	) ), $id );
 	tfp_seed_set_field( 'locaux_5_titre', 'Autres secteurs couverts en région', $id );
 	tfp_seed_set_field( 'locaux_5_texte', implode( "\n", array(
 		'Villes éloignées, couvertes depuis Saint-Apollinaire — ce ne sont pas des communes voisines.',
@@ -1421,15 +1532,19 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'locaux_5_section', 9, $id );
 	tfp_seed_set_field( 'locaux_5_niveau', 2, $id );
 	tfp_seed_set_field( 'locaux_5_noms', '', $id );
-	tfp_seed_set_field( 'locaux_6_titre', 'Aller plus loin', $id );
-	tfp_seed_set_field( 'locaux_6_texte', implode( "\n", array(
-		'Des guides locaux (fréquences, budget, cahier des charges) viendront compléter cette page.',
+	tfp_seed_set_field( 'locaux_5_cibles', implode( "\n", array(
+		'belfort',
+		'vesoul',
+		'dole',
 	) ), $id );
+	tfp_seed_set_field( 'locaux_6_titre', 'Aller plus loin', $id );
+	tfp_seed_set_field( 'locaux_6_texte', '', $id );
 	tfp_seed_set_field( 'locaux_6_type', 'liens', $id );
 	tfp_seed_set_field( 'locaux_6_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_6_section', 9, $id );
 	tfp_seed_set_field( 'locaux_6_niveau', 2, $id );
 	tfp_seed_set_field( 'locaux_6_noms', '', $id );
+	tfp_seed_set_field( 'locaux_6_cibles', '', $id );
 	tfp_seed_set_field( 'locaux_avant_tarif', 1, $id );
 	tfp_seed_set_field( 'faq_titre', 'Questions fréquentes — Besançon', $id );
 	tfp_seed_set_field( 'faq_1', array( 'question' => 'Avez-vous une agence ou un responsable à Besançon ?', 'reponse' => 'Non. Notre unique implantation est à Saint-Apollinaire, près de Dijon. Il n\'y a ni agence bisontine, ni responsable local, ni numéro de téléphone spécifique à la ville.' ), $id );
@@ -1553,6 +1668,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'locaux_1_section', 5, $id );
 	tfp_seed_set_field( 'locaux_1_niveau', 2, $id );
 	tfp_seed_set_field( 'locaux_1_noms', '', $id );
+	tfp_seed_set_field( 'locaux_1_cibles', '', $id );
 	tfp_seed_set_field( 'locaux_2_titre', 'Quartiers et zones d\'activité', $id );
 	tfp_seed_set_field( 'locaux_2_texte', implode( "\n", array(
 		'Nous intervenons dans l\'ensemble de la ville, sans secteur réservé :',
@@ -1567,6 +1683,7 @@ if ( empty( $posts ) ) {
 		'Zones d\'activité',
 		'Secteur de la gare',
 	) ), $id );
+	tfp_seed_set_field( 'locaux_2_cibles', '', $id );
 	tfp_seed_set_field( 'locaux_3_titre', 'Communes proches desservies', $id );
 	tfp_seed_set_field( 'locaux_3_texte', implode( "\n", array(
 		'Communes du bassin dolois. Les demandes situées dans ces communes peuvent être étudiées selon l\'adresse exacte, le volume horaire et les possibilités d\'organisation du planning :',
@@ -1584,6 +1701,7 @@ if ( empty( $posts ) ) {
 		'Rochefort-sur-Nenon',
 		'Crissey',
 	) ), $id );
+	tfp_seed_set_field( 'locaux_3_cibles', '', $id );
 	tfp_seed_set_field( 'locaux_4_titre', 'Dans le même département', $id );
 	tfp_seed_set_field( 'locaux_4_texte', '', $id );
 	tfp_seed_set_field( 'locaux_4_type', 'villes', $id );
@@ -1591,6 +1709,10 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'locaux_4_section', 9, $id );
 	tfp_seed_set_field( 'locaux_4_niveau', 2, $id );
 	tfp_seed_set_field( 'locaux_4_noms', '', $id );
+	tfp_seed_set_field( 'locaux_4_cibles', implode( "\n", array(
+		'jura',
+		'lons-le-saunier',
+	) ), $id );
 	tfp_seed_set_field( 'locaux_5_titre', 'Autres secteurs couverts en région', $id );
 	tfp_seed_set_field( 'locaux_5_texte', implode( "\n", array(
 		'Villes éloignées, couvertes depuis Saint-Apollinaire — ce ne sont pas des communes voisines.',
@@ -1600,15 +1722,19 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'locaux_5_section', 9, $id );
 	tfp_seed_set_field( 'locaux_5_niveau', 2, $id );
 	tfp_seed_set_field( 'locaux_5_noms', '', $id );
-	tfp_seed_set_field( 'locaux_6_titre', 'Aller plus loin', $id );
-	tfp_seed_set_field( 'locaux_6_texte', implode( "\n", array(
-		'Des guides locaux (fréquences, budget, cahier des charges) viendront compléter cette page.',
+	tfp_seed_set_field( 'locaux_5_cibles', implode( "\n", array(
+		'lons-le-saunier',
+		'besancon',
+		'chalon-sur-saone',
 	) ), $id );
+	tfp_seed_set_field( 'locaux_6_titre', 'Aller plus loin', $id );
+	tfp_seed_set_field( 'locaux_6_texte', '', $id );
 	tfp_seed_set_field( 'locaux_6_type', 'liens', $id );
 	tfp_seed_set_field( 'locaux_6_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_6_section', 9, $id );
 	tfp_seed_set_field( 'locaux_6_niveau', 2, $id );
 	tfp_seed_set_field( 'locaux_6_noms', '', $id );
+	tfp_seed_set_field( 'locaux_6_cibles', '', $id );
 	tfp_seed_set_field( 'locaux_avant_tarif', 1, $id );
 	tfp_seed_set_field( 'faq_titre', 'Questions fréquentes — Dole', $id );
 	tfp_seed_set_field( 'faq_1', array( 'question' => 'Pouvez-vous passer avant l\'ouverture de ma boutique ?', 'reponse' => 'Oui, c\'est un créneau pouvant être envisagé : passage entre 6 h et 8 h 30, du mardi au samedi selon vos jours d\'ouverture, avec un renfort possible les jours de forte affluence.' ), $id );
@@ -1731,6 +1857,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'locaux_1_section', 5, $id );
 	tfp_seed_set_field( 'locaux_1_niveau', 2, $id );
 	tfp_seed_set_field( 'locaux_1_noms', '', $id );
+	tfp_seed_set_field( 'locaux_1_cibles', '', $id );
 	tfp_seed_set_field( 'locaux_2_titre', 'Quartiers et zones d\'activité', $id );
 	tfp_seed_set_field( 'locaux_2_texte', implode( "\n", array(
 		'Nous intervenons dans l\'ensemble de la ville, sans secteur réservé :',
@@ -1745,6 +1872,7 @@ if ( empty( $posts ) ) {
 		'Zones d\'activité',
 		'Secteur de la gare',
 	) ), $id );
+	tfp_seed_set_field( 'locaux_2_cibles', '', $id );
 	tfp_seed_set_field( 'locaux_3_titre', 'Communes proches desservies', $id );
 	tfp_seed_set_field( 'locaux_3_texte', implode( "\n", array(
 		'Communes voisines de Lons-le-Saunier. Les demandes situées dans ces communes peuvent être étudiées selon l\'adresse exacte, le volume horaire et les possibilités d\'organisation du planning :',
@@ -1761,6 +1889,7 @@ if ( empty( $posts ) ) {
 		'Villeneuve-sous-Pymont',
 		'Conliège',
 	) ), $id );
+	tfp_seed_set_field( 'locaux_3_cibles', '', $id );
 	tfp_seed_set_field( 'locaux_4_titre', 'Dans le même département', $id );
 	tfp_seed_set_field( 'locaux_4_texte', '', $id );
 	tfp_seed_set_field( 'locaux_4_type', 'villes', $id );
@@ -1768,6 +1897,10 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'locaux_4_section', 9, $id );
 	tfp_seed_set_field( 'locaux_4_niveau', 2, $id );
 	tfp_seed_set_field( 'locaux_4_noms', '', $id );
+	tfp_seed_set_field( 'locaux_4_cibles', implode( "\n", array(
+		'jura',
+		'dole',
+	) ), $id );
 	tfp_seed_set_field( 'locaux_5_titre', 'Autres secteurs couverts en région', $id );
 	tfp_seed_set_field( 'locaux_5_texte', implode( "\n", array(
 		'Villes éloignées, couvertes depuis Saint-Apollinaire — ce ne sont pas des communes voisines.',
@@ -1777,15 +1910,19 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'locaux_5_section', 9, $id );
 	tfp_seed_set_field( 'locaux_5_niveau', 2, $id );
 	tfp_seed_set_field( 'locaux_5_noms', '', $id );
-	tfp_seed_set_field( 'locaux_6_titre', 'Aller plus loin', $id );
-	tfp_seed_set_field( 'locaux_6_texte', implode( "\n", array(
-		'Des guides locaux (fréquences, budget, cahier des charges) viendront compléter cette page.',
+	tfp_seed_set_field( 'locaux_5_cibles', implode( "\n", array(
+		'dole',
+		'chalon-sur-saone',
+		'macon',
 	) ), $id );
+	tfp_seed_set_field( 'locaux_6_titre', 'Aller plus loin', $id );
+	tfp_seed_set_field( 'locaux_6_texte', '', $id );
 	tfp_seed_set_field( 'locaux_6_type', 'liens', $id );
 	tfp_seed_set_field( 'locaux_6_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_6_section', 9, $id );
 	tfp_seed_set_field( 'locaux_6_niveau', 2, $id );
 	tfp_seed_set_field( 'locaux_6_noms', '', $id );
+	tfp_seed_set_field( 'locaux_6_cibles', '', $id );
 	tfp_seed_set_field( 'locaux_avant_tarif', 1, $id );
 	tfp_seed_set_field( 'faq_titre', 'Questions fréquentes — Lons-le-Saunier', $id );
 	tfp_seed_set_field( 'faq_1', array( 'question' => 'Avez-vous une agence à Lons-le-Saunier ?', 'reponse' => 'Non. Notre unique implantation est à Saint-Apollinaire, près de Dijon. Il n\'y a ni agence, ni responsable local, ni numéro spécifique à la ville : c\'est le 06 36 17 63 39 partout.' ), $id );
@@ -1908,6 +2045,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'locaux_1_section', 5, $id );
 	tfp_seed_set_field( 'locaux_1_niveau', 2, $id );
 	tfp_seed_set_field( 'locaux_1_noms', '', $id );
+	tfp_seed_set_field( 'locaux_1_cibles', '', $id );
 	tfp_seed_set_field( 'locaux_2_titre', 'Quartiers et zones d\'activité', $id );
 	tfp_seed_set_field( 'locaux_2_texte', implode( "\n", array(
 		'Nous intervenons dans l\'ensemble de la ville, sans secteur réservé :',
@@ -1922,6 +2060,7 @@ if ( empty( $posts ) ) {
 		'Zones d\'activité',
 		'Secteur de la gare',
 	) ), $id );
+	tfp_seed_set_field( 'locaux_2_cibles', '', $id );
 	tfp_seed_set_field( 'locaux_3_titre', 'Communes proches desservies', $id );
 	tfp_seed_set_field( 'locaux_3_texte', implode( "\n", array(
 		'Communes de l\'agglomération de Nevers. Les demandes situées dans ces communes peuvent être étudiées selon l\'adresse exacte, le volume horaire et les possibilités d\'organisation du planning :',
@@ -1939,6 +2078,7 @@ if ( empty( $posts ) ) {
 		'Garchizy',
 		'Sermoise-sur-Loire',
 	) ), $id );
+	tfp_seed_set_field( 'locaux_3_cibles', '', $id );
 	tfp_seed_set_field( 'locaux_4_titre', 'Dans le même département', $id );
 	tfp_seed_set_field( 'locaux_4_texte', '', $id );
 	tfp_seed_set_field( 'locaux_4_type', 'departements', $id );
@@ -1946,6 +2086,9 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'locaux_4_section', 9, $id );
 	tfp_seed_set_field( 'locaux_4_niveau', 2, $id );
 	tfp_seed_set_field( 'locaux_4_noms', '', $id );
+	tfp_seed_set_field( 'locaux_4_cibles', implode( "\n", array(
+		'nievre',
+	) ), $id );
 	tfp_seed_set_field( 'locaux_5_titre', 'Autres secteurs couverts en région', $id );
 	tfp_seed_set_field( 'locaux_5_texte', implode( "\n", array(
 		'Villes éloignées, couvertes depuis Saint-Apollinaire — ce ne sont pas des communes voisines.',
@@ -1955,15 +2098,19 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'locaux_5_section', 9, $id );
 	tfp_seed_set_field( 'locaux_5_niveau', 2, $id );
 	tfp_seed_set_field( 'locaux_5_noms', '', $id );
-	tfp_seed_set_field( 'locaux_6_titre', 'Aller plus loin', $id );
-	tfp_seed_set_field( 'locaux_6_texte', implode( "\n", array(
-		'Des guides locaux (fréquences, budget, cahier des charges) viendront compléter cette page.',
+	tfp_seed_set_field( 'locaux_5_cibles', implode( "\n", array(
+		'chalon-sur-saone',
+		'macon',
+		'auxerre',
 	) ), $id );
+	tfp_seed_set_field( 'locaux_6_titre', 'Aller plus loin', $id );
+	tfp_seed_set_field( 'locaux_6_texte', '', $id );
 	tfp_seed_set_field( 'locaux_6_type', 'liens', $id );
 	tfp_seed_set_field( 'locaux_6_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_6_section', 9, $id );
 	tfp_seed_set_field( 'locaux_6_niveau', 2, $id );
 	tfp_seed_set_field( 'locaux_6_noms', '', $id );
+	tfp_seed_set_field( 'locaux_6_cibles', '', $id );
 	tfp_seed_set_field( 'locaux_avant_tarif', 1, $id );
 	tfp_seed_set_field( 'faq_titre', 'Questions fréquentes — Nevers', $id );
 	tfp_seed_set_field( 'faq_1', array( 'question' => 'Intervenez-vous vraiment à Nevers depuis la Côte-d\'Or ?', 'reponse' => 'Oui, sur la base de créneaux réguliers planifiés à l\'avance. C\'est un secteur éloigné : nous y travaillons en régularité, pas en urgence, et nous le disons clairement avant tout engagement.' ), $id );
@@ -2086,6 +2233,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'locaux_1_section', 5, $id );
 	tfp_seed_set_field( 'locaux_1_niveau', 2, $id );
 	tfp_seed_set_field( 'locaux_1_noms', '', $id );
+	tfp_seed_set_field( 'locaux_1_cibles', '', $id );
 	tfp_seed_set_field( 'locaux_2_titre', 'Quartiers et zones d\'activité', $id );
 	tfp_seed_set_field( 'locaux_2_texte', implode( "\n", array(
 		'Nous intervenons dans l\'ensemble de la ville, sans secteur réservé :',
@@ -2100,6 +2248,7 @@ if ( empty( $posts ) ) {
 		'Zones d\'activité',
 		'Secteurs commerçants',
 	) ), $id );
+	tfp_seed_set_field( 'locaux_2_cibles', '', $id );
 	tfp_seed_set_field( 'locaux_3_titre', 'Communes proches desservies', $id );
 	tfp_seed_set_field( 'locaux_3_texte', implode( "\n", array(
 		'Communes de la couronne vésulienne. Les demandes situées dans ces communes peuvent être étudiées selon l\'adresse exacte, le volume horaire et les possibilités d\'organisation du planning :',
@@ -2116,6 +2265,7 @@ if ( empty( $posts ) ) {
 		'Échenoz-la-Méline',
 		'Frotey-lès-Vesoul',
 	) ), $id );
+	tfp_seed_set_field( 'locaux_3_cibles', '', $id );
 	tfp_seed_set_field( 'locaux_4_titre', 'Dans le même département', $id );
 	tfp_seed_set_field( 'locaux_4_texte', '', $id );
 	tfp_seed_set_field( 'locaux_4_type', 'departements', $id );
@@ -2123,6 +2273,9 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'locaux_4_section', 9, $id );
 	tfp_seed_set_field( 'locaux_4_niveau', 2, $id );
 	tfp_seed_set_field( 'locaux_4_noms', '', $id );
+	tfp_seed_set_field( 'locaux_4_cibles', implode( "\n", array(
+		'haute-saone',
+	) ), $id );
 	tfp_seed_set_field( 'locaux_5_titre', 'Autres secteurs couverts en région', $id );
 	tfp_seed_set_field( 'locaux_5_texte', implode( "\n", array(
 		'Villes éloignées, couvertes depuis Saint-Apollinaire — ce ne sont pas des communes voisines.',
@@ -2132,15 +2285,19 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'locaux_5_section', 9, $id );
 	tfp_seed_set_field( 'locaux_5_niveau', 2, $id );
 	tfp_seed_set_field( 'locaux_5_noms', '', $id );
-	tfp_seed_set_field( 'locaux_6_titre', 'Aller plus loin', $id );
-	tfp_seed_set_field( 'locaux_6_texte', implode( "\n", array(
-		'Des guides locaux (fréquences, budget, cahier des charges) viendront compléter cette page.',
+	tfp_seed_set_field( 'locaux_5_cibles', implode( "\n", array(
+		'belfort',
+		'besancon',
+		'dijon',
 	) ), $id );
+	tfp_seed_set_field( 'locaux_6_titre', 'Aller plus loin', $id );
+	tfp_seed_set_field( 'locaux_6_texte', '', $id );
 	tfp_seed_set_field( 'locaux_6_type', 'liens', $id );
 	tfp_seed_set_field( 'locaux_6_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_6_section', 9, $id );
 	tfp_seed_set_field( 'locaux_6_niveau', 2, $id );
 	tfp_seed_set_field( 'locaux_6_noms', '', $id );
+	tfp_seed_set_field( 'locaux_6_cibles', '', $id );
 	tfp_seed_set_field( 'locaux_avant_tarif', 1, $id );
 	tfp_seed_set_field( 'faq_titre', 'Questions fréquentes — Vesoul', $id );
 	tfp_seed_set_field( 'faq_1', array( 'question' => 'Pouvez-vous intervenir en dehors des horaires d\'ouverture ?', 'reponse' => 'Oui, c\'est un créneau pouvant être envisagé : passage en soirée ou tôt le matin, avec badge ou clé remis contre décharge écrite et procédure de fermeture consignée.' ), $id );
@@ -2263,6 +2420,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'locaux_1_section', 5, $id );
 	tfp_seed_set_field( 'locaux_1_niveau', 2, $id );
 	tfp_seed_set_field( 'locaux_1_noms', '', $id );
+	tfp_seed_set_field( 'locaux_1_cibles', '', $id );
 	tfp_seed_set_field( 'locaux_2_titre', 'Quartiers et zones d\'activité', $id );
 	tfp_seed_set_field( 'locaux_2_texte', implode( "\n", array(
 		'Nous intervenons dans l\'ensemble de la ville, sans secteur réservé :',
@@ -2277,6 +2435,7 @@ if ( empty( $posts ) ) {
 		'Zones d\'activité',
 		'Secteurs commerçants',
 	) ), $id );
+	tfp_seed_set_field( 'locaux_2_cibles', '', $id );
 	tfp_seed_set_field( 'locaux_3_titre', 'Communes proches desservies', $id );
 	tfp_seed_set_field( 'locaux_3_texte', implode( "\n", array(
 		'Communes du Grand Chalon. Les demandes situées dans ces communes peuvent être étudiées selon l\'adresse exacte, le volume horaire et les possibilités d\'organisation du planning :',
@@ -2293,6 +2452,7 @@ if ( empty( $posts ) ) {
 		'Fragnes-La Loyère',
 		'Lux',
 	) ), $id );
+	tfp_seed_set_field( 'locaux_3_cibles', '', $id );
 	tfp_seed_set_field( 'locaux_4_titre', 'Dans le même département', $id );
 	tfp_seed_set_field( 'locaux_4_texte', '', $id );
 	tfp_seed_set_field( 'locaux_4_type', 'villes', $id );
@@ -2300,6 +2460,10 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'locaux_4_section', 9, $id );
 	tfp_seed_set_field( 'locaux_4_niveau', 2, $id );
 	tfp_seed_set_field( 'locaux_4_noms', '', $id );
+	tfp_seed_set_field( 'locaux_4_cibles', implode( "\n", array(
+		'saone-et-loire',
+		'macon',
+	) ), $id );
 	tfp_seed_set_field( 'locaux_5_titre', 'Autres secteurs couverts en région', $id );
 	tfp_seed_set_field( 'locaux_5_texte', implode( "\n", array(
 		'Villes éloignées, couvertes depuis Saint-Apollinaire — ce ne sont pas des communes voisines.',
@@ -2309,15 +2473,19 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'locaux_5_section', 9, $id );
 	tfp_seed_set_field( 'locaux_5_niveau', 2, $id );
 	tfp_seed_set_field( 'locaux_5_noms', '', $id );
-	tfp_seed_set_field( 'locaux_6_titre', 'Aller plus loin', $id );
-	tfp_seed_set_field( 'locaux_6_texte', implode( "\n", array(
-		'Des guides locaux (fréquences, budget, cahier des charges) viendront compléter cette page.',
+	tfp_seed_set_field( 'locaux_5_cibles', implode( "\n", array(
+		'macon',
+		'dijon',
+		'dole',
 	) ), $id );
+	tfp_seed_set_field( 'locaux_6_titre', 'Aller plus loin', $id );
+	tfp_seed_set_field( 'locaux_6_texte', '', $id );
 	tfp_seed_set_field( 'locaux_6_type', 'liens', $id );
 	tfp_seed_set_field( 'locaux_6_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_6_section', 9, $id );
 	tfp_seed_set_field( 'locaux_6_niveau', 2, $id );
 	tfp_seed_set_field( 'locaux_6_noms', '', $id );
+	tfp_seed_set_field( 'locaux_6_cibles', '', $id );
 	tfp_seed_set_field( 'locaux_avant_tarif', 1, $id );
 	tfp_seed_set_field( 'faq_titre', 'Questions fréquentes — Chalon-sur-Saône', $id );
 	tfp_seed_set_field( 'faq_1', array( 'question' => 'Avez-vous une agence à Chalon-sur-Saône ?', 'reponse' => 'Non. Notre unique implantation est à Saint-Apollinaire, près de Dijon. Le numéro est le même pour tous nos clients : 06 36 17 63 39.' ), $id );
@@ -2440,6 +2608,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'locaux_1_section', 5, $id );
 	tfp_seed_set_field( 'locaux_1_niveau', 2, $id );
 	tfp_seed_set_field( 'locaux_1_noms', '', $id );
+	tfp_seed_set_field( 'locaux_1_cibles', '', $id );
 	tfp_seed_set_field( 'locaux_2_titre', 'Quartiers et zones d\'activité', $id );
 	tfp_seed_set_field( 'locaux_2_texte', implode( "\n", array(
 		'Nous intervenons dans l\'ensemble de la ville, sans secteur réservé :',
@@ -2454,6 +2623,7 @@ if ( empty( $posts ) ) {
 		'Zones d\'activité',
 		'Secteur de la gare',
 	) ), $id );
+	tfp_seed_set_field( 'locaux_2_cibles', '', $id );
 	tfp_seed_set_field( 'locaux_3_titre', 'Communes proches desservies', $id );
 	tfp_seed_set_field( 'locaux_3_texte', implode( "\n", array(
 		'Communes de l\'agglomération mâconnaise. Les demandes situées dans ces communes peuvent être étudiées selon l\'adresse exacte, le volume horaire et les possibilités d\'organisation du planning :',
@@ -2470,6 +2640,7 @@ if ( empty( $posts ) ) {
 		'Chaintré',
 		'Saint-Laurent-sur-Saône',
 	) ), $id );
+	tfp_seed_set_field( 'locaux_3_cibles', '', $id );
 	tfp_seed_set_field( 'locaux_4_titre', 'Dans le même département', $id );
 	tfp_seed_set_field( 'locaux_4_texte', '', $id );
 	tfp_seed_set_field( 'locaux_4_type', 'villes', $id );
@@ -2477,6 +2648,10 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'locaux_4_section', 9, $id );
 	tfp_seed_set_field( 'locaux_4_niveau', 2, $id );
 	tfp_seed_set_field( 'locaux_4_noms', '', $id );
+	tfp_seed_set_field( 'locaux_4_cibles', implode( "\n", array(
+		'saone-et-loire',
+		'chalon-sur-saone',
+	) ), $id );
 	tfp_seed_set_field( 'locaux_5_titre', 'Autres secteurs couverts en région', $id );
 	tfp_seed_set_field( 'locaux_5_texte', implode( "\n", array(
 		'Villes éloignées, couvertes depuis Saint-Apollinaire — ce ne sont pas des communes voisines.',
@@ -2486,15 +2661,19 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'locaux_5_section', 9, $id );
 	tfp_seed_set_field( 'locaux_5_niveau', 2, $id );
 	tfp_seed_set_field( 'locaux_5_noms', '', $id );
-	tfp_seed_set_field( 'locaux_6_titre', 'Aller plus loin', $id );
-	tfp_seed_set_field( 'locaux_6_texte', implode( "\n", array(
-		'Des guides locaux (fréquences, budget, cahier des charges) viendront compléter cette page.',
+	tfp_seed_set_field( 'locaux_5_cibles', implode( "\n", array(
+		'chalon-sur-saone',
+		'lons-le-saunier',
+		'dijon',
 	) ), $id );
+	tfp_seed_set_field( 'locaux_6_titre', 'Aller plus loin', $id );
+	tfp_seed_set_field( 'locaux_6_texte', '', $id );
 	tfp_seed_set_field( 'locaux_6_type', 'liens', $id );
 	tfp_seed_set_field( 'locaux_6_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_6_section', 9, $id );
 	tfp_seed_set_field( 'locaux_6_niveau', 2, $id );
 	tfp_seed_set_field( 'locaux_6_noms', '', $id );
+	tfp_seed_set_field( 'locaux_6_cibles', '', $id );
 	tfp_seed_set_field( 'locaux_avant_tarif', 1, $id );
 	tfp_seed_set_field( 'faq_titre', 'Questions fréquentes — Mâcon', $id );
 	tfp_seed_set_field( 'faq_1', array( 'question' => 'Avez-vous une agence à Mâcon ?', 'reponse' => 'Non. Notre unique implantation est à Saint-Apollinaire, près de Dijon. Il n\'y a ni agence mâconnaise, ni responsable local, ni numéro spécifique à la ville.' ), $id );
@@ -2617,6 +2796,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'locaux_1_section', 5, $id );
 	tfp_seed_set_field( 'locaux_1_niveau', 2, $id );
 	tfp_seed_set_field( 'locaux_1_noms', '', $id );
+	tfp_seed_set_field( 'locaux_1_cibles', '', $id );
 	tfp_seed_set_field( 'locaux_2_titre', 'Quartiers et zones d\'activité', $id );
 	tfp_seed_set_field( 'locaux_2_texte', implode( "\n", array(
 		'Nous intervenons dans l\'ensemble de la ville, sans secteur réservé :',
@@ -2631,6 +2811,7 @@ if ( empty( $posts ) ) {
 		'Zones d\'activité',
 		'Secteurs commerçants',
 	) ), $id );
+	tfp_seed_set_field( 'locaux_2_cibles', '', $id );
 	tfp_seed_set_field( 'locaux_3_titre', 'Communes proches desservies', $id );
 	tfp_seed_set_field( 'locaux_3_texte', implode( "\n", array(
 		'Communes de la couronne auxerroise. Les demandes situées dans ces communes peuvent être étudiées selon l\'adresse exacte, le volume horaire et les possibilités d\'organisation du planning :',
@@ -2648,6 +2829,7 @@ if ( empty( $posts ) ) {
 		'Chevannes',
 		'Augy',
 	) ), $id );
+	tfp_seed_set_field( 'locaux_3_cibles', '', $id );
 	tfp_seed_set_field( 'locaux_4_titre', 'Dans le même département', $id );
 	tfp_seed_set_field( 'locaux_4_texte', '', $id );
 	tfp_seed_set_field( 'locaux_4_type', 'departements', $id );
@@ -2655,6 +2837,9 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'locaux_4_section', 9, $id );
 	tfp_seed_set_field( 'locaux_4_niveau', 2, $id );
 	tfp_seed_set_field( 'locaux_4_noms', '', $id );
+	tfp_seed_set_field( 'locaux_4_cibles', implode( "\n", array(
+		'yonne',
+	) ), $id );
 	tfp_seed_set_field( 'locaux_5_titre', 'Autres secteurs couverts en région', $id );
 	tfp_seed_set_field( 'locaux_5_texte', implode( "\n", array(
 		'Villes éloignées, couvertes depuis Saint-Apollinaire — ce ne sont pas des communes voisines.',
@@ -2664,15 +2849,19 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'locaux_5_section', 9, $id );
 	tfp_seed_set_field( 'locaux_5_niveau', 2, $id );
 	tfp_seed_set_field( 'locaux_5_noms', '', $id );
-	tfp_seed_set_field( 'locaux_6_titre', 'Aller plus loin', $id );
-	tfp_seed_set_field( 'locaux_6_texte', implode( "\n", array(
-		'Des guides locaux (fréquences, budget, cahier des charges) viendront compléter cette page.',
+	tfp_seed_set_field( 'locaux_5_cibles', implode( "\n", array(
+		'dijon',
+		'nevers',
+		'chalon-sur-saone',
 	) ), $id );
+	tfp_seed_set_field( 'locaux_6_titre', 'Aller plus loin', $id );
+	tfp_seed_set_field( 'locaux_6_texte', '', $id );
 	tfp_seed_set_field( 'locaux_6_type', 'liens', $id );
 	tfp_seed_set_field( 'locaux_6_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_6_section', 9, $id );
 	tfp_seed_set_field( 'locaux_6_niveau', 2, $id );
 	tfp_seed_set_field( 'locaux_6_noms', '', $id );
+	tfp_seed_set_field( 'locaux_6_cibles', '', $id );
 	tfp_seed_set_field( 'locaux_avant_tarif', 1, $id );
 	tfp_seed_set_field( 'faq_titre', 'Questions fréquentes — Auxerre', $id );
 	tfp_seed_set_field( 'faq_1', array( 'question' => 'Avez-vous une agence à Auxerre ?', 'reponse' => 'Non. Notre unique implantation est à Saint-Apollinaire, près de Dijon. Il n\'y a ni agence auxerroise, ni responsable local, ni numéro spécifique au département.' ), $id );
@@ -2795,6 +2984,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'locaux_1_section', 5, $id );
 	tfp_seed_set_field( 'locaux_1_niveau', 2, $id );
 	tfp_seed_set_field( 'locaux_1_noms', '', $id );
+	tfp_seed_set_field( 'locaux_1_cibles', '', $id );
 	tfp_seed_set_field( 'locaux_2_titre', 'Quartiers et zones d\'activité', $id );
 	tfp_seed_set_field( 'locaux_2_texte', implode( "\n", array(
 		'Nous intervenons dans l\'ensemble de la ville, sans secteur réservé :',
@@ -2809,6 +2999,7 @@ if ( empty( $posts ) ) {
 		'Zones d\'activité',
 		'Secteur de la gare',
 	) ), $id );
+	tfp_seed_set_field( 'locaux_2_cibles', '', $id );
 	tfp_seed_set_field( 'locaux_3_titre', 'Communes proches desservies', $id );
 	tfp_seed_set_field( 'locaux_3_texte', implode( "\n", array(
 		'Communes de la couronne belfortaine. Les demandes situées dans ces communes peuvent être étudiées selon l\'adresse exacte, le volume horaire et les possibilités d\'organisation du planning :',
@@ -2826,6 +3017,7 @@ if ( empty( $posts ) ) {
 		'Essert',
 		'Pérouse',
 	) ), $id );
+	tfp_seed_set_field( 'locaux_3_cibles', '', $id );
 	tfp_seed_set_field( 'locaux_4_titre', 'Dans le même département', $id );
 	tfp_seed_set_field( 'locaux_4_texte', '', $id );
 	tfp_seed_set_field( 'locaux_4_type', 'departements', $id );
@@ -2833,6 +3025,9 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'locaux_4_section', 9, $id );
 	tfp_seed_set_field( 'locaux_4_niveau', 2, $id );
 	tfp_seed_set_field( 'locaux_4_noms', '', $id );
+	tfp_seed_set_field( 'locaux_4_cibles', implode( "\n", array(
+		'territoire-de-belfort',
+	) ), $id );
 	tfp_seed_set_field( 'locaux_5_titre', 'Autres secteurs couverts en région', $id );
 	tfp_seed_set_field( 'locaux_5_texte', implode( "\n", array(
 		'Villes éloignées, couvertes depuis Saint-Apollinaire — ce ne sont pas des communes voisines.',
@@ -2842,15 +3037,19 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'locaux_5_section', 9, $id );
 	tfp_seed_set_field( 'locaux_5_niveau', 2, $id );
 	tfp_seed_set_field( 'locaux_5_noms', '', $id );
-	tfp_seed_set_field( 'locaux_6_titre', 'Aller plus loin', $id );
-	tfp_seed_set_field( 'locaux_6_texte', implode( "\n", array(
-		'Des guides locaux (fréquences, budget, cahier des charges) viendront compléter cette page.',
+	tfp_seed_set_field( 'locaux_5_cibles', implode( "\n", array(
+		'besancon',
+		'vesoul',
+		'dole',
 	) ), $id );
+	tfp_seed_set_field( 'locaux_6_titre', 'Aller plus loin', $id );
+	tfp_seed_set_field( 'locaux_6_texte', '', $id );
 	tfp_seed_set_field( 'locaux_6_type', 'liens', $id );
 	tfp_seed_set_field( 'locaux_6_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_6_section', 9, $id );
 	tfp_seed_set_field( 'locaux_6_niveau', 2, $id );
 	tfp_seed_set_field( 'locaux_6_noms', '', $id );
+	tfp_seed_set_field( 'locaux_6_cibles', '', $id );
 	tfp_seed_set_field( 'locaux_avant_tarif', 1, $id );
 	tfp_seed_set_field( 'faq_titre', 'Questions fréquentes — Belfort', $id );
 	tfp_seed_set_field( 'faq_1', array( 'question' => 'Belfort est loin de Dijon : intervenez-vous vraiment ici ?', 'reponse' => 'Oui, sur la base de créneaux réguliers planifiés à l\'avance, dont le regroupement est étudié selon le planning. C\'est un secteur éloigné : nous y travaillons en régularité, pas en urgence.' ), $id );
@@ -2955,6 +3154,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'locaux_1_section', 5, $id );
 	tfp_seed_set_field( 'locaux_1_niveau', 2, $id );
 	tfp_seed_set_field( 'locaux_1_noms', '', $id );
+	tfp_seed_set_field( 'locaux_1_cibles', '', $id );
 	tfp_seed_set_field( 'locaux_2_titre', 'Quartiers et zones d\'activité', $id );
 	tfp_seed_set_field( 'locaux_2_texte', implode( "\n", array(
 		'Nous intervenons dans l\'ensemble de la commune, sans secteur réservé :',
@@ -2969,6 +3169,7 @@ if ( empty( $posts ) ) {
 		'Zones d\'activité',
 		'Commerces de proximité',
 	) ), $id );
+	tfp_seed_set_field( 'locaux_2_cibles', '', $id );
 	tfp_seed_set_field( 'locaux_3_titre', 'Communes proches desservies', $id );
 	tfp_seed_set_field( 'locaux_3_texte', implode( "\n", array(
 		'Communes proches de Saint-Apollinaire, dans le même bassin géographique :',
@@ -2983,6 +3184,10 @@ if ( empty( $posts ) ) {
 		'Varois-et-Chaignot',
 		'Norges-la-Ville',
 	) ), $id );
+	tfp_seed_set_field( 'locaux_3_cibles', implode( "\n", array(
+		'dijon',
+		'quetigny',
+	) ), $id );
 	tfp_seed_set_field( 'locaux_4_titre', 'Dans le même département', $id );
 	tfp_seed_set_field( 'locaux_4_texte', '', $id );
 	tfp_seed_set_field( 'locaux_4_type', 'villes', $id );
@@ -2990,6 +3195,15 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'locaux_4_section', 9, $id );
 	tfp_seed_set_field( 'locaux_4_niveau', 2, $id );
 	tfp_seed_set_field( 'locaux_4_noms', '', $id );
+	tfp_seed_set_field( 'locaux_4_cibles', implode( "\n", array(
+		'cote-dor',
+		'chenove',
+		'talant',
+		'longvic',
+		'fontaine-les-dijon',
+		'marsannay-la-cote',
+		'beaune',
+	) ), $id );
 	tfp_seed_set_field( 'locaux_5_titre', 'Autres secteurs couverts en région', $id );
 	tfp_seed_set_field( 'locaux_5_texte', implode( "\n", array(
 		'Villes éloignées, couvertes depuis Saint-Apollinaire — ce ne sont pas des communes voisines.',
@@ -2999,15 +3213,18 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'locaux_5_section', 9, $id );
 	tfp_seed_set_field( 'locaux_5_niveau', 2, $id );
 	tfp_seed_set_field( 'locaux_5_noms', '', $id );
-	tfp_seed_set_field( 'locaux_6_titre', 'Aller plus loin', $id );
-	tfp_seed_set_field( 'locaux_6_texte', implode( "\n", array(
-		'Des guides locaux (fréquences, budget, cahier des charges) viendront compléter cette page.',
+	tfp_seed_set_field( 'locaux_5_cibles', implode( "\n", array(
+		'chalon-sur-saone',
+		'besancon',
 	) ), $id );
+	tfp_seed_set_field( 'locaux_6_titre', 'Aller plus loin', $id );
+	tfp_seed_set_field( 'locaux_6_texte', '', $id );
 	tfp_seed_set_field( 'locaux_6_type', 'liens', $id );
 	tfp_seed_set_field( 'locaux_6_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_6_section', 9, $id );
 	tfp_seed_set_field( 'locaux_6_niveau', 2, $id );
 	tfp_seed_set_field( 'locaux_6_noms', '', $id );
+	tfp_seed_set_field( 'locaux_6_cibles', '', $id );
 	tfp_seed_set_field( 'locaux_avant_tarif', 1, $id );
 	tfp_seed_set_field( 'faq_titre', 'Questions fréquentes — Saint-Apollinaire', $id );
 	tfp_seed_set_field( 'faq_1', array( 'question' => 'Votre entreprise est-elle vraiment domiciliée à Saint-Apollinaire ?', 'reponse' => 'Oui, c\'est notre unique implantation : 21850 Saint-Apollinaire, en Côte-d\'Or. Tous nos plannings régionaux sont organisés depuis cette adresse.' ), $id );
@@ -3112,6 +3329,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'locaux_1_section', 5, $id );
 	tfp_seed_set_field( 'locaux_1_niveau', 2, $id );
 	tfp_seed_set_field( 'locaux_1_noms', '', $id );
+	tfp_seed_set_field( 'locaux_1_cibles', '', $id );
 	tfp_seed_set_field( 'locaux_2_titre', 'Quartiers et zones d\'activité', $id );
 	tfp_seed_set_field( 'locaux_2_texte', implode( "\n", array(
 		'Nous intervenons dans l\'ensemble de la commune, sans secteur réservé :',
@@ -3126,6 +3344,7 @@ if ( empty( $posts ) ) {
 		'Zones d\'activité',
 		'Commerces de proximité',
 	) ), $id );
+	tfp_seed_set_field( 'locaux_2_cibles', '', $id );
 	tfp_seed_set_field( 'locaux_3_titre', 'Communes proches desservies', $id );
 	tfp_seed_set_field( 'locaux_3_texte', implode( "\n", array(
 		'Communes proches de Chenôve, dans le même bassin géographique :',
@@ -3137,6 +3356,11 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'locaux_3_noms', implode( "\n", array(
 		'Perrigny-lès-Dijon',
 	) ), $id );
+	tfp_seed_set_field( 'locaux_3_cibles', implode( "\n", array(
+		'dijon',
+		'longvic',
+		'marsannay-la-cote',
+	) ), $id );
 	tfp_seed_set_field( 'locaux_4_titre', 'Dans le même département', $id );
 	tfp_seed_set_field( 'locaux_4_texte', '', $id );
 	tfp_seed_set_field( 'locaux_4_type', 'villes', $id );
@@ -3144,6 +3368,14 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'locaux_4_section', 9, $id );
 	tfp_seed_set_field( 'locaux_4_niveau', 2, $id );
 	tfp_seed_set_field( 'locaux_4_noms', '', $id );
+	tfp_seed_set_field( 'locaux_4_cibles', implode( "\n", array(
+		'cote-dor',
+		'saint-apollinaire',
+		'quetigny',
+		'talant',
+		'fontaine-les-dijon',
+		'beaune',
+	) ), $id );
 	tfp_seed_set_field( 'locaux_5_titre', 'Autres secteurs couverts en région', $id );
 	tfp_seed_set_field( 'locaux_5_texte', implode( "\n", array(
 		'Villes éloignées, couvertes depuis Saint-Apollinaire — ce ne sont pas des communes voisines.',
@@ -3153,15 +3385,18 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'locaux_5_section', 9, $id );
 	tfp_seed_set_field( 'locaux_5_niveau', 2, $id );
 	tfp_seed_set_field( 'locaux_5_noms', '', $id );
-	tfp_seed_set_field( 'locaux_6_titre', 'Aller plus loin', $id );
-	tfp_seed_set_field( 'locaux_6_texte', implode( "\n", array(
-		'Des guides locaux (fréquences, budget, cahier des charges) viendront compléter cette page.',
+	tfp_seed_set_field( 'locaux_5_cibles', implode( "\n", array(
+		'chalon-sur-saone',
+		'besancon',
 	) ), $id );
+	tfp_seed_set_field( 'locaux_6_titre', 'Aller plus loin', $id );
+	tfp_seed_set_field( 'locaux_6_texte', '', $id );
 	tfp_seed_set_field( 'locaux_6_type', 'liens', $id );
 	tfp_seed_set_field( 'locaux_6_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_6_section', 9, $id );
 	tfp_seed_set_field( 'locaux_6_niveau', 2, $id );
 	tfp_seed_set_field( 'locaux_6_noms', '', $id );
+	tfp_seed_set_field( 'locaux_6_cibles', '', $id );
 	tfp_seed_set_field( 'locaux_avant_tarif', 1, $id );
 	tfp_seed_set_field( 'faq_titre', 'Questions fréquentes — Chenôve', $id );
 	tfp_seed_set_field( 'faq_1', array( 'question' => 'Chenôve fait-elle partie de votre secteur prioritaire ?', 'reponse' => 'Oui, c\'est une commune limitrophe de Dijon et l\'un de nos secteurs prioritaires, notamment pour les parties communes de copropriétés.' ), $id );
@@ -3260,6 +3495,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'locaux_1_section', 5, $id );
 	tfp_seed_set_field( 'locaux_1_niveau', 2, $id );
 	tfp_seed_set_field( 'locaux_1_noms', '', $id );
+	tfp_seed_set_field( 'locaux_1_cibles', '', $id );
 	tfp_seed_set_field( 'locaux_2_titre', 'Quartiers et zones d\'activité', $id );
 	tfp_seed_set_field( 'locaux_2_texte', implode( "\n", array(
 		'Nous intervenons dans l\'ensemble de la commune, sans secteur réservé :',
@@ -3274,6 +3510,7 @@ if ( empty( $posts ) ) {
 		'Zones d\'activité',
 		'Pôle commercial',
 	) ), $id );
+	tfp_seed_set_field( 'locaux_2_cibles', '', $id );
 	tfp_seed_set_field( 'locaux_3_titre', 'Communes proches desservies', $id );
 	tfp_seed_set_field( 'locaux_3_texte', implode( "\n", array(
 		'Communes proches de Quetigny, dans le même bassin géographique :',
@@ -3287,6 +3524,10 @@ if ( empty( $posts ) ) {
 		'Sennecey-lès-Dijon',
 		'Bretenière',
 	) ), $id );
+	tfp_seed_set_field( 'locaux_3_cibles', implode( "\n", array(
+		'saint-apollinaire',
+		'dijon',
+	) ), $id );
 	tfp_seed_set_field( 'locaux_4_titre', 'Dans le même département', $id );
 	tfp_seed_set_field( 'locaux_4_texte', '', $id );
 	tfp_seed_set_field( 'locaux_4_type', 'villes', $id );
@@ -3294,6 +3535,15 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'locaux_4_section', 9, $id );
 	tfp_seed_set_field( 'locaux_4_niveau', 2, $id );
 	tfp_seed_set_field( 'locaux_4_noms', '', $id );
+	tfp_seed_set_field( 'locaux_4_cibles', implode( "\n", array(
+		'cote-dor',
+		'chenove',
+		'talant',
+		'longvic',
+		'fontaine-les-dijon',
+		'marsannay-la-cote',
+		'beaune',
+	) ), $id );
 	tfp_seed_set_field( 'locaux_5_titre', 'Autres secteurs couverts en région', $id );
 	tfp_seed_set_field( 'locaux_5_texte', implode( "\n", array(
 		'Villes éloignées, couvertes depuis Saint-Apollinaire — ce ne sont pas des communes voisines.',
@@ -3303,15 +3553,18 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'locaux_5_section', 9, $id );
 	tfp_seed_set_field( 'locaux_5_niveau', 2, $id );
 	tfp_seed_set_field( 'locaux_5_noms', '', $id );
-	tfp_seed_set_field( 'locaux_6_titre', 'Aller plus loin', $id );
-	tfp_seed_set_field( 'locaux_6_texte', implode( "\n", array(
-		'Des guides locaux (fréquences, budget, cahier des charges) viendront compléter cette page.',
+	tfp_seed_set_field( 'locaux_5_cibles', implode( "\n", array(
+		'chalon-sur-saone',
+		'dole',
 	) ), $id );
+	tfp_seed_set_field( 'locaux_6_titre', 'Aller plus loin', $id );
+	tfp_seed_set_field( 'locaux_6_texte', '', $id );
 	tfp_seed_set_field( 'locaux_6_type', 'liens', $id );
 	tfp_seed_set_field( 'locaux_6_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_6_section', 9, $id );
 	tfp_seed_set_field( 'locaux_6_niveau', 2, $id );
 	tfp_seed_set_field( 'locaux_6_noms', '', $id );
+	tfp_seed_set_field( 'locaux_6_cibles', '', $id );
 	tfp_seed_set_field( 'locaux_avant_tarif', 1, $id );
 	tfp_seed_set_field( 'faq_titre', 'Questions fréquentes — Quetigny', $id );
 	tfp_seed_set_field( 'faq_1', array( 'question' => 'Quetigny fait-elle partie de vos secteurs prioritaires ?', 'reponse' => 'Oui : la commune est limitrophe de Saint-Apollinaire, où nous sommes implantés. La visite de devis et un éventuel passage supplémentaire sont proposés selon les disponibilités du planning.' ), $id );
@@ -3416,6 +3669,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'locaux_1_section', 5, $id );
 	tfp_seed_set_field( 'locaux_1_niveau', 2, $id );
 	tfp_seed_set_field( 'locaux_1_noms', '', $id );
+	tfp_seed_set_field( 'locaux_1_cibles', '', $id );
 	tfp_seed_set_field( 'locaux_2_titre', 'Quartiers et zones d\'activité', $id );
 	tfp_seed_set_field( 'locaux_2_texte', implode( "\n", array(
 		'Nous intervenons dans l\'ensemble de la commune, sans secteur réservé :',
@@ -3430,6 +3684,7 @@ if ( empty( $posts ) ) {
 		'Zones d\'activité',
 		'Commerces de proximité',
 	) ), $id );
+	tfp_seed_set_field( 'locaux_2_cibles', '', $id );
 	tfp_seed_set_field( 'locaux_3_titre', 'Communes proches desservies', $id );
 	tfp_seed_set_field( 'locaux_3_texte', implode( "\n", array(
 		'Communes proches de Talant, dans le même bassin géographique :',
@@ -3442,6 +3697,10 @@ if ( empty( $posts ) ) {
 		'Plombières-lès-Dijon',
 		'Daix',
 	) ), $id );
+	tfp_seed_set_field( 'locaux_3_cibles', implode( "\n", array(
+		'dijon',
+		'fontaine-les-dijon',
+	) ), $id );
 	tfp_seed_set_field( 'locaux_4_titre', 'Dans le même département', $id );
 	tfp_seed_set_field( 'locaux_4_texte', '', $id );
 	tfp_seed_set_field( 'locaux_4_type', 'villes', $id );
@@ -3449,6 +3708,15 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'locaux_4_section', 9, $id );
 	tfp_seed_set_field( 'locaux_4_niveau', 2, $id );
 	tfp_seed_set_field( 'locaux_4_noms', '', $id );
+	tfp_seed_set_field( 'locaux_4_cibles', implode( "\n", array(
+		'cote-dor',
+		'saint-apollinaire',
+		'chenove',
+		'quetigny',
+		'longvic',
+		'marsannay-la-cote',
+		'beaune',
+	) ), $id );
 	tfp_seed_set_field( 'locaux_5_titre', 'Autres secteurs couverts en région', $id );
 	tfp_seed_set_field( 'locaux_5_texte', implode( "\n", array(
 		'Villes éloignées, couvertes depuis Saint-Apollinaire — ce ne sont pas des communes voisines.',
@@ -3458,15 +3726,18 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'locaux_5_section', 9, $id );
 	tfp_seed_set_field( 'locaux_5_niveau', 2, $id );
 	tfp_seed_set_field( 'locaux_5_noms', '', $id );
-	tfp_seed_set_field( 'locaux_6_titre', 'Aller plus loin', $id );
-	tfp_seed_set_field( 'locaux_6_texte', implode( "\n", array(
-		'Des guides locaux (fréquences, budget, cahier des charges) viendront compléter cette page.',
+	tfp_seed_set_field( 'locaux_5_cibles', implode( "\n", array(
+		'besancon',
+		'chalon-sur-saone',
 	) ), $id );
+	tfp_seed_set_field( 'locaux_6_titre', 'Aller plus loin', $id );
+	tfp_seed_set_field( 'locaux_6_texte', '', $id );
 	tfp_seed_set_field( 'locaux_6_type', 'liens', $id );
 	tfp_seed_set_field( 'locaux_6_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_6_section', 9, $id );
 	tfp_seed_set_field( 'locaux_6_niveau', 2, $id );
 	tfp_seed_set_field( 'locaux_6_noms', '', $id );
+	tfp_seed_set_field( 'locaux_6_cibles', '', $id );
 	tfp_seed_set_field( 'locaux_avant_tarif', 1, $id );
 	tfp_seed_set_field( 'faq_titre', 'Questions fréquentes — Talant', $id );
 	tfp_seed_set_field( 'faq_1', array( 'question' => 'Talant fait-elle partie de votre secteur prioritaire ?', 'reponse' => 'Oui, la commune est limitrophe de Dijon et fait partie de notre zone prioritaire. Les éventuelles indemnités kilométriques dépendent de l\'adresse des locaux, du planning et des conditions d\'intervention. Elles sont précisées dans le devis.' ), $id );
@@ -3571,6 +3842,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'locaux_1_section', 5, $id );
 	tfp_seed_set_field( 'locaux_1_niveau', 2, $id );
 	tfp_seed_set_field( 'locaux_1_noms', '', $id );
+	tfp_seed_set_field( 'locaux_1_cibles', '', $id );
 	tfp_seed_set_field( 'locaux_2_titre', 'Quartiers et zones d\'activité', $id );
 	tfp_seed_set_field( 'locaux_2_texte', implode( "\n", array(
 		'Nous intervenons dans l\'ensemble de la commune, sans secteur réservé :',
@@ -3585,6 +3857,7 @@ if ( empty( $posts ) ) {
 		'Zones d\'activité',
 		'Commerces de proximité',
 	) ), $id );
+	tfp_seed_set_field( 'locaux_2_cibles', '', $id );
 	tfp_seed_set_field( 'locaux_3_titre', 'Communes proches desservies', $id );
 	tfp_seed_set_field( 'locaux_3_texte', implode( "\n", array(
 		'Communes proches de Longvic, dans le même bassin géographique :',
@@ -3598,6 +3871,10 @@ if ( empty( $posts ) ) {
 		'Fénay',
 		'Perrigny-lès-Dijon',
 	) ), $id );
+	tfp_seed_set_field( 'locaux_3_cibles', implode( "\n", array(
+		'dijon',
+		'chenove',
+	) ), $id );
 	tfp_seed_set_field( 'locaux_4_titre', 'Dans le même département', $id );
 	tfp_seed_set_field( 'locaux_4_texte', '', $id );
 	tfp_seed_set_field( 'locaux_4_type', 'villes', $id );
@@ -3605,6 +3882,15 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'locaux_4_section', 9, $id );
 	tfp_seed_set_field( 'locaux_4_niveau', 2, $id );
 	tfp_seed_set_field( 'locaux_4_noms', '', $id );
+	tfp_seed_set_field( 'locaux_4_cibles', implode( "\n", array(
+		'cote-dor',
+		'saint-apollinaire',
+		'quetigny',
+		'talant',
+		'fontaine-les-dijon',
+		'marsannay-la-cote',
+		'beaune',
+	) ), $id );
 	tfp_seed_set_field( 'locaux_5_titre', 'Autres secteurs couverts en région', $id );
 	tfp_seed_set_field( 'locaux_5_texte', implode( "\n", array(
 		'Villes éloignées, couvertes depuis Saint-Apollinaire — ce ne sont pas des communes voisines.',
@@ -3614,15 +3900,18 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'locaux_5_section', 9, $id );
 	tfp_seed_set_field( 'locaux_5_niveau', 2, $id );
 	tfp_seed_set_field( 'locaux_5_noms', '', $id );
-	tfp_seed_set_field( 'locaux_6_titre', 'Aller plus loin', $id );
-	tfp_seed_set_field( 'locaux_6_texte', implode( "\n", array(
-		'Des guides locaux (fréquences, budget, cahier des charges) viendront compléter cette page.',
+	tfp_seed_set_field( 'locaux_5_cibles', implode( "\n", array(
+		'chalon-sur-saone',
+		'dole',
 	) ), $id );
+	tfp_seed_set_field( 'locaux_6_titre', 'Aller plus loin', $id );
+	tfp_seed_set_field( 'locaux_6_texte', '', $id );
 	tfp_seed_set_field( 'locaux_6_type', 'liens', $id );
 	tfp_seed_set_field( 'locaux_6_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_6_section', 9, $id );
 	tfp_seed_set_field( 'locaux_6_niveau', 2, $id );
 	tfp_seed_set_field( 'locaux_6_noms', '', $id );
+	tfp_seed_set_field( 'locaux_6_cibles', '', $id );
 	tfp_seed_set_field( 'locaux_avant_tarif', 1, $id );
 	tfp_seed_set_field( 'faq_titre', 'Questions fréquentes — Longvic', $id );
 	tfp_seed_set_field( 'faq_1', array( 'question' => 'Entretenez-vous les ateliers de production ?', 'reponse' => 'Non. Notre intervention porte sur les espaces tertiaires : bureaux, accueil, salles de réunion, vestiaires de bureau, sanitaires et circulations administratives.' ), $id );
@@ -3733,6 +4022,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'locaux_1_section', 5, $id );
 	tfp_seed_set_field( 'locaux_1_niveau', 2, $id );
 	tfp_seed_set_field( 'locaux_1_noms', '', $id );
+	tfp_seed_set_field( 'locaux_1_cibles', '', $id );
 	tfp_seed_set_field( 'locaux_2_titre', 'Quartiers et zones d\'activité', $id );
 	tfp_seed_set_field( 'locaux_2_texte', implode( "\n", array(
 		'Nous intervenons dans l\'ensemble de la commune, sans secteur réservé :',
@@ -3747,6 +4037,7 @@ if ( empty( $posts ) ) {
 		'Zones d\'activité',
 		'Commerces de proximité',
 	) ), $id );
+	tfp_seed_set_field( 'locaux_2_cibles', '', $id );
 	tfp_seed_set_field( 'locaux_3_titre', 'Communes proches desservies', $id );
 	tfp_seed_set_field( 'locaux_3_texte', implode( "\n", array(
 		'Communes proches de Fontaine-lès-Dijon, dans le même bassin géographique :',
@@ -3760,6 +4051,10 @@ if ( empty( $posts ) ) {
 		'Daix',
 		'Hauteville-lès-Dijon',
 	) ), $id );
+	tfp_seed_set_field( 'locaux_3_cibles', implode( "\n", array(
+		'dijon',
+		'talant',
+	) ), $id );
 	tfp_seed_set_field( 'locaux_4_titre', 'Dans le même département', $id );
 	tfp_seed_set_field( 'locaux_4_texte', '', $id );
 	tfp_seed_set_field( 'locaux_4_type', 'villes', $id );
@@ -3767,6 +4062,15 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'locaux_4_section', 9, $id );
 	tfp_seed_set_field( 'locaux_4_niveau', 2, $id );
 	tfp_seed_set_field( 'locaux_4_noms', '', $id );
+	tfp_seed_set_field( 'locaux_4_cibles', implode( "\n", array(
+		'cote-dor',
+		'saint-apollinaire',
+		'chenove',
+		'quetigny',
+		'longvic',
+		'marsannay-la-cote',
+		'beaune',
+	) ), $id );
 	tfp_seed_set_field( 'locaux_5_titre', 'Autres secteurs couverts en région', $id );
 	tfp_seed_set_field( 'locaux_5_texte', implode( "\n", array(
 		'Villes éloignées, couvertes depuis Saint-Apollinaire — ce ne sont pas des communes voisines.',
@@ -3776,15 +4080,18 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'locaux_5_section', 9, $id );
 	tfp_seed_set_field( 'locaux_5_niveau', 2, $id );
 	tfp_seed_set_field( 'locaux_5_noms', '', $id );
-	tfp_seed_set_field( 'locaux_6_titre', 'Aller plus loin', $id );
-	tfp_seed_set_field( 'locaux_6_texte', implode( "\n", array(
-		'Des guides locaux (fréquences, budget, cahier des charges) viendront compléter cette page.',
+	tfp_seed_set_field( 'locaux_5_cibles', implode( "\n", array(
+		'besancon',
+		'auxerre',
 	) ), $id );
+	tfp_seed_set_field( 'locaux_6_titre', 'Aller plus loin', $id );
+	tfp_seed_set_field( 'locaux_6_texte', '', $id );
 	tfp_seed_set_field( 'locaux_6_type', 'liens', $id );
 	tfp_seed_set_field( 'locaux_6_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_6_section', 9, $id );
 	tfp_seed_set_field( 'locaux_6_niveau', 2, $id );
 	tfp_seed_set_field( 'locaux_6_noms', '', $id );
+	tfp_seed_set_field( 'locaux_6_cibles', '', $id );
 	tfp_seed_set_field( 'locaux_avant_tarif', 1, $id );
 	tfp_seed_set_field( 'faq_titre', 'Questions fréquentes — Fontaine-lès-Dijon', $id );
 	tfp_seed_set_field( 'faq_1', array( 'question' => 'Intervenez-vous auprès des cabinets de la commune ?', 'reponse' => 'Oui, pour l\'entretien courant de leurs locaux : accueil, salle d\'attente, bureaux, sanitaires et sols, avec consigne écrite de confidentialité.' ), $id );
@@ -3883,6 +4190,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'locaux_1_section', 5, $id );
 	tfp_seed_set_field( 'locaux_1_niveau', 2, $id );
 	tfp_seed_set_field( 'locaux_1_noms', '', $id );
+	tfp_seed_set_field( 'locaux_1_cibles', '', $id );
 	tfp_seed_set_field( 'locaux_2_titre', 'Quartiers et zones d\'activité', $id );
 	tfp_seed_set_field( 'locaux_2_texte', implode( "\n", array(
 		'Nous intervenons dans l\'ensemble de la commune, sans secteur réservé :',
@@ -3897,6 +4205,7 @@ if ( empty( $posts ) ) {
 		'Zones d\'activité',
 		'Commerces de proximité',
 	) ), $id );
+	tfp_seed_set_field( 'locaux_2_cibles', '', $id );
 	tfp_seed_set_field( 'locaux_3_titre', 'Communes proches desservies', $id );
 	tfp_seed_set_field( 'locaux_3_texte', implode( "\n", array(
 		'Communes proches de Marsannay-la-Côte, dans le même bassin géographique :',
@@ -3909,6 +4218,10 @@ if ( empty( $posts ) ) {
 		'Couchey',
 		'Perrigny-lès-Dijon',
 	) ), $id );
+	tfp_seed_set_field( 'locaux_3_cibles', implode( "\n", array(
+		'chenove',
+		'dijon',
+	) ), $id );
 	tfp_seed_set_field( 'locaux_4_titre', 'Dans le même département', $id );
 	tfp_seed_set_field( 'locaux_4_texte', '', $id );
 	tfp_seed_set_field( 'locaux_4_type', 'villes', $id );
@@ -3916,6 +4229,15 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'locaux_4_section', 9, $id );
 	tfp_seed_set_field( 'locaux_4_niveau', 2, $id );
 	tfp_seed_set_field( 'locaux_4_noms', '', $id );
+	tfp_seed_set_field( 'locaux_4_cibles', implode( "\n", array(
+		'cote-dor',
+		'saint-apollinaire',
+		'quetigny',
+		'talant',
+		'longvic',
+		'fontaine-les-dijon',
+		'beaune',
+	) ), $id );
 	tfp_seed_set_field( 'locaux_5_titre', 'Autres secteurs couverts en région', $id );
 	tfp_seed_set_field( 'locaux_5_texte', implode( "\n", array(
 		'Villes éloignées, couvertes depuis Saint-Apollinaire — ce ne sont pas des communes voisines.',
@@ -3925,15 +4247,18 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'locaux_5_section', 9, $id );
 	tfp_seed_set_field( 'locaux_5_niveau', 2, $id );
 	tfp_seed_set_field( 'locaux_5_noms', '', $id );
-	tfp_seed_set_field( 'locaux_6_titre', 'Aller plus loin', $id );
-	tfp_seed_set_field( 'locaux_6_texte', implode( "\n", array(
-		'Des guides locaux (fréquences, budget, cahier des charges) viendront compléter cette page.',
+	tfp_seed_set_field( 'locaux_5_cibles', implode( "\n", array(
+		'chalon-sur-saone',
+		'macon',
 	) ), $id );
+	tfp_seed_set_field( 'locaux_6_titre', 'Aller plus loin', $id );
+	tfp_seed_set_field( 'locaux_6_texte', '', $id );
 	tfp_seed_set_field( 'locaux_6_type', 'liens', $id );
 	tfp_seed_set_field( 'locaux_6_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_6_section', 9, $id );
 	tfp_seed_set_field( 'locaux_6_niveau', 2, $id );
 	tfp_seed_set_field( 'locaux_6_noms', '', $id );
+	tfp_seed_set_field( 'locaux_6_cibles', '', $id );
 	tfp_seed_set_field( 'locaux_avant_tarif', 1, $id );
 	tfp_seed_set_field( 'faq_titre', 'Questions fréquentes — Marsannay-la-Côte', $id );
 	tfp_seed_set_field( 'faq_1', array( 'question' => 'Entretenez-vous les caves et les chais ?', 'reponse' => 'Non. Nous intervenons sur les espaces d\'accueil, de dégustation et de bureau, ainsi que sur les sanitaires visiteurs. Les caves d\'élaboration et zones de conditionnement ne font pas partie de notre offre.' ), $id );
@@ -4032,6 +4357,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'locaux_1_section', 5, $id );
 	tfp_seed_set_field( 'locaux_1_niveau', 2, $id );
 	tfp_seed_set_field( 'locaux_1_noms', '', $id );
+	tfp_seed_set_field( 'locaux_1_cibles', '', $id );
 	tfp_seed_set_field( 'locaux_2_titre', 'Quartiers et zones d\'activité', $id );
 	tfp_seed_set_field( 'locaux_2_texte', implode( "\n", array(
 		'Nous intervenons dans l\'ensemble de la ville, sans secteur réservé :',
@@ -4046,6 +4372,7 @@ if ( empty( $posts ) ) {
 		'Zones d\'activité',
 		'Secteurs commerçants',
 	) ), $id );
+	tfp_seed_set_field( 'locaux_2_cibles', '', $id );
 	tfp_seed_set_field( 'locaux_3_titre', 'Communes proches desservies', $id );
 	tfp_seed_set_field( 'locaux_3_texte', implode( "\n", array(
 		'Communes proches de Beaune, dans le même bassin géographique :',
@@ -4062,6 +4389,7 @@ if ( empty( $posts ) ) {
 		'Bligny-lès-Beaune',
 		'Pommard',
 	) ), $id );
+	tfp_seed_set_field( 'locaux_3_cibles', '', $id );
 	tfp_seed_set_field( 'locaux_4_titre', 'Dans le même département', $id );
 	tfp_seed_set_field( 'locaux_4_texte', '', $id );
 	tfp_seed_set_field( 'locaux_4_type', 'villes', $id );
@@ -4069,6 +4397,17 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'locaux_4_section', 9, $id );
 	tfp_seed_set_field( 'locaux_4_niveau', 2, $id );
 	tfp_seed_set_field( 'locaux_4_noms', '', $id );
+	tfp_seed_set_field( 'locaux_4_cibles', implode( "\n", array(
+		'cote-dor',
+		'dijon',
+		'saint-apollinaire',
+		'chenove',
+		'quetigny',
+		'talant',
+		'longvic',
+		'fontaine-les-dijon',
+		'marsannay-la-cote',
+	) ), $id );
 	tfp_seed_set_field( 'locaux_5_titre', 'Autres secteurs couverts en région', $id );
 	tfp_seed_set_field( 'locaux_5_texte', implode( "\n", array(
 		'Villes éloignées, couvertes depuis Saint-Apollinaire — ce ne sont pas des communes voisines.',
@@ -4078,15 +4417,18 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'locaux_5_section', 9, $id );
 	tfp_seed_set_field( 'locaux_5_niveau', 2, $id );
 	tfp_seed_set_field( 'locaux_5_noms', '', $id );
-	tfp_seed_set_field( 'locaux_6_titre', 'Aller plus loin', $id );
-	tfp_seed_set_field( 'locaux_6_texte', implode( "\n", array(
-		'Des guides locaux (fréquences, budget, cahier des charges) viendront compléter cette page.',
+	tfp_seed_set_field( 'locaux_5_cibles', implode( "\n", array(
+		'dijon',
+		'chalon-sur-saone',
 	) ), $id );
+	tfp_seed_set_field( 'locaux_6_titre', 'Aller plus loin', $id );
+	tfp_seed_set_field( 'locaux_6_texte', '', $id );
 	tfp_seed_set_field( 'locaux_6_type', 'liens', $id );
 	tfp_seed_set_field( 'locaux_6_variante', 'liens', $id );
 	tfp_seed_set_field( 'locaux_6_section', 9, $id );
 	tfp_seed_set_field( 'locaux_6_niveau', 2, $id );
 	tfp_seed_set_field( 'locaux_6_noms', '', $id );
+	tfp_seed_set_field( 'locaux_6_cibles', '', $id );
 	tfp_seed_set_field( 'locaux_avant_tarif', 1, $id );
 	tfp_seed_set_field( 'faq_titre', 'Questions fréquentes — Beaune', $id );
 	tfp_seed_set_field( 'faq_1', array( 'question' => 'Beaune est-elle une commune voisine de Dijon ?', 'reponse' => 'Non. Beaune est située au sud de la Côte-d\'Or, sur un bassin distinct de l\'agglomération dijonnaise, avec ses propres communes voisines.' ), $id );

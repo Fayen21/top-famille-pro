@@ -283,3 +283,216 @@ test.describe( 'Libellés de l’accueil (§5) et gérante (§8)', () => {
 		await expect( page.locator( '.tfp-audrey-portrait__note' ) ).toHaveText( 'Photo d’illustration' );
 	} );
 } );
+
+test.describe( 'Audit transversal (§9) — défauts vus en lisant les écrans', () => {
+	for ( const largeur of [ 375, 1440 ] ) {
+		test( `à ${ largeur } px : la carte régionale de l'index des zones garde titre, sous-ligne et pastille`, async ( { page } ) => {
+			await page.setViewportSize( { width: largeur, height: 900 } );
+			await page.goto( '/zones-intervention/' );
+			const carte = page.locator( '.tfp-carte-lien' );
+			await expect( carte ).toHaveCount( 1 );
+			await expect( carte ).toHaveAttribute( 'href', /\/bourgogne-franche-comte\/$/ );
+			await expect( carte.locator( '.tfp-carte-lien__titre' ) ).toHaveText( 'Bourgogne-Franche-Comté' );
+			await expect( carte.locator( '.tfp-carte-lien__desc' ) ).toHaveText( /^La page régionale · huit départements/ );
+			await expect( carte.locator( '.tfp-carte-lien__cta' ) ).toHaveText( /^Voir la page régionale/ );
+			// Plus de phrase collée « Bourgogne-Franche-ComtéLa page régionale ».
+			expect( await page.locator( 'body' ).innerText() ).not.toMatch( /ComtéLa page/ );
+			// Rien ne sort de la fenêtre ni de la carte.
+			const mesures = await carte.evaluate( ( el ) => {
+				const r = el.getBoundingClientRect();
+				const cta = el.querySelector( '.tfp-carte-lien__cta' ).getBoundingClientRect();
+				return { droite: r.right, ctaDroite: cta.right, ctaBas: cta.bottom, bas: r.bottom, scroll: document.documentElement.scrollWidth };
+			} );
+			expect( mesures.scroll ).toBeLessThanOrEqual( largeur );
+			expect( mesures.ctaDroite ).toBeLessThanOrEqual( mesures.droite + 0.5 );
+			expect( mesures.ctaBas ).toBeLessThanOrEqual( mesures.bas + 0.5 );
+		} );
+	}
+
+	test( 'Côte-d’Or : villes et communes ne sont plus la même rangée affichée deux fois', async ( { page } ) => {
+		await page.setViewportSize( { width: 1440, height: 900 } );
+		await page.goto( '/zones-intervention/cote-dor/' );
+		const groupes = page.locator( '.tfp-zone-links' );
+		const villes = groupes.filter( { hasText: /Nos villes d.intervention dans le département/ } ).first();
+		const communes = groupes.filter( { hasText: 'Autour de Dijon et de Beaune' } ).first();
+		// Une seule ville principale en Côte-d'Or (PROJECT_INPUTS §6) : Dijon, en rangée avec son code postal.
+		await expect( villes.locator( '.tfp-ville-row' ) ).toHaveCount( 1 );
+		await expect( villes.locator( '.tfp-ville-row__nom' ) ).toContainText( 'Dijon' );
+		await expect( villes.locator( '.tfp-ville-row__cp' ) ).toContainText( '21000' );
+		await expect( villes.locator( '.tfp-ville-row__cp .visually-hidden' ) ).toHaveText( 'Code postal : ' );
+		// Les huit communes, en pastilles, une seule fois.
+		await expect( communes.locator( 'a.tfp-chip' ) ).toHaveCount( 8 );
+		const nomsCommunes = await communes.locator( 'a.tfp-chip' ).allInnerTexts();
+		expect( nomsCommunes ).toContain( 'Saint-Apollinaire' );
+		expect( nomsCommunes ).toContain( 'Beaune' );
+		// Beaune a sa page : il n'est plus répété en pastille inerte sous « Autres communes citées ».
+		const inertes = await page.locator( '.tfp-chip--static' ).allInnerTexts();
+		expect( inertes ).not.toContain( 'Beaune' );
+		// Aucun des mots bannis par la décision du 14 octobre.
+		expect( await page.locator( 'main' ).innerText() ).not.toMatch( /communes secondaires|déjà documentées|d'autres suivront|documentées/i );
+	} );
+
+	test( 'les sept autres départements gardent leur rangée unique de villes', async ( { page } ) => {
+		await page.setViewportSize( { width: 1440, height: 900 } );
+		for ( const [ num, slug ] of Object.entries( DEPARTEMENTS ) ) {
+			if ( '21' === num ) continue;
+			await page.goto( `/zones-intervention/${ slug }/` );
+			const rangees = page.locator( '.tfp-ville-row' );
+			expect( await rangees.count(), slug ).toBeGreaterThanOrEqual( 1 );
+			for ( const rangee of await rangees.all() ) {
+				await expect( rangee.locator( '.tfp-ville-row__cp' ) ).toHaveText( /\d{5}/ );
+			}
+		}
+	} );
+} );
+
+test.describe( 'Audit transversal (§9) — pages statiques relevées', () => {
+	test( 'les bandes d’appel final à fond primaire sont centrées et portent des boutons, pas des cartes', async ( { page } ) => {
+		await page.setViewportSize( { width: 1440, height: 900 } );
+		for ( const route of [ '/zones-intervention/', '/nettoyage-professionnel/', '/pourquoi-nous/', '/zones-intervention/bourgogne-franche-comte/' ] ) {
+			await page.goto( route );
+			const bande = page.locator( '.tfp-section--primary.tfp-section--centre' ).last();
+			await expect( bande, route ).toHaveCount( 1 );
+			await expect( bande.locator( '.tfp-card-tile' ), route ).toHaveCount( 0 );
+			const boutons = bande.locator( '.tfp-action-row--statique .tfp-btn' );
+			expect( await boutons.count(), route ).toBeGreaterThanOrEqual( 1 );
+			const m = await bande.evaluate( ( el ) => {
+				const h2 = el.querySelector( 'h2' ).getBoundingClientRect();
+				const row = el.querySelector( '.tfp-action-row--statique' ).getBoundingClientRect();
+				const c = el.getBoundingClientRect();
+				return { h2: ( h2.left + h2.right ) / 2, row: ( row.left + row.right ) / 2, centre: ( c.left + c.right ) / 2 };
+			} );
+			expect( Math.abs( m.h2 - m.centre ), route ).toBeLessThan( 4 );
+			expect( Math.abs( m.row - m.centre ), route ).toBeLessThan( 4 );
+		}
+	} );
+
+	test( 'une carte bordée d’un seul côté sur la maquette ne l’est que de ce côté', async ( { page } ) => {
+		await page.setViewportSize( { width: 1440, height: 900 } );
+		for ( const route of [ '/pourquoi-nous/', '/nettoyage-professionnel/', '/a-propos/' ] ) {
+			await page.goto( route );
+			const tuile = page.locator( '.tfp-card-grid[style*="filet-largeurs"] .tfp-card-tile' ).first();
+			await expect( tuile, route ).toHaveCount( 1 );
+			const b = await tuile.evaluate( ( el ) => { const s = getComputedStyle( el ); return [ s.borderTopWidth, s.borderRightWidth, s.borderBottomWidth, s.borderLeftWidth ]; } );
+			expect( b, route ).toEqual( [ '2px', '0px', '0px', '0px' ] );
+		}
+	} );
+
+	test( 'le bandeau tarifaire statique ne répète plus ses garanties en texte nu', async ( { page } ) => {
+		await page.setViewportSize( { width: 1440, height: 900 } );
+		for ( const route of [ '/nettoyage-professionnel/', '/zones-intervention/', '/zones-intervention/bourgogne-franche-comte/' ] ) {
+			await page.goto( route );
+			await expect( page.locator( '.tfp-price-band--statique' ), route ).toHaveCount( 1 );
+			const texte = await page.locator( 'main' ).innerText();
+			expect( texte.match( /Devis gratuit sous 24 h Intervention régulière/g ) ?? [], route ).toHaveLength( 0 );
+		}
+	} );
+
+	test( 'page pilier : les intertitres relevés en 600 ne sont plus des notes grises', async ( { page } ) => {
+		await page.goto( '/nettoyage-professionnel/' );
+		const inter = page.locator( '.tfp-prose--intertitre' );
+		expect( await inter.count() ).toBeGreaterThanOrEqual( 3 );
+		await expect( inter.filter( { hasText: 'Sélection & intervenant habituel recherché' } ) ).toHaveCount( 1 );
+		await expect( inter.first() ).toHaveCSS( 'font-weight', '600' );
+	} );
+
+	test( 'page région : plus de « secteurs secondaires déjà documentés »', async ( { page } ) => {
+		await page.goto( '/zones-intervention/bourgogne-franche-comte/' );
+		const texte = await page.locator( 'main' ).innerText();
+		expect( texte ).not.toMatch( /déjà documentés|secteurs secondaires/i );
+		expect( texte ).toContain( 'Autour de Dijon et de Beaune' );
+	} );
+
+	test( 'page avis : le panneau de note fictive n’apparaît pas, le libellé téléphonique est celui du site', async ( { page } ) => {
+		await page.goto( '/avis-clients/' );
+		await expect( page.locator( '.tfp-card-tile--texte', { hasText: 'Demander mon devis' } ) ).toHaveCount( 0 );
+		await expect( page.locator( '.tfp-card-grid--panneau' ).first() ).not.toContainText( 'Demander mon devis' );
+		expect( await page.locator( 'main' ).innerText() ).not.toMatch( /Appeler Audrey/ );
+	} );
+
+	test( 'page tarifs : la liste nue ne porte aucune puce et la carte « inclus » est turquoise', async ( { page } ) => {
+		await page.goto( '/tarifs/' );
+		const puce = await page.locator( '.tfp-list-plain--nue li' ).first().evaluate( ( el ) => getComputedStyle( el, '::before' ).content );
+		expect( puce ).toBe( 'none' );
+		await expect( page.locator( '.tfp-card--inclus' ) ).toHaveCSS( 'background-color', 'rgb(221, 244, 243)' );
+	} );
+
+	test( 'page contact : parcours actif en fond primaire, mention des horaires sous sa carte', async ( { page } ) => {
+		await page.setViewportSize( { width: 1440, height: 900 } );
+		await page.goto( '/contact/' );
+		await expect( page.locator( '.tfp-card-tile--orientation-active' ) ).toHaveCSS( 'background-color', 'rgb(23, 74, 129)' );
+		await expect( page.locator( 'a.tfp-card-tile--orientation' ) ).toHaveAttribute( 'href', /demande-de-devis/ );
+		const m = await page.locator( 'li:has(> .tfp-provisional-notice)' ).first().evaluate( ( li ) => {
+			const carte = li.querySelector( '.tfp-card-tile' ).getBoundingClientRect();
+			const note = li.querySelector( '.tfp-provisional-notice' ).getBoundingClientRect();
+			return { carteBas: carte.bottom, noteHaut: note.top, carteLargeur: carte.width, liLargeur: li.getBoundingClientRect().width };
+		} );
+		expect( m.noteHaut ).toBeGreaterThanOrEqual( m.carteBas );
+		expect( m.carteLargeur ).toBeGreaterThan( m.liLargeur - 2 );
+	} );
+
+	test( 'pages légales : un seul titre « Droit applicable », chapeau et premier chapitre rapprochés', async ( { page } ) => {
+		await page.setViewportSize( { width: 1440, height: 900 } );
+		await page.goto( '/mentions-legales/' );
+		await expect( page.locator( 'h2', { hasText: 'Droit applicable' } ) ).toHaveCount( 1 );
+		for ( const route of [ '/mentions-legales/', '/politique-de-confidentialite/', '/gestion-des-cookies/' ] ) {
+			await page.goto( route );
+			const ecart = await page.evaluate( () => {
+				const lede = document.querySelector( '.tfp-legal-tete .tfp-section__lede' ).getBoundingClientRect();
+				const corps = document.querySelector( '.tfp-legal-corps .tfp-legal-body > *' ).getBoundingClientRect();
+				return corps.top - lede.bottom;
+			} );
+			expect( ecart, route ).toBeLessThan( 80 );
+		}
+	} );
+
+	test( 'plan du site : plus de « communes secondaires » à l’écran', async ( { page } ) => {
+		await page.goto( '/plan-du-site/' );
+		const texte = await page.locator( 'main' ).innerText();
+		expect( texte ).not.toMatch( /communes secondaires/i );
+		// Le surtitre du plan est composé en capitales : innerText rend « AUTOUR DE DIJON… ».
+		expect( texte ).toMatch( /autour de dijon et de beaune/i );
+	} );
+
+	test( 'page département : sous-groupes espacés, Beaune lié une seule fois', async ( { page } ) => {
+		await page.setViewportSize( { width: 1440, height: 900 } );
+		await page.goto( '/zones-intervention/cote-dor/' );
+		const h3 = page.locator( '.tfp-zone-links--sous > h3' ).first();
+		await expect( h3 ).toHaveCSS( 'margin-top', '20px' );
+		const beaune = page.locator( '.tfp-zone-links a', { hasText: /^Beaune$/ } );
+		await expect( beaune ).toHaveCount( 1 );
+	} );
+} );
+
+test.describe( 'Audit transversal (§9) — maillage des pages ville', () => {
+	test( 'Dijon : chaque groupe de liens pointe vers SES zones, les autres secteurs portent leur département', async ( { page } ) => {
+		await page.setViewportSize( { width: 1440, height: 900 } );
+		await page.goto( '/zones-intervention/cote-dor/dijon/' );
+		const groupe = ( titre ) => page.locator( '.tfp-zone-links' ).filter( { hasText: titre } ).first();
+		const autres = await groupe( 'Autres secteurs couverts en région' ).locator( 'a.tfp-chip' ).allInnerTexts();
+		expect( autres ).toEqual( [ 'Chalon-sur-Saône (71)', 'Besançon (25)', 'Auxerre (89)' ] );
+		// Même département : la rangée « Nettoyage en Côte-d'Or → » puis Beaune seule (les sept
+		// communes proches sont déjà liées au-dessus, comme sur la maquette).
+		await expect( groupe( 'Dans le même département' ).locator( '.tfp-dept-row' ) ).toHaveText( /Nettoyage en Côte-d.Or/ );
+		await expect( groupe( 'Dans le même département' ).locator( '.tfp-dept-row' ) ).toHaveAttribute( 'href', /\/zones-intervention\/cote-dor\/$/ );
+		const memeDept = await groupe( 'Dans le même département' ).locator( 'a.tfp-chip' ).allInnerTexts();
+		expect( memeDept ).toEqual( [ 'Beaune' ] );
+		const proches = groupe( 'Communes proches desservies' );
+		expect( await proches.locator( 'a.tfp-chip' ).count() ).toBe( 7 );
+		expect( await proches.locator( '.tfp-chip--static' ).count() ).toBeGreaterThanOrEqual( 5 );
+		// Les liens d'un autre département mènent bien à ce département.
+		await expect( groupe( 'Autres secteurs couverts en région' ).locator( 'a.tfp-chip', { hasText: 'Besançon' } ) ).toHaveAttribute( 'href', /\/zones-intervention\/doubs\/besancon\/$/ );
+		// Chalon-sur-Saône : le groupe régional numérote tous ses noms, même Mâcon (71), comme la maquette.
+		await page.goto( '/zones-intervention/saone-et-loire/chalon-sur-saone/' );
+		expect( await groupe( 'Autres secteurs couverts en région' ).locator( 'a.tfp-chip' ).allInnerTexts() ).toEqual( [ 'Mâcon (71)', 'Dijon (21)', 'Dole (39)' ] );
+		expect( await groupe( 'Dans le même département' ).locator( 'a.tfp-chip' ).allInnerTexts() ).toEqual( [ 'Mâcon' ] );
+	} );
+
+	test( 'la phrase « Des guides locaux … viendront compléter cette page » a disparu (CLAUDE.md §9)', async ( { page } ) => {
+		for ( const route of [ '/zones-intervention/cote-dor/dijon/', '/zones-intervention/cote-dor/saint-apollinaire/', '/zones-intervention/doubs/besancon/', '/zones-intervention/cote-dor/beaune/' ] ) {
+			await page.goto( route );
+			expect( await page.locator( 'main' ).innerText(), route ).not.toMatch( /viendront compléter cette page/ );
+			await expect( page.locator( '.tfp-zone-links', { hasText: 'Aller plus loin' } ).locator( 'a.tfp-link-row' ), route ).toHaveCount( 5 );
+		}
+	} );
+} );

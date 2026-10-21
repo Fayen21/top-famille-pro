@@ -8,7 +8,7 @@
 		"Toute modification ici exige une décision humaine explicite, datée, reportée dans `decisions`."
 	],
 	"version": 2,
-	"derniere_mise_a_jour": "2026-08-20",
+	"derniere_mise_a_jour": "2026-10-21",
 	"decisions": [
 		{
 			"id": "note-google-masquee",
@@ -94,19 +94,23 @@
 		},
 		{
 			"id": "navigation-six-entrees",
-			"titre": "Navigation principale à six entrées, « Prestations » porte le lien pilier",
-			"decide_le": "2026-08-19",
+			"titre": "Navigation principale à six entrées, « Prestations » porte le lien pilier, « Zones d'intervention » ouvre les huit départements",
+			"decide_le": "2026-10-14",
 			"remplace": [
 				{
 					"date": "2026-08-17",
 					"regle": "l'entrée autonome « Nettoyage professionnel » est conservée au menu"
+				},
+				{
+					"date": "2026-08-19",
+					"regle": "l'entrée « Zones » porte ce libellé court et ouvre un panneau à deux liens"
 				}
 			],
 			"regle": {
 				"entrees": [
 					"Prestations",
 					"Tarifs",
-					"Zones",
+					"Zones d'intervention",
 					"Pourquoi nous",
 					"Avis",
 					"Conseils"
@@ -114,8 +118,14 @@
 				"lien_pilier_porte_par": "Prestations",
 				"url_pilier": "/nettoyage-professionnel/",
 				"entree_autonome_pilier_interdite": true,
-				"hauteur_entete_max_px": 121
-			}
+				"hauteur_entete_max_px": 121,
+				"panneau_zones": {
+					"departements": 8,
+					"lien_final": "Voir toutes les villes",
+					"url_lien_final": "/zones-intervention/"
+				}
+			},
+			"note_2026_10_14": "Décision du 14 octobre 2026 (passe visuelle) : l'entrée se nomme « Zones d'intervention » et son panneau liste les huit départements numérotés puis « Voir toutes les villes » ; même contenu dans l'accordéon mobile. Vérifié par tests/passe-visuelle.spec.js."
 		},
 		{
 			"id": "cta-heros-institutionnels",

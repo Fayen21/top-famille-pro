@@ -142,6 +142,47 @@ add_action( 'template_redirect', 'tfp_zone_canonical_redirect', 5 );
  * @param string $dept_slug
  * @return WP_Post|null
  */
+/**
+ * Zone (tout niveau) par son slug — pour résoudre les cibles relevées sur la maquette.
+ *
+ * @param string $slug Slug WordPress de la zone.
+ * @return WP_Post|null
+ */
+function tfp_get_zone_by_slug( $slug ) {
+	static $cache = array();
+	$slug = sanitize_title( $slug );
+	if ( '' === $slug ) {
+		return null;
+	}
+	if ( ! array_key_exists( $slug, $cache ) ) {
+		$posts          = get_posts( array( 'post_type' => 'zone', 'name' => $slug, 'numberposts' => 1 ) );
+		$cache[ $slug ] = ! empty( $posts ) ? $posts[0] : null;
+	}
+	return $cache[ $slug ];
+}
+
+/**
+ * Numéro du département d'une zone (« 21 »), ou chaîne vide.
+ *
+ * Le numéro vient de la table de `tfp_departements_nav()`, jamais d'un champ saisi : il est
+ * apparié par le slug du terme `departement` de la zone.
+ *
+ * @param WP_Post|int $zone Zone ou identifiant.
+ * @return string
+ */
+function tfp_zone_departement_num( $zone ) {
+	$terms = get_the_terms( $zone, 'departement' );
+	if ( empty( $terms ) || is_wp_error( $terms ) || ! function_exists( 'tfp_departements_nav' ) ) {
+		return '';
+	}
+	foreach ( tfp_departements_nav() as $entree ) {
+		if ( $entree['slug'] === $terms[0]->slug ) {
+			return (string) $entree['num'];
+		}
+	}
+	return '';
+}
+
 function tfp_get_zone_by_department_slug( $dept_slug ) {
 	$posts = get_posts(
 		array(

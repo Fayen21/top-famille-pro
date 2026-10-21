@@ -161,7 +161,35 @@ if ( '' !== $horaires ) {
 
 <section class="tfp-section--tight" style="--tfp-bande-haut:0px;--tfp-bande-bas:clamp(30px, 4vw, 48px)">
 	<div class="tfp-container tfp-container--narrow tfp-contact-orientation">
-		<?php tfp_card_grid( $orientation ); ?>
+		<?php
+		/*
+		 * Passe visuelle du 14 octobre 2026 : les deux cartes étaient rendues sur le gris
+		 * rgb(239, 239, 239) — la couleur par défaut d'un `<button>` relevée telle quelle — sans
+		 * rien qui distingue le parcours en cours du renvoi vers le devis. La maquette pose la
+		 * carte « J'ai une question » en état ACTIF (fond primaire, texte blanc : c'est le
+		 * formulaire affiché sous elle) et « J'ai un besoin de nettoyage » en carte blanche
+		 * cliquable, flèche comprise. Même balisage que la grille de cartes, pour que les
+		 * contrôles qui comptent les sept cartes de la page restent vrais.
+		 */
+		?>
+		<ul class="tfp-card-grid tfp-card-grid--2 tfp-orientation" style="--tfp-tuile-padding:22px;--tfp-tuile-gap:14px;--tfp-tuile-rayon:16px;--tfp-tuile-filet:1px">
+			<li>
+				<div class="tfp-card-tile tfp-card-tile--lien tfp-card-tile--orientation tfp-card-tile--orientation-active">
+					<div class="tfp-card-tile__body">
+						<strong class="tfp-card-tile__title"><?php echo esc_html( $orientation['items'][0]['titre'] ); ?></strong>
+						<p class="tfp-card-tile__desc"><?php echo esc_html( $orientation['items'][0]['description'] ); ?></p>
+					</div>
+				</div>
+			</li>
+			<li>
+				<a class="tfp-card-tile tfp-card-tile--lien tfp-card-tile--orientation" href="<?php echo esc_url( home_url( '/demande-de-devis/' ) ); ?>">
+					<div class="tfp-card-tile__body">
+						<strong class="tfp-card-tile__title"><?php echo esc_html( $orientation['items'][1]['titre'] ); ?></strong>
+						<p class="tfp-card-tile__desc"><?php echo esc_html( $orientation['items'][1]['description'] ); ?><span aria-hidden="true"> →</span></p>
+					</div>
+				</a>
+			</li>
+		</ul>
 	</div>
 </section>
 

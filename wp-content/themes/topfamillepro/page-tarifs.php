@@ -220,7 +220,7 @@ get_header();
 	 */
 	?>
 	<div class="tfp-container tfp-container--narrow tfp-grid tfp-grid--autofit" style="--tfp-colonne:260px">
-		<div class="tfp-card">
+		<div class="tfp-card tfp-card--inclus">
 			<h3>Ce qui est inclus</h3>
 			<ul class="tfp-list-plain tfp-list-plain--nue">
 				<?php foreach ( $inclus as $item ) : ?>

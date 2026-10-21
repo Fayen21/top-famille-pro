@@ -1,0 +1,10 @@
+import { chromium } from '@playwright/test';
+const [url, sel, out, w] = process.argv.slice(2);
+const b = await chromium.launch({ executablePath: '/opt/pw-browsers/chromium' });
+const p = await b.newPage({ viewport: { width: Number(w || 1440), height: 900 }, deviceScaleFactor: 2 });
+await p.goto(url, { waitUntil: 'load' }); await p.waitForTimeout(500);
+const el = p.locator(sel).first();
+await el.scrollIntoViewIfNeeded();
+await el.screenshot({ path: out });
+console.log(await el.evaluate((e) => { const cs = getComputedStyle(e); const img = e.querySelector('img'); const more = e.querySelector('.tfp-card-tile__more'); return { radius: cs.borderRadius, overflow: cs.overflow, img: img && getComputedStyle(img).borderRadius, more: more && getComputedStyle(more, '::before').content + ' / ' + getComputedStyle(more).display }; }));
+await b.close();

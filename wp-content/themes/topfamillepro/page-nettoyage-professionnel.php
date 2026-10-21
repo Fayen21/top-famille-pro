@@ -194,7 +194,10 @@ if ( $tfp_bande_methode ) :
 			foreach ( ( $tfp_bloc['sequence'] ?? array() ) as $tfp_enfant ) {
 				$type = $tfp_enfant['type'] ?? '';
 				if ( 'paragraph' === $type || 'note' === $type ) {
-					printf( '<p class="tfp-prose">%s</p>', esc_html( $tfp_enfant['texte'] ) );
+					// Même règle que static-blocks : une ligne relevée en graisse 600 et courte est
+					// un intertitre de la maquette (« Sélection & intervenant habituel recherché »).
+					$tfp_intertitre = (int) ( $tfp_enfant['graisse'] ?? 400 ) >= 600 && mb_strlen( (string) $tfp_enfant['texte'] ) <= 90;
+					printf( '<p class="tfp-prose%s">%s</p>', $tfp_intertitre ? ' tfp-prose--intertitre' : '', esc_html( $tfp_enfant['texte'] ) );
 				} elseif ( 'grid' === $type ) {
 					tfp_card_grid( $tfp_enfant );
 				} elseif ( 'list' === $type ) {

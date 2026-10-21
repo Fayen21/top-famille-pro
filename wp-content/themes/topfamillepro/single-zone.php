@@ -272,7 +272,26 @@ get_header();
  * (routes `#/`) : elles sont reconstruites depuis le contenu WordPress réel. Un nom sans page
  * dédiée reste du texte — jamais un lien mort (CLAUDE.md §8).
  */
-$render_group = function ( array $bloc ) use ( $toutes_prestations, $cities_in_dept, $communes_proches, $dept_post, $is_dept ) {
+/*
+ * Passe visuelle du 14 octobre 2026 — Côte-d'Or affichait DEUX FOIS la même rangée de dix-huit
+ * pastilles : sous « Nos villes d'intervention dans le département » et sous « Autour de Dijon et
+ * de Beaune ». La requête mélangeait villes et communes, et chaque groupe « villes » la rendait
+ * en entier. Les villes (niveau 2) et les communes (niveau 3) sont donc séparées : le premier
+ * groupe reçoit les villes, le sous-groupe reçoit les communes. Un département sans sous-groupe
+ * garde tout dans son unique rangée — rien ne disparaît.
+ */
+$villes_in_dept   = array_values( array_filter( $cities_in_dept, static fn( $z ) => 'commune' !== tfp_get_field( 'niveau', $z->ID ) ) );
+$communes_in_dept = array_values( array_filter( $cities_in_dept, static fn( $z ) => 'commune' === tfp_get_field( 'niveau', $z->ID ) ) );
+$a_sous_groupe_villes = false;
+foreach ( $groupes_liens as $g ) {
+	if ( 'villes' === ( $g['type'] ?? '' ) && 3 === (int) ( $g['niveau'] ?? 2 ) ) {
+		$a_sous_groupe_villes = true;
+	}
+}
+
+$num_page = function_exists( 'tfp_zone_departement_num' ) ? tfp_zone_departement_num( $post_id ) : '';
+
+$render_group = function ( array $bloc ) use ( $toutes_prestations, $cities_in_dept, $villes_in_dept, $communes_in_dept, $a_sous_groupe_villes, $communes_proches, $dept_post, $is_dept, $post_id, $num_page ) {
 	?>
 	<div class="tfp-zone-links<?php echo 3 === (int) ( $bloc['niveau'] ?? 2 ) ? ' tfp-zone-links--sous' : ''; ?>">
 		<?php
@@ -346,12 +365,85 @@ $render_group = function ( array $bloc ) use ( $toutes_prestations, $cities_in_d
 			 * leur rangée séparée : c'est la structure que la maquette y déclare (sous-groupe h3).
 			 */
 			?>
+			<?php
+			$est_sous_groupe = 3 === (int) ( $bloc['niveau'] ?? 2 );
+			if ( $is_dept && ! $est_sous_groupe ) :
+				/*
+				 * Villes principales d'un département : la maquette les pose en RANGÉES pleine largeur
+				 * (carte blanche, nom en 600, code postal en 13 px à côté, flèche), pas en pastilles.
+				 * Le thème les rendait en pastilles : sur la Côte-d'Or, une fois les communes
+				 * séparées, il restait une pastille « Dijon » orpheline sous un titre de chapitre.
+				 * Le code postal est annoncé en clair aux lecteurs d'écran (« Code postal : 21000 »),
+				 * la décision du 14 octobre voulant un code postal toujours distinct du nom.
+				 */
+				$cibles = $a_sous_groupe_villes ? $villes_in_dept : $cities_in_dept;
+				?>
+				<ul class="tfp-ville-rows" style="margin-top:16px">
+					<?php foreach ( $cibles as $cible ) : ?>
+						<?php $cp = trim( (string) tfp_get_field( 'code_postal', $cible->ID ) ); ?>
+						<li>
+							<a class="tfp-ville-row" href="<?php echo esc_url( get_permalink( $cible ) ); ?>">
+								<span class="tfp-ville-row__nom"><?php echo esc_html( get_the_title( $cible ) ); ?><?php if ( '' !== $cp ) : ?><span class="tfp-ville-row__cp"><span aria-hidden="true"> · </span><span class="visually-hidden">Code postal : </span><?php echo esc_html( $cp ); ?></span><?php endif; ?></span>
+								<span class="tfp-ville-row__fleche" aria-hidden="true">→</span>
+							</a>
+						</li>
+					<?php endforeach; ?>
+				</ul>
+			<?php else : ?>
 			<div class="tfp-chip-row" style="margin-top:16px">
 				<?php
-				$cibles = ! empty( $cities_in_dept ) ? $cities_in_dept : (array) $communes_proches;
-				foreach ( $cibles as $cible ) :
+				/*
+				 * Cibles RELEVÉES sur la maquette (`locaux_N_cibles`) quand elles existent : chaque
+				 * groupe d'une page de ville lie ses propres zones — communes proches, villes du
+				 * même département, « autres secteurs » d'autres départements. Sans ce relevé, les
+				 * trois groupes recevaient la même liste de communes proches (revue du 21 octobre :
+				 * « Autres secteurs couverts en région » listait Chenôve et Talant sous une phrase
+				 * qui annonce des villes éloignées). Une zone d'un autre département porte son
+				 * numéro entre parenthèses, comme la maquette (« Chalon-sur-Saône (71) »).
+				 */
+				$cibles      = array();
+				$dept_cibles = array();
+				if ( ! $is_dept && ! empty( $bloc['cibles'] ) && function_exists( 'tfp_get_zone_by_slug' ) ) {
+					foreach ( (array) $bloc['cibles'] as $slug_cible ) {
+						$zone_cible = tfp_get_zone_by_slug( $slug_cible );
+						if ( ! $zone_cible || (int) $zone_cible->ID === (int) $post_id ) {
+							continue;
+						}
+						// La page du département, liée en tête du groupe « Dans le même
+						// département » : rangée pleine largeur « Nettoyage en Côte-d'Or → »
+						// sur la maquette, pas une pastille.
+						if ( 'departement' === tfp_get_field( 'niveau', $zone_cible->ID ) ) {
+							$dept_cibles[] = $zone_cible;
+						} else {
+							$cibles[] = $zone_cible;
+						}
+					}
+				} elseif ( $is_dept ) {
+					$cibles = $communes_in_dept;
+				} else {
+					$cibles = (array) $communes_proches;
+				}
+				foreach ( $dept_cibles as $dept_cible ) :
 					?>
-					<a class="tfp-chip" href="<?php echo esc_url( get_permalink( $cible ) ); ?>"><?php echo esc_html( get_the_title( $cible ) ); ?></a>
+					<a class="tfp-dept-row" href="<?php echo esc_url( get_permalink( $dept_cible ) ); ?>"><span class="tfp-dept-row__nom">Nettoyage en <?php echo esc_html( get_the_title( $dept_cible ) ); ?></span><span class="tfp-dept-row__fleche" aria-hidden="true">→</span></a>
+					<?php
+				endforeach;
+				/*
+				 * Groupe RÉGIONAL : dès qu'une cible appartient à un autre département, la maquette
+				 * écrit le numéro de département derrière chaque nom du groupe (« Mâcon (71) · Dijon
+				 * (21) · Dole (39) » sur Chalon-sur-Saône), jamais derrière les communes proches ni
+				 * les villes du même département.
+				 */
+				$numeros = array();
+				foreach ( $cibles as $cible ) {
+					$numeros[ $cible->ID ] = function_exists( 'tfp_zone_departement_num' ) ? tfp_zone_departement_num( $cible ) : '';
+				}
+				$groupe_regional = (bool) array_filter( $numeros, static fn( $n ) => '' !== $n && $n !== $num_page );
+				foreach ( $cibles as $cible ) :
+					$num_cible = $numeros[ $cible->ID ];
+					$suffixe   = $groupe_regional && '' !== $num_cible ? ' (' . $num_cible . ')' : '';
+					?>
+					<a class="tfp-chip" href="<?php echo esc_url( get_permalink( $cible ) ); ?>"><?php echo esc_html( get_the_title( $cible ) . $suffixe ); ?></a>
 				<?php endforeach; ?>
 				<?php if ( ! $is_dept && ! empty( $bloc['noms'] ) ) : ?>
 					<?php foreach ( (array) $bloc['noms'] as $nom ) : ?>
@@ -360,6 +452,7 @@ $render_group = function ( array $bloc ) use ( $toutes_prestations, $cities_in_d
 					<?php $bloc['noms'] = array(); ?>
 				<?php endif; ?>
 			</div>
+			<?php endif; ?>
 		<?php elseif ( 'departements' === $bloc['type'] ) : ?>
 			<div class="tfp-chip-row tfp-chip-row--10" style="margin-top:16px">
 				<?php foreach ( tfp_footer_zones_tree() as $entry ) : ?>
@@ -377,6 +470,16 @@ $render_group = function ( array $bloc ) use ( $toutes_prestations, $cities_in_d
 				<a class="tfp-link-row" href="<?php echo esc_url( home_url( '/conseils/' ) ); ?>">Nos guides d'entretien<span aria-hidden="true">→</span></a>
 			</div>
 		<?php endif; ?>
+		<?php
+		/*
+		 * Un nom inerte ne double jamais une page qui existe : « Beaune » était cité en pastille
+		 * grise sous « Autres communes citées » alors qu'il venait d'être lié juste au-dessus.
+		 */
+		if ( ! empty( $bloc['noms'] ) && $is_dept ) {
+			$deja_liees   = array_map( 'get_the_title', $cities_in_dept );
+			$bloc['noms'] = array_values( array_filter( (array) $bloc['noms'], static fn( $nom ) => ! in_array( $nom, $deja_liees, true ) ) );
+		}
+		?>
 		<?php if ( ! empty( $bloc['noms'] ) ) : ?>
 			<div class="tfp-chip-row" style="margin-top:16px">
 				<?php foreach ( $bloc['noms'] as $nom ) : ?>
