@@ -140,6 +140,8 @@ get_header();
 
 <?php if ( $une ) : ?>
 <section class="tfp-container tfp-section--tight" data-tfp-filtre-section style="--tfp-bande-haut:0px;--tfp-bande-bas:clamp(20px, 3vw, 32px)">
+	<?php // Titre de section masqué : la carte à la une porte un h3, qui suivait directement le h1 (Lighthouse « heading-order »). ?>
+	<h2 class="visually-hidden">Article à la une</h2>
 	<?php $carte( $une, true ); ?>
 </section>
 <?php endif; ?>

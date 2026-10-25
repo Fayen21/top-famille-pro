@@ -29,6 +29,11 @@ const PAGES = [
 	{ nom: 'Article', url: '/conseils/cout-nettoyage-bureaux/' },
 	{ nom: 'Contact', url: '/contact/' },
 	{ nom: 'Formulaire de devis', url: '/demande-de-devis/' },
+	// Routes touchées par la revue des trois ZIP (25 octobre 2026) : ordre des sections, ponctuel,
+	// filtres Conseils.
+	{ nom: 'Index des prestations', url: '/prestations/' },
+	{ nom: 'Prestation ponctuelle', url: '/prestations/ponctuel/' },
+	{ nom: 'Index Conseils', url: '/conseils/' },
 ];
 
 const seule = (process.argv.find((a) => a.startsWith('--only=')) || '').split('=')[1];

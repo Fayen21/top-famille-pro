@@ -15,7 +15,8 @@ function tfpInitConseilsFiltres() {
 	const statut = document.querySelector('[data-tfp-filtres-statut]');
 	const boutons = [];
 
-	liste.setAttribute('role', 'group');
+	// La liste garde sa sémantique de liste (un `role="group"` la cassait : axe « listitem ») ;
+	// seul son nom change, pour dire ce que font désormais ses boutons.
 	liste.setAttribute('aria-label', 'Filtrer les articles par thème');
 
 	const appliquer = (theme) => {

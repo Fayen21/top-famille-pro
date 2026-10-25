@@ -10,20 +10,26 @@ Cibles : Performance ≥ 90 · Accessibilité, Bonnes pratiques, SEO = 100 · CL
 
 | Page | Profil | Perf. | A11y | BP | SEO | LCP | CLS | TBT |
 |---|---|---:|---:|---:|---:|---:|---:|---:|
-| Accueil | mobile | 99 | 100 | 100 | 100 | 1.98 s | 0.000 | 0 ms |
+| Accueil | mobile | 97 | 100 | 100 | 100 | 1.98 s | 0.000 | 10 ms |
 | Accueil | bureau | 100 | 100 | 100 | 100 | 0.48 s | 0.000 | 0 ms |
-| Prestation | mobile | 99 | 100 | 100 | 100 | 1.81 s | 0.000 | 0 ms |
-| Prestation | bureau | 100 | 100 | 100 | 100 | 0.41 s | 0.000 | 0 ms |
-| Ville | mobile | 99 | 100 | 100 | 100 | 1.82 s | 0.000 | 92 ms |
-| Ville | bureau | 100 | 100 | 100 | 100 | 0.44 s | 0.000 | 0 ms |
-| Tarifs | mobile | 100 | 100 | 100 | 100 | 1.66 s | 0.000 | 0 ms |
-| Tarifs | bureau | 100 | 100 | 100 | 100 | 0.42 s | 0.000 | 0 ms |
-| Article | mobile | 99 | 100 | 100 | 100 | 1.82 s | 0.000 | 42 ms |
-| Article | bureau | 100 | 100 | 100 | 100 | 0.41 s | 0.000 | 0 ms |
-| Contact | mobile | 100 | 100 | 100 | 100 | 1.67 s | 0.000 | 0 ms |
-| Contact | bureau | 100 | 100 | 100 | 100 | 0.41 s | 0.000 | 0 ms |
-| Formulaire de devis | mobile | 100 | 100 | 100 | 100 | 1.66 s | 0.000 | 0 ms |
-| Formulaire de devis | bureau | 100 | 100 | 100 | 100 | 0.41 s | 0.000 | 0 ms |
+| Prestation | mobile | 99 | 100 | 100 | 100 | 1.82 s | 0.000 | 0 ms |
+| Prestation | bureau | 100 | 100 | 100 | 100 | 0.43 s | 0.000 | 0 ms |
+| Ville | mobile | 99 | 100 | 100 | 100 | 1.83 s | 0.000 | 0 ms |
+| Ville | bureau | 100 | 100 | 100 | 100 | 0.46 s | 0.000 | 0 ms |
+| Tarifs | mobile | 98 | 100 | 100 | 100 | 1.68 s | 0.000 | 0 ms |
+| Tarifs | bureau | 100 | 100 | 100 | 100 | 0.46 s | 0.000 | 0 ms |
+| Article | mobile | 99 | 100 | 100 | 100 | 1.82 s | 0.000 | 0 ms |
+| Article | bureau | 100 | 100 | 100 | 100 | 0.42 s | 0.000 | 0 ms |
+| Contact | mobile | 100 | 100 | 100 | 100 | 1.66 s | 0.000 | 0 ms |
+| Contact | bureau | 100 | 100 | 100 | 100 | 0.42 s | 0.000 | 0 ms |
+| Formulaire de devis | mobile | 98 | 100 | 100 | 100 | 1.75 s | 0.000 | 0 ms |
+| Formulaire de devis | bureau | 100 | 100 | 100 | 100 | 0.43 s | 0.000 | 0 ms |
+| Index des prestations | mobile | 99 | 100 | 100 | 100 | 1.91 s | 0.000 | 0 ms |
+| Index des prestations | bureau | 100 | 100 | 100 | 100 | 0.47 s | 0.000 | 0 ms |
+| Prestation ponctuelle | mobile | 99 | 100 | 100 | 100 | 1.82 s | 0.000 | 17 ms |
+| Prestation ponctuelle | bureau | 100 | 100 | 100 | 100 | 0.42 s | 0.000 | 0 ms |
+| Index Conseils | mobile | 99 | 100 | 100 | 100 | 1.81 s | 0.000 | 42 ms |
+| Index Conseils | bureau | 100 | 100 | 100 | 100 | 0.43 s | 0.000 | 0 ms |
 
 **Toutes les mesures atteignent leur cible.**
 
