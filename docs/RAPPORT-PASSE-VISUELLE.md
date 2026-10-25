@@ -158,7 +158,7 @@ Documenté intégralement dans **`docs/CARTE-BFC-SOURCE.md`** (généré par `to
 | Chemin d'accès | dérivé GeoJSON *france-geojson* (G. David), `departements-bourgogne-franche-comte.geojson`, récupéré le 21 octobre 2026 — les catalogues IGN, data.gouv.fr, geo.api.gouv.fr et DataBFC ne sont pas joignables depuis l'environnement (proxy sortant) |
 | Transformation | mapshaper *visvalingam weighted* 25 % en amont, **8 %** ici (topologie préservée), projection plate carrée × cos(47,275°), échelle commune, arrondi 0,1 px |
 | Contrôle | le script refuse tout jeu qui n'est pas exactement {21, 25, 39, 58, 70, 71, 89, 90} ; `tests/passe-visuelle.spec.js` compare le nombre de sommets rendus au GeoJSON versionné (`tools/data/`) |
-| Siège | Saint-Apollinaire (21540), centroïde de la commune ADMIN EXPRESS, un seul marqueur |
+| Siège | Saint-Apollinaire (code INSEE 21540 ; code postal 21850), centroïde de la commune ADMIN EXPRESS, un seul marqueur |
 
 ---
 

@@ -182,8 +182,29 @@
     }
   }
 
+  /**
+   * Volets du pied de page (<details data-tfp-volet>) : rendus ouverts côté serveur, repliés sous
+   * 820 px, maintenus ouverts au-delà (ce sont alors des colonnes, rien ne doit se replier).
+   */
+  function initFooterVolets() {
+    var volets = document.querySelectorAll('[data-tfp-volet]');
+    if (!volets.length || !window.matchMedia) return;
+    var mobile = window.matchMedia('(max-width: 819px)');
+    var appliquer = function () {
+      volets.forEach(function (d) { d.open = !mobile.matches; });
+    };
+    appliquer();
+    if (mobile.addEventListener) mobile.addEventListener('change', appliquer);
+    volets.forEach(function (d) {
+      d.addEventListener('toggle', function () {
+        if (!mobile.matches && !d.open) d.open = true;
+      });
+    });
+  }
+
   document.addEventListener('DOMContentLoaded', function () {
     initHeaderScroll();
+    initFooterVolets();
     initDesktopSubmenus();
     initMobileMenu();
     syncMobileCtaBarSpacer();

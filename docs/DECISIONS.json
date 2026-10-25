@@ -8,7 +8,7 @@
 		"Toute modification ici exige une décision humaine explicite, datée, reportée dans `decisions`."
 	],
 	"version": 2,
-	"derniere_mise_a_jour": "2026-10-21",
+	"derniere_mise_a_jour": "2026-10-25",
 	"decisions": [
 		{
 			"id": "note-google-masquee",
@@ -228,6 +228,72 @@
 					"Ces trois éléments ne doivent plus faire obstacle à la validation humaine.",
 					"Ils ne sont pas pour autant corrigés ni validés : l'état du site est inchangé sur ce point.",
 					"La fiche de décision du dossier G28 le dit en clair, pour qu'aucune relecture ne les juge."
+				]
+			}
+		},
+		{
+			"id": "revue-trois-zip",
+			"titre": "Corrections après revue des trois ZIP (dossier-passe-visuelle-1/2/3)",
+			"decide_le": "2026-10-25",
+			"remplace": [
+				{
+					"date": "2026-08-10",
+					"regle": "titre de la section couverture repris de la maquette : « Une couverture régionale, pas des agences fictives »"
+				},
+				{
+					"date": "2026-10-14",
+					"regle": "carte tarifaire « À partir de 27 € HT/h » ; ponctuel présenté comme un budget mensuel ; groupe « Départements limitrophes couverts »"
+				}
+			],
+			"regle": {
+				"interdit_dans_le_html_servi": [
+					{
+						"motif": "Départements limitrophes",
+						"nom": "ancien intitulé du groupe départemental"
+					},
+					{
+						"motif": "À partir de 27",
+						"nom": "carte tarifaire « À partir de » sur un tarif unique"
+					},
+					{
+						"motif": "sans frais de déplacement",
+						"nom": "promesse de gratuité du déplacement"
+					},
+					{
+						"motif": "Ce que vous gardez la main sur",
+						"nom": "intitulé agrammatical de la page pilier"
+					},
+					{
+						"motif": "Exemples de budgets réels",
+						"nom": "budgets calculés présentés comme réels"
+					},
+					{
+						"motif": "Horaires indicatifs|en cours de confirmation",
+						"nom": "mention d'horaires non établis"
+					},
+					{
+						"motif": "Outil retenu",
+						"nom": "note de travail sur la page cookies"
+					},
+					{
+						"motif": "Un devis pour (Bureaux|Commerces|Cabinets|Copropriétés|Meublés|Ponctuel)\\b",
+						"nom": "titre de prestation tronqué"
+					},
+					{
+						"motif": "Appeler Audrey",
+						"nom": "ancien libellé d'appel"
+					},
+					{
+						"motif": "pas des agences fictives",
+						"nom": "ancien titre de la section couverture"
+					}
+				],
+				"titre_couverture": "Une entreprise régionale basée à Saint-Apollinaire",
+				"libelle_appel": "Appeler Top-Famille Pro",
+				"note": [
+					"Le maillage « Dans le même département » est construit par relations (tfp_zone_maillage) : tests/maillage.spec.js.",
+					"CTA par parcours (tfp_parcours) : aucune barre mobile sur le devis et les pages utilitaires ; candidature en action principale sur le recrutement.",
+					"La note Google reste masquée ; photo, citation et avis provisoires inchangés (non rouverts par cette revue)."
 				]
 			}
 		}

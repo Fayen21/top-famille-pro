@@ -397,6 +397,49 @@
   overflow-wrap: anywhere;
 }
 
+/* Revue des trois ZIP du 25 octobre 2026, §5.
+   Tablette (560–1099 px) : la grille automatique posait 3 + 2 cartes, la seconde rangée laissant
+   un trou d'une carte. Grille à six pistes : trois cartes de deux pistes, puis deux de trois —
+   deux rangées pleines.
+   Mobile (< 560 px) : cinq cartes empilées de ~150 px. La pastille passe à gauche du titre, sur
+   la même ligne, et les rembourrages se resserrent ; la taille des textes ne bouge pas. */
+@media (min-width: 560px) and (max-width: 1099px) {
+  .tfp-etapes {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+
+  .tfp-etape {
+    grid-column: span 2;
+  }
+
+  .tfp-etape:nth-child(n + 4) {
+    grid-column: span 3;
+  }
+}
+
+@media (max-width: 559px) {
+  .tfp-etapes {
+    gap: 10px;
+  }
+
+  .tfp-etape {
+    display: grid;
+    grid-template-columns: 36px minmax(0, 1fr);
+    column-gap: 12px;
+    row-gap: 4px;
+    align-items: center;
+    padding: 16px 16px 18px;
+  }
+
+  .tfp-etape__titre {
+    margin: 0;
+  }
+
+  .tfp-etape__desc {
+    grid-column: 2;
+  }
+}
+
 /* ---------- Tarif résumé ---------- */
 .tfp-price-example {
   margin-top: var(--space-5);
@@ -528,9 +571,12 @@
 .tfp-carte-bfc__dept path {
   /* Palette homogène : les huit départements sont couverts aux mêmes conditions. Aucune nuance
      par département, qui suggérerait des niveaux de service. */
+  /* Revue du 25 octobre 2026 : le filet turquoise sur aplat pâle ne détachait pas les limites
+     (≈ 1,6:1 sur le fond). Filet bleu principal, au-dessus de 3:1 contre l'aplat et le blanc
+     (WCAG 1.4.11, contenus non textuels). */
   fill: var(--color-turquoise-pale-2);
-  stroke: var(--color-turquoise);
-  stroke-width: 1.6;
+  stroke: var(--color-primary);
+  stroke-width: 1.4;
   stroke-linejoin: round;
   transition: fill var(--transition-base);
 }
@@ -618,22 +664,46 @@
 }
 
 .tfp-carte-bfc__legende {
-  display: flex;
-  align-items: center;
-  gap: 8px;
+  display: grid;
+  gap: 6px;
   margin-top: 12px;
-  font-size: 13px;
+  font-size: 13.5px;
+  line-height: 1.45;
   color: var(--color-text-secondary);
+}
+
+/* Chaque ligne de légende aligne son pictogramme sur la PREMIÈRE ligne de texte : centré sur un
+   texte de trois lignes, le point flottait à mi-hauteur, loin du mot qu'il légende (375 px). */
+.tfp-carte-bfc__legende-repere,
+.tfp-carte-bfc__legende-zone {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.tfp-carte-bfc__legende strong {
+  color: var(--color-navy);
 }
 
 .tfp-carte-bfc__legende-point {
   flex: 0 0 auto;
-  width: 10px;
-  height: 10px;
+  width: 12px;
+  height: 12px;
+  margin-top: 4px;
   border-radius: 50%;
   background: var(--color-copper);
   border: 2px solid var(--color-white);
   box-shadow: 0 0 0 1px var(--color-copper);
+}
+
+.tfp-carte-bfc__legende-aplat {
+  flex: 0 0 auto;
+  width: 14px;
+  height: 11px;
+  margin-top: 4px;
+  border-radius: 2px;
+  background: var(--color-turquoise-pale-2);
+  border: 1.4px solid var(--color-primary);
 }
 
 .tfp-dept-link {

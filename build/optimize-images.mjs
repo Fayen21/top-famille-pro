@@ -228,7 +228,7 @@ const SLOTS = [
     slug: 'hero-region',
     src: 'locaux-professionnels-region.jpg',
     widths: [480, 760, 960],
-    alt: 'Locaux professionnels en Bourgogne-Franche-Comté (photo d’illustration)',
+    alt: 'Locaux professionnels (photo d’illustration)', // aucun lieu affirmé : image de banque d'images (revue du 25 octobre 2026)
   },
   {
     // Visuel temporaire (accueil + À propos) tant que le portrait authentique d'Audrey n'est pas

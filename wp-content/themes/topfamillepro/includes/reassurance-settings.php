@@ -25,6 +25,14 @@ const TFP_REASSURANCE_OPTION = 'tfp_reassurance';
 const TFP_REASSURANCE_AVIS_MAX = 6; // Les six témoignages authentiques listés dans CLAUDE.md §5.5.
 
 /**
+ * Disponibilité affichée par défaut sur la page Contact : uniquement des éléments établis dans
+ * PROJECT_INPUTS.md (réponse sous 24 h, interventions du lundi au samedi de 6 h à 22 h).
+ */
+function tfp_horaires_contact_defaut() {
+	return 'Réponse sous 24 h · interventions généralement du lundi au samedi, 6 h – 22 h';
+}
+
+/**
  * Valeurs par défaut. Ne jamais mettre ici un avis ou une note de démonstration : seules des
  * valeurs explicitement confirmées par le client y ont leur place, pour qu'elles soient
  * versionnées et présentes sur toute installation sans ressaisie.
@@ -78,7 +86,7 @@ function tfp_reassurance_defaults() {
 		// visiblement et corrigible ici — et elle n'est **jamais** déclarée en
 		// `openingHoursSpecification` : une amplitude non confirmée publiée en donnée structurée
 		// est un engagement d'ouverture opposable, pas une illustration.
-		'horaires_contact' => 'Du lundi au vendredi · réponse sous 24 h',
+		'horaires_contact' => tfp_horaires_contact_defaut(),
 		'avis'            => $avis,
 	);
 }
@@ -223,23 +231,21 @@ function tfp_render_reassurance_page() {
 				</tr>
 			</table>
 
-			<h2>Horaires de contact</h2>
+			<h2>Disponibilité</h2>
 			<p>
-				Affichés sur la page Contact. L'amplitude reprise de la maquette
-				n'a <strong>jamais été confirmée</strong> : elle est présentée sur le site comme une
-				indication provisoire, avec une mention visible, et n'est déclarée dans
-				<strong>aucune donnée structurée</strong> — une amplitude d'ouverture publiée en
-				<code>openingHoursSpecification</code> est un engagement opposable, pas une
-				illustration. Dès que les horaires réels sont arrêtés, les saisir ici ; la mention
-				provisoire se retire alors dans le gabarit, en connaissance de cause.
+				Affichée sur la page Contact. N'y écrire que ce qui est <strong>établi</strong> : la
+				réponse sous 24 h et la plage d'intervention habituelle le sont ; une amplitude
+				d'accueil téléphonique ne l'a jamais été. Cette valeur n'est déclarée dans
+				<strong>aucune donnée structurée</strong> — une amplitude publiée en
+				<code>openingHoursSpecification</code> est un engagement opposable.
 				Vider le champ retire la carte.
 			</p>
 			<table class="form-table" role="presentation">
 				<tr>
-					<th scope="row"><label for="tfp-horaires-contact">Horaires affichés</label></th>
+					<th scope="row"><label for="tfp-horaires-contact">Disponibilité affichée</label></th>
 					<td>
 						<input type="text" id="tfp-horaires-contact" name="<?php echo esc_attr( TFP_REASSURANCE_OPTION ); ?>[horaires_contact]" value="<?php echo esc_attr( $values['horaires_contact'] ); ?>" class="regular-text">
-						<p class="description">Ex. « Du lundi au vendredi, 8 h – 18 h · réponse sous 24 h ».</p>
+						<p class="description">Par défaut : « <?php echo esc_html( tfp_horaires_contact_defaut() ); ?> ».</p>
 					</td>
 				</tr>
 			</table>

@@ -13,7 +13,8 @@
  * Chaque département de la carte est un lien vers sa page, avec un état de focus visible. La
  * colonne de gauche garde sa liste de liens : c'est la version accessible et lisible sans carte.
  *
- * Titre repris mot pour mot de la maquette (décision du 10 août 2026), conservé pour cette passe.
+ * Titre : « Une entreprise régionale basée à Saint-Apollinaire » depuis la revue du 25 octobre
+ * 2026 (CLAUDE.md §9). Légende sur deux lignes : le repère, puis la couverture.
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -33,17 +34,15 @@ foreach ( $carte['departements'] as $d ) {
 		<div class="tfp-couverture__col">
 			<?php
 			/*
-			 * Intitulé de la maquette, volontairement conservé : CLAUDE.md §9 demande « Une entreprise
-			 * régionale basée à Saint-Apollinaire », mais Emmanuel a différé cette reformulation le
-			 * 10 août 2026 (« je veux d'abord reproduire la maquette, puis je modifierai ses
-			 * formulations ultérieurement » — docs/ECARTS-MAQUETTE-AUTORISES.md). Le bloc ayant été
-			 * refait sur la décision du 14 octobre, le moment de trancher est signalé dans le rapport
-			 * de passe ; la décision n'est pas prise ici.
+			 * Intitulé imposé par CLAUDE.md §9, différé le 10 août 2026 pour reproduire d'abord la
+			 * maquette, puis explicitement autorisé par la revue des trois ZIP du 25 octobre 2026
+			 * (§5) — docs/ECARTS-MAQUETTE-AUTORISES.md. Le chapeau dit ce que couvre la carte : huit
+			 * départements, un même tarif horaire, une organisation fixée au devis.
 			 */
 			?>
-			<h2 id="tfp-couverture-titre">Une couverture régionale, pas des agences fictives</h2>
+			<h2 id="tfp-couverture-titre">Une entreprise régionale basée à <?php echo esc_html( $site['address_city'] ); ?></h2>
 			<p class="tfp-couverture__lede">
-				Nous intervenons depuis <?php echo esc_html( $site['address_city'] ); ?> sur les huit départements de la <?php echo esc_html( $site['address_region'] ); ?>, avec la même organisation partout.
+				Depuis <?php echo esc_html( $site['address_city'] ); ?>, près de Dijon, nous intervenons sur les huit départements de la <?php echo esc_html( $site['address_region'] ); ?>, au même tarif horaire partout. Fréquence, créneaux et éventuels frais de déplacement sont précisés dans votre devis.
 			</p>
 			<ul class="tfp-dept-list" aria-label="Les huit départements couverts">
 				<?php foreach ( $depts as $dept ) : ?>
@@ -91,10 +90,16 @@ foreach ( $carte['departements'] as $d ) {
 				</g>
 				<text class="tfp-carte-bfc__source" x="<?php echo esc_attr( (int) explode( ' ', $carte['viewbox'] )[2] - 6 ); ?>" y="<?php echo esc_attr( (int) explode( ' ', $carte['viewbox'] )[3] - 6 ); ?>" aria-hidden="true">Tracés : <?php echo esc_html( $carte['source'] ); ?></text>
 			</svg>
-			<p class="tfp-carte-bfc__legende">
-				<span class="tfp-carte-bfc__legende-point" aria-hidden="true"></span>
-				Implantation de <?php echo esc_html( $site['brand_name'] ); ?> — <?php echo esc_html( $site['address_city'] ); ?>. Les huit départements sont couverts aux mêmes conditions.
-			</p>
+			<div class="tfp-carte-bfc__legende">
+				<p class="tfp-carte-bfc__legende-repere">
+					<span class="tfp-carte-bfc__legende-point" aria-hidden="true"></span>
+					<span><strong><?php echo esc_html( $site['address_city'] ); ?></strong> — siège et unique implantation de <?php echo esc_html( $site['brand_name'] ); ?></span>
+				</p>
+				<p class="tfp-carte-bfc__legende-zone">
+					<span class="tfp-carte-bfc__legende-aplat" aria-hidden="true"></span>
+					<span>Départements couverts, aux mêmes conditions</span>
+				</p>
+			</div>
 		</div>
 	</div>
 </section>

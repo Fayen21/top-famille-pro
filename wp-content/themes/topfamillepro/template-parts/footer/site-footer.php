@@ -34,6 +34,15 @@ $prestations = get_posts(
 	)
 );
 $zones = tfp_footer_zones_tree();
+
+/*
+ * Volets du pied (revue des trois ZIP du 25 octobre 2026, §5) : sur mobile, les trois colonnes de
+ * liens empilées faisaient près de 1 500 px. Elles deviennent des <details> natifs — dépliables
+ * au clavier et sans JavaScript. Ils sont rendus OUVERTS : sans JavaScript, le pied reste complet
+ * partout ; nav.js ne les replie que sous 820 px, et les maintient ouverts au-delà, où ils
+ * reprennent l'apparence des colonnes. La marque (téléphone, e-mail) et la barre légale restent
+ * hors volet : ce sont les liens qu'on ne doit jamais avoir à chercher.
+ */
 ?>
 <footer class="tfp-footer">
 	<?php
@@ -115,18 +124,21 @@ $zones = tfp_footer_zones_tree();
 		</div>
 
 		<div class="tfp-footer__col">
-			<h3>Prestations</h3>
+			<details class="tfp-footer__volet" open data-tfp-volet>
+				<summary class="tfp-footer__volet-titre"><h3>Prestations</h3><?php echo tfp_icone( 'chevron', 'tfp-footer__volet-chevron' ); // phpcs:ignore WordPress.Security.EscapeOutput ?></summary>
 			<ul>
 				<?php foreach ( $prestations as $prestation ) : ?>
 					<li><a href="<?php echo esc_url( get_permalink( $prestation ) ); ?>"><?php echo esc_html( tfp_get_field( 'nav_label', $prestation->ID ) ?: get_the_title( $prestation ) ); ?></a></li>
 				<?php endforeach; ?>
 				<li><a class="tfp-footer__more" href="<?php echo esc_url( home_url( '/prestations/' ) ); ?>">Toutes les prestations&nbsp;→</a></li>
 			</ul>
+			</details>
 		</div>
 
 		<div class="tfp-footer__col tfp-footer__col--zones">
-			<h3>Zones d'intervention</h3>
-			<a class="tfp-footer__more" href="<?php echo esc_url( home_url( '/zones-intervention/bourgogne-franche-comte/' ) ); ?>">Toute la <?php echo esc_html( $site['address_region'] ); ?>&nbsp;→</a>
+			<details class="tfp-footer__volet" open data-tfp-volet>
+				<summary class="tfp-footer__volet-titre"><h3>Zones d'intervention</h3><?php echo tfp_icone( 'chevron', 'tfp-footer__volet-chevron' ); // phpcs:ignore WordPress.Security.EscapeOutput ?></summary>
+			<a class="tfp-footer__more tfp-footer__region" href="<?php echo esc_url( home_url( '/zones-intervention/bourgogne-franche-comte/' ) ); ?>">Toute la <?php echo esc_html( $site['address_region'] ); ?>&nbsp;→</a>
 			<p class="tfp-footer__zones-label">Villes principales par département</p>
 			<ul class="tfp-footer__zones">
 				<?php foreach ( $zones as $entry ) : ?>
@@ -147,10 +159,12 @@ $zones = tfp_footer_zones_tree();
 				<a class="tfp-footer__more" href="<?php echo esc_url( home_url( '/zones-intervention/' ) ); ?>">Voir les <?php echo count( $zones ); ?> départements&nbsp;→</a>
 				<a class="tfp-footer__more" href="<?php echo esc_url( home_url( '/zones-intervention/' ) ); ?>">Toutes les villes&nbsp;→</a>
 			</div>
+			</details>
 		</div>
 
 		<div class="tfp-footer__col tfp-footer__col--infos">
-			<h3>Informations</h3>
+			<details class="tfp-footer__volet" open data-tfp-volet>
+				<summary class="tfp-footer__volet-titre"><h3>Informations</h3><?php echo tfp_icone( 'chevron', 'tfp-footer__volet-chevron' ); // phpcs:ignore WordPress.Security.EscapeOutput ?></summary>
 			<ul>
 				<li><a href="<?php echo esc_url( home_url( '/tarifs/' ) ); ?>">Tarifs</a></li>
 				<li><a href="<?php echo esc_url( home_url( '/pourquoi-nous/' ) ); ?>">Pourquoi nous</a></li>
@@ -161,6 +175,7 @@ $zones = tfp_footer_zones_tree();
 				<li><a href="<?php echo esc_url( home_url( '/recrutement/' ) ); ?>">Recrutement</a></li>
 				<li><a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>">Contact</a></li>
 			</ul>
+			</details>
 		</div>
 	</div>
 

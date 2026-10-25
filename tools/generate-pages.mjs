@@ -95,7 +95,54 @@ const CORRECTIONS_EDITORIALES = [
 			'mise en place et des indemnités kilométriques de 0,35 € HT/km, lorsqu\'ils ' +
 			"s'appliquent, selon les conditions précisées au devis.",
 	},
+	/*
+	 * Revue des trois ZIP du 25 octobre 2026, §6.
+	 *
+	 * Page pilier : un intitulé agrammatical, et un passage sur l'intervenant habituel qui
+	 * répétait, en deux phrases sèches, ce que le paragraphe venait de dire.
+	 */
+	{ avant: 'Ce que vous gardez la main sur', apres: 'Ce sur quoi vous gardez la main' },
+	{
+		avant:
+			"vous tenons informé de l'organisation retenue. Un intervenant habituel est recherché. " +
+			"En cas d'absence, Top-Famille Pro recherche activement une solution selon les disponibilités.",
+		apres: "vous tenons informé de l'organisation retenue.",
+	},
+	/*
+	 * Formulations défensives : la même réserve (« sans être garanti de façon absolue ») était
+	 * répétée sur plusieurs cartes d'une même page. Elle reste dite une fois, dans la FAQ
+	 * « intervenant habituel », là où le visiteur la cherche.
+	 */
+	{
+		avant:
+			'et recherchons un intervenant habituel qui connaît vos habitudes, continuité privilégiée ' +
+			'autant que possible sans être garantie de façon absolue.',
+		apres: 'et recherchons, autant que possible, un intervenant habituel qui connaît vos habitudes.',
+	},
+	{
+		avant:
+			"Nous recherchons un intervenant habituel sans le garantir de façon absolue. Nous recherchons " +
+			"activement une solution en cas d'absence sans promettre un remplacement immédiat systématique.",
+		apres:
+			"Nous recherchons un intervenant habituel et, en cas d'absence, une solution de remplacement, " +
+			'sans promettre ce que nous ne pourrions pas tenir.',
+	},
+	{
+		avant:
+			"et recherche activement une solution en cas d'absence imprévue de l'intervenant habituel, " +
+			'sans que ce remplacement puisse être garanti dans tous les cas.',
+		apres: "et recherche activement une solution en cas d'absence imprévue de l'intervenant habituel.",
+	},
 ];
+
+/**
+ * Déplacements de sections décidés après relevé (revue du 25 octobre 2026, §5) : la section qui
+ * contient `remonter` est placée à l'index `position`. Un fragment introuvable fait échouer la
+ * génération.
+ */
+const ORDRE_SECTIONS = {
+	prestations: { remonter: '#/service/ponctuel', position: 0 },
+};
 
 /** Nombre de remplacements appliqués, contrôlé en fin de génération. */
 const comptesCorrections = CORRECTIONS_EDITORIALES.map(() => 0);
@@ -1861,6 +1908,17 @@ for (const p of PAGES) {
 		console.error(`  ⚠ ${p.key} : fonds de bande non répertoriés → ${data.fondsInconnus.join(', ')}`);
 	}
 
+	// Revue des trois ZIP du 25 octobre 2026, §5 — densité : sur l'index des prestations, les six
+	// cartes passaient sous deux sections d'aide au choix (≈ 2 600 px à 375 px). Elles remontent
+	// juste sous le hero ; l'aide au choix suit, pour qui hésite encore.
+	const ordre = ORDRE_SECTIONS[p.key];
+	if (ordre) {
+		const titres = data.sections.map((s) => (s.blocs.find((b) => b.type === 'titre') || {}).texte || '');
+		const i = data.sections.findIndex((s) => JSON.stringify(s).includes(ordre.remonter));
+		if (i < 0) throw new Error(`ORDRE_SECTIONS : « ${ordre.remonter} » introuvable dans ${p.key} (${titres.join(' | ')})`);
+		const [sec] = data.sections.splice(i, 1);
+		data.sections.splice(ordre.position, 0, sec);
+	}
 	all.push({ ...p, ...data });
 	console.error(
 		`  ${p.key.padEnd(26)} ${String(data.sections.length).padStart(2)} sections · ` +

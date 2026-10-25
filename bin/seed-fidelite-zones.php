@@ -1187,7 +1187,7 @@ if ( empty( $posts ) ) {
 	$id = $posts[0]->ID;
 	tfp_seed_set_field( 'h1', 'Entreprise de nettoyage à Dijon', $id );
 	tfp_seed_set_field( 'hero_lede', 'Bureaux, commerces, cabinets, copropriétés et locations meublées : Top-Famille Pro entretient vos locaux dijonnais depuis son implantation de Saint-Apollinaire, commune limitrophe de Dijon.', $id );
-	tfp_seed_set_field( 'hero_alt', 'Locaux professionnels à Dijon', $id );
+	tfp_seed_set_field( 'hero_alt', 'Locaux professionnels (photo d’illustration)', $id );
 	tfp_seed_set_field( 'cta_label', 'Demander un devis à Dijon', $id );
 	tfp_seed_set_field( 'cta_phone_label', '', $id );
 	tfp_seed_set_field( 'band_items', implode( "\n", array(
@@ -1384,7 +1384,7 @@ if ( empty( $posts ) ) {
 	$id = $posts[0]->ID;
 	tfp_seed_set_field( 'h1', 'Entreprise de nettoyage à Besançon', $id );
 	tfp_seed_set_field( 'hero_lede', 'Bureaux, cabinets, commerces du centre historique et parties communes : Top-Famille Pro entretient vos locaux bisontins avec des créneaux réguliers planifiés.', $id );
-	tfp_seed_set_field( 'hero_alt', 'Locaux professionnels à Besançon', $id );
+	tfp_seed_set_field( 'hero_alt', 'Locaux professionnels (photo d’illustration)', $id );
 	tfp_seed_set_field( 'cta_label', 'Demander un devis à Besançon', $id );
 	tfp_seed_set_field( 'cta_phone_label', '', $id );
 	tfp_seed_set_field( 'band_items', implode( "\n", array(
@@ -1569,7 +1569,7 @@ if ( empty( $posts ) ) {
 	$id = $posts[0]->ID;
 	tfp_seed_set_field( 'h1', 'Entreprise de nettoyage à Dole', $id );
 	tfp_seed_set_field( 'hero_lede', 'Commerces du centre historique, bureaux, cabinets et parties communes : Top-Famille Pro entretient vos locaux dolois en régulier ou en ponctuel.', $id );
-	tfp_seed_set_field( 'hero_alt', 'Locaux professionnels à Dole', $id );
+	tfp_seed_set_field( 'hero_alt', 'Locaux professionnels (photo d’illustration)', $id );
 	tfp_seed_set_field( 'cta_label', 'Demander un devis à Dole', $id );
 	tfp_seed_set_field( 'cta_phone_label', '', $id );
 	tfp_seed_set_field( 'band_items', implode( "\n", array(
@@ -1758,7 +1758,7 @@ if ( empty( $posts ) ) {
 	$id = $posts[0]->ID;
 	tfp_seed_set_field( 'h1', 'Entreprise de nettoyage à Lons-le-Saunier', $id );
 	tfp_seed_set_field( 'hero_lede', 'Bureaux, cabinets, commerces et parties communes : Top-Famille Pro entretient vos locaux à Lons-le-Saunier avec des créneaux réguliers planifiés à l\'avance.', $id );
-	tfp_seed_set_field( 'hero_alt', 'Locaux professionnels à Lons-le-Saunier', $id );
+	tfp_seed_set_field( 'hero_alt', 'Locaux professionnels (photo d’illustration)', $id );
 	tfp_seed_set_field( 'cta_label', 'Demander un devis à Lons-le-Saunier', $id );
 	tfp_seed_set_field( 'cta_phone_label', '', $id );
 	tfp_seed_set_field( 'band_items', implode( "\n", array(
@@ -1946,7 +1946,7 @@ if ( empty( $posts ) ) {
 	$id = $posts[0]->ID;
 	tfp_seed_set_field( 'h1', 'Entreprise de nettoyage à Nevers', $id );
 	tfp_seed_set_field( 'hero_lede', 'Parties communes, bureaux administratifs, commerces et cabinets : Top-Famille Pro entretient vos locaux nivernais avec des créneaux hebdomadaires fixes.', $id );
-	tfp_seed_set_field( 'hero_alt', 'Locaux professionnels à Nevers', $id );
+	tfp_seed_set_field( 'hero_alt', 'Locaux professionnels (photo d’illustration)', $id );
 	tfp_seed_set_field( 'cta_label', 'Demander un devis à Nevers', $id );
 	tfp_seed_set_field( 'cta_phone_label', '', $id );
 	tfp_seed_set_field( 'band_items', implode( "\n", array(
@@ -2134,7 +2134,7 @@ if ( empty( $posts ) ) {
 	$id = $posts[0]->ID;
 	tfp_seed_set_field( 'h1', 'Entreprise de nettoyage à Vesoul', $id );
 	tfp_seed_set_field( 'hero_lede', 'Bureaux administratifs, commerces, cabinets et parties communes : Top-Famille Pro entretient vos locaux vésuliens, y compris en dehors des heures d\'ouverture.', $id );
-	tfp_seed_set_field( 'hero_alt', 'Locaux professionnels à Vesoul', $id );
+	tfp_seed_set_field( 'hero_alt', 'Locaux professionnels (photo d’illustration)', $id );
 	tfp_seed_set_field( 'cta_label', 'Demander un devis à Vesoul', $id );
 	tfp_seed_set_field( 'cta_phone_label', '', $id );
 	tfp_seed_set_field( 'band_items', implode( "\n", array(
@@ -2321,7 +2321,7 @@ if ( empty( $posts ) ) {
 	$id = $posts[0]->ID;
 	tfp_seed_set_field( 'h1', 'Entreprise de nettoyage à Chalon-sur-Saône', $id );
 	tfp_seed_set_field( 'hero_lede', 'Bureaux, bureaux d\'études, commerces, cabinets et copropriétés : Top-Famille Pro entretient vos locaux du Grand Chalon, en régulier ou en ponctuel.', $id );
-	tfp_seed_set_field( 'hero_alt', 'Locaux professionnels à Chalon-sur-Saône', $id );
+	tfp_seed_set_field( 'hero_alt', 'Locaux professionnels (photo d’illustration)', $id );
 	tfp_seed_set_field( 'cta_label', 'Demander un devis à Chalon-sur-Saône', $id );
 	tfp_seed_set_field( 'cta_phone_label', '', $id );
 	tfp_seed_set_field( 'band_items', implode( "\n", array(
@@ -2509,7 +2509,7 @@ if ( empty( $posts ) ) {
 	$id = $posts[0]->ID;
 	tfp_seed_set_field( 'h1', 'Entreprise de nettoyage à Mâcon', $id );
 	tfp_seed_set_field( 'hero_lede', 'Bureaux, cabinets, commerces et locations meublées : Top-Famille Pro entretient vos locaux mâconnais avec un planning régulier et un tarif unique.', $id );
-	tfp_seed_set_field( 'hero_alt', 'Locaux professionnels à Mâcon', $id );
+	tfp_seed_set_field( 'hero_alt', 'Locaux professionnels (photo d’illustration)', $id );
 	tfp_seed_set_field( 'cta_label', 'Demander un devis à Mâcon', $id );
 	tfp_seed_set_field( 'cta_phone_label', '', $id );
 	tfp_seed_set_field( 'band_items', implode( "\n", array(
@@ -2697,7 +2697,7 @@ if ( empty( $posts ) ) {
 	$id = $posts[0]->ID;
 	tfp_seed_set_field( 'h1', 'Entreprise de nettoyage à Auxerre', $id );
 	tfp_seed_set_field( 'hero_lede', 'Bureaux de PME, commerces, cabinets et parties communes : Top-Famille Pro entretient vos locaux auxerrois en régulier ou en ponctuel, à 27 € HT/h.', $id );
-	tfp_seed_set_field( 'hero_alt', 'Locaux professionnels à Auxerre', $id );
+	tfp_seed_set_field( 'hero_alt', 'Locaux professionnels (photo d’illustration)', $id );
 	tfp_seed_set_field( 'cta_label', 'Demander un devis à Auxerre', $id );
 	tfp_seed_set_field( 'cta_phone_label', '', $id );
 	tfp_seed_set_field( 'band_items', implode( "\n", array(
@@ -2885,7 +2885,7 @@ if ( empty( $posts ) ) {
 	$id = $posts[0]->ID;
 	tfp_seed_set_field( 'h1', 'Entreprise de nettoyage à Belfort', $id );
 	tfp_seed_set_field( 'hero_lede', 'Bureaux d\'ingénierie, locaux tertiaires, commerces et parties communes : Top-Famille Pro entretient vos locaux belfortains, y compris en soirée.', $id );
-	tfp_seed_set_field( 'hero_alt', 'Locaux professionnels à Belfort', $id );
+	tfp_seed_set_field( 'hero_alt', 'Locaux professionnels (photo d’illustration)', $id );
 	tfp_seed_set_field( 'cta_label', 'Demander un devis à Belfort', $id );
 	tfp_seed_set_field( 'cta_phone_label', '', $id );
 	tfp_seed_set_field( 'band_items', implode( "\n", array(
@@ -3073,7 +3073,7 @@ if ( empty( $posts ) ) {
 	$id = $posts[0]->ID;
 	tfp_seed_set_field( 'h1', 'Entreprise de nettoyage à Saint-Apollinaire', $id );
 	tfp_seed_set_field( 'hero_lede', 'Saint-Apollinaire est l\'implantation réelle de Top-Famille Pro : c\'est de cette commune que partent tous nos plannings, en Côte-d\'Or comme dans le reste de la région.', $id );
-	tfp_seed_set_field( 'hero_alt', 'Locaux professionnels à Saint-Apollinaire', $id );
+	tfp_seed_set_field( 'hero_alt', 'Locaux professionnels (photo d’illustration)', $id );
 	tfp_seed_set_field( 'cta_label', 'Demander un devis à Saint-Apollinaire', $id );
 	tfp_seed_set_field( 'cta_phone_label', '', $id );
 	tfp_seed_set_field( 'band_items', implode( "\n", array(
@@ -3248,7 +3248,7 @@ if ( empty( $posts ) ) {
 	$id = $posts[0]->ID;
 	tfp_seed_set_field( 'h1', 'Entreprise de nettoyage à Chenôve', $id );
 	tfp_seed_set_field( 'hero_lede', 'Parties communes, commerces et bureaux : Top-Famille Pro entretient vos locaux à Chenôve, commune limitrophe de Dijon au sud de l\'agglomération.', $id );
-	tfp_seed_set_field( 'hero_alt', 'Locaux professionnels à Chenôve', $id );
+	tfp_seed_set_field( 'hero_alt', 'Locaux professionnels (photo d’illustration)', $id );
 	tfp_seed_set_field( 'cta_label', 'Demander un devis à Chenôve', $id );
 	tfp_seed_set_field( 'cta_phone_label', '', $id );
 	tfp_seed_set_field( 'band_items', implode( "\n", array(
@@ -3420,7 +3420,7 @@ if ( empty( $posts ) ) {
 	$id = $posts[0]->ID;
 	tfp_seed_set_field( 'h1', 'Entreprise de nettoyage à Quetigny', $id );
 	tfp_seed_set_field( 'hero_lede', 'Commerces, bureaux et cabinets : Quetigny est voisine de notre implantation de Saint-Apollinaire, ce qui en fait l\'un de nos secteurs prioritaires.', $id );
-	tfp_seed_set_field( 'hero_alt', 'Locaux professionnels à Quetigny', $id );
+	tfp_seed_set_field( 'hero_alt', 'Locaux professionnels (photo d’illustration)', $id );
 	tfp_seed_set_field( 'cta_label', 'Demander un devis à Quetigny', $id );
 	tfp_seed_set_field( 'cta_phone_label', '', $id );
 	tfp_seed_set_field( 'band_items', implode( "\n", array(
@@ -3588,7 +3588,7 @@ if ( empty( $posts ) ) {
 	$id = $posts[0]->ID;
 	tfp_seed_set_field( 'h1', 'Entreprise de nettoyage à Talant', $id );
 	tfp_seed_set_field( 'hero_lede', 'Parties communes, cabinets et commerces de proximité : Top-Famille Pro entretient vos locaux à Talant, commune limitrophe de Dijon au nord-ouest.', $id );
-	tfp_seed_set_field( 'hero_alt', 'Locaux professionnels à Talant', $id );
+	tfp_seed_set_field( 'hero_alt', 'Locaux professionnels (photo d’illustration)', $id );
 	tfp_seed_set_field( 'cta_label', 'Demander un devis à Talant', $id );
 	tfp_seed_set_field( 'cta_phone_label', '', $id );
 	tfp_seed_set_field( 'band_items', implode( "\n", array(
@@ -3761,7 +3761,7 @@ if ( empty( $posts ) ) {
 	$id = $posts[0]->ID;
 	tfp_seed_set_field( 'h1', 'Entreprise de nettoyage à Longvic', $id );
 	tfp_seed_set_field( 'hero_lede', 'Bureaux, espaces tertiaires de zones d\'activité et commerces : Top-Famille Pro entretient vos locaux à Longvic, commune limitrophe de Dijon au sud.', $id );
-	tfp_seed_set_field( 'hero_alt', 'Locaux professionnels à Longvic', $id );
+	tfp_seed_set_field( 'hero_alt', 'Locaux professionnels (photo d’illustration)', $id );
 	tfp_seed_set_field( 'cta_label', 'Demander un devis à Longvic', $id );
 	tfp_seed_set_field( 'cta_phone_label', '', $id );
 	tfp_seed_set_field( 'band_items', implode( "\n", array(
@@ -3935,7 +3935,7 @@ if ( empty( $posts ) ) {
 	$id = $posts[0]->ID;
 	tfp_seed_set_field( 'h1', 'Entreprise de nettoyage à Fontaine-lès-Dijon', $id );
 	tfp_seed_set_field( 'hero_lede', 'Cabinets, bureaux et parties communes : Top-Famille Pro entretient vos locaux à Fontaine-lès-Dijon, commune limitrophe de Dijon au nord.', $id );
-	tfp_seed_set_field( 'hero_alt', 'Locaux professionnels à Fontaine-lès-Dijon', $id );
+	tfp_seed_set_field( 'hero_alt', 'Locaux professionnels (photo d’illustration)', $id );
 	tfp_seed_set_field( 'cta_label', 'Demander un devis à Fontaine-lès-Dijon', $id );
 	tfp_seed_set_field( 'cta_phone_label', '', $id );
 	tfp_seed_set_field( 'band_items', implode( "\n", array(
@@ -4115,7 +4115,7 @@ if ( empty( $posts ) ) {
 	$id = $posts[0]->ID;
 	tfp_seed_set_field( 'h1', 'Entreprise de nettoyage à Marsannay-la-Côte', $id );
 	tfp_seed_set_field( 'hero_lede', 'Bureaux, espaces d\'accueil et de dégustation, commerces et parties communes : Top-Famille Pro entretient vos locaux à Marsannay-la-Côte, au sud de l\'agglomération dijonnaise.', $id );
-	tfp_seed_set_field( 'hero_alt', 'Locaux professionnels à Marsannay-la-Côte', $id );
+	tfp_seed_set_field( 'hero_alt', 'Locaux professionnels (photo d’illustration)', $id );
 	tfp_seed_set_field( 'cta_label', 'Demander un devis à Marsannay-la-Côte', $id );
 	tfp_seed_set_field( 'cta_phone_label', '', $id );
 	tfp_seed_set_field( 'band_items', implode( "\n", array(
@@ -4282,7 +4282,7 @@ if ( empty( $posts ) ) {
 	$id = $posts[0]->ID;
 	tfp_seed_set_field( 'h1', 'Entreprise de nettoyage à Beaune', $id );
 	tfp_seed_set_field( 'hero_lede', 'Commerces, cabinets, bureaux, hébergements et parties communes : Top-Famille Pro entretient vos locaux à Beaune, au cœur de la Côte viticole.', $id );
-	tfp_seed_set_field( 'hero_alt', 'Locaux professionnels à Beaune', $id );
+	tfp_seed_set_field( 'hero_alt', 'Locaux professionnels (photo d’illustration)', $id );
 	tfp_seed_set_field( 'cta_label', 'Demander un devis à Beaune', $id );
 	tfp_seed_set_field( 'cta_phone_label', '', $id );
 	tfp_seed_set_field( 'band_items', implode( "\n", array(

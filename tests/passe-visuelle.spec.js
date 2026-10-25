@@ -482,9 +482,10 @@ test.describe( 'Audit transversal (§9) — maillage des pages ville', () => {
 		expect( await proches.locator( '.tfp-chip--static' ).count() ).toBeGreaterThanOrEqual( 5 );
 		// Les liens d'un autre département mènent bien à ce département.
 		await expect( groupe( 'Autres secteurs couverts en région' ).locator( 'a.tfp-chip', { hasText: 'Besançon' } ) ).toHaveAttribute( 'href', /\/zones-intervention\/doubs\/besancon\/$/ );
-		// Chalon-sur-Saône : le groupe régional numérote tous ses noms, même Mâcon (71), comme la maquette.
+		// Chalon-sur-Saône : Mâcon n'est plus répété dans « Autres secteurs » (revue ZIP du 25 octobre,
+		// §2) ; il reste lié une seule fois, sous « Dans le même département ».
 		await page.goto( '/zones-intervention/saone-et-loire/chalon-sur-saone/' );
-		expect( await groupe( 'Autres secteurs couverts en région' ).locator( 'a.tfp-chip' ).allInnerTexts() ).toEqual( [ 'Mâcon (71)', 'Dijon (21)', 'Dole (39)' ] );
+		expect( await groupe( 'Autres secteurs couverts en région' ).locator( 'a.tfp-chip' ).allInnerTexts() ).toEqual( [ 'Dijon (21)', 'Dole (39)' ] );
 		expect( await groupe( 'Dans le même département' ).locator( 'a.tfp-chip' ).allInnerTexts() ).toEqual( [ 'Mâcon' ] );
 	} );
 

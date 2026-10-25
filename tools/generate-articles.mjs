@@ -30,7 +30,12 @@ const ARTICLES = [
  * Le générateur reproduit le prototype ; la faute est dans le prototype, donc la correction vient
  * ici — la corriger dans le fichier généré serait écrasé à la régénération suivante.
  */
-const ORTHOGRAPHE = [ [ 'lister precisément', 'lister précisément' ] ];
+const ORTHOGRAPHE = [
+	[ 'lister precisément', 'lister précisément' ],
+	// Revue des trois ZIP du 25 octobre 2026, §6 : les budgets du tableau sont des exemples
+	// calculés sur la grille, pas des devis réels relevés chez des clients.
+	[ 'Exemples de budgets réels', 'Exemples de budgets' ],
+];
 
 /** Nombre de corrections appliquées, pour le compte rendu de fin de génération. */
 let fautesCorrigees = 0;

@@ -596,7 +596,9 @@ for (const z of all) {
 	const set = (k, v) => L.push(`\ttfp_seed_set_field( ${php(k)}, ${v}, $id );`);
 	set('h1', php(z.h1));
 	set('hero_lede', php(z.heroLede));
-	set('hero_alt', php(z.heroAlt));
+	// Revue des trois ZIP du 25 octobre 2026, §5 : « Locaux professionnels à Dijon » sur une photo
+	// de banque d'images affirmait un lieu. Le texte alternatif dit ce qu'est l'image, sans lieu.
+	set('hero_alt', php(/^Locaux professionnels (à|en) /.test(z.heroAlt) ? 'Locaux professionnels (photo d’illustration)' : z.heroAlt));
 	set('cta_label', php(z.ctaLabel));
 	// Revue du 25 octobre 2026 : « ☎ Échanger avec Audrey » n'est plus écrit dans les données.
 	// Tous les appels génériques disent « Appeler Top-Famille Pro » (tfp_bouton_appel()) ; le

@@ -42,7 +42,15 @@ pied de page, sans effet de conversion à préserver.
 « corrigerait » au nom de la fidélité fait échouer la suite, et devra revenir ici plutôt que de
 trancher à nouveau.
 
-## Les deux écarts éditoriaux ont été rétablis
+## Mise à jour du 25 octobre 2026 — titre de la section couverture
+
+La revue des trois ZIP du 25 octobre 2026 (§5) autorise explicitement le titre
+« Une entreprise régionale basée à Saint-Apollinaire » sur la section couverture de l'accueil. Il
+remplace le titre de la maquette ; `tests/fidelite.spec.js` (bloc 10) attend désormais ce titre.
+L'état antérieur ci-dessous est conservé pour l'historique : il n'est plus en vigueur pour cette
+ligne. La seconde ligne (« Un interlocuteur identifié ») n'est pas concernée par cette revue.
+
+## Les deux écarts éditoriaux ont été rétablis (état du 10 août 2026)
 
 `CLAUDE.md §9` prévoit une série de corrections éditoriales sur les textes du prototype. Deux
 d'entre elles avaient été appliquées et **ont été annulées le 10 août 2026**, sur consigne
@@ -51,7 +59,7 @@ ultérieurement. »
 
 | Route | Texte Claude Design, rétabli | Correction §9 différée |
 |---|---|---|
-| `#/` — section couverture | « Une couverture régionale, pas des agences fictives » | « Une entreprise régionale basée à Saint-Apollinaire » |
+| `#/` — section couverture | ~~« Une couverture régionale, pas des agences fictives »~~ | « Une entreprise régionale basée à Saint-Apollinaire » — **appliquée le 25 octobre 2026**, voir ci-dessous |
 | `#/` — section difficultés | « Un interlocuteur identifié suit votre dossier, ajuste la prestation et vous répond directement. » | « Interlocutrice identifiée » |
 
 Aucune des deux ne réintroduit un ancien tarif, une information juridique fausse ni une donnée

@@ -52,9 +52,29 @@ test.describe( 'Checkpoint structuré ↔ HTML servi', () => {
 			'navigation-six-entrees',
 			'cta-heros-institutionnels',
 			'elements-provisoires',
+			'revue-trois-zip',
 		] ) {
 			expect( decision( id ).regle, `décision ${ id } sans règle exploitable` ).toBeTruthy();
 		}
+	} );
+
+	test( 'revue des trois ZIP (25 octobre 2026) — aucun ancien libellé sur les 53 routes', async ( { request } ) => {
+		const d = decision( 'revue-trois-zip' );
+		const motifs = d.regle.interdit_dans_le_html_servi.map( ( m ) => ( { nom: m.nom, re: new RegExp( m.motif ) } ) );
+		const fautes = [];
+		for ( const route of TOUTES_ROUTES ) {
+			const html = await ( await request.get( route ) ).text();
+			for ( const m of motifs ) {
+				const i = html.search( m.re );
+				if ( i >= 0 ) fautes.push( `${ route } → ${ m.nom } :: …${ html.slice( Math.max( 0, i - 50 ), i + 40 ).replace( /\s+/g, ' ' ) }…` );
+			}
+		}
+		expect( fautes, `décision « ${ d.titre } » (${ d.decide_le }) contredite par le HTML servi` ).toEqual( [] );
+		expect( TOUTES_ROUTES.length ).toBeGreaterThanOrEqual( 53 );
+
+		const accueil = await ( await request.get( '/' ) ).text();
+		expect( accueil ).toContain( d.regle.titre_couverture );
+		expect( accueil ).toContain( d.regle.libelle_appel );
 	} );
 
 	test( 'note Google — aucun des motifs interdits sur les 53 routes', async ( { request } ) => {

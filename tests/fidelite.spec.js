@@ -26,7 +26,7 @@ const HOME_BLOCKS = [
 	// Intitulé de la maquette, rétabli le 10 août 2026 sur décision d'Emmanuel : reproduire d'abord
 	// le prototype, reformuler ensuite. La correction éditoriale de CLAUDE.md §9 (« Une entreprise
 	// régionale basée à Saint-Apollinaire ») reste à appliquer dans une passe ultérieure.
-	{ n: 10, match: /Une couverture régionale, pas des agences fictives/i, label: 'Couverture régionale' },
+	{ n: 10, match: /Une entreprise régionale basée à Saint-Apollinaire/i, label: 'Couverture régionale' },
 	// Décision du 14 octobre 2026 : le bloc présente la gérante.
 	{ n: 11, match: /Audrey Brançon, gérante de Top-Famille Pro/i, label: 'Audrey' },
 	{ n: 12, match: /Conseils & repères/i, label: 'Conseils' },

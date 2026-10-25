@@ -8,6 +8,8 @@
  *    dans la colonne du formulaire ;
  *  - recrutement : la candidature (site carrière) est l'action principale ;
  *  - contact : seulement l'appel, pour ne pas détourner un message en cours de rédaction ;
+ *  - pages utilitaires (mentions, confidentialité, cookies, plan du site) : AUCUNE barre — une
+ *    bande commerciale collante y dominait un contenu de consultation ; le CTA du header suffit ;
  *  - ailleurs : appel + devis, comme avant.
  */
 
@@ -17,7 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 $site     = tfp_site_data();
 $parcours = tfp_parcours();
-if ( 'devis' === $parcours ) {
+if ( in_array( $parcours, array( 'devis', 'utilitaire' ), true ) ) {
 	return;
 }
 ?>

@@ -86,7 +86,7 @@ if ( empty( $posts ) ) {
 <p>Un prix affiché au m² masque souvent le volume d\'heures réellement effectué, ce qui rend la comparaison entre prestataires difficile. Le tarif horaire, lui, est directement lisible : vous savez ce que vaut chaque heure de travail, et pouvez vérifier que le volume proposé correspond à vos besoins réels.</p>
 <h2>Ce qui fait varier le volume d\'heures</h2>
 <p>Le nombre d\'heures nécessaires dépend de la surface, du type de locaux, de la fréquence retenue et du niveau d\'exigence (standard ou renforcé, notamment pour les espaces recevant du public). Deux bureaux de même surface peuvent ainsi nécessiter des volumes différents selon leur usage.</p>
-<h2>Exemples de budgets réels</h2>
+<h2>Exemples de budgets</h2>
 <p>À titre indicatif, calculé à 27 € HT/h + 9 € HT de gestion :</p>
 [tfp_budget_table]
 <h2>Ce qui est inclus, ce qui ne l\'est pas</h2>

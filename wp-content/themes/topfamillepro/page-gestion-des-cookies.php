@@ -57,7 +57,7 @@ get_header();
 
 		<div>
 			<h2>Mesure d'audience</h2>
-			<p class="tfp-legal-p">Si une mesure d'audience est mise en place, elle sera configurée pour être exemptée de consentement lorsque c'est possible, ou soumise à votre accord préalable dans le cas contraire. Outil retenu : à confirmer. Aucun outil de ce type n'est installé à ce jour.</p>
+			<p class="tfp-legal-p">Si une mesure d'audience est mise en place, elle sera configurée pour être exemptée de consentement lorsque c'est possible, ou soumise à votre accord préalable dans le cas contraire. Aucun outil de ce type n'est installé à ce jour.</p>
 
 			<h2>Refuser ou supprimer les cookies</h2>
 			<p class="tfp-legal-p">Vous pouvez configurer votre navigateur pour refuser ou supprimer les cookies à tout moment. Le refus des cookies non essentiels n'empêche ni la consultation du site, ni l'envoi d'une demande de devis.</p>

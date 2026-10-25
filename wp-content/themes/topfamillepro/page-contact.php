@@ -135,26 +135,29 @@ $coordonnees = array(
 );
 
 /*
- * Horaires de contact.
+ * Disponibilité.
  *
- * La maquette écrit « Du lundi au vendredi · à confirmer · réponse sous 24 h » : l'amplitude n'a
- * jamais été arrêtée. Trois façons de traiter cela, une seule est honnête — inventer une amplitude
- * plausible est exclu, supprimer la carte fait perdre une information réelle (la réponse sous
- * 24 h), il reste donc à afficher ce qui est su en disant que ce n'est pas figé. Le « à confirmer »
- * brut de la maquette est remplacé par une mention de transparence explicite, du même type que
- * celle des témoignages provisoires, et la valeur devient administrable
- * (Réglages → Réassurance & avis) pour être corrigée sans toucher au code.
+ * La maquette écrivait « Du lundi au vendredi · à confirmer · réponse sous 24 h » ; une version
+ * antérieure affichait cette amplitude avec la mention « Horaires indicatifs, en cours de
+ * confirmation ». Revue des trois ZIP du 25 octobre 2026, §6 : une amplitude de contact n'a
+ * jamais été établie, on n'affiche donc QUE ce qui l'est (PROJECT_INPUTS.md) — la réponse sous
+ * 24 h et la plage d'intervention habituelle (lundi au samedi, 6 h – 22 h). Plus de mention
+ * provisoire : rien ici n'est provisoire.
+ *
+ * La valeur reste administrable (Réglages → Réassurance & avis). L'ancienne valeur par défaut,
+ * jamais confirmée, est neutralisée si elle a été enregistrée telle quelle en base.
  *
  * Aucun `openingHoursSpecification` n'est émis nulle part sur le site : voir includes/seo.php.
  */
 $horaires = tfp_reassurance_data()['horaires_contact'];
+if ( in_array( $horaires, array( 'Du lundi au vendredi · réponse sous 24 h', 'Du lundi au vendredi · à confirmer · réponse sous 24 h' ), true ) ) {
+	$horaires = tfp_horaires_contact_defaut();
+}
 if ( '' !== $horaires ) {
 	$coordonnees['items'][] = array(
 		'icone'       => '🕑',
-		'titre'       => 'Horaires de contact',
+		'titre'       => 'Disponibilité',
 		'description' => $horaires,
-		'provisoire'  => true,
-		'note'        => 'Horaires indicatifs, en cours de confirmation.',
 	);
 }
 ?>

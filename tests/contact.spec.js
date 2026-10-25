@@ -54,7 +54,7 @@ test.describe('Contact — cartes de la maquette', () => {
 			/Téléphone/,
 			/E-mail/,
 			/Implantation/,
-			/Horaires de contact/,
+			/Disponibilité/,
 			/sur Google|HT\/h/,
 		];
 		attendu.forEach((motif, i) => {
@@ -73,16 +73,20 @@ test.describe('Contact — cartes de la maquette', () => {
 		expect(joint).not.toMatch(/agence/i);
 	});
 
-	test('les horaires sont affichés, marqués provisoires, et absents des données structurées', async ({ page }) => {
+	test('disponibilité : seulement ce qui est établi, sans mention provisoire ni donnée structurée', async ({ page }) => {
 		await page.goto(PAGE, { waitUntil: 'domcontentloaded' });
 
-		const carte = page.locator('li[data-tfp-provisional]', { hasText: 'Horaires de contact' });
-		await expect(carte, 'la carte horaires doit être marquée provisoire').toHaveCount(1);
+		// Revue des trois ZIP du 25 octobre 2026, §6 : plus d'amplitude inventée ni de « Horaires
+		// indicatifs, en cours de confirmation ». Réponse sous 24 h et plage d'intervention
+		// (PROJECT_INPUTS.md) seulement.
+		const carte = page.locator('.tfp-card-tile', { hasText: 'Disponibilité' });
+		await expect(carte).toHaveCount(1);
+		await expect(carte).toContainText('Réponse sous 24 h');
+		await expect(carte).not.toHaveAttribute('data-tfp-provisional', /.*/);
+		const texte = await page.locator('main').innerText();
+		expect(texte).not.toMatch(/en cours de confirmation|Horaires indicatifs|lundi au vendredi/);
 
-		const mention = carte.locator('[data-tfp-provisional-notice]');
-		await expect(mention, 'la mention provisoire doit être visible du visiteur').toBeVisible();
-
-		// Une amplitude non confirmée déclarée en donnée structurée est un engagement opposable.
+		// Une amplitude déclarée en donnée structurée est un engagement opposable.
 		const graphe = await page.evaluate(() =>
 			[...document.querySelectorAll('script[type="application/ld+json"]')].map((s) => s.textContent).join(' ')
 		);

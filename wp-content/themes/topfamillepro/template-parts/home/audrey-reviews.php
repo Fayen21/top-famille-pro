@@ -64,7 +64,7 @@ $is_real      = tfp_audrey_photo_is_real();
 		<div class="tfp-gerante__texte">
 			<h2 id="tfp-gerante-titre" class="tfp-gerante__titre"><?php echo esc_html( $site['manager'] ); ?>, gérante de <?php echo esc_html( $site['brand_name'] ); ?></h2>
 			<p class="tfp-gerante__lede">
-				Gérante de <?php echo esc_html( $site['brand_name'] ); ?>, <?php echo esc_html( $first_name ); ?> supervise l'organisation des prestations et le suivi des clients. Elle reste directement joignable pour échanger sur vos locaux et vos besoins.
+				<?php echo esc_html( $first_name ); ?> supervise l'organisation des prestations et le suivi des clients. Elle reste directement joignable pour échanger sur vos locaux et vos besoins.
 			</p>
 			<blockquote class="tfp-quote" data-tfp-provisional="1">&laquo;&nbsp;Mon rôle, c'est de rester joignable et de tenir mes engagements. Chaque client sait à qui parler, et sait ce qui a été fait dans ses locaux.&nbsp;&raquo;</blockquote>
 			<p class="tfp-provisional-notice" data-tfp-provisional-notice="1">Citation en attente de validation par l’intéressée.</p>
