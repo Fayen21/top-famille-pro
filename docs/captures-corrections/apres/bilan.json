@@ -1,4 +1,274 @@
 {
+ "maillage-besancon-375": {
+  "route": "/zones-intervention/doubs/besancon/",
+  "largeur": 375,
+  "mode": "composant",
+  "images": {
+   "images": 4,
+   "completes": 4,
+   "rendues_non_chargees": []
+  }
+ },
+ "maillage-auxerre-375": {
+  "route": "/zones-intervention/yonne/auxerre/",
+  "largeur": 375,
+  "mode": "composant",
+  "images": {
+   "images": 4,
+   "completes": 4,
+   "rendues_non_chargees": []
+  }
+ },
+ "maillage-belfort-375": {
+  "route": "/zones-intervention/territoire-de-belfort/belfort/",
+  "largeur": 375,
+  "mode": "composant",
+  "images": {
+   "images": 4,
+   "completes": 4,
+   "rendues_non_chargees": []
+  }
+ },
+ "maillage-nevers-375": {
+  "route": "/zones-intervention/nievre/nevers/",
+  "largeur": 375,
+  "mode": "composant",
+  "images": {
+   "images": 4,
+   "completes": 4,
+   "rendues_non_chargees": []
+  }
+ },
+ "maillage-vesoul-375": {
+  "route": "/zones-intervention/haute-saone/vesoul/",
+  "largeur": 375,
+  "mode": "composant",
+  "images": {
+   "images": 4,
+   "completes": 4,
+   "rendues_non_chargees": []
+  }
+ },
+ "maillage-chalon-sur-saone-375": {
+  "route": "/zones-intervention/saone-et-loire/chalon-sur-saone/",
+  "largeur": 375,
+  "mode": "composant",
+  "images": {
+   "images": 4,
+   "completes": 4,
+   "rendues_non_chargees": []
+  }
+ },
+ "maillage-macon-375": {
+  "route": "/zones-intervention/saone-et-loire/macon/",
+  "largeur": 375,
+  "mode": "composant",
+  "images": {
+   "images": 4,
+   "completes": 4,
+   "rendues_non_chargees": []
+  }
+ },
+ "maillage-dole-375": {
+  "route": "/zones-intervention/jura/dole/",
+  "largeur": 375,
+  "mode": "composant",
+  "images": {
+   "images": 4,
+   "completes": 4,
+   "rendues_non_chargees": []
+  }
+ },
+ "maillage-lons-le-saunier-375": {
+  "route": "/zones-intervention/jura/lons-le-saunier/",
+  "largeur": 375,
+  "mode": "composant",
+  "images": {
+   "images": 4,
+   "completes": 4,
+   "rendues_non_chargees": []
+  }
+ },
+ "maillage-beaune-375": {
+  "route": "/zones-intervention/cote-dor/beaune/",
+  "largeur": 375,
+  "mode": "composant",
+  "images": {
+   "images": 4,
+   "completes": 4,
+   "rendues_non_chargees": []
+  }
+ },
+ "departement-cote-dor-375": {
+  "route": "/zones-intervention/cote-dor/",
+  "largeur": 375,
+  "mode": "composant",
+  "images": {
+   "images": 3,
+   "completes": 3,
+   "rendues_non_chargees": []
+  }
+ },
+ "departement-doubs-375": {
+  "route": "/zones-intervention/doubs/",
+  "largeur": 375,
+  "mode": "composant",
+  "images": {
+   "images": 3,
+   "completes": 3,
+   "rendues_non_chargees": []
+  }
+ },
+ "departement-jura-375": {
+  "route": "/zones-intervention/jura/",
+  "largeur": 375,
+  "mode": "composant",
+  "images": {
+   "images": 3,
+   "completes": 3,
+   "rendues_non_chargees": []
+  }
+ },
+ "departement-nievre-375": {
+  "route": "/zones-intervention/nievre/",
+  "largeur": 375,
+  "mode": "composant",
+  "images": {
+   "images": 3,
+   "completes": 3,
+   "rendues_non_chargees": []
+  }
+ },
+ "departement-haute-saone-375": {
+  "route": "/zones-intervention/haute-saone/",
+  "largeur": 375,
+  "mode": "composant",
+  "images": {
+   "images": 3,
+   "completes": 3,
+   "rendues_non_chargees": []
+  }
+ },
+ "departement-saone-et-loire-375": {
+  "route": "/zones-intervention/saone-et-loire/",
+  "largeur": 375,
+  "mode": "composant",
+  "images": {
+   "images": 3,
+   "completes": 3,
+   "rendues_non_chargees": []
+  }
+ },
+ "departement-yonne-375": {
+  "route": "/zones-intervention/yonne/",
+  "largeur": 375,
+  "mode": "composant",
+  "images": {
+   "images": 3,
+   "completes": 3,
+   "rendues_non_chargees": []
+  }
+ },
+ "departement-territoire-de-belfort-375": {
+  "route": "/zones-intervention/territoire-de-belfort/",
+  "largeur": 375,
+  "mode": "composant",
+  "images": {
+   "images": 3,
+   "completes": 3,
+   "rendues_non_chargees": []
+  }
+ },
+ "tarif-prestation-bureaux-375": {
+  "route": "/prestations/bureaux/",
+  "largeur": 375,
+  "mode": "composant",
+  "images": {
+   "images": 4,
+   "completes": 4,
+   "rendues_non_chargees": []
+  }
+ },
+ "tarif-prestation-bureaux-1440": {
+  "route": "/prestations/bureaux/",
+  "largeur": 1440,
+  "mode": "composant",
+  "images": {
+   "images": 4,
+   "completes": 4,
+   "rendues_non_chargees": []
+  }
+ },
+ "ponctuel-375": {
+  "route": "/prestations/ponctuel/",
+  "largeur": 375,
+  "mode": "page",
+  "images": {
+   "images": 4,
+   "completes": 4,
+   "rendues_non_chargees": []
+  }
+ },
+ "ponctuel-1440": {
+  "route": "/prestations/ponctuel/",
+  "largeur": 1440,
+  "mode": "page",
+  "images": {
+   "images": 4,
+   "completes": 4,
+   "rendues_non_chargees": []
+  }
+ },
+ "exemple-saint-apollinaire-375": {
+  "route": "/zones-intervention/cote-dor/saint-apollinaire/",
+  "largeur": 375,
+  "mode": "composant",
+  "images": {
+   "images": 4,
+   "completes": 4,
+   "rendues_non_chargees": []
+  }
+ },
+ "exemple-dijon-1440": {
+  "route": "/zones-intervention/cote-dor/dijon/",
+  "largeur": 1440,
+  "mode": "composant",
+  "images": {
+   "images": 4,
+   "completes": 4,
+   "rendues_non_chargees": []
+  }
+ },
+ "devis-etape1-haut-375": {
+  "route": "/demande-de-devis/",
+  "largeur": 375,
+  "mode": "fenetre",
+  "images": {
+   "images": 4,
+   "completes": 4,
+   "rendues_non_chargees": []
+  }
+ },
+ "devis-etape1-bas-375": {
+  "route": "/demande-de-devis/",
+  "largeur": 375,
+  "mode": "fenetre",
+  "images": {
+   "images": 4,
+   "completes": 4,
+   "rendues_non_chargees": []
+  }
+ },
+ "devis-etape2-375": {
+  "route": "/demande-de-devis/",
+  "largeur": 375,
+  "mode": "fenetre",
+  "images": {
+   "images": 4,
+   "completes": 4,
+   "rendues_non_chargees": []
+  }
+ },
  "recrutement-bas-375": {
   "route": "/recrutement/",
   "largeur": 375,
@@ -6,6 +276,26 @@
   "images": {
    "images": 4,
    "completes": 4,
+   "rendues_non_chargees": []
+  }
+ },
+ "contact-bas-375": {
+  "route": "/contact/",
+  "largeur": 375,
+  "mode": "fenetre",
+  "images": {
+   "images": 4,
+   "completes": 4,
+   "rendues_non_chargees": []
+  }
+ },
+ "mentions-bas-375": {
+  "route": "/mentions-legales/",
+  "largeur": 375,
+  "mode": "fenetre",
+  "images": {
+   "images": 3,
+   "completes": 3,
    "rendues_non_chargees": []
   }
  },
@@ -19,10 +309,130 @@
    "rendues_non_chargees": []
   }
  },
+ "accueil-fin-1440": {
+  "route": "/",
+  "largeur": 1440,
+  "mode": "fenetre",
+  "images": {
+   "images": 12,
+   "completes": 12,
+   "rendues_non_chargees": []
+  }
+ },
+ "menu-mobile-375x812": {
+  "route": "/",
+  "largeur": 375,
+  "mode": "fenetre",
+  "images": {
+   "images": 12,
+   "completes": 12,
+   "rendues_non_chargees": []
+  }
+ },
  "menu-mobile-bas-375x560": {
   "route": "/",
   "largeur": 375,
   "mode": "fenetre",
+  "images": {
+   "images": 12,
+   "completes": 12,
+   "rendues_non_chargees": []
+  }
+ },
+ "footer-375": {
+  "route": "/",
+  "largeur": 375,
+  "mode": "composant",
+  "images": {
+   "images": 12,
+   "completes": 12,
+   "rendues_non_chargees": []
+  }
+ },
+ "etapes-375": {
+  "route": "/",
+  "largeur": 375,
+  "mode": "composant",
+  "images": {
+   "images": 12,
+   "completes": 12,
+   "rendues_non_chargees": []
+  }
+ },
+ "etapes-768": {
+  "route": "/",
+  "largeur": 768,
+  "mode": "composant",
+  "images": {
+   "images": 12,
+   "completes": 12,
+   "rendues_non_chargees": []
+  }
+ },
+ "carte-375": {
+  "route": "/",
+  "largeur": 375,
+  "mode": "composant",
+  "images": {
+   "images": 12,
+   "completes": 12,
+   "rendues_non_chargees": []
+  }
+ },
+ "carte-1440": {
+  "route": "/",
+  "largeur": 1440,
+  "mode": "composant",
+  "images": {
+   "images": 12,
+   "completes": 12,
+   "rendues_non_chargees": []
+  }
+ },
+ "gerante-375": {
+  "route": "/",
+  "largeur": 375,
+  "mode": "composant",
+  "images": {
+   "images": 12,
+   "completes": 12,
+   "rendues_non_chargees": []
+  }
+ },
+ "prestations-index-1440": {
+  "route": "/prestations/",
+  "largeur": 1440,
+  "mode": "page",
+  "images": {
+   "images": 9,
+   "completes": 9,
+   "rendues_non_chargees": []
+  }
+ },
+ "prestations-index-375": {
+  "route": "/prestations/",
+  "largeur": 375,
+  "mode": "page",
+  "images": {
+   "images": 9,
+   "completes": 9,
+   "rendues_non_chargees": []
+  }
+ },
+ "accueil-1440": {
+  "route": "/",
+  "largeur": 1440,
+  "mode": "page",
+  "images": {
+   "images": 12,
+   "completes": 12,
+   "rendues_non_chargees": []
+  }
+ },
+ "accueil-375": {
+  "route": "/",
+  "largeur": 375,
+  "mode": "page",
   "images": {
    "images": 12,
    "completes": 12,

@@ -2164,3 +2164,50 @@ un défaut, elle constate une absence.**
 Le chantier repart d'**un seul tronc**. Toute reprise se fait sur
 `hotfix-production-fidelite-claude-design` ; la branche `claude/g23-fidelite-claude-design-7doxg4`
 est entièrement contenue dedans et n'a plus à être reprise.
+
+## Revue des trois ZIP — corrections complètes (25 octobre 2026, branche `claude/jolly-fermi-d5dryq`)
+
+Rapport complet, matrice des 35 défauts et preuves : `docs/RAPPORT-CORRECTIONS-REVUE-ZIP.md`.
+Point de départ `7955f64` (`f516b6d` et `f917741` en sont des ancêtres). Rien n'est fusionné dans
+`main`, rien n'est déployé, aucun DNS touché.
+
+### Fait
+
+- **Maillage géographique** construit par relations (`tfp_zone_maillage()`), plus par listes de la
+  maquette : « Dans le même département » ne contient plus que ce département (5 départements à
+  ville unique compris), plus de doublon entre groupes, « Nos autres secteurs en
+  Bourgogne-Franche-Comté ». Test sémantique sur les 26 routes de zone (`tests/maillage.spec.js`).
+- **Tarifs** : « Tarif unique · En régulier comme en ponctuel » ; ponctuel en intervention unique
+  (7 h = 189 € HT de main-d'œuvre, champs ACF `exemple_mode`/`exemple_heures`) ; 27 exemples de
+  zone mis en cohérence volume ↔ passages ; plus de « sans frais de déplacement ».
+- **CTA par parcours** (`tfp_parcours()`) : une conclusion par page ; devis sans barre ni pré-pied
+  et CTA du header vers le formulaire ouvert ; candidature en action principale du recrutement ;
+  contact et pages utilitaires sans bande commerciale ; bouton d'appel unique `tfp_bouton_appel()`.
+- **Design** : icônes SVG, chevron du menu mobile selon `aria-expanded`, tiroir fermé après
+  navigation, cartes de l'index des prestations remontées, pied mobile en volets `<details>`
+  (1 500 → 504 px), étapes resserrées sur mobile et rangées pleines sur tablette, carte contrastée
+  et légendée, titre « Une entreprise régionale basée à Saint-Apollinaire », `alt` de photos de
+  villes sans lieu affirmé.
+- **Éditorial** : pilier, article coût, contact (disponibilité établie seulement), cookies,
+  confidentialité (devis et contact séparés, candidatures externes), titres de prestation complets,
+  réserves défensives dites une fois. Décision consignée : `docs/DECISIONS.json` `revue-trois-zip`.
+- **Fonctionnel** : téléphone OU e-mail et code postal validés côté client (messages français,
+  focus, `aria-invalid`) et serveur ; sommaires d'articles liés à des ancres uniques visibles sous
+  le header ; filtres Conseils réels (amélioration progressive).
+- **Captures** : cause des images blanches de l'accueil 1440 vérifiée — l'outil ne faisait pas
+  défiler la page. `tools/lib/capture-fiable.mjs` (polices, défilement, `decode()`, stabilité), sans
+  rendre aucune image « eager ».
+- **Thème en 0.14.0.** Paquets reconstruits après l'export statique, parité 1 267 fichiers.
+
+### Reste à faire
+
+- **Validation visuelle humaine** du dossier `release/dossier-revue-zip-2026-10-25-volume-{1,2}-*.zip`.
+- Mesure Lighthouse sur Hostinger après déploiement (les chiffres actuels sont ceux du banc local).
+- Inchangé : photo et citation d'Audrey, vrais avis, URL de la fiche Google, Kbis.
+
+### Décisions prises dans cette passe
+
+- Les pages utilitaires (mentions, confidentialité, cookies, plan du site) n'ont plus de barre
+  d'action mobile : le CTA du header suffit.
+- Disponibilité affichée sur Contact = éléments de `PROJECT_INPUTS.md` seulement.
+- `tests/fidelite.spec.js` attend le nouveau titre de la section couverture.
