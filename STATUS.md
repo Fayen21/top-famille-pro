@@ -2198,6 +2198,12 @@ Point de départ `7955f64` (`f516b6d` et `f917741` en sont des ancêtres). Rien 
   défiler la page. `tools/lib/capture-fiable.mjs` (polices, défilement, `decode()`, stabilité), sans
   rendre aucune image « eager ».
 - **Thème en 0.14.0.** Paquets reconstruits après l'export statique, parité 1 267 fichiers.
+- **Suite complète sur `149acd6`** (`development`) : 1 362 / 1 363. Seul échec : soumission du
+  devis refusée par la limitation de fréquence (5/h/IP) après les relances de la journée ; fichier
+  fonctionnel relancé après purge des transients : 15/15. Lighthouse banc local : 20/20 au-dessus des
+  cibles. Revue 53 routes : 106 écrans sans défaut objectivable.
+- **Piège noté** : la limitation de fréquence du devis rend la suite sensible à l'ordre et aux
+  relances dans l'heure. Purger les transients du banc avant une suite complète.
 
 ### Reste à faire
 

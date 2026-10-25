@@ -98,14 +98,14 @@ Google (toujours masquée), « Kbis à confirmer » (pas un nouveau bloqueur).
 
 | Contrôle | Résultat | Commit |
 |---|---|---|
-| `npm run lint:php` | 83 fichiers, 0 erreur | final |
-| `npm run build` | CSS/JS + images | final |
-| Suite Playwright complète, `development` | voir §5 bis | final |
+| `npm run lint:php` | 83 fichiers, 0 erreur | `149acd6` |
+| `npm run build` | CSS/JS + images | `3f6478b`, CSS/JS reconstruits à chaque commit suivant |
+| Suite Playwright complète, `development` | 1 362 / 1 363 — l'échec est la limitation de fréquence, voir §5 bis | `149acd6` |
 | Suites ciblées : maillage (26), corrections-zip (30), functional (15), contact, décisions, fidélité, passe-visuelle, accessibilité | vertes | `777e467` puis final |
 | Lighthouse, 10 pages × mobile/bureau, `banc-production.mjs` | 20/20 au-dessus des cibles (perf ≥ 97, a11y/BP/SEO 100, LCP mobile ≤ 1,98 s, CLS 0) | `49e2d3c` |
-| Export statique + `--verifier` | 53/53 routes hors ligne, 0 image cassée, 0 requête externe | `49e2d3c` |
-| Paquets + parité dépôt ↔ livraison | 1 267 fichiers concordants | `49e2d3c` |
-| Dossier hors ligne, extrait à neuf, réseau coupé | conforme | final |
+| Export statique + `--verifier` | 53/53 routes hors ligne, 0 image cassée, 0 requête externe | `49e2d3c` (seul `style.css` a changé depuis : version 0.14.0) |
+| Paquets + parité dépôt ↔ livraison | 1 267 fichiers concordants | reconstruits après le passage en 0.14.0 |
+| Dossier hors ligne, extrait à neuf, réseau coupé | conforme | `149acd6` |
 
 **Lighthouse** : mesuré sur le banc local derrière un mandataire qui ajoute compression et cache
 comme LiteSpeed. Ce n'est **pas** une mesure Hostinger : le serveur réel (TTFB, cache LiteSpeed
@@ -113,7 +113,18 @@ effectif) reste à mesurer après déploiement.
 
 ### 5 bis. Suite complète sur le HEAD final
 
-_Complété après exécution — voir la section STATUS du 25 octobre 2026._
+Exécutée sur le commit `149acd6` (code identique au HEAD : le commit suivant ne touche que
+`docs/` et les captures de référence), banc en `development`, du 2026-10-25T16:30:18Z au
+2026-10-25T16:39:29Z : **1 362 réussis, 1 échec**.
+
+L'échec est `quote-form.spec.js` « soumission complète (téléphone seul) » : le serveur a répondu
+`erreur=limite`. C'est la **limitation de fréquence** (5 demandes par heure et par IP) qui a
+joué son rôle : plusieurs fichiers de la suite et les relances de la journée soumettent depuis la
+même adresse. Après purge des transients du banc (`wp transient delete --all`), le fichier
+fonctionnel relancé seul passe : **15/15**. Aucun e-mail réel n'est parti (`data-tfp-mail-disabled`
+vérifié avant chaque soumission).
+
+Lint PHP sur le même commit : 83 fichiers, 0 erreur.
 
 ## 6. Livrables
 
