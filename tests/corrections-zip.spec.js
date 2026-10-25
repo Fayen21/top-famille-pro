@@ -270,3 +270,61 @@ test.describe( 'Éditorial (§6)', () => {
 		await expect( page.locator( 'main h2', { hasText: /^Exemples de budgets$/ } ) ).toHaveCount( 1 );
 	} );
 } );
+
+test.describe( 'Recontrôles fonctionnels (§8)', () => {
+	for ( const largeur of [ 375, 1440 ] ) {
+		test( `sommaires d'articles à ${ largeur } px : liens, ancres uniques, cible sous le header`, async ( { page } ) => {
+			await page.setViewportSize( { width: largeur, height: 800 } );
+			for ( const route of [ '/conseils/frequence-bureaux/', '/conseils/cout-nettoyage-bureaux/', '/conseils/cahier-des-charges-nettoyage/' ] ) {
+				await page.goto( route );
+				const hrefs = await page.locator( '.tfp-toc a' ).evaluateAll( ( as ) => as.map( ( a ) => a.getAttribute( 'href' ) ) );
+				expect( hrefs.length, route ).toBeGreaterThan( 2 );
+				expect( new Set( hrefs ).size, route ).toBe( hrefs.length );
+				const ids = await page.locator( '[id]' ).evaluateAll( ( els ) => els.map( ( e ) => e.id ) );
+				expect( new Set( ids ).size, `${ route } : identifiants dupliqués` ).toBe( ids.length );
+				for ( const h of hrefs ) {
+					expect( h, route ).toMatch( /^#[a-z0-9-]+$/ );
+					await page.locator( `.tfp-toc a[href="${ h }"]` ).click();
+					await page.waitForTimeout( 100 );
+					const [ haut, basHeader ] = await page.evaluate( ( id ) => [
+						document.getElementById( id ).getBoundingClientRect().top,
+						document.querySelector( '.tfp-header' ).getBoundingClientRect().bottom,
+					], h.slice( 1 ) );
+					expect( haut, `${ route }${ h }` ).toBeGreaterThanOrEqual( basHeader );
+					await page.evaluate( () => window.scrollTo( 0, 0 ) );
+				}
+			}
+		} );
+	}
+
+	test( 'filtres Conseils : boutons aria-pressed qui filtrent, tout affiché sans JavaScript', async ( { page, browser } ) => {
+		await page.goto( '/conseils/' );
+		const boutons = page.locator( '[data-tfp-filtres] button' );
+		expect( await boutons.count() ).toBeGreaterThan( 1 );
+		await expect( boutons.first() ).toHaveAttribute( 'aria-pressed', 'true' );
+		const total = await page.locator( '.tfp-article-card' ).count();
+		await boutons.nth( 1 ).click();
+		await expect( boutons.nth( 1 ) ).toHaveAttribute( 'aria-pressed', 'true' );
+		await expect( boutons.first() ).toHaveAttribute( 'aria-pressed', 'false' );
+		const visibles = await page.locator( '.tfp-article-card:visible' ).count();
+		expect( visibles ).toBeGreaterThan( 0 );
+		expect( visibles ).toBeLessThan( total );
+		await expect( page.locator( '[data-tfp-filtres-statut]' ) ).toHaveText( new RegExp( `^${ visibles } article` ) );
+		await boutons.first().click();
+		await expect( page.locator( '.tfp-article-card:visible' ) ).toHaveCount( total );
+
+		const ctx = await browser.newContext( { javaScriptEnabled: false } );
+		const sansJs = await ctx.newPage();
+		await sansJs.goto( '/conseils/' );
+		await expect( sansJs.locator( '[data-tfp-filtres] button' ) ).toHaveCount( 0 );
+		await expect( sansJs.locator( '.tfp-article-card:visible' ) ).toHaveCount( total );
+		await ctx.close();
+	} );
+
+	test( 'liens de candidature : site carrière externe, aucun formulaire de CV', async ( { page } ) => {
+		await page.goto( '/recrutement/' );
+		const liens = page.locator( 'a[href^="https://careers.werecruit.io/fr/top-famille"]' );
+		expect( await liens.count() ).toBeGreaterThanOrEqual( 2 );
+		await expect( page.locator( 'main form, main input[type="file"]' ) ).toHaveCount( 0 );
+	} );
+} );

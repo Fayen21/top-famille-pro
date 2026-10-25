@@ -42,17 +42,47 @@ $maillage      = get_post_meta( $post_id, '_tfp_maillage', true );
 $cta_titre     = get_post_meta( $post_id, '_tfp_cta_titre', true ) ?: "Un projet d'entretien pour vos locaux ?";
 $cta_texte     = get_post_meta( $post_id, '_tfp_cta_texte', true ) ?: 'Devis gratuit sous 24 h, sans engagement.';
 
-// Sommaire déduit des H2 du corps : il ne peut donc pas se désynchroniser du contenu, alors qu'un
-// sommaire stocké à part se périme au premier ajout de section.
+// Sommaire déduit des H2 du corps RENDU : il ne peut donc pas se désynchroniser du contenu, alors
+// qu'un sommaire stocké à part se périme au premier ajout de section.
+//
+// Revue des trois ZIP du 25 octobre 2026, §8 : les entrées du sommaire étaient du texte seul. Chaque
+// H2 reçoit désormais une ancre unique (slug du titre, suffixé en cas de doublon) et chaque entrée
+// est un lien vers elle ; le décalage sous le header collant est porté par `:target` en CSS
+// (scroll-margin-top).
+$ancres_utilisees = array();
+$ancre            = function ( $texte ) use ( &$ancres_utilisees ) {
+	// sanitize_title encode les caractères hors ASCII (« m² » → « m%c2%b2 ») : on les retire.
+	$base = trim( preg_replace( '/-+/', '-', preg_replace( '/%[0-9a-f]{2}/i', '', sanitize_title( $texte ) ) ), '-' ) ?: 'section';
+	$id   = $base;
+	$n    = 2;
+	while ( isset( $ancres_utilisees[ $id ] ) ) {
+		$id = $base . '-' . $n++;
+	}
+	$ancres_utilisees[ $id ] = true;
+	return $id;
+};
+
 $sommaire = array();
-if ( preg_match_all( '#<h2[^>]*>(.*?)</h2>#is', get_post_field( 'post_content', $post_id ), $m ) ) {
-	$sommaire = array_map( 'wp_strip_all_tags', $m[1] );
-}
+$contenu  = str_replace( ']]>', ']]&gt;', apply_filters( 'the_content', get_post_field( 'post_content', $post_id ) ) );
+$contenu  = preg_replace_callback(
+	'#<h2((?:(?!\bid=)[^>])*)>(.*?)</h2>#is',
+	function ( $m ) use ( $ancre, &$sommaire ) {
+		$texte      = wp_strip_all_tags( $m[2] );
+		$id         = $ancre( $texte );
+		$sommaire[] = array( 'texte' => $texte, 'id' => $id );
+		return '<h2 id="' . esc_attr( $id ) . '"' . $m[1] . '>' . $m[2] . '</h2>';
+	},
+	$contenu
+);
+$id_erreurs = '';
 if ( $erreurs_titre ) {
-	$sommaire[] = $erreurs_titre;
+	$id_erreurs = $ancre( $erreurs_titre );
+	$sommaire[] = array( 'texte' => $erreurs_titre, 'id' => $id_erreurs );
 }
+$id_faq = '';
 if ( ! empty( $faq ) ) {
-	$sommaire[] = 'Questions fréquentes';
+	$id_faq     = $ancre( 'Questions fréquentes' );
+	$sommaire[] = array( 'texte' => 'Questions fréquentes', 'id' => $id_faq );
 }
 
 $schema = array(
@@ -159,7 +189,7 @@ get_header();
 		<strong>Sommaire</strong>
 		<ul>
 			<?php foreach ( $sommaire as $entree ) : ?>
-				<li><?php echo esc_html( $entree ); ?></li>
+				<li><a href="#<?php echo esc_attr( $entree['id'] ); ?>"><?php echo esc_html( $entree['texte'] ); ?></a></li>
 			<?php endforeach; ?>
 		</ul>
 	</nav>
@@ -167,13 +197,13 @@ get_header();
 <?php endif; ?>
 
 <article class="tfp-container tfp-container--narrow tfp-section--tight tfp-article-body" style="--tfp-bande-haut:0;--tfp-bande-bas:clamp(20px, 3vw, 32px)">
-	<?php the_content(); ?>
+	<?php echo $contenu; // phpcs:ignore WordPress.Security.EscapeOutput -- sortie de the_content, ancres ajoutées et échappées ci-dessus. ?>
 </article>
 
 <?php if ( ! empty( $erreurs ) ) : ?>
 <section class="tfp-section--alt tfp-section--tight" style="--tfp-bande-haut:clamp(28px, 4vw, 44px);--tfp-bande-bas:clamp(28px, 4vw, 44px)">
 	<div class="tfp-container tfp-container--narrow">
-		<h2><?php echo esc_html( $erreurs_titre ); ?></h2>
+		<h2 id="<?php echo esc_attr( $id_erreurs ); ?>"><?php echo esc_html( $erreurs_titre ); ?></h2>
 		<ul class="tfp-list-excluded">
 			<?php foreach ( $erreurs as $erreur ) : ?>
 				<li><?php echo esc_html( $erreur ); ?></li>
@@ -186,7 +216,7 @@ get_header();
 <?php if ( ! empty( $faq ) ) : ?>
 <section class="tfp-section--alt tfp-section--tight" style="--tfp-bande-haut:clamp(28px, 4vw, 44px);--tfp-bande-bas:clamp(28px, 4vw, 44px)">
 	<div class="tfp-container tfp-container--narrow">
-		<h2>Questions fréquentes</h2>
+		<h2 id="<?php echo esc_attr( $id_faq ); ?>">Questions fréquentes</h2>
 		<div style="margin-top:20px">
 			<?php foreach ( $faq as $item ) : ?>
 				<details class="tfp-card tfp-faq-item">

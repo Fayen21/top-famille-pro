@@ -65,31 +65,69 @@ test.describe('Formulaire de demande de devis', () => {
 		expect(url.searchParams.get('erreur')).not.toBe('champs');
 	});
 
-	test('ni téléphone ni e-mail → rejeté par le serveur (erreur=champs)', async ({ page }) => {
-		await page.goto(FORM_URL);
-		await fillStepOne(page);
-		await page.click('[data-step-next]');
+	/*
+	 * Gardes SERVEUR : le client bloque désormais ces cas lui-même (test suivant). Pour éprouver
+	 * la garde serveur seule, l'envoi passe par HTMLFormElement.prototype.submit, qui ne déclenche
+	 * pas l'événement `submit` — donc aucune validation client.
+	 */
+	async function envoyerSansClient(page, { telephone = '', email = '', codePostal = '' } = {}) {
+		await fillStepOne(page, { telephone, email });
+		if (codePostal) await page.fill('#tfp-code-postal', codePostal);
+		await page.evaluate(() => document.querySelectorAll('[data-step]').forEach((f) => { f.hidden = false; }));
 		await page.fill('#tfp-message', 'Message de test.');
 		await page.check('input[name="consentement"]');
-		// data-step-submit est de type="submit" mais required côté client bloque déjà la
-		// soumission ; on force l'envoi réel côté serveur pour vérifier la garde serveur elle-même,
-		// indépendamment de la validation client.
-		await page.evaluate(() => document.querySelector('.tfp-quote-form').setAttribute('novalidate', ''));
-		await Promise.all([page.waitForNavigation(), page.click('[data-step-submit]')]);
-		const url = new URL(page.url());
-		expect(url.searchParams.get('erreur')).toBe('champs');
+		await Promise.all([
+			page.waitForNavigation(),
+			page.evaluate(() => HTMLFormElement.prototype.submit.call(document.querySelector('.tfp-quote-form'))),
+		]);
+		return new URL(page.url());
+	}
+
+	test('ni téléphone ni e-mail → rejeté par le serveur (erreur=champs)', async ({ page }) => {
+		await page.goto(FORM_URL);
+		expect((await envoyerSansClient(page)).searchParams.get('erreur')).toBe('champs');
 	});
 
 	test('e-mail mal formé → rejeté par le serveur (erreur=champs)', async ({ page }) => {
 		await page.goto(FORM_URL);
-		await fillStepOne(page, { email: 'pas-un-email' });
+		expect((await envoyerSansClient(page, { email: 'pas-un-email' })).searchParams.get('erreur')).toBe('champs');
+	});
+
+	test('code postal de quatre chiffres → rejeté par le serveur (erreur=champs)', async ({ page }) => {
+		await page.goto(FORM_URL);
+		expect((await envoyerSansClient(page, { telephone: '0600000000', codePostal: '2185' })).searchParams.get('erreur')).toBe('champs');
+	});
+
+	test('validation client : contact, e-mail et code postal — messages français, focus sur le champ', async ({ page }) => {
+		await page.goto(FORM_URL);
+		await fillStepOne(page);
 		await page.click('[data-step-next]');
-		await page.fill('#tfp-message', 'Message de test.');
-		await page.check('input[name="consentement"]');
-		await page.evaluate(() => document.querySelector('.tfp-quote-form').setAttribute('novalidate', ''));
-		await Promise.all([page.waitForNavigation(), page.click('[data-step-submit]')]);
-		const url = new URL(page.url());
-		expect(url.searchParams.get('erreur')).toBe('champs');
+		await expect(page.locator('[data-form-errors]')).toContainText('Téléphone ou e-mail');
+		await expect(page.locator('#tfp-telephone')).toBeFocused();
+		await expect(page.locator('#tfp-telephone')).toHaveAttribute('aria-invalid', 'true');
+		await expect(page.locator('[data-step="1"]')).toBeHidden();
+
+		await page.fill('#tfp-email', 'pas-un-email');
+		await page.click('[data-step-next]');
+		await expect(page.locator('[data-form-errors]')).toContainText('E-mail : adresse mal formée');
+		await expect(page.locator('#tfp-email')).toBeFocused();
+
+		await page.fill('#tfp-email', 'test@example.com');
+		await page.fill('#tfp-code-postal', '218');
+		await page.click('[data-step-next]');
+		await expect(page.locator('[data-form-errors]')).toContainText('Code postal : cinq chiffres');
+		await expect(page.locator('#tfp-code-postal')).toBeFocused();
+
+		// Vide ou cinq chiffres : accepté. Les valeurs de l'étape 1 sont conservées après aller-retour.
+		await page.fill('#tfp-code-postal', '21850');
+		await page.fill('#tfp-ville-visible', 'Saint-Apollinaire');
+		await page.click('[data-step-next]');
+		await expect(page.locator('[data-step="1"]')).toBeVisible();
+		await expect(page.locator('[data-quote-recap-text]')).toContainText('Saint-Apollinaire');
+		await page.locator('[data-step="1"] [data-step-prev]').first().click();
+		await expect(page.locator('#tfp-code-postal')).toHaveValue('21850');
+		await expect(page.locator('#tfp-email')).toHaveValue('test@example.com');
+		await expect(page.locator('#tfp-type-locaux')).toHaveValue('bureaux');
 	});
 
 	test('consentement non coché → bloqué côté client, formulaire non envoyé', async ({ page }) => {
@@ -116,6 +154,19 @@ test.describe('Formulaire de demande de devis', () => {
 		const url = new URL(page.url());
 		expect(url.searchParams.has('merci')).toBe(false);
 		expect(url.searchParams.has('erreur')).toBe(false);
+	});
+
+	test('préremplissage serveur : prestation, type de locaux, régime, ville, département, UTM', async ({ page }) => {
+		await page.goto(FORM_URL + '?service=ponctuel&ville=Beaune&departement=C%C3%B4te-d%27Or&utm_source=google&utm_medium=cpc&utm_campaign=beaune');
+		await expect(page.locator('#tfp-type-locaux')).toHaveValue('ponctuel');
+		await expect(page.locator('#tfp-regime')).toHaveValue('ponctuel');
+		await expect(page.locator('#tfp-ville-visible')).toHaveValue('Beaune');
+		await expect(page.locator('[name="utm_source"]')).toHaveValue('google');
+		await expect(page.locator('[name="utm_medium"]')).toHaveValue('cpc');
+		await expect(page.locator('[name="utm_campaign"]')).toHaveValue('beaune');
+		expect(await page.locator('[name="departement"]').inputValue()).toMatch(/^Côte/);
+		await page.goto(FORM_URL + '?service=commerces');
+		await expect(page.locator('#tfp-type-locaux')).toHaveValue('commerces');
 	});
 
 	test('contexte local transmis et pré-rempli depuis un lien contextualisé', async ({ page }) => {

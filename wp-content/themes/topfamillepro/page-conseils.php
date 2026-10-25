@@ -6,9 +6,13 @@
  * Reproduit les 7 blocs de la route `#/conseils` de la maquette : hero, filtres par thème, article
  * mis en avant, les autres articles, « Passer du conseil à votre situation », relance.
  *
- * Les filtres par thème sont rendus tels quels mais sans comportement : la maquette les présente
- * comme des repères visuels, et une catégorie ne portant qu'un article ne justifie pas une page
- * d'archive supplémentaire. Ils ne sont donc pas des liens — jamais un `href="#"` (CLAUDE.md §8).
+ * Filtres par thème (revue des trois ZIP du 25 octobre 2026, §8) : une pastille « Toutes les
+ * catégories » en état actif qui ne filtrait rien était une commande morte. Ils filtrent désormais
+ * les cartes, par amélioration progressive : le serveur rend une simple liste de thèmes (sans
+ * JavaScript, tous les articles restent affichés et rien ne prétend être cliquable) ; src/js/
+ * conseils-filtres.js transforme chaque thème en bouton `aria-pressed` et annonce le nombre
+ * d'articles affichés. Pas de page d'archive par thème (une catégorie ne porte qu'un article), et
+ * jamais un `href="#"` (CLAUDE.md §8).
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -44,7 +48,7 @@ $carte = function ( $article, $mise_en_avant = false ) use ( $prenom ) {
 	$label = get_post_meta( $article->ID, '_tfp_categorie_label', true ) ?: 'Conseils';
 	$alt   = get_post_meta( $article->ID, '_tfp_image_alt', true );
 	?>
-	<a class="tfp-article-card<?php echo $mise_en_avant ? ' tfp-article-card--feature' : ''; ?>" href="<?php echo esc_url( get_permalink( $article ) ); ?>">
+	<a class="tfp-article-card<?php echo $mise_en_avant ? ' tfp-article-card--feature' : ''; ?>" href="<?php echo esc_url( get_permalink( $article ) ); ?>" data-tfp-theme="<?php echo esc_attr( $label ); ?>">
 		<div class="tfp-article-card__media">
 			<?php
 			tfp_picture(
@@ -124,23 +128,24 @@ get_header();
 
 <?php if ( ! empty( $themes ) ) : ?>
 <section class="tfp-container tfp-section--tight" style="--tfp-bande-haut:0px;--tfp-bande-bas:clamp(20px, 3vw, 32px)">
-	<ul class="tfp-theme-list">
-		<li class="tfp-theme-list__item is-current">Toutes les catégories</li>
+	<ul class="tfp-theme-list" data-tfp-filtres aria-label="Thèmes des articles">
+		<li class="tfp-theme-list__item is-current" data-tfp-theme="">Toutes les catégories</li>
 		<?php foreach ( $themes as $theme ) : ?>
-			<li class="tfp-theme-list__item"><?php echo esc_html( $theme ); ?></li>
+			<li class="tfp-theme-list__item" data-tfp-theme="<?php echo esc_attr( $theme ); ?>"><?php echo esc_html( $theme ); ?></li>
 		<?php endforeach; ?>
 	</ul>
+	<p class="visually-hidden" aria-live="polite" data-tfp-filtres-statut></p>
 </section>
 <?php endif; ?>
 
 <?php if ( $une ) : ?>
-<section class="tfp-container tfp-section--tight" style="--tfp-bande-haut:0px;--tfp-bande-bas:clamp(20px, 3vw, 32px)">
+<section class="tfp-container tfp-section--tight" data-tfp-filtre-section style="--tfp-bande-haut:0px;--tfp-bande-bas:clamp(20px, 3vw, 32px)">
 	<?php $carte( $une, true ); ?>
 </section>
 <?php endif; ?>
 
 <?php if ( ! empty( $articles ) ) : ?>
-<section class="tfp-section--tight" style="--tfp-bande-haut:clamp(20px, 3vw, 32px);--tfp-bande-bas:clamp(36px, 4vw, 56px)">
+<section class="tfp-section--tight" data-tfp-filtre-section style="--tfp-bande-haut:clamp(20px, 3vw, 32px);--tfp-bande-bas:clamp(36px, 4vw, 56px)">
 	<div class="tfp-container">
 		<?php
 		/*

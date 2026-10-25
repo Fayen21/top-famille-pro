@@ -100,7 +100,53 @@ function tfpInitQuoteForm() {
 			errors.push(`${name.replace('*', '').trim()} : champ requis ou invalide.`);
 			field.setAttribute('aria-invalid', 'true');
 		});
+		return errors.concat(validateRules(steps[index]));
+	}
+
+	/**
+	 * Règles qui ne s'expriment pas avec `required` (revue du 25 octobre 2026, §8) — les mêmes que
+	 * côté serveur (includes/quote-form.php) :
+	 *  - un moyen de recontact au moins : téléphone OU e-mail ;
+	 *  - un e-mail fourni doit être bien formé ;
+	 *  - le code postal est vide ou fait exactement cinq chiffres.
+	 * Messages en français, champ marqué `aria-invalid`, annoncés par la région live.
+	 */
+	function validateRules(step) {
+		const errors = [];
+		const marquer = (el, ok) => {
+			if (!el) return;
+			if (ok) el.removeAttribute('aria-invalid');
+			else el.setAttribute('aria-invalid', 'true');
+		};
+		const tel = step.querySelector('#tfp-telephone');
+		const mail = step.querySelector('#tfp-email');
+		if (tel && mail) {
+			const telV = tel.value.trim();
+			const mailV = mail.value.trim();
+			if (!telV && !mailV) {
+				errors.push('Téléphone ou e-mail : indiquez au moins l’un des deux pour être recontacté.');
+				marquer(tel, false);
+				marquer(mail, false);
+			} else {
+				marquer(tel, true);
+				const mailOk = !mailV || mail.checkValidity();
+				if (!mailOk) errors.push('E-mail : adresse mal formée (exemple : vous@entreprise.fr).');
+				marquer(mail, mailOk);
+			}
+		}
+		const cp = step.querySelector('#tfp-code-postal');
+		if (cp) {
+			const ok = cp.value.trim() === '' || /^[0-9]{5}$/.test(cp.value.trim());
+			if (!ok) errors.push('Code postal : cinq chiffres attendus, ou laissez le champ vide.');
+			marquer(cp, ok);
+		}
 		return errors;
+	}
+
+	/** Place le focus sur le premier champ en erreur de l'étape affichée. */
+	function focusFirstInvalid(index) {
+		const el = steps[index].querySelector('[aria-invalid="true"]');
+		if (el) el.focus();
 	}
 
 	if (nextBtn) {
@@ -108,6 +154,7 @@ function tfpInitQuoteForm() {
 			const errors = validateStep(0);
 			if (errors.length) {
 				announce(errors);
+				focusFirstInvalid(0);
 				return;
 			}
 			announce([]);
@@ -135,6 +182,7 @@ function tfpInitQuoteForm() {
 				current = 0;
 				showStep(current);
 			}
+			focusFirstInvalid(current);
 		}
 	});
 

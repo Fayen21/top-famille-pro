@@ -91,7 +91,9 @@ function tfp_handle_quote_submission() {
 	// légitime partageant la même adresse IP.
 	$email_fourni_invalide = ( '' !== $email ) && ! is_email( $email );
 	$aucun_contact         = empty( $telephone ) && empty( $email );
-	if ( empty( $nom ) || $aucun_contact || $email_fourni_invalide || empty( $message ) || ! $consentement ) {
+	// Code postal : vide, ou exactement cinq chiffres (même règle que le client, revue du 25 octobre 2026).
+	$code_postal_invalide = ( '' !== $code_postal ) && ! preg_match( '/^[0-9]{5}$/', $code_postal );
+	if ( empty( $nom ) || $aucun_contact || $email_fourni_invalide || $code_postal_invalide || empty( $message ) || ! $consentement ) {
 		wp_safe_redirect( add_query_arg( 'erreur', 'champs', $redirect_base ) );
 		exit;
 	}

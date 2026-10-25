@@ -3024,6 +3024,20 @@ body.tfp-type-prestation .tfp-hero__content h1 {
   color: var(--color-turquoise);
 }
 
+/* Entrées du sommaire : de vrais liens vers les ancres des H2 (revue du 25 octobre 2026),
+   soulignés pour être identifiables autrement que par la couleur. */
+.tfp-toc a {
+  color: var(--color-primary);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  padding-block: 2px;
+}
+
+.tfp-toc a:hover {
+  color: var(--color-navy);
+}
+
 /* Ce bloc redéclarait `h2`, `p` et `ul` du corps d'article — plus bas dans la feuille, il
    l'emportait sur les valeurs relevées quelques centaines de lignes plus haut et remettait en
    place exactement ce qu'elles corrigeaient : intitulés à 36 px de marge, paragraphes en
@@ -3068,9 +3082,9 @@ body.tfp-type-prestation .tfp-hero__content h1 {
   padding: 0;
 }
 
-/* Repères de thème, pas des filtres : ils ne sont pas cliquables, et leur apparence le dit
-   (pas de curseur main, pas de survol) — une pastille qui ressemble à un bouton sans en être un
-   est un piège d'interface. */
+/* Sans JavaScript : repères de thème non cliquables (pas de curseur main, pas de survol). Avec
+   JavaScript, src/js/conseils-filtres.js y place un vrai bouton (revue du 25 octobre 2026) : la
+   pastille passe alors son rembourrage au bouton, qui occupe toute la cible. */
 .tfp-theme-list__item {
   padding: 8px 16px;
   border: 1px solid var(--color-border);
@@ -3084,6 +3098,38 @@ body.tfp-type-prestation .tfp-hero__content h1 {
   background: var(--color-navy);
   border-color: var(--color-navy);
   color: var(--color-white);
+}
+
+.tfp-theme-list__item--filtre {
+  padding: 0;
+}
+
+/* Une carte ou une section masquée par le filtre doit l'être malgré son `display` propre. */
+.tfp-article-card[hidden],
+[data-tfp-filtre-section][hidden] {
+  display: none;
+}
+
+.tfp-theme-list__btn {
+  display: block;
+  min-height: 36px;
+  padding: 8px 16px;
+  border: 0;
+  border-radius: inherit;
+  background: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+.tfp-theme-list__item--filtre:not(.is-current):hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.tfp-theme-list__btn:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
 }
 
 .tfp-article-card {
@@ -5499,14 +5545,15 @@ body.tfp-body .tfp-card-tile--orientation-active .tfp-card-tile__desc {
    l'en-tête collant au lieu de passer dessous. */
 :target,
 [id^="tfp-formulaire"] {
-  /* Seul le header (90 px en bureau) reste collé : la barre haute défile avec la page. */
-  scroll-margin-top: 110px;
+  /* Mesuré le 25 octobre 2026 : le header collant, barre haute COMPRISE, fait 120 px en bureau et
+     101 px sous 820 px. L'ancien décalage (110 / 88 px) laissait le titre visé sous le header. */
+  scroll-margin-top: 136px;
 }
 
 @media (max-width: 819px) {
   :target,
   [id^="tfp-formulaire"] {
-    scroll-margin-top: 88px;
+    scroll-margin-top: 116px;
   }
 }
 
