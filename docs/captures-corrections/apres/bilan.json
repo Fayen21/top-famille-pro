@@ -1,0 +1,32 @@
+{
+ "recrutement-bas-375": {
+  "route": "/recrutement/",
+  "largeur": 375,
+  "mode": "fenetre",
+  "images": {
+   "images": 4,
+   "completes": 4,
+   "rendues_non_chargees": []
+  }
+ },
+ "dijon-fin-375": {
+  "route": "/zones-intervention/cote-dor/dijon/",
+  "largeur": 375,
+  "mode": "fenetre",
+  "images": {
+   "images": 4,
+   "completes": 4,
+   "rendues_non_chargees": []
+  }
+ },
+ "menu-mobile-bas-375x560": {
+  "route": "/",
+  "largeur": 375,
+  "mode": "fenetre",
+  "images": {
+   "images": 12,
+   "completes": 12,
+   "rendues_non_chargees": []
+  }
+ }
+}

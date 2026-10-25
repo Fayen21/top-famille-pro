@@ -2377,6 +2377,19 @@ body.tfp-body .tfp-row-heading {
   color: var(--color-white);
 }
 
+/* Icône SVG du téléphone (revue du 25 octobre 2026) : sur la même ligne que le numéro. */
+.tfp-footer__contact li:first-child a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tfp-footer__contact .tfp-icone {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 auto;
+}
+
 /* La ville est une information, pas un lien : elle reste en gris de second plan. */
 .tfp-footer__contact li:last-child {
   color: #8FAEB9;
@@ -5504,10 +5517,10 @@ body.tfp-body .tfp-card-tile--orientation-active .tfp-card-tile__desc {
   font-variant-numeric: tabular-nums;
 }
 
-.tfp-btn__libelle + .tfp-btn__numero::before {
-  content: "·";
-  margin-right: 0.45em;
-  opacity: 0.7;
+/* Le numéro se distingue du libellé par sa graisse, pas par un séparateur : replié sur une seconde
+   ligne (320–375 px), un « · » se retrouvait en tête de ligne (revue du 25 octobre 2026). */
+.tfp-btn__libelle + .tfp-btn__numero {
+  font-weight: var(--fw-medium);
 }
 
 .tfp-card-tile__icon .tfp-icone {

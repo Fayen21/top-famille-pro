@@ -29,7 +29,8 @@ const TFP_REASSURANCE_AVIS_MAX = 6; // Les six témoignages authentiques listés
  * PROJECT_INPUTS.md (réponse sous 24 h, interventions du lundi au samedi de 6 h à 22 h).
  */
 function tfp_horaires_contact_defaut() {
-	return 'Réponse sous 24 h · interventions généralement du lundi au samedi, 6 h – 22 h';
+	// Espaces insécables dans les durées et l'amplitude : « 6 h » ne se coupe pas en fin de ligne.
+	return "Réponse sous 24\u{00A0}h · interventions généralement du lundi au samedi, 6\u{00A0}h\u{00A0}–\u{00A0}22\u{00A0}h";
 }
 
 /**

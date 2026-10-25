@@ -1,6 +1,6 @@
 # Revue visuelle transversale — 53 routes × 375 / 1440 px
 
-> Généré par `tools/revue-visuelle.mjs` le 2026-10-21. Chaque route a été ouverte, FAQ dépliées, parcourue jusqu'au pied de page ; l'accueil avec le menu Zones ouvert, le devis à ses deux étapes. Les captures sont dans `docs/revue-visuelle/`. Le relevé automatique ci-dessous TRIE la lecture, il ne la remplace pas : la colonne « lecture » est remplie à la main.
+> Généré par `tools/revue-visuelle.mjs` le 2026-10-25. Chaque route a été ouverte, FAQ dépliées, parcourue jusqu'au pied de page ; l'accueil avec le menu Zones ouvert, le devis à ses deux étapes. Les captures sont dans `docs/revue-visuelle/`. Le relevé automatique ci-dessous TRIE la lecture, il ne la remplace pas : la colonne « lecture » est remplie à la main.
 
 | Route | 375 px — relevé auto | 1440 px — relevé auto | Lecture humaine |
 |---|---|---|---|

@@ -205,7 +205,9 @@ test.describe( 'Cinq étapes (§6)', () => {
 					const rt = titre.getBoundingClientRect(), rd = desc.getBoundingClientRect();
 					return {
 						titre: titre.textContent.trim(),
-						vertical: rt.top >= num.bottom - 1 && rd.top >= rt.bottom - 1,
+						// Revue du 25 octobre 2026 : sous 560 px, la pastille passe à gauche du titre
+						// (même ligne) ; la description reste sous le titre.
+						vertical: ( innerWidth < 560 ? num.right <= rt.left + 0.5 : rt.top >= num.bottom - 1 ) && rd.top >= rt.bottom - 1,
 						dedans: rd.right <= r.right + 0.5 && rd.bottom <= r.bottom + 0.5 && rt.right <= r.right + 0.5,
 						deborde: desc.scrollWidth > desc.clientWidth + 1,
 						tailleDesc: parseFloat( getComputedStyle( desc ).fontSize ),
@@ -417,18 +419,14 @@ test.describe( 'Audit transversal (§9) — pages statiques relevées', () => {
 		await expect( page.locator( '.tfp-card--inclus' ) ).toHaveCSS( 'background-color', 'rgb(221, 244, 243)' );
 	} );
 
-	test( 'page contact : parcours actif en fond primaire, mention des horaires sous sa carte', async ( { page } ) => {
+	test( 'page contact : parcours actif en fond primaire, plus de mention d’horaires provisoires', async ( { page } ) => {
 		await page.setViewportSize( { width: 1440, height: 900 } );
 		await page.goto( '/contact/' );
 		await expect( page.locator( '.tfp-card-tile--orientation-active' ) ).toHaveCSS( 'background-color', 'rgb(23, 74, 129)' );
 		await expect( page.locator( 'a.tfp-card-tile--orientation' ) ).toHaveAttribute( 'href', /demande-de-devis/ );
-		const m = await page.locator( 'li:has(> .tfp-provisional-notice)' ).first().evaluate( ( li ) => {
-			const carte = li.querySelector( '.tfp-card-tile' ).getBoundingClientRect();
-			const note = li.querySelector( '.tfp-provisional-notice' ).getBoundingClientRect();
-			return { carteBas: carte.bottom, noteHaut: note.top, carteLargeur: carte.width, liLargeur: li.getBoundingClientRect().width };
-		} );
-		expect( m.noteHaut ).toBeGreaterThanOrEqual( m.carteBas );
-		expect( m.carteLargeur ).toBeGreaterThan( m.liLargeur - 2 );
+		// Revue du 25 octobre 2026, §6 : la carte « Disponibilité » ne montre que des éléments établis,
+		// sans mention provisoire sous elle.
+		await expect( page.locator( 'main .tfp-provisional-notice' ) ).toHaveCount( 0 );
 	} );
 
 	test( 'pages légales : un seul titre « Droit applicable », chapeau et premier chapitre rapprochés', async ( { page } ) => {

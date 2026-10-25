@@ -35,6 +35,7 @@ import { chromium } from '@playwright/test';
 import { mkdirSync, writeFileSync, existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { ROUTE_MAP } from './route-map.mjs';
+import { preparer } from './lib/capture-fiable.mjs';
 
 const WP = process.env.TFP_BASE_URL || 'http://localhost:8901';
 const SORTIE = join('docs', 'revue-visuelle');
@@ -49,16 +50,14 @@ const ROUTES = Object.keys(ROUTE_MAP).filter((h) => !ONLY.length || ONLY.include
 // « villes principales par département »), pas une formulation de chantier.
 const JARGON = ['communes secondaires', 'secteurs secondaires', 'déjà document', 'disposent déjà de leur page', "D'autres suivront", '[À COMPLÉTER]', 'lorem', 'TODO', 'phase 2', 'phase 3'];
 
-/** Déplie tout ce qui se déplie, puis parcourt la page jusqu'en bas pour déclencher le paresseux. */
+/**
+ * Déplie tout ce qui se déplie, puis prépare la page avec tools/lib/capture-fiable.mjs (polices,
+ * parcours progressif, chargement ET décodage des images, stabilité) — revue du 25 octobre 2026 :
+ * l'ancien parcours ne garantissait pas le décodage des images paresseuses avant la capture.
+ */
 async function parcourir(page) {
-	await page.addStyleTag({ content: '*{animation:none!important;transition:none!important;scroll-behavior:auto!important}' });
 	await page.evaluate(() => document.querySelectorAll('details').forEach((d) => { d.open = true; }));
-	await page.evaluate(async () => {
-		const h = document.documentElement.scrollHeight;
-		for (let y = 0; y < h; y += 700) { window.scrollTo(0, y); await new Promise((r) => setTimeout(r, 40)); }
-		window.scrollTo(0, 0);
-	});
-	await page.waitForTimeout(250);
+	return preparer(page);
 }
 
 const RELEVE = (JARGON) => {
@@ -171,8 +170,9 @@ for (const hash of ROUTES) {
 		page.on('pageerror', (e) => erreurs.push(String(e.message).slice(0, 120)));
 		page.on('console', (m) => { if (m.type() === 'error') erreurs.push(m.text().slice(0, 120)); });
 		await page.goto(WP + route, { waitUntil: 'load', timeout: 60000 });
-		await parcourir(page);
+		const bilanImages = await parcourir(page);
 		const releve = await page.evaluate(RELEVE, JARGON);
+		releve.images_non_chargees = bilanImages.rendues_non_chargees || [];
 		releve.erreurs_console = erreurs.filter((e) => !/google|gstatic|ERR_/.test(e));
 		// Pleine page en JPEG (la PNG de 53 routes pesait 110 Mo pour un usage de lecture), plus des
 		// TUILES à hauteur d'écran : une pleine page de 13 000 px réduite à 2 000 ne se lit pas, et
@@ -215,7 +215,7 @@ for (const hash of ROUTES) {
 			await page.screenshot({ path: join(SORTIE, `${nom}-${largeur}-etape-2.jpg`), type: 'jpeg', quality: 85, fullPage: true });
 		}
 		resultats[hash][largeur] = releve;
-		const defauts = ['debordement_page', 'hors_fenetre', 'textes_debordants', 'enfants_hors_carte', 'mots_coupes', 'cta_doubles', 'images_sans_dimensions', 'jargon', 'cibles_petites', 'erreurs_console']
+		const defauts = ['debordement_page', 'hors_fenetre', 'textes_debordants', 'enfants_hors_carte', 'mots_coupes', 'cta_doubles', 'images_sans_dimensions', 'jargon', 'cibles_petites', 'erreurs_console', 'images_non_chargees']
 			.filter((k) => (Array.isArray(releve[k]) ? releve[k].length : releve[k])).join(' ');
 		console.log(`${defauts ? '⚠' : '✓'} ${String(largeur).padStart(4)} ${hash.padEnd(44)} ${defauts || ''}${releve.pied_de_page ? '' : ' PIED_DE_PAGE_ABSENT'}`);
 		await page.close();

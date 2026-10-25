@@ -50,7 +50,7 @@ function tfpInitQuoteForm() {
 		recap.hidden = false;
 	}
 
-	function showStep(index) {
+	function showStep(index, focus = true) {
 		steps.forEach((step, i) => {
 			step.hidden = i !== index;
 		});
@@ -60,6 +60,9 @@ function tfpInitQuoteForm() {
 		if (nextBtn) nextBtn.hidden = index !== 0;
 		const submitBtn = form.querySelector('[data-step-submit]');
 		if (submitBtn) submitBtn.hidden = index === 0;
+		// Pas de focus au chargement initial : il faisait défiler la page et annonçait un champ
+		// avant le titre (revue du 25 octobre 2026). Le focus suit seulement un changement d'étape.
+		if (!focus) return;
 		const first = steps[index].querySelector('input, textarea, select');
 		if (first) first.focus();
 	}
@@ -186,7 +189,7 @@ function tfpInitQuoteForm() {
 		}
 	});
 
-	showStep(current);
+	showStep(current, false);
 
 	// Contexte visiteur : URL courante, référent, prestation/ville pré-remplies depuis les query
 	// params (les pages prestation/zone peuvent lier vers /demande-de-devis/?prestation=X&ville=Y).
