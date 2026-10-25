@@ -42,7 +42,7 @@ $site            = $args['site'];
 						<div class="tfp-mobile-nav__row">
 							<a class="tfp-mobile-nav__link" href="<?php echo esc_url( $item['url'] ); ?>"><?php echo esc_html( $item['label'] ); ?></a>
 							<button type="button" class="tfp-mobile-nav__button" id="tfp-mobile-btn-<?php echo esc_attr( $item['key'] ); ?>" aria-controls="<?php echo esc_attr( $tfp_msub ); ?>" aria-expanded="false" data-tfp-mobile-submenu-toggle>
-								<span aria-hidden="true">＋</span>
+								<?php echo tfp_icone( 'chevron', 'tfp-mobile-nav__chevron' ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
 								<span class="visually-hidden">Ouvrir le menu <?php echo esc_html( $item['aide'] ); ?></span>
 							</button>
 						</div>
@@ -72,19 +72,12 @@ $site            = $args['site'];
 			tfp_button(
 				array(
 					'label'   => 'Demander mon devis',
-					'href'    => home_url( '/demande-de-devis/' ),
+					'href'    => 'devis' === tfp_parcours() ? '#tfp-formulaire-devis' : home_url( '/demande-de-devis/' ),
 					'variant' => 'primary',
 					'block'   => true,
 				)
 			);
-			tfp_button(
-				array(
-					'label'   => '☎ ' . $site['phone'],
-					'href'    => 'tel:' . $site['phone_href'],
-					'variant' => 'secondary',
-					'block'   => true,
-				)
-			);
+			tfp_bouton_appel( array( 'variant' => 'secondary', 'numero' => true, 'classe' => 'tfp-btn--block' ) );
 			?>
 		</div>
 	</div>

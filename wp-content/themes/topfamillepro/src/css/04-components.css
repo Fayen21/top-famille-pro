@@ -618,7 +618,8 @@
 }
 
 .tfp-nav__caret {
-  font-size: var(--fs-3xs);
+  width: 14px;
+  height: 14px;
   color: var(--color-text-tertiary);
   transition: transform var(--transition-base);
 }
@@ -5344,4 +5345,88 @@ body.tfp-body .tfp-card-tile--orientation-active .tfp-card-tile__desc {
   object-fit: cover;
   border-radius: 20px;
   background: var(--color-border);
+}
+
+/* ---------- Icônes SVG et bouton d'appel (revue du 25 octobre 2026) ----------
+   Un seul jeu d'icônes à trait (tfp_icone()), à la couleur du texte. Le bouton d'appel peut
+   passer à la ligne ENTRE son libellé et le numéro ; le numéro, lui, est insécable. Le bouton
+   entier n'est jamais en `nowrap` : à 320 px il déborderait. */
+.tfp-icone {
+  width: 1.15em;
+  height: 1.15em;
+  flex: 0 0 auto;
+  vertical-align: -0.18em;
+}
+
+.tfp-btn--appel {
+  flex-wrap: wrap;
+  column-gap: 0.45em;
+  row-gap: 2px;
+  text-align: center;
+}
+
+.tfp-btn__numero,
+.tfp-nowrap {
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+.tfp-btn__libelle + .tfp-btn__numero::before {
+  content: "·";
+  margin-right: 0.45em;
+  opacity: 0.7;
+}
+
+.tfp-card-tile__icon .tfp-icone {
+  width: 20px;
+  height: 20px;
+  color: var(--color-primary);
+}
+
+.tfp-header__phone .tfp-icone {
+  width: 18px;
+  height: 18px;
+}
+
+/* Chevron du tiroir mobile : son orientation SUIT `aria-expanded` (revue du 25 octobre 2026 : le
+   « + » restait affiché sous huit départements dépliés). Vers le bas fermé, vers le haut ouvert. */
+.tfp-mobile-nav__chevron {
+  width: 20px;
+  height: 20px;
+  color: var(--color-primary);
+  transition: transform var(--transition-base);
+}
+
+.tfp-mobile-nav__button[aria-expanded="true"] .tfp-mobile-nav__chevron {
+  transform: rotate(180deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tfp-mobile-nav__chevron,
+  .tfp-nav__caret {
+    transition: none;
+  }
+}
+
+/* Cible d'ancre (sommaires, retour au formulaire du devis) : le titre visé s'arrête SOUS
+   l'en-tête collant au lieu de passer dessous. */
+:target,
+[id^="tfp-formulaire"] {
+  /* Seul le header (90 px en bureau) reste collé : la barre haute défile avec la page. */
+  scroll-margin-top: 110px;
+}
+
+@media (max-width: 819px) {
+  :target,
+  [id^="tfp-formulaire"] {
+    scroll-margin-top: 88px;
+  }
+}
+
+/* Précision sous le montant de la carte tarifaire (revue du 25 octobre 2026). */
+.tfp-price-card__note {
+  display: block;
+  margin-top: 2px;
+  font-size: var(--fs-sm);
+  color: var(--color-text-on-dark-muted);
 }

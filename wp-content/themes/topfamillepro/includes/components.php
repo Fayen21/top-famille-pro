@@ -22,6 +22,50 @@ if ( ! defined( 'ABSPATH' ) ) {
  *   @type string $icon    HTML brut optionnel affiché avant le label (ex. picto téléphone).
  * }
  */
+/**
+ * Parcours de la page servie — revue du 25 octobre 2026 (§4).
+ *
+ * Les appels à l'action globaux (bandeau de fin de page, barre mobile, bouton du header) ne
+ * disent pas la même chose selon ce que le visiteur est en train de faire : remplir le devis,
+ * postuler, écrire un message, lire une page légale.
+ *
+ * @return string 'devis' | 'recrutement' | 'contact' | 'utilitaire' | 'standard'.
+ */
+function tfp_parcours() {
+	if ( is_page( 'demande-de-devis' ) ) {
+		return 'devis';
+	}
+	if ( is_page( 'recrutement' ) ) {
+		return 'recrutement';
+	}
+	if ( is_page( 'contact' ) ) {
+		return 'contact';
+	}
+	if ( is_page( array( 'mentions-legales', 'politique-de-confidentialite', 'gestion-des-cookies', 'plan-du-site' ) ) ) {
+		return 'utilitaire';
+	}
+	return 'standard';
+}
+
+/**
+ * La page a-t-elle déjà rendu sa propre conclusion commerciale ?
+ *
+ * Revue du 25 octobre 2026 : l'accueil, les prestations, les villes, les articles et les tarifs
+ * enchaînaient leur appel final (bande bleue « Demander mon devis ») puis le bandeau global « Un
+ * besoin d'entretien pour vos locaux ? » portant le même bouton. Toute commande « Demander mon
+ * devis » posée sur fond sombre marque la page ; le pied de page ne rajoute alors pas le sien.
+ *
+ * @param bool $marquer Vrai pour signaler qu'une conclusion vient d'être rendue.
+ * @return bool
+ */
+function tfp_cta_final( $marquer = false ) {
+	static $present = false;
+	if ( $marquer ) {
+		$present = true;
+	}
+	return $present;
+}
+
 function tfp_button( $args ) {
 	$args = wp_parse_args(
 		$args,
@@ -50,6 +94,9 @@ function tfp_button( $args ) {
 	);
 
 	$classes = array( 'tfp-btn', 'tfp-btn--' . $args['variant'] );
+	if ( 'on-primary' === $args['variant'] && false !== strpos( (string) $args['href'], 'demande-de-devis' ) ) {
+		tfp_cta_final( true );
+	}
 	if ( $args['size'] ) {
 		$classes[] = 'tfp-btn--' . $args['size'];
 	}
@@ -77,6 +124,79 @@ function tfp_button( $args ) {
 		esc_html( $args['label'] ),
 		$vars ? ' style="' . esc_attr( implode( ';', $vars ) ) . '"' : '',
 		$args['aria'] ? ' aria-label="' . esc_attr( $args['aria'] ) . '"' : ''
+	);
+}
+
+/**
+ * Icônes SVG du thème — un seul jeu, trait de 2 px, `currentColor`, 24 × 24.
+ *
+ * Revue du 25 octobre 2026 : le téléphone était un « ☎ » Unicode, rendu différemment selon la
+ * police de repli et l'appareil (pictogramme plein ici, émoji coloré là), et les chevrons du menu
+ * mélangeaient « ▾ » et « + ». Les icônes sont décoratives : `aria-hidden`, jamais focalisables ;
+ * le nom accessible est porté par le texte ou l'`aria-label` de l'élément parent.
+ *
+ * @param string $nom    'telephone' | 'chevron' | 'fleche'.
+ * @param string $classe Classe supplémentaire.
+ * @return string
+ */
+function tfp_icone( $nom, $classe = '' ) {
+	$traces = array(
+		'telephone' => '<path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/>',
+		'chevron'   => '<path d="m6 9 6 6 6-6"/>',
+		'fleche'    => '<path d="M5 12h14M13 6l6 6-6 6"/>',
+		'mail'      => '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/>',
+		'lieu'      => '<path d="M12 21s-7-6.1-7-11.5a7 7 0 0 1 14 0C19 14.9 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/>',
+		'horloge'   => '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
+	);
+	if ( ! isset( $traces[ $nom ] ) ) {
+		return '';
+	}
+	return sprintf(
+		'<svg class="tfp-icone tfp-icone--%1$s%2$s" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">%3$s</svg>',
+		esc_attr( $nom ),
+		$classe ? ' ' . esc_attr( $classe ) : '',
+		$traces[ $nom ]
+	);
+}
+
+/**
+ * Bouton d'appel — UN composant pour tous les appels génériques du site.
+ *
+ * Décision du 14 octobre 2026, étendue le 25 : « Appeler Top-Famille Pro » partout, y compris là
+ * où la maquette écrivait « ☎ Échanger avec Audrey · 06 … » ou le seul numéro. Le libellé et le
+ * numéro sont deux segments : le bouton peut passer à la ligne ENTRE eux (lisible à 320 px), jamais
+ * à l'intérieur du numéro (`white-space: nowrap` sur le seul numéro, pas sur tout le bouton, qui
+ * déborderait). Le nom accessible est complet : « Appeler Top-Famille Pro au 06 36 17 63 39 ».
+ *
+ * @param array $args variant, numero (bool : afficher le numéro), size, mesures, classe.
+ */
+function tfp_bouton_appel( $args = array() ) {
+	$args  = wp_parse_args( $args, array( 'variant' => 'secondary', 'numero' => false, 'size' => '', 'mesures' => array(), 'classe' => '' ) );
+	$site  = tfp_site_data();
+	$label = tfp_phone_cta_label( false );
+	$classes = array( 'tfp-btn', 'tfp-btn--' . $args['variant'], 'tfp-btn--appel' );
+	if ( $args['size'] ) {
+		$classes[] = 'tfp-btn--' . $args['size'];
+	}
+	if ( $args['classe'] ) {
+		$classes[] = $args['classe'];
+	}
+	$vars = array();
+	foreach ( array( 'pad_v' => '--tfp-btn-pv', 'pad_h' => '--tfp-btn-ph', 'taille' => '--tfp-btn-fs', 'hauteur' => '--tfp-btn-h' ) as $cle => $var ) {
+		$valeur = tfp_longueur_css( $args['mesures'][ $cle ] ?? '' );
+		if ( '' !== $valeur ) {
+			$vars[] = $var . ':' . $valeur;
+		}
+	}
+	printf(
+		'<a class="%1$s" href="tel:%2$s" aria-label="%3$s"%4$s>%5$s<span class="tfp-btn__libelle">%6$s</span>%7$s</a>',
+		esc_attr( implode( ' ', $classes ) ),
+		esc_attr( $site['phone_href'] ),
+		esc_attr( $label . ' au ' . $site['phone'] ),
+		$vars ? ' style="' . esc_attr( implode( ';', $vars ) ) . '"' : '',
+		tfp_icone( 'telephone' ), // phpcs:ignore WordPress.Security.EscapeOutput -- SVG interne.
+		esc_html( $label ),
+		$args['numero'] ? '<span class="tfp-btn__numero">' . esc_html( $site['phone'] ) . '</span>' : '' // phpcs:ignore WordPress.Security.EscapeOutput
 	);
 }
 
@@ -390,17 +510,20 @@ function tfp_panel_exclusions( $titre, $intro, array $items ) {
 }
 
 /**
- * Carte tarifaire marine : « À partir de … HT/h » et son renvoi vers la page tarifs.
+ * Carte tarifaire marine : « Tarif unique — 27 € HT/h » et son renvoi vers la page tarifs.
  *
- * Le montant n'est jamais écrit ici : il vient de includes/site-options.php, source unique du
- * tarif (CLAUDE.md §5.3 — grille régionale identique partout).
+ * Revue du 25 octobre 2026 : la carte écrivait « À partir de 27 € HT/h ». Le tarif est UNIQUE
+ * (PROJECT_INPUTS.md §5, décision du 13 août) ; « à partir de » laissait croire à un prix d'appel
+ * et à des tarifs supérieurs. Le montant n'est jamais écrit ici : il vient de
+ * includes/site-options.php, source unique du tarif (CLAUDE.md §5.3).
  */
 function tfp_price_card() {
 	$site = tfp_site_data();
 	?>
 	<div class="tfp-price-card">
-		<span class="tfp-price-card__label">À partir de</span>
+		<span class="tfp-price-card__label">Tarif unique</span>
 		<span class="tfp-price-card__value"><?php echo esc_html( tfp_format_price( $site['price_unique'] ) ); ?> HT/h</span>
+		<span class="tfp-price-card__note">En régulier comme en ponctuel</span>
 		<a class="tfp-price-card__link" href="<?php echo esc_url( home_url( '/tarifs/' ) ); ?>">Détail des tarifs →</a>
 	</div>
 	<?php
@@ -1078,7 +1201,12 @@ function tfp_card_grid( array $grille ) {
 					}
 					?>
 					<?php if ( $item['icone'] ) : ?>
-						<span class="tfp-card-tile__icon" aria-hidden="true"><?php echo esc_html( $item['icone'] ); ?></span>
+						<?php
+						// Pictogrammes Unicode du relevé (☎ ✉ 📍 🕑) remplacés par le jeu SVG du
+						// thème : rendu identique sur tous les appareils (revue du 25 octobre 2026).
+						$svg_icone = array( '☎' => 'telephone', '✉' => 'mail', '📍' => 'lieu', '🕑' => 'horloge' )[ trim( $item['icone'] ) ] ?? '';
+						?>
+						<span class="tfp-card-tile__icon" aria-hidden="true"><?php echo $svg_icone ? tfp_icone( $svg_icone ) : esc_html( $item['icone'] ); // phpcs:ignore WordPress.Security.EscapeOutput ?></span>
 					<?php endif; ?>
 					<?php
 					/*

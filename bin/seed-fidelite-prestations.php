@@ -129,7 +129,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'temoignage_auteur', 'Camille R.', $id );
 	tfp_seed_set_field( 'temoignage_role', 'Dirigeante de PME', $id );
 	tfp_seed_set_field( 'temoignage_ville', 'Dijon', $id );
-	tfp_seed_set_field( 'faq_titre', 'Questions fréquentes — Bureaux', $id );
+	tfp_seed_set_field( 'faq_titre', 'Questions fréquentes — Nettoyage de bureaux', $id );
 	tfp_seed_set_field( 'faq_1', array( 'question' => 'Intervenez-vous pendant que nos équipes sont présentes ?', 'reponse' => 'Nous privilégions les horaires avant l\'arrivée ou après le départ de vos salariés, pour ne pas perturber votre activité. Une intervention en journée reste possible sur demande.' ), $id );
 	tfp_seed_set_field( 'faq_2', array( 'question' => 'Le nettoyage des écrans et claviers est-il inclus ?', 'reponse' => 'Il s\'agit d\'un dépoussiérage prudent selon les consignes et le matériel autorisé. Nous n\'appliquons aucun produit sur les écrans, claviers ou unités centrales sans instruction écrite de votre part, et nous ne débranchons ni ne déplaçons aucun équipement.' ), $id );
 	tfp_seed_set_field( 'faq_3', array( 'question' => 'Que faites-vous en cas de salle de réunion occupée en continu ?', 'reponse' => 'Nous adaptons le passage à un créneau libre identifié avec vous, ou reportons ce point précis au passage suivant en le notant dans le cahier de liaison.' ), $id );
@@ -138,8 +138,11 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'faq_6', array( 'question' => 'Comment sont gérées les clés et l\'alarme ?', 'reponse' => 'Les modalités d\'accès (jeu de clés, badge, code) sont définies avec vous et consignées par écrit avant le premier passage, avec une consigne claire en cas de déclenchement accidentel. Elles ne sont transmises qu\'aux intervenants concernés par votre site.' ), $id );
 	tfp_seed_set_field( 'faq_7', array( 'question' => 'Pouvons-nous modifier la fréquence en cours d\'année ?', 'reponse' => 'Oui. Un déménagement, une embauche ou une baisse d\'activité justifient souvent un ajustement. La modification passe par un échange avec Audrey, puis par un devis actualisé si le volume d\'heures change.' ), $id );
 	tfp_seed_set_field( 'faq_8', array( 'question' => 'Que se passe-t-il si une tâche prévue n\'a pas été réalisée ?', 'reponse' => 'Elle est signalée dans le cahier de liaison avec sa raison (pièce occupée, accès impossible, temps insuffisant) et reportée au passage suivant. Si le cas se répète, c\'est généralement le signe que le volume d\'heures ou le découpage des tâches doit être revu.' ), $id );
-	tfp_seed_set_field( 'cta_titre', 'Un devis pour Bureaux', $id );
+	tfp_seed_set_field( 'cta_titre', 'Un devis pour le nettoyage de vos bureaux ?', $id );
 	tfp_seed_set_field( 'cta_texte', 'Réponse claire et chiffrée sous 24 h, sans engagement.', $id );
+	tfp_seed_set_field( 'objet_editorial', 'le nettoyage de vos bureaux', $id );
+	tfp_seed_set_field( 'exemple_mode', 'mensuel', $id );
+	tfp_seed_set_field( 'exemple_heures', '', $id );
 	echo "  ✓ bureaux\n";
 }
 
@@ -240,7 +243,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'temoignage_auteur', 'Sarah B.', $id );
 	tfp_seed_set_field( 'temoignage_role', 'Commerçante', $id );
 	tfp_seed_set_field( 'temoignage_ville', 'Dole', $id );
-	tfp_seed_set_field( 'faq_titre', 'Questions fréquentes — Commerces', $id );
+	tfp_seed_set_field( 'faq_titre', 'Questions fréquentes — Nettoyage de commerces', $id );
 	tfp_seed_set_field( 'faq_1', array( 'question' => 'Pouvez-vous intervenir avant l\'ouverture, très tôt le matin ?', 'reponse' => 'Oui, c\'est le cas le plus fréquent pour les commerces : nous nous calons sur votre heure d\'ouverture réelle.' ), $id );
 	tfp_seed_set_field( 'faq_2', array( 'question' => 'Un passage supplémentaire est-il possible un jour de forte affluence ?', 'reponse' => 'Oui, sur devis complémentaire, par exemple avant un week-end de soldes ou un marché.' ), $id );
 	tfp_seed_set_field( 'faq_3', array( 'question' => 'Les vitrines extérieures sont-elles comprises ?', 'reponse' => 'Les vitrines sont incluses uniquement lorsqu\'elles sont accessibles sans équipement spécialisé et prévues au devis. Les vitrines en hauteur, les enseignes et les surfaces nécessitant une nacelle ou une perche télescopique sont exclues de la prestation courante.' ), $id );
@@ -248,8 +251,11 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'faq_5', array( 'question' => 'Que faites-vous des réserves et de l\'arrière-boutique ?', 'reponse' => 'Les réserves sont traitées lorsqu\'elles sont dégagées et accessibles : sol, poubelles et surfaces libres. Nous ne déplaçons pas les stocks, les cartons ni le mobilier de rangement, et les zones encombrées sont signalées dans le cahier de liaison plutôt que contournées silencieusement.' ), $id );
 	tfp_seed_set_field( 'faq_6', array( 'question' => 'Les cabines d\'essayage sont-elles comprises ?', 'reponse' => 'Oui : sol, miroir, banquette ou tabouret, patères et rideau ou porte. Le linge, les cintres et les articles oubliés par la clientèle ne sont pas rangés mais rassemblés à un endroit convenu avec vous, afin que rien ne disparaisse.' ), $id );
 	tfp_seed_set_field( 'faq_7', array( 'question' => 'Adaptez-vous la fréquence selon la saison ?', 'reponse' => 'Oui, c\'est fréquent dans le commerce : soldes, fêtes de fin d\'année, période estivale ou marché hebdomadaire modifient nettement la fréquentation. Un renfort temporaire ou un passage supplémentaire peut être prévu par avenant au devis, puis retiré lorsque la période s\'achève.' ), $id );
-	tfp_seed_set_field( 'cta_titre', 'Un devis pour Commerces', $id );
+	tfp_seed_set_field( 'cta_titre', 'Un devis pour l\'entretien de votre commerce ?', $id );
 	tfp_seed_set_field( 'cta_texte', 'Réponse claire et chiffrée sous 24 h, sans engagement.', $id );
+	tfp_seed_set_field( 'objet_editorial', 'l\'entretien de votre commerce', $id );
+	tfp_seed_set_field( 'exemple_mode', 'mensuel', $id );
+	tfp_seed_set_field( 'exemple_heures', '', $id );
 	echo "  ✓ commerces\n";
 }
 
@@ -357,7 +363,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'temoignage_auteur', 'Thomas L.', $id );
 	tfp_seed_set_field( 'temoignage_role', 'Responsable de cabinet', $id );
 	tfp_seed_set_field( 'temoignage_ville', 'Besançon', $id );
-	tfp_seed_set_field( 'faq_titre', 'Questions fréquentes — Cabinets', $id );
+	tfp_seed_set_field( 'faq_titre', 'Questions fréquentes — Cabinets & professions libérales', $id );
 	tfp_seed_set_field( 'faq_1', array( 'question' => 'Intervenez-vous entre deux patients ?', 'reponse' => 'Non. Notre passage a lieu en dehors des heures de consultation, en début ou en fin de journée. Ce qui se fait entre deux patients relève entièrement du protocole du praticien et de son équipe, avec ses propres produits et ses propres règles.' ), $id );
 	tfp_seed_set_field( 'faq_2', array( 'question' => 'Traitez-vous les déchets médicaux ?', 'reponse' => 'Non. Les déchets d\'activité de soins à risques infectieux (DASRI) ne sont ni manipulés ni évacués par nos intervenants. Nous gérons uniquement les corbeilles et points de collecte courants, à l\'exclusion de tout contenant dédié aux déchets de soins.' ), $id );
 	tfp_seed_set_field( 'faq_3', array( 'question' => 'L\'intervenant est-il informé des règles de confidentialité ?', 'reponse' => 'Oui. Les consignes de confidentialité figurent au cahier des charges : aucun document n\'est déplacé, ouvert ou trié, les dossiers laissés sur un bureau sont contournés, et les zones dont l\'accès est réservé sont identifiées par écrit avant le premier passage.' ), $id );
@@ -366,8 +372,11 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'faq_6', array( 'question' => 'À quelle fréquence faut-il faire nettoyer un cabinet ?', 'reponse' => 'Cela dépend du nombre de praticiens, du nombre de patients reçus par jour et de la présence d\'une salle d\'attente commune. Un cabinet individuel se satisfait souvent de deux à trois passages par semaine ; un cabinet de groupe recevant du public en continu justifie généralement un passage quotidien en fin de journée.' ), $id );
 	tfp_seed_set_field( 'faq_7', array( 'question' => 'Comment se passe l\'accès en dehors des heures d\'ouverture ?', 'reponse' => 'Les modalités sont définies avec vous et consignées par écrit : remise de clés, badge ou code, protocole de fermeture et de réactivation de l\'alarme. Elles ne sont transmises qu\'aux intervenants concernés par votre cabinet.' ), $id );
 	tfp_seed_set_field( 'faq_8', array( 'question' => 'Le même intervenant vient-il à chaque passage ?', 'reponse' => 'C\'est l\'organisation que nous recherchons, parce qu\'un cabinet impose des repères précis. Cette continuité est privilégiée autant que possible, mais ne constitue pas une garantie absolue : en cas d\'absence, nous recherchons activement une solution et vous informons de l\'organisation retenue.' ), $id );
-	tfp_seed_set_field( 'cta_titre', 'Un devis pour Cabinets', $id );
+	tfp_seed_set_field( 'cta_titre', 'Un devis pour l\'entretien de votre cabinet ?', $id );
 	tfp_seed_set_field( 'cta_texte', 'Réponse claire et chiffrée sous 24 h, sans engagement.', $id );
+	tfp_seed_set_field( 'objet_editorial', 'l\'entretien de votre cabinet', $id );
+	tfp_seed_set_field( 'exemple_mode', 'mensuel', $id );
+	tfp_seed_set_field( 'exemple_heures', '', $id );
 	echo "  ✓ cabinets\n";
 }
 
@@ -471,7 +480,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'temoignage_auteur', 'Nadia M.', $id );
 	tfp_seed_set_field( 'temoignage_role', 'Gestionnaire de copropriété', $id );
 	tfp_seed_set_field( 'temoignage_ville', 'Chalon-sur-Saône', $id );
-	tfp_seed_set_field( 'faq_titre', 'Questions fréquentes — Copropriétés', $id );
+	tfp_seed_set_field( 'faq_titre', 'Questions fréquentes — Copropriétés & parties communes', $id );
 	tfp_seed_set_field( 'faq_1', array( 'question' => 'Travaillez-vous directement avec le syndic ou avec les copropriétaires ?', 'reponse' => 'Le plus souvent avec le syndic ou le conseil syndical, qui valide le cahier des charges et reste notre interlocuteur pour le suivi.' ), $id );
 	tfp_seed_set_field( 'faq_2', array( 'question' => 'La sortie des conteneurs est-elle comprise ?', 'reponse' => 'Elle est possible lorsqu\'elle est prévue et chiffrée dans le devis, selon les jours de collecte de la commune. Ce n\'est pas une tâche incluse par défaut : elle impose un passage supplémentaire à jour et heure fixes, qui doit donc être budgété explicitement.' ), $id );
 	tfp_seed_set_field( 'faq_3', array( 'question' => 'Un cahier de liaison est-il laissé dans les parties communes ?', 'reponse' => 'Oui. Il est placé à un endroit convenu avec le syndic — souvent le hall ou le local technique — et permet de suivre les passages, de noter ce qui n\'a pas pu être fait et de recueillir une remarque de résident sans passer par un échange téléphonique.' ), $id );
@@ -480,8 +489,11 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'faq_6', array( 'question' => 'Que se passe-t-il si un résident fait une remarque à l\'intervenant ?', 'reponse' => 'L\'intervenant l\'écoute, la note dans le cahier de liaison et ne s\'engage sur rien : le périmètre de la prestation est fixé par le syndic, pas par les demandes individuelles. Audrey relaie ensuite la remarque au gestionnaire, qui décide de la suite.' ), $id );
 	tfp_seed_set_field( 'faq_7', array( 'question' => 'À quelle fréquence faut-il entretenir des parties communes ?', 'reponse' => 'Un passage hebdomadaire est le rythme le plus courant pour une résidence de taille moyenne. Un immeuble de standing, une résidence avec ascenseur très utilisé ou un hall donnant directement sur la rue justifient souvent deux passages ; une petite copropriété de quelques lots peut se satisfaire d\'un passage tous les quinze jours.' ), $id );
 	tfp_seed_set_field( 'faq_8', array( 'question' => 'Comment sont gérées les clés de l\'immeuble ?', 'reponse' => 'Un jeu de clés ou un badge est confié par le syndic, avec la liste précise des accès concernés (hall, local technique, local poubelles, parking). Ces éléments sont consignés par écrit et ne sont transmis qu\'aux intervenants concernés par la résidence.' ), $id );
-	tfp_seed_set_field( 'cta_titre', 'Un devis pour Copropriétés', $id );
+	tfp_seed_set_field( 'cta_titre', 'Un devis pour votre copropriété ?', $id );
 	tfp_seed_set_field( 'cta_texte', 'Réponse claire et chiffrée sous 24 h, sans engagement.', $id );
+	tfp_seed_set_field( 'objet_editorial', 'l\'entretien de votre copropriété', $id );
+	tfp_seed_set_field( 'exemple_mode', 'mensuel', $id );
+	tfp_seed_set_field( 'exemple_heures', '', $id );
 	echo "  ✓ coproprietes\n";
 }
 
@@ -583,7 +595,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'temoignage_auteur', 'Julien P.', $id );
 	tfp_seed_set_field( 'temoignage_role', 'Gestionnaire de meublés', $id );
 	tfp_seed_set_field( 'temoignage_ville', 'Auxerre', $id );
-	tfp_seed_set_field( 'faq_titre', 'Questions fréquentes — Locations meublées', $id );
+	tfp_seed_set_field( 'faq_titre', 'Questions fréquentes — Locations meublées & hébergements', $id );
 	tfp_seed_set_field( 'faq_1', array( 'question' => 'Comment récupérez-vous les clés entre deux passages ?', 'reponse' => 'Boîte à clés sécurisée, conciergerie ou remise en main propre : la solution est définie avec vous selon votre organisation.' ), $id );
 	tfp_seed_set_field( 'faq_2', array( 'question' => 'Lavez-vous le linge de lit et les serviettes ?', 'reponse' => 'Nous changeons le linge fourni propre par le client ; le lavage du linge sale n\'est pas inclus dans la prestation courante.' ), $id );
 	tfp_seed_set_field( 'faq_3', array( 'question' => 'Que se passe-t-il si un dysfonctionnement est constaté ?', 'reponse' => 'Il est signalé selon les modalités convenues avec vous : mot dans le cahier de liaison, message à votre interlocutrice, ou appel direct pour ce qui empêcherait un séjour (fuite, chauffage en panne, serrure défectueuse). Le canal et le délai sont fixés au devis, plutôt que laissés à l\'appréciation du moment.' ), $id );
@@ -592,8 +604,11 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'faq_6', array( 'question' => 'Quel délai vous faut-il entre un départ et une arrivée ?', 'reponse' => 'Pour un studio ou un T2, deux à trois heures suffisent généralement. Pour un logement familial ou un gîte, comptez trois à cinq heures. Un créneau plus court est parfois possible mais réduit le périmètre : nous préférons vous le dire avant plutôt que de livrer un logement partiellement traité.' ), $id );
 	tfp_seed_set_field( 'faq_7', array( 'question' => 'En quoi vous différenciez-vous d\'une conciergerie ?', 'reponse' => 'Une conciergerie gère la relation voyageur : annonces, réservations, tarifs, accueil, remise de clés, assistance pendant le séjour. Nous faisons uniquement la remise en état du logement. Nous travaillons d\'ailleurs souvent en complément d\'une conciergerie, qui reste alors votre interlocuteur commercial.' ), $id );
 	tfp_seed_set_field( 'faq_8', array( 'question' => 'Que se passe-t-il si le logement est laissé dans un état anormal ?', 'reponse' => 'L\'intervenant vous alerte sans attendre et nous convenons de la suite : temps supplémentaire chiffré, intervention ponctuelle de remise en état, ou passage limité au strict nécessaire si le créneau ne permet rien d\'autre. Le temps prévu au devis correspond à un état d\'usage normal.' ), $id );
-	tfp_seed_set_field( 'cta_titre', 'Un devis pour Locations meublées', $id );
+	tfp_seed_set_field( 'cta_titre', 'Un devis pour vos locations meublées ?', $id );
 	tfp_seed_set_field( 'cta_texte', 'Réponse claire et chiffrée sous 24 h, sans engagement.', $id );
+	tfp_seed_set_field( 'objet_editorial', 'le ménage de vos locations meublées', $id );
+	tfp_seed_set_field( 'exemple_mode', 'mensuel', $id );
+	tfp_seed_set_field( 'exemple_heures', '', $id );
 	echo "  ✓ meubles\n";
 }
 
@@ -639,10 +654,10 @@ if ( empty( $posts ) ) {
 		'Une fin de chantier laisse une poussière fine difficile à éliminer sans méthode adaptée, sur tous les types de surfaces.',
 		'Une fin de bail commercial impose souvent un délai serré avant l\'état des lieux ou l\'arrivée du nouvel occupant.',
 	) ), $id );
-	tfp_seed_set_field( 'situations_exemple_label', 'Exemple de planning', $id );
+	tfp_seed_set_field( 'situations_exemple_label', 'Exemple d\'intervention', $id );
 	tfp_seed_set_field( 'situations_exemple', 'Exemple pour une remise en état après travaux (bureau de 80 m²) : une intervention de 6 à 8 heures — dépoussiérage complet, sols, vitres, sanitaires, contrôle final avant remise des clés.', $id );
 	tfp_seed_set_field( 'configs_titre', 'Trois configurations, trois organisations', $id );
-	tfp_seed_set_field( 'configs_intro', 'Le volume d\'heures et la fréquence ne se déduisent pas d\'une surface. Voici les cas de figure que nous rencontrons le plus souvent, et le rythme qui leur correspond généralement.', $id );
+	tfp_seed_set_field( 'configs_intro', 'Le volume d\'heures d\'une intervention ne se déduit pas d\'une surface. Voici les situations que nous rencontrons le plus souvent, et l\'organisation qui leur correspond généralement.', $id );
 	tfp_seed_set_field( 'config_1_titre', 'Fin de chantier', $id );
 	tfp_seed_set_field( 'config_1_texte', 'Une poussière fine de plâtre et de découpe s\'est déposée partout, y compris sur les surfaces verticales et dans les rainures de menuiserie. Le travail est méthodique et descendant : hauts de meubles et huisseries, vitres et encadrements, plinthes, sols en dernier. Compter en général une journée d\'intervention pour 80 à 100 m², selon l\'intensité des travaux.', $id );
 	tfp_seed_set_field( 'config_2_titre', 'Fin de bail', $id );
@@ -688,7 +703,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'organisation_6_texte', 'S\'agissant d\'une intervention unique, la question de l\'absence se pose différemment qu\'en régulier : en cas d\'imprévu, nous vous prévenons immédiatement et reprogrammons le créneau avec vous. Lorsque la date est contrainte par un état des lieux ou une réouverture, dites-le nous dès la demande de devis : cela conditionne notre capacité à nous engager.', $id );
 	tfp_seed_set_field( 'organisation_6_carte', '1', $id );
 	tfp_seed_set_field( 'note_taches', 'Hors prestation : évacuation de gravats et déchets de chantier, dépose de matériaux, traitement de surfaces dangereuses (amiante, plomb, moisissures étendues), manipulation de produits classés dangereux, intervention en hauteur avec équipement spécialisé. Ces situations relèvent d\'entreprises spécialisées.', $id );
-	tfp_seed_set_field( 'semaine_titre', 'Une semaine type', $id );
+	tfp_seed_set_field( 'semaine_titre', 'Déroulé d\'une intervention type', $id );
 	tfp_seed_set_field( 'semaine_type', 'Déroulé type pour une remise en état après travaux d\'un bureau de 80 m², une intervention de 7 heures : dépoussiérage descendant des hauts de meubles, huisseries, luminaires et grilles de ventilation ; vitres, encadrements et rebords ; retrait des projections de peinture et résidus d\'adhésif sur menuiseries et plinthes ; sanitaires et coin cuisine dégraissés et détartrés ; placards intérieurs ; aspiration puis lavage complet des sols ; contrôle final pièce par pièce et point sur les zones qui justifieraient un second passage.', $id );
 	tfp_seed_set_field( 'limites_titre', 'Les limites de la prestation', $id );
 	tfp_seed_set_field( 'limites', 'Nous ne réalisons pas l\'évacuation des gravats et déchets de chantier, la dépose de matériaux, les petites réparations, le traitement de l\'amiante, du plomb ou des moisissures étendues, la manipulation de produits classés dangereux, ni les interventions en hauteur nécessitant un équipement spécialisé. Nous ne nous engageons pas sur le résultat d\'un état des lieux, qui dépend du bailleur et de l\'usure normale : notre engagement porte sur un périmètre de nettoyage et un temps consacré.', $id );
@@ -696,7 +711,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'temoignage_auteur', 'Olivier D.', $id );
 	tfp_seed_set_field( 'temoignage_role', 'Gérant', $id );
 	tfp_seed_set_field( 'temoignage_ville', 'Besançon', $id );
-	tfp_seed_set_field( 'faq_titre', 'Questions fréquentes — Ponctuel', $id );
+	tfp_seed_set_field( 'faq_titre', 'Questions fréquentes — Nettoyage ponctuel & remise en état', $id );
 	tfp_seed_set_field( 'faq_1', array( 'question' => 'Intervenez-vous juste après la fin des travaux ?', 'reponse' => 'Oui, une fois les corps de métier partis. Nous recommandons un délai court pour éviter que la poussière ne se redépose sur les surfaces déjà traitées.' ), $id );
 	tfp_seed_set_field( 'faq_2', array( 'question' => 'Le nettoyage après travaux est-il plus cher qu\'un entretien courant ?', 'reponse' => 'Le tarif horaire reste le même (27 € HT/h) ; c\'est le volume d\'heures qui est généralement plus important, selon l\'ampleur du chantier.' ), $id );
 	tfp_seed_set_field( 'faq_3', array( 'question' => 'Prenez-vous en charge l\'évacuation des déchets de chantier ?', 'reponse' => 'Non. L\'évacuation de gravats, de chutes de matériaux et de déchets volumineux ne fait pas partie de la prestation : elle suppose un véhicule adapté et un accès en déchetterie professionnelle. Nous traitons la poussière et les résidus de surface, une fois les déchets évacués par le chantier.' ), $id );
@@ -705,8 +720,11 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'faq_6', array( 'question' => 'Que faites-vous face à des matériaux fragiles ?', 'reponse' => 'Parquet huilé, béton ciré, pierre naturelle, inox brossé, plan de travail stratifié ou verre laqué ne supportent pas les mêmes produits ni les mêmes gestes. Nous les identifions avant l\'intervention et adaptons le produit et la méthode. En cas de doute sur une surface, nous testons sur une zone discrète ou nous vous interrogeons avant d\'agir.' ), $id );
 	tfp_seed_set_field( 'faq_7', array( 'question' => 'Un second passage est-il possible ?', 'reponse' => 'Oui, et c\'est parfois recommandé après travaux : la poussière fine en suspension se redépose pendant les 24 à 48 heures suivant le premier nettoyage. Un second passage plus court peut être prévu au devis dès le départ, ou décidé après le premier passage.' ), $id );
 	tfp_seed_set_field( 'faq_8', array( 'question' => 'Traitez-vous les produits ou substances dangereuses ?', 'reponse' => 'Non. Amiante, plomb, moisissures étendues, résidus chimiques, produits classés dangereux et locaux insalubres sont exclus de notre périmètre : ils relèvent d\'entreprises spécialisées disposant des habilitations et des équipements de protection requis.' ), $id );
-	tfp_seed_set_field( 'cta_titre', 'Un devis pour Ponctuel', $id );
+	tfp_seed_set_field( 'cta_titre', 'Un devis pour votre nettoyage ponctuel ?', $id );
 	tfp_seed_set_field( 'cta_texte', 'Réponse claire et chiffrée sous 24 h, sans engagement.', $id );
+	tfp_seed_set_field( 'objet_editorial', 'votre nettoyage ponctuel', $id );
+	tfp_seed_set_field( 'exemple_mode', 'intervention', $id );
+	tfp_seed_set_field( 'exemple_heures', 7, $id );
 	echo "  ✓ ponctuel\n";
 }
 

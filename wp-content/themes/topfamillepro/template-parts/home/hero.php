@@ -37,14 +37,7 @@ $reassurance = tfp_reassurance_data();
 			 * personnellement » — les commandes génériques nomment l'entreprise ; Audrey reste nommée
 			 * là où le texte décrit son rôle (bloc de la gérante, réassurance).
 			 */
-			tfp_button(
-				array(
-					'label'   => tfp_phone_cta_label(),
-					'href'    => 'tel:' . $site['phone_href'],
-					'variant' => 'secondary',
-					'aria'    => tfp_phone_cta_label( false ) . ' au ' . $site['phone'],
-				)
-			);
+			tfp_bouton_appel( array( 'variant' => 'secondary' ) );
 			?>
 		</div>
 		<div class="tfp-hero__microcopy">Réponse sous 24 h · Gratuit · Sans engagement · Devis étudié personnellement</div>

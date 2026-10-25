@@ -39,7 +39,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'hero_lede', 'De Dijon à Beaune, Top-Famille Pro entretient bureaux, commerces, cabinets et parties communes en Côte-d\'Or, depuis son implantation de Saint-Apollinaire.', $id );
 	tfp_seed_set_field( 'hero_alt', '', $id );
 	tfp_seed_set_field( 'cta_label', 'Demander un devis en Côte-d\'Or', $id );
-	tfp_seed_set_field( 'cta_phone_label', '☎ Échanger avec Audrey', $id );
+	tfp_seed_set_field( 'cta_phone_label', '', $id );
 	tfp_seed_set_field( 'band_items', implode( "\n", array(
 		'Devis gratuit sous 24 h',
 		'Intervention régulière ou ponctuelle',
@@ -81,7 +81,7 @@ if ( empty( $posts ) ) {
 		'27 € HT/h, comme dans le reste de la région, plus 9 € HT/mois de gestion en contrat régulier et 50 € HT de frais de mise en place, le cas échéant, selon les conditions précisées au devis. Les éventuelles indemnités kilométriques dépendent de l\'adresse des locaux, du planning et des conditions d\'intervention. Elles sont précisées dans le devis. Elles peuvent apparaître pour les communes les plus éloignées du département, et sont alors chiffrées au devis.',
 	) ), $id );
 	tfp_seed_set_field( 'exemple_label', 'Exemple · bureaux à Dijon, 12 h/mois', $id );
-	tfp_seed_set_field( 'exemple_texte', 'Trois passages de 1 h par semaine dans un plateau de 180 m² : sols, sanitaires, cuisine et salle de réunion. 333 € HT/mois ; 383 € HT le premier mois si les frais de mise en place s\'appliquent.', $id );
+	tfp_seed_set_field( 'exemple_texte', 'Douze passages d\'une heure par mois dans un plateau de 180 m² : sols, sanitaires, cuisine et salle de réunion. 333 € HT/mois ; 383 € HT le premier mois si les frais de mise en place s\'appliquent.', $id );
 	tfp_seed_set_field( 'temoignage_texte', 'Nous cherchions un prestataire capable de passer avant 8 h sans qu\'on ait à rappeler chaque semaine. C\'est le cas depuis un an, et les consignes de la salle de réunion sont bien suivies.', $id );
 	tfp_seed_set_field( 'temoignage_auteur', 'Julien R.', $id );
 	tfp_seed_set_field( 'temoignage_role', 'Agence de communication · Dijon', $id );
@@ -161,9 +161,9 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'locaux_4_niveau', 2, $id );
 	tfp_seed_set_field( 'locaux_4_noms', '', $id );
 	tfp_seed_set_field( 'locaux_4_cibles', '', $id );
-	tfp_seed_set_field( 'locaux_5_titre', 'Départements limitrophes couverts', $id );
+	tfp_seed_set_field( 'locaux_5_titre', 'Nos autres secteurs en Bourgogne-Franche-Comté', $id );
 	tfp_seed_set_field( 'locaux_5_texte', implode( "\n", array(
-		'Départements voisins, également couverts par Top-Famille Pro :',
+		'Les sept autres départements de la région, couverts depuis Saint-Apollinaire au même tarif horaire :',
 	) ), $id );
 	tfp_seed_set_field( 'locaux_5_type', 'departements', $id );
 	tfp_seed_set_field( 'locaux_5_variante', 'liens', $id );
@@ -200,7 +200,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'hero_lede', 'À Besançon et dans son agglomération, Top-Famille Pro entretient bureaux, cabinets, commerces et parties communes, avec la même organisation et le même tarif que dans le reste de la région.', $id );
 	tfp_seed_set_field( 'hero_alt', '', $id );
 	tfp_seed_set_field( 'cta_label', 'Demander un devis dans le Doubs', $id );
-	tfp_seed_set_field( 'cta_phone_label', '☎ Échanger avec Audrey', $id );
+	tfp_seed_set_field( 'cta_phone_label', '', $id );
 	tfp_seed_set_field( 'band_items', implode( "\n", array(
 		'Devis gratuit sous 24 h',
 		'Intervention régulière ou ponctuelle',
@@ -236,7 +236,7 @@ if ( empty( $posts ) ) {
 		'27 € HT/h, plus 9 € HT/mois de gestion en régulier et 50 € HT de frais de mise en place, le cas échéant, selon les conditions précisées au devis. Les éventuelles indemnités kilométriques dépendent de l\'adresse des locaux, du planning et des conditions d\'intervention. Elles sont précisées dans le devis. C\'est aussi pourquoi nous privilégions ici les créneaux réguliers et les volumes d\'heures groupés.',
 	) ), $id );
 	tfp_seed_set_field( 'exemple_label', 'Exemple · cabinet à Besançon, 10 h/mois', $id );
-	tfp_seed_set_field( 'exemple_texte', 'Deux passages de 1 h 15 par semaine dans un cabinet de professions libérales : accueil, salle d\'attente, bureaux, sanitaires et sols. 279 € HT/mois. Hors éventuelles indemnités kilométriques précisées dans le devis.', $id );
+	tfp_seed_set_field( 'exemple_texte', 'Huit passages de 1 h 15 par mois dans un cabinet de professions libérales : accueil, salle d\'attente, bureaux, sanitaires et sols. 279 € HT/mois. Hors éventuelles indemnités kilométriques précisées dans le devis.', $id );
 	tfp_seed_set_field( 'temoignage_texte', 'La salle d\'attente et les sanitaires sont repris selon le cahier des charges convenu. Le passage se fait après le dernier patient, ce qui était notre principale contrainte.', $id );
 	tfp_seed_set_field( 'temoignage_auteur', 'Claire D.', $id );
 	tfp_seed_set_field( 'temoignage_role', 'Cabinet paramédical · Besançon', $id );
@@ -299,9 +299,9 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'locaux_3_niveau', 2, $id );
 	tfp_seed_set_field( 'locaux_3_noms', '', $id );
 	tfp_seed_set_field( 'locaux_3_cibles', '', $id );
-	tfp_seed_set_field( 'locaux_4_titre', 'Départements limitrophes couverts', $id );
+	tfp_seed_set_field( 'locaux_4_titre', 'Nos autres secteurs en Bourgogne-Franche-Comté', $id );
 	tfp_seed_set_field( 'locaux_4_texte', implode( "\n", array(
-		'Départements voisins, également couverts par Top-Famille Pro :',
+		'Les sept autres départements de la région, couverts depuis Saint-Apollinaire au même tarif horaire :',
 	) ), $id );
 	tfp_seed_set_field( 'locaux_4_type', 'departements', $id );
 	tfp_seed_set_field( 'locaux_4_variante', 'liens', $id );
@@ -338,7 +338,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'hero_lede', 'Dole et Lons-le-Saunier sont nos deux villes d\'intervention dans le Jura : bureaux, commerces, cabinets et parties communes, en régulier comme en ponctuel.', $id );
 	tfp_seed_set_field( 'hero_alt', '', $id );
 	tfp_seed_set_field( 'cta_label', 'Demander un devis dans le Jura', $id );
-	tfp_seed_set_field( 'cta_phone_label', '☎ Échanger avec Audrey', $id );
+	tfp_seed_set_field( 'cta_phone_label', '', $id );
 	tfp_seed_set_field( 'band_items', implode( "\n", array(
 		'Devis gratuit sous 24 h',
 		'Intervention régulière ou ponctuelle',
@@ -380,7 +380,7 @@ if ( empty( $posts ) ) {
 		'27 € HT/h partout dans le département, avec 9 € HT/mois de gestion en régulier et 50 € HT de frais de mise en place, le cas échéant, selon les conditions précisées au devis. Les éventuelles indemnités kilométriques dépendent de l\'adresse des locaux, du planning et des conditions d\'intervention. Elles sont précisées dans le devis.',
 	) ), $id );
 	tfp_seed_set_field( 'exemple_label', 'Exemple · commerce à Dole, 16 h/mois', $id );
-	tfp_seed_set_field( 'exemple_texte', 'Un passage d\'une heure avant ouverture, du mardi au samedi : surface de vente, sanitaires clients, réserve une fois par semaine. 441 € HT/mois.', $id );
+	tfp_seed_set_field( 'exemple_texte', 'Seize passages d\'une heure par mois, avant ouverture : surface de vente, sanitaires clients, réserve une fois par semaine. 441 € HT/mois.', $id );
 	tfp_seed_set_field( 'temoignage_texte', 'Le passage se fait avant l\'ouverture, tous les matins, et la boutique est prête quand j\'arrive. Le point de suivi permet d\'ajuster ce qui doit l\'être sans avoir à téléphoner.', $id );
 	tfp_seed_set_field( 'temoignage_auteur', 'Nathalie P.', $id );
 	tfp_seed_set_field( 'temoignage_role', 'Commerce de centre-ville · Dole', $id );
@@ -445,9 +445,9 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'locaux_3_niveau', 2, $id );
 	tfp_seed_set_field( 'locaux_3_noms', '', $id );
 	tfp_seed_set_field( 'locaux_3_cibles', '', $id );
-	tfp_seed_set_field( 'locaux_4_titre', 'Départements limitrophes couverts', $id );
+	tfp_seed_set_field( 'locaux_4_titre', 'Nos autres secteurs en Bourgogne-Franche-Comté', $id );
 	tfp_seed_set_field( 'locaux_4_texte', implode( "\n", array(
-		'Départements voisins, également couverts par Top-Famille Pro :',
+		'Les sept autres départements de la région, couverts depuis Saint-Apollinaire au même tarif horaire :',
 	) ), $id );
 	tfp_seed_set_field( 'locaux_4_type', 'departements', $id );
 	tfp_seed_set_field( 'locaux_4_variante', 'liens', $id );
@@ -483,7 +483,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'hero_lede', 'À Nevers et dans son agglomération, Top-Famille Pro entretient bureaux, commerces, cabinets et parties communes, au même tarif que dans le reste de la région.', $id );
 	tfp_seed_set_field( 'hero_alt', '', $id );
 	tfp_seed_set_field( 'cta_label', 'Demander un devis dans la Nièvre', $id );
-	tfp_seed_set_field( 'cta_phone_label', '☎ Échanger avec Audrey', $id );
+	tfp_seed_set_field( 'cta_phone_label', '', $id );
 	tfp_seed_set_field( 'band_items', implode( "\n", array(
 		'Devis gratuit sous 24 h',
 		'Intervention régulière ou ponctuelle',
@@ -525,7 +525,7 @@ if ( empty( $posts ) ) {
 		'27 € HT/h, plus 9 € HT/mois de gestion en régulier et 50 € HT de frais de mise en place, le cas échéant, selon les conditions précisées au devis. Les éventuelles indemnités kilométriques dépendent de l\'adresse des locaux, du planning et des conditions d\'intervention. Elles sont précisées dans le devis. Le taux horaire, lui, ne change pas.',
 	) ), $id );
 	tfp_seed_set_field( 'exemple_label', 'Exemple · copropriété à Nevers, 8 h/mois', $id );
-	tfp_seed_set_field( 'exemple_texte', 'Deux heures par semaine : hall, cage d\'escalier, ascenseur, local à conteneurs et sortie des bacs. 225 € HT/mois. Hors éventuelles indemnités kilométriques précisées dans le devis.', $id );
+	tfp_seed_set_field( 'exemple_texte', 'Quatre passages de deux heures par mois : hall, cage d\'escalier, ascenseur, local à conteneurs et sortie des bacs. 225 € HT/mois. Hors éventuelles indemnités kilométriques précisées dans le devis.', $id );
 	tfp_seed_set_field( 'temoignage_texte', 'Le hall et les escaliers sont repris chaque semaine et les bacs sortent aux bons jours. Le cahier de liaison nous sert de compte rendu pour les réunions du conseil.', $id );
 	tfp_seed_set_field( 'temoignage_auteur', 'Bernard L.', $id );
 	tfp_seed_set_field( 'temoignage_role', 'Conseil syndical · Nevers', $id );
@@ -587,9 +587,9 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'locaux_3_niveau', 2, $id );
 	tfp_seed_set_field( 'locaux_3_noms', '', $id );
 	tfp_seed_set_field( 'locaux_3_cibles', '', $id );
-	tfp_seed_set_field( 'locaux_4_titre', 'Départements limitrophes couverts', $id );
+	tfp_seed_set_field( 'locaux_4_titre', 'Nos autres secteurs en Bourgogne-Franche-Comté', $id );
 	tfp_seed_set_field( 'locaux_4_texte', implode( "\n", array(
-		'Départements voisins, également couverts par Top-Famille Pro :',
+		'Les sept autres départements de la région, couverts depuis Saint-Apollinaire au même tarif horaire :',
 	) ), $id );
 	tfp_seed_set_field( 'locaux_4_type', 'departements', $id );
 	tfp_seed_set_field( 'locaux_4_variante', 'liens', $id );
@@ -624,7 +624,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'hero_lede', 'Vesoul et son agglomération : bureaux, commerces, cabinets et parties communes entretenus en contrat régulier ou en intervention ponctuelle, à 27 € HT/h.', $id );
 	tfp_seed_set_field( 'hero_alt', '', $id );
 	tfp_seed_set_field( 'cta_label', 'Demander un devis en Haute-Saône', $id );
-	tfp_seed_set_field( 'cta_phone_label', '☎ Échanger avec Audrey', $id );
+	tfp_seed_set_field( 'cta_phone_label', '', $id );
 	tfp_seed_set_field( 'band_items', implode( "\n", array(
 		'Devis gratuit sous 24 h',
 		'Intervention régulière ou ponctuelle',
@@ -666,7 +666,7 @@ if ( empty( $posts ) ) {
 		'27 € HT/h, plus 9 € HT/mois de gestion en contrat régulier et 50 € HT de frais de mise en place, le cas échéant, selon les conditions précisées au devis. Les éventuelles indemnités kilométriques dépendent de l\'adresse des locaux, du planning et des conditions d\'intervention. Elles sont précisées dans le devis. Nous privilégions ici des créneaux réguliers et des volumes d\'heures suffisants pour que la prestation tienne dans le temps.',
 	) ), $id );
 	tfp_seed_set_field( 'exemple_label', 'Exemple · bureaux à Vesoul, 10 h/mois', $id );
-	tfp_seed_set_field( 'exemple_texte', 'Deux passages de 1 h 15 par semaine : espaces de travail, sanitaires, coin cuisine et accueil. 279 € HT/mois. Hors éventuelles indemnités kilométriques précisées dans le devis.', $id );
+	tfp_seed_set_field( 'exemple_texte', 'Huit passages de 1 h 15 par mois : espaces de travail, sanitaires, coin cuisine et accueil. 279 € HT/mois. Hors éventuelles indemnités kilométriques précisées dans le devis.', $id );
 	tfp_seed_set_field( 'temoignage_texte', 'Nous avions besoin d\'un passage en dehors des horaires d\'ouverture, avec un badge d\'accès. L\'organisation a été mise en place proprement et le planning est respecté.', $id );
 	tfp_seed_set_field( 'temoignage_auteur', 'Fabrice T.', $id );
 	tfp_seed_set_field( 'temoignage_role', 'Bureau administratif · Vesoul', $id );
@@ -728,9 +728,9 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'locaux_3_niveau', 2, $id );
 	tfp_seed_set_field( 'locaux_3_noms', '', $id );
 	tfp_seed_set_field( 'locaux_3_cibles', '', $id );
-	tfp_seed_set_field( 'locaux_4_titre', 'Départements limitrophes couverts', $id );
+	tfp_seed_set_field( 'locaux_4_titre', 'Nos autres secteurs en Bourgogne-Franche-Comté', $id );
 	tfp_seed_set_field( 'locaux_4_texte', implode( "\n", array(
-		'Départements voisins, également couverts par Top-Famille Pro :',
+		'Les sept autres départements de la région, couverts depuis Saint-Apollinaire au même tarif horaire :',
 	) ), $id );
 	tfp_seed_set_field( 'locaux_4_type', 'departements', $id );
 	tfp_seed_set_field( 'locaux_4_variante', 'liens', $id );
@@ -767,7 +767,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'hero_lede', 'De Chalon-sur-Saône à Mâcon, le long de l\'axe Saône : bureaux, commerces, cabinets, copropriétés et locations meublées entretenus à 27 € HT/h.', $id );
 	tfp_seed_set_field( 'hero_alt', '', $id );
 	tfp_seed_set_field( 'cta_label', 'Demander un devis en Saône-et-Loire', $id );
-	tfp_seed_set_field( 'cta_phone_label', '☎ Échanger avec Audrey', $id );
+	tfp_seed_set_field( 'cta_phone_label', '', $id );
 	tfp_seed_set_field( 'band_items', implode( "\n", array(
 		'Devis gratuit sous 24 h',
 		'Intervention régulière ou ponctuelle',
@@ -803,7 +803,7 @@ if ( empty( $posts ) ) {
 		'27 € HT/h dans les deux bassins, plus 9 € HT/mois de gestion en régulier et 50 € HT de frais de mise en place, le cas échéant, selon les conditions précisées au devis. Les éventuelles indemnités kilométriques dépendent de l\'adresse des locaux, du planning et des conditions d\'intervention. Elles sont précisées dans le devis. Elles sont calculées au devis, avant signature.',
 	) ), $id );
 	tfp_seed_set_field( 'exemple_label', 'Exemple · bureaux à Chalon, 12 h/mois', $id );
-	tfp_seed_set_field( 'exemple_texte', 'Trois passages d\'une heure par semaine : open-space, bureaux individuels, sanitaires et espace café. 333 € HT/mois. Hors éventuelles indemnités kilométriques précisées dans le devis.', $id );
+	tfp_seed_set_field( 'exemple_texte', 'Douze passages d\'une heure par mois : open-space, bureaux individuels, sanitaires et espace café. 333 € HT/mois. Hors éventuelles indemnités kilométriques précisées dans le devis.', $id );
 	tfp_seed_set_field( 'temoignage_texte', 'Nous avons trois passages par semaine tôt le matin. Les bureaux sont prêts avant l\'arrivée des équipes et le suivi mensuel évite les allers-retours par mail.', $id );
 	tfp_seed_set_field( 'temoignage_auteur', 'Émilie V.', $id );
 	tfp_seed_set_field( 'temoignage_role', 'Bureau d\'études · Chalon-sur-Saône', $id );
@@ -867,9 +867,9 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'locaux_3_niveau', 2, $id );
 	tfp_seed_set_field( 'locaux_3_noms', '', $id );
 	tfp_seed_set_field( 'locaux_3_cibles', '', $id );
-	tfp_seed_set_field( 'locaux_4_titre', 'Départements limitrophes couverts', $id );
+	tfp_seed_set_field( 'locaux_4_titre', 'Nos autres secteurs en Bourgogne-Franche-Comté', $id );
 	tfp_seed_set_field( 'locaux_4_texte', implode( "\n", array(
-		'Départements voisins, également couverts par Top-Famille Pro :',
+		'Les sept autres départements de la région, couverts depuis Saint-Apollinaire au même tarif horaire :',
 	) ), $id );
 	tfp_seed_set_field( 'locaux_4_type', 'departements', $id );
 	tfp_seed_set_field( 'locaux_4_variante', 'liens', $id );
@@ -906,7 +906,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'hero_lede', 'Auxerre et son agglomération : entretien de bureaux, commerces, cabinets et parties communes, en régulier ou en ponctuel, à 27 € HT/h.', $id );
 	tfp_seed_set_field( 'hero_alt', '', $id );
 	tfp_seed_set_field( 'cta_label', 'Demander un devis dans l\'Yonne', $id );
-	tfp_seed_set_field( 'cta_phone_label', '☎ Échanger avec Audrey', $id );
+	tfp_seed_set_field( 'cta_phone_label', '', $id );
 	tfp_seed_set_field( 'band_items', implode( "\n", array(
 		'Devis gratuit sous 24 h',
 		'Intervention régulière ou ponctuelle',
@@ -948,7 +948,7 @@ if ( empty( $posts ) ) {
 		'27 € HT/h comme partout en région, avec 9 € HT/mois de gestion en régulier et 50 € HT de frais de mise en place, le cas échéant, selon les conditions précisées au devis. Les éventuelles indemnités kilométriques dépendent de l\'adresse des locaux, du planning et des conditions d\'intervention. Elles sont précisées dans le devis. Elles sont chiffrées au devis, et nous privilégions des créneaux réguliers et regroupés.',
 	) ), $id );
 	tfp_seed_set_field( 'exemple_label', 'Exemple · bureaux à Auxerre, 8 h/mois', $id );
-	tfp_seed_set_field( 'exemple_texte', 'Deux passages d\'une heure par semaine : bureaux administratifs, sanitaires, salle de pause. 225 € HT/mois. Hors éventuelles indemnités kilométriques précisées dans le devis.', $id );
+	tfp_seed_set_field( 'exemple_texte', 'Huit passages d\'une heure par mois : bureaux administratifs, sanitaires, salle de pause. 225 € HT/mois. Hors éventuelles indemnités kilométriques précisées dans le devis.', $id );
 	tfp_seed_set_field( 'temoignage_texte', 'Nos bureaux administratifs sont entretenus deux fois par semaine en dehors des heures d\'activité. Ce qui nous a convaincus, c\'est d\'avoir la même personne à joindre à chaque question.', $id );
 	tfp_seed_set_field( 'temoignage_auteur', 'Karim B.', $id );
 	tfp_seed_set_field( 'temoignage_role', 'PME · Auxerre', $id );
@@ -1010,9 +1010,9 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'locaux_3_niveau', 2, $id );
 	tfp_seed_set_field( 'locaux_3_noms', '', $id );
 	tfp_seed_set_field( 'locaux_3_cibles', '', $id );
-	tfp_seed_set_field( 'locaux_4_titre', 'Départements limitrophes couverts', $id );
+	tfp_seed_set_field( 'locaux_4_titre', 'Nos autres secteurs en Bourgogne-Franche-Comté', $id );
 	tfp_seed_set_field( 'locaux_4_texte', implode( "\n", array(
-		'Départements voisins, également couverts par Top-Famille Pro :',
+		'Les sept autres départements de la région, couverts depuis Saint-Apollinaire au même tarif horaire :',
 	) ), $id );
 	tfp_seed_set_field( 'locaux_4_type', 'departements', $id );
 	tfp_seed_set_field( 'locaux_4_variante', 'liens', $id );
@@ -1047,7 +1047,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'hero_lede', 'Belfort et son agglomération : bureaux, commerces, cabinets et parties communes entretenus en contrat régulier ou en intervention ponctuelle, à 27 € HT/h.', $id );
 	tfp_seed_set_field( 'hero_alt', '', $id );
 	tfp_seed_set_field( 'cta_label', 'Demander un devis à Belfort', $id );
-	tfp_seed_set_field( 'cta_phone_label', '☎ Échanger avec Audrey', $id );
+	tfp_seed_set_field( 'cta_phone_label', '', $id );
 	tfp_seed_set_field( 'band_items', implode( "\n", array(
 		'Devis gratuit sous 24 h',
 		'Intervention régulière ou ponctuelle',
@@ -1089,7 +1089,7 @@ if ( empty( $posts ) ) {
 		'27 € HT/h, plus 9 € HT/mois de gestion en régulier et 50 € HT de frais de mise en place, le cas échéant, selon les conditions précisées au devis. Les éventuelles indemnités kilométriques dépendent de l\'adresse des locaux, du planning et des conditions d\'intervention. Elles sont précisées dans le devis. Nous y privilégions des créneaux réguliers et des volumes d\'heures regroupés.',
 	) ), $id );
 	tfp_seed_set_field( 'exemple_label', 'Exemple · bureaux à Belfort, 10 h/mois', $id );
-	tfp_seed_set_field( 'exemple_texte', 'Deux passages de 1 h 15 par semaine : open-space, salles de réunion, sanitaires et espace café. 279 € HT/mois. Hors éventuelles indemnités kilométriques précisées dans le devis.', $id );
+	tfp_seed_set_field( 'exemple_texte', 'Huit passages de 1 h 15 par mois : open-space, salles de réunion, sanitaires et espace café. 279 € HT/mois. Hors éventuelles indemnités kilométriques précisées dans le devis.', $id );
 	tfp_seed_set_field( 'temoignage_texte', 'Le passage se fait en soirée, après le départ des équipes techniques. Les salles de réunion sont remises en ordre et les consignes de sécurité du site sont respectées.', $id );
 	tfp_seed_set_field( 'temoignage_auteur', 'Sylvain M.', $id );
 	tfp_seed_set_field( 'temoignage_role', 'Bureau d\'ingénierie · Belfort', $id );
@@ -1151,9 +1151,9 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'locaux_3_niveau', 2, $id );
 	tfp_seed_set_field( 'locaux_3_noms', '', $id );
 	tfp_seed_set_field( 'locaux_3_cibles', '', $id );
-	tfp_seed_set_field( 'locaux_4_titre', 'Départements limitrophes couverts', $id );
+	tfp_seed_set_field( 'locaux_4_titre', 'Nos autres secteurs en Bourgogne-Franche-Comté', $id );
 	tfp_seed_set_field( 'locaux_4_texte', implode( "\n", array(
-		'Départements voisins, également couverts par Top-Famille Pro :',
+		'Les sept autres départements de la région, couverts depuis Saint-Apollinaire au même tarif horaire :',
 	) ), $id );
 	tfp_seed_set_field( 'locaux_4_type', 'departements', $id );
 	tfp_seed_set_field( 'locaux_4_variante', 'liens', $id );
@@ -1189,7 +1189,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'hero_lede', 'Bureaux, commerces, cabinets, copropriétés et locations meublées : Top-Famille Pro entretient vos locaux dijonnais depuis son implantation de Saint-Apollinaire, commune limitrophe de Dijon.', $id );
 	tfp_seed_set_field( 'hero_alt', 'Locaux professionnels à Dijon', $id );
 	tfp_seed_set_field( 'cta_label', 'Demander un devis à Dijon', $id );
-	tfp_seed_set_field( 'cta_phone_label', '☎ Échanger avec Audrey', $id );
+	tfp_seed_set_field( 'cta_phone_label', '', $id );
 	tfp_seed_set_field( 'band_items', implode( "\n", array(
 		'Devis gratuit sous 24 h',
 		'Intervention régulière ou ponctuelle',
@@ -1237,7 +1237,7 @@ if ( empty( $posts ) ) {
 		'27 € HT/h à Dijon, comme partout ailleurs en Bourgogne-Franche-Comté, plus 9 € HT/mois de gestion pour un contrat régulier et 50 € HT de frais de mise en place, le cas échéant, selon les conditions précisées au devis. Les éventuelles indemnités kilométriques dépendent de l\'adresse des locaux, du planning et des conditions d\'intervention. Elles sont précisées dans le devis. Les interventions de nuit, le dimanche et les jours fériés sont majorées de 10 %.',
 	) ), $id );
 	tfp_seed_set_field( 'exemple_label', 'Exemple · bureaux en secteur tertiaire dijonnais, 12 h/mois', $id );
-	tfp_seed_set_field( 'exemple_texte', 'Trois passages d\'une heure par semaine dans un plateau de 180 m² : sols, sanitaires, cuisine partagée, salle de réunion remise en ordre. 333 € HT/mois ; 383 € HT le premier mois si les frais de mise en place s\'appliquent.', $id );
+	tfp_seed_set_field( 'exemple_texte', 'Douze passages d\'une heure par mois dans un plateau de 180 m² : sols, sanitaires, cuisine partagée, salle de réunion remise en ordre. 333 € HT/mois ; 383 € HT le premier mois si les frais de mise en place s\'appliquent.', $id );
 	tfp_seed_set_field( 'temoignage_texte', 'Nous ouvrons à 9 h et le passage est fait avant : bureaux, vitrine intérieure et espace d\'accueil. En un an, nous n\'avons eu à signaler que deux ajustements, réglés dès la semaine suivante.', $id );
 	tfp_seed_set_field( 'temoignage_auteur', 'Marc D.', $id );
 	tfp_seed_set_field( 'temoignage_role', 'Agence immobilière · Dijon centre', $id );
@@ -1386,7 +1386,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'hero_lede', 'Bureaux, cabinets, commerces du centre historique et parties communes : Top-Famille Pro entretient vos locaux bisontins avec des créneaux réguliers planifiés.', $id );
 	tfp_seed_set_field( 'hero_alt', 'Locaux professionnels à Besançon', $id );
 	tfp_seed_set_field( 'cta_label', 'Demander un devis à Besançon', $id );
-	tfp_seed_set_field( 'cta_phone_label', '☎ Échanger avec Audrey', $id );
+	tfp_seed_set_field( 'cta_phone_label', '', $id );
 	tfp_seed_set_field( 'band_items', implode( "\n", array(
 		'Devis gratuit sous 24 h',
 		'Intervention régulière ou ponctuelle',
@@ -1429,7 +1429,7 @@ if ( empty( $posts ) ) {
 		'27 € HT/h à Besançon, identique au reste de la région, avec 9 € HT/mois de gestion en contrat régulier et 50 € HT de frais de mise en place, le cas échéant, selon les conditions précisées au devis. Les éventuelles indemnités kilométriques dépendent de l\'adresse des locaux, du planning et des conditions d\'intervention. Elles sont précisées dans le devis. Majoration de 10 % la nuit, le dimanche et les jours fériés.',
 	) ), $id );
 	tfp_seed_set_field( 'exemple_label', 'Exemple · cabinet paramédical, 10 h/mois', $id );
-	tfp_seed_set_field( 'exemple_texte', 'Deux passages de 1 h 15 par semaine : salle d\'attente, deux bureaux de consultation, sanitaires et surfaces courantes. 279 € HT/mois. Hors éventuelles indemnités kilométriques précisées dans le devis.', $id );
+	tfp_seed_set_field( 'exemple_texte', 'Huit passages de 1 h 15 par mois : salle d\'attente, deux bureaux de consultation, sanitaires et surfaces courantes. 279 € HT/mois. Hors éventuelles indemnités kilométriques précisées dans le devis.', $id );
 	tfp_seed_set_field( 'temoignage_texte', 'Le passage se fait après le dernier patient et la salle d\'attente est impeccable le matin. Ce qui compte pour nous : la discrétion sur les dossiers et le respect strict de l\'horaire de fermeture.', $id );
 	tfp_seed_set_field( 'temoignage_auteur', 'Hélène F.', $id );
 	tfp_seed_set_field( 'temoignage_role', 'Cabinet de kinésithérapie · Besançon', $id );
@@ -1571,7 +1571,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'hero_lede', 'Commerces du centre historique, bureaux, cabinets et parties communes : Top-Famille Pro entretient vos locaux dolois en régulier ou en ponctuel.', $id );
 	tfp_seed_set_field( 'hero_alt', 'Locaux professionnels à Dole', $id );
 	tfp_seed_set_field( 'cta_label', 'Demander un devis à Dole', $id );
-	tfp_seed_set_field( 'cta_phone_label', '☎ Échanger avec Audrey', $id );
+	tfp_seed_set_field( 'cta_phone_label', '', $id );
 	tfp_seed_set_field( 'band_items', implode( "\n", array(
 		'Devis gratuit sous 24 h',
 		'Intervention régulière ou ponctuelle',
@@ -1619,7 +1619,7 @@ if ( empty( $posts ) ) {
 		'27 € HT/h, comme dans le reste de la région, avec 9 € HT/mois de gestion en contrat régulier et 50 € HT de frais de mise en place, le cas échéant, selon les conditions précisées au devis. Dole fait partie de nos secteurs prioritaires dans le Jura. Les éventuelles indemnités kilométriques dépendent de l\'adresse des locaux, du planning et des conditions d\'intervention. Elles sont précisées dans le devis. Majoration de 10 % pour les interventions de nuit, le dimanche et les jours fériés.',
 	) ), $id );
 	tfp_seed_set_field( 'exemple_label', 'Exemple · commerce en centre-ville, 16 h/mois', $id );
-	tfp_seed_set_field( 'exemple_texte', 'Un passage d\'une heure avant ouverture, du mardi au samedi : surface de vente, sanitaires clients, réserve une fois par semaine. 441 € HT/mois.', $id );
+	tfp_seed_set_field( 'exemple_texte', 'Seize passages d\'une heure par mois, avant ouverture : surface de vente, sanitaires clients, réserve une fois par semaine. 441 € HT/mois.', $id );
 	tfp_seed_set_field( 'temoignage_texte', 'J\'ouvre à 9 h 30 et tout est fait avant mon arrivée, y compris la vitrine côté intérieur. Le samedi, le passage est un peu plus long, comme convenu au départ.', $id );
 	tfp_seed_set_field( 'temoignage_auteur', 'Isabelle G.', $id );
 	tfp_seed_set_field( 'temoignage_role', 'Boutique de prêt-à-porter · Dole', $id );
@@ -1760,7 +1760,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'hero_lede', 'Bureaux, cabinets, commerces et parties communes : Top-Famille Pro entretient vos locaux à Lons-le-Saunier avec des créneaux réguliers planifiés à l\'avance.', $id );
 	tfp_seed_set_field( 'hero_alt', 'Locaux professionnels à Lons-le-Saunier', $id );
 	tfp_seed_set_field( 'cta_label', 'Demander un devis à Lons-le-Saunier', $id );
-	tfp_seed_set_field( 'cta_phone_label', '☎ Échanger avec Audrey', $id );
+	tfp_seed_set_field( 'cta_phone_label', '', $id );
 	tfp_seed_set_field( 'band_items', implode( "\n", array(
 		'Devis gratuit sous 24 h',
 		'Intervention régulière ou ponctuelle',
@@ -1814,7 +1814,7 @@ if ( empty( $posts ) ) {
 		'27 € HT/h comme partout en région, avec 9 € HT/mois de gestion en contrat régulier et 50 € HT de frais de mise en place, le cas échéant, selon les conditions précisées au devis. Les éventuelles indemnités kilométriques dépendent de l\'adresse des locaux, du planning et des conditions d\'intervention. Elles sont précisées dans le devis. Nous y privilégions des créneaux réguliers et des volumes d\'heures regroupés.',
 	) ), $id );
 	tfp_seed_set_field( 'exemple_label', 'Exemple · cabinet comptable, 8 h/mois', $id );
-	tfp_seed_set_field( 'exemple_texte', 'Deux heures par semaine, le vendredi en fin de journée : bureaux, salle d\'accueil, sanitaires, espace café. 225 € HT/mois. Hors éventuelles indemnités kilométriques précisées dans le devis.', $id );
+	tfp_seed_set_field( 'exemple_texte', 'Quatre passages de deux heures par mois, le vendredi en fin de journée : bureaux, salle d\'accueil, sanitaires, espace café. 225 € HT/mois. Hors éventuelles indemnités kilométriques précisées dans le devis.', $id );
 	tfp_seed_set_field( 'temoignage_texte', 'Le passage du vendredi soir nous permet de retrouver des bureaux nets le lundi matin. Les dossiers ne sont jamais déplacés, ce qui était notre condition principale.', $id );
 	tfp_seed_set_field( 'temoignage_auteur', 'Pascal R.', $id );
 	tfp_seed_set_field( 'temoignage_role', 'Cabinet d\'expertise comptable · Lons-le-Saunier', $id );
@@ -1948,7 +1948,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'hero_lede', 'Parties communes, bureaux administratifs, commerces et cabinets : Top-Famille Pro entretient vos locaux nivernais avec des créneaux hebdomadaires fixes.', $id );
 	tfp_seed_set_field( 'hero_alt', 'Locaux professionnels à Nevers', $id );
 	tfp_seed_set_field( 'cta_label', 'Demander un devis à Nevers', $id );
-	tfp_seed_set_field( 'cta_phone_label', '☎ Échanger avec Audrey', $id );
+	tfp_seed_set_field( 'cta_phone_label', '', $id );
 	tfp_seed_set_field( 'band_items', implode( "\n", array(
 		'Devis gratuit sous 24 h',
 		'Intervention régulière ou ponctuelle',
@@ -2002,7 +2002,7 @@ if ( empty( $posts ) ) {
 		'27 € HT/h, identique au reste de la région, avec 9 € HT/mois de gestion en contrat régulier et 50 € HT de frais de mise en place, le cas échéant, selon les conditions précisées au devis. Les éventuelles indemnités kilométriques dépendent de l\'adresse des locaux, du planning et des conditions d\'intervention. Elles sont précisées dans le devis. Nous y privilégions des créneaux réguliers pouvant être envisagés selon le planning, avec des volumes d\'heures regroupés.',
 	) ), $id );
 	tfp_seed_set_field( 'exemple_label', 'Exemple · copropriété, 8 h/mois', $id );
-	tfp_seed_set_field( 'exemple_texte', 'Deux heures par semaine : hall, cage d\'escalier, ascenseur, local à conteneurs et sortie des bacs. 225 € HT/mois. Hors éventuelles indemnités kilométriques précisées dans le devis.', $id );
+	tfp_seed_set_field( 'exemple_texte', 'Quatre passages de deux heures par mois : hall, cage d\'escalier, ascenseur, local à conteneurs et sortie des bacs. 225 € HT/mois. Hors éventuelles indemnités kilométriques précisées dans le devis.', $id );
 	tfp_seed_set_field( 'temoignage_texte', 'Nous avions des retards de passage avec notre ancien prestataire. Depuis, le créneau du mardi est tenu et le cahier de liaison nous sert de compte rendu au conseil syndical.', $id );
 	tfp_seed_set_field( 'temoignage_auteur', 'Michèle A.', $id );
 	tfp_seed_set_field( 'temoignage_role', 'Résidence de centre-ville · Nevers', $id );
@@ -2136,7 +2136,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'hero_lede', 'Bureaux administratifs, commerces, cabinets et parties communes : Top-Famille Pro entretient vos locaux vésuliens, y compris en dehors des heures d\'ouverture.', $id );
 	tfp_seed_set_field( 'hero_alt', 'Locaux professionnels à Vesoul', $id );
 	tfp_seed_set_field( 'cta_label', 'Demander un devis à Vesoul', $id );
-	tfp_seed_set_field( 'cta_phone_label', '☎ Échanger avec Audrey', $id );
+	tfp_seed_set_field( 'cta_phone_label', '', $id );
 	tfp_seed_set_field( 'band_items', implode( "\n", array(
 		'Devis gratuit sous 24 h',
 		'Intervention régulière ou ponctuelle',
@@ -2184,7 +2184,7 @@ if ( empty( $posts ) ) {
 		'27 € HT/h, comme partout en région, avec 9 € HT/mois de gestion en contrat régulier et 50 € HT de frais de mise en place, le cas échéant, selon les conditions précisées au devis. Les éventuelles indemnités kilométriques dépendent de l\'adresse des locaux, du planning et des conditions d\'intervention. Elles sont précisées dans le devis. Majoration de 10 % pour les interventions de nuit, le dimanche et les jours fériés.',
 	) ), $id );
 	tfp_seed_set_field( 'exemple_label', 'Exemple · bureaux administratifs, 10 h/mois', $id );
-	tfp_seed_set_field( 'exemple_texte', 'Deux passages de 1 h 15 par semaine, après 18 h, accès par badge : espaces de travail, accueil, sanitaires, coin cuisine. 279 € HT/mois. Hors éventuelles indemnités kilométriques précisées dans le devis.', $id );
+	tfp_seed_set_field( 'exemple_texte', 'Huit passages de 1 h 15 par mois, après 18 h, accès par badge : espaces de travail, accueil, sanitaires, coin cuisine. 279 € HT/mois. Hors éventuelles indemnités kilométriques précisées dans le devis.', $id );
 	tfp_seed_set_field( 'temoignage_texte', 'L\'intervention se fait en soirée avec un badge, sans que personne soit présent. La procédure de fermeture est respectée et nous n\'avons jamais eu d\'alarme déclenchée par erreur.', $id );
 	tfp_seed_set_field( 'temoignage_auteur', 'Laurent C.', $id );
 	tfp_seed_set_field( 'temoignage_role', 'Bureau administratif · Vesoul', $id );
@@ -2323,7 +2323,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'hero_lede', 'Bureaux, bureaux d\'études, commerces, cabinets et copropriétés : Top-Famille Pro entretient vos locaux du Grand Chalon, en régulier ou en ponctuel.', $id );
 	tfp_seed_set_field( 'hero_alt', 'Locaux professionnels à Chalon-sur-Saône', $id );
 	tfp_seed_set_field( 'cta_label', 'Demander un devis à Chalon-sur-Saône', $id );
-	tfp_seed_set_field( 'cta_phone_label', '☎ Échanger avec Audrey', $id );
+	tfp_seed_set_field( 'cta_phone_label', '', $id );
 	tfp_seed_set_field( 'band_items', implode( "\n", array(
 		'Devis gratuit sous 24 h',
 		'Intervention régulière ou ponctuelle',
@@ -2371,7 +2371,7 @@ if ( empty( $posts ) ) {
 		'27 € HT/h, comme dans le reste de la région, avec 9 € HT/mois de gestion en contrat régulier et 50 € HT de frais de mise en place, le cas échéant, selon les conditions précisées au devis. Les éventuelles indemnités kilométriques dépendent de l\'adresse des locaux, du planning et des conditions d\'intervention. Elles sont précisées dans le devis.',
 	) ), $id );
 	tfp_seed_set_field( 'exemple_label', 'Exemple · bureaux, 12 h/mois', $id );
-	tfp_seed_set_field( 'exemple_texte', 'Trois passages d\'une heure par semaine : open-space, bureaux individuels, sanitaires, espace café et salle de réunion. 333 € HT/mois. Hors éventuelles indemnités kilométriques précisées dans le devis.', $id );
+	tfp_seed_set_field( 'exemple_texte', 'Douze passages d\'une heure par mois : open-space, bureaux individuels, sanitaires, espace café et salle de réunion. 333 € HT/mois. Hors éventuelles indemnités kilométriques précisées dans le devis.', $id );
 	tfp_seed_set_field( 'temoignage_texte', 'Trois passages par semaine tôt le matin, avant l\'arrivée des équipes. La salle de réunion est toujours remise en ordre, ce qui nous évite de le faire nous-mêmes avant les rendez-vous.', $id );
 	tfp_seed_set_field( 'temoignage_auteur', 'Damien P.', $id );
 	tfp_seed_set_field( 'temoignage_role', 'Bureau d\'études · Chalon-sur-Saône', $id );
@@ -2511,7 +2511,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'hero_lede', 'Bureaux, cabinets, commerces et locations meublées : Top-Famille Pro entretient vos locaux mâconnais avec un planning régulier et un tarif unique.', $id );
 	tfp_seed_set_field( 'hero_alt', 'Locaux professionnels à Mâcon', $id );
 	tfp_seed_set_field( 'cta_label', 'Demander un devis à Mâcon', $id );
-	tfp_seed_set_field( 'cta_phone_label', '☎ Échanger avec Audrey', $id );
+	tfp_seed_set_field( 'cta_phone_label', '', $id );
 	tfp_seed_set_field( 'band_items', implode( "\n", array(
 		'Devis gratuit sous 24 h',
 		'Intervention régulière ou ponctuelle',
@@ -2559,7 +2559,7 @@ if ( empty( $posts ) ) {
 		'27 € HT/h comme partout en région, avec 9 € HT/mois de gestion en contrat régulier et 50 € HT de frais de mise en place, le cas échéant, selon les conditions précisées au devis. Les éventuelles indemnités kilométriques dépendent de l\'adresse des locaux, du planning et des conditions d\'intervention. Elles sont précisées dans le devis.',
 	) ), $id );
 	tfp_seed_set_field( 'exemple_label', 'Exemple · cabinet de conseil, 8 h/mois', $id );
-	tfp_seed_set_field( 'exemple_texte', 'Deux heures par semaine, le vendredi en fin de journée : bureaux, salle de réception clients, sanitaires. 225 € HT/mois. Hors éventuelles indemnités kilométriques précisées dans le devis.', $id );
+	tfp_seed_set_field( 'exemple_texte', 'Quatre passages de deux heures par mois, le vendredi en fin de journée : bureaux, salle de réception clients, sanitaires. 225 € HT/mois. Hors éventuelles indemnités kilométriques précisées dans le devis.', $id );
 	tfp_seed_set_field( 'temoignage_texte', 'Nous recevons des clients le lundi matin : la salle de réception doit être irréprochable. Le passage du vendredi soir répond exactement à ce besoin depuis deux ans.', $id );
 	tfp_seed_set_field( 'temoignage_auteur', 'Anne-Sophie L.', $id );
 	tfp_seed_set_field( 'temoignage_role', 'Cabinet de conseil · Mâcon', $id );
@@ -2699,7 +2699,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'hero_lede', 'Bureaux de PME, commerces, cabinets et parties communes : Top-Famille Pro entretient vos locaux auxerrois en régulier ou en ponctuel, à 27 € HT/h.', $id );
 	tfp_seed_set_field( 'hero_alt', 'Locaux professionnels à Auxerre', $id );
 	tfp_seed_set_field( 'cta_label', 'Demander un devis à Auxerre', $id );
-	tfp_seed_set_field( 'cta_phone_label', '☎ Échanger avec Audrey', $id );
+	tfp_seed_set_field( 'cta_phone_label', '', $id );
 	tfp_seed_set_field( 'band_items', implode( "\n", array(
 		'Devis gratuit sous 24 h',
 		'Intervention régulière ou ponctuelle',
@@ -2747,7 +2747,7 @@ if ( empty( $posts ) ) {
 		'27 € HT/h, identique au reste de la région, avec 9 € HT/mois de gestion en contrat régulier et 50 € HT de frais de mise en place, le cas échéant, selon les conditions précisées au devis. Les éventuelles indemnités kilométriques dépendent de l\'adresse des locaux, du planning et des conditions d\'intervention. Elles sont précisées dans le devis.',
 	) ), $id );
 	tfp_seed_set_field( 'exemple_label', 'Exemple · bureaux de PME, 8 h/mois', $id );
-	tfp_seed_set_field( 'exemple_texte', 'Deux passages d\'une heure par semaine, après 18 h : bureaux administratifs, sanitaires, salle de pause. 225 € HT/mois. Hors éventuelles indemnités kilométriques précisées dans le devis.', $id );
+	tfp_seed_set_field( 'exemple_texte', 'Huit passages d\'une heure par mois, après 18 h : bureaux administratifs, sanitaires, salle de pause. 225 € HT/mois. Hors éventuelles indemnités kilométriques précisées dans le devis.', $id );
 	tfp_seed_set_field( 'temoignage_texte', 'Deux passages par semaine après la fermeture, sans que nous ayons à être présents. Le cahier de liaison nous signale ce qui doit l\'être, y compris les consommables à recommander.', $id );
 	tfp_seed_set_field( 'temoignage_auteur', 'Sébastien H.', $id );
 	tfp_seed_set_field( 'temoignage_role', 'PME de services · Auxerre', $id );
@@ -2887,7 +2887,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'hero_lede', 'Bureaux d\'ingénierie, locaux tertiaires, commerces et parties communes : Top-Famille Pro entretient vos locaux belfortains, y compris en soirée.', $id );
 	tfp_seed_set_field( 'hero_alt', 'Locaux professionnels à Belfort', $id );
 	tfp_seed_set_field( 'cta_label', 'Demander un devis à Belfort', $id );
-	tfp_seed_set_field( 'cta_phone_label', '☎ Échanger avec Audrey', $id );
+	tfp_seed_set_field( 'cta_phone_label', '', $id );
 	tfp_seed_set_field( 'band_items', implode( "\n", array(
 		'Devis gratuit sous 24 h',
 		'Intervention régulière ou ponctuelle',
@@ -2935,7 +2935,7 @@ if ( empty( $posts ) ) {
 		'27 € HT/h comme partout en région, avec 9 € HT/mois de gestion en contrat régulier et 50 € HT de frais de mise en place, le cas échéant, selon les conditions précisées au devis. Les éventuelles indemnités kilométriques dépendent de l\'adresse des locaux, du planning et des conditions d\'intervention. Elles sont précisées dans le devis. Majoration de 10 % pour les interventions de nuit, le dimanche et les jours fériés.',
 	) ), $id );
 	tfp_seed_set_field( 'exemple_label', 'Exemple · bureaux d\'ingénierie, 10 h/mois', $id );
-	tfp_seed_set_field( 'exemple_texte', 'Deux passages de 1 h 15 par semaine, en soirée : open-space, salles de réunion, sanitaires et espace café. 279 € HT/mois. Hors éventuelles indemnités kilométriques précisées dans le devis.', $id );
+	tfp_seed_set_field( 'exemple_texte', 'Huit passages de 1 h 15 par mois, en soirée : open-space, salles de réunion, sanitaires et espace café. 279 € HT/mois. Hors éventuelles indemnités kilométriques précisées dans le devis.', $id );
 	tfp_seed_set_field( 'temoignage_texte', 'Le passage a lieu après le départ des équipes techniques, avec les consignes d\'accès du site respectées. En deux ans, nous n\'avons eu aucun incident de fermeture à signaler.', $id );
 	tfp_seed_set_field( 'temoignage_auteur', 'Thierry N.', $id );
 	tfp_seed_set_field( 'temoignage_role', 'Bureau d\'ingénierie · Belfort', $id );
@@ -3075,7 +3075,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'hero_lede', 'Saint-Apollinaire est l\'implantation réelle de Top-Famille Pro : c\'est de cette commune que partent tous nos plannings, en Côte-d\'Or comme dans le reste de la région.', $id );
 	tfp_seed_set_field( 'hero_alt', 'Locaux professionnels à Saint-Apollinaire', $id );
 	tfp_seed_set_field( 'cta_label', 'Demander un devis à Saint-Apollinaire', $id );
-	tfp_seed_set_field( 'cta_phone_label', '☎ Échanger avec Audrey', $id );
+	tfp_seed_set_field( 'cta_phone_label', '', $id );
 	tfp_seed_set_field( 'band_items', implode( "\n", array(
 		'Devis gratuit sous 24 h',
 		'Intervention régulière ou ponctuelle',
@@ -3111,7 +3111,7 @@ if ( empty( $posts ) ) {
 		'27 € HT/h, plus 9 € HT/mois de gestion en contrat régulier et 50 € HT de frais de mise en place, le cas échéant, selon les conditions précisées au devis. Les éventuelles indemnités kilométriques dépendent de l\'adresse des locaux, du planning et des conditions d\'intervention. Elles sont précisées dans le devis. C\'est le secteur où notre implantation est la plus proche : ajustement de créneau, passage supplémentaire ou visite complémentaire sont étudiés selon les disponibilités du planning.',
 	) ), $id );
 	tfp_seed_set_field( 'exemple_label', 'Exemple · bureaux en zone d\'activité, 12 h/mois', $id );
-	tfp_seed_set_field( 'exemple_texte', 'Trois passages d\'une heure par semaine avant 8 h : bureaux, sanitaires, coin cuisine et salle de réunion. 333 € HT/mois, sans frais de déplacement.', $id );
+	tfp_seed_set_field( 'exemple_texte', 'Douze passages d\'une heure par mois avant 8 h : bureaux, sanitaires, coin cuisine et salle de réunion. 333 € HT/mois. Les éventuelles indemnités kilométriques dépendent de l’adresse des locaux, du planning et des conditions d’intervention ; elles sont précisées dans le devis.', $id );
 	tfp_seed_set_field( 'temoignage_texte', 'Nous sommes suivis depuis deux ans, avec le même créneau chaque semaine. Quand nous avons eu besoin d\'un passage supplémentaire avant une réunion, il a été organisé dans la semaine.', $id );
 	tfp_seed_set_field( 'temoignage_auteur', 'Client Top-Famille Pro', $id );
 	tfp_seed_set_field( 'temoignage_role', 'Avis général · Côte-d\'Or', $id );
@@ -3250,7 +3250,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'hero_lede', 'Parties communes, commerces et bureaux : Top-Famille Pro entretient vos locaux à Chenôve, commune limitrophe de Dijon au sud de l\'agglomération.', $id );
 	tfp_seed_set_field( 'hero_alt', 'Locaux professionnels à Chenôve', $id );
 	tfp_seed_set_field( 'cta_label', 'Demander un devis à Chenôve', $id );
-	tfp_seed_set_field( 'cta_phone_label', '☎ Échanger avec Audrey', $id );
+	tfp_seed_set_field( 'cta_phone_label', '', $id );
 	tfp_seed_set_field( 'band_items', implode( "\n", array(
 		'Devis gratuit sous 24 h',
 		'Intervention régulière ou ponctuelle',
@@ -3286,7 +3286,7 @@ if ( empty( $posts ) ) {
 		'27 € HT/h, plus 9 € HT/mois de gestion en contrat régulier et 50 € HT de frais de mise en place, le cas échéant, selon les conditions précisées au devis. Les éventuelles indemnités kilométriques dépendent de l\'adresse des locaux, du planning et des conditions d\'intervention. Elles sont précisées dans le devis. Majoration de 10 % pour les interventions de nuit, le dimanche et les jours fériés.',
 	) ), $id );
 	tfp_seed_set_field( 'exemple_label', 'Exemple · copropriété, 8 h/mois', $id );
-	tfp_seed_set_field( 'exemple_texte', 'Deux heures par semaine : trois cages d\'escalier, hall, local à conteneurs et sortie des bacs possible lorsqu\'elle est prévue au cahier des charges et chiffrée au devis, selon le calendrier de collecte applicable à l\'adresse. 225 € HT/mois.', $id );
+	tfp_seed_set_field( 'exemple_texte', 'Quatre passages de deux heures par mois : trois cages d\'escalier, hall, local à conteneurs et sortie des bacs possible lorsqu\'elle est prévue au cahier des charges et chiffrée au devis, selon le calendrier de collecte applicable à l\'adresse. 225 € HT/mois.', $id );
 	tfp_seed_set_field( 'temoignage_texte', 'L\'entretien de nos parties communes est régulier et le local à conteneurs est enfin propre. Le cahier de liaison nous signale ce qu\'il faut réparer, ce que nous n\'avions pas avant.', $id );
 	tfp_seed_set_field( 'temoignage_auteur', 'Client Top-Famille Pro', $id );
 	tfp_seed_set_field( 'temoignage_role', 'Avis général · Côte-d\'Or', $id );
@@ -3422,7 +3422,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'hero_lede', 'Commerces, bureaux et cabinets : Quetigny est voisine de notre implantation de Saint-Apollinaire, ce qui en fait l\'un de nos secteurs prioritaires.', $id );
 	tfp_seed_set_field( 'hero_alt', 'Locaux professionnels à Quetigny', $id );
 	tfp_seed_set_field( 'cta_label', 'Demander un devis à Quetigny', $id );
-	tfp_seed_set_field( 'cta_phone_label', '☎ Échanger avec Audrey', $id );
+	tfp_seed_set_field( 'cta_phone_label', '', $id );
 	tfp_seed_set_field( 'band_items', implode( "\n", array(
 		'Devis gratuit sous 24 h',
 		'Intervention régulière ou ponctuelle',
@@ -3458,7 +3458,7 @@ if ( empty( $posts ) ) {
 		'27 € HT/h, plus 9 € HT/mois de gestion en contrat régulier et 50 € HT de frais de mise en place, le cas échéant, selon les conditions précisées au devis. Les éventuelles indemnités kilométriques dépendent de l\'adresse des locaux, du planning et des conditions d\'intervention. Elles sont précisées dans le devis. Les prestations courtes sont étudiées au cas par cas. Majoration de 10 % la nuit, le dimanche et les jours fériés.',
 	) ), $id );
 	tfp_seed_set_field( 'exemple_label', 'Exemple · commerce, 20 h/mois', $id );
-	tfp_seed_set_field( 'exemple_texte', 'Un passage d\'une heure avant ouverture six jours par semaine, avec un créneau renforcé le samedi : surface de vente, sanitaires clients, réserve hebdomadaire. 549 € HT/mois.', $id );
+	tfp_seed_set_field( 'exemple_texte', 'Vingt heures par mois avant ouverture, réparties selon les jours d’affluence : surface de vente, sanitaires clients, réserve hebdomadaire. 549 € HT/mois.', $id );
 	tfp_seed_set_field( 'temoignage_texte', 'Le passage a lieu avant l\'ouverture, tous les jours travaillés, et la boutique est prête quand j\'arrive. Les échanges avec Audrey sont directs, sans intermédiaire.', $id );
 	tfp_seed_set_field( 'temoignage_auteur', 'Client Top-Famille Pro', $id );
 	tfp_seed_set_field( 'temoignage_role', 'Avis général · Côte-d\'Or', $id );
@@ -3590,7 +3590,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'hero_lede', 'Parties communes, cabinets et commerces de proximité : Top-Famille Pro entretient vos locaux à Talant, commune limitrophe de Dijon au nord-ouest.', $id );
 	tfp_seed_set_field( 'hero_alt', 'Locaux professionnels à Talant', $id );
 	tfp_seed_set_field( 'cta_label', 'Demander un devis à Talant', $id );
-	tfp_seed_set_field( 'cta_phone_label', '☎ Échanger avec Audrey', $id );
+	tfp_seed_set_field( 'cta_phone_label', '', $id );
 	tfp_seed_set_field( 'band_items', implode( "\n", array(
 		'Devis gratuit sous 24 h',
 		'Intervention régulière ou ponctuelle',
@@ -3626,7 +3626,7 @@ if ( empty( $posts ) ) {
 		'27 € HT/h, plus 9 € HT/mois de gestion en contrat régulier et 50 € HT de frais de mise en place, le cas échéant, selon les conditions précisées au devis. Les éventuelles indemnités kilométriques dépendent de l\'adresse des locaux, du planning et des conditions d\'intervention. Elles sont précisées dans le devis. Les interventions de nuit, le dimanche et les jours fériés sont majorées de 10 %.',
 	) ), $id );
 	tfp_seed_set_field( 'exemple_label', 'Exemple · résidence, 6 h/mois', $id );
-	tfp_seed_set_field( 'exemple_texte', 'Un passage de 1 h 30 par semaine : hall, ascenseur, paliers, vitrage de la porte d\'entrée et local à conteneurs. 171 € HT/mois.', $id );
+	tfp_seed_set_field( 'exemple_texte', 'Quatre passages de 1 h 30 par mois : hall, ascenseur, paliers, vitrage de la porte d\'entrée et local à conteneurs. 171 € HT/mois.', $id );
 	tfp_seed_set_field( 'temoignage_texte', 'Le hall et l\'ascenseur sont repris chaque semaine, à jour fixe. Le conseil syndical dispose du cahier de liaison pour préparer ses réunions.', $id );
 	tfp_seed_set_field( 'temoignage_auteur', 'Client Top-Famille Pro', $id );
 	tfp_seed_set_field( 'temoignage_role', 'Avis général · Côte-d\'Or', $id );
@@ -3763,7 +3763,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'hero_lede', 'Bureaux, espaces tertiaires de zones d\'activité et commerces : Top-Famille Pro entretient vos locaux à Longvic, commune limitrophe de Dijon au sud.', $id );
 	tfp_seed_set_field( 'hero_alt', 'Locaux professionnels à Longvic', $id );
 	tfp_seed_set_field( 'cta_label', 'Demander un devis à Longvic', $id );
-	tfp_seed_set_field( 'cta_phone_label', '☎ Échanger avec Audrey', $id );
+	tfp_seed_set_field( 'cta_phone_label', '', $id );
 	tfp_seed_set_field( 'band_items', implode( "\n", array(
 		'Devis gratuit sous 24 h',
 		'Intervention régulière ou ponctuelle',
@@ -3799,7 +3799,7 @@ if ( empty( $posts ) ) {
 		'27 € HT/h, plus 9 € HT/mois de gestion en contrat régulier et 50 € HT de frais de mise en place, le cas échéant, selon les conditions précisées au devis. Les éventuelles indemnités kilométriques dépendent de l\'adresse des locaux, du planning et des conditions d\'intervention. Elles sont précisées dans le devis. Les interventions de nuit, le dimanche et les jours fériés sont majorées de 10 %, ce qui est indiqué au devis dès que le créneau le justifie.',
 	) ), $id );
 	tfp_seed_set_field( 'exemple_label', 'Exemple · bureaux de zone d\'activité, 12 h/mois', $id );
-	tfp_seed_set_field( 'exemple_texte', 'Trois passages d\'une heure par semaine avant 8 h : bureaux, accueil, sanitaires, vestiaires de bureau et coin cuisine. 333 € HT/mois.', $id );
+	tfp_seed_set_field( 'exemple_texte', 'Douze passages d\'une heure par mois avant 8 h : bureaux, accueil, sanitaires, vestiaires de bureau et coin cuisine. 333 € HT/mois.', $id );
 	tfp_seed_set_field( 'temoignage_texte', 'Nos bureaux sont entretenus trois matins par semaine avant l\'arrivée des équipes. Le périmètre a été écrit dès le départ, ce qui a évité toute discussion sur ce qui était inclus ou non.', $id );
 	tfp_seed_set_field( 'temoignage_auteur', 'Client Top-Famille Pro', $id );
 	tfp_seed_set_field( 'temoignage_role', 'Avis général · Côte-d\'Or', $id );
@@ -3937,7 +3937,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'hero_lede', 'Cabinets, bureaux et parties communes : Top-Famille Pro entretient vos locaux à Fontaine-lès-Dijon, commune limitrophe de Dijon au nord.', $id );
 	tfp_seed_set_field( 'hero_alt', 'Locaux professionnels à Fontaine-lès-Dijon', $id );
 	tfp_seed_set_field( 'cta_label', 'Demander un devis à Fontaine-lès-Dijon', $id );
-	tfp_seed_set_field( 'cta_phone_label', '☎ Échanger avec Audrey', $id );
+	tfp_seed_set_field( 'cta_phone_label', '', $id );
 	tfp_seed_set_field( 'band_items', implode( "\n", array(
 		'Devis gratuit sous 24 h',
 		'Intervention régulière ou ponctuelle',
@@ -3979,7 +3979,7 @@ if ( empty( $posts ) ) {
 		'27 € HT/h, plus 9 € HT/mois de gestion en contrat régulier et 50 € HT de frais de mise en place, le cas échéant, selon les conditions précisées au devis. Les éventuelles indemnités kilométriques dépendent de l\'adresse des locaux, du planning et des conditions d\'intervention. Elles sont précisées dans le devis. Majoration de 10 % pour les interventions de nuit, le dimanche et les jours fériés.',
 	) ), $id );
 	tfp_seed_set_field( 'exemple_label', 'Exemple · cabinet paramédical, 8 h/mois', $id );
-	tfp_seed_set_field( 'exemple_texte', 'Deux passages d\'une heure par semaine en fin de journée : salle d\'attente, deux cabinets, sanitaires et surfaces courantes. 225 € HT/mois.', $id );
+	tfp_seed_set_field( 'exemple_texte', 'Huit passages d\'une heure par mois en fin de journée : salle d\'attente, deux cabinets, sanitaires et surfaces courantes. 225 € HT/mois.', $id );
 	tfp_seed_set_field( 'temoignage_texte', 'Le passage se fait après la fermeture, deux fois par semaine, et la salle d\'attente est nette chaque matin. Nous apprécions de traiter directement avec la même personne.', $id );
 	tfp_seed_set_field( 'temoignage_auteur', 'Client Top-Famille Pro', $id );
 	tfp_seed_set_field( 'temoignage_role', 'Avis général · Côte-d\'Or', $id );
@@ -4117,7 +4117,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'hero_lede', 'Bureaux, espaces d\'accueil et de dégustation, commerces et parties communes : Top-Famille Pro entretient vos locaux à Marsannay-la-Côte, au sud de l\'agglomération dijonnaise.', $id );
 	tfp_seed_set_field( 'hero_alt', 'Locaux professionnels à Marsannay-la-Côte', $id );
 	tfp_seed_set_field( 'cta_label', 'Demander un devis à Marsannay-la-Côte', $id );
-	tfp_seed_set_field( 'cta_phone_label', '☎ Échanger avec Audrey', $id );
+	tfp_seed_set_field( 'cta_phone_label', '', $id );
 	tfp_seed_set_field( 'band_items', implode( "\n", array(
 		'Devis gratuit sous 24 h',
 		'Intervention régulière ou ponctuelle',
@@ -4153,7 +4153,7 @@ if ( empty( $posts ) ) {
 		'27 € HT/h, plus 9 € HT/mois de gestion en contrat régulier et 50 € HT de frais de mise en place, le cas échéant, selon les conditions précisées au devis. Les éventuelles indemnités kilométriques dépendent de l\'adresse des locaux, du planning et des conditions d\'intervention. Elles sont précisées dans le devis. Majoration de 10 % la nuit, le dimanche et les jours fériés.',
 	) ), $id );
 	tfp_seed_set_field( 'exemple_label', 'Exemple · espace d\'accueil et bureaux, 10 h/mois', $id );
-	tfp_seed_set_field( 'exemple_texte', 'Deux passages de 1 h 15 par semaine : espace d\'accueil, salle de dégustation, bureaux et sanitaires visiteurs. 279 € HT/mois.', $id );
+	tfp_seed_set_field( 'exemple_texte', 'Huit passages de 1 h 15 par mois : espace d\'accueil, salle de dégustation, bureaux et sanitaires visiteurs. 279 € HT/mois.', $id );
 	tfp_seed_set_field( 'temoignage_texte', 'Nous recevons des visiteurs plusieurs jours par semaine : l\'espace d\'accueil et les sanitaires sont repris avant chaque période de forte fréquentation, comme convenu au devis.', $id );
 	tfp_seed_set_field( 'temoignage_auteur', 'Client Top-Famille Pro', $id );
 	tfp_seed_set_field( 'temoignage_role', 'Avis général · Côte-d\'Or', $id );
@@ -4284,7 +4284,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'hero_lede', 'Commerces, cabinets, bureaux, hébergements et parties communes : Top-Famille Pro entretient vos locaux à Beaune, au cœur de la Côte viticole.', $id );
 	tfp_seed_set_field( 'hero_alt', 'Locaux professionnels à Beaune', $id );
 	tfp_seed_set_field( 'cta_label', 'Demander un devis à Beaune', $id );
-	tfp_seed_set_field( 'cta_phone_label', '☎ Échanger avec Audrey', $id );
+	tfp_seed_set_field( 'cta_phone_label', '', $id );
 	tfp_seed_set_field( 'band_items', implode( "\n", array(
 		'Devis gratuit sous 24 h',
 		'Intervention régulière ou ponctuelle',
@@ -4320,7 +4320,7 @@ if ( empty( $posts ) ) {
 		'27 € HT/h, plus 9 € HT/mois de gestion en contrat régulier et 50 € HT de frais de mise en place, le cas échéant, selon les conditions précisées au devis. Beaune se trouve au sud du département, sur un bassin distinct de l\'agglomération dijonnaise. Les éventuelles indemnités kilométriques dépendent de l\'adresse des locaux, du planning et des conditions d\'intervention. Elles sont précisées dans le devis. Majoration de 10 % la nuit, le dimanche et les jours fériés.',
 	) ), $id );
 	tfp_seed_set_field( 'exemple_label', 'Exemple · commerce intra-muros, 16 h/mois', $id );
-	tfp_seed_set_field( 'exemple_texte', 'Un passage d\'une heure avant ouverture, du mardi au samedi : surface de vente, sanitaires clients, vitrages intérieurs, réserve hebdomadaire. 441 € HT/mois.', $id );
+	tfp_seed_set_field( 'exemple_texte', 'Seize passages d\'une heure par mois, avant ouverture : surface de vente, sanitaires clients, vitrages intérieurs, réserve hebdomadaire. 441 € HT/mois.', $id );
 	tfp_seed_set_field( 'temoignage_texte', 'En haute saison, le passage avant ouverture fait une vraie différence sur la tenue du magasin. Les créneaux sont convenus à l\'avance, ce qui nous évite les mauvaises surprises.', $id );
 	tfp_seed_set_field( 'temoignage_auteur', 'Client Top-Famille Pro', $id );
 	tfp_seed_set_field( 'temoignage_role', 'Avis général · Côte-d\'Or', $id );

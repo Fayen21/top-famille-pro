@@ -117,6 +117,57 @@ let phrasesSupprimees = 0;
  */
 const TITRES_REMPLACES = {
 	'Communes secondaires documentées': 'Autour de Dijon et de Beaune',
+	// Revue du 25 octobre 2026 : sous « Départements limitrophes couverts », les pages département
+	// listaient les SEPT autres départements, qui ne sont pas tous limitrophes (la Nièvre et le
+	// Territoire de Belfort ne se touchent pas). L'intitulé dit désormais ce que la liste contient.
+	'Départements limitrophes couverts': 'Nos autres secteurs en Bourgogne-Franche-Comté',
+};
+/**
+ * Exemples tarifaires locaux — revue du 25 octobre 2026 (§3.3 et §3.4).
+ *
+ * La maquette décrivait des passages HEBDOMADAIRES à côté d'un volume MENSUEL qui ne leur
+ * correspond pas : « trois passages de 1 h par semaine » pour 12 h/mois, « deux heures par
+ * semaine » pour 8 h/mois, « du mardi au samedi » pour 16 h/mois. Le montant était juste pour le
+ * volume annoncé ; le planning, lui, aurait donné un autre volume. Plutôt que d'inventer une
+ * convention « quatre semaines par mois », le planning est exprimé en passages PAR MOIS, dont le
+ * total est exactement le volume affiché (et donc le montant calculé, tfp_budget_example()).
+ *
+ * Saint-Apollinaire promettait « sans frais de déplacement » alors que la page et sa FAQ prévoient
+ * d'éventuelles indemnités selon l'adresse : aucune règle commerciale ne fonde cette gratuité, elle
+ * est retirée. Chaque remplacement est compté ; un fragment disparu de la maquette fait échouer la
+ * génération.
+ */
+const EXEMPLES_CORRIGES = [
+	['Trois passages de 1 h par semaine', "Douze passages d'une heure par mois", 1],
+	["Trois passages d'une heure par semaine", "Douze passages d'une heure par mois", 5],
+	['Deux passages de 1 h 15 par semaine', 'Huit passages de 1 h 15 par mois', 7],
+	["Deux passages d'une heure par semaine", "Huit passages d'une heure par mois", 3],
+	['Deux heures par semaine', 'Quatre passages de deux heures par mois', 5],
+	["Un passage d'une heure avant ouverture, du mardi au samedi", "Seize passages d'une heure par mois, avant ouverture", 3],
+	[
+		"Un passage d'une heure avant ouverture six jours par semaine, avec un créneau renforcé le samedi",
+		'Vingt heures par mois avant ouverture, réparties selon les jours d’affluence',
+		1,
+	],
+	['Un passage de 1 h 30 par semaine', 'Quatre passages de 1 h 30 par mois', 1],
+	['333 € HT/mois, sans frais de déplacement.', '333 € HT/mois. Les éventuelles indemnités kilométriques dépendent de l’adresse des locaux, du planning et des conditions d’intervention ; elles sont précisées dans le devis.', 1],
+];
+const exemplesComptes = EXEMPLES_CORRIGES.map(() => 0);
+function corrigerExemple(texte) {
+	let sortie = String(texte || '');
+	EXEMPLES_CORRIGES.forEach(([avant, apres], i) => {
+		while (sortie.includes(avant)) {
+			sortie = sortie.replace(avant, apres);
+			exemplesComptes[i]++;
+		}
+	});
+	return sortie;
+}
+
+/** Textes d'introduction remplacés avec leur titre (même décision). */
+const TEXTES_REMPLACES = {
+	'Départements voisins, également couverts par Top-Famille Pro :':
+		'Les sept autres départements de la région, couverts depuis Saint-Apollinaire au même tarif horaire :',
 };
 let titresRemplaces = 0;
 
@@ -547,7 +598,10 @@ for (const z of all) {
 	set('hero_lede', php(z.heroLede));
 	set('hero_alt', php(z.heroAlt));
 	set('cta_label', php(z.ctaLabel));
-	set('cta_phone_label', php(z.ctaPhoneLabel));
+	// Revue du 25 octobre 2026 : « ☎ Échanger avec Audrey » n'est plus écrit dans les données.
+	// Tous les appels génériques disent « Appeler Top-Famille Pro » (tfp_bouton_appel()) ; le
+	// champ est vidé pour qu'aucune ancienne valeur ne survive dans la base.
+	set('cta_phone_label', "''");
 	set('band_items', phpLines(z.bandItems));
 	set('reponse_directe', php(corriger(z.slug, 'reponse', z.reponse)));
 
@@ -562,7 +616,7 @@ for (const z of all) {
 	set('exemple_label', php(z.exempleLabel));
 	// Phrase qui justifie le montant, dans la carte d'exemple de la maquette — pas dans la colonne
 	// de texte, où elle allongeait la bande sans expliquer le chiffre affiché juste à côté.
-	set('exemple_texte', php(z.exempleTexte));
+	set('exemple_texte', php(corrigerExemple(z.exempleTexte)));
 	if (z.temoignage) {
 		set('temoignage_texte', php(z.temoignage.texte));
 		set('temoignage_auteur', php(z.temoignage.auteur));
@@ -588,6 +642,7 @@ for (const z of all) {
 			g.titre = TITRES_REMPLACES[g.titre];
 			titresRemplaces++;
 		}
+		g.textes = (g.textes || []).map((t) => TEXTES_REMPLACES[t] || t);
 		set(`locaux_${i + 1}_titre`, php(g.titre));
 		set(`locaux_${i + 1}_texte`, phpLines(g.textes));
 		set(`locaux_${i + 1}_type`, php(g.kind));
@@ -632,4 +687,10 @@ console.error(`Phrases supprimées (CLAUDE.md §9, « guides locaux ») : ${phra
 if (!titresRemplaces) {
 	throw new Error('« Communes secondaires documentées » introuvable : revoir TITRES_REMPLACES plutôt que de laisser passer un intitulé non contrôlé.');
 }
-console.error(`Intitulés remplacés (décision du 14 octobre 2026) : ${titresRemplaces}`);
+console.error(`Intitulés remplacés (décisions des 14 et 25 octobre 2026) : ${titresRemplaces}`);
+EXEMPLES_CORRIGES.forEach(([avant, , attendu], i) => {
+	if (exemplesComptes[i] !== attendu) {
+		throw new Error(`exemple tarifaire : « ${avant} » remplacé ${exemplesComptes[i]} fois, ${attendu} attendu — la maquette a changé, revoir EXEMPLES_CORRIGES.`);
+	}
+});
+console.error(`Exemples tarifaires mis en cohérence (volume ↔ passages) : ${exemplesComptes.reduce((a, b) => a + b, 0)}`);

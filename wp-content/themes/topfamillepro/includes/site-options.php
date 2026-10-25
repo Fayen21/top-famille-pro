@@ -142,6 +142,24 @@ function tfp_budget_example( $hours ) {
 }
 
 /**
+ * Exemple chiffré d'une INTERVENTION UNIQUE (prestation ponctuelle) : main-d'œuvre seule.
+ *
+ * Pas de frais de gestion (mensuels, propres au contrat régulier) ni de « premier mois ». Les
+ * autres frais — mise en place, indemnités kilométriques, majoration — ne sont ni calculés ni
+ * ajoutés d'office : leur application dépend de l'intervention et figure au devis.
+ *
+ * @param int $hours Heures de l'intervention.
+ * @return array{hours: int, labour: float}
+ */
+function tfp_intervention_example( $hours ) {
+	$hours = max( 1, (int) $hours );
+	return array(
+		'hours'  => $hours,
+		'labour' => $hours * tfp_site_data()['price_unique'],
+	);
+}
+
+/**
  * Nombre d'heures lu dans un libellé d'exemple (« Exemple · bureaux de PME, 8 h/mois »).
  *
  * Le libellé est la donnée éditoriale relevée sur la maquette ; les heures qu'il annonce sont donc
@@ -280,6 +298,19 @@ function tfp_departements_nav() {
  * @param bool $icone Préfixer du pictogramme téléphone.
  * @return string
  */
-function tfp_phone_cta_label( $icone = true ) {
-	return ( $icone ? '☎ ' : '' ) . 'Appeler ' . tfp_site_data()['brand_name'];
+function tfp_phone_cta_label( $icone = false ) {
+	// Le pictogramme « ☎ » n'est plus écrit dans le texte : l'icône est un SVG (tfp_icone()),
+	// posé par tfp_bouton_appel(). Le paramètre est gardé pour compatibilité, sans effet visible.
+	unset( $icone );
+	return 'Appeler ' . tfp_site_data()['brand_name'];
+}
+
+/**
+ * Site carrière du groupe (CLAUDE.md §8) — une seule source pour la page recrutement et sa barre
+ * d'action mobile. Aucun formulaire de candidature n'est hébergé ici.
+ *
+ * @return string
+ */
+function tfp_url_carrieres() {
+	return 'https://careers.werecruit.io/fr/top-famille';
 }

@@ -95,7 +95,7 @@ $main_nav = array(
 					<div class="tfp-nav__group" data-tfp-nav-item>
 						<a class="tfp-nav__link tfp-nav__link--parent" href="<?php echo esc_url( $item['url'] ); ?>"><?php echo esc_html( $item['label'] ); ?></a>
 						<button type="button" class="tfp-nav__caret-btn" id="tfp-btn-<?php echo esc_attr( $item['key'] ); ?>" aria-controls="<?php echo esc_attr( $tfp_menu_id ); ?>" aria-expanded="false" data-tfp-submenu-toggle>
-							<span class="tfp-nav__caret" aria-hidden="true">▾</span>
+							<?php echo tfp_icone( 'chevron', 'tfp-nav__caret' ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
 							<span class="visually-hidden">Ouvrir le menu <?php echo esc_html( $item['aide'] ); ?></span>
 						</button>
 						<div class="tfp-submenu <?php echo esc_attr( $item['classe'] ); ?>" id="<?php echo esc_attr( $tfp_menu_id ); ?>" role="menu" aria-labelledby="tfp-btn-<?php echo esc_attr( $item['key'] ); ?>" hidden>
@@ -123,15 +123,22 @@ $main_nav = array(
 
 		<div class="tfp-header__actions">
 			<a class="tfp-header__phone" href="tel:<?php echo esc_attr( $site['phone_href'] ); ?>">
-				<span aria-hidden="true">☎</span>
+				<?php echo tfp_icone( 'telephone' ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
 				<span class="tfp-header__phone-label"><?php echo esc_html( $site['phone'] ); ?></span>
 				<span class="visually-hidden"><?php echo esc_html( tfp_phone_cta_label( false ) ); ?></span>
 			</a>
 			<?php
+			/*
+			 * Sur la page du devis, le bouton du header ne recharge pas le formulaire (ce qui
+			 * effacerait la saisie) : il ramène au formulaire sur la même page et se déclare
+			 * page courante. Revue du 25 octobre 2026, §4.2.
+			 */
+			$sur_devis = 'devis' === tfp_parcours();
 			tfp_button(
 				array(
 					'label'   => 'Demander mon devis',
-					'href'    => home_url( '/demande-de-devis/' ),
+					'href'    => $sur_devis ? '#tfp-formulaire-devis' : home_url( '/demande-de-devis/' ),
+					'aria'    => $sur_devis ? 'Demander mon devis — formulaire en cours sur cette page' : '',
 					// Cuivre, comme dans la maquette (fond #D9A062, texte bleu nuit) — mesuré sur le
 					// rendu réel du prototype, pas déduit du code.
 					'variant' => 'copper',

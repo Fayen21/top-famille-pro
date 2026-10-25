@@ -69,11 +69,15 @@ $villes           = tfp_get_field( 'villes_prioritaires', $post_id );
 $related_articles = tfp_get_prestation_related_articles( $post_id );
 $faq              = tfp_get_faq_items( 'faq', $post_id, 8 );
 $faq_titre        = tfp_get_field( 'faq_titre', $post_id ) ?: 'Questions fréquentes — ' . $court;
-$cta_titre        = tfp_get_field( 'cta_titre', $post_id ) ?: 'Un devis pour ' . $court;
+// Objet en toutes lettres (« le nettoyage de vos bureaux ») : plus de « Un devis pour Bureaux ».
+$objet            = tfp_get_field( 'objet_editorial', $post_id ) ?: mb_strtolower( $titre );
+$cta_titre        = tfp_get_field( 'cta_titre', $post_id ) ?: 'Un devis pour ' . $objet . ' ?';
 $cta_texte        = tfp_get_field( 'cta_texte', $post_id );
 
 // Même règle que sur les pages de zone : les heures viennent du libellé affiché.
-$budget    = tfp_budget_example( tfp_hours_from_label( tfp_get_field( 'exemple_label', $post_id ) ) );
+$exemple_mode   = tfp_get_field( 'exemple_mode', $post_id ) ?: 'mensuel';
+$exemple_heures = (int) tfp_get_field( 'exemple_heures', $post_id );
+$budget         = tfp_budget_example( $exemple_heures ?: tfp_hours_from_label( tfp_get_field( 'exemple_label', $post_id ) ) );
 $seo_title = tfp_get_field( 'seo_title', $post_id );
 $seo_desc  = tfp_get_field( 'seo_description', $post_id );
 
@@ -198,7 +202,7 @@ get_header();
 		<div class="tfp-action-row" style="margin-top:24px">
 			<?php
 			tfp_button( array( 'label' => 'Demander mon devis', 'href' => $devis_url, 'variant' => 'primary' ) );
-			tfp_button( array( 'label' => tfp_phone_cta_label(), 'href' => 'tel:' . $site['phone_href'], 'variant' => 'secondary' ) );
+			tfp_bouton_appel( array( 'variant' => 'secondary' ) );
 			?>
 		</div>
 		<p class="tfp-hero__microcopy"><?php echo esc_html( tfp_format_price( $site['price_unique'] ) ); ?> HT/h · régulier ou ponctuel · réponse sous 24 h</p>
@@ -431,12 +435,31 @@ get_header();
 <section class="tfp-section--tight">
 	<div class="tfp-container tfp-presta-tarif">
 		<div class="tfp-price-example">
+			<?php if ( 'intervention' === $exemple_mode ) : ?>
+				<?php
+				/*
+				 * Intervention UNIQUE — revue du 25 octobre 2026. La carte réutilisait le modèle du
+				 * contrat régulier : « 12 h/mois, 333 € HT/mois, 9 € de gestion, premier mois 383 € »
+				 * sur un nettoyage ponctuel. Ici, seule la main-d'œuvre est chiffrée (heures × tarif
+				 * unique, tfp_intervention_example()) ; les autres frais ne sont ni inventés ni
+				 * appliqués d'office : ils sont nommés et renvoyés au devis.
+				 */
+				$intervention = tfp_intervention_example( $budget['hours'] );
+				?>
+				<div class="tfp-price-example__label">Exemple · intervention unique de <?php echo (int) $intervention['hours']; ?> h</div>
+				<div class="tfp-price-example__value"><?php echo esc_html( tfp_format_price( $intervention['labour'] ) ); ?> <span>HT de main-d’œuvre</span></div>
+				<div class="tfp-price-example__note">
+					<?php echo (int) $intervention['hours']; ?> h × <?php echo esc_html( tfp_format_price( $site['price_unique'] ) ); ?> HT/h. Aucun frais de gestion mensuel : ils concernent les contrats réguliers.
+					Frais de mise en place, indemnités kilométriques (<?php echo esc_html( $site['price_km_display'] ); ?> HT/km) ou majoration de <?php echo (int) $site['price_majoration_pct']; ?> % (dimanche, jour férié, nuit) : indiqués au devis s’ils s’appliquent.
+				</div>
+			<?php else : ?>
 			<div class="tfp-price-example__label">Exemple · <?php echo (int) $budget['hours']; ?> h/mois</div>
 			<div class="tfp-price-example__value"><?php echo esc_html( tfp_format_price( $budget['monthly'] ) ); ?> <span>HT/mois</span></div>
 			<div class="tfp-price-example__note">
 				<?php echo (int) $budget['hours']; ?> h × <?php echo esc_html( tfp_format_price( $site['price_unique'] ) ); ?> + <?php echo esc_html( tfp_format_price( $site['price_gestion'] ) ); ?> de gestion.
 				Le cas échéant, avec les frais de mise en place : <?php echo esc_html( tfp_format_price( $budget['first_month'] ) ); ?> HT
 			</div>
+			<?php endif; ?>
 			<div class="tfp-price-example__disclaimer">Exemple non contractuel.</div>
 			<a class="tfp-eyebrow-link" href="<?php echo esc_url( home_url( '/tarifs/' ) ); ?>">Tous les tarifs →</a>
 		</div>
@@ -509,7 +532,7 @@ get_header();
 
 <section class="tfp-container tfp-section--tight">
 	<div class="tfp-contact-nudge">
-		<p>Encore une question sur <?php echo esc_html( $court ); ?> ? <?php echo esc_html( $prenom ); ?> vous répond directement.</p>
+		<p>Encore une question sur <?php echo esc_html( $objet ); ?> ? <?php echo esc_html( $prenom ); ?> vous répond directement.</p>
 		<?php tfp_button( array( 'label' => 'Nous contacter', 'href' => home_url( '/contact/' ), 'variant' => 'secondary', 'size' => 'sm' ) ); ?>
 	</div>
 </section>
@@ -521,7 +544,7 @@ get_header();
 		<div class="tfp-cta-block__actions">
 			<?php
 			tfp_button( array( 'label' => 'Demander mon devis', 'href' => $devis_url, 'variant' => 'on-primary' ) );
-			tfp_button( array( 'label' => '☎ ' . $site['phone'], 'href' => 'tel:' . $site['phone_href'], 'variant' => 'on-dark' ) );
+			tfp_bouton_appel( array( 'variant' => 'on-dark', 'numero' => true ) );
 			?>
 		</div>
 	</div>

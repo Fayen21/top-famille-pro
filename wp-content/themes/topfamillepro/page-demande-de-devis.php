@@ -48,6 +48,17 @@ $types_locaux = array(
 	'autre'         => 'Autre',
 );
 
+/*
+ * Préremplissage depuis la page d'origine, CÔTÉ SERVEUR (revue du 25 octobre 2026) : une page
+ * prestation envoie `?service=bureaux`, une page de zone `?ville=Dijon`. Seul le libellé visible de
+ * la prestation était prérempli, et par JavaScript ; le type de locaux restait à choisir alors que
+ * la page d'origine le disait déjà. La prestation ponctuelle préremplit aussi le régime.
+ */
+$pre_service = isset( $_GET['service'] ) ? sanitize_key( wp_unslash( $_GET['service'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- lecture d'un paramètre d'affichage.
+$pre_type    = isset( $types_locaux[ $pre_service ] ) ? $pre_service : '';
+$pre_regime  = 'ponctuel' === $pre_service ? 'ponctuel' : '';
+$pre_ville   = isset( $_GET['ville'] ) ? sanitize_text_field( wp_unslash( $_GET['ville'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+
 $frequences = array(
 	''                 => 'À définir ensemble',
 	'quotidien'        => 'Quotidien',
@@ -114,7 +125,7 @@ get_header();
 				</div>
 			<?php endif; ?>
 
-			<form class="tfp-quote-form" method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" novalidate data-tfp-analytics="quote"<?php echo tfp_quote_mail_disabled() ? ' data-tfp-mail-disabled' : ''; ?>>
+			<form id="tfp-formulaire-devis" class="tfp-quote-form" method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" novalidate data-tfp-analytics="quote"<?php echo tfp_quote_mail_disabled() ? ' data-tfp-mail-disabled' : ''; ?>>
 				<div class="tfp-form-errors" role="alert" aria-live="polite" data-form-errors></div>
 
 				<input type="hidden" name="action" value="tfp_submit_devis">
@@ -174,7 +185,7 @@ get_header();
 							<label for="tfp-type-locaux">Type de locaux *</label>
 							<select id="tfp-type-locaux" name="type_locaux" required>
 								<?php foreach ( $types_locaux as $value => $label ) : ?>
-									<option value="<?php echo esc_attr( $value ); ?>"><?php echo esc_html( $label ); ?></option>
+									<option value="<?php echo esc_attr( $value ); ?>"<?php selected( $pre_type, $value ); ?>><?php echo esc_html( $label ); ?></option>
 								<?php endforeach; ?>
 							</select>
 						</div>
@@ -196,7 +207,7 @@ get_header();
 							<select id="tfp-regime" name="regime" required>
 								<option value="">Choisir…</option>
 								<option value="regulier">Entretien régulier</option>
-								<option value="ponctuel">Intervention ponctuelle</option>
+								<option value="ponctuel"<?php selected( $pre_regime, 'ponctuel' ); ?>>Intervention ponctuelle</option>
 							</select>
 						</div>
 					</div>
@@ -204,7 +215,7 @@ get_header();
 					<div class="tfp-form-row tfp-form-row--2-1">
 						<div class="tfp-field">
 							<label for="tfp-ville-visible">Ville</label>
-							<input type="text" id="tfp-ville-visible" name="ville" autocomplete="address-level2" placeholder="Ex. Dijon">
+							<input type="text" id="tfp-ville-visible" name="ville" autocomplete="address-level2" placeholder="Ex. Dijon" value="<?php echo esc_attr( $pre_ville ); ?>">
 							<span class="tfp-field__hint">Commune où se trouvent les locaux.</span>
 						</div>
 

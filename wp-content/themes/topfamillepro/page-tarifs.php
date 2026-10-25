@@ -389,7 +389,7 @@ get_header();
 		<div class="tfp-cta-block__actions">
 			<?php
 			tfp_button( array( 'label' => 'Demander mon devis', 'href' => home_url( '/demande-de-devis/' ), 'variant' => 'on-primary' ) );
-			tfp_button( array( 'label' => '☎ ' . $site['phone'], 'href' => 'tel:' . $site['phone_href'], 'variant' => 'on-dark' ) );
+			tfp_bouton_appel( array( 'variant' => 'on-dark', 'numero' => true ) );
 			?>
 		</div>
 	</div>

@@ -182,6 +182,7 @@ get_header();
  */
 ?>
 <section class="tfp-section--turquoise tfp-section--tight" style="--tfp-bande-haut:0px;--tfp-bande-bas:0px">
+	<?php tfp_cta_final( true ); // Cette bande EST la conclusion de la page. ?>
 	<div class="tfp-container tfp-prefooter__inner tfp-prefooter__inner--page">
 		<p class="tfp-prefooter__text">
 			<strong>Un besoin précis pour vos locaux ?</strong>

@@ -113,24 +113,32 @@
       document.addEventListener('keydown', onKeydown);
     }
 
-    function close() {
+    function close(rendreFocus) {
       panel.hidden = true;
       document.body.classList.remove('tfp-scroll-locked');
       openBtn.setAttribute('aria-expanded', 'false');
       document.removeEventListener('keydown', onKeydown);
-      if (lastFocused) lastFocused.focus();
+      if (rendreFocus !== false && lastFocused) lastFocused.focus();
     }
+
+    /* Un lien suivi depuis le tiroir le referme : indispensable pour une ancre de la même page
+       (retour au formulaire du devis), où aucun rechargement ne le ferait disparaître. Le focus
+       n'est pas rendu au bouton du menu — il suit la navigation. */
+    panel.addEventListener('click', function (event) {
+      var lien = event.target.closest('a[href]');
+      if (lien && !panel.hidden) close(false);
+    });
 
     function onKeydown(event) {
       if (event.key === 'Escape') {
-        close();
+        close(true);
       } else if (event.key === 'Tab') {
         trapFocus(panel, event);
       }
     }
 
     openBtn.addEventListener('click', open);
-    if (closeBtn) closeBtn.addEventListener('click', close);
+    if (closeBtn) closeBtn.addEventListener('click', function () { close(); });
 
     /* Sous-menus accordéon à l'intérieur du panneau mobile */
     panel.querySelectorAll('[data-tfp-mobile-submenu-toggle]').forEach(function (btn) {

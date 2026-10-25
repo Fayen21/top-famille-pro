@@ -402,7 +402,49 @@ L.push('');
 L.push("echo \"=== Fidélité Claude Design : contenu intégral des 6 prestations ===\\n\";");
 L.push('');
 
+/**
+ * Décisions éditoriales par prestation — revue du 25 octobre 2026 (§3.2 et §6).
+ *
+ * La maquette composait ses titres en concaténant le nom court du menu : « Un devis pour
+ * Bureaux », « Un devis pour Ponctuel », « Encore une question sur Copropriétés ? ». Chaque
+ * prestation reçoit ici une formulation française complète, écrite une fois (`objet`), d'où sont
+ * tirés le titre de l'appel final et la question de bas de page. Les titres de FAQ prennent le
+ * libellé complet de la prestation.
+ *
+ * La prestation ponctuelle n'est pas un contrat : son exemple chiffré est une INTERVENTION
+ * unique (7 heures, l'exemple de déroulé déjà publié), pas un budget mensuel avec frais de gestion
+ * et « premier mois » ; son déroulé n'est pas une « semaine type ».
+ */
+const DECISIONS_PRESTATIONS = {
+	bureaux: { objet: 'le nettoyage de vos bureaux', cta: 'Un devis pour le nettoyage de vos bureaux ?' },
+	commerces: { objet: "l'entretien de votre commerce", cta: "Un devis pour l'entretien de votre commerce ?" },
+	cabinets: { objet: "l'entretien de votre cabinet", cta: "Un devis pour l'entretien de votre cabinet ?" },
+	coproprietes: { objet: "l'entretien de votre copropriété", cta: 'Un devis pour votre copropriété ?' },
+	meubles: { objet: 'le ménage de vos locations meublées', cta: 'Un devis pour vos locations meublées ?' },
+	ponctuel: {
+		objet: 'votre nettoyage ponctuel',
+		cta: 'Un devis pour votre nettoyage ponctuel ?',
+		semaineTitre: "Déroulé d'une intervention type",
+		exempleLabel: "Exemple d'intervention",
+		configsIntro:
+			"Le volume d'heures d'une intervention ne se déduit pas d'une surface. Voici les situations que nous rencontrons le plus souvent, et l'organisation qui leur correspond généralement.",
+		exemple: { mode: 'intervention', heures: 7 },
+	},
+};
+const ancienConfigsIntro =
+	"Le volume d'heures et la fréquence ne se déduisent pas d'une surface. Voici les cas de figure que nous rencontrons le plus souvent, et le rythme qui leur correspond généralement.";
+
 for (const s of all) {
+	const dec = DECISIONS_PRESTATIONS[s.slug];
+	if (!dec) throw new Error(`décision éditoriale manquante pour la prestation « ${s.slug} »`);
+	s.ctaTitre = dec.cta;
+	s.faqTitre = `Questions fréquentes — ${s.navLabel}`;
+	if (dec.semaineTitre) s.semaineTitre = dec.semaineTitre;
+	if (dec.exempleLabel) s.exempleLabel = dec.exempleLabel;
+	if (dec.configsIntro) {
+		if (s.configsIntro !== ancienConfigsIntro) throw new Error(`introduction des configurations de « ${s.slug} » changée dans la maquette : revoir DECISIONS_PRESTATIONS`);
+		s.configsIntro = dec.configsIntro;
+	}
 	L.push(`/* ---------------- ${s.slug} ---------------- */`);
 	L.push(`$posts = get_posts( array( 'post_type' => 'prestation', 'name' => ${php(s.slug)}, 'numberposts' => 1, 'post_status' => 'any' ) );`);
 	L.push('if ( empty( $posts ) ) {');
@@ -470,6 +512,9 @@ for (const s of all) {
 	});
 	set('cta_titre', php(s.ctaTitre));
 	set('cta_texte', php(s.ctaTexte));
+	set('objet_editorial', php(dec.objet));
+	set('exemple_mode', php(dec.exemple ? dec.exemple.mode : 'mensuel'));
+	set('exemple_heures', dec.exemple ? String(dec.exemple.heures) : "''");
 	L.push(`\techo "  ✓ ${s.slug}\\n";`);
 	L.push('}');
 	L.push('');

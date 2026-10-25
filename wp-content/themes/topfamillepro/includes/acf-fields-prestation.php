@@ -346,6 +346,31 @@ function tfp_register_acf_fields_prestation() {
 					'rows'  => 2,
 				),
 				array(
+					'key'          => 'field_tfp_prestation_objet_editorial',
+					'label'        => 'Objet de la prestation, en toutes lettres',
+					'name'         => 'objet_editorial',
+					'type'         => 'text',
+					'instructions' => "Complément français utilisé dans « Un devis pour … ? » et « Encore une question sur … ? » — par exemple « le nettoyage de vos bureaux ». Jamais le nom court du menu seul.",
+				),
+				array(
+					'key'           => 'field_tfp_prestation_exemple_mode',
+					'label'         => 'Exemple chiffré — nature',
+					'name'          => 'exemple_mode',
+					'type'          => 'select',
+					'choices'       => array(
+						'mensuel'      => 'Budget mensuel (contrat régulier : heures × tarif + frais de gestion, premier mois avec mise en place)',
+						'intervention' => 'Intervention unique (heures × tarif, sans « /mois » ni « premier mois »)',
+					),
+					'default_value' => 'mensuel',
+				),
+				array(
+					'key'          => 'field_tfp_prestation_exemple_heures',
+					'label'        => 'Exemple chiffré — nombre d’heures',
+					'name'         => 'exemple_heures',
+					'type'         => 'number',
+					'instructions' => 'Vide : 12 h/mois pour un budget mensuel.',
+				),
+				array(
 					'key'   => 'field_tfp_prestation_temoignage_tab',
 					'label' => 'Témoignage',
 					'type'  => 'tab',

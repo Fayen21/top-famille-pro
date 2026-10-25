@@ -59,7 +59,12 @@ $faq                = tfp_get_faq_items( 'faq', $post_id, 8 );
    `locaux_avant_tarif`, qui dit combien de groupes précèdent le bloc tarifaire. */
 $hero_lede       = tfp_get_field( 'hero_lede', $post_id );
 $hero_alt        = tfp_get_field( 'hero_alt', $post_id );
-$cta_phone_label = tfp_get_field( 'cta_phone_label', $post_id ) ?: tfp_phone_cta_label();
+/*
+ * Revue du 25 octobre 2026 : le champ ACF `cta_phone_label` portait « ☎ Échanger avec Audrey »,
+ * relevé sur la maquette, et le bouton final ajoutait « · 06 36 17 63 39 », le numéro finissant
+ * seul sur une deuxième ligne. Tous les appels génériques passent par tfp_bouton_appel() ; le
+ * champ reste en administration mais n'alimente plus de libellé d'appel.
+ */
 $band_items      = tfp_get_lines( tfp_get_field( 'band_items', $post_id ) );
 $recit           = tfp_get_zone_blocks( 'recit', $post_id, 6 );
 $methode         = tfp_get_zone_blocks( 'methode', $post_id, 4 );
@@ -177,7 +182,7 @@ get_header();
 		<div class="tfp-action-row" style="margin-top:24px">
 			<?php
 			tfp_button( array( 'label' => $cta_label, 'href' => $devis_url, 'variant' => 'primary' ) );
-			tfp_button( array( 'label' => $cta_phone_label, 'href' => 'tel:' . $site['phone_href'], 'variant' => 'secondary' ) );
+			tfp_bouton_appel( array( 'variant' => 'secondary' ) );
 			?>
 		</div>
 	</div>
@@ -291,7 +296,15 @@ foreach ( $groupes_liens as $g ) {
 
 $num_page = function_exists( 'tfp_zone_departement_num' ) ? tfp_zone_departement_num( $post_id ) : '';
 
-$render_group = function ( array $bloc ) use ( $toutes_prestations, $cities_in_dept, $villes_in_dept, $communes_in_dept, $a_sous_groupe_villes, $communes_proches, $dept_post, $is_dept, $post_id, $num_page ) {
+// Maillage géographique des pages ville et commune, calculé par relations (voir tfp_zone_maillage()).
+$maillage = ( ! $is_dept && function_exists( 'tfp_zone_maillage' ) ) ? tfp_zone_maillage( $post_id, $groupes_liens ) : array();
+
+$render_group = function ( array $bloc ) use ( $toutes_prestations, $cities_in_dept, $villes_in_dept, $communes_in_dept, $a_sous_groupe_villes, $communes_proches, $dept_post, $is_dept, $post_id, $num_page, $maillage ) {
+	$m = $maillage[ (int) ( $bloc['rang'] ?? 0 ) ] ?? null;
+	// Un groupe régional vidé par la déduplication ne s'affiche pas : jamais de titre sans liens.
+	if ( $m && 'autres' === $m['role'] && ! $m['zones'] ) {
+		return;
+	}
 	?>
 	<div class="tfp-zone-links<?php echo 3 === (int) ( $bloc['niveau'] ?? 2 ) ? ' tfp-zone-links--sous' : ''; ?>">
 		<?php
@@ -346,6 +359,27 @@ $render_group = function ( array $bloc ) use ( $toutes_prestations, $cities_in_d
 						<?php echo esc_html( tfp_get_field( 'nav_label', $prestation->ID ) ?: get_the_title( $prestation ) ); ?><span aria-hidden="true">→</span>
 					</a>
 				<?php endforeach; ?>
+			</div>
+		<?php elseif ( $m ) : ?>
+			<div class="tfp-chip-row" style="margin-top:16px">
+				<?php if ( $m['departement'] ) : ?>
+					<a class="tfp-dept-row" href="<?php echo esc_url( get_permalink( $m['departement'] ) ); ?>"><span class="tfp-dept-row__nom">Nettoyage en <?php echo esc_html( get_the_title( $m['departement'] ) ); ?></span><span class="tfp-dept-row__fleche" aria-hidden="true">→</span></a>
+				<?php endif; ?>
+				<?php
+				// Les autres départements portent leur numéro (« Chalon-sur-Saône (71) ») ; le
+				// département courant, jamais.
+				foreach ( $m['zones'] as $cible ) :
+					$num_cible = 'autres' === $m['role'] && function_exists( 'tfp_zone_departement_num' ) ? tfp_zone_departement_num( $cible ) : '';
+					$suffixe   = '' !== $num_cible ? ' (' . $num_cible . ')' : '';
+					?>
+					<a class="tfp-chip" href="<?php echo esc_url( get_permalink( $cible ) ); ?>"><?php echo esc_html( get_the_title( $cible ) . $suffixe ); ?></a>
+				<?php endforeach; ?>
+				<?php if ( ! empty( $bloc['noms'] ) ) : ?>
+					<?php foreach ( (array) $bloc['noms'] as $nom ) : ?>
+						<span class="tfp-chip tfp-chip--static"><?php echo esc_html( $nom ); ?></span>
+					<?php endforeach; ?>
+					<?php $bloc['noms'] = array(); ?>
+				<?php endif; ?>
 			</div>
 		<?php elseif ( 'villes' === $bloc['type'] ) : ?>
 			<?php
@@ -689,7 +723,7 @@ $render_sections = function ( array $groupes, $classe ) use ( $render_group, $is
 		<div class="tfp-cta-block__actions">
 			<?php
 			tfp_button( array( 'label' => $cta_label, 'href' => $devis_url, 'variant' => 'on-primary' ) );
-			tfp_button( array( 'label' => $cta_phone_label . ' · ' . $site['phone'], 'href' => 'tel:' . $site['phone_href'], 'variant' => 'on-dark' ) );
+			tfp_bouton_appel( array( 'variant' => 'on-dark', 'numero' => true ) );
 			?>
 		</div>
 	</div>

@@ -136,13 +136,6 @@ function tfp_zone_canonical_redirect() {
 add_action( 'template_redirect', 'tfp_zone_canonical_redirect', 5 );
 
 /**
- * Retrouve l'entrée `zone` de niveau "departement" portant le slug de département donné
- * (le terme de taxonomie `departement` porte le même slug que le post département).
- *
- * @param string $dept_slug
- * @return WP_Post|null
- */
-/**
  * Zone (tout niveau) par son slug — pour résoudre les cibles relevées sur la maquette.
  *
  * @param string $slug Slug WordPress de la zone.
@@ -183,6 +176,114 @@ function tfp_zone_departement_num( $zone ) {
 	return '';
 }
 
+/**
+ * Slug du terme `departement` d'une zone (« cote-dor »), ou chaîne vide.
+ *
+ * @param WP_Post|int $zone Zone ou identifiant.
+ * @return string
+ */
+function tfp_zone_departement_slug( $zone ) {
+	$terms = get_the_terms( $zone, 'departement' );
+	return ( empty( $terms ) || is_wp_error( $terms ) ) ? '' : (string) $terms[0]->slug;
+}
+
+/**
+ * Maillage géographique d'une page ville ou commune — calculé par RELATIONS, pas par libellés.
+ *
+ * Revue des captures du 21 octobre 2026 : sur Besançon, Nevers, Vesoul, Auxerre et Belfort, le
+ * groupe « Dans le même département » listait les sept AUTRES départements (la maquette n'y liait
+ * que la page du département ; le gabarit rendait pour ce type la liste régionale), et les
+ * « Autres secteurs couverts en région » répétaient des villes du même département (Chalon ↔
+ * Mâcon, Dole ↔ Lons-le-Saunier, Beaune → Dijon).
+ *
+ * Chaque groupe de liens reçoit un RÔLE déduit de ses cibles relevées :
+ *  - `meme_departement` : le groupe lie la page du département courant (ou il a été relevé comme
+ *    lien départemental). Il rend ce lien, puis les autres zones publiées du MÊME département ;
+ *  - `proches` : toutes ses cibles sont du même département (communes proches) ;
+ *  - `autres` : il vise d'autres départements ; les zones du département courant en sont retirées.
+ * Les groupes sont traités dans l'ordre de la page : la page courante et toute destination déjà
+ * liée par un groupe précédent sont exclues des suivants. Rien n'est ajouté pour remplir : un
+ * département qui n'a qu'une page ville ne propose que son lien départemental.
+ *
+ * @param int   $post_id Zone courante (ville ou commune).
+ * @param array $groupes Groupes de `tfp_get_zone_blocks( 'locaux', … )`.
+ * @return array<int,array{role:string,departement:?WP_Post,zones:WP_Post[]}> Indexé par rang ACF.
+ */
+function tfp_zone_maillage( $post_id, array $groupes ) {
+	$dept_slug = tfp_zone_departement_slug( $post_id );
+	$dept_post = '' !== $dept_slug ? tfp_get_zone_by_department_slug( $dept_slug ) : null;
+	$meme_dept = array();
+	if ( '' !== $dept_slug ) {
+		$meme_dept = get_posts(
+			array(
+				'post_type'   => 'zone',
+				'numberposts' => -1,
+				'orderby'     => 'menu_order title',
+				'order'       => 'ASC',
+				'tax_query'   => array( array( 'taxonomy' => 'departement', 'field' => 'slug', 'terms' => $dept_slug ) ),
+				'meta_query'  => array( array( 'key' => 'niveau', 'value' => array( 'ville', 'commune' ), 'compare' => 'IN' ) ),
+			)
+		);
+		// Les villes principales avant les communes, comme dans le reste du site.
+		usort( $meme_dept, static fn( $a, $b ) => ( 'commune' === tfp_get_field( 'niveau', $a->ID ) ) <=> ( 'commune' === tfp_get_field( 'niveau', $b->ID ) ) );
+	}
+
+	$deja   = array( (int) $post_id => true );
+	$sortie = array();
+	foreach ( $groupes as $g ) {
+		if ( ! in_array( $g['type'] ?? '', array( 'villes', 'departements' ), true ) || empty( $g['cibles'] ) ) {
+			continue;
+		}
+		$resolues = array();
+		$lie_dept = 'departements' === $g['type'];
+		foreach ( (array) $g['cibles'] as $slug ) {
+			$z = tfp_get_zone_by_slug( $slug );
+			if ( ! $z ) {
+				continue;
+			}
+			if ( 'departement' === tfp_get_field( 'niveau', $z->ID ) ) {
+				$lie_dept = $lie_dept || ( $dept_post && (int) $z->ID === (int) $dept_post->ID );
+				continue;
+			}
+			$resolues[] = $z;
+		}
+		$du_dept = static fn( $z ) => tfp_zone_departement_slug( $z ) === $dept_slug;
+
+		if ( $lie_dept ) {
+			$role  = 'meme_departement';
+			$zones = array_merge( array_filter( $resolues, $du_dept ), $meme_dept );
+		} elseif ( $resolues && count( array_filter( $resolues, $du_dept ) ) === count( $resolues ) ) {
+			$role  = 'proches';
+			$zones = $resolues;
+		} else {
+			$role  = 'autres';
+			$zones = array_filter( $resolues, static fn( $z ) => ! $du_dept( $z ) );
+		}
+
+		$retenues = array();
+		foreach ( $zones as $z ) {
+			if ( isset( $deja[ (int) $z->ID ] ) ) {
+				continue;
+			}
+			$deja[ (int) $z->ID ] = true;
+			$retenues[]           = $z;
+		}
+		$sortie[ (int) $g['rang'] ] = array(
+			'role'        => $role,
+			'departement' => 'meme_departement' === $role ? $dept_post : null,
+			'zones'       => $retenues,
+		);
+	}
+	return $sortie;
+}
+
+/**
+ * Retrouve l'entrée `zone` de niveau "departement" portant le slug de département donné
+ * (le terme de taxonomie `departement` porte le même slug que le post département).
+ *
+ * @param string $dept_slug
+ * @return WP_Post|null
+ */
 function tfp_get_zone_by_department_slug( $dept_slug ) {
 	$posts = get_posts(
 		array(

@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 $site        = tfp_site_data();
-$careers_url = 'https://careers.werecruit.io/fr/top-famille';
+$careers_url = tfp_url_carrieres();
 
 tfp_seo(
 	array(
@@ -87,12 +87,11 @@ $page = tfp_static_page_data( 'recrutement' );
 					'mesures' => array( 'pad_v' => '15px', 'pad_h' => '24px', 'taille' => '17px', 'graisse' => 700, 'hauteur' => '60px' ),
 				)
 			);
-			tfp_button(
+			tfp_bouton_appel(
 				array(
-					'label'   => '☎ ' . $site['phone'],
-					'href'    => 'tel:' . $site['phone_href'],
 					'variant' => 'secondary',
-					'mesures' => array( 'pad_v' => '15px', 'pad_h' => '22px', 'taille' => '17px', 'graisse' => 600, 'hauteur' => '60px' ),
+					'numero'  => true,
+					'mesures' => array( 'pad_v' => '15px', 'pad_h' => '22px', 'taille' => '17px', 'hauteur' => '60px' ),
 				)
 			);
 			?>

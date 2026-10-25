@@ -36,6 +36,16 @@ $prestations = get_posts(
 $zones = tfp_footer_zones_tree();
 ?>
 <footer class="tfp-footer">
+	<?php
+	/*
+	 * Bandeau de rappel — conditionnel depuis la revue du 25 octobre 2026 : une seule conclusion
+	 * commerciale par page. Absent si la page a déjà la sienne (tfp_cta_final()), et sur les
+	 * parcours où il détourne le visiteur : devis (il renvoyait au formulaire ouvert),
+	 * recrutement (candidature), contact (message en cours), pages légales et plan du site
+	 * (l'accès au devis reste dans la navigation).
+	 */
+	if ( 'standard' === tfp_parcours() && ! tfp_cta_final() ) :
+		?>
 	<section class="tfp-prefooter">
 		<div class="tfp-prefooter__inner">
 			<p class="tfp-prefooter__text">
@@ -64,11 +74,12 @@ $zones = tfp_footer_zones_tree();
 					)
 				);
 				?>
-				<a class="tfp-prefooter__phone" href="tel:<?php echo esc_attr( $site['phone_href'] ); ?>"><span aria-hidden="true">☎</span> <?php echo esc_html( tfp_phone_cta_label( false ) ); ?></a>
+				<a class="tfp-prefooter__phone" href="tel:<?php echo esc_attr( $site['phone_href'] ); ?>"><?php echo tfp_icone( 'telephone' ); // phpcs:ignore WordPress.Security.EscapeOutput ?> <?php echo esc_html( tfp_phone_cta_label( false ) ); ?></a>
 				<span class="tfp-prefooter__price"><?php echo esc_html( $site['price_unique_display'] ); ?> HT/h</span>
 			</div>
 		</div>
 	</section>
+	<?php endif; ?>
 	<div class="tfp-footer__inner">
 		<div class="tfp-footer__col tfp-footer__col--brand">
 			<div class="tfp-footer__brand">
@@ -85,7 +96,7 @@ $zones = tfp_footer_zones_tree();
 			</div>
 			<p class="tfp-footer__tagline">Nettoyage professionnel régulier ou ponctuel en <?php echo esc_html( $site['address_region'] ); ?>.</p>
 			<ul class="tfp-footer__contact">
-				<li><a href="tel:<?php echo esc_attr( $site['phone_href'] ); ?>">☎ <?php echo esc_html( $site['phone'] ); ?></a></li>
+				<li><a href="tel:<?php echo esc_attr( $site['phone_href'] ); ?>" aria-label="<?php echo esc_attr( tfp_phone_cta_label( false ) . ' au ' . $site['phone'] ); ?>"><?php echo tfp_icone( 'telephone' ); // phpcs:ignore WordPress.Security.EscapeOutput ?> <span class="tfp-nowrap"><?php echo esc_html( $site['phone'] ); ?></span></a></li>
 				<li><a href="mailto:<?php echo esc_attr( $site['email'] ); ?>"><?php echo esc_html( $site['email'] ); ?></a></li>
 				<li><?php echo esc_html( $site['address_city'] . ' (' . $site['address_cp'] . ')' ); ?></li>
 			</ul>

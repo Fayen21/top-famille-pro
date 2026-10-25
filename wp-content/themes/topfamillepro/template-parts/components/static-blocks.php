@@ -390,6 +390,18 @@ foreach ( $data['sections'] as $section ) {
 								} else {
 									$variante = $principal ? 'primary' : 'secondary';
 								}
+								if ( 0 === strpos( (string) $l['href'], 'tel:' ) ) {
+									// Appel relevé (« ☎ 06 36 17 63 39 », « ☎ Échanger avec Audrey ») :
+									// composant d'appel unique, numéro affiché si la maquette l'affichait.
+									tfp_bouton_appel(
+										array(
+											'variant' => $variante,
+											'numero'  => (bool) preg_match( '/\d{2}[\s.]?\d{2}/', (string) $l['label'] ),
+											'mesures' => $l['mesures'],
+										)
+									);
+									continue;
+								}
 								tfp_button(
 									array(
 										'label'   => $l['label'],
