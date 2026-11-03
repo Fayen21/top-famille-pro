@@ -7,6 +7,85 @@ capture ou un fichier minifié seul.
 **Conclusion : PRET_POUR_VALIDATION_VISUELLE_HUMAINE.** La fidélité au prototype Claude Design
 n'est pas déclarée validée : c'est une décision humaine.
 
+## 0. Version finale — complément du 3 novembre 2026
+
+**Version de code de référence : `b095763`** (thème 0.14.1). Tout ce qui suit est rattaché à ce
+commit : captures, revue, suite de tests, export, paquets et dossier. Le commit suivant, qui
+porte ce rapport, `STATUS.md` et les archives, ne modifie **aucun** fichier de code, de test ou
+d'outil (`git diff --stat b095763..HEAD -- wp-content tests tools bin build` est vide).
+
+### Ce qui a été fait dans ce complément
+
+1. **Isolation du formulaire de devis vis-à-vis de la limitation (5 demandes/heure/IP).** Seuil et
+   protection inchangés. `tests/functional/limite-banc.js` remet à zéro, par WP-CLI et sur le banc
+   local uniquement, le **seul** transitoire `tfp_devis_<md5(ip)>` de l'IP du banc avant chaque
+   test ; le fichier passe en mode série. Il n'existait **aucun** test du refus : il est ajouté
+   (compteur saturé au seuil de production → `erreur=limite`, pas de confirmation). Preuve :
+   quatre exécutions consécutives du fichier, 16/16 chacune (sans l'isolation, la troisième
+   dépassait le quota).
+2. **Relecture visuelle des captures** (voir ci-dessous), trois défauts concrets corrigés :
+   - « Nettoyage en Yonne / en Doubs / en Jura / en Nièvre / en Territoire de Belfort » →
+     « dans l'Yonne », « dans le Doubs »… (`tfp_departement_locatif()`, mêmes formes que les H1 ;
+     vérifié par `tests/maillage.spec.js` sur les 18 routes) ;
+   - accueil 375 px : « ; » et « : » rejetés en début de ligne → espaces insécables
+     (`tfp_espaces_insecables()`, appliqué aux deux textes concernés) ;
+   - pied : « Lons-le-/Saunier » coupé et « · » orphelin en fin de ligne → noms insécables,
+     virgule portée par la ville précédente.
+   Et un défaut de l'outil : les captures pleine page imprimaient la barre d'action mobile au
+   milieu de l'image ; elles figent désormais les couches fixes (les captures « fenêtre »
+   continuent de montrer la barre réelle).
+
+### Captures réellement lues, et contrôles automatiques
+
+| Lu à l'œil (captures `docs/captures-corrections/apres/`, commit `b095763`) | Couvert seulement par un contrôle automatique |
+|---|---|
+| Maillage des 5 villes à ville unique (Besançon, Auxerre, Belfort, Nevers, Vesoul) ; doublons Chalon, Beaune, Dole ; bloc départemental du Jura | 7 autres blocs départementaux, Mâcon, Lons-le-Saunier : `tests/maillage.spec.js` (26 routes, appartenance, auto-lien, doublons, libellés) |
+| Carte « Tarif unique » 1440 ; ponctuel 375 (hero, déroulé, carte 189 €) ; exemple Saint-Apollinaire | Ponctuel 1440, exemple Dijon : `corrections-zip.spec.js` |
+| Devis étape 1 (haut et bas) et étape 2, à 375 | Validation, préremplissage, refus : `functional/quote-form.spec.js` |
+| Recrutement (bas, barre « Envoyer ma candidature »), menu mobile 375×812 et 375×560, pied 375 | Seuils 819/820, 1099/1100, 1219/1220, clavier, Échap : `corrections-zip.spec.js` |
+| **Accueil complet à 1440 (4 tranches) et à 375 (7 tranches)** — 12 images sur 12 chargées et décodées aux deux largeurs (`bilan.json`) | Les 53 routes × 2 largeurs : relevé `docs/REVUE-VISUELLE.md`, 106 écrans, 0 alerte ; échantillon de tuiles lu le 25 octobre seulement |
+
+### Résultats obtenus sur `b095763`
+
+| Contrôle | Résultat |
+|---|---|
+| Suite Playwright complète (`development`, 2026-11-03 09:27–09:38 UTC) | **1 365 réussis, 1 échec** : `parite-installeur.spec.js`, car les paquets n'étaient pas encore reconstruits pour 0.14.1 ; rejoué après reconstruction : **4/4**. Le test de soumission du devis passe dans la suite complète |
+| `npm run lint:php` | 83 fichiers, 0 erreur |
+| Captures avant/après | 44/44, 0 image rendue non chargée |
+| Revue 53 routes à 375 et 1440 | 106 écrans, 0 alerte automatique |
+| Export statique (`production`) + `--verifier` | 53/53 routes ouvrables hors ligne, 0 image cassée, 0 requête externe |
+| Paquets + parité | 1 267 fichiers concordants |
+| Dossier hors ligne, extrait à neuf, réseau coupé | conforme (2 volumes, 156 pages, 198 images) |
+| Lighthouse | **non rejoué** : mesures du 25 octobre (`49e2d3c`, 20/20 au-dessus des cibles, banc local). Les changements depuis sont du texte et du CSS mineurs |
+
+### Archives (commit `b095763`)
+
+| Archive | SHA-256 |
+|---|---|
+| `release/dossier-revue-zip-2026-11-03-volume-1-avant-apres.zip` | `1e3c0c7283b5ea8c20816c24533df122a7cfee871ab5e137ad78814abdca5e40` |
+| `release/dossier-revue-zip-2026-11-03-volume-2-53-routes.zip` | `dc310a777491593487afaa9d038d72cc9b6790fe6c9ea31ebb24ef07d707754f` |
+| `release/paquets-travail-2026-11-03/topfamillepro-theme.zip` | `de2433c3bc1997774f2705e7ae7bba03ee51b7fa1c983e599d2887f091cd188f` |
+| `release/paquets-travail-2026-11-03/topfamillepro-content-installer.zip` | `787f8e31544781df6b02e114a116963dc3e60e78b506bfd26798d838b09b357b` |
+| `release/paquets-travail-2026-11-03/html-brut.zip` | `a5ee3cd547258d1675367940a5adc728c53e1db7fa75091de8618244abd9f320` |
+| `release/paquets-travail-2026-11-03/site-navigable.zip` | `8fe76eb069372901fa646b8ac6fc2fd463ab6e11b71a3d42c4e40d409fedb45a` |
+
+Les archives du 25 octobre sont désormais **anciennes** (`release/LISEZ-MOI-ARCHIVES.md`).
+
+### Limites et écarts restants
+
+- Lighthouse non rejoué sur `b095763` ; aucune mesure Hostinger.
+- Lecture humaine des 110 pleines pages : partielle (liste ci-dessus) ; le reste repose sur le
+  relevé automatique.
+- L'isolation du formulaire n'agit que sur le banc local (WP-CLI). Sur une autre cible, le test du
+  refus est ignoré et indique pourquoi.
+- Les espaces insécables ne sont garantis que sur les deux textes relevés : les autres contenus
+  n'ont pas été balayés pour ce motif.
+- Inchangés, par consigne : photo et citation d'Audrey, avis provisoires, note Google masquée,
+  données Kbis.
+
+**Statut : PRET_POUR_VALIDATION_VISUELLE_HUMAINE.** La fidélité Claude Design n'est pas validée par
+ce rapport.
+
 ## 1. Branche, HEAD, environnement
 
 | | |

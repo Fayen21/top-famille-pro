@@ -2217,3 +2217,15 @@ Point de départ `7955f64` (`f516b6d` et `f917741` en sont des ancêtres). Rien 
   d'action mobile : le CTA du header suffit.
 - Disponibilité affichée sur Contact = éléments de `PROJECT_INPUTS.md` seulement.
 - `tests/fidelite.spec.js` attend le nouveau titre de la section couverture.
+
+### Complément du 3 novembre 2026 — version de référence `b095763` (thème 0.14.1)
+
+- Tests du devis isolés de la limitation 5/h/IP par purge ciblée du transitoire sur le banc
+  (`tests/functional/limite-banc.js`), fichier en série, test du refus ajouté. Seuil inchangé.
+- Relecture des captures : « Nettoyage dans l'Yonne/le Doubs… », espaces insécables de l'accueil,
+  villes du pied insécables ; pleines pages sans couche fixe.
+- Suite complète sur `b095763` : 1 365/1 366 (seul échec : parité avant reconstruction des
+  paquets, 4/4 ensuite). Revue 106/106, captures 44/44, export 53/53, dossier conforme.
+- Livrables : `release/dossier-revue-zip-2026-11-03-volume-{1,2}-*.zip`,
+  `release/paquets-travail-2026-11-03/`. Détail : `docs/RAPPORT-CORRECTIONS-REVUE-ZIP.md` §0.
+- **Reste** : validation visuelle humaine ; Lighthouse sur `b095763` et sur Hostinger.
