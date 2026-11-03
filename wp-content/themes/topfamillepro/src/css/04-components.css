@@ -3446,6 +3446,18 @@ body.tfp-type-prestation .tfp-hero__content h1 {
   display: inline;
   min-height: 0;
   margin-right: 4px;
+  /* Relu le 3 novembre 2026 : « Lons-le-/Saunier » se coupait au trait d'union, et le « · »
+     restait seul en fin de ligne après « Chalon-sur-Saône ». Un nom de ville ne se coupe plus ;
+     le séparateur devient une virgule portée par la ville qui précède. */
+  white-space: nowrap;
+}
+
+.tfp-footer__villes > span[aria-hidden="true"] {
+  display: none;
+}
+
+.tfp-footer__col ul .tfp-footer__villes a:not(:last-child)::after {
+  content: ",";
 }
 
 .tfp-footer__zones li {

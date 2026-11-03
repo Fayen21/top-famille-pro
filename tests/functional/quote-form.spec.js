@@ -1,5 +1,6 @@
 // @ts-check
 import { test, expect } from '@playwright/test';
+import { banc, purgerLimiteDevis, saturerLimiteDevis } from './limite-banc.js';
 
 const FORM_URL = '/demande-de-devis/';
 
@@ -15,7 +16,12 @@ async function envoiNeutralise(page) {
 	return (await page.locator('.tfp-quote-form[data-tfp-mail-disabled]').count()) > 0;
 }
 
+// Série : le test du refus sature le compteur de l'IP du banc ; en parallèle, il ferait échouer
+// les soumissions valides des autres tests du fichier. Aucun autre fichier ne soumet le devis.
+test.describe.configure({ mode: 'serial' });
+
 test.beforeEach(async ({ page }) => {
+	purgerLimiteDevis();
 	await page.goto(FORM_URL);
 	test.skip(
 		!(await envoiNeutralise(page)),
@@ -141,6 +147,24 @@ test.describe('Formulaire de demande de devis', () => {
 		await expect(page).toHaveURL(new RegExp(FORM_URL.replace('/', '\\/') + '$'));
 		const isInvalid = await page.$eval('input[name="consentement"]', (el) => !el.checkValidity());
 		expect(isInvalid).toBe(true);
+	});
+
+	test('limitation de fréquence : au-delà de 5 demandes par heure et par IP, refus serveur (erreur=limite)', async ({ page }) => {
+		test.skip(!banc, 'saturation du compteur possible seulement sur le banc local (WP-CLI)');
+		saturerLimiteDevis();
+		try {
+			await fillStepOne(page, { telephone: '0600000000' });
+			await page.click('[data-step-next]');
+			await page.fill('#tfp-message', 'Message de test : limitation de fréquence.');
+			await page.check('input[name="consentement"]');
+			await Promise.all([page.waitForNavigation(), page.click('[data-step-submit]')]);
+			const url = new URL(page.url());
+			expect(url.searchParams.get('erreur')).toBe('limite');
+			expect(url.searchParams.has('merci')).toBe(false);
+			await expect(page.getByRole('status').filter({ hasText: 'Votre demande a bien été envoyée' })).toHaveCount(0);
+		} finally {
+			purgerLimiteDevis();
+		}
 	});
 
 	test('anti-spam : honeypot rempli → rejet silencieux, aucun e-mail envoyé', async ({ page }) => {

@@ -7,7 +7,8 @@
  *    d'action mobile masquée (`figerCouches`) — pour lire le contenu ;
  *  - `fenetre`   : capture de la FENÊTRE réelle à une position de défilement, couches fixes
  *    comprises — pour juger leur comportement en navigation ;
- *  - `page`      : pleine page, après défilement complet et décodage de toutes les images.
+ *  - `page`      : pleine page, après défilement complet et décodage de toutes les images, couches
+ *    fixes figées comme en mode composant (sinon la barre mobile est imprimée au milieu).
  *
  * Usage :
  *   TFP_BASE_URL=http://localhost:8901 node tools/captures-corrections.mjs avant|apres [--only=a,b]
@@ -88,6 +89,10 @@ for (const c of CAPTURES) {
 		const prep = await preparer(page);
 		if (c.action) await c.action(page);
 		if (c.mode === 'page') {
+			// Une pleine page imprime les couches FIXES à la position de la fenêtre au moment de la
+			// prise : la barre d'action mobile traversait le visuel du hero (lu le 3 novembre 2026).
+			// Même traitement que les composants ; les captures « fenêtre » montrent la barre réelle.
+			await figerCouches(page);
 			await page.screenshot({ path: chemin, fullPage: true });
 		} else if (c.mode === 'fenetre') {
 			if (c.position === 'bas') await page.evaluate(() => window.scrollTo(0, document.documentElement.scrollHeight));

@@ -27,7 +27,7 @@ $problems = array(
 			<?php foreach ( $problems as $problem ) : ?>
 				<div class="tfp-problem">
 					<div class="tfp-problem__title"><?php echo esc_html( $problem['title'] ); ?></div>
-					<p class="tfp-problem__desc"><?php echo esc_html( $problem['desc'] ); ?></p>
+					<p class="tfp-problem__desc"><?php echo esc_html( tfp_espaces_insecables( $problem['desc'] ) ); ?></p>
 				</div>
 			<?php endforeach; ?>
 		</div>

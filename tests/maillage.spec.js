@@ -19,6 +19,13 @@ const CODES = {
 // du département. C'est là que l'ancien gabarit affichait les sept autres départements.
 const VILLE_UNIQUE = [ 'doubs', 'nievre', 'haute-saone', 'yonne', 'territoire-de-belfort' ];
 
+// Complément de lieu attendu sur la rangée du département (mêmes formes que les H1 département).
+const LOCATIF = {
+	'cote-dor': 'en Côte-d’Or', doubs: 'dans le Doubs', jura: 'dans le Jura', nievre: 'dans la Nièvre',
+	'haute-saone': 'en Haute-Saône', 'saone-et-loire': 'en Saône-et-Loire', yonne: 'dans l’Yonne',
+	'territoire-de-belfort': 'dans le Territoire de Belfort',
+};
+
 const LOCALES = Object.values( ROUTE_MAP ).filter( ( r ) => r.type === 'ville' || r.type === 'commune' ).map( ( r ) => r.wp );
 const DEPTS = Object.values( ROUTE_MAP ).filter( ( r ) => r.type === 'departement' ).map( ( r ) => r.wp );
 
@@ -56,6 +63,8 @@ test.describe( 'Maillage des 18 pages ville et commune (§2)', () => {
 
 			// La rangée du groupe pointe vers le département de la page, et lui seul.
 			expect( meme.rangees ).toEqual( [ `/zones-intervention/${ dept }/` ] );
+			const libelle = ( await page.locator( 'main .tfp-dept-row__nom' ).first().innerText() ).replace( /[’']/g, '’' );
+			expect( libelle ).toBe( `Nettoyage ${ LOCATIF[ dept ] }` );
 			// Aucune puce du groupe ne sort du département.
 			for ( const p of meme.puces ) expect( deptDe( p.chemin ), `${ p.texte } sous « même département »` ).toBe( dept );
 			if ( VILLE_UNIQUE.includes( dept ) ) expect( meme.puces, 'département à ville unique' ).toEqual( [] );

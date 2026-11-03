@@ -188,6 +188,35 @@ function tfp_zone_departement_slug( $zone ) {
 }
 
 /**
+ * Complément de lieu d'un département, avec la préposition et l'article justes (« dans l'Yonne »,
+ * « dans le Doubs », « en Côte-d'Or ») — les mêmes que les H1 des pages département.
+ *
+ * Relu sur les captures du 3 novembre 2026 : la rangée « Nettoyage en {département} » donnait
+ * « en Yonne », « en Doubs », « en Territoire de Belfort ». Un département inconnu retombe sur
+ * « en {titre} ».
+ *
+ * @param WP_Post|int $departement Page du département (CPT zone, niveau departement).
+ * @return string
+ */
+function tfp_departement_locatif( $departement ) {
+	$post   = get_post( $departement );
+	$titre  = $post ? get_the_title( $post ) : '';
+	$slug   = $post ? ( tfp_zone_departement_slug( $post ) ?: $post->post_name ) : '';
+	$formes = array(
+		'cote-dor'              => 'en',
+		'haute-saone'           => 'en',
+		'saone-et-loire'        => 'en',
+		'doubs'                 => 'dans le',
+		'jura'                  => 'dans le',
+		'territoire-de-belfort' => 'dans le',
+		'nievre'                => 'dans la',
+		'yonne'                 => 'dans l’',
+	);
+	$prep = $formes[ $slug ] ?? 'en';
+	return 'dans l’' === $prep ? $prep . $titre : $prep . ' ' . $titre;
+}
+
+/**
  * Maillage géographique d'une page ville ou commune — calculé par RELATIONS, pas par libellés.
  *
  * Revue des captures du 21 octobre 2026 : sur Besançon, Nevers, Vesoul, Auxerre et Belfort, le

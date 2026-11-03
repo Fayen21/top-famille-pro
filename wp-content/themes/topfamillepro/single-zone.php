@@ -363,7 +363,7 @@ $render_group = function ( array $bloc ) use ( $toutes_prestations, $cities_in_d
 		<?php elseif ( $m ) : ?>
 			<div class="tfp-chip-row" style="margin-top:16px">
 				<?php if ( $m['departement'] ) : ?>
-					<a class="tfp-dept-row" href="<?php echo esc_url( get_permalink( $m['departement'] ) ); ?>"><span class="tfp-dept-row__nom">Nettoyage en <?php echo esc_html( get_the_title( $m['departement'] ) ); ?></span><span class="tfp-dept-row__fleche" aria-hidden="true">→</span></a>
+					<a class="tfp-dept-row" href="<?php echo esc_url( get_permalink( $m['departement'] ) ); ?>"><span class="tfp-dept-row__nom">Nettoyage <?php echo esc_html( tfp_departement_locatif( $m['departement'] ) ); ?></span><span class="tfp-dept-row__fleche" aria-hidden="true">→</span></a>
 				<?php endif; ?>
 				<?php
 				// Les autres départements portent leur numéro (« Chalon-sur-Saône (71) ») ; le
@@ -459,7 +459,7 @@ $render_group = function ( array $bloc ) use ( $toutes_prestations, $cities_in_d
 				}
 				foreach ( $dept_cibles as $dept_cible ) :
 					?>
-					<a class="tfp-dept-row" href="<?php echo esc_url( get_permalink( $dept_cible ) ); ?>"><span class="tfp-dept-row__nom">Nettoyage en <?php echo esc_html( get_the_title( $dept_cible ) ); ?></span><span class="tfp-dept-row__fleche" aria-hidden="true">→</span></a>
+					<a class="tfp-dept-row" href="<?php echo esc_url( get_permalink( $dept_cible ) ); ?>"><span class="tfp-dept-row__nom">Nettoyage <?php echo esc_html( tfp_departement_locatif( $dept_cible ) ); ?></span><span class="tfp-dept-row__fleche" aria-hidden="true">→</span></a>
 					<?php
 				endforeach;
 				/*

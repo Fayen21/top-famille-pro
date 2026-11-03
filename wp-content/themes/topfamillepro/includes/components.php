@@ -11,17 +11,21 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Affiche un bouton/lien.
+ * Espaces insécables de la typographie française devant « ; : ! ? » et à l'intérieur des
+ * guillemets, pour qu'un signe ne soit jamais rejeté seul en début de ligne.
  *
- * @param array $args {
- *   @type string $label   Texte visible (obligatoire).
- *   @type string $href    URL (obligatoire).
- *   @type string $variant 'primary' | 'secondary' | 'copper' | 'on-primary' | 'on-dark'. Défaut 'primary'.
- *   @type string $size    '' | 'sm'. Défaut ''.
- *   @type bool   $block   Pleine largeur. Défaut false.
- *   @type string $icon    HTML brut optionnel affiché avant le label (ex. picto téléphone).
- * }
+ * Relu sur l'accueil à 375 px le 3 novembre 2026 : « … les intervenants / ; vous n'avez pas… »
+ * et « … frais de gestion / : comprendre… ». Appliquer AVANT l'échappement : la fonction ne
+ * produit que du texte (U+00A0), jamais d'entité.
+ *
+ * @param string $texte
+ * @return string
  */
+function tfp_espaces_insecables( $texte ) {
+	$texte = preg_replace( '/ ([;:!?»])/u', "\u{00A0}$1", (string) $texte );
+	return preg_replace( '/« /u', "«\u{00A0}", $texte );
+}
+
 /**
  * Parcours de la page servie — revue du 25 octobre 2026 (§4).
  *
@@ -66,6 +70,18 @@ function tfp_cta_final( $marquer = false ) {
 	return $present;
 }
 
+/**
+ * Affiche un bouton/lien.
+ *
+ * @param array $args {
+ *   @type string $label   Texte visible (obligatoire).
+ *   @type string $href    URL (obligatoire).
+ *   @type string $variant 'primary' | 'secondary' | 'copper' | 'on-primary' | 'on-dark'. Défaut 'primary'.
+ *   @type string $size    '' | 'sm'. Défaut ''.
+ *   @type bool   $block   Pleine largeur. Défaut false.
+ *   @type string $icon    HTML brut optionnel affiché avant le label (ex. picto téléphone).
+ * }
+ */
 function tfp_button( $args ) {
 	$args = wp_parse_args(
 		$args,

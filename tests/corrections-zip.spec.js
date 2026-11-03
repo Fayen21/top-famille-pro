@@ -328,3 +328,26 @@ test.describe( 'Recontrôles fonctionnels (§8)', () => {
 		await expect( page.locator( 'main form, main input[type="file"]' ) ).toHaveCount( 0 );
 	} );
 } );
+
+test.describe( 'Relecture des captures du 3 novembre 2026', () => {
+	test( 'accueil 375 px : aucun « ; » ni « : » rejeté en début de ligne', async ( { page } ) => {
+		await page.setViewportSize( { width: 375, height: 812 } );
+		await page.goto( '/' );
+		for ( const texte of [ 'les intervenants', 'frais de gestion' ] ) {
+			const el = page.locator( 'main p, main span' ).filter( { hasText: texte } ).first();
+			expect( await el.textContent() ).toMatch( / [;:]/ );
+		}
+	} );
+
+	test( 'pied 1440 px : noms de ville insécables, pas de séparateur orphelin', async ( { page } ) => {
+		await page.setViewportSize( { width: 1440, height: 900 } );
+		await page.goto( '/' );
+		const villes = page.locator( '.tfp-footer__villes a' );
+		expect( await villes.count() ).toBeGreaterThan( 8 );
+		for ( const ws of await villes.evaluateAll( ( els ) => els.map( ( e ) => getComputedStyle( e ).whiteSpace ) ) ) expect( ws ).toBe( 'nowrap' );
+		await expect( page.locator( '.tfp-footer__villes > span[aria-hidden="true"]:visible' ) ).toHaveCount( 0 );
+		// Une ville tient sur une seule ligne.
+		const hauteurs = await villes.evaluateAll( ( els ) => els.map( ( e ) => e.getClientRects().length ) );
+		for ( const n of hauteurs ) expect( n ).toBe( 1 );
+	} );
+} );
