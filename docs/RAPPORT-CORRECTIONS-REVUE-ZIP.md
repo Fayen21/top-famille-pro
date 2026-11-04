@@ -9,10 +9,15 @@ n'est pas déclarée validée : c'est une décision humaine.
 
 ## 0. Version finale — complément du 3 novembre 2026
 
-**Version de code de référence : `b095763`** (thème 0.14.1). Tout ce qui suit est rattaché à ce
-commit : captures, revue, suite de tests, export, paquets et dossier. Le commit suivant, qui
-porte ce rapport, `STATUS.md` et les archives, ne modifie **aucun** fichier de code, de test ou
-d'outil (`git diff --stat b095763..HEAD -- wp-content tests tools bin build` est vide).
+| | Commit |
+|---|---|
+| **Code testé et capturé** (thème 0.14.1) — captures, revue, suite de tests, export, paquets et dossier ont été produits sur ce commit | **`b095763`** |
+| **Livraison** — ajoute ce rapport, `STATUS.md`, les captures et les archives ; aucun fichier de code, de test ou d'outil (`git diff --stat b095763 4514c34 -- wp-content tests tools bin build` est vide) | **`4514c34`** |
+| HEAD de la branche | le commit qui inscrit ce tableau, juste après `4514c34` ; il ne modifie que ce fichier |
+
+Un commit ne peut pas contenir son propre hash : la référence vérifiable est donc le couple
+`b095763` (code) / `4514c34` (archives). Les empreintes ci-dessous ont été recalculées le
+4 novembre 2026 sur les fichiers livrés : elles sont identiques.
 
 ### Ce qui a été fait dans ce complément
 
