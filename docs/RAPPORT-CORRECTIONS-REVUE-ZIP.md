@@ -61,7 +61,7 @@ Un commit ne peut pas contenir son propre hash : la référence vérifiable est 
 | Export statique (`production`) + `--verifier` | 53/53 routes ouvrables hors ligne, 0 image cassée, 0 requête externe |
 | Paquets + parité | 1 267 fichiers concordants |
 | Dossier hors ligne, extrait à neuf, réseau coupé | conforme (2 volumes, 156 pages, 198 images) |
-| Lighthouse | **non rejoué** : mesures du 25 octobre (`49e2d3c`, 20/20 au-dessus des cibles, banc local). Les changements depuis sont du texte et du CSS mineurs |
+| Lighthouse, 10 pages × mobile/bureau (`production` + `banc-production.mjs`, 2026-11-09) | **20/20 au-dessus des cibles** : perf. mobile 98–100, bureau 100 ; a11y, BP, SEO 100 partout ; LCP mobile 1,67–1,98 s ; CLS 0,000 ; TBT ≤ 89 ms. Thème servi : 0.14.1, identique à `b095763` |
 
 ### Archives (commit `b095763`)
 
@@ -78,7 +78,7 @@ Les archives du 25 octobre sont désormais **anciennes** (`release/LISEZ-MOI-ARC
 
 ### Limites et écarts restants
 
-- Lighthouse non rejoué sur `b095763` ; aucune mesure Hostinger.
+- Lighthouse mesuré sur `b095763` au banc local uniquement (compression et cache simulés) ; aucune mesure Hostinger.
 - Lecture humaine des 110 pleines pages : partielle (liste ci-dessus) ; le reste repose sur le
   relevé automatique.
 - L'isolation du formulaire n'agit que sur le banc local (WP-CLI). Sur une autre cible, le test du
@@ -186,7 +186,7 @@ Google (toujours masquée), « Kbis à confirmer » (pas un nouveau bloqueur).
 | `npm run build` | CSS/JS + images | `3f6478b`, CSS/JS reconstruits à chaque commit suivant |
 | Suite Playwright complète, `development` | 1 362 / 1 363 — l'échec est la limitation de fréquence, voir §5 bis | `149acd6` |
 | Suites ciblées : maillage (26), corrections-zip (30), functional (15), contact, décisions, fidélité, passe-visuelle, accessibilité | vertes | `777e467` puis final |
-| Lighthouse, 10 pages × mobile/bureau, `banc-production.mjs` | 20/20 au-dessus des cibles (perf ≥ 97, a11y/BP/SEO 100, LCP mobile ≤ 1,98 s, CLS 0) | `49e2d3c` |
+| Lighthouse, 10 pages × mobile/bureau, `banc-production.mjs` | 20/20 au-dessus des cibles (perf ≥ 97, a11y/BP/SEO 100, LCP mobile ≤ 1,98 s, CLS 0) ; rejoué sur `b095763` le 9 novembre : 20/20 (voir §0) | `49e2d3c`, puis `b095763` |
 | Export statique + `--verifier` | 53/53 routes hors ligne, 0 image cassée, 0 requête externe | `49e2d3c` (seul `style.css` a changé depuis : version 0.14.0) |
 | Paquets + parité dépôt ↔ livraison | 1 267 fichiers concordants | reconstruits après le passage en 0.14.0 |
 | Dossier hors ligne, extrait à neuf, réseau coupé | conforme | `149acd6` |

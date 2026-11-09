@@ -2228,4 +2228,5 @@ Point de départ `7955f64` (`f516b6d` et `f917741` en sont des ancêtres). Rien 
   paquets, 4/4 ensuite). Revue 106/106, captures 44/44, export 53/53, dossier conforme.
 - Livrables : `release/dossier-revue-zip-2026-11-03-volume-{1,2}-*.zip`,
   `release/paquets-travail-2026-11-03/`. Détail : `docs/RAPPORT-CORRECTIONS-REVUE-ZIP.md` §0.
-- **Reste** : validation visuelle humaine ; Lighthouse sur `b095763` et sur Hostinger.
+- Lighthouse rejoué sur `b095763` le 9 novembre 2026 (banc local) : 20/20 au-dessus des cibles.
+- **Reste** : validation visuelle humaine ; Lighthouse sur Hostinger après déploiement.
