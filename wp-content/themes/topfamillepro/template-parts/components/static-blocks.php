@@ -41,6 +41,13 @@ $index_max = isset( $args['a'] ) ? (int) $args['a'] : null;
  * Clé : la route telle qu'elle a été relevée sur la maquette. Voir le `case 'link'` plus bas.
  */
 $liens_rediriges = is_array( $args['liens'] ?? null ) ? $args['liens'] : array();
+/*
+ * Sections REPLIÉES (passe commerciale du 10 novembre 2026, §4) : leur contenu passe dans un
+ * <details> natif dont le résumé porte le titre du premier bloc, en H2. Le titre d'origine de ce
+ * bloc n'est alors pas répété dans le corps. Tout reste dans le HTML, sans JavaScript.
+ * Chaque section rendue reçoit aussi une ancre `s-{index}`, que tfp_static_sommaire() vise.
+ */
+$replier = array_map( 'intval', (array) ( $args['replier'] ?? array() ) );
 
 foreach ( $data['sections'] as $section ) {
 	if ( in_array( $section['index'], $skip, true ) ) {
@@ -190,8 +197,16 @@ foreach ( $data['sections'] as $section ) {
 	 */
 	$sequences = tfp_static_runs( $section['blocs'] );
 	?>
-	<section class="<?php echo esc_attr( implode( ' ', $classes ) ); ?>"<?php echo $pad_style; // phpcs:ignore WordPress.Security.EscapeOutput ?>>
+	<?php
+	$est_repliee  = in_array( (int) $section['index'], $replier, true );
+	$titre_repli  = $est_repliee ? trim( (string) ( $section['blocs'][0]['titre'] ?? '' ) ) : '';
+	$est_repliee  = $est_repliee && '' !== $titre_repli;
+	?>
+	<section id="s-<?php echo (int) $section['index']; ?>" class="<?php echo esc_attr( implode( ' ', $classes ) ); ?>"<?php echo $pad_style; // phpcs:ignore WordPress.Security.EscapeOutput ?>>
 		<div class="tfp-container">
+		<?php if ( $est_repliee ) : ?>
+			<details class="tfp-volet tfp-volet--section"><summary><h2><?php echo esc_html( $titre_repli ); ?></h2></summary><div class="tfp-volet__corps">
+		<?php endif; ?>
 		<?php
 		foreach ( $sequences as $sequence ) :
 			/*
@@ -299,7 +314,9 @@ foreach ( $data['sections'] as $section ) {
 						 * fenêtre au lieu d'y être figés. Sans relevé, les jetons du thème
 						 * s'appliquent — c'est-à-dire le comportement d'avant.
 						 */
-						tfp_bloc_titre( $bloc );
+						if ( ! ( $est_repliee && $bloc === $section['blocs'][0] ) ) {
+							tfp_bloc_titre( $bloc );
+						}
 						?>
 
 						<?php
@@ -663,6 +680,9 @@ foreach ( $data['sections'] as $section ) {
 			<?php endforeach; ?>
 			</div>
 		<?php endforeach; ?>
+		<?php if ( $est_repliee ) : ?>
+			</div></details>
+		<?php endif; ?>
 		</div>
 	</section>
 	<?php

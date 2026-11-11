@@ -164,16 +164,21 @@ foreach ( ( $page['sections'] ?? array() ) as $tfp_section ) {
 	}
 }
 
+// Passe commerciale du 10 novembre 2026 (§4) : sommaire (page de plus de 10 000 px à 375 px) et
+// trois sections de méthode repliées — les tâches espace par espace, le cahier des charges, sa
+// construction — que la bande « Cahier des charges, intervenants et suivi » résume juste après.
+tfp_static_sommaire( 'nettoyage-professionnel', array( 16, 18 ) );
+
 get_template_part(
 	'template-parts/components/static-blocks',
 	null,
-	array( 'key' => 'nettoyage-professionnel', 'skip' => array( 12 ), 'a' => 11 )
+	array( 'key' => 'nettoyage-professionnel', 'skip' => array( 12 ), 'a' => 11, 'replier' => array( 9, 10, 11 ) )
 );
 
 if ( $tfp_bande_methode ) :
 	$tfp_bloc = $tfp_bande_methode['blocs'][0] ?? array();
 	?>
-<section class="tfp-section--tight tfp-section--blanc" style="--tfp-bande-haut:clamp(44px, 6vw, 84px);--tfp-bande-bas:clamp(44px, 6vw, 84px)">
+<section id="s-12" class="tfp-section--tight tfp-section--blanc" style="--tfp-bande-haut:clamp(44px, 6vw, 84px);--tfp-bande-bas:clamp(44px, 6vw, 84px)">
 	<div class="tfp-container tfp-methode-rangee">
 		<div class="tfp-methode-rangee__media">
 			<?php

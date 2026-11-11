@@ -158,6 +158,41 @@ function tfp_exemple_suivi( array $lignes, $id = 'suivi' ) {
 }
 
 /**
+ * Sommaire d'une page statique longue — passe commerciale du 10 novembre 2026 (§4).
+ *
+ * Liens vers les ancres `s-{index}` que pose static-blocks.php, libellés par le titre du premier
+ * bloc de chaque section. Les sections sans titre, et celles listées dans `$exclure`, n'y figurent
+ * pas. Réservé aux pages qui le justifient (le pilier, plus de 10 000 px à 375 px).
+ *
+ * @param string $key     Clé de la page (option `tfp_page_{key}`).
+ * @param int[]  $exclure Index de sections à ne pas lister.
+ */
+function tfp_static_sommaire( $key, array $exclure = array() ) {
+	$data  = tfp_static_page_data( $key );
+	$liens = array();
+	foreach ( (array) ( $data['sections'] ?? array() ) as $section ) {
+		$titre = trim( (string) ( $section['blocs'][0]['titre'] ?? '' ) );
+		if ( '' === $titre || in_array( (int) $section['index'], $exclure, true ) ) {
+			continue;
+		}
+		$liens[ 's-' . (int) $section['index'] ] = $titre;
+	}
+	if ( count( $liens ) < 3 ) {
+		return;
+	}
+	?>
+	<nav class="tfp-container tfp-sur-page" aria-label="Sommaire de la page">
+		<p class="tfp-sur-page__titre">Sur cette page</p>
+		<ul>
+			<?php foreach ( $liens as $ancre => $titre ) : ?>
+				<li><a href="#<?php echo esc_attr( $ancre ); ?>"><?php echo esc_html( $titre ); ?></a></li>
+			<?php endforeach; ?>
+		</ul>
+	</nav>
+	<?php
+}
+
+/**
  * Affiche un bouton/lien.
  *
  * @param array $args {
