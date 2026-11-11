@@ -263,7 +263,6 @@ async function verifier() {
 		}
 		await page.close();
 	}
-	await navigateur.close();
 
 	// --- Démonstration du formulaire de devis : étapes, validation, confirmation simulée, aucun POST.
 	const demo = await (async () => {
@@ -298,6 +297,7 @@ async function verifier() {
 	const chercher = (dir) => { for (const e of readdirSync(dir, { withFileTypes: true })) { const p = join(dir, e.name); if (e.isDirectory()) chercher(p); else if (e.name.endsWith('.html') && readFileSync(p, 'utf8').includes('admin-post')) restesAdminPost.push(relative(NAV, p)); } };
 	chercher(NAV);
 	console.log(`Pages navigables visant encore admin-post : ${restesAdminPost.length}`);
+	await navigateur.close();
 
 	console.log(`Images cassées (53 routes × 2 largeurs) : ${cassees}`);
 	console.log(`Requêtes vers un domaine externe : ${externes}`);

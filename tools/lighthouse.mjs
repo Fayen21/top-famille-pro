@@ -34,6 +34,8 @@ const PAGES = [
 	{ nom: 'Index des prestations', url: '/prestations/' },
 	{ nom: 'Prestation ponctuelle', url: '/prestations/ponctuel/' },
 	{ nom: 'Index Conseils', url: '/conseils/' },
+	// Passe commerciale du 10 novembre 2026 : pilier restructuré (sommaire, sections repliées).
+	{ nom: 'Pilier', url: '/nettoyage-professionnel/' },
 ];
 
 const seule = (process.argv.find((a) => a.startsWith('--only=')) || '').split('=')[1];

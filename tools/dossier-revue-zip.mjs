@@ -76,14 +76,17 @@ function volume(nom, titre, intro, vues) {
 }
 
 /* Volume 1 — avant / après. */
-const AVANT = 'docs/captures-corrections/avant';
-const APRES = 'docs/captures-corrections/apres';
+// `--passe=commerciale` : un seul volume, avant / après de la passe commerciale du 10 novembre 2026.
+const PASSE_COMMERCIALE = process.argv.includes('--passe=commerciale');
+const BASE_CAPTURES = PASSE_COMMERCIALE ? 'docs/captures-passe-commerciale' : 'docs/captures-corrections';
+const AVANT = `${BASE_CAPTURES}/avant`;
+const APRES = `${BASE_CAPTURES}/apres`;
 const bilan = JSON.parse(readFileSync(path.join(APRES, 'bilan.json'), 'utf8'));
 const pairs = readdirSync(APRES).filter((f) => f.endsWith('.png')).sort().map((f) => {
 	const cle = f.replace(/\.png$/, '');
 	const b = bilan[cle] || {};
 	const images = [];
-	if (existsSync(path.join(AVANT, f))) images.push({ src: path.join(AVANT, f), legende: 'Avant — 7955f64' });
+	if (existsSync(path.join(AVANT, f))) images.push({ src: path.join(AVANT, f), legende: PASSE_COMMERCIALE ? 'Avant — 6102180' : 'Avant — 7955f64' });
 	images.push({ src: path.join(APRES, f), legende: `Après — ${HEAD}` });
 	return { slug: cle, titre: cle, sousTitre: `${b.route || ''} · ${b.largeur || ''} px · capture ${b.mode || ''}`, images };
 });
@@ -97,11 +100,13 @@ const routes = readdirSync(REVUE).filter((f) => f.endsWith('.jpg')).sort().map((
 });
 const intro2 = '<p>Les 53 routes à 375 et 1440 px, plus le menu ouvert de l’accueil et l’étape 2 du devis. Relevé automatique : docs/REVUE-VISUELLE.md.</p>';
 
-const zips = [
-	volume(`dossier-revue-zip-${DATE}-volume-1-avant-apres`, 'Revue des trois ZIP — avant / après', intro1, pairs),
-	volume(`dossier-revue-zip-${DATE}-volume-2-53-routes`, 'Revue des trois ZIP — 53 routes à 375 et 1440 px', intro2, routes),
-];
+const zips = PASSE_COMMERCIALE
+	? [ volume(`dossier-passe-commerciale-${DATE}-avant-apres`, 'Passe commerciale — avant / après (375 et 1440 px)', intro1, pairs) ]
+	: [
+		volume(`dossier-revue-zip-${DATE}-volume-1-avant-apres`, 'Revue des trois ZIP — avant / après', intro1, pairs),
+		volume(`dossier-revue-zip-${DATE}-volume-2-53-routes`, 'Revue des trois ZIP — 53 routes à 375 et 1440 px', intro2, routes),
+	];
 
 const sommes = zips.map((z) => `${createHash('sha256').update(readFileSync(z)).digest('hex')}  ${path.basename(z)}`).join('\n') + '\n';
-writeFileSync(path.join(RELEASE, 'SHA256SUMS-dossier-revue-zip.txt'), sommes);
+writeFileSync(path.join(RELEASE, PASSE_COMMERCIALE ? 'SHA256SUMS-dossier-passe-commerciale.txt' : 'SHA256SUMS-dossier-revue-zip.txt'), sommes);
 process.stdout.write(sommes);

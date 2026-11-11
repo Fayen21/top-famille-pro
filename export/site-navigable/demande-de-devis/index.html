@@ -38,7 +38,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 </style>
 
 <link rel='stylesheet' id='generatepress-parent-css' href='../wp-content/themes/generatepress/style.css?ver=0.1.0' media='all' />
-<link rel='stylesheet' id='topfamillepro-css' href='../wp-content/themes/topfamillepro/assets/dist/css/main.css?ver=1793698065' media='all' />
+<link rel='stylesheet' id='topfamillepro-css' href='../wp-content/themes/topfamillepro/assets/dist/css/main.css?ver=1794389319' media='all' />
 </head>
 <body class="wp-singular page-template-default page page-id-48 wp-theme-generatepress wp-child-theme-topfamillepro tfp-body tfp-type-institutionnelle">
 <a class="skip-link" href="#tfp-main">Aller au contenu principal</a>
@@ -48,6 +48,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 		<div class="tfp-topbar">
 		<div class="tfp-topbar__inner">
 			<span class="tfp-topbar__offer">
+								<span class="tfp-topbar__metier">Nettoyage de locaux professionnels<span aria-hidden="true"> · </span></span>
 				<strong>27 € HT/h</strong> · Devis gratuit sous 24 h
 			</span>
 						<a class="tfp-topbar__phone" href="tel:+33636176339">06 36 17 63 39</a>
@@ -57,6 +58,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 	<div class="tfp-header__inner">
 		<a class="tfp-logo" href="../index.html" aria-label="Top-Famille Pro — Accueil">
 			<img src="../wp-content/themes/topfamillepro/assets/dist/images/logo-horizontal.png" alt="Top-Famille Pro" width="155" height="82">
+						<span class="tfp-logo__metier" aria-hidden="true">Nettoyage de locaux professionnels</span>
 		</a>
 
 		<nav class="tfp-nav" aria-label="Navigation principale">
@@ -245,11 +247,11 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 			<h2 class="visually-hidden">Votre demande</h2>
 
 			
-			<form id="tfp-formulaire-devis" class="tfp-quote-form" method="post" action="../wp-admin/admin-post/index.html.php" novalidate data-tfp-analytics="quote">
+			<form id="tfp-formulaire-devis" class="tfp-quote-form" method="get" action="../demonstration-formulaire.html" novalidate data-tfp-demo><p class="tfp-form-notice tfp-form-notice--demo" role="note"><strong>Mode démonstration</strong> : ce formulaire n’envoie rien. Les étapes et les contrôles fonctionnent ; la confirmation affichée sera simulée.</p>
 				<div class="tfp-form-errors" role="alert" aria-live="polite" data-form-errors></div>
 
 				<input type="hidden" name="action" value="tfp_submit_devis">
-				<input type="hidden" id="tfp_quote_nonce" name="tfp_quote_nonce" value="0ee054095f" /><input type="hidden" name="_wp_http_referer" value="/demande-de-devis/" />
+				<input type="hidden" id="tfp_quote_nonce" name="tfp_quote_nonce" value="28f5b360b2" /><input type="hidden" name="_wp_http_referer" value="/demande-de-devis/" />
 				<div class="tfp-field-honeypot" aria-hidden="true">
 					<label for="tfp-site-web">Laisser vide</label>
 					<input type="text" id="tfp-site-web" name="tfp_site_web" tabindex="-1" autocomplete="off">
@@ -295,23 +297,10 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 						</div>
 					</div>
 
-					<div class="tfp-form-row tfp-form-row--2-1">
-						<div class="tfp-field">
-							<label for="tfp-ville-visible">Ville</label>
-							<input type="text" id="tfp-ville-visible" name="ville" autocomplete="address-level2" placeholder="Ex. Dijon" value="">
-							<span class="tfp-field__hint">Commune où se trouvent les locaux.</span>
-						</div>
-
-						<div class="tfp-field">
-							<label for="tfp-code-postal">Code postal</label>
-							<input type="text" id="tfp-code-postal" name="code_postal" inputmode="numeric" pattern="[0-9]{5}" maxlength="5" autocomplete="postal-code" placeholder="21000">
-						</div>
-					</div>
-
-					<div class="tfp-field">
-						<label for="tfp-surface">Surface approximative</label>
-						<input type="text" id="tfp-surface" name="surface" inputmode="numeric" placeholder="Ex. 120 m² — un ordre de grandeur suffit">
-						<span class="tfp-field__hint">Une estimation suffit : elle est vérifiée lors de la visite.</span>
+										<div class="tfp-field">
+						<label for="tfp-ville-visible">Ville</label>
+						<input type="text" id="tfp-ville-visible" name="ville" autocomplete="address-level2" placeholder="Ex. Dijon" value="">
+						<span class="tfp-field__hint">Commune où se trouvent les locaux.</span>
 					</div>
 
 					<div class="tfp-form-row">
@@ -343,7 +332,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 					<legend class="tfp-form-step">
 						<span class="tfp-form-step__rang">Étape 2 sur 2</span>
 						<span class="tfp-form-step__jauge" aria-hidden="true"><span class="tfp-form-step__part" style="width:100%"></span></span>
-						<span class="tfp-form-step__objet">Précisions utiles</span>
+						<span class="tfp-form-step__objet">Précisions sur vos locaux</span>
 					</legend>
 
 										<p class="tfp-form-recap" role="status" aria-live="polite" data-quote-recap hidden>
@@ -351,19 +340,31 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 						<button type="button" class="tfp-btn-lien" data-step-prev>Modifier l'étape 1</button>
 					</p>
 
-					<div class="tfp-field">
-						<label for="tfp-prestation-visible">Prestation concernée</label>
-						<input type="text" id="tfp-prestation-visible" name="prestation" placeholder="Ex. bureaux, commerces, copropriété…">
+										<input type="hidden" id="tfp-prestation-visible" name="prestation" value="">
+
+					<p class="tfp-form-step__lede">Seuls votre message et votre accord sont obligatoires : les autres précisions aident à chiffrer juste.</p>
+
+					<div class="tfp-form-row tfp-form-row--2-1">
+						<div class="tfp-field">
+							<label for="tfp-surface">Surface approximative <span class="tfp-field__facultatif">(facultatif)</span></label>
+							<input type="text" id="tfp-surface" name="surface" inputmode="numeric" placeholder="Ex. 120 m²">
+							<span class="tfp-field__hint">Un ordre de grandeur suffit : il est vérifié lors de la visite.</span>
+						</div>
+
+						<div class="tfp-field">
+							<label for="tfp-code-postal">Code postal <span class="tfp-field__facultatif">(facultatif)</span></label>
+							<input type="text" id="tfp-code-postal" name="code_postal" inputmode="numeric" pattern="[0-9]{5}" maxlength="5" autocomplete="postal-code" placeholder="21000">
+						</div>
 					</div>
 
 										<div class="tfp-form-row">
 						<div class="tfp-field">
-							<label for="tfp-entreprise">Entreprise</label>
+							<label for="tfp-entreprise">Entreprise <span class="tfp-field__facultatif">(facultatif)</span></label>
 							<input type="text" id="tfp-entreprise" name="entreprise" autocomplete="organization" placeholder="Nom de votre structure">
 						</div>
 
 						<div class="tfp-field">
-							<label for="tfp-frequence">Fréquence envisagée</label>
+							<label for="tfp-frequence">Fréquence envisagée <span class="tfp-field__facultatif">(facultatif)</span></label>
 							<select id="tfp-frequence" name="frequence">
 																	<option value="">À définir ensemble</option>
 																	<option value="quotidien">Quotidien</option>
@@ -377,7 +378,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 					</div>
 
 					<div class="tfp-field">
-						<label for="tfp-creneau">Horaires souhaités</label>
+						<label for="tfp-creneau">Horaires souhaités <span class="tfp-field__facultatif">(facultatif)</span></label>
 						<select id="tfp-creneau" name="creneau">
 															<option value="">Peu importe</option>
 															<option value="matin">Tôt le matin, avant l&#039;arrivée des équipes</option>
@@ -565,6 +566,6 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <script type="speculationrules">
 {"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/wp-content/uploads/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/topfamillepro/*","/wp-content/themes/generatepress/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
 </script>
-<script data-wp-strategy="defer" defer id="topfamillepro-js" src="../wp-content/themes/topfamillepro/assets/dist/js/main.js?ver=1793698065"></script>
-</body>
+<script data-wp-strategy="defer" defer id="topfamillepro-js" src="../wp-content/themes/topfamillepro/assets/dist/js/main.js?ver=1794389319"></script>
+<script src="../demonstration-formulaire.js" defer></script></body>
 </html>
