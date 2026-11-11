@@ -5832,12 +5832,17 @@ body.tfp-body .tfp-card-tile--orientation-active .tfp-card-tile__desc {
     background: none;
   }
 
-  .tfp-suivi__table thead {
+  /* En-tête masqué à l'écran mais lu par les technologies d'assistance (même règle que
+     .visually-hidden, appliquée aussi aux cellules pour qu'aucune ne déborde). */
+  .tfp-suivi__table thead,
+  .tfp-suivi__table thead th {
     position: absolute;
     width: 1px;
     height: 1px;
+    padding: 0;
     overflow: hidden;
     clip: rect(0 0 0 0);
+    white-space: nowrap;
   }
 
   .tfp-suivi__table tbody tr {

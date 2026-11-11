@@ -92,6 +92,13 @@ function tfp_perimetre_prix( $classe = '', $titre = true, $ponctuel = false ) {
 	$frais[] = tfp_format_price( $site['price_setup'] ) . ' HT de frais de mise en place, une fois';
 	$frais[] = 'indemnités de ' . $site['price_km_display'] . ' HT/km';
 	$frais[] = 'majoration de ' . (int) $site['price_majoration_pct'] . ' % le dimanche, les jours fériés et la nuit';
+	// Montants insécables : « 0,35 € HT/km » ne se coupe pas entre le montant et l'unité.
+	$frais = array_map(
+		static function ( $f ) {
+			return preg_replace( '/(\d) (€|%)/u', "$1\u{00A0}$2", preg_replace( '/€ HT/u', "€\u{00A0}HT", $f ) );
+		},
+		$frais
+	);
 	?>
 	<div class="tfp-perimetre<?php echo $classe ? ' ' . esc_attr( $classe ) : ''; ?>">
 		<?php if ( $titre ) : ?>

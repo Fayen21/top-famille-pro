@@ -294,7 +294,7 @@ get_header();
 					?>
 					<input type="hidden" id="tfp-prestation-visible" name="prestation" value="<?php echo esc_attr( $pre_prestation ); ?>">
 
-					<p class="tfp-form-step__lede">Tout est facultatif ici, sauf votre message : ces précisions aident à chiffrer juste.</p>
+					<p class="tfp-form-step__lede">Seuls votre message et votre accord sont obligatoires : les autres précisions aident à chiffrer juste.</p>
 
 					<div class="tfp-form-row tfp-form-row--2-1">
 						<div class="tfp-field">
