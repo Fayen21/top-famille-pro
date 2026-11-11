@@ -57,13 +57,13 @@ const SLOTS = [
     slug: 'service-bureaux',
     src: 'unsplash-1531973576160-7125cd663d86-800.jpg',
     widths: [320, 480, 640],
-    alt: 'Nettoyage de bureaux et open-spaces (photo d’illustration)',
+    alt: 'Plateau de bureaux en open-space (photo d’illustration)',
   },
   {
     slug: 'service-commerces',
     src: 'unsplash-1441986300917-64674bd600d8-800.jpg',
     widths: [320, 480, 640],
-    alt: 'Nettoyage de commerces et de surfaces de vente (photo d’illustration)',
+    alt: 'Surface de vente d’une boutique (photo d’illustration)',
   },
   /*
    * Cartes de prestation de l'ACCUEIL — G26 §3. La maquette n'y pose pas les mêmes photos que sur
@@ -76,13 +76,13 @@ const SLOTS = [
     slug: 'accueil-bureaux',
     src: 'prestation-bureaux.jpg',
     widths: [320, 480, 640],
-    alt: 'Nettoyage de bureaux et open-spaces (photo d’illustration)',
+    alt: 'Plateau de bureaux en open-space (photo d’illustration)',
   },
   {
     slug: 'accueil-commerces',
     src: 'prestation-commerces.jpg',
     widths: [320, 480, 640],
-    alt: 'Nettoyage de commerces et de surfaces de vente (photo d’illustration)',
+    alt: 'Surface de vente d’une boutique (photo d’illustration)',
   },
   /*
    * Portrait des pages /contact/ et /demande-de-devis/ — un troisième visuel de stock dans la
@@ -111,7 +111,7 @@ const SLOTS = [
     slug: 'service-meubles',
     src: 'unsplash-1600585152220-90363fe7e115-800.jpg',
     widths: [320, 480, 640],
-    alt: 'Séjour d’un logement meublé (photo d’illustration)',
+    alt: 'Cuisine d’un logement meublé (photo d’illustration)',
   },
   {
     slug: 'service-ponctuel',

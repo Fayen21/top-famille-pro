@@ -209,7 +209,12 @@ get_header();
 	</div>
 	<div class="tfp-hero__media">
 		<div class="tfp-hero__media-main">
-			<?php tfp_picture( $image_slug, array( 'sizes' => '(max-width: 819px) 92vw, 600px', 'lcp' => true, 'alt' => tfp_get_field( 'hero_alt', $post_id ) ?: null ) ); ?>
+			<?php
+			// Passe commerciale du 10 novembre 2026 : le texte alternatif décrit la PHOTO (manifeste
+			// d'images, « … (photo d'illustration) »), pas la prestation — une photo de couloir ne
+			// doit pas être annoncée comme « parties communes de copropriété ».
+			tfp_picture( $image_slug, array( 'sizes' => '(max-width: 819px) 92vw, 600px', 'lcp' => true ) );
+			?>
 		</div>
 	</div>
 </section>

@@ -103,7 +103,7 @@
   },
   "service-bureaux": {
     "slug": "service-bureaux",
-    "alt": "Nettoyage de bureaux et open-spaces (photo d’illustration)",
+    "alt": "Plateau de bureaux en open-space (photo d’illustration)",
     "lcp": false,
     "width": 640,
     "height": 427,
@@ -154,7 +154,7 @@
   },
   "service-commerces": {
     "slug": "service-commerces",
-    "alt": "Nettoyage de commerces et de surfaces de vente (photo d’illustration)",
+    "alt": "Surface de vente d’une boutique (photo d’illustration)",
     "lcp": false,
     "width": 640,
     "height": 427,
@@ -205,7 +205,7 @@
   },
   "accueil-bureaux": {
     "slug": "accueil-bureaux",
-    "alt": "Nettoyage de bureaux et open-spaces (photo d’illustration)",
+    "alt": "Plateau de bureaux en open-space (photo d’illustration)",
     "lcp": false,
     "width": 640,
     "height": 427,
@@ -256,7 +256,7 @@
   },
   "accueil-commerces": {
     "slug": "accueil-commerces",
-    "alt": "Nettoyage de commerces et de surfaces de vente (photo d’illustration)",
+    "alt": "Surface de vente d’une boutique (photo d’illustration)",
     "lcp": false,
     "width": 640,
     "height": 427,
@@ -460,7 +460,7 @@
   },
   "service-meubles": {
     "slug": "service-meubles",
-    "alt": "Séjour d’un logement meublé (photo d’illustration)",
+    "alt": "Cuisine d’un logement meublé (photo d’illustration)",
     "lcp": false,
     "width": 640,
     "height": 426,
