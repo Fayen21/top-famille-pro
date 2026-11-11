@@ -201,6 +201,7 @@ foreach ( $data['sections'] as $section ) {
 	$est_repliee  = in_array( (int) $section['index'], $replier, true );
 	$titre_repli  = $est_repliee ? trim( (string) ( $section['blocs'][0]['titre'] ?? '' ) ) : '';
 	$est_repliee  = $est_repliee && '' !== $titre_repli;
+	$titre_saute  = false;
 	?>
 	<section id="s-<?php echo (int) $section['index']; ?>" class="<?php echo esc_attr( implode( ' ', $classes ) ); ?>"<?php echo $pad_style; // phpcs:ignore WordPress.Security.EscapeOutput ?>>
 		<div class="tfp-container">
@@ -314,7 +315,10 @@ foreach ( $data['sections'] as $section ) {
 						 * fenêtre au lieu d'y être figés. Sans relevé, les jetons du thème
 						 * s'appliquent — c'est-à-dire le comportement d'avant.
 						 */
-						if ( ! ( $est_repliee && $bloc === $section['blocs'][0] ) ) {
+						// Section repliée : son titre est déjà dans le résumé du volet, il n'est pas répété.
+						if ( $est_repliee && ! $titre_saute && trim( (string) ( $bloc['titre'] ?? '' ) ) === $titre_repli ) {
+							$titre_saute = true;
+						} else {
 							tfp_bloc_titre( $bloc );
 						}
 						?>

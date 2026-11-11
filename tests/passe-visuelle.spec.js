@@ -232,7 +232,9 @@ test.describe( 'Bandeau tarifaire (§5)', () => {
 	for ( const largeur of [ 375, 768, 1440 ] ) {
 		test( `à ${ largeur } px : « Voir les tarifs » est à côté ou juste sous le prix`, async ( { page } ) => {
 			await page.setViewportSize( { width: largeur, height: 900 } );
-			await page.goto( '/' );
+			// L'accueil n'a plus ce bandeau depuis la passe commerciale du 10 novembre 2026 (le tarif
+			// est groupé avec les commandes dans le hero) ; le composant partagé reste sur le pilier.
+			await page.goto( '/nettoyage-professionnel/' );
 			const prix = await page.locator( '.tfp-price-band__value' ).boundingBox();
 			const cta = await page.locator( '.tfp-price-band__cta' ).boundingBox();
 			const horizontal = Math.abs( cta.y - prix.y ) < prix.height && cta.x - ( prix.x + prix.width ) < 40;
@@ -259,7 +261,9 @@ test.describe( 'Libellés de l’accueil (§5) et gérante (§8)', () => {
 		const hero = page.locator( '.tfp-hero' );
 		await expect( hero.locator( 'a[href^="tel:"]' ) ).toHaveText( /Appeler Top-Famille Pro/ );
 		await expect( hero.locator( 'a[href^="tel:"]' ) ).toHaveAttribute( 'aria-label', /Appeler Top-Famille Pro au 06/ );
-		await expect( hero.locator( '.tfp-hero__microcopy' ) ).toHaveText( /Devis étudié personnellement$/ );
+		// Passe commerciale du 10 novembre 2026 : réassurance courte sous les commandes.
+		await expect( hero.locator( '.tfp-hero__microcopy' ) ).toHaveText( 'Devis gratuit · Réponse sous 24 h · Sans engagement' );
+		await expect( hero.locator( '.tfp-hero__offre .tfp-hero__prix' ) ).toContainText( '27 € HT/h' );
 		await expect( hero.locator( '.tfp-hero__microcopy' ) ).not.toContainText( 'par Audrey' );
 		await expect( page.locator( '.tfp-header__phone .visually-hidden' ) ).toHaveText( 'Appeler Top-Famille Pro' );
 		await expect( page.locator( '.tfp-mobile-cta-bar a[href^="tel:"]' ) ).toHaveAttribute( 'aria-label', /Appeler Top-Famille Pro au/ );

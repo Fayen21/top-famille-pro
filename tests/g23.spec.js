@@ -259,14 +259,14 @@ test.describe( 'G23 · /prestations/meubles/ à 1024 px — les règles déclar�
 		await expect( bande.locator( '.tfp-maillage' ) ).toHaveCSS( 'font-size', '15.5px' );
 	} );
 
-	test( 'typographies et écarts déclarés : corps 1.6vw plafond 20, grille 2.6vw, H1 4vw', async ( { page } ) => {
+	test( 'typographies déclarées : corps 1.6vw plafond 20, H1 4vw', async ( { page } ) => {
 		await page.goto( '/prestations/meubles/' );
 		// À 1024 px : 1.6vw = 16.384px, 2.6vw = 26.624px, 4vw = 40.96px.
 		await expect( page.locator( '.tfp-direct-answer__text' ) ).toHaveCSS( 'font-size', '16.384px' );
-		await expect( page.locator( '.tfp-detail-grid' ).first() ).toHaveCSS( 'gap', '26.624px' );
 		await expect( page.locator( '.tfp-hero__content h1' ) ).toHaveCSS( 'font-size', '40.96px' );
-		// La variante orga garde son écart déclaré de 18 px.
-		await expect( page.locator( '.tfp-detail-grid--orga' ) ).toHaveCSS( 'gap', '18px' );
+		// Les grilles « détail » et « organisation » de la maquette ont été remplacées par des volets
+		// <details> (passe commerciale du 10 novembre 2026) : plus d'écart de grille à contrôler.
+		await expect( page.locator( '#details .tfp-volet' ).first() ).toBeVisible();
 	} );
 
 	test( 'zone et article gardent leurs valeurs (non-régression du scope)', async ( { page } ) => {

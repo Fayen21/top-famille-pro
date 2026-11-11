@@ -78,10 +78,20 @@ function tfp_cta_final( $marquer = false ) {
  * jamais d'un texte en dur ; les frais ne sont pas présentés comme systématiques.
  *
  * @param string $classe Classe supplémentaire.
- * @param bool   $titre  Afficher la ligne du tarif (inutile quand le tarif est déjà affiché à côté).
+ * @param bool   $titre    Afficher la ligne du tarif (inutile quand le tarif est déjà affiché à côté).
+ * @param bool   $ponctuel Page d'intervention ponctuelle : sans frais de gestion mensuels.
  */
-function tfp_perimetre_prix( $classe = '', $titre = true ) {
+function tfp_perimetre_prix( $classe = '', $titre = true, $ponctuel = false ) {
 	$site = tfp_site_data();
+	// Frais au devis : la gestion mensuelle ne concerne que les contrats réguliers ; sur une page
+	// d'intervention ponctuelle, elle n'est pas citée (aucun « /mois » sur le ponctuel).
+	$frais = array();
+	if ( ! $ponctuel ) {
+		$frais[] = tfp_format_price( $site['price_gestion'] ) . ' HT/mois de gestion (contrats réguliers)';
+	}
+	$frais[] = tfp_format_price( $site['price_setup'] ) . ' HT de frais de mise en place, une fois';
+	$frais[] = 'indemnités de ' . $site['price_km_display'] . ' HT/km';
+	$frais[] = 'majoration de ' . (int) $site['price_majoration_pct'] . ' % le dimanche, les jours fériés et la nuit';
 	?>
 	<div class="tfp-perimetre<?php echo $classe ? ' ' . esc_attr( $classe ) : ''; ?>">
 		<?php if ( $titre ) : ?>
@@ -90,7 +100,7 @@ function tfp_perimetre_prix( $classe = '', $titre = true ) {
 		<ul class="tfp-perimetre__liste">
 			<li><span class="tfp-perimetre__cle">Inclus</span> la main-d’œuvre de l’intervenant, l’organisation du planning et le suivi, selon l’offre validée au devis.</li>
 			<li><span class="tfp-perimetre__cle">Fournis par le client</span> les produits et le matériel, en règle générale&nbsp;; les modalités sont précisées au devis.</li>
-			<li><span class="tfp-perimetre__cle">Au devis, s’ils s’appliquent</span> gestion <?php echo esc_html( tfp_format_price( $site['price_gestion'] ) ); ?> HT/mois (contrats réguliers), mise en place <?php echo esc_html( tfp_format_price( $site['price_setup'] ) ); ?> HT une fois, indemnités <?php echo esc_html( $site['price_km_display'] ); ?> HT/km, majoration de <?php echo (int) $site['price_majoration_pct']; ?> % le dimanche, les jours fériés et la nuit.</li>
+			<li><span class="tfp-perimetre__cle">Au devis, lorsqu’ils s’appliquent</span> <?php echo esc_html( implode( ', ', $frais ) ); ?>.</li>
 		</ul>
 	</div>
 	<?php

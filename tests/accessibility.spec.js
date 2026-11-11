@@ -137,16 +137,10 @@ test.describe('Navigation clavier réelle', () => {
 			const id = await page.evaluate(() => document.activeElement?.id || document.activeElement?.name || document.activeElement?.tagName);
 			order.push(id);
 		}
-		// L'ordre doit progresser dans le DOM (régime → ville → code postal → surface → nom → …),
-		// jamais revenir en arrière ni sauter hors du formulaire vers le header/footer.
-		const form = page.locator('.tfp-quote-form');
-		for (const id of order.slice(1)) {
-			if (!id) continue;
-			const inForm = await form.evaluate((f, elId) => {
-				const el = document.getElementById(elId) || document.getElementsByName(elId)[0];
-				return !!el && f.contains(el);
-			}, id);
-			expect(inForm, `le focus (${id}) doit rester dans le formulaire pendant la tabulation de l'étape 1`).toBe(true);
-		}
+		// L'ordre suit le DOM de l'étape 1 (régime → ville → nom → téléphone → e-mail → Continuer),
+		// sans sauter hors du formulaire vers le header ou le footer.
+		expect(order.slice(1, 6)).toEqual(['tfp-regime', 'tfp-ville-visible', 'tfp-nom', 'tfp-telephone', 'tfp-email']);
+		const dansFormulaire = await page.evaluate(() => !!document.activeElement.closest('.tfp-quote-form'));
+		expect(dansFormulaire, 'le focus doit rester dans le formulaire pendant la tabulation de l’étape 1').toBe(true);
 	});
 });

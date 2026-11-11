@@ -16,10 +16,12 @@ test.describe( 'Tarifs et exemples (§3)', () => {
 			const texte = await texteMain( page );
 			expect( texte, route ).not.toMatch( /À partir de 2[47]/i );
 		}
+		// Passe commerciale du 10 novembre 2026 : le tarif d'une prestation se lit avec son périmètre.
 		await page.goto( '/prestations/bureaux/' );
-		const carte = page.locator( '.tfp-price-card' ).first();
-		await expect( carte ).toContainText( 'Tarif unique' );
-		await expect( carte ).toContainText( 'En régulier comme en ponctuel' );
+		const perimetre = page.locator( '#tarif .tfp-perimetre' );
+		await expect( perimetre ).toContainText( 'tarif unique, en régulier comme en ponctuel' );
+		await expect( perimetre ).toContainText( 'Fournis par le client' );
+		await expect( perimetre ).toContainText( '9 € HT/mois de gestion' );
 	} );
 
 	test( 'ponctuel : une intervention unique, sans mensualité ni premier mois', async ( { page } ) => {

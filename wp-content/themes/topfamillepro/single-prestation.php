@@ -356,7 +356,7 @@ $sommaire     = array_filter(
 <section class="tfp-section--tight" id="tarif">
 	<div class="tfp-container">
 		<h2>Tarif et exemple</h2>
-		<?php tfp_perimetre_prix(); ?>
+		<?php tfp_perimetre_prix( '', true, 'intervention' === $exemple_mode ); ?>
 	</div>
 	<div class="tfp-container tfp-presta-tarif" style="margin-top:24px">
 		<div class="tfp-price-example">

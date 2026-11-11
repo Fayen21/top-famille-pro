@@ -12,8 +12,10 @@ import { test, expect } from '@playwright/test';
 
 /** Ordre et intitulé des blocs de l'accueil, relevés sur la maquette. */
 const HOME_BLOCKS = [
-	{ n: 1, match: /Nettoyage professionnel de bureaux/i, label: 'Hero' },
-	{ n: 2, match: /tarif unique/i, label: 'Bandeau tarifaire' },
+	// Passe commerciale du 10 novembre 2026 : H1 recentré, et le tarif est dans le hero (le bandeau
+	// tarifaire de l'accueil a été retiré).
+	{ n: 1, match: /Nettoyage professionnel en Bourgogne-Franche-Comté/i, label: 'Hero' },
+	{ n: 2, match: /tarif unique/i, label: 'Tarif dans le hero' },
 	{ n: 3, match: /Saint-Apollinaire/i, label: 'Réassurance' },
 	{ n: 4, match: /Pensé pour les professionnels de la région/i, label: 'Audiences' },
 	{ n: 5, match: /Nos prestations de nettoyage/i, label: 'Prestations' },

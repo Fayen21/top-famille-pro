@@ -208,6 +208,10 @@ const TON_FACTUEL = [
 	],
 	[ ' Nous ne prétendons pas être implantés sur place.', '' ],
 	[
+		", mais nous ne garantissons pas la même réactivité qu'à Besançon.",
+		", avec une réactivité moindre qu'à Besançon.",
+	],
+	[
 		"Nous n'avons pas de bureau à Chenôve et nous ne prétendons pas en avoir.",
 		'Les interventions y sont organisées depuis Saint-Apollinaire.',
 	],

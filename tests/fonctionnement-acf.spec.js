@@ -126,7 +126,9 @@ test.describe( 'Champ ACF « fonctionnement » — destination réelle', () => {
 				ecrireChamp( id, 'fonctionnement', marqueur );
 				await page.goto( cas.route, { waitUntil: 'domcontentloaded' } );
 
-				const corps = await page.locator( 'body' ).innerText();
+				// textContent, pas innerText : depuis la passe commerciale du 10 novembre 2026, ce
+				// chapitre est dans un volet <details> replié — présent dans le HTML, masqué à l'écran.
+				const corps = await page.locator( 'body' ).evaluate( ( el ) => el.textContent );
 				const occurrences = corps.split( marqueur ).length - 1;
 				expect( occurrences, `${ cas.route } : le marqueur doit apparaître une seule fois` ).toBe( 1 );
 
@@ -155,7 +157,7 @@ test.describe( 'Champ ACF « fonctionnement » — destination réelle', () => {
 
 			// Aucune donnée de test persistante : la page rendue est redevenue celle du seed.
 			await page.goto( cas.route, { waitUntil: 'domcontentloaded' } );
-			const apres = await page.locator( 'body' ).innerText();
+			const apres = await page.locator( 'body' ).evaluate( ( el ) => el.textContent );
 			expect( apres, 'marqueur de test resté en base' ).not.toContain( marqueur );
 			expect( apres ).toContain( premierParagraphe );
 			expect( lireChamp( id, 'fonctionnement' ) ).toBe( origine );
@@ -176,7 +178,7 @@ test.describe( 'Champ ACF « fonctionnement » — destination réelle', () => {
 			// Champ vide : le chapitre existe toujours, avec son texte d'origine, et n'est plus
 			// marqué comme piloté — la page ne perd jamais son contenu parce qu'un champ est vidé.
 			await expect( page.locator( '[data-tfp-champ="fonctionnement"]' ) ).toHaveCount( 0 );
-			const corps = await page.locator( 'body' ).innerText();
+			const corps = await page.locator( 'body' ).evaluate( ( el ) => el.textContent );
 			expect( corps, 'le repli doit prendre le relais' ).toContain( origine.split( '\n' )[ 0 ] );
 		} finally {
 			ecrireChamp( id, 'fonctionnement', origine );
