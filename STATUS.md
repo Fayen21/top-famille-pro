@@ -2230,3 +2230,24 @@ Point de départ `7955f64` (`f516b6d` et `f917741` en sont des ancêtres). Rien 
   `release/paquets-travail-2026-11-03/`. Détail : `docs/RAPPORT-CORRECTIONS-REVUE-ZIP.md` §0.
 - Lighthouse rejoué sur `b095763` le 9 novembre 2026 (banc local) : 20/20 au-dessus des cibles.
 - **Reste** : validation visuelle humaine ; Lighthouse sur Hostinger après déploiement.
+
+## Passe commerciale — 10 et 11 novembre 2026 (code `b8d3bef`, thème 0.15.0)
+
+Rapport : `docs/RAPPORT-PASSE-COMMERCIALE.md`. Rien n'est fusionné dans `main`, rien n'est déployé.
+
+### Fait
+- Accueil recentré : H1 court, bénéfice, publics, bloc tarif + commandes + réassurance ; bandeau
+  redondant retiré ; descriptif « Nettoyage de locaux professionnels » au header.
+- Images réaffectées (scène de nettoyage en premier plan, cabinets, copropriétés), alt décrivant la
+  photo réelle.
+- Prestations : sommaire, ordre utile, tarif avec périmètre, « Exemple de suivi », volets accessibles.
+  Pages locales : chapitres génériques repliés. Pilier : sommaire et trois sections repliées.
+- Ton factuel sur les zones, prestations et pages (générateurs, contrôle d'échec si phrase absente).
+- Devis : code postal et surface en étape 2, prestation non redemandée, résumé complet.
+- Export navigable : mode démonstration (aucun POST, aucun e-mail, aucune conversion).
+- Suite complète 1 383/1 384 (parité, puis 4/4) ; Lighthouse local 22/22 ; export 53/53.
+
+### Reste
+- Photos à fournir (copropriétés surtout) — liste dans le rapport, §5. Un environnement réseau
+  « top-famille-pro » (Openverse, Wikimedia) existe pour une prochaine session.
+- Validation visuelle humaine ; mesures Lighthouse sur Hostinger.
