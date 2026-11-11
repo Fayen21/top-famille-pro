@@ -53,6 +53,66 @@ const cheminNav = (wp) => (wp === '/' ? 'index.html' : join(wp.replace(/^\//, ''
 /* Export                                                              */
 /* ------------------------------------------------------------------ */
 
+/*
+ * Mode DÉMONSTRATION des formulaires du paquet navigable — passe commerciale du 10 novembre 2026
+ * (§9).
+ *
+ * Le paquet hors ligne réécrivait l'action `…/wp-admin/admin-post.php` en
+ * `../wp-admin/admin-post/index.html.php`, un fichier qui n'existe pas : un envoi menait à une page
+ * d'erreur. Le gabarit WordPress n'est PAS modifié (son point d'envoi reste celui de production).
+ * Ici seulement, chaque formulaire qui visait admin-post :
+ *  - vise `demonstration-formulaire.html`, page locale qui existe, en GET (aucun POST possible) ;
+ *  - perd `data-tfp-analytics` : aucun événement de conversion n'est poussé ;
+ *  - porte `data-tfp-demo` et une mention visible « Mode démonstration » ;
+ *  - charge `demonstration-formulaire.js`, qui laisse jouer les étapes et la validation du thème,
+ *    puis, si l'envoi est valide, l'intercepte et affiche une confirmation annoncée comme simulée.
+ */
+function demonstrationFormulaires(html, versRacine) {
+	let trouve = false;
+	const sortie = html.replace(/<form\b[^>]*action="[^"]*\/wp-admin\/admin-post\.php"[^>]*>/g, (balise) => {
+		trouve = true;
+		const nouvelle = balise
+			.replace(/\saction="[^"]*"/, ` action="${versRacine}/demonstration-formulaire.html"`)
+			.replace(/\smethod="[^"]*"/, ' method="get"')
+			.replace(/\sdata-tfp-analytics="[^"]*"/, '')
+			.replace(/\sdata-tfp-mail-disabled(="[^"]*")?/, '')
+			.replace(/>$/, ' data-tfp-demo>');
+		return nouvelle + '<p class="tfp-form-notice tfp-form-notice--demo" role="note"><strong>Mode démonstration</strong> : ce formulaire n’envoie rien. Les étapes et les contrôles fonctionnent ; la confirmation affichée sera simulée.</p>';
+	});
+	if (!trouve) return html;
+	return sortie.replace('</body>', `<script src="${versRacine}/demonstration-formulaire.js" defer></script></body>`);
+}
+
+const SCRIPT_DEMO = `/* Mode démonstration du paquet navigable : aucun envoi, aucun e-mail, aucun événement de conversion. */
+document.addEventListener('submit', function (e) {
+	var form = e.target;
+	if (!(form instanceof HTMLFormElement) || !form.hasAttribute('data-tfp-demo')) return;
+	// Envoi déjà refusé par la validation du thème (src/js/quote-form.js) : rien à simuler.
+	var refuse = e.defaultPrevented;
+	e.preventDefault();
+	if (refuse) return;
+	var bouton = form.querySelector('[data-tfp-once]');
+	if (bouton) {
+		bouton.disabled = false;
+		bouton.removeAttribute('aria-busy');
+		if (bouton.dataset.libelle) bouton.textContent = bouton.dataset.libelle;
+	}
+	var ancien = form.querySelector('[data-tfp-demo-confirmation]');
+	if (ancien) ancien.remove();
+	var message = document.createElement('div');
+	message.className = 'tfp-form-notice tfp-form-notice--demo';
+	message.setAttribute('role', 'status');
+	message.setAttribute('tabindex', '-1');
+	message.setAttribute('data-tfp-demo-confirmation', '');
+	message.innerHTML = '<strong>Confirmation simulée (démonstration)</strong> — sur le site réel, votre demande serait transmise à Top-Famille Pro. Ici, aucune donnée n’a été envoyée et aucun e-mail n’est parti.';
+	form.insertBefore(message, form.firstChild);
+	message.focus();
+}, false);
+`;
+
+const PAGE_DEMO = `<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>Démonstration — formulaire</title><style>body{font:16px/1.6 system-ui,sans-serif;max-width:640px;margin:48px auto;padding:0 16px;color:#10233a}</style></head><body><h1>Mode démonstration</h1><p>Cette copie hors ligne du site ne transmet aucun formulaire : aucune donnée n’a été envoyée et aucun e-mail n’est parti. Sur le site réel, la demande serait reçue par Top-Famille Pro.</p><p><a href="index.html">Revenir à l’accueil</a></p></body></html>
+`;
+
 async function exporter() {
 	rmSync(RACINE, { recursive: true, force: true });
 	mkdirSync(BRUT, { recursive: true });
@@ -68,6 +128,9 @@ async function exporter() {
 	mkdirSync(dirname(dest), { recursive: true });
 	cpSync(THEME + '/assets', join(dest, 'assets'), { recursive: true });
 
+	writeFileSync(join(NAV, 'demonstration-formulaire.js'), SCRIPT_DEMO);
+	writeFileSync(join(NAV, 'demonstration-formulaire.html'), PAGE_DEMO);
+
 	const index = [];
 	for (const [hash, m] of Object.entries(ROUTE_MAP)) {
 		const reponse = await fetch(WP + m.wp);
@@ -81,7 +144,7 @@ async function exporter() {
 		mkdirSync(dirname(cible), { recursive: true });
 		const profondeur = relative(dirname(cible), NAV) || '.';
 		const versRacine = profondeur === '' ? '.' : profondeur;
-		let navHtml = html
+		let navHtml = demonstrationFormulaires(html, versRacine)
 			// Ressources : `http://hôte/wp-content/…` → `../../wp-content/…`
 			.replaceAll(WP + '/wp-content', versRacine + '/wp-content')
 			// Liens internes : `http://hôte/prestations/bureaux/` → `../../prestations/bureaux/index.html`
@@ -200,11 +263,45 @@ async function verifier() {
 	}
 	await navigateur.close();
 
+	// --- Démonstration du formulaire de devis : étapes, validation, confirmation simulée, aucun POST.
+	const demo = await (async () => {
+		const page = await navigateur.newPage({ viewport: { width: 375, height: 900 } });
+		const posts = [];
+		page.on('request', (r) => { if (r.method() === 'POST') posts.push(r.url()); });
+		await page.goto('file://' + join(process.cwd(), NAV, cheminNav('/demande-de-devis/')), { waitUntil: 'load' });
+		const verdict = { notice: await page.locator('[data-tfp-demo] .tfp-form-notice--demo').count() };
+		await page.click('[data-step-next]');
+		verdict.validationEtape1 = (await page.locator('[data-form-errors]').innerText()).length > 0;
+		await page.selectOption('#tfp-type-locaux', 'bureaux');
+		await page.selectOption('#tfp-regime', 'regulier');
+		await page.fill('#tfp-nom', 'Démonstration');
+		await page.fill('#tfp-telephone', '0600000000');
+		await page.click('[data-step-next]');
+		verdict.etape2 = await page.locator('[data-step="1"]').isVisible();
+		await page.fill('#tfp-message', 'Message de démonstration.');
+		await page.check('input[name="consentement"]');
+		const url = page.url();
+		await page.click('[data-step-submit]');
+		await page.waitForTimeout(300);
+		verdict.confirmation = await page.locator('[data-tfp-demo-confirmation]').isVisible();
+		verdict.memePage = page.url() === url;
+		verdict.posts = posts.length;
+		verdict.dataLayer = await page.evaluate(() => (window.dataLayer || []).filter((e) => /quote_(submit|complete|lead)/.test(e.event || '')).length);
+		await page.close();
+		return verdict;
+	})();
+	const demoOk = demo.notice === 1 && demo.validationEtape1 && demo.etape2 && demo.confirmation && demo.memePage && demo.posts === 0 && demo.dataLayer === 0;
+	console.log(`Démonstration du devis : ${demoOk ? 'OK' : 'ÉCHEC'} ${JSON.stringify(demo)}`);
+	const restesAdminPost = [];
+	const chercher = (dir) => { for (const e of readdirSync(dir, { withFileTypes: true })) { const p = join(dir, e.name); if (e.isDirectory()) chercher(p); else if (e.name.endsWith('.html') && readFileSync(p, 'utf8').includes('admin-post')) restesAdminPost.push(relative(NAV, p)); } };
+	chercher(NAV);
+	console.log(`Pages navigables visant encore admin-post : ${restesAdminPost.length}`);
+
 	console.log(`Images cassées (53 routes × 2 largeurs) : ${cassees}`);
 	console.log(`Requêtes vers un domaine externe : ${externes}`);
 	console.log(`Routes ouvrables hors ligne sans image cassée : ${routesOk} / ${Object.keys(ROUTE_MAP).length}`);
 
-	const ok = manquantes.size === 0 && fuites.length === 0 && cassees === 0 && externes === 0;
+	const ok = manquantes.size === 0 && fuites.length === 0 && cassees === 0 && externes === 0 && demoOk && restesAdminPost.length === 0;
 	console.log(ok ? '\n✅ Export navigable autonome et complet.' : '\n❌ Export incomplet.');
 	return ok;
 }
