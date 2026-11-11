@@ -91,6 +91,8 @@ document.addEventListener('submit', function (e) {
 	var refuse = e.defaultPrevented;
 	e.preventDefault();
 	if (refuse) return;
+	// Formulaire sans validation scriptée (contact) : contrôles natifs du navigateur.
+	if (!form.checkValidity()) { form.reportValidity(); return; }
 	var bouton = form.querySelector('[data-tfp-once]');
 	if (bouton) {
 		bouton.disabled = false;
