@@ -58,6 +58,12 @@ $pre_service = isset( $_GET['service'] ) ? sanitize_key( wp_unslash( $_GET['serv
 $pre_type    = isset( $types_locaux[ $pre_service ] ) ? $pre_service : '';
 $pre_regime  = 'ponctuel' === $pre_service ? 'ponctuel' : '';
 $pre_ville   = isset( $_GET['ville'] ) ? sanitize_text_field( wp_unslash( $_GET['ville'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+// Prestation (champ caché de l'étape 2) : libellé transmis par la page d'origine, sinon celui du
+// type de locaux présélectionné. Même source que le préremplissage JavaScript.
+$pre_prestation = isset( $_GET['service_label'] ) ? sanitize_text_field( wp_unslash( $_GET['service_label'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- lecture d'un paramètre d'affichage.
+if ( '' === $pre_prestation && $pre_type ) {
+	$pre_prestation = $types_locaux[ $pre_type ];
+}
 
 $frequences = array(
 	''                 => 'À définir ensemble',
@@ -212,23 +218,14 @@ get_header();
 						</div>
 					</div>
 
-					<div class="tfp-form-row tfp-form-row--2-1">
-						<div class="tfp-field">
-							<label for="tfp-ville-visible">Ville</label>
-							<input type="text" id="tfp-ville-visible" name="ville" autocomplete="address-level2" placeholder="Ex. Dijon" value="<?php echo esc_attr( $pre_ville ); ?>">
-							<span class="tfp-field__hint">Commune où se trouvent les locaux.</span>
-						</div>
-
-						<div class="tfp-field">
-							<label for="tfp-code-postal">Code postal</label>
-							<input type="text" id="tfp-code-postal" name="code_postal" inputmode="numeric" pattern="[0-9]{5}" maxlength="5" autocomplete="postal-code" placeholder="21000">
-						</div>
-					</div>
-
+					<?php
+					// Passe commerciale du 10 novembre 2026 (§6) : le code postal et la surface passent à
+					// l'étape 2. L'étape 1 ne garde que ce qui permet de rappeler et d'orienter la demande.
+					?>
 					<div class="tfp-field">
-						<label for="tfp-surface">Surface approximative</label>
-						<input type="text" id="tfp-surface" name="surface" inputmode="numeric" placeholder="Ex. 120 m² — un ordre de grandeur suffit">
-						<span class="tfp-field__hint">Une estimation suffit : elle est vérifiée lors de la visite.</span>
+						<label for="tfp-ville-visible">Ville</label>
+						<input type="text" id="tfp-ville-visible" name="ville" autocomplete="address-level2" placeholder="Ex. Dijon" value="<?php echo esc_attr( $pre_ville ); ?>">
+						<span class="tfp-field__hint">Commune où se trouvent les locaux.</span>
 					</div>
 
 					<div class="tfp-form-row">
@@ -266,7 +263,7 @@ get_header();
 					<legend class="tfp-form-step">
 						<span class="tfp-form-step__rang">Étape 2 sur 2</span>
 						<span class="tfp-form-step__jauge" aria-hidden="true"><span class="tfp-form-step__part" style="width:100%"></span></span>
-						<span class="tfp-form-step__objet">Précisions utiles</span>
+						<span class="tfp-form-step__objet">Précisions sur vos locaux</span>
 					</legend>
 
 					<?php
@@ -288,9 +285,28 @@ get_header();
 						<button type="button" class="tfp-btn-lien" data-step-prev>Modifier l'étape 1</button>
 					</p>
 
-					<div class="tfp-field">
-						<label for="tfp-prestation-visible">Prestation concernée</label>
-						<input type="text" id="tfp-prestation-visible" name="prestation" placeholder="Ex. bureaux, commerces, copropriété…">
+					<?php
+					/*
+					 * La prestation n'est plus redemandée (§6) : le type de locaux de l'étape 1 la dit
+					 * déjà. Le champ reste transmis, caché, prérempli depuis la page d'origine
+					 * (?service=…, voir src/js/quote-form.js) pour le contexte de la demande.
+					 */
+					?>
+					<input type="hidden" id="tfp-prestation-visible" name="prestation" value="<?php echo esc_attr( $pre_prestation ); ?>">
+
+					<p class="tfp-form-step__lede">Tout est facultatif ici, sauf votre message : ces précisions aident à chiffrer juste.</p>
+
+					<div class="tfp-form-row tfp-form-row--2-1">
+						<div class="tfp-field">
+							<label for="tfp-surface">Surface approximative <span class="tfp-field__facultatif">(facultatif)</span></label>
+							<input type="text" id="tfp-surface" name="surface" inputmode="numeric" placeholder="Ex. 120 m²">
+							<span class="tfp-field__hint">Un ordre de grandeur suffit : il est vérifié lors de la visite.</span>
+						</div>
+
+						<div class="tfp-field">
+							<label for="tfp-code-postal">Code postal <span class="tfp-field__facultatif">(facultatif)</span></label>
+							<input type="text" id="tfp-code-postal" name="code_postal" inputmode="numeric" pattern="[0-9]{5}" maxlength="5" autocomplete="postal-code" placeholder="21000">
+						</div>
 					</div>
 
 					<?php
@@ -301,12 +317,12 @@ get_header();
 					?>
 					<div class="tfp-form-row">
 						<div class="tfp-field">
-							<label for="tfp-entreprise">Entreprise</label>
+							<label for="tfp-entreprise">Entreprise <span class="tfp-field__facultatif">(facultatif)</span></label>
 							<input type="text" id="tfp-entreprise" name="entreprise" autocomplete="organization" placeholder="Nom de votre structure">
 						</div>
 
 						<div class="tfp-field">
-							<label for="tfp-frequence">Fréquence envisagée</label>
+							<label for="tfp-frequence">Fréquence envisagée <span class="tfp-field__facultatif">(facultatif)</span></label>
 							<select id="tfp-frequence" name="frequence">
 								<?php foreach ( $frequences as $value => $label ) : ?>
 									<option value="<?php echo esc_attr( $value ); ?>"><?php echo esc_html( $label ); ?></option>
@@ -316,7 +332,7 @@ get_header();
 					</div>
 
 					<div class="tfp-field">
-						<label for="tfp-creneau">Horaires souhaités</label>
+						<label for="tfp-creneau">Horaires souhaités <span class="tfp-field__facultatif">(facultatif)</span></label>
 						<select id="tfp-creneau" name="creneau">
 							<?php foreach ( $creneaux as $value => $label ) : ?>
 								<option value="<?php echo esc_attr( $value ); ?>"><?php echo esc_html( $label ); ?></option>

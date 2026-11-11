@@ -5946,3 +5946,9 @@ body.tfp-body .tfp-card-tile--orientation-active .tfp-card-tile__desc {
   margin-top: 0;
   grid-template-columns: minmax(0, 1fr);
 }
+
+/* Mention « (facultatif) » des libellés de l'étape 2 du devis. */
+.tfp-field__facultatif {
+  font-weight: var(--fw-regular, 400);
+  color: var(--color-text-tertiary);
+}

@@ -78,8 +78,8 @@ test.describe('Formulaire de demande de devis', () => {
 	 */
 	async function envoyerSansClient(page, { telephone = '', email = '', codePostal = '' } = {}) {
 		await fillStepOne(page, { telephone, email });
-		if (codePostal) await page.fill('#tfp-code-postal', codePostal);
 		await page.evaluate(() => document.querySelectorAll('[data-step]').forEach((f) => { f.hidden = false; }));
+		if (codePostal) await page.fill('#tfp-code-postal', codePostal);
 		await page.fill('#tfp-message', 'Message de test.');
 		await page.check('input[name="consentement"]');
 		await Promise.all([
@@ -119,21 +119,30 @@ test.describe('Formulaire de demande de devis', () => {
 		await expect(page.locator('#tfp-email')).toBeFocused();
 
 		await page.fill('#tfp-email', 'test@example.com');
-		await page.fill('#tfp-code-postal', '218');
-		await page.click('[data-step-next]');
-		await expect(page.locator('[data-form-errors]')).toContainText('Code postal : cinq chiffres');
-		await expect(page.locator('#tfp-code-postal')).toBeFocused();
-
-		// Vide ou cinq chiffres : accepté. Les valeurs de l'étape 1 sont conservées après aller-retour.
-		await page.fill('#tfp-code-postal', '21850');
 		await page.fill('#tfp-ville-visible', 'Saint-Apollinaire');
 		await page.click('[data-step-next]');
 		await expect(page.locator('[data-step="1"]')).toBeVisible();
 		await expect(page.locator('[data-quote-recap-text]')).toContainText('Saint-Apollinaire');
+		await expect(page.locator('[data-quote-recap-text]')).toContainText('test@example.com');
+
+		// Passe commerciale du 10 novembre 2026 : le code postal est à l'étape 2 (facultatif, cinq
+		// chiffres s'il est saisi) ; l'erreur s'y affiche et le focus va au champ.
+		await page.fill('#tfp-code-postal', '218');
+		await page.fill('#tfp-message', 'Message de test automatisé.');
+		await page.check('input[name="consentement"]');
+		await page.click('[data-step-submit]');
+		await expect(page.locator('[data-form-errors]')).toContainText('Code postal : cinq chiffres');
+		await expect(page.locator('#tfp-code-postal')).toBeFocused();
+		await expect(page.locator('[data-step="1"]')).toBeVisible();
+
+		// Retour à l'étape 1 puis de nouveau à l'étape 2 : toutes les valeurs sont conservées.
+		await page.fill('#tfp-code-postal', '21850');
 		await page.locator('[data-step="1"] [data-step-prev]').first().click();
-		await expect(page.locator('#tfp-code-postal')).toHaveValue('21850');
 		await expect(page.locator('#tfp-email')).toHaveValue('test@example.com');
 		await expect(page.locator('#tfp-type-locaux')).toHaveValue('bureaux');
+		await page.click('[data-step-next]');
+		await expect(page.locator('#tfp-code-postal')).toHaveValue('21850');
+		await expect(page.locator('#tfp-message')).toHaveValue('Message de test automatisé.');
 	});
 
 	test('consentement non coché → bloqué côté client, formulaire non envoyé', async ({ page }) => {
@@ -178,6 +187,22 @@ test.describe('Formulaire de demande de devis', () => {
 		const url = new URL(page.url());
 		expect(url.searchParams.has('merci')).toBe(false);
 		expect(url.searchParams.has('erreur')).toBe(false);
+	});
+
+	test('étape 1 allégée : code postal et surface à l’étape 2, prestation non redemandée', async ({ page }) => {
+		const etape1 = page.locator('[data-step="0"]');
+		for (const id of ['#tfp-type-locaux', '#tfp-regime', '#tfp-ville-visible', '#tfp-nom', '#tfp-telephone', '#tfp-email']) {
+			await expect(etape1.locator(id), id).toHaveCount(1);
+		}
+		for (const id of ['#tfp-code-postal', '#tfp-surface']) {
+			await expect(etape1.locator(id), id).toHaveCount(0);
+			await expect(page.locator('[data-step="1"]').locator(id), id).toHaveCount(1);
+		}
+		await expect(page.locator('#tfp-prestation-visible')).toHaveAttribute('type', 'hidden');
+		// Aucun nouveau champ obligatoire : téléphone et e-mail restent facultatifs un par un.
+		await expect(page.locator('#tfp-telephone')).not.toHaveAttribute('required', /.*/);
+		await expect(page.locator('#tfp-email')).not.toHaveAttribute('required', /.*/);
+		await expect(page.locator('[data-step="1"] .tfp-field__facultatif')).toHaveCount(5);
 	});
 
 	test('préremplissage serveur : prestation, type de locaux, régime, ville, département, UTM', async ({ page }) => {

@@ -41,7 +41,10 @@ function tfpInitQuoteForm() {
 			}
 			return el.value.trim();
 		};
-		const parts = [lire('#tfp-type-locaux'), lire('#tfp-regime'), lire('#tfp-ville-visible')].filter(Boolean);
+		// Passe commerciale du 10 novembre 2026 (§6) : le résumé reprend aussi le nom et le moyen de
+		// recontact choisis, pour que l'étape 2 ne laisse aucun doute sur ce qui a été saisi.
+		const contact = [lire('#tfp-telephone'), lire('#tfp-email')].filter(Boolean).join(', ');
+		const parts = [lire('#tfp-type-locaux'), lire('#tfp-regime'), lire('#tfp-ville-visible'), lire('#tfp-nom'), contact].filter(Boolean);
 		if (!parts.length) {
 			recap.hidden = true;
 			return;
