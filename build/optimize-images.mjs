@@ -28,17 +28,19 @@ const OUT_DIR = path.join(ROOT, 'wp-content', 'themes', 'topfamillepro', 'assets
  */
 const SLOTS = [
   {
+    // Passe commerciale du 10 novembre 2026 : le premier plan de l'accueil montre une scène de
+    // nettoyage, plus l'espace de bureaux vide (passé en vignette). Source 1000 px : pas de 1200.
     slug: 'hero-main',
-    src: 'hero-bureaux.jpg',
-    widths: [480, 760, 1040, 1200],
-    alt: 'Espace de bureaux professionnels, lumineux et rangé (photo d’illustration)',
+    src: 'intervenante-stock-materiel.jpg',
+    widths: [480, 760, 1000],
+    alt: 'Nettoyage de vitres dans des locaux professionnels (photo d’illustration)',
     lcp: true,
   },
   {
     slug: 'hero-secondary',
-    src: 'hero-nettoyage-vitres.jpg',
+    src: 'hero-bureaux.jpg',
     widths: [220, 340, 460],
-    alt: 'Nettoyage de vitres avec équipement de protection (photo d’illustration)',
+    alt: 'Espace de bureaux entretenu (photo d’illustration)',
   },
   /*
    * SIX héros de prestation, un par prestation — table établie sur les OCTETS de la maquette par
@@ -95,15 +97,15 @@ const SLOTS = [
   },
   {
     slug: 'service-cabinets',
-    src: 'unsplash-1497366811353-6870744d04b2-800.jpg',
+    src: 'unsplash-1524758631624-e2822e304c36-800.jpg',
     widths: [320, 480, 640],
-    alt: 'Cabinet et salle d’attente (photo d’illustration)',
+    alt: 'Espace d’accueil avec fauteuils, type salle d’attente (photo d’illustration)',
   },
   {
     slug: 'service-coproprietes',
-    src: 'unsplash-1524758631624-e2822e304c36-800.jpg',
+    src: 'unsplash-1497366216548-37526070297c-900.jpg',
     widths: [320, 480, 640],
-    alt: 'Hall d’immeuble et parties communes (photo d’illustration)',
+    alt: 'Couloir et circulations entretenus (photo d’illustration)',
   },
   {
     slug: 'service-meubles',
@@ -115,7 +117,7 @@ const SLOTS = [
     slug: 'service-ponctuel',
     src: 'unsplash-1581578731548-c64695cc6952-800.jpg',
     widths: [320, 480, 640],
-    alt: 'Bureau en cours de remise en état (photo d’illustration)',
+    alt: 'Nettoyage approfondi de vitres (photo d’illustration)',
   },
   {
     slug: 'article-1',
@@ -177,8 +179,8 @@ const SLOTS = [
    */
   { slug: 'thumb-bureaux', src: 'unsplash-1531973576160-7125cd663d86-800.jpg', widths: [112, 168], alt: '' },
   { slug: 'thumb-commerces', src: 'unsplash-1441986300917-64674bd600d8-800.jpg', widths: [112, 168], alt: '' },
-  { slug: 'thumb-cabinets', src: 'unsplash-1497366811353-6870744d04b2-800.jpg', widths: [112, 168], alt: '' },
-  { slug: 'thumb-coproprietes', src: 'unsplash-1524758631624-e2822e304c36-800.jpg', widths: [112, 168], alt: '' },
+  { slug: 'thumb-cabinets', src: 'unsplash-1524758631624-e2822e304c36-800.jpg', widths: [112, 168], alt: '' },
+  { slug: 'thumb-coproprietes', src: 'unsplash-1497366216548-37526070297c-900.jpg', widths: [112, 168], alt: '' },
   { slug: 'thumb-meubles', src: 'unsplash-1600585152220-90363fe7e115-800.jpg', widths: [112, 168], alt: '' },
   { slug: 'thumb-ponctuel', src: 'unsplash-1581578731548-c64695cc6952-800.jpg', widths: [112, 168], alt: '' },
   /*

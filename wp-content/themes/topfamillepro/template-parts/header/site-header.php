@@ -70,6 +70,8 @@ $main_nav = array(
 	<div class="tfp-topbar">
 		<div class="tfp-topbar__inner">
 			<span class="tfp-topbar__offer">
+				<?php // Descriptif métier (passe commerciale du 10 novembre 2026) : sur ordinateur, la navigation touche le logo ; il se lit donc ici. ?>
+				<span class="tfp-topbar__metier">Nettoyage de locaux professionnels<span aria-hidden="true"> · </span></span>
 				<strong><?php echo esc_html( $site['price_unique_display'] ); ?> HT/h</strong> · Devis gratuit sous 24 h
 			</span>
 			<?php if ( ! empty( $tfp_reassurance_bar['note'] ) ) : ?>
@@ -86,6 +88,11 @@ $main_nav = array(
 	<div class="tfp-header__inner">
 		<a class="tfp-logo" href="<?php echo esc_url( home_url( '/' ) ); ?>" aria-label="<?php echo esc_attr( $site['brand_name'] ); ?> — Accueil">
 			<img src="<?php echo esc_url( TFP_THEME_URI . '/assets/dist/images/logo-horizontal.png' ); ?>" alt="<?php echo esc_attr( $site['brand_name'] ); ?>" width="155" height="82">
+			<?php
+			// Descriptif métier à côté du logo, de 370 à 1099 px (place libre mesurée : 110 à 560 px).
+			// Masqué aux technologies d'assistance : le nom accessible du lien suffit.
+			?>
+			<span class="tfp-logo__metier" aria-hidden="true">Nettoyage de locaux professionnels</span>
 		</a>
 
 		<nav class="tfp-nav" aria-label="Navigation principale">

@@ -1,6 +1,6 @@
 <?php
 /**
- * 1. Hero — proposition de valeur, CTA principal + secondaire, réassurance immédiate.
+ * 1. Hero — besoin du client, publics, tarif unique, CTA principal + secondaire, réassurance courte.
  * Image principale = LCP de la page (tfp_picture gère fetchpriority="high" + pas de lazy-loading).
  */
 
@@ -20,27 +20,39 @@ $reassurance = tfp_reassurance_data();
 		tfp_google_rating_badge( 'inline' );
 		?>
 
-		<h1 class="tfp-hero__title">Nettoyage professionnel de bureaux et locaux en Bourgogne-Franche-Comté</h1>
-		<p class="tfp-hero__lede">La rigueur d'un prestataire structuré, avec la proximité d'une entreprise régionale directement joignable. Top-Famille Pro organise l'entretien régulier ou ponctuel de vos bureaux, commerces, cabinets, parties communes et locations meublées.</p>
+		<?php
+		/*
+		 * Passe commerciale du 10 novembre 2026 : le premier écran dit d'abord le besoin du client,
+		 * puis l'offre, dans cet ordre — activité et bénéfice, publics (une ligne), tarif unique,
+		 * devis, appel, réassurance courte. Le prix et les deux commandes forment UN bloc
+		 * (`.tfp-hero__offre`) : le tarif n'est plus dans une pastille posée sur la photo, ni répété
+		 * par un bandeau juste en dessous (voir pricing-reassurance.php).
+		 */
+		?>
+		<h1 class="tfp-hero__title">Nettoyage professionnel en Bourgogne-Franche-Comté</h1>
+		<p class="tfp-hero__lede">Des locaux propres, des passages organisés selon vos horaires et un contact direct pour le suivi.</p>
+		<p class="tfp-hero__publics"><span class="visually-hidden">Pour : </span>Bureaux · commerces · cabinets · copropriétés · locations meublées</p>
 
-		<div class="tfp-hero__actions">
-			<?php
-			tfp_button(
-				array(
-					'label'   => 'Demander mon devis',
-					'href'    => home_url( '/demande-de-devis/' ),
-					'variant' => 'primary',
-				)
-			);
-			/*
-			 * Décision du 14 octobre 2026 : « Appeler Top-Famille Pro » et « Devis étudié
-			 * personnellement » — les commandes génériques nomment l'entreprise ; Audrey reste nommée
-			 * là où le texte décrit son rôle (bloc de la gérante, réassurance).
-			 */
-			tfp_bouton_appel( array( 'variant' => 'secondary' ) );
-			?>
+		<div class="tfp-hero__offre">
+			<p class="tfp-hero__prix">
+				<strong><?php echo esc_html( $site['price_unique_display'] ); ?> HT/h</strong>
+				<span>tarif unique, en régulier comme en ponctuel</span>
+			</p>
+			<div class="tfp-hero__actions">
+				<?php
+				tfp_button(
+					array(
+						'label'   => 'Demander mon devis',
+						'href'    => home_url( '/demande-de-devis/' ),
+						'variant' => 'primary',
+					)
+				);
+				// Décision du 14 octobre 2026 : la commande générique nomme l'entreprise.
+				tfp_bouton_appel( array( 'variant' => 'secondary' ) );
+				?>
+			</div>
+			<p class="tfp-hero__microcopy">Devis gratuit · Réponse sous 24 h · Sans engagement</p>
 		</div>
-		<div class="tfp-hero__microcopy">Réponse sous 24 h · Gratuit · Sans engagement · Devis étudié personnellement</div>
 	</div>
 
 	<div class="tfp-hero__media tfp-hero__media--accueil">
@@ -49,19 +61,6 @@ $reassurance = tfp_reassurance_data();
 		</div>
 		<div class="tfp-hero__media-secondary">
 			<?php tfp_picture( 'hero-secondary', array( 'sizes' => '220px' ) ); ?>
-		</div>
-		<div class="tfp-hero__price-tag">
-			<div class="tfp-hero__price-tag-value"><?php echo esc_html( $site['price_unique_display'] ); ?><span class="tfp-hero__price-tag-unit"> HT/h</span></div>
-			<?php
-			/*
-			 * « régulier ou ponctuel » : le libellé de la maquette, réaligné en G25. L'ajout de
-			 * « tarif unique, » (choix d'une phase précédente) faisait replier la pastille sur
-			 * trois lignes au lieu de deux (66 px contre 56, relevé G22) sans nécessité : l'unicité
-			 * du tarif est déjà affirmée sur l'accueil par le bandeau (« tarif unique en région »),
-			 * la bande tarifaire et la barre haute.
-			 */
-			?>
-			<div class="tfp-hero__price-tag-note">régulier ou ponctuel</div>
 		</div>
 	</div>
 </section>

@@ -1,10 +1,10 @@
 {
   "hero-main": {
     "slug": "hero-main",
-    "alt": "Espace de bureaux professionnels, lumineux et rangé (photo d’illustration)",
+    "alt": "Nettoyage de vitres dans des locaux professionnels (photo d’illustration)",
     "lcp": true,
-    "width": 1200,
-    "height": 800,
+    "width": 1000,
+    "height": 667,
     "variants": {
       "avif": [
         {
@@ -16,12 +16,8 @@
           "file": "hero-main-760.avif"
         },
         {
-          "width": 1040,
-          "file": "hero-main-1040.avif"
-        },
-        {
-          "width": 1200,
-          "file": "hero-main-1200.avif"
+          "width": 1000,
+          "file": "hero-main-1000.avif"
         }
       ],
       "webp": [
@@ -34,12 +30,8 @@
           "file": "hero-main-760.webp"
         },
         {
-          "width": 1040,
-          "file": "hero-main-1040.webp"
-        },
-        {
-          "width": 1200,
-          "file": "hero-main-1200.webp"
+          "width": 1000,
+          "file": "hero-main-1000.webp"
         }
       ],
       "jpg": [
@@ -52,22 +44,18 @@
           "file": "hero-main-760.jpg"
         },
         {
-          "width": 1040,
-          "file": "hero-main-1040.jpg"
-        },
-        {
-          "width": 1200,
-          "file": "hero-main-1200.jpg"
+          "width": 1000,
+          "file": "hero-main-1000.jpg"
         }
       ]
     }
   },
   "hero-secondary": {
     "slug": "hero-secondary",
-    "alt": "Nettoyage de vitres avec équipement de protection (photo d’illustration)",
+    "alt": "Espace de bureaux entretenu (photo d’illustration)",
     "lcp": false,
     "width": 460,
-    "height": 306,
+    "height": 307,
     "variants": {
       "avif": [
         {
@@ -370,10 +358,10 @@
   },
   "service-cabinets": {
     "slug": "service-cabinets",
-    "alt": "Cabinet et salle d’attente (photo d’illustration)",
+    "alt": "Espace d’accueil avec fauteuils, type salle d’attente (photo d’illustration)",
     "lcp": false,
     "width": 640,
-    "height": 427,
+    "height": 426,
     "variants": {
       "avif": [
         {
@@ -421,10 +409,10 @@
   },
   "service-coproprietes": {
     "slug": "service-coproprietes",
-    "alt": "Hall d’immeuble et parties communes (photo d’illustration)",
+    "alt": "Couloir et circulations entretenus (photo d’illustration)",
     "lcp": false,
     "width": 640,
-    "height": 426,
+    "height": 427,
     "variants": {
       "avif": [
         {
@@ -523,7 +511,7 @@
   },
   "service-ponctuel": {
     "slug": "service-ponctuel",
-    "alt": "Bureau en cours de remise en état (photo d’illustration)",
+    "alt": "Nettoyage approfondi de vitres (photo d’illustration)",
     "lcp": false,
     "width": 640,
     "height": 426,
