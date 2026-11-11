@@ -16,11 +16,11 @@ $budget = tfp_home_budget_example();
 	<div class="tfp-container tfp-two-col">
 		<div>
 			<h2>Un tarif clair, affiché avant le devis</h2>
-			<p style="margin-top:14px;font-size:17px;color:var(--color-text-secondary)">
-				<?php echo esc_html( tfp_format_price( $site['price_unique'] ) ); ?> HT/h en régulier comme en ponctuel. Nous y ajoutons
-				<?php echo esc_html( tfp_format_price( $site['price_gestion'] ) ); ?> HT/mois de gestion et <?php echo esc_html( tfp_format_price( $site['price_setup'] ) ); ?> HT de frais de mise en place,
-				lorsqu'ils s'appliquent, selon les conditions précisées au devis et toujours indiqués à l'avance.
-			</p>
+			<?php
+			// Passe commerciale du 10 novembre 2026 (§7) : le tarif et son périmètre se lisent ensemble —
+			// inclus, fourni par le client, chiffré au devis. Le tarif lui-même est dans le panneau voisin.
+			tfp_perimetre_prix( 'tfp-perimetre--accueil', false );
+			?>
 
 			<div class="tfp-price-example">
 				<div class="tfp-price-example__label">Exemple · bureaux réguliers, <?php echo (int) $budget['hours']; ?> h/mois</div>

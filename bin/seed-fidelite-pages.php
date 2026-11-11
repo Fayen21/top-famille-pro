@@ -5320,7 +5320,7 @@ update_option( 'tfp_page_zones-intervention', array(
 							array(
 								'type' => 'note',
 								'texte' => 'Devis gratuit sous 24 h Intervention régulière ou ponctuelle Conditions d\'arrêt précisées au devis',
-								'ligne' => 545,
+								'ligne' => 575,
 							),
 						),
 						'cartes' => array(
@@ -5446,7 +5446,7 @@ update_option( 'tfp_page_zones-intervention', array(
 							array(
 								'type' => 'note',
 								'texte' => 'Réponse directe',
-								'ligne' => 751,
+								'ligne' => 781,
 								'graisse' => 700,
 							),
 							array(
@@ -8369,7 +8369,7 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 							array(
 								'type' => 'note',
 								'texte' => 'Devis gratuit sous 24 h Intervention régulière ou ponctuelle Conditions d\'arrêt précisées au devis',
-								'ligne' => 688,
+								'ligne' => 718,
 							),
 						),
 						'cartes' => array(
@@ -8495,7 +8495,7 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 							array(
 								'type' => 'note',
 								'texte' => 'Réponse directe',
-								'ligne' => 895,
+								'ligne' => 925,
 								'graisse' => 700,
 							),
 							array(
@@ -12919,7 +12919,7 @@ update_option( 'tfp_page_pourquoi-nous', array(
 							array(
 								'type' => 'faq',
 								'question' => '« Vous êtes une petite structure, tiendrez-vous dans le temps ? »',
-								'reponse' => 'Nous n\'avons qu\'une implantation, à Saint-Apollinaire, et nous ne prétendons pas avoir des agences partout. C\'est justement ce qui permet à Audrey de connaître chaque dossier. En contrepartie, nous refusons les prestations que nous ne pouvons pas assurer correctement, plutôt que d\'accepter et de décevoir.',
+								'reponse' => 'Notre unique implantation est à Saint-Apollinaire : c\'est de là que sont organisées toutes nos interventions. C\'est justement ce qui permet à Audrey de connaître chaque dossier. En contrepartie, nous refusons les prestations que nous ne pouvons pas assurer correctement, plutôt que d\'accepter et de décevoir.',
 							),
 							array(
 								'type' => 'faq',
@@ -12944,7 +12944,7 @@ update_option( 'tfp_page_pourquoi-nous', array(
 							),
 							array(
 								'question' => '« Vous êtes une petite structure, tiendrez-vous dans le temps ? »',
-								'reponse' => 'Nous n\'avons qu\'une implantation, à Saint-Apollinaire, et nous ne prétendons pas avoir des agences partout. C\'est justement ce qui permet à Audrey de connaître chaque dossier. En contrepartie, nous refusons les prestations que nous ne pouvons pas assurer correctement, plutôt que d\'accepter et de décevoir.',
+								'reponse' => 'Notre unique implantation est à Saint-Apollinaire : c\'est de là que sont organisées toutes nos interventions. C\'est justement ce qui permet à Audrey de connaître chaque dossier. En contrepartie, nous refusons les prestations que nous ne pouvons pas assurer correctement, plutôt que d\'accepter et de décevoir.',
 							),
 							array(
 								'question' => '« Comment savoir que le travail a réellement été fait ? »',
@@ -15510,7 +15510,7 @@ update_option( 'tfp_page_a-propos', array(
 							array(
 								'type' => 'note',
 								'texte' => 'Audrey · Top-Famille Pro',
-								'ligne' => 964,
+								'ligne' => 934,
 							),
 						),
 						'cartes' => array(),
@@ -15865,12 +15865,12 @@ update_option( 'tfp_page_a-propos', array(
 						'sequence' => array(
 							array(
 								'type' => 'paragraph',
-								'texte' => 'Nous sommes basés à Saint-Apollinaire, aux portes de Dijon, en Côte-d\'Or. C\'est notre unique implantation : nous n\'avons pas d\'agence dans les autres départements et nous ne le prétendons pas. Depuis Saint-Apollinaire, nous intervenons sur les huit départements de la Bourgogne-Franche-Comté. Selon la distance, des indemnités kilométriques peuvent s\'appliquer ; elles sont indiquées sur le devis, avant toute intervention.',
+								'texte' => 'Nous sommes basés à Saint-Apollinaire, aux portes de Dijon, en Côte-d\'Or. C\'est notre unique implantation : les interventions dans les autres départements sont organisées depuis Saint-Apollinaire. Depuis Saint-Apollinaire, nous intervenons sur les huit départements de la Bourgogne-Franche-Comté. Selon la distance, des indemnités kilométriques peuvent s\'appliquer ; elles sont indiquées sur le devis, avant toute intervention.',
 							),
 						),
 						'cartes' => array(),
 						'textes' => array(
-							'Nous sommes basés à Saint-Apollinaire, aux portes de Dijon, en Côte-d\'Or. C\'est notre unique implantation : nous n\'avons pas d\'agence dans les autres départements et nous ne le prétendons pas. Depuis Saint-Apollinaire, nous intervenons sur les huit départements de la Bourgogne-Franche-Comté. Selon la distance, des indemnités kilométriques peuvent s\'appliquer ; elles sont indiquées sur le devis, avant toute intervention.',
+							'Nous sommes basés à Saint-Apollinaire, aux portes de Dijon, en Côte-d\'Or. C\'est notre unique implantation : les interventions dans les autres départements sont organisées depuis Saint-Apollinaire. Depuis Saint-Apollinaire, nous intervenons sur les huit départements de la Bourgogne-Franche-Comté. Selon la distance, des indemnités kilométriques peuvent s\'appliquer ; elles sont indiquées sur le devis, avant toute intervention.',
 						),
 						'liste' => array(),
 						'liens' => array(),
@@ -16010,12 +16010,12 @@ update_option( 'tfp_page_a-propos', array(
 						'sequence' => array(
 							array(
 								'type' => 'paragraph',
-								'texte' => 'Nous n\'intervenons pas en bio-nettoyage hospitalier, en stérilisation, sur les DASRI ni sur du matériel médical. Nous ne réalisons pas de travail en hauteur nécessitant un équipement spécialisé, ni de traitement de l\'amiante, du plomb ou des moisissures étendues. Nous n\'évacuons pas les gravats et déchets de chantier, n\'effectuons pas de petites réparations, ne gérons pas d\'espaces verts et n\'assurons pas de conciergerie. Nous ne garantissons pas non plus un même intervenant à chaque passage : nous recherchons cette continuité et la privilégions autant que possible.',
+								'texte' => 'Nous n\'intervenons pas en bio-nettoyage hospitalier, en stérilisation, sur les DASRI ni sur du matériel médical. Nous ne réalisons pas de travail en hauteur nécessitant un équipement spécialisé, ni de traitement de l\'amiante, du plomb ou des moisissures étendues. Nous n\'évacuons pas les gravats et déchets de chantier, n\'effectuons pas de petites réparations, ne gérons pas d\'espaces verts et n\'assurons pas de conciergerie. Nous recherchons un même intervenant d\'un passage à l\'autre et privilégions cette continuité autant que possible.',
 							),
 						),
 						'cartes' => array(),
 						'textes' => array(
-							'Nous n\'intervenons pas en bio-nettoyage hospitalier, en stérilisation, sur les DASRI ni sur du matériel médical. Nous ne réalisons pas de travail en hauteur nécessitant un équipement spécialisé, ni de traitement de l\'amiante, du plomb ou des moisissures étendues. Nous n\'évacuons pas les gravats et déchets de chantier, n\'effectuons pas de petites réparations, ne gérons pas d\'espaces verts et n\'assurons pas de conciergerie. Nous ne garantissons pas non plus un même intervenant à chaque passage : nous recherchons cette continuité et la privilégions autant que possible.',
+							'Nous n\'intervenons pas en bio-nettoyage hospitalier, en stérilisation, sur les DASRI ni sur du matériel médical. Nous ne réalisons pas de travail en hauteur nécessitant un équipement spécialisé, ni de traitement de l\'amiante, du plomb ou des moisissures étendues. Nous n\'évacuons pas les gravats et déchets de chantier, n\'effectuons pas de petites réparations, ne gérons pas d\'espaces verts et n\'assurons pas de conciergerie. Nous recherchons un même intervenant d\'un passage à l\'autre et privilégions cette continuité autant que possible.',
 						),
 						'liste' => array(),
 						'liens' => array(),

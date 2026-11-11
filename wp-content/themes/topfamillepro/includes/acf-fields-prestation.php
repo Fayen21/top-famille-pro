@@ -371,6 +371,14 @@ function tfp_register_acf_fields_prestation() {
 					'instructions' => 'Vide : 12 h/mois pour un budget mensuel.',
 				),
 				array(
+					'key'          => 'field_tfp_prestation_suivi_exemple',
+					'label'        => 'Exemple de suivi (4 lignes)',
+					'name'         => 'suivi_exemple',
+					'type'         => 'textarea',
+					'rows'         => 5,
+					'instructions' => 'Une ligne par tâche : « tâche prévue | fréquence | passage réalisé | observation ». Affiché comme « Exemple de suivi » : ne jamais y recopier un relevé réel de client.',
+				),
+				array(
 					'key'   => 'field_tfp_prestation_temoignage_tab',
 					'label' => 'Témoignage',
 					'type'  => 'tab',

@@ -71,6 +71,93 @@ function tfp_cta_final( $marquer = false ) {
 }
 
 /**
+ * Périmètre du tarif — passe commerciale du 10 novembre 2026 (§7).
+ *
+ * Le tarif horaire et ce qu'il couvre se lisent ensemble : ce qui est inclus, ce que le client
+ * fournit généralement, et ce qui est chiffré au devis. Les montants viennent de tfp_site_data(),
+ * jamais d'un texte en dur ; les frais ne sont pas présentés comme systématiques.
+ *
+ * @param string $classe Classe supplémentaire.
+ * @param bool   $titre  Afficher la ligne du tarif (inutile quand le tarif est déjà affiché à côté).
+ */
+function tfp_perimetre_prix( $classe = '', $titre = true ) {
+	$site = tfp_site_data();
+	?>
+	<div class="tfp-perimetre<?php echo $classe ? ' ' . esc_attr( $classe ) : ''; ?>">
+		<?php if ( $titre ) : ?>
+			<p class="tfp-perimetre__titre"><strong><?php echo esc_html( $site['price_unique_display'] ); ?> HT/h</strong> — tarif unique, en régulier comme en ponctuel</p>
+		<?php endif; ?>
+		<ul class="tfp-perimetre__liste">
+			<li><span class="tfp-perimetre__cle">Inclus</span> la main-d’œuvre de l’intervenant, l’organisation du planning et le suivi, selon l’offre validée au devis.</li>
+			<li><span class="tfp-perimetre__cle">Fournis par le client</span> les produits et le matériel, en règle générale&nbsp;; les modalités sont précisées au devis.</li>
+			<li><span class="tfp-perimetre__cle">Au devis, s’ils s’appliquent</span> gestion <?php echo esc_html( tfp_format_price( $site['price_gestion'] ) ); ?> HT/mois (contrats réguliers), mise en place <?php echo esc_html( tfp_format_price( $site['price_setup'] ) ); ?> HT une fois, indemnités <?php echo esc_html( $site['price_km_display'] ); ?> HT/km, majoration de <?php echo (int) $site['price_majoration_pct']; ?> % le dimanche, les jours fériés et la nuit.</li>
+		</ul>
+	</div>
+	<?php
+}
+
+/**
+ * « Exemple de suivi » — passe commerciale du 10 novembre 2026 (§5).
+ *
+ * Montre à quoi servent les deux documents dont parle tout le site : le cahier des charges dit ce
+ * qui est prévu (tâche, fréquence), le cahier de liaison ce qui a été fait et ce qui a été signalé.
+ * C'est un exemple de PRÉSENTATION : le composant le dit en titre et en légende, n'affiche ni nom
+ * de client, ni date, ni adresse, et n'alimente aucune donnée structurée.
+ *
+ * Tableau sur ordinateur ; sous 640 px, chaque ligne devient une fiche (libellés tirés de
+ * `data-label`), sans JavaScript.
+ *
+ * @param string[] $lignes « tâche | fréquence | réalisé | observation », une par ligne.
+ * @param string   $id     Ancre de la section.
+ */
+function tfp_exemple_suivi( array $lignes, $id = 'suivi' ) {
+	$rangees = array();
+	foreach ( $lignes as $ligne ) {
+		$cols = array_map( 'trim', explode( '|', $ligne ) );
+		if ( count( $cols ) === 4 ) {
+			$rangees[] = $cols;
+		}
+	}
+	if ( ! $rangees ) {
+		return;
+	}
+	$entetes = array( 'Tâche prévue', 'Fréquence', 'Passage', 'Observation ou besoin signalé' );
+	?>
+	<section class="tfp-section--tight tfp-suivi" id="<?php echo esc_attr( $id ); ?>" aria-labelledby="<?php echo esc_attr( $id ); ?>-titre">
+		<div class="tfp-container">
+			<p class="tfp-eyebrow">Exemple de suivi</p>
+			<h2 id="<?php echo esc_attr( $id ); ?>-titre">Ce qui est prévu, ce qui est fait</h2>
+			<div class="tfp-suivi__docs">
+				<p><strong>Le cahier des charges</strong> définit ce qui est prévu : les tâches, leur fréquence et vos consignes.</p>
+				<p><strong>Le cahier de liaison</strong> reste sur place : chaque passage y est noté, avec les remarques et les besoins signalés.</p>
+			</div>
+			<table class="tfp-suivi__table">
+				<caption class="visually-hidden">Exemple de suivi : tâches prévues, fréquence, passage réalisé et observations</caption>
+				<thead>
+					<tr>
+						<?php foreach ( $entetes as $e ) : ?>
+							<th scope="col"><?php echo esc_html( $e ); ?></th>
+						<?php endforeach; ?>
+					</tr>
+				</thead>
+				<tbody>
+					<?php foreach ( $rangees as $r ) : ?>
+						<tr>
+							<th scope="row" data-label="<?php echo esc_attr( $entetes[0] ); ?>"><?php echo esc_html( $r[0] ); ?></th>
+							<td data-label="<?php echo esc_attr( $entetes[1] ); ?>"><?php echo esc_html( $r[1] ); ?></td>
+							<td data-label="<?php echo esc_attr( $entetes[2] ); ?>"><span class="tfp-suivi__etat tfp-suivi__etat--<?php echo esc_attr( 'Fait' === $r[2] ? 'fait' : 'autre' ); ?>"><?php echo esc_html( $r[2] ); ?></span></td>
+							<td data-label="<?php echo esc_attr( $entetes[3] ); ?>"><?php echo '—' === $r[3] ? '<span aria-label="Aucune observation">—</span>' : esc_html( $r[3] ); ?></td>
+						</tr>
+					<?php endforeach; ?>
+				</tbody>
+			</table>
+			<p class="tfp-suivi__note">Exemple de présentation, construit pour illustrer la méthode : il ne reproduit le dossier d’aucun client.</p>
+		</div>
+	</section>
+	<?php
+}
+
+/**
  * Affiche un bouton/lien.
  *
  * @param array $args {

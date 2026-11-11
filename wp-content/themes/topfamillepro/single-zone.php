@@ -249,24 +249,56 @@ get_header();
 </section>
 <?php endif; ?>
 
+<?php
+/*
+ * Chapitres d'une page locale — passe commerciale du 10 novembre 2026 (§4).
+ *
+ * Les deux premiers chapitres du récit (implantation, professionnels accompagnés) et le premier
+ * chapitre de méthode (fréquences) portent ce qui est propre au secteur : ils restent ouverts. Les
+ * suivants reprennent, avec quelques précisions locales, ce que la page prestation et la page
+ * régionale expliquent déjà (tâches par type de local, horaires et matériel, clés, sélection et
+ * suivi) : ils passent dans des volets <details>. Rien n'est retiré du HTML ; la page se parcourt
+ * sans dérouler 3 000 px de texte générique.
+ *
+ * @param array $bloc   { titre, textes[], liste[] }.
+ * @param bool  $volet  Rendu replié.
+ * @param array $textes Paragraphes à afficher (par défaut ceux du bloc).
+ * @param string $attr  Attribut supplémentaire du conteneur.
+ */
+$tfp_chapitre = static function ( array $bloc, $volet, $textes = null, $attr = '' ) {
+	$textes = null === $textes ? $bloc['textes'] : $textes;
+	$corps  = static function () use ( $bloc, $textes ) {
+		foreach ( $textes as $texte ) {
+			echo '<p class="tfp-prose">' . esc_html( $texte ) . '</p>';
+		}
+		if ( ! empty( $bloc['liste'] ) ) {
+			echo '<ul class="tfp-list-plain">';
+			foreach ( $bloc['liste'] as $item ) {
+				echo '<li>' . esc_html( $item ) . '</li>';
+			}
+			echo '</ul>';
+		}
+	};
+	if ( $volet ) {
+		echo '<details class="tfp-volet tfp-volet--chapitre"' . $attr . '><summary><h2>' . esc_html( $bloc['titre'] ) . '</h2></summary><div class="tfp-volet__corps">'; // phpcs:ignore WordPress.Security.EscapeOutput
+		$corps();
+		echo '</div></details>';
+	} else {
+		echo '<div class="tfp-zone-chapter"' . $attr . '><h2>' . esc_html( $bloc['titre'] ) . '</h2>'; // phpcs:ignore WordPress.Security.EscapeOutput
+		$corps();
+		echo '</div>';
+	}
+};
+?>
+
 <?php if ( ! empty( $recit ) ) : ?>
 <section class="tfp-section--tight">
 	<div class="tfp-container tfp-container--narrow">
-		<?php foreach ( $recit as $bloc ) : ?>
-			<div class="tfp-zone-chapter">
-				<h2><?php echo esc_html( $bloc['titre'] ); ?></h2>
-				<?php foreach ( $bloc['textes'] as $texte ) : ?>
-					<p class="tfp-prose"><?php echo esc_html( $texte ); ?></p>
-				<?php endforeach; ?>
-				<?php if ( ! empty( $bloc['liste'] ) ) : ?>
-					<ul class="tfp-list-plain">
-						<?php foreach ( $bloc['liste'] as $item ) : ?>
-							<li><?php echo esc_html( $item ); ?></li>
-						<?php endforeach; ?>
-					</ul>
-				<?php endif; ?>
-			</div>
+		<?php foreach ( array_values( $recit ) as $i => $bloc ) : ?>
+			<?php if ( 2 === $i ) : ?><div class="tfp-volets"><?php endif; ?>
+			<?php $tfp_chapitre( $bloc, $i >= 2 ); ?>
 		<?php endforeach; ?>
+		<?php if ( count( $recit ) > 2 ) : ?></div><?php endif; ?>
 	</div>
 </section>
 <?php endif; ?>
@@ -657,7 +689,7 @@ $render_sections = function ( array $groupes, $classe ) use ( $render_group, $is
 <?php if ( ! empty( $methode ) ) : ?>
 <section class="tfp-section--tight">
 	<div class="tfp-container tfp-container--narrow">
-		<?php foreach ( $methode as $bloc ) : ?>
+		<?php foreach ( array_values( $methode ) as $i => $bloc ) : ?>
 			<?php
 			/*
 			 * Un seul des deux textes sort : le champ « Fonctionnement » s'il désigne ce chapitre
@@ -669,20 +701,10 @@ $render_sections = function ( array $groupes, $classe ) use ( $render_group, $is
 				&& ! empty( $fonctionnement_lignes );
 			$paragraphes = $pilote_par_fonctionnement ? $fonctionnement_lignes : $bloc['textes'];
 			?>
-			<div class="tfp-zone-chapter"<?php echo $pilote_par_fonctionnement ? ' data-tfp-champ="fonctionnement"' : ''; ?>>
-				<h2><?php echo esc_html( $bloc['titre'] ); ?></h2>
-				<?php foreach ( $paragraphes as $texte ) : ?>
-					<p class="tfp-prose"><?php echo esc_html( $texte ); ?></p>
-				<?php endforeach; ?>
-				<?php if ( ! empty( $bloc['liste'] ) ) : ?>
-					<ul class="tfp-list-plain">
-						<?php foreach ( $bloc['liste'] as $item ) : ?>
-							<li><?php echo esc_html( $item ); ?></li>
-						<?php endforeach; ?>
-					</ul>
-				<?php endif; ?>
-			</div>
+			<?php if ( 1 === $i ) : ?><div class="tfp-volets"><?php endif; ?>
+			<?php $tfp_chapitre( $bloc, $i >= 1, $paragraphes, $pilote_par_fonctionnement ? ' data-tfp-champ="fonctionnement"' : '' ); ?>
 		<?php endforeach; ?>
+		<?php if ( count( $methode ) > 1 ) : ?></div><?php endif; ?>
 	</div>
 </section>
 <?php endif; ?>

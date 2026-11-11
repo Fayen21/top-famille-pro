@@ -210,7 +210,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'recit_1_titre', 'Notre couverture dans le Doubs', $id );
 	tfp_seed_set_field( 'recit_1_texte', implode( "\n", array(
 		'Notre secteur d\'intervention prioritaire couvre Besançon et sa première couronne : École-Valentin, Chalezeule, Thise, Saône, Pirey, Serre-les-Sapins, Beure. Ces communes appartiennent au même bassin géographique. Les demandes situées dans ces communes peuvent être étudiées selon l\'adresse exacte, le volume horaire et les possibilités d\'organisation du planning.',
-		'Le nord du département, autour de Montbéliard et du Pays de Montbéliard, ainsi que le Haut-Doubs vers Pontarlier, ne font pas partie de nos secteurs prioritaires. Nous étudions les demandes au cas par cas, mais nous ne prétendons pas couvrir tout le département avec la même réactivité qu\'à Besançon.',
+		'Le nord du département, autour de Montbéliard et du Pays de Montbéliard, ainsi que le Haut-Doubs vers Pontarlier, ne font pas partie de nos secteurs prioritaires. Hors de l\'agglomération de Besançon, les demandes sont étudiées au cas par cas, selon la fréquence et le trajet.',
 	) ), $id );
 	tfp_seed_set_field( 'recit_1_liste', '', $id );
 	tfp_seed_set_field( 'recit_2_titre', 'Le tissu professionnel bisontin', $id );
@@ -493,7 +493,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'recit_1_titre', 'Notre couverture dans la Nièvre', $id );
 	tfp_seed_set_field( 'recit_1_texte', implode( "\n", array(
 		'Nevers et les communes qui l\'entourent — Varennes-Vauzelles, Fourchambault, Marzy, Coulanges-lès-Nevers, Challuy — constituent notre secteur nivernais. Ces communes forment un ensemble compact, ce qui est pris en compte lorsque le regroupement de plusieurs interventions sur une même journée est étudié.',
-		'Le reste du département, très étendu et peu dense, n\'est pas couvert de façon régulière. Nous ne prétendons pas intervenir partout dans la Nièvre : au-delà de l\'agglomération, chaque demande est examinée en fonction de la fréquence, du volume d\'heures et du trajet.',
+		'Le reste du département, très étendu et peu dense, n\'est pas couvert de façon régulière. Au-delà de l\'agglomération, chaque demande est examinée en fonction de la fréquence, du volume d\'heures et du trajet.',
 	) ), $id );
 	tfp_seed_set_field( 'recit_1_liste', '', $id );
 	tfp_seed_set_field( 'recit_2_titre', 'Le tissu professionnel nivernais', $id );
@@ -601,7 +601,7 @@ if ( empty( $posts ) ) {
 	) ), $id );
 	tfp_seed_set_field( 'locaux_avant_tarif', 3, $id );
 	tfp_seed_set_field( 'faq_titre', 'Questions fréquentes — Nièvre', $id );
-	tfp_seed_set_field( 'faq_1', array( 'question' => 'Intervenez-vous ailleurs qu\'à Nevers dans la Nièvre ?', 'reponse' => 'Notre secteur prioritaire couvre Nevers et son agglomération proche. Pour une commune plus éloignée, contactez-nous : nous vous dirons honnêtement si nous pouvons tenir un planning fiable.' ), $id );
+	tfp_seed_set_field( 'faq_1', array( 'question' => 'Intervenez-vous ailleurs qu\'à Nevers dans la Nièvre ?', 'reponse' => 'Notre secteur prioritaire couvre Nevers et son agglomération proche. Pour une commune plus éloignée, contactez-nous : nous vous indiquerons si un planning régulier peut y être tenu.' ), $id );
 	tfp_seed_set_field( 'faq_2', array( 'question' => 'Le tarif est-il majoré à cause de la distance ?', 'reponse' => 'Le taux horaire reste 27 € HT/h. Les éventuelles indemnités kilométriques dépendent de l\'adresse des locaux, du planning et des conditions d\'intervention. Elles sont précisées dans le devis.' ), $id );
 	tfp_seed_set_field( 'faq_3', array( 'question' => 'Travaillez-vous avec les syndics de copropriété ?', 'reponse' => 'Oui, c\'est une part importante de notre activité à Nevers : halls, escaliers, ascenseurs, locaux à conteneurs et gestion des bacs selon le calendrier de collecte.' ), $id );
 	tfp_seed_set_field( 'faq_4', array( 'question' => 'Un passage hebdomadaire suffit-il pour un immeuble ?', 'reponse' => 'Pour un immeuble de taille moyenne, oui, dans la plupart des cas. Nous adaptons la fréquence à la fréquentation, au nombre d\'étages et à la présence d\'un ascenseur.' ), $id );
@@ -744,7 +744,7 @@ if ( empty( $posts ) ) {
 	) ), $id );
 	tfp_seed_set_field( 'locaux_avant_tarif', 3, $id );
 	tfp_seed_set_field( 'faq_titre', 'Questions fréquentes — Haute-Saône', $id );
-	tfp_seed_set_field( 'faq_1', array( 'question' => 'Intervenez-vous ailleurs qu\'à Vesoul en Haute-Saône ?', 'reponse' => 'Notre secteur prioritaire couvre Vesoul et sa couronne immédiate. Gray, Lure, Luxeuil-les-Bains ou Héricourt ne sont pas des secteurs prioritaires : contactez-nous, nous vous répondrons honnêtement.' ), $id );
+	tfp_seed_set_field( 'faq_1', array( 'question' => 'Intervenez-vous ailleurs qu\'à Vesoul en Haute-Saône ?', 'reponse' => 'Notre secteur prioritaire couvre Vesoul et sa couronne immédiate. Gray, Lure, Luxeuil-les-Bains ou Héricourt ne sont pas des secteurs prioritaires : chaque demande y est étudiée selon la fréquence et le trajet.' ), $id );
 	tfp_seed_set_field( 'faq_2', array( 'question' => 'Le déplacement est-il facturé ?', 'reponse' => 'Les éventuelles indemnités kilométriques dépendent de l\'adresse des locaux, du planning et des conditions d\'intervention. Elles sont précisées dans le devis. Elles figurent en ligne distincte sur le devis, jamais après coup.' ), $id );
 	tfp_seed_set_field( 'faq_3', array( 'question' => 'Entretenez-vous les entrepôts logistiques ?', 'reponse' => 'Non. Nous intervenons dans les bureaux, accueils, salles de réunion, vestiaires de bureau et sanitaires de ces sites, pas dans les zones d\'exploitation ni sur les machines.' ), $id );
 	tfp_seed_set_field( 'faq_4', array( 'question' => 'Pouvez-vous intervenir avec un badge en dehors des horaires ?', 'reponse' => 'Oui. La remise du badge ou de la clé se fait contre décharge écrite, avec le code d\'alarme et la procédure de fermeture consignés dans le cahier des charges.' ), $id );
@@ -1198,7 +1198,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'reponse_directe', 'Top-Famille Pro est une entreprise de nettoyage implantée à Saint-Apollinaire, commune limitrophe de Dijon. Nous entretenons bureaux, surfaces de vente, cabinets, parties communes d\'immeubles et locations meublées à Dijon et dans sa première couronne, en contrat régulier ou en intervention ponctuelle, au tarif de 27 € HT/h. Le devis est gratuit et transmis sous 24 heures ; votre interlocutrice est Audrey, au 06 36 17 63 39.', $id );
 	tfp_seed_set_field( 'recit_1_titre', 'Une entreprise implantée à Saint-Apollinaire, aux portes de Dijon', $id );
 	tfp_seed_set_field( 'recit_1_texte', implode( "\n", array(
-		'Notre adresse est à Saint-Apollinaire, en périphérie est de Dijon. Nous n\'avons pas de bureau au centre-ville, et nous ne le prétendons pas : ce serait une vitrine sans utilité. Ce qui compte pour vous, c\'est que Dijon fait partie de nos secteurs prioritaires : visite, ajustement de planning ou passage supplémentaire y sont étudiés selon les disponibilités du planning.',
+		'Notre adresse est à Saint-Apollinaire, en périphérie est de Dijon. Basée à Saint-Apollinaire, notre entreprise organise les interventions à Dijon et dans son agglomération. Ce qui compte pour vous, c\'est que Dijon fait partie de nos secteurs prioritaires : visite, ajustement de planning ou passage supplémentaire y sont étudiés selon les disponibilités du planning.',
 		'Cette proximité fait de Dijon l\'un de nos secteurs prioritaires. Les prestations courtes y sont étudiées au cas par cas, et plusieurs sites peuvent être organisés sur une même matinée.',
 	) ), $id );
 	tfp_seed_set_field( 'recit_1_liste', '', $id );
@@ -1268,12 +1268,12 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'methode_4_titre', 'Sélection, intervenant habituel et suivi', $id );
 	tfp_seed_set_field( 'methode_4_texte', implode( "\n", array(
 		'Les intervenants sont recrutés par Audrey, en entretien individuel, avec vérification des références et une période d\'observation sur site. Nous cherchons à confier votre site au même intervenant d\'une semaine sur l\'autre : c\'est la régularité, plus que la longueur de la liste de tâches, qui fait la qualité perçue.',
-		'En cas d\'absence, de congés ou de départ, nous cherchons une solution de remplacement, transmettons les consignes écrites au remplaçant et vous informons du changement. Nous ne garantissons pas une continuité automatique — personne ne peut le faire honnêtement. Chaque site dispose d\'un cahier de liaison, et un point de suivi permet d\'ajuster ce qui doit l\'être.',
+		'En cas d\'absence, de congés ou de départ, nous cherchons une solution de remplacement, transmettons les consignes écrites au remplaçant et vous informons du changement. La continuité est recherchée, sans être automatique. Chaque site dispose d\'un cahier de liaison, et un point de suivi permet d\'ajuster ce qui doit l\'être.',
 	) ), $id );
 	tfp_seed_set_field( 'methode_4_liste', '', $id );
 	tfp_seed_set_field( 'fonctionnement', implode( "\n", array(
 		'Les intervenants sont recrutés par Audrey, en entretien individuel, avec vérification des références et une période d\'observation sur site. Nous cherchons à confier votre site au même intervenant d\'une semaine sur l\'autre : c\'est la régularité, plus que la longueur de la liste de tâches, qui fait la qualité perçue.',
-		'En cas d\'absence, de congés ou de départ, nous cherchons une solution de remplacement, transmettons les consignes écrites au remplaçant et vous informons du changement. Nous ne garantissons pas une continuité automatique — personne ne peut le faire honnêtement. Chaque site dispose d\'un cahier de liaison, et un point de suivi permet d\'ajuster ce qui doit l\'être.',
+		'En cas d\'absence, de congés ou de départ, nous cherchons une solution de remplacement, transmettons les consignes écrites au remplaçant et vous informons du changement. La continuité est recherchée, sans être automatique. Chaque site dispose d\'un cahier de liaison, et un point de suivi permet d\'ajuster ce qui doit l\'être.',
 	) ), $id );
 	tfp_seed_set_field( 'fonctionnement_bloc', 4, $id );
 	tfp_seed_set_field( 'locaux_1_titre', 'Nos prestations sur place', $id );
@@ -1362,7 +1362,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'locaux_6_cibles', '', $id );
 	tfp_seed_set_field( 'locaux_avant_tarif', 1, $id );
 	tfp_seed_set_field( 'faq_titre', 'Questions fréquentes — Dijon', $id );
-	tfp_seed_set_field( 'faq_1', array( 'question' => 'Où êtes-vous exactement installés ?', 'reponse' => 'À Saint-Apollinaire (21850), commune limitrophe de Dijon. Nous n\'avons pas de bureau dans le centre-ville dijonnais : c\'est notre unique implantation pour toute la région.' ), $id );
+	tfp_seed_set_field( 'faq_1', array( 'question' => 'Où êtes-vous exactement installés ?', 'reponse' => 'À Saint-Apollinaire (21850), commune limitrophe de Dijon. C\'est notre unique implantation : les interventions à Dijon et dans toute la région sont organisées depuis Saint-Apollinaire.' ), $id );
 	tfp_seed_set_field( 'faq_2', array( 'question' => 'Intervenez-vous dans le centre historique et les rues piétonnes ?', 'reponse' => 'Oui, y compris pour les commerces et les cabinets installés en zone piétonne. Les contraintes d\'accès véhicule sont intégrées au planning dès la mise en place.' ), $id );
 	tfp_seed_set_field( 'faq_3', array( 'question' => 'Pouvez-vous passer avant 8 h ?', 'reponse' => 'Oui, c\'est un créneau pouvant être envisagé à Dijon, pour les bureaux comme pour les commerces. Le tôt matin et la fin de journée sont les deux plages généralement retenues.' ), $id );
 	tfp_seed_set_field( 'faq_4', array( 'question' => 'Y a-t-il des frais de déplacement sur Dijon ?', 'reponse' => 'Les éventuelles indemnités kilométriques dépendent de l\'adresse des locaux, du planning et des conditions d\'intervention. Elles sont précisées dans le devis.' ), $id );
@@ -2709,7 +2709,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'recit_1_titre', 'Notre positionnement à Auxerre', $id );
 	tfp_seed_set_field( 'recit_1_texte', implode( "\n", array(
 		'Auxerre est notre secteur icaunais, situé au nord-ouest de la région et bien desservi par l\'axe autoroutier. Nous y intervenons sur des créneaux réguliers planifiés, dont le regroupement est étudié selon le planning, ce qui rend le déplacement soutenable et permet de maintenir le tarif régional de 27 € HT/h sans surcoût horaire.',
-		'Nous n\'avons pas d\'agence auxerroise, pas de responsable local et pas de numéro dédié à l\'Yonne. L\'ensemble de l\'organisation passe par Audrey, au 06 36 17 63 39 : échange préalable, cahier des charges, planning, remplacement et point de suivi. Nous ne prétendons pas être implantés sur place.',
+		'Nous n\'avons pas d\'agence auxerroise, pas de responsable local et pas de numéro dédié à l\'Yonne. L\'ensemble de l\'organisation passe par Audrey, au 06 36 17 63 39 : échange préalable, cahier des charges, planning, remplacement et point de suivi.',
 	) ), $id );
 	tfp_seed_set_field( 'recit_1_liste', '', $id );
 	tfp_seed_set_field( 'recit_2_titre', 'Les professionnels que nous accompagnons', $id );
@@ -3260,7 +3260,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'recit_1_titre', 'Chenôve dans l\'agglomération dijonnaise', $id );
 	tfp_seed_set_field( 'recit_1_texte', implode( "\n", array(
 		'Chenôve est limitrophe de Dijon, au sud de l\'agglomération. C\'est une commune de l\'agglomération dijonnaise, avec un parc résidentiel collectif important, des commerces de proximité et des zones d\'activité. Notre implantation de Saint-Apollinaire se situe dans la même agglomération : la commune fait partie de nos secteurs prioritaires.',
-		'Nous n\'avons pas de bureau à Chenôve et nous ne prétendons pas en avoir. Ce qui compte, c\'est que la commune fait partie de nos secteurs prioritaires. Les éventuelles indemnités kilométriques dépendent de l\'adresse des locaux, du planning et des conditions d\'intervention. Elles sont précisées dans le devis.',
+		'Les interventions y sont organisées depuis Saint-Apollinaire. Ce qui compte, c\'est que la commune fait partie de nos secteurs prioritaires. Les éventuelles indemnités kilométriques dépendent de l\'adresse des locaux, du planning et des conditions d\'intervention. Elles sont précisées dans le devis.',
 	) ), $id );
 	tfp_seed_set_field( 'recit_1_liste', '', $id );
 	tfp_seed_set_field( 'recit_2_titre', 'Les professionnels et structures que nous accompagnons', $id );

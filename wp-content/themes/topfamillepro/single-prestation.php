@@ -241,19 +241,54 @@ get_header();
 </section>
 <?php endif; ?>
 
+<?php
+/*
+ * Corps de page — passe commerciale du 10 novembre 2026 (§4, §5, §7).
+ *
+ * Avant : treize bandes, dont quatre décrivaient le même plateau type (« exemple de planning »,
+ * « configurations », « exemple de cahier des charges », « semaine type ») et trois revenaient sur
+ * les clés, l'intervenant habituel et le cahier de liaison déjà traités par la FAQ ; 13 000 px à
+ * 375 px. Après : l'essentiel d'abord, dans l'ordre où un client le cherche — ce qui est fait,
+ * comment les passages s'organisent, ce que cela coûte et ce que couvre le prix, comment le suivi
+ * fonctionne, ce qui est exclu — puis le détail dans des volets <details> : tout le contenu reste
+ * dans le HTML, lisible sans JavaScript et au clavier, et n'encombre plus la lecture.
+ *
+ * Retiré de l'affichage : le bloc d'organisation intitulé « Suivi » (l'exemple de suivi le montre)
+ * et la carte tarifaire de la colonne « Pour qui » (le tarif a sa section, avec son périmètre).
+ */
+$orga_affiches = array_values(
+	array_filter(
+		$orga,
+		static function ( $b ) {
+			return 0 !== stripos( trim( $b['titre'] ), 'Suivi' );
+		}
+	)
+);
+$suivi_lignes = tfp_get_lines( tfp_get_field( 'suivi_exemple', $post_id ) );
+$sommaire     = array_filter(
+	array(
+		'essentiel'    => ( ! empty( $pour_qui ) || ! empty( $taches ) ) ? 'L’essentiel' : '',
+		'organisation' => $semaine ? 'Organisation des passages' : '',
+		'tarif'        => 'Tarif',
+		'suivi'        => $suivi_lignes ? 'Suivi' : '',
+		'limites'      => ( $limites || $exclusions_items ) ? 'Limites' : '',
+		'details'      => 'Dans le détail',
+		'questions'    => ! empty( $faq ) ? 'Questions' : '',
+	)
+);
+?>
+<nav class="tfp-container tfp-sur-page" aria-label="Sur cette page">
+	<p class="tfp-sur-page__titre">Sur cette page</p>
+	<ul>
+		<?php foreach ( $sommaire as $ancre => $libelle ) : ?>
+			<li><a href="#<?php echo esc_attr( $ancre ); ?>"><?php echo esc_html( $libelle ); ?></a></li>
+		<?php endforeach; ?>
+		<li><a href="<?php echo esc_url( $devis_url ); ?>">Devis</a></li>
+	</ul>
+</nav>
+
 <?php if ( ! empty( $pour_qui ) || ! empty( $taches ) ) : ?>
-<section class="tfp-section--tight">
-	<?php
-	/*
-	 * Bases de colonnes et bases de listes RELEVÉES sur la maquette (piste .tfp-list-plain, G22) :
-	 * la colonne « Pour qui » déclare `flex: 1 1 260px; min-width: min(100%, 260px)`, la colonne
-	 * des tâches `flex: 1 1 440px; min-width: min(100%, 320px)` — 474 et 654 px à 1440, jamais
-	 * deux moitiés égales. La liste « Pour qui » est une COLONNE (une seule file à toutes les
-	 * largeurs) ; la liste des tâches déclare une base de 230 px — pas les 320 de la règle
-	 * commune — et tient ainsi deux colonnes dès 1024 px, comme la maquette. Vérifié aux six
-	 * largeurs des deux côtés.
-	 */
-	?>
+<section class="tfp-section--tight" id="essentiel">
 	<div class="tfp-container tfp-two-col">
 		<div style="flex:1 1 260px;min-width:min(100%, 260px)">
 			<h2><?php echo esc_html( $pour_qui_titre ); ?></h2>
@@ -262,7 +297,6 @@ get_header();
 					<li><?php echo esc_html( $item ); ?></li>
 				<?php endforeach; ?>
 			</ul>
-			<?php tfp_price_card(); ?>
 		</div>
 		<div style="flex:1 1 440px;min-width:min(100%, 320px)">
 			<h2><?php echo esc_html( $taches_titre ); ?></h2>
@@ -272,16 +306,9 @@ get_header();
 				<?php endforeach; ?>
 			</ul>
 			<?php
-			// La maquette clôt la colonne des tâches par une carte encadrée. Le texte est relevé du
-			// prototype (`note_taches`) ; `hors_prestation` sert de repli pour les contenus produits
-			// avant l'ajout de ce champ.
 			$hors = tfp_get_field( 'note_taches', $post_id ) ?: $hors;
 			if ( $hors ) {
-				?>
-				<?php
-				// La maquette met l'amorce de cette note en gras (« Hors prestation courante : »).
-				// L'amorce n'existe pas sur toutes les prestations : on ne la fabrique pas, on la
-				// détache seulement quand elle est là.
+				// L'amorce (« Hors prestation courante : ») est mise en gras quand elle existe.
 				$morceaux = preg_split( '/\s:\s/u', $hors, 2 );
 				?>
 				<div class="tfp-answer-card" style="margin-top:16px">
@@ -301,139 +328,32 @@ get_header();
 </section>
 <?php endif; ?>
 
-<?php if ( $exclusions_titre && ! empty( $exclusions_items ) ) : ?>
-<section class="tfp-section--tight">
+<?php if ( $semaine ) : ?>
+<section class="tfp-section--alt tfp-section--tight" id="organisation">
 	<div class="tfp-container">
-		<?php
-		// Panneau sombre de la maquette : c'est la section qui dit ce que l'entreprise ne fait pas,
-		// et le prototype lui donne délibérément le poids visuel le plus fort de la page. Le thème
-		// la rendait en bande claire avec des puces blanches — même contenu, lu en diagonale.
-		tfp_panel_exclusions( $exclusions_titre, $exclusions_intro, $exclusions_items );
-		?>
-	</div>
-</section>
-<?php endif; ?>
-
-<?php if ( ! empty( $situations ) || $exemple ) : ?>
-<section class="tfp-section--alt tfp-section--tight">
-	<div class="tfp-container">
-		<h2><?php echo esc_html( $situations_titre ?: 'Les situations concrètes que nous traitons' ); ?></h2>
-		<div class="tfp-situation-grid">
-			<?php foreach ( $situations as $item ) : ?>
-				<div><p><?php echo esc_html( $item ); ?></p></div>
-			<?php endforeach; ?>
-		</div>
-		<?php if ( $exemple ) : ?>
-			<div class="tfp-callout">
-				<strong><?php echo esc_html( $exemple_label ); ?></strong>
-				<p><?php echo esc_html( $exemple ); ?></p>
-			</div>
-		<?php endif; ?>
-	</div>
-</section>
-<?php endif; ?>
-
-<?php if ( ! empty( $configs ) ) : ?>
-<section class="tfp-section--tight">
-	<div class="tfp-container">
-		<h2><?php echo esc_html( $configs_titre ?: 'Trois configurations, trois organisations' ); ?></h2>
-		<?php if ( $configs_intro ) : ?>
-			<p class="tfp-section__lede"><?php echo esc_html( $configs_intro ); ?></p>
-		<?php endif; ?>
-		<div class="tfp-grid tfp-grid--autofit-lg" style="margin-top:24px">
-			<?php foreach ( $configs as $config ) : ?>
-				<div class="tfp-card">
-					<h3><?php echo esc_html( $config['titre'] ); ?></h3>
-					<p><?php echo esc_html( $config['texte'] ); ?></p>
-				</div>
-			<?php endforeach; ?>
-		</div>
-	</div>
-</section>
-<?php endif; ?>
-
-<?php if ( $detail_titre && ! empty( $details ) ) : ?>
-<section class="tfp-section--alt tfp-section--tight">
-	<div class="tfp-container">
-		<?php // max-width 620 : déclaré par la maquette sur le H2 de cette bande — il replie le titre sur deux lignes dès 1024 px (relevé G23). ?>
-		<h2 style="max-width:620px"><?php echo esc_html( $detail_titre ); ?></h2>
-		<div class="tfp-detail-grid">
-			<?php foreach ( $details as $bloc ) : ?>
-				<div class="tfp-detail-item">
-					<h3><?php echo esc_html( $bloc['titre'] ); ?></h3>
-					<p><?php echo esc_html( $bloc['texte'] ); ?></p>
-				</div>
-			<?php endforeach; ?>
-		</div>
-	</div>
-</section>
-<?php endif; ?>
-
-<?php if ( $orga_titre && ! empty( $orga ) ) : ?>
-<section class="tfp-section--turquoise tfp-section--tight">
-	<div class="tfp-container">
-		<?php // max-width 560 : déclaré par la maquette sur le H2 de cette bande (relevé G23). ?>
-		<h2 style="max-width:560px"><?php echo esc_html( $orga_titre ); ?></h2>
-		<?php
-		/*
-		 * La bande mêle deux traitements, relevés sur la maquette : cinq blocs rangés sur une grille
-		 * de quatre colonnes sans ornement, et « Absence et remplacement » en carte blanche pleine
-		 * largeur. Les rendre tous pareil revenait à effacer une hiérarchie voulue.
-		 */
-		$orga_grille = array_values( array_filter( $orga, static function ( $b ) { return empty( $b['carte'] ); } ) );
-		$orga_cartes = array_values( array_filter( $orga, static function ( $b ) { return ! empty( $b['carte'] ); } ) );
-		?>
-		<?php if ( $orga_grille ) : ?>
-			<div class="tfp-detail-grid tfp-detail-grid--orga">
-				<?php foreach ( $orga_grille as $bloc ) : ?>
-					<div class="tfp-detail-item">
-						<h3><?php echo esc_html( $bloc['titre'] ); ?></h3>
-						<p><?php echo esc_html( $bloc['texte'] ); ?></p>
+		<h2><?php echo esc_html( $semaine_titre ); ?></h2>
+		<p class="tfp-prose" style="max-width:820px"><?php echo esc_html( $semaine ); ?></p>
+		<?php if ( ! empty( $configs ) ) : ?>
+			<h3 class="tfp-row-heading" style="margin-top:28px"><?php echo esc_html( $configs_titre ?: 'Trois configurations, trois organisations' ); ?></h3>
+			<div class="tfp-grid tfp-grid--autofit-lg">
+				<?php foreach ( $configs as $config ) : ?>
+					<div class="tfp-card">
+						<h4 class="tfp-card__titre"><?php echo esc_html( $config['titre'] ); ?></h4>
+						<p><?php echo esc_html( $config['texte'] ); ?></p>
 					</div>
 				<?php endforeach; ?>
 			</div>
 		<?php endif; ?>
-		<?php foreach ( $orga_cartes as $bloc ) : ?>
-			<div class="tfp-detail-item tfp-detail-item--carte">
-				<h3><?php echo esc_html( $bloc['titre'] ); ?></h3>
-				<p><?php echo esc_html( $bloc['texte'] ); ?></p>
-			</div>
-		<?php endforeach; ?>
 	</div>
 </section>
 <?php endif; ?>
 
-<?php if ( $semaine || $limites ) : ?>
-<section class="tfp-section--tight">
-	<div class="tfp-container tfp-two-col">
-		<?php if ( $semaine ) : ?>
-			<div>
-				<h2><?php echo esc_html( $semaine_titre ); ?></h2>
-				<p class="tfp-prose"><?php echo esc_html( $semaine ); ?></p>
-			</div>
-		<?php endif; ?>
-		<?php if ( $limites ) : ?>
-			<div>
-				<h2><?php echo esc_html( $limites_titre ); ?></h2>
-				<?php tfp_note_card( $limites ); ?>
-			</div>
-		<?php endif; ?>
+<section class="tfp-section--tight" id="tarif">
+	<div class="tfp-container">
+		<h2>Tarif et exemple</h2>
+		<?php tfp_perimetre_prix(); ?>
 	</div>
-</section>
-<?php endif; ?>
-
-<?php
-/*
- * Bande « Exemple tarifaire + avis », relevée sur la maquette (G23) : rangée flex align-items:
- * center à l'écart clamp(28px, 4vw, 48px), carte Exemple en ENFANT DIRECT (flex 1 1 300,
- * rembourrage 28, rayon 18, montant 38 px en bleu principal), témoignage nu en enfant direct
- * (flex 1 1 360). Le composant générique .tfp-two-col, avec ses conteneurs intermédiaires de
- * hauteurs voisines, faisait partager leur ordonnée aux deux boîtes : deux colonnes comptées là
- * où la maquette, centrant deux boîtes de hauteurs franchement différentes, n'en compte qu'une.
- */
-?>
-<section class="tfp-section--tight">
-	<div class="tfp-container tfp-presta-tarif">
+	<div class="tfp-container tfp-presta-tarif" style="margin-top:24px">
 		<div class="tfp-price-example">
 			<?php if ( 'intervention' === $exemple_mode ) : ?>
 				<?php
@@ -476,6 +396,60 @@ get_header();
 	</div>
 </section>
 
+<?php
+if ( $suivi_lignes ) {
+	tfp_exemple_suivi( $suivi_lignes );
+}
+?>
+
+<?php if ( $limites || ( $exclusions_titre && ! empty( $exclusions_items ) ) ) : ?>
+<section class="tfp-section--tight" id="limites">
+	<div class="tfp-container">
+		<?php if ( $exclusions_titre && ! empty( $exclusions_items ) ) : ?>
+			<?php tfp_panel_exclusions( $exclusions_titre, $exclusions_intro, $exclusions_items ); ?>
+		<?php endif; ?>
+		<?php if ( $limites ) : ?>
+			<h2 style="margin-top:32px"><?php echo esc_html( $limites_titre ); ?></h2>
+			<?php tfp_note_card( $limites ); ?>
+		<?php endif; ?>
+	</div>
+</section>
+<?php endif; ?>
+
+<section class="tfp-section--alt tfp-section--tight" id="details">
+	<div class="tfp-container">
+		<h2>Dans le détail</h2>
+		<p class="tfp-section__lede">Situations, espaces et organisation : ouvrez le point qui vous concerne.</p>
+		<div class="tfp-volets">
+			<?php if ( ! empty( $situations ) || $exemple ) : ?>
+				<details class="tfp-volet">
+					<summary><h3><?php echo esc_html( $situations_titre ?: 'Les situations concrètes que nous traitons' ); ?></h3></summary>
+					<div class="tfp-volet__corps">
+						<?php foreach ( $situations as $item ) : ?>
+							<p><?php echo esc_html( $item ); ?></p>
+						<?php endforeach; ?>
+						<?php if ( $exemple ) : ?>
+							<p><strong><?php echo esc_html( $exemple_label ); ?> :</strong> <?php echo esc_html( preg_replace( '/^' . preg_quote( $exemple_label, '/' ) . '\s*:?\s*/u', '', $exemple ) ); ?></p>
+						<?php endif; ?>
+					</div>
+				</details>
+			<?php endif; ?>
+			<?php foreach ( $details as $bloc ) : ?>
+				<details class="tfp-volet">
+					<summary><h3><?php echo esc_html( $bloc['titre'] ); ?></h3></summary>
+					<div class="tfp-volet__corps"><p><?php echo esc_html( $bloc['texte'] ); ?></p></div>
+				</details>
+			<?php endforeach; ?>
+			<?php foreach ( $orga_affiches as $bloc ) : ?>
+				<details class="tfp-volet">
+					<summary><h3><?php echo esc_html( $bloc['titre'] ); ?></h3></summary>
+					<div class="tfp-volet__corps"><p><?php echo esc_html( $bloc['texte'] ); ?></p></div>
+				</details>
+			<?php endforeach; ?>
+		</div>
+	</div>
+</section>
+
 <?php if ( ! empty( $villes ) || ! empty( $related_articles ) ) : ?>
 <section class="tfp-section--alt tfp-section--tight">
 	<div class="tfp-container tfp-two-col">
@@ -502,7 +476,7 @@ get_header();
 				tfp_link_cards(
 					array_map(
 						static function ( $article ) {
-							return array( 'texte' => get_the_title( $article ), 'url' => get_permalink( $article ) );
+							return array( 'texte' => tfp_espaces_insecables( get_the_title( $article ) ), 'url' => get_permalink( $article ) );
 						},
 						$related_articles
 					)
@@ -515,7 +489,7 @@ get_header();
 <?php endif; ?>
 
 <?php if ( ! empty( $faq ) ) : ?>
-<section class="tfp-section">
+<section class="tfp-section" id="questions">
 	<div class="tfp-container tfp-container--narrow">
 		<h2><?php echo esc_html( $faq_titre ); ?></h2>
 		<div style="margin-top:20px">

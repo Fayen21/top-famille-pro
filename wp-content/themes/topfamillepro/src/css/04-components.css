@@ -5633,3 +5633,316 @@ body.tfp-body .tfp-card-tile--orientation-active .tfp-card-tile__desc {
   font-size: var(--fs-sm);
   color: var(--color-text-on-dark-muted);
 }
+
+/* ==================================================================
+   Passe commerciale du 10 novembre 2026 — composants partagés
+   ================================================================== */
+
+/* Étiquette de section (« Exemple de suivi »). */
+.tfp-eyebrow {
+  margin: 0 0 6px;
+  font-size: 12.5px;
+  font-weight: var(--fw-bold);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--color-primary);
+}
+
+/* « Sur cette page » : raccourcis vers les sections d'une prestation. Une rangée de liens qui
+   passe à la ligne ; aucune barre collante (elle masquerait le header et la barre mobile). */
+.tfp-sur-page {
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.tfp-sur-page__titre {
+  margin: 0 0 8px;
+  font-size: var(--fs-2xs);
+  font-weight: var(--fw-bold);
+  color: var(--color-text-secondary);
+}
+
+.tfp-sur-page ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.tfp-sur-page a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 36px;
+  padding: 6px 14px;
+  border: 1px solid var(--color-border-strong);
+  border-radius: 999px;
+  background: var(--color-white);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semibold);
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+.tfp-sur-page a:hover {
+  border-color: var(--color-primary);
+}
+
+.tfp-sur-page a:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Périmètre du tarif. */
+.tfp-perimetre {
+  margin-top: 16px;
+  padding: 18px 20px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-white);
+  max-width: 860px;
+}
+
+.tfp-perimetre__titre {
+  margin: 0;
+  font-size: var(--fs-sm);
+  color: var(--color-text-secondary);
+}
+
+.tfp-perimetre__titre strong {
+  font-family: var(--font-heading);
+  font-size: var(--fs-xl);
+  color: var(--color-primary);
+}
+
+.tfp-perimetre__liste {
+  list-style: none;
+  margin: 12px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+  font-size: var(--fs-sm);
+  line-height: 1.55;
+  color: var(--color-text-secondary);
+}
+
+.tfp-perimetre__cle {
+  display: block;
+  font-weight: var(--fw-bold);
+  color: var(--color-navy);
+}
+
+@media (min-width: 900px) {
+  .tfp-perimetre__liste {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+  }
+}
+
+/* Exemple de suivi : tableau, puis fiches sous 640 px. */
+.tfp-suivi__docs {
+  display: grid;
+  gap: 10px 24px;
+  margin: 14px 0 20px;
+  max-width: 900px;
+  color: var(--color-text-secondary);
+}
+
+.tfp-suivi__docs p {
+  margin: 0;
+}
+
+@media (min-width: 760px) {
+  .tfp-suivi__docs {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.tfp-suivi__table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  font-size: var(--fs-sm);
+}
+
+.tfp-suivi__table th,
+.tfp-suivi__table td {
+  padding: 12px 14px;
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.tfp-suivi__table thead th {
+  background: var(--color-turquoise-pale);
+  color: var(--color-navy);
+  font-size: var(--fs-2xs);
+  font-weight: var(--fw-bold);
+}
+
+.tfp-suivi__table tbody th {
+  font-weight: var(--fw-semibold);
+  color: var(--color-navy);
+}
+
+.tfp-suivi__table tbody tr:last-child > * {
+  border-bottom: 0;
+}
+
+.tfp-suivi__etat {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 999px;
+  font-size: var(--fs-2xs);
+  font-weight: var(--fw-bold);
+}
+
+.tfp-suivi__etat--fait {
+  background: #E3F4EA;
+  color: #1E6B3C;
+}
+
+.tfp-suivi__etat--autre {
+  background: #FCEFD9;
+  color: #7A4A0C;
+}
+
+.tfp-suivi__note {
+  margin-top: 10px;
+  font-size: var(--fs-2xs);
+  font-style: italic;
+  color: var(--color-text-tertiary);
+}
+
+@media (max-width: 639px) {
+  .tfp-suivi__table,
+  .tfp-suivi__table tbody,
+  .tfp-suivi__table tr,
+  .tfp-suivi__table th,
+  .tfp-suivi__table td {
+    display: block;
+  }
+
+  .tfp-suivi__table {
+    border: 0;
+    background: none;
+  }
+
+  .tfp-suivi__table thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+  }
+
+  .tfp-suivi__table tbody tr {
+    margin-bottom: 10px;
+    padding: 12px 14px;
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+  }
+
+  .tfp-suivi__table th,
+  .tfp-suivi__table td {
+    padding: 4px 0;
+    border: 0;
+  }
+
+  .tfp-suivi__table td::before {
+    content: attr(data-label) " : ";
+    font-weight: var(--fw-semibold);
+    color: var(--color-navy);
+  }
+}
+
+/* Volets « Dans le détail » : <details> natifs, ouverts au clavier, sans JavaScript. */
+.tfp-volets {
+  margin-top: 20px;
+  display: grid;
+  gap: 10px;
+}
+
+.tfp-volet {
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+.tfp-volet > summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 52px;
+  padding: 12px 18px;
+  cursor: pointer;
+  list-style: none;
+}
+
+.tfp-volet > summary::-webkit-details-marker {
+  display: none;
+}
+
+.tfp-volet > summary::after {
+  content: "+";
+  flex: 0 0 auto;
+  font-size: 22px;
+  line-height: 1;
+  color: var(--color-primary);
+}
+
+.tfp-volet[open] > summary::after {
+  content: "−";
+}
+
+.tfp-volet > summary:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.tfp-volet > summary h3 {
+  margin: 0;
+  font-size: 17px;
+  line-height: 1.3;
+}
+
+.tfp-volet__corps {
+  padding: 0 18px 16px;
+  color: var(--color-text-secondary);
+  line-height: 1.65;
+}
+
+.tfp-volet__corps p {
+  margin: 0 0 10px;
+}
+
+.tfp-volet__corps p:last-child {
+  margin-bottom: 0;
+}
+
+.tfp-card__titre {
+  margin: 0 0 8px;
+  font-size: 18px;
+}
+
+/* Chapitres repliés d'une page locale : le titre garde la taille d'un H2 de chapitre, réduite. */
+.tfp-volet--chapitre > summary h2 {
+  margin: 0;
+  font-size: 19px;
+  line-height: 1.3;
+}
+
+.tfp-container--narrow .tfp-volets {
+  margin-top: 28px;
+}
+
+.tfp-perimetre--accueil .tfp-perimetre__liste {
+  margin-top: 0;
+  grid-template-columns: minmax(0, 1fr);
+}

@@ -30,9 +30,29 @@ const SERVICES = [
 	{ hash: '#/service/ponctuel', slug: 'ponctuel' },
 ];
 
+/*
+ * Ton factuel — passe commerciale du 10 novembre 2026 (§7) : la réserve sur le remplacement est
+ * conservée, dite sans tournure défensive. Remplacement exact sur tout texte relevé ; l'entrée doit
+ * servir au moins une fois (contrôle en fin de génération).
+ */
+const TON_FACTUEL = [
+	[
+		"Nous ne garantissons pas un remplacement dans tous les cas : sur un créneau de quelques heures, mieux vaut une information immédiate qu'une promesse non tenue.",
+		"Sur un créneau de quelques heures, un remplacement n'est pas toujours possible : vous êtes alors prévenu immédiatement.",
+	],
+];
+const tonComptes = TON_FACTUEL.map(() => 0);
+
 /** Échappement pour une chaîne PHP entre apostrophes simples. */
 function php(str) {
-	return "'" + String(str ?? '').replace(/\\/g, '\\\\').replace(/'/g, "\\'") + "'";
+	let texte = String(str ?? '');
+	TON_FACTUEL.forEach(([avant, apres], i) => {
+		while (texte.includes(avant)) {
+			texte = texte.replace(avant, apres);
+			tonComptes[i]++;
+		}
+	});
+	return "'" + texte.replace(/\\/g, '\\\\').replace(/'/g, "\\'") + "'";
 }
 
 function phpList(items) {
@@ -431,6 +451,52 @@ const DECISIONS_PRESTATIONS = {
 		exemple: { mode: 'intervention', heures: 7 },
 	},
 };
+/*
+ * « Exemple de suivi » — passe commerciale du 10 novembre 2026 (§5). Quatre lignes par prestation,
+ * au format « tâche prévue | fréquence | passage réalisé | observation » : un exemple de
+ * PRÉSENTATION, rendu comme tel (tfp_exemple_suivi()), jamais un relevé tiré d'un dossier client.
+ * Les tâches reprennent celles de la prestation ; les observations sont du type de ce qu'un
+ * intervenant note réellement (stock bas, pièce occupée, dégradation constatée).
+ */
+const SUIVI_EXEMPLES = {
+	bureaux: [
+		'Sanitaires : nettoyage et réapprovisionnement|À chaque passage|Fait|Savon presque épuisé : à commander',
+		'Salle de réunion : remise en ordre|À chaque passage|Reporté|Salle occupée à 8 h : traitée au passage suivant',
+		"Vitres intérieures de l'accueil|1 fois par semaine|Fait|—",
+		'Corbeilles et points de tri|À chaque passage|Fait|Bac de tri du 2e étage fendu',
+	],
+	commerces: [
+		'Sols de la surface de vente|Chaque matin avant ouverture|Fait|—',
+		'Vitrine, face intérieure|2 fois par semaine|Fait|Traces d’adhésif d’une ancienne affiche',
+		"Cabines d'essayage et miroirs|Chaque matin|Fait|Miroir fêlé dans la cabine 2",
+		'Réserve|1 fois par semaine|Reporté|Livraison en cours : reportée au samedi',
+	],
+	cabinets: [
+		"Salle d'attente : sièges, tables, sol|À chaque passage|Fait|—",
+		'Sanitaires des patients|À chaque passage|Fait|Distributeur de papier bloqué',
+		'Bureaux de consultation|À chaque passage|Fait|Documents laissés sur le bureau : contournés',
+		'Vitrages intérieurs|1 fois par semaine|Reporté|Consultation tardive : reporté au jeudi',
+	],
+	coproprietes: [
+		'Hall et boîtes aux lettres|À chaque passage|Fait|—',
+		'Escaliers et rampes|1 fois par semaine|Fait|Éclairage du 3e étage hors service',
+		'Sortie des conteneurs|Jours de collecte|Fait|Couvercle du bac jaune cassé',
+		"Vitres de la porte d'entrée|1 fois par semaine|Fait|—",
+	],
+	meubles: [
+		'Changement du linge fourni|À chaque départ|Fait|Housse de couette tachée : à remplacer',
+		'Cuisine et vaisselle|À chaque départ|Fait|—',
+		'Salle de bain|À chaque départ|Fait|Joint de douche noirci',
+		"Contrôle de l'inventaire|À chaque départ|Fait|Deux verres manquants",
+	],
+	ponctuel: [
+		'Hauts de meubles et huisseries|Une fois, en début d’intervention|Fait|—',
+		'Vitres et encadrements|Une fois|Fait|Traces de peinture sur deux châssis : reprises',
+		'Plinthes et menuiseries|Une fois|Fait|—',
+		'Sols : aspiration puis lavage|Une fois, en fin d’intervention|Fait|Seconde passe conseillée sous 48 h',
+	],
+};
+
 const ancienConfigsIntro =
 	"Le volume d'heures et la fréquence ne se déduisent pas d'une surface. Voici les cas de figure que nous rencontrons le plus souvent, et le rythme qui leur correspond généralement.";
 
@@ -515,6 +581,8 @@ for (const s of all) {
 	set('objet_editorial', php(dec.objet));
 	set('exemple_mode', php(dec.exemple ? dec.exemple.mode : 'mensuel'));
 	set('exemple_heures', dec.exemple ? String(dec.exemple.heures) : "''");
+	if (!SUIVI_EXEMPLES[s.slug]) throw new Error(`exemple de suivi manquant pour « ${s.slug} »`);
+	set('suivi_exemple', `implode( "\\n", ${phpList(SUIVI_EXEMPLES[s.slug])} )`);
 	L.push(`\techo "  ✓ ${s.slug}\\n";`);
 	L.push('}');
 	L.push('');
@@ -522,4 +590,7 @@ for (const s of all) {
 L.push("echo \"Terminé.\\n\";");
 
 writeFileSync(OUT, L.join('\n') + '\n');
+TON_FACTUEL.forEach(([avant], i) => {
+	if (!tonComptes[i]) throw new Error(`ton factuel : « ${avant.slice(0, 60)}… » introuvable — revoir TON_FACTUEL.`);
+});
 console.error(`\nÉcrit : ${OUT}`);

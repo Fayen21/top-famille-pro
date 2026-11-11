@@ -133,6 +133,22 @@ const CORRECTIONS_EDITORIALES = [
 			'sans que ce remplacement puisse être garanti dans tous les cas.',
 		apres: "et recherche activement une solution en cas d'absence imprévue de l'intervenant habituel.",
 	},
+	/*
+	 * Ton factuel — passe commerciale du 10 novembre 2026 (§7) : l'unique implantation et la
+	 * continuité recherchée restent dites, sans tournure défensive.
+	 */
+	{
+		avant: "C'est notre unique implantation : nous n'avons pas d'agence dans les autres départements et nous ne le prétendons pas.",
+		apres: "C'est notre unique implantation : les interventions dans les autres départements sont organisées depuis Saint-Apollinaire.",
+	},
+	{
+		avant: "Nous n'avons qu'une implantation, à Saint-Apollinaire, et nous ne prétendons pas avoir des agences partout.",
+		apres: "Notre unique implantation est à Saint-Apollinaire : c'est de là que sont organisées toutes nos interventions.",
+	},
+	{
+		avant: 'Nous ne garantissons pas non plus un même intervenant à chaque passage : nous recherchons cette continuité et la privilégions autant que possible.',
+		apres: "Nous recherchons un même intervenant d'un passage à l'autre et privilégions cette continuité autant que possible.",
+	},
 ];
 
 /**

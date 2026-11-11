@@ -171,9 +171,58 @@ const TEXTES_REMPLACES = {
 };
 let titresRemplaces = 0;
 
+/*
+ * Ton factuel — passe commerciale du 10 novembre 2026 (§7). Les tournures défensives (« nous ne le
+ * prétendons pas », « honnêtement », « une vitrine sans utilité ») deviennent des informations ; les
+ * limites de couverture qu'elles portaient sont conservées, dites autrement. Remplacement exact,
+ * appliqué à tout texte relevé ; chaque entrée doit servir au moins une fois.
+ */
+const TON_FACTUEL = [
+	[
+		"Nous n'avons pas de bureau au centre-ville, et nous ne le prétendons pas : ce serait une vitrine sans utilité.",
+		'Basée à Saint-Apollinaire, notre entreprise organise les interventions à Dijon et dans son agglomération.',
+	],
+	[
+		"Nous n'avons pas de bureau dans le centre-ville dijonnais : c'est notre unique implantation pour toute la région.",
+		"C'est notre unique implantation : les interventions à Dijon et dans toute la région sont organisées depuis Saint-Apollinaire.",
+	],
+	[
+		'Pour une commune plus éloignée, contactez-nous : nous vous dirons honnêtement si nous pouvons tenir un planning fiable.',
+		'Pour une commune plus éloignée, contactez-nous : nous vous indiquerons si un planning régulier peut y être tenu.',
+	],
+	[
+		'ne sont pas des secteurs prioritaires : contactez-nous, nous vous répondrons honnêtement.',
+		'ne sont pas des secteurs prioritaires : chaque demande y est étudiée selon la fréquence et le trajet.',
+	],
+	[
+		'Nous ne garantissons pas une continuité automatique — personne ne peut le faire honnêtement.',
+		'La continuité est recherchée, sans être automatique.',
+	],
+	[
+		"Nous étudions les demandes au cas par cas, mais nous ne prétendons pas couvrir tout le département avec la même réactivité qu'à Besançon.",
+		"Hors de l'agglomération de Besançon, les demandes sont étudiées au cas par cas, selon la fréquence et le trajet.",
+	],
+	[
+		"Nous ne prétendons pas intervenir partout dans la Nièvre : au-delà de l'agglomération, chaque demande",
+		"Au-delà de l'agglomération, chaque demande",
+	],
+	[ ' Nous ne prétendons pas être implantés sur place.', '' ],
+	[
+		"Nous n'avons pas de bureau à Chenôve et nous ne prétendons pas en avoir.",
+		'Les interventions y sont organisées depuis Saint-Apollinaire.',
+	],
+];
+const tonComptes = TON_FACTUEL.map(() => 0);
+
 /** Applique les règles d'accord ; échoue si une tournure fautive non couverte subsiste. */
 function grammaire(texte) {
 	let sortie = String(texte ?? '');
+	TON_FACTUEL.forEach(([avant, apres], i) => {
+		while (sortie.includes(avant)) {
+			sortie = sortie.replace(avant, apres);
+			tonComptes[i]++;
+		}
+	});
 	for (const [avant, apres] of GRAMMAIRE) {
 		while (sortie.includes(avant)) {
 			sortie = sortie.replace(avant, apres);
@@ -690,6 +739,10 @@ if (!titresRemplaces) {
 	throw new Error('« Communes secondaires documentées » introuvable : revoir TITRES_REMPLACES plutôt que de laisser passer un intitulé non contrôlé.');
 }
 console.error(`Intitulés remplacés (décisions des 14 et 25 octobre 2026) : ${titresRemplaces}`);
+TON_FACTUEL.forEach(([avant], i) => {
+	if (!tonComptes[i]) throw new Error(`ton factuel : « ${avant.slice(0, 60)}… » introuvable — la maquette a changé, revoir TON_FACTUEL.`);
+});
+console.error(`Tournures défensives remplacées (passe commerciale) : ${tonComptes.reduce((a, b) => a + b, 0)}`);
 EXEMPLES_CORRIGES.forEach(([avant, , attendu], i) => {
 	if (exemplesComptes[i] !== attendu) {
 		throw new Error(`exemple tarifaire : « ${avant} » remplacé ${exemplesComptes[i]} fois, ${attendu} attendu — la maquette a changé, revoir EXEMPLES_CORRIGES.`);

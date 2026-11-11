@@ -143,6 +143,12 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'objet_editorial', 'le nettoyage de vos bureaux', $id );
 	tfp_seed_set_field( 'exemple_mode', 'mensuel', $id );
 	tfp_seed_set_field( 'exemple_heures', '', $id );
+	tfp_seed_set_field( 'suivi_exemple', implode( "\n", array(
+		'Sanitaires : nettoyage et réapprovisionnement|À chaque passage|Fait|Savon presque épuisé : à commander',
+		'Salle de réunion : remise en ordre|À chaque passage|Reporté|Salle occupée à 8 h : traitée au passage suivant',
+		'Vitres intérieures de l\'accueil|1 fois par semaine|Fait|—',
+		'Corbeilles et points de tri|À chaque passage|Fait|Bac de tri du 2e étage fendu',
+	) ), $id );
 	echo "  ✓ bureaux\n";
 }
 
@@ -256,6 +262,12 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'objet_editorial', 'l\'entretien de votre commerce', $id );
 	tfp_seed_set_field( 'exemple_mode', 'mensuel', $id );
 	tfp_seed_set_field( 'exemple_heures', '', $id );
+	tfp_seed_set_field( 'suivi_exemple', implode( "\n", array(
+		'Sols de la surface de vente|Chaque matin avant ouverture|Fait|—',
+		'Vitrine, face intérieure|2 fois par semaine|Fait|Traces d’adhésif d’une ancienne affiche',
+		'Cabines d\'essayage et miroirs|Chaque matin|Fait|Miroir fêlé dans la cabine 2',
+		'Réserve|1 fois par semaine|Reporté|Livraison en cours : reportée au samedi',
+	) ), $id );
 	echo "  ✓ commerces\n";
 }
 
@@ -377,6 +389,12 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'objet_editorial', 'l\'entretien de votre cabinet', $id );
 	tfp_seed_set_field( 'exemple_mode', 'mensuel', $id );
 	tfp_seed_set_field( 'exemple_heures', '', $id );
+	tfp_seed_set_field( 'suivi_exemple', implode( "\n", array(
+		'Salle d\'attente : sièges, tables, sol|À chaque passage|Fait|—',
+		'Sanitaires des patients|À chaque passage|Fait|Distributeur de papier bloqué',
+		'Bureaux de consultation|À chaque passage|Fait|Documents laissés sur le bureau : contournés',
+		'Vitrages intérieurs|1 fois par semaine|Reporté|Consultation tardive : reporté au jeudi',
+	) ), $id );
 	echo "  ✓ cabinets\n";
 }
 
@@ -494,6 +512,12 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'objet_editorial', 'l\'entretien de votre copropriété', $id );
 	tfp_seed_set_field( 'exemple_mode', 'mensuel', $id );
 	tfp_seed_set_field( 'exemple_heures', '', $id );
+	tfp_seed_set_field( 'suivi_exemple', implode( "\n", array(
+		'Hall et boîtes aux lettres|À chaque passage|Fait|—',
+		'Escaliers et rampes|1 fois par semaine|Fait|Éclairage du 3e étage hors service',
+		'Sortie des conteneurs|Jours de collecte|Fait|Couvercle du bac jaune cassé',
+		'Vitres de la porte d\'entrée|1 fois par semaine|Fait|—',
+	) ), $id );
 	echo "  ✓ coproprietes\n";
 }
 
@@ -584,7 +608,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'organisation_5_texte', 'Les modalités de suivi sont fixées au devis : signalement des anomalies constatées, canal utilisé (cahier de liaison, message, appel pour ce qui bloque un séjour) et délai. Un compte-rendu écrit après chaque passage est possible lorsqu\'il est prévu au devis, selon l\'organisation définie avec le client. Audrey reste votre interlocutrice pour organiser les plannings de rotation et absorber les changements de dernière minute.', $id );
 	tfp_seed_set_field( 'organisation_5_carte', '', $id );
 	tfp_seed_set_field( 'organisation_6_titre', 'Absence et remplacement', $id );
-	tfp_seed_set_field( 'organisation_6_texte', 'En cas d\'absence de l\'intervenant habituel entre deux réservations, nous recherchons activement une solution et vous prévenons sans attendre, afin que vous puissiez décider en connaissance de cause. Nous ne garantissons pas un remplacement dans tous les cas : sur un créneau de quelques heures, mieux vaut une information immédiate qu\'une promesse non tenue.', $id );
+	tfp_seed_set_field( 'organisation_6_texte', 'En cas d\'absence de l\'intervenant habituel entre deux réservations, nous recherchons activement une solution et vous prévenons sans attendre, afin que vous puissiez décider en connaissance de cause. Sur un créneau de quelques heures, un remplacement n\'est pas toujours possible : vous êtes alors prévenu immédiatement.', $id );
 	tfp_seed_set_field( 'organisation_6_carte', '1', $id );
 	tfp_seed_set_field( 'note_taches', 'Hors prestation : lavage du linge (nous changeons le linge propre fourni par le client, nous ne le lavons pas), petites réparations, accueil et remise de clés aux voyageurs, gestion des réservations, réapprovisionnement acheté par nos soins.', $id );
 	tfp_seed_set_field( 'semaine_titre', 'Une semaine type', $id );
@@ -609,6 +633,12 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'objet_editorial', 'le ménage de vos locations meublées', $id );
 	tfp_seed_set_field( 'exemple_mode', 'mensuel', $id );
 	tfp_seed_set_field( 'exemple_heures', '', $id );
+	tfp_seed_set_field( 'suivi_exemple', implode( "\n", array(
+		'Changement du linge fourni|À chaque départ|Fait|Housse de couette tachée : à remplacer',
+		'Cuisine et vaisselle|À chaque départ|Fait|—',
+		'Salle de bain|À chaque départ|Fait|Joint de douche noirci',
+		'Contrôle de l\'inventaire|À chaque départ|Fait|Deux verres manquants',
+	) ), $id );
 	echo "  ✓ meubles\n";
 }
 
@@ -725,6 +755,12 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'objet_editorial', 'votre nettoyage ponctuel', $id );
 	tfp_seed_set_field( 'exemple_mode', 'intervention', $id );
 	tfp_seed_set_field( 'exemple_heures', 7, $id );
+	tfp_seed_set_field( 'suivi_exemple', implode( "\n", array(
+		'Hauts de meubles et huisseries|Une fois, en début d’intervention|Fait|—',
+		'Vitres et encadrements|Une fois|Fait|Traces de peinture sur deux châssis : reprises',
+		'Plinthes et menuiseries|Une fois|Fait|—',
+		'Sols : aspiration puis lavage|Une fois, en fin d’intervention|Fait|Seconde passe conseillée sous 48 h',
+	) ), $id );
 	echo "  ✓ ponctuel\n";
 }
 
