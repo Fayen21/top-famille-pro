@@ -633,6 +633,19 @@
   transform: rotate(180deg);
 }
 
+/* Première entrée du panneau : la page que désignait le libellé du menu (13 novembre 2026). */
+.tfp-submenu__item--tete {
+  margin-bottom: 4px;
+  border-bottom: 1px solid var(--color-border);
+  border-radius: 9px 9px 0 0;
+  font-weight: var(--fw-semibold);
+  color: var(--color-navy);
+}
+
+.tfp-nav__link--parent[role="button"] {
+  cursor: pointer;
+}
+
 /* Lien « Toutes les prestations → » du sous-menu : repris de son style en ligne d'origine. */
 .tfp-submenu__item--all {
   font-weight: var(--fw-semibold);
@@ -5956,4 +5969,469 @@ body.tfp-body .tfp-card-tile--orientation-active .tfp-card-tile__desc {
 .tfp-field__facultatif {
   font-weight: var(--fw-regular, 400);
   color: var(--color-text-tertiary);
+}
+
+/* ==================================================================
+   Passe du 13 novembre 2026 — gérante sans photo, pied harmonisé,
+   pages prestation réalignées, un peu plus de couleur.
+   ================================================================== */
+
+/* ---------- Monogramme de la gérante (remplacé par sa photo quand elle est fournie) ---------- */
+.tfp-monogramme.tfp-monogramme {
+  display: inline-grid;
+  place-items: center;
+  flex: 0 0 auto;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(140deg, var(--color-primary) 0%, var(--color-navy) 100%);
+  box-shadow: 0 0 0 3px var(--color-white), 0 0 0 5px var(--color-turquoise);
+  color: var(--color-white);
+  font-family: var(--font-heading);
+  font-size: 22px;
+  font-weight: var(--fw-extrabold);
+  letter-spacing: 0.5px;
+  line-height: 1;
+  object-fit: cover;
+}
+
+.tfp-monogramme.tfp-monogramme--xl {
+  width: 112px;
+  height: 112px;
+  font-size: 42px;
+  box-shadow: 0 0 0 5px var(--color-white), 0 0 0 8px var(--color-turquoise), var(--shadow-md);
+}
+
+/* ---------- Carte « Votre interlocutrice » de l'accueil ---------- */
+.tfp-gerante-carte {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+  gap: clamp(24px, 3.5vw, 48px);
+  align-items: center;
+  padding: clamp(22px, 3.4vw, 44px);
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-md);
+}
+
+.tfp-gerante-carte__identite {
+  display: flex;
+  align-items: flex-start;
+  gap: clamp(18px, 2.4vw, 32px);
+}
+
+.tfp-gerante-carte__identite .tfp-eyebrow {
+  margin-bottom: 8px;
+}
+
+.tfp-gerante-carte__roles {
+  display: grid;
+  gap: 4px;
+  margin: 0;
+  padding: clamp(14px, 1.8vw, 22px);
+  list-style: none;
+  background: var(--color-turquoise-pale-2);
+  border-radius: var(--radius-lg);
+}
+
+.tfp-gerante-carte__roles li {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  padding: 10px 6px;
+}
+
+.tfp-gerante-carte__roles li + li {
+  border-top: 1px solid var(--color-turquoise-light);
+}
+
+.tfp-gerante-carte__rang {
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--color-copper);
+  color: var(--color-navy);
+  font-family: var(--font-heading);
+  font-weight: var(--fw-extrabold);
+}
+
+.tfp-gerante-carte__roles strong {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 17px;
+  color: var(--color-navy);
+}
+
+.tfp-gerante-carte__roles span:not(.tfp-gerante-carte__rang) {
+  display: block;
+  margin-top: 2px;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--color-text-secondary);
+}
+
+@media (max-width: 899px) {
+  .tfp-gerante-carte {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 559px) {
+  .tfp-gerante-carte__identite {
+    flex-direction: column;
+  }
+
+  .tfp-monogramme.tfp-monogramme--xl {
+    width: 84px;
+    height: 84px;
+    font-size: 32px;
+  }
+}
+
+/* ---------- Carte de la gérante dans le hero de /a-propos/ ---------- */
+.tfp-hero__media--carte-gerante {
+  display: grid;
+  place-items: center;
+}
+
+.tfp-carte-gerante {
+  display: grid;
+  justify-items: center;
+  gap: 6px;
+  width: min(100%, 380px);
+  padding: clamp(28px, 4vw, 48px) 24px;
+  text-align: center;
+  background:
+    radial-gradient(circle at 85% 12%, rgba(217, 160, 98, 0.22), transparent 42%),
+    linear-gradient(160deg, var(--color-turquoise-pale) 0%, var(--color-white) 70%);
+  border: 1px solid var(--color-turquoise-light);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+}
+
+.tfp-carte-gerante__nom {
+  margin-top: 18px;
+  font-family: var(--font-heading);
+  font-size: clamp(22px, 2.2vw, 28px);
+  color: var(--color-navy);
+}
+
+.tfp-carte-gerante__fonction {
+  font-weight: var(--fw-semibold);
+  color: var(--color-primary);
+}
+
+.tfp-carte-gerante__lieu {
+  font-size: 14.5px;
+  color: var(--color-text-tertiary);
+}
+
+/* ---------- Page prestation : « Pour qui » et les tâches partent de la même ligne ---------- */
+#essentiel .tfp-two-col {
+  align-items: flex-start;
+}
+
+/* ---------- Pied de page : quatre colonnes alignées, mêmes intitulés, mêmes renvois ---------- */
+@media (min-width: 820px) {
+  .tfp-footer__inner {
+    /* Minimums à 0 : entre 820 et 1 100 px, des largeurs planchers faisaient déborder la page de 34 px. */
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1.15fr) minmax(0, 1.5fr) minmax(0, 0.8fr);
+    gap: 32px clamp(24px, 3.2vw, 48px);
+    align-items: start;
+  }
+}
+
+.tfp-footer__col--infos h3 {
+  color: var(--color-turquoise);
+}
+
+.tfp-footer__col ul.tfp-footer__zones {
+  margin-top: 0;
+  gap: 10px 24px;
+}
+
+.tfp-footer .tfp-footer__more,
+.tfp-footer .tfp-footer__zones-links .tfp-footer__more {
+  margin-top: 8px;
+  font-size: 14.5px;
+}
+
+.tfp-footer__zones-links {
+  gap: 0;
+  margin-top: 8px;
+}
+
+/* ---------- Un peu plus de couleur (13 novembre 2026), sans toucher aux dimensions ----------
+   Tout ce qui suit joue sur des fonds, des filets et des ombres : aucune hauteur, aucune marge,
+   aucune taille de texte ne change. La palette reste celle de CLAUDE.md §4. */
+
+/* Halos turquoise et cuivre derrière le haut de page : le hero n'est plus un aplat gris. */
+body.tfp-body {
+  background-image:
+    radial-gradient(760px 460px at 92% 150px, rgba(147, 218, 219, 0.42), transparent 70%),
+    radial-gradient(620px 420px at 0% 520px, rgba(217, 160, 98, 0.16), transparent 70%);
+  background-repeat: no-repeat;
+}
+
+/* Surtitres en cuivre : le second accent de la charte, jusque-là presque absent des pages. */
+.tfp-eyebrow,
+.tfp-sur-page__titre {
+  color: var(--color-copper-text);
+}
+
+/* Sommaire « Sur cette page » : pastilles turquoise, cuivre au survol. */
+.tfp-sur-page a {
+  background: var(--color-turquoise-pale);
+  border-color: var(--color-turquoise-light);
+  color: var(--color-navy);
+}
+
+.tfp-sur-page a:hover {
+  background: var(--color-copper-pale);
+  border-color: var(--color-copper);
+}
+
+.tfp-sur-page li:last-child a {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+.tfp-sur-page li:last-child a:hover {
+  background: var(--color-navy);
+  border-color: var(--color-navy);
+}
+
+/* Listes de tâches : puces cuivre, en écho aux puces turquoise de « Pour qui ». */
+#essentiel .tfp-list-marked li::before {
+  background: var(--color-copper);
+}
+
+/* Cartes de réassurance de l'accueil : un liseré de couleur par carte. */
+.tfp-reassurance--4 .tfp-reassurance__item {
+  box-shadow: inset 0 3px 0 var(--color-turquoise);
+}
+
+.tfp-reassurance--4 .tfp-reassurance__item:nth-child(2) {
+  box-shadow: inset 0 3px 0 var(--color-copper);
+}
+
+.tfp-reassurance--4 .tfp-reassurance__item:nth-child(3) {
+  box-shadow: inset 0 3px 0 var(--color-primary);
+}
+
+.tfp-reassurance--4 .tfp-reassurance__item:nth-child(4) {
+  box-shadow: inset 0 3px 0 var(--color-turquoise);
+}
+
+/* Cartes cliquables : au survol, liseré turquoise et légère élévation. */
+a.tfp-card-tile--lien,
+a.tfp-card {
+  transition: box-shadow var(--transition-base), border-color var(--transition-base), transform var(--transition-base);
+}
+
+a.tfp-card-tile--lien:hover,
+a.tfp-card:hover {
+  border-color: var(--color-turquoise);
+  box-shadow: var(--shadow-md), inset 0 3px 0 var(--color-turquoise);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a.tfp-card-tile--lien:hover,
+  a.tfp-card:hover {
+    transform: translateY(-2px);
+  }
+}
+
+/* FAQ : la question ouverte se distingue. */
+details.tfp-faq-item[open] {
+  border-color: var(--color-turquoise);
+  box-shadow: inset 4px 0 0 var(--color-turquoise);
+}
+
+details.tfp-faq-item > summary:hover {
+  color: var(--color-primary);
+}
+
+/* Bandeau de rappel avant le pied : dégradé et halo, au lieu d'un aplat bleu. */
+.tfp-prefooter {
+  background-image:
+    radial-gradient(520px 260px at 88% 0%, rgba(147, 218, 219, 0.28), transparent 70%),
+    linear-gradient(120deg, var(--color-primary) 0%, var(--color-navy) 100%);
+}
+
+/* ---------- Page prestation : la « réponse directe » s'aligne sur le reste de la page ----------
+   Elle vivait dans une colonne de 820 px centrée, décalée par rapport au hero et au sommaire, avec
+   deux filets emboîtés. C'est maintenant un seul encadré, sur la largeur du conteneur. */
+body.tfp-type-prestation .tfp-presta-reponse {
+  --container-max: 1260px !important;
+}
+
+body.tfp-type-prestation .tfp-presta-reponse .tfp-direct-answer {
+  max-width: none;
+  padding: clamp(18px, 2.4vw, 28px) clamp(18px, 2.8vw, 34px);
+  background: var(--color-white);
+  border: 1px solid var(--color-turquoise-light);
+  border-left: 5px solid var(--color-turquoise);
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+
+body.tfp-type-prestation .tfp-presta-reponse .tfp-direct-answer__label {
+  color: var(--color-copper-text);
+}
+
+body.tfp-type-prestation .tfp-presta-reponse .tfp-direct-answer__text {
+  max-width: 980px;
+  color: var(--color-text);
+}
+
+body.tfp-type-prestation .tfp-presta-reponse .tfp-maillage {
+  max-width: none;
+  margin: 0;
+  padding: 14px clamp(18px, 2.8vw, 34px);
+  background: var(--color-turquoise-pale-2);
+  border: 1px solid var(--color-turquoise-light);
+  border-top: 0;
+  border-left: 5px solid var(--color-turquoise);
+  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+}
+
+body.tfp-type-prestation .tfp-presta-reponse .tfp-direct-answer:last-child {
+  border-radius: var(--radius-lg);
+}
+
+/* ---------- Page « Pourquoi nous » : des cartes, des numéros, des chiffres qui se voient ---------- */
+.tfp-page-pourquoi-nous #s-2 .tfp-card-grid {
+  --tfp-tuile-padding: 26px 24px 24px !important;
+  --tfp-tuile-rayon: 16px !important;
+  --tfp-tuile-filet: 1px !important;
+  --tfp-tuile-filet-largeurs: 1px !important;
+  --tfp-tuile-fond: var(--color-white) !important;
+  --tfp-tuile-filet-couleur: var(--color-border) !important;
+  --tfp-tuile-gap: 20px !important;
+  --tfp-grille-colonne: 320px !important;
+  counter-reset: tfp-argument;
+}
+
+.tfp-page-pourquoi-nous #s-2.tfp-section--blanc {
+  background: transparent;
+}
+
+.tfp-page-pourquoi-nous #s-2 .tfp-card-tile--texte {
+  position: relative;
+  height: 100%;
+  box-shadow: var(--shadow-sm);
+  counter-increment: tfp-argument;
+}
+
+.tfp-page-pourquoi-nous #s-2 .tfp-card-tile__title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.tfp-page-pourquoi-nous #s-2 .tfp-card-tile__title::before {
+  content: counter(tfp-argument, decimal-leading-zero);
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: var(--color-turquoise-pale);
+  color: var(--color-primary);
+  font-family: var(--font-heading);
+  font-size: 15px;
+  font-weight: var(--fw-extrabold);
+}
+
+.tfp-page-pourquoi-nous #s-2 li:nth-child(even) .tfp-card-tile__title::before {
+  background: var(--color-copper-pale);
+  color: var(--color-copper-text);
+}
+
+/* Les trois chiffres : une bande bleu nuit, des nombres en grand. */
+.tfp-page-pourquoi-nous #s-3 {
+  background:
+    radial-gradient(520px 300px at 100% 0%, rgba(147, 218, 219, 0.2), transparent 70%),
+    var(--color-navy);
+}
+
+.tfp-page-pourquoi-nous #s-3 .tfp-static-block__titre {
+  color: var(--color-white);
+}
+
+.tfp-page-pourquoi-nous #s-3 .tfp-prose {
+  color: var(--color-text-on-dark-muted);
+}
+
+.tfp-page-pourquoi-nous #s-3 .tfp-card-grid {
+  --tfp-tuile-fond: rgba(255, 255, 255, 0.06) !important;
+  --tfp-tuile-filet-couleur: rgba(184, 228, 228, 0.35) !important;
+  --tfp-tuile-padding: 22px 24px !important;
+}
+
+.tfp-page-pourquoi-nous #s-3 .tfp-card-tile__title {
+  font-size: clamp(34px, 4vw, 46px);
+  line-height: 1.1;
+  color: var(--color-turquoise);
+}
+
+.tfp-page-pourquoi-nous #s-3 li:nth-child(2) .tfp-card-tile__title {
+  color: var(--color-copper);
+}
+
+.tfp-page-pourquoi-nous #s-3 .tfp-card-tile__desc {
+  margin-top: 6px;
+  font-size: 15px;
+  color: var(--color-white);
+}
+
+/* « Ce qui nous distingue » : cartes à liseré, turquoise et cuivre en alternance. */
+.tfp-page-pourquoi-nous #s-4 .tfp-card-grid {
+  --tfp-tuile-padding: 22px 22px 22px 24px !important;
+  --tfp-tuile-rayon: 14px !important;
+  --tfp-tuile-filet: 1px !important;
+  --tfp-tuile-filet-largeurs: 1px !important;
+  --tfp-tuile-fond: var(--color-bg) !important;
+  --tfp-tuile-filet-couleur: var(--color-border) !important;
+  --tfp-tuile-gap: 18px !important;
+}
+
+.tfp-page-pourquoi-nous #s-4 .tfp-card-tile--texte {
+  height: 100%;
+  box-shadow: inset 4px 0 0 var(--color-turquoise);
+}
+
+.tfp-page-pourquoi-nous #s-4 li:nth-child(even) .tfp-card-tile--texte {
+  box-shadow: inset 4px 0 0 var(--color-copper);
+}
+
+/* ---------- FAQ de l'accueil ---------- */
+.tfp-home-faq__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.4fr);
+  gap: clamp(24px, 4vw, 64px);
+  align-items: start;
+}
+
+.tfp-home-faq__lede {
+  margin-top: 14px;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+
+.tfp-home-faq__liste {
+  display: grid;
+  gap: 10px;
+}
+
+@media (max-width: 899px) {
+  .tfp-home-faq__inner {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }

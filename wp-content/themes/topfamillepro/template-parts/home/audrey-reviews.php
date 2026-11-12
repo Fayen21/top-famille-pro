@@ -32,65 +32,60 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-$site         = tfp_site_data();
-$first_name   = explode( ' ', $site['manager'] )[0];
-// `audrey-portrait` : le visuel que la maquette pose sur l'accueil — distinct de celui de /a-propos/.
-$audrey_photo = tfp_get_audrey_photo_url( 'audrey-portrait' );
-$is_real      = tfp_audrey_photo_is_real();
+$site       = tfp_site_data();
+$first_name = explode( ' ', $site['manager'] )[0];
+
+/*
+ * Décision du 13 novembre 2026 : la gérante est présentée SANS photo et SANS citation.
+ *  - plus de portrait de banque d'images ni de mention « photo provisoire » : un monogramme, remplacé
+ *    de lui-même par la vraie photo le jour où elle est saisie (tfp_gerante_visuel()) ;
+ *  - plus de phrase mise dans la bouche d'Audrey : la citation de la maquette attendait sa
+ *    validation (CLAUDE.md §5.5). Le bloc dit à la place ce qu'elle FAIT, en trois temps, avec des
+ *    faits déjà présents ailleurs sur le site (devis étudié par elle, réponse sous 24 h, visite,
+ *    cahier des charges, suivi direct).
+ */
+$roles = array(
+	array( 'Votre devis', $first_name . ' étudie personnellement chaque demande et vous répond sous 24 h.' ),
+	array( 'Votre cahier des charges', 'Il est établi avec vous, à partir de la visite de vos locaux.' ),
+	array( 'Votre suivi', 'Elle reste joignable directement pour ajuster un passage ou traiter une remarque.' ),
+);
 ?>
 <section class="tfp-section--alt tfp-section" aria-labelledby="tfp-gerante-titre">
-	<div class="tfp-container tfp-gerante">
-		<div class="tfp-audrey-portrait tfp-gerante__portrait">
-			<?php if ( $audrey_photo ) : ?>
-				<img
-					src="<?php echo esc_url( $audrey_photo ); ?>"
-					alt="<?php echo esc_attr( $is_real ? ( $site['manager'] . ', gérante de ' . $site['brand_name'] ) : 'Photo d’illustration temporaire — portrait définitif à venir' ); ?>"
-					width="294" height="368"
-					class="tfp-audrey-portrait__img"
-					loading="lazy"
-				>
-				<?php tfp_google_rating_badge( 'floating' ); ?>
-				<?php if ( ! $is_real ) : ?>
-					<p class="tfp-audrey-portrait__note">Photo d’illustration</p>
-				<?php endif; ?>
-			<?php else : ?>
-				<div class="tfp-audrey-portrait__fallback">
-					<span aria-hidden="true"><?php echo esc_html( mb_substr( $first_name, 0, 1 ) ); ?></span>
+	<div class="tfp-container">
+		<div class="tfp-gerante-carte">
+			<div class="tfp-gerante-carte__identite">
+				<?php tfp_gerante_visuel( 'tfp-monogramme--xl' ); ?>
+				<div>
+					<p class="tfp-eyebrow">Votre interlocutrice</p>
+					<h2 id="tfp-gerante-titre" class="tfp-gerante__titre"><?php echo esc_html( $site['manager'] ); ?>, gérante de <?php echo esc_html( $site['brand_name'] ); ?></h2>
+					<p class="tfp-gerante__lede">
+						<?php echo esc_html( $first_name ); ?> supervise l'organisation des prestations et le suivi des clients, depuis <?php echo esc_html( $site['address_city'] ); ?>. Vous savez à qui parler, du premier échange au suivi des passages.
+					</p>
+					<div class="tfp-action-row tfp-gerante__actions">
+						<?php
+						tfp_button(
+							array(
+								'label'   => 'Échanger sur mes locaux',
+								'href'    => home_url( '/contact/' ),
+								'variant' => 'primary',
+							)
+						);
+						tfp_bouton_appel( array( 'variant' => 'secondary', 'numero' => true ) );
+						?>
+					</div>
 				</div>
-				<p class="tfp-audrey-portrait__note">Photo à venir</p>
-			<?php endif; ?>
-		</div>
-
-		<div class="tfp-gerante__texte">
-			<h2 id="tfp-gerante-titre" class="tfp-gerante__titre"><?php echo esc_html( $site['manager'] ); ?>, gérante de <?php echo esc_html( $site['brand_name'] ); ?></h2>
-			<p class="tfp-gerante__lede">
-				<?php echo esc_html( $first_name ); ?> supervise l'organisation des prestations et le suivi des clients. Elle reste directement joignable pour échanger sur vos locaux et vos besoins.
-			</p>
-			<blockquote class="tfp-quote" data-tfp-provisional="1">&laquo;&nbsp;Mon rôle, c'est de rester joignable et de tenir mes engagements. Chaque client sait à qui parler, et sait ce qui a été fait dans ses locaux.&nbsp;&raquo;</blockquote>
-			<p class="tfp-provisional-notice" data-tfp-provisional-notice="1">Citation en attente de validation par l’intéressée.</p>
-			<p class="tfp-gerante__signature">
-				<strong><?php echo esc_html( $site['manager'] ); ?></strong>
-				<span class="tfp-gerante__fonction"> · Gérante, <?php echo esc_html( $site['brand_name'] . ' — ' . $site['address_city'] ); ?></span>
-			</p>
-
-			<div class="tfp-action-row tfp-gerante__actions">
-				<?php
-				tfp_button(
-					array(
-						'label'   => 'Échanger sur mes locaux',
-						'href'    => home_url( '/contact/' ),
-						'variant' => 'primary',
-					)
-				);
-				tfp_button(
-					array(
-						'label'   => 'Lire les avis',
-						'href'    => home_url( '/avis-clients/' ),
-						'variant' => 'secondary',
-					)
-				);
-				?>
 			</div>
+			<ol class="tfp-gerante-carte__roles">
+				<?php foreach ( $roles as $i => $role ) : ?>
+					<li>
+						<span class="tfp-gerante-carte__rang" aria-hidden="true"><?php echo (int) $i + 1; ?></span>
+						<div>
+							<strong><?php echo esc_html( $role[0] ); ?></strong>
+							<span><?php echo esc_html( $role[1] ); ?></span>
+						</div>
+					</li>
+				<?php endforeach; ?>
+			</ol>
 		</div>
 	</div>
 </section>

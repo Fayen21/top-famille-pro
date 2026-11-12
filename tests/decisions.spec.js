@@ -260,20 +260,18 @@ test.describe( 'Checkpoint structuré ↔ HTML servi', () => {
 		}
 	} );
 
-	test( 'éléments provisoires — la photo reste une illustration, la citation reste marquée', async ( { page } ) => {
+	test( 'éléments provisoires — ni portrait d’emprunt, ni citation prêtée à la gérante', async ( { page } ) => {
 		const d = decision( 'elements-provisoires' );
 		expect( d.regle.citation_audrey_validee_par_l_interessee ).toBe( false );
+		expect( d.regle.photo_audrey_marquee_illustration ).toBe( false );
 
-		await page.goto( '/a-propos/' );
-		const provisoires = page.locator( '[data-tfp-provisional]' );
-		await expect(
-			provisoires,
-			'les contenus provisoires doivent rester repérables d’une seule requête'
-		).not.toHaveCount( 0 );
-
-		if ( d.regle.photo_audrey_marquee_illustration ) {
-			const mention = page.getByText( /illustration|provisoire/i ).first();
-			await expect( mention, 'le portrait doit rester annoncé comme illustration' ).toBeVisible();
+		// Décision du 13 novembre 2026 : monogramme à la place du portrait, aucune mention visible,
+		// et la citation non validée n'est plus publiée — ni sur l'accueil, ni sur « À propos ».
+		for ( const route of [ '/', '/a-propos/' ] ) {
+			await page.goto( route );
+			await expect( page.locator( '.tfp-monogramme' ).first(), route ).toBeVisible();
+			await expect( page.locator( '[data-tfp-provisional-notice]' ), route ).toHaveCount( 0 );
+			expect( await page.locator( 'body' ).innerText(), route ).not.toMatch( /Mon rôle, c.est de rester joignable/ );
 		}
 	} );
 } );

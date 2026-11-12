@@ -80,7 +80,8 @@ test.describe('G23 · badge-reassurance — la note des eyebrows intérieurs est
 		expect( s.centre ).toBe( 'center' );
 		// Le marquage provisoire survit au changement de forme (CLAUDE.md §5.5).
 		await expect( figure ).toHaveAttribute( 'data-tfp-provisional', '1' );
-		await expect( figure.locator( '[data-tfp-provisional-notice]' ) ).toBeVisible();
+		// 13 novembre 2026 : plus de mention visible, le marquage suffit.
+		await expect( figure.locator( '[data-tfp-provisional-notice]' ) ).toHaveCount( 0 );
 	} );
 
 	test( 'pilier : la pastille est seule dans l’eyebrow, sans badge région', async ( { page } ) => {
@@ -249,13 +250,14 @@ test.describe( 'G23 · /prestations/meubles/ à 1024 px — les règles déclar�
 	// clamp(22px, 2.6vw, 34px), max-width 620/560 des H2, H1 en pente 4vw, lède 600 px.
 	test.use( { viewport: { width: 1024, height: 900 } } );
 
-	test( 'la bande Réponse directe vit dans le conteneur de lecture de 820 px', async ( { page } ) => {
+	test( 'la bande Réponse directe s’aligne sur le conteneur de la page', async ( { page } ) => {
+		// 13 novembre 2026 : la bande vivait dans une colonne de 820 px, décalée par rapport au
+		// hero et au sommaire (capture d'Emmanuel). C'est un encadré sur la largeur du conteneur.
 		await page.goto( '/prestations/meubles/' );
 		const bande = page.locator( '.tfp-presta-reponse' );
 		await expect( bande ).toBeVisible();
-		const largeur = await bande.evaluate( ( el ) => el.getBoundingClientRect().width );
-		expect( largeur ).toBeLessThanOrEqual( 820 );
-		await expect( bande.locator( '.tfp-maillage' ) ).toHaveCSS( 'max-width', '680px' );
+		const gauche = ( sel ) => page.locator( sel ).first().evaluate( ( el ) => Math.round( el.getBoundingClientRect().left ) );
+		expect( Math.abs( ( await gauche( '.tfp-presta-reponse .tfp-direct-answer' ) ) - ( await gauche( '.tfp-sur-page ul' ) ) ) ).toBeLessThanOrEqual( 1 );
 		await expect( bande.locator( '.tfp-maillage' ) ).toHaveCSS( 'font-size', '15.5px' );
 	} );
 

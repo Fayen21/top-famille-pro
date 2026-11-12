@@ -52,7 +52,7 @@ foreach ( tfp_departements_nav() as $dept ) {
  * Avis, Conseils. Six entrées, une seule ligne, en-tête de 119 px à 1440 px.
  */
 $main_nav = array(
-	array( 'type' => 'submenu', 'key' => 'prestations', 'label' => 'Prestations', 'url' => home_url( '/nettoyage-professionnel/' ), 'items' => $prestations_nav, 'classe' => 'tfp-submenu--wide', 'aide' => 'des prestations', 'tout' => array( 'label' => 'Toutes les prestations', 'url' => home_url( '/prestations/' ) ) ),
+	array( 'type' => 'submenu', 'key' => 'prestations', 'label' => 'Prestations', 'url' => home_url( '/nettoyage-professionnel/' ), 'items' => $prestations_nav, 'classe' => 'tfp-submenu--wide', 'aide' => 'des prestations', 'tete' => array( 'label' => 'Le nettoyage professionnel : notre méthode', 'url' => home_url( '/nettoyage-professionnel/' ) ), 'tout' => array( 'label' => 'Toutes les prestations', 'url' => home_url( '/prestations/' ) ) ),
 	array( 'type' => 'link', 'label' => 'Tarifs', 'url' => home_url( '/tarifs/' ) ),
 	array( 'type' => 'submenu', 'key' => 'zones', 'label' => "Zones d'intervention", 'url' => home_url( '/zones-intervention/' ), 'items' => $zones_nav, 'classe' => 'tfp-submenu--zones', 'aide' => 'des zones d’intervention', 'tout' => array( 'label' => 'Voir toutes les villes', 'url' => home_url( '/zones-intervention/' ) ) ),
 	array( 'type' => 'link', 'label' => 'Pourquoi nous', 'url' => home_url( '/pourquoi-nous/' ) ),
@@ -71,7 +71,7 @@ $main_nav = array(
 		<div class="tfp-topbar__inner">
 			<span class="tfp-topbar__offer">
 				<?php // Descriptif métier (passe commerciale du 10 novembre 2026) : sur ordinateur, la navigation touche le logo ; il se lit donc ici. ?>
-				<span class="tfp-topbar__metier">Nettoyage de locaux professionnels<span aria-hidden="true"> · </span></span>
+				<span class="tfp-topbar__metier">Nettoyage de locaux professionnels à Dijon et dans toute la Bourgogne-Franche-Comté<span aria-hidden="true"> · </span></span>
 				<strong><?php echo esc_html( $site['price_unique_display'] ); ?> HT/h</strong> · Devis gratuit sous 24 h
 			</span>
 			<?php if ( ! empty( $tfp_reassurance_bar['note'] ) ) : ?>
@@ -106,6 +106,10 @@ $main_nav = array(
 							<span class="visually-hidden">Ouvrir le menu <?php echo esc_html( $item['aide'] ); ?></span>
 						</button>
 						<div class="tfp-submenu <?php echo esc_attr( $item['classe'] ); ?>" id="<?php echo esc_attr( $tfp_menu_id ); ?>" role="menu" aria-labelledby="tfp-btn-<?php echo esc_attr( $item['key'] ); ?>" hidden>
+							<?php if ( ! empty( $item['tete'] ) ) : ?>
+								<?php // Le libellé du menu ouvre désormais le panneau : la page qu'il désignait en devient la première entrée. ?>
+								<a class="tfp-submenu__item tfp-submenu__item--tete" role="menuitem" href="<?php echo esc_url( $item['tete']['url'] ); ?>"><?php echo esc_html( $item['tete']['label'] ); ?></a>
+							<?php endif; ?>
 							<div class="tfp-submenu__items">
 								<?php foreach ( $item['items'] as $sub ) : ?>
 									<a class="tfp-submenu__item" role="menuitem" href="<?php echo esc_url( $sub['url'] ); ?>">

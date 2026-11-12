@@ -314,3 +314,46 @@ function tfp_phone_cta_label( $icone = false ) {
 function tfp_url_carrieres() {
 	return 'https://careers.werecruit.io/fr/top-famille';
 }
+
+/**
+ * Questions fréquentes de l'accueil (13 novembre 2026).
+ *
+ * Six questions, six réponses courtes. Chaque réponse reprend un fait validé de PROJECT_INPUTS.md
+ * — tarif unique, périmètre du tarif, exclusions, zone, devis, interlocutrice — et rien d'autre :
+ * aucun délai, aucun chiffre, aucun engagement qui ne figure déjà ailleurs sur le site.
+ * La même liste alimente la section visible et le FAQPage (CLAUDE.md §8).
+ *
+ * @return array<int, array{q: string, a: string}>
+ */
+function tfp_faq_accueil() {
+	$site    = tfp_site_data();
+	$prix    = $site['price_unique_display'];
+	$prenom  = explode( ' ', $site['manager'] )[0];
+
+	return array(
+		array(
+			'q' => 'Combien coûte le nettoyage de nos locaux ?',
+			'a' => "Le tarif est de {$prix} HT/h, le même en entretien régulier et en intervention ponctuelle, partout en {$site['address_region']}. Votre budget dépend du nombre d'heures nécessaires : il est chiffré dans le devis.",
+		),
+		array(
+			'q' => 'Que comprend ce tarif ?',
+			'a' => "La main-d'œuvre, l'organisation des passages et le suivi. Le matériel et les produits sont fournis par le client. Les autres frais — gestion mensuelle, mise en place, déplacement, majoration du dimanche, des jours fériés et de la nuit — sont détaillés dans le devis.",
+		),
+		array(
+			'q' => 'Quels locaux prenez-vous en charge ?',
+			'a' => "Bureaux, commerces, cabinets et professions libérales, copropriétés et locations meublées, en entretien régulier ou en remise en état ponctuelle. Nous n'intervenons pas dans les locaux industriels, alimentaires ou médicaux nécessitant une asepsie.",
+		),
+		array(
+			'q' => 'Dans quels secteurs intervenez-vous ?',
+			'a' => "Dans les huit départements de {$site['address_region']}, depuis {$site['address_city']}, près de Dijon. Selon la distance, des indemnités kilométriques peuvent s'appliquer ; elles figurent au devis.",
+		),
+		array(
+			'q' => 'Comment obtenir un devis ?',
+			'a' => "Par le formulaire en ligne ou par téléphone. {$prenom} étudie personnellement chaque demande et vous répond sous 24 heures. Le devis est gratuit et sans engagement.",
+		),
+		array(
+			'q' => 'Qui sera notre contact ?',
+			'a' => "{$site['manager']}, gérante de {$site['brand_name']}. Elle étudie votre devis, établit avec vous le cahier des charges et reste joignable pour le suivi des passages.",
+		),
+	);
+}

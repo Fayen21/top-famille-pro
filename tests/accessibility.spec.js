@@ -100,7 +100,9 @@ test.describe('Navigation clavier réelle', () => {
 		await page.setViewportSize({ width: 1440, height: 900 });
 		await page.goto('/', { waitUntil: 'networkidle' });
 
-		const toggle = page.locator('#tfp-btn-prestations');
+		// Depuis le 13 novembre 2026, c'est le LIBELLÉ « Prestations » qui ouvre le menu (rôle bouton).
+		const toggle = page.locator('.tfp-nav__link--parent').first();
+		await expect(toggle).toHaveAttribute('role', 'button');
 		await toggle.focus();
 		await page.keyboard.press('Enter');
 		await expect(toggle).toHaveAttribute('aria-expanded', 'true');
@@ -109,6 +111,10 @@ test.describe('Navigation clavier réelle', () => {
 		await page.keyboard.press('Escape');
 		await expect(toggle).toHaveAttribute('aria-expanded', 'false');
 		await expect(toggle).toBeFocused();
+
+		// La barre d'espace ouvre aussi, comme sur tout bouton.
+		await page.keyboard.press('Space');
+		await expect(page.locator('#tfp-menu-prestations')).toBeVisible();
 	});
 
 	test('barre CTA mobile fixe : boutons atteignables et activables au clavier', async ({ page }) => {

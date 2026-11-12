@@ -63,56 +63,89 @@ test.describe( 'Navigation principale', () => {
 		).toHaveCount( 0 );
 	} );
 
-	test( '« Prestations » pointe vers la page pilier', async ( { page } ) => {
+	/*
+	 * Décision du 13 novembre 2026 : cliquer sur « Prestations » ou « Zones d'intervention » OUVRE
+	 * les choix, sans quitter la page. Le libellé garde son `href` (navigation sans JavaScript,
+	 * lien lisible par les moteurs) et la page pilier devient la première entrée du panneau.
+	 */
+	test( '« Prestations » ouvre ses choix au clic ; la page pilier est la première entrée', async ( { page } ) => {
 		await page.goto( '/' );
 		const lien = page.locator( '.tfp-nav__link--parent' ).first();
 		await expect( lien ).toHaveText( 'Prestations' );
 		await expect( lien ).toHaveAttribute( 'href', /\/nettoyage-professionnel\/$/ );
+		await expect( lien ).toHaveAttribute( 'role', 'button' );
 
-		// Et le lien fonctionne réellement : un `href` correct sur un élément masqué ne vaut rien.
+		const url = page.url();
 		await lien.click();
+		expect( page.url(), 'le clic ne doit plus quitter la page' ).toBe( url );
+		const menu = page.locator( '#tfp-menu-prestations' );
+		await expect( menu ).toBeVisible();
+		await expect( lien ).toHaveAttribute( 'aria-expanded', 'true' );
+
+		// La page pilier reste accessible, et le lien fonctionne réellement.
+		await menu.locator( 'a' ).first().click();
 		await expect( page ).toHaveURL( /\/nettoyage-professionnel\/$/ );
 		await expect( page.locator( 'h1' ) ).toBeVisible();
 	} );
 
-	test( 'le chevron déplie les six prestations, au clavier', async ( { page } ) => {
+	test( '« Zones d’intervention » ouvre ses choix au clic, un second clic referme', async ( { page } ) => {
 		await page.goto( '/' );
-		const caret = page.locator( '#tfp-btn-prestations' );
+		const lien = page.locator( '.tfp-nav__link--parent' ).nth( 1 );
+		const url = page.url();
+		await lien.click();
+		expect( page.url() ).toBe( url );
+		await expect( page.locator( '#tfp-menu-zones' ) ).toBeVisible();
+		await expect( page.locator( '#tfp-menu-prestations' ) ).toBeHidden();
+		await lien.click();
+		await expect( page.locator( '#tfp-menu-zones' ) ).toBeHidden();
+	} );
+
+	test( 'sans JavaScript, « Prestations » reste un lien vers la page pilier', async ( { browser } ) => {
+		const contexte = await browser.newContext( { javaScriptEnabled: false } );
+		const page = await contexte.newPage();
+		await page.goto( '/' );
+		await page.locator( '.tfp-nav__link--parent' ).first().click();
+		await expect( page ).toHaveURL( /\/nettoyage-professionnel\/$/ );
+		await contexte.close();
+	} );
+
+	test( 'le libellé déplie les six prestations, au clavier', async ( { page } ) => {
+		await page.goto( '/' );
+		const libelle = page.locator( '.tfp-nav__link--parent' ).first();
 		const menu = page.locator( '#tfp-menu-prestations' );
 
-		await expect( caret ).toHaveAttribute( 'aria-expanded', 'false' );
+		await expect( libelle ).toHaveAttribute( 'aria-expanded', 'false' );
 		await expect( menu ).toBeHidden();
 
-		// Au clavier : le chevron se prend le focus et s'active à la touche Entrée.
-		await caret.focus();
-		await expect( caret ).toBeFocused();
+		await libelle.focus();
 		await page.keyboard.press( 'Enter' );
-
-		await expect( caret ).toHaveAttribute( 'aria-expanded', 'true' );
+		await expect( libelle ).toHaveAttribute( 'aria-expanded', 'true' );
 		await expect( menu ).toBeVisible();
 
 		const liens = menu.locator( 'a' );
-		// Six prestations + le renvoi vers l'index.
-		await expect( liens ).toHaveCount( PRESTATIONS.length + 1 );
+		// La page pilier, les six prestations, puis le renvoi vers l'index.
+		await expect( liens ).toHaveCount( PRESTATIONS.length + 2 );
 		const hrefs = await liens.evaluateAll( ( els ) => els.map( ( a ) => new URL( a.href ).pathname ) );
-		expect( hrefs.slice( 0, 6 ) ).toEqual( PRESTATIONS );
-		expect( hrefs[ 6 ] ).toBe( '/prestations/' );
+		expect( hrefs[ 0 ] ).toBe( '/nettoyage-professionnel/' );
+		expect( hrefs.slice( 1, 7 ) ).toEqual( PRESTATIONS );
+		expect( hrefs[ 7 ] ).toBe( '/prestations/' );
 
-		// Échap referme et rend le focus au chevron : sans cela, le clavier reste dans le vide.
+		// Échap referme et rend le focus au libellé : sans cela, le clavier reste dans le vide.
 		await page.keyboard.press( 'Escape' );
-		await expect( caret ).toHaveAttribute( 'aria-expanded', 'false' );
+		await expect( libelle ).toHaveAttribute( 'aria-expanded', 'false' );
 		await expect( menu ).toBeHidden();
-		await expect( caret ).toBeFocused();
+		await expect( libelle ).toBeFocused();
 	} );
 
-	test( 'le lien parent et le chevron sont deux arrêts de tabulation distincts', async ( { page } ) => {
+	test( 'une seule commande par menu : le chevron sort de l’ordre de tabulation', async ( { page } ) => {
 		await page.goto( '/' );
+		for ( const id of [ '#tfp-btn-prestations', '#tfp-btn-zones' ] ) {
+			await expect( page.locator( id ) ).toHaveAttribute( 'tabindex', '-1' );
+			await expect( page.locator( id ) ).toHaveAttribute( 'aria-hidden', 'true' );
+		}
 		await page.locator( '.tfp-nav__link--parent' ).first().focus();
 		await page.keyboard.press( 'Tab' );
-		await expect(
-			page.locator( '#tfp-btn-prestations' ),
-			'le chevron doit suivre immédiatement le lien dans l’ordre du clavier'
-		).toBeFocused();
+		await expect( page.locator( '#tfp-btn-prestations' ) ).not.toBeFocused();
 	} );
 
 	test( 'les cibles tactiles de l’entrée composite tiennent la main', async ( { page } ) => {

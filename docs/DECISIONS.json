@@ -152,10 +152,10 @@
 				"non_modifiables_cette_passe": [
 					"« Aucun simulateur » (correction §9 différée)",
 					"« agences fictives » (correction §9 différée)",
-					"photo temporaire d'Audrey — reste identifiée comme illustration",
-					"citation attribuée à Audrey — non validée pour publication"
+					"photo temporaire d'Audrey — RETIRÉE le 13 novembre 2026 : monogramme à la place, jusqu'à la vraie photo",
+					"citation attribuée à Audrey — non validée, RETIRÉE de l'affichage le 13 novembre 2026 (accueil et À propos)"
 				],
-				"photo_audrey_marquee_illustration": true,
+				"photo_audrey_marquee_illustration": false,
 				"citation_audrey_validee_par_l_interessee": false
 			}
 		},

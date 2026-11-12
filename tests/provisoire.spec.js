@@ -1,68 +1,33 @@
 /**
- * Transparence des contenus provisoires, sur les 53 routes.
+ * Contenus provisoires, sur les 53 routes.
  *
- * Les témoignages repris de la maquette servent à reproduire le design, mais ce ne sont pas de
- * vrais avis. L'attribut `data-tfp-provisional` les rend repérables **pour l'équipe** ; il ne dit
- * rien au visiteur, qui ne lit pas le code source. Trente-huit routes affichaient des avis
- * d'apparence authentique sans que rien ne signale leur statut.
- *
- * Ce test exige donc une mention **réellement visible** — visibilité calculée, pas simple présence
- * dans le DOM — dans le même composant ou la même section que le contenu provisoire.
+ * Décision d'Emmanuel du 13 novembre 2026 : le site n'affiche plus AUCUNE mention du type « exemple
+ * de présentation », « en cours d'intégration » ou « photo provisoire ». Ce fichier vérifiait
+ * l'inverse — une mention visible à côté de chaque contenu provisoire ; il vérifie désormais :
+ *  - qu'aucune de ces mentions n'est restée, ni dans le texte ni dans le DOM ;
+ *  - qu'aucun témoignage n'alimente de donnée structurée `Review` ou `AggregateRating` (CLAUDE.md §5.5).
+ * Le marquage `data-tfp-provisional` des témoignages repris de la maquette est contrôlé par
+ * tests/g26.spec.js : toute rangée d'étoiles hors note Google doit se trouver dans un bloc marqué.
  */
 import { test, expect } from '@playwright/test';
 import { ROUTES } from './data/routes.js';
 
-test.describe('Contenus provisoires — mention visible obligatoire', () => {
+test.describe('Contenus provisoires — aucune mention visible, marquage conservé', () => {
 	for (const route of ROUTES) {
-		test(`${route.url} : chaque contenu provisoire porte sa mention visible`, async ({ page }) => {
+		test(`${route.url} : aucune mention visible, aucun avis en donnée structurée`, async ({ page }) => {
 			await page.goto(route.url, { waitUntil: 'domcontentloaded' });
 
-			const resultat = await page.evaluate(() => {
-				/** Visible au sens du rendu : dimensions non nulles, non masqué, opacité non nulle. */
-				const estVisible = (el) => {
-					if (!el) return false;
-					const r = el.getBoundingClientRect();
-					const s = getComputedStyle(el);
-					return (
-						r.width > 0 &&
-						r.height > 0 &&
-						s.display !== 'none' &&
-						s.visibility !== 'hidden' &&
-						parseFloat(s.opacity) > 0.05
-					);
-				};
+			const resultat = await page.evaluate(() => ({
+				mentions: document.querySelectorAll('[data-tfp-provisional-notice], .tfp-provisional-notice').length,
+				texte: (document.body.textContent || '').match(/exemples? de présentation|en cours d[’']intégration|photo d[’']illustration provisoire|portrait d[’']Audrey à venir|en attente de validation|contenu de démonstration/gi) || [],
+				// Aucun contenu provisoire ne doit alimenter de donnée structurée d'avis.
+				schemasAvis: [...document.querySelectorAll('script[type="application/ld+json"]')]
+					.map((s) => s.textContent || '')
+					.filter((t) => /"@type"\s*:\s*"(Review|AggregateRating)"/.test(t)).length,
+			}));
 
-				const provisoires = [...document.querySelectorAll('[data-tfp-provisional]')];
-				const orphelins = [];
-
-				for (const p of provisoires) {
-					// La mention peut être dans le bloc lui-même, ou dans un ancêtre proche — une
-					// grille annonce ses cartes une seule fois, au-dessus d'elles.
-					let couvert = [...p.querySelectorAll('[data-tfp-provisional-notice]')].some(estVisible);
-					for (let a = p; a && !couvert; a = a.parentElement) {
-						couvert = [...a.querySelectorAll(':scope > [data-tfp-provisional-notice]')].some(estVisible);
-						if (a.tagName === 'SECTION' || a.tagName === 'BODY') break;
-					}
-					if (!couvert) {
-						orphelins.push((p.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 90));
-					}
-				}
-
-				return {
-					provisoires: provisoires.length,
-					orphelins,
-					// Aucun contenu provisoire ne doit alimenter de donnée structurée d'avis.
-					schemasAvis: [...document.querySelectorAll('script[type="application/ld+json"]')]
-						.map((s) => s.textContent || '')
-						.filter((t) => /"@type"\s*:\s*"(Review|AggregateRating)"/.test(t)).length,
-				};
-			});
-
-			expect(
-				resultat.orphelins,
-				`${route.url} : ${resultat.orphelins.length} contenu(s) provisoire(s) sans mention visible.\n` +
-					resultat.orphelins.map((t) => `  — « ${t} »`).join('\n')
-			).toEqual([]);
+			expect(resultat.mentions, `${route.url} : une mention de contenu provisoire est encore rendue`).toBe(0);
+			expect(resultat.texte, `${route.url} : formulation interdite encore présente`).toEqual([]);
 
 			expect(
 				resultat.schemasAvis,

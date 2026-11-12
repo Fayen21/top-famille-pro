@@ -58,6 +58,8 @@
         if (id === exceptId) return;
         var panel = document.getElementById(id);
         btn.setAttribute('aria-expanded', 'false');
+        var lien = btn.parentNode && btn.parentNode.querySelector('.tfp-nav__link--parent[aria-expanded]');
+        if (lien) lien.setAttribute('aria-expanded', 'false');
         if (panel) panel.hidden = true;
       });
     }
@@ -67,12 +69,43 @@
       var panel = document.getElementById(id);
       if (!panel) return;
 
-      btn.addEventListener('click', function () {
+      function basculer() {
         var expanded = btn.getAttribute('aria-expanded') === 'true';
         closeAll(expanded ? null : id);
         btn.setAttribute('aria-expanded', String(!expanded));
+        if (libelle) libelle.setAttribute('aria-expanded', String(!expanded));
         panel.hidden = expanded;
-      });
+      }
+
+      /*
+       * Décision du 13 novembre 2026 : un clic sur « Prestations » ou « Zones d'intervention »
+       * OUVRE les choix, il ne quitte plus la page. Le libellé reste un lien dans le HTML — sans
+       * JavaScript il mène toujours à sa page, et le lien compte pour le référencement — mais,
+       * script chargé, il devient LA commande de dépliage : rôle bouton, état annoncé. Le chevron,
+       * devenu redondant, sort de l'ordre de tabulation. La page du libellé reste accessible :
+       * c'est la première entrée du panneau.
+       */
+      var groupe = btn.closest('[data-tfp-nav-item]');
+      var libelle = groupe && groupe.querySelector('.tfp-nav__link--parent');
+      if (libelle) {
+        libelle.setAttribute('role', 'button');
+        libelle.setAttribute('aria-expanded', 'false');
+        libelle.setAttribute('aria-controls', id);
+        btn.setAttribute('tabindex', '-1');
+        btn.setAttribute('aria-hidden', 'true');
+        libelle.addEventListener('click', function (event) {
+          event.preventDefault();
+          basculer();
+        });
+        libelle.addEventListener('keydown', function (event) {
+          if (event.key === ' ') {
+            event.preventDefault();
+            basculer();
+          }
+        });
+      }
+
+      btn.addEventListener('click', basculer);
     });
 
     document.addEventListener('click', function (event) {
@@ -88,7 +121,7 @@
         closeAll(null);
         if (wasOpen) {
           var openBtn = document.activeElement && document.activeElement.closest('[data-tfp-nav-item]');
-          if (openBtn) openBtn.querySelector('[data-tfp-submenu-toggle]').focus();
+          if (openBtn) (openBtn.querySelector('.tfp-nav__link--parent[role="button"]') || openBtn.querySelector('[data-tfp-submenu-toggle]')).focus();
         }
       }
     });
@@ -145,11 +178,30 @@
       var id = btn.getAttribute('aria-controls');
       var sub = document.getElementById(id);
       if (!sub) return;
-      btn.addEventListener('click', function () {
+      var libelle = btn.parentNode && btn.parentNode.querySelector('a.tfp-mobile-nav__link');
+      function basculer() {
         var expanded = btn.getAttribute('aria-expanded') === 'true';
         btn.setAttribute('aria-expanded', String(!expanded));
+        if (libelle) libelle.setAttribute('aria-expanded', String(!expanded));
         sub.hidden = expanded;
-      });
+      }
+      btn.addEventListener('click', basculer);
+      // Même règle qu'en bureau (13 novembre 2026) : le libellé ouvre les choix au lieu de naviguer.
+      if (libelle) {
+        libelle.setAttribute('role', 'button');
+        libelle.setAttribute('aria-expanded', 'false');
+        libelle.setAttribute('aria-controls', id);
+        btn.setAttribute('tabindex', '-1');
+        btn.setAttribute('aria-hidden', 'true');
+        libelle.addEventListener('click', function (event) {
+          event.preventDefault();
+          event.stopPropagation(); // le tiroir se ferme sur tout lien suivi : celui-ci ne l'est pas.
+          basculer();
+        });
+        libelle.addEventListener('keydown', function (event) {
+          if (event.key === ' ') { event.preventDefault(); basculer(); }
+        });
+      }
     });
 
     /* Ferme le panneau si on revient en desktop (redimensionnement) */

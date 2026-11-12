@@ -86,3 +86,31 @@ function tfp_get_audrey_photo_url( $slug = 'audrey-placeholder' ) {
 function tfp_audrey_photo_is_real() {
 	return (bool) get_theme_mod( 'tfp_audrey_photo', '' );
 }
+
+/**
+ * Visuel de la gérante : sa vraie photo si elle a été fournie, sinon son monogramme.
+ *
+ * Décision du 13 novembre 2026 : plus aucun portrait de banque d'images à côté du nom d'Audrey, et
+ * plus aucune mention « photo provisoire ». Tant que la photo authentique n'est pas saisie dans le
+ * Customizer, la gérante est représentée par ses initiales — un signe, pas un visage d'emprunt
+ * (CLAUDE.md §5.6). Le jour où la photo est saisie, elle prend la place du monogramme partout.
+ *
+ * @param string $classe Classe(s) de taille : `tfp-monogramme--sm`, `--lg`, `--xl`.
+ */
+function tfp_gerante_visuel( $classe = '' ) {
+	$site = tfp_site_data();
+	if ( tfp_audrey_photo_is_real() ) {
+		printf(
+			'<img class="tfp-monogramme tfp-monogramme--photo %s" src="%s" alt="%s" width="160" height="160" loading="lazy" decoding="async">',
+			esc_attr( $classe ),
+			esc_url( get_theme_mod( 'tfp_audrey_photo', '' ) ),
+			esc_attr( $site['manager'] . ', gérante de ' . $site['brand_name'] )
+		);
+		return;
+	}
+	$initiales = '';
+	foreach ( preg_split( '/\s+/', trim( $site['manager'] ) ) as $mot ) {
+		$initiales .= mb_substr( $mot, 0, 1 );
+	}
+	printf( '<span class="tfp-monogramme %s" aria-hidden="true">%s</span>', esc_attr( $classe ), esc_html( mb_strtoupper( $initiales ) ) );
+}

@@ -16,6 +16,9 @@
   --color-turquoise-pale-2: #EDF9F9;
   --color-copper: #D9A062;
   --color-copper-dark: #A8622E;
+  /* Cuivre de TEXTE (13 novembre 2026) : 5,7:1 sur le fond de page, 5,0:1 sur le cuivre pâle. Le
+     cuivre foncé (#A8622E) reste à 4,4:1 sur fond clair : insuffisant pour un petit texte. */
+  --color-copper-text: #8F5222;
   --color-copper-pale: #F6E5CF;
 
   /* Couleurs — neutres bleu-gris */

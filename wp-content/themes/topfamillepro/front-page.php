@@ -22,6 +22,19 @@ tfp_seo(
 		'robots'      => 'index,follow',
 		// Pas de fil d'Ariane sur l'accueil (includes/breadcrumbs.php) : c'est la racine du site,
 		// donc pas de BreadcrumbList JSON-LD non plus ici.
+		// FAQPage : la section « Vos questions, nos réponses » est visible sur la page (CLAUDE.md §8).
+		'schema'      => array(
+			array(
+				'@type'      => 'FAQPage',
+				'@id'        => trailingslashit( home_url( '/' ) ) . '#faq',
+				'mainEntity' => array_map(
+					static function ( $item ) {
+						return array( '@type' => 'Question', 'name' => $item['q'], 'acceptedAnswer' => array( '@type' => 'Answer', 'text' => $item['a'] ) );
+					},
+					tfp_faq_accueil()
+				),
+			),
+		),
 	)
 );
 
@@ -41,6 +54,7 @@ get_template_part( 'template-parts/home/process' );
 get_template_part( 'template-parts/home/pricing' );
 get_template_part( 'template-parts/home/coverage' );
 get_template_part( 'template-parts/home/audrey-reviews' );
+get_template_part( 'template-parts/home/faq' );
 get_template_part( 'template-parts/home/advice' );
 get_template_part( 'template-parts/home/cta-final' );
 

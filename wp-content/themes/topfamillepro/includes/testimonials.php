@@ -300,20 +300,11 @@ function tfp_testimonial_card( $item = null, $args = array() ) {
 	echo '</figcaption>';
 
 	/*
-	 * La mention accompagne la carte elle-même : elle ne peut donc pas être oubliée sur une route.
-	 *
-	 * Sauf quand la GRILLE l'a déjà posée au-dessus de ses cartes — c'est le cas des six avis de
-	 * `/avis-clients/`, dont `tfp_card_grid()` annonce le caractère provisoire une fois pour
-	 * toutes. La répéter dans chaque carte ne dit rien de plus au visiteur et ajoute ici trois
-	 * lignes par carte : 58 px × 6, soit une page de 9 % plus longue que la maquette pour une
-	 * information déjà donnée juste au-dessus.
+	 * Décision d'Emmanuel du 13 novembre 2026 : plus AUCUNE mention visible du type « exemple de
+	 * présentation » ou « en cours d'intégration ». Le témoignage reste marqué `data-tfp-provisional`
+	 * (une requête suffit à tous les retrouver), stocké hors gabarit, et n'alimente aucune donnée
+	 * structurée — les trois conditions de CLAUDE.md §5.5 sont inchangées.
 	 */
-	if ( ! empty( $item['demo'] ) && false !== ( $args['mention'] ?? true ) ) {
-		echo '<figcaption class="tfp-provisional-notice" data-tfp-provisional-notice="1">'
-			. 'Exemple de présentation — témoignages authentiques en cours d’intégration.'
-			. '</figcaption>';
-	}
-
 	echo '</figure>';
 }
 
@@ -328,9 +319,8 @@ function tfp_testimonial_card( $item = null, $args = array() ) {
  * lecteurs d'écran.
  */
 function tfp_provisional_notice( $texte = '' ) {
-	echo '<p class="tfp-provisional-notice" data-tfp-provisional-notice="1">'
-		. esc_html( '' !== $texte ? $texte : 'Exemples de présentation — témoignages authentiques en cours d’intégration.' )
-		. '</p>';
+	// Décision du 13 novembre 2026 : aucune mention visible. La fonction reste pour ses appelants.
+	unset( $texte );
 }
 
 /**

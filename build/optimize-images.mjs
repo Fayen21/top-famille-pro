@@ -28,19 +28,20 @@ const OUT_DIR = path.join(ROOT, 'wp-content', 'themes', 'topfamillepro', 'assets
  */
 const SLOTS = [
   {
-    // Passe commerciale du 10 novembre 2026 : le premier plan de l'accueil montre une scène de
-    // nettoyage, plus l'espace de bureaux vide (passé en vignette). Source 1000 px : pas de 1200.
+    // 13 novembre 2026 : photo d'accueil changée à la demande d'Emmanuel. Le dépôt ne contient pas
+    // d'autre scène de nettoyage que celle au masque et aux lunettes ; l'accueil montre donc un
+    // espace de bureaux lumineux (source 1100 px), avec une salle de réunion en vignette.
     slug: 'hero-main',
-    src: 'intervenante-stock-materiel.jpg',
+    src: 'hero-bureaux.jpg',
     widths: [480, 760, 1000],
-    alt: 'Nettoyage de vitres dans des locaux professionnels (photo d’illustration)',
+    alt: 'Espace de bureaux lumineux avec fauteuils et table basse (photo d’illustration)',
     lcp: true,
   },
   {
     slug: 'hero-secondary',
-    src: 'hero-bureaux.jpg',
+    src: 'unsplash-1497366811353-6870744d04b2-900.jpg',
     widths: [220, 340, 460],
-    alt: 'Espace de bureaux entretenu (photo d’illustration)',
+    alt: 'Salle de réunion vitrée (photo d’illustration)',
   },
   /*
    * SIX héros de prestation, un par prestation — table établie sur les OCTETS de la maquette par
@@ -134,10 +135,11 @@ const SLOTS = [
   },
   {
     slug: 'article-3',
-    // Relevé G26 sur ARTICLES[2].photo : le thème servait la photo de la page région.
-    src: 'unsplash-1581578731548-c64695cc6952-900.jpg',
+    // 13 novembre 2026 : la scène au masque et aux lunettes quitte l'accueil (carte « Conseils »).
+    // L'ancien texte alternatif décrivait d'ailleurs un bureau, pas cette photo.
+    src: 'unsplash-1497215842964-222b430dc094-900.jpg',
     widths: [320, 480, 640],
-    alt: 'Bureau avec documents et ordinateur (photo d’illustration)',
+    alt: 'Poste de travail devant une baie vitrée (photo d’illustration)',
   },
   {
     slug: 'service-generic',
@@ -221,7 +223,7 @@ const SLOTS = [
     slug: 'hero-pilier',
     src: 'intervenante-stock-bureaux.jpg',
     widths: [480, 760, 960],
-    alt: 'Nettoyage de bureaux professionnels (photo d’illustration)',
+    alt: 'Deux collègues dans un bureau (photo d’illustration)',
   },
   {
     // Hero de la page région — l'image EXACTE de la maquette (G24) :

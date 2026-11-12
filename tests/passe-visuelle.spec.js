@@ -105,12 +105,14 @@ test.describe( 'Header — menu Zones d’intervention (§3)', () => {
 	test( 'au clavier : Tab atteint le déplieur, Entrée ouvre, Échap ferme et rend le focus', async ( { page } ) => {
 		await page.setViewportSize( { width: 1440, height: 900 } );
 		await page.goto( '/' );
-		await page.focus( '#tfp-btn-zones' );
+		// 13 novembre 2026 : le libellé « Zones d'intervention » est la commande de dépliage.
+		const libelle = page.locator( '.tfp-nav__link--parent' ).nth( 1 );
+		await libelle.focus();
 		await page.keyboard.press( 'Enter' );
 		await expect( page.locator( '#tfp-menu-zones' ) ).toBeVisible();
 		await page.keyboard.press( 'Escape' );
 		await expect( page.locator( '#tfp-menu-zones' ) ).toBeHidden();
-		await expect( page.locator( '#tfp-btn-zones' ) ).toBeFocused();
+		await expect( libelle ).toBeFocused();
 	} );
 
 	// 819/820 : barre CTA mobile · 1099/1100 : menu compact ↔ barre complète · 1219/1220 : plage
@@ -271,22 +273,18 @@ test.describe( 'Libellés de l’accueil (§5) et gérante (§8)', () => {
 		expect( texte ).not.toMatch( /Appeler Audrey/ );
 	} );
 
-	test( 'le bloc présente la gérante et le portrait mesure 294 × 368 à 1440 px', async ( { page } ) => {
+	test( 'le bloc présente la gérante sans portrait ni citation : monogramme et trois rôles', async ( { page } ) => {
+		// 13 novembre 2026 : plus de photo de banque d'images, plus de phrase attribuée à Audrey.
 		await page.setViewportSize( { width: 1440, height: 900 } );
 		await page.goto( '/' );
 		await expect( page.locator( '#tfp-gerante-titre' ) ).toHaveText( 'Audrey Brançon, gérante de Top-Famille Pro' );
 		await expect( page.locator( '.tfp-gerante__lede' ) ).toContainText( 'supervise l\'organisation des prestations' );
-		await expect( page.locator( '.tfp-gerante__signature' ) ).toContainText( 'Gérante' );
-		const img = page.locator( '.tfp-audrey-portrait__img' );
-		await expect( img ).toHaveAttribute( 'width', '294' );
-		await expect( img ).toHaveAttribute( 'height', '368' );
-		const b = await img.boundingBox();
-		expect( Math.round( b.width ) ).toBe( 294 );
-		expect( Math.round( b.height ) ).toBe( 368 );
-		// La réduction porte sur la colonne, pas sur un transform.
-		await expect( img ).toHaveCSS( 'transform', 'none' );
-		// Photo et mention d'illustration conservées.
-		await expect( page.locator( '.tfp-audrey-portrait__note' ) ).toHaveText( 'Photo d’illustration' );
+		const carte = page.locator( '.tfp-gerante-carte' );
+		await expect( carte.locator( 'img' ) ).toHaveCount( 0 );
+		await expect( carte.locator( '.tfp-monogramme' ) ).toHaveText( 'AB' );
+		await expect( carte.locator( '.tfp-gerante-carte__roles li' ) ).toHaveCount( 3 );
+		await expect( carte.locator( 'blockquote' ) ).toHaveCount( 0 );
+		await expect( carte.locator( 'a[href^="tel:"]' ) ).toBeVisible();
 	} );
 } );
 
@@ -380,7 +378,8 @@ test.describe( 'Audit transversal (§9) — pages statiques relevées', () => {
 			const tuile = page.locator( '.tfp-card-grid[style*="filet-largeurs"] .tfp-card-tile' ).first();
 			await expect( tuile, route ).toHaveCount( 1 );
 			const b = await tuile.evaluate( ( el ) => { const s = getComputedStyle( el ); return [ s.borderTopWidth, s.borderRightWidth, s.borderBottomWidth, s.borderLeftWidth ]; } );
-			expect( b, route ).toEqual( [ '2px', '0px', '0px', '0px' ] );
+			// « Pourquoi nous » est passée en cartes pleines le 13 novembre 2026 : filet sur les quatre côtés.
+			expect( b, route ).toEqual( '/pourquoi-nous/' === route ? [ '1px', '1px', '1px', '1px' ] : [ '2px', '0px', '0px', '0px' ] );
 		}
 	} );
 

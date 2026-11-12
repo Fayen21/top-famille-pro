@@ -1,10 +1,10 @@
 {
   "hero-main": {
     "slug": "hero-main",
-    "alt": "Nettoyage de vitres dans des locaux professionnels (photo d’illustration)",
+    "alt": "Espace de bureaux lumineux avec fauteuils et table basse (photo d’illustration)",
     "lcp": true,
     "width": 1000,
-    "height": 667,
+    "height": 666,
     "variants": {
       "avif": [
         {
@@ -52,7 +52,7 @@
   },
   "hero-secondary": {
     "slug": "hero-secondary",
-    "alt": "Espace de bureaux entretenu (photo d’illustration)",
+    "alt": "Salle de réunion vitrée (photo d’illustration)",
     "lcp": false,
     "width": 460,
     "height": 307,
@@ -664,7 +664,7 @@
   },
   "article-3": {
     "slug": "article-3",
-    "alt": "Bureau avec documents et ordinateur (photo d’illustration)",
+    "alt": "Poste de travail devant une baie vitrée (photo d’illustration)",
     "lcp": false,
     "width": 640,
     "height": 427,
@@ -2008,7 +2008,7 @@
   },
   "hero-pilier": {
     "slug": "hero-pilier",
-    "alt": "Nettoyage de bureaux professionnels (photo d’illustration)",
+    "alt": "Deux collègues dans un bureau (photo d’illustration)",
     "lcp": false,
     "width": 960,
     "height": 640,

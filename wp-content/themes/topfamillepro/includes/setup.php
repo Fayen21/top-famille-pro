@@ -108,6 +108,12 @@ function tfp_body_class( $classes ) {
 		$classes[] = 'tfp-page-region';
 	}
 
+	// Marqueur de page (13 novembre 2026) : permet d'habiller une page précise — « Pourquoi nous » —
+	// sans toucher au composant commun qui rend les autres.
+	if ( is_page( 'pourquoi-nous' ) ) {
+		$classes[] = 'tfp-page-pourquoi-nous';
+	}
+
 	/*
 	 * Largeur du hero, relevée sur la maquette route par route (tools/compare-styles.mjs).
 	 *

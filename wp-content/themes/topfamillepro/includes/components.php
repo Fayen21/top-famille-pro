@@ -168,7 +168,7 @@ function tfp_exemple_suivi( array $lignes, $id = 'suivi' ) {
 					<?php endforeach; ?>
 				</tbody>
 			</table>
-			<p class="tfp-suivi__note">Exemple de présentation, construit pour illustrer la méthode : il ne reproduit le dossier d’aucun client.</p>
+			<p class="tfp-suivi__note">Tableau type : le vôtre est établi avec vous, après la visite de vos locaux.</p>
 		</div>
 	</section>
 	<?php

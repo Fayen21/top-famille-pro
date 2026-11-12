@@ -39,12 +39,13 @@ test.describe( 'Premier écran de l’accueil (§2)', () => {
 		expect( parseFloat( await page.locator( '.tfp-hero__lede' ).evaluate( ( el ) => getComputedStyle( el ).fontSize ) ) ).toBeGreaterThanOrEqual( 17 );
 	} );
 
-	test( 'image principale : scène de nettoyage, chargée en priorité, sans lazy-loading', async ( { page } ) => {
+	test( 'image principale : locaux professionnels, chargée en priorité, sans lazy-loading', async ( { page } ) => {
 		await page.goto( '/' );
 		const img = page.locator( '.tfp-hero__media-main img' );
 		await expect( img ).toHaveAttribute( 'fetchpriority', 'high' );
 		expect( await img.getAttribute( 'loading' ) ).not.toBe( 'lazy' );
-		await expect( img ).toHaveAttribute( 'alt', /nettoyage/i );
+		// 13 novembre 2026 : photo d'accueil changée ; l'alt décrit la photo réelle.
+		await expect( img ).toHaveAttribute( 'alt', /bureaux/i );
 		await expect( img ).toHaveAttribute( 'alt', /photo d’illustration/ );
 	} );
 } );
@@ -92,7 +93,9 @@ test.describe( 'Prestations (§4, §5, §7)', () => {
 			const suivi = page.locator( '#suivi' );
 			await expect( suivi.locator( '.tfp-eyebrow' ) ).toHaveText( 'Exemple de suivi' );
 			await expect( suivi.locator( 'tbody tr' ) ).toHaveCount( 4 );
-			await expect( suivi ).toContainText( 'il ne reproduit le dossier d’aucun client' );
+			// Jamais présenté comme le dossier d'un client : c'est un tableau type, et il le dit.
+			await expect( suivi ).toContainText( 'Tableau type' );
+			await expect( suivi ).not.toContainText( /exemple de présentation/i );
 			await expect( page.locator( '#tarif .tfp-perimetre' ) ).toContainText( 'Fournis par le client' );
 			// Le cahier de liaison n'est plus expliqué une seconde fois par un bloc « Suivi ».
 			await expect( page.locator( '#details summary', { hasText: /^Suivi$/ } ) ).toHaveCount( 0 );

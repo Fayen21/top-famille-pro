@@ -138,8 +138,6 @@ $zones = tfp_footer_zones_tree();
 		<div class="tfp-footer__col tfp-footer__col--zones">
 			<details class="tfp-footer__volet" open data-tfp-volet>
 				<summary class="tfp-footer__volet-titre"><h3>Zones d'intervention</h3><?php echo tfp_icone( 'chevron', 'tfp-footer__volet-chevron' ); // phpcs:ignore WordPress.Security.EscapeOutput ?></summary>
-			<a class="tfp-footer__more tfp-footer__region" href="<?php echo esc_url( home_url( '/zones-intervention/bourgogne-franche-comte/' ) ); ?>">Toute la <?php echo esc_html( $site['address_region'] ); ?>&nbsp;→</a>
-			<p class="tfp-footer__zones-label">Villes principales par département</p>
 			<ul class="tfp-footer__zones">
 				<?php foreach ( $zones as $entry ) : ?>
 					<li>
@@ -155,9 +153,14 @@ $zones = tfp_footer_zones_tree();
 					</li>
 				<?php endforeach; ?>
 			</ul>
+			<?php
+			// 13 novembre 2026 : pied harmonisé. Chaque colonne commence par sa liste et se termine par
+			// ses liens « → » ; le lien régional rejoint donc le bas de la colonne, et les deux liens
+			// qui menaient à la même page (« 8 départements », « Toutes les villes ») n'en font qu'un.
+			?>
 			<div class="tfp-footer__zones-links">
-				<a class="tfp-footer__more" href="<?php echo esc_url( home_url( '/zones-intervention/' ) ); ?>">Voir les <?php echo count( $zones ); ?> départements&nbsp;→</a>
-				<a class="tfp-footer__more" href="<?php echo esc_url( home_url( '/zones-intervention/' ) ); ?>">Toutes les villes&nbsp;→</a>
+				<a class="tfp-footer__more" href="<?php echo esc_url( home_url( '/zones-intervention/bourgogne-franche-comte/' ) ); ?>">Toute la <?php echo esc_html( $site['address_region'] ); ?>&nbsp;→</a>
+				<a class="tfp-footer__more" href="<?php echo esc_url( home_url( '/zones-intervention/' ) ); ?>">Tous les départements et villes&nbsp;→</a>
 			</div>
 			</details>
 		</div>
@@ -174,6 +177,7 @@ $zones = tfp_footer_zones_tree();
 				<li><a href="<?php echo esc_url( home_url( '/conseils/' ) ); ?>">Conseils</a></li>
 				<li><a href="<?php echo esc_url( home_url( '/recrutement/' ) ); ?>">Recrutement</a></li>
 				<li><a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>">Contact</a></li>
+				<li><a class="tfp-footer__more" href="<?php echo esc_url( home_url( '/demande-de-devis/' ) ); ?>">Demander un devis&nbsp;→</a></li>
 			</ul>
 			</details>
 		</div>

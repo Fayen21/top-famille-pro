@@ -58,28 +58,18 @@ $page = tfp_static_page_data( 'a-propos' );
  */
 ?>
 <section class="tfp-hero">
-	<div class="tfp-hero__media tfp-hero__media--portrait" data-tfp-provisional="photo">
-		<div class="tfp-hero__media-main">
-			<?php
-			/*
-			 * Visuel de hero. La maquette en pose un sur cette route ; le thème n'en rendait
-			 * aucun, et le rembourrage de bande en trop masquait le manque jusqu'à G13.
-			 *
-			 * L'`alt` vient du manifeste et n'est PAS celui de la maquette : celui-ci présente
-			 * une photo de stock comme une personne réelle de l'entreprise, ce que
-			 * CLAUDE.md §5.6 interdit. Le manifeste dit « photo d'illustration », ce qui est vrai.
-			 */
-			tfp_picture( 'audrey-placeholder', array( 'sizes' => '(max-width: 819px) 92vw, 400px', 'lcp' => true ) );
-			?>
+	<?php
+	// Décision du 13 novembre 2026 : plus de portrait de banque d'images ni de mention « photo
+	// provisoire ». La gérante est présentée par une carte : monogramme (ou vraie photo, le jour où
+	// elle est saisie), nom, fonction, siège.
+	?>
+	<div class="tfp-hero__media tfp-hero__media--carte-gerante">
+		<div class="tfp-carte-gerante">
+			<?php tfp_gerante_visuel( 'tfp-monogramme--xl' ); ?>
+			<strong class="tfp-carte-gerante__nom"><?php echo esc_html( $site['manager'] ); ?></strong>
+			<span class="tfp-carte-gerante__fonction">Gérante de <?php echo esc_html( $site['brand_name'] ); ?></span>
+			<span class="tfp-carte-gerante__lieu"><?php echo esc_html( $site['address_city'] ); ?> · Bourgogne-Franche-Comté</span>
 		</div>
-		<?php
-		/*
-		 * Mention VISIBLE, et pas seulement `data-tfp-provisional` sur le bloc : l'attribut rend le
-		 * visuel repérable pour l'équipe, il ne dit rien au visiteur, qui ne lit pas le code source.
-		 * CLAUDE.md §5.5 exige les deux, et tests/provisoire.spec.js le vérifie sur les 53 routes.
-		 */
-		?>
-		<p class="tfp-provisional-notice" data-tfp-provisional-notice="1">Photo d’illustration provisoire — portrait d’Audrey à venir.</p>
 	</div>
 	<div class="tfp-hero__content">
 		<div class="tfp-hero__eyebrow">

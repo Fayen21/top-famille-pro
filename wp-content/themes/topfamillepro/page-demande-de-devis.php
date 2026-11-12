@@ -384,22 +384,8 @@ get_header();
 		<aside class="tfp-quote-aside" aria-label="Contact direct et réassurance">
 			<div class="tfp-quote-aside__card tfp-quote-aside__manager">
 				<?php
-				/*
-				 * Photo d'illustration provisoire : elle ne prétend pas représenter Audrey tant que la
-				 * photo authentique n'est pas fournie, et son `alt` le dit (CLAUDE.md §5.6).
-				 */
-				// Même visuel que /contact/ : la maquette y pose son troisième portrait de stock,
-				// distinct de celui de /a-propos/ (relevé par empreinte, G26 §3).
-				$portrait = tfp_get_audrey_photo_url( 'portrait-contact' );
-				if ( $portrait ) :
-					?>
-					<img
-						class="tfp-quote-aside__avatar"
-						src="<?php echo esc_url( $portrait ); ?>"
-						alt="<?php echo esc_attr( tfp_audrey_photo_is_real() ? $site['manager'] . ', gérante de ' . $site['brand_name'] : 'Photo d’illustration temporaire — portrait définitif à venir' ); ?>"
-						width="60" height="60" loading="lazy" decoding="async">
-					<?php
-				endif;
+				// Monogramme de la gérante, ou sa vraie photo quand elle est saisie (13 novembre 2026).
+				tfp_gerante_visuel( 'tfp-monogramme--sm' );
 				?>
 				<div>
 					<strong><?php echo esc_html( explode( ' ', $site['manager'] )[0] ); ?></strong>

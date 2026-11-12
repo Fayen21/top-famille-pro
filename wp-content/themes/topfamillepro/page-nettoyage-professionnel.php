@@ -182,12 +182,10 @@ if ( $tfp_bande_methode ) :
 	<div class="tfp-container tfp-methode-rangee">
 		<div class="tfp-methode-rangee__media">
 			<?php
-			// Visuel d'illustration — jamais présenté comme Audrey (CLAUDE.md §5.6) : l'alt de la
-			// maquette (« Audrey, interlocutrice dédiée ») présente une photo de stock comme une
-			// personne réelle, celui du manifeste dit ce qu'il en est.
-			tfp_picture( 'audrey-portrait', array( 'sizes' => '(max-width: 819px) 92vw, 500px', 'class' => 'tfp-methode-rangee__img' ) );
+			// Visuel de locaux (13 novembre 2026) : le portrait de banque d'images et sa mention
+			// « photo provisoire » sont retirés. Aucune photo ne figure une personne de l'entreprise.
+			tfp_picture( 'service-bureaux', array( 'sizes' => '(max-width: 819px) 92vw, 500px', 'class' => 'tfp-methode-rangee__img' ) );
 			?>
-			<p class="tfp-provisional-notice" data-tfp-provisional-notice="1">Photo d’illustration provisoire — portrait d’Audrey à venir.</p>
 		</div>
 		<div class="tfp-methode-rangee__corps">
 			<?php

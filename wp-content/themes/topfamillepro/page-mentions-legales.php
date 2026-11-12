@@ -102,7 +102,7 @@ get_header();
 
 		<div>
 			<h2>Propriété intellectuelle</h2>
-			<p class="tfp-legal-p">Les textes, la charte graphique et les logos <?php echo esc_html( $site['brand_name'] ); ?> sont la propriété de leur éditeur. Les photographies actuellement affichées sont des visuels sous licence, utilisés à titre provisoire ; leur auteur et leur licence seront précisés lors de la mise en ligne. Elles ne représentent ni les locaux de nos clients, ni nos intervenants, ni la gérante.</p>
+			<p class="tfp-legal-p">Les textes, la charte graphique et les logos <?php echo esc_html( $site['brand_name'] ); ?> sont la propriété de leur éditeur. Les photographies affichées sont des visuels d’illustration sous licence. Elles ne représentent ni les locaux de nos clients, ni nos intervenants, ni la gérante.</p>
 			<p class="tfp-legal-p">L'ensemble des contenus de ce site (textes, structure, mise en page) est la propriété de <?php echo esc_html( $site['legal_name'] ); ?>, sauf mention contraire. Toute reproduction non autorisée est interdite.</p>
 		</div>
 

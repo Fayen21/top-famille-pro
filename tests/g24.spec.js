@@ -47,24 +47,20 @@ test.describe( 'G24 · images exactes des héros', () => {
 		} );
 	}
 
-	test( 'à-propos : portrait provisoire — attribut, mention visible, alt exact (CLAUDE.md §5.6)', async ( { page } ) => {
-		// Même si le fichier est l'image exacte de la maquette, il ne représente pas Audrey :
-		// le statut provisoire ne se négocie pas tant que la photo authentique n'est pas fournie.
+	test( 'à-propos : aucun portrait de banque d’images, la gérante est représentée par son monogramme', async ( { page } ) => {
+		// 13 novembre 2026 : plus de visage d'emprunt à côté du nom d'Audrey, plus de mention
+		// « photo provisoire » (CLAUDE.md §5.6). La vraie photo remplacera le monogramme.
 		await page.goto( '/a-propos/' );
-		const media = page.locator( '.tfp-hero__media--portrait' );
-		await expect( media ).toHaveAttribute( 'data-tfp-provisional', 'photo' );
-		const mention = media.locator( '[data-tfp-provisional-notice]' );
-		await expect( mention ).toBeVisible();
-		await expect( mention ).toContainText( /Photo d(')?[’']illustration/ );
-		const img = media.locator( 'img' ).first();
-		await expect( img ).toHaveAttribute( 'alt', 'Photo d’illustration temporaire — portrait définitif à venir' );
-		await expect( img ).toHaveCSS( 'aspect-ratio', '4 / 5' );
-		const src = await img.evaluate( ( el ) => ( el.currentSrc || '' ).split( '/' ).pop() );
-		expect( src ).toContain( 'audrey-placeholder' );
+		const carte = page.locator( '.tfp-hero__media--carte-gerante' );
+		await expect( carte.locator( 'img' ) ).toHaveCount( 0 );
+		await expect( carte.locator( '.tfp-monogramme' ) ).toHaveText( 'AB' );
+		await expect( carte ).toContainText( 'Audrey Brançon' );
+		await expect( carte ).toContainText( 'Gérante de Top-Famille Pro' );
+		await expect( page.locator( '[data-tfp-provisional-notice]' ) ).toHaveCount( 0 );
 	} );
 
 	test( 'chaque héros expose AVIF, WebP et un JPG de secours avec dimensions explicites', async ( { page } ) => {
-		for ( const { route } of [ ...HEROS, { route: '/a-propos/' } ] ) {
+		for ( const { route } of HEROS ) {
 			await page.goto( route );
 			const picture = page.locator( '.tfp-hero__media-main picture' ).first();
 			await expect( picture.locator( 'source[type="image/avif"]' ) ).toHaveCount( 1 );

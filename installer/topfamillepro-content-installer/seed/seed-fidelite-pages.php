@@ -138,7 +138,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 							array(
 								'type' => 'note',
 								'texte' => 'Devis gratuit sous 24 h Intervention régulière ou ponctuelle Conditions d\'arrêt précisées au devis',
-								'ligne' => 823,
+								'ligne' => 853,
 							),
 						),
 						'cartes' => array(
@@ -2909,7 +2909,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 							array(
 								'type' => 'note',
 								'texte' => 'Sélection & intervenant habituel recherché',
-								'ligne' => 7025,
+								'ligne' => 7055,
 								'graisse' => 600,
 							),
 							array(
@@ -2919,7 +2919,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 							array(
 								'type' => 'note',
 								'texte' => 'Recherche active d\'une solution en cas d\'absence',
-								'ligne' => 7119,
+								'ligne' => 7149,
 								'graisse' => 600,
 							),
 							array(
@@ -2929,7 +2929,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 							array(
 								'type' => 'note',
 								'texte' => 'Suivi & interlocuteur dédié',
-								'ligne' => 7213,
+								'ligne' => 7243,
 								'graisse' => 600,
 							),
 							array(
@@ -3007,7 +3007,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 							array(
 								'type' => 'note',
 								'texte' => '★★★★★',
-								'ligne' => 7569,
+								'ligne' => 7599,
 							),
 							array(
 								'type' => 'quote',
@@ -3016,7 +3016,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 							array(
 								'type' => 'note',
 								'texte' => 'Marc V. · Directeur administratif · Chalon-sur-Saône',
-								'ligne' => 7725,
+								'ligne' => 7755,
 							),
 						),
 						'cartes' => array(),
@@ -4077,7 +4077,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 							array(
 								'type' => 'faq',
 								'question' => 'Faut-il fournir les produits et le matériel ?',
-								'reponse' => 'Les produits et le matériel sont généralement fournis par le client. Les modalités sont précisées au devis.',
+								'reponse' => 'Oui : le matériel et les produits sont fournis par le client. Le tarif horaire couvre la main-d\'œuvre, l\'organisation et le suivi ; les modalités pratiques sont précisées au devis.',
 							),
 							array(
 								'type' => 'faq',
@@ -4087,7 +4087,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 							array(
 								'type' => 'faq',
 								'question' => 'Que se passe-t-il si l\'intervenant est absent ?',
-								'reponse' => 'Nous recherchons une solution de remplacement pour maintenir la continuité et vous tenons informé.',
+								'reponse' => 'Vous êtes prévenu, et nous recherchons un remplaçant, auquel vos consignes écrites sont transmises.',
 							),
 							array(
 								'type' => 'faq',
@@ -4097,7 +4097,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 							array(
 								'type' => 'faq',
 								'question' => 'Le même intervenant vient-il à chaque passage ?',
-								'reponse' => 'C\'est l\'organisation que nous recherchons : un intervenant habituel qui connaît vos locaux et vos consignes. Cette continuité est privilégiée autant que possible, sans constituer une garantie absolue en cas d\'absence ou de changement de disponibilité.',
+								'reponse' => 'C\'est l\'organisation que nous recherchons : un intervenant habituel qui connaît vos locaux et vos consignes. Cette continuité est privilégiée autant que possible ; en cas d\'absence, vous êtes prévenu et un remplacement est recherché.',
 							),
 							array(
 								'type' => 'faq',
@@ -4118,6 +4118,21 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 								'type' => 'faq',
 								'question' => 'Pouvez-vous intervenir le dimanche ou la nuit ?',
 								'reponse' => 'Oui, sur demande, lorsque votre activité l\'exige. Ces créneaux font l\'objet d\'une majoration de 10 % du tarif horaire, indiquée à l\'avance sur le devis et jamais découverte après coup.',
+							),
+							array(
+								'type' => 'faq',
+								'question' => 'Quels locaux ne prenez-vous pas en charge ?',
+								'reponse' => 'Les locaux industriels, les locaux alimentaires et les locaux médicaux nécessitant une asepsie : ils relèvent de protocoles spécifiques. Nous intervenons dans les bureaux, commerces, cabinets, copropriétés et locations meublées.',
+							),
+							array(
+								'type' => 'faq',
+								'question' => 'Que comprend le tarif horaire ?',
+								'reponse' => 'La main-d\'œuvre, l\'organisation des passages et le suivi. Le matériel et les produits sont fournis par le client. Les autres frais — gestion mensuelle, mise en place, déplacement, majoration du dimanche, des jours fériés et de la nuit — sont détaillés dans le devis.',
+							),
+							array(
+								'type' => 'faq',
+								'question' => 'Y a-t-il un engagement de durée ?',
+								'reponse' => 'Le devis ne vous engage pas. Pour un entretien régulier, les frais et les conditions d\'arrêt sont écrits dans le devis, avant tout démarrage.',
 							),
 						),
 						'cartes' => array(),
@@ -4133,7 +4148,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 							),
 							array(
 								'question' => 'Faut-il fournir les produits et le matériel ?',
-								'reponse' => 'Les produits et le matériel sont généralement fournis par le client. Les modalités sont précisées au devis.',
+								'reponse' => 'Oui : le matériel et les produits sont fournis par le client. Le tarif horaire couvre la main-d\'œuvre, l\'organisation et le suivi ; les modalités pratiques sont précisées au devis.',
 							),
 							array(
 								'question' => 'Le devis est-il payant ou engageant ?',
@@ -4141,7 +4156,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 							),
 							array(
 								'question' => 'Que se passe-t-il si l\'intervenant est absent ?',
-								'reponse' => 'Nous recherchons une solution de remplacement pour maintenir la continuité et vous tenons informé.',
+								'reponse' => 'Vous êtes prévenu, et nous recherchons un remplaçant, auquel vos consignes écrites sont transmises.',
 							),
 							array(
 								'question' => 'Comment est rédigé le cahier des charges ?',
@@ -4149,7 +4164,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 							),
 							array(
 								'question' => 'Le même intervenant vient-il à chaque passage ?',
-								'reponse' => 'C\'est l\'organisation que nous recherchons : un intervenant habituel qui connaît vos locaux et vos consignes. Cette continuité est privilégiée autant que possible, sans constituer une garantie absolue en cas d\'absence ou de changement de disponibilité.',
+								'reponse' => 'C\'est l\'organisation que nous recherchons : un intervenant habituel qui connaît vos locaux et vos consignes. Cette continuité est privilégiée autant que possible ; en cas d\'absence, vous êtes prévenu et un remplacement est recherché.',
 							),
 							array(
 								'question' => 'Vaut-il mieux passer par un prestataire ou embaucher un agent d\'entretien ?',
@@ -4166,6 +4181,18 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 							array(
 								'question' => 'Pouvez-vous intervenir le dimanche ou la nuit ?',
 								'reponse' => 'Oui, sur demande, lorsque votre activité l\'exige. Ces créneaux font l\'objet d\'une majoration de 10 % du tarif horaire, indiquée à l\'avance sur le devis et jamais découverte après coup.',
+							),
+							array(
+								'question' => 'Quels locaux ne prenez-vous pas en charge ?',
+								'reponse' => 'Les locaux industriels, les locaux alimentaires et les locaux médicaux nécessitant une asepsie : ils relèvent de protocoles spécifiques. Nous intervenons dans les bureaux, commerces, cabinets, copropriétés et locations meublées.',
+							),
+							array(
+								'question' => 'Que comprend le tarif horaire ?',
+								'reponse' => 'La main-d\'œuvre, l\'organisation des passages et le suivi. Le matériel et les produits sont fournis par le client. Les autres frais — gestion mensuelle, mise en place, déplacement, majoration du dimanche, des jours fériés et de la nuit — sont détaillés dans le devis.',
+							),
+							array(
+								'question' => 'Y a-t-il un engagement de durée ?',
+								'reponse' => 'Le devis ne vous engage pas. Pour un entretien régulier, les frais et les conditions d\'arrêt sont écrits dans le devis, avant tout démarrage.',
 							),
 						),
 						'etapes' => array(),
@@ -5320,7 +5347,7 @@ update_option( 'tfp_page_zones-intervention', array(
 							array(
 								'type' => 'note',
 								'texte' => 'Devis gratuit sous 24 h Intervention régulière ou ponctuelle Conditions d\'arrêt précisées au devis',
-								'ligne' => 575,
+								'ligne' => 545,
 							),
 						),
 						'cartes' => array(
@@ -5446,7 +5473,7 @@ update_option( 'tfp_page_zones-intervention', array(
 							array(
 								'type' => 'note',
 								'texte' => 'Réponse directe',
-								'ligne' => 781,
+								'ligne' => 751,
 								'graisse' => 700,
 							),
 							array(
@@ -8369,7 +8396,7 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 							array(
 								'type' => 'note',
 								'texte' => 'Devis gratuit sous 24 h Intervention régulière ou ponctuelle Conditions d\'arrêt précisées au devis',
-								'ligne' => 718,
+								'ligne' => 688,
 							),
 						),
 						'cartes' => array(
@@ -8495,7 +8522,7 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 							array(
 								'type' => 'note',
 								'texte' => 'Réponse directe',
-								'ligne' => 925,
+								'ligne' => 895,
 								'graisse' => 700,
 							),
 							array(
@@ -12014,7 +12041,7 @@ update_option( 'tfp_page_pourquoi-nous', array(
 									array(
 										'titre' => 'Ancrage régional',
 										'titre_tag' => '',
-										'description' => 'Basée à Saint-Apollinaire, une couverture réelle sur toute la BFC, sans agences fictives.',
+										'description' => 'Une entreprise régionale basée à Saint-Apollinaire, qui intervient dans les huit départements de Bourgogne-Franche-Comté.',
 										'liste' => array(),
 										'lignes' => array(),
 										'titre_taille' => '20px',
@@ -12183,7 +12210,7 @@ update_option( 'tfp_page_pourquoi-nous', array(
 									array(
 										'titre' => 'Ancrage régional',
 										'titre_tag' => '',
-										'description' => 'Basée à Saint-Apollinaire, une couverture réelle sur toute la BFC, sans agences fictives.',
+										'description' => 'Une entreprise régionale basée à Saint-Apollinaire, qui intervient dans les huit départements de Bourgogne-Franche-Comté.',
 										'liste' => array(),
 										'lignes' => array(),
 										'titre_taille' => '20px',
@@ -12246,7 +12273,7 @@ update_option( 'tfp_page_pourquoi-nous', array(
 						'sequence' => array(
 							array(
 								'type' => 'paragraph',
-								'texte' => 'Nous préférons ces quelques chiffres, vérifiables, à des formules comme « satisfaction garantie » que nous nous interdisons volontairement d\'employer tant qu\'elles ne reposent pas sur une mesure réelle. Ce que nous nous engageons à faire est décrit, sans superlatif, dans notre page nettoyage professionnel.',
+								'texte' => 'Trois repères simples à vérifier. Nos engagements, eux, sont décrits point par point dans notre page nettoyage professionnel.',
 							),
 							array(
 								'type' => 'grid',
@@ -12491,7 +12518,7 @@ update_option( 'tfp_page_pourquoi-nous', array(
 							),
 						),
 						'textes' => array(
-							'Nous préférons ces quelques chiffres, vérifiables, à des formules comme « satisfaction garantie » que nous nous interdisons volontairement d\'employer tant qu\'elles ne reposent pas sur une mesure réelle. Ce que nous nous engageons à faire est décrit, sans superlatif, dans notre page nettoyage professionnel.',
+							'Trois repères simples à vérifier. Nos engagements, eux, sont décrits point par point dans notre page nettoyage professionnel.',
 						),
 						'liste' => array(),
 						'liens' => array(),
@@ -12924,7 +12951,7 @@ update_option( 'tfp_page_pourquoi-nous', array(
 							array(
 								'type' => 'faq',
 								'question' => '« Comment savoir que le travail a réellement été fait ? »',
-								'reponse' => 'Par le cahier de liaison laissé sur place, qui trace chaque passage et mentionne aussi ce qui n\'a pas pu être réalisé. C\'est moins spectaculaire qu\'une application avec des photos, mais c\'est lu, rempli à la main et vérifiable par n\'importe qui dans vos locaux.',
+								'reponse' => 'Par le cahier de liaison laissé sur place, qui trace chaque passage et mentionne aussi ce qui n\'a pas pu être réalisé. Il est rempli à la main à chaque passage et consultable par toute personne présente dans vos locaux.',
 							),
 						),
 						'cartes' => array(),
@@ -12948,7 +12975,7 @@ update_option( 'tfp_page_pourquoi-nous', array(
 							),
 							array(
 								'question' => '« Comment savoir que le travail a réellement été fait ? »',
-								'reponse' => 'Par le cahier de liaison laissé sur place, qui trace chaque passage et mentionne aussi ce qui n\'a pas pu être réalisé. C\'est moins spectaculaire qu\'une application avec des photos, mais c\'est lu, rempli à la main et vérifiable par n\'importe qui dans vos locaux.',
+								'reponse' => 'Par le cahier de liaison laissé sur place, qui trace chaque passage et mentionne aussi ce qui n\'a pas pu être réalisé. Il est rempli à la main à chaque passage et consultable par toute personne présente dans vos locaux.',
 							),
 						),
 						'etapes' => array(),
@@ -15505,7 +15532,7 @@ update_option( 'tfp_page_a-propos', array(
 						'sequence' => array(
 							array(
 								'type' => 'paragraph',
-								'texte' => '« Mon rôle, c\'est de rester joignable et de tenir mes engagements. Chaque client sait à qui parler, et sait ce qui a été fait dans ses locaux. »',
+								'texte' => 'Une interlocutrice joignable et des engagements tenus : chaque client sait à qui parler, et sait ce qui a été fait dans ses locaux.',
 							),
 							array(
 								'type' => 'note',
@@ -15515,7 +15542,7 @@ update_option( 'tfp_page_a-propos', array(
 						),
 						'cartes' => array(),
 						'textes' => array(
-							'« Mon rôle, c\'est de rester joignable et de tenir mes engagements. Chaque client sait à qui parler, et sait ce qui a été fait dans ses locaux. »',
+							'Une interlocutrice joignable et des engagements tenus : chaque client sait à qui parler, et sait ce qui a été fait dans ses locaux.',
 						),
 						'liste' => array(),
 						'liens' => array(),

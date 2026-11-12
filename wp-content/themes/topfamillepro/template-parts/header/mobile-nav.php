@@ -29,10 +29,10 @@ $site            = $args['site'];
 		<nav aria-label="Navigation principale">
 			<?php
 			/*
-			 * Même ordre et même principe qu'en bureau : le libellé d'une entrée à sous-menu est un
-			 * LIEN vers sa page (pilier pour « Prestations », hub pour « Zones »), le « + » est un
-			 * BOUTON qui déplie. Sur un panneau mobile, confondre les deux condamne l'accès à la
-			 * page parente : le doigt tombe forcément sur l'un ou sur l'autre.
+			 * Même ordre et même principe qu'en bureau. Depuis le 13 novembre 2026, toucher le
+			 * libellé d'une entrée à sous-menu OUVRE ses choix (src/js/nav.js) ; sans JavaScript il
+			 * reste un lien vers sa page. La page parente est la première ou la dernière entrée du
+			 * volet (« notre méthode », « Voir toutes les villes »).
 			 */
 			?>
 			<div class="tfp-mobile-nav__list">
@@ -47,6 +47,9 @@ $site            = $args['site'];
 							</button>
 						</div>
 						<div class="tfp-mobile-submenu" id="<?php echo esc_attr( $tfp_msub ); ?>" hidden>
+							<?php if ( ! empty( $item['tete'] ) ) : ?>
+								<a href="<?php echo esc_url( $item['tete']['url'] ); ?>"><?php echo esc_html( $item['tete']['label'] ); ?></a>
+							<?php endif; ?>
 							<?php foreach ( $item['items'] as $sub ) : ?>
 								<a href="<?php echo esc_url( $sub['url'] ); ?>">
 									<?php echo esc_html( $sub['label'] ); ?>

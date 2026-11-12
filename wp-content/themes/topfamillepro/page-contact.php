@@ -356,13 +356,9 @@ if ( '' !== $horaires ) {
 		<div class="tfp-contact-cols__aside">
 			<div class="tfp-contact-person">
 				<?php
-				/*
-				 * Portrait propre à /contact/ et /demande-de-devis/ : la maquette y pose un troisième
-				 * visuel de stock, distinct de celui de /a-propos/ (relevé par empreinte, G26 §3).
-				 * `alt` vide : le nom est écrit juste à côté, et aucune photo ne prétend représenter
-				 * Audrey tant que la vraie n'est pas fournie (CLAUDE.md §5.6).
-				 */
-				tfp_picture( 'portrait-contact', array( 'sizes' => '64px', 'alt' => '', 'class' => 'tfp-contact-person__photo' ) );
+				// Monogramme de la gérante, ou sa vraie photo quand elle est saisie (13 novembre 2026) :
+				// plus de portrait de banque d'images à côté de son prénom.
+				tfp_gerante_visuel( 'tfp-monogramme--sm' );
 				?>
 				<div>
 					<strong><?php echo esc_html( $prenom ); ?></strong>

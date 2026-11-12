@@ -149,7 +149,68 @@ const CORRECTIONS_EDITORIALES = [
 		avant: 'Nous ne garantissons pas non plus un même intervenant à chaque passage : nous recherchons cette continuité et la privilégions autant que possible.',
 		apres: "Nous recherchons un même intervenant d'un passage à l'autre et privilégions cette continuité autant que possible.",
 	},
+	/*
+	 * 13 novembre 2026 — questions-réponses resserrées : dire ce qui est fait, sans tournure de
+	 * précaution. Aucun fait nouveau : matériel fourni par le client (CLAUDE.md §9), remplacement
+	 * recherché et client prévenu, implantation unique à Saint-Apollinaire.
+	 */
+	{
+		avant: 'Les produits et le matériel sont généralement fournis par le client. Les modalités sont précisées au devis.',
+		apres: "Oui : le matériel et les produits sont fournis par le client. Le tarif horaire couvre la main-d'œuvre, l'organisation et le suivi ; les modalités pratiques sont précisées au devis.",
+	},
+	{
+		avant: 'Nous recherchons une solution de remplacement pour maintenir la continuité et vous tenons informé.',
+		apres: 'Vous êtes prévenu, et nous recherchons un remplaçant, auquel vos consignes écrites sont transmises.',
+	},
+	{
+		avant: 'Basée à Saint-Apollinaire, une couverture réelle sur toute la BFC, sans agences fictives.',
+		apres: 'Une entreprise régionale basée à Saint-Apollinaire, qui intervient dans les huit départements de Bourgogne-Franche-Comté.',
+	},
+	{
+		avant: "Nous préférons ces quelques chiffres, vérifiables, à des formules comme « satisfaction garantie » que nous nous interdisons volontairement d'employer tant qu'elles ne reposent pas sur une mesure réelle. Ce que nous nous engageons à faire est décrit, sans superlatif, dans notre page nettoyage professionnel.",
+		apres: 'Trois repères simples à vérifier. Nos engagements, eux, sont décrits point par point dans notre page nettoyage professionnel.',
+	},
+	{
+		avant: "C'est moins spectaculaire qu'une application avec des photos, mais c'est lu, rempli à la main et vérifiable par n'importe qui dans vos locaux.",
+		apres: 'Il est rempli à la main à chaque passage et consultable par toute personne présente dans vos locaux.',
+	},
+	/*
+	 * Citation attribuée à Audrey (page À propos) : reprise de la maquette, jamais validée par
+	 * l'intéressée (CLAUDE.md §5.5). Le 13 novembre 2026, elle cesse d'être une citation : la même
+	 * idée est dite par l'entreprise, sans guillemets, comme sur l'accueil.
+	 */
+	{
+		avant: "« Mon rôle, c'est de rester joignable et de tenir mes engagements. Chaque client sait à qui parler, et sait ce qui a été fait dans ses locaux. »",
+		apres: 'Une interlocutrice joignable et des engagements tenus : chaque client sait à qui parler, et sait ce qui a été fait dans ses locaux.',
+	},
+	{
+		avant: ", sans constituer une garantie absolue en cas d'absence ou de changement de disponibilité.",
+		apres: ' ; en cas d\'absence, vous êtes prévenu et un remplacement est recherché.',
+	},
 ];
+
+/**
+ * Questions ajoutées aux FAQ relevées (13 novembre 2026). Elles ne viennent pas de la maquette :
+ * chacune reprend un fait validé de PROJECT_INPUTS.md (exclusions, périmètre du tarif, conditions
+ * écrites au devis). Elles sont ajoutées à la suite de la dernière question de la page, donc
+ * affichées — et prises en compte par le FAQPage, qui lit ce qui est visible.
+ */
+const FAQ_AJOUTS = {
+	'nettoyage-professionnel': [
+		{
+			question: 'Quels locaux ne prenez-vous pas en charge ?',
+			reponse: "Les locaux industriels, les locaux alimentaires et les locaux médicaux nécessitant une asepsie : ils relèvent de protocoles spécifiques. Nous intervenons dans les bureaux, commerces, cabinets, copropriétés et locations meublées.",
+		},
+		{
+			question: 'Que comprend le tarif horaire ?',
+			reponse: "La main-d'œuvre, l'organisation des passages et le suivi. Le matériel et les produits sont fournis par le client. Les autres frais — gestion mensuelle, mise en place, déplacement, majoration du dimanche, des jours fériés et de la nuit — sont détaillés dans le devis.",
+		},
+		{
+			question: 'Y a-t-il un engagement de durée ?',
+			reponse: "Le devis ne vous engage pas. Pour un entretien régulier, les frais et les conditions d'arrêt sont écrits dans le devis, avant tout démarrage.",
+		},
+	],
+};
 
 /**
  * Déplacements de sections décidés après relevé (revue du 25 octobre 2026, §5) : la section qui
@@ -1942,6 +2003,17 @@ for (const p of PAGES) {
 	);
 }
 await browser.close();
+
+for (const [cle, ajouts] of Object.entries(FAQ_AJOUTS)) {
+	const page = all.find((p) => p.key === cle);
+	const blocs = page ? page.sections.flatMap((sec) => sec.blocs).filter((b) => (b.faq || []).length) : [];
+	if (!blocs.length) throw new Error(`FAQ_AJOUTS : aucune FAQ relevée sur « ${cle} », rien à compléter.`);
+	const bloc = blocs[blocs.length - 1];
+	const rang = bloc.sequence.map((e) => e.type).lastIndexOf('faq');
+	bloc.faq.push(...ajouts);
+	bloc.sequence.splice(rang + 1, 0, ...ajouts.map((f) => ({ type: 'faq', ...f })));
+	console.log(`  FAQ « ${cle} » : ${ajouts.length} question(s) ajoutée(s), ${bloc.faq.length} au total`);
+}
 
 const L = [];
 L.push('<?php');

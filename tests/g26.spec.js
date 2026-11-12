@@ -91,25 +91,14 @@ test.describe( 'G26 · la note Google n’apparaît que si elle est autorisée',
 					}
 					const marque = el.closest( '[data-tfp-provisional]' );
 					if ( ! marque ) return 'orpheline';
-					/*
-					 * La mention couvre légitimement un GROUPE : le composant de grille la pose une
-					 * fois au-dessus de la liste, pas dans chaque carte. On la cherche donc au-delà
-					 * du bloc marqué — mais de façon BORNÉE, sur trois niveaux au plus. Sans borne,
-					 * la recherche atteint `<body>` et une seule mention sur la page suffisait à
-					 * valider n'importe quelles étoiles : le contrôle ne prouvait plus rien.
-					 */
-					let portee = marque;
-					for ( let n = 0; n < 3 && portee.parentElement; n++ ) {
-						if ( portee.querySelector( '[data-tfp-provisional-notice]' ) ) return 'provisoire';
-						portee = portee.parentElement;
-					}
-					return portee.querySelector( '[data-tfp-provisional-notice]' ) ? 'provisoire' : 'provisoire-sans-mention';
+					// Depuis le 13 novembre 2026, plus de mention visible : le marquage du bloc suffit.
+					return 'provisoire';
 				} );
 				if ( 'note' === origine ) {
 					expect( autorisee, `${ route } : étoiles de note alors que la note n’est pas autorisée` ).toBe( true );
 					continue;
 				}
-				expect( origine, `${ route } : étoiles sans marquage ni mention provisoire dans le même bloc` ).toBe( 'provisoire' );
+				expect( origine, `${ route } : étoiles hors note Google et hors témoignage marqué data-tfp-provisional` ).toBe( 'provisoire' );
 			}
 		} );
 	}

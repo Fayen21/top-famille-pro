@@ -88,8 +88,20 @@ $faqs = array(
 		'a' => "Le tarif horaire ({$prix} HT/h) est fixe. Le volume horaire — le nombre d'heures nécessaires chaque mois — varie selon la surface, la fréquence et le type de locaux : c'est lui qui détermine le budget final.",
 	),
 	array(
-		'q' => 'Pourquoi ne proposez-vous pas de simulateur en ligne ?',
-		'a' => "Un simulateur automatique ne peut pas tenir compte de l'état réel de vos locaux ni de vos contraintes spécifiques. Nous préférons un échange direct, qui aboutit à un devis précis sous 24 heures.",
+		'q' => "Que comprend le tarif de {$prix} HT/h ?",
+		'a' => "La main-d'œuvre, l'organisation des passages et le suivi. Le matériel et les produits sont fournis par le client. Les autres frais sont détaillés dans le devis.",
+	),
+	array(
+		'q' => 'Le tarif change-t-il selon la ville ?',
+		'a' => "Non. Le tarif horaire est le même dans les huit départements de {$site['address_region']}. Seules d'éventuelles indemnités kilométriques, indiquées au devis, dépendent de la distance.",
+	),
+	array(
+		'q' => 'Y a-t-il une majoration le dimanche ou la nuit ?',
+		'a' => "Oui : une majoration de 10 % du tarif horaire s'applique le dimanche, les jours fériés et la nuit. Elle est indiquée à l'avance sur le devis.",
+	),
+	array(
+		'q' => 'Comment est établi mon devis ?',
+		'a' => "Il est étudié personnellement par Audrey, à partir de vos locaux et de vos contraintes, et vous est transmis sous 24 heures. Il est gratuit et sans engagement.",
 	),
 );
 
