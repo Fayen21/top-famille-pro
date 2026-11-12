@@ -1,12 +1,13 @@
 # Archives de `release/` — lesquelles sont à jour
 
-Mis à jour le 11 novembre 2026 (passe commerciale). Version de code : `b8d3bef`, thème 0.15.0.
+Mis à jour le 12 novembre 2026 (recette du devis). Thème 0.15.1.
 
 ## À jour
 
 | Dossier / fichier | Contenu | Empreintes |
 |---|---|---|
-| `paquets-passe-commerciale-2026-11-11/` | thème 0.15.0, installeur de contenu, export HTML brut, site navigable hors ligne avec démonstration du formulaire — commit `b8d3bef` | `paquets-passe-commerciale-2026-11-11/SHA256SUMS.txt` |
+| `paquets-recette-devis-2026-11-12/` | thème 0.15.1, installeur, export HTML brut, site navigable (démonstration corrigée : double validation, prestation suivie), captures de recette à 375 px | `paquets-recette-devis-2026-11-12/SHA256SUMS.txt` |
+| `paquets-passe-commerciale-2026-11-11/` | **remplacé** par le dossier ci-dessus — thème 0.15.0, installeur de contenu, export HTML brut, site navigable hors ligne avec démonstration du formulaire — commit `b8d3bef` | `paquets-passe-commerciale-2026-11-11/SHA256SUMS.txt` |
 | `dossier-passe-commerciale-2026-11-11-avant-apres.zip` | captures avant / après de la passe commerciale | `SHA256SUMS-dossier-passe-commerciale.txt` |
 | `paquets-travail-2026-11-03/` | **remplacé** par le dossier ci-dessus (thème 0.14.1, `b095763`) | `paquets-travail-2026-11-03/SHA256SUMS.txt` |
 | `dossier-revue-zip-2026-11-03-volume-1-avant-apres.zip` | dossier de revue hors ligne : 44 vues avant / après | `SHA256SUMS-dossier-revue-zip.txt` |

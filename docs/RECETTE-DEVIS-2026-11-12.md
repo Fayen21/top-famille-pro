@@ -53,11 +53,11 @@ Fichier : `tools/export-statique.mjs`.
 | Contrôle | Environnement | Résultat |
 |---|---|---|
 | Formulaire : suite fonctionnelle (dont 4 nouveaux tests : Bureaux → Commerce, accès direct, retour à l'étape 1, département) | banc `development` | **21/21** |
-| Recette serveur `tools/recette-devis.mjs` : vrai chemin `admin-post` → `wp_mail()`, e-mail intercepté par un mu-plugin temporaire du banc, aucune expédition | banc `production` | **25/25 contrôles** |
+| Recette serveur `tools/recette-devis.mjs` : vrai chemin `admin-post` → `wp_mail()`, e-mail intercepté par un mu-plugin temporaire du banc, aucune expédition | banc `production` | **23/23 contrôles** |
 | Export : 53 routes ouvertes hors ligne à 375 et 1440 px, 5 963 liens internes, ancres, ressources locales | fichiers locaux | 53/53, 0 ancre introuvable, 0 ressource manquante, 0 image cassée, 0 requête externe |
 | Démonstration : notice, validation de l'étape 1, confirmation simulée, **2e validation après modification**, bouton actif, Bureaux → Commerce, 0 POST, 0 événement de conversion | export | OK |
 | Paquets et parité dépôt ↔ livraison | — | 1 258 fichiers concordants |
-| Suite Playwright complète | banc `development` | voir §4 |
+| Suite Playwright complète | banc `development` | **1 388/1 388** |
 
 Contenu de la recette serveur :
 - **Accès direct** (Commerces, ponctuel, téléphone seul, surface et code postal vides) : demande
@@ -112,7 +112,10 @@ Les mesures sont dans `bilan.json`.
 
 ## 4. Suite complète
 
-_Voir la section ajoutée en fin de recette._
+`TFP_BASE_URL=http://localhost:8901 npx playwright test --trace off` sur le banc en
+`development` (PHP 8.3, WordPress + SQLite, Chromium 1.62) : **1 388 tests réussis, 0 échec** en
+5,7 min. La recette serveur a été rejouée ensuite en `production`, avec le JavaScript final :
+23/23.
 
 ## 5. Reste à valider en préproduction
 

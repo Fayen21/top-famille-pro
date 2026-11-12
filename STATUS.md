@@ -2251,3 +2251,23 @@ Rapport : `docs/RAPPORT-PASSE-COMMERCIALE.md`. Rien n'est fusionné dans `main`,
 - Photos à fournir (copropriétés surtout) — liste dans le rapport, §5. Un environnement réseau
   « top-famille-pro » (Openverse, Wikimedia) existe pour une prochaine session.
 - Validation visuelle humaine ; mesures Lighthouse sur Hostinger.
+
+## Recette du devis — 12 novembre 2026 (thème 0.15.1)
+
+Bilan : `docs/RECETTE-DEVIS-2026-11-12.md`. Rien n'est fusionné dans `main`, rien n'est déployé.
+
+### Fait
+- La prestation demandée se déduit du type de locaux et du régime : le serveur la recalcule, le
+  client la tient à jour. La prestation de la page d'origine est envoyée à part
+  (`prestation_origine`). Le département est retiré si la ville saisie change.
+- Export : en démonstration, double validation possible sans rechargement. Référence
+  `generatepress/style.css` retirée. Le vérificateur contrôle les ancres et les attributs entre
+  apostrophes.
+- `tools/recette-devis.mjs` : recette en `production` sur le banc, e-mail intercepté, aucune
+  expédition. 23/23.
+- Suite complète 1 388/1 388 ; export 53/53, 0 ancre introuvable.
+
+### Reste
+- Envoi réel vers une boîte de test en préproduction (contenu, Reply-To, remise par Hostinger).
+- Rendu avec le vrai thème parent GeneratePress.
+- Photos : hall résidentiel (Copropriétés), remise en état (Ponctuel), toujours à fournir.
