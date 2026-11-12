@@ -2271,3 +2271,27 @@ Bilan : `docs/RECETTE-DEVIS-2026-11-12.md`. Rien n'est fusionné dans `main`, ri
 - Envoi réel vers une boîte de test en préproduction (contenu, Reply-To, remise par Hostinger).
 - Rendu avec le vrai thème parent GeneratePress.
 - Photos : hall résidentiel (Copropriétés), remise en état (Ponctuel), toujours à fournir.
+
+## Passe du 13 novembre 2026 (thème 0.16.0)
+
+Bilan : `docs/BILAN-PASSE-2026-11-13.md`. Rien n'est fusionné dans `main`, rien n'est déployé.
+
+### Décisions d'Emmanuel du 13 novembre
+- Les libellés « Prestations » et « Zones d'intervention » ouvrent leur menu au clic (remplace la
+  décision du 19 août : lien vers le pilier). Le `href` reste pour la navigation sans JavaScript.
+- Plus aucune mention visible « exemple de présentation », « en cours d'intégration », « photo
+  provisoire ». Le marquage `data-tfp-provisional` et l'absence de donnée structurée demeurent.
+- Plus de portrait de banque d'images pour Audrey : monogramme, jusqu'à la vraie photo.
+- La citation attribuée à Audrey n'est plus publiée (elle n'avait jamais été validée).
+
+### Fait
+Header, bandeau, photo d'accueil, pied de page, pages prestation, « Pourquoi nous », couleur, FAQ
+(accueil, pilier, tarifs). Suite 1 390/1 390, export 53/53, recette du devis 23/23.
+
+### Reste
+- **Avis réels** : textes des six avis authentiques à fournir. Ceux de la maquette, fictifs, sont
+  affichés sans mention : à remplacer avant mise en ligne.
+- Photos (hall de copropriété, remise en état, scène de nettoyage pour l'accueil).
+- Préproduction : envoi réel du devis, vrai thème parent, Lighthouse.
+- CLAUDE.md §5.5 décrit encore la citation et la photo provisoires : à mettre à jour avec
+  l'accord d'Emmanuel.
