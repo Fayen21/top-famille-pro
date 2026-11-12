@@ -1,0 +1,222 @@
+{
+  "date": "2026-11-12T13:52:37.044Z",
+  "base": "http://localhost:8901",
+  "scenarios": {
+    "banc": [
+      {
+        "nom": "formulaire en mode envoi réel (pas de data-tfp-mail-disabled)",
+        "ok": true,
+        "detail": "environnement production"
+      }
+    ],
+    "accueil 375": [
+      {
+        "nom": "tarif visible au-dessus de la barre mobile",
+        "ok": true,
+        "detail": "27 € HT/h tarif unique, en régulier comme en ponctuel · bas 540 px / barre 731 px"
+      },
+      {
+        "nom": "« Demander mon devis » entièrement visible, ≥ 44 px",
+        "ok": true,
+        "detail": "bas 616 px · 60 px de haut"
+      },
+      {
+        "nom": "« Appeler » entièrement visible, ≥ 44 px, lien tel:",
+        "ok": true,
+        "detail": "Appeler Top-Famille Pro · bas 688 px · 60 px"
+      },
+      {
+        "nom": "barre mobile affichée, commandes ≥ 44 px",
+        "ok": true,
+        "detail": "Appeler 60 px · Demander mon devis 60 px"
+      },
+      {
+        "nom": "aucun débordement horizontal",
+        "ok": true,
+        "detail": "375 px"
+      },
+      {
+        "nom": "« Devis » reçoit le clic en son centre",
+        "ok": true,
+        "detail": ""
+      },
+      {
+        "nom": "« Appeler » reçoit le clic en son centre",
+        "ok": true,
+        "detail": ""
+      }
+    ],
+    "A accès direct": [
+      {
+        "nom": "téléphone seul + surface et CP vides : envoi accepté",
+        "ok": true,
+        "detail": "?merci=1"
+      },
+      {
+        "nom": "un e-mail remis à wp_mail()",
+        "ok": true,
+        "detail": ""
+      },
+      {
+        "email": {
+          "to": "audrey.b@top-famille.fr",
+          "subject": "[Demande de devis] Recette A",
+          "message": "Nom : Recette A\nTéléphone : 06 00 00 00 01\nType de locaux : Commerces\nRégime : Ponctuel\nPrestation demandée : Nettoyage de commerces (intervention ponctuelle)\n\nMessage :\nRecette du 12 novembre 2026 — demande de test, ne pas traiter.\n\n--- Contexte de la demande ---\nIP : 127.0.0.1",
+          "headers": [
+            "Content-Type: text/plain; charset=UTF-8"
+          ],
+          "attachments": [],
+          "embeds": []
+        }
+      },
+      {
+        "nom": "prestation demandée = Commerces ponctuel",
+        "ok": true,
+        "detail": ""
+      },
+      {
+        "nom": "type et régime reçus",
+        "ok": true,
+        "detail": ""
+      },
+      {
+        "nom": "pas de prestation d’origine (accès direct)",
+        "ok": true,
+        "detail": ""
+      },
+      {
+        "nom": "téléphone présent, aucun e-mail, CP et surface absents",
+        "ok": true,
+        "detail": ""
+      }
+    ],
+    "B Bureaux → Commerce": [
+      {
+        "nom": "récapitulatif = Commerces",
+        "ok": true,
+        "detail": ""
+      },
+      {
+        "nom": "champ caché prestation = Commerces",
+        "ok": true,
+        "detail": ""
+      },
+      {
+        "nom": "e-mail seul : envoi accepté",
+        "ok": true,
+        "detail": "?merci=1"
+      },
+      {
+        "email": {
+          "to": "audrey.b@top-famille.fr",
+          "subject": "[Demande de devis] Recette B",
+          "message": "Nom : Recette B\nE-mail : recette@example.com\nType de locaux : Commerces\nRégime : Ponctuel\nPrestation demandée : Nettoyage de commerces (intervention ponctuelle)\n\nMessage :\nRecette du 12 novembre 2026 — demande de test, ne pas traiter.\n\n--- Contexte de la demande ---\nPage d'origine : http://localhost:8901/prestations/bureaux/\nPrestation de la page d'origine : Nettoyage de bureaux\nRéférent : http://localhost:8901/prestations/bureaux/\nIP : 127.0.0.1",
+          "headers": [
+            "Content-Type: text/plain; charset=UTF-8",
+            "Reply-To: Recette B <recette@example.com>"
+          ],
+          "attachments": [],
+          "embeds": []
+        }
+      },
+      {
+        "nom": "prestation demandée = dernier choix (Commerces, ponctuel)",
+        "ok": true,
+        "detail": ""
+      },
+      {
+        "nom": "aucune mention « Nettoyage de bureaux » comme prestation demandée",
+        "ok": true,
+        "detail": ""
+      },
+      {
+        "nom": "origine conservée à part",
+        "ok": true,
+        "detail": ""
+      },
+      {
+        "nom": "Reply-To vers l’e-mail du prospect",
+        "ok": true,
+        "detail": ""
+      }
+    ],
+    "C serveur": [
+      {
+        "nom": "POST avec prestation périmée : le serveur recalcule depuis type et régime",
+        "ok": true,
+        "detail": ""
+      }
+    ],
+    "D sans contact": [
+      {
+        "nom": "refus client annoncé, étape 1 conservée",
+        "ok": true,
+        "detail": ""
+      }
+    ]
+  },
+  "accueil": {
+    "vh": 812,
+    "largeurDoc": 375,
+    "prix": {
+      "texte": "27 € HT/h tarif unique, en régulier comme en ponctuel",
+      "top": 485,
+      "bottom": 540,
+      "left": 33,
+      "right": 342,
+      "h": 54,
+      "w": 309,
+      "police": "17px"
+    },
+    "devis": {
+      "texte": "Demander mon devis",
+      "top": 556,
+      "bottom": 616,
+      "left": 33,
+      "right": 342,
+      "h": 60,
+      "w": 309
+    },
+    "appel": {
+      "texte": "Appeler Top-Famille Pro",
+      "href": "tel:+33636176339",
+      "top": 628,
+      "bottom": 688,
+      "left": 33,
+      "right": 342,
+      "h": 60,
+      "w": 309
+    },
+    "barre": {
+      "top": 731,
+      "bottom": 812,
+      "left": 0,
+      "right": 375,
+      "h": 81,
+      "w": 375,
+      "visible": true,
+      "liens": [
+        {
+          "texte": "Appeler",
+          "top": 742,
+          "bottom": 802,
+          "left": 16,
+          "right": 182,
+          "h": 60,
+          "w": 166
+        },
+        {
+          "texte": "Demander mon devis",
+          "top": 742,
+          "bottom": 802,
+          "left": 194,
+          "right": 359,
+          "h": 60,
+          "w": 166
+        }
+      ]
+    }
+  },
+  "mailsConsignes": 3,
+  "echecs": 0
+}

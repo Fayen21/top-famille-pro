@@ -8,11 +8,20 @@ document.addEventListener('submit', function (e) {
 	if (refuse) return;
 	// Formulaire sans validation scriptée (contact) : contrôles natifs du navigateur.
 	if (!form.checkValidity()) { form.reportValidity(); return; }
+	/*
+	 * Verrou anti-double-envoi du thème (src/js/main.js) : il pose « Envoi… » tout de suite et
+	 * désactive le bouton au tour de boucle suivant. Le rétablir ici, de façon synchrone, ne
+	 * servait à rien : la désactivation arrivait après. On le rétablit donc APRÈS elle, au tour
+	 * suivant, pour pouvoir valider, modifier et valider de nouveau sans recharger la page.
+	 * Sur le site réel, ce script n'existe pas : le verrou reste entier.
+	 */
 	var bouton = form.querySelector('[data-tfp-once]');
 	if (bouton) {
-		bouton.disabled = false;
-		bouton.removeAttribute('aria-busy');
-		if (bouton.dataset.libelle) bouton.textContent = bouton.dataset.libelle;
+		window.setTimeout(function () {
+			bouton.disabled = false;
+			bouton.removeAttribute('aria-busy');
+			if (bouton.dataset.libelle) bouton.textContent = bouton.dataset.libelle;
+		}, 0);
 	}
 	var ancien = form.querySelector('[data-tfp-demo-confirmation]');
 	if (ancien) ancien.remove();

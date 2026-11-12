@@ -17,6 +17,53 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
+ * Types de locaux proposés à l'étape 1 et prestation correspondante.
+ *
+ * Une seule table pour le gabarit (liste et préremplissage) et pour le traitement serveur : le
+ * libellé de la prestation reçue par e-mail se DÉDUIT du type de locaux choisi en dernier, il ne
+ * se recopie plus depuis la page d'origine. Recette du 12 novembre 2026 : arrivé depuis Bureaux, un
+ * prospect qui choisissait « Commerces » envoyait une demande marquée « Nettoyage de bureaux ».
+ * Les intitulés de prestation sont ceux que transmettent les pages prestation (`service_label`).
+ *
+ * @return array<string, array{label: string, prestation: string}>
+ */
+function tfp_quote_types_locaux() {
+	return array(
+		'bureaux'      => array( 'label' => 'Bureaux', 'prestation' => 'Nettoyage de bureaux' ),
+		'commerces'    => array( 'label' => 'Commerces', 'prestation' => 'Nettoyage de commerces' ),
+		'cabinets'     => array( 'label' => 'Cabinets & professions libérales', 'prestation' => 'Nettoyage de cabinets' ),
+		'coproprietes' => array( 'label' => 'Copropriété / parties communes', 'prestation' => 'Entretien de copropriétés' ),
+		'meubles'      => array( 'label' => 'Location meublée / hébergement', 'prestation' => 'Nettoyage de locations meublées' ),
+		'ponctuel'     => array( 'label' => 'Remise en état ponctuelle', 'prestation' => 'Nettoyage ponctuel' ),
+		'autre'        => array( 'label' => 'Autre', 'prestation' => 'Autre besoin' ),
+	);
+}
+
+/**
+ * Prestation demandée, déduite des choix de l'étape 1 : type de locaux et régime.
+ *
+ * Le régime est toujours précisé, sauf quand il répète le type (« Nettoyage ponctuel » en
+ * intervention ponctuelle). Un type inconnu ne produit rien : la demande n'invente pas de
+ * prestation. Même règle que src/js/quote-form.js (`prestationDemandee`).
+ *
+ * @param string $type   Clé de tfp_quote_types_locaux().
+ * @param string $regime « regulier » ou « ponctuel ».
+ * @return string
+ */
+function tfp_quote_prestation_demandee( $type, $regime ) {
+	$types = tfp_quote_types_locaux();
+	if ( ! isset( $types[ $type ] ) ) {
+		return '';
+	}
+	$libelle  = $types[ $type ]['prestation'];
+	$regimes  = array( 'regulier' => 'entretien régulier', 'ponctuel' => 'intervention ponctuelle' );
+	if ( isset( $regimes[ $regime ] ) && ! ( 'ponctuel' === $type && 'ponctuel' === $regime ) ) {
+		$libelle .= ' (' . $regimes[ $regime ] . ')';
+	}
+	return $libelle;
+}
+
+/**
  * Limite de soumissions : 5 par heure et par IP, via un transitoire (pas de table dédiée).
  *
  * @param string $ip
@@ -76,7 +123,17 @@ function tfp_handle_quote_submission() {
 	$frequence   = isset( $_POST['frequence'] ) ? sanitize_text_field( wp_unslash( $_POST['frequence'] ) ) : '';
 	$creneau     = isset( $_POST['creneau'] ) ? sanitize_text_field( wp_unslash( $_POST['creneau'] ) ) : '';
 
-	$prestation  = isset( $_POST['prestation'] ) ? sanitize_text_field( wp_unslash( $_POST['prestation'] ) ) : '';
+	/*
+	 * Prestation demandée : recalculée ICI depuis le type de locaux et le régime reçus, qui sont les
+	 * derniers choix du prospect. Le champ caché `prestation` n'est plus qu'un repli (type inconnu,
+	 * formulaire ancien resté en cache). La prestation de la page d'origine est une information
+	 * distincte, transmise à part et rangée dans le contexte de la demande.
+	 */
+	$prestation = tfp_quote_prestation_demandee( $type_locaux, $regime );
+	if ( '' === $prestation && isset( $_POST['prestation'] ) ) {
+		$prestation = sanitize_text_field( wp_unslash( $_POST['prestation'] ) );
+	}
+	$prestation_origine = isset( $_POST['prestation_origine'] ) ? sanitize_text_field( wp_unslash( $_POST['prestation_origine'] ) ) : '';
 	$ville       = isset( $_POST['ville'] ) ? sanitize_text_field( wp_unslash( $_POST['ville'] ) ) : '';
 	$departement = isset( $_POST['departement'] ) ? sanitize_text_field( wp_unslash( $_POST['departement'] ) ) : '';
 	$page_origine = isset( $_POST['page_origine'] ) ? esc_url_raw( wp_unslash( $_POST['page_origine'] ) ) : '';
@@ -106,7 +163,7 @@ function tfp_handle_quote_submission() {
 
 	$site = tfp_site_data();
 
-	$type_locaux_labels = array( 'bureaux' => 'Bureaux', 'commerces' => 'Commerces', 'cabinets' => 'Cabinets & professions libérales', 'coproprietes' => 'Copropriété / parties communes', 'meubles' => 'Location meublée / hébergement', 'ponctuel' => 'Remise en état ponctuelle', 'autre' => 'Autre' );
+	$type_locaux_labels = wp_list_pluck( tfp_quote_types_locaux(), 'label' );
 	$regime_labels      = array( 'regulier' => 'Régulier', 'ponctuel' => 'Ponctuel' );
 	$frequence_labels   = array( 'quotidien' => 'Quotidien', 'plusieurs-semaine' => 'Plusieurs fois par semaine', 'hebdomadaire' => 'Hebdomadaire', 'bimensuel' => 'Toutes les deux semaines', 'mensuel' => 'Mensuel', 'ponctuel' => 'Une seule fois' );
 	$creneau_labels     = array( 'matin' => "Tôt le matin, avant l'arrivée des équipes", 'soir' => 'En soirée, après le départ des équipes', 'journee' => 'En journée', 'weekend' => 'Le week-end' );
@@ -122,7 +179,7 @@ function tfp_handle_quote_submission() {
 	if ( $code_postal ) { $lines[] = 'Code postal : ' . $code_postal; }
 	if ( $surface ) { $lines[] = 'Surface approximative : ' . $surface; }
 	if ( $departement ) { $lines[] = 'Département : ' . $departement; }
-	if ( $prestation ) { $lines[] = 'Prestation concernée : ' . $prestation; }
+	if ( $prestation ) { $lines[] = 'Prestation demandée : ' . $prestation; }
 	if ( $frequence ) { $lines[] = 'Fréquence souhaitée : ' . ( isset( $frequence_labels[ $frequence ] ) ? $frequence_labels[ $frequence ] : $frequence ); }
 	if ( $creneau ) { $lines[] = 'Créneau souhaité : ' . ( isset( $creneau_labels[ $creneau ] ) ? $creneau_labels[ $creneau ] : $creneau ); }
 	$lines[] = '';
@@ -131,6 +188,7 @@ function tfp_handle_quote_submission() {
 	$lines[] = '';
 	$lines[] = '--- Contexte de la demande ---';
 	if ( $page_origine ) { $lines[] = 'Page d\'origine : ' . $page_origine; }
+	if ( $prestation_origine ) { $lines[] = 'Prestation de la page d\'origine : ' . $prestation_origine; }
 	if ( $referent ) { $lines[] = 'Référent : ' . $referent; }
 	if ( $utm_source || $utm_medium || $utm_campaign ) {
 		$lines[] = sprintf( 'UTM : source=%s medium=%s campaign=%s', $utm_source, $utm_medium, $utm_campaign );

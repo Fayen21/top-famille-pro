@@ -226,6 +226,85 @@ test.describe('Formulaire de demande de devis', () => {
 		expect(departement).toContain('Côte-d\'Or'.slice(0, 4)); // tolère l'encodage exact de l'apostrophe
 	});
 
+	/*
+	 * Recette du 12 novembre 2026 : la prestation reçue suit les DERNIERS choix du prospect, la
+	 * prestation de la page d'origine est transmise à part. Le POST est intercepté pour lire
+	 * exactement ce que le navigateur envoie.
+	 */
+	async function corpsEnvoye(page) {
+		let corps = null;
+		await page.route('**/wp-admin/admin-post.php', async (route) => {
+			corps = new URLSearchParams(route.request().postData() || '');
+			await route.fulfill({ status: 204, body: '' });
+		});
+		await page.fill('#tfp-message', 'Recette prestation.');
+		await page.check('input[name="consentement"]');
+		await page.click('[data-step-submit]');
+		await expect.poll(() => corps).not.toBeNull();
+		return corps;
+	}
+
+	test('prestation : Bureaux → Demander un devis → Commerce envoie Commerce, origine à part', async ({ page }) => {
+		await page.goto('/prestations/bureaux/');
+		await Promise.all([page.waitForURL(/demande-de-devis/), page.locator('a[href*="demande-de-devis/?service=bureaux"]').first().click()]);
+		await expect(page.locator('#tfp-type-locaux')).toHaveValue('bureaux');
+		await page.selectOption('#tfp-type-locaux', 'commerces');
+		await page.selectOption('#tfp-regime', 'regulier');
+		await page.fill('#tfp-nom', 'Test Automatisé');
+		await page.fill('#tfp-email', 'test@example.com');
+		await page.click('[data-step-next]');
+		await expect(page.locator('[data-quote-recap-text]')).toContainText('Commerces');
+		const corps = await corpsEnvoye(page);
+		expect(corps.get('type_locaux')).toBe('commerces');
+		expect(corps.get('prestation')).toBe('Nettoyage de commerces (entretien régulier)');
+		expect(corps.get('prestation_origine')).toBe('Nettoyage de bureaux');
+		expect(corps.get('page_origine')).toContain('/prestations/bureaux/');
+	});
+
+	test('prestation : accès direct, la prestation se déduit du type et du régime choisis', async ({ page }) => {
+		await page.goto(FORM_URL);
+		await expect(page.locator('#tfp-prestation-visible')).toHaveValue('');
+		await page.selectOption('#tfp-type-locaux', 'cabinets');
+		await page.selectOption('#tfp-regime', 'ponctuel');
+		await expect(page.locator('#tfp-prestation-visible')).toHaveValue('Nettoyage de cabinets (intervention ponctuelle)');
+		await page.fill('#tfp-nom', 'Test Automatisé');
+		await page.fill('#tfp-telephone', '0600000000');
+		await page.click('[data-step-next]');
+		const corps = await corpsEnvoye(page);
+		expect(corps.get('prestation')).toBe('Nettoyage de cabinets (intervention ponctuelle)');
+		expect(corps.get('prestation_origine')).toBe('');
+		// Surface et code postal laissés vides : facultatifs.
+		expect(corps.get('surface')).toBe('');
+		expect(corps.get('code_postal')).toBe('');
+	});
+
+	test('prestation : retour à l’étape 1 pour changer type et régime, la demande suit', async ({ page }) => {
+		await page.goto(FORM_URL + '?service=ponctuel&service_label=Nettoyage%20ponctuel');
+		await expect(page.locator('#tfp-prestation-visible')).toHaveValue('Nettoyage ponctuel');
+		await page.fill('#tfp-nom', 'Test Automatisé');
+		await page.fill('#tfp-telephone', '0600000000');
+		await page.click('[data-step-next]');
+		await page.click('[data-quote-recap] [data-step-prev]');
+		await page.selectOption('#tfp-type-locaux', 'meubles');
+		await page.selectOption('#tfp-regime', 'regulier');
+		await page.click('[data-step-next]');
+		await expect(page.locator('[data-quote-recap-text]')).toContainText('Location meublée');
+		await expect(page.locator('[data-quote-recap-text]')).toContainText('Entretien régulier');
+		const corps = await corpsEnvoye(page);
+		expect(corps.get('regime')).toBe('regulier');
+		expect(corps.get('prestation')).toBe('Nettoyage de locations meublées (entretien régulier)');
+		expect(corps.get('prestation_origine')).toBe('Nettoyage ponctuel');
+	});
+
+	test('département : retiré si le prospect saisit une autre ville que celle de la page', async ({ page }) => {
+		await page.goto(FORM_URL + '?ville=Vesoul&departement=Haute-Sa%C3%B4ne');
+		await expect(page.locator('[name="departement"]')).toHaveValue('Haute-Saône');
+		await page.fill('#tfp-ville-visible', 'Dijon');
+		await expect(page.locator('[name="departement"]')).toHaveValue('');
+		await page.fill('#tfp-ville-visible', 'Vesoul');
+		await expect(page.locator('[name="departement"]')).toHaveValue('Haute-Saône');
+	});
+
 	test('navigation clavier : Tab jusqu\'au bouton Continuer, Entrée pour avancer', async ({ page }) => {
 		await page.goto(FORM_URL);
 		await fillStepOne(page, { telephone: '0600000000' });

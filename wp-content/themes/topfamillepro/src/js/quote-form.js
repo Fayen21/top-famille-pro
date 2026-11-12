@@ -209,15 +209,65 @@ function tfpInitQuoteForm() {
 	setHidden('utm_medium', params.get('utm_medium') || '');
 	setHidden('utm_campaign', params.get('utm_campaign') || '');
 
-	// Préremplissage visible du champ prestation (libellé lisible si fourni, sinon le slug brut).
-	// Paramètres d'URL nommés "service"/"service_label", pas "prestation" : ce dernier est le
-	// query_var natif du CPT `prestation` et détournerait la requête principale de WordPress si un
-	// lien externe l'utilisait (voir le commentaire dans single-prestation.php).
-	const prestationVisible = form.querySelector('#tfp-prestation-visible');
-	const prestationValue = params.get('service_label') || params.get('service');
-	if (prestationVisible && prestationValue && !prestationVisible.value) {
-		prestationVisible.value = prestationValue;
+	/*
+	 * Prestation demandée (recette du 12 novembre 2026) : DÉDUITE du type de locaux et du régime
+	 * choisis en dernier, jamais recopiée depuis la page d'origine. Arrivé depuis Bureaux, un
+	 * prospect qui choisit « Commerces » demande du nettoyage de commerces. Même règle que le
+	 * serveur (tfp_quote_prestation_demandee(), qui la recalcule de toute façon à la réception) ;
+	 * la prestation de la page d'origine reste à part, dans `prestation_origine`.
+	 */
+	const typeSelect = form.querySelector('#tfp-type-locaux');
+	const regimeSelect = form.querySelector('#tfp-regime');
+	const prestationField = form.querySelector('#tfp-prestation-visible');
+	const origineField = form.querySelector('#tfp-prestation-origine');
+
+	/*
+	 * Préremplissage depuis la page d'origine : WordPress le fait déjà côté serveur
+	 * (page-demande-de-devis.php). Il est repris ici, à l'identique et seulement sur un champ
+	 * encore vide, pour une page servie sans PHP — la copie navigable hors ligne. Il ne remplace
+	 * jamais un choix déjà fait.
+	 */
+	const service = params.get('service') || '';
+	if (typeSelect && !typeSelect.value && service && typeSelect.querySelector(`option[value="${CSS.escape(service)}"]`)) {
+		typeSelect.value = service;
 	}
+	if (regimeSelect && !regimeSelect.value && service === 'ponctuel') regimeSelect.value = 'ponctuel';
+	if (origineField && !origineField.value) origineField.value = params.get('service_label') || '';
+	const regimes = { regulier: 'entretien régulier', ponctuel: 'intervention ponctuelle' };
+	function prestationDemandee() {
+		if (!typeSelect) return '';
+		const opt = typeSelect.options[typeSelect.selectedIndex];
+		const base = opt && opt.value ? opt.dataset.prestation || '' : '';
+		if (!base) return '';
+		const regime = regimeSelect ? regimeSelect.value : '';
+		if (regimes[regime] && !(typeSelect.value === 'ponctuel' && regime === 'ponctuel')) {
+			return `${base} (${regimes[regime]})`;
+		}
+		return base;
+	}
+	function syncPrestation() {
+		if (prestationField) prestationField.value = prestationDemandee();
+	}
+	[typeSelect, regimeSelect].forEach((el) => el && el.addEventListener('change', syncPrestation));
+	syncPrestation();
+
+	/*
+	 * Département : transmis par une page de zone avec sa ville (?ville=Vesoul&departement=…). Il
+	 * ne vaut que pour CETTE ville : si le prospect en saisit une autre, le département de la page
+	 * d'origine ne la décrit plus, on le retire plutôt que d'envoyer une demande contradictoire.
+	 */
+	const villeField = form.querySelector('#tfp-ville-visible');
+	const departementField = form.querySelector('input[type="hidden"][name="departement"]');
+	if (villeField && departementField) {
+		const villeOrigine = villeField.value.trim().toLowerCase();
+		const departementOrigine = departementField.value;
+		villeField.addEventListener('input', () => {
+			departementField.value = villeField.value.trim().toLowerCase() === villeOrigine ? departementOrigine : '';
+		});
+	}
+
+	// Dernière mise à jour juste avant l'envoi : rien ne part qui ne reflète l'étape 1 affichée.
+	form.addEventListener('submit', syncPrestation, true);
 }
 
 document.addEventListener('DOMContentLoaded', tfpInitQuoteForm);

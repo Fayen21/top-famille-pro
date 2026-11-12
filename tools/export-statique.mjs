@@ -93,11 +93,20 @@ document.addEventListener('submit', function (e) {
 	if (refuse) return;
 	// Formulaire sans validation scriptée (contact) : contrôles natifs du navigateur.
 	if (!form.checkValidity()) { form.reportValidity(); return; }
+	/*
+	 * Verrou anti-double-envoi du thème (src/js/main.js) : il pose « Envoi… » tout de suite et
+	 * désactive le bouton au tour de boucle suivant. Le rétablir ici, de façon synchrone, ne
+	 * servait à rien : la désactivation arrivait après. On le rétablit donc APRÈS elle, au tour
+	 * suivant, pour pouvoir valider, modifier et valider de nouveau sans recharger la page.
+	 * Sur le site réel, ce script n'existe pas : le verrou reste entier.
+	 */
 	var bouton = form.querySelector('[data-tfp-once]');
 	if (bouton) {
-		bouton.disabled = false;
-		bouton.removeAttribute('aria-busy');
-		if (bouton.dataset.libelle) bouton.textContent = bouton.dataset.libelle;
+		window.setTimeout(function () {
+			bouton.disabled = false;
+			bouton.removeAttribute('aria-busy');
+			if (bouton.dataset.libelle) bouton.textContent = bouton.dataset.libelle;
+		}, 0);
 	}
 	var ancien = form.querySelector('[data-tfp-demo-confirmation]');
 	if (ancien) ancien.remove();
@@ -147,6 +156,13 @@ async function exporter() {
 		const profondeur = relative(dirname(cible), NAV) || '.';
 		const versRacine = profondeur === '' ? '.' : profondeur;
 		let navHtml = demonstrationFormulaires(html, versRacine)
+			/*
+			 * Feuille du thème parent : le dépôt ne versionne que le thème enfant (CLAUDE.md §3), et
+			 * `generatepress/style.css` n'est que l'en-tête du thème — aucune règle, rien au rendu.
+			 * Le paquet navigable la référençait sans la contenir ; on retire la référence plutôt
+			 * que d'embarquer un fichier du parent. Le paquet brut, lui, reste le HTML de WordPress.
+			 */
+			.replace(/<link\b[^>]*id=['"]generatepress-parent-css['"][^>]*>\s*/g, '')
 			// Ressources : `http://hôte/wp-content/…` → `../../wp-content/…`
 			.replaceAll(WP + '/wp-content', versRacine + '/wp-content')
 			// Liens internes : `http://hôte/prestations/bureaux/` → `../../prestations/bureaux/index.html`
@@ -196,10 +212,12 @@ function referencesLocales(contenu, type) {
 		refs.add(propre);
 	};
 	if (type === 'html') {
-		for (const m of contenu.matchAll(/\s(?:src|href)="([^"]+)"/g)) ajouter(m[1]);
+		// Guillemets doubles ET simples : WordPress écrit ses `<link>` entre apostrophes, et c'est
+		// par là que `generatepress/style.css` manquait sans être signalé (recette du 12 novembre 2026).
+		for (const m of contenu.matchAll(/\s(?:src|href)=(?:"([^"]+)"|'([^']+)')/g)) ajouter(m[1] ?? m[2]);
 		// Chaque candidat d'un `srcset` compte : c'est précisément ce que l'ancien export ratait.
-		for (const m of contenu.matchAll(/\ssrcset="([^"]+)"/g)) {
-			for (const c of m[1].split(',')) ajouter(c.trim().split(/\s+/)[0]);
+		for (const m of contenu.matchAll(/\ssrcset=(?:"([^"]+)"|'([^']+)')/g)) {
+			for (const c of (m[1] ?? m[2]).split(',')) ajouter(c.trim().split(/\s+/)[0]);
 		}
 	} else {
 		for (const m of contenu.matchAll(/url\(\s*([^)]+?)\s*\)/g)) ajouter(m[1]);
@@ -231,6 +249,42 @@ async function verifier() {
 		}
 	};
 	parcourir(NAV);
+
+	/*
+	 * Liens internes et ancres : chaque `href` local doit mener à un fichier, et chaque fragment
+	 * (`#suivi`, `page/index.html#questions`) à un `id` présent dans la page visée. Un `href="#"`
+	 * nu est une erreur en soi (CLAUDE.md §8).
+	 */
+	const idsParFichier = new Map();
+	const ids = (fichier) => {
+		if (!idsParFichier.has(fichier)) {
+			const c = existsSync(fichier) ? readFileSync(fichier, 'utf8') : '';
+			idsParFichier.set(fichier, new Set([...c.matchAll(/\sid=(?:"([^"]+)"|'([^']+)')/g)].map((m) => m[1] ?? m[2])));
+		}
+		return idsParFichier.get(fichier);
+	};
+	const ancresCassees = [];
+	let liensInternes = 0;
+	const parcourirLiens = (dir) => {
+		for (const e of readdirSync(dir, { withFileTypes: true })) {
+			const p = join(dir, e.name);
+			if (e.isDirectory()) { parcourirLiens(p); continue; }
+			if (!e.name.endsWith('.html')) continue;
+			const contenu = readFileSync(p, 'utf8');
+			for (const m of contenu.matchAll(/<a\b[^>]*\shref=(?:"([^"]*)"|'([^']*)')/g)) {
+				const href = (m[1] ?? m[2]).replace(/&amp;|&#0*38;/g, '&');
+				if (/^(https?:|mailto:|tel:|javascript:|\/\/)/i.test(href)) continue;
+				liensInternes++;
+				if (href === '#') { ancresCassees.push(`${relative(NAV, p)} → href="#"`); continue; }
+				const [chemin, fragment] = href.split('#');
+				const cible = chemin ? join(dirname(p), chemin.split('?')[0]) : p;
+				if (fragment && !ids(cible).has(decodeURIComponent(fragment))) ancresCassees.push(`${relative(NAV, p)} → ${href}`);
+			}
+		}
+	};
+	parcourirLiens(NAV);
+	console.log(`Liens internes contrôlés : ${liensInternes} · ancres introuvables : ${ancresCassees.length}`);
+	for (const a of ancresCassees.slice(0, 10)) console.log(`  ✕ ${a}`);
 
 	console.log(`\nRessources locales manquantes : ${manquantes.size}`);
 	for (const [ref, ou] of [...manquantes].slice(0, 10)) console.log(`  ✕ ${ref} (${ou.length} référence(s))`);
@@ -285,13 +339,37 @@ async function verifier() {
 		await page.click('[data-step-submit]');
 		await page.waitForTimeout(300);
 		verdict.confirmation = await page.locator('[data-tfp-demo-confirmation]').isVisible();
+		verdict.boutonActif = await page.locator('[data-step-submit]').isEnabled();
+		/*
+		 * Recette du 12 novembre 2026 : valider, modifier, valider de nouveau sans recharger. Le
+		 * verrou anti-double-envoi désactivait le bouton après la confirmation simulée.
+		 */
+		await page.click('[data-quote-recap] [data-step-prev]');
+		await page.selectOption('#tfp-type-locaux', 'commerces');
+		await page.click('[data-step-next]');
+		verdict.prestationApresModif = await page.inputValue('#tfp-prestation-visible');
+		await page.evaluate(() => document.querySelector('[data-tfp-demo-confirmation]')?.remove());
+		await page.click('[data-step-submit]');
+		await page.waitForTimeout(300);
+		verdict.deuxiemeConfirmation = await page.locator('[data-tfp-demo-confirmation]').isVisible();
+		verdict.boutonActifApres2 = await page.locator('[data-step-submit]').isEnabled();
 		verdict.memePage = page.url() === url;
 		verdict.posts = posts.length;
 		verdict.dataLayer = await page.evaluate(() => (window.dataLayer || []).filter((e) => /quote_(submit|complete|lead)/.test(e.event || '')).length);
+
+		// Parcours Bureaux → Demander un devis → Commerce : la prestation suit le dernier choix.
+		await page.goto('file://' + join(process.cwd(), NAV, cheminNav('/prestations/bureaux/')), { waitUntil: 'load' });
+		await page.locator('a[href*="demande-de-devis/index.html?service=bureaux"]').first().click();
+		await page.waitForLoadState('load');
+		verdict.depuisBureaux = await page.inputValue('#tfp-prestation-visible');
+		await page.selectOption('#tfp-type-locaux', 'commerces');
+		await page.selectOption('#tfp-regime', 'regulier');
+		verdict.bureauxPuisCommerce = await page.inputValue('#tfp-prestation-visible');
+		verdict.origine = await page.inputValue('#tfp-prestation-origine');
 		await page.close();
 		return verdict;
 	})();
-	const demoOk = demo.notice === 1 && demo.validationEtape1 && demo.etape2 && demo.confirmation && demo.memePage && demo.posts === 0 && demo.dataLayer === 0;
+	const demoOk = demo.notice === 1 && demo.validationEtape1 && demo.etape2 && demo.confirmation && demo.boutonActif && demo.prestationApresModif === 'Nettoyage de commerces (entretien régulier)' && demo.deuxiemeConfirmation && demo.boutonActifApres2 && demo.bureauxPuisCommerce === 'Nettoyage de commerces (entretien régulier)' && demo.origine === 'Nettoyage de bureaux' && demo.memePage && demo.posts === 0 && demo.dataLayer === 0;
 	console.log(`Démonstration du devis : ${demoOk ? 'OK' : 'ÉCHEC'} ${JSON.stringify(demo)}`);
 	const restesAdminPost = [];
 	const chercher = (dir) => { for (const e of readdirSync(dir, { withFileTypes: true })) { const p = join(dir, e.name); if (e.isDirectory()) chercher(p); else if (e.name.endsWith('.html') && readFileSync(p, 'utf8').includes('admin-post')) restesAdminPost.push(relative(NAV, p)); } };
@@ -303,7 +381,7 @@ async function verifier() {
 	console.log(`Requêtes vers un domaine externe : ${externes}`);
 	console.log(`Routes ouvrables hors ligne sans image cassée : ${routesOk} / ${Object.keys(ROUTE_MAP).length}`);
 
-	const ok = manquantes.size === 0 && fuites.length === 0 && cassees === 0 && externes === 0 && demoOk && restesAdminPost.length === 0;
+	const ok = manquantes.size === 0 && ancresCassees.length === 0 && fuites.length === 0 && cassees === 0 && externes === 0 && demoOk && restesAdminPost.length === 0;
 	console.log(ok ? '\n✅ Export navigable autonome et complet.' : '\n❌ Export incomplet.');
 	return ok;
 }

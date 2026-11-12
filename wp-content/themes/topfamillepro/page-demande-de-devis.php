@@ -37,17 +37,7 @@ $erreur_messages = array(
 	'envoi'   => 'L\'envoi a échoué côté serveur. Merci de réessayer, ou d\'appeler directement Audrey au ' . $site['phone'] . '.',
 );
 
-$types_locaux = array(
-	''              => 'Sélectionnez le type de locaux',
-	'bureaux'       => 'Bureaux',
-	'commerces'     => 'Commerces',
-	'cabinets'      => 'Cabinets & professions libérales',
-	'coproprietes'  => 'Copropriété / parties communes',
-	'meubles'       => 'Location meublée / hébergement',
-	'ponctuel'      => 'Remise en état ponctuelle',
-	'autre'         => 'Autre',
-);
-
+$types_locaux = wp_list_pluck( tfp_quote_types_locaux(), 'label' );
 /*
  * Préremplissage depuis la page d'origine, CÔTÉ SERVEUR (revue du 25 octobre 2026) : une page
  * prestation envoie `?service=bureaux`, une page de zone `?ville=Dijon`. Seul le libellé visible de
@@ -58,12 +48,16 @@ $pre_service = isset( $_GET['service'] ) ? sanitize_key( wp_unslash( $_GET['serv
 $pre_type    = isset( $types_locaux[ $pre_service ] ) ? $pre_service : '';
 $pre_regime  = 'ponctuel' === $pre_service ? 'ponctuel' : '';
 $pre_ville   = isset( $_GET['ville'] ) ? sanitize_text_field( wp_unslash( $_GET['ville'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
-// Prestation (champ caché de l'étape 2) : libellé transmis par la page d'origine, sinon celui du
-// type de locaux présélectionné. Même source que le préremplissage JavaScript.
-$pre_prestation = isset( $_GET['service_label'] ) ? sanitize_text_field( wp_unslash( $_GET['service_label'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- lecture d'un paramètre d'affichage.
-if ( '' === $pre_prestation && $pre_type ) {
-	$pre_prestation = $types_locaux[ $pre_type ];
-}
+/*
+ * Deux informations distinctes (recette du 12 novembre 2026) :
+ *  - `prestation` : la prestation DEMANDÉE, déduite du type de locaux et du régime choisis. Le
+ *    serveur la recalcule à la réception ; src/js/quote-form.js la tient à jour à chaque
+ *    changement, y compris quand le prospect revient modifier l'étape 1 ;
+ *  - `prestation_origine` : la prestation de la page d'où vient le prospect (`service_label`),
+ *    conservée telle quelle comme contexte. Elle ne décide plus de rien.
+ */
+$pre_origine    = isset( $_GET['service_label'] ) ? sanitize_text_field( wp_unslash( $_GET['service_label'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- lecture d'un paramètre d'affichage.
+$pre_prestation = tfp_quote_prestation_demandee( $pre_type, $pre_regime );
 
 $frequences = array(
 	''                 => 'À définir ensemble',
@@ -190,8 +184,9 @@ get_header();
 						<div class="tfp-field">
 							<label for="tfp-type-locaux">Type de locaux *</label>
 							<select id="tfp-type-locaux" name="type_locaux" required>
-								<?php foreach ( $types_locaux as $value => $label ) : ?>
-									<option value="<?php echo esc_attr( $value ); ?>"<?php selected( $pre_type, $value ); ?>><?php echo esc_html( $label ); ?></option>
+								<option value=""<?php selected( $pre_type, '' ); ?>>Sélectionnez le type de locaux</option>
+								<?php foreach ( tfp_quote_types_locaux() as $value => $type ) : ?>
+									<option value="<?php echo esc_attr( $value ); ?>" data-prestation="<?php echo esc_attr( $type['prestation'] ); ?>"<?php selected( $pre_type, $value ); ?>><?php echo esc_html( $type['label'] ); ?></option>
 								<?php endforeach; ?>
 							</select>
 						</div>
@@ -288,11 +283,12 @@ get_header();
 					<?php
 					/*
 					 * La prestation n'est plus redemandée (§6) : le type de locaux de l'étape 1 la dit
-					 * déjà. Le champ reste transmis, caché, prérempli depuis la page d'origine
-					 * (?service=…, voir src/js/quote-form.js) pour le contexte de la demande.
+					 * déjà. Le champ caché `prestation` en est déduit (type + régime) et suit chaque
+					 * changement ; `prestation_origine` garde la page d'où vient le prospect.
 					 */
 					?>
 					<input type="hidden" id="tfp-prestation-visible" name="prestation" value="<?php echo esc_attr( $pre_prestation ); ?>">
+					<input type="hidden" id="tfp-prestation-origine" name="prestation_origine" value="<?php echo esc_attr( $pre_origine ); ?>">
 
 					<p class="tfp-form-step__lede">Seuls votre message et votre accord sont obligatoires : les autres précisions aident à chiffrer juste.</p>
 
