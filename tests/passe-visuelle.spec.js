@@ -273,7 +273,7 @@ test.describe( 'Libellés de l’accueil (§5) et gérante (§8)', () => {
 		expect( texte ).not.toMatch( /Appeler Audrey/ );
 	} );
 
-	test( 'le bloc présente la gérante sans portrait ni citation : monogramme et trois rôles', async ( { page } ) => {
+	test( 'le bloc présente la gérante sans portrait, monogramme ni citation : trois rôles', async ( { page } ) => {
 		// 13 novembre 2026 : plus de photo de banque d'images, plus de phrase attribuée à Audrey.
 		await page.setViewportSize( { width: 1440, height: 900 } );
 		await page.goto( '/' );
@@ -281,7 +281,7 @@ test.describe( 'Libellés de l’accueil (§5) et gérante (§8)', () => {
 		await expect( page.locator( '.tfp-gerante__lede' ) ).toContainText( 'supervise l\'organisation des prestations' );
 		const carte = page.locator( '.tfp-gerante-carte' );
 		await expect( carte.locator( 'img' ) ).toHaveCount( 0 );
-		await expect( carte.locator( '.tfp-monogramme' ) ).toHaveText( 'AB' );
+		await expect( carte.locator( '.tfp-monogramme' ) ).toHaveCount( 0 );
 		await expect( carte.locator( '.tfp-gerante-carte__roles li' ) ).toHaveCount( 3 );
 		await expect( carte.locator( 'blockquote' ) ).toHaveCount( 0 );
 		await expect( carte.locator( 'a[href^="tel:"]' ) ).toBeVisible();

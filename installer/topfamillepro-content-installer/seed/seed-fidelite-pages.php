@@ -138,7 +138,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 							array(
 								'type' => 'note',
 								'texte' => 'Devis gratuit sous 24 h Intervention régulière ou ponctuelle Conditions d\'arrêt précisées au devis',
-								'ligne' => 853,
+								'ligne' => 823,
 							),
 						),
 						'cartes' => array(
@@ -2909,7 +2909,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 							array(
 								'type' => 'note',
 								'texte' => 'Sélection & intervenant habituel recherché',
-								'ligne' => 7055,
+								'ligne' => 7025,
 								'graisse' => 600,
 							),
 							array(
@@ -2919,7 +2919,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 							array(
 								'type' => 'note',
 								'texte' => 'Recherche active d\'une solution en cas d\'absence',
-								'ligne' => 7149,
+								'ligne' => 7119,
 								'graisse' => 600,
 							),
 							array(
@@ -2929,7 +2929,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 							array(
 								'type' => 'note',
 								'texte' => 'Suivi & interlocuteur dédié',
-								'ligne' => 7243,
+								'ligne' => 7213,
 								'graisse' => 600,
 							),
 							array(
@@ -3007,7 +3007,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 							array(
 								'type' => 'note',
 								'texte' => '★★★★★',
-								'ligne' => 7599,
+								'ligne' => 7569,
 							),
 							array(
 								'type' => 'quote',
@@ -3016,7 +3016,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 							array(
 								'type' => 'note',
 								'texte' => 'Marc V. · Directeur administratif · Chalon-sur-Saône',
-								'ligne' => 7755,
+								'ligne' => 7725,
 							),
 						),
 						'cartes' => array(),
@@ -3657,7 +3657,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 							),
 							array(
 								'type' => 'link',
-								'texte' => 'Hub régional →',
+								'texte' => 'Toute la Bourgogne-Franche-Comté →',
 								'route' => '#/bourgogne-franche-comte',
 								'archetype' => 'ligne',
 								'rangee' => '',
@@ -3761,7 +3761,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 								'hauteur' => '41px',
 							),
 							array(
-								'texte' => 'Hub régional →',
+								'texte' => 'Toute la Bourgogne-Franche-Comté →',
 								'route' => '#/bourgogne-franche-comte',
 								'archetype' => 'ligne',
 								'rangee' => '',
@@ -15537,7 +15537,7 @@ update_option( 'tfp_page_a-propos', array(
 							array(
 								'type' => 'note',
 								'texte' => 'Audrey · Top-Famille Pro',
-								'ligne' => 934,
+								'ligne' => 964,
 							),
 						),
 						'cartes' => array(),

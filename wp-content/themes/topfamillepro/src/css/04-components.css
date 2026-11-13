@@ -6435,3 +6435,83 @@ body.tfp-type-prestation .tfp-presta-reponse .tfp-direct-answer:last-child {
     grid-template-columns: minmax(0, 1fr);
   }
 }
+
+/* ---------- 14 novembre 2026 : la gérante sans aucun visuel (ni photo, ni monogramme) ---------- */
+.tfp-carte-gerante {
+  justify-items: start;
+  text-align: left;
+  padding: clamp(24px, 3.2vw, 40px);
+}
+
+.tfp-carte-gerante__nom {
+  margin-top: 4px;
+}
+
+.tfp-carte-gerante__faits {
+  display: grid;
+  gap: 8px;
+  margin: 14px 0 6px;
+  padding: 14px 0 0;
+  list-style: none;
+  border-top: 1px solid var(--color-turquoise-light);
+  width: 100%;
+}
+
+.tfp-carte-gerante__faits li {
+  position: relative;
+  padding-left: 22px;
+  color: var(--color-text);
+}
+
+.tfp-carte-gerante__faits li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 9px;
+  height: 9px;
+  border-radius: 3px;
+  background: var(--color-copper);
+}
+
+.tfp-carte-gerante__tel {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  font-family: var(--font-heading);
+  font-size: 20px;
+  font-weight: var(--fw-bold);
+  color: var(--color-navy);
+}
+
+/* Accueil : sans visuel, le titre de la carte porte un filet turquoise et cuivre à sa gauche. */
+.tfp-gerante-carte__identite {
+  padding-left: clamp(16px, 2vw, 26px);
+  border-left: 5px solid var(--color-turquoise);
+  border-image: linear-gradient(180deg, var(--color-turquoise) 0 60%, var(--color-copper) 60% 100%) 1;
+}
+
+/* ---------- Balayage des 53 pages, 14 novembre 2026 ---------- */
+
+/* Accueil : le texte d'introduction des prestations touchait les cartes. */
+.tfp-lede-rule + .tfp-grid {
+  margin-top: 24px;
+}
+
+/* Renvois « Libellé → » : la flèche était repoussée à l'autre bout de la ligne, loin de son libellé. */
+.tfp-link-row:not(.tfp-link-row--panel) {
+  display: inline-flex;
+  justify-content: flex-start;
+  gap: 8px;
+}
+
+/* Section repliable à deux blocs : ils partent de la même ligne, et le second titre reprend la
+   taille d'un intertitre au lieu de dépasser celui de la section. */
+.tfp-volet--section .tfp-static-run {
+  align-items: start;
+}
+
+.tfp-volet--section .tfp-static-block .tfp-static-block__titre {
+  font-size: clamp(19px, 1.7vw, 22px);
+}

@@ -174,6 +174,8 @@ const CORRECTIONS_EDITORIALES = [
 		avant: "C'est moins spectaculaire qu'une application avec des photos, mais c'est lu, rempli à la main et vérifiable par n'importe qui dans vos locaux.",
 		apres: 'Il est rempli à la main à chaque passage et consultable par toute personne présente dans vos locaux.',
 	},
+	// Balayage du 14 novembre 2026 : « Hub régional » est un terme de chantier, pas un libellé de lien.
+	{ avant: 'Hub régional', apres: 'Toute la Bourgogne-Franche-Comté' },
 	/*
 	 * Citation attribuée à Audrey (page À propos) : reprise de la maquette, jamais validée par
 	 * l'intéressée (CLAUDE.md §5.5). Le 13 novembre 2026, elle cesse d'être une citation : la même

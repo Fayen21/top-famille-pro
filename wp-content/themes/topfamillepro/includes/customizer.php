@@ -88,7 +88,7 @@ function tfp_audrey_photo_is_real() {
 }
 
 /**
- * Visuel de la gérante : sa vraie photo si elle a été fournie, sinon son monogramme.
+ * Visuel de la gérante : sa vraie photo si elle a été fournie, sinon RIEN.
  *
  * Décision du 13 novembre 2026 : plus aucun portrait de banque d'images à côté du nom d'Audrey, et
  * plus aucune mention « photo provisoire ». Tant que la photo authentique n'est pas saisie dans le
@@ -108,9 +108,6 @@ function tfp_gerante_visuel( $classe = '' ) {
 		);
 		return;
 	}
-	$initiales = '';
-	foreach ( preg_split( '/\s+/', trim( $site['manager'] ) ) as $mot ) {
-		$initiales .= mb_substr( $mot, 0, 1 );
-	}
-	printf( '<span class="tfp-monogramme %s" aria-hidden="true">%s</span>', esc_attr( $classe ), esc_html( mb_strtoupper( $initiales ) ) );
+	// Décision du 14 novembre 2026 : pas de monogramme non plus. Sans vraie photo, rien n'est rendu :
+	// la gérante est présentée par du texte, la mise en page ne réserve aucune place à un portrait.
 }

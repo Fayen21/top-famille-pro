@@ -265,11 +265,13 @@ test.describe( 'Checkpoint structuré ↔ HTML servi', () => {
 		expect( d.regle.citation_audrey_validee_par_l_interessee ).toBe( false );
 		expect( d.regle.photo_audrey_marquee_illustration ).toBe( false );
 
-		// Décision du 13 novembre 2026 : monogramme à la place du portrait, aucune mention visible,
+		// Décision du 13 novembre 2026 : plus de portrait d'emprunt, aucune mention visible,
 		// et la citation non validée n'est plus publiée — ni sur l'accueil, ni sur « À propos ».
 		for ( const route of [ '/', '/a-propos/' ] ) {
 			await page.goto( route );
-			await expect( page.locator( '.tfp-monogramme' ).first(), route ).toBeVisible();
+			// 14 novembre 2026 : ni portrait d'emprunt, ni monogramme — aucun visuel ne tient lieu de photo.
+			await expect( page.locator( '.tfp-monogramme' ), route ).toHaveCount( 0 );
+			await expect( page.locator( 'img[alt*="portrait" i], img[src*="portrait"], img[src*="audrey"]' ), route ).toHaveCount( 0 );
 			await expect( page.locator( '[data-tfp-provisional-notice]' ), route ).toHaveCount( 0 );
 			expect( await page.locator( 'body' ).innerText(), route ).not.toMatch( /Mon rôle, c.est de rester joignable/ );
 		}

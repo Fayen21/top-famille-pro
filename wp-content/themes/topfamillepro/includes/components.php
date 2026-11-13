@@ -27,6 +27,18 @@ function tfp_espaces_insecables( $texte ) {
 }
 
 /**
+ * Montants et unités insécables — balayage du 14 novembre 2026 : « 9 € / HT/mois » se coupait en
+ * fin de ligne sur la page pilier. Lie le nombre à son unité (€, %, h) et « € » à « HT ».
+ *
+ * @param string $texte Texte brut, avant échappement.
+ * @return string
+ */
+function tfp_montants_insecables( $texte ) {
+	$texte = preg_replace( '/(\d) (€|%|h\b)/u', "$1\u{00A0}$2", (string) $texte );
+	return preg_replace( '/€ HT/u', "€\u{00A0}HT", $texte );
+}
+
+/**
  * Parcours de la page servie — revue du 25 octobre 2026 (§4).
  *
  * Les appels à l'action globaux (bandeau de fin de page, barre mobile, bouton du header) ne
@@ -1213,13 +1225,20 @@ function tfp_card_grid( array $grille ) {
 					array(
 						'texte'  => $item['citation'] ?? '',
 						'auteur' => $item['auteur'] ?? '',
-						'role'   => $item['meta'] ?? '',
+						/*
+						 * Balayage du 14 novembre 2026 : ces témoignages viennent de la maquette. La
+						 * mention « Google » et la date (« mars 2026 ») leur prêtaient une plateforme et
+						 * un moment de publication qu'ils n'ont jamais eus : attribuer un texte inventé à
+						 * Google est une affirmation vérifiable et fausse (CLAUDE.md §5.5). Ni l'une ni
+						 * l'autre ne sont plus affichées.
+						 */
+						'role'   => preg_replace( '/\s·\s(janvier|février|mars|avril|mai|juin|juillet|août|septembre|octobre|novembre|décembre)\s20\d\d$/u', '', (string) ( $item['meta'] ?? '' ) ),
 						'ville'  => '',
 					),
 					array(
 						// La grille annonce déjà le caractère provisoire au-dessus de ses cartes.
 						'mention' => false,
-						'source'  => $item['source'] ?? '',
+						'source'  => '',
 						'etoiles' => $item['etoiles'] ?? '',
 						'carte'   => array(
 							'padding' => $item['carte_padding'] ?? '',

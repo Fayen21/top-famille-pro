@@ -47,13 +47,14 @@ test.describe( 'G24 · images exactes des héros', () => {
 		} );
 	}
 
-	test( 'à-propos : aucun portrait de banque d’images, la gérante est représentée par son monogramme', async ( { page } ) => {
+	test( 'à-propos : aucun portrait ni monogramme, la gérante est présentée par du texte', async ( { page } ) => {
 		// 13 novembre 2026 : plus de visage d'emprunt à côté du nom d'Audrey, plus de mention
-		// « photo provisoire » (CLAUDE.md §5.6). La vraie photo remplacera le monogramme.
+		// « photo provisoire » (CLAUDE.md §5.6). La gérante est présentée par du texte.
 		await page.goto( '/a-propos/' );
 		const carte = page.locator( '.tfp-hero__media--carte-gerante' );
 		await expect( carte.locator( 'img' ) ).toHaveCount( 0 );
-		await expect( carte.locator( '.tfp-monogramme' ) ).toHaveText( 'AB' );
+		await expect( carte.locator( '.tfp-monogramme' ) ).toHaveCount( 0 );
+		await expect( carte.locator( '.tfp-carte-gerante__faits li' ) ).toHaveCount( 3 );
 		await expect( carte ).toContainText( 'Audrey Brançon' );
 		await expect( carte ).toContainText( 'Gérante de Top-Famille Pro' );
 		await expect( page.locator( '[data-tfp-provisional-notice]' ) ).toHaveCount( 0 );

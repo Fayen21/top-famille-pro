@@ -182,7 +182,7 @@ get_header();
 		</div>
 		<div class="tfp-price-headline__promise">
 			<div class="tfp-price-headline__delay">Devis sous 24 h</div>
-			<p>Gratuit, personnalisé et sans engagement. Aucun simulateur : une étude adaptée à vos locaux.</p>
+			<p>Gratuit, personnalisé et sans engagement. Devis étudié personnellement par Audrey.</p>
 		</div>
 	</div>
 </section>

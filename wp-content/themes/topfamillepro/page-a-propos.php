@@ -66,8 +66,15 @@ $page = tfp_static_page_data( 'a-propos' );
 	<div class="tfp-hero__media tfp-hero__media--carte-gerante">
 		<div class="tfp-carte-gerante">
 			<?php tfp_gerante_visuel( 'tfp-monogramme--xl' ); ?>
+			<span class="tfp-eyebrow">Votre interlocutrice</span>
 			<strong class="tfp-carte-gerante__nom"><?php echo esc_html( $site['manager'] ); ?></strong>
 			<span class="tfp-carte-gerante__fonction">Gérante de <?php echo esc_html( $site['brand_name'] ); ?></span>
+			<ul class="tfp-carte-gerante__faits">
+				<li>Étudie personnellement chaque devis</li>
+				<li>Établit le cahier des charges avec vous</li>
+				<li>Reste joignable pour le suivi</li>
+			</ul>
+			<a class="tfp-carte-gerante__tel" href="tel:<?php echo esc_attr( $site['phone_href'] ); ?>"><?php echo tfp_icone( 'telephone' ); // phpcs:ignore WordPress.Security.EscapeOutput ?> <?php echo esc_html( $site['phone'] ); ?></a>
 			<span class="tfp-carte-gerante__lieu"><?php echo esc_html( $site['address_city'] ); ?> · Bourgogne-Franche-Comté</span>
 		</div>
 	</div>

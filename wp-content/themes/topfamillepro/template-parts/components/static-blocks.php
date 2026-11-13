@@ -503,7 +503,7 @@ foreach ( $data['sections'] as $section ) {
 									 */
 									$graisse  = (int) ( $enfant['graisse'] ?? 400 );
 									$intertitre = $graisse >= 600 && mb_strlen( (string) $enfant['texte'] ) <= 90;
-									printf( '<p class="tfp-prose%s">%s</p>', $intertitre ? ' tfp-prose--intertitre' : '', esc_html( $enfant['texte'] ) );
+									printf( '<p class="tfp-prose%s">%s</p>', $intertitre ? ' tfp-prose--intertitre' : '', esc_html( tfp_montants_insecables( $enfant['texte'] ) ) );
 									break;
 
 								case 'step-ligne':

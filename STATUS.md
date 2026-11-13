@@ -2295,3 +2295,17 @@ Header, bandeau, photo d'accueil, pied de page, pages prestation, « Pourquoi no
 - Préproduction : envoi réel du devis, vrai thème parent, Lighthouse.
 - CLAUDE.md §5.5 décrit encore la citation et la photo provisoires : à mettre à jour avec
   l'accord d'Emmanuel.
+
+## Passe du 14 novembre 2026 (thème 0.16.1)
+
+Bilan : `docs/BILAN-PASSE-2026-11-14.md`.
+
+- Gérante : section conservée sans photo NI monogramme (décision d'Emmanuel) ; texte seul.
+- Demande de nouveaux avis fictifs sans mention : **refusée** (CLAUDE.md §5.1). Mention « Google »
+  et dates retirées des avis de la maquette.
+- Balayage des 53 pages : `tools/scan-mentions.mjs` (0 mention de chantier), revue visuelle
+  159 écrans (0 alerte), 6 069 liens (0 mort), 7 défauts corrigés à la lecture.
+- Suite 1 390/1 390, export 53/53.
+
+Reste : avis réels à fournir (ou retrait des blocs d'avis), points « à décider » du bilan §3,
+préproduction (envoi réel, vrai thème parent, Lighthouse), photos.
