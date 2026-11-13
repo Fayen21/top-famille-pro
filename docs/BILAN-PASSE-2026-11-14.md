@@ -26,7 +26,7 @@ mention **« Google »** et une **date** (« mars 2026 »). Ni l'une ni l'autre 
 
 | Contrôle | Méthode | Résultat |
 |---|---|---|
-| Mentions « provisoire », « temporaire », « à venir », « exemple de présentation », « en cours », « démonstration », « maquette », crochets, etc. — texte et attributs `alt`, `title`, `aria-label`, `placeholder`, méta | `tools/scan-mentions.mjs`, 53 routes | 0 mention de chantier. 5 emplois normaux restants : « suspension temporaire », « renfort temporaire » (×2), « allongement temporaire », IP « utilisée de façon temporaire », et « Seuls des avis authentiques et autorisés y seront publiés » (page Avis) |
+| Mentions « provisoire », « temporaire », « à venir », « exemple de présentation », « en cours », « démonstration », « maquette », crochets, etc. — texte et attributs `alt`, `title`, `aria-label`, `placeholder`, méta | `tools/scan-mentions.mjs`, 53 routes | 0 mention de chantier. 5 emplois normaux restants : « suspension temporaire », « renfort temporaire », « allongement temporaire », IP « utilisée de façon temporaire », et « Seuls des avis authentiques et autorisés y seront publiés » (page Avis) |
 | Débordements, images cassées, éléments tronqués | `tools/revue-visuelle.mjs`, 53 routes × 375 / 768 / 1 440 px = 159 écrans | 0 alerte |
 | Liens internes, ancres, ressources | `tools/export-statique.mjs`, 6 069 liens | 0 lien mort, 0 ancre introuvable, 0 ressource manquante |
 | Lecture à l'œil | planches de l'accueil, du pilier, d'une prestation, des tarifs, d'une ville, d'un département, du hub des zones, des avis, du fonctionnement, du contact, des conseils, d'un article, du recrutement | 7 défauts trouvés, corrigés ci-dessous |
