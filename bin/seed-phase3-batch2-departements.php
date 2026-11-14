@@ -67,6 +67,10 @@ if ( ! function_exists( 'tfp_seed_get_dept_term' ) ) {
 $bureaux = get_page_by_path( 'bureaux', OBJECT, 'prestation' );
 $bureaux_id = $bureaux ? $bureaux->ID : 0;
 
+// prestations_liees ci-dessous n'est qu'une valeur initiale (seule « bureaux » existe à ce
+// stade de l'installation) : bin/seed-phase4-maillage.php la complète avec les 6 prestations
+// une fois qu'elles existent toutes (bug réel corrigé au hotfix du 9 août 2026).
+
 echo "=== Seed phase 3, lot 2 : 7 zones département restantes ===\n";
 
 /* ------------------------------------------------------------------ */

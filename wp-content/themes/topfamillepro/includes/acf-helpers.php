@@ -88,14 +88,22 @@ function tfp_acf_faq_group_fields( $key_prefix, $name_prefix, $count = 8 ) {
  * @return array Liste de ['question' => string, 'reponse' => string].
  */
 function tfp_get_faq_items( $name_prefix, $post_id, $count = 8 ) {
-	if ( ! function_exists( 'get_field' ) ) {
-		return array();
-	}
-
 	$items = array();
 	for ( $i = 1; $i <= $count; $i++ ) {
-		$group = get_field( $name_prefix . '_' . $i, $post_id );
-		if ( ! empty( $group['question'] ) ) {
+		/*
+		 * Repli sur `get_post_meta()` quand ACF n'est pas installé — comme tous les autres
+		 * accesseurs du thème, et comme le projet l'exige : le thème doit fonctionner sans ACF.
+		 *
+		 * Cet accesseur-ci rendait un tableau vide, et la FAQ disparaissait purement et
+		 * simplement. Sur les six pages de prestation, c'est une bande entière de la maquette qui
+		 * manquait — 1 042 px sur « Nettoyage de bureaux » à 320 px — alors que les questions et
+		 * leurs réponses étaient bien en base, sous `faq_1` à `faq_8`. Le gabarit, lui, était prêt
+		 * et n'émettait à juste titre aucun `FAQPage` puisqu'aucune FAQ n'était visible.
+		 */
+		$group = function_exists( 'get_field' )
+			? get_field( $name_prefix . '_' . $i, $post_id )
+			: get_post_meta( (int) $post_id, $name_prefix . '_' . $i, true );
+		if ( is_array( $group ) && ! empty( $group['question'] ) ) {
 			$items[] = array(
 				'question' => $group['question'],
 				'reponse'  => $group['reponse'] ?? '',

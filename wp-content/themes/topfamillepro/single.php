@@ -23,9 +23,67 @@ $faq          = tfp_get_article_faq( $post_id );
 $robots       = tfp_article_is_complete( $post_id ) ? 'index,follow' : 'noindex,follow';
 $seo_title    = get_post_meta( $post_id, '_tfp_seo_title', true );
 $related_prestations = tfp_get_article_related_prestations( $post_id );
+$related_ville_id    = (int) get_post_meta( $post_id, '_tfp_related_ville', true );
+$related_ville       = $related_ville_id ? get_post( $related_ville_id ) : null;
+if ( $related_ville && ( 'zone' !== $related_ville->post_type || 'publish' !== $related_ville->post_status ) ) {
+	$related_ville = null;
+}
 
 $categories = get_the_category( $post_id );
-$cat_name   = ! empty( $categories ) ? $categories[0]->name : 'Conseils';
+// La maquette étiquette chaque article par son thème (« Bureaux », « Tarifs », « Organisation »),
+// plus précis que la catégorie WordPress unique « Conseils ». Repli sur la catégorie réelle.
+$cat_name = get_post_meta( $post_id, '_tfp_categorie_label', true )
+	?: ( ! empty( $categories ) ? $categories[0]->name : 'Conseils' );
+
+$image_alt     = get_post_meta( $post_id, '_tfp_image_alt', true );
+$erreurs_titre = get_post_meta( $post_id, '_tfp_erreurs_titre', true );
+$erreurs       = tfp_get_lines( get_post_meta( $post_id, '_tfp_erreurs', true ) );
+$maillage      = get_post_meta( $post_id, '_tfp_maillage', true );
+$cta_titre     = get_post_meta( $post_id, '_tfp_cta_titre', true ) ?: "Un projet d'entretien pour vos locaux ?";
+$cta_texte     = get_post_meta( $post_id, '_tfp_cta_texte', true ) ?: 'Devis gratuit sous 24 h, sans engagement.';
+
+// Sommaire déduit des H2 du corps RENDU : il ne peut donc pas se désynchroniser du contenu, alors
+// qu'un sommaire stocké à part se périme au premier ajout de section.
+//
+// Revue des trois ZIP du 25 octobre 2026, §8 : les entrées du sommaire étaient du texte seul. Chaque
+// H2 reçoit désormais une ancre unique (slug du titre, suffixé en cas de doublon) et chaque entrée
+// est un lien vers elle ; le décalage sous le header collant est porté par `:target` en CSS
+// (scroll-margin-top).
+$ancres_utilisees = array();
+$ancre            = function ( $texte ) use ( &$ancres_utilisees ) {
+	// sanitize_title encode les caractères hors ASCII (« m² » → « m%c2%b2 ») : on les retire.
+	$base = trim( preg_replace( '/-+/', '-', preg_replace( '/%[0-9a-f]{2}/i', '', sanitize_title( $texte ) ) ), '-' ) ?: 'section';
+	$id   = $base;
+	$n    = 2;
+	while ( isset( $ancres_utilisees[ $id ] ) ) {
+		$id = $base . '-' . $n++;
+	}
+	$ancres_utilisees[ $id ] = true;
+	return $id;
+};
+
+$sommaire = array();
+$contenu  = str_replace( ']]>', ']]&gt;', apply_filters( 'the_content', get_post_field( 'post_content', $post_id ) ) );
+$contenu  = preg_replace_callback(
+	'#<h2((?:(?!\bid=)[^>])*)>(.*?)</h2>#is',
+	function ( $m ) use ( $ancre, &$sommaire ) {
+		$texte      = wp_strip_all_tags( $m[2] );
+		$id         = $ancre( $texte );
+		$sommaire[] = array( 'texte' => $texte, 'id' => $id );
+		return '<h2 id="' . esc_attr( $id ) . '"' . $m[1] . '>' . $m[2] . '</h2>';
+	},
+	$contenu
+);
+$id_erreurs = '';
+if ( $erreurs_titre ) {
+	$id_erreurs = $ancre( $erreurs_titre );
+	$sommaire[] = array( 'texte' => $erreurs_titre, 'id' => $id_erreurs );
+}
+$id_faq = '';
+if ( ! empty( $faq ) ) {
+	$id_faq     = $ancre( 'Questions fréquentes' );
+	$sommaire[] = array( 'texte' => 'Questions fréquentes', 'id' => $id_faq );
+}
 
 $schema = array(
 	array(
@@ -33,7 +91,18 @@ $schema = array(
 		'@id'           => get_permalink( $post_id ) . '#article',
 		'headline'      => wp_strip_all_tags( get_the_title( $post_id ) ),
 		'description'   => get_the_excerpt( $post_id ),
-		'image'         => has_post_thumbnail( $post_id ) ? get_the_post_thumbnail_url( $post_id, 'full' ) : trailingslashit( $site['origin'] ) . ltrim( $site['logo_path'], '/' ),
+		/*
+		 * Image de l'article, jamais le logo du site.
+		 *
+		 * Sans image mise en avant, le schéma retombait sur le logo : les trois articles déclaraient
+		 * donc à Google un visuel qui n'illustre pas leur contenu, ce que les recommandations sur les
+		 * résultats enrichis proscrivent — l'image d'un `Article` doit représenter l'article. Le
+		 * visuel réellement affiché en tête vient du pipeline d'images du thème ; c'est lui qu'on
+		 * déclare, dans sa plus grande variante.
+		 */
+		'image'         => has_post_thumbnail( $post_id )
+			? get_the_post_thumbnail_url( $post_id, 'full' )
+			: tfp_article_schema_image( $post_id ),
 		'datePublished' => get_the_date( 'c', $post_id ),
 		'dateModified'  => get_the_modified_date( 'c', $post_id ),
 		'author'        => array( '@type' => 'Person', 'name' => get_the_author_meta( 'display_name', get_post_field( 'post_author', $post_id ) ) ?: $site['manager'] ),
@@ -80,37 +149,79 @@ get_header();
 	<?php tfp_breadcrumb( tfp_seo()['breadcrumb'] ); ?>
 </div>
 
-<article class="tfp-container tfp-container--narrow tfp-section--tight">
-	<span style="font-size:13px;font-weight:600;color:var(--color-primary)"><?php echo esc_html( $cat_name ); ?></span>
-	<h1 style="margin-top:8px"><?php the_title(); ?></h1>
-	<p style="margin-top:8px;font-size:13.5px;color:var(--color-text-tertiary)">
-		Publié le <?php echo esc_html( get_the_date( '' , $post_id ) ); ?>
-		<?php if ( get_the_modified_date( '', $post_id ) !== get_the_date( '', $post_id ) ) : ?>
-			· mis à jour le <?php echo esc_html( get_the_modified_date( '', $post_id ) ); ?>
-		<?php endif; ?>
-	</p>
-
-	<?php if ( $direct ) : ?>
-		<div style="margin-top:22px;display:flex;gap:16px;align-items:flex-start">
-			<span aria-hidden="true" style="flex-shrink:0;width:4px;align-self:stretch;background:var(--color-primary);border-radius:3px"></span>
-			<p style="font-size:19px;color:var(--color-text);line-height:1.6"><?php echo esc_html( $direct ); ?></p>
-		</div>
-	<?php endif; ?>
-
-	<div style="margin-top:32px;font-size:16.5px;color:var(--color-text-secondary);line-height:1.75" class="tfp-article-body">
-		<?php the_content(); ?>
+<?php
+/*
+ * Les blocs de l'article sont des sections de premier niveau, comme dans la maquette, et non
+ * imbriquées dans un `<article>` unique : c'est l'élément `<article>` du corps de texte qui porte
+ * la sémantique, l'en-tête, le sommaire et l'encadré d'erreurs étant du mobilier de page.
+ */
+?>
+<header class="tfp-container tfp-container--narrow tfp-section--tight" style="--tfp-bande-haut:clamp(26px, 4vw, 48px);--tfp-bande-bas:clamp(20px, 3vw, 32px)">
+		<span class="tfp-article__category"><?php echo esc_html( $cat_name ); ?></span>
+		<h1 style="margin-top:8px"><?php the_title(); ?></h1>
+		<p class="tfp-article__meta">
+			<span><?php echo esc_html( explode( ' ', $site['manager'] )[0] ); ?></span>
+			<span aria-hidden="true">·</span>
+			<span>Publié le <?php echo esc_html( tfp_format_date_fr( $post_id ) ); ?></span>
+			<?php if ( get_the_modified_date( 'Ymd', $post_id ) !== get_the_date( 'Ymd', $post_id ) ) : ?>
+				<span aria-hidden="true">·</span>
+				<span>Mis à jour le <?php echo esc_html( tfp_format_date_fr( (int) get_post_modified_time( 'U', false, $post_id ), false ) ); ?></span>
+			<?php endif; ?>
+		</p>
+	<div class="tfp-article__cover">
+		<?php tfp_picture( tfp_article_image_slug( $post_id ), array( 'sizes' => '(max-width: 900px) 92vw, 820px', 'lcp' => true, 'alt' => $image_alt ?: null ) ); ?>
 	</div>
+</header>
+
+<?php if ( $direct ) : ?>
+<section class="tfp-section--alt tfp-section--tight" style="--tfp-bande-haut:clamp(28px, 4vw, 44px);--tfp-bande-bas:clamp(28px, 4vw, 44px)">
+	<div class="tfp-container tfp-container--narrow">
+		<div class="tfp-direct-answer">
+			<p class="tfp-direct-answer__text"><?php echo esc_html( $direct ); ?></p>
+		</div>
+	</div>
+</section>
+<?php endif; ?>
+
+<?php if ( ! empty( $sommaire ) ) : ?>
+<section class="tfp-container tfp-container--narrow tfp-section--tight" style="--tfp-bande-haut:clamp(28px, 4vw, 44px);--tfp-bande-bas:clamp(28px, 4vw, 44px)">
+	<nav class="tfp-toc" aria-label="Sommaire de l'article">
+		<strong>Sommaire</strong>
+		<ul>
+			<?php foreach ( $sommaire as $entree ) : ?>
+				<li><a href="#<?php echo esc_attr( $entree['id'] ); ?>"><?php echo esc_html( $entree['texte'] ); ?></a></li>
+			<?php endforeach; ?>
+		</ul>
+	</nav>
+</section>
+<?php endif; ?>
+
+<article class="tfp-container tfp-container--narrow tfp-section--tight tfp-article-body" style="--tfp-bande-haut:0;--tfp-bande-bas:clamp(20px, 3vw, 32px)">
+	<?php echo $contenu; // phpcs:ignore WordPress.Security.EscapeOutput -- sortie de the_content, ancres ajoutées et échappées ci-dessus. ?>
 </article>
 
-<?php if ( ! empty( $faq ) ) : ?>
-<section class="tfp-section--alt tfp-section">
+<?php if ( ! empty( $erreurs ) ) : ?>
+<section class="tfp-section--alt tfp-section--tight" style="--tfp-bande-haut:clamp(28px, 4vw, 44px);--tfp-bande-bas:clamp(28px, 4vw, 44px)">
 	<div class="tfp-container tfp-container--narrow">
-		<h2>Questions fréquentes</h2>
+		<h2 id="<?php echo esc_attr( $id_erreurs ); ?>"><?php echo esc_html( $erreurs_titre ); ?></h2>
+		<ul class="tfp-list-excluded">
+			<?php foreach ( $erreurs as $erreur ) : ?>
+				<li><?php echo esc_html( $erreur ); ?></li>
+			<?php endforeach; ?>
+		</ul>
+	</div>
+</section>
+<?php endif; ?>
+
+<?php if ( ! empty( $faq ) ) : ?>
+<section class="tfp-section--alt tfp-section--tight" style="--tfp-bande-haut:clamp(28px, 4vw, 44px);--tfp-bande-bas:clamp(28px, 4vw, 44px)">
+	<div class="tfp-container tfp-container--narrow">
+		<h2 id="<?php echo esc_attr( $id_faq ); ?>">Questions fréquentes</h2>
 		<div style="margin-top:20px">
 			<?php foreach ( $faq as $item ) : ?>
-				<details class="tfp-card" style="margin-bottom:10px">
-					<summary style="font-weight:600;font-size:17px;cursor:pointer"><?php echo esc_html( $item['question'] ); ?></summary>
-					<p style="margin-top:12px;color:var(--color-text-secondary)"><?php echo esc_html( $item['reponse'] ); ?></p>
+				<details class="tfp-card tfp-faq-item">
+					<summary><?php echo esc_html( $item['question'] ); ?></summary>
+					<p><?php echo esc_html( $item['reponse'] ); ?></p>
 				</details>
 			<?php endforeach; ?>
 		</div>
@@ -118,27 +229,55 @@ get_header();
 </section>
 <?php endif; ?>
 
-<?php if ( ! empty( $related_prestations ) ) : ?>
-<section class="tfp-section--tight">
+<?php if ( $maillage || ! empty( $related_prestations ) ) : ?>
+<section class="tfp-section--alt tfp-section--tight" style="--tfp-bande-haut:clamp(28px, 4vw, 44px);--tfp-bande-bas:clamp(28px, 4vw, 44px)">
 	<div class="tfp-container tfp-container--narrow">
-		<h2 style="font-size:19px">Prestations liées</h2>
-		<div class="tfp-flex" style="margin-top:14px">
-			<?php foreach ( $related_prestations as $prestation ) : ?>
-				<a href="<?php echo esc_url( get_permalink( $prestation ) ); ?>" class="tfp-chip"><?php echo esc_html( get_the_title( $prestation ) ); ?></a>
-			<?php endforeach; ?>
-		</div>
+		<?php if ( $maillage ) : ?>
+			<p class="tfp-maillage">
+				<?php
+				echo wp_kses_post(
+					tfp_link_phrases(
+						$maillage,
+						array(
+							'nettoyage professionnel' => home_url( '/nettoyage-professionnel/' ),
+							'nos tarifs'              => home_url( '/tarifs/' ),
+						)
+					)
+				);
+				?>
+			</p>
+		<?php endif; ?>
+		<?php if ( ! empty( $related_prestations ) ) : ?>
+			<div class="tfp-chip-row tfp-chip-row--10" style="margin-top:14px">
+				<?php foreach ( $related_prestations as $prestation ) : ?>
+					<a href="<?php echo esc_url( get_permalink( $prestation ) ); ?>" class="tfp-chip"><?php echo esc_html( tfp_get_field( 'nav_label', $prestation->ID ) ?: get_the_title( $prestation ) ); ?></a>
+				<?php endforeach; ?>
+				<a href="<?php echo esc_url( home_url( '/tarifs/' ) ); ?>" class="tfp-chip">Nos tarifs</a>
+				<?php
+				/*
+				 * Troisième renvoi de la maquette : la ville de référence de l'article. Il manquait
+				 * sur les trois articles, alors que le prototype le pose sur les trois.
+				 */
+				if ( $related_ville ) :
+					?>
+					<a href="<?php echo esc_url( get_permalink( $related_ville ) ); ?>" class="tfp-chip">Nettoyage à <?php echo esc_html( get_the_title( $related_ville ) ); ?></a>
+					<?php
+				endif;
+				?>
+			</div>
+		<?php endif; ?>
 	</div>
 </section>
 <?php endif; ?>
 
 <section class="tfp-cta-block">
 	<div class="tfp-cta-block__inner">
-		<h2>Un projet d'entretien pour vos locaux ?</h2>
-		<p>Devis gratuit sous 24 h, sans engagement.</p>
+		<h2><?php echo esc_html( $cta_titre ); ?></h2>
+		<p><?php echo esc_html( $cta_texte ); ?></p>
 		<div class="tfp-cta-block__actions">
 			<?php
 			tfp_button( array( 'label' => 'Demander mon devis', 'href' => home_url( '/demande-de-devis/' ), 'variant' => 'on-primary' ) );
-			tfp_button( array( 'label' => '☎ ' . $site['phone'], 'href' => 'tel:' . $site['phone_href'], 'variant' => 'on-dark' ) );
+			tfp_bouton_appel( array( 'variant' => 'on-dark', 'numero' => true ) );
 			?>
 		</div>
 	</div>

@@ -59,6 +59,13 @@ function tfp_site_data() {
 			'legal_activity_start_date'   => '01/01/2025',
 			// Formulation complète exacte fournie par le client — à utiliser telle quelle.
 			'legal_full_statement'        => 'TOP-ENTREPRISE, SARL au capital de 600 €, immatriculée au RCS de Dijon sous le numéro 938 472 420, SIRET 938 472 420 00018, code APE 81.21Z, TVA intracommunautaire FR32938472420, siège social : RTE de Gray 650D, 21850 Saint-Apollinaire.',
+			// Directrice de la publication : confirmée le 9 août 2026 (même personne que la gérante).
+			'legal_publication_director'  => 'Audrey Brançon',
+			// Hébergeur — confirmé le 9 août 2026, coordonnées publiques Hostinger.
+			'host_name'      => 'HOSTINGER INTERNATIONAL LIMITED',
+			'host_address'   => '61 Lordou Vironos Street, 6023 Larnaca, Chypre',
+			'host_email'     => 'compliance@hostinger.com',
+			'host_website'   => 'https://www.hostinger.fr/',
 			// Domaine cible (PROJECT_INPUTS.md §1). Filtrable pour les environnements de test/preprod.
 			'origin'          => apply_filters( 'tfp_site_origin', home_url( '/' ) ),
 			'logo_path'       => '/wp-content/themes/topfamillepro/assets/dist/images/logo-horizontal.png',
@@ -73,13 +80,17 @@ function tfp_site_data() {
 				'opens' => '06:00',
 				'closes' => '22:00',
 			),
-			// Grille tarifaire réelle (PROJECT_INPUTS.md §5) — identique partout, jamais différenciée par ville (CLAUDE.md §5.3).
-			'price_entry'          => 24.30,
-			'price_entry_display'  => '24,30 €',
-			'price_autres_locaux'  => 26.00,
-			'price_ponctuel'       => 30.00,
+			// Tarif réel (PROJECT_INPUTS.md §5) — identique partout, jamais différenciée par ville
+			// (CLAUDE.md §5.3). Tarif unique depuis le 9 août 2026 (hotfix fidélité Claude Design) :
+			// remplace l'ancienne grille à trois montants (24,30 € / 26,00 € / 30,00 €) — même
+			// montant en entretien régulier et en intervention ponctuelle, quel que soit le local.
+			'price_unique'         => 27.00,
+			'price_unique_display' => '27 €',
 			'price_gestion'        => 9.00,
 			'price_setup'          => 50.00,
+			'price_km'             => 0.35,
+			'price_km_display'     => '0,35 €',
+			'price_majoration_pct' => 10,
 			'price_currency'       => 'EUR',
 			'price_unit'           => 'heure',
 			// Départements réellement couverts (PROJECT_INPUTS.md §6) — jamais au-delà.
@@ -100,24 +111,97 @@ function tfp_site_data() {
 }
 
 /**
- * Exemple de budget mensuel affiché sur l'accueil (« bureaux réguliers », 12 h/mois).
- * Bureaux = tarif « autres locaux » (26,00 € HT/h), pas le tarif « locations » (24,30 €),
- * qui ne s'applique qu'aux locations meublées — cf. PROJECT_INPUTS.md §5.
- * Exemple non contractuel, calculé (jamais une valeur inventée).
+ * Exemple de budget mensuel pour un nombre d'heures donné — **source unique de vérité**.
  *
+ * Tout exemple tarifaire du site passe par ici. Aucun total n'est stocké ni saisi : le seul
+ * paramètre est le nombre d'heures, et le montant s'en déduit.
+ *
+ *     mensuel      = heures × tarif horaire + frais de gestion
+ *     premier mois = mensuel + frais de mise en place
+ *
+ * Le défaut que cette fonction supprime était structurel, et il n'était visible d'aucune
+ * recherche de texte : le libellé de l'exemple portait les heures propres à chaque zone
+ * (« 8 h/mois », « 16 h/mois »…) tandis que le montant venait d'un exemple **fixe** à 12 heures.
+ * Vingt exemples sur trente-trois affichaient donc 333 € HT/mois pour des volumes qui ne
+ * donnaient pas ce total. Les montants employaient bien le tarif officiel de 27 € : chercher les
+ * anciens tarifs ne pouvait pas les trouver, seul un contrôle par le calcul le pouvait.
+ *
+ * @param int $hours Nombre d'heures mensuelles.
  * @return array{hours: int, monthly: float, first_month: float}
  */
-function tfp_home_budget_example() {
+function tfp_budget_example( $hours ) {
 	$site    = tfp_site_data();
-	$hours   = 12;
-	$monthly = ( $hours * $site['price_autres_locaux'] ) + $site['price_gestion'];
-	$first   = $monthly + $site['price_setup'];
+	$hours   = max( 1, (int) $hours );
+	$monthly = ( $hours * $site['price_unique'] ) + $site['price_gestion'];
 
 	return array(
 		'hours'       => $hours,
 		'monthly'     => $monthly,
-		'first_month' => $first,
+		'first_month' => $monthly + $site['price_setup'],
 	);
+}
+
+/**
+ * Exemple chiffré d'une INTERVENTION UNIQUE (prestation ponctuelle) : main-d'œuvre seule.
+ *
+ * Pas de frais de gestion (mensuels, propres au contrat régulier) ni de « premier mois ». Les
+ * autres frais — mise en place, indemnités kilométriques, majoration — ne sont ni calculés ni
+ * ajoutés d'office : leur application dépend de l'intervention et figure au devis.
+ *
+ * @param int $hours Heures de l'intervention.
+ * @return array{hours: int, labour: float}
+ */
+function tfp_intervention_example( $hours ) {
+	$hours = max( 1, (int) $hours );
+	return array(
+		'hours'  => $hours,
+		'labour' => $hours * tfp_site_data()['price_unique'],
+	);
+}
+
+/**
+ * Nombre d'heures lu dans un libellé d'exemple (« Exemple · bureaux de PME, 8 h/mois »).
+ *
+ * Le libellé est la donnée éditoriale relevée sur la maquette ; les heures qu'il annonce sont donc
+ * la seule intention fiable. Les extraire du libellé garantit que le montant affiché à côté ne
+ * peut pas le contredire — c'est exactement la contradiction qui produisait les vingt exemples
+ * faux.
+ *
+ * @param string $label
+ * @param int    $defaut Heures à retenir si le libellé n'en annonce aucune.
+ * @return int
+ */
+function tfp_hours_from_label( $label, $defaut = 12 ) {
+	if ( preg_match( '/(\d+)\s*(?:h|heures?)\s*\/\s*mois/ui', (string) $label, $m ) ) {
+		return max( 1, (int) $m[1] );
+	}
+	return $defaut;
+}
+
+/**
+ * Exemple de budget mensuel affiché sur l'accueil (bureaux réguliers, 12 h/mois).
+ * Tarif unique (27,00 € HT/h) — cf. PROJECT_INPUTS.md §5. Exemple non contractuel, calculé
+ * (jamais une valeur inventée).
+ *
+ * @return array{hours: int, monthly: float, first_month: float}
+ */
+function tfp_home_budget_example() {
+	return tfp_budget_example( 12 );
+}
+
+/**
+ * Table de plusieurs exemples de budget mensuel (page Tarifs, PROJECT_INPUTS.md §5), calculés à
+ * partir du tarif unique — jamais des valeurs codées en dur, pour ne jamais désynchroniser d'un
+ * changement de tarif.
+ *
+ * @return array<int, array{hours: int, monthly: float, first_month: float}>
+ */
+function tfp_budget_examples_table() {
+	$rows = array();
+	foreach ( array( 8, 12, 20 ) as $hours ) {
+		$rows[] = tfp_budget_example( $hours );
+	}
+	return $rows;
 }
 
 /**
@@ -128,7 +212,148 @@ function tfp_home_budget_example() {
  */
 function tfp_format_price( $amount ) {
 	$formatted = number_format( $amount, 2, ',', ' ' );
-	// Retire les ",00" superflus (24,30 reste tel quel, 321,00 devient 321).
+	// Retire les ",00" superflus (27,50 reste tel quel, 321,00 devient 321).
 	$formatted = preg_replace( '/,00$/', '', $formatted );
 	return $formatted . ' €';
+}
+
+/**
+ * Formate une date en français (« 9 août 2026 »), sans dépendre du réglage Réglages → Général →
+ * Format de date du site (souvent laissé à l'anglais « F j, Y » par défaut) ni de la locale
+ * WordPress active (WPLANG) : un site sans locale fr_FR configurée afficherait sinon les mois en
+ * anglais malgré un site entièrement rédigé en français. Bug réel trouvé lors du hotfix de
+ * fidélité Claude Design du 9 août 2026 (dates d'articles affichées « Publié le août 9, 2026 »,
+ * mélange de format anglais et de mois traduit).
+ *
+ * @param int|string $post_id_or_timestamp ID de post, ou timestamp Unix.
+ * @param bool       $is_post_id           True (défaut) si le premier argument est un ID de post.
+ * @return string
+ */
+function tfp_format_date_fr( $post_id_or_timestamp, $is_post_id = true ) {
+	$mois = array(
+		1 => 'janvier', 2 => 'février', 3 => 'mars', 4 => 'avril', 5 => 'mai', 6 => 'juin',
+		7 => 'juillet', 8 => 'août', 9 => 'septembre', 10 => 'octobre', 11 => 'novembre', 12 => 'décembre',
+	);
+
+	$timestamp = $is_post_id
+		? (int) get_post_time( 'U', false, $post_id_or_timestamp )
+		: (int) $post_id_or_timestamp;
+
+	$jour       = (int) gmdate( 'j', $timestamp );
+	$mois_index = (int) gmdate( 'n', $timestamp );
+	$annee      = gmdate( 'Y', $timestamp );
+
+	return $jour . ' ' . $mois[ $mois_index ] . ' ' . $annee;
+}
+
+/**
+ * Les huit départements couverts, avec leur numéro et leur page — pour la navigation.
+ *
+ * Décision du 14 octobre 2026 : le menu « Zones d'intervention » propose les huit départements,
+ * pas un sous-menu à deux entrées. Le header, le panneau mobile, la bande de couverture de
+ * l'accueil et la carte lisent TOUS cette liste : un département ajouté ici apparaît partout,
+ * et aucun gabarit ne porte sa propre copie des numéros.
+ *
+ * Les numéros sont des faits (PROJECT_INPUTS.md §6), les slugs ceux des pages de zone existantes.
+ *
+ * @return array<int,array{label:string,num:string,slug:string,url:string}>
+ */
+function tfp_departements_nav() {
+	static $liste = null;
+	if ( null !== $liste ) {
+		return $liste;
+	}
+	$numeros = array(
+		"Côte-d'Or"             => '21',
+		'Doubs'                 => '25',
+		'Jura'                  => '39',
+		'Nièvre'                => '58',
+		'Haute-Saône'           => '70',
+		'Saône-et-Loire'        => '71',
+		'Yonne'                 => '89',
+		'Territoire de Belfort' => '90',
+	);
+	$liste = array();
+	foreach ( tfp_site_data()['departements'] as $nom ) {
+		$slug    = sanitize_title( remove_accents( $nom ) );
+		$liste[] = array(
+			'label' => $nom,
+			'num'   => $numeros[ $nom ] ?? '',
+			'slug'  => $slug,
+			'url'   => home_url( '/zones-intervention/' . $slug . '/' ),
+		);
+	}
+	return $liste;
+}
+
+/**
+ * Libellé du bouton d'appel générique — « ☎ Appeler Top-Famille Pro ».
+ *
+ * Décision du 14 octobre 2026 : les commandes téléphoniques génériques nomment l'entreprise, pas la
+ * gérante. Une seule fonction, lue par le hero, le header, la barre mobile, le pied de page et les
+ * rangées d'actions des pages intérieures — sinon chaque gabarit recomposait le libellé à sa façon
+ * (prénom seul, nom complet) et les boutons variaient d'une page à l'autre. Les textes qui décrivent
+ * le RÔLE d'Audrey continuent, eux, de la nommer.
+ *
+ * @param bool $icone Préfixer du pictogramme téléphone.
+ * @return string
+ */
+function tfp_phone_cta_label( $icone = false ) {
+	// Le pictogramme « ☎ » n'est plus écrit dans le texte : l'icône est un SVG (tfp_icone()),
+	// posé par tfp_bouton_appel(). Le paramètre est gardé pour compatibilité, sans effet visible.
+	unset( $icone );
+	return 'Appeler ' . tfp_site_data()['brand_name'];
+}
+
+/**
+ * Site carrière du groupe (CLAUDE.md §8) — une seule source pour la page recrutement et sa barre
+ * d'action mobile. Aucun formulaire de candidature n'est hébergé ici.
+ *
+ * @return string
+ */
+function tfp_url_carrieres() {
+	return 'https://careers.werecruit.io/fr/top-famille';
+}
+
+/**
+ * Questions fréquentes de l'accueil (13 novembre 2026).
+ *
+ * Six questions, six réponses courtes. Chaque réponse reprend un fait validé de PROJECT_INPUTS.md
+ * — tarif unique, périmètre du tarif, exclusions, zone, devis, interlocutrice — et rien d'autre :
+ * aucun délai, aucun chiffre, aucun engagement qui ne figure déjà ailleurs sur le site.
+ * La même liste alimente la section visible et le FAQPage (CLAUDE.md §8).
+ *
+ * @return array<int, array{q: string, a: string}>
+ */
+function tfp_faq_accueil() {
+	$site    = tfp_site_data();
+	$prix    = $site['price_unique_display'];
+	$prenom  = explode( ' ', $site['manager'] )[0];
+
+	return array(
+		array(
+			'q' => 'Combien coûte le nettoyage de nos locaux ?',
+			'a' => "Le tarif est de {$prix} HT/h, le même en entretien régulier et en intervention ponctuelle, partout en {$site['address_region']}. Votre budget dépend du nombre d'heures nécessaires : il est chiffré dans le devis.",
+		),
+		array(
+			'q' => 'Que comprend ce tarif ?',
+			'a' => "La main-d'œuvre, l'organisation des passages et le suivi. Le matériel et les produits sont fournis par le client. Les autres frais — gestion mensuelle, mise en place, déplacement, majoration du dimanche, des jours fériés et de la nuit — sont détaillés dans le devis.",
+		),
+		array(
+			'q' => 'Quels locaux prenez-vous en charge ?',
+			'a' => "Bureaux, commerces, cabinets et professions libérales, copropriétés et locations meublées, en entretien régulier ou en remise en état ponctuelle. Nous n'intervenons pas dans les locaux industriels, alimentaires ou médicaux nécessitant une asepsie.",
+		),
+		array(
+			'q' => 'Dans quels secteurs intervenez-vous ?',
+			'a' => "Dans les huit départements de {$site['address_region']}, depuis {$site['address_city']}, près de Dijon. Selon la distance, des indemnités kilométriques peuvent s'appliquer ; elles figurent au devis.",
+		),
+		array(
+			'q' => 'Comment obtenir un devis ?',
+			'a' => "Par le formulaire en ligne ou par téléphone. {$prenom} étudie personnellement chaque demande et vous répond sous 24 heures. Le devis est gratuit et sans engagement.",
+		),
+		array(
+			'q' => 'Qui sera notre contact ?',
+			'a' => "{$site['manager']}, gérante de {$site['brand_name']}. Elle étudie votre devis, établit avec vous le cahier des charges et reste joignable pour le suivi des passages.",
+		),
+	);
 }

@@ -15,18 +15,57 @@ function tfpInitQuoteForm() {
 	if (steps.length < 2) return;
 
 	const nextBtn = form.querySelector('[data-step-next]');
-	const prevBtn = form.querySelector('[data-step-prev]');
+	// Deux commandes ramènent à l'étape 1 : le bouton de la rangée de commandes et le lien du
+	// résumé. Elles portent le même attribut et se comportent de la même façon.
+	const prevBtns = Array.from(form.querySelectorAll('[data-step-prev]'));
 	const liveRegion = form.querySelector('[data-form-errors]');
+	const recap = form.querySelector('[data-quote-recap]');
+	const recapText = form.querySelector('[data-quote-recap-text]');
 	let current = 0;
 
-	function showStep(index) {
+	/**
+	 * Résume l'étape 1 à partir des champs eux-mêmes.
+	 *
+	 * Rien n'est reconstitué ni deviné : on lit ce que le visiteur a saisi, dans l'ordre où il l'a
+	 * saisi. Si aucun des trois champs n'est renseigné — cas impossible en usage normal, les deux
+	 * premiers étant obligatoires — le résumé reste masqué plutôt que d'afficher une phrase vide.
+	 */
+	function updateRecap() {
+		if (!recap || !recapText) return;
+		const lire = (selector) => {
+			const el = form.querySelector(selector);
+			if (!el || !el.value) return '';
+			if (el.tagName === 'SELECT') {
+				const opt = el.options[el.selectedIndex];
+				return opt ? opt.textContent.trim() : '';
+			}
+			return el.value.trim();
+		};
+		// Passe commerciale du 10 novembre 2026 (§6) : le résumé reprend aussi le nom et le moyen de
+		// recontact choisis, pour que l'étape 2 ne laisse aucun doute sur ce qui a été saisi.
+		const contact = [lire('#tfp-telephone'), lire('#tfp-email')].filter(Boolean).join(', ');
+		const parts = [lire('#tfp-type-locaux'), lire('#tfp-regime'), lire('#tfp-ville-visible'), lire('#tfp-nom'), contact].filter(Boolean);
+		if (!parts.length) {
+			recap.hidden = true;
+			return;
+		}
+		recapText.textContent = `Étape 1 renseignée : ${parts.join(' · ')}. `;
+		recap.hidden = false;
+	}
+
+	function showStep(index, focus = true) {
 		steps.forEach((step, i) => {
 			step.hidden = i !== index;
 		});
-		if (prevBtn) prevBtn.hidden = index === 0;
+		prevBtns.forEach((btn) => {
+			btn.hidden = index === 0;
+		});
 		if (nextBtn) nextBtn.hidden = index !== 0;
 		const submitBtn = form.querySelector('[data-step-submit]');
 		if (submitBtn) submitBtn.hidden = index === 0;
+		// Pas de focus au chargement initial : il faisait défiler la page et annonçait un champ
+		// avant le titre (revue du 25 octobre 2026). Le focus suit seulement un changement d'étape.
+		if (!focus) return;
 		const first = steps[index].querySelector('input, textarea, select');
 		if (first) first.focus();
 	}
@@ -67,7 +106,53 @@ function tfpInitQuoteForm() {
 			errors.push(`${name.replace('*', '').trim()} : champ requis ou invalide.`);
 			field.setAttribute('aria-invalid', 'true');
 		});
+		return errors.concat(validateRules(steps[index]));
+	}
+
+	/**
+	 * Règles qui ne s'expriment pas avec `required` (revue du 25 octobre 2026, §8) — les mêmes que
+	 * côté serveur (includes/quote-form.php) :
+	 *  - un moyen de recontact au moins : téléphone OU e-mail ;
+	 *  - un e-mail fourni doit être bien formé ;
+	 *  - le code postal est vide ou fait exactement cinq chiffres.
+	 * Messages en français, champ marqué `aria-invalid`, annoncés par la région live.
+	 */
+	function validateRules(step) {
+		const errors = [];
+		const marquer = (el, ok) => {
+			if (!el) return;
+			if (ok) el.removeAttribute('aria-invalid');
+			else el.setAttribute('aria-invalid', 'true');
+		};
+		const tel = step.querySelector('#tfp-telephone');
+		const mail = step.querySelector('#tfp-email');
+		if (tel && mail) {
+			const telV = tel.value.trim();
+			const mailV = mail.value.trim();
+			if (!telV && !mailV) {
+				errors.push('Téléphone ou e-mail : indiquez au moins l’un des deux pour être recontacté.');
+				marquer(tel, false);
+				marquer(mail, false);
+			} else {
+				marquer(tel, true);
+				const mailOk = !mailV || mail.checkValidity();
+				if (!mailOk) errors.push('E-mail : adresse mal formée (exemple : vous@entreprise.fr).');
+				marquer(mail, mailOk);
+			}
+		}
+		const cp = step.querySelector('#tfp-code-postal');
+		if (cp) {
+			const ok = cp.value.trim() === '' || /^[0-9]{5}$/.test(cp.value.trim());
+			if (!ok) errors.push('Code postal : cinq chiffres attendus, ou laissez le champ vide.');
+			marquer(cp, ok);
+		}
 		return errors;
+	}
+
+	/** Place le focus sur le premier champ en erreur de l'étape affichée. */
+	function focusFirstInvalid(index) {
+		const el = steps[index].querySelector('[aria-invalid="true"]');
+		if (el) el.focus();
 	}
 
 	if (nextBtn) {
@@ -75,20 +160,22 @@ function tfpInitQuoteForm() {
 			const errors = validateStep(0);
 			if (errors.length) {
 				announce(errors);
+				focusFirstInvalid(0);
 				return;
 			}
 			announce([]);
 			current = 1;
+			updateRecap();
 			showStep(current);
 		});
 	}
 
-	if (prevBtn) {
-		prevBtn.addEventListener('click', () => {
+	prevBtns.forEach((btn) => {
+		btn.addEventListener('click', () => {
 			current = 0;
 			showStep(current);
 		});
-	}
+	});
 
 	form.addEventListener('submit', (event) => {
 		const errorsStep0 = validateStep(0);
@@ -101,10 +188,11 @@ function tfpInitQuoteForm() {
 				current = 0;
 				showStep(current);
 			}
+			focusFirstInvalid(current);
 		}
 	});
 
-	showStep(current);
+	showStep(current, false);
 
 	// Contexte visiteur : URL courante, référent, prestation/ville pré-remplies depuis les query
 	// params (les pages prestation/zone peuvent lier vers /demande-de-devis/?prestation=X&ville=Y).
@@ -121,15 +209,65 @@ function tfpInitQuoteForm() {
 	setHidden('utm_medium', params.get('utm_medium') || '');
 	setHidden('utm_campaign', params.get('utm_campaign') || '');
 
-	// Préremplissage visible du champ prestation (libellé lisible si fourni, sinon le slug brut).
-	// Paramètres d'URL nommés "service"/"service_label", pas "prestation" : ce dernier est le
-	// query_var natif du CPT `prestation` et détournerait la requête principale de WordPress si un
-	// lien externe l'utilisait (voir le commentaire dans single-prestation.php).
-	const prestationVisible = form.querySelector('#tfp-prestation-visible');
-	const prestationValue = params.get('service_label') || params.get('service');
-	if (prestationVisible && prestationValue && !prestationVisible.value) {
-		prestationVisible.value = prestationValue;
+	/*
+	 * Prestation demandée (recette du 12 novembre 2026) : DÉDUITE du type de locaux et du régime
+	 * choisis en dernier, jamais recopiée depuis la page d'origine. Arrivé depuis Bureaux, un
+	 * prospect qui choisit « Commerces » demande du nettoyage de commerces. Même règle que le
+	 * serveur (tfp_quote_prestation_demandee(), qui la recalcule de toute façon à la réception) ;
+	 * la prestation de la page d'origine reste à part, dans `prestation_origine`.
+	 */
+	const typeSelect = form.querySelector('#tfp-type-locaux');
+	const regimeSelect = form.querySelector('#tfp-regime');
+	const prestationField = form.querySelector('#tfp-prestation-visible');
+	const origineField = form.querySelector('#tfp-prestation-origine');
+
+	/*
+	 * Préremplissage depuis la page d'origine : WordPress le fait déjà côté serveur
+	 * (page-demande-de-devis.php). Il est repris ici, à l'identique et seulement sur un champ
+	 * encore vide, pour une page servie sans PHP — la copie navigable hors ligne. Il ne remplace
+	 * jamais un choix déjà fait.
+	 */
+	const service = params.get('service') || '';
+	if (typeSelect && !typeSelect.value && service && typeSelect.querySelector(`option[value="${CSS.escape(service)}"]`)) {
+		typeSelect.value = service;
 	}
+	if (regimeSelect && !regimeSelect.value && service === 'ponctuel') regimeSelect.value = 'ponctuel';
+	if (origineField && !origineField.value) origineField.value = params.get('service_label') || '';
+	const regimes = { regulier: 'entretien régulier', ponctuel: 'intervention ponctuelle' };
+	function prestationDemandee() {
+		if (!typeSelect) return '';
+		const opt = typeSelect.options[typeSelect.selectedIndex];
+		const base = opt && opt.value ? opt.dataset.prestation || '' : '';
+		if (!base) return '';
+		const regime = regimeSelect ? regimeSelect.value : '';
+		if (regimes[regime] && !(typeSelect.value === 'ponctuel' && regime === 'ponctuel')) {
+			return `${base} (${regimes[regime]})`;
+		}
+		return base;
+	}
+	function syncPrestation() {
+		if (prestationField) prestationField.value = prestationDemandee();
+	}
+	[typeSelect, regimeSelect].forEach((el) => el && el.addEventListener('change', syncPrestation));
+	syncPrestation();
+
+	/*
+	 * Département : transmis par une page de zone avec sa ville (?ville=Vesoul&departement=…). Il
+	 * ne vaut que pour CETTE ville : si le prospect en saisit une autre, le département de la page
+	 * d'origine ne la décrit plus, on le retire plutôt que d'envoyer une demande contradictoire.
+	 */
+	const villeField = form.querySelector('#tfp-ville-visible');
+	const departementField = form.querySelector('input[type="hidden"][name="departement"]');
+	if (villeField && departementField) {
+		const villeOrigine = villeField.value.trim().toLowerCase();
+		const departementOrigine = departementField.value;
+		villeField.addEventListener('input', () => {
+			departementField.value = villeField.value.trim().toLowerCase() === villeOrigine ? departementOrigine : '';
+		});
+	}
+
+	// Dernière mise à jour juste avant l'envoi : rien ne part qui ne reflète l'étape 1 affichée.
+	form.addEventListener('submit', syncPrestation, true);
 }
 
 document.addEventListener('DOMContentLoaded', tfpInitQuoteForm);

@@ -3,8 +3,8 @@
  * Seed des 5 pages de référence de la phase 2 (une par famille de gabarit).
  *
  * Contenu repris du prototype (reference/Top-Famille-Pro-HANDOFF-READY.html), corrigé selon
- * CLAUDE.md §9 : tarif unique fictif « 27 € HT/h » remplacé par la vraie grille à trois montants
- * (PROJECT_INPUTS.md §5), tous les avis de démonstration retirés (docs/DONNEES-FICTIVES.md),
+ * CLAUDE.md §9 : tarif réel appliqué (27,00 € HT/h, tarif unique — PROJECT_INPUTS.md §5, mis à
+ * jour le 9 août 2026), tous les avis de démonstration retirés (docs/DONNEES-FICTIVES.md),
  * accords grammaticaux corrigés. Le contenu vit ici en PHP versionné plutôt que directement en
  * base : c'est ce qui permet de le relire et de le revoir dans une PR, conformément à
  * CLAUDE.md §3 (le dépôt ne versionne que le thème, jamais la base — ce script est le code
@@ -69,6 +69,10 @@ $bureaux_id = tfp_seed_upsert_post(
 	)
 );
 
+// prestations_liees ci-dessous n'est qu'une valeur initiale (seule « bureaux » existe à ce
+// stade de l'installation) : bin/seed-phase4-maillage.php la complète avec les 6 prestations
+// une fois qu'elles existent toutes (bug réel corrigé au hotfix du 9 août 2026).
+
 tfp_seed_set_field( 'h1', 'Nettoyage de bureaux en Bourgogne-Franche-Comté', $bureaux_id );
 tfp_seed_set_field( 'tease', 'Open-spaces, salles de réunion, accueil', $bureaux_id );
 tfp_seed_set_field(
@@ -115,6 +119,13 @@ tfp_seed_set_field(
 	"Les produits d'entretien courants et le matériel sont généralement fournis par vos soins, ce qui garantit l'usage de références déjà validées pour vos revêtements et votre mobilier. L'accès (jeu de clés, badge, code d'alarme) est organisé selon votre configuration et consigné par écrit avant le premier passage, avec un protocole clair en cas de déclenchement accidentel. Nous recherchons un intervenant habituel qui connaît vos locaux, vos horaires et vos consignes de confidentialité — un critère important dans des open-spaces où circulent des documents et des écrans allumés. Un cahier de liaison reste sur place pour tracer chaque passage ; en cas d'absence imprévue, nous recherchons activement une solution de remplacement et vous informons de l'organisation retenue.",
 	$bureaux_id
 );
+tfp_seed_set_field( 'config_1_titre', "Moins de 10 postes", $bureaux_id );
+tfp_seed_set_field( 'config_1_texte', "Un plateau de moins de dix postes se traite le plus souvent en un à deux passages hebdomadaires de deux à trois heures : sols, sanitaires, coin cuisine et corbeilles à chaque passage, dépoussiérage du mobilier en alternance selon les zones.", $bureaux_id );
+tfp_seed_set_field( 'config_2_titre', "De 10 à 30 postes", $bureaux_id );
+tfp_seed_set_field( 'config_2_texte', "Au-delà de dix postes, la charge se concentre sur les sanitaires, la salle de pause et les sols de circulation, qui se salissent bien plus vite que les bureaux eux-mêmes. Trois passages par semaine constituent souvent le bon équilibre.", $bureaux_id );
+tfp_seed_set_field( 'config_3_titre', "Plus de 30 postes ou plusieurs plateaux", $bureaux_id );
+tfp_seed_set_field( 'config_3_texte', "À partir d'une trentaine de postes, un passage quotidien devient généralement nécessaire pour les sanitaires et la cuisine. Le cahier des charges distingue alors les tâches quotidiennes, hebdomadaires et mensuelles, et le travail est réparti par étage ou par zone.", $bureaux_id );
+tfp_seed_set_field( 'semaine_type', "Pour un plateau de 15 postes avec passage le lundi, le mercredi et le vendredi entre 6 h 30 et 8 h : le lundi, sanitaires, cuisine, corbeilles et aspiration des circulations et de l'open-space ; le mercredi, les mêmes tâches auxquelles s'ajoutent le dépoussiérage des bureaux et le lavage des sols ; le vendredi, les mêmes tâches plus l'accueil, les vitres intérieures et la remise en ordre des salles de réunion. Ce découpage est indicatif : il est arrêté avec vous au moment du cahier des charges et peut être réorganisé.", $bureaux_id );
 tfp_seed_set_field(
 	'exclusions',
 	"Hors prestation courante : maintenance informatique, déplacement de mobilier lourd, shampouinage de moquette en profondeur et nettoyage de vitres en hauteur nécessitant un équipement spécialisé — ces interventions font l'objet d'un devis distinct.",
@@ -332,7 +343,7 @@ update_post_meta(
 $article_faqs = array(
 	array( 'q' => 'Peut-on changer de fréquence en cours de contrat ?', 'a' => 'Oui, la fréquence peut être ajustée à tout moment avec votre interlocutrice, à la hausse comme à la baisse, selon l\'évolution de vos besoins.' ),
 	array( 'q' => 'Une fréquence hebdomadaire suffit-elle pour un cabinet médical ?', 'a' => "Cela dépend du flux de patients. Pour les salles d'attente et sanitaires très fréquentés, un passage plus rapproché est généralement recommandé ; le bureau de consultation peut suivre une fréquence plus légère." ),
-	array( 'q' => 'Le tarif horaire change-t-il selon la fréquence choisie ?', 'a' => "Non, le tarif horaire reste identique quelle que soit la fréquence retenue (24,30 € à 30,00 € HT/h selon le type de local et le régime, voir la page Tarifs) ; seul le volume d'heures mensuel varie." ),
+	array( 'q' => 'Le tarif horaire change-t-il selon la fréquence choisie ?', 'a' => "Non. Le tarif horaire est unique — 27,00 € HT/h, identique quelle que soit la fréquence retenue et le type de local (voir la page Tarifs) ; seul le volume d'heures mensuel varie." ),
 );
 foreach ( $article_faqs as $i => $item ) {
 	update_post_meta( $article_id, '_tfp_faq_' . ( $i + 1 ) . '_q', $item['q'] );

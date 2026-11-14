@@ -1,0 +1,404 @@
+{
+ "#/contact": {
+  "largeur": 768,
+  "bande": 2,
+  "hauteurBandeRef": 1254.3,
+  "hauteurBandeWp": 1614.17,
+  "deltaBande": 359.9,
+  "bouclage": -0.3,
+  "troisPlusFortesContributions": [
+   {
+    "contribution": 345,
+    "role": "grille",
+    "selecteur": "tfp-container tfp-contact-cols",
+    "hRef": 1200.55,
+    "hWp": 1552.73,
+    "causes": [
+     "écart 38.4px→40px"
+    ],
+    "contenuEnPlusDuTheme": [
+     "titre 25px « J’ai une question »",
+     "texte 56px « Formulaire court : décrivez votre  »",
+     "titre 25px « Une demande précise ? »",
+     "texte 56px « Pour un devis, décrivez directemen »",
+     "bouton 60px « Demander mon devis »",
+     "texte 50px « Top-Famille Pro — 650D route de Gr »"
+    ],
+    "supplementEnveloppe": 343.4
+   },
+   {
+    "contribution": 166.7,
+    "role": "grille",
+    "selecteur": "tfp-contact-form__row",
+    "hRef": 77.67,
+    "hWp": 195.34,
+    "causes": [
+     "écart 15px→0px 16px"
+    ],
+    "contenuEnPlusDuTheme": [
+     "champ 49px «  »"
+    ],
+    "supplementEnveloppe": 61
+   },
+   {
+    "contribution": -110.7,
+    "role": "formulaire",
+    "selecteur": "tfp-contact-form",
+    "hRef": 523.55,
+    "hWp": 579.36,
+    "causes": [
+     "marge haute 0→18",
+     "écart 15px→null"
+    ],
+    "contenuEnPlusDuTheme": [],
+    "supplementEnveloppe": null
+   }
+  ]
+ },
+ "#/pourquoi-top-famille-pro": {
+  "largeur": 768,
+  "bande": 3,
+  "hauteurBandeRef": 1013.86,
+  "hauteurBandeWp": 1265.34,
+  "deltaBande": 251.5,
+  "bouclage": 0,
+  "troisPlusFortesContributions": [
+   {
+    "contribution": 129.3,
+    "role": "grille",
+    "selecteur": "tfp-static-grid tfp-static-grid--3",
+    "hRef": 866.56,
+    "hWp": 1064.39,
+    "causes": [
+     "marge haute 26→16",
+     "écart 22px→34px"
+    ],
+    "contenuEnPlusDuTheme": [],
+    "supplementEnveloppe": null
+   },
+   {
+    "contribution": 65.8,
+    "role": "carte",
+    "selecteur": "tfp-section--tight tfp-section--bl",
+    "hRef": 1013.86,
+    "hWp": 1265.34,
+    "causes": [
+     "rembourrage haut 46.08→80",
+     "rembourrage bas 46.08→80",
+     "filet 1/1→0/0"
+    ],
+    "contenuEnPlusDuTheme": [],
+    "supplementEnveloppe": null
+   },
+   {
+    "contribution": -57.8,
+    "role": "texte",
+    "selecteur": "tfp-static-block",
+    "hRef": 321.09,
+    "hWp": 314.8,
+    "causes": [
+     "rembourrage haut 16→0",
+     "marge haute 0→36",
+     "filet 2/0→0/0",
+     "largeur 342→336"
+    ],
+    "contenuEnPlusDuTheme": [],
+    "supplementEnveloppe": null
+   }
+  ]
+ },
+ "#/nos-tarifs": {
+  "largeur": 768,
+  "bande": 5,
+  "hauteurBandeRef": 305.53,
+  "hauteurBandeWp": 527.88,
+  "deltaBande": 222.4,
+  "bouclage": 0.3,
+  "troisPlusFortesContributions": [
+   {
+    "contribution": 296.3,
+    "role": "grille",
+    "selecteur": "tfp-container tfp-two-col",
+    "hRef": 265.53,
+    "hWp": 466.44,
+    "causes": [
+     "écart 16px→30.72px",
+     "colonnes 2→1"
+    ],
+    "contenuEnPlusDuTheme": [],
+    "supplementEnveloppe": null
+   },
+   {
+    "contribution": -129.1,
+    "role": "grille",
+    "selecteur": "tfp-list-plain",
+    "hRef": 181.78,
+    "hWp": 165.25,
+    "causes": [
+     "marge haute 14→18",
+     "écart 9px→0px 10px",
+     "colonnes 1→2",
+     "police 15→17",
+     "interligne 24.3→27.54",
+     "largeur 295→657"
+    ],
+    "contenuEnPlusDuTheme": [],
+    "supplementEnveloppe": null
+   },
+   {
+    "contribution": -120.1,
+    "role": "grille",
+    "selecteur": "tfp-list-plain",
+    "hRef": 124.19,
+    "hWp": 93.13,
+    "causes": [
+     "marge haute 14→18",
+     "écart 9px→0px 10px",
+     "colonnes 1→2",
+     "police 15→17",
+     "interligne 24.3→27.54",
+     "largeur 295→657"
+    ],
+    "contenuEnPlusDuTheme": [],
+    "supplementEnveloppe": null
+   }
+  ]
+ },
+ "#/article/cout-nettoyage-bureaux": {
+  "largeur": 768,
+  "bande": 3,
+  "hauteurBandeRef": 1175.73,
+  "hauteurBandeWp": 1428.13,
+  "deltaBande": 252.4,
+  "bouclage": 0,
+  "troisPlusFortesContributions": [
+   {
+    "contribution": 1382.2,
+    "role": "texte",
+    "selecteur": "tfp-container tfp-container--narro",
+    "hRef": 1175.73,
+    "hWp": 1428.13,
+    "causes": [
+     "rembourrage haut 0→30.72",
+     "rembourrage bas 23.04→30.72"
+    ],
+    "contenuEnPlusDuTheme": [],
+    "supplementEnveloppe": null
+   },
+   {
+    "contribution": -1129.8,
+    "role": "titre",
+    "selecteur": "h2",
+    "hRef": 1152.7,
+    "hWp": 22.88,
+    "causes": [
+     "marge haute 0→36",
+     "marge basse 0→10",
+     "écart 28px→null",
+     "colonnes 1→0",
+     "police 17→22",
+     "interligne 27.54→22.88",
+     "lignes 0→1",
+     "largeur 768→707"
+    ],
+    "contenuEnPlusDuTheme": [],
+    "supplementEnveloppe": null
+   }
+  ]
+ },
+ "#/plan-du-site": {
+  "largeur": 768,
+  "bande": 1,
+  "hauteurBandeRef": 134.03,
+  "hauteurBandeWp": 1226.38,
+  "deltaBande": 1092.4,
+  "bouclage": 0.2,
+  "troisPlusFortesContributions": [
+   {
+    "contribution": 980.8,
+    "role": "texte",
+    "selecteur": "tfp-section",
+    "hRef": 134.03,
+    "hWp": 1226.38,
+    "causes": [
+     "rembourrage haut 0→48",
+     "rembourrage bas 53.76→48"
+    ],
+    "contenuEnPlusDuTheme": [
+     "texte 524px « Pages principales Accueil Nettoyag »",
+     "texte 268px « Prestations Entretien de coproprié »",
+     "texte 334px « Zones — départements Côte-d’Or Dou »",
+     "texte 382px « Zones — villes Auxerre Belfort Bes »",
+     "texte 334px « Communes secondaires Beaune Chenôv »",
+     "texte 252px « Conseils Combien coûte le nettoyag »"
+    ],
+    "supplementEnveloppe": 938.5
+   },
+   {
+    "contribution": 142.5,
+    "role": "grille",
+    "selecteur": "ul",
+    "hRef": 45.48,
+    "hWp": 134.13,
+    "causes": [
+     "marge haute 0→12",
+     "écart 9px→8px",
+     "colonnes 4→1",
+     "largeur 707→225"
+    ],
+    "contenuEnPlusDuTheme": [],
+    "supplementEnveloppe": null
+   },
+   {
+    "contribution": 25,
+    "role": "titre",
+    "selecteur": "h2",
+    "hRef": 20.8,
+    "hWp": 45.75,
+    "causes": [
+     "marge basse 14→0",
+     "police 20→22",
+     "interligne 20.8→22.88"
+    ],
+    "contenuEnPlusDuTheme": [],
+    "supplementEnveloppe": null
+   }
+  ]
+ },
+ "#/avis-clients": {
+  "largeur": 768,
+  "bande": 2,
+  "hauteurBandeRef": 424.17,
+  "hauteurBandeWp": 637.02,
+  "deltaBande": 212.8,
+  "bouclage": 0.1,
+  "troisPlusFortesContributions": [
+   {
+    "contribution": 471.3,
+    "role": "texte",
+    "selecteur": "tfp-section--tight",
+    "hRef": 424.17,
+    "hWp": 637.02,
+    "causes": [
+     "rembourrage haut 15.36→20",
+     "rembourrage bas 28→40"
+    ],
+    "contenuEnPlusDuTheme": [
+     "texte 20px « Exemples de présentation — témoign »",
+     "texte 25px « ★★★★★ »",
+     "texte 25px « · · »",
+     "texte 25px « Marc V. »",
+     "texte 25px « Directeur administratif »",
+     "texte 25px « Chalon-sur-Saône »",
+     "texte 20px « Exemples de présentation — témoign »",
+     "grille 198px « ★★★★★ « Devis clair reçu le lendem »"
+    ],
+    "supplementEnveloppe": 444.6
+   },
+   {
+    "contribution": -258.4,
+    "role": "carte",
+    "selecteur": "tfp-quote",
+    "hRef": 380.81,
+    "hWp": 122.39,
+    "causes": [
+     "rembourrage haut 30.72→18",
+     "rembourrage bas 30.72→18",
+     "marge haute 0→16",
+     "écart 24px→null",
+     "colonnes 1→0",
+     "police 17→18",
+     "interligne 27.54→28.8",
+     "lignes 0→1"
+    ],
+    "contenuEnPlusDuTheme": [],
+    "supplementEnveloppe": null
+   }
+  ]
+ },
+ "#/zones-intervention": {
+  "largeur": 768,
+  "bande": 11,
+  "hauteurBandeRef": 343.02,
+  "hauteurBandeWp": 195.97,
+  "deltaBande": -147,
+  "bouclage": -0.1,
+  "troisPlusFortesContributions": [
+   {
+    "contribution": -98.2,
+    "role": "texte",
+    "selecteur": "tfp-static-block",
+    "hRef": 343.02,
+    "hWp": 195.97,
+    "causes": [
+     "rembourrage haut 46.08→0",
+     "rembourrage bas 46.08→0",
+     "largeur 768→707"
+    ],
+    "contenuEnPlusDuTheme": [],
+    "supplementEnveloppe": null
+   },
+   {
+    "contribution": -97.1,
+    "role": "grille",
+    "selecteur": "tfp-card-grid tfp-card-grid--2",
+    "hRef": 129.06,
+    "hWp": 85.09,
+    "causes": [
+     "marge haute 24→18",
+     "colonnes 1→2"
+    ],
+    "contenuEnPlusDuTheme": [],
+    "supplementEnveloppe": null
+   },
+   {
+    "contribution": 33.1,
+    "role": "texte",
+    "selecteur": "tfp-card-tile__title",
+    "hRef": 22,
+    "hWp": 55.09,
+    "causes": [],
+    "contenuEnPlusDuTheme": [],
+    "supplementEnveloppe": null
+   }
+  ]
+ },
+ "#/recrutement": {
+  "largeur": 768,
+  "bande": 0,
+  "hauteurBandeRef": 856.95,
+  "hauteurBandeWp": 337.59,
+  "deltaBande": -519.4,
+  "bouclage": 0.1,
+  "troisPlusFortesContributions": [
+   {
+    "contribution": -334.7,
+    "role": "texte",
+    "selecteur": "tfp-container tfp-section--tight",
+    "hRef": 856.95,
+    "hWp": 337.59,
+    "causes": [
+     "rembourrage bas 40→30.72",
+     "écart 38.4px→null"
+    ],
+    "contenuEnPlusDuTheme": [],
+    "supplementEnveloppe": null
+   },
+   {
+    "contribution": -184.6,
+    "role": "titre",
+    "selecteur": "h1",
+    "hRef": 217.92,
+    "hWp": 33.27,
+    "causes": [
+     "colonnes 1→0",
+     "police 17→32",
+     "interligne 27.54→33.28",
+     "lignes 0→1"
+    ],
+    "contenuEnPlusDuTheme": [],
+    "supplementEnveloppe": null
+   }
+  ]
+ }
+}

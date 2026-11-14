@@ -1,8 +1,14 @@
 <?php
 /**
  * 2. Bandeau tarifaire + réassurance.
- * Aucune fausse note Google ici (docs/DONNEES-FICTIVES.md) : la grille de réassurance
- * n'affiche que des faits confirmés (PROJECT_INPUTS.md).
+ *
+ * Décision du 14 octobre 2026 : le bouton « Voir les tarifs » appartient au MÊME groupe visuel que le
+ * prix — juste à côté de la pastille marine, jamais isolé sur une seconde ligne à l'extrémité droite
+ * d'un bandeau vide. Le bandeau est le composant PARTAGÉ tfp_bande_tarif() : l'accueil et les
+ * pages statiques relevées sur la maquette composent le même.
+ *
+ * Aucune fausse note Google ici (docs/DONNEES-FICTIVES.md) : la grille de réassurance n'affiche
+ * que des faits confirmés (PROJECT_INPUTS.md).
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -11,21 +17,18 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 $site = tfp_site_data();
 ?>
+<?php
+/*
+ * Passe commerciale du 10 novembre 2026 : le bandeau tarifaire de l'accueil est retiré. Le prix,
+ * la promesse « gratuit, sous 24 h, sans engagement » et les deux commandes sont désormais groupés
+ * dans le hero ; le bandeau les répétait à 100 px d'écart. Les conditions qu'il portait en propre
+ * (intervention régulière ou ponctuelle, conditions écrites au devis) passent dans la grille
+ * ci-dessous, qui ne répète plus ni le délai ni le tarif. Le composant tfp_bande_tarif() reste
+ * utilisé par les autres pages.
+ */
+?>
 <section class="tfp-container tfp-section--tight">
-	<div class="tfp-price-band">
-		<span class="tfp-price-band__value">
-			<strong>à partir de <?php echo esc_html( $site['price_entry_display'] ); ?> HT/h</strong>
-			<span>tarif indiqué avant le devis</span>
-		</span>
-		<?php tfp_check_item( 'Devis gratuit sous 24 h' ); ?>
-		<?php tfp_check_item( 'Intervention régulière ou ponctuelle' ); ?>
-		<?php tfp_check_item( "Conditions d'arrêt précisées au devis" ); ?>
-		<a href="<?php echo esc_url( home_url( '/tarifs/' ) ); ?>" class="tfp-btn tfp-btn--secondary tfp-btn--sm" style="margin-left:auto">Voir les tarifs →</a>
-	</div>
-</section>
-
-<section class="tfp-container tfp-section--tight">
-	<div class="tfp-reassurance">
+	<div class="tfp-reassurance tfp-reassurance--4">
 		<div class="tfp-reassurance__item">
 			<div class="tfp-reassurance__title"><?php echo esc_html( $site['address_city'] ); ?></div>
 			<div class="tfp-reassurance__desc">Entreprise régionale basée en BFC</div>
@@ -36,15 +39,11 @@ $site = tfp_site_data();
 		</div>
 		<div class="tfp-reassurance__item">
 			<div class="tfp-reassurance__title">Intervenants sélectionnés</div>
-			<div class="tfp-reassurance__desc">Régulier ou ponctuel</div>
+			<div class="tfp-reassurance__desc">Entretien régulier ou intervention ponctuelle</div>
 		</div>
 		<div class="tfp-reassurance__item">
-			<div class="tfp-reassurance__title">Tarif transparent</div>
-			<div class="tfp-reassurance__desc">Annoncé avant le devis</div>
-		</div>
-		<div class="tfp-reassurance__item">
-			<div class="tfp-reassurance__title">Réponse sous 24 h</div>
-			<div class="tfp-reassurance__desc">Devis gratuit, sans engagement</div>
+			<div class="tfp-reassurance__title">Conditions écrites</div>
+			<div class="tfp-reassurance__desc">Frais et conditions d'arrêt précisés au devis</div>
 		</div>
 	</div>
 </section>

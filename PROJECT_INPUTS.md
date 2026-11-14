@@ -117,19 +117,40 @@ Locaux commerciaux · entreprises de services · cabinets libéraux (avocat, not
 
 ## 5. Tarifs réels ✅
 
-Relevés sur topentreprise.fr/tarifs-aides. ⛔ **À faire confirmer par Audrey** : ces montants peuvent avoir évolué depuis la dernière mise à jour du site Wix.
+**Mise à jour du 9 août 2026 (hotfix fidélité Claude Design) : tarif unique.** Remplace
+intégralement l'ancienne grille à trois montants (24,30 € / 26,00 € / 30,00 € HT/h) relevée sur
+topentreprise.fr/tarifs-aides, ci-dessous conservée barrée pour traçabilité.
 
 | Prestation | Tarif |
 |---|---|
-| Ménage régulier — locations | 24,30 € HT/heure |
-| Ménage régulier — autres locaux | 26,00 € HT/heure |
-| Ménage ponctuel (≤ 5 interventions) | 30,00 € HT/heure |
-| Majoration dimanche, jours fériés, nuit (22h–7h) | +10 % |
-| Indemnités kilométriques (véhicule personnel de l'intervenant) | 0,35 € HT/km |
+| **Nettoyage, régulier comme ponctuel, tout type de local, toute la région** | **27,00 € HT/heure** |
+| Majoration dimanche, jours fériés, nuit (22h–7h), si applicable | +10 % |
+| Indemnités kilométriques (véhicule personnel de l'intervenant), si applicables | 0,35 € HT/km |
 | Frais de mise en place | 50,00 € HT, une seule fois |
 | Frais de gestion mensuels | 9,00 € HT/mois |
 
-**Point d'entrée à afficher : « à partir de 24,30 € HT/heure ».**
+**Formulation à utiliser partout : « 27 € HT/h — tarif unique en régulier comme en ponctuel, dans
+toute la Bourgogne-Franche-Comté ».**
+
+Exemples de budget mensuel (heures × 27 € + 9 € de frais de gestion ; premier mois + 50 € de mise
+en place) :
+
+| Volume mensuel | Mois courant | Premier mois |
+|---|---|---|
+| 8 h/mois | 8 × 27 € + 9 € = **225 € HT** | 225 € + 50 € = **275 € HT** |
+| 12 h/mois | 12 × 27 € + 9 € = **333 € HT** | 333 € + 50 € = **383 € HT** |
+| 20 h/mois | 20 × 27 € + 9 € = **549 € HT** | 549 € + 50 € = **599 € HT** |
+
+<details>
+<summary>Ancienne grille (remplacée le 9 août 2026, conservée pour traçabilité)</summary>
+
+| Prestation | Tarif |
+|---|---|
+| ~~Ménage régulier — locations~~ | ~~24,30 € HT/heure~~ |
+| ~~Ménage régulier — autres locaux~~ | ~~26,00 € HT/heure~~ |
+| ~~Ménage ponctuel (≤ 5 interventions)~~ | ~~30,00 € HT/heure~~ |
+
+</details>
 
 > ⚠️ Le prototype affiche des blocs tarifaires par ville. **Ces tarifs sont régionaux, pas locaux** : afficher un prix différent selon la ville serait faux. Utiliser la même grille partout, et faire porter la différenciation locale sur autre chose (types de locaux du secteur, contexte, FAQ).
 
@@ -150,7 +171,14 @@ Le prototype prévoit 8 pages départementales + 10 pages villes : **cela corres
 | 89 — Yonne | Auxerre |
 | 90 — Territoire de Belfort | Belfort |
 
-⛔ **Les 8 « communes secondaires » du prototype n'existent pas sur le site actuel.** Elles ont été inventées ou déduites par Claude Design. À faire valider une par une par Audrey : toute commune non réellement desservie passe en `noindex,follow` ou disparaît.
+✅ **Les 8 « communes secondaires » sont validées — décision d'Emmanuel du 17 août 2026, confirmée le 19.**
+Saint-Apollinaire, Chenôve, Quetigny, Talant, Longvic, Fontaine-lès-Dijon, Marsannay-la-Côte et Beaune :
+Audrey y intervient. Ces huit pages sont en **`index,follow`**, figurent au sitemap, et leur texte affirme
+la desserte.
+
+> La consigne antérieure — elles avaient été proposées par Claude Design sans source, et restaient donc en
+> `noindex,follow` en attendant validation — est **périmée pour ces huit routes**. Elle reste la règle pour
+> toute nouvelle commune : non validée par Audrey, elle naît `noindex,follow` ou n'est pas créée.
 
 ⛔ Le site actuel ne couvre **pas** le 71 côté Chalon dans le menu principal alors qu'il a une page : vérifier la cohérence du maillage réel avec Audrey.
 
@@ -244,14 +272,16 @@ Correspondances identifiées ✅ (à compléter après relevé exhaustif via le 
 | # | Question | Pour qui | Bloque |
 |---|---|---|---|
 | 1 | ~~**Kbis** : SIRET exact, capital, APE, TVA, date d'immatriculation — et lever l'incohérence sur le SIREN~~ | Client | **Résolu phase 7** — voir §2 |
-| 2 | Assureur RC pro (nom + police) pour justifier l'affirmation « nous sommes assurés » | Client | Mise en ligne |
+| 2 | Assureur RC pro (nom + police) — la section « Assurance professionnelle » a été retirée des mentions légales le 9 août 2026 (sur instruction explicite, plutôt que laissée en placeholder) ; si l'information est un jour transmise, une section pourra être réintroduite | Client | Non bloquant — section absente plutôt qu'un `[À COMPLÉTER]` visible |
 | 3 | Les tarifs relevés sont-ils toujours à jour ? | Audrey | Phase 3 |
 | 4 | Adresse de réception des demandes de devis + configuration SMTP Hostinger | Client | Phase 4 |
 | 5 | E-mails en `@top-famille-pro.fr` ou maintien de `@top-famille.fr` ? | Emmanuel / client | Phase 1 |
-| 6 | URL de la fiche Google Business, note et nombre d'avis réels | Client | Mise en ligne |
+| 6 | **Note Google 5,0/5 — confirmée réelle le 9 août 2026, mais NON AFFICHÉE.** Consigne du 18 août 2026, confirmée le 19 : aucune note tant qu'une **URL officielle** de fiche Top-Famille Pro n'est pas fournie **et validée humainement**. Elle est enregistrée en réglages et invisible ; le jour où l'URL est saisie, elle revient d'elle-même. Le **nombre réel d'avis** reste à fournir : le compteur reste masqué. |
 | 7 | Portrait HD d'Audrey + visuels réels | Client | Mise en ligne |
 | 8 | Validation des 8 communes secondaires du prototype (absentes du site actuel) | Audrey | Phase 3 |
 | 9 | Que devient topentreprise.fr ? | Emmanuel / client | Phase 6 |
 | 10 | Inventaire des articles du blog actuel pour les redirections | Emmanuel | Phase 6 |
 | 11 | CPT + ACF ou pages classiques ? | Emmanuel | Phase 0 |
 | 12 | Accès hPanel / SFTP / base ; top-famille-pro.fr déposé et pointé ? | Emmanuel | Phase 1 |
+| 13 | **Déploiement réel** : `top-famille-pro.fr` fait tourner un thème `V1top-famille-pro` étranger à ce dépôt (constaté 9 août 2026, `docs/AUDIT-PRODUCTION.md`) — qui a provisionné ce thème, et le paquet correctif peut-il être installé (voir procédure staging) ? | Emmanuel / client | Mise en ligne |
+| 14 | Les deux fichiers annoncés comme joints à la session du 9 août (référence HTML standalone, ZIP de 31 images) n'étaient pas accessibles dans l'environnement d'exécution — à retransmettre pour confirmer qu'ils correspondent bien à `reference/Top-Famille-Pro-HANDOFF-READY.html` et `assets/` déjà dans le dépôt (équivalence vérifiée par SHA-256, à confirmer si une version plus récente existe) | Emmanuel | Non bloquant — substitution déjà vérifiée |

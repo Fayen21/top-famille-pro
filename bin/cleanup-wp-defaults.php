@@ -35,3 +35,49 @@ if ( $sample_page ) {
 }
 
 echo "=== Terminé ===\n";
+
+/*
+ * ------------------------------------------------------------------
+ * Réglages d'identité du site
+ * ------------------------------------------------------------------
+ *
+ * Trois réglages WordPress se retrouvaient dans le HTML public de chacune des 53 pages et
+ * appartiennent à l'installation, pas au thème — ils doivent donc être posés ici, pour que toute
+ * installation neuve parte juste.
+ *
+ *  - **Langue.** `wp core install` laisse `en_US`, et les 53 documents déclaraient
+ *    `<html lang="en-US">` sur un site intégralement rédigé en français. C'est une erreur
+ *    d'accessibilité (WCAG 3.1.1) autant que de référencement : un lecteur d'écran prononce le
+ *    texte avec la phonétique anglaise.
+ *  - **Nom du site.** Il alimente le titre des flux, l'Open Graph et le nom du `WebSite` en
+ *    JSON-LD. Le nom du bac d'essai fuitait dans le HTML des 53 pages.
+ *  - **Fuseau horaire et formats.** Les dates visibles et les dates structurées des articles
+ *    doivent être cohérentes, en heure française.
+ */
+echo "\n=== Identité du site ===\n";
+
+$identite = array(
+	'blogname'        => 'Top-Famille Pro',
+	'blogdescription' => 'Nettoyage professionnel de bureaux et locaux en Bourgogne-Franche-Comté',
+	'timezone_string' => 'Europe/Paris',
+	'date_format'     => 'j F Y',
+	'time_format'     => 'H:i',
+	'start_of_week'   => 1,
+);
+foreach ( $identite as $cle => $valeur ) {
+	if ( get_option( $cle ) !== $valeur ) {
+		update_option( $cle, $valeur );
+		echo "  {$cle} → {$valeur}\n";
+	} else {
+		echo "  {$cle} déjà correct.\n";
+	}
+}
+
+// La locale se pose via `WPLANG`. Le pack de langue peut ne pas être installé : `lang` en dépend
+// pour la valeur `fr-FR`, et `get_bloginfo('language')` la dérive de cette option.
+if ( get_option( 'WPLANG' ) !== 'fr_FR' ) {
+	update_option( 'WPLANG', 'fr_FR' );
+	echo "  WPLANG → fr_FR\n";
+} else {
+	echo "  WPLANG déjà en fr_FR.\n";
+}

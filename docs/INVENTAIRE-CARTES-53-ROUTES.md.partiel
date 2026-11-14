@@ -1,0 +1,102 @@
+# Inventaire des cartes — maquette Claude Design ↔ WordPress
+
+> Fichier **généré** par `node tools/inventaire-cartes.mjs`. Ne pas éditer à la main.
+>
+> Une page peut contenir toutes les phrases du prototype, faire la même hauteur, et présenter
+> huit contraintes dans deux gros pavés là où la maquette en fait huit micro-cartes. Cet
+> inventaire relève **chaque carte** des deux côtés — archétype, bande, titre, texte, médias,
+> géométrie, colonnes — et nomme quatre familles d’anomalies : carte **absente**, cartes
+> **fusionnées**, carte **supplémentaire**, mauvais **type** ou mauvais nombre de **colonnes**.
+>
+> Un conteneur qui contient visuellement plusieurs micro-cartes n’est jamais compté pour une
+> carte : il compte pour ses enfants.
+
+**6 routes × 2 largeurs · 4 anomalie(s), dont 0 grave(s)** (carte absente ou fusionnée).
+
+## Synthèse
+
+| Route | Cartes 1440 px | Cartes 375 px | Anomalies 1440 px | Anomalies 375 px |
+|---|---|---|---|---|
+| `#/service/bureaux` | 21 → 21 | 22 → 22 | ✅ | ✅ |
+| `#/service/commerces` | 20 → 20 | 21 → 21 | ✅ | ✅ |
+| `#/service/cabinets` | 28 → 28 | 29 → 29 | ⚠️ 1 | ⚠️ 1 |
+| `#/service/coproprietes` | 21 → 21 | 22 → 22 | ✅ | ✅ |
+| `#/service/meubles` | 21 → 21 | 22 → 22 | ⚠️ 1 | ⚠️ 1 |
+| `#/service/ponctuel` | 21 → 21 | 22 → 22 | ✅ | ✅ |
+
+## Routes à corriger en priorité
+
+Aucune : aucune carte absente ni fusionnée à 1440 px.
+
+## Archétypes employés par la maquette
+
+| Archétype | Occurrences dans la maquette |
+|---|---|
+| `faq` | 47 |
+| `carte-titre-texte` | 36 |
+| `carte-titre` | 18 |
+| `tarif` | 12 |
+| `carte-sombre` | 7 |
+| `chip` | 6 |
+| `micro-carte` | 6 |
+
+## Détail par route
+
+### `#/service/bureaux` → `/prestations/bureaux/`
+
+**1440 px** — bandes 14 → 14 · cartes 21 → 21 · 0 anomalie(s)
+
+**375 px** — bandes 14 → 14 · cartes 22 → 22 · 0 anomalie(s)
+
+
+### `#/service/commerces` → `/prestations/commerces/`
+
+**1440 px** — bandes 14 → 14 · cartes 20 → 20 · 0 anomalie(s)
+
+**375 px** — bandes 14 → 14 · cartes 21 → 21 · 0 anomalie(s)
+
+
+### `#/service/cabinets` → `/prestations/cabinets/`
+
+**1440 px** — bandes 15 → 15 · cartes 28 → 28 · 1 anomalie(s)
+
+| Anomalie | Archétype | Bande | Détail |
+|---|---|---|---|
+| type | `carte-titre-texte` | 4 | « Cette prestation est un entretien courant de locaux professi » — rendue en `micro-carte` |
+
+**375 px** — bandes 15 → 15 · cartes 29 → 29 · 1 anomalie(s)
+
+| Anomalie | Archétype | Bande | Détail |
+|---|---|---|---|
+| type | `carte-titre-texte` | 4 | « Cette prestation est un entretien courant de locaux professi » — rendue en `micro-carte` |
+
+
+### `#/service/coproprietes` → `/prestations/coproprietes/`
+
+**1440 px** — bandes 14 → 14 · cartes 21 → 21 · 0 anomalie(s)
+
+**375 px** — bandes 14 → 14 · cartes 22 → 22 · 0 anomalie(s)
+
+
+### `#/service/meubles` → `/prestations/meubles/`
+
+**1440 px** — bandes 14 → 14 · cartes 21 → 21 · 1 anomalie(s)
+
+| Anomalie | Archétype | Bande | Détail |
+|---|---|---|---|
+| type | `carte-titre` | 13 | « Encore une question sur Locations meublées ? Audrey vous rép » — rendue en `carte-titre-texte` |
+
+**375 px** — bandes 14 → 14 · cartes 22 → 22 · 1 anomalie(s)
+
+| Anomalie | Archétype | Bande | Détail |
+|---|---|---|---|
+| type | `carte-titre` | 13 | « Encore une question sur Locations meublées ? Audrey vous rép » — rendue en `carte-titre-texte` |
+
+
+### `#/service/ponctuel` → `/prestations/ponctuel/`
+
+**1440 px** — bandes 14 → 14 · cartes 21 → 21 · 0 anomalie(s)
+
+**375 px** — bandes 14 → 14 · cartes 22 → 22 · 0 anomalie(s)
+
+
