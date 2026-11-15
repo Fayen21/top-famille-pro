@@ -110,8 +110,8 @@ function tfp_body_class( $classes ) {
 
 	// Marqueur de page (13 novembre 2026) : permet d'habiller une page précise — « Pourquoi nous » —
 	// sans toucher au composant commun qui rend les autres.
-	if ( is_page( 'pourquoi-nous' ) ) {
-		$classes[] = 'tfp-page-pourquoi-nous';
+	if ( is_page() ) {
+		$classes[] = 'tfp-page-' . sanitize_html_class( (string) get_post_field( 'post_name', get_queried_object_id() ) );
 	}
 
 	/*

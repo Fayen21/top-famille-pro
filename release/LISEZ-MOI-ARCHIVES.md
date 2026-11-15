@@ -1,12 +1,13 @@
 # Archives de `release/` — lesquelles sont à jour
 
-Mis à jour le 14 novembre 2026. Thème 0.16.1.
+Mis à jour le 15 novembre 2026. Thème 0.16.2.
 
 ## À jour
 
 | Dossier / fichier | Contenu | Empreintes |
 |---|---|---|
-| `paquets-passe-2026-11-14/` | thème 0.16.1, installeur, export HTML brut, site navigable, captures — voir `docs/BILAN-PASSE-2026-11-14.md` | `paquets-passe-2026-11-14/SHA256SUMS.txt` |
+| `paquets-passe-2026-11-15/` | thème 0.16.2, installeur, export HTML brut, site navigable, captures — voir `docs/BILAN-PASSE-2026-11-15.md` | `paquets-passe-2026-11-15/SHA256SUMS.txt` |
+| `paquets-passe-2026-11-14/` | **remplacé** par le dossier ci-dessus — thème 0.16.1, installeur, export HTML brut, site navigable, captures — voir `docs/BILAN-PASSE-2026-11-14.md` | `paquets-passe-2026-11-14/SHA256SUMS.txt` |
 | `paquets-passe-2026-11-13/` | **remplacé** par le dossier ci-dessus — thème 0.16.0, installeur, export HTML brut, site navigable, captures — voir `docs/BILAN-PASSE-2026-11-13.md` | `paquets-passe-2026-11-13/SHA256SUMS.txt` |
 | `paquets-recette-devis-2026-11-12/` | **remplacé** par le dossier ci-dessus — thème 0.15.1, installeur, export HTML brut, site navigable (démonstration corrigée : double validation, prestation suivie), captures de recette à 375 px | `paquets-recette-devis-2026-11-12/SHA256SUMS.txt` |
 | `paquets-passe-commerciale-2026-11-11/` | **remplacé** par le dossier ci-dessus — thème 0.15.0, installeur de contenu, export HTML brut, site navigable hors ligne avec démonstration du formulaire — commit `b8d3bef` | `paquets-passe-commerciale-2026-11-11/SHA256SUMS.txt` |

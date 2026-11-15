@@ -713,6 +713,57 @@
       ]
     }
   },
+  "hero-recrutement": {
+    "slug": "hero-recrutement",
+    "alt": "Équipe réunie autour d’une table de travail (photo d’illustration)",
+    "lcp": false,
+    "width": 900,
+    "height": 675,
+    "variants": {
+      "avif": [
+        {
+          "width": 480,
+          "file": "hero-recrutement-480.avif"
+        },
+        {
+          "width": 760,
+          "file": "hero-recrutement-760.avif"
+        },
+        {
+          "width": 900,
+          "file": "hero-recrutement-900.avif"
+        }
+      ],
+      "webp": [
+        {
+          "width": 480,
+          "file": "hero-recrutement-480.webp"
+        },
+        {
+          "width": 760,
+          "file": "hero-recrutement-760.webp"
+        },
+        {
+          "width": 900,
+          "file": "hero-recrutement-900.webp"
+        }
+      ],
+      "jpg": [
+        {
+          "width": 480,
+          "file": "hero-recrutement-480.jpg"
+        },
+        {
+          "width": 760,
+          "file": "hero-recrutement-760.jpg"
+        },
+        {
+          "width": 900,
+          "file": "hero-recrutement-900.jpg"
+        }
+      ]
+    }
+  },
   "service-generic": {
     "slug": "service-generic",
     "alt": "Intervention de nettoyage professionnel avec équipement de protection (photo d’illustration)",

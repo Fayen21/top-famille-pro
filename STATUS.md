@@ -2309,3 +2309,16 @@ Bilan : `docs/BILAN-PASSE-2026-11-14.md`.
 
 Reste : avis réels à fournir (ou retrait des blocs d'avis), points « à décider » du bilan §3,
 préproduction (envoi réel, vrai thème parent, Lighthouse), photos.
+
+## Passe du 15 novembre 2026 (thème 0.16.2)
+
+Bilan : `docs/BILAN-PASSE-2026-11-15.md`.
+
+- Pages de ville et de département alignées sur le conteneur de la page (chapitres, volets et FAQ
+  sur deux colonnes à partir de 900 px).
+- Plus aucune carte seule sur sa rangée (Fonctionnement, Tarifs, plan du site) ;
+  `tools/scan-orphelines.mjs` le vérifie sur les 53 pages.
+- Recrutement : photo d'équipe à la place de la scène au masque.
+- Suite 1 390/1 390, export 53/53.
+
+Reste : avis réels (ou retrait des blocs d'avis), préproduction, photos.

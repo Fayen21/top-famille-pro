@@ -6515,3 +6515,79 @@ body.tfp-type-prestation .tfp-presta-reponse .tfp-direct-answer:last-child {
 .tfp-volet--section .tfp-static-block .tfp-static-block__titre {
   font-size: clamp(19px, 1.7vw, 22px);
 }
+
+/* ==================================================================
+   15 novembre 2026 — trois corrections demandées après le balayage.
+   ================================================================== */
+
+/* ---------- 1. Pages de ville et de département : tout s'aligne sur le conteneur de la page ----------
+   Le texte courant vivait dans une colonne de 900 px centrée, entre un hero et des grilles alignés
+   à gauche sur 1 260 px : trois bords gauches différents sur la même page. Le conteneur étroit
+   prend la largeur de la page ; les chapitres se rangent sur deux colonnes, ce qui garde une
+   longueur de ligne lisible (environ 600 px) sans colonne flottante. */
+body.single-zone .tfp-container--narrow {
+  max-width: var(--container-max);
+}
+
+@media (min-width: 900px) {
+  body.single-zone .tfp-container--narrow:has(> .tfp-zone-chapter) {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+    align-items: start;
+  }
+
+  body.single-zone .tfp-container--narrow > .tfp-zone-chapter {
+    margin-bottom: 0;
+    height: 100%;
+  }
+
+  /* Un chapitre seul, ou le dernier d'un nombre impair, prend toute la largeur. */
+  body.single-zone .tfp-container--narrow > .tfp-zone-chapter:nth-child(odd):not(:has(+ .tfp-zone-chapter)) {
+    grid-column: 1 / -1;
+  }
+
+  body.single-zone .tfp-container--narrow > .tfp-zone-chapter:nth-child(odd):not(:has(+ .tfp-zone-chapter)) > .tfp-prose {
+    max-width: 880px;
+  }
+
+  body.single-zone .tfp-container--narrow > .tfp-volets {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px 18px;
+    align-items: start;
+    margin-top: 6px;
+  }
+
+  body.single-zone .tfp-container--narrow > .tfp-volets > .tfp-volet {
+    margin: 0;
+  }
+
+  /* FAQ des zones : deux colonnes de questions, alignées sur le titre. */
+  body.single-zone .tfp-container--narrow > div:has(> .tfp-faq-item) {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0 18px;
+    align-items: start;
+  }
+}
+
+body.single-zone .tfp-container--narrow > h2 + .tfp-prose {
+  max-width: 820px;
+}
+
+/* ---------- 2. Quatre cartes : deux par rangée, plus de carte seule sur la seconde ---------- */
+@media (min-width: 600px) {
+  .tfp-facteurs.tfp-facteurs,
+  .tfp-page-notre-fonctionnement .tfp-card-grid:has(> li:nth-child(4):last-child) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Plan du site : six rubriques rangées 5 + 1 à 1 440 px (balayage du 15 novembre 2026) → 3 + 3. */
+@media (min-width: 900px) {
+  .tfp-grid.tfp-sitemap-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}

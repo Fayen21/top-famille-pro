@@ -9,7 +9,7 @@ import { test, expect } from '@playwright/test';
  *   pilier      assets/photos/intervenante-stock-bureaux.jpg  = asset 3727bc9c… (sha256 dbc3d616…)
  *   région      assets/photos/locaux-professionnels-region.jpg = asset 2b5b290d… (sha256 64547308…)
  *   à-propos    assets/photos/portrait-stock-a-propos.jpg      = asset 63dd6687… (sha256 c6c51783…)
- *   recrutement assets/photos/intervenante-stock-materiel.jpg  = asset d02c99e5… (sha256 600a388c…)
+ *   recrutement assets/photos/unsplash-1556761175-b413da4baf72-900.jpg — choisie le 15 novembre 2026 (n'est plus l'asset de la maquette)
  * Ces tests verrouillent le slot servi par chaque route, le cadrage déclaré, et le statut
  * provisoire du portrait (CLAUDE.md §5.6 : jamais présenté comme Audrey).
  */
@@ -17,7 +17,8 @@ import { test, expect } from '@playwright/test';
 const HEROS = [
 	{ route: '/nettoyage-professionnel/', slot: 'hero-pilier', ratio: '4 / 3' },
 	{ route: '/zones-intervention/bourgogne-franche-comte/', slot: 'hero-region', ratio: '4 / 3' },
-	{ route: '/recrutement/', slot: 'service-generic', ratio: '4 / 3' },
+	// 15 novembre 2026 : photo d'équipe à la place de la scène au masque.
+	{ route: '/recrutement/', slot: 'hero-recrutement', ratio: '4 / 3' },
 ];
 
 test.describe( 'G24 · images exactes des héros', () => {

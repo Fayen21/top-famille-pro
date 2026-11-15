@@ -142,6 +142,14 @@ const SLOTS = [
     alt: 'Poste de travail devant une baie vitrée (photo d’illustration)',
   },
   {
+    // 15 novembre 2026 : la page Recrutement était la dernière à montrer la scène au masque et aux
+    // lunettes. Elle reçoit une photo d'équipe, plus juste pour une page qui invite à rejoindre l'entreprise.
+    slug: 'hero-recrutement',
+    src: 'unsplash-1556761175-b413da4baf72-900.jpg',
+    widths: [480, 760, 900],
+    alt: 'Équipe réunie autour d’une table de travail (photo d’illustration)',
+  },
+  {
     slug: 'service-generic',
     src: 'intervenante-stock-materiel.jpg',
     widths: [480, 760, 960],
