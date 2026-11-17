@@ -9,13 +9,13 @@
  * Ce test lit donc chaque exemple **rendu**, en extrait le nombre d'heures annoncé, et compare le
  * montant affiché à celui que la grille officielle impose :
  *
- *     mensuel      = heures × 27 + 9
+ *     mensuel      = heures × 26 + 9 (tarif du 17 novembre 2026 ; 27 auparavant)
  *     premier mois = mensuel + 50
  */
 import { test, expect } from '@playwright/test';
 import { ROUTES } from './data/routes.js';
 
-const TARIF_HORAIRE = 27;
+const TARIF_HORAIRE = 26;
 const FRAIS_GESTION = 9;
 const FRAIS_MISE_EN_PLACE = 50;
 

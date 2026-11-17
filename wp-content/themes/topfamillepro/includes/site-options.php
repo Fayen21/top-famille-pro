@@ -84,8 +84,8 @@ function tfp_site_data() {
 			// (CLAUDE.md §5.3). Tarif unique depuis le 9 août 2026 (hotfix fidélité Claude Design) :
 			// remplace l'ancienne grille à trois montants (24,30 € / 26,00 € / 30,00 €) — même
 			// montant en entretien régulier et en intervention ponctuelle, quel que soit le local.
-			'price_unique'         => 27.00,
-			'price_unique_display' => '27 €',
+			'price_unique'         => 26.00, // Décision d'Emmanuel du 17 novembre 2026 (27 € auparavant).
+			'price_unique_display' => '26 €',
 			'price_gestion'        => 9.00,
 			'price_setup'          => 50.00,
 			'price_km'             => 0.35,
@@ -180,7 +180,7 @@ function tfp_hours_from_label( $label, $defaut = 12 ) {
 
 /**
  * Exemple de budget mensuel affiché sur l'accueil (bureaux réguliers, 12 h/mois).
- * Tarif unique (27,00 € HT/h) — cf. PROJECT_INPUTS.md §5. Exemple non contractuel, calculé
+ * Tarif unique (26,00 € HT/h depuis le 17 novembre 2026) — cf. PROJECT_INPUTS.md §5. Exemple non contractuel, calculé
  * (jamais une valeur inventée).
  *
  * @return array{hours: int, monthly: float, first_month: float}
@@ -318,7 +318,7 @@ function tfp_url_carrieres() {
 /**
  * Questions fréquentes de l'accueil (13 novembre 2026).
  *
- * Six questions, six réponses courtes. Chaque réponse reprend un fait validé de PROJECT_INPUTS.md
+ * Dix questions, réponses courtes (six le 13 novembre, quatre de plus le 17). Chaque réponse reprend un fait validé de PROJECT_INPUTS.md
  * — tarif unique, périmètre du tarif, exclusions, zone, devis, interlocutrice — et rien d'autre :
  * aucun délai, aucun chiffre, aucun engagement qui ne figure déjà ailleurs sur le site.
  * La même liste alimente la section visible et le FAQPage (CLAUDE.md §8).
@@ -352,8 +352,77 @@ function tfp_faq_accueil() {
 			'a' => "Par le formulaire en ligne ou par téléphone. {$prenom} étudie personnellement chaque demande et vous répond sous 24 heures. Le devis est gratuit et sans engagement.",
 		),
 		array(
+			'q' => 'À quels horaires intervenez-vous ?',
+			'a' => "Aux horaires qui conviennent à votre activité : tôt le matin avant l'arrivée des équipes, en soirée après leur départ, en journée ou le week-end. Les passages du dimanche, des jours fériés et de nuit sont majorés de 10 %, une majoration indiquée à l'avance sur le devis.",
+		),
+		array(
+			'q' => 'Le même intervenant vient-il à chaque passage ?',
+			'a' => "C'est l'organisation que nous recherchons : un intervenant habituel qui connaît vos locaux, vos horaires et vos consignes. En cas d'absence, vous êtes prévenu et un remplaçant reçoit vos consignes écrites.",
+		),
+		array(
+			'q' => 'Comment savoir ce qui a été fait ?',
+			'a' => "Un cahier de liaison reste sur place : chaque passage y est noté, avec ce qui a été fait, ce qui n'a pas pu l'être et les remarques. Il se compare au cahier des charges établi avec vous avant le premier passage.",
+		),
+		array(
+			'q' => 'Y a-t-il un engagement de durée ?',
+			'a' => "Le devis ne vous engage pas. Pour un entretien régulier, les conditions de modification et d'arrêt sont écrites dans le devis, avant tout démarrage.",
+		),
+		array(
 			'q' => 'Qui sera notre contact ?',
 			'a' => "{$site['manager']}, gérante de {$site['brand_name']}. Elle étudie votre devis, établit avec vous le cahier des charges et reste joignable pour le suivi des passages.",
 		),
 	);
+}
+
+/**
+ * Questions complémentaires des pages de prestation et de zone (17 novembre 2026).
+ *
+ * Emmanuel : « les FAQ, c'est trop léger ». Chaque page garde ses questions propres (saisies en
+ * ACF, huit au plus) ; s'y ajoutent ici les questions que tout prospect se pose — tarif, matériel,
+ * devis, engagement, exclusions, horaires, absence — rédigées à partir des seuls faits validés de
+ * PROJECT_INPUTS.md. Une question n'est ajoutée que si la page n'y répond pas déjà (repérage par
+ * mots-clés dans les questions existantes). La liste alimente la FAQ visible ET le FAQPage.
+ *
+ * @param array  $faq      Questions de la page : [ { question, reponse } ].
+ * @param string $contexte 'prestation' ou 'zone'.
+ * @param string $sujet    Prestation (« le nettoyage de bureaux ») ou lieu (« à Dijon », « dans le Jura »).
+ * @param int    $limite   Nombre maximal de questions ajoutées (0 : toutes).
+ * @return array
+ */
+function tfp_faq_complements( array $faq, $contexte, $sujet, $limite = 0 ) {
+	$site   = tfp_site_data();
+	$prix   = $site['price_unique_display'];
+	$prenom = explode( ' ', $site['manager'] )[0];
+	$deja   = mb_strtolower( implode( ' | ', wp_list_pluck( $faq, 'question' ) ) );
+	$couvre = static function ( $motifs ) use ( $deja ) {
+		return (bool) preg_match( '/' . $motifs . '/u', $deja );
+	};
+
+	$candidates = array();
+	if ( 'zone' === $contexte ) {
+		$candidates[] = array( 'tarif|prix|coût|combien', "Quel est le tarif {$sujet} ?", "{$prix} HT de l'heure, le même tarif que partout en {$site['address_region']}, en entretien régulier comme en intervention ponctuelle. Votre budget dépend du nombre d'heures convenu ensemble. Selon l'adresse, des indemnités kilométriques de {$site['price_km_display']} HT/km peuvent s'ajouter : elles sont écrites dans le devis, jamais découvertes après coup." );
+		$candidates[] = array( 'locaux|type', "Quels locaux entretenez-vous {$sujet} ?", "Bureaux, commerces, cabinets et professions libérales, parties communes de copropriétés et locations meublées, en entretien régulier ou en remise en état ponctuelle. Nous n'intervenons pas dans les locaux industriels, alimentaires ou médicaux nécessitant une asepsie." );
+	} else {
+		$candidates[] = array( 'tarif|prix|coût|combien coûte', "Combien coûte {$sujet} ?", "Le tarif est de {$prix} HT de l'heure, le même en régulier et en ponctuel, dans toute la {$site['address_region']}. Le budget dépend du nombre d'heures, fixé avec vous selon vos locaux et la fréquence. S'y ajoutent, lorsqu'ils s'appliquent : 9 € HT/mois de gestion pour un contrat régulier, 50 € HT de mise en place une fois, {$site['price_km_display']} HT/km d'indemnités et une majoration de 10 % le dimanche, les jours fériés et la nuit." );
+	}
+	$candidates[] = array( 'matériel|produit', 'Qui fournit le matériel et les produits ?', "Le matériel et les produits sont fournis par le client. C'est ce qui permet un tarif horaire unique : il rémunère la main-d'œuvre, l'organisation des passages et le suivi. Les besoins (aspirateur, produits adaptés à vos sols, consommables) sont listés avec vous avant le premier passage." );
+	$candidates[] = array( 'devis', 'Comment obtenir un devis ?', "Par le formulaire en ligne ou par téléphone au {$site['phone']}. {$prenom} étudie personnellement chaque demande et vous répond sous 24 heures. Le devis est gratuit et sans engagement ; il précise le volume d'heures, la fréquence, les horaires et tous les frais qui s'appliquent." );
+	$candidates[] = array( 'engag|résili|arrêt|durée', 'Y a-t-il un engagement de durée ?', "Le devis ne vous engage pas. Pour un entretien régulier, les conditions de modification et d'arrêt sont écrites dans le devis, avant tout démarrage : vous les connaissez avant de signer." );
+	$candidates[] = array( 'horaire|tôt|soir|week|dimanche|nuit|avant 8', 'À quels horaires intervenez-vous ?', "Aux horaires qui conviennent à votre activité : tôt le matin, en soirée, en journée ou le week-end. Les passages du dimanche, des jours fériés et de nuit sont majorés de 10 %, une majoration indiquée à l'avance sur le devis." );
+	$candidates[] = array( 'absen|rempla|même intervenant', "Que se passe-t-il si l'intervenant est absent ?", "Vous êtes prévenu, et nous recherchons un remplaçant, auquel vos consignes écrites sont transmises. Nous privilégions un intervenant habituel qui connaît vos locaux ; la continuité est recherchée, sans être garantie en cas d'absence." );
+	if ( 'zone' !== $contexte ) {
+		$candidates[] = array( 'exclu|ne prenez|pas en charge|n\'entretenez', 'Quels locaux ne prenez-vous pas en charge ?', "Les locaux industriels, les locaux alimentaires et les locaux médicaux nécessitant une asepsie : ils relèvent de protocoles spécifiques. Nous intervenons dans les bureaux, commerces, cabinets, copropriétés et locations meublées." );
+	}
+
+	$ajoutees = 0;
+	foreach ( $candidates as $c ) {
+		if ( $limite && $ajoutees >= $limite ) {
+			break;
+		}
+		if ( ! $couvre( $c[0] ) ) {
+			$faq[] = array( 'question' => $c[1], 'reponse' => $c[2] );
+			$ajoutees++;
+		}
+	}
+	return $faq;
 }

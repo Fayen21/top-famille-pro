@@ -265,7 +265,7 @@ test.describe( 'Libellés de l’accueil (§5) et gérante (§8)', () => {
 		await expect( hero.locator( 'a[href^="tel:"]' ) ).toHaveAttribute( 'aria-label', /Appeler Top-Famille Pro au 06/ );
 		// Passe commerciale du 10 novembre 2026 : réassurance courte sous les commandes.
 		await expect( hero.locator( '.tfp-hero__microcopy' ) ).toHaveText( 'Devis gratuit · Réponse sous 24 h · Sans engagement' );
-		await expect( hero.locator( '.tfp-hero__offre .tfp-hero__prix' ) ).toContainText( '27 € HT/h' );
+		await expect( hero.locator( '.tfp-hero__offre .tfp-hero__prix' ) ).toContainText( '26 € HT/h' );
 		await expect( hero.locator( '.tfp-hero__microcopy' ) ).not.toContainText( 'par Audrey' );
 		await expect( page.locator( '.tfp-header__phone .visually-hidden' ) ).toHaveText( 'Appeler Top-Famille Pro' );
 		await expect( page.locator( '.tfp-mobile-cta-bar a[href^="tel:"]' ) ).toHaveAttribute( 'aria-label', /Appeler Top-Famille Pro au/ );

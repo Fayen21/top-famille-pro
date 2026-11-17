@@ -14,6 +14,7 @@
  *
  * Usage : node tools/generate-zones.mjs   → écrit bin/seed-fidelite-zones.php
  */
+import { retarifer, compteTarif } from './lib/tarif.mjs';
 import { chromium } from '@playwright/test';
 import { writeFileSync } from 'node:fs';
 import { ROUTE_MAP } from './route-map.mjs';
@@ -342,7 +343,7 @@ const ZONES = Object.entries(ROUTE_MAP)
 	.map(([hash, m]) => ({ hash, slug: hash.split('/').pop(), niveau: m.type }));
 
 function php(str) {
-	return "'" + grammaire(str).replace(/\\/g, '\\\\').replace(/'/g, "\\'") + "'";
+	return "'" + retarifer(grammaire(str)).replace(/\\/g, '\\\\').replace(/'/g, "\\'") + "'";
 }
 
 function phpLines(items) {
@@ -730,6 +731,7 @@ for (const z of all) {
 L.push('echo "Terminé.\\n";');
 
 writeFileSync(OUT, L.join('\n') + '\n');
+console.error(`Tarif : ${compteTarif.n} montant(s) recalculé(s) à 26 € HT/h.`);
 console.error(`\nÉcrit : ${OUT}`);
 console.error(`Accords corrigés (CLAUDE.md §9) : ${accordsCorriges}`);
 if (!phrasesSupprimees) {

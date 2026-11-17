@@ -2322,3 +2322,17 @@ Bilan : `docs/BILAN-PASSE-2026-11-15.md`.
 - Suite 1 390/1 390, export 53/53.
 
 Reste : avis réels (ou retrait des blocs d'avis), préproduction, photos.
+
+## Passe du 17 novembre 2026 (thème 0.17.0)
+
+Bilan : `docs/BILAN-PASSE-2026-11-17.md`.
+
+- **Tarif 26 € HT/h** (décision d'Emmanuel) : site-options, contenus régénérés via
+  `tools/lib/tarif.mjs`, PROJECT_INPUTS §5, CLAUDE.md §8. 0 ancien montant sur les 53 pages.
+- Alignements : `tools/scan-alignements.mjs`, 132 défauts → 0 à 1 440 px, 0 aussi à 1 024, 768,
+  375. Le conteneur garde toujours la largeur de page ; les largeurs étroites deviennent une mesure
+  de lecture alignée à gauche.
+- FAQ enrichies (`tfp_faq_complements()`), page devis refaite, finitions visuelles.
+- Suite 1 390/1 390, export 53/53, recette devis 23/23.
+
+Reste : avis réels (ou retrait), préproduction, Lighthouse à rejouer.

@@ -30,7 +30,8 @@ const ATTENDU = {
 	parLargeur: {
 		375: { carte: 339, colonnes: 1 },
 		768: { carte: 346.3, colonnes: 2 },
-		1440: { carte: 284.5, colonnes: 4 },
+		// 17 novembre 2026 : six cartes rangées 3 + 3 (plus de 4 + 2), à la demande d'Emmanuel.
+		1440: { carte: 384, colonnes: 3 },
 	},
 };
 
@@ -103,7 +104,7 @@ test.describe( 'Vignettes 56 px de la page pilier', () => {
 				expect( c.carteL, `${ ou } : largeur de carte` ).toBeCloseTo( attenduLargeur.carte, 0 );
 			}
 
-			// Repli : une colonne à 375, deux à 768, quatre à 1440 — comme la maquette.
+			// Repli : une colonne à 375, deux à 768, trois à 1440 (3 + 3 depuis le 17 novembre 2026).
 			const colonnes = new Set( cartes.map( ( c ) => c.carteLeft ) ).size;
 			expect( colonnes, `${ largeur } px : nombre de colonnes` ).toBe( attenduLargeur.colonnes );
 

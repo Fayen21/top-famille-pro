@@ -77,8 +77,35 @@ $creneaux = array(
 	'weekend'  => 'Le week-end',
 );
 
+/*
+ * Questions de la page devis (17 novembre 2026) — visibles sous le formulaire, et déclarées en
+ * FAQPage. Faits validés uniquement : gratuité, délai de 24 h, champs du formulaire, usage des
+ * données (texte du consentement), tarif et périmètre.
+ */
+$tfp_prenom_gerante = explode( ' ', $site['manager'] )[0];
+$tfp_faq_devis      = array(
+	array( 'question' => 'Le devis est-il vraiment gratuit ?', 'reponse' => "Oui. Le devis est gratuit et sans engagement : vous êtes libre de ne pas y donner suite, sans frais ni relance insistante." ),
+	array( 'question' => 'Sous quel délai vais-je recevoir une réponse ?', 'reponse' => "{$tfp_prenom_gerante} étudie personnellement chaque demande et vous répond sous 24 heures, par téléphone ou par e-mail selon le moyen que vous avez indiqué." ),
+	array( 'question' => 'Quelles informations préparer ?', 'reponse' => "Le type de locaux, la commune, et si vous les avez : la surface approximative, la fréquence souhaitée et les horaires possibles. Rien n'est obligatoire au-delà de votre nom, d'un moyen de vous joindre et de quelques mots sur votre besoin : le reste se précise ensemble." ),
+	array( 'question' => "Que se passe-t-il après l'envoi ?", 'reponse' => "{$tfp_prenom_gerante} vous recontacte pour préciser vos locaux et vos contraintes. Le cahier des charges est établi avec vous — tâches, fréquence, horaires, accès — puis vous recevez un devis écrit qui détaille le volume d'heures et tous les frais qui s'appliquent." ),
+	array( 'question' => 'Combien coûte le nettoyage ?', 'reponse' => "{$site['price_unique_display']} HT de l'heure, le même tarif en régulier et en ponctuel, partout en {$site['address_region']}. Le matériel et les produits sont fournis par le client. Les autres frais (gestion mensuelle, mise en place, déplacement, majoration du dimanche, des jours fériés et de la nuit) sont écrits dans le devis lorsqu'ils s'appliquent." ),
+	array( 'question' => 'À quoi servent mes données ?', 'reponse' => "Uniquement à traiter votre demande de devis : elles ne sont ni revendues ni utilisées pour de la prospection. Le détail figure dans notre politique de confidentialité." ),
+);
+
 tfp_seo(
 	array(
+		'schema'      => array(
+			array(
+				'@type'      => 'FAQPage',
+				'@id'        => trailingslashit( home_url( '/demande-de-devis/' ) ) . '#faq',
+				'mainEntity' => array_map(
+					static function ( $item ) {
+						return array( '@type' => 'Question', 'name' => $item['question'], 'acceptedAnswer' => array( '@type' => 'Answer', 'text' => $item['reponse'] ) );
+					},
+					$tfp_faq_devis
+				),
+			),
+		),
 		'title'       => 'Demande de devis gratuit | ' . $site['brand_name'],
 		'description' => 'Décrivez vos locaux en deux étapes : Audrey vous répond sous 24 heures avec une proposition claire et sans engagement.',
 		'type'        => 'website',
@@ -107,8 +134,14 @@ get_header();
 <section class="tfp-quote-page">
 	<div class="tfp-container tfp-quote-layout">
 		<div class="tfp-quote-main">
+			<p class="tfp-eyebrow">Devis gratuit · Réponse sous 24 h</p>
 			<h1>Demandez votre devis gratuit</h1>
-			<p class="tfp-section__lede">Décrivez-nous vos locaux et vos besoins. <?php echo esc_html( explode( ' ', $site['manager'] )[0] ); ?> vous répond sous 24 heures avec une proposition claire et chiffrée, sans engagement.</p>
+			<p class="tfp-section__lede">Décrivez-nous vos locaux et vos besoins en deux étapes. <?php echo esc_html( $tfp_prenom_gerante ); ?> vous répond sous 24 heures avec une proposition claire et chiffrée, sans engagement.</p>
+			<ul class="tfp-quote-garanties">
+				<li><span class="tfp-quote-garanties__icone" aria-hidden="true">✓</span><span><strong>Gratuit</strong> et sans engagement</span></li>
+				<li><span class="tfp-quote-garanties__icone" aria-hidden="true">24 h</span><span><strong>Réponse</strong> sous 24 heures</span></li>
+				<li><span class="tfp-quote-garanties__icone" aria-hidden="true"><?php echo esc_html( mb_substr( $tfp_prenom_gerante, 0, 1 ) ); ?></span><span><strong>Étudié par <?php echo esc_html( $tfp_prenom_gerante ); ?></strong>, la gérante</span></li>
+			</ul>
 
 		<?php if ( $success ) : ?>
 			<div class="tfp-form-notice" role="status">
@@ -125,6 +158,7 @@ get_header();
 				</div>
 			<?php endif; ?>
 
+			<div class="tfp-quote-panel">
 			<form id="tfp-formulaire-devis" class="tfp-quote-form" method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" novalidate data-tfp-analytics="quote"<?php echo tfp_quote_mail_disabled() ? ' data-tfp-mail-disabled' : ''; ?>>
 				<div class="tfp-form-errors" role="alert" aria-live="polite" data-form-errors></div>
 
@@ -377,28 +411,32 @@ get_header();
 					<p class="tfp-form-note">Gratuit · Sans engagement · Réponse sous 24 h</p>
 				</fieldset>
 			</form>
+			</div>
 
 		<?php endif; ?>
 		</div>
 
-		<aside class="tfp-quote-aside" aria-label="Contact direct et réassurance">
-			<div class="tfp-quote-aside__card tfp-quote-aside__manager">
-				<?php
-				// Monogramme de la gérante, ou sa vraie photo quand elle est saisie (13 novembre 2026).
-				tfp_gerante_visuel( 'tfp-monogramme--sm' );
-				?>
-				<div>
-					<strong><?php echo esc_html( explode( ' ', $site['manager'] )[0] ); ?></strong>
-					<span>Votre interlocutrice dédiée</span>
-				</div>
-			</div>
-
+		<aside class="tfp-quote-aside" aria-label="Contact direct et déroulé de la demande">
 			<div class="tfp-quote-aside__card tfp-quote-aside__phone">
 				<span class="tfp-quote-aside__phone-label">Préférez le téléphone ?</span>
 				<a class="tfp-quote-aside__tel" href="tel:<?php echo esc_attr( $site['phone_href'] ); ?>"><?php echo esc_html( $site['phone'] ); ?></a>
+				<span class="tfp-quote-aside__note"><?php echo esc_html( $site['manager'] ); ?>, gérante — votre interlocutrice du devis au suivi.</span>
 				<?php tfp_google_rating_badge( 'quote' ); ?>
-				<span class="tfp-quote-aside__price"><?php echo esc_html( $site['price_unique_display'] ); ?> HT/h</span>
-				<span class="tfp-quote-aside__note">régulier ou ponctuel · devis gratuit et sans engagement</span>
+			</div>
+
+			<div class="tfp-quote-aside__card tfp-quote-etapes">
+				<p class="tfp-quote-etapes__titre">Après votre demande</p>
+				<ol>
+					<li><strong>Votre demande</strong><span>Deux étapes : vos locaux, puis les précisions utiles.</span></li>
+					<li><strong>Réponse sous 24 h</strong><span><?php echo esc_html( $tfp_prenom_gerante ); ?> étudie votre besoin et vous recontacte.</span></li>
+					<li><strong>Cahier des charges</strong><span>Tâches, fréquence, horaires et accès, établis avec vous.</span></li>
+					<li><strong>Devis écrit</strong><span>Volume d'heures et tous les frais, sans engagement.</span></li>
+				</ol>
+			</div>
+
+			<div class="tfp-quote-aside__card tfp-quote-tarif">
+				<p class="tfp-quote-tarif__prix"><strong><?php echo esc_html( $site['price_unique_display'] ); ?> HT/h</strong> <span>tarif unique, régulier ou ponctuel</span></p>
+				<p class="tfp-quote-tarif__note">Main-d'œuvre, organisation et suivi compris. Matériel et produits fournis par le client. <a class="tfp-underline" href="<?php echo esc_url( home_url( '/tarifs/' ) ); ?>">Détail des tarifs</a></p>
 			</div>
 
 			<?php
@@ -417,6 +455,23 @@ get_header();
 			);
 			?>
 		</aside>
+	</div>
+</section>
+
+<section class="tfp-section tfp-faq-section tfp-quote-faq" aria-labelledby="tfp-devis-faq-titre">
+	<div class="tfp-container">
+		<div class="tfp-faq-tete">
+			<p class="tfp-eyebrow">Avant d'envoyer</p>
+			<h2 id="tfp-devis-faq-titre">Vos questions sur le devis</h2>
+		</div>
+		<div class="tfp-faq-liste">
+			<?php foreach ( $tfp_faq_devis as $item ) : ?>
+				<details class="tfp-card tfp-faq-item">
+					<summary><?php echo esc_html( $item['question'] ); ?></summary>
+					<p><?php echo esc_html( $item['reponse'] ); ?></p>
+				</details>
+			<?php endforeach; ?>
+		</div>
 	</div>
 </section>
 

@@ -13,7 +13,7 @@ $site   = tfp_site_data();
 $budget = tfp_home_budget_example();
 ?>
 <section class="tfp-section">
-	<div class="tfp-container tfp-two-col">
+	<div class="tfp-container tfp-two-col tfp-pricing-row">
 		<div>
 			<h2>Un tarif clair, affiché avant le devis</h2>
 			<?php

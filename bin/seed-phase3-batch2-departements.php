@@ -4,7 +4,7 @@
  * Saône-et-Loire, Yonne, Territoire de Belfort). Côte-d'Or a été créée en phase 2.
  *
  * Contenu repris du prototype, corrigé selon CLAUDE.md §9 et §5.1 :
- * - tarif fictif « 27 € HT/h » retiré de toutes les réponses directes/FAQ (la grille réelle à
+ * - tarif fictif « 26 € HT/h » retiré de toutes les réponses directes/FAQ (la grille réelle à
  *   trois montants est déjà affichée par la section tarifs du gabarit, PROJECT_INPUTS.md §5) ;
  * - aucune commune satellite non validée listée comme desservie (le prototype propose une liste
  *   de « communesPlain » différente par département — aucune n'est confirmée par Audrey, donc

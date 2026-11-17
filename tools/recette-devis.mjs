@@ -84,7 +84,7 @@ try {
 	});
 	bilan.accueil = mesure;
 	const haut = mesure.barre?.visible ? mesure.barre.top : mesure.vh;
-	verifier('accueil 375', 'tarif visible au-dessus de la barre mobile', !!mesure.prix && mesure.prix.bottom <= haut && /27/.test(mesure.prix.texte || ''), `${mesure.prix?.texte} · bas ${mesure.prix?.bottom} px / barre ${haut} px`);
+	verifier('accueil 375', 'tarif visible au-dessus de la barre mobile', !!mesure.prix && mesure.prix.bottom <= haut && /26 €/.test(mesure.prix.texte || ''), `${mesure.prix?.texte} · bas ${mesure.prix?.bottom} px / barre ${haut} px`);
 	verifier('accueil 375', '« Demander mon devis » entièrement visible, ≥ 44 px', !!mesure.devis && mesure.devis.bottom <= haut && mesure.devis.h >= 44, `bas ${mesure.devis?.bottom} px · ${mesure.devis?.h} px de haut`);
 	verifier('accueil 375', '« Appeler » entièrement visible, ≥ 44 px, lien tel:', !!mesure.appel && mesure.appel.bottom <= haut && mesure.appel.h >= 44, `${mesure.appel?.texte} · bas ${mesure.appel?.bottom} px · ${mesure.appel?.h} px`);
 	verifier('accueil 375', 'barre mobile affichée, commandes ≥ 44 px', !!mesure.barre?.visible && mesure.barre.liens.length > 0 && mesure.barre.liens.every((l) => l.h >= 44), (mesure.barre?.liens || []).map((l) => `${l.texte} ${l.h} px`).join(' · '));

@@ -117,6 +117,20 @@ Locaux commerciaux · entreprises de services · cabinets libéraux (avocat, not
 
 ## 5. Tarifs réels ✅
 
+**Mise à jour du 17 novembre 2026 — décision d'Emmanuel : le tarif unique passe à 26,00 € HT/heure.**
+Il remplace les 27,00 € ci-dessous partout (pages, exemples, données structurées). Les autres frais
+sont inchangés : 9 € HT/mois de gestion, 50 € HT de mise en place, 0,35 € HT/km, +10 % dimanche,
+jours fériés et nuit. Exemples recalculés :
+
+| Volume | Budget mensuel | Premier mois |
+|---|---|---|
+| 8 h/mois | 8 × 26 € + 9 € = **217 € HT** | **267 € HT** |
+| 12 h/mois | 12 × 26 € + 9 € = **321 € HT** | **371 € HT** |
+| 20 h/mois | 20 × 26 € + 9 € = **529 € HT** | **579 € HT** |
+| Ponctuel 7 h | 7 × 26 € = **182 € HT** de main-d'œuvre | — |
+
+Le texte qui suit (9 août) est conservé pour l'historique ; ses montants à 27 € sont périmés.
+
 **Mise à jour du 9 août 2026 (hotfix fidélité Claude Design) : tarif unique.** Remplace
 intégralement l'ancienne grille à trois montants (24,30 € / 26,00 € / 30,00 € HT/h) relevée sur
 topentreprise.fr/tarifs-aides, ci-dessous conservée barrée pour traçabilité.

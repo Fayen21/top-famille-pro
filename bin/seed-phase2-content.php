@@ -3,7 +3,7 @@
  * Seed des 5 pages de référence de la phase 2 (une par famille de gabarit).
  *
  * Contenu repris du prototype (reference/Top-Famille-Pro-HANDOFF-READY.html), corrigé selon
- * CLAUDE.md §9 : tarif réel appliqué (27,00 € HT/h, tarif unique — PROJECT_INPUTS.md §5, mis à
+ * CLAUDE.md §9 : tarif réel appliqué (26,00 € HT/h, tarif unique — PROJECT_INPUTS.md §5, mis à
  * jour le 9 août 2026), tous les avis de démonstration retirés (docs/DONNEES-FICTIVES.md),
  * accords grammaticaux corrigés. Le contenu vit ici en PHP versionné plutôt que directement en
  * base : c'est ce qui permet de le relire et de le revoir dans une PR, conformément à
@@ -343,7 +343,7 @@ update_post_meta(
 $article_faqs = array(
 	array( 'q' => 'Peut-on changer de fréquence en cours de contrat ?', 'a' => 'Oui, la fréquence peut être ajustée à tout moment avec votre interlocutrice, à la hausse comme à la baisse, selon l\'évolution de vos besoins.' ),
 	array( 'q' => 'Une fréquence hebdomadaire suffit-elle pour un cabinet médical ?', 'a' => "Cela dépend du flux de patients. Pour les salles d'attente et sanitaires très fréquentés, un passage plus rapproché est généralement recommandé ; le bureau de consultation peut suivre une fréquence plus légère." ),
-	array( 'q' => 'Le tarif horaire change-t-il selon la fréquence choisie ?', 'a' => "Non. Le tarif horaire est unique — 27,00 € HT/h, identique quelle que soit la fréquence retenue et le type de local (voir la page Tarifs) ; seul le volume d'heures mensuel varie." ),
+	array( 'q' => 'Le tarif horaire change-t-il selon la fréquence choisie ?', 'a' => "Non. Le tarif horaire est unique — 26,00 € HT/h, identique quelle que soit la fréquence retenue et le type de local (voir la page Tarifs) ; seul le volume d'heures mensuel varie." ),
 );
 foreach ( $article_faqs as $i => $item ) {
 	update_post_meta( $article_id, '_tfp_faq_' . ( $i + 1 ) . '_q', $item['q'] );

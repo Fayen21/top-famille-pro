@@ -67,7 +67,7 @@ Ne jamais réévaluer la fréquence après un changement d\'effectif ou d\'organ
 	update_post_meta( $id, '_tfp_faq_2_q', 'Une fréquence hebdomadaire suffit-elle pour un cabinet médical ?' );
 	update_post_meta( $id, '_tfp_faq_2_a', 'Cela dépend du flux de patients. Pour les salles d\'attente et sanitaires très fréquentés, un passage plus rapproché est généralement recommandé ; le bureau de consultation peut suivre une fréquence plus légère.' );
 	update_post_meta( $id, '_tfp_faq_3_q', 'Le tarif horaire change-t-il selon la fréquence choisie ?' );
-	update_post_meta( $id, '_tfp_faq_3_a', 'Non, le tarif de 27 € HT/h reste identique quelle que soit la fréquence retenue ; seul le volume d\'heures mensuel varie.' );
+	update_post_meta( $id, '_tfp_faq_3_a', 'Non, le tarif de 26 € HT/h reste identique quelle que soit la fréquence retenue ; seul le volume d\'heures mensuel varie.' );
 	echo "  ✓ frequence-bureaux\n";
 }
 
@@ -81,13 +81,13 @@ if ( empty( $posts ) ) {
 		'ID'            => $id,
 		'post_title'    => 'Combien coûte le nettoyage de bureaux ?',
 		'post_content'  => '<h2>Comment se calcule le prix du nettoyage de bureaux</h2>
-<p>Le budget final résulte de deux éléments : un tarif horaire fixe et un volume d\'heures mensuel variable. Chez Top-Famille Pro, le tarif horaire est de 27 € HT/h, identique pour les prestations régulières et ponctuelles. S\'y ajoutent, selon les cas, des frais de gestion de 9 € HT par mois et, au démarrage, des frais de mise en place de 50 € HT.</p>
+<p>Le budget final résulte de deux éléments : un tarif horaire fixe et un volume d\'heures mensuel variable. Chez Top-Famille Pro, le tarif horaire est de 26 € HT/h, identique pour les prestations régulières et ponctuelles. S\'y ajoutent, selon les cas, des frais de gestion de 9 € HT par mois et, au démarrage, des frais de mise en place de 50 € HT.</p>
 <h2>Le tarif horaire, un repère plus fiable que le prix au m²</h2>
 <p>Un prix affiché au m² masque souvent le volume d\'heures réellement effectué, ce qui rend la comparaison entre prestataires difficile. Le tarif horaire, lui, est directement lisible : vous savez ce que vaut chaque heure de travail, et pouvez vérifier que le volume proposé correspond à vos besoins réels.</p>
 <h2>Ce qui fait varier le volume d\'heures</h2>
 <p>Le nombre d\'heures nécessaires dépend de la surface, du type de locaux, de la fréquence retenue et du niveau d\'exigence (standard ou renforcé, notamment pour les espaces recevant du public). Deux bureaux de même surface peuvent ainsi nécessiter des volumes différents selon leur usage.</p>
 <h2>Exemples de budgets</h2>
-<p>À titre indicatif, calculé à 27 € HT/h + 9 € HT de gestion :</p>
+<p>À titre indicatif, calculé à 26 € HT/h + 9 € HT de gestion :</p>
 [tfp_budget_table]
 <h2>Ce qui est inclus, ce qui ne l\'est pas</h2>
 <p>Le tarif couvre la main-d\'œuvre de l\'intervenant sélectionné, l\'organisation du planning, le suivi par une interlocutrice dédiée et le cahier de liaison. Les produits et le matériel sont généralement fournis par le client. Les indemnités kilométriques (0,35 € HT/km) et la majoration de 10 % (dimanche, jours fériés, nuit) ne s\'appliquent que dans certains cas, toujours précisés au devis.</p>
@@ -102,7 +102,7 @@ if ( empty( $posts ) ) {
 		array( 'ID' => $id )
 	);
 	clean_post_cache( $id );
-	update_post_meta( $id, '_tfp_direct_answer', 'Le nettoyage de bureaux est facturé au tarif horaire, 27 € HT/h chez Top-Famille Pro, identique en régulier et en ponctuel. Pour un petit bureau (8 h/mois), comptez environ 225 € HT/mois, frais de gestion compris ; pour un plateau plus large (20 h/mois), environ 549 € HT/mois. Le premier mois inclut, le cas échéant, 50 € HT de frais de mise en place.' );
+	update_post_meta( $id, '_tfp_direct_answer', 'Le nettoyage de bureaux est facturé au tarif horaire, 26 € HT/h chez Top-Famille Pro, identique en régulier et en ponctuel. Pour un petit bureau (8 h/mois), comptez environ 217 € HT/mois, frais de gestion compris ; pour un plateau plus large (20 h/mois), environ 529 € HT/mois. Le premier mois inclut, le cas échéant, 50 € HT de frais de mise en place.' );
 	update_post_meta( $id, '_tfp_categorie_label', 'Tarifs' );
 	update_post_meta( $id, '_tfp_image_alt', 'Combien coûte le nettoyage de bureaux ?' );
 	update_post_meta( $id, '_tfp_erreurs_titre', 'Erreurs à éviter' );
@@ -113,7 +113,7 @@ Ignorer les frais de mise en place et découvrir un premier mois plus élevé qu
 	update_post_meta( $id, '_tfp_cta_titre', 'Un devis pour vos locaux ?' );
 	update_post_meta( $id, '_tfp_cta_texte', 'Gratuit, sous 24 h, sans engagement.' );
 	update_post_meta( $id, '_tfp_faq_1_q', 'Le prix est-il différent pour un contrat régulier ou une intervention ponctuelle ?' );
-	update_post_meta( $id, '_tfp_faq_1_a', 'Non, le tarif horaire de 27 € HT/h est identique dans les deux cas. Les frais de gestion mensuels ne s\'appliquent qu\'aux contrats réguliers.' );
+	update_post_meta( $id, '_tfp_faq_1_a', 'Non, le tarif horaire de 26 € HT/h est identique dans les deux cas. Les frais de gestion mensuels ne s\'appliquent qu\'aux contrats réguliers.' );
 	update_post_meta( $id, '_tfp_faq_2_q', 'Peut-on avoir un budget précis avant de s\'engager ?' );
 	update_post_meta( $id, '_tfp_faq_2_a', 'Oui, le devis détaille le volume d\'heures estimé et le budget mensuel correspondant, avant toute décision de votre part.' );
 	update_post_meta( $id, '_tfp_faq_3_q', 'Le budget peut-il changer en cours de contrat ?' );
@@ -174,7 +174,7 @@ Ne jamais mettre à jour le document après un changement d\'organisation ou d\'
 	update_post_meta( $id, '_tfp_faq_2_q', 'Peut-on le modifier après le début de la prestation ?' );
 	update_post_meta( $id, '_tfp_faq_2_a', 'Oui, à tout moment, en lien avec votre interlocutrice, notamment si vos locaux ou votre organisation évoluent.' );
 	update_post_meta( $id, '_tfp_faq_3_q', 'Le cahier des charges a-t-il un impact sur le tarif ?' );
-	update_post_meta( $id, '_tfp_faq_3_a', 'Il permet surtout d\'estimer précisément le volume d\'heures nécessaire ; le tarif horaire de 27 € HT/h reste, lui, inchangé.' );
+	update_post_meta( $id, '_tfp_faq_3_a', 'Il permet surtout d\'estimer précisément le volume d\'heures nécessaire ; le tarif horaire de 26 € HT/h reste, lui, inchangé.' );
 	echo "  ✓ cahier-des-charges-nettoyage\n";
 }
 

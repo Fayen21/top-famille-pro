@@ -20,6 +20,8 @@ $site    = tfp_site_data();
 
 $direct       = get_post_meta( $post_id, '_tfp_direct_answer', true );
 $faq          = tfp_get_article_faq( $post_id );
+// Trois questions pratiques ajoutées (tarif, matériel, devis) si l'article n'y répond pas déjà — 17 novembre 2026.
+$faq          = tfp_faq_complements( $faq, 'prestation', 'le nettoyage de vos locaux', 3 );
 $robots       = tfp_article_is_complete( $post_id ) ? 'index,follow' : 'noindex,follow';
 $seo_title    = get_post_meta( $post_id, '_tfp_seo_title', true );
 $related_prestations = tfp_get_article_related_prestations( $post_id );

@@ -12,6 +12,7 @@
  *
  * Usage : node tools/generate-articles.mjs   → écrit bin/seed-fidelite-articles.php
  */
+import { retarifer, compteTarif } from './lib/tarif.mjs';
 import { chromium } from '@playwright/test';
 import { writeFileSync } from 'node:fs';
 
@@ -52,12 +53,12 @@ function orthographe(texte) {
 }
 
 function php(str) {
-	return "'" + orthographe(str).replace(/\\/g, '\\\\').replace(/'/g, "\\'") + "'";
+	return "'" + retarifer(orthographe(str)).replace(/\\/g, '\\\\').replace(/'/g, "\\'") + "'";
 }
 
 /** Échappement HTML pour le corps reconstruit — le contenu vient du DOM, pas d'une saisie. */
 function esc(s) {
-	return orthographe(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+	return retarifer(orthographe(s)).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 }
 
 const browser = await chromium.launch({ executablePath: '/opt/pw-browsers/chromium' });
@@ -227,7 +228,8 @@ L.push(' *');
  * en dur dans le HTML de l'article les aurait figés au prochain changement de tarif.
  */
 function poserTableauBudget(html) {
-	const apres = '<p>À titre indicatif, calculé à 27 € HT/h + 9 € HT de gestion :</p>';
+	// Le corps HTML passe déjà par esc() → retarifer() : la phrase repère porte le tarif en vigueur.
+	const apres = retarifer('<p>À titre indicatif, calculé à 27 € HT/h + 9 € HT de gestion :</p>');
 	if (!html.includes(apres) || html.includes('[tfp_budget_table]')) return html;
 	return html.replace(apres, apres + '\n[tfp_budget_table]');
 }
@@ -316,6 +318,7 @@ L.push('');
 L.push('echo "Terminé.\\n";');
 
 writeFileSync(OUT, L.join('\n') + '\n');
+console.error(`Tarif : ${compteTarif.n} montant(s) recalculé(s) à 26 € HT/h.`);
 console.error(`\nÉcrit : ${OUT}`);
 if (fautesCorrigees !== ORTHOGRAPHE.length) {
 	throw new Error(

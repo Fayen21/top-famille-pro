@@ -14,6 +14,7 @@
  *
  * Usage : node tools/generate-prestations.mjs   → écrit bin/seed-fidelite-prestations.php
  */
+import { retarifer, compteTarif } from './lib/tarif.mjs';
 import { chromium } from '@playwright/test';
 import { writeFileSync } from 'node:fs';
 
@@ -45,7 +46,7 @@ const tonComptes = TON_FACTUEL.map(() => 0);
 
 /** Échappement pour une chaîne PHP entre apostrophes simples. */
 function php(str) {
-	let texte = String(str ?? '');
+	let texte = retarifer(String(str ?? ''));
 	TON_FACTUEL.forEach(([avant, apres], i) => {
 		while (texte.includes(avant)) {
 			texte = texte.replace(avant, apres);
@@ -593,4 +594,5 @@ writeFileSync(OUT, L.join('\n') + '\n');
 TON_FACTUEL.forEach(([avant], i) => {
 	if (!tonComptes[i]) throw new Error(`ton factuel : « ${avant.slice(0, 60)}… » introuvable — revoir TON_FACTUEL.`);
 });
+console.error(`Tarif : ${compteTarif.n} montant(s) recalculé(s) à 26 € HT/h.`);
 console.error(`\nÉcrit : ${OUT}`);

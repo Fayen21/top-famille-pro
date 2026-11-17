@@ -22,7 +22,7 @@ echo "=== Fidélité Claude Design : pages statiques ===\n";
 update_option( 'tfp_page_nettoyage-professionnel', array(
 		'h1' => 'Le nettoyage professionnel de vos locaux en Bourgogne-Franche-Comté',
 		'lede' => array(
-			'Top-Famille Pro organise l\'entretien régulier ou ponctuel des bureaux, commerces, cabinets, copropriétés et locations meublées. Des intervenants sélectionnés, une interlocutrice dédiée et un tarif clair de 27 € HT/h. Pour comprendre ce que recouvre exactement une prestation, lisez notre page nettoyage professionnel.',
+			'Top-Famille Pro organise l\'entretien régulier ou ponctuel des bureaux, commerces, cabinets, copropriétés et locations meublées. Des intervenants sélectionnés, une interlocutrice dédiée et un tarif clair de 26 € HT/h. Pour comprendre ce que recouvre exactement une prestation, lisez notre page nettoyage professionnel.',
 		),
 		'hero_alt' => 'Intervenant Top-Famille Pro entretenant des bureaux professionnels',
 		'sections' => array(
@@ -83,7 +83,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 								'variante' => 'texte',
 								'items' => array(
 									array(
-										'titre' => '27 € HT/h',
+										'titre' => '26 € HT/h',
 										'titre_tag' => '',
 										'description' => 'tarif unique en région',
 										'liste' => array(),
@@ -138,7 +138,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 							array(
 								'type' => 'note',
 								'texte' => 'Devis gratuit sous 24 h Intervention régulière ou ponctuelle Conditions d\'arrêt précisées au devis',
-								'ligne' => 823,
+								'ligne' => 853,
 							),
 						),
 						'cartes' => array(
@@ -170,7 +170,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 								'variante' => 'texte',
 								'items' => array(
 									array(
-										'titre' => '27 € HT/h',
+										'titre' => '26 € HT/h',
 										'titre_tag' => '',
 										'description' => 'tarif unique en région',
 										'liste' => array(),
@@ -263,7 +263,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 						'sequence' => array(
 							array(
 								'type' => 'paragraph',
-								'texte' => 'Le nettoyage professionnel désigne l\'entretien récurrent ou ponctuel de locaux à usage professionnel, réalisé par un prestataire extérieur. Chez Top-Famille Pro, chaque prestation repose sur un cahier des charges défini avec vous, un intervenant sélectionné et un cahier de liaison laissé sur place — au tarif de 27 € HT/h, en régulier comme en ponctuel, avec un devis gratuit sous 24 heures.',
+								'texte' => 'Le nettoyage professionnel désigne l\'entretien récurrent ou ponctuel de locaux à usage professionnel, réalisé par un prestataire extérieur. Chez Top-Famille Pro, chaque prestation repose sur un cahier des charges défini avec vous, un intervenant sélectionné et un cahier de liaison laissé sur place — au tarif de 26 € HT/h, en régulier comme en ponctuel, avec un devis gratuit sous 24 heures.',
 							),
 							array(
 								'type' => 'paragraph',
@@ -272,7 +272,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 						),
 						'cartes' => array(),
 						'textes' => array(
-							'Le nettoyage professionnel désigne l\'entretien récurrent ou ponctuel de locaux à usage professionnel, réalisé par un prestataire extérieur. Chez Top-Famille Pro, chaque prestation repose sur un cahier des charges défini avec vous, un intervenant sélectionné et un cahier de liaison laissé sur place — au tarif de 27 € HT/h, en régulier comme en ponctuel, avec un devis gratuit sous 24 heures.',
+							'Le nettoyage professionnel désigne l\'entretien récurrent ou ponctuel de locaux à usage professionnel, réalisé par un prestataire extérieur. Chez Top-Famille Pro, chaque prestation repose sur un cahier des charges défini avec vous, un intervenant sélectionné et un cahier de liaison laissé sur place — au tarif de 26 € HT/h, en régulier comme en ponctuel, avec un devis gratuit sous 24 heures.',
 							'Contrairement au ménage à domicile, le nettoyage professionnel s\'organise autour de contraintes propres à l\'entreprise : horaires calés sur l\'activité, accès sécurisé aux locaux, confidentialité des espaces de travail, et un besoin de traçabilité — savoir qui est passé, quand, et pour faire quoi. C\'est cette organisation, plus que le geste de nettoyage lui-même, qui distingue un prestataire structuré d\'une solution improvisée.',
 						),
 						'liste' => array(),
@@ -2909,7 +2909,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 							array(
 								'type' => 'note',
 								'texte' => 'Sélection & intervenant habituel recherché',
-								'ligne' => 7025,
+								'ligne' => 7055,
 								'graisse' => 600,
 							),
 							array(
@@ -2919,7 +2919,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 							array(
 								'type' => 'note',
 								'texte' => 'Recherche active d\'une solution en cas d\'absence',
-								'ligne' => 7119,
+								'ligne' => 7149,
 								'graisse' => 600,
 							),
 							array(
@@ -2929,7 +2929,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 							array(
 								'type' => 'note',
 								'texte' => 'Suivi & interlocuteur dédié',
-								'ligne' => 7213,
+								'ligne' => 7243,
 								'graisse' => 600,
 							),
 							array(
@@ -3007,7 +3007,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 							array(
 								'type' => 'note',
 								'texte' => '★★★★★',
-								'ligne' => 7569,
+								'ligne' => 7599,
 							),
 							array(
 								'type' => 'quote',
@@ -3016,7 +3016,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 							array(
 								'type' => 'note',
 								'texte' => 'Marc V. · Directeur administratif · Chalon-sur-Saône',
-								'ligne' => 7725,
+								'ligne' => 7755,
 							),
 						),
 						'cartes' => array(),
@@ -3300,7 +3300,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 						'sequence' => array(
 							array(
 								'type' => 'paragraph',
-								'texte' => '27 € HT/h, identique en régulier et en ponctuel. S\'y ajoutent, si prévu et indiqué au devis, 9 € HT/mois de gestion, 50 € HT de frais de mise en place, une majoration de 10 % (dimanche, jours fériés, nuit) et 0,35 € HT/km.',
+								'texte' => '26 € HT/h, identique en régulier et en ponctuel. S\'y ajoutent, si prévu et indiqué au devis, 9 € HT/mois de gestion, 50 € HT de frais de mise en place, une majoration de 10 % (dimanche, jours fériés, nuit) et 0,35 € HT/km.',
 							),
 							array(
 								'type' => 'link',
@@ -3317,7 +3317,7 @@ update_option( 'tfp_page_nettoyage-professionnel', array(
 						),
 						'cartes' => array(),
 						'textes' => array(
-							'27 € HT/h, identique en régulier et en ponctuel. S\'y ajoutent, si prévu et indiqué au devis, 9 € HT/mois de gestion, 50 € HT de frais de mise en place, une majoration de 10 % (dimanche, jours fériés, nuit) et 0,35 € HT/km.',
+							'26 € HT/h, identique en régulier et en ponctuel. S\'y ajoutent, si prévu et indiqué au devis, 9 € HT/mois de gestion, 50 € HT de frais de mise en place, une majoration de 10 % (dimanche, jours fériés, nuit) et 0,35 € HT/km.',
 						),
 						'liste' => array(),
 						'liens' => array(
@@ -4299,8 +4299,8 @@ echo "  ✓ nettoyage-professionnel (17 sections)\n";
 update_option( 'tfp_page_prestations', array(
 		'h1' => 'Nos prestations de nettoyage professionnel',
 		'lede' => array(
-			'Un même savoir-faire, adapté à chaque type de locaux. Toutes nos prestations sont réalisées par des intervenants sélectionnés, au tarif de 27 € HT/h, en régulier ou en ponctuel.',
-			'Chaque prestation ci-dessous correspond à un type de local et à des contraintes propres : horaires d\'ouverture, confidentialité, accès au public, rotation d\'occupants. Nous ne proposons pas un forfait générique décliné en six versions, mais six organisations réellement pensées pour leur contexte — avec, dans chaque cas, un cahier des charges défini avec vous, un intervenant sélectionné et un tarif identique de 27 € HT/h.',
+			'Un même savoir-faire, adapté à chaque type de locaux. Toutes nos prestations sont réalisées par des intervenants sélectionnés, au tarif de 26 € HT/h, en régulier ou en ponctuel.',
+			'Chaque prestation ci-dessous correspond à un type de local et à des contraintes propres : horaires d\'ouverture, confidentialité, accès au public, rotation d\'occupants. Nous ne proposons pas un forfait générique décliné en six versions, mais six organisations réellement pensées pour leur contexte — avec, dans chaque cas, un cahier des charges défini avec vous, un intervenant sélectionné et un tarif identique de 26 € HT/h.',
 		),
 		'hero_alt' => '',
 		'sections' => array(
@@ -5086,12 +5086,12 @@ update_option( 'tfp_page_prestations', array(
 						'sequence' => array(
 							array(
 								'type' => 'paragraph',
-								'texte' => 'Quel que soit le type de locaux, l\'organisation est la même : un cahier des charges écrit et validé avec vous avant le premier passage, un intervenant sélectionné dont nous recherchons la continuité d\'un passage à l\'autre, un cahier de liaison laissé sur place pour tracer ce qui a été fait et ce qui n\'a pas pu l\'être, et Audrey comme interlocutrice unique du devis au suivi. Le tarif est identique — 27 € HT/h en régulier comme en ponctuel — et les frais éventuels sont annoncés avant le devis plutôt que découverts sur une facture.',
+								'texte' => 'Quel que soit le type de locaux, l\'organisation est la même : un cahier des charges écrit et validé avec vous avant le premier passage, un intervenant sélectionné dont nous recherchons la continuité d\'un passage à l\'autre, un cahier de liaison laissé sur place pour tracer ce qui a été fait et ce qui n\'a pas pu l\'être, et Audrey comme interlocutrice unique du devis au suivi. Le tarif est identique — 26 € HT/h en régulier comme en ponctuel — et les frais éventuels sont annoncés avant le devis plutôt que découverts sur une facture.',
 							),
 						),
 						'cartes' => array(),
 						'textes' => array(
-							'Quel que soit le type de locaux, l\'organisation est la même : un cahier des charges écrit et validé avec vous avant le premier passage, un intervenant sélectionné dont nous recherchons la continuité d\'un passage à l\'autre, un cahier de liaison laissé sur place pour tracer ce qui a été fait et ce qui n\'a pas pu l\'être, et Audrey comme interlocutrice unique du devis au suivi. Le tarif est identique — 27 € HT/h en régulier comme en ponctuel — et les frais éventuels sont annoncés avant le devis plutôt que découverts sur une facture.',
+							'Quel que soit le type de locaux, l\'organisation est la même : un cahier des charges écrit et validé avec vous avant le premier passage, un intervenant sélectionné dont nous recherchons la continuité d\'un passage à l\'autre, un cahier de liaison laissé sur place pour tracer ce qui a été fait et ce qui n\'a pas pu l\'être, et Audrey comme interlocutrice unique du devis au suivi. Le tarif est identique — 26 € HT/h en régulier comme en ponctuel — et les frais éventuels sont annoncés avant le devis plutôt que découverts sur une facture.',
 						),
 						'liste' => array(),
 						'liens' => array(),
@@ -5292,7 +5292,7 @@ update_option( 'tfp_page_zones-intervention', array(
 								'variante' => 'texte',
 								'items' => array(
 									array(
-										'titre' => '27 € HT/h',
+										'titre' => '26 € HT/h',
 										'titre_tag' => '',
 										'description' => 'tarif unique en région',
 										'liste' => array(),
@@ -5379,7 +5379,7 @@ update_option( 'tfp_page_zones-intervention', array(
 								'variante' => 'texte',
 								'items' => array(
 									array(
-										'titre' => '27 € HT/h',
+										'titre' => '26 € HT/h',
 										'titre_tag' => '',
 										'description' => 'tarif unique en région',
 										'liste' => array(),
@@ -5478,12 +5478,12 @@ update_option( 'tfp_page_zones-intervention', array(
 							),
 							array(
 								'type' => 'paragraph',
-								'texte' => 'Nous intervenons uniquement en Bourgogne-Franche-Comté : Côte-d\'Or, Doubs, Jura, Nièvre, Haute-Saône, Saône-et-Loire, Yonne et Territoire de Belfort. Le tarif est le même partout, 27 € HT/h, en entretien régulier comme en intervention ponctuelle, avec un devis gratuit transmis sous 24 heures. Les éventuelles indemnités kilométriques dépendent de l\'adresse des locaux, du planning et des conditions d\'intervention. Elles sont précisées dans le devis.',
+								'texte' => 'Nous intervenons uniquement en Bourgogne-Franche-Comté : Côte-d\'Or, Doubs, Jura, Nièvre, Haute-Saône, Saône-et-Loire, Yonne et Territoire de Belfort. Le tarif est le même partout, 26 € HT/h, en entretien régulier comme en intervention ponctuelle, avec un devis gratuit transmis sous 24 heures. Les éventuelles indemnités kilométriques dépendent de l\'adresse des locaux, du planning et des conditions d\'intervention. Elles sont précisées dans le devis.',
 							),
 						),
 						'cartes' => array(),
 						'textes' => array(
-							'Nous intervenons uniquement en Bourgogne-Franche-Comté : Côte-d\'Or, Doubs, Jura, Nièvre, Haute-Saône, Saône-et-Loire, Yonne et Territoire de Belfort. Le tarif est le même partout, 27 € HT/h, en entretien régulier comme en intervention ponctuelle, avec un devis gratuit transmis sous 24 heures. Les éventuelles indemnités kilométriques dépendent de l\'adresse des locaux, du planning et des conditions d\'intervention. Elles sont précisées dans le devis.',
+							'Nous intervenons uniquement en Bourgogne-Franche-Comté : Côte-d\'Or, Doubs, Jura, Nièvre, Haute-Saône, Saône-et-Loire, Yonne et Territoire de Belfort. Le tarif est le même partout, 26 € HT/h, en entretien régulier comme en intervention ponctuelle, avec un devis gratuit transmis sous 24 heures. Les éventuelles indemnités kilométriques dépendent de l\'adresse des locaux, du planning et des conditions d\'intervention. Elles sont précisées dans le devis.',
 						),
 						'liste' => array(),
 						'liens' => array(),
@@ -5558,13 +5558,13 @@ update_option( 'tfp_page_zones-intervention', array(
 							),
 							array(
 								'type' => 'paragraph',
-								'texte' => 'Cette organisation a une conséquence concrète : les conditions d\'intervention dépendent de la distance réelle entre vos locaux et Saint-Apollinaire, et non d\'un tarif différent affiché ville par ville. Le taux horaire reste de 27 € HT/h dans toute la région. Les éventuelles indemnités kilométriques dépendent de l\'adresse des locaux, du planning et des conditions d\'intervention. Elles sont précisées dans le devis.',
+								'texte' => 'Cette organisation a une conséquence concrète : les conditions d\'intervention dépendent de la distance réelle entre vos locaux et Saint-Apollinaire, et non d\'un tarif différent affiché ville par ville. Le taux horaire reste de 26 € HT/h dans toute la région. Les éventuelles indemnités kilométriques dépendent de l\'adresse des locaux, du planning et des conditions d\'intervention. Elles sont précisées dans le devis.',
 							),
 						),
 						'cartes' => array(),
 						'textes' => array(
 							'Top-Famille Pro est implantée à Saint-Apollinaire, commune de la périphérie est de Dijon, en Côte-d\'Or. C\'est de cette adresse que partent les plannings, que sont préparés les devis et que sont cherchées les solutions de remplacement. Nous n\'avons pas d\'agence à Besançon, à Chalon-sur-Saône ni ailleurs dans la région : une seule adresse, une seule interlocutrice, un seul numéro de téléphone pour tous nos clients.',
-							'Cette organisation a une conséquence concrète : les conditions d\'intervention dépendent de la distance réelle entre vos locaux et Saint-Apollinaire, et non d\'un tarif différent affiché ville par ville. Le taux horaire reste de 27 € HT/h dans toute la région. Les éventuelles indemnités kilométriques dépendent de l\'adresse des locaux, du planning et des conditions d\'intervention. Elles sont précisées dans le devis.',
+							'Cette organisation a une conséquence concrète : les conditions d\'intervention dépendent de la distance réelle entre vos locaux et Saint-Apollinaire, et non d\'un tarif différent affiché ville par ville. Le taux horaire reste de 26 € HT/h dans toute la région. Les éventuelles indemnités kilométriques dépendent de l\'adresse des locaux, du planning et des conditions d\'intervention. Elles sont précisées dans le devis.',
 						),
 						'liste' => array(),
 						'liens' => array(),
@@ -7932,7 +7932,7 @@ update_option( 'tfp_page_zones-intervention', array(
 									array(
 										'titre' => 'Voir les tarifs',
 										'titre_tag' => '',
-										'description' => '27 € HT/h, gestion et mise en place détaillées.',
+										'description' => '26 € HT/h, gestion et mise en place détaillées.',
 										'liste' => array(),
 										'lignes' => array(),
 										'titre_taille' => '17px',
@@ -8029,7 +8029,7 @@ update_option( 'tfp_page_zones-intervention', array(
 									array(
 										'titre' => 'Voir les tarifs',
 										'titre_tag' => '',
-										'description' => '27 € HT/h, gestion et mise en place détaillées.',
+										'description' => '26 € HT/h, gestion et mise en place détaillées.',
 										'liste' => array(),
 										'lignes' => array(),
 										'titre_taille' => '17px',
@@ -8126,7 +8126,7 @@ update_option( 'tfp_page_zones-intervention', array(
 							array(
 								'type' => 'faq',
 								'question' => 'Le tarif change-t-il selon la ville ?',
-								'reponse' => 'Non, le taux horaire est de 27 € HT/h partout. Les éventuelles indemnités kilométriques dépendent de l\'adresse des locaux, du planning et des conditions d\'intervention. Elles sont précisées dans le devis. Tout figure au devis.',
+								'reponse' => 'Non, le taux horaire est de 26 € HT/h partout. Les éventuelles indemnités kilométriques dépendent de l\'adresse des locaux, du planning et des conditions d\'intervention. Elles sont précisées dans le devis. Tout figure au devis.',
 							),
 							array(
 								'type' => 'faq',
@@ -8141,7 +8141,7 @@ update_option( 'tfp_page_zones-intervention', array(
 							array(
 								'type' => 'faq',
 								'question' => 'Puis-je faire appel à vous pour une intervention unique ?',
-								'reponse' => 'Oui. Nous réalisons des interventions ponctuelles : remise en état après travaux, fin de bail, avant ouverture, grand nettoyage saisonnier. Le tarif reste de 27 € HT/h et la date est confirmée au devis, selon nos disponibilités sur votre secteur.',
+								'reponse' => 'Oui. Nous réalisons des interventions ponctuelles : remise en état après travaux, fin de bail, avant ouverture, grand nettoyage saisonnier. Le tarif reste de 26 € HT/h et la date est confirmée au devis, selon nos disponibilités sur votre secteur.',
 							),
 						),
 						'cartes' => array(),
@@ -8161,7 +8161,7 @@ update_option( 'tfp_page_zones-intervention', array(
 							),
 							array(
 								'question' => 'Le tarif change-t-il selon la ville ?',
-								'reponse' => 'Non, le taux horaire est de 27 € HT/h partout. Les éventuelles indemnités kilométriques dépendent de l\'adresse des locaux, du planning et des conditions d\'intervention. Elles sont précisées dans le devis. Tout figure au devis.',
+								'reponse' => 'Non, le taux horaire est de 26 € HT/h partout. Les éventuelles indemnités kilométriques dépendent de l\'adresse des locaux, du planning et des conditions d\'intervention. Elles sont précisées dans le devis. Tout figure au devis.',
 							),
 							array(
 								'question' => 'À partir de quelle fréquence intervenez-vous ?',
@@ -8173,7 +8173,7 @@ update_option( 'tfp_page_zones-intervention', array(
 							),
 							array(
 								'question' => 'Puis-je faire appel à vous pour une intervention unique ?',
-								'reponse' => 'Oui. Nous réalisons des interventions ponctuelles : remise en état après travaux, fin de bail, avant ouverture, grand nettoyage saisonnier. Le tarif reste de 27 € HT/h et la date est confirmée au devis, selon nos disponibilités sur votre secteur.',
+								'reponse' => 'Oui. Nous réalisons des interventions ponctuelles : remise en état après travaux, fin de bail, avant ouverture, grand nettoyage saisonnier. Le tarif reste de 26 € HT/h et la date est confirmée au devis, selon nos disponibilités sur votre secteur.',
 							),
 						),
 						'etapes' => array(),
@@ -8280,7 +8280,7 @@ echo "  ✓ zones-intervention (11 sections)\n";
 update_option( 'tfp_page_bourgogne-franche-comte', array(
 		'h1' => 'Entreprise de nettoyage en Bourgogne-Franche-Comté',
 		'lede' => array(
-			'Basée à Saint-Apollinaire, Top-Famille Pro entretient bureaux, commerces, cabinets, parties communes et locations meublées sur les huit départements de la région, avec une même organisation et un même tarif de 27 € HT/h.',
+			'Basée à Saint-Apollinaire, Top-Famille Pro entretient bureaux, commerces, cabinets, parties communes et locations meublées sur les huit départements de la région, avec une même organisation et un même tarif de 26 € HT/h.',
 		),
 		'hero_alt' => 'Locaux professionnels en Bourgogne-Franche-Comté',
 		'sections' => array(
@@ -8341,7 +8341,7 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 								'variante' => 'texte',
 								'items' => array(
 									array(
-										'titre' => '27 € HT/h',
+										'titre' => '26 € HT/h',
 										'titre_tag' => '',
 										'description' => 'tarif unique en région',
 										'liste' => array(),
@@ -8396,7 +8396,7 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 							array(
 								'type' => 'note',
 								'texte' => 'Devis gratuit sous 24 h Intervention régulière ou ponctuelle Conditions d\'arrêt précisées au devis',
-								'ligne' => 688,
+								'ligne' => 718,
 							),
 						),
 						'cartes' => array(
@@ -8428,7 +8428,7 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 								'variante' => 'texte',
 								'items' => array(
 									array(
-										'titre' => '27 € HT/h',
+										'titre' => '26 € HT/h',
 										'titre_tag' => '',
 										'description' => 'tarif unique en région',
 										'liste' => array(),
@@ -8522,17 +8522,17 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 							array(
 								'type' => 'note',
 								'texte' => 'Réponse directe',
-								'ligne' => 895,
+								'ligne' => 925,
 								'graisse' => 700,
 							),
 							array(
 								'type' => 'paragraph',
-								'texte' => 'Top-Famille Pro est une entreprise de nettoyage régionale implantée à Saint-Apollinaire (21850), près de Dijon. Elle intervient en Bourgogne-Franche-Comté auprès des TPE, PME, commerces, professions libérales, syndics et propriétaires bailleurs, en entretien régulier ou en intervention ponctuelle, au tarif de 27 € HT/h, avec un devis gratuit transmis sous 24 heures et une interlocutrice unique, Audrey, au 06 36 17 63 39.',
+								'texte' => 'Top-Famille Pro est une entreprise de nettoyage régionale implantée à Saint-Apollinaire (21850), près de Dijon. Elle intervient en Bourgogne-Franche-Comté auprès des TPE, PME, commerces, professions libérales, syndics et propriétaires bailleurs, en entretien régulier ou en intervention ponctuelle, au tarif de 26 € HT/h, avec un devis gratuit transmis sous 24 heures et une interlocutrice unique, Audrey, au 06 36 17 63 39.',
 							),
 						),
 						'cartes' => array(),
 						'textes' => array(
-							'Top-Famille Pro est une entreprise de nettoyage régionale implantée à Saint-Apollinaire (21850), près de Dijon. Elle intervient en Bourgogne-Franche-Comté auprès des TPE, PME, commerces, professions libérales, syndics et propriétaires bailleurs, en entretien régulier ou en intervention ponctuelle, au tarif de 27 € HT/h, avec un devis gratuit transmis sous 24 heures et une interlocutrice unique, Audrey, au 06 36 17 63 39.',
+							'Top-Famille Pro est une entreprise de nettoyage régionale implantée à Saint-Apollinaire (21850), près de Dijon. Elle intervient en Bourgogne-Franche-Comté auprès des TPE, PME, commerces, professions libérales, syndics et propriétaires bailleurs, en entretien régulier ou en intervention ponctuelle, au tarif de 26 € HT/h, avec un devis gratuit transmis sous 24 heures et une interlocutrice unique, Audrey, au 06 36 17 63 39.',
 						),
 						'liste' => array(),
 						'liens' => array(),
@@ -11256,7 +11256,7 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 						'sequence' => array(
 							array(
 								'type' => 'paragraph',
-								'texte' => 'Le taux horaire est de 27 € HT/h dans les huit départements, en régulier comme en ponctuel. S\'y ajoutent 9 € HT/mois de gestion pour les contrats réguliers, 50 € HT de frais de mise en place et des indemnités kilométriques de 0,35 € HT/km, lorsqu\'ils s\'appliquent, selon les conditions précisées au devis. Les éventuelles indemnités kilométriques dépendent de l\'adresse des locaux, du planning et des conditions d\'intervention. Aucun de ces éléments n\'apparaît après coup : tout est écrit au devis.',
+								'texte' => 'Le taux horaire est de 26 € HT/h dans les huit départements, en régulier comme en ponctuel. S\'y ajoutent 9 € HT/mois de gestion pour les contrats réguliers, 50 € HT de frais de mise en place et des indemnités kilométriques de 0,35 € HT/km, lorsqu\'ils s\'appliquent, selon les conditions précisées au devis. Les éventuelles indemnités kilométriques dépendent de l\'adresse des locaux, du planning et des conditions d\'intervention. Aucun de ces éléments n\'apparaît après coup : tout est écrit au devis.',
 							),
 							array(
 								'type' => 'link',
@@ -11295,9 +11295,9 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 								'variante' => 'texte',
 								'items' => array(
 									array(
-										'titre' => '333 € HT/mois',
+										'titre' => '321 € HT/mois',
 										'titre_tag' => '',
-										'description' => '12 h × 27 € HT + 9 € HT de gestion = 333 € HT/mois. Premier mois : 383 € HT si les frais de mise en place s\'appliquent. Les éventuelles indemnités kilométriques dépendent de l\'adresse des locaux, du planning et des conditions d\'intervention. Elles sont précisées dans le devis.',
+										'description' => '12 h × 26 € HT + 9 € HT de gestion = 321 € HT/mois. Premier mois : 371 € HT si les frais de mise en place s\'appliquent. Les éventuelles indemnités kilométriques dépendent de l\'adresse des locaux, du planning et des conditions d\'intervention. Elles sont précisées dans le devis.',
 										'liste' => array(),
 										'lignes' => array(
 											'Exemple non contractuel.',
@@ -11375,9 +11375,9 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 								'variante' => 'texte',
 								'items' => array(
 									array(
-										'titre' => '333 € HT/mois',
+										'titre' => '321 € HT/mois',
 										'titre_tag' => '',
-										'description' => '12 h × 27 € HT + 9 € HT de gestion = 333 € HT/mois. Premier mois : 383 € HT si les frais de mise en place s\'appliquent. Les éventuelles indemnités kilométriques dépendent de l\'adresse des locaux, du planning et des conditions d\'intervention. Elles sont précisées dans le devis.',
+										'description' => '12 h × 26 € HT + 9 € HT de gestion = 321 € HT/mois. Premier mois : 371 € HT si les frais de mise en place s\'appliquent. Les éventuelles indemnités kilométriques dépendent de l\'adresse des locaux, du planning et des conditions d\'intervention. Elles sont précisées dans le devis.',
 										'liste' => array(),
 										'lignes' => array(
 											'Exemple non contractuel.',
@@ -11431,7 +11431,7 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 							),
 						),
 						'textes' => array(
-							'Le taux horaire est de 27 € HT/h dans les huit départements, en régulier comme en ponctuel. S\'y ajoutent 9 € HT/mois de gestion pour les contrats réguliers, 50 € HT de frais de mise en place et des indemnités kilométriques de 0,35 € HT/km, lorsqu\'ils s\'appliquent, selon les conditions précisées au devis. Les éventuelles indemnités kilométriques dépendent de l\'adresse des locaux, du planning et des conditions d\'intervention. Aucun de ces éléments n\'apparaît après coup : tout est écrit au devis.',
+							'Le taux horaire est de 26 € HT/h dans les huit départements, en régulier comme en ponctuel. S\'y ajoutent 9 € HT/mois de gestion pour les contrats réguliers, 50 € HT de frais de mise en place et des indemnités kilométriques de 0,35 € HT/km, lorsqu\'ils s\'appliquent, selon les conditions précisées au devis. Les éventuelles indemnités kilométriques dépendent de l\'adresse des locaux, du planning et des conditions d\'intervention. Aucun de ces éléments n\'apparaît après coup : tout est écrit au devis.',
 						),
 						'liste' => array(),
 						'liens' => array(
@@ -11563,13 +11563,13 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 							),
 							array(
 								'type' => 'paragraph',
-								'texte' => 'L\'intervention ponctuelle répond à un besoin daté : remise en état après travaux, fin de bail, avant ouverture, grand nettoyage saisonnier, nettoyage après sinistre léger. Le tarif horaire est identique, 27 € HT/h, avec une estimation du volume d\'heures nécessaire au devis et une date confirmée selon nos disponibilités sur le secteur.',
+								'texte' => 'L\'intervention ponctuelle répond à un besoin daté : remise en état après travaux, fin de bail, avant ouverture, grand nettoyage saisonnier, nettoyage après sinistre léger. Le tarif horaire est identique, 26 € HT/h, avec une estimation du volume d\'heures nécessaire au devis et une date confirmée selon nos disponibilités sur le secteur.',
 							),
 						),
 						'cartes' => array(),
 						'textes' => array(
 							'L\'entretien régulier représente l\'essentiel de notre activité : un à cinq passages par semaine, un volume d\'heures défini, un planning convenu et un tarif mensuel prévisible. C\'est le format qui donne les meilleurs résultats, parce que l\'intervenant connaît le site et que les consignes s\'affinent au fil des semaines.',
-							'L\'intervention ponctuelle répond à un besoin daté : remise en état après travaux, fin de bail, avant ouverture, grand nettoyage saisonnier, nettoyage après sinistre léger. Le tarif horaire est identique, 27 € HT/h, avec une estimation du volume d\'heures nécessaire au devis et une date confirmée selon nos disponibilités sur le secteur.',
+							'L\'intervention ponctuelle répond à un besoin daté : remise en état après travaux, fin de bail, avant ouverture, grand nettoyage saisonnier, nettoyage après sinistre léger. Le tarif horaire est identique, 26 € HT/h, avec une estimation du volume d\'heures nécessaire au devis et une date confirmée selon nos disponibilités sur le secteur.',
 						),
 						'liste' => array(),
 						'liens' => array(),
@@ -11699,7 +11699,7 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 							array(
 								'type' => 'faq',
 								'question' => 'Le tarif est-il le même dans tous les départements ?',
-								'reponse' => 'Oui, 27 € HT/h partout, en régulier comme en ponctuel, avec 9 € HT/mois de gestion et 50 € HT de frais de mise en place, le cas échéant, selon les conditions précisées au devis. Les éventuelles indemnités kilométriques dépendent de l\'adresse des locaux, du planning et des conditions d\'intervention. Elles sont précisées dans le devis.',
+								'reponse' => 'Oui, 26 € HT/h partout, en régulier comme en ponctuel, avec 9 € HT/mois de gestion et 50 € HT de frais de mise en place, le cas échéant, selon les conditions précisées au devis. Les éventuelles indemnités kilométriques dépendent de l\'adresse des locaux, du planning et des conditions d\'intervention. Elles sont précisées dans le devis.',
 							),
 							array(
 								'type' => 'faq',
@@ -11739,7 +11739,7 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 							),
 							array(
 								'question' => 'Le tarif est-il le même dans tous les départements ?',
-								'reponse' => 'Oui, 27 € HT/h partout, en régulier comme en ponctuel, avec 9 € HT/mois de gestion et 50 € HT de frais de mise en place, le cas échéant, selon les conditions précisées au devis. Les éventuelles indemnités kilométriques dépendent de l\'adresse des locaux, du planning et des conditions d\'intervention. Elles sont précisées dans le devis.',
+								'reponse' => 'Oui, 26 € HT/h partout, en régulier comme en ponctuel, avec 9 € HT/mois de gestion et 50 € HT de frais de mise en place, le cas échéant, selon les conditions précisées au devis. Les éventuelles indemnités kilométriques dépendent de l\'adresse des locaux, du planning et des conditions d\'intervention. Elles sont précisées dans le devis.',
 							),
 							array(
 								'question' => 'Aurai-je toujours le même intervenant ?',
@@ -11792,7 +11792,7 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 						'sequence' => array(
 							array(
 								'type' => 'paragraph',
-								'texte' => 'Devis gratuit sous 24 h, sans engagement, au même tarif de 27 € HT/h.',
+								'texte' => 'Devis gratuit sous 24 h, sans engagement, au même tarif de 26 € HT/h.',
 							),
 							array(
 								'type' => 'link',
@@ -11821,7 +11821,7 @@ update_option( 'tfp_page_bourgogne-franche-comte', array(
 						),
 						'cartes' => array(),
 						'textes' => array(
-							'Devis gratuit sous 24 h, sans engagement, au même tarif de 27 € HT/h.',
+							'Devis gratuit sous 24 h, sans engagement, au même tarif de 26 € HT/h.',
 						),
 						'liste' => array(),
 						'liens' => array(
@@ -11995,7 +11995,7 @@ update_option( 'tfp_page_pourquoi-nous', array(
 									array(
 										'titre' => 'Tarif transparent',
 										'titre_tag' => '',
-										'description' => '27 € HT/h affiché avant même le devis, frais de gestion et de mise en place annoncés à l\'avance, exemples de budgets chiffrés. Vous savez ce que vous payez avant de nous contacter.',
+										'description' => '26 € HT/h affiché avant même le devis, frais de gestion et de mise en place annoncés à l\'avance, exemples de budgets chiffrés. Vous savez ce que vous payez avant de nous contacter.',
 										'liste' => array(),
 										'lignes' => array(),
 										'titre_taille' => '20px',
@@ -12164,7 +12164,7 @@ update_option( 'tfp_page_pourquoi-nous', array(
 									array(
 										'titre' => 'Tarif transparent',
 										'titre_tag' => '',
-										'description' => '27 € HT/h affiché avant même le devis, frais de gestion et de mise en place annoncés à l\'avance, exemples de budgets chiffrés. Vous savez ce que vous payez avant de nous contacter.',
+										'description' => '26 € HT/h affiché avant même le devis, frais de gestion et de mise en place annoncés à l\'avance, exemples de budgets chiffrés. Vous savez ce que vous payez avant de nous contacter.',
 										'liste' => array(),
 										'lignes' => array(),
 										'titre_taille' => '20px',
@@ -12371,7 +12371,7 @@ update_option( 'tfp_page_pourquoi-nous', array(
 										'span' => '',
 									),
 									array(
-										'titre' => '27 €',
+										'titre' => '26 €',
 										'titre_tag' => '',
 										'description' => 'HT/h, transparent',
 										'liste' => array(),
@@ -12492,7 +12492,7 @@ update_option( 'tfp_page_pourquoi-nous', array(
 										'span' => '',
 									),
 									array(
-										'titre' => '27 €',
+										'titre' => '26 €',
 										'titre_tag' => '',
 										'description' => 'HT/h, transparent',
 										'liste' => array(),
@@ -12935,7 +12935,7 @@ update_option( 'tfp_page_pourquoi-nous', array(
 						'sequence' => array(
 							array(
 								'type' => 'faq',
-								'question' => '« 27 € HT/h, c\'est plus cher qu\'un salarié »',
+								'question' => '« 26 € HT/h, c\'est plus cher qu\'un salarié »',
 								'reponse' => 'Plus cher qu\'un salaire brut horaire, oui. À comparer au coût complet : charges patronales, congés payés, remplacement pendant les absences, matériel, produits, temps de recrutement et d\'encadrement. Sur des volumes de 8 à 25 heures par mois, le prestataire est généralement plus économique — et surtout, il n\'occupe pas votre temps.',
 							),
 							array(
@@ -12962,7 +12962,7 @@ update_option( 'tfp_page_pourquoi-nous', array(
 						'citations' => array(),
 						'faq' => array(
 							array(
-								'question' => '« 27 € HT/h, c\'est plus cher qu\'un salarié »',
+								'question' => '« 26 € HT/h, c\'est plus cher qu\'un salarié »',
 								'reponse' => 'Plus cher qu\'un salaire brut horaire, oui. À comparer au coût complet : charges patronales, congés payés, remplacement pendant les absences, matériel, produits, temps de recrutement et d\'encadrement. Sur des volumes de 8 à 25 heures par mois, le prestataire est généralement plus économique — et surtout, il n\'occupe pas votre temps.',
 							),
 							array(
@@ -13043,7 +13043,7 @@ update_option( 'tfp_page_pourquoi-nous', array(
 									array(
 										'titre' => 'La transparence tarifaire',
 										'titre_tag' => '',
-										'description' => '27 € HT/h, frais annexes détaillés, exemples chiffrés.',
+										'description' => '26 € HT/h, frais annexes détaillés, exemples chiffrés.',
 										'liste' => array(),
 										'lignes' => array(),
 										'titre_taille' => '16.5px',
@@ -13164,7 +13164,7 @@ update_option( 'tfp_page_pourquoi-nous', array(
 									array(
 										'titre' => 'La transparence tarifaire',
 										'titre_tag' => '',
-										'description' => '27 € HT/h, frais annexes détaillés, exemples chiffrés.',
+										'description' => '26 € HT/h, frais annexes détaillés, exemples chiffrés.',
 										'liste' => array(),
 										'lignes' => array(),
 										'titre_taille' => '16.5px',
@@ -13477,7 +13477,7 @@ update_option( 'tfp_page_notre-fonctionnement', array(
 									array(
 										'titre' => 'Devis sous 24 h',
 										'titre_tag' => '',
-										'description' => 'Vous recevez une proposition claire et chiffrée, basée sur 27 € HT/h, détaillant le volume d\'heures estimé, les frais éventuels de gestion et de mise en place, et l\'organisation envisagée. Sans engagement de votre part.',
+										'description' => 'Vous recevez une proposition claire et chiffrée, basée sur 26 € HT/h, détaillant le volume d\'heures estimé, les frais éventuels de gestion et de mise en place, et l\'organisation envisagée. Sans engagement de votre part.',
 										'liste' => array(),
 										'lignes' => array(),
 										'titre_taille' => '19px',
@@ -13622,7 +13622,7 @@ update_option( 'tfp_page_notre-fonctionnement', array(
 									array(
 										'titre' => 'Devis sous 24 h',
 										'titre_tag' => '',
-										'description' => 'Vous recevez une proposition claire et chiffrée, basée sur 27 € HT/h, détaillant le volume d\'heures estimé, les frais éventuels de gestion et de mise en place, et l\'organisation envisagée. Sans engagement de votre part.',
+										'description' => 'Vous recevez une proposition claire et chiffrée, basée sur 26 € HT/h, détaillant le volume d\'heures estimé, les frais éventuels de gestion et de mise en place, et l\'organisation envisagée. Sans engagement de votre part.',
 										'liste' => array(),
 										'lignes' => array(),
 										'titre_taille' => '19px',
@@ -15171,7 +15171,7 @@ update_option( 'tfp_page_avis-clients', array(
 									array(
 										'titre' => 'Nos tarifs',
 										'titre_tag' => '',
-										'description' => '27 € HT/h, gestion, mise en place, exemples.',
+										'description' => '26 € HT/h, gestion, mise en place, exemples.',
 										'liste' => array(),
 										'lignes' => array(),
 										'titre_taille' => '16.5px',
@@ -15292,7 +15292,7 @@ update_option( 'tfp_page_avis-clients', array(
 									array(
 										'titre' => 'Nos tarifs',
 										'titre_tag' => '',
-										'description' => '27 € HT/h, gestion, mise en place, exemples.',
+										'description' => '26 € HT/h, gestion, mise en place, exemples.',
 										'liste' => array(),
 										'lignes' => array(),
 										'titre_taille' => '16.5px',
@@ -15426,7 +15426,7 @@ update_option( 'tfp_page_avis-clients', array(
 						'sequence' => array(
 							array(
 								'type' => 'paragraph',
-								'texte' => 'Un devis gratuit sous 24 h, au tarif de 27 € HT/h.',
+								'texte' => 'Un devis gratuit sous 24 h, au tarif de 26 € HT/h.',
 							),
 							array(
 								'type' => 'link',
@@ -15455,7 +15455,7 @@ update_option( 'tfp_page_avis-clients', array(
 						),
 						'cartes' => array(),
 						'textes' => array(
-							'Un devis gratuit sous 24 h, au tarif de 27 € HT/h.',
+							'Un devis gratuit sous 24 h, au tarif de 26 € HT/h.',
 						),
 						'liste' => array(),
 						'liens' => array(
@@ -15537,7 +15537,7 @@ update_option( 'tfp_page_a-propos', array(
 							array(
 								'type' => 'note',
 								'texte' => 'Audrey · Top-Famille Pro',
-								'ligne' => 964,
+								'ligne' => 934,
 							),
 						),
 						'cartes' => array(),
@@ -15656,7 +15656,7 @@ update_option( 'tfp_page_a-propos', array(
 									array(
 										'titre' => 'Transparence',
 										'titre_tag' => '',
-										'description' => '27 € HT/h affiché avant le devis, frais annoncés à l\'avance, exemples de budgets chiffrés. Nous nous interdisons les formulations vagues du type « satisfaction garantie ».',
+										'description' => '26 € HT/h affiché avant le devis, frais annoncés à l\'avance, exemples de budgets chiffrés. Nous nous interdisons les formulations vagues du type « satisfaction garantie ».',
 										'liste' => array(),
 										'lignes' => array(),
 										'titre_taille' => '18px',
@@ -15777,7 +15777,7 @@ update_option( 'tfp_page_a-propos', array(
 									array(
 										'titre' => 'Transparence',
 										'titre_tag' => '',
-										'description' => '27 € HT/h affiché avant le devis, frais annoncés à l\'avance, exemples de budgets chiffrés. Nous nous interdisons les formulations vagues du type « satisfaction garantie ».',
+										'description' => '26 € HT/h affiché avant le devis, frais annoncés à l\'avance, exemples de budgets chiffrés. Nous nous interdisons les formulations vagues du type « satisfaction garantie ».',
 										'liste' => array(),
 										'lignes' => array(),
 										'titre_taille' => '18px',
@@ -16624,8 +16624,8 @@ update_option( 'tfp_page_recrutement', array(
 						'carte' => '',
 						'colonne_min' => '340px',
 						'rangee_gap' => 'clamp(30px, 4vw, 52px)',
-						'grille' => true,
-						'colonnes' => 2,
+						'grille' => false,
+						'colonnes' => 1,
 						'sequence' => array(
 							array(
 								'type' => 'list',
@@ -16666,8 +16666,8 @@ update_option( 'tfp_page_recrutement', array(
 						),
 						'colonne_min' => '320px',
 						'rangee_gap' => 'clamp(30px, 4vw, 52px)',
-						'grille' => true,
-						'colonnes' => 2,
+						'grille' => false,
+						'colonnes' => 1,
 						'sequence' => array(
 							array(
 								'type' => 'step-ligne',

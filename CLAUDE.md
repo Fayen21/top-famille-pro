@@ -167,7 +167,7 @@ Les mentions légales de topentreprise.fr contiennent au moins trois défauts : 
 **Performances** — AVIF/WebP, `srcset`/`sizes`, dimensions explicites, image LCP non lazy-loadée avec `fetchpriority="high"` sur elle seule, lazy loading hors écran, polices auto-hébergées en `font-display: swap`, CSS critique, JS différé et découpé, cache LiteSpeed, compression.
 Cibles : LCP ≤ 2,5 s · INP ≤ 200 ms · CLS ≤ 0,1 · Lighthouse mobile Performance ≥ 90 · Accessibilité / Bonnes pratiques / SEO ≥ 95.
 
-**Conversion** — CTA principal « Demander mon devis », secondaire « Appeler Audrey », contextuel « Demander un devis à {ville} ». Réassurance près du CTA : `Gratuit · Sans engagement · Réponse sous 24 h`. Point d'entrée tarifaire affiché : **à partir de 24,30 € HT/heure**.
+**Conversion** — CTA principal « Demander mon devis », secondaire « Appeler Audrey », contextuel « Demander un devis à {ville} ». Réassurance près du CTA : `Gratuit · Sans engagement · Réponse sous 24 h`. Tarif affiché : **26 € HT/h, tarif unique** (décision du 17 novembre 2026 ; voir `PROJECT_INPUTS.md` §5).
 
 **Formulaire** — deux étapes, contexte visiteur conservé automatiquement (page d'origine, prestation, ville, département, URL, UTM, référent) et prérempli depuis les pages locales et prestations. Validation client **et** serveur, honeypot ou équivalent, limitation des soumissions, messages d'erreur accessibles, données conservées entre les étapes. Confirmation affichée **uniquement** après succès réel de l'envoi serveur ; page ou état de confirmation en `noindex`.
 

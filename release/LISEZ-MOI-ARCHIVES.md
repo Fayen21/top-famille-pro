@@ -1,12 +1,13 @@
 # Archives de `release/` — lesquelles sont à jour
 
-Mis à jour le 15 novembre 2026. Thème 0.16.2.
+Mis à jour le 17 novembre 2026. Thème 0.17.0 (tarif 26 € HT/h).
 
 ## À jour
 
 | Dossier / fichier | Contenu | Empreintes |
 |---|---|---|
-| `paquets-passe-2026-11-15/` | thème 0.16.2, installeur, export HTML brut, site navigable, captures — voir `docs/BILAN-PASSE-2026-11-15.md` | `paquets-passe-2026-11-15/SHA256SUMS.txt` |
+| `paquets-passe-2026-11-17/` | thème 0.17.0, tarif 26 € HT/h, installeur, export HTML brut, site navigable, captures — voir `docs/BILAN-PASSE-2026-11-17.md` | `paquets-passe-2026-11-17/SHA256SUMS.txt` |
+| `paquets-passe-2026-11-15/` | **remplacé** (tarif 27 € périmé) — thème 0.16.2, installeur, export HTML brut, site navigable, captures — voir `docs/BILAN-PASSE-2026-11-15.md` | `paquets-passe-2026-11-15/SHA256SUMS.txt` |
 | `paquets-passe-2026-11-14/` | **remplacé** par le dossier ci-dessus — thème 0.16.1, installeur, export HTML brut, site navigable, captures — voir `docs/BILAN-PASSE-2026-11-14.md` | `paquets-passe-2026-11-14/SHA256SUMS.txt` |
 | `paquets-passe-2026-11-13/` | **remplacé** par le dossier ci-dessus — thème 0.16.0, installeur, export HTML brut, site navigable, captures — voir `docs/BILAN-PASSE-2026-11-13.md` | `paquets-passe-2026-11-13/SHA256SUMS.txt` |
 | `paquets-recette-devis-2026-11-12/` | **remplacé** par le dossier ci-dessus — thème 0.15.1, installeur, export HTML brut, site navigable (démonstration corrigée : double validation, prestation suivie), captures de recette à 375 px | `paquets-recette-devis-2026-11-12/SHA256SUMS.txt` |

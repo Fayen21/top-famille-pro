@@ -16,7 +16,7 @@ $faqs = tfp_faq_accueil();
 		<div class="tfp-home-faq__tete">
 			<p class="tfp-eyebrow">Questions fréquentes</p>
 			<h2 id="tfp-home-faq-titre">Vos questions, nos réponses</h2>
-			<p class="tfp-home-faq__lede">L'essentiel avant de demander un devis. Pour le détail, la page <a class="tfp-underline" href="<?php echo esc_url( home_url( '/nettoyage-professionnel/' ) ); ?>#s-17">nettoyage professionnel</a> répond à une douzaine d'autres questions.</p>
+			<p class="tfp-home-faq__lede">L'essentiel avant de demander un devis. Pour le détail, la page <a class="tfp-underline" href="<?php echo esc_url( home_url( '/nettoyage-professionnel/' ) ); ?>#s-17">nettoyage professionnel</a> répond à d'autres questions, prestation par prestation.</p>
 		</div>
 		<div class="tfp-home-faq__liste">
 			<?php foreach ( $faqs as $item ) : ?>

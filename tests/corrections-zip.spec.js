@@ -28,7 +28,7 @@ test.describe( 'Tarifs et exemples (§3)', () => {
 		await page.goto( '/prestations/ponctuel/' );
 		const texte = await texteMain( page );
 		expect( texte ).toContain( 'intervention unique de 7 h' );
-		expect( texte ).toContain( '189 € HT de main-d’œuvre' );
+		expect( texte ).toContain( '182 € HT de main-d’œuvre' );
 		expect( texte ).not.toMatch( /\/mois|premier mois|Semaine type/ );
 		expect( texte ).toContain( 'Déroulé d\'une intervention type' );
 	} );

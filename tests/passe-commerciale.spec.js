@@ -17,7 +17,7 @@ test.describe( 'Premier écran de l’accueil (§2)', () => {
 		await expect( hero.locator( '.tfp-hero__lede' ) ).toHaveText( 'Des locaux propres, des passages organisés selon vos horaires et un contact direct pour le suivi.' );
 		await expect( hero.locator( '.tfp-hero__publics' ) ).toContainText( 'Bureaux · commerces · cabinets · copropriétés · locations meublées' );
 		const offre = hero.locator( '.tfp-hero__offre' );
-		await expect( offre.locator( '.tfp-hero__prix' ) ).toContainText( '27 € HT/h' );
+		await expect( offre.locator( '.tfp-hero__prix' ) ).toContainText( '26 € HT/h' );
 		const ordre = await offre.evaluate( ( el ) => [ ...el.querySelectorAll( '.tfp-hero__prix, a.tfp-btn, .tfp-hero__microcopy' ) ].map( ( n ) => n.textContent.replace( /\s+/g, ' ' ).trim() ) );
 		expect( ordre[ 1 ] ).toBe( 'Demander mon devis' );
 		expect( ordre[ 2 ] ).toMatch( /^Appeler Top-Famille Pro/ );
@@ -123,7 +123,7 @@ test.describe( 'Prestations (§4, §5, §7)', () => {
 	test( 'ponctuel : périmètre sans frais de gestion mensuels', async ( { page } ) => {
 		await page.goto( '/prestations/ponctuel/' );
 		await expect( page.locator( '#tarif .tfp-perimetre' ) ).not.toContainText( '/mois' );
-		await expect( page.locator( '#tarif' ) ).toContainText( '189 € HT de main-d’œuvre' );
+		await expect( page.locator( '#tarif' ) ).toContainText( '182 € HT de main-d’œuvre' );
 	} );
 
 	for ( const largeur of [ 375, 1440 ] ) {

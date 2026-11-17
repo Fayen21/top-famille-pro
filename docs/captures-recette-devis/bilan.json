@@ -1,5 +1,5 @@
 {
-  "date": "2026-11-12T22:44:38.374Z",
+  "date": "2026-11-17T09:07:57.540Z",
   "base": "http://localhost:8901",
   "scenarios": {
     "banc": [
@@ -13,7 +13,7 @@
       {
         "nom": "tarif visible au-dessus de la barre mobile",
         "ok": true,
-        "detail": "27 € HT/h tarif unique, en régulier comme en ponctuel · bas 540 px / barre 731 px"
+        "detail": "26 € HT/h tarif unique, en régulier comme en ponctuel · bas 540 px / barre 731 px"
       },
       {
         "nom": "« Demander mon devis » entièrement visible, ≥ 44 px",
@@ -159,7 +159,7 @@
     "vh": 812,
     "largeurDoc": 375,
     "prix": {
-      "texte": "27 € HT/h tarif unique, en régulier comme en ponctuel",
+      "texte": "26 € HT/h tarif unique, en régulier comme en ponctuel",
       "top": 485,
       "bottom": 540,
       "left": 33,

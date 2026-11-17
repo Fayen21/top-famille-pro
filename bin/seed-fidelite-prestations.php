@@ -43,7 +43,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'tease', 'Un entretien régulier et discret de vos espaces de travail, confié autant que possible à un intervenant habituel, pour des bureaux toujours prêts à recevoir vos équipes et vos visiteurs.', $id );
 	tfp_seed_set_field( 'hero_alt', 'Nettoyage de bureaux en Bourgogne-Franche-Comté', $id );
 	tfp_seed_set_field( 'reponse_directe', 'Le nettoyage de bureaux demande de la régularité et de la discrétion. Nous intervenons tôt le matin, en fin de journée ou pendant les heures creuses, selon l\'organisation de votre entreprise, afin de ne jamais perturber votre activité.', $id );
-	tfp_seed_set_field( 'maillage_texte', 'Cette prestation suit la méthode décrite dans notre page nettoyage professionnel et le tarif de 27 € HT/h. Nous l\'assurons notamment à Dijon, Besançon, Chalon-sur-Saône et partout en Bourgogne-Franche-Comté. Pour cadrer votre besoin en amont : à quelle fréquence faire nettoyer ses locaux.', $id );
+	tfp_seed_set_field( 'maillage_texte', 'Cette prestation suit la méthode décrite dans notre page nettoyage professionnel et le tarif de 26 € HT/h. Nous l\'assurons notamment à Dijon, Besançon, Chalon-sur-Saône et partout en Bourgogne-Franche-Comté. Pour cadrer votre besoin en amont : à quelle fréquence faire nettoyer ses locaux.', $id );
 	tfp_seed_set_field( 'pour_qui_titre', 'Pour qui ?', $id );
 	tfp_seed_set_field( 'pour_qui_items', implode( "\n", array(
 		'PME et sièges sociaux',
@@ -166,7 +166,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'tease', 'Une surface de vente impeccable à l\'ouverture : sols, vitrines et sanitaires clients entretenus avant l\'arrivée de vos premiers visiteurs.', $id );
 	tfp_seed_set_field( 'hero_alt', 'Nettoyage de commerces et de surfaces de vente', $id );
 	tfp_seed_set_field( 'reponse_directe', 'La propreté d\'un commerce influence directement l\'image perçue par vos clients. Nous adaptons nos horaires à vos jours et heures d\'ouverture, y compris tôt le matin.', $id );
-	tfp_seed_set_field( 'maillage_texte', 'Cette prestation suit la méthode décrite dans notre page nettoyage professionnel et le tarif de 27 € HT/h. Nous l\'assurons notamment à Dijon, Besançon, Chalon-sur-Saône et partout en Bourgogne-Franche-Comté. Pour cadrer votre besoin en amont : à quelle fréquence faire nettoyer ses locaux.', $id );
+	tfp_seed_set_field( 'maillage_texte', 'Cette prestation suit la méthode décrite dans notre page nettoyage professionnel et le tarif de 26 € HT/h. Nous l\'assurons notamment à Dijon, Besançon, Chalon-sur-Saône et partout en Bourgogne-Franche-Comté. Pour cadrer votre besoin en amont : à quelle fréquence faire nettoyer ses locaux.', $id );
 	tfp_seed_set_field( 'pour_qui_titre', 'Pour qui ?', $id );
 	tfp_seed_set_field( 'pour_qui_items', implode( "\n", array(
 		'Boutiques et prêt-à-porter',
@@ -285,7 +285,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'tease', 'L\'entretien courant des cabinets médicaux, paramédicaux, juridiques et de conseil : accueil, salle d\'attente, bureaux, sanitaires et sols, en dehors des heures de consultation et dans le respect de la confidentialité.', $id );
 	tfp_seed_set_field( 'hero_alt', 'Nettoyage de cabinets et de professions libérales', $id );
 	tfp_seed_set_field( 'reponse_directe', 'Un cabinet reçoit du public toute la journée : la salle d\'attente, les sanitaires et les sols se salissent vite et se remarquent immédiatement. Notre prestation est un entretien courant de locaux professionnels recevant du public, organisé en dehors des heures de consultation. Elle ne comprend aucun protocole médical : le bio-nettoyage hospitalier, la stérilisation, la gestion des DASRI et l\'entretien du matériel de soin relèvent de prestataires spécialisés et de vos propres protocoles.', $id );
-	tfp_seed_set_field( 'maillage_texte', 'Cette prestation suit la méthode décrite dans notre page nettoyage professionnel et le tarif de 27 € HT/h. Nous l\'assurons notamment à Dijon, Besançon, Chalon-sur-Saône et partout en Bourgogne-Franche-Comté. Pour cadrer votre besoin en amont : à quelle fréquence faire nettoyer ses locaux.', $id );
+	tfp_seed_set_field( 'maillage_texte', 'Cette prestation suit la méthode décrite dans notre page nettoyage professionnel et le tarif de 26 € HT/h. Nous l\'assurons notamment à Dijon, Besançon, Chalon-sur-Saône et partout en Bourgogne-Franche-Comté. Pour cadrer votre besoin en amont : à quelle fréquence faire nettoyer ses locaux.', $id );
 	tfp_seed_set_field( 'pour_qui_titre', 'Pour qui ?', $id );
 	tfp_seed_set_field( 'pour_qui_items', implode( "\n", array(
 		'Cabinets médicaux et paramédicaux',
@@ -412,7 +412,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'tease', 'L\'entretien régulier des halls, cages d\'escalier, ascenseurs et locaux communs, pour des résidences et immeubles tertiaires soignés au quotidien.', $id );
 	tfp_seed_set_field( 'hero_alt', 'Entretien de copropriétés et de parties communes', $id );
 	tfp_seed_set_field( 'reponse_directe', 'Nous travaillons avec les syndics, gestionnaires et propriétaires pour l\'entretien des parties communes, planifié selon une fréquence définie et suivi via un cahier de liaison.', $id );
-	tfp_seed_set_field( 'maillage_texte', 'Cette prestation suit la méthode décrite dans notre page nettoyage professionnel et le tarif de 27 € HT/h. Nous l\'assurons notamment à Dijon, Besançon, Chalon-sur-Saône et partout en Bourgogne-Franche-Comté. Pour cadrer votre besoin en amont : à quelle fréquence faire nettoyer ses locaux.', $id );
+	tfp_seed_set_field( 'maillage_texte', 'Cette prestation suit la méthode décrite dans notre page nettoyage professionnel et le tarif de 26 € HT/h. Nous l\'assurons notamment à Dijon, Besançon, Chalon-sur-Saône et partout en Bourgogne-Franche-Comté. Pour cadrer votre besoin en amont : à quelle fréquence faire nettoyer ses locaux.', $id );
 	tfp_seed_set_field( 'pour_qui_titre', 'Pour qui ?', $id );
 	tfp_seed_set_field( 'pour_qui_items', implode( "\n", array(
 		'Syndics de copropriété',
@@ -535,7 +535,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'tease', 'La remise en état de vos meublés et hébergements professionnels entre deux occupants, avec un contrôle visuel et un signalement des anomalies selon l\'organisation définie avec le client.', $id );
 	tfp_seed_set_field( 'hero_alt', 'Nettoyage de locations meublées et d\'hébergements', $id );
 	tfp_seed_set_field( 'reponse_directe', 'Pour les locations meublées et les hébergements, tout se joue sur le créneau disponible entre un départ et une arrivée. Nous organisons l\'intervention sur ce créneau, avec un contrôle visuel et un signalement des anomalies selon l\'organisation définie avec le client. Nous ne sommes pas une conciergerie : nous n\'accueillons pas les voyageurs, ne gérons pas les réservations et ne lavons pas le linge.', $id );
-	tfp_seed_set_field( 'maillage_texte', 'Cette prestation suit la méthode décrite dans notre page nettoyage professionnel et le tarif de 27 € HT/h. Nous l\'assurons notamment à Dijon, Besançon, Chalon-sur-Saône et partout en Bourgogne-Franche-Comté. Pour cadrer votre besoin en amont : à quelle fréquence faire nettoyer ses locaux.', $id );
+	tfp_seed_set_field( 'maillage_texte', 'Cette prestation suit la méthode décrite dans notre page nettoyage professionnel et le tarif de 26 € HT/h. Nous l\'assurons notamment à Dijon, Besançon, Chalon-sur-Saône et partout en Bourgogne-Franche-Comté. Pour cadrer votre besoin en amont : à quelle fréquence faire nettoyer ses locaux.', $id );
 	tfp_seed_set_field( 'pour_qui_titre', 'Pour qui ?', $id );
 	tfp_seed_set_field( 'pour_qui_items', implode( "\n", array(
 		'Propriétaires de meublés',
@@ -656,7 +656,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'tease', 'Une intervention ponctuelle pour une remise en état après travaux, un grand nettoyage saisonnier ou une fin de bail, au même tarif horaire que nos prestations régulières.', $id );
 	tfp_seed_set_field( 'hero_alt', 'Nettoyage ponctuel et remise en état', $id );
 	tfp_seed_set_field( 'reponse_directe', 'Certaines situations demandent une intervention unique et approfondie : fin de chantier, grand nettoyage, réouverture ou départ des lieux. Nous établissons un devis précis selon le volume et l\'état constaté.', $id );
-	tfp_seed_set_field( 'maillage_texte', 'Cette prestation suit la méthode décrite dans notre page nettoyage professionnel et le tarif de 27 € HT/h. Nous l\'assurons notamment à Dijon, Besançon, Chalon-sur-Saône et partout en Bourgogne-Franche-Comté. Pour cadrer votre besoin en amont : à quelle fréquence faire nettoyer ses locaux.', $id );
+	tfp_seed_set_field( 'maillage_texte', 'Cette prestation suit la méthode décrite dans notre page nettoyage professionnel et le tarif de 26 € HT/h. Nous l\'assurons notamment à Dijon, Besançon, Chalon-sur-Saône et partout en Bourgogne-Franche-Comté. Pour cadrer votre besoin en amont : à quelle fréquence faire nettoyer ses locaux.', $id );
 	tfp_seed_set_field( 'pour_qui_titre', 'Pour qui ?', $id );
 	tfp_seed_set_field( 'pour_qui_items', implode( "\n", array(
 		'Fins de travaux et de chantier',
@@ -700,7 +700,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'detail_2_titre', 'État des locaux', $id );
 	tfp_seed_set_field( 'detail_2_texte', 'Deux fins de chantier de même surface peuvent demander des temps très différents : un simple rafraîchissement de peinture n\'a rien à voir avec une dépose de cloisons et un ponçage. Nous distinguons la poussière déposée, les projections adhérentes (peinture, enduit, colle, silicone), les traces d\'adhésif et les résidus incrustés, chacun demandant une méthode et un temps propres.', $id );
 	tfp_seed_set_field( 'detail_3_titre', 'Estimation du nombre d\'heures', $id );
-	tfp_seed_set_field( 'detail_3_texte', 'Le devis est exprimé en fourchette d\'heures au tarif de 27 € HT/h, plutôt qu\'en forfait dont personne ne connaît le contenu. Si l\'état constaté sur place dépasse nettement ce qui avait été décrit, l\'intervenant s\'arrête et nous vous appelons avant de poursuivre : vous décidez alors d\'allonger l\'intervention ou de resserrer le périmètre. Aucune heure supplémentaire n\'est engagée sans votre accord.', $id );
+	tfp_seed_set_field( 'detail_3_texte', 'Le devis est exprimé en fourchette d\'heures au tarif de 26 € HT/h, plutôt qu\'en forfait dont personne ne connaît le contenu. Si l\'état constaté sur place dépasse nettement ce qui avait été décrit, l\'intervenant s\'arrête et nous vous appelons avant de poursuivre : vous décidez alors d\'allonger l\'intervention ou de resserrer le périmètre. Aucune heure supplémentaire n\'est engagée sans votre accord.', $id );
 	tfp_seed_set_field( 'detail_4_titre', 'Poussières de chantier', $id );
 	tfp_seed_set_field( 'detail_4_texte', 'La poussière de chantier est fine, volatile et électrostatique : elle ne s\'élimine pas à l\'eau seule et se redépose si l\'on travaille dans le mauvais ordre. Nous procédons du haut vers le bas, en aspirant avant de laver, en changeant fréquemment les eaux et les microfibres, et en traitant les rainures de menuiserie, les grilles de ventilation et les hauts de plinthe où elle se loge durablement.', $id );
 	tfp_seed_set_field( 'detail_5_titre', 'Matériaux fragiles', $id );
@@ -743,7 +743,7 @@ if ( empty( $posts ) ) {
 	tfp_seed_set_field( 'temoignage_ville', 'Besançon', $id );
 	tfp_seed_set_field( 'faq_titre', 'Questions fréquentes — Nettoyage ponctuel & remise en état', $id );
 	tfp_seed_set_field( 'faq_1', array( 'question' => 'Intervenez-vous juste après la fin des travaux ?', 'reponse' => 'Oui, une fois les corps de métier partis. Nous recommandons un délai court pour éviter que la poussière ne se redépose sur les surfaces déjà traitées.' ), $id );
-	tfp_seed_set_field( 'faq_2', array( 'question' => 'Le nettoyage après travaux est-il plus cher qu\'un entretien courant ?', 'reponse' => 'Le tarif horaire reste le même (27 € HT/h) ; c\'est le volume d\'heures qui est généralement plus important, selon l\'ampleur du chantier.' ), $id );
+	tfp_seed_set_field( 'faq_2', array( 'question' => 'Le nettoyage après travaux est-il plus cher qu\'un entretien courant ?', 'reponse' => 'Le tarif horaire reste le même (26 € HT/h) ; c\'est le volume d\'heures qui est généralement plus important, selon l\'ampleur du chantier.' ), $id );
 	tfp_seed_set_field( 'faq_3', array( 'question' => 'Prenez-vous en charge l\'évacuation des déchets de chantier ?', 'reponse' => 'Non. L\'évacuation de gravats, de chutes de matériaux et de déchets volumineux ne fait pas partie de la prestation : elle suppose un véhicule adapté et un accès en déchetterie professionnelle. Nous traitons la poussière et les résidus de surface, une fois les déchets évacués par le chantier.' ), $id );
 	tfp_seed_set_field( 'faq_4', array( 'question' => 'Comment estimez-vous le nombre d\'heures nécessaires ?', 'reponse' => 'À partir de la surface, du nombre de pièces, de la nature des résidus (poussière fine de plâtre, projections de peinture, colle, silicone) et de l\'état constaté. Nous demandons des photos, ou une visite lorsque c\'est possible. L\'estimation est donnée sous forme de fourchette d\'heures, et nous vous prévenons avant de la dépasser.' ), $id );
 	tfp_seed_set_field( 'faq_5', array( 'question' => 'Intervenez-vous pour une fin de bail ou un état des lieux ?', 'reponse' => 'Oui, c\'est un cas fréquent, en local commercial comme en bureau. Nous ne nous engageons pas sur le résultat d\'un état des lieux, qui dépend du bailleur et de l\'usure normale des lieux : nous nous engageons sur un périmètre de nettoyage défini et sur le temps consacré.' ), $id );

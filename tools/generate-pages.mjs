@@ -12,6 +12,7 @@
  *
  * Usage : node tools/generate-pages.mjs   → écrit bin/seed-fidelite-pages.php
  */
+import { retarifer, compteTarif } from './lib/tarif.mjs';
 import { chromium } from '@playwright/test';
 import { writeFileSync } from 'node:fs';
 
@@ -260,7 +261,7 @@ function php(v, indent = '\t') {
 	// Un booléen sérialisé en chaîne devient `'false'`, qui est **vrai** en PHP. Bug silencieux et
 	// exactement inversé : la disposition en cartes s'appliquait partout au lieu de nulle part.
 	if (typeof v === 'boolean') return v ? 'true' : 'false';
-	return "'" + corriger(v).replace(/\\/g, '\\\\').replace(/'/g, "\\'") + "'";
+	return "'" + retarifer(corriger(v)).replace(/\\/g, '\\\\').replace(/'/g, "\\'") + "'";
 }
 
 const browser = await chromium.launch({ executablePath: '/opt/pw-browsers/chromium' });
@@ -2059,4 +2060,5 @@ console.error(
 	`Corrections éditoriales appliquées : ${comptesCorrections.reduce((a, b) => a + b, 0)} ` +
 		`(${comptesCorrections.join(' + ')})`
 );
+console.error(`Tarif : ${compteTarif.n} montant(s) recalculé(s) à 26 € HT/h.`);
 console.error(`\nÉcrit : ${OUT}`);

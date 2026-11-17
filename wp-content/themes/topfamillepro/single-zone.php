@@ -52,6 +52,8 @@ $materiel_rappel    = tfp_get_field( 'materiel_rappel', $post_id );
 $communes_proches   = tfp_get_field( 'communes_proches', $post_id );
 $prestations_liees  = tfp_get_field( 'prestations_liees', $post_id );
 $faq                = tfp_get_faq_items( 'faq', $post_id, 8 );
+// Questions communes ajoutées à celles de la page (17 novembre 2026) — voir tfp_faq_complements().
+$faq                = tfp_faq_complements( $faq, 'zone', 'departement' === tfp_get_field( 'niveau', $post_id ) ? tfp_departement_locatif( $post_id ) : 'à ' . get_the_title( $post_id ) );
 
 /* Contenu repris de la maquette Claude Design (bin/seed-fidelite-zones.php, généré par
    tools/generate-zones.mjs). Les trois niveaux partagent la même structure : un récit, un bloc

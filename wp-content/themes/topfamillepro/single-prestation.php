@@ -68,6 +68,8 @@ $temoignage = array(
 $villes           = tfp_get_field( 'villes_prioritaires', $post_id );
 $related_articles = tfp_get_prestation_related_articles( $post_id );
 $faq              = tfp_get_faq_items( 'faq', $post_id, 8 );
+// Questions communes ajoutées à celles de la page (17 novembre 2026) — voir tfp_faq_complements().
+$faq              = tfp_faq_complements( $faq, 'prestation', mb_strtolower( mb_substr( get_the_title( $post_id ), 0, 1 ) ) . mb_substr( get_the_title( $post_id ), 1 ) );
 $faq_titre        = tfp_get_field( 'faq_titre', $post_id ) ?: 'Questions fréquentes — ' . $court;
 // Objet en toutes lettres (« le nettoyage de vos bureaux ») : plus de « Un devis pour Bureaux ».
 $objet            = tfp_get_field( 'objet_editorial', $post_id ) ?: mb_strtolower( $titre );
@@ -494,10 +496,14 @@ if ( $suivi_lignes ) {
 <?php endif; ?>
 
 <?php if ( ! empty( $faq ) ) : ?>
-<section class="tfp-section" id="questions">
-	<div class="tfp-container tfp-container--narrow">
-		<h2><?php echo esc_html( $faq_titre ); ?></h2>
-		<div style="margin-top:20px">
+<section class="tfp-section tfp-faq-section" id="questions">
+	<div class="tfp-container">
+		<div class="tfp-faq-tete">
+			<p class="tfp-eyebrow">Questions fréquentes</p>
+			<h2><?php echo esc_html( $faq_titre ); ?></h2>
+			<p class="tfp-faq-tete__lede"><?php echo count( $faq ); ?> réponses sur le tarif, l'organisation et le suivi. Cliquez sur une question pour l'ouvrir.</p>
+		</div>
+		<div class="tfp-faq-liste">
 			<?php foreach ( $faq as $item ) : ?>
 				<details class="tfp-card tfp-faq-item">
 					<summary><?php echo esc_html( $item['question'] ); ?></summary>
@@ -505,16 +511,16 @@ if ( $suivi_lignes ) {
 				</details>
 			<?php endforeach; ?>
 		</div>
+		<div class="tfp-contact-nudge">
+			<p><strong>Encore une question sur <?php echo esc_html( $objet ); ?> ?</strong> <?php echo esc_html( $prenom ); ?> vous répond directement.</p>
+			<div class="tfp-contact-nudge__actions">
+				<?php tfp_bouton_appel( array( 'variant' => 'secondary', 'size' => 'sm', 'numero' => true ) ); ?>
+				<?php tfp_button( array( 'label' => 'Nous écrire', 'href' => home_url( '/contact/' ), 'variant' => 'secondary', 'size' => 'sm' ) ); ?>
+			</div>
+		</div>
 	</div>
 </section>
 <?php endif; ?>
-
-<section class="tfp-container tfp-section--tight">
-	<div class="tfp-contact-nudge">
-		<p>Encore une question sur <?php echo esc_html( $objet ); ?> ? <?php echo esc_html( $prenom ); ?> vous répond directement.</p>
-		<?php tfp_button( array( 'label' => 'Nous contacter', 'href' => home_url( '/contact/' ), 'variant' => 'secondary', 'size' => 'sm' ) ); ?>
-	</div>
-</section>
 
 <section class="tfp-cta-block">
 	<div class="tfp-cta-block__inner">

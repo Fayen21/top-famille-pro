@@ -4,9 +4,9 @@
  * Chalon-sur-Saône, Mâcon, Auxerre, Belfort). Dijon a été créée en phase 2.
  *
  * Contenu repris du prototype, corrigé selon CLAUDE.md §5.1/§9 :
- * - tarif fictif « 27 € HT/h » retiré (grille réelle affichée par la section tarifs du gabarit) ;
+ * - tarif fictif « 26 € HT/h » retiré (grille réelle affichée par la section tarifs du gabarit) ;
  * - aucun exemple de budget chiffré sur le tarif fictif (même précédent que Côte-d'Or/Dijon en
- *   phase 2 : pas de « 279 € HT/mois » recalculé, pour éviter un contenu quasi dupliqué) ;
+ *   phase 2 : pas de « 269 € HT/mois » recalculé, pour éviter un contenu quasi dupliqué) ;
  * - **régression trouvée dans le prototype** : chaque ville y affirme positivement desservir des
  *   communes satellites non validées (« Intervenez-vous à [commune] ? Oui, ces communes sont
  *   proches… »). C'est plus grave que la simple mention en zones_desservies déjà corrigée en
