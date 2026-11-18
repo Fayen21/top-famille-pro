@@ -154,6 +154,33 @@ if ( ! empty( $faq ) && $validated ) {
 	);
 }
 
+/*
+ * Service rendu sur ce territoire. C'est une zone DESSERVIE depuis Saint-Apollinaire, pas un
+ * établissement (CLAUDE.md §5.2) : aucun LocalBusiness, aucune adresse ni aucun téléphone local,
+ * le prestataire reste l'organisation unique. Le prix est le tarif régional (§5.3).
+ */
+if ( $validated ) {
+	$zone_nom = get_the_title( $post_id );
+	$schema[] = array(
+		'@type'       => 'Service',
+		'@id'         => trailingslashit( $canonical ) . '#service',
+		'name'        => $h1,
+		'serviceType' => 'Nettoyage professionnel',
+		'description' => $seo_desc ?: wp_trim_words( $reponse, 30 ),
+		'provider'    => array( '@id' => trailingslashit( $site['origin'] ) . '#organisation' ),
+		'areaServed'  => $is_dept
+			? array( '@type' => 'AdministrativeArea', 'name' => $zone_nom )
+			: array_filter(
+				array(
+					'@type'           => 'City',
+					'name'            => $zone_nom,
+					'containedInPlace' => $dept_term ? array( '@type' => 'AdministrativeArea', 'name' => $dept_term->name ) : null,
+				)
+			),
+		'offers'      => tfp_schema_offre_horaire( 'Nettoyage professionnel — ' . $zone_nom ),
+	);
+}
+
 tfp_seo(
 	array(
 		'title'       => $seo_title ?: ( $h1 . ' | ' . $site['brand_name'] ),

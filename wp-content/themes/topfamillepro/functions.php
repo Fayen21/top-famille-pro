@@ -36,6 +36,7 @@ $tfp_includes = array(
 	'includes/quote-form.php',   // Traitement serveur du formulaire de demande de devis (admin-post.php, wp_mail()).
 	'includes/contact-form.php', // Formulaire de contact court — parcours distinct du devis (maquette #/contact).
 	'includes/sitemap-robots.php', // Sitemap XML natif WP filtré (exclut users/taxonomies + communes non validées) + robots.txt.
+	'includes/llms-txt.php',     // /llms.txt : résumé du site pour les assistants conversationnels (GEO), construit depuis les données du site.
 );
 
 foreach ( $tfp_includes as $tfp_include ) {

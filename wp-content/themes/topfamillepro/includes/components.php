@@ -1369,8 +1369,10 @@ function tfp_card_grid( array $grille ) {
 						tfp_picture( $slug_image, array( 'sizes' => '56px', 'alt' => '' ) );
 						echo '</span>';
 					} elseif ( $slug_image ) {
+						// Grand visuel : alt honnête du manifeste (« … (photo d'illustration) »), qui
+						// décrit la photo réelle — utile aux moteurs d'images comme aux lecteurs d'écran.
 						echo '<span class="tfp-card-tile__media">';
-						tfp_picture( $slug_image, array( 'sizes' => '(max-width: 819px) 100vw, 383px', 'alt' => '' ) );
+						tfp_picture( $slug_image, array( 'sizes' => '(max-width: 819px) 100vw, 383px' ) );
 						echo '</span>';
 					}
 					?>

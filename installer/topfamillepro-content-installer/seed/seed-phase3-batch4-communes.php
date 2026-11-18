@@ -135,12 +135,12 @@ function tfp_seed_commune_secondaire( $id, $name, $cp, $economie, $bureaux_id, $
 		),
 		$post_id
 	);
-	tfp_seed_set_field( 'seo_title', "Nettoyage professionnel à $name | Top-Famille Pro", $post_id );
+	tfp_seed_set_field( 'seo_title', "Entreprise de nettoyage à $name | Top-Famille Pro", $post_id );
 	tfp_seed_set_field(
 		'seo_description',
 		$est_siege
-			? "Top-Famille Pro est implantée à Saint-Apollinaire (21850) : nettoyage de bureaux, commerces et locaux professionnels, en régulier ou en ponctuel. Devis gratuit sous 24 h."
-			: "Nettoyage professionnel à $name : bureaux, commerces et locaux professionnels, en contrat régulier ou en intervention ponctuelle. Devis gratuit sous 24 h.",
+			? "Entreprise de nettoyage implantée à Saint-Apollinaire (21850) : bureaux, commerces, locaux professionnels, en régulier ou ponctuel. Devis gratuit sous 24 h."
+			: "Entreprise de nettoyage à $name ($cp) : bureaux, commerces, locaux professionnels, en régulier ou ponctuel. 26 € HT/h, devis gratuit sous 24 h.",
 		$post_id
 	);
 

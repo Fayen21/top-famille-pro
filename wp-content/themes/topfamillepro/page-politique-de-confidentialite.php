@@ -24,7 +24,7 @@ $site = tfp_site_data();
 tfp_seo(
 	array(
 		'title'       => 'Politique de confidentialité | ' . $site['brand_name'],
-		'description' => 'Comment ' . $site['brand_name'] . ' traite les données transmises via le formulaire de demande de devis.',
+		'description' => 'Comment ' . $site['brand_name'] . ' traite les données transmises par le formulaire de devis : finalités, durée de conservation et exercice de vos droits.',
 		'type'        => 'website',
 		'robots'      => 'index,follow',
 		'breadcrumb'  => array(

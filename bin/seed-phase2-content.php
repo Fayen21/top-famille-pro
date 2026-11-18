@@ -216,8 +216,8 @@ tfp_seed_faq(
 	),
 	$cote_dor_id
 );
-tfp_seed_set_field( 'seo_title', "Nettoyage professionnel en Côte-d'Or | Top-Famille Pro", $cote_dor_id );
-tfp_seed_set_field( 'seo_description', "Top-Famille Pro entretient bureaux, commerces, cabinets et parties communes en Côte-d'Or, depuis Saint-Apollinaire.", $cote_dor_id );
+tfp_seed_set_field( 'seo_title', "Entreprise de nettoyage en Côte-d'Or | Top-Famille Pro", $cote_dor_id );
+tfp_seed_set_field( 'seo_description', "Entreprise de nettoyage en Côte-d'Or basée à Saint-Apollinaire : bureaux, commerces, cabinets et parties communes, de Dijon à Beaune. Devis gratuit sous 24 h.", $cote_dor_id );
 
 echo "  Zone Côte-d'Or (département) : #$cote_dor_id\n";
 

@@ -1,11 +1,11 @@
-# Check-list de mise en ligne — Top-Famille Pro, thème 0.17.0
+# Check-list de mise en ligne — Top-Famille Pro, thème 0.18.0
 
 > Version du 18 novembre 2026. À suivre dans l'ordre, case par case. Une case ⛔ non cochée
 > **arrête** la procédure : on ne passe pas à l'étape suivante.
 >
-> Fichiers à utiliser : dossier `release/paquets-passe-2026-11-17/`
-> - `topfamillepro-theme.zip` — le thème (version 0.17.0, tarif 26 € HT/h) ;
-> - `topfamillepro-content-installer.zip` — l'outil temporaire qui crée les 53 pages (version 1.11.0) ;
+> Fichiers à utiliser : dossier `release/paquets-passe-2026-11-18/`
+> - `topfamillepro-theme.zip` — le thème (version 0.18.0, tarif 26 € HT/h) ;
+> - `topfamillepro-content-installer.zip` — l'outil temporaire qui crée les 53 pages (version 1.12.0) ;
 > - `SHA256SUMS.txt` — empreintes pour vérifier que les fichiers ne sont pas abîmés.
 >
 > **Raccourci** : les phases 2 et 4 peuvent être faites en une commande SSH avec
@@ -70,7 +70,7 @@
 - [ ] Menus : un clic sur « Prestations » et « Zones d'intervention » ouvre les choix ; menu mobile
       (☰) sur téléphone.
 - [ ] Contrôle visuel sur **ordinateur et téléphone** : accueil, une prestation, une ville, Tarifs,
-      Demander mon devis, Contact, mentions légales. Comparer avec `captures-2026-11-17.zip`.
+      Demander mon devis, Contact, mentions légales. Comparer avec `release/paquets-passe-2026-11-17/captures-2026-11-17.zip`.
 - [ ] Rendu avec le **vrai GeneratePress** : rien d'inattendu (marges, polices, couleurs).
       Le banc de test utilisait un parent réduit ; c'est le premier contrôle avec le vrai.
 - [ ] Aucune page étrangère publiée (anciennes offres, pages d'essai) : **Pages** → filtrer

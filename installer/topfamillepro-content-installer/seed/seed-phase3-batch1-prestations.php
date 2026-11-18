@@ -139,7 +139,7 @@ tfp_seed_faq( 'faq', array(
 	array( 'q' => 'Le même intervenant vient-il à chaque passage ?', 'a' => "C'est l'organisation que nous recherchons. Cette continuité est privilégiée autant que possible, sans constituer une garantie absolue : en cas d'absence, nous recherchons activement une solution et vous informons de l'organisation retenue." ),
 ), $cabinets_id );
 tfp_seed_set_field( 'seo_title', 'Nettoyage de cabinets et professions libérales | Top-Famille Pro', $cabinets_id );
-tfp_seed_set_field( 'seo_description', "Entretien courant de cabinets médicaux, paramédicaux et libéraux : accueil, salle d'attente, sanitaires, sols. Confidentialité respectée, devis gratuit sous 24 h.", $cabinets_id );
+tfp_seed_set_field( 'seo_description', "Entretien courant de cabinets médicaux, paramédicaux et libéraux : accueil, salle d'attente, sanitaires, sols. Discrétion, devis gratuit sous 24 h.", $cabinets_id );
 
 echo "  Prestation cabinets : #$cabinets_id\n";
 

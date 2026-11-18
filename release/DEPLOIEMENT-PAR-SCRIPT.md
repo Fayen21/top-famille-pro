@@ -1,4 +1,4 @@
-# Installation par script — Top-Famille Pro 0.17.0
+# Installation par script — Top-Famille Pro 0.18.0
 
 > Version du 18 novembre 2026. Ce script remplace les **phases 2 et 4** de
 > `CHECKLIST-MISE-EN-LIGNE.md` : installation des prérequis, du thème et du contenu, activation,
@@ -15,9 +15,9 @@
 2. **Déposer quatre fichiers** dans un dossier `tfp-livraison`, à la racine de votre espace
    d'hébergement (hPanel → **Fichiers → Gestionnaire de fichiers** → dossier personnel → nouveau
    dossier `tfp-livraison` → Téléverser) :
-   - `release/paquets-passe-2026-11-17/topfamillepro-theme.zip` ;
-   - `release/paquets-passe-2026-11-17/topfamillepro-content-installer.zip` ;
-   - `release/paquets-passe-2026-11-17/SHA256SUMS.txt` ;
+   - `release/paquets-passe-2026-11-18/topfamillepro-theme.zip` ;
+   - `release/paquets-passe-2026-11-18/topfamillepro-content-installer.zip` ;
+   - `release/paquets-passe-2026-11-18/SHA256SUMS.txt` ;
    - `tools/deploiement/deployer-hostinger.sh`.
 3. **Se connecter** depuis un terminal (Terminal sur Mac, PowerShell sous Windows) :
    ```
@@ -64,7 +64,7 @@ Puis refaire le test du devis en production (check-list, phase 4), puis la phase
 
 | Étape | Action | S'arrête si… |
 |---|---|---|
-| 0 | Contrôles : WP-CLI, WordPress, PHP ≥ 8, ZIP intacts (SHA-256), thème en 0.17.0, environnement | une condition manque |
+| 0 | Contrôles : WP-CLI, WordPress, PHP ≥ 8, ZIP intacts (SHA-256), thème en 0.18.0, environnement | une condition manque |
 | 1 | Export de la base et archive des thèmes et extensions dans `~/tfp-sauvegardes/` ; note du thème actif | l'export échoue (voir §5) |
 | 2 | GeneratePress, ACF, et LiteSpeed Cache avec `--litespeed` | GeneratePress ne s'installe pas |
 | 3 | Thème installé (non activé) ; outil d'installation du contenu installé et activé | une installation échoue |
@@ -72,7 +72,7 @@ Puis refaire le test du devis en production (check-list, phase 4), puis la phase
 | 5 | Installation du contenu ; rapport dans `~/tfp-sauvegardes/` | une étape est en erreur : **le thème n'est pas activé** |
 | 6 | Activation du thème, permaliens « Nom de l'article » si vides, règles d'adresses reconstruites | l'activation échoue |
 | 7 | Outil d'installation supprimé, cache LiteSpeed purgé | — |
-| 8 | Thème actif, accueil 200, **26 € HT/h** affiché et plus aucun 27 €, 5 pages clés en 200, formulaire en **envoi réel**, vraie 404, **53 adresses** au sitemap, `robots.txt`, compression | — (bilan en échec, avec la commande de retour arrière) |
+| 8 | Thème actif, accueil 200, **26 € HT/h** affiché et plus aucun 27 €, 5 pages clés en 200, formulaire en **envoi réel**, vraie 404, **53 adresses** au sitemap, `robots.txt`, `llms.txt`, compression | — (bilan en échec, avec la commande de retour arrière) |
 
 Un **✓** indique un contrôle réussi. Un **!** signale une alerte à lire, qui ne bloque pas. Un
 **✕** signale un échec.
@@ -109,9 +109,9 @@ En dernier recours : hPanel → Sauvegardes → Restaurer.
 ## 7. Essai réalisé avant livraison
 
 Le script a été lancé sur le banc local : WordPress, SQLite, environnement `production`, avec les
-ZIP de `paquets-passe-2026-11-17`.
+ZIP de `paquets-passe-2026-11-18`.
 
-- **Installation complète** : 16 étapes de contenu sur 16, puis 13 contrôles sur 13. Alertes
+- **Installation complète** : 16 étapes de contenu sur 16, puis 14 contrôles sur 14 (rejoué avec les paquets 0.18.0). Alertes
   attendues sur le banc : base SQLite non exportable, ACF et LiteSpeed absents (pas de réseau vers
   wordpress.org), pas de compression.
 - **Chemins d'échec vérifiés** : chacun s'arrête proprement.

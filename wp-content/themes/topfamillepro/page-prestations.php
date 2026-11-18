@@ -25,7 +25,7 @@ $prestations = get_posts(
 tfp_seo(
 	array(
 		'title'       => 'Nos prestations de nettoyage professionnel | ' . $site['brand_name'],
-		'description' => "Six prestations d'entretien professionnel : bureaux, commerces, cabinets, copropriétés, locations meublées et nettoyage ponctuel, dans toute la {$site['address_region']}.",
+		'description' => "Nettoyage de bureaux, commerces, cabinets, copropriétés, meublés et ponctuel en {$site['address_region']}. Tarif unique, devis gratuit sous 24 h.",
 		'type'        => 'website',
 		'robots'      => 'index,follow',
 		'breadcrumb'  => array(

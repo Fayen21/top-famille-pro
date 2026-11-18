@@ -198,7 +198,7 @@ tfp_seed_faq( 'faq', array(
 	array( 'q' => 'Comment savoir ce qui a été fait pendant le passage ?', 'a' => "Chaque site dispose d'un cahier de liaison où l'intervenant note le travail réalisé et les points à signaler. Un point de suivi avec Audrey complète ce suivi." ),
 ), $nevers_id );
 tfp_seed_set_field( 'seo_title', 'Entreprise de nettoyage à Nevers (58000) | Top-Famille Pro', $nevers_id );
-tfp_seed_set_field( 'seo_description', "Entreprise de nettoyage à Nevers : parties communes, bureaux, commerces, cabinets. Devis gratuit sous 24 h.", $nevers_id );
+tfp_seed_set_field( 'seo_description', "Entreprise de nettoyage à Nevers : parties communes, bureaux, commerces, cabinets, en régulier ou ponctuel. Devis gratuit sous 24 h.", $nevers_id );
 
 echo "  Zone Nevers (ville) : #$nevers_id\n";
 
@@ -293,7 +293,7 @@ tfp_seed_faq( 'faq', array(
 	array( 'q' => 'Quel volume minimum conseillez-vous ?', 'a' => "Au moins deux heures par passage, ou un regroupement hebdomadaire, pour que l'organisation reste tenable dans la durée." ),
 ), $macon_id );
 tfp_seed_set_field( 'seo_title', 'Entreprise de nettoyage à Mâcon (71000) | Top-Famille Pro', $macon_id );
-tfp_seed_set_field( 'seo_description', "Entreprise de nettoyage à Mâcon : bureaux, commerces, cabinets, locations meublées. Devis gratuit sous 24 h.", $macon_id );
+tfp_seed_set_field( 'seo_description', "Entreprise de nettoyage à Mâcon : bureaux, commerces, cabinets, locations meublées, en régulier ou ponctuel. Devis gratuit sous 24 h.", $macon_id );
 
 echo "  Zone Mâcon (ville) : #$macon_id\n";
 

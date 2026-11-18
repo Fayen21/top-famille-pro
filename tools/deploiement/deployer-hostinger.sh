@@ -37,7 +37,7 @@
 # =================================================================================================
 set -uo pipefail
 
-VERSION_ATTENDUE="0.17.0"
+VERSION_ATTENDUE="0.18.0"
 TARIF_ATTENDU="26"
 ADRESSES_SITEMAP=53
 THEME="topfamillepro"
@@ -323,6 +323,7 @@ for s in page prestation zone post; do
 done
 controle "sitemap : $TOTAL adresses ($ADRESSES_SITEMAP attendues)" '[ "$TOTAL" -eq "$ADRESSES_SITEMAP" ]'
 controle "robots.txt annonce le sitemap" 'grep -qi "^Sitemap:" <<<"$(page /robots.txt)"'
+controle "llms.txt disponible (résumé pour les assistants IA)" 'grep -q "^# " <<<"$(page /llms.txt)"'
 ENC="$(curl -s -o /dev/null -D - -H 'Accept-Encoding: br, gzip' --max-time 30 "$SITE/wp-content/themes/$THEME/assets/dist/css/main.css" 2>/dev/null | grep -i '^content-encoding' | tr -d '\r')"
 if [ -n "$ENC" ]; then ok "feuille de style compressée (${ENC#*: })"; else alerte "feuille de style servie sans compression : activez la compression dans LiteSpeed Cache."; fi
 

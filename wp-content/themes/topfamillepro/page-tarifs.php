@@ -129,7 +129,7 @@ $schema = array(
 tfp_seo(
 	array(
 		'title'       => 'Tarifs de nettoyage professionnel | ' . $site['brand_name'],
-		'description' => "Tarif réel du nettoyage professionnel : {$prix} HT/h, tarif unique en régulier comme en ponctuel, identique dans toute la {$site['address_region']}. Frais de gestion, mise en place et exemples de budgets.",
+		'description' => "Nettoyage professionnel à {$prix} HT/h, tarif unique en régulier comme en ponctuel, partout en {$site['address_region']}. Frais et exemples de budgets.",
 		'type'        => 'website',
 		'robots'      => 'index,follow',
 		'breadcrumb'  => array(

@@ -144,6 +144,7 @@ $schema = array(
 		'description' => $seo_desc ?: wp_trim_words( $reponse, 40 ),
 		'serviceType' => $titre,
 		'provider'    => array( '@id' => trailingslashit( $site['origin'] ) . '#organisation' ),
+		'offers'      => tfp_schema_offre_horaire( $titre ),
 		'areaServed'  => array_map(
 			function ( $name ) {
 				return array( '@type' => 'AdministrativeArea', 'name' => $name );

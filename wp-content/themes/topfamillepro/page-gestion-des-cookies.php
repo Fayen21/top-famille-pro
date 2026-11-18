@@ -19,7 +19,7 @@ $site = tfp_site_data();
 tfp_seo(
 	array(
 		'title'       => 'Gestion des cookies | ' . $site['brand_name'],
-		'description' => 'Ce site n\'utilise actuellement aucun cookie de mesure d\'audience ni de traçage publicitaire.',
+		'description' => 'Cookies du site ' . $site['brand_name'] . ' : aucun cookie de mesure d\'audience ni de traçage publicitaire n\'est déposé sur votre appareil.',
 		'type'        => 'website',
 		'robots'      => 'index,follow',
 		'breadcrumb'  => array(

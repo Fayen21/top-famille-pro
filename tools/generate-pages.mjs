@@ -63,6 +63,9 @@ const CORRECTIONS_EDITORIALES = [
 	 * restent possibles dans les données (niveau=commune) ; elles n'apparaissent plus à l'écran.
 	 */
 	{ avant: 'Nos dix villes principales', apres: "Nos villes d'intervention" },
+	// 18 novembre 2026 (passe SEO) : la page n'a plus de visuel de la gérante, et le h1 doit porter
+	// le métier. « un visage » promettait un portrait qui n'existe plus.
+	{ avant: 'Une entreprise régionale, un visage', apres: 'Une entreprise de nettoyage régionale, une interlocutrice' },
 	// Signature d'un témoignage de la page pilier : le relevé perdait la structure de la légende
 	// (deux séparateurs en tête, plus aucun entre les champs). Lu sur la revue transversale.
 	{ avant: '· · Marc V. Directeur administratif Chalon-sur-Saône', apres: 'Marc V. · Directeur administratif · Chalon-sur-Saône' },

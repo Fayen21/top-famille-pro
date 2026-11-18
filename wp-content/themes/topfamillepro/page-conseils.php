@@ -95,7 +95,7 @@ $passerelles = array(
 
 tfp_seo(
 	array(
-		'title'       => 'Conseils & repères sur le nettoyage professionnel | ' . $site['brand_name'],
+		'title'       => 'Conseils sur le nettoyage professionnel | ' . $site['brand_name'],
 		'description' => "Repères concrets sur le nettoyage professionnel de bureaux et de locaux : fréquence de passage, budget réaliste, cahier des charges. Écrits par {$prenom}.",
 		'type'        => 'website',
 		'robots'      => 'index,follow',

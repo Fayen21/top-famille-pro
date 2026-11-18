@@ -35,7 +35,7 @@ $site = tfp_site_data();
 tfp_seo(
 	array(
 		'title'       => 'Mentions légales | ' . $site['brand_name'],
-		'description' => 'Mentions légales de ' . $site['brand_name'] . ' — éditeur, hébergeur, propriété intellectuelle et données personnelles.',
+		'description' => 'Mentions légales du site ' . $site['brand_name'] . ' : éditeur, directrice de la publication, hébergeur, propriété intellectuelle et données personnelles.',
 		'type'        => 'website',
 		'robots'      => 'index,follow',
 		'breadcrumb'  => array(

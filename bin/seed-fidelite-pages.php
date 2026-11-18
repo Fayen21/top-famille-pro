@@ -15494,7 +15494,7 @@ update_option( 'tfp_page_avis-clients', array(
 echo "  ✓ avis-clients (5 sections)\n";
 
 update_option( 'tfp_page_a-propos', array(
-		'h1' => 'Une entreprise régionale, un visage',
+		'h1' => 'Une entreprise de nettoyage régionale, une interlocutrice',
 		'lede' => array(
 			'Top-Famille Pro est la déclinaison professionnelle de Top-Famille, basée à Saint-Apollinaire, aux portes de Dijon. Nous accompagnons les professionnels de toute la Bourgogne-Franche-Comté pour l\'entretien de leurs locaux.',
 			'Notre conviction : la qualité d\'un service tient autant à la propreté qu\'à la fiabilité, à la transparence et à la relation humaine. Un local propre ne suffit pas si le prestataire est injoignable, si l\'intervenant change sans prévenir, ou si le tarif réserve des surprises.',

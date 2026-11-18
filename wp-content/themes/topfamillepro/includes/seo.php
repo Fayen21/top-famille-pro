@@ -155,6 +155,19 @@ function tfp_render_jsonld( $seo, $canonical ) {
 		),
 		'areaServed'  => $area_served,
 		'priceRange'  => $site['price_unique_display'] . ' HT/heure (tarif unique)',
+		// Point de contact unique : le seul numéro et la seule adresse e-mail de l'entreprise.
+		'contactPoint' => array(
+			'@type'             => 'ContactPoint',
+			'contactType'       => 'customer service',
+			'telephone'         => $site['phone_href'],
+			'email'             => $site['email'],
+			'areaServed'        => 'FR',
+			'availableLanguage' => 'fr',
+		),
+		// Métiers réellement exercés (les six prestations) : aide les moteurs et les assistants
+		// conversationnels à rattacher l'entreprise aux bonnes requêtes.
+		'knowsAbout'  => tfp_schema_metiers(),
+		'makesOffer'  => array( tfp_schema_offre_horaire() ),
 	);
 
 	/*
@@ -182,7 +195,7 @@ function tfp_render_jsonld( $seo, $canonical ) {
 	);
 
 	$webpage = array(
-		'@type'       => 'WebPage',
+		'@type'       => tfp_schema_type_page(),
 		'@id'         => $canonical . '#webpage',
 		'url'         => $canonical,
 		'name'        => $seo['title'],
@@ -205,12 +218,139 @@ function tfp_render_jsonld( $seo, $canonical ) {
 		$graph = array_merge( $graph, $seo['schema'] );
 	}
 
+	/*
+	 * FAQ des pages statiques : une page dont le corps (relevé de la maquette) affiche des
+	 * questions-réponses reçoit le FAQPage correspondant, construit à partir des MÊMES blocs que
+	 * ceux rendus à l'écran (CLAUDE.md §8 : FAQPage uniquement si la FAQ est visible). Une page
+	 * qui déclare déjà son FAQPage n'en reçoit pas un second.
+	 */
+	$a_deja_faq = (bool) array_filter(
+		$graph,
+		function ( $n ) {
+			return isset( $n['@type'] ) && 'FAQPage' === $n['@type'];
+		}
+	);
+	if ( ! $a_deja_faq && is_page() ) {
+		$faq = tfp_static_faq_items( get_post_field( 'post_name', get_queried_object_id() ) );
+		if ( $faq ) {
+			$graph[] = array(
+				'@type'      => 'FAQPage',
+				'@id'        => $canonical . '#faq',
+				'mainEntity' => array_map(
+					function ( $item ) {
+						return array(
+							'@type'          => 'Question',
+							'name'           => $item['q'],
+							'acceptedAnswer' => array( '@type' => 'Answer', 'text' => $item['a'] ),
+						);
+					},
+					$faq
+				),
+			);
+		}
+	}
+
 	$jsonld = array(
 		'@context' => 'https://schema.org',
 		'@graph'   => $graph,
 	);
 
 	echo '<script type="application/ld+json">' . wp_json_encode( tfp_jsonld_decode_entities( $jsonld ), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES ) . '</script>' . "\n";
+}
+
+/**
+ * Type schema.org de la page courante : sous-type de WebPage quand il existe un type exact.
+ *
+ * @return string
+ */
+function tfp_schema_type_page() {
+	if ( ! is_page() ) {
+		return 'WebPage';
+	}
+	$types = array(
+		'contact'            => 'ContactPage',
+		'a-propos'           => 'AboutPage',
+		'prestations'        => 'CollectionPage',
+		'zones-intervention' => 'CollectionPage',
+		'conseils'           => 'CollectionPage',
+		'plan-du-site'       => 'CollectionPage',
+	);
+	$slug = get_post_field( 'post_name', get_queried_object_id() );
+	return $types[ $slug ] ?? 'WebPage';
+}
+
+/**
+ * Les six métiers exercés, tels qu'intitulés sur le site.
+ *
+ * @return string[]
+ */
+function tfp_schema_metiers() {
+	return array(
+		'Nettoyage de bureaux',
+		'Nettoyage de commerces',
+		'Nettoyage de cabinets et de professions libérales',
+		'Entretien de copropriétés et de parties communes',
+		'Nettoyage de locations meublées',
+		'Nettoyage ponctuel et remise en état',
+		'Nettoyage professionnel',
+	);
+}
+
+/**
+ * Offre au tarif horaire unique (PROJECT_INPUTS.md §5) : le seul prix public de l'entreprise,
+ * identique partout. Jamais de prix local (CLAUDE.md §5.3).
+ *
+ * @param string $nom Intitulé de l'offre.
+ * @return array
+ */
+function tfp_schema_offre_horaire( $nom = '' ) {
+	$site = tfp_site_data();
+	return array(
+		'@type'              => 'Offer',
+		'name'               => $nom ? $nom : 'Nettoyage professionnel au tarif horaire unique',
+		'priceCurrency'      => 'EUR',
+		'price'              => number_format( (float) $site['price_unique'], 2, '.', '' ),
+		'priceSpecification' => array(
+			'@type'                 => 'UnitPriceSpecification',
+			'price'                 => number_format( (float) $site['price_unique'], 2, '.', '' ),
+			'priceCurrency'         => 'EUR',
+			'unitCode'              => 'HUR',
+			'unitText'              => 'heure',
+			'valueAddedTaxIncluded' => false,
+		),
+		'seller'             => array( '@id' => trailingslashit( $site['origin'] ) . '#organisation' ),
+	);
+}
+
+/**
+ * Questions-réponses affichées par le corps d'une page statique (blocs `faq` du relevé).
+ *
+ * @param string $cle Identifiant de la page (son slug).
+ * @return array Liste de { q, a } en texte brut.
+ */
+function tfp_static_faq_items( $cle ) {
+	if ( ! $cle || ! function_exists( 'tfp_static_page_data' ) ) {
+		return array();
+	}
+	$items   = array();
+	$visiter = function ( $noeud ) use ( &$visiter, &$items ) {
+		if ( ! is_array( $noeud ) ) {
+			return;
+		}
+		if ( isset( $noeud['type'], $noeud['question'], $noeud['reponse'] ) && 'faq' === $noeud['type'] ) {
+			$q = trim( wp_strip_all_tags( (string) $noeud['question'] ) );
+			$r = trim( wp_strip_all_tags( (string) $noeud['reponse'] ) );
+			if ( '' !== $q && '' !== $r ) {
+				$items[] = array( 'q' => $q, 'a' => $r );
+			}
+			return;
+		}
+		foreach ( $noeud as $enfant ) {
+			$visiter( $enfant );
+		}
+	};
+	$visiter( tfp_static_page_data( $cle ) );
+	return $items;
 }
 
 /**

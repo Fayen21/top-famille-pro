@@ -2343,13 +2343,38 @@ Reste : avis réels (ou retrait), préproduction, Lighthouse à rejouer.
 - `tools/deploiement/deployer-hostinger.sh` : installation en une commande SSH, à lancer par
   Emmanuel, d'abord sur la préproduction puis sur la production. Il couvre les phases 2 et 4 :
   - sauvegarde, prérequis, thème, contenu, activation, permaliens, nettoyage ;
-  - 13 contrôles automatiques ;
+  - 14 contrôles automatiques (dont llms.txt depuis 0.18.0) ;
   - arrêt au premier problème, et `--retour-arriere`.
 - Mode d'emploi : `release/DEPLOIEMENT-PAR-SCRIPT.md`.
-- Essai sur le banc en `production` : 16/16 étapes, 13/13 contrôles. Les chemins d'échec ont été
+- Essai sur le banc en `production` : 16/16 étapes, 14/14 contrôles. Les chemins d'échec ont été
   vérifiés.
 - Non testé : le WP-CLI d'Hostinger, l'export MySQL, les téléchargements depuis wordpress.org.
 - Le script n'a été lancé sur aucun serveur réel, conformément à CLAUDE.md §6.
 
 Reste : décisions de la phase 0 (avis, Kbis, fusion de la PR), lancement en préproduction, test
 réel du devis.
+
+## Passe SEO / GEO (18 novembre 2026, thème 0.18.0, installateur 1.12.0)
+
+Rapport : `docs/AUDIT-SEO-GEO-2026-11-18.md`. Outil : `node tools/audit-seo.mjs`.
+
+- Les fondations étaient déjà en place : title, description, canonical, h1, OG, BreadcrumbList,
+  FAQPage, Service et Article.
+- Corrigé :
+  - 10 descriptions hors longueur et 1 title trop long ;
+  - titres des départements (« en Doubs » → « dans le Doubs ») ;
+  - descriptions des communes, différenciées par code postal et tarif ;
+  - H1 de la page À propos ;
+  - `alt` des 6 visuels de l'index Prestations.
+- Données structurées ajoutées :
+  - `Service` sur les 26 zones (zone desservie, pas d'établissement local) ;
+  - `Offer` 26 € HT/h, sur l'organisation, les prestations et les zones ;
+  - `contactPoint` et `knowsAbout` sur l'organisation ;
+  - types de page précis (ContactPage, AboutPage, CollectionPage) ;
+  - FAQPage automatique pour les FAQ des pages statiques.
+- GEO : `/llms.txt` (`includes/llms-txt.php`), construit depuis les données du site.
+- Paquets : `release/paquets-passe-2026-11-18/`. La check-list et le script visent désormais 0.18.0.
+- Ordre de construction : export statique **puis** `npm run paquets`, car l'export vide `export/`.
+
+Reste après la mise en ligne : Search Console, fiche Google Business Profile, avis réels, test des
+résultats enrichis sur l'URL réelle.
