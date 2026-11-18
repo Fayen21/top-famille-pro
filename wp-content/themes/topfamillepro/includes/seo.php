@@ -171,15 +171,21 @@ function tfp_render_jsonld( $seo, $canonical ) {
 	);
 
 	/*
-	 * Pas de `openingHoursSpecification`.
-	 *
-	 * Les horaires lundi-samedi 06:00-22:00 n'ont jamais été confirmés par Audrey. Une donnée
-	 * structurée est une **déclaration officielle** exploitée par Google : publier une amplitude
-	 * inventée expose à des appels hors horaires et à une information trompeuse dans les résultats
-	 * de recherche. Tant que l'amplitude réelle n'est pas fournie, aucune n'est déclarée — et on
-	 * n'en substitue pas une autre. La seule promesse structurée reste celle qui est confirmée :
-	 * la réponse sous 24 heures, portée par le contenu visible.
+	 * Horaires d'ouverture : du lundi au vendredi, 8 h – 18 h, confirmés par Emmanuel le
+	 * 18 novembre 2026 (l'ancienne amplitude 6 h – 22 h n'avait jamais été confirmée et n'était
+	 * pas déclarée). Ce sont les heures où l'entreprise est joignable ; les interventions peuvent
+	 * avoir lieu en dehors, ce que dit le contenu visible.
 	 */
+	if ( ! empty( $site['opening_hours']['days'] ) ) {
+		$horaires = array(
+			'@type'     => 'OpeningHoursSpecification',
+			'dayOfWeek' => $site['opening_hours']['days'],
+			'opens'     => $site['opening_hours']['opens'],
+			'closes'    => $site['opening_hours']['closes'],
+		);
+		$organization['openingHoursSpecification'] = array( $horaires );
+		$organization['contactPoint']['hoursAvailable'] = $horaires;
+	}
 
 	if ( ! empty( $site['same_as'] ) ) {
 		$organization['sameAs'] = array_values( $site['same_as'] );

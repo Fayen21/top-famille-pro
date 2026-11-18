@@ -1,10 +1,10 @@
-# Check-list de mise en ligne — Top-Famille Pro, thème 0.18.0
+# Check-list de mise en ligne — Top-Famille Pro, thème 0.18.1
 
 > Version du 18 novembre 2026. À suivre dans l'ordre, case par case. Une case ⛔ non cochée
 > **arrête** la procédure : on ne passe pas à l'étape suivante.
 >
 > Fichiers à utiliser : dossier `release/paquets-passe-2026-11-18/`
-> - `topfamillepro-theme.zip` — le thème (version 0.18.0, tarif 26 € HT/h) ;
+> - `topfamillepro-theme.zip` — le thème (version 0.18.1, tarif 26 € HT/h) ;
 > - `topfamillepro-content-installer.zip` — l'outil temporaire qui crée les 53 pages (version 1.12.0) ;
 > - `SHA256SUMS.txt` — empreintes pour vérifier que les fichiers ne sont pas abîmés.
 >

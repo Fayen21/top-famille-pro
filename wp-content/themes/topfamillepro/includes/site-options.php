@@ -75,10 +75,14 @@ function tfp_site_data() {
 				// Fiche Google Business : URL réelle non fournie (PROJECT_INPUTS.md, question ouverte #6).
 				// Ne pas ajouter de lien Google tant qu'elle n'est pas communiquée.
 			),
+			// Horaires d'ouverture (joignabilité du bureau), confirmés par Emmanuel le 18 novembre
+			// 2026 : du lundi au vendredi, 8 h – 18 h. Ils alimentent `openingHoursSpecification`.
+			// Les INTERVENTIONS, elles, peuvent avoir lieu en dehors (tôt le matin, en soirée, le
+			// samedi, et sur demande le dimanche ou la nuit) : PROJECT_INPUTS.md §5.
 			'opening_hours'   => array(
-				'days'  => array( 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa' ),
-				'opens' => '06:00',
-				'closes' => '22:00',
+				'days'   => array( 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday' ),
+				'opens'  => '08:00',
+				'closes' => '18:00',
 			),
 			// Tarif réel (PROJECT_INPUTS.md §5) — identique partout, jamais différenciée par ville
 			// (CLAUDE.md §5.3). Tarif unique depuis le 9 août 2026 (hotfix fidélité Claude Design) :

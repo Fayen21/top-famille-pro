@@ -37,7 +37,7 @@
 # =================================================================================================
 set -uo pipefail
 
-VERSION_ATTENDUE="0.18.0"
+VERSION_ATTENDUE="0.18.1"
 TARIF_ATTENDU="26"
 ADRESSES_SITEMAP=53
 THEME="topfamillepro"

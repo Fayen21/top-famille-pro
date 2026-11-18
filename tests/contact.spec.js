@@ -73,7 +73,7 @@ test.describe('Contact — cartes de la maquette', () => {
 		expect(joint).not.toMatch(/agence/i);
 	});
 
-	test('disponibilité : seulement ce qui est établi, sans mention provisoire ni donnée structurée', async ({ page }) => {
+	test('disponibilité : horaires confirmés (lun.–ven., 8 h – 18 h), affichés et déclarés', async ({ page }) => {
 		await page.goto(PAGE, { waitUntil: 'domcontentloaded' });
 
 		// Revue des trois ZIP du 25 octobre 2026, §6 : plus d'amplitude inventée ni de « Horaires
@@ -81,16 +81,25 @@ test.describe('Contact — cartes de la maquette', () => {
 		// (PROJECT_INPUTS.md) seulement.
 		const carte = page.locator('.tfp-card-tile', { hasText: 'Disponibilité' });
 		await expect(carte).toHaveCount(1);
-		await expect(carte).toContainText('Réponse sous 24 h');
+		await expect(carte).toContainText(/réponse sous 24\s?h/i);
+		await expect(carte).toContainText(/lundi au vendredi, 8\s?h\s?–\s?18\s?h/);
 		await expect(carte).not.toHaveAttribute('data-tfp-provisional', /.*/);
 		const texte = await page.locator('main').innerText();
-		expect(texte).not.toMatch(/en cours de confirmation|Horaires indicatifs|lundi au vendredi/);
+		expect(texte).not.toMatch(/en cours de confirmation|Horaires indicatifs|à confirmer/);
 
-		// Une amplitude déclarée en donnée structurée est un engagement opposable.
+		// Horaires confirmés par Emmanuel le 18 novembre 2026 : déclarés, et seulement eux.
 		const graphe = await page.evaluate(() =>
 			[...document.querySelectorAll('script[type="application/ld+json"]')].map((s) => s.textContent).join(' ')
 		);
-		expect(graphe, 'aucune amplitude horaire ne doit être déclarée').not.toMatch(/openingHours/i);
+		const horaires = JSON.parse(graphe.match(/"openingHoursSpecification":(\[[^\]]*\][^\]]*\])/)[1]);
+		expect(horaires).toEqual([
+			{
+				'@type': 'OpeningHoursSpecification',
+				dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+				opens: '08:00',
+				closes: '18:00',
+			},
+		]);
 		expect(graphe).not.toMatch(/"@type"\s*:\s*"(Review|AggregateRating)"/);
 	});
 });

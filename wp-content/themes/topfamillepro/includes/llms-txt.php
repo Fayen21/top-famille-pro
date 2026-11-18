@@ -77,7 +77,8 @@ function tfp_llms_txt() {
 	$o .= '- Raison sociale : ' . $site['legal_name'] . ', marque ' . $site['brand_name'] . ".\n";
 	$o .= '- Un seul établissement : ' . $site['address_street'] . ', ' . $site['address_cp'] . ' ' . $site['address_city'] . ". Pas d'agence locale : les autres villes sont des zones desservies.\n";
 	$o .= '- Interlocutrice : ' . $site['manager'] . ", gérante, du devis au suivi.\n";
-	$o .= '- Contact : ' . $site['phone'] . ' · ' . $site['email'] . "\n";
+	$o .= '- Contact : ' . $site['phone'] . ' · ' . $site['email'] . ", du lundi au vendredi de 8 h à 18 h ; réponse sous 24 heures.\n";
+	$o .= "- Interventions : aussi tôt le matin, en soirée et le samedi ; dimanche et nuit sur demande.\n";
 	$o .= '- Tarif : ' . $prix . ' HT/h, tarif unique en régulier comme en ponctuel. Frais de gestion '
 		. number_format( (float) $site['price_gestion'], 0, ',', ' ' ) . ' € HT/mois en contrat régulier, mise en place '
 		. number_format( (float) $site['price_setup'], 0, ',', ' ' ) . ' € HT, indemnités kilométriques ' . $site['price_km_display']

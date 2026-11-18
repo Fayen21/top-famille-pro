@@ -30,7 +30,9 @@ const TFP_REASSURANCE_AVIS_MAX = 6; // Les six témoignages authentiques listés
  */
 function tfp_horaires_contact_defaut() {
 	// Espaces insécables dans les durées et l'amplitude : « 6 h » ne se coupe pas en fin de ligne.
-	return "Réponse sous 24\u{00A0}h · interventions généralement du lundi au samedi, 6\u{00A0}h\u{00A0}–\u{00A0}22\u{00A0}h";
+	// Horaires d'ouverture confirmés le 18 novembre 2026 ; les interventions débordent cette
+	// plage (PROJECT_INPUTS.md : du lundi au samedi, 6 h – 22 h).
+	return "Du lundi au vendredi, 8\u{00A0}h\u{00A0}–\u{00A0}18\u{00A0}h · réponse sous 24\u{00A0}h · interventions possibles tôt le matin, en soirée et le samedi";
 }
 
 /**
@@ -234,11 +236,10 @@ function tfp_render_reassurance_page() {
 
 			<h2>Disponibilité</h2>
 			<p>
-				Affichée sur la page Contact. N'y écrire que ce qui est <strong>établi</strong> : la
-				réponse sous 24 h et la plage d'intervention habituelle le sont ; une amplitude
-				d'accueil téléphonique ne l'a jamais été. Cette valeur n'est déclarée dans
-				<strong>aucune donnée structurée</strong> — une amplitude publiée en
-				<code>openingHoursSpecification</code> est un engagement opposable.
+				Affichée sur la page Contact. N'y écrire que ce qui est <strong>établi</strong>.
+				Les horaires d'ouverture déclarés aux moteurs de recherche
+				(<code>openingHoursSpecification</code> : lundi–vendredi, 8 h – 18 h) sont fixés dans
+				le thème (includes/site-options.php) : s'ils changent, modifier les deux.
 				Vider le champ retire la carte.
 			</p>
 			<table class="form-table" role="presentation">

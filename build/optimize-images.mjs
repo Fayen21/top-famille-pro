@@ -34,14 +34,14 @@ const SLOTS = [
     slug: 'hero-main',
     src: 'hero-bureaux.jpg',
     widths: [480, 760, 1000],
-    alt: 'Espace de bureaux lumineux avec fauteuils et table basse (photo d’illustration)',
+    alt: 'Espace d’accueil de bureaux lumineux : fauteuils clairs, canapé gris, table basse et grande baie vitrée (photo d’illustration)',
     lcp: true,
   },
   {
     slug: 'hero-secondary',
     src: 'unsplash-1497366811353-6870744d04b2-900.jpg',
     widths: [220, 340, 460],
-    alt: 'Salle de réunion vitrée (photo d’illustration)',
+    alt: 'Salle de réunion moderne : table en bois, chaises roses, sol en béton ciré et façade entièrement vitrée (photo d’illustration)',
   },
   /*
    * SIX héros de prestation, un par prestation — table établie sur les OCTETS de la maquette par
@@ -58,13 +58,13 @@ const SLOTS = [
     slug: 'service-bureaux',
     src: 'unsplash-1531973576160-7125cd663d86-800.jpg',
     widths: [320, 480, 640],
-    alt: 'Plateau de bureaux en open-space (photo d’illustration)',
+    alt: 'Grand open-space de bureaux : postes de travail alignés, moquette grise et éclairage linéaire au plafond (photo d’illustration)',
   },
   {
     slug: 'service-commerces',
     src: 'unsplash-1441986300917-64674bd600d8-800.jpg',
     widths: [320, 480, 640],
-    alt: 'Surface de vente d’une boutique (photo d’illustration)',
+    alt: 'Boutique de prêt-à-porter : portants de vestes, étagères de vêtements pliés et suspensions blanches (photo d’illustration)',
   },
   /*
    * Cartes de prestation de l'ACCUEIL — G26 §3. La maquette n'y pose pas les mêmes photos que sur
@@ -77,13 +77,13 @@ const SLOTS = [
     slug: 'accueil-bureaux',
     src: 'prestation-bureaux.jpg',
     widths: [320, 480, 640],
-    alt: 'Plateau de bureaux en open-space (photo d’illustration)',
+    alt: 'Grand open-space de bureaux : postes de travail alignés, moquette grise et éclairage linéaire au plafond (photo d’illustration)',
   },
   {
     slug: 'accueil-commerces',
     src: 'prestation-commerces.jpg',
     widths: [320, 480, 640],
-    alt: 'Surface de vente d’une boutique (photo d’illustration)',
+    alt: 'Boutique de prêt-à-porter : portants de vestes, étagères de vêtements pliés et suspensions blanches (photo d’illustration)',
   },
   /*
    * Portrait des pages /contact/ et /demande-de-devis/ — un troisième visuel de stock dans la
@@ -100,38 +100,38 @@ const SLOTS = [
     slug: 'service-cabinets',
     src: 'unsplash-1524758631624-e2822e304c36-800.jpg',
     widths: [320, 480, 640],
-    alt: 'Espace d’accueil avec fauteuils, type salle d’attente (photo d’illustration)',
+    alt: 'Salle d’attente lumineuse : fauteuils, canapé, table basse et lampadaire près d’une baie vitrée (photo d’illustration)',
   },
   {
     slug: 'service-coproprietes',
     src: 'unsplash-1497366216548-37526070297c-900.jpg',
     widths: [320, 480, 640],
-    alt: 'Couloir et circulations entretenus (photo d’illustration)',
+    alt: 'Long couloir de circulation au sol clair, bordé de cloisons vitrées et d’une cuisine équipée (photo d’illustration)',
   },
   {
     slug: 'service-meubles',
     src: 'unsplash-1600585152220-90363fe7e115-800.jpg',
     widths: [320, 480, 640],
-    alt: 'Cuisine d’un logement meublé (photo d’illustration)',
+    alt: 'Cuisine ouverte d’un logement meublé : îlot blanc, tabourets en bois, suspensions noires et parquet clair (photo d’illustration)',
   },
   {
     slug: 'service-ponctuel',
     src: 'unsplash-1581578731548-c64695cc6952-800.jpg',
     widths: [320, 480, 640],
-    alt: 'Nettoyage approfondi de vitres (photo d’illustration)',
+    alt: 'Agente d’entretien équipée de gants, lunettes et masque, nettoyant une fenêtre à l’éponge (photo d’illustration)',
   },
   {
     slug: 'article-1',
     src: 'unsplash-1497366216548-37526070297c-900.jpg',
     widths: [320, 480, 640],
-    alt: 'Couloir de bureaux et kitchenette (photo d’illustration)',
+    alt: 'Long couloir de circulation au sol clair, bordé de cloisons vitrées et d’une cuisine équipée (photo d’illustration)',
   },
   {
     slug: 'article-2',
     // Relevé G26 sur ARTICLES[1].photo : le thème servait une autre photo.
     src: 'unsplash-1454165804606-c3d57bc86b40-900.jpg',
     widths: [320, 480, 640],
-    alt: 'Poste de travail avec ordinateur (photo d’illustration)',
+    alt: 'Mains annotant un document papier posé entre deux ordinateurs portables (photo d’illustration)',
   },
   {
     slug: 'article-3',
@@ -139,7 +139,7 @@ const SLOTS = [
     // L'ancien texte alternatif décrivait d'ailleurs un bureau, pas cette photo.
     src: 'unsplash-1497215842964-222b430dc094-900.jpg',
     widths: [320, 480, 640],
-    alt: 'Poste de travail devant une baie vitrée (photo d’illustration)',
+    alt: 'Poste de travail devant une baie vitrée : ordinateur, orchidée et vue sur les immeubles de la ville (photo d’illustration)',
   },
   {
     // 15 novembre 2026 : la page Recrutement était la dernière à montrer la scène au masque et aux
@@ -147,13 +147,13 @@ const SLOTS = [
     slug: 'hero-recrutement',
     src: 'unsplash-1556761175-b413da4baf72-900.jpg',
     widths: [480, 760, 900],
-    alt: 'Équipe réunie autour d’une table de travail (photo d’illustration)',
+    alt: 'Quatre collègues échangent autour d’un poste de travail dans un open-space (photo d’illustration)',
   },
   {
     slug: 'service-generic',
     src: 'intervenante-stock-materiel.jpg',
     widths: [480, 760, 960],
-    alt: 'Intervention de nettoyage professionnel avec équipement de protection (photo d’illustration)',
+    alt: 'Agente d’entretien équipée de gants, lunettes et masque, nettoyant une fenêtre à l’éponge (photo d’illustration)',
   },
   /*
    * G26 — images relevées PAR RÔLE, après le refus de validation du 17 août 2026.
@@ -204,24 +204,24 @@ const SLOTS = [
    * cette table avait attribués aux prestations du même nom. Les vingt-quatre routes concernées
    * sont désormais appariées par empreinte, sans exception.
    */
-  { slug: 'ville-dijon', src: 'unsplash-1497366754035-f200968a6e72-900.jpg', widths: [480, 760, 960], alt: 'Locaux professionnels (photo d’illustration)' },
-  { slug: 'ville-besancon', src: 'unsplash-1524758631624-e2822e304c36-900.jpg', widths: [480, 760, 960], alt: 'Locaux professionnels (photo d’illustration)' },
-  { slug: 'ville-dole', src: 'unsplash-1497366216548-37526070297c-900.jpg', widths: [480, 760, 960], alt: 'Locaux professionnels (photo d’illustration)' },
-  { slug: 'ville-lons-le-saunier', src: 'unsplash-1497215842964-222b430dc094-900.jpg', widths: [480, 760, 960], alt: 'Locaux professionnels (photo d’illustration)' },
-  { slug: 'ville-nevers', src: 'unsplash-1541746972996-4e0b0f43e02a-900.jpg', widths: [480, 760, 960], alt: 'Locaux professionnels (photo d’illustration)' },
-  { slug: 'ville-vesoul', src: 'unsplash-1556761175-b413da4baf72-900.jpg', widths: [480, 760, 960], alt: 'Locaux professionnels (photo d’illustration)' },
-  { slug: 'ville-chalon-sur-saone', src: 'unsplash-1600880292203-757bb62b4baf-900.jpg', widths: [480, 760, 960], alt: 'Locaux professionnels (photo d’illustration)' },
-  { slug: 'ville-macon', src: 'unsplash-1497366811353-6870744d04b2-900.jpg', widths: [480, 760, 960], alt: 'Locaux professionnels (photo d’illustration)' },
-  { slug: 'ville-auxerre', src: 'prestation-bureaux.jpg', widths: [480, 760, 960], alt: 'Locaux professionnels (photo d’illustration)' },
-  { slug: 'ville-belfort', src: 'prestation-commerces.jpg', widths: [480, 760, 960], alt: 'Locaux professionnels (photo d’illustration)' },
-  { slug: 'ville-saint-apollinaire', src: 'unsplash-1497366811353-6870744d04b2-900.jpg', widths: [480, 760, 960], alt: 'Locaux professionnels (photo d’illustration)' },
-  { slug: 'ville-chenove', src: 'unsplash-1524758631624-e2822e304c36-900.jpg', widths: [480, 760, 960], alt: 'Locaux professionnels (photo d’illustration)' },
-  { slug: 'ville-quetigny', src: 'prestation-commerces.jpg', widths: [480, 760, 960], alt: 'Locaux professionnels (photo d’illustration)' },
-  { slug: 'ville-talant', src: 'unsplash-1497215842964-222b430dc094-900.jpg', widths: [480, 760, 960], alt: 'Locaux professionnels (photo d’illustration)' },
-  { slug: 'ville-longvic', src: 'prestation-bureaux.jpg', widths: [480, 760, 960], alt: 'Locaux professionnels (photo d’illustration)' },
-  { slug: 'ville-fontaine-les-dijon', src: 'unsplash-1600585152220-90363fe7e115-900.jpg', widths: [480, 760, 960], alt: 'Locaux professionnels (photo d’illustration)' },
-  { slug: 'ville-marsannay-la-cote', src: 'unsplash-1600880292203-757bb62b4baf-900.jpg', widths: [480, 760, 960], alt: 'Locaux professionnels (photo d’illustration)' },
-  { slug: 'ville-beaune', src: 'unsplash-1454165804606-c3d57bc86b40-900.jpg', widths: [480, 760, 960], alt: 'Locaux professionnels (photo d’illustration)' },
+  { slug: 'ville-dijon', src: 'unsplash-1497366754035-f200968a6e72-900.jpg', widths: [480, 760, 960], alt: 'Couloir de bureaux bordé de cloisons vitrées noires, sol en béton ciré et suspensions (photo d’illustration — entretien de locaux professionnels à Dijon)' },
+  { slug: 'ville-besancon', src: 'unsplash-1524758631624-e2822e304c36-900.jpg', widths: [480, 760, 960], alt: 'Salle d’attente lumineuse : fauteuils, canapé, table basse et lampadaire près d’une baie vitrée (photo d’illustration — entretien de locaux professionnels à Besançon)' },
+  { slug: 'ville-dole', src: 'unsplash-1497366216548-37526070297c-900.jpg', widths: [480, 760, 960], alt: 'Long couloir de circulation au sol clair, bordé de cloisons vitrées et d’une cuisine équipée (photo d’illustration — entretien de locaux professionnels à Dole)' },
+  { slug: 'ville-lons-le-saunier', src: 'unsplash-1497215842964-222b430dc094-900.jpg', widths: [480, 760, 960], alt: 'Poste de travail devant une baie vitrée : ordinateur, orchidée et vue sur les immeubles de la ville (photo d’illustration — entretien de locaux professionnels à Lons-le-Saunier)' },
+  { slug: 'ville-nevers', src: 'unsplash-1541746972996-4e0b0f43e02a-900.jpg', widths: [480, 760, 960], alt: 'Réunion d’équipe en fin de journée dans une salle vitrée, autour d’ordinateurs portables (photo d’illustration — entretien de locaux professionnels à Nevers)' },
+  { slug: 'ville-vesoul', src: 'unsplash-1556761175-b413da4baf72-900.jpg', widths: [480, 760, 960], alt: 'Quatre collègues échangent autour d’un poste de travail dans un open-space (photo d’illustration — entretien de locaux professionnels à Vesoul)' },
+  { slug: 'ville-chalon-sur-saone', src: 'unsplash-1600880292203-757bb62b4baf-900.jpg', widths: [480, 760, 960], alt: 'Deux collègues se tapent dans la main autour d’un bureau, ordinateur portable et documents sur la table (photo d’illustration — entretien de locaux professionnels à Chalon-sur-Saône)' },
+  { slug: 'ville-macon', src: 'unsplash-1497366811353-6870744d04b2-900.jpg', widths: [480, 760, 960], alt: 'Salle de réunion moderne : table en bois, chaises roses, sol en béton ciré et façade entièrement vitrée (photo d’illustration — entretien de locaux professionnels à Mâcon)' },
+  { slug: 'ville-auxerre', src: 'prestation-bureaux.jpg', widths: [480, 760, 960], alt: 'Grand open-space de bureaux : postes de travail alignés, moquette grise et éclairage linéaire au plafond (photo d’illustration — entretien de locaux professionnels à Auxerre)' },
+  { slug: 'ville-belfort', src: 'prestation-commerces.jpg', widths: [480, 760, 960], alt: 'Boutique de prêt-à-porter : portants de vestes, étagères de vêtements pliés et suspensions blanches (photo d’illustration — entretien de locaux professionnels à Belfort)' },
+  { slug: 'ville-saint-apollinaire', src: 'unsplash-1497366811353-6870744d04b2-900.jpg', widths: [480, 760, 960], alt: 'Salle de réunion moderne : table en bois, chaises roses, sol en béton ciré et façade entièrement vitrée (photo d’illustration — entretien de locaux professionnels à Saint-Apollinaire)' },
+  { slug: 'ville-chenove', src: 'unsplash-1524758631624-e2822e304c36-900.jpg', widths: [480, 760, 960], alt: 'Salle d’attente lumineuse : fauteuils, canapé, table basse et lampadaire près d’une baie vitrée (photo d’illustration — entretien de locaux professionnels à Chenôve)' },
+  { slug: 'ville-quetigny', src: 'prestation-commerces.jpg', widths: [480, 760, 960], alt: 'Boutique de prêt-à-porter : portants de vestes, étagères de vêtements pliés et suspensions blanches (photo d’illustration — entretien de locaux professionnels à Quetigny)' },
+  { slug: 'ville-talant', src: 'unsplash-1497215842964-222b430dc094-900.jpg', widths: [480, 760, 960], alt: 'Poste de travail devant une baie vitrée : ordinateur, orchidée et vue sur les immeubles de la ville (photo d’illustration — entretien de locaux professionnels à Talant)' },
+  { slug: 'ville-longvic', src: 'prestation-bureaux.jpg', widths: [480, 760, 960], alt: 'Grand open-space de bureaux : postes de travail alignés, moquette grise et éclairage linéaire au plafond (photo d’illustration — entretien de locaux professionnels à Longvic)' },
+  { slug: 'ville-fontaine-les-dijon', src: 'unsplash-1600585152220-90363fe7e115-900.jpg', widths: [480, 760, 960], alt: 'Cuisine ouverte d’un logement meublé : îlot blanc, tabourets en bois, suspensions noires et parquet clair (photo d’illustration — entretien de locaux professionnels à Fontaine-lès-Dijon)' },
+  { slug: 'ville-marsannay-la-cote', src: 'unsplash-1600880292203-757bb62b4baf-900.jpg', widths: [480, 760, 960], alt: 'Deux collègues se tapent dans la main autour d’un bureau, ordinateur portable et documents sur la table (photo d’illustration — entretien de locaux professionnels à Marsannay-la-Côte)' },
+  { slug: 'ville-beaune', src: 'unsplash-1454165804606-c3d57bc86b40-900.jpg', widths: [480, 760, 960], alt: 'Mains annotant un document papier posé entre deux ordinateurs portables (photo d’illustration — entretien de locaux professionnels à Beaune)' },
   {
     // Hero du pilier /nettoyage-professionnel/ — l'image EXACTE de la maquette (G24) :
     // assets/photos/intervenante-stock-bureaux.jpg est octet pour octet l'asset embarqué du
@@ -231,7 +231,7 @@ const SLOTS = [
     slug: 'hero-pilier',
     src: 'intervenante-stock-bureaux.jpg',
     widths: [480, 760, 960],
-    alt: 'Deux collègues dans un bureau (photo d’illustration)',
+    alt: 'Deux collègues se tapent dans la main autour d’un bureau, ordinateur portable et documents sur la table (photo d’illustration)',
   },
   {
     // Hero de la page région — l'image EXACTE de la maquette (G24) :
@@ -240,7 +240,7 @@ const SLOTS = [
     slug: 'hero-region',
     src: 'locaux-professionnels-region.jpg',
     widths: [480, 760, 960],
-    alt: 'Locaux professionnels (photo d’illustration)', // aucun lieu affirmé : image de banque d'images (revue du 25 octobre 2026)
+    alt: 'Poste de travail devant une baie vitrée : ordinateur, orchidée et vue sur les immeubles de la ville (photo d’illustration — entretien de locaux professionnels en Bourgogne-Franche-Comté)', // aucun lieu affirmé : image de banque d'images (revue du 25 octobre 2026)
   },
   {
     // Visuel temporaire (accueil + À propos) tant que le portrait authentique d'Audrey n'est pas

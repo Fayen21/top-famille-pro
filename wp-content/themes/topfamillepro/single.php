@@ -171,7 +171,7 @@ get_header();
 			<?php endif; ?>
 		</p>
 	<div class="tfp-article__cover">
-		<?php tfp_picture( tfp_article_image_slug( $post_id ), array( 'sizes' => '(max-width: 900px) 92vw, 820px', 'lcp' => true, 'alt' => $image_alt ?: null ) ); ?>
+		<?php tfp_picture( tfp_article_image_slug( $post_id ), array( 'sizes' => '(max-width: 900px) 92vw, 820px', 'lcp' => true, 'alt' => ( $image_alt && $image_alt !== get_the_title( $post_id ) && '?' !== substr( $image_alt, -1 ) ) ? $image_alt : null /* Un alt qui recopie le titre ne décrit pas la photo : le manifeste prend le relais. */ ) ); ?>
 	</div>
 </header>
 

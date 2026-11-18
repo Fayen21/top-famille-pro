@@ -1,4 +1,4 @@
-# Installation par script — Top-Famille Pro 0.18.0
+# Installation par script — Top-Famille Pro 0.18.1
 
 > Version du 18 novembre 2026. Ce script remplace les **phases 2 et 4** de
 > `CHECKLIST-MISE-EN-LIGNE.md` : installation des prérequis, du thème et du contenu, activation,
@@ -64,7 +64,7 @@ Puis refaire le test du devis en production (check-list, phase 4), puis la phase
 
 | Étape | Action | S'arrête si… |
 |---|---|---|
-| 0 | Contrôles : WP-CLI, WordPress, PHP ≥ 8, ZIP intacts (SHA-256), thème en 0.18.0, environnement | une condition manque |
+| 0 | Contrôles : WP-CLI, WordPress, PHP ≥ 8, ZIP intacts (SHA-256), thème en 0.18.1, environnement | une condition manque |
 | 1 | Export de la base et archive des thèmes et extensions dans `~/tfp-sauvegardes/` ; note du thème actif | l'export échoue (voir §5) |
 | 2 | GeneratePress, ACF, et LiteSpeed Cache avec `--litespeed` | GeneratePress ne s'installe pas |
 | 3 | Thème installé (non activé) ; outil d'installation du contenu installé et activé | une installation échoue |
@@ -111,7 +111,7 @@ En dernier recours : hPanel → Sauvegardes → Restaurer.
 Le script a été lancé sur le banc local : WordPress, SQLite, environnement `production`, avec les
 ZIP de `paquets-passe-2026-11-18`.
 
-- **Installation complète** : 16 étapes de contenu sur 16, puis 14 contrôles sur 14 (rejoué avec les paquets 0.18.0). Alertes
+- **Installation complète** : 16 étapes de contenu sur 16, puis 14 contrôles sur 14 (rejoué avec les paquets 0.18.1). Alertes
   attendues sur le banc : base SQLite non exportable, ACF et LiteSpeed absents (pas de réseau vers
   wordpress.org), pas de compression.
 - **Chemins d'échec vérifiés** : chacun s'arrête proprement.

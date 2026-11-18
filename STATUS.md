@@ -2374,7 +2374,21 @@ Rapport : `docs/AUDIT-SEO-GEO-2026-11-18.md`. Outil : `node tools/audit-seo.mjs`
   - FAQPage automatique pour les FAQ des pages statiques.
 - GEO : `/llms.txt` (`includes/llms-txt.php`), construit depuis les données du site.
 - Paquets : `release/paquets-passe-2026-11-18/`. La check-list et le script visent désormais 0.18.0.
-- Ordre de construction : export statique **puis** `npm run paquets`, car l'export vide `export/`.
+- Ordre de construction : `npm run paquets`, export statique (qui contrôle la parité puis vide
+  `export/`), puis de nouveau `npm run paquets`.
 
 Reste après la mise en ligne : Search Console, fiche Google Business Profile, avis réels, test des
 résultats enrichis sur l'URL réelle.
+
+### Compléments (thème 0.18.1)
+
+- Horaires d'ouverture confirmés par Emmanuel : du lundi au vendredi, 8 h – 18 h.
+  - Déclarés en `openingHoursSpecification` et affichés sur la page Contact.
+  - Le test `contact.spec.js` est mis à jour pour cette décision.
+- 35 `alt` d'images réécrits d'après le contenu réel des photos (`build/optimize-images.mjs`).
+  Sur les zones et les articles, le manifeste remplace l'alt générique ou le titre recopié.
+- Balisage `Review` / `AggregateRating` demandé, mais **non fait**. Les témoignages affichés sont
+  fictifs, et Google ignore les avis qu'une entreprise publie sur elle-même (raisons détaillées
+  dans le rapport, §6).
+- Suite : 1 389/1 390 avant reconstruction des paquets, puis parité 4/4 et contact 17/17.
+  Export 53/53, recette du devis sans échec, script 14/14 avec les paquets 0.18.1.

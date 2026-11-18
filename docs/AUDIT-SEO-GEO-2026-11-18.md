@@ -1,4 +1,4 @@
-# Audit SEO / GEO — 18 novembre 2026 (thème 0.18.0)
+# Audit SEO / GEO — 18 novembre 2026 (thème 0.18.1)
 
 Outil : `node tools/audit-seo.mjs [url]`. Il lit le sitemap, ouvre chacune des 53 pages dans Chromium
 et contrôle les balises, les titres, les données structurées, les images et le maillage. Lancé sur
@@ -84,8 +84,7 @@ visuels de cartes n'avaient pas d'`alt` : ils sont corrigés.
 | Contenu court : Contact (154 mots), Recrutement, Conseils, cookies, confidentialité | Pages utilitaires : les allonger n'apporterait rien au référencement et nuirait à leur usage |
 | Peu de liens sortants sur les pages légales et Recrutement | Normal pour ces pages, qui restent liées depuis le pied de page des 53 pages |
 | Plan du site lié seulement depuis le pied de page | Usage normal d'un plan du site |
-| Pas d'`openingHoursSpecification` | Horaires jamais confirmés par Audrey |
-| Pas de `Review` / `AggregateRating` | Interdit (CLAUDE.md §5.5) |
+| Pas de `Review` / `AggregateRating` | Voir §6 : les avis affichés sont fictifs, et Google n'affiche de toute façon pas d'étoiles pour les avis qu'une entreprise publie sur elle-même |
 
 ## 4. Ce qui ne peut se faire qu'après la mise en ligne
 
@@ -109,3 +108,30 @@ visuels de cartes n'avaient pas d'`alt` : ils sont corrigés.
   rejoué : 4/4.
 - Export : 53/53 routes. Parité : 1 287 fichiers. Recette du devis : 0 échec.
 - Script de mise en ligne avec les paquets 0.18.0 sur le banc : 16/16 étapes, 14/14 contrôles.
+
+## 6. Compléments du 18 novembre (thème 0.18.1)
+
+**Horaires d'ouverture** (donnés par Emmanuel) : du lundi au vendredi, 8 h – 18 h.
+- Déclarés en `openingHoursSpecification` sur l'organisation et en `hoursAvailable` sur le point
+  de contact.
+- Affichés sur la page Contact, avec la mention « interventions possibles tôt le matin, en soirée
+  et le samedi ». Les interventions débordent la plage d'ouverture (PROJECT_INPUTS.md).
+- Repris dans `llms.txt`.
+
+**Descriptions des images réécrites** après lecture de chaque photo. 35 visuels sont concernés.
+- Chaque `alt` décrit ce que montre réellement la photo. Exemple : « Grand open-space de bureaux :
+  postes de travail alignés, moquette grise et éclairage linéaire au plafond ».
+- Sur les 18 pages de ville, il cite aussi le lieu desservi : « … (photo d'illustration —
+  entretien de locaux professionnels à Dijon) ». Le texte générique « Locaux professionnels » et le
+  titre d'article recopié en `alt` ne sont plus utilisés.
+- « (photo d'illustration) » est conservé : ce sont des photos de banque d'images, qui ne doivent
+  pas passer pour des intervenants ou des locaux réels (CLAUDE.md §5.6).
+
+**Balisage d'avis non ajouté.**
+- Les témoignages affichés sont ceux de la maquette, inventés. Les baliser en `Review` reviendrait
+  à déclarer de faux avis à Google : c'est une pratique commerciale trompeuse, et un motif
+  d'action manuelle de Google pour données structurées abusives.
+- Même avec de vrais avis, Google n'affiche plus d'étoiles depuis 2019 pour les avis qu'une
+  entreprise (`LocalBusiness` / `Organization`) publie sur son propre site. Le gain serait nul.
+- La note Google de 5,0 n'a ni nombre d'avis, ni fiche vérifiable. Les étoiles qui comptent en
+  local sont celles de la **fiche Google Business Profile**, affichées par Google lui-même.

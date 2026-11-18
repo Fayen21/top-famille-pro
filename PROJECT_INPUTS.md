@@ -109,6 +109,8 @@ Locaux commerciaux · entreprises de services · cabinets libéraux (avocat, not
 **Exclusions explicites** ✅ — locaux **industriels**, **alimentaires**, et **médicaux nécessitant une asepsie complète**.
 > Ces exclusions doivent apparaître sur le site : elles qualifient les demandes en amont et évitent des devis perdus.
 
+**Horaires d'ouverture** ✅ — du lundi au vendredi, 8 h – 18 h (confirmés par Emmanuel le 18 novembre 2026 ; déclarés en `openingHoursSpecification`).
+
 **Horaires d'intervention** ✅ — généralement du lundi au samedi, 6h–22h. Jours fériés, dimanche et travail de nuit possibles sur demande.
 
 **Point de vigilance commercial** ✅ — le matériel et les produits sont **fournis par le client**, les intervenants utilisent ceux du client. C'est une différence réelle avec une société de propreté classique : à énoncer clairement plutôt qu'à masquer, sous peine de litiges à la première prestation.

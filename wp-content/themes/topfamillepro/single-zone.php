@@ -228,7 +228,11 @@ get_header();
 				 */
 				$tfp_slug_zone  = get_post_field( 'post_name', $post_id );
 				$tfp_slot_ville = tfp_image_exists( 'ville-' . $tfp_slug_zone ) ? 'ville-' . $tfp_slug_zone : 'article-3';
-				tfp_picture( $tfp_slot_ville, array( 'sizes' => '(max-width: 819px) 92vw, 560px', 'lcp' => true, 'alt' => $hero_alt ) );
+				// Le champ `hero_alt` générique (« Locaux professionnels… ») cède la place à la description
+				// précise de la photo, tenue dans le manifeste d'images (passe SEO du 18 novembre 2026).
+				// Un texte saisi à la main dans le champ reste prioritaire.
+				$tfp_alt_ville = ( 0 === strpos( $hero_alt, 'Locaux professionnels' ) ) ? null : $hero_alt;
+				tfp_picture( $tfp_slot_ville, array( 'sizes' => '(max-width: 819px) 92vw, 560px', 'lcp' => true, 'alt' => $tfp_alt_ville ) );
 				?>
 			</div>
 		</div>

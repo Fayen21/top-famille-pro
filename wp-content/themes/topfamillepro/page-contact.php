@@ -147,10 +147,11 @@ $coordonnees = array(
  * La valeur reste administrable (Réglages → Réassurance & avis). L'ancienne valeur par défaut,
  * jamais confirmée, est neutralisée si elle a été enregistrée telle quelle en base.
  *
- * Aucun `openingHoursSpecification` n'est émis nulle part sur le site : voir includes/seo.php.
+ * Les horaires d'ouverture (lundi–vendredi, 8 h – 18 h, confirmés le 18 novembre 2026) sont
+ * déclarés en `openingHoursSpecification` par includes/seo.php.
  */
 $horaires = tfp_reassurance_data()['horaires_contact'];
-if ( in_array( $horaires, array( 'Du lundi au vendredi · réponse sous 24 h', 'Du lundi au vendredi · à confirmer · réponse sous 24 h' ), true ) ) {
+if ( in_array( $horaires, array( 'Du lundi au vendredi · réponse sous 24 h', 'Du lundi au vendredi · à confirmer · réponse sous 24 h', "Réponse sous 24\u{00A0}h · interventions généralement du lundi au samedi, 6\u{00A0}h\u{00A0}–\u{00A0}22\u{00A0}h" ), true ) ) {
 	$horaires = tfp_horaires_contact_defaut();
 }
 if ( '' !== $horaires ) {
