@@ -2336,3 +2336,20 @@ Bilan : `docs/BILAN-PASSE-2026-11-17.md`.
 - Suite 1 390/1 390, export 53/53, recette devis 23/23.
 
 Reste : avis réels (ou retrait), préproduction, Lighthouse à rejouer.
+
+## Mise en ligne par script (18 novembre 2026)
+
+- `release/CHECKLIST-MISE-EN-LIGNE.md` : procédure complète, phases 0 à 6, et retour arrière.
+- `tools/deploiement/deployer-hostinger.sh` : installation en une commande SSH, à lancer par
+  Emmanuel, d'abord sur la préproduction puis sur la production. Il couvre les phases 2 et 4 :
+  - sauvegarde, prérequis, thème, contenu, activation, permaliens, nettoyage ;
+  - 13 contrôles automatiques ;
+  - arrêt au premier problème, et `--retour-arriere`.
+- Mode d'emploi : `release/DEPLOIEMENT-PAR-SCRIPT.md`.
+- Essai sur le banc en `production` : 16/16 étapes, 13/13 contrôles. Les chemins d'échec ont été
+  vérifiés.
+- Non testé : le WP-CLI d'Hostinger, l'export MySQL, les téléchargements depuis wordpress.org.
+- Le script n'a été lancé sur aucun serveur réel, conformément à CLAUDE.md §6.
+
+Reste : décisions de la phase 0 (avis, Kbis, fusion de la PR), lancement en préproduction, test
+réel du devis.

@@ -1,0 +1,124 @@
+# Installation par script — Top-Famille Pro 0.17.0
+
+> Version du 18 novembre 2026. Ce script remplace les **phases 2 et 4** de
+> `CHECKLIST-MISE-EN-LIGNE.md` : installation des prérequis, du thème et du contenu, activation,
+> permaliens, nettoyage, contrôles. Les **phases 0, 3, 5 et 6** restent à faire par une personne :
+> décisions, test réel du devis, contrôle visuel, Search Console.
+>
+> Le script ne s'exécute que sur la commande de la personne qui le lance. Il demande de retaper
+> l'adresse du site avant toute modification, et s'arrête au premier problème en expliquant quoi faire.
+
+## 1. Préparer (une seule fois)
+
+1. **Activer l'accès SSH** : hPanel → **Avancé → Accès SSH** → activer. Noter l'hôte, le port
+   (souvent `65002`) et l'utilisateur, et définir un mot de passe.
+2. **Déposer quatre fichiers** dans un dossier `tfp-livraison`, à la racine de votre espace
+   d'hébergement (hPanel → **Fichiers → Gestionnaire de fichiers** → dossier personnel → nouveau
+   dossier `tfp-livraison` → Téléverser) :
+   - `release/paquets-passe-2026-11-17/topfamillepro-theme.zip` ;
+   - `release/paquets-passe-2026-11-17/topfamillepro-content-installer.zip` ;
+   - `release/paquets-passe-2026-11-17/SHA256SUMS.txt` ;
+   - `tools/deploiement/deployer-hostinger.sh`.
+3. **Se connecter** depuis un terminal (Terminal sur Mac, PowerShell sous Windows) :
+   ```
+   ssh -p 65002 UTILISATEUR@HÔTE
+   ```
+   Hostinger propose aussi un terminal dans le navigateur, sur la page Accès SSH.
+4. **Trouver le dossier du site**, celui qui contient `wp-config.php` :
+   ```
+   ls ~/domains/
+   ls ~/domains/top-famille-pro.fr/public_html/wp-config.php
+   ```
+   La préproduction a son propre dossier, indiqué dans hPanel sur la page de l'environnement de
+   préproduction.
+
+## 2. Préproduction d'abord
+
+```
+cd ~/domains/<dossier-de-la-préproduction>
+bash ~/tfp-livraison/deployer-hostinger.sh --simulation
+bash ~/tfp-livraison/deployer-hostinger.sh --litespeed
+```
+
+- `--simulation` ne modifie rien. Il vérifie WP-CLI, PHP, l'intégrité des fichiers et la version, et
+  indique si le formulaire enverra de vrais e-mails.
+- La deuxième commande installe. Elle demande de **retaper l'adresse exacte du site** affichée,
+  puis enchaîne les étapes 1 à 8 en environ une minute.
+
+Ensuite, faire la **phase 3** de la check-list : envoyer un devis de test, regarder le site et
+lancer Lighthouse.
+
+## 3. Production
+
+Après validation de la préproduction, et une **sauvegarde hPanel** faite juste avant :
+
+```
+cd ~/domains/top-famille-pro.fr/public_html
+bash ~/tfp-livraison/deployer-hostinger.sh --simulation
+bash ~/tfp-livraison/deployer-hostinger.sh --litespeed
+```
+
+Puis refaire le test du devis en production (check-list, phase 4), puis la phase 5.
+
+## 4. Ce que fait le script
+
+| Étape | Action | S'arrête si… |
+|---|---|---|
+| 0 | Contrôles : WP-CLI, WordPress, PHP ≥ 8, ZIP intacts (SHA-256), thème en 0.17.0, environnement | une condition manque |
+| 1 | Export de la base et archive des thèmes et extensions dans `~/tfp-sauvegardes/` ; note du thème actif | l'export échoue (voir §5) |
+| 2 | GeneratePress, ACF, et LiteSpeed Cache avec `--litespeed` | GeneratePress ne s'installe pas |
+| 3 | Thème installé (non activé) ; outil d'installation du contenu installé et activé | une installation échoue |
+| 4 | Simulation : pages présentes ou à créer, contenu étranger aux 53 pages (**rien n'est supprimé**) | — |
+| 5 | Installation du contenu ; rapport dans `~/tfp-sauvegardes/` | une étape est en erreur : **le thème n'est pas activé** |
+| 6 | Activation du thème, permaliens « Nom de l'article » si vides, règles d'adresses reconstruites | l'activation échoue |
+| 7 | Outil d'installation supprimé, cache LiteSpeed purgé | — |
+| 8 | Thème actif, accueil 200, **26 € HT/h** affiché et plus aucun 27 €, 5 pages clés en 200, formulaire en **envoi réel**, vraie 404, **53 adresses** au sitemap, `robots.txt`, compression | — (bilan en échec, avec la commande de retour arrière) |
+
+Un **✓** indique un contrôle réussi. Un **!** signale une alerte à lire, qui ne bloque pas. Un
+**✕** signale un échec.
+
+## 5. Cas particuliers
+
+- **« export de la base impossible »** : faire une sauvegarde complète dans hPanel → Sauvegardes,
+  puis relancer avec `--sauvegarde-hpanel-faite`.
+- **« formulaire de devis en mode test »** : `wp-config.php` contient
+  `WP_ENVIRONMENT_TYPE` à `local` ou `development`. Le retirer, ou le mettre à `production`, puis
+  relancer. Sinon, aucun devis ne partira.
+- **« ACF n'a pas pu être installé »** : le site fonctionne, mais les champs ne sont pas modifiables
+  en administration. L'installer ensuite via Extensions → Ajouter.
+- **« sans compression »** : LiteSpeed Cache → Cache → activer, puis Page Optimization →
+  compression. Ne **pas** activer le chargement différé du CSS principal.
+- **Contenu « HORS des 53 pages »** : anciennes pages de l'ancien thème. Les mettre en brouillon
+  après avoir vérifié qu'elles ne servent plus.
+
+## 6. Retour arrière
+
+```
+bash ~/tfp-livraison/deployer-hostinger.sh --retour-arriere
+```
+
+Cette commande réactive le thème noté avant l'installation (`~/tfp-sauvegardes/theme-avant.txt`),
+supprime l'outil d'installation s'il reste, et purge le cache. Pour réimporter aussi la base :
+
+```
+bash ~/tfp-livraison/deployer-hostinger.sh --retour-arriere --restaurer-base=~/tfp-sauvegardes/base-AAAAMMJJ-HHMMSS.sql
+```
+
+En dernier recours : hPanel → Sauvegardes → Restaurer.
+
+## 7. Essai réalisé avant livraison
+
+Le script a été lancé sur le banc local : WordPress, SQLite, environnement `production`, avec les
+ZIP de `paquets-passe-2026-11-17`.
+
+- **Installation complète** : 16 étapes de contenu sur 16, puis 13 contrôles sur 13. Alertes
+  attendues sur le banc : base SQLite non exportable, ACF et LiteSpeed absents (pas de réseau vers
+  wordpress.org), pas de compression.
+- **Chemins d'échec vérifiés** : chacun s'arrête proprement.
+  - ZIP abîmé : arrêt à l'étape 0.
+  - Mauvaise adresse retapée : arrêt, rien n'est modifié.
+  - Dossier sans WordPress : arrêt.
+  - Environnement `development` : alerte à l'étape 0, puis contrôle « formulaire » en échec.
+  - Retour arrière : l'ancien thème est réactivé.
+- **Non testé ici** : le vrai WP-CLI d'Hostinger, `wp db export` sur MySQL, l'installation d'ACF,
+  de GeneratePress et de LiteSpeed depuis wordpress.org. D'où la préproduction d'abord.

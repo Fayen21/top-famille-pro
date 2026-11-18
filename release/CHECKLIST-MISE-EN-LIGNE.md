@@ -8,6 +8,9 @@
 > - `topfamillepro-content-installer.zip` — l'outil temporaire qui crée les 53 pages (version 1.11.0) ;
 > - `SHA256SUMS.txt` — empreintes pour vérifier que les fichiers ne sont pas abîmés.
 >
+> **Raccourci** : les phases 2 et 4 peuvent être faites en une commande SSH avec
+> `tools/deploiement/deployer-hostinger.sh` — mode d'emploi dans `DEPLOIEMENT-PAR-SCRIPT.md`.
+>
 > Le pas à pas détaillé, avec les écrans de l'administration, est dans `GUIDE-DEPLOIEMENT-HOSTINGER.md`
 > (même dossier `release/`). Cette check-list le remplace sur deux points devenus faux : les
 > 8 communes secondaires sont désormais **indexées** (et dans le sitemap), et les avis ne montrent
