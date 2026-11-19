@@ -2392,3 +2392,34 @@ résultats enrichis sur l'URL réelle.
   dans le rapport, §6).
 - Suite : 1 389/1 390 avant reconstruction des paquets, puis parité 4/4 et contact 17/17.
   Export 53/53, recette du devis sans échec, script 14/14 avec les paquets 0.18.1.
+
+## Mise en ligne de top-famille-pro.fr (19 novembre 2026) — faite par Emmanuel
+
+Mise à jour lancée par Emmanuel en SSH avec `deployer-hostinger.sh` : thème **0.1.0 → 0.18.1**.
+Il n'existait pas de préproduction.
+
+**Contrôles automatiques : tous réussis.**
+- `--controles` : 15/15, 0 alerte.
+- Tarif 26 €, envoi réel du devis, vraie 404.
+- Sitemap à 53 adresses, `robots.txt`, `llms.txt`, compression br.
+
+**Ajustements faits sur le serveur :**
+- **Anciennes pages en brouillon** : 52 `/fonctionnement/`, 46 `/entreprise-nettoyage-dijon/`, 34 `/nettoyage-de-bureaux/`.
+- **Redirections 301** vers leurs équivalents, posées en tête de `.htaccess`. Une copie de l'ancien fichier est dans `~/tfp-sauvegardes/htaccess-avant-redirections`.
+- **Page d'accueil** : ID 42 (`/accueil/`), conservée.
+- **`llms.txt` d'Hostinger** déplacé dans `~/tfp-sauvegardes/llms-hostinger.txt` : il masquait celui du thème.
+- **Outil d'installation du contenu** : il était resté actif en ancienne version ; il est maintenant supprimé.
+
+**Sauvegardes :**
+- La base n'a pas pu être exportée par WP-CLI. Une sauvegarde hPanel est déclarée faite.
+- Les thèmes et extensions sont archivés dans `~/tfp-sauvegardes/`.
+
+**Reste :**
+- Devis de test reçu en boîte de réception.
+- Contrôle visuel sur ordinateur et téléphone.
+- Fusion de la PR #10, pour que `main` corresponde à la production.
+- Google Search Console (sitemap).
+- Fiche Google Business Profile.
+- Avis réels.
+- Mentions légales à vérifier sur le Kbis.
+- Supprimer `~/tfp-livraison` une fois le site validé.
