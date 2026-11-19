@@ -26,7 +26,7 @@ Il contient le dossier `tfp-livraison/` avec quatre fichiers :
 - le script.
 
 Son empreinte SHA-256 est :
-`8baab54648498fe2651cd1168d52b8a48884086d6bc248205b1b6191a6cebd85`.
+`6e081c7ef51a1cc877ddabc7830ba378bdafcb910c57dc1271952edb3f9c1e19`.
 
 ### b. Activer l'accès SSH
 
@@ -131,6 +131,21 @@ Un **✓** indique un contrôle réussi. Un **!** signale une alerte à lire, qu
 **✕** signale un échec.
 
 ## 5. Cas particuliers
+
+- **Revérifier le site sans rien modifier** : `bash ~/tfp-livraison/deployer-hostinger.sh --controles`.
+  Cette commande relance seulement les contrôles de l'étape 8. `--simulation` ne les fait pas.
+- **Anciennes pages restées publiées** (le sitemap compte plus de 53 adresses) : les passer en
+  brouillon et rediriger leur adresse en 301 vers la nouvelle page. Ne jamais toucher à la page
+  définie comme page d'accueil (`wp option get page_on_front`). Pour top-famille-pro.fr, le
+  19 novembre 2026, cela concernait :
+  - `/fonctionnement/` → `/notre-fonctionnement/` ;
+  - `/entreprise-nettoyage-dijon/` → `/zones-intervention/cote-dor/dijon/` ;
+  - `/nettoyage-de-bureaux/` → `/prestations/bureaux/`.
+
+  Les redirections sont en tête du fichier `.htaccess`.
+- **Fichier `llms.txt` dans `public_html`** : il est créé par l'outil IA d'Hostinger et masque
+  celui du thème. Le déplacer dans `~/tfp-sauvegardes/`, puis désactiver sa génération dans
+  l'extension Hostinger si elle le recrée.
 
 - **« export de la base impossible »** : faire une sauvegarde complète dans hPanel → Sauvegardes,
   puis relancer avec `--sauvegarde-hpanel-faite`.

@@ -25,6 +25,7 @@
 #    bash deployer-hostinger.sh                       # installation (demande confirmation)
 #    bash deployer-hostinger.sh --simulation          # étapes 0 et 4 seulement : rien n'est modifié
 #    bash deployer-hostinger.sh --retour-arriere      # réactive le thème noté avant l'installation
+#    bash deployer-hostinger.sh --controles           # étape 8 seulement : contrôle le site en ligne, ne modifie rien
 #
 #  Options :
 #    --paquets=DOSSIER        dossier contenant les ZIP et SHA256SUMS.txt (défaut : ~/tfp-livraison)
@@ -58,6 +59,7 @@ for arg in "$@"; do
 		--chemin=*) CHEMIN="${arg#*=}" ;;
 		--simulation) MODE="simulation" ;;
 		--retour-arriere) MODE="retour" ;;
+		--controles) MODE="controles" ;;
 		--litespeed) LITESPEED=1 ;;
 		--sauvegarde-hpanel-faite) HPANEL_OK=1 ;;
 		--oui) OUI=1 ;;
@@ -177,6 +179,11 @@ simulation() {
 	'
 }
 
+if [ "$MODE" = "controles" ]; then
+	HORO="$(date +%Y%m%d-%H%M%S)"
+	VERSION_ZIP="$(wpc theme get "$THEME" --field=version 2>/dev/null)"
+fi
+
 if [ "$MODE" = "simulation" ]; then
 	etape "4. Simulation (rien n'est modifié)"
 	if wpc plugin is-active "$OUTIL" 2>/dev/null; then
@@ -190,6 +197,7 @@ if [ "$MODE" = "simulation" ]; then
 	exit 0
 fi
 
+if [ "$MODE" = "installation" ]; then
 # ---------- confirmation ----------
 if [ "$OUI" -ne 1 ]; then
 	printf '\n  %sVous allez installer Top-Famille Pro %s sur :%s %s\n' "$G" "$VERSION_ZIP" "$N" "$SITE"
@@ -299,6 +307,8 @@ else
 	alerte "LiteSpeed Cache n'est pas actif : obligatoire pour les performances (relancez avec --litespeed, ou installez-le depuis l'administration)."
 fi
 
+fi # fin des étapes 1 à 7 (sautées avec --controles)
+
 # =================================================================================================
 #  8. Contrôles du site en ligne
 # =================================================================================================
@@ -331,7 +341,10 @@ for s in page prestation zone post; do
 done
 controle "sitemap : $TOTAL adresses ($ADRESSES_SITEMAP attendues)" '[ "$TOTAL" -eq "$ADRESSES_SITEMAP" ]'
 controle "robots.txt annonce le sitemap" 'grep -qi "^Sitemap:" <<<"$(page /robots.txt)"'
-controle "llms.txt disponible (résumé pour les assistants IA)" 'grep -q "^# " <<<"$(page /llms.txt)"'
+controle "llms.txt disponible (résumé pour les assistants IA)" 'grep -q "^# " <<<"$(page /llms.txt | sed "1s/^\xEF\xBB\xBF//")"'
+if [ -f "$CHEMIN/llms.txt" ]; then
+	alerte "un fichier llms.txt existe dans le dossier du site (souvent créé par l'outil IA d'Hostinger) : il masque celui du thème, plus complet. Pour utiliser celui du thème : mv \"$CHEMIN/llms.txt\" ~/tfp-sauvegardes/ — et désactiver la génération de llms.txt dans l'extension Hostinger si elle le recrée."
+fi
 ENC="$(curl -s -o /dev/null -D - -H 'Accept-Encoding: br, gzip' --max-time 30 "$SITE/wp-content/themes/$THEME/assets/dist/css/main.css" 2>/dev/null | grep -i '^content-encoding' | tr -d '\r')"
 if [ -n "$ENC" ]; then ok "feuille de style compressée (${ENC#*: })"; else alerte "feuille de style servie sans compression : activez la compression dans LiteSpeed Cache."; fi
 
@@ -344,6 +357,10 @@ if [ "$ECHECS" -gt 0 ]; then
 	printf '  %s%d contrôle(s) en échec.%s Corrigez avant d’ouvrir le site, ou revenez en arrière :\n' "$R" "$ECHECS" "$N"
 	info "bash $0 --retour-arriere"
 	exit 1
+fi
+if [ "$MODE" = "controles" ]; then
+	printf '  %sContrôles automatiques réussis%s (%d alerte(s) à lire ci-dessus). Rien n’a été modifié.\n' "$V" "$N" "$ALERTES"
+	exit 0
 fi
 printf '  %sInstallation terminée, contrôles automatiques réussis%s (%d alerte(s) à lire ci-dessus).\n' "$V" "$N" "$ALERTES"
 cat <<FIN
