@@ -67,11 +67,27 @@ ls ~/domains/top-famille-pro.fr/public_html/wp-config.php
 
 ## 2. Préproduction d'abord
 
+Trouver d'abord le dossier de la préproduction (chaque ligne affichée est un WordPress) :
+
 ```
-cd ~/domains/<dossier-de-la-préproduction>
+find ~/domains/top-famille-pro.fr -maxdepth 3 -name wp-config.php
+```
+
+- **Une seule ligne** (`…/public_html/wp-config.php`) : il n'existe pas encore de préproduction.
+  La créer dans hPanel → **WordPress → Préproduction** (« Staging »), puis relancer la commande.
+- **Deux lignes** : la préproduction est celle qui n'est pas `…/public_html/wp-config.php`
+  (par exemple `…/public_html/staging/wp-config.php`).
+
+Se placer dans ce dossier (le chemin affiché, **sans** `/wp-config.php`), puis lancer le script.
+Exemple, à adapter au chemin réellement affiché :
+
+```
+cd ~/domains/top-famille-pro.fr/public_html/staging
 bash ~/tfp-livraison/deployer-hostinger.sh --simulation
 bash ~/tfp-livraison/deployer-hostinger.sh --litespeed
 ```
+
+Si le `cd` répond « No such file or directory », ne pas lancer le script : vérifier le chemin.
 
 - `--simulation` ne modifie rien. Il vérifie WP-CLI, PHP, l'intégrité des fichiers et la version, et
   indique si le formulaire enverra de vrais e-mails.
