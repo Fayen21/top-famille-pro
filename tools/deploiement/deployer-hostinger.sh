@@ -147,6 +147,9 @@ else
 fi
 THEME_AVANT="$(wpc theme list --status=active --field=name 2>/dev/null | head -1)"
 ok "thème actif actuellement : $THEME_AVANT"
+if [ "$THEME_AVANT" = "$THEME" ]; then
+	info "Mise à jour : version installée $(wpc theme get "$THEME" --field=version 2>/dev/null) → $VERSION_ZIP"
+fi
 
 # =================================================================================================
 #  Simulation seule
@@ -159,6 +162,10 @@ simulation() {
 			if ( ! is_array( $l ) || ! isset( $l["expected"] ) ) continue;
 			$n = function ( $v ) { return is_array( $v ) ? count( $v ) : (int) $v; };
 			printf( "    %-14s %2d attendus · %2d présents · %2d à créer\n", $famille, $l["expected"], $n( $l["present"] ), $n( $l["missing"] ) );
+		}
+		if ( ! function_exists( "tfp_installer_scan_legacy_content" ) ) {
+			echo "    (outil d’installation actif dans une ANCIENNE version : la liste du contenu hors des 53 pages sera faite par la nouvelle, pendant l’installation)\n";
+			return;
 		}
 		$etrangers = tfp_installer_scan_legacy_content();
 		if ( $etrangers ) {
@@ -173,6 +180,7 @@ simulation() {
 if [ "$MODE" = "simulation" ]; then
 	etape "4. Simulation (rien n'est modifié)"
 	if wpc plugin is-active "$OUTIL" 2>/dev/null; then
+		alerte "l'outil d'installation du contenu est resté ACTIF sur ce site (version $(wpc plugin get "$OUTIL" --field=version 2>/dev/null)). Il sera remplacé puis supprimé par l'installation."
 		simulation
 	else
 		info "L'outil d'installation n'est pas encore sur ce site : la simulation détaillée sera faite"

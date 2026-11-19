@@ -26,7 +26,7 @@ Il contient le dossier `tfp-livraison/` avec quatre fichiers :
 - le script.
 
 Son empreinte SHA-256 est :
-`e7ca5bae44e7e03c2d1e847db76fed1c03f9d23834f06a3eb4f6e12712b08155`.
+`8baab54648498fe2651cd1168d52b8a48884086d6bc248205b1b6191a6cebd85`.
 
 ### b. Activer l'accès SSH
 
