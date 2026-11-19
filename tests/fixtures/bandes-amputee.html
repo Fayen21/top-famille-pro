@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="fr-FR">
+	<head>
+		<meta charset="utf-8" />
+		<title>Fixture — article WordPress amputé d'une bande réelle</title>
+		<style>
+			body { margin: 0; }
+			main > * { min-height: 60px; }
+		</style>
+	</head>
+	<body>
+		<!--
+			Contre-épreuve : bandes-corps-continu.html PRIVÉ de sa bande « Questions fréquentes ».
+			C'est le défaut réel qui avait été trouvé sur les six pages de prestation — la FAQ ne
+			s'affichait pas faute de repli `get_post_meta()` hors ACF.
+
+			Le compteur élargi doit continuer de le voir : sept bandes contre huit. Une règle qui
+			rattraperait le corps éditorial continu en cessant de détecter une bande absente ne
+			vaudrait rien.
+		-->
+		<main>
+			<div class="tfp-container">Accueil › Conseils › Combien coûte le nettoyage de bureaux ?</div>
+
+			<header class="tfp-container tfp-container--narrow">
+				<span>Tarifs</span>
+				<h1>Combien coûte le nettoyage de bureaux ?</h1>
+				<p>Audrey · Publié le 4 août 2026</p>
+			</header>
+
+			<section><p>Comptez 27 € HT de l'heure, quel que soit le rythme.</p></section>
+
+			<section>
+				<strong>Sommaire</strong>
+				<ul><li>Comment se calcule le prix</li><li>Erreurs à éviter</li></ul>
+			</section>
+
+			<article class="tfp-article-body">
+				<h2>Comment se calcule le prix du nettoyage de bureaux ?</h2>
+				<p>Le prix se construit à partir d'un volume d'heures.</p>
+				<h2>Le tarif horaire, un repère plus fiable que le forfait</h2>
+				<p>Un forfait masque le volume réellement passé sur place.</p>
+				<h2>Exemples de budgets réels</h2>
+				<p>8 h par mois : 225 € HT.</p>
+			</article>
+
+			<section>
+				<h2>Erreurs à éviter</h2>
+				<ul><li>Comparer deux devis sans comparer les volumes d'heures.</li></ul>
+			</section>
+
+			<!-- BANDE RÉELLEMENT ABSENTE : « Questions fréquentes » -->
+
+			<section><p>Voir aussi nos tarifs et le nettoyage professionnel.</p></section>
+
+			<section>
+				<h2>Un devis pour vos locaux ?</h2>
+				<p>Gratuit · Sans engagement · Réponse sous 24 h</p>
+			</section>
+		</main>
+	</body>
+</html>

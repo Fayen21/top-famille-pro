@@ -4,7 +4,7 @@
  * Saône-et-Loire, Yonne, Territoire de Belfort). Côte-d'Or a été créée en phase 2.
  *
  * Contenu repris du prototype, corrigé selon CLAUDE.md §9 et §5.1 :
- * - tarif fictif « 27 € HT/h » retiré de toutes les réponses directes/FAQ (la grille réelle à
+ * - tarif fictif « 26 € HT/h » retiré de toutes les réponses directes/FAQ (la grille réelle à
  *   trois montants est déjà affichée par la section tarifs du gabarit, PROJECT_INPUTS.md §5) ;
  * - aucune commune satellite non validée listée comme desservie (le prototype propose une liste
  *   de « communesPlain » différente par département — aucune n'est confirmée par Audrey, donc
@@ -67,6 +67,10 @@ if ( ! function_exists( 'tfp_seed_get_dept_term' ) ) {
 $bureaux = get_page_by_path( 'bureaux', OBJECT, 'prestation' );
 $bureaux_id = $bureaux ? $bureaux->ID : 0;
 
+// prestations_liees ci-dessous n'est qu'une valeur initiale (seule « bureaux » existe à ce
+// stade de l'installation) : bin/seed-phase4-maillage.php la complète avec les 6 prestations
+// une fois qu'elles existent toutes (bug réel corrigé au hotfix du 9 août 2026).
+
 echo "=== Seed phase 3, lot 2 : 7 zones département restantes ===\n";
 
 /* ------------------------------------------------------------------ */
@@ -95,7 +99,7 @@ tfp_seed_faq( 'faq', array(
 	array( 'q' => 'Pouvez-vous intervenir après la fermeture du cabinet ?', 'a' => "Oui, c'est le cas le plus fréquent : passage après le dernier patient, avec une clé ou un code confiés sous décharge écrite. Les interventions de nuit et les dimanches sont majorées de 10 %." ),
 	array( 'q' => 'Un petit volume horaire est-il possible à Besançon ?', 'a' => "Nous conseillons au moins deux heures par passage sur ce secteur, ou un regroupement hebdomadaire : en dessous, l'organisation est difficile à tenir dans la durée." ),
 ), $doubs_id );
-tfp_seed_set_field( 'seo_title', 'Nettoyage professionnel en Doubs | Top-Famille Pro', $doubs_id );
+tfp_seed_set_field( 'seo_title', 'Entreprise de nettoyage dans le Doubs | Top-Famille Pro', $doubs_id );
 tfp_seed_set_field( 'seo_description', "Entreprise de nettoyage à Besançon et dans le Doubs : bureaux, cabinets, commerces, parties communes. Devis gratuit sous 24 h.", $doubs_id );
 
 echo "  Zone Doubs (département) : #$doubs_id\n";
@@ -126,7 +130,7 @@ tfp_seed_faq( 'faq', array(
 	array( 'q' => 'Pouvez-vous entretenir une location meublée dans le Jura ?', 'a' => "Oui, entre deux séjours ou en fin de bail : ménage complet, changement de linge fourni, vérification des consommables, chacun possible lorsque prévu au cahier des charges et chiffré dans le devis." ),
 	array( 'q' => 'Quel délai pour une intervention ponctuelle ?', 'a' => "Le délai de démarrage dépend des disponibilités, de l'adresse, du volume horaire et de l'organisation nécessaire. Il est confirmé lors de l'établissement du devis." ),
 ), $jura_id );
-tfp_seed_set_field( 'seo_title', 'Nettoyage professionnel en Jura | Top-Famille Pro', $jura_id );
+tfp_seed_set_field( 'seo_title', 'Entreprise de nettoyage dans le Jura | Top-Famille Pro', $jura_id );
 tfp_seed_set_field( 'seo_description', "Entreprise de nettoyage à Dole et Lons-le-Saunier (Jura) : bureaux, commerces, cabinets, parties communes. Devis gratuit sous 24 h.", $jura_id );
 
 echo "  Zone Jura (département) : #$jura_id\n";
@@ -157,7 +161,7 @@ tfp_seed_faq( 'faq', array(
 	array( 'q' => 'Pouvez-vous intervenir rapidement en urgence ?', 'a' => "Sur ce secteur, notre réactivité est plus limitée qu'en Côte-d'Or. Nous répondons clairement selon nos disponibilités plutôt que de nous engager sur un délai que nous ne pourrions pas tenir." ),
 	array( 'q' => "Faut-il un engagement de durée ?", 'a' => "Le devis est toujours gratuit et sans engagement. Le volume et la fréquence peuvent être ajustés en cours de route ; les conditions d'arrêt (préavis écrit) sont précisées au devis avant signature." ),
 ), $nievre_id );
-tfp_seed_set_field( 'seo_title', 'Nettoyage professionnel en Nièvre | Top-Famille Pro', $nievre_id );
+tfp_seed_set_field( 'seo_title', 'Entreprise de nettoyage dans la Nièvre | Top-Famille Pro', $nievre_id );
 tfp_seed_set_field( 'seo_description', "Entreprise de nettoyage à Nevers et dans la Nièvre : bureaux, commerces, cabinets, copropriétés. Devis gratuit sous 24 h.", $nievre_id );
 
 echo "  Zone Nièvre (département) : #$nievre_id\n";
@@ -188,7 +192,7 @@ tfp_seed_faq( 'faq', array(
 	array( 'q' => 'Le tarif est-il plus élevé qu\'en Côte-d\'Or ?', 'a' => "Non, le taux horaire est identique partout dans la région — voir la page Tarifs. Les éventuelles indemnités kilométriques dépendent de l'adresse des locaux et sont précisées dans le devis." ),
 	array( 'q' => 'Quel volume minimum conseillez-vous ?', 'a' => "Sur ce secteur, nous recommandons au moins deux heures par passage, ou un regroupement hebdomadaire, afin que l'organisation reste tenable pour vous comme pour nous." ),
 ), $hs_id );
-tfp_seed_set_field( 'seo_title', 'Nettoyage professionnel en Haute-Saône | Top-Famille Pro', $hs_id );
+tfp_seed_set_field( 'seo_title', 'Entreprise de nettoyage en Haute-Saône | Top-Famille Pro', $hs_id );
 tfp_seed_set_field( 'seo_description', "Entreprise de nettoyage à Vesoul et en Haute-Saône : bureaux, commerces, cabinets, parties communes. Devis gratuit sous 24 h.", $hs_id );
 
 echo "  Zone Haute-Saône (département) : #$hs_id\n";
@@ -219,7 +223,7 @@ tfp_seed_faq( 'faq', array(
 	array( 'q' => 'Un passage supplémentaire est-il possible les jours de forte affluence ?', 'a' => "Oui, pour les commerces notamment. Il est chiffré séparément au même tarif horaire, sans modifier le contrat régulier en place." ),
 	array( 'q' => 'Travaillez-vous avec les syndics du Grand Chalon ?', 'a' => "Oui : halls, cages d'escalier, ascenseurs, locaux à conteneurs, avec un cahier de liaison consultable par le conseil syndical et un point de suivi." ),
 ), $sl_id );
-tfp_seed_set_field( 'seo_title', 'Nettoyage professionnel en Saône-et-Loire | Top-Famille Pro', $sl_id );
+tfp_seed_set_field( 'seo_title', 'Entreprise de nettoyage en Saône-et-Loire | Top-Famille Pro', $sl_id );
 tfp_seed_set_field( 'seo_description', "Entreprise de nettoyage à Chalon-sur-Saône et Mâcon : bureaux, commerces, cabinets, copropriétés. Devis gratuit sous 24 h.", $sl_id );
 
 echo "  Zone Saône-et-Loire (département) : #$sl_id\n";
@@ -250,7 +254,7 @@ tfp_seed_faq( 'faq', array(
 	array( 'q' => 'Est-il possible d\'intervenir sans que nous soyons présents ?', 'a' => "Oui, c'est le cas le plus fréquent. La clé ou le badge est remis contre décharge écrite, avec le code d'alarme et la procédure de fermeture consignés." ),
 	array( 'q' => 'Quel délai pour démarrer un contrat régulier ?', 'a' => "Le délai de démarrage dépend des disponibilités, de l'adresse, du volume horaire et de l'organisation nécessaire. Il est confirmé lors de l'établissement du devis." ),
 ), $yonne_id );
-tfp_seed_set_field( 'seo_title', "Nettoyage professionnel en Yonne | Top-Famille Pro", $yonne_id );
+tfp_seed_set_field( 'seo_title', "Entreprise de nettoyage dans l'Yonne | Top-Famille Pro", $yonne_id );
 tfp_seed_set_field( 'seo_description', "Entreprise de nettoyage à Auxerre et dans l'Yonne : bureaux, commerces, cabinets, parties communes. Devis gratuit sous 24 h.", $yonne_id );
 
 echo "  Zone Yonne (département) : #$yonne_id\n";
@@ -281,7 +285,7 @@ tfp_seed_faq( 'faq', array(
 	array( 'q' => 'Couvrez-vous Delle, Beaucourt ou Giromagny ?', 'a' => "Ces communes sont examinées au cas par cas, selon la fréquence et le volume. Notre secteur prioritaire est Belfort et sa couronne immédiate." ),
 	array( 'q' => 'Quel est le délai de mise en place ?', 'a' => "Le délai de démarrage dépend des disponibilités, de l'adresse, du volume horaire et de l'organisation nécessaire. Il est confirmé lors de l'établissement du devis." ),
 ), $belfort_dept_id );
-tfp_seed_set_field( 'seo_title', 'Nettoyage professionnel à Belfort (90) | Top-Famille Pro', $belfort_dept_id );
+tfp_seed_set_field( 'seo_title', 'Entreprise de nettoyage à Belfort (90) | Top-Famille Pro', $belfort_dept_id );
 tfp_seed_set_field( 'seo_description', "Entreprise de nettoyage à Belfort et dans le Territoire de Belfort : bureaux, commerces, cabinets. Devis gratuit sous 24 h.", $belfort_dept_id );
 
 echo "  Zone Territoire de Belfort (département) : #$belfort_dept_id\n";

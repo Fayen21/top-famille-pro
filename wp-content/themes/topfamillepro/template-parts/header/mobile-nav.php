@@ -18,7 +18,7 @@ $site            = $args['site'];
 <div class="tfp-mobile-nav" id="tfp-mobile-nav" data-tfp-mobile-panel role="dialog" aria-modal="true" aria-label="Menu" hidden>
 	<div class="tfp-mobile-nav__header">
 		<a class="tfp-logo" href="<?php echo esc_url( home_url( '/' ) ); ?>" aria-label="<?php echo esc_attr( $site['brand_name'] ); ?> — Accueil">
-			<img src="<?php echo esc_url( TFP_THEME_URI . '/assets/dist/images/logo-horizontal.png' ); ?>" alt="<?php echo esc_attr( $site['brand_name'] ); ?>" width="68" height="36">
+			<img src="<?php echo esc_url( TFP_THEME_URI . '/assets/dist/images/logo-horizontal.png' ); ?>" alt="<?php echo esc_attr( $site['brand_name'] ); ?>" width="155" height="82">
 		</a>
 		<button type="button" class="tfp-menu-toggle" data-tfp-mobile-close aria-label="Fermer le menu">
 			<span aria-hidden="true">✕</span>
@@ -27,27 +27,45 @@ $site            = $args['site'];
 
 	<div class="tfp-mobile-nav__body">
 		<nav aria-label="Navigation principale">
+			<?php
+			/*
+			 * Même ordre et même principe qu'en bureau. Depuis le 13 novembre 2026, toucher le
+			 * libellé d'une entrée à sous-menu OUVRE ses choix (src/js/nav.js) ; sans JavaScript il
+			 * reste un lien vers sa page. La page parente est la première ou la dernière entrée du
+			 * volet (« notre méthode », « Voir toutes les villes »).
+			 */
+			?>
 			<div class="tfp-mobile-nav__list">
-				<button type="button" class="tfp-mobile-nav__button" id="tfp-mobile-btn-prestations" aria-controls="tfp-mobile-sub-prestations" aria-expanded="false" data-tfp-mobile-submenu-toggle>
-					Prestations <span aria-hidden="true">＋</span>
-				</button>
-				<div class="tfp-mobile-submenu" id="tfp-mobile-sub-prestations" hidden>
-					<?php foreach ( $prestations_nav as $item ) : ?>
-						<a href="<?php echo esc_url( $item['url'] ); ?>"><?php echo esc_html( $item['label'] ); ?></a>
-					<?php endforeach; ?>
-				</div>
-
-				<button type="button" class="tfp-mobile-nav__button" id="tfp-mobile-btn-zones" aria-controls="tfp-mobile-sub-zones" aria-expanded="false" data-tfp-mobile-submenu-toggle>
-					Zones d'intervention <span aria-hidden="true">＋</span>
-				</button>
-				<div class="tfp-mobile-submenu" id="tfp-mobile-sub-zones" hidden>
-					<?php foreach ( $zones_nav as $item ) : ?>
-						<a href="<?php echo esc_url( $item['url'] ); ?>"><?php echo esc_html( $item['label'] ); ?></a>
-					<?php endforeach; ?>
-				</div>
-
 				<?php foreach ( $main_nav as $item ) : ?>
-					<a class="tfp-mobile-nav__link" href="<?php echo esc_url( $item['url'] ); ?>"><?php echo esc_html( $item['label'] ); ?></a>
+					<?php if ( 'submenu' === $item['type'] ) : ?>
+						<?php $tfp_msub = 'tfp-mobile-sub-' . $item['key']; ?>
+						<div class="tfp-mobile-nav__row">
+							<a class="tfp-mobile-nav__link" href="<?php echo esc_url( $item['url'] ); ?>"><?php echo esc_html( $item['label'] ); ?></a>
+							<button type="button" class="tfp-mobile-nav__button" id="tfp-mobile-btn-<?php echo esc_attr( $item['key'] ); ?>" aria-controls="<?php echo esc_attr( $tfp_msub ); ?>" aria-expanded="false" data-tfp-mobile-submenu-toggle>
+								<?php echo tfp_icone( 'chevron', 'tfp-mobile-nav__chevron' ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
+								<span class="visually-hidden">Ouvrir le menu <?php echo esc_html( $item['aide'] ); ?></span>
+							</button>
+						</div>
+						<div class="tfp-mobile-submenu" id="<?php echo esc_attr( $tfp_msub ); ?>" hidden>
+							<?php if ( ! empty( $item['tete'] ) ) : ?>
+								<a href="<?php echo esc_url( $item['tete']['url'] ); ?>"><?php echo esc_html( $item['tete']['label'] ); ?></a>
+							<?php endif; ?>
+							<?php foreach ( $item['items'] as $sub ) : ?>
+								<a href="<?php echo esc_url( $sub['url'] ); ?>">
+									<?php echo esc_html( $sub['label'] ); ?>
+									<?php if ( ! empty( $sub['num'] ) ) : ?>
+										<span class="tfp-submenu__num" aria-hidden="true"><?php echo esc_html( $sub['num'] ); ?></span>
+										<span class="visually-hidden">(<?php echo esc_html( $sub['num'] ); ?>)</span>
+									<?php endif; ?>
+								</a>
+							<?php endforeach; ?>
+							<?php if ( ! empty( $item['tout'] ) ) : ?>
+								<a class="tfp-mobile-submenu__all" href="<?php echo esc_url( $item['tout']['url'] ); ?>"><?php echo esc_html( $item['tout']['label'] ); ?> →</a>
+							<?php endif; ?>
+						</div>
+					<?php else : ?>
+						<a class="tfp-mobile-nav__link" href="<?php echo esc_url( $item['url'] ); ?>"><?php echo esc_html( $item['label'] ); ?></a>
+					<?php endif; ?>
 				<?php endforeach; ?>
 			</div>
 		</nav>
@@ -57,19 +75,12 @@ $site            = $args['site'];
 			tfp_button(
 				array(
 					'label'   => 'Demander mon devis',
-					'href'    => home_url( '/demande-de-devis/' ),
+					'href'    => 'devis' === tfp_parcours() ? '#tfp-formulaire-devis' : home_url( '/demande-de-devis/' ),
 					'variant' => 'primary',
 					'block'   => true,
 				)
 			);
-			tfp_button(
-				array(
-					'label'   => '☎ ' . $site['phone'],
-					'href'    => 'tel:' . $site['phone_href'],
-					'variant' => 'secondary',
-					'block'   => true,
-				)
-			);
+			tfp_bouton_appel( array( 'variant' => 'secondary', 'numero' => true, 'classe' => 'tfp-btn--block' ) );
 			?>
 		</div>
 	</div>

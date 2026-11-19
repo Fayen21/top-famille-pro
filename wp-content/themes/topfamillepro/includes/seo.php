@@ -75,7 +75,16 @@ function tfp_render_head_meta() {
 	printf( '<meta name="robots" content="%s">' . "\n", esc_attr( $seo['robots'] ) );
 	printf( '<link rel="canonical" href="%s">' . "\n", esc_url( $canonical ) );
 
-	// Open Graph.
+	// Favicon (absent jusqu'au hotfix de fidélité production — généré depuis le logo carré,
+	// build/optimize-images.mjs → assets/dist/images/favicon-*.png).
+	$icons_base = trailingslashit( $site['origin'] ) . 'wp-content/themes/topfamillepro/assets/dist/images/';
+	printf( '<link rel="icon" type="image/png" sizes="32x32" href="%s">' . "\n", esc_url( $icons_base . 'favicon-32.png' ) );
+	printf( '<link rel="icon" type="image/png" sizes="512x512" href="%s">' . "\n", esc_url( $icons_base . 'favicon-512.png' ) );
+	printf( '<link rel="apple-touch-icon" sizes="180x180" href="%s">' . "\n", esc_url( $icons_base . 'favicon-180.png' ) );
+
+	// Open Graph. Image dédiée 1200×630 (og-image.jpg) — le logo seul (140px) était utilisé
+	// jusqu'ici, avec des proportions inadaptées à un aperçu de partage.
+	$og_image = trailingslashit( $site['origin'] ) . 'wp-content/themes/topfamillepro/assets/dist/images/og-image.jpg';
 	printf( '<meta property="og:type" content="%s">' . "\n", esc_attr( $seo['type'] ) );
 	printf( '<meta property="og:site_name" content="%s">' . "\n", esc_attr( $site['brand_name'] ) );
 	printf( '<meta property="og:title" content="%s">' . "\n", esc_attr( $seo['title'] ) );
@@ -84,7 +93,9 @@ function tfp_render_head_meta() {
 	}
 	printf( '<meta property="og:url" content="%s">' . "\n", esc_url( $canonical ) );
 	printf( '<meta property="og:locale" content="fr_FR">' . "\n" );
-	printf( '<meta property="og:image" content="%s">' . "\n", esc_url( trailingslashit( $site['origin'] ) . ltrim( $site['logo_path'], '/' ) ) );
+	printf( '<meta property="og:image" content="%s">' . "\n", esc_url( $og_image ) );
+	printf( '<meta property="og:image:width" content="1200">' . "\n" );
+	printf( '<meta property="og:image:height" content="630">' . "\n" );
 
 	// Twitter Card.
 	printf( '<meta name="twitter:card" content="summary_large_image">' . "\n" );
@@ -92,7 +103,7 @@ function tfp_render_head_meta() {
 	if ( ! empty( $seo['description'] ) ) {
 		printf( '<meta name="twitter:description" content="%s">' . "\n", esc_attr( $seo['description'] ) );
 	}
-	printf( '<meta name="twitter:image" content="%s">' . "\n", esc_url( trailingslashit( $site['origin'] ) . ltrim( $site['logo_path'], '/' ) ) );
+	printf( '<meta name="twitter:image" content="%s">' . "\n", esc_url( $og_image ) );
 
 	tfp_render_jsonld( $seo, $canonical );
 }
@@ -143,14 +154,38 @@ function tfp_render_jsonld( $seo, $canonical ) {
 			'addressCountry'  => $site['address_country'],
 		),
 		'areaServed'  => $area_served,
-		'priceRange'  => 'À partir de ' . $site['price_entry_display'] . ' HT/heure',
-		'openingHoursSpecification' => array(
+		'priceRange'  => $site['price_unique_display'] . ' HT/heure (tarif unique)',
+		// Point de contact unique : le seul numéro et la seule adresse e-mail de l'entreprise.
+		'contactPoint' => array(
+			'@type'             => 'ContactPoint',
+			'contactType'       => 'customer service',
+			'telephone'         => $site['phone_href'],
+			'email'             => $site['email'],
+			'areaServed'        => 'FR',
+			'availableLanguage' => 'fr',
+		),
+		// Métiers réellement exercés (les six prestations) : aide les moteurs et les assistants
+		// conversationnels à rattacher l'entreprise aux bonnes requêtes.
+		'knowsAbout'  => tfp_schema_metiers(),
+		'makesOffer'  => array( tfp_schema_offre_horaire() ),
+	);
+
+	/*
+	 * Horaires d'ouverture : du lundi au vendredi, 8 h – 18 h, confirmés par Emmanuel le
+	 * 18 novembre 2026 (l'ancienne amplitude 6 h – 22 h n'avait jamais été confirmée et n'était
+	 * pas déclarée). Ce sont les heures où l'entreprise est joignable ; les interventions peuvent
+	 * avoir lieu en dehors, ce que dit le contenu visible.
+	 */
+	if ( ! empty( $site['opening_hours']['days'] ) ) {
+		$horaires = array(
 			'@type'     => 'OpeningHoursSpecification',
 			'dayOfWeek' => $site['opening_hours']['days'],
 			'opens'     => $site['opening_hours']['opens'],
 			'closes'    => $site['opening_hours']['closes'],
-		),
-	);
+		);
+		$organization['openingHoursSpecification'] = array( $horaires );
+		$organization['contactPoint']['hoursAvailable'] = $horaires;
+	}
 
 	if ( ! empty( $site['same_as'] ) ) {
 		$organization['sameAs'] = array_values( $site['same_as'] );
@@ -166,7 +201,7 @@ function tfp_render_jsonld( $seo, $canonical ) {
 	);
 
 	$webpage = array(
-		'@type'       => 'WebPage',
+		'@type'       => tfp_schema_type_page(),
 		'@id'         => $canonical . '#webpage',
 		'url'         => $canonical,
 		'name'        => $seo['title'],
@@ -189,12 +224,139 @@ function tfp_render_jsonld( $seo, $canonical ) {
 		$graph = array_merge( $graph, $seo['schema'] );
 	}
 
+	/*
+	 * FAQ des pages statiques : une page dont le corps (relevé de la maquette) affiche des
+	 * questions-réponses reçoit le FAQPage correspondant, construit à partir des MÊMES blocs que
+	 * ceux rendus à l'écran (CLAUDE.md §8 : FAQPage uniquement si la FAQ est visible). Une page
+	 * qui déclare déjà son FAQPage n'en reçoit pas un second.
+	 */
+	$a_deja_faq = (bool) array_filter(
+		$graph,
+		function ( $n ) {
+			return isset( $n['@type'] ) && 'FAQPage' === $n['@type'];
+		}
+	);
+	if ( ! $a_deja_faq && is_page() ) {
+		$faq = tfp_static_faq_items( get_post_field( 'post_name', get_queried_object_id() ) );
+		if ( $faq ) {
+			$graph[] = array(
+				'@type'      => 'FAQPage',
+				'@id'        => $canonical . '#faq',
+				'mainEntity' => array_map(
+					function ( $item ) {
+						return array(
+							'@type'          => 'Question',
+							'name'           => $item['q'],
+							'acceptedAnswer' => array( '@type' => 'Answer', 'text' => $item['a'] ),
+						);
+					},
+					$faq
+				),
+			);
+		}
+	}
+
 	$jsonld = array(
 		'@context' => 'https://schema.org',
 		'@graph'   => $graph,
 	);
 
 	echo '<script type="application/ld+json">' . wp_json_encode( tfp_jsonld_decode_entities( $jsonld ), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES ) . '</script>' . "\n";
+}
+
+/**
+ * Type schema.org de la page courante : sous-type de WebPage quand il existe un type exact.
+ *
+ * @return string
+ */
+function tfp_schema_type_page() {
+	if ( ! is_page() ) {
+		return 'WebPage';
+	}
+	$types = array(
+		'contact'            => 'ContactPage',
+		'a-propos'           => 'AboutPage',
+		'prestations'        => 'CollectionPage',
+		'zones-intervention' => 'CollectionPage',
+		'conseils'           => 'CollectionPage',
+		'plan-du-site'       => 'CollectionPage',
+	);
+	$slug = get_post_field( 'post_name', get_queried_object_id() );
+	return $types[ $slug ] ?? 'WebPage';
+}
+
+/**
+ * Les six métiers exercés, tels qu'intitulés sur le site.
+ *
+ * @return string[]
+ */
+function tfp_schema_metiers() {
+	return array(
+		'Nettoyage de bureaux',
+		'Nettoyage de commerces',
+		'Nettoyage de cabinets et de professions libérales',
+		'Entretien de copropriétés et de parties communes',
+		'Nettoyage de locations meublées',
+		'Nettoyage ponctuel et remise en état',
+		'Nettoyage professionnel',
+	);
+}
+
+/**
+ * Offre au tarif horaire unique (PROJECT_INPUTS.md §5) : le seul prix public de l'entreprise,
+ * identique partout. Jamais de prix local (CLAUDE.md §5.3).
+ *
+ * @param string $nom Intitulé de l'offre.
+ * @return array
+ */
+function tfp_schema_offre_horaire( $nom = '' ) {
+	$site = tfp_site_data();
+	return array(
+		'@type'              => 'Offer',
+		'name'               => $nom ? $nom : 'Nettoyage professionnel au tarif horaire unique',
+		'priceCurrency'      => 'EUR',
+		'price'              => number_format( (float) $site['price_unique'], 2, '.', '' ),
+		'priceSpecification' => array(
+			'@type'                 => 'UnitPriceSpecification',
+			'price'                 => number_format( (float) $site['price_unique'], 2, '.', '' ),
+			'priceCurrency'         => 'EUR',
+			'unitCode'              => 'HUR',
+			'unitText'              => 'heure',
+			'valueAddedTaxIncluded' => false,
+		),
+		'seller'             => array( '@id' => trailingslashit( $site['origin'] ) . '#organisation' ),
+	);
+}
+
+/**
+ * Questions-réponses affichées par le corps d'une page statique (blocs `faq` du relevé).
+ *
+ * @param string $cle Identifiant de la page (son slug).
+ * @return array Liste de { q, a } en texte brut.
+ */
+function tfp_static_faq_items( $cle ) {
+	if ( ! $cle || ! function_exists( 'tfp_static_page_data' ) ) {
+		return array();
+	}
+	$items   = array();
+	$visiter = function ( $noeud ) use ( &$visiter, &$items ) {
+		if ( ! is_array( $noeud ) ) {
+			return;
+		}
+		if ( isset( $noeud['type'], $noeud['question'], $noeud['reponse'] ) && 'faq' === $noeud['type'] ) {
+			$q = trim( wp_strip_all_tags( (string) $noeud['question'] ) );
+			$r = trim( wp_strip_all_tags( (string) $noeud['reponse'] ) );
+			if ( '' !== $q && '' !== $r ) {
+				$items[] = array( 'q' => $q, 'a' => $r );
+			}
+			return;
+		}
+		foreach ( $noeud as $enfant ) {
+			$visiter( $enfant );
+		}
+	};
+	$visiter( tfp_static_page_data( $cle ) );
+	return $items;
 }
 
 /**

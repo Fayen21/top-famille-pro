@@ -1,0 +1,32 @@
+{
+ "gerante-1440": {
+  "largeur": 1440,
+  "boite": {
+   "w": 1440,
+   "h": 730
+  },
+  "portrait": {
+   "w": 420,
+   "h": 525
+  }
+ },
+ "gerante-375": {
+  "largeur": 375,
+  "boite": {
+   "w": 375,
+   "h": 1197
+  },
+  "portrait": {
+   "w": 339,
+   "h": 424
+  }
+ },
+ "accueil-1440": {
+  "largeur": 1440,
+  "hauteur": 7834
+ },
+ "accueil-375": {
+  "largeur": 375,
+  "hauteur": 13586
+ }
+}

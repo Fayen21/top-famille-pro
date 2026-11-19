@@ -1,0 +1,21 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Cibles — deux commandes réellement trop serrées</title>
+<!--
+	Le contre-exemple, sans lequel la fixture précédente ne prouverait rien : séparer les couches de
+	positionnement ne doit pas rendre l'audit aveugle. Deux boutons de 16 px, dans le MÊME flux, à
+	4 px l'un de l'autre : ni la taille (< 24), ni l'espacement (centres à 20 px), ni l'exception
+	« inline » (ce sont des boutons seuls dans leur conteneur) ne sont satisfaits. L'outil doit les
+	signaler.
+-->
+<style>
+	* { margin: 0; padding: 0; box-sizing: border-box; }
+	body { font: 15px/21px system-ui, sans-serif; }
+	.rangee { display: flex; gap: 4px; padding: 40px; }
+	.rangee button { width: 16px; height: 16px; border: 0; background: #16506e; }
+</style>
+
+<div class="rangee">
+	<button type="button" aria-label="Précédent">‹</button>
+	<button type="button" aria-label="Suivant">›</button>
+</div>

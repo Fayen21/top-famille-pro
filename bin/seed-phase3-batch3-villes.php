@@ -4,9 +4,9 @@
  * Chalon-sur-Saône, Mâcon, Auxerre, Belfort). Dijon a été créée en phase 2.
  *
  * Contenu repris du prototype, corrigé selon CLAUDE.md §5.1/§9 :
- * - tarif fictif « 27 € HT/h » retiré (grille réelle affichée par la section tarifs du gabarit) ;
+ * - tarif fictif « 26 € HT/h » retiré (grille réelle affichée par la section tarifs du gabarit) ;
  * - aucun exemple de budget chiffré sur le tarif fictif (même précédent que Côte-d'Or/Dijon en
- *   phase 2 : pas de « 279 € HT/mois » recalculé, pour éviter un contenu quasi dupliqué) ;
+ *   phase 2 : pas de « 269 € HT/mois » recalculé, pour éviter un contenu quasi dupliqué) ;
  * - **régression trouvée dans le prototype** : chaque ville y affirme positivement desservir des
  *   communes satellites non validées (« Intervenez-vous à [commune] ? Oui, ces communes sont
  *   proches… »). C'est plus grave que la simple mention en zones_desservies déjà corrigée en
@@ -67,6 +67,10 @@ if ( ! function_exists( 'tfp_seed_get_dept_term' ) ) {
 
 $bureaux = get_page_by_path( 'bureaux', OBJECT, 'prestation' );
 $bureaux_id = $bureaux ? $bureaux->ID : 0;
+
+// prestations_liees ci-dessous n'est qu'une valeur initiale (seule « bureaux » existe à ce
+// stade de l'installation) : bin/seed-phase4-maillage.php la complète avec les 6 prestations
+// une fois qu'elles existent toutes (bug réel corrigé au hotfix du 9 août 2026).
 
 echo "=== Seed phase 3, lot 3 : 9 zones ville restantes ===\n";
 
@@ -194,7 +198,7 @@ tfp_seed_faq( 'faq', array(
 	array( 'q' => 'Comment savoir ce qui a été fait pendant le passage ?', 'a' => "Chaque site dispose d'un cahier de liaison où l'intervenant note le travail réalisé et les points à signaler. Un point de suivi avec Audrey complète ce suivi." ),
 ), $nevers_id );
 tfp_seed_set_field( 'seo_title', 'Entreprise de nettoyage à Nevers (58000) | Top-Famille Pro', $nevers_id );
-tfp_seed_set_field( 'seo_description', "Entreprise de nettoyage à Nevers : parties communes, bureaux, commerces, cabinets. Devis gratuit sous 24 h.", $nevers_id );
+tfp_seed_set_field( 'seo_description', "Entreprise de nettoyage à Nevers : parties communes, bureaux, commerces, cabinets, en régulier ou ponctuel. Devis gratuit sous 24 h.", $nevers_id );
 
 echo "  Zone Nevers (ville) : #$nevers_id\n";
 
@@ -289,7 +293,7 @@ tfp_seed_faq( 'faq', array(
 	array( 'q' => 'Quel volume minimum conseillez-vous ?', 'a' => "Au moins deux heures par passage, ou un regroupement hebdomadaire, pour que l'organisation reste tenable dans la durée." ),
 ), $macon_id );
 tfp_seed_set_field( 'seo_title', 'Entreprise de nettoyage à Mâcon (71000) | Top-Famille Pro', $macon_id );
-tfp_seed_set_field( 'seo_description', "Entreprise de nettoyage à Mâcon : bureaux, commerces, cabinets, locations meublées. Devis gratuit sous 24 h.", $macon_id );
+tfp_seed_set_field( 'seo_description', "Entreprise de nettoyage à Mâcon : bureaux, commerces, cabinets, locations meublées, en régulier ou ponctuel. Devis gratuit sous 24 h.", $macon_id );
 
 echo "  Zone Mâcon (ville) : #$macon_id\n";
 

@@ -46,7 +46,7 @@ $articles = array(
 					<span class="tfp-article-card__body">
 						<span class="tfp-article-card__cat"><?php echo esc_html( $article['cat'] ); ?></span>
 						<span class="tfp-article-card__title"><?php echo esc_html( $article['title'] ); ?></span>
-						<span class="tfp-article-card__excerpt"><?php echo esc_html( $article['excerpt'] ); ?></span>
+						<span class="tfp-article-card__excerpt"><?php echo esc_html( tfp_espaces_insecables( $article['excerpt'] ) ); ?></span>
 					</span>
 				</a>
 			<?php endforeach; ?>

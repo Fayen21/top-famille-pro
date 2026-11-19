@@ -1,0 +1,3779 @@
+{
+ "#/": {
+  "320": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "375": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "768": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "1024": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "1440": {
+   "cls": 0.0005,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "84×68@852,51",
+     "apres": "85×68@841,51",
+     "contribution": 0.00047119070296424895
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "268×73@1042,48",
+     "apres": "283×48@1027,61",
+     "contribution": 0.00047119070296424895
+    },
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "153×68@518,51",
+     "apres": "153×68@505,51",
+     "contribution": 0.00047119070296424895
+    }
+   ]
+  },
+  "1920": {
+   "cls": 0.0003,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "84×68@1092,51",
+     "apres": "85×68@1081,51",
+     "contribution": 0.00026504477041739
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "268×73@1282,48",
+     "apres": "283×48@1267,61",
+     "contribution": 0.00026504477041739
+    },
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "153×68@758,51",
+     "apres": "153×68@745,51",
+     "contribution": 0.00026504477041739
+    }
+   ]
+  }
+ },
+ "#/nettoyage-professionnel": {
+  "320": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "375": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "768": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "1024": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "1440": {
+   "cls": 0.0005,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "84×68@852,51",
+     "apres": "85×68@841,51",
+     "contribution": 0.00047119070296424895
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "268×73@1042,48",
+     "apres": "283×48@1027,61",
+     "contribution": 0.00047119070296424895
+    },
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "153×68@518,51",
+     "apres": "153×68@505,51",
+     "contribution": 0.00047119070296424895
+    }
+   ]
+  },
+  "1920": {
+   "cls": 0.0003,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "84×68@1092,51",
+     "apres": "85×68@1081,51",
+     "contribution": 0.00026504477041739
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "268×73@1282,48",
+     "apres": "283×48@1267,61",
+     "contribution": 0.00026504477041739
+    },
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "153×68@758,51",
+     "apres": "153×68@745,51",
+     "contribution": 0.00026504477041739
+    }
+   ]
+  }
+ },
+ "#/nos-prestations": {
+  "320": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "375": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "768": {
+   "cls": 0.0007,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "li > div.tfp-card-tile > div.tfp-card-tile__body > p.tfp-card-tile__desc",
+     "avant": "304×47@52,844",
+     "apres": "304×32@52,868",
+     "contribution": 0.0006649144804526749
+    }
+   ]
+  },
+  "1024": {
+   "cls": 0.0005,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "li > div.tfp-card-tile > div.tfp-card-tile__body > p.tfp-card-tile__desc",
+     "avant": "264×47@380,787",
+     "apres": "264×47@380,811",
+     "contribution": 0.00048258105913798015
+    }
+   ]
+  },
+  "1440": {
+   "cls": 0.0008,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "84×68@852,51",
+     "apres": "85×68@841,51",
+     "contribution": 0.0007770094380947788
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "268×73@1042,48",
+     "apres": "283×48@1027,61",
+     "contribution": 0.0007770094380947788
+    },
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "153×68@518,51",
+     "apres": "153×68@505,51",
+     "contribution": 0.0007770094380947788
+    }
+   ]
+  },
+  "1920": {
+   "cls": 0.0004,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "84×68@1092,51",
+     "apres": "85×68@1081,51",
+     "contribution": 0.00043706780892831314
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "268×73@1282,48",
+     "apres": "283×48@1267,61",
+     "contribution": 0.00043706780892831314
+    },
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "153×68@758,51",
+     "apres": "153×68@745,51",
+     "contribution": 0.00043706780892831314
+    }
+   ]
+  }
+ },
+ "#/service/bureaux": {
+  "320": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "375": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "768": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "1024": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "1440": {
+   "cls": 0.0005,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "84×68@852,51",
+     "apres": "85×68@841,51",
+     "contribution": 0.00047119070296424895
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "268×73@1042,48",
+     "apres": "283×48@1027,61",
+     "contribution": 0.00047119070296424895
+    },
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "153×68@518,51",
+     "apres": "153×68@505,51",
+     "contribution": 0.00047119070296424895
+    }
+   ]
+  },
+  "1920": {
+   "cls": 0.0003,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "84×68@1092,51",
+     "apres": "85×68@1081,51",
+     "contribution": 0.00026504477041739
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "268×73@1282,48",
+     "apres": "283×48@1267,61",
+     "contribution": 0.00026504477041739
+    },
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "153×68@758,51",
+     "apres": "153×68@745,51",
+     "contribution": 0.00026504477041739
+    }
+   ]
+  }
+ },
+ "#/service/commerces": {
+  "320": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "375": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "768": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "1024": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "1440": {
+   "cls": 0.0005,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "84×68@852,51",
+     "apres": "85×68@841,51",
+     "contribution": 0.00047119070296424895
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "268×73@1042,48",
+     "apres": "283×48@1027,61",
+     "contribution": 0.00047119070296424895
+    },
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "153×68@518,51",
+     "apres": "153×68@505,51",
+     "contribution": 0.00047119070296424895
+    }
+   ]
+  },
+  "1920": {
+   "cls": 0.0003,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "84×68@1092,51",
+     "apres": "85×68@1081,51",
+     "contribution": 0.00026504477041739
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "268×73@1282,48",
+     "apres": "283×48@1267,61",
+     "contribution": 0.00026504477041739
+    },
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "153×68@758,51",
+     "apres": "153×68@745,51",
+     "contribution": 0.00026504477041739
+    }
+   ]
+  }
+ },
+ "#/service/cabinets": {
+  "320": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "375": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "768": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "1024": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "1440": {
+   "cls": 0.0005,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "84×68@852,51",
+     "apres": "85×68@841,51",
+     "contribution": 0.00047119070296424895
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "268×73@1042,48",
+     "apres": "283×48@1027,61",
+     "contribution": 0.00047119070296424895
+    },
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "153×68@518,51",
+     "apres": "153×68@505,51",
+     "contribution": 0.00047119070296424895
+    }
+   ]
+  },
+  "1920": {
+   "cls": 0.0003,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "84×68@1092,51",
+     "apres": "85×68@1081,51",
+     "contribution": 0.00026504477041739
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "268×73@1282,48",
+     "apres": "283×48@1267,61",
+     "contribution": 0.00026504477041739
+    },
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "153×68@758,51",
+     "apres": "153×68@745,51",
+     "contribution": 0.00026504477041739
+    }
+   ]
+  }
+ },
+ "#/service/coproprietes": {
+  "320": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "375": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "768": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "1024": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "1440": {
+   "cls": 0.0005,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "84×68@852,51",
+     "apres": "85×68@841,51",
+     "contribution": 0.00047119070296424895
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "268×73@1042,48",
+     "apres": "283×48@1027,61",
+     "contribution": 0.00047119070296424895
+    },
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "153×68@518,51",
+     "apres": "153×68@505,51",
+     "contribution": 0.00047119070296424895
+    }
+   ]
+  },
+  "1920": {
+   "cls": 0.0003,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "84×68@1092,51",
+     "apres": "85×68@1081,51",
+     "contribution": 0.00026504477041739
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "268×73@1282,48",
+     "apres": "283×48@1267,61",
+     "contribution": 0.00026504477041739
+    },
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "153×68@758,51",
+     "apres": "153×68@745,51",
+     "contribution": 0.00026504477041739
+    }
+   ]
+  }
+ },
+ "#/service/meubles": {
+  "320": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "375": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "768": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "1024": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "1440": {
+   "cls": 0.0005,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "84×68@852,51",
+     "apres": "85×68@841,51",
+     "contribution": 0.00047119070296424895
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "268×73@1042,48",
+     "apres": "283×48@1027,61",
+     "contribution": 0.00047119070296424895
+    },
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "153×68@518,51",
+     "apres": "153×68@505,51",
+     "contribution": 0.00047119070296424895
+    }
+   ]
+  },
+  "1920": {
+   "cls": 0.0003,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "84×68@1092,51",
+     "apres": "85×68@1081,51",
+     "contribution": 0.00026504477041739
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "268×73@1282,48",
+     "apres": "283×48@1267,61",
+     "contribution": 0.00026504477041739
+    },
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "153×68@758,51",
+     "apres": "153×68@745,51",
+     "contribution": 0.00026504477041739
+    }
+   ]
+  }
+ },
+ "#/service/ponctuel": {
+  "320": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "375": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "768": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "1024": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "1440": {
+   "cls": 0.0005,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "84×68@852,51",
+     "apres": "85×68@841,51",
+     "contribution": 0.00047119070296424895
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "268×73@1042,48",
+     "apres": "283×48@1027,61",
+     "contribution": 0.00047119070296424895
+    },
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "153×68@518,51",
+     "apres": "153×68@505,51",
+     "contribution": 0.00047119070296424895
+    }
+   ]
+  },
+  "1920": {
+   "cls": 0.0003,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "84×68@1092,51",
+     "apres": "85×68@1081,51",
+     "contribution": 0.00026504477041739
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "268×73@1282,48",
+     "apres": "283×48@1267,61",
+     "contribution": 0.00026504477041739
+    },
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "153×68@758,51",
+     "apres": "153×68@745,51",
+     "contribution": 0.00026504477041739
+    }
+   ]
+  }
+ },
+ "#/nos-tarifs": {
+  "320": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "375": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "768": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "1024": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "1440": {
+   "cls": 0.0005,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "84×68@852,51",
+     "apres": "85×68@841,51",
+     "contribution": 0.00047119070296424895
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "268×73@1042,48",
+     "apres": "283×48@1027,61",
+     "contribution": 0.00047119070296424895
+    },
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "153×68@518,51",
+     "apres": "153×68@505,51",
+     "contribution": 0.00047119070296424895
+    }
+   ]
+  },
+  "1920": {
+   "cls": 0.0003,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "84×68@1092,51",
+     "apres": "85×68@1081,51",
+     "contribution": 0.00026504477041739
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "268×73@1282,48",
+     "apres": "283×48@1267,61",
+     "contribution": 0.00026504477041739
+    },
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "153×68@758,51",
+     "apres": "153×68@745,51",
+     "contribution": 0.00026504477041739
+    }
+   ]
+  }
+ },
+ "#/zones-intervention": {
+  "320": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "375": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "768": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "1024": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "1440": {
+   "cls": 0.0005,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "84×68@852,51",
+     "apres": "85×68@841,51",
+     "contribution": 0.00047119070296424895
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "268×73@1042,48",
+     "apres": "283×48@1027,61",
+     "contribution": 0.00047119070296424895
+    },
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "153×68@518,51",
+     "apres": "153×68@505,51",
+     "contribution": 0.00047119070296424895
+    }
+   ]
+  },
+  "1920": {
+   "cls": 0.0003,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "84×68@1092,51",
+     "apres": "85×68@1081,51",
+     "contribution": 0.00026504477041739
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "268×73@1282,48",
+     "apres": "283×48@1267,61",
+     "contribution": 0.00026504477041739
+    },
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "153×68@758,51",
+     "apres": "153×68@745,51",
+     "contribution": 0.00026504477041739
+    }
+   ]
+  }
+ },
+ "#/bourgogne-franche-comte": {
+  "320": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "375": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "768": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "1024": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "1440": {
+   "cls": 0.0005,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "84×68@852,51",
+     "apres": "85×68@841,51",
+     "contribution": 0.00047119070296424895
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "268×73@1042,48",
+     "apres": "283×48@1027,61",
+     "contribution": 0.00047119070296424895
+    },
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "153×68@518,51",
+     "apres": "153×68@505,51",
+     "contribution": 0.00047119070296424895
+    }
+   ]
+  },
+  "1920": {
+   "cls": 0.0003,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "84×68@1092,51",
+     "apres": "85×68@1081,51",
+     "contribution": 0.00026504477041739
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "268×73@1282,48",
+     "apres": "283×48@1267,61",
+     "contribution": 0.00026504477041739
+    },
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "153×68@758,51",
+     "apres": "153×68@745,51",
+     "contribution": 0.00026504477041739
+    }
+   ]
+  }
+ },
+ "#/departement/cote-dor": {
+  "320": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "375": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "768": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "1024": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "1440": {
+   "cls": 0.0005,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "84×68@852,51",
+     "apres": "85×68@841,51",
+     "contribution": 0.00047119070296424895
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "268×73@1042,48",
+     "apres": "283×48@1027,61",
+     "contribution": 0.00047119070296424895
+    },
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "153×68@518,51",
+     "apres": "153×68@505,51",
+     "contribution": 0.00047119070296424895
+    }
+   ]
+  },
+  "1920": {
+   "cls": 0.0003,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "84×68@1092,51",
+     "apres": "85×68@1081,51",
+     "contribution": 0.00026504477041739
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "268×73@1282,48",
+     "apres": "283×48@1267,61",
+     "contribution": 0.00026504477041739
+    },
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "153×68@758,51",
+     "apres": "153×68@745,51",
+     "contribution": 0.00026504477041739
+    }
+   ]
+  }
+ },
+ "#/departement/doubs": {
+  "320": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "375": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "768": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "1024": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "1440": {
+   "cls": 0.0005,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "84×68@852,51",
+     "apres": "85×68@841,51",
+     "contribution": 0.00047119070296424895
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "268×73@1042,48",
+     "apres": "283×48@1027,61",
+     "contribution": 0.00047119070296424895
+    },
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "153×68@518,51",
+     "apres": "153×68@505,51",
+     "contribution": 0.00047119070296424895
+    }
+   ]
+  },
+  "1920": {
+   "cls": 0.0003,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "84×68@1092,51",
+     "apres": "85×68@1081,51",
+     "contribution": 0.00026504477041739
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "268×73@1282,48",
+     "apres": "283×48@1267,61",
+     "contribution": 0.00026504477041739
+    },
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "153×68@758,51",
+     "apres": "153×68@745,51",
+     "contribution": 0.00026504477041739
+    }
+   ]
+  }
+ },
+ "#/departement/jura": {
+  "320": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "375": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "768": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "1024": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "1440": {
+   "cls": 0.0005,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "84×68@852,51",
+     "apres": "85×68@841,51",
+     "contribution": 0.00047119070296424895
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "268×73@1042,48",
+     "apres": "283×48@1027,61",
+     "contribution": 0.00047119070296424895
+    },
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "153×68@518,51",
+     "apres": "153×68@505,51",
+     "contribution": 0.00047119070296424895
+    }
+   ]
+  },
+  "1920": {
+   "cls": 0.0003,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "84×68@1092,51",
+     "apres": "85×68@1081,51",
+     "contribution": 0.00026504477041739
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "268×73@1282,48",
+     "apres": "283×48@1267,61",
+     "contribution": 0.00026504477041739
+    },
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "153×68@758,51",
+     "apres": "153×68@745,51",
+     "contribution": 0.00026504477041739
+    }
+   ]
+  }
+ },
+ "#/departement/nievre": {
+  "320": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "375": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "768": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "1024": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "1440": {
+   "cls": 0.0005,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "84×68@852,51",
+     "apres": "85×68@841,51",
+     "contribution": 0.00047119070296424895
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "268×73@1042,48",
+     "apres": "283×48@1027,61",
+     "contribution": 0.00047119070296424895
+    },
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "153×68@518,51",
+     "apres": "153×68@505,51",
+     "contribution": 0.00047119070296424895
+    }
+   ]
+  },
+  "1920": {
+   "cls": 0.0003,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "84×68@1092,51",
+     "apres": "85×68@1081,51",
+     "contribution": 0.00026504477041739
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "268×73@1282,48",
+     "apres": "283×48@1267,61",
+     "contribution": 0.00026504477041739
+    },
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "153×68@758,51",
+     "apres": "153×68@745,51",
+     "contribution": 0.00026504477041739
+    }
+   ]
+  }
+ },
+ "#/departement/haute-saone": {
+  "320": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "375": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "768": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "1024": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "1440": {
+   "cls": 0.0005,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "84×68@852,51",
+     "apres": "85×68@841,51",
+     "contribution": 0.00047119070296424895
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "268×73@1042,48",
+     "apres": "283×48@1027,61",
+     "contribution": 0.00047119070296424895
+    },
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "153×68@518,51",
+     "apres": "153×68@505,51",
+     "contribution": 0.00047119070296424895
+    }
+   ]
+  },
+  "1920": {
+   "cls": 0.0003,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "84×68@1092,51",
+     "apres": "85×68@1081,51",
+     "contribution": 0.00026504477041739
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "268×73@1282,48",
+     "apres": "283×48@1267,61",
+     "contribution": 0.00026504477041739
+    },
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "153×68@758,51",
+     "apres": "153×68@745,51",
+     "contribution": 0.00026504477041739
+    }
+   ]
+  }
+ },
+ "#/departement/saone-et-loire": {
+  "320": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "375": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "768": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "1024": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "1440": {
+   "cls": 0.0005,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "84×68@852,51",
+     "apres": "85×68@841,51",
+     "contribution": 0.00047119070296424895
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "268×73@1042,48",
+     "apres": "283×48@1027,61",
+     "contribution": 0.00047119070296424895
+    },
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "153×68@518,51",
+     "apres": "153×68@505,51",
+     "contribution": 0.00047119070296424895
+    }
+   ]
+  },
+  "1920": {
+   "cls": 0.0003,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "84×68@1092,51",
+     "apres": "85×68@1081,51",
+     "contribution": 0.00026504477041739
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "268×73@1282,48",
+     "apres": "283×48@1267,61",
+     "contribution": 0.00026504477041739
+    },
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "153×68@758,51",
+     "apres": "153×68@745,51",
+     "contribution": 0.00026504477041739
+    }
+   ]
+  }
+ },
+ "#/departement/yonne": {
+  "320": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "375": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "768": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "1024": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "1440": {
+   "cls": 0.0005,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "84×68@852,51",
+     "apres": "85×68@841,51",
+     "contribution": 0.00047119070296424895
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "268×73@1042,48",
+     "apres": "283×48@1027,61",
+     "contribution": 0.00047119070296424895
+    },
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "153×68@518,51",
+     "apres": "153×68@505,51",
+     "contribution": 0.00047119070296424895
+    }
+   ]
+  },
+  "1920": {
+   "cls": 0.0003,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "84×68@1092,51",
+     "apres": "85×68@1081,51",
+     "contribution": 0.00026504477041739
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "268×73@1282,48",
+     "apres": "283×48@1267,61",
+     "contribution": 0.00026504477041739
+    },
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "153×68@758,51",
+     "apres": "153×68@745,51",
+     "contribution": 0.00026504477041739
+    }
+   ]
+  }
+ },
+ "#/departement/territoire-de-belfort": {
+  "320": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "375": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "768": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "1024": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "1440": {
+   "cls": 0.0005,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "84×68@852,51",
+     "apres": "85×68@841,51",
+     "contribution": 0.00047119070296424895
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "268×73@1042,48",
+     "apres": "283×48@1027,61",
+     "contribution": 0.00047119070296424895
+    },
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "153×68@518,51",
+     "apres": "153×68@505,51",
+     "contribution": 0.00047119070296424895
+    }
+   ]
+  },
+  "1920": {
+   "cls": 0.0003,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "84×68@1092,51",
+     "apres": "85×68@1081,51",
+     "contribution": 0.00026504477041739
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "268×73@1282,48",
+     "apres": "283×48@1267,61",
+     "contribution": 0.00026504477041739
+    },
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "153×68@758,51",
+     "apres": "153×68@745,51",
+     "contribution": 0.00026504477041739
+    }
+   ]
+  }
+ },
+ "#/ville/dijon": {
+  "320": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "375": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "768": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "1024": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "1440": {
+   "cls": 0.0005,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "84×68@852,51",
+     "apres": "85×68@841,51",
+     "contribution": 0.00047119070296424895
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "268×73@1042,48",
+     "apres": "283×48@1027,61",
+     "contribution": 0.00047119070296424895
+    },
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "153×68@518,51",
+     "apres": "153×68@505,51",
+     "contribution": 0.00047119070296424895
+    }
+   ]
+  },
+  "1920": {
+   "cls": 0.0003,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "84×68@1092,51",
+     "apres": "85×68@1081,51",
+     "contribution": 0.00026504477041739
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "268×73@1282,48",
+     "apres": "283×48@1267,61",
+     "contribution": 0.00026504477041739
+    },
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "153×68@758,51",
+     "apres": "153×68@745,51",
+     "contribution": 0.00026504477041739
+    }
+   ]
+  }
+ },
+ "#/ville/besancon": {
+  "320": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "375": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "768": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "1024": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "1440": {
+   "cls": 0.0005,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "84×68@852,51",
+     "apres": "85×68@841,51",
+     "contribution": 0.00047119070296424895
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "268×73@1042,48",
+     "apres": "283×48@1027,61",
+     "contribution": 0.00047119070296424895
+    },
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "153×68@518,51",
+     "apres": "153×68@505,51",
+     "contribution": 0.00047119070296424895
+    }
+   ]
+  },
+  "1920": {
+   "cls": 0.0003,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "84×68@1092,51",
+     "apres": "85×68@1081,51",
+     "contribution": 0.00026504477041739
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "268×73@1282,48",
+     "apres": "283×48@1267,61",
+     "contribution": 0.00026504477041739
+    },
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "153×68@758,51",
+     "apres": "153×68@745,51",
+     "contribution": 0.00026504477041739
+    }
+   ]
+  }
+ },
+ "#/ville/dole": {
+  "320": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "375": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "768": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "1024": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "1440": {
+   "cls": 0.0005,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "84×68@852,51",
+     "apres": "85×68@841,51",
+     "contribution": 0.00047119070296424895
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "268×73@1042,48",
+     "apres": "283×48@1027,61",
+     "contribution": 0.00047119070296424895
+    },
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "153×68@518,51",
+     "apres": "153×68@505,51",
+     "contribution": 0.00047119070296424895
+    }
+   ]
+  },
+  "1920": {
+   "cls": 0.0003,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "84×68@1092,51",
+     "apres": "85×68@1081,51",
+     "contribution": 0.00026504477041739
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "268×73@1282,48",
+     "apres": "283×48@1267,61",
+     "contribution": 0.00026504477041739
+    },
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "153×68@758,51",
+     "apres": "153×68@745,51",
+     "contribution": 0.00026504477041739
+    }
+   ]
+  }
+ },
+ "#/ville/lons-le-saunier": {
+  "320": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "375": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "768": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "1024": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "1440": {
+   "cls": 0.0005,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "84×68@852,51",
+     "apres": "85×68@841,51",
+     "contribution": 0.00047119070296424895
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "268×73@1042,48",
+     "apres": "283×48@1027,61",
+     "contribution": 0.00047119070296424895
+    },
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "153×68@518,51",
+     "apres": "153×68@505,51",
+     "contribution": 0.00047119070296424895
+    }
+   ]
+  },
+  "1920": {
+   "cls": 0.0003,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "84×68@1092,51",
+     "apres": "85×68@1081,51",
+     "contribution": 0.00026504477041739
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "268×73@1282,48",
+     "apres": "283×48@1267,61",
+     "contribution": 0.00026504477041739
+    },
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "153×68@758,51",
+     "apres": "153×68@745,51",
+     "contribution": 0.00026504477041739
+    }
+   ]
+  }
+ },
+ "#/ville/nevers": {
+  "320": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "375": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "768": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "1024": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "1440": {
+   "cls": 0.0005,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "84×68@852,51",
+     "apres": "85×68@841,51",
+     "contribution": 0.00047119070296424895
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "268×73@1042,48",
+     "apres": "283×48@1027,61",
+     "contribution": 0.00047119070296424895
+    },
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "153×68@518,51",
+     "apres": "153×68@505,51",
+     "contribution": 0.00047119070296424895
+    }
+   ]
+  },
+  "1920": {
+   "cls": 0.0003,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "84×68@1092,51",
+     "apres": "85×68@1081,51",
+     "contribution": 0.00026504477041739
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "268×73@1282,48",
+     "apres": "283×48@1267,61",
+     "contribution": 0.00026504477041739
+    },
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "153×68@758,51",
+     "apres": "153×68@745,51",
+     "contribution": 0.00026504477041739
+    }
+   ]
+  }
+ },
+ "#/ville/vesoul": {
+  "320": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "375": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "768": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "1024": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "1440": {
+   "cls": 0.0005,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "84×68@852,51",
+     "apres": "85×68@841,51",
+     "contribution": 0.00047119070296424895
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "268×73@1042,48",
+     "apres": "283×48@1027,61",
+     "contribution": 0.00047119070296424895
+    },
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "153×68@518,51",
+     "apres": "153×68@505,51",
+     "contribution": 0.00047119070296424895
+    }
+   ]
+  },
+  "1920": {
+   "cls": 0.0003,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "84×68@1092,51",
+     "apres": "85×68@1081,51",
+     "contribution": 0.00026504477041739
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "268×73@1282,48",
+     "apres": "283×48@1267,61",
+     "contribution": 0.00026504477041739
+    },
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "153×68@758,51",
+     "apres": "153×68@745,51",
+     "contribution": 0.00026504477041739
+    }
+   ]
+  }
+ },
+ "#/ville/chalon-sur-saone": {
+  "320": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "375": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "768": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "1024": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "1440": {
+   "cls": 0.0005,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "84×68@852,51",
+     "apres": "85×68@841,51",
+     "contribution": 0.00047119070296424895
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "268×73@1042,48",
+     "apres": "283×48@1027,61",
+     "contribution": 0.00047119070296424895
+    },
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "153×68@518,51",
+     "apres": "153×68@505,51",
+     "contribution": 0.00047119070296424895
+    }
+   ]
+  },
+  "1920": {
+   "cls": 0.0003,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "84×68@1092,51",
+     "apres": "85×68@1081,51",
+     "contribution": 0.00026504477041739
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "268×73@1282,48",
+     "apres": "283×48@1267,61",
+     "contribution": 0.00026504477041739
+    },
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "153×68@758,51",
+     "apres": "153×68@745,51",
+     "contribution": 0.00026504477041739
+    }
+   ]
+  }
+ },
+ "#/ville/macon": {
+  "320": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "375": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "768": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "1024": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "1440": {
+   "cls": 0.0005,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "84×68@852,51",
+     "apres": "85×68@841,51",
+     "contribution": 0.00047119070296424895
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "268×73@1042,48",
+     "apres": "283×48@1027,61",
+     "contribution": 0.00047119070296424895
+    },
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "153×68@518,51",
+     "apres": "153×68@505,51",
+     "contribution": 0.00047119070296424895
+    }
+   ]
+  },
+  "1920": {
+   "cls": 0.0003,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "84×68@1092,51",
+     "apres": "85×68@1081,51",
+     "contribution": 0.00026504477041739
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "268×73@1282,48",
+     "apres": "283×48@1267,61",
+     "contribution": 0.00026504477041739
+    },
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "153×68@758,51",
+     "apres": "153×68@745,51",
+     "contribution": 0.00026504477041739
+    }
+   ]
+  }
+ },
+ "#/ville/auxerre": {
+  "320": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "375": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "768": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "1024": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "1440": {
+   "cls": 0.0005,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "84×68@852,51",
+     "apres": "85×68@841,51",
+     "contribution": 0.00047119070296424895
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "268×73@1042,48",
+     "apres": "283×48@1027,61",
+     "contribution": 0.00047119070296424895
+    },
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "153×68@518,51",
+     "apres": "153×68@505,51",
+     "contribution": 0.00047119070296424895
+    }
+   ]
+  },
+  "1920": {
+   "cls": 0.0003,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "84×68@1092,51",
+     "apres": "85×68@1081,51",
+     "contribution": 0.00026504477041739
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "268×73@1282,48",
+     "apres": "283×48@1267,61",
+     "contribution": 0.00026504477041739
+    },
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "153×68@758,51",
+     "apres": "153×68@745,51",
+     "contribution": 0.00026504477041739
+    }
+   ]
+  }
+ },
+ "#/ville/belfort": {
+  "320": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "375": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "768": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "1024": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "1440": {
+   "cls": 0.0005,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "84×68@852,51",
+     "apres": "85×68@841,51",
+     "contribution": 0.00047119070296424895
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "268×73@1042,48",
+     "apres": "283×48@1027,61",
+     "contribution": 0.00047119070296424895
+    },
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "153×68@518,51",
+     "apres": "153×68@505,51",
+     "contribution": 0.00047119070296424895
+    }
+   ]
+  },
+  "1920": {
+   "cls": 0.0003,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "84×68@1092,51",
+     "apres": "85×68@1081,51",
+     "contribution": 0.00026504477041739
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "268×73@1282,48",
+     "apres": "283×48@1267,61",
+     "contribution": 0.00026504477041739
+    },
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "153×68@758,51",
+     "apres": "153×68@745,51",
+     "contribution": 0.00026504477041739
+    }
+   ]
+  }
+ },
+ "#/ville/saint-apollinaire": {
+  "320": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "375": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "768": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "1024": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "1440": {
+   "cls": 0.0005,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "84×68@852,51",
+     "apres": "85×68@841,51",
+     "contribution": 0.00047119070296424895
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "268×73@1042,48",
+     "apres": "283×48@1027,61",
+     "contribution": 0.00047119070296424895
+    },
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "153×68@518,51",
+     "apres": "153×68@505,51",
+     "contribution": 0.00047119070296424895
+    }
+   ]
+  },
+  "1920": {
+   "cls": 0.0003,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "84×68@1092,51",
+     "apres": "85×68@1081,51",
+     "contribution": 0.00026504477041739
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "268×73@1282,48",
+     "apres": "283×48@1267,61",
+     "contribution": 0.00026504477041739
+    },
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "153×68@758,51",
+     "apres": "153×68@745,51",
+     "contribution": 0.00026504477041739
+    }
+   ]
+  }
+ },
+ "#/ville/chenove": {
+  "320": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "375": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "768": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "1024": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "1440": {
+   "cls": 0.0005,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "84×68@852,51",
+     "apres": "85×68@841,51",
+     "contribution": 0.00047119070296424895
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "268×73@1042,48",
+     "apres": "283×48@1027,61",
+     "contribution": 0.00047119070296424895
+    },
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "153×68@518,51",
+     "apres": "153×68@505,51",
+     "contribution": 0.00047119070296424895
+    }
+   ]
+  },
+  "1920": {
+   "cls": 0.0003,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "84×68@1092,51",
+     "apres": "85×68@1081,51",
+     "contribution": 0.00026504477041739
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "268×73@1282,48",
+     "apres": "283×48@1267,61",
+     "contribution": 0.00026504477041739
+    },
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "153×68@758,51",
+     "apres": "153×68@745,51",
+     "contribution": 0.00026504477041739
+    }
+   ]
+  }
+ },
+ "#/ville/quetigny": {
+  "320": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "375": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "768": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "1024": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "1440": {
+   "cls": 0.0005,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "84×68@852,51",
+     "apres": "85×68@841,51",
+     "contribution": 0.00047119070296424895
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "268×73@1042,48",
+     "apres": "283×48@1027,61",
+     "contribution": 0.00047119070296424895
+    },
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "153×68@518,51",
+     "apres": "153×68@505,51",
+     "contribution": 0.00047119070296424895
+    }
+   ]
+  },
+  "1920": {
+   "cls": 0.0003,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "84×68@1092,51",
+     "apres": "85×68@1081,51",
+     "contribution": 0.0002638040801625193
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "268×72@1282,49",
+     "apres": "283×48@1267,61",
+     "contribution": 0.0002638040801625193
+    },
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "153×68@758,51",
+     "apres": "153×68@745,51",
+     "contribution": 0.0002638040801625193
+    }
+   ]
+  }
+ },
+ "#/ville/talant": {
+  "320": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "375": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "768": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "1024": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "1440": {
+   "cls": 0.0005,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "84×68@852,51",
+     "apres": "85×68@841,51",
+     "contribution": 0.00047119070296424895
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "268×73@1042,48",
+     "apres": "283×48@1027,61",
+     "contribution": 0.00047119070296424895
+    },
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "153×68@518,51",
+     "apres": "153×68@505,51",
+     "contribution": 0.00047119070296424895
+    }
+   ]
+  },
+  "1920": {
+   "cls": 0.0003,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "84×68@1092,51",
+     "apres": "85×68@1081,51",
+     "contribution": 0.00026504477041739
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "268×73@1282,48",
+     "apres": "283×48@1267,61",
+     "contribution": 0.00026504477041739
+    },
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "153×68@758,51",
+     "apres": "153×68@745,51",
+     "contribution": 0.00026504477041739
+    }
+   ]
+  }
+ },
+ "#/ville/longvic": {
+  "320": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "375": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "768": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "1024": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "1440": {
+   "cls": 0.0005,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "84×68@852,51",
+     "apres": "85×68@841,51",
+     "contribution": 0.00047119070296424895
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "268×73@1042,48",
+     "apres": "283×48@1027,61",
+     "contribution": 0.00047119070296424895
+    },
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "153×68@518,51",
+     "apres": "153×68@505,51",
+     "contribution": 0.00047119070296424895
+    }
+   ]
+  },
+  "1920": {
+   "cls": 0.0003,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "84×68@1092,51",
+     "apres": "85×68@1081,51",
+     "contribution": 0.00026504477041739
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "268×73@1282,48",
+     "apres": "283×48@1267,61",
+     "contribution": 0.00026504477041739
+    },
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "153×68@758,51",
+     "apres": "153×68@745,51",
+     "contribution": 0.00026504477041739
+    }
+   ]
+  }
+ },
+ "#/ville/fontaine-les-dijon": {
+  "320": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "375": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "768": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "1024": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "1440": {
+   "cls": 0.0005,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "84×68@852,51",
+     "apres": "85×68@841,51",
+     "contribution": 0.00047119070296424895
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "268×73@1042,48",
+     "apres": "283×48@1027,61",
+     "contribution": 0.00047119070296424895
+    },
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "153×68@518,51",
+     "apres": "153×68@505,51",
+     "contribution": 0.00047119070296424895
+    }
+   ]
+  },
+  "1920": {
+   "cls": 0.0003,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "84×68@1092,51",
+     "apres": "85×68@1081,51",
+     "contribution": 0.00026504477041739
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "268×73@1282,48",
+     "apres": "283×48@1267,61",
+     "contribution": 0.00026504477041739
+    },
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "153×68@758,51",
+     "apres": "153×68@745,51",
+     "contribution": 0.00026504477041739
+    }
+   ]
+  }
+ },
+ "#/ville/marsannay-la-cote": {
+  "320": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "375": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "768": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "1024": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "1440": {
+   "cls": 0.0005,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "84×68@852,51",
+     "apres": "85×68@841,51",
+     "contribution": 0.00047119070296424895
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "268×73@1042,48",
+     "apres": "283×48@1027,61",
+     "contribution": 0.00047119070296424895
+    },
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "153×68@518,51",
+     "apres": "153×68@505,51",
+     "contribution": 0.00047119070296424895
+    }
+   ]
+  },
+  "1920": {
+   "cls": 0.0003,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "84×68@1092,51",
+     "apres": "85×68@1081,51",
+     "contribution": 0.00026504477041739
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "268×73@1282,48",
+     "apres": "283×48@1267,61",
+     "contribution": 0.00026504477041739
+    },
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "153×68@758,51",
+     "apres": "153×68@745,51",
+     "contribution": 0.00026504477041739
+    }
+   ]
+  }
+ },
+ "#/ville/beaune": {
+  "320": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "375": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "768": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "1024": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "1440": {
+   "cls": 0.0005,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "84×68@852,51",
+     "apres": "85×68@841,51",
+     "contribution": 0.00047119070296424895
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "268×73@1042,48",
+     "apres": "283×48@1027,61",
+     "contribution": 0.00047119070296424895
+    },
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "153×68@518,51",
+     "apres": "153×68@505,51",
+     "contribution": 0.00047119070296424895
+    }
+   ]
+  },
+  "1920": {
+   "cls": 0.0003,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "84×68@1092,51",
+     "apres": "85×68@1081,51",
+     "contribution": 0.00026504477041739
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "268×73@1282,48",
+     "apres": "283×48@1267,61",
+     "contribution": 0.00026504477041739
+    },
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "153×68@758,51",
+     "apres": "153×68@745,51",
+     "contribution": 0.00026504477041739
+    }
+   ]
+  }
+ },
+ "#/conseils": {
+  "320": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "375": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "768": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "1024": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "1440": {
+   "cls": 0.0005,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "84×68@852,51",
+     "apres": "85×68@841,51",
+     "contribution": 0.00047119070296424895
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "268×73@1042,48",
+     "apres": "283×48@1027,61",
+     "contribution": 0.00047119070296424895
+    },
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "153×68@518,51",
+     "apres": "153×68@505,51",
+     "contribution": 0.00047119070296424895
+    }
+   ]
+  },
+  "1920": {
+   "cls": 0.0003,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "84×68@1092,51",
+     "apres": "85×68@1081,51",
+     "contribution": 0.00026504477041739
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "268×73@1282,48",
+     "apres": "283×48@1267,61",
+     "contribution": 0.00026504477041739
+    },
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "153×68@758,51",
+     "apres": "153×68@745,51",
+     "contribution": 0.00026504477041739
+    }
+   ]
+  }
+ },
+ "#/article/frequence-bureaux": {
+  "320": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "375": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "768": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "1024": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "1440": {
+   "cls": 0.0005,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "84×68@852,51",
+     "apres": "85×68@841,51",
+     "contribution": 0.00047119070296424895
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "268×73@1042,48",
+     "apres": "283×48@1027,61",
+     "contribution": 0.00047119070296424895
+    },
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "153×68@518,51",
+     "apres": "153×68@505,51",
+     "contribution": 0.00047119070296424895
+    }
+   ]
+  },
+  "1920": {
+   "cls": 0.0003,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "84×68@1092,51",
+     "apres": "85×68@1081,51",
+     "contribution": 0.00026504477041739
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "268×73@1282,48",
+     "apres": "283×48@1267,61",
+     "contribution": 0.00026504477041739
+    },
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "153×68@758,51",
+     "apres": "153×68@745,51",
+     "contribution": 0.00026504477041739
+    }
+   ]
+  }
+ },
+ "#/article/cout-nettoyage-bureaux": {
+  "320": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "375": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "768": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "1024": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "1440": {
+   "cls": 0.0005,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "84×68@852,51",
+     "apres": "85×68@841,51",
+     "contribution": 0.00047119070296424895
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "268×73@1042,48",
+     "apres": "283×48@1027,61",
+     "contribution": 0.00047119070296424895
+    },
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "153×68@518,51",
+     "apres": "153×68@505,51",
+     "contribution": 0.00047119070296424895
+    }
+   ]
+  },
+  "1920": {
+   "cls": 0.0003,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "84×68@1092,51",
+     "apres": "85×68@1081,51",
+     "contribution": 0.00026504477041739
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "268×73@1282,48",
+     "apres": "283×48@1267,61",
+     "contribution": 0.00026504477041739
+    },
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "153×68@758,51",
+     "apres": "153×68@745,51",
+     "contribution": 0.00026504477041739
+    }
+   ]
+  }
+ },
+ "#/article/cahier-des-charges-nettoyage": {
+  "320": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "375": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "768": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "1024": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "1440": {
+   "cls": 0.0005,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "84×68@852,51",
+     "apres": "85×68@841,51",
+     "contribution": 0.00047119070296424895
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "268×73@1042,48",
+     "apres": "283×48@1027,61",
+     "contribution": 0.00047119070296424895
+    },
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "153×68@518,51",
+     "apres": "153×68@505,51",
+     "contribution": 0.00047119070296424895
+    }
+   ]
+  },
+  "1920": {
+   "cls": 0.0003,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "84×68@1092,51",
+     "apres": "85×68@1081,51",
+     "contribution": 0.00026504477041739
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "268×73@1282,48",
+     "apres": "283×48@1267,61",
+     "contribution": 0.00026504477041739
+    },
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "153×68@758,51",
+     "apres": "153×68@745,51",
+     "contribution": 0.00026504477041739
+    }
+   ]
+  }
+ },
+ "#/pourquoi-top-famille-pro": {
+  "320": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "375": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "768": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "1024": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "1440": {
+   "cls": 0.0005,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "84×68@852,51",
+     "apres": "85×68@841,51",
+     "contribution": 0.00047119070296424895
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "268×73@1042,48",
+     "apres": "283×48@1027,61",
+     "contribution": 0.00047119070296424895
+    },
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "153×68@518,51",
+     "apres": "153×68@505,51",
+     "contribution": 0.00047119070296424895
+    }
+   ]
+  },
+  "1920": {
+   "cls": 0.0003,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "84×68@1092,51",
+     "apres": "85×68@1081,51",
+     "contribution": 0.00026504477041739
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "268×73@1282,48",
+     "apres": "283×48@1267,61",
+     "contribution": 0.00026504477041739
+    },
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "153×68@758,51",
+     "apres": "153×68@745,51",
+     "contribution": 0.00026504477041739
+    }
+   ]
+  }
+ },
+ "#/notre-fonctionnement": {
+  "320": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "375": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "768": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "1024": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "1440": {
+   "cls": 0.0005,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "84×68@852,51",
+     "apres": "85×68@841,51",
+     "contribution": 0.00047119070296424895
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "268×73@1042,48",
+     "apres": "283×48@1027,61",
+     "contribution": 0.00047119070296424895
+    },
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "153×68@518,51",
+     "apres": "153×68@505,51",
+     "contribution": 0.00047119070296424895
+    }
+   ]
+  },
+  "1920": {
+   "cls": 0.0003,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "84×68@1092,51",
+     "apres": "85×68@1081,51",
+     "contribution": 0.00026504477041739
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "268×73@1282,48",
+     "apres": "283×48@1267,61",
+     "contribution": 0.00026504477041739
+    },
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "153×68@758,51",
+     "apres": "153×68@745,51",
+     "contribution": 0.00026504477041739
+    }
+   ]
+  }
+ },
+ "#/avis-clients": {
+  "320": {
+   "cls": 0.0001,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "?",
+     "avant": "158×67@14,742",
+     "apres": "158×67@14,745",
+     "contribution": 0.00012800925925925927
+    }
+   ]
+  },
+  "375": {
+   "cls": 0.0001,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "?",
+     "avant": "158×67@18,714",
+     "apres": "158×67@18,717",
+     "contribution": 0.00010923456790123459
+    }
+   ]
+  },
+  "768": {
+   "cls": 0.0016,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "?",
+     "avant": "157×67@31,519",
+     "apres": "157×67@31,522",
+     "contribution": 0.0016413483796296298
+    },
+    {
+     "noeud": "li > div.tfp-card-tile > div.tfp-card-tile__body > p.tfp-card-tile__desc",
+     "avant": "706×23@31,865",
+     "apres": "0×0@0,0",
+     "contribution": 0.0016413483796296298
+    }
+   ]
+  },
+  "1024": {
+   "cls": 0.001,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "?",
+     "avant": "158×67@40,542",
+     "apres": "158×67@40,545",
+     "contribution": 0.0010166645050048828
+    },
+    {
+     "noeud": "li > div.tfp-card-tile > div.tfp-card-tile__body > p.tfp-card-tile__desc",
+     "avant": "454×19@530,813",
+     "apres": "454×19@530,833",
+     "contribution": 0.0010166645050048828
+    },
+    {
+     "noeud": "li > div.tfp-card-tile > div.tfp-card-tile__body > p.tfp-card-tile__line",
+     "avant": "454×38@530,836",
+     "apres": "454×38@530,856",
+     "contribution": 0.0010166645050048828
+    }
+   ]
+  },
+  "1440": {
+   "cls": 0.0006,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "84×68@852,51",
+     "apres": "85×68@841,51",
+     "contribution": 0.000562215805576989
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "268×73@1042,48",
+     "apres": "283×48@1027,61",
+     "contribution": 0.000562215805576989
+    },
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "153×68@518,51",
+     "apres": "153×68@505,51",
+     "contribution": 0.000562215805576989
+    }
+   ]
+  },
+  "1920": {
+   "cls": 0.0003,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "84×68@1092,51",
+     "apres": "85×68@1081,51",
+     "contribution": 0.0003162463906370563
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "268×73@1282,48",
+     "apres": "283×48@1267,61",
+     "contribution": 0.0003162463906370563
+    },
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "153×68@758,51",
+     "apres": "153×68@745,51",
+     "contribution": 0.0003162463906370563
+    }
+   ]
+  }
+ },
+ "#/a-propos": {
+  "320": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "375": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "768": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "1024": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "1440": {
+   "cls": 0.0005,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "84×68@852,51",
+     "apres": "85×68@841,51",
+     "contribution": 0.00047119070296424895
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "268×73@1042,48",
+     "apres": "283×48@1027,61",
+     "contribution": 0.00047119070296424895
+    },
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "153×68@518,51",
+     "apres": "153×68@505,51",
+     "contribution": 0.00047119070296424895
+    }
+   ]
+  },
+  "1920": {
+   "cls": 0.0003,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "84×68@1092,51",
+     "apres": "85×68@1081,51",
+     "contribution": 0.00026504477041739
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "268×73@1282,48",
+     "apres": "283×48@1267,61",
+     "contribution": 0.00026504477041739
+    },
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "153×68@758,51",
+     "apres": "153×68@745,51",
+     "contribution": 0.00026504477041739
+    }
+   ]
+  }
+ },
+ "#/recrutement": {
+  "320": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "375": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "768": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "1024": {
+   "cls": 0.0003,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "li > div.tfp-card-tile > div.tfp-card-tile__body > p.tfp-card-tile__desc",
+     "avant": "263×37@61,863",
+     "apres": "263×10@61,890",
+     "contribution": 0.000275667193863127
+    }
+   ]
+  },
+  "1440": {
+   "cls": 0.001,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "84×68@852,51",
+     "apres": "85×68@841,51",
+     "contribution": 0.0010255311063287682
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "268×73@1042,48",
+     "apres": "283×48@1027,61",
+     "contribution": 0.0010255311063287682
+    },
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "153×68@518,51",
+     "apres": "153×68@505,51",
+     "contribution": 0.0010255311063287682
+    }
+   ]
+  },
+  "1920": {
+   "cls": 0.0006,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "84×68@1092,51",
+     "apres": "85×68@1081,51",
+     "contribution": 0.0005592384903519242
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "268×73@1282,48",
+     "apres": "283×48@1267,61",
+     "contribution": 0.0005592384903519242
+    },
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "153×68@758,51",
+     "apres": "153×68@745,51",
+     "contribution": 0.0005592384903519242
+    }
+   ]
+  }
+ },
+ "#/demande-de-devis": {
+  "320": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "375": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "768": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "1024": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "1440": {
+   "cls": 0.0005,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "84×68@852,51",
+     "apres": "85×68@841,51",
+     "contribution": 0.00047119070296424895
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "268×73@1042,48",
+     "apres": "283×48@1027,61",
+     "contribution": 0.00047119070296424895
+    },
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "153×68@518,51",
+     "apres": "153×68@505,51",
+     "contribution": 0.00047119070296424895
+    }
+   ]
+  },
+  "1920": {
+   "cls": 0.0003,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "84×68@1092,51",
+     "apres": "85×68@1081,51",
+     "contribution": 0.00026504477041739
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "268×73@1282,48",
+     "apres": "283×48@1267,61",
+     "contribution": 0.00026504477041739
+    },
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "153×68@758,51",
+     "apres": "153×68@745,51",
+     "contribution": 0.00026504477041739
+    }
+   ]
+  }
+ },
+ "#/contact": {
+  "320": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "375": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "768": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "1024": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "1440": {
+   "cls": 0.0005,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "84×68@852,51",
+     "apres": "85×68@841,51",
+     "contribution": 0.00047119070296424895
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "268×73@1042,48",
+     "apres": "283×48@1027,61",
+     "contribution": 0.00047119070296424895
+    },
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "153×68@518,51",
+     "apres": "153×68@505,51",
+     "contribution": 0.00047119070296424895
+    }
+   ]
+  },
+  "1920": {
+   "cls": 0.0003,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "84×68@1092,51",
+     "apres": "85×68@1081,51",
+     "contribution": 0.00026504477041739
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "268×73@1282,48",
+     "apres": "283×48@1267,61",
+     "contribution": 0.00026504477041739
+    },
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "153×68@758,51",
+     "apres": "153×68@745,51",
+     "contribution": 0.00026504477041739
+    }
+   ]
+  }
+ },
+ "#/plan-du-site": {
+  "320": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "375": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "768": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "1024": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "1440": {
+   "cls": 0.0005,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "84×68@852,51",
+     "apres": "85×68@841,51",
+     "contribution": 0.00047119070296424895
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "268×73@1042,48",
+     "apres": "283×48@1027,61",
+     "contribution": 0.00047119070296424895
+    },
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "153×68@518,51",
+     "apres": "153×68@505,51",
+     "contribution": 0.00047119070296424895
+    }
+   ]
+  },
+  "1920": {
+   "cls": 0.0003,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "84×68@1092,51",
+     "apres": "85×68@1081,51",
+     "contribution": 0.00026504477041739
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "268×73@1282,48",
+     "apres": "283×48@1267,61",
+     "contribution": 0.00026504477041739
+    },
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "153×68@758,51",
+     "apres": "153×68@745,51",
+     "contribution": 0.00026504477041739
+    }
+   ]
+  }
+ },
+ "#/mentions-legales": {
+  "320": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "375": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "768": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "1024": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "1440": {
+   "cls": 0.0005,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "84×68@852,51",
+     "apres": "85×68@841,51",
+     "contribution": 0.00047119070296424895
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "268×73@1042,48",
+     "apres": "283×48@1027,61",
+     "contribution": 0.00047119070296424895
+    },
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "153×68@518,51",
+     "apres": "153×68@505,51",
+     "contribution": 0.00047119070296424895
+    }
+   ]
+  },
+  "1920": {
+   "cls": 0.0003,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "84×68@1092,51",
+     "apres": "85×68@1081,51",
+     "contribution": 0.00026504477041739
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "268×73@1282,48",
+     "apres": "283×48@1267,61",
+     "contribution": 0.00026504477041739
+    },
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "153×68@758,51",
+     "apres": "153×68@745,51",
+     "contribution": 0.00026504477041739
+    }
+   ]
+  }
+ },
+ "#/politique-de-confidentialite": {
+  "320": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "375": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "768": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "1024": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "1440": {
+   "cls": 0.0005,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "84×68@852,51",
+     "apres": "85×68@841,51",
+     "contribution": 0.00047119070296424895
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "268×73@1042,48",
+     "apres": "283×48@1027,61",
+     "contribution": 0.00047119070296424895
+    },
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "153×68@518,51",
+     "apres": "153×68@505,51",
+     "contribution": 0.00047119070296424895
+    }
+   ]
+  },
+  "1920": {
+   "cls": 0.0003,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "84×68@1092,51",
+     "apres": "85×68@1081,51",
+     "contribution": 0.00026504477041739
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "268×73@1282,48",
+     "apres": "283×48@1267,61",
+     "contribution": 0.00026504477041739
+    },
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "153×68@758,51",
+     "apres": "153×68@745,51",
+     "contribution": 0.00026504477041739
+    }
+   ]
+  }
+ },
+ "#/gestion-des-cookies": {
+  "320": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "375": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "768": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "1024": {
+   "cls": 0,
+   "entrees": 0,
+   "sources": []
+  },
+  "1440": {
+   "cls": 0.0005,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "84×68@852,51",
+     "apres": "85×68@841,51",
+     "contribution": 0.00047119070296424895
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "268×73@1042,48",
+     "apres": "283×48@1027,61",
+     "contribution": 0.00047119070296424895
+    },
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "153×68@518,51",
+     "apres": "153×68@505,51",
+     "contribution": 0.00047119070296424895
+    }
+   ]
+  },
+  "1920": {
+   "cls": 0.0003,
+   "entrees": 1,
+   "sources": [
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "84×68@1092,51",
+     "apres": "85×68@1081,51",
+     "contribution": 0.00026504477041739
+    },
+    {
+     "noeud": "div > header.tfp-header > div.tfp-header__inner > div.tfp-header__actions",
+     "avant": "268×73@1282,48",
+     "apres": "283×48@1267,61",
+     "contribution": 0.00026504477041739
+    },
+    {
+     "noeud": "header.tfp-header > div.tfp-header__inner > nav.tfp-nav > a.tfp-nav__link",
+     "avant": "153×68@758,51",
+     "apres": "153×68@745,51",
+     "contribution": 0.00026504477041739
+    }
+   ]
+  }
+ }
+}

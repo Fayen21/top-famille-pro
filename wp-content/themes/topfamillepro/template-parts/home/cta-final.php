@@ -22,13 +22,7 @@ $site = tfp_site_data();
 					'variant' => 'on-primary',
 				)
 			);
-			tfp_button(
-				array(
-					'label'   => '☎ ' . $site['phone'],
-					'href'    => 'tel:' . $site['phone_href'],
-					'variant' => 'on-dark',
-				)
-			);
+			tfp_bouton_appel( array( 'variant' => 'on-dark', 'numero' => true ) );
 			?>
 		</div>
 	</div>

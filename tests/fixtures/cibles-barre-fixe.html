@@ -1,0 +1,40 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Cibles — barre fixe au-dessus d'une liste de liens</title>
+<!--
+	Reproduction du faux positif du plan du site.
+
+	La barre d'action mobile est `position: fixed; bottom: 0`. Elle n'a donc AUCUNE position dans le
+	document : `getBoundingClientRect().top + scrollY` lui en fabrique une, qui glisse à travers la
+	page au fil du défilement et dépend de la hauteur de la fenêtre. À 900 px de haut elle tombait
+	pile sur un lien du plan du site et l'outil annonçait « voisine à 5 px » ; à 800 px, rien.
+
+	La fixture pose exactement cette géométrie : le lien ciblé est placé pour que la barre lui
+	retombe dessus dans une fenêtre de 900 px. Les liens de la liste, eux, sont à 33 px les uns des
+	autres — au-dessus des 24 px du critère : la page ne doit rien signaler.
+-->
+<style>
+	* { margin: 0; padding: 0; box-sizing: border-box; }
+	body { font: 15px/21px system-ui, sans-serif; }
+	.remplissage { height: 830px; }
+	ul { list-style: none; }
+	li { margin-bottom: 12px; }        /* 21 px de ligne + 12 = 33 px entre centres */
+	a { color: #16506e; }
+	.barre {
+		position: fixed; bottom: 0; left: 0; right: 0;
+		display: flex; gap: 12px; padding: 10px 16px; background: #fff;
+	}
+	.barre a { display: flex; align-items: center; height: 60px; padding: 0 18px; background: #16506e; color: #fff; }
+</style>
+
+<div class="remplissage"></div>
+<ul>
+	<li><a href="/prestations/coproprietes/">Entretien de copropriétés</a></li>
+	<li><a href="/prestations/bureaux/">Nettoyage de bureaux</a></li>
+	<li><a href="/prestations/cabinets/">Nettoyage de cabinets</a></li>
+</ul>
+
+<div class="barre">
+	<a href="tel:+33636176339">☎ Appeler</a>
+	<a href="/demande-de-devis/">Demander mon devis</a>
+</div>

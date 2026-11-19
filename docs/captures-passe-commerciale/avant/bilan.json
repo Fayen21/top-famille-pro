@@ -1,0 +1,322 @@
+{
+ "accueil-ecran-375": {
+  "route": "/",
+  "largeur": 375,
+  "mode": "fenetre",
+  "images": {
+   "images": 12,
+   "completes": 12,
+   "rendues_non_chargees": []
+  }
+ },
+ "accueil-ecran-1440": {
+  "route": "/",
+  "largeur": 1440,
+  "mode": "fenetre",
+  "images": {
+   "images": 12,
+   "completes": 12,
+   "rendues_non_chargees": []
+  }
+ },
+ "accueil-page-375": {
+  "route": "/",
+  "largeur": 375,
+  "mode": "page",
+  "images": {
+   "images": 12,
+   "completes": 12,
+   "rendues_non_chargees": []
+  }
+ },
+ "accueil-page-1440": {
+  "route": "/",
+  "largeur": 1440,
+  "mode": "page",
+  "images": {
+   "images": 12,
+   "completes": 12,
+   "rendues_non_chargees": []
+  }
+ },
+ "header-375": {
+  "route": "/tarifs/",
+  "largeur": 375,
+  "mode": "composant",
+  "images": {
+   "images": 3,
+   "completes": 3,
+   "rendues_non_chargees": []
+  }
+ },
+ "header-1440": {
+  "route": "/tarifs/",
+  "largeur": 1440,
+  "mode": "composant",
+  "images": {
+   "images": 3,
+   "completes": 3,
+   "rendues_non_chargees": []
+  }
+ },
+ "bureaux-ecran-375": {
+  "route": "/prestations/bureaux/",
+  "largeur": 375,
+  "mode": "fenetre",
+  "images": {
+   "images": 4,
+   "completes": 4,
+   "rendues_non_chargees": []
+  }
+ },
+ "bureaux-ecran-1440": {
+  "route": "/prestations/bureaux/",
+  "largeur": 1440,
+  "mode": "fenetre",
+  "images": {
+   "images": 4,
+   "completes": 4,
+   "rendues_non_chargees": []
+  }
+ },
+ "bureaux-page-375": {
+  "route": "/prestations/bureaux/",
+  "largeur": 375,
+  "mode": "page",
+  "images": {
+   "images": 4,
+   "completes": 4,
+   "rendues_non_chargees": []
+  }
+ },
+ "bureaux-page-1440": {
+  "route": "/prestations/bureaux/",
+  "largeur": 1440,
+  "mode": "page",
+  "images": {
+   "images": 4,
+   "completes": 4,
+   "rendues_non_chargees": []
+  }
+ },
+ "coproprietes-ecran-375": {
+  "route": "/prestations/coproprietes/",
+  "largeur": 375,
+  "mode": "fenetre",
+  "images": {
+   "images": 4,
+   "completes": 4,
+   "rendues_non_chargees": []
+  }
+ },
+ "coproprietes-ecran-1440": {
+  "route": "/prestations/coproprietes/",
+  "largeur": 1440,
+  "mode": "fenetre",
+  "images": {
+   "images": 4,
+   "completes": 4,
+   "rendues_non_chargees": []
+  }
+ },
+ "cabinets-ecran-375": {
+  "route": "/prestations/cabinets/",
+  "largeur": 375,
+  "mode": "fenetre",
+  "images": {
+   "images": 4,
+   "completes": 4,
+   "rendues_non_chargees": []
+  }
+ },
+ "cabinets-ecran-1440": {
+  "route": "/prestations/cabinets/",
+  "largeur": 1440,
+  "mode": "fenetre",
+  "images": {
+   "images": 4,
+   "completes": 4,
+   "rendues_non_chargees": []
+  }
+ },
+ "commerces-ecran-375": {
+  "route": "/prestations/commerces/",
+  "largeur": 375,
+  "mode": "fenetre",
+  "images": {
+   "images": 4,
+   "completes": 4,
+   "rendues_non_chargees": []
+  }
+ },
+ "commerces-ecran-1440": {
+  "route": "/prestations/commerces/",
+  "largeur": 1440,
+  "mode": "fenetre",
+  "images": {
+   "images": 4,
+   "completes": 4,
+   "rendues_non_chargees": []
+  }
+ },
+ "meubles-ecran-375": {
+  "route": "/prestations/meubles/",
+  "largeur": 375,
+  "mode": "fenetre",
+  "images": {
+   "images": 4,
+   "completes": 4,
+   "rendues_non_chargees": []
+  }
+ },
+ "meubles-ecran-1440": {
+  "route": "/prestations/meubles/",
+  "largeur": 1440,
+  "mode": "fenetre",
+  "images": {
+   "images": 4,
+   "completes": 4,
+   "rendues_non_chargees": []
+  }
+ },
+ "ponctuel-ecran-375": {
+  "route": "/prestations/ponctuel/",
+  "largeur": 375,
+  "mode": "fenetre",
+  "images": {
+   "images": 4,
+   "completes": 4,
+   "rendues_non_chargees": []
+  }
+ },
+ "ponctuel-ecran-1440": {
+  "route": "/prestations/ponctuel/",
+  "largeur": 1440,
+  "mode": "fenetre",
+  "images": {
+   "images": 4,
+   "completes": 4,
+   "rendues_non_chargees": []
+  }
+ },
+ "prestations-index-375": {
+  "route": "/prestations/",
+  "largeur": 375,
+  "mode": "page",
+  "images": {
+   "images": 9,
+   "completes": 9,
+   "rendues_non_chargees": []
+  }
+ },
+ "prestations-index-1440": {
+  "route": "/prestations/",
+  "largeur": 1440,
+  "mode": "page",
+  "images": {
+   "images": 9,
+   "completes": 9,
+   "rendues_non_chargees": []
+  }
+ },
+ "dijon-page-375": {
+  "route": "/zones-intervention/cote-dor/dijon/",
+  "largeur": 375,
+  "mode": "page",
+  "images": {
+   "images": 4,
+   "completes": 4,
+   "rendues_non_chargees": []
+  }
+ },
+ "dijon-page-1440": {
+  "route": "/zones-intervention/cote-dor/dijon/",
+  "largeur": 1440,
+  "mode": "page",
+  "images": {
+   "images": 4,
+   "completes": 4,
+   "rendues_non_chargees": []
+  }
+ },
+ "pilier-page-375": {
+  "route": "/nettoyage-professionnel/",
+  "largeur": 375,
+  "mode": "page",
+  "images": {
+   "images": 11,
+   "completes": 11,
+   "rendues_non_chargees": []
+  }
+ },
+ "pilier-page-1440": {
+  "route": "/nettoyage-professionnel/",
+  "largeur": 1440,
+  "mode": "page",
+  "images": {
+   "images": 11,
+   "completes": 11,
+   "rendues_non_chargees": []
+  }
+ },
+ "tarifs-page-375": {
+  "route": "/tarifs/",
+  "largeur": 375,
+  "mode": "page",
+  "images": {
+   "images": 3,
+   "completes": 3,
+   "rendues_non_chargees": []
+  }
+ },
+ "tarifs-page-1440": {
+  "route": "/tarifs/",
+  "largeur": 1440,
+  "mode": "page",
+  "images": {
+   "images": 3,
+   "completes": 3,
+   "rendues_non_chargees": []
+  }
+ },
+ "devis-etape1-375": {
+  "route": "/demande-de-devis/",
+  "largeur": 375,
+  "mode": "composant",
+  "images": {
+   "images": 4,
+   "completes": 4,
+   "rendues_non_chargees": []
+  }
+ },
+ "devis-etape1-1440": {
+  "route": "/demande-de-devis/",
+  "largeur": 1440,
+  "mode": "composant",
+  "images": {
+   "images": 4,
+   "completes": 4,
+   "rendues_non_chargees": []
+  }
+ },
+ "devis-etape2-375": {
+  "route": "/demande-de-devis/",
+  "largeur": 375,
+  "mode": "composant",
+  "images": {
+   "images": 4,
+   "completes": 4,
+   "rendues_non_chargees": []
+  }
+ },
+ "devis-etape2-1440": {
+  "route": "/demande-de-devis/",
+  "largeur": 1440,
+  "mode": "composant",
+  "images": {
+   "images": 4,
+   "completes": 4,
+   "rendues_non_chargees": []
+  }
+ }
+}

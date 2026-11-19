@@ -69,7 +69,15 @@ for (const route of ROUTES) {
 
 		test('aucune donnée fictive résiduelle (avis démo, Top-Entreprise, compteur 47 avis)', async ({ page }) => {
 			await page.goto(route.url);
-			const text = await page.locator('body').innerText();
+			// Le contenu explicitement marqué comme provisoire (`data-tfp-provisional`) est retiré
+			// avant contrôle : il n'est rendu que hors production, porte une mention visible, et son
+			// absence en production est vérifiée séparément et strictement (tests/fidelite.spec.js,
+			// « aucun contenu de démonstration en production »).
+			const text = await page.evaluate(() => {
+				const clone = document.body.cloneNode(true);
+				clone.querySelectorAll('[data-tfp-provisional]').forEach((el) => el.remove());
+				return clone.innerText;
+			});
 			// Les avis/compteur démo sont vérifiés tels quels. « Top-Entreprise » est vérifié sans
 			// tenir compte de la casse (pour attraper toute variante), après avoir retiré la seule
 			// occurrence légitime : la raison sociale réelle « SARL TOP-ENTREPRISE » du pied de page
