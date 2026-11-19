@@ -9,7 +9,8 @@
 > - `SHA256SUMS.txt` — empreintes pour vérifier que les fichiers ne sont pas abîmés.
 >
 > **Raccourci** : les phases 2 et 4 peuvent être faites en une commande SSH avec
-> `tools/deploiement/deployer-hostinger.sh` — mode d'emploi dans `DEPLOIEMENT-PAR-SCRIPT.md`.
+> `tools/deploiement/deployer-hostinger.sh`. Un seul fichier à déposer dans hPanel :
+> `release/tfp-livraison-0.18.1.zip`. Mode d'emploi dans `DEPLOIEMENT-PAR-SCRIPT.md`.
 >
 > Le pas à pas détaillé, avec les écrans de l'administration, est dans `GUIDE-DEPLOIEMENT-HOSTINGER.md`
 > (même dossier `release/`). Cette check-list le remplace sur deux points devenus faux : les

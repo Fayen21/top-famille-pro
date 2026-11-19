@@ -1,6 +1,6 @@
 # Installation par script — Top-Famille Pro 0.18.1
 
-> Version du 18 novembre 2026. Ce script remplace les **phases 2 et 4** de
+> Version du 19 novembre 2026. Ce script remplace les **phases 2 et 4** de
 > `CHECKLIST-MISE-EN-LIGNE.md` : installation des prérequis, du thème et du contenu, activation,
 > permaliens, nettoyage, contrôles. Les **phases 0, 3, 5 et 6** restent à faire par une personne :
 > décisions, test réel du devis, contrôle visuel, Search Console.
@@ -10,27 +10,60 @@
 
 ## 1. Préparer (une seule fois)
 
-1. **Activer l'accès SSH** : hPanel → **Avancé → Accès SSH** → activer. Noter l'hôte, le port
-   (souvent `65002`) et l'utilisateur, et définir un mot de passe.
-2. **Déposer quatre fichiers** dans un dossier `tfp-livraison`, à la racine de votre espace
-   d'hébergement (hPanel → **Fichiers → Gestionnaire de fichiers** → dossier personnel → nouveau
-   dossier `tfp-livraison` → Téléverser) :
-   - `release/paquets-passe-2026-11-18/topfamillepro-theme.zip` ;
-   - `release/paquets-passe-2026-11-18/topfamillepro-content-installer.zip` ;
-   - `release/paquets-passe-2026-11-18/SHA256SUMS.txt` ;
-   - `tools/deploiement/deployer-hostinger.sh`.
-3. **Se connecter** depuis un terminal (Terminal sur Mac, PowerShell sous Windows) :
-   ```
-   ssh -p 65002 UTILISATEUR@HÔTE
-   ```
-   Hostinger propose aussi un terminal dans le navigateur, sur la page Accès SSH.
-4. **Trouver le dossier du site**, celui qui contient `wp-config.php` :
-   ```
-   ls ~/domains/
-   ls ~/domains/top-famille-pro.fr/public_html/wp-config.php
-   ```
-   La préproduction a son propre dossier, indiqué dans hPanel sur la page de l'environnement de
-   préproduction.
+### a. Récupérer le fichier sur votre ordinateur
+
+Un seul fichier suffit : **`tfp-livraison-0.18.1.zip`** (9 Mo). Deux façons de l'obtenir :
+- la pièce jointe envoyée dans la conversation avec Claude ;
+- ou GitHub, connecté à votre compte :
+  https://github.com/fayen21/top-famille-pro/raw/claude/jolly-fermi-d5dryq/release/tfp-livraison-0.18.1.zip
+
+**Ne le décompressez pas sur votre ordinateur** : il se décompresse sur le serveur (étape c).
+
+Il contient le dossier `tfp-livraison/` avec quatre fichiers :
+- le thème ;
+- l'outil d'installation du contenu ;
+- les empreintes de contrôle ;
+- le script.
+
+Son empreinte SHA-256 est :
+`e7ca5bae44e7e03c2d1e847db76fed1c03f9d23834f06a3eb4f6e12712b08155`.
+
+### b. Activer l'accès SSH
+
+1. hPanel → choisir le site → menu **Avancé → Accès SSH**.
+2. Activer l'accès, puis définir ou changer le mot de passe SSH.
+3. Noter la ligne de connexion affichée, de la forme `ssh -p 65002 u123456789@123.45.67.89`.
+
+### c. Déposer et décompresser le fichier sur le serveur
+
+1. hPanel → **Fichiers → Gestionnaire de fichiers**.
+2. Remonter au **dossier personnel**, tout en haut de l'arborescence, celui qui contient le dossier
+   `domains`. **Pas** dans `public_html` : ce dossier est public sur Internet.
+3. Bouton **Téléverser** (flèche vers le haut) → choisir `tfp-livraison-0.18.1.zip`.
+4. Clic droit sur le fichier → **Extraire** → confirmer. Un dossier `tfp-livraison` apparaît.
+5. Le fichier `tfp-livraison-0.18.1.zip` peut ensuite être supprimé.
+
+### d. Ouvrir le terminal
+
+Deux possibilités :
+- dans hPanel, sur la page **Accès SSH**, le bouton du **terminal dans le navigateur**, s'il est
+  proposé ;
+- depuis votre ordinateur (Terminal sur Mac, PowerShell sous Windows) : coller la ligne de
+  connexion notée à l'étape b, puis saisir le mot de passe SSH. Le mot de passe ne s'affiche pas
+  pendant la frappe, c'est normal.
+
+### e. Vérifier les fichiers et trouver le dossier du site
+
+```
+ls ~/tfp-livraison
+ls ~/domains/
+ls ~/domains/top-famille-pro.fr/public_html/wp-config.php
+```
+
+- La première commande doit lister les quatre fichiers.
+- La troisième doit répondre par le chemin du fichier, et non par « No such file ».
+- La préproduction a son propre dossier, indiqué dans hPanel sur la page de l'environnement de
+  préproduction (souvent un sous-dossier ou un sous-domaine de `~/domains/`).
 
 ## 2. Préproduction d'abord
 
@@ -59,6 +92,10 @@ bash ~/tfp-livraison/deployer-hostinger.sh --litespeed
 ```
 
 Puis refaire le test du devis en production (check-list, phase 4), puis la phase 5.
+
+**Une fois le site en ligne et vérifié**, supprimer le dossier `~/tfp-livraison` (Gestionnaire de
+fichiers, clic droit → Supprimer). Garder `~/tfp-sauvegardes` quelques jours : il sert au retour
+arrière.
 
 ## 4. Ce que fait le script
 
