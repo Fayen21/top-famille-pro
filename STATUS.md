@@ -2414,8 +2414,15 @@ Il n'existait pas de préproduction.
 - La base n'a pas pu être exportée par WP-CLI. Une sauvegarde hPanel est déclarée faite.
 - Les thèmes et extensions sont archivés dans `~/tfp-sauvegardes/`.
 
+**Devis de test : reçu (19 novembre 2026).**
+
+**Point ouvert, sitemap.** Search Console reçoit une erreur 403 sur `wp-sitemap.xml`.
+- Avec un navigateur, l'adresse répond 200.
+- Avec l'identité de Googlebot, depuis le serveur, elle répond 403 ; l'accueil, lui, répond 200.
+- Le site passe par le CDN d'Hostinger (`x-hcdn`). Le thème ne filtre aucun robot.
+- Cause probable : la protection anti-robots du CDN d'Hostinger.
+
 **Reste :**
-- Devis de test reçu en boîte de réception.
 - Contrôle visuel sur ordinateur et téléphone.
 - Fusion de la PR #10, pour que `main` corresponde à la production.
 - Google Search Console (sitemap).
